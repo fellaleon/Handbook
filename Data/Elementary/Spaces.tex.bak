@@ -1,0 +1,598 @@
+
+\chapter{Spaces}
+
+\section{Vector Spaces}\label{sec:vector_space}
+
+\subsection{Vector Spaces}%Definitions}
+
+The crucial properties of field $\F$ (or set of scalars) are as follows (see definition of field (Definition \ref{def:field}))
+\ben
+\item [(i)] $\F$ is an abelian group under $+$, with additive identity 0.
+\item [(ii)] $\F\bs \bra{0}$ is an abelian group under multiplication($\cdot$), with multiplicative identity 1.
+\item [(iii)] Multiplication is distributive over addition, $a(b + c) = ab + ac$ for all $a, b, c \in \F$.
+\een
+
+\begin{remark}
+Note that $\F$ will almost always be the real numbers $\R$ or the complex numbers $\C$ under the usual addition and multiplication, but it could be the rational numbers, the integers modulo a specified prime number, or some other field.
+\end{remark}
+
+\begin{definition}[vector space\index{vector space}]\label{def:vector_space}
+For a field $\F$ (could be a general field, not only $\R$ or $\C$), the set $V$ is a vector space over $\F$ if the following holds.
+\ben
+\item [(A)] $V$ is an abelian group under an operation $+$, i.e., (see Definition \ref{def:group})
+\ben
+\item [(A0)] $+ : V \to V$, $(v_1, v_2) \mapsto v_1 + v_2 \in V$;
+\item [(A1)] For all $v_1, v_2, v_3 \in V$, $(v_1 + v_2) + v_3 = v_1 + (v_2 + v_3)$;
+\item [(A2)] For all $v_1, v_2 \in V$, $v_1 + v_2 = v_2 + v_1$;
+\item [(A3)] There exists $0 \in V$ such that $v + 0 = v$ for all $v \in V$;
+\item [(A4)] For each $v \in V$ there exists $-v \in V$ such that $-v + v = 0$.
+\een
+\item [(B)] There exists a multiplication $\cdot$ by scalars on $V$, i.e.,
+\ben
+\item [(B0)] $\cdot: \F \times V \to V$, $(\lm, v) \mapsto \lm v$;
+\item [(B1)] For all $\lm \in \F$, $v_1, v_2 \in V$, $\lm(v_1 + v_2) = \lm v_1 + \lm v_2$;
+\item [(B2)] For all $\lm_1, \lm_2 \in\F$, $v \in V$, $(\lm_1 + \lm_2)v = \lm_1v + \lm_2v$;
+\item [(B3)] For all $\lm_1, \lm_2 \in\F$, $v \in V$, $(\lm_1\lm_2)v = \lm_1(\lm_2v)$;
+\item [(B4)] For all $v \in V$, $1\cdot v = v$.
+\een
+\een
+\end{definition}
+
+\begin{lemma}
+Let $V$ be a vector space over $\F$ and let $v \in V$, $\lm \in \F$. Then
+\ben
+\item [(i)] $0 \cdot v = 0$, $\lm \cdot 0 = 0$;
+\item [(ii)] $-v = (-1) \cdot v$;
+\item [(iii)] if $\lm v = 0$ then either $\lm = 0$ or $v = 0$.
+\een
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] $0 \cdot v = (0 + 0) \cdot v = 0 \cdot v + 0 \cdot v$, so $0 = 0 \cdot v$;
+\item [(ii)] $-v + v = 0 = 0v = (-1 + 1)v = (-1)v + 1v = (-1)v + v$, so $-v = (-1)v$.
+\item [(iii)] Let $\lm v = 0$ and suppose $\lm \neq 0$. Then $\lm^{-1}$ exists and $\lm^{-1}(\lm v) = \lm^{-1} 0 = 0$ but $\lm^{-1}(\lm v) = (\lm^{-1}\lm)v = 1v = v$ so $v = 0$.
+\een
+\end{proof}
+
+\begin{example}
+\ben
+\item [(i)] The space $\F^n$ of $n$-tuples with entries in $\F$.
+\item [(ii)] Let $X$ be any set. The set $\F^X$ of all functions $X \to \F$ is a vector space over $\F$ addition and multiplication defined pointwise.\footnote{more examples needed.}
+\een
+\end{example}
+
+\subsection{Subspace of vector space}
+
+\begin{definition}[subspace\index{subspace!vector space}]\label{def:sub_vector_space}
+Let $V$ be a vector space over $\F$. A subset $U \subseteq V$ is a subspace of $V$, written $U \leq V$ if
+\ben
+\item [(i)] $0 \in U$;
+\item [(ii)] $\forall u_1, u_2 \in U \ \ra\ u_1 + u_2 \in U$;
+\item [(iii)] $\forall \lm \in \F,\ u \in U \ \ra\ \lm u \in U$.
+\een
+
+Equivalently, $U \neq \emptyset$ and $U$ is closed under linear combinations\footnote{need definition of linear combinations}.
+\end{definition}
+
+\begin{remark}
+Clearly, the intersection of any collection of subspaces is a subspace.
+\end{remark}
+
+\begin{lemma}
+If $V$ is a vector space over $\F$ and $U \leq V$ then $U$ is a vector space over $\F$ under the restriction of the operations $+$ and $\cdot$ on $V$ to $U$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+This is direct result from Definition \ref{def:sub_vector_space}.
+\end{proof}
+
+\begin{example}\label{exa:vector_space}
+\ben
+\item [(i)] $\R^\R$ is a vector space over $\R$.
+\item [(ii)] The set $C(\R)$\index{subsapce!continuous real functions} of continuous real functions is a subspace, and hence a real vector space.
+\item [(iii)] Similarly, one can also consider the subspaces $D(\R)$\index{subsapce!differential real functions} and $P(\R)$\index{subsapce!polynimial real functions} of differentiable and polynomial functions, respectively.\footnote{more examples needed.}
+\een
+\end{example}
+
+
+
+\begin{proposition}
+Let $V$ be a vector space with $U,W\leq V$. Then $U \cup W$ is a subspace if and only if $U \subseteq W$ or $W \subseteq U$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+($\ra$) It is obvious as $U\cup W$ is either $U$ or $W$.
+
+($\la$) Now suppose neither subspace is contained in the other subspace. Then there are vectors $x$ and $y$ such that $x\in U$ but not in $W$, and $y\in W$ but not in $U$. Obviously $x,y\in U\cup W$.
+
+If $x+y$ is in $U$, then $y = (x+y)-x \in U$ as $-x\in U$. Thus, $x+y\not\in U$. Similarly, $x+y \not\in W$. Thus, $x+y\not\in U\cup W$ which implies that $U\cup W$ is not sub vector space.
+\end{proof}
+
+
+
+%so is $x$, so $-x$ is also there, so (x+y)+(−x) is there, but that's just y, which we know is not there. We've reached a contradiction on the assumption that x+y was in the first subspace, so it can't be. Very similar reasoning shows it can't be in the second subspace, either, and we're done.
+
+%Then I claim the x+y can't be in either subspace, hence, can't be in their union; hence, the union is not closed under addition, so it's not a subspace.
+
+
+
+
+
+\subsection{Linear combination}
+
+\begin{definition}[linear combination]
+Let $V$ be a vector space of $\F$ and $v_1, \dots, v_n \in V$. Then the linear combination of $\bra{v_1,\dots,v_n}$ is
+\be
+\sum^n_{i=1} \lm_i v_i = \lm_1v_1 + \dots + \lm_nv_n,\qquad \lm_1, \dots, \lm_n \in \F
+\ee
+for $n \in \N$. By convention, $\sum^0_{i=1} \lm_iv_i = 0$.
+\end{definition}
+
+\begin{remark}
+Also note that all linear combinations are finite. If $S \subseteq V$, the linear combination $\sum_{v\in S} \lm_v v$ has only finitely many $v$ such that $\lm_v \neq 0$.
+\end{remark}
+
+
+\subsection{Span}
+
+%\begin{definition}[linear span, finite dimensional space]\label{def:space_span}
+%Let $V$ be a vector space. Then for $n\in \Z^+$ the vectors $v_1, \dots, v_n\in V$ (linearly) span (or generate) $V$ over $\F$ if any $v \in V$ is a linear combination of $v_1, \dots, v_n$. Write $V = \bsa{v_1, \dots, v_n}$ and we say that $V$ is finite dimensional.
+
+%More generally, if $S \subseteq V$ then $S$ spans $V$ if $\forall v \in V$,
+%\be
+%\exists n\in \Z^+,\ v_1, \dots, v_n \in S,\ \lm_1, \dots, \lm_n \in \F \quad\text{ s.t. }\quad  v = \sum^n_{i=1} %\lm_iv_i.
+%\ee%$S$ is called a linear span of vector space $$
+%\end{definition}
+
+%\begin{remark}
+%\end{remark}
+
+\begin{definition}[span]
+Let $S$ be a subset (not necessarily infinite) of the vector space $V$ of field $\F$. Then the span of the set $S$, denoted by $\linspan(S)$ or $\bsa{S}$, is the intersection $W$ of all subspaces of $V$ containing $S$. 
+
+$U$ is referred to as the subspace spanned by $S$, or by the vectors in $S$.
+
+Equivalently, the span of the set $S$ is the smallest subspace containing $S$. 
+\end{definition}
+
+\begin{remark}
+Note that span is a special case of generating set (for vector space).
+\end{remark}
+%\begin{remark}
+%The span of $U =\bra{u_1,\dots,u_n}$ contains all the linear combination of $u_1,\dots,u_n$.
+%\end{remark}
+
+%The span of a set $S \subseteq V$ (not necessarily finite) is defined to be the intersection $W$ of all subspaces of $V$ which contain $S$. $W$ is referred to as the subspace spanned by $S$, or by the vectors in $S$. Conversely, $S$ is called a spanning set of $W$.
+
+
+%\begin{lemma}
+%Let $S \subseteq V$. There is a unique smallest subspace $U$ of $V$ containing $S$, denoted by $U = \bsa{S}$, the subspace generated by $S$. In fact, $U$ consists of linear combinations of elements of $S$.
+%\end{lemma}
+
+%\begin{proof}[\bf Proof]
+%If we write $U$ for the set of linear combinations of elements of $S$ then $U$ is a subspace of $V$. On the other hand, $U$ as defined above has to be in any subspace containing $S$.
+%\end{proof}
+
+%\begin{example}
+%\end{example}
+
+
+\begin{example}
+\ben
+\item [(i)] The polynomials $P_2(\R)$ is spanned by $1, X, X^2$ (with coefficients 0 or 1).
+\item [(ii)] Let $V = \R^\R$ (see Example \ref{exa:vector_space}) and $S = \bra{1, X, X^2, \dots}$. Then $\linspan(S) = P(\R)$, the subspace of polynomial functions. Clearly, the polynomials space $P(\R)$ is not finite-dimensional (see Definition \ref{def:dimension_vector_space}).
+\een
+\end{example}
+
+\begin{theorem}\label{thm:span_of_set_is_linear_combination_of_elements_of_set}
+Let $S$ be a subset (not necessarily finite) of the vector space $V$ of field $\F$. Then the span of $S$ is the set of all finite linear combination of elements of $S$. That is,
+\be
+\linspan(S) = U = \bigcup_{k\in \Z^+}\bra{\sum^k_{i=1} \lm_i v_i: v_i\in S,\lm_i\in \F}.
+\ee
+\end{theorem}
+
+\begin{remark}
+Clearly, if $S$ is finite with $S =\bra{v_1,\dots,v_n}$, we have
+\be
+\linspan(S) = \bsa{v_1,\dots, v_n} = \bra{\sum^n_{i=1} \lm_i v_i: v_i\in S,\lm_i\in \F}
+\ee
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Clearly, $U$ is a sub vector space containing $S$ as it is closed under addition and scalar multiplication. 
+
+Let $W$ be any subspace containing $S$. We need to show that $W$ contains $U$. Since $W$ contains $S$, it must contain every linear combination of the elements of $S$ and the set of all possible linear combinations of elements of $S$ is precisely $U$ (as linear combinations are finite). Thus, $U$ is the smallest subspace containing $S$, i.e., $\linspan(S)$.
+\end{proof}
+
+\subsection{Linear independence}
+
+\begin{definition}[linear independence]\label{def:linearly_independent_vector}
+The vectors $v_1, \dots, v_n$ are linearly independent\index{linearly independent!vectors} in $V$ over $\F$ if $\forall \lm_1,\dots,\lm_n\in \F$,
+\be
+\lm_1v_1 + \dots + \lm_nv_n = 0 \ \ra \ \lm_1 = \dots = \lm_n = 0.
+\ee
+
+Otherwise, the vectors are linearly dependent\index{linearly dependent!vectors}.
+
+More generally, if $S \subseteq V$ then $S$ is linearly independent precisely\index{linearly independent!subvector space} if every finite subset of $S$ is linearly independent.
+\end{definition}
+
+\begin{remark}
+0 is never contained in a linearly independent set as $1 \cdot 0 = 0$.
+\end{remark}
+
+\begin{remark}
+\ben
+\item [(i)] $V = \C$ is a vector space over $\R$ and 1, $i$ are linearly independent.
+\item [(ii)] $V = \C$ is also a vector space over $\C$. In this case, 1, $i$ are linearly dependent.
+\een
+\end{remark}
+
+\begin{lemma}\label{lem:span_linearly_independence_property}
+Let $S = \bra{s_1,\dots,s_n}$ be non-empty set of vectors in vector space $V$. Then
+\ben
+\item [(i)] If $S$ contains a linearly dependent subset, then $S$ itself must be linear dependent.
+\item [(ii)] If $S$ is linearly independent, then every subset of $S$ is also linear independent.
+\item [(iii)] If $S$ is linearly independent and if $v\in V$, then the extension set $T = S\cup \bra{v}$ is linearly independent if and only if $v\notin \linspan(S)$.%\item [(iv)] If $S\subseteq U$ where $U$ is $m$-dimensional vector space. If $n>m$, then $S$ must be linearly dependent.
+\een
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+\footnote{see Meyer book, p188.}
+\end{proof}
+
+
+
+%\section{Normed Vector Spaces}
+
+\subsection{Vector norm}
+%\section{Norms}
+
+\begin{definition}[norm\index{norm!vector space}]\label{def:norm_vector_space}
+Let $V$ be a vector space over a field $\F$ ($\R$ or $\C$). A map $\dabs{\cdot}:V \to [0,\infty),x \mapsto \dabs{x}: $ is a vector norm if
+\ben
+\item [(i)] $\dabs{x} \geq 0$ for all $x \in V$ (non-negative).
+\item [(ii)] $\dabs{x} = 0$ implies $x = 0$ (positive).
+\item [(iii)] $\dabs{\alpha x} = |\alpha|\dabs{x}$ for all $x \in V$ and $\alpha \in \F$ (homogeneous).
+\item [(iv)] $\dabs{x + y} \leq \dabs{x} + \dabs{y}$ for all $x, y \in V$ (triangle inequality).
+\een
+\end{definition}
+
+\begin{remark}
+Note that (iii) implies that $x=0$ gives $\dabs{x}=0$. Thus (ii) can be rewritten by $
+\dabs{x} = 0\lra x=0$. 
+\end{remark}
+
+\begin{definition}[convergence in vector space\index{convergence!in vector space}]\label{def:convergence_vector_space}
+Let $V$ be a vector space over a field $\F$ ($\R$ or $\C$) and let $\dabs{\cdot}$ be a vector norm on $V$. Then we say that the sequence $x_n$ of vectors in $V$ converges to a vector $x\in V$ with respect to the norm $\dabs{\cdot}$ if and only if $\dabs{x_n-x} \to 0$ as $n\to \infty$.
+\end{definition}
+
+\begin{remark}
+We note that, for any norm, if $\dabs{x_n - x} \to 0$ then $\dabs{x_n} \to \dabs{x}$ as $\dabs{x_n}\leq \dabs{x_n-x}+\dabs{x} \to \dabs{x}$.
+\end{remark}
+
+%\subsection{Normed vector spaces}
+
+
+
+
+%\section{Finite Dimensional Vector Spaces}
+
+\section{Basis and Dimension of Vector Spaces}
+
+Note that in linear algebra, we only consider finite dimensional vector space.
+
+\subsection{Basis}
+
+\begin{definition}[basis\index{basis!vector space}]\label{def:basis_vector_space}
+The vectors $v_1, \dots, v_n$ form a basis of $V$ if they span $V$ over $\F$ and are linearly independent.
+\end{definition}
+
+\begin{example}
+\ben
+\item [(i)] $P_2(\R)$ has standard basis $\bra{1, X, X^2}$.
+\item [(ii)] $\F^n$ has standard basis $\bra{e_1, \dots, e_n}$ where $\bbe_i = (0, \dots, 1, \dots, 0)^T$ ($i$th element is 1, otherwise 0).
+\item [(iii)] $\bra{0}$ has basis $\emptyset$.
+\een
+\end{example}
+
+\begin{lemma}
+$v_1, \dots, v_n \in V$ form a basis of $V$ over $\F$ if and only if each element $v \in V$ can be written uniquely as $v = \sum^n_{i=1} \lm_iv_i$ with $\lm_i \in \F$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+$\forall v \in V$. $v_1, \dots, v_n$ span $V$ so $v = \sum^n_{i=1} \lm_iv_i$ for some $\lm_i \in \F$. If also $v = \sum^n_{i=1} \mu_iv_i$ then $0 = \sum^n_{i=1}(\lm_i - \mu_i)v_i$, so as $v_1, \dots, v_n$ are linearly independent, we have $\lm_i = \mu_i$ for $i = 1, \dots, n$.
+
+Conversely, since each $v \in V$ is a linear combination of $v_1, \dots, v_n$, we have $v_1, \dots, v_n$ span $V$ over $\F$. They are linearly dependent since if $\sum^n_{i=1} \lm_iv_i = 0 = \sum^n_{i=1} 0v_i$ then $\lm_i = 0$ for $i = 1, \dots, n$ by uniqueness.
+\end{proof}
+
+\begin{lemma}\label{lem:spanning_subset_is_basis}
+If $v_1, \dots, v_n$ span $V$ over $\F$, some subset of $\bra{v_1, \dots, v_n}$ is a basis of $V$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+If $v_1, \dots, v_n$ are linearly independent, we are done. Otherwise, for some $k$, there exist $\alpha_1, \dots, \alpha_{k-1} \in \F$ with $v_k = \alpha_1v_1 + \dots + \alpha_{k-1}v_{k-1}$. (If $\lm_1v_1 + \dots + \lm_nv_n = 0$ with not all $\lm_i = 0$, take $k$ maximal with $\lm_k \neq 0$ and let $\alpha_i = -\frac{\lm_i}{\lm_k}$.)
+
+Then $v_1, \dots, v_{k-1}, v_{k+1}, \dots, v_n$ still span $V$ since whenever $v = \sum^n_{i=1} \lm_iv_i$ then $v = \sum^{k-1}_{i=1} (\alpha_i+ \lm_i)v_i + \sum^n_{i=k+1} \lm_iv_i$. Continue deleting until we have a basis.
+\end{proof}
+
+\begin{theorem}[Steinitz exchange lemma]\label{thm:steinitz_exchange}
+Let $V$ be a vector space over $\F$. Let $v_1, \dots, v_m$ be linearly independent and let $w_1, \dots,w_n$ span $V$ over $\F$ for some $m,n\in \N$. Then $m \leq  n$, and reordering the $w_i$ if necessary, the vectors $v_1, \dots, v_m, w_{m+1}, \dots,w_n$ span $V$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Suppose we have replaced $r \geq 0$ of the $w_i$ by $v_i$ already, renumbering the $w_i$ if necessary, we have $v_1, \dots, v_r,w_{r+1}, \dots,w_n$ span $V$. If $r = m$, we are done. So assume $r < m$. Then
+\be
+v_{r+1} = \sum^r_{i=1} \alpha_iv_i + \sum^n_{i=r+1} \beta_iw_i
+\ee
+for some $\alpha_i, \beta_i \in \F$. Note that $\beta_i \neq 0$ for some $i$ since $v_1, \dots, v_r, v_{r+1}$ are linearly independent. After reordering $w_{r+1}, \dots,w_n$ we have $\beta_{r+1} \neq 0$. Then
+\be
+w_{r+1} = \sum^r_{i=1} \frac{-\alpha_i}{\beta_{r+1}} v_i + \frac 1{\beta_{r+1}} v_{r+1} + \sum_{i=r+2} \frac{-\beta_i}{\beta_{r+1}} w_i.
+\ee
+
+It follows that $V$ is spanned by $v_1, \dots, v_r, v_{r+1},w_{r+2}, \dots,w_n$. After $m$ steps, we shall have replaced $m$ of the $w_i$ by the $v_i$, retaining the spanning property.
+
+If $m>n$, we have $v_1,\dots,v_n$ span $V$ over $\F$. But $v_m$ can be expressed by a linear combination of $v_1,\dots,v_n$ since $v_1,\dots,v_m$ are linearly independent. Therefore, it follows that $m \leq n$.
+\end{proof}
+
+\subsection{Dimension of vector space}
+
+%\begin{theorem}[dimension\index{dimension!vector space}]\label{thm:dimension_vector_space}
+%If $V$ is a finite dimensional vector space over $\F$, any two bases have the same size, the dimension of $V$ over $\F$, $\dim_\F V$.
+%\end{theorem}
+
+%\begin{proof}[\bf Proof]
+%Let $\bra{v_1, \dots, v_m}$ and $\bra{w_1, \dots,w_n}$ be two bases. Thus, $v_1, \dots, v_m$ are linearly independent and span $V$ and so are $w_1, \dots,w_n$. Then by Steinitz exchange lemma (Theorem \ref{thm:steinitz_exchange}), $m \leq  n$ since the $v_i$ are linearly independent and the $w_i$ span $V$. Also $n \leq  m$ since the $w_i$ are linearly independent and the $v_i$ span $V$.
+%\end{proof}
+
+
+\begin{theorem}\label{thm:span_cardinality_geq_linearly_independent_cardinality}
+Let $V$ be a vector space over $\F$ spanned by $J$ and $I$ is a linearly independent set. Then the cardinality of $I$ is not larger than the cardinality of $J$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+If cardinality of $J$ is finite, then Steinitz exchange lemma (Theorem \ref{thm:steinitz_exchange}) implies that every finite subset of $I$ has cardinality not larger than that of $J$. Hence, $I$ is finite with cardinality not larger than that of $J$. If cardinality of $I$ is infinite, there must be a finite subset of $I$ with larger cardinality than that of $J$. This will be contradiction to Steinitz exchange lemma (Theorem \ref{thm:steinitz_exchange}).
+
+\footnote{infinite case proof needed. see wiki dimension theorem for vector space}
+\end{proof}
+
+Thus, we can have the following corollary by Theorem \ref{thm:span_cardinality_geq_linearly_independent_cardinality} and definition of basis.
+
+\begin{corollary}[dimension theorem for vector space]\label{cor:dimension_theorem_for_vector_space}
+Let $V$ be a vector space over $\F$. Then any two bases of $V$ have the same cardinality.
+\end{corollary}
+
+Then we can have the following definition.
+
+\begin{definition}[dimension of vector space]\label{def:dimension_vector_space}
+Let $V$ be a vector space over $\F$. Then its dimension, denoted by $\dim_{\F}V$ (or $\dim V$), is defined by the cardinality of its basis.
+
+If its dimension is finite, then the vector space is called finite-dimensional. Otherwise, it is called infinite-dimensional.
+\end{definition}
+
+
+\begin{example}
+\ben
+\item [(i)] $\dim_\F \F^n = n$.
+\item [(ii)] $\dim_\R P_2(\R) = 3$.
+\item [(iii)] $\dim_\R \C = 2$.
+\item [(iv)] $\dim_\F \F = 1$.
+\een
+\end{example}
+
+
+\subsection{Finite dimensional vector space}
+
+\begin{lemma}\label{lem:linearly_independent_extend_basis}
+If $V$ is $n$-dimensional vector space over $\F$, and if the vectors $v_1, \dots, v_k$ are linearly independent for some $k \geq 0$, there exists a basis $\bra{v_1, \dots, v_k, v_{k+1}, \dots, v_n}$
+of $V$.
+\end{lemma}
+
+\begin{remark}
+If $V$ is finite dimensional then whenever $U \leq  V$ then $\dim U \leq \dim V$ with equality if and only if $U = V$.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+If $v_1, \dots, v_k$ span $V$, we are done. Otherwise, take $v_{k+1} \in V \bs \bsa{v_1, \dots, v_k}$. Then $v_1, \dots, v_{k+1}$ are linearly independent. We shall obtain a basis after $\dim V -k$ steps.
+\end{proof}
+
+\begin{lemma}\label{lem:independent_spanning_basis}
+Let $V$ be a vector space over $\F$ with $\dim V = n$.
+\ben
+\item [(i)] An independent set has at most $n$ vectors, with equality if and only if it as basis.
+\item [(ii)] A spanning set has at least $n$ vectors, with equality if and only if it a basis.
+\een
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] This follows from Lemma \ref{lem:linearly_independent_extend_basis} and Corollary \ref{cor:dimension_theorem_for_vector_space}. % Theorem \ref{thm:dimension_vector_space}.
+\item [(ii)] This follows from Lemma \ref{lem:spanning_subset_is_basis} and Corollary \ref{cor:dimension_theorem_for_vector_space}. %Theorem \ref{thm:dimension_vector_space}.
+\een
+\end{proof}
+
+Then Lemma \ref{lem:independent_spanning_basis} gives
+\begin{lemma}\label{lem:finite_basis_linearly_independent_spanning_equivalent}
+Let $V$ be a vector space over $\F$ with $\dim_\F V = n$. The following are equivalent.
+\ben
+\item [(i)] $B = \bra{v_1, \dots, v_n}$ forms a basis.
+\item [(ii)] $B = \bra{v_1, \dots, v_n}$ is a minimal spanning set of $V$.
+\item [(iii)] $B = \bra{v_1, \dots, v_n}$ is a maximal linearly independent subset of $V$.
+\een
+\end{lemma}
+
+
+\begin{proposition}\label{pro:dimension_subspace_property}
+Let $U\leq V$ be a subspace of $V$ with finite dimension. Then
+\ben
+\item [(i)] $\dim U\leq \dim V$.
+\item [(ii)] If $\dim U = \dim V$, then $U = V$.
+\item [(iii)] $U\subset V$ (proper subset) iff $\dim U < \dim V$.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Let $\dim U = m$ and $\dim V =n$. If $m>n$, then there exists a linearly independent subset of $V$ (namely, a basis of $U$) containing more than $n$ vectors. But this is impossible because $n$ is the size of a maximal independent subset of $V$ (by Lemma \ref{lem:finite_basis_linearly_independent_spanning_equivalent}). Thus, $m\leq n$.
+
+\item [(ii)] If $m=n$ but $U\neq V$, then there exists a vector $x$ such that $x\in V$ but $x\notin U$. If $\sB$ is a basis of $U$, then $x\notin \linspan(\sB)$, and the extension set $\sE = \sB\cup \bra{x}$ is a linear independent subset of $V$ (by Lemma \ref{lem:span_linearly_independence_property}.(iii)). But $\sE$ contains $m+1 = n+1$ vectors, which is impossible because $\dim V =n$ is the size of a maximal independent subset of $V$ (by Lemma \ref{lem:finite_basis_linearly_independent_spanning_equivalent}). Hence, $U=V$.
+
+\item [(iii)] Direct result from (ii).
+\een
+\end{proof}
+
+
+
+
+\subsection{Sum of vector spaces}
+
+\begin{definition}[sum of vector space]\label{def:sum_vector_space}
+If $U,W \leq  V$ define $U +W = \bra{u + w : u \in U,w \in W}$. Then $U +W \leq  V$.
+\end{definition}
+
+
+\begin{theorem}[modular equation]\label{thm:modular_equation_vector_space}
+Let $U, W$ are finite dimensional subspaces of $V$, i.e., $U,W\leq V$. Then $U +W$ is also finite dimensional and 
+\be
+\dim (U + W) +  \dim (U \cap W) = \dim U + \dim W.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $v_1, \dots, v_k$ be a basis for $U \cap W$. Extend this to $v_1, \dots, v_k, u_1, \dots, u_l$ a basis for $U$ and to $v_1, \dots, v_k,w_1, \dots,w_m$ a basis for $W$. We claim $v_1, \dots, v_k, u_1, \dots, u_l,w_1, \dots,w_m$ is a basis for $U +W$.
+
+If $v \in U +W$, then $v = u+w$ for some $u \in U$, $w \in W$. Now $u = \sum \alpha_i' v_i + \sum \beta_i u_i$ for some $\alpha_i', \beta_i \in \F$ and $w = \sum \alpha_i'' v_i + \sum \gamma_i w_i$ for some $\alpha''_i , \gamma_i \in \F$, and therefore
+\be
+v = \sum \bb{\alpha_i' + \alpha''_i }v_i + \sum \beta_iu_i + \sum \gamma_iw_i := \sum \alpha_i v_i + \sum \beta_iu_i + \sum \gamma_iw_i.
+\ee
+
+Suppose $\sum \alpha_iv_i + \sum \beta_iu_i + \sum \gamma_i w_i = 0$. Then
+\be
+\sum \alpha_iv_i + \sum \beta_iu_i = - \sum \gamma_iw_i = \sum \delta_iv_i
+\ee
+for some $\delta_i \in \F$, using that the LHS is in $U$ and the RHS is in $W$, so both vectors are in $U \cap W$. Then
+\be
+\sum \bb{\alpha_i - \delta_i}v_i + \sum \beta_iu_i = 0,
+\ee
+and as $v_1, \dots, v_k, u_1, \dots, u_l$ form a basis of $U$, we have that all $\beta_i$ are 0. But then
+\be
+\sum \alpha_iv_i + \sum \gamma_iw_i = 0,
+\ee
+and as $v_1, \dots, v_k,w_1, \dots,w_m$ form a basis of $W$, we have that all $\alpha_i, \gamma_i$ are 0.
+\end{proof}
+
+\begin{definition}[complement subspace]\label{def:complement_subspace}%{def:complement_subspace}
+Let $U,W\leq V$, i.e., $U,W$ are subspaces of $V$.
+
+Then $U$ and $W$ are complement if
+\ben
+\item [(i)] $U + W = V$.
+\item [(ii)] $U\cap W = \bra{0}$.
+\een
+\end{definition}
+
+
+
+\begin{corollary}\label{cor:dimension_sum_intersection_zero_iff_complement_subspaces}
+Let $U,W\leq V$ and consider the following conditions
+\ben
+\item [(i)] $\dim\bb{U+W} = \dim V$.
+\item [(ii)] $U \cap W = \bra{0}$.
+\item [(iii)] $\dim U + \dim W = \dim V$.
+\item [(iv)] $U$ and $W$ are complement subspaces.
+\een
+
+Then
+\be
+\text{(i),(ii)} \ \lra \ \text{(i),(iii)} \ \lra \ \text{(ii),(iii)} \ \lra\ \text{(i),(ii),(iii)} \ \lra \ \text{(iv)}.
+\ee
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+Direct result from Proposition \ref{pro:dimension_subspace_property} and Theorem \ref{thm:modular_equation_vector_space}.
+\end{proof}
+
+
+\subsection{Direct sum of vector spaces}
+
+
+\begin{definition}[direct sum\index{direct sum!vector space}]\label{def:direct_sum_vector_space}
+Let $V$ be a vector space over $\F$ and suppose $U,W \leq  V$. Then
+\be
+V = U \oplus W
+\ee
+if every element $v$ of $V$ can be written uniquely as $v = u + w$ with $u \in U$ and $w \in W$. If so, we say $W$ is the complement (or complement subspace) of $U$ in $V$.
+\end{definition}
+
+
+\begin{lemma}
+If $V$ is a finite dimensional vector space over $\F$ with $\dim_{\F}V = n$and $U \leq V$, then $U$ has a complement in $V$. (Note this is not at all unique unless $U = \bra{0}$ or $U = V$.)
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Take $u_1, \dots, u_k$ a basis for $U$ and extend to a basis $u_1, \dots, u_k,w_{k+1}, \dots,w_n$ for $V$. Then $W = \linspan\bra{w_{k+1}, \dots, w_n}$ is a complement of $U$ in $V$ as $\bra{w_{k+1}, \dots, w_n}$ is independent of $\bra{u_1, \dots, u_k}$.
+\end{proof}
+
+\begin{lemma}\label{lem:direct_sum_vector_space}
+Suppose $U,W \leq V$. Then $V = U \oplus W$ if and only if $U$ and $W$ are complement, that is, $U + W = V$ and $U \cap W = \bra{0}$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+($\ra$). If $V = U \oplus W$, then $V = U + W$. Thus, $\forall v \in V$, we have $v = u + w$ for $u\in U$ and $w\in W$. If $U\cap W \neq \bra{0}$, then there exists $x\neq 0$ such that
+\be
+v = u+w = (u+x) + (w-x),\quad u+x\in U,w-x\in W \ \ra \ \text{Contradiction.}
+\ee
+
+($\la$). If $U \cap W = \bra{0}$ and $U+W = V$, there exists $u_1,u_2\in U$ and $w_1,w_2 \in W$ such that
+\be
+v = u_1 + w_1 = u_2 + w_2 \ \ra \ u_1 -u_2 = w_2-w_1
+\ee
+where the LHS in $U$ and the RHS in $W$. Thus, $u_1 = u_2,w_1 = w_2$. Therefore, $V = U\oplus W$.
+\end{proof}
+
+
+
+\begin{definition}\label{def:n_direct_sum_vector_space}
+Suppose $V_1, \dots, V_k \leq V$ and let $\sum V_i = \bra{\sum v_i : v_i \in V_i} \leq V$. Then the sum $\sum_i V_i$ is direct, written as $\bigoplus V_i$, if each $v \in V$ is uniquely expressible as $\sum v_i$ with $v_i \in V_i$.
+\end{definition}
+
+\begin{lemma}
+Let $V_1, \dots, V_k \leq V$. The following are equivalent.
+\ben
+\item [(i)] $\sum_i V_i$ is direct.
+\item [(ii)] If $B_i$ is a basis for $V_i$ then $B = \bigcup^k_{i=1} B_i$ is a basis for $\sum_i V_i$.
+\item [(iii)] For each $i$, $V_i \cap \sum_{j\neq i} V_j = \bra{0}$ and $V = \sum_i V_i$
+\een
+\end{lemma}
+
+Note that in (iii), if $k > 2$ it is not enough to assume $V_i \cap V_j = \bra{0}$ for all $i \neq j$.
+
+\begin{proof}[\bf Proof]
+(i) $\ra$ (ii). Let $B_i$ be a basis for $V_i$, let $B = \bigcup^k_{i=1} B_i$. If $v \in \sum V_i$ then $v = \sum^k_{i=1} v_i$, and $v_i$ can be written as a linear combination of vectors in $B_i$, so substitute for each $v_i$ and obtain $v$ as a linear combination of $B$. If we have a linear
+combination of vectors in $B$ equal to 0, collect together terms in each $V_i$, let $v_i$ denote the part in $V_i$. Then $v_1+\dots+v_k = 0$. By uniqueness of expression for 0, we have $v_i = 0$. Now $B_i$ is linear independent, so all coefficients are 0.
+
+For the rest, we use similar argument in proof of Lemma \ref{lem:direct_sum_vector_space}.
+\end{proof}
+
+\section{Sequence Space}
+
+\subsection{Sequence space}
+
+\begin{definition}[sequence (vector) space]\label{def:sequence_vector_space}
+Let $\F$ be a field ($\R$ or $\C$). Then the set of all sequences of scalars, denoted by $\F^\N$, is defined by
+\be
+\F^\N = \bra{(x_n)_{n\in \N} = \bb{x_0,x_1,x_2,\dots},\ x_n \in \F}.
+\ee
+
+If for any $(x_n)_{n\in \N}$ and $(y_n)_{n\in \N}$, we define the addition and scalar multiplication by
+\be
+(x_n)_{n\in \N} + (y_n)_{n\in \N} := (x_n+y_n)_{n\in \N},\qquad \alpha (x_n)_{n\in \N} :=  (\alpha x_n)_{n\in \N},\quad \alpha\in \F.
+\ee
+
+Then $\F^\N$ is turned into a vector space (see Definition \ref{def:vector_space}), called sequence (vector) space.
+\end{definition}
+
+
+
+
