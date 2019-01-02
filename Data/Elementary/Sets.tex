@@ -282,7 +282,7 @@ If $R$ and $S$ are relations and $R\subseteq S$, then cleary $R[A] \subseteq S[A
 \begin{proposition}\label{pro:inverse_relation_properties}
 Let $R,S,T$ be the relations and let $A$ and $B$ be sets. Then
 \ben
-\item [(i)] $\bb{R^{-1}}^{-1} = R$, $\bb{R\circ S}^{-1} = S^{-1}\circ R^{-1}$.
+\item [(i)] $\brb{R^{-1}}^{-1} = R$, $\brb{R\circ S}^{-1} = S^{-1}\circ R^{-1}$.
 \item [(ii)] $R\circ (S\circ T) = (R\circ S)\circ T$, $(R\circ S)[A] = R[S[A]]$.
 \item [(iii)] $R[A\cup B] = R[A] \cup R[B]$, $R[A\cap B] \subseteq R[A] \cap R[B]$.
 \een
@@ -469,7 +469,7 @@ Let $f:X\to Y$, $g:Y\to Z$, and $h:Z\to W$ be functions. Then $h\circ (g\circ f)
 \begin{proof}[\bf Proof]
 For each $x\in X$, we have that
 \be
-h\circ (g\circ f) (x) = h\bb{(g\circ f) (x)} = h\bb{g(f(x))} = (h\circ g)(f(x)) = \bb{(h\circ g) \circ f}(x).
+h\circ (g\circ f) (x) = h\brb{(g\circ f) (x)} = h\brb{g(f(x))} = (h\circ g)(f(x)) = \brb{(h\circ g) \circ f}(x).
 \ee
 \end{proof}
 
@@ -560,13 +560,13 @@ Let $f:X\to Y$ and $g = Y\to Z$ be functions. Then
 \ben
 \item [(i)] Suppose that $x,x'\in X$ and $f(x) = f(x')$. Then
 \be
-\bb{g\circ f}(x) = g\bb{f(x)} = g\bb{f(x')} = \bb{g\circ f}(x') \ \ra\ x = x'
+\brb{g\circ f}(x) = g\brb{f(x)} = g\brb{f(x')} = \brb{g\circ f}(x') \ \ra\ x = x'
 \ee
 since $g\circ f$ is injective. Thus, we conclude that $f$ is injective as well.
 
 \item [(ii)] For any $z\in Z$, we can find $x\in X$ such that
 \be
-\bb{g\circ f}(x) = g\bb{f(x)} = z
+\brb{g\circ f}(x) = g\brb{f(x)} = z
 \ee
 since $g\circ f$ is surjective. Thus, we can find $f(x)\in Y$ for any $z$ which implies that $g$ is surjective.
 \een
@@ -585,13 +585,13 @@ Suppose $f_1,f_2:X\to Y$, $g :Y\to Z$ and $h_1,h_2:Z\to W$ are functions.
 \ben
 \item [(i)] For any $x\in X$, we have
 \be
-g\bb{f_1(x)} = \bb{g\circ f_1}(x) =  \bb{g\circ f_2}(x) = g\bb{f_2(x)} \ \ra\ f_1(x) = f_2(x)
+g\brb{f_1(x)} = \brb{g\circ f_1}(x) =  \brb{g\circ f_2}(x) = g\brb{f_2(x)} \ \ra\ f_1(x) = f_2(x)
 \ee
 since $g$ is injective. Then $f_1 = f_2$ on $X$.
 
 \item [(ii)] For any $z\in Z$, we can find $y \in Y$ such that $g(y) =z$ since $g$ is surjective. So
 \be
-h_1(c) = h_1\bb{g(y)} = \bb{h_1\circ g}(y) = \bb{h_2\circ g}(y) = h_2\bb{g(y)} = h_2(c),
+h_1(c) = h_1\brb{g(y)} = \brb{h_1\circ g}(y) = \brb{h_2\circ g}(y) = h_2\brb{g(y)} = h_2(c),
 \ee
 which implies that $h_1 = h_2$ on $Z$.
 \een
@@ -635,8 +635,8 @@ Equality does not necessarily hold in the intersection formula. There is a more 
 \begin{proposition}
 For any function $f : X \to Y$, subsets $A_i$ of $X$, $i\in I$\footnote{Note that $I$ can be uncountable.}
 \be
-f\bb{\bigcup_{i\in I} A_i} = \bigcup_{i\in I} f(A_i),\qquad
-f\bb{\bigcap_{i\in I} A_i} \subseteq \bigcap_{i\in I} f(A_i). \ee
+f\brb{\bigcup_{i\in I} A_i} = \bigcup_{i\in I} f(A_i),\qquad
+f\brb{\bigcap_{i\in I} A_i} \subseteq \bigcap_{i\in I} f(A_i). \ee
 \end{proposition}
 
 \begin{proof}[\bf Proof]
@@ -688,53 +688,53 @@ A more general result is given by
 \begin{proposition}[inverse image preserves set operation]\label{pro:inverse_image_preserves_set_operation_infinite}
 For any function $f : X \to Y$, the inverse image preserves set operations, for subsets $A_i$ of $Y$, $i\in I$\footnote{Note that $I$ can be uncountable}
 \be
-f^{-1} \bb{\bigcup_{i\in I} A_i} = \bigcup_{i\in I} f^{-1}(A_i),\qquad
-f^{-1} \bb{\bigcap_{i\in I} A_i} = \bigcap_{i\in I} f^{-1}(A_i).
+f^{-1} \brb{\bigcup_{i\in I} A_i} = \bigcup_{i\in I} f^{-1}(A_i),\qquad
+f^{-1} \brb{\bigcap_{i\in I} A_i} = \bigcap_{i\in I} f^{-1}(A_i).
 \ee
 \end{proposition}
 
 \begin{proof}[\bf Proof]
 \beast
-x \in f^{-1}\bb{\bigcup_{i\in I} A_i} \ \lra\  f(x) \in \bigcup_{i\in I} A_i & \lra & f(x) \in A_i \text{ for some }i \\
-& \lra & x\in f^{-1}\bb{A_i}\text{ for some }i \ \lra \ x \in \bigcup_{i\in I} f^{-1}\bb{A_i}.
+x \in f^{-1}\brb{\bigcup_{i\in I} A_i} \ \lra\  f(x) \in \bigcup_{i\in I} A_i & \lra & f(x) \in A_i \text{ for some }i \\
+& \lra & x\in f^{-1}\brb{A_i}\text{ for some }i \ \lra \ x \in \bigcup_{i\in I} f^{-1}\brb{A_i}.
 \eeast
 \beast
-x \in f^{-1}\bb{\bigcap_{i\in I} A_i} \ \lra\  f(x) \in \bigcap_{i\in I} A_i & \lra & f(x) \in A_i \text{ for all }i \\
-& \lra & x\in f^{-1}\bb{A_i}\text{ for all }i \ \lra \ x \in \bigcap_{i\in I} f^{-1}\bb{A_i}.
+x \in f^{-1}\brb{\bigcap_{i\in I} A_i} \ \lra\  f(x) \in \bigcap_{i\in I} A_i & \lra & f(x) \in A_i \text{ for all }i \\
+& \lra & x\in f^{-1}\brb{A_i}\text{ for all }i \ \lra \ x \in \bigcap_{i\in I} f^{-1}\brb{A_i}.
 \eeast
 \end{proof}
 
 %\beast
 %x \in f^{-1}(B \bs A) \ \lra\  f(x) \in B \bs A & \lra & f(x) \in B,\ f(x)\in A^c \\
-%& \lra & x\in f^{-1}\bb{B},\ x\in f^{-1}\bb{A^c} \\
-%& \lra & x\in f^{-1}\bb{B},\ x\in \bb{f^{-1}\bb{A}}^c \ \lra \ x \in f^{-1}(B) \left\bs f^{-1}(A)\right..
+%& \lra & x\in f^{-1}\brb{B},\ x\in f^{-1}\brb{A^c} \\
+%& \lra & x\in f^{-1}\brb{B},\ x\in \brb{f^{-1}\brb{A}}^c \ \lra \ x \in f^{-1}(B) \left\bs f^{-1}(A)\right..
 %\eeast
 
 \begin{lemma}\label{lem:image_inverse_image_composition} % {lem:function_inverse_function_composition}
 Let $X$ and $Y$ be two sets and $f:X\to Y$ be a map from $X$ to $Y$. Then for any $A\in X$, we have
 \be
-A \subseteq f^{-1}\bb{f(A)}.
+A \subseteq f^{-1}\brb{f(A)}.
 \ee
 
 For any subset $B\subseteq Y$, we have
 \be
-f\bb{f^{-1}(B)} = B\cap f(X).
+f\brb{f^{-1}(B)} = B\cap f(X).
 \ee
 
 In particular, if $f$ is surjective (or onto), that is, $Y = f(X)$ ($\forall y\in Y$, $\exists x\in X$ such that $f(x) = y$.), then
 \be
-f\bb{f^{-1}(B)} = B.
+f\brb{f^{-1}(B)} = B.
 \ee
 \end{lemma}
 
 \begin{proof}[\bf Proof]
-For any $a\in A$, we have $f(a)\in f(A)$ by definition of image so $a \in f^{-1}\bb{f(A)}$ by definition of inverse image. Thus, $A\subseteq f^{-1}\bb{f(A)}$.
+For any $a\in A$, we have $f(a)\in f(A)$ by definition of image so $a \in f^{-1}\brb{f(A)}$ by definition of inverse image. Thus, $A\subseteq f^{-1}\brb{f(A)}$.
 
-Now let $y\in f\bb{f^{-1}(B)}$. Then $y = f(x)$ for some $x\in f^{-1}(B)$. But for such an $x$ we have that $f(x) \in B$ so $y\in B$. But also $y = f(x)$ so $y \in f(X)$. Hence $y\in B\cap f(X)$ which implies that $f\bb{f^{-1}(B)} \subseteq B\cap f(X)$.
+Now let $y\in f\brb{f^{-1}(B)}$. Then $y = f(x)$ for some $x\in f^{-1}(B)$. But for such an $x$ we have that $f(x) \in B$ so $y\in B$. But also $y = f(x)$ so $y \in f(X)$. Hence $y\in B\cap f(X)$ which implies that $f\brb{f^{-1}(B)} \subseteq B\cap f(X)$.
 
 Conversely, if $y\in B\cap f(X)$ then $y\in B$ and also $y = f(x)$ for some $x\in X$. Now for this $x$ have $f(x) = y\in B$ so $x\in f^{-1}(B)$. Thus,
 \be
-y = f(x) \in f\bb{f^{-1}(B)} \ \ra\ B\cap f(X) \subseteq f\bb{f^{-1}(B)}
+y = f(x) \in f\brb{f^{-1}(B)} \ \ra\ B\cap f(X) \subseteq f\brb{f^{-1}(B)}
 \ee
 which gives the required result.
 \end{proof}
@@ -745,12 +745,12 @@ It is easy to find examples where the inclusion in the first part is strict.
 \ben
 \item [(i)] Let $X= \bra{a,b}$ and $Y = \bra{1,2}$. The map $f$ has images $f(a) = f(b) = 1$. Let $A = \bra{a}$, then
 \be
-f^{-1}\bb{f(A)} = f^{-1}(1) = \bra{a,b} \neq A.
+f^{-1}\brb{f(A)} = f^{-1}(1) = \bra{a,b} \neq A.
 \ee
 
 \item [(ii)] Let $X=Y = \R$ and $f(x) = x^2$ and $A = [0,1]$. Then
 \be
-f^{-1}\bb{f(A)} = f^{-1}\bb{[0,1]} = [-1,1] \neq A.
+f^{-1}\brb{f(A)} = f^{-1}\brb{[0,1]} = [-1,1] \neq A.
 \ee
 \een
 \end{example}
@@ -758,7 +758,7 @@ f^{-1}\bb{f(A)} = f^{-1}\bb{[0,1]} = [-1,1] \neq A.
 \begin{proposition}[composition of inverse images]\label{pro:composition_of_inverse_images}
 Let $f:Y\to Z$ and $g:X\to Y$ be two functions. If $W$ is a subset of $Z$, then the inverse image of $f\circ g$ of $W$ is
 \be
-\bb{f\circ g}^{-1}(W) =g^{-1} \bb{f^{-1}(W)} = \bra{x\in X:\bb{f\circ g}(x) \in W}.
+\brb{f\circ g}^{-1}(W) =g^{-1} \brb{f^{-1}(W)} = \bra{x\in X:\brb{f\circ g}(x) \in W}.
 \ee
 \end{proposition}
 
@@ -770,8 +770,8 @@ h(x) \in V \ \lra \ x\in h^{-1}(V).
 
 Thus,
 \beast
-x\in (f\circ g)^{-1}(W) & \ \lra \ &  \bb{f\circ g}(x) \in W \ \lra\ f(g(x)) \in W \\
-& \ \lra\ & g(x) \in f^{-1}(W) \ \lra \  x\in g^{-1}\bb{f^{-1}(W)}.
+x\in (f\circ g)^{-1}(W) & \ \lra \ &  \brb{f\circ g}(x) \in W \ \lra\ f(g(x)) \in W \\
+& \ \lra\ & g(x) \in f^{-1}(W) \ \lra \  x\in g^{-1}\brb{f^{-1}(W)}.
 \eeast
 \end{proof}
 
@@ -786,13 +786,13 @@ Let $f:X\to Y$ be a function.% with range $U\subseteq Y$.
 
 A function $g:Y\to X$ is a left inverse (function) of $f$ if for any $x\in X$,
 \be
-\bb{g\circ f }(x) = x,\qquad (g\circ f = \identity_X)
+\brb{g\circ f }(x) = x,\qquad (g\circ f = \identity_X)
 \ee
 and $f$ is called left-invertible function\index{left-invertible function}.
 
 A function $g:Y\to X$ is a right inverse (function) of $f$ if for any $y\in Y$,
 \be
-\bb{f\circ g }(y) = y,\qquad (g\circ f = \identity_Y)
+\brb{f\circ g }(y) = y,\qquad (g\circ f = \identity_Y)
 \ee
 and $f$ is called right-invertible function\index{right-invertible function}.
 \end{definition}
@@ -834,14 +834,14 @@ Let $f:X\to Y$ be a function.
 \ben
 \item [(i)] Suppose $f$ is injective, and that $x$ is any element of $X$. Then $f(x)$ is an element of the range of $f$, which we denote by $y := f(x)$. If $g$ is a pseudo-inverse of $f$, then $g(y) \in f^{-1}(y)$. Since $f$ is injective, $f^{-1}(y)$ has only one value $x$, which should be equal to $g(y)$. Then
 \be
-\bb{g\circ f}(x) = g\bb{f(x)} = g(y) = x \ \ra\ g\circ f = \identity_X.
+\brb{g\circ f}(x) = g\brb{f(x)} = g(y) = x \ \ra\ g\circ f = \identity_X.
 \ee
 
 Thus, $g\circ f$ is bijective and therefore surjective. Hence, $g$ is surjective by Proposition \ref{pro:composition_injective_surjective_implies_individual_injective_surjective}.
 
 \item [(ii)] Suppose $f$ is surjective. In this case $U = Y$, so for any $y\in Y$, $g(y)$ is contained in $f^{-1}(y)$. This means that
 \be
-\bb{f\circ g}(y) = f\bb{g(y)} = y \ \ra\ f\circ g = \identity_Y.
+\brb{f\circ g}(y) = f\brb{g(y)} = y \ \ra\ f\circ g = \identity_Y.
 \ee
 
 Thus, $f\circ g$ is bijective and therefore injective. Hence, $g$ is injective by Proposition \ref{pro:composition_injective_surjective_implies_individual_injective_surjective}.
@@ -852,7 +852,7 @@ Thus, $f\circ g$ is bijective and therefore injective. Hence, $g$ is injective b
 \begin{definition}[inverse function, invertible function]\label{def:inverse_function}
 Let $f:X\to Y$ and $g:Y\to X$ be two functions. Then we say $g$ is an inverse (function)\index{inverse!function} to $f$ (and $f$ is an inverse (function) to $g$) if for any $x\in X$ and $y\in Y$
 \be
-f\bb{g(y)} = y,\qquad g\bb{f(x)} = x.\qquad\qquad \bb{f\circ g = \identity_Y,\qquad g\circ f = \identity_X}
+f\brb{g(y)} = y,\qquad g\brb{f(x)} = x.\qquad\qquad \brb{f\circ g = \identity_Y,\qquad g\circ f = \identity_X}
 \ee
 
 $f$ is called invertible function\index{invertible function}.
@@ -897,7 +897,7 @@ since $f$ is injective. This is actually the definition of the inverse function.
 
 If $g_1$ and $g_2$ are both inverses of $f$. Then since the composition is associative\footnote{lemma needed.},
 \be
-g_1 = g_1 \circ i_Y = g_1 \circ \bb{f\circ g_2} = \bb{g_1\circ f}\circ g_2 = \identity_X \circ g_2 = g_2,
+g_1 = g_1 \circ i_Y = g_1 \circ \brb{f\circ g_2} = \brb{g_1\circ f}\circ g_2 = \identity_X \circ g_2 = g_2,
 \ee
 which implies that the inverse is unique.
 \end{proof}%\ref{lem:composition_injective_surjective_bijective_functions}
@@ -921,15 +921,15 @@ It can be seen that $f$ is also the inverse function $f^{-1}$ by Definition \ref
 \begin{proposition}[composition of bijective functions]
 Let $f:Y\to Z$ and $g:X\to Y$ be two bijective functions. Then the composition $f\circ g$ is also bijective and
 \be
-\bb{f\circ g}^{-1} = g^{-1}\circ f^{-1}.
+\brb{f\circ g}^{-1} = g^{-1}\circ f^{-1}.
 \ee
 \end{proposition}
 
 \begin{proof}[\bf Proof]
 By proposition \ref{pro:composition_injective_surjective_implies_individual_injective_surjective}, $f\circ g: X\to Z$ is bijective as it is injective and surjective. Also,
 \beast
-\bb{f\circ g} \circ\bb{ g^{-1}\circ f^{-1}} & = & f\circ \bb{g \circ  g^{-1}} \circ f^{-1} = f\circ i_Y \circ f^{-1} = f \circ f^{-1} = \identity_Z,\\
-\bb{ g^{-1}\circ f^{-1}}\circ  \bb{f\circ g}  & = & g^{-1} \circ \bb{f^{-1}\circ f} \circ g = g^{-1}\circ i_Y \circ g = g^{-1} \circ g = \identity_X.
+\brb{f\circ g} \circ\brb{ g^{-1}\circ f^{-1}} & = & f\circ \brb{g \circ  g^{-1}} \circ f^{-1} = f\circ i_Y \circ f^{-1} = f \circ f^{-1} = \identity_Z,\\
+\brb{ g^{-1}\circ f^{-1}}\circ  \brb{f\circ g}  & = & g^{-1} \circ \brb{f^{-1}\circ f} \circ g = g^{-1}\circ i_Y \circ g = g^{-1} \circ g = \identity_X.
 \eeast
 
 Also, by Theorem \ref{thm:bijective_function_has_unique_inverse}, this inverse is unique.
@@ -1047,7 +1047,7 @@ function $f$ on $E$ and a sequence of such functions $(f_n)_{n \in \N}$, we writ
 Zorn's lemma, also known as the Kuratowski-Zorn lemma, is a proposition of set theory which is named after the mathematicians Max Zorn and Kazimierz Kuratowski.
 
 \begin{lemma}[Zorn's lemma\index{Zorn's lemma}]\label{lem:zorn}
-Suppose a partially ordered set\footnote{see Bollobas book. check needed.} $X$ has the property that every chain (i.e. totally ordered subset) has an upper bound in $X$. Then the set $X$ contains at least one maximal element. 
+Suppose a partially ordered set\footnote{see Bollobas book. check needed.} $X$ has the property that every chain (i.e. totally ordered subset) has an upper bound in $X$. Then the set $X$ contains at least one maximal element.
 \end{lemma}
 
 
