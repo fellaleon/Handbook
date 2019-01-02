@@ -149,11 +149,11 @@ Also note that all linear combinations are finite. If $S \subseteq V$, the linea
 %\end{remark}
 
 \begin{definition}[span]
-Let $S$ be a subset (not necessarily infinite) of the vector space $V$ of field $\F$. Then the span of the set $S$, denoted by $\linspan(S)$ or $\bsa{S}$, is the intersection $W$ of all subspaces of $V$ containing $S$. 
+Let $S$ be a subset (not necessarily infinite) of the vector space $V$ of field $\F$. Then the span of the set $S$, denoted by $\linspan(S)$ or $\bsa{S}$, is the intersection $W$ of all subspaces of $V$ containing $S$.
 
 $U$ is referred to as the subspace spanned by $S$, or by the vectors in $S$.
 
-Equivalently, the span of the set $S$ is the smallest subspace containing $S$. 
+Equivalently, the span of the set $S$ is the smallest subspace containing $S$.
 \end{definition}
 
 \begin{remark}
@@ -200,7 +200,7 @@ Clearly, if $S$ is finite with $S =\bra{v_1,\dots,v_n}$, we have
 \end{remark}
 
 \begin{proof}[\bf Proof]
-Clearly, $U$ is a sub vector space containing $S$ as it is closed under addition and scalar multiplication. 
+Clearly, $U$ is a sub vector space containing $S$ as it is closed under addition and scalar multiplication.
 
 Let $W$ be any subspace containing $S$. We need to show that $W$ contains $U$. Since $W$ contains $S$, it must contain every linear combination of the elements of $S$ and the set of all possible linear combinations of elements of $S$ is precisely $U$ (as linear combinations are finite). Thus, $U$ is the smallest subspace containing $S$, i.e., $\linspan(S)$.
 \end{proof}
@@ -261,7 +261,7 @@ Let $V$ be a vector space over a field $\F$ ($\R$ or $\C$). A map $\dabs{\cdot}:
 
 \begin{remark}
 Note that (iii) implies that $x=0$ gives $\dabs{x}=0$. Thus (ii) can be rewritten by $
-\dabs{x} = 0\lra x=0$. 
+\dabs{x} = 0\lra x=0$.
 \end{remark}
 
 \begin{definition}[convergence in vector space\index{convergence!in vector space}]\label{def:convergence_vector_space}
@@ -453,7 +453,7 @@ If $U,W \leq  V$ define $U +W = \bra{u + w : u \in U,w \in W}$. Then $U +W \leq 
 
 
 \begin{theorem}[modular equation]\label{thm:modular_equation_vector_space}
-Let $U, W$ are finite dimensional subspaces of $V$, i.e., $U,W\leq V$. Then $U +W$ is also finite dimensional and 
+Let $U, W$ are finite dimensional subspaces of $V$, i.e., $U,W\leq V$. Then $U +W$ is also finite dimensional and
 \be
 \dim (U + W) +  \dim (U \cap W) = \dim U + \dim W.
 \ee
@@ -464,7 +464,7 @@ Let $v_1, \dots, v_k$ be a basis for $U \cap W$. Extend this to $v_1, \dots, v_k
 
 If $v \in U +W$, then $v = u+w$ for some $u \in U$, $w \in W$. Now $u = \sum \alpha_i' v_i + \sum \beta_i u_i$ for some $\alpha_i', \beta_i \in \F$ and $w = \sum \alpha_i'' v_i + \sum \gamma_i w_i$ for some $\alpha''_i , \gamma_i \in \F$, and therefore
 \be
-v = \sum \bb{\alpha_i' + \alpha''_i }v_i + \sum \beta_iu_i + \sum \gamma_iw_i := \sum \alpha_i v_i + \sum \beta_iu_i + \sum \gamma_iw_i.
+v = \sum \brb{\alpha_i' + \alpha''_i }v_i + \sum \beta_iu_i + \sum \gamma_iw_i := \sum \alpha_i v_i + \sum \beta_iu_i + \sum \gamma_iw_i.
 \ee
 
 Suppose $\sum \alpha_iv_i + \sum \beta_iu_i + \sum \gamma_i w_i = 0$. Then
@@ -473,7 +473,7 @@ Suppose $\sum \alpha_iv_i + \sum \beta_iu_i + \sum \gamma_i w_i = 0$. Then
 \ee
 for some $\delta_i \in \F$, using that the LHS is in $U$ and the RHS is in $W$, so both vectors are in $U \cap W$. Then
 \be
-\sum \bb{\alpha_i - \delta_i}v_i + \sum \beta_iu_i = 0,
+\sum \brb{\alpha_i - \delta_i}v_i + \sum \beta_iu_i = 0,
 \ee
 and as $v_1, \dots, v_k, u_1, \dots, u_l$ form a basis of $U$, we have that all $\beta_i$ are 0. But then
 \be
@@ -497,7 +497,7 @@ Then $U$ and $W$ are complement if
 \begin{corollary}\label{cor:dimension_sum_intersection_zero_iff_complement_subspaces}
 Let $U,W\leq V$ and consider the following conditions
 \ben
-\item [(i)] $\dim\bb{U+W} = \dim V$.
+\item [(i)] $\dim\brb{U+W} = \dim V$.
 \item [(ii)] $U \cap W = \bra{0}$.
 \item [(iii)] $\dim U + \dim W = \dim V$.
 \item [(iv)] $U$ and $W$ are complement subspaces.
@@ -582,7 +582,7 @@ For the rest, we use similar argument in proof of Lemma \ref{lem:direct_sum_vect
 \begin{definition}[sequence (vector) space]\label{def:sequence_vector_space}
 Let $\F$ be a field ($\R$ or $\C$). Then the set of all sequences of scalars, denoted by $\F^\N$, is defined by
 \be
-\F^\N = \bra{(x_n)_{n\in \N} = \bb{x_0,x_1,x_2,\dots},\ x_n \in \F}.
+\F^\N = \bra{(x_n)_{n\in \N} = \brb{x_0,x_1,x_2,\dots},\ x_n \in \F}.
 \ee
 
 If for any $(x_n)_{n\in \N}$ and $(y_n)_{n\in \N}$, we define the addition and scalar multiplication by
