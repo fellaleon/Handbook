@@ -65,7 +65,7 @@ where $x^T$ is the transpose of $x$.
 
 \begin{example}[dot product on $\C^n$]
 The complex space $\C^n$ with the dot product is an inner product space,% (see Definition \ref{def:inner_product}),%, an example of a Euclidean $n$-space.
-\be 
+\be
 \inner{x}{y} = \bsa{ \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}, \begin{bmatrix} y_1 \\ \vdots \\ y_n \end{bmatrix} } := x^* y = \sum_{i=1}^n \ol{x_i} y_i = \ol{x_1} y_1 + \cdots +\ol{x_n} y_n, \qquad x,y\in \C^n
 \ee where $x^*$ is the adjoint of $x$.
 \end{example}
@@ -124,7 +124,7 @@ and
 \beast
 \dabs{x+y}^2 & = & \inner{x+y,x+y} = \inner{x}{x} + \inner{y}{y} + \inner{x}{y} + \inner{y}{x} \\
 & \leq & \inner{x}{x} + \inner{y}{y} + 2\abs{\inner{x}{y}} \leq \inner{x}{x} + \inner{y}{y}  + 2\dabs{x} \dabs{y} \\
-& = & \bb{\dabs{x} + \dabs{y}}^2
+& = & \brb{\dabs{x} + \dabs{y}}^2
 \eeast
 by the Cauchy-Schwarz inequality.%\footnote{details needed.}.
 \end{remark}%\footnote{need definition}
@@ -161,11 +161,11 @@ If $\inner{x}{y} = 0$, the theorem holds trivially.
 
 If not, then $x \neq 0, y \neq 0$. Choose $\lm = \frac{\abs{\inner{x}{y}}}{\inner{x}{y}}$. Then $\abs{\lm} = 1$, and
 \be
-0 \le \dabs{\frac{\lambda x}{\|x\|} - \frac{y}{\|y\|}}^2 = |\lm|^2 \frac{\|x\|^2}{\|x\|^2} - 2 \Re\bb{\inner{\frac{\lambda x}{\|x\|}}{\frac{y}{\|y\|} }} + \frac{\|y\|^2}{\|y\|^2} = 2 - 2 \frac{\Re\bb{\lambda \inner{x}{y}}}{\|x\|\|y\|}
+0 \le \dabs{\frac{\lambda x}{\|x\|} - \frac{y}{\|y\|}}^2 = |\lm|^2 \frac{\|x\|^2}{\|x\|^2} - 2 \Re\brb{\inner{\frac{\lambda x}{\|x\|}}{\frac{y}{\|y\|} }} + \frac{\|y\|^2}{\|y\|^2} = 2 - 2 \frac{\Re\brb{\lambda \inner{x}{y}}}{\|x\|\|y\|}
 \ee
 It follows that
 \be
-\abs{\inner{x}{y}} = \Re\bb{\abs{\inner{x}{y}}} = \Re\bb{\lambda \langle x, y \rangle} \le \|x\|\|y\|
+\abs{\inner{x}{y}} = \Re\brb{\abs{\inner{x}{y}}} = \Re\brb{\lambda \langle x, y \rangle} \le \|x\|\|y\|
 \ee
 as required.
 \end{proof}
@@ -226,7 +226,7 @@ Note that an infinite orthonormal set could be produced from a countably infinit
 
 \begin{remark}
 At each step in the Gram-Schmidt process, the orthonormal vectors $z_1,\dots,z_k$ are linear combination of the original independent vectors $x_1,\dots,x_k$ only (and vice versa). If we denote $Z =
-\bb{z_1,z_2,\dots,z_n}$ and $X = \bb{x_1,x_2,\dots,x_n}$, matrices that have as columns the vectors $z_i$ and $x_i$, respectively, then $Z = XR$, where the matrix $R = \bb{r_{ij}}$ is nonsingular
+\brb{z_1,z_2,\dots,z_n}$ and $X = \brb{x_1,x_2,\dots,x_n}$, matrices that have as columns the vectors $z_i$ and $x_i$, respectively, then $Z = XR$, where the matrix $R = \brb{r_{ij}}$ is nonsingular
 (with diagonal entries 1) and upper triangular; that is, $r_{ij} = 0$ whenever $i>j$.
 
 Finally, we note that the Gram-Schmidt process may be applied to any finite or countably (not necessarily linearly independent) sequence of vectors. If the set is not independent, it will produce a
@@ -287,7 +287,7 @@ Finally, we want to show that $U+W = V$ ($W^\perp + W = V$). Let $T = U+W$ and $
 Let $U\leq V$ be the subspace of $V$ with dimension $n$. Then
 \ben
 \item [(i)] $V = U\oplus U^\perp$.
-\item [(ii)] $\bb{U^\perp}^\perp = U$.
+\item [(ii)] $\brb{U^\perp}^\perp = U$.
 \een
 \end{proposition}
 
@@ -299,7 +299,7 @@ Note that Proposition \ref{pro:orthogonal_complement_iff_complement_plus_all_inn
 \ben
 \item [(i)] Direct result from Proposition \ref{pro:orthogonal_complement_iff_complement_plus_all_inner_product_zero}.(i) and Lemma \ref{lem:direct_sum_vector_space}.
 
-\item [(ii)] Since $U^\perp$ and $U$ are complement and $\inner{x}{y} =0$ for all $x\in U$ and $y\in U^\perp$ by Proposition \ref{pro:orthogonal_complement_iff_complement_plus_all_inner_product_zero}.(i). Then we can change the order of $U$ and $U^\perp$, $U$ and $U^\perp$ are complement (see Definition \ref{def:complement_subspace}) and $\inner{y}{x} = \ol{\inner{x}{y}} =0$ for all $y\in U^\perp$ and $x\in U$. Therefore, we have that $\bb{U^\perp}^\perp = U$ by Proposition \ref{pro:orthogonal_complement_iff_complement_plus_all_inner_product_zero}.(ii).
+\item [(ii)] Since $U^\perp$ and $U$ are complement and $\inner{x}{y} =0$ for all $x\in U$ and $y\in U^\perp$ by Proposition \ref{pro:orthogonal_complement_iff_complement_plus_all_inner_product_zero}.(i). Then we can change the order of $U$ and $U^\perp$, $U$ and $U^\perp$ are complement (see Definition \ref{def:complement_subspace}) and $\inner{y}{x} = \ol{\inner{x}{y}} =0$ for all $y\in U^\perp$ and $x\in U$. Therefore, we have that $\brb{U^\perp}^\perp = U$ by Proposition \ref{pro:orthogonal_complement_iff_complement_plus_all_inner_product_zero}.(ii).
 \een
 \end{proof}
 
@@ -355,7 +355,7 @@ Thus $\alpha$ is linear.
 
 If $\forall v\in V$, we have two linear maps $\alpha_1,\alpha_2$ such that $\alpha_1(v) = \alpha_2(v) = \alpha(v)$. We have that
 \be
-\alpha_1(v) = \alpha_1 \bb{\sum^n_{i=1}\lm_iv_i} = \sum^n_{i=1} \lm_i\alpha_1(v_i) = \sum^n_{i=1} \lm_i\alpha_0(v_i)= \sum^n_{i=1} \lm_i\alpha_2(v_i) = \alpha_2\bb{\sum^n_{i=1} \lm_i v_i} = \alpha_2(v).
+\alpha_1(v) = \alpha_1 \brb{\sum^n_{i=1}\lm_iv_i} = \sum^n_{i=1} \lm_i\alpha_1(v_i) = \sum^n_{i=1} \lm_i\alpha_0(v_i)= \sum^n_{i=1} \lm_i\alpha_2(v_i) = \alpha_2\brb{\sum^n_{i=1} \lm_i v_i} = \alpha_2(v).
 \ee
 
 Thus, the linear map is unique.
@@ -411,7 +411,7 @@ The vector spaces $V, W$ over $\F$ are isomorphic if and only if they have the s
 
 ($\ra$). The image of a basis of $V$ under an isomorphism is a basis of $W$, i.e., let $B$ be a basis of $V$, $\alpha : V \to W$ an isomorphism. Then $\alpha(B)$ is a basis of $W$.
 
-If $w \in W$, then $w = \alpha(v)$ for some $v \in V$; write $v = \sum^n_{i=1} \lm_iv_i$ with $v_1, \dots, v_n \in B$, $\lm_i \in \F$. Then $w = \alpha\bb{\sum \lm_iv_i} = \sum \lm_i\alpha(v_i)$. Then if $\lm_1\alpha(v_1)+\dots+\lm_n\alpha(v_n) = 0$ then $\alpha(\lm_1v_1+\dots+\lm_nv_n) = 0$ so $\lm_1v_1+\dots+\lm_nv_n = 0$ by definition of linear map (Definition \ref{def:linear_map_vector_space}). %as $\alpha$ is injective.
+If $w \in W$, then $w = \alpha(v)$ for some $v \in V$; write $v = \sum^n_{i=1} \lm_iv_i$ with $v_1, \dots, v_n \in B$, $\lm_i \in \F$. Then $w = \alpha\brb{\sum \lm_iv_i} = \sum \lm_i\alpha(v_i)$. Then if $\lm_1\alpha(v_1)+\dots+\lm_n\alpha(v_n) = 0$ then $\alpha(\lm_1v_1+\dots+\lm_nv_n) = 0$ so $\lm_1v_1+\dots+\lm_nv_n = 0$ by definition of linear map (Definition \ref{def:linear_map_vector_space}). %as $\alpha$ is injective.
 Hence $\lm_i = 0$ for all $i$ as $B$ is a basis of $V$.%$B$ is independent.
 \end{proof}
 
@@ -429,7 +429,7 @@ Then $N(\alpha) \leq  V$, $\im(\alpha) \leq  W$.
 
 Note that $\alpha$ is injective if and only if $N(\alpha) = \bra{0}$ and surjective if and only if $\im(\alpha) = W$.
 
-Define $\nullity(\alpha) = \dim \bb{N(\alpha)}$, the nullity of $\alpha$, and $\rank(\alpha) = \dim \bb{\im(\alpha)}$, the rank of $\alpha$.
+Define $\nullity(\alpha) = \dim \brb{N(\alpha)}$, the nullity of $\alpha$, and $\rank(\alpha) = \dim \brb{\im(\alpha)}$, the rank of $\alpha$.
 \end{definition}
 
 \begin{theorem}[rank-nullity theorem]\label{thm:rank_nullity}
@@ -445,7 +445,7 @@ w = \alpha(v) = \sum^n_{i=1} \lm_i\alpha(v_i) = \sum^n_{k+1} \lm_i\alpha(v_i), \
 \ee
 since $\alpha(v_i) = 0$ for $i = 1, \dots, k$. Then
 \be
-\sum^n_{i=k+1} \lm_i\alpha(v_i) = 0 \ \ra \ \alpha\bb{\sum^n_{i=k+1} \lm_iv_i} = 0 \ \ra\ \sum^n_{i=k+1} \lm_iv_i \in N(\alpha),
+\sum^n_{i=k+1} \lm_i\alpha(v_i) = 0 \ \ra \ \alpha\brb{\sum^n_{i=k+1} \lm_iv_i} = 0 \ \ra\ \sum^n_{i=k+1} \lm_iv_i \in N(\alpha),
 \ee
 so it can be written as $\sum^k_{i=1} \lm_iv_i$. But $v_1, \dots, v_n$ are linearly independent, so $\lm_i = 0$ for $i = 1, \dots, n$. Thus, $\alpha(v_{k+1}), \dots, \alpha(v_n)$ are linearly independent. Thus $\alpha(v_{k+1}), \dots, \alpha(v_n)$ is a basis for $\im(\alpha)$ by Definition \ref{def:basis_vector_space}.
 \end{proof}
@@ -459,7 +459,7 @@ Let $V$ be a vector space over $\F$ and $N \leq V$. Then $V/N = \bra{v +N : v \i
 \lm(v + N) & = & (\lm v) + N
 \eeast
 
-Write $U = V/N$, $u = v + N$. Choose a basis $v_1, \dots, v_k, v_{k+1}, \dots, v_n$ for $V$ containing the basis $v_1, \dots, v_k$ for $N(\alpha)$. Then $u_{k+1}, \dots, u_n$ is a basis for $U$. Hence $\dim V/N = \dim V - \dim N$. Now let $\alpha : V \to W$ be linear for some vector space $W$ over $\F$. Then $V/N(\alpha) \cong \im(\alpha)$. The map $v + N(\alpha) \mapsto \alpha(v)$ is linear. Hence $\dim \im(\alpha) = \dim \bb{V/N(\alpha)} = \dim V - \dim N(\alpha)$.
+Write $U = V/N$, $u = v + N$. Choose a basis $v_1, \dots, v_k, v_{k+1}, \dots, v_n$ for $V$ containing the basis $v_1, \dots, v_k$ for $N(\alpha)$. Then $u_{k+1}, \dots, u_n$ is a basis for $U$. Hence $\dim V/N = \dim V - \dim N$. Now let $\alpha : V \to W$ be linear for some vector space $W$ over $\F$. Then $V/N(\alpha) \cong \im(\alpha)$. The map $v + N(\alpha) \mapsto \alpha(v)$ is linear. Hence $\dim \im(\alpha) = \dim \brb{V/N(\alpha)} = \dim V - \dim N(\alpha)$.
 \end{remark}
 
 \begin{corollary}\label{cor:same_dimension_linear_map_equivalent}
@@ -476,7 +476,7 @@ Let $V$ be a vector space of finite dimension over $\F$, let $\alpha : V \to V$ 
 
 (ii) $\ra$ (i). If $\alpha$ is surjective, we have $\im (\alpha) = W$. Then by rank-nullity theorem \ref{thm:rank_nullity}, we have
 \beast
-\dim V = \nullity(\alpha) + \rank(\alpha) = \dim \bb{\im(\alpha)} + \dim\bb{N(\alpha)} = \dim W + \dim\bb{N(\alpha)} \ \ra \ \dim \bb{N(\alpha)} = 0 \ \ra \ N(\alpha) = \bra{0}\quad (*)
+\dim V = \nullity(\alpha) + \rank(\alpha) = \dim \brb{\im(\alpha)} + \dim\brb{N(\alpha)} = \dim W + \dim\brb{N(\alpha)} \ \ra \ \dim \brb{N(\alpha)} = 0 \ \ra \ N(\alpha) = \bra{0}\quad (*)
 \eeast
 
 Thus, $\forall \alpha(v_1) = \alpha(v_2) \in W$ for some $v_1,v_2 \in V$, we have
@@ -504,7 +504,7 @@ To show this is a vector space over $\F$, consider the vector space of all funct
 \end{remark}
 
 \begin{proposition}\label{pro:finite_linear_maps_dimension}
-If $U, V$ are vector spaces over $\F$, then $\sL(U, V )$ is a vector space over $\F$. If both $U, V$ are finite dimensional, then so is $\sL(U, V)$ and $\dim \bb{\sL(U, V )} = \dim U \dim V$.
+If $U, V$ are vector spaces over $\F$, then $\sL(U, V )$ is a vector space over $\F$. If both $U, V$ are finite dimensional, then so is $\sL(U, V)$ and $\dim \brb{\sL(U, V )} = \dim U \dim V$.
 \end{proposition}
 
 \begin{proof}[\bf Proof]
@@ -520,8 +520,8 @@ If $\sum_{i,j} \lm_{ij}\ve_{ij} = 0$, then in particular for all $1 \leq  k \leq
 Now the $v_i$ are linearly independent, so $\lm_{ik} = 0$ for all $1 \leq  i \leq  m$. This is true for all $1 \leq  k \leq  n$, so the $\ve_{ij}$ are linearly independent.
 
 Now $\forall \alpha \in\sL(U, V)$, say $\alpha(u_k) = \sum_i a_{ik} v_i$. Then
-\be%\ve_{ij}\bb{ \sum_{i,j} a_{ij}u_k} =
-\sum_{i,j} a_{ij}\bb{\ve_{ij}(u_k)} = \sum_{i,j} a_{ij}\delta_{jk}v_i= \sum_i a_{ik}v_i = \alpha(u_k)
+\be%\ve_{ij}\brb{ \sum_{i,j} a_{ij}u_k} =
+\sum_{i,j} a_{ij}\brb{\ve_{ij}(u_k)} = \sum_{i,j} a_{ij}\delta_{jk}v_i= \sum_i a_{ik}v_i = \alpha(u_k)
 \ee
 for any $1 \leq  k \leq  n$, so the maps are equal on a basis of $U$, hence they are equal by Lemma \ref{lem:basis_linear_map_existence_uniqueness}. Thus, $\ve_{ij}$ span $\sL(U,V)$. Therefore, $\ve_{ij}$ is a basis by Definition \ref{def:basis_vector_space}.
 \end{proof}
@@ -537,7 +537,7 @@ If $\alpha : U \to V$ is linear and $\dim U = n$, $\dim V = m$, then $\sL(U, V) 
 \begin{proof}[\bf Proof]
 Let $B = \bra{u_1, \dots, u_n}$ and $C = \bra{v_1, \dots, v_m}$ be bases for $U$ and $V$, respectively.
 
-We have that $\dim \bb{\sL(U,V)} = mn$ by Proposition \ref{pro:finite_linear_maps_dimension} and $\dim_\F M_{m,n}(\F) = mn$ by Proposition \ref{pro:matrix_dimension}.
+We have that $\dim \brb{\sL(U,V)} = mn$ by Proposition \ref{pro:finite_linear_maps_dimension} and $\dim_\F M_{m,n}(\F) = mn$ by Proposition \ref{pro:matrix_dimension}.
 
 Then by Theorem \ref{thm:isomorphim_same_dimension}, $\theta : \sL(U, V) \to M_{m,n}(\F)$, $\alpha \mapsto [\alpha]_{B,C}$ is an isomorphism.
 \end{proof}
@@ -547,7 +547,7 @@ Let $U, V$ be finite dimensional vector spaces over $\F$, let $\alpha : U \to V$
 
 Define $A = (a_{ij})$ by $\alpha(u_j) = \sum_i a_{ij}v_i$. For $u\in U$ with $u = \sum_i \lm_iu_i$ write $[u]_B = (\lm_1, \dots, \lm_n)^T$. Then
 \be
-A = \bb{[\alpha(u_1)]_C \dots [\alpha(u_n)]_C},
+A = \brb{[\alpha(u_1)]_C \dots [\alpha(u_n)]_C},
 \ee
 denoted $A = [\alpha]_{B,C}$.
 \end{definition}
@@ -603,8 +603,8 @@ so $[\beta \circ \alpha]_{B,D} = BA$ by Definition \ref{def:linear_map_matrix}. 
 \begin{definition}[change of bases]\label{def:change_of_bases_matrix}
 Let $U, V$ be vector spaces over $\F$ with $\dim U = n$, $\dim V = m$. Suppose $U$ has bases $B = \bra{u_1, \dots, u_n}$ and $B' = \bra{u'_1, \dots, u'_n}$. The matrix $P = (p_{ij})$ is the change of bases matrix from $B$ to $B'$ if $u'_j = \sum_i p_{ij}u_i$, so (as we can write $[B']_{B'} = I_n = [B]_{B}$)
 \beast
-P := \bb{[u'_1]_B, \dots,[u'_n]_B} & = & \bb{[\iota(u'_1)_B,\dots, [\iota(u'_n)_B]} = \bb{[\iota_U]_{B'B}[u_1']_{B'} ,\dots, [\iota_U]_{B'B}[u_n']_{B'}} \\
-& = & [\iota_U]_{B'B}\bb{[u_1']_{B'} ,\dots,[u_n']_{B'}} =  [\iota_U]_{B'B}
+P := \brb{[u'_1]_B, \dots,[u'_n]_B} & = & \brb{[\iota(u'_1)_B,\dots, [\iota(u'_n)_B]} = \brb{[\iota_U]_{B'B}[u_1']_{B'} ,\dots, [\iota_U]_{B'B}[u_n']_{B'}} \\
+& = & [\iota_U]_{B'B}\brb{[u_1']_{B'} ,\dots,[u_n']_{B'}} =  [\iota_U]_{B'B}
 \eeast
 by Lemma \ref{lem:matrix_basis} and the fact that $[u'_j]_{B'} = e_j$ for each $u'_j$.
 \end{definition}
@@ -642,7 +642,7 @@ Then for all $u \in U$, by Lemma \ref{lem:matrix_basis} we have
 \be
 AP[u]_{B'} = A[u]_B = [\alpha(u)]_C = Q[\alpha(u)]_{C'} = QA'[u]_{B'},
 \ee
-so $A' = Q^{-1}AP$ by choosing $u = u_1',\dots,u_n'$. 
+so $A' = Q^{-1}AP$ by choosing $u = u_1',\dots,u_n'$.
 \end{proof}
 
 \begin{lemma}\label{lem:linear_map_equivalent_to_identity}
@@ -662,7 +662,7 @@ Then by Lemma \ref{lem:finite_basis_linearly_independent_spanning_equivalent}, w
 
 Then we can extend this to a basis $C = \bra{\alpha(u_1), \dots, \alpha(u_r), v_{r+1}, \dots, v_m}$ of $V$. Then for all $u\in U$, $u = \sum_i \lm_i u_i$, since $u_{r+1},\dots,u_n\in N(\alpha)$,
 \be
-[\alpha]_{B,C} = \bb{[\alpha(u_1)]_C,\dots, [\alpha(u_r)]_C,0,\dots,0} = \bepm I_r & 0\\ 0 & 0\eepm.
+[\alpha]_{B,C} = \brb{[\alpha(u_1)]_C,\dots, [\alpha(u_r)]_C,0,\dots,0} = \bepm I_r & 0\\ 0 & 0\eepm.
 \ee
 \end{proof}
 
@@ -675,7 +675,7 @@ Consider the map $\theta : \im(\alpha) \to \colsp(A)$, $\alpha(u) \mapsto [\alph
 
 Let $C = \bra{v_1,\dots,v_m}$. Then $\forall v\in V$ we can find $\lm_i \in \F$ such that $v = \sum_i \lm_iv_i$. Clearly, for any $u\in U$, $\alpha_1,\alpha_2,\alpha\in \sL(U,V)$,
 \beast
-\theta(\alpha_1(u) + \alpha_2(u)) & = & \theta\bb{(\alpha_1+\alpha_2)(u)} = [(\alpha_1+\alpha_2)(u)]_C = [(\alpha_1(u)+\alpha_2(u)]_C \\
+\theta(\alpha_1(u) + \alpha_2(u)) & = & \theta\brb{(\alpha_1+\alpha_2)(u)} = [(\alpha_1+\alpha_2)(u)]_C = [(\alpha_1(u)+\alpha_2(u)]_C \\
 & = & [\alpha_1(u)]_C + [\alpha_2(u)]_C = \theta(\alpha_1(u)) + \theta(\alpha_2(u)).
 \eeast
 since $V$ is vector space. Also, $\theta(\lm \alpha(u)) = \theta (\alpha(\lm u)) = [\alpha(\lm u)]_C = \lm [\alpha(u)]_C = \lm \theta(\alpha(u))$. Thus, $\theta$ is linear.
