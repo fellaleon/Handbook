@@ -1,0 +1,311 @@
+\chapter{Functions}
+
+\section{Fundamentals}
+
+\subsection{Definition}
+
+\begin{definition}[function\index{function}]\label{def:function}
+Let $X,Y$ be sets, and let $P(x,y)$ be a property pertaining to an object $x\in X$ and an object $y\in Y$, such that for every $x\in X$, there is exactly one $y\in Y$ for which $P(x,y)$ is true (this is sometimes known as the vertical line test). 
+
+Then we define the function $f:X\to Y, x\mapsto f(x)$ defined by $P$ on the domain\index{domain} $X$ and range\index{range} $Y$ to be the object which, given any input $x\in X$, assigns an output $f(x)\in Y$, defined to be the unique object $f(x)$ for which $P(x,f(x))$ is true. Thus, for any $x\in X$ and $y\in Y$, 
+\be
+y = f(x) \ \lra \ P(x,y)\text{ is true.}
+\ee
+\end{definition}
+
+%\begin{remark}
+%Note that the functions are single-valued, and obey the rule that $f(x)\in Y$ for all $x\in X$. If we have $f_1,f_2: X\to Y$, then $f_1 = f_2$ if $f_1(x) = f_2(x)$ for all $x\in X$.
+%\end{remark}
+
+%\begin{definition}
+%If $A,B$ are sets, a function\index{function} (or mapping) $f:A\to B$ is a rule that assigns to each element exactly one element $a\in A$ exactly one element $f(a) \in B$.
+%%\end{definition}
+
+\begin{definition}[equality of functions\index{equality!functions}]\label{def:equality_function}
+Two functions $f:X\to Y$, $g:X\to Y$ with the same domain and range are said to be equal, $f=g$, if and only if $f(x) = g(x)$ for all $x\in X$.
+\end{definition}
+
+\begin{remark}
+If $f(x)$ and $g(x)$ agree for some values of $x$, but not others, then we do not consider $f$ and $g$ to be equal.
+\end{remark}
+
+\begin{example}
+\ben
+\item [(i)] The functions $x\mapsto x^2 + 2x +1$ and $x\mapsto (x+1)^2$ are equal on the domain $\R$ and range $[1,\infty)$. 
+\item [(ii)] The functions $x\mapsto x$ and $x\mapsto \abs{x}$ are equal on the positive real axis, but are not equal on $\R$; thus the concept of equality of functions can depend on the choice of domain.
+\een
+\end{example}
+
+\begin{definition}[composition\index{composition!function}]\label{def:composition}
+Let $f:X\to Y$ and $g:Y\to Z$ be two functions, such that the range of $f$ is the same set as the domain of $g$. We then define the composition $g\circ f:X\to Z$ of the two functions $g$ and $f$ to be the function define explicitly by the formula
+\be
+(g\circ f)(x) := g(f(x)).
+\ee
+
+If the range of $f$ does not match the domain of $g$, we leave the composition $g\circ f$ undefined.
+\end{definition}
+
+\begin{lemma}[composition is associative]\label{lem:composition_is_associative}
+Let $f:X\to Y$, $g:Y\to Z$, and $h:Z\to W$ be functions. Then $h\circ (g\circ f) = (h\circ g)\circ f$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+\footnote{need proof}
+\end{proof}
+
+\subsection{Injective, surjective and bijective functions}
+
+\begin{definition}[injective\index{injective} (one-to-one\index{one-to-one}) function]\label{def:injective_function}
+A function $f:X\to Y$ is injective(or one-to-one) if different elements map to different elements:
+\be
+x\neq x'  \ \ra \ f(x) \neq f(x').
+\ee
+
+Equivalently, a function is injective if 
+\be
+f(x) = f(x') \ \ra \ x = x'.
+\ee%$a_1,a_2\in A,\ f(a_1) = f(a_2)\ \ra \ a_1=a_2$, so that each element in $A$ is assigned a different element in $B$.
+\end{definition}
+
+\begin{definition}[surjective\index{surjective} (onto\index{onto}) function]\label{def:surjective_function}
+A function $f:X\to Y$ is surjective (or onto $Y$) if $f(X) = Y$, i.e., every element in $Y$ comes from applying $f$ to some element in $X$:
+\be
+\text{for every }y\in Y, \text{ there exists }x\in X\text{ such that }f(x) = y.
+\ee%each $b\in B$ has an $a\in A$ with $f(a) = b$, so that everything in $B$ is 'covered' by something in $A$. Injectivity implies surjectivity for finite sets.
+\end{definition}
+
+\begin{definition}[bijective\index{bijective} (invertible\index{invertible!function}) function]\label{def:bijective_function}
+$f:X\to Y$ is bijective (or invertible) if it is both injective and surjective.
+\end{definition}
+
+%If $g:A\to B$ and $f:B\to C$, then we define $f\circ g:A\to C$ by, for all $a\in A$, $f\circ g(a) = f(g(a))$.
+
+\begin{lemma}%\footnote{needed in Groups}
+If $f:X\to Y$ and $g: Y\to Z$ are both injective, both surjective or both bijective, then so is $g\circ f$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]%We only consider the injective case. 
+If $g\circ f(x) = g\circ f(x')$ then $g(f(x)) = g(f(x'))$ by definition. But $g$ is injective, thus $f(x) = f(x')$. Also $f$ is injective, thus $x = x'$.
+
+%Similar arguments work with surjectivity and 
+
+Since $g$ is surjective, for any $z\in Z$, we can find $y\in Y$ such that $z = g(y)$. Also, we can find $x\in X$ such that $y = f(x)$ as $f$ is surjective. Thus, for any $z\in Z$, we can find $x\in X$ such that $z = g(f(x)) = g\circ f(x)$. Therefore, $g\circ f$ is surjective.
+
+Then the conclusion of bijectivity is from the definition.
+\end{proof}
+
+
+
+\section{Elementary function}
+
+\subsection{Kronecker delta}
+
+\begin{definition}[Kronecker delta\index{Kronecker delta}]\label{def:kronecker_delta}
+Kronecker delta\footnote{named after Leopold Kronecker}, is a function of two variables, usually integers. The function is 1 if the variables are equal, and 0 otherwise:
+\be
+\delta_{ij} = \left\{\begin{matrix} 0, & \mbox{if } i \ne j \\ 1, & \mbox{if } i=j \end{matrix}\right.
+\ee
+where Kronecker delta $\delta_{ij}$ is a piecewise function of variables $i$ and $j$. For example, $\delta_{12} = 0$, whereas $\delta_{33} = 1$.
+\end{definition}
+
+
+\section{Hyperbolic function}
+
+\begin{definition}[hyperbolic functions]\label{hyperbolic_function}
+The hyperbolic functions are:
+
+Hyperbolic sine:
+\be
+\sinh x = \frac {e^x - e^{-x}} {2} = \frac {e^{2x} - 1} {2e^x}
+\ee
+
+Hyperbolic cosine:
+\be
+\cosh x = \frac {e^x + e^{-x}} {2} = \frac {e^{2x} + 1} {2e^x}
+\ee
+
+Hyperbolic tangent:
+\be
+\tanh x = \frac{\sinh x}{\cosh x} = \frac {e^x - e^{-x}} {e^x + e^{-x}} = \frac{e^{2x} - 1} {e^{2x} + 1}
+\ee
+
+Hyperbolic cotangent:
+\be
+\coth x = \frac{\cosh x}{\sinh x} = \frac {e^x + e^{-x}} {e^x - e^{-x}} = \frac{e^{2x} + 1} {e^{2x} - 1}
+\ee
+
+Hyperbolic secant:
+\be
+\operatorname{sech}\,x = \left(\cosh x\right)^{-1} = \frac {2} {e^x + e^{-x}} = \frac{2e^x} {e^{2x} + 1}
+\ee
+
+Hyperbolic cosecant:
+\be
+\operatorname{csch}\,x = \left(\sinh x\right)^{-1} = \frac {2} {e^x - e^{-x}} = \frac{2e^x} {e^{2x} - 1}
+\ee
+
+Hyperbolic functions can be introduced via imaginary circular angles:
+
+Hyperbolic sine:
+\be
+\sinh x = - {\rm{i}} \sin {\rm{i}}x \!
+\ee
+
+Hyperbolic cosine:
+\be
+\cosh x = \cos {\rm{i}}x \!
+\ee
+
+Hyperbolic tangent:
+\be
+\tanh x = -{\rm{i}} \tan {\rm{i}}x \!
+\ee
+
+Hyperbolic cotangent:
+\be
+\coth x = {\rm{i}} \cot {\rm{i}}x \!
+\ee
+
+Hyperbolic secant:
+\be
+\operatorname{sech}\,x = \sec { {\rm{i}} x} \!
+\ee
+
+Hyperbolic cosecant:
+\be
+\operatorname{csch}\,x = {\rm{i}}\,\csc\,{\rm{i}}x \!
+\ee
+where $i$ is the imaginary unit defined by $i^2 = -1$. The complex forms in the definitions above derive from Euler's formula.
+\end{definition}
+
+\begin{proposition}\label{pro:hyperbolic_function_relation}
+Odd and even functions:
+\be
+\sinh(-x) = -\sinh (x),\quad  \cosh(-x) = \cosh (x) 
+\ee
+
+Hence:
+\begin{align} 
+\tanh(-x) &= -\tanh (x) \\ \coth(-x) &= -\coth (x) \\ \operatorname{sech}(-x) &= \operatorname{sech}(x) \\ \operatorname{csch}(-x) &= -\operatorname{csch}(x) \end{align}
+
+It can be seen that cosh x and sech x are even functions; the others are odd functions.
+\begin{align} \operatorname{arsech}(x) &= \operatorname{arcosh} \left(\frac{1}{x}\right) \\ \operatorname{arcsch}(x) &= \operatorname{arsinh} \left(\frac{1}{x}\right) \\ \operatorname{arcoth}(x) &= \operatorname{artanh} \left(\frac{1}{x}\right) \end{align}
+
+
+Hyperbolic sine and cosine satisfy the identity
+\be
+\cosh^2 (x) - \sinh^2 (x) = 1\,
+\ee
+which is similar to the Pythagorean trigonometric identity. One also has
+\begin{align} \operatorname{sech} ^{2}(x) &= 1 - \tanh^{2}(x) \\ \coth^{2}(x) &= 1 + \operatorname{csch}^{2}(x) \end{align}
+for the other functions.
+
+The hyperbolic tangent is the solution to the nonlinear boundary value problem[5]:
+\be
+\frac{1}{2} f'' = f^3 - f ; \quad f(0) = f'(\infty) = 0
+\ee
+
+It can be shown that the area under the curve of $\cosh (x)$ is always equal to the arc length:
+\be
+\text{area} = \int_a^b{ \cosh{(x)} } \ dx = \int_a^b\sqrt{1 + \left(\frac{d}{dx} \cosh{(x)}\right)^2} \ dx = \text{arc length}
+\ee
+
+Sums of arguments:
+\begin{align} \cosh {(x + y)} &= \sinh{(x)} \cdot \sinh {(y)} + \cosh {(x)} \cdot \cosh {(y)} \\ \sinh {(x + y)} &= \cosh{(x)} \cdot \sinh {(y)} + \sinh {(x)} \cdot \cosh {(y)} \end{align}
+
+Sum and difference of cosh and sinh:
+\begin{align} \cosh{(x)} + \sinh{(x)} &= e^x \\ \cosh{(x)} - \sinh{(x)} &= e^{-x} \end{align} 
+\end{proposition}
+
+
+
+\section{Binomial series}
+
+\begin{definition}[binomial series]\label{def:binomial_series}
+The binomial series is the Taylor series at $x = 0$ of the function $f$ given by $f(x) = (1 + x)^\alpha$, where $\alpha \in \C$ is an arbitrary complex number. Explicitly,
+\be
+(1 + x)^\alpha = \sum_{k=0}^{\infty} \; {\alpha \choose k}  x^k  = 1 + \alpha x + \frac{\alpha(\alpha-1)}{2!} x^2 + \cdots, \quad(*)
+\ee
+and the binomial series\index{binomial series} is the power series on the right hand side, expressed in terms of the (generalized) binomial coefficients
+\be
+{\alpha \choose k} := \frac{\alpha (\alpha-1) (\alpha-2) \cdots (\alpha-k+1)}{k!}. 
+\ee
+\end{definition}
+
+%\begin{lemma}
+%If $\alpha$ is a non-negative integer $n$, then the $(n + 1)$th term and all later terms in the series are 0, since each contains a factor $(n - n)$; thus in this case the series is finite and gives the algebraic binomial formula.
+
+%The following variant holds for arbitrary complex $\beta$, but is especially useful for handling negative integer exponents in (*) in Definition \ref{def:binomial_series}:
+%\be
+%\frac{1}{(1-z)^{\beta+1}} = \sum_{k=0}^{\infty}{k+\beta \choose k}z^k.
+%\ee
+%\end{lemma}
+
+%To prove it, substitute x = −z in (1) and apply a binomial coefficient identity.
+%\begin{proof}[\bf Proof]
+%\footnote{need proof.}
+%\end{proof}
+
+\section{Gamma function}
+
+\begin{definition}[gamma function\index{gamma function}]\label{def:gamma_function}
+The gamma function (represented by the capital Greek letter $\Gamma$) is an extension of the factorial function, with its argument shifted down by 1, to real and complex numbers. That is, if $n$ is a positive integer, $\Gamma(n) = (n-1)!$.
+
+The gamma function is defined for all complex numbers except the non-positive integers. For complex numbers with a positive real part ($\Re z >0$), it is defined via an improper integral that converges:
+\be
+\Gamma(z) = \int_0^\infty e^{-t} t^{z-1} dt .
+\ee
+\end{definition}
+
+\begin{remark}
+This integral function is extended by analytic continuation to all complex numbers except the non-positive integers (where the function has simple poles), yielding the meromorphic function we call the gamma function.
+
+The gamma function is a component in various probability-distribution functions, and as such it is applicable in the fields of probability and statistics, as well as combinatorics.
+\end{remark}
+
+\begin{proposition}\label{pro:gamma_function_induction}
+For $z\in \C$,
+\be
+\Gamma(z+1)=z \Gamma(z). 
+\ee
+\end{proposition}
+
+\begin{proposition}\label{pro:gamma_half}
+\beast
+\Gamma\left(\frac{1}{2}\right) & = &\sqrt{\pi},\\
+\Gamma\left(\frac{1}{2}+n\right) & = & {(2n)! \over 4^n n!} \sqrt{\pi} = \frac{(2n-1)!!}{2^n}\, \sqrt{\pi} = \sqrt{\pi} \cdot \left[ {n-\frac{1}{2}\choose n} n! \right] \\
+\Gamma\left(\frac{1}{2}-n\right) & = & {(-4)^n n! \over (2n)!} \sqrt{\pi} = \frac{(-2)^n}{(2n-1)!!}\, \sqrt{\pi} = \sqrt{\pi} / \left[ {-\frac{1}{2} \choose n} n! \right] 
+\eeast
+\end{proposition}
+
+\section{Beta function}
+
+\begin{definition}[beta function\index{beta function}]\label{def:beta_function}
+In mathematics, the beta function, also called the Euler integral of the first kind, is a special function defined by
+\be
+B(a,b) = \int_0^1 x^{a-1}(1-x)^{b-1} dx,\qquad \Re a, \Re b > 0.
+\ee
+%The beta function was studied by Euler and Legendre and was given its name by Jacques Binet; its symbol Β is a Greek capital β rather than the similar Latin capital B.
+\end{definition}
+
+\begin{proposition}\label{pro:beta_gamma_relation}
+\be
+B(a,b) = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+First, write the product of two factorials as
+\be
+\Gamma(a)\Gamma(b) = \int_0^\infty e^{-u} u^{a-1}du \int_0^\infty e^{-v} v^{b-1}dv =\int_0^\infty\int_0^\infty\ e^{-u-v} u^{a-1}v^{b-1}du dv.
+\ee
+
+Changing variables by putting $u=zt$, $v=z(1-t)$ shows that this is
+\be
+\int_{0}^\infty\int_{0}^1 e^{-z} (zt)^{a-1}(z(1-t))^{b-1}z dtdz =\int_{0}^\infty \ e^{-z}z^{a+b-1} \,dz\int_{0}^1t^{a-1}(1-t)^{b-1}dt.
+\ee
+Hence $\Gamma(a)\Gamma(b)=\Gamma(a+b)B(a,b)$.
+\end{proof}
+
+%\section{Bessel function}
+

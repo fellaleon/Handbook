@@ -1,0 +1,226 @@
+Suppose $(X_t)_{t\in \R}$ is a stationary process, where $K$ is the time horizon,
+\be
+\alpha_n = \frac 1K \int^K_0 e^{i2\pi nt/K}X_t dt\quad\quad\text{is a Gaussian zero-mean $\C$-valued}
+\ee
+
+Thus,
+\be
+X_t = \sum^{N}_{n=0} \alpha_n e^{-i2\pi nt/K}
+\ee
+
+Hence, for $m,n\geq 0$,
+\beast
+\E\bb{\alpha_m\alpha_n^*} & = & \E\bb{\frac 1K \int^K_0 e^{i2\pi m u/K}X_u du \frac 1K \int^K_0 e^{-i2\pi nv/K}X_v dv} \\
+& = & \frac 1{K^2}\int^K_0 \int^K_0  e^{i2\pi m u/K - i2\pi nv/K}\E\bb{X_uX_v}du dv.
+\eeast
+
+\qcutline
+
+If $X_t$ is Brownian Motion, $\E\bb{X_uX_v} = u\land v$,
+%\beast
+%\E\bb{\alpha_m\alpha_n} & = & \frac 1{K^2}\int^K_0 \int^K_0  e^{i2\pi m u/K + i2\pi nv/K} \bb{u \land v} du dv = \frac 2{K^2}\int^K_0 e^{i2\pi m u/K} \int^u_0  e^{i2\pi nv/K} v dv du\\
+%& = & \frac 2{K^2}\int^K_0 e^{i2\pi m u/K} \frac K{i2\pi n}\bb{\left.ve^{i2\pi nv/K}\right|^u_0 - \int^u_0  e^{i2\pi nv/K} dv} du\\
+%& = & \frac 2{K^2}\frac K{i2\pi n} \int^K_0 e^{i2\pi m u/K} \bb{ue^{i2\pi nu/K} - \frac K{i2\pi n}  \bb{e^{i2\pi nu/K} -1} }du\\
+%& = & \frac 2{K^2}\frac K{i2\pi n} \int^K_0 \bb{ue^{i2\pi (m+n)u/K} + \frac K{i2\pi n}  \bb{e^{i2\pi mu/K} - e^{i2\pi (m+n)u/K} } }du\\
+%& = & \frac 2{K^2}\frac K{i2\pi n} \int^K_0  ue^{i2\pi (m+n)u/K} du 
+%\eeast
+
+\beast
+\E\bb{\alpha_m\alpha_n^*} & = & \frac 1{K^2}\int^K_0 \int^K_0  e^{i2\pi m u/K - i2\pi nv/K} \bb{u \land v} du dv \\
+& = & \frac 1{K^2}\bb{\int^K_0 e^{i2\pi m u/K} \int^u_0  e^{-i2\pi nv/K} v dv du + \int^K_0 u e^{i2\pi m u/K} \int^K_u  e^{-i2\pi nv/K} dv du}. 
+\eeast
+
+We know that if $m\neq n,m,n\neq 0$,
+\beast
+\int^K_0 e^{i2\pi m u/K} \int^u_0  e^{-i2\pi nv/K} v dv du & = & \int^K_0 e^{i2\pi m u/K} \frac K{-i2\pi n}\bb{\left.ve^{-i2\pi nv/K}\right|^u_0 - \int^u_0  e^{-i2\pi nv/K} dv} du\\
+& = & \frac K{-i2\pi n} \int^K_0 e^{i2\pi m u/K} \bb{ue^{-i2\pi nu/K} + \frac K{i2\pi n}  \bb{e^{-i2\pi nu/K} -1} }du\\
+& = & \frac K{-i2\pi n} \int^K_0 \bb{ue^{i2\pi (m-n)u/K} + \frac K{i2\pi n}  \bb{e^{i2\pi (m-n)u/K} - e^{i2\pi mu/K}} }du\\
+& = & \frac K{-i2\pi n} \int^K_0  ue^{i2\pi (m-n)u/K} du = \frac K{-i2\pi n} \frac K{i2\pi (m-n)} K = \frac{K^3}{4\pi^2 n(m-n)}
+\eeast
+
+\beast
+\int^K_0 u e^{i2\pi m u/K} \int^K_u  e^{-i2\pi nv/K} dv du & = & \frac K{-i2\pi n} \int^K_0  u e^{i2\pi m u/K}\bb{1 - e^{-i2\pi nu/K}} du\\
+& = & \frac K{-i2\pi n} \bb{\int^K_0  u e^{i2\pi m u/K}\bb{1 - e^{-i2\pi nu/K}} du}\\
+& = & \frac K{-i2\pi n} \bb{\frac {K^2}{i2\pi m} - \frac {K^2}{i2\pi (m-n)}} = \frac {K^3}{4\pi^2 mn} - \frac {K^3}{4\pi^2 n(m-n)}
+\eeast
+
+Thus, $\E\bb{\alpha_m\alpha_n^*} = \frac{K}{4\pi^2 mn}$ if $m\neq n$ and $m,n\neq 0$. If $n=0$,
+\beast
+\E\bb{\alpha_m\alpha_n^*} & = & \frac 1{K^2}\bb{\int^K_0 e^{i2\pi m u/K} \int^u_0 v dv du + \int^K_0 u e^{i2\pi m u/K} \int^K_u  dv du}\\
+& = & \frac 1{K^2}\bb{\int^K_0 \frac {u^2}2 e^{i2\pi m u/K} du + \int^K_0 (K-u)u e^{i2\pi m u/K} du}.  
+\eeast
+
+If $m=0$, we have
+\be
+\E\bb{\alpha_m\alpha_n^*} = \frac 1{K^2}\bb{\int^K_0 \frac {u^2}2 du + \int^K_0 (K-u)u du} = \frac 1{K^2}\bb{\frac{K^3}6 + \frac {K^3}2 - \frac{K^3}3} = \frac{K}3.
+\ee
+
+If $m\neq 0$, we have
+\beast
+\E\bb{\alpha_m\alpha_n^*} & = & \frac 1{K^2}\bb{\int^K_0 Kue^{i2\pi m u/K} - \frac {u^2}2 e^{i2\pi m u/K} du } = \frac 1{K^2}\bb{\frac{K^3}{i2\pi m} - \frac{K}{i2\pi m} \bb{\frac {K^2}2 - \int^K_0 u e^{i2\pi m u/K} du }}\\
+& = & \frac 1{K^2}\bb{\frac{K^3}{i2\pi m} - \frac{K}{i2\pi m} \bb{\frac {K^2}2 - \frac{K}{i2\pi m} K }} = - \frac{K}{4\pi^2m^2} - \frac{K}{4\pi m}i
+\eeast
+
+If $m=n\neq 0$, we have
+\beast
+\int^K_0 e^{i2\pi n u/K} \int^u_0  e^{-i2\pi nv/K} v dv du & = & \int^K_0 e^{i2\pi n u/K} \frac K{-i2\pi n}\bb{\left.ve^{-i2\pi nv/K}\right|^u_0 - \int^u_0  e^{-i2\pi nv/K} dv} du\\
+& = & \frac K{-i2\pi n} \int^K_0 e^{i2\pi n u/K} \bb{ue^{-i2\pi nu/K} + \frac K{i2\pi n}  \bb{e^{-i2\pi nu/K} -1} }du\\
+& = & \frac K{-i2\pi n} \int^K_0 \bb{u + \frac K{i2\pi n}  \bb{1 - e^{i2\pi mu/K} } }du\\
+& = & \frac K{-i2\pi n} \int^K_0 \bb{u + \frac K{i2\pi n} }du
+\eeast
+
+\beast
+\int^K_0 u e^{i2\pi n u/K} \int^K_u  e^{-i2\pi nv/K} dv du & = & \frac K{-i2\pi n} \int^K_0  u e^{i2\pi n u/K}\bb{1 - e^{-i2\pi nu/K}} du\\
+& = & \frac K{-i2\pi n} \int^K_0  \bb{u e^{i2\pi n u/K} -u} du = \frac K{-i2\pi n} \bb{\frac {K^2}{i2\pi n} - \int^K_0 u du}
+\eeast
+
+Hence, 
+\be
+\E\bb{\alpha_n\alpha_n^*} = \frac 1{K^2}\bb{\frac K{-i2\pi n} \int^K_0 \bb{u +\frac K{i2\pi n} }du + \frac K{-i2\pi n} \bb{\frac {K^2}{-i2\pi n} - \int^K_0 u du}} = \frac{K}{2\pi^2 n^2}.
+\ee
+
+Thus, we have
+\be
+\E\bb{\alpha_m\alpha_n^*} = \left\{\ba{ll}
+\frac{K}{4\pi^2 mn} & m\neq n,\ m,n \neq 0\\
+\\
+- \frac{K}{4\pi^2m^2} - \frac{K}{4\pi m}i \quad\quad & n = 0,\ m\neq 0\\
+\\
+- \frac{K}{4\pi^2n^2} + \frac{K}{4\pi n}i \quad\quad & m = 0,\ n\neq 0\\
+\\
+\frac{K}{2\pi^2 n^2} & m= n \neq 0\\
+\\
+\frac{K}{3} & m= n = 0
+\ea\right.
+\ee
+
+\qcutline
+
+\newpage
+
+Now if $(X_t)_{t\in\R}$ is an OU process, $dX_t = \lm (\mu - X_t) dt + \sigma dW_t$,
+\be
+X_t = X_0 e^{-\lm t} + \mu\bb{1-e^{-\lm t}} + \sigma \int^t_0 e^{\lm(s-t)} dW_s
+\ee
+
+Thus, $\E(X_t) = X_0 e^{-\lm t} + \mu\bb{1-e^{-\lm t}}$,
+\beast
+\E(X_uX_v) & = & \bb{X_0 e^{-\lm t} + \mu\bb{1-e^{-\lm t}}}^2 + \sigma^2 \int^{u\land v}_0 e^{-\lm (u-s)}e^{-\lm(v-s)}ds \\
+& = & \bb{X_0 e^{-\lm t} + \mu\bb{1-e^{-\lm t}}}^2 + \sigma^2 e^{-\lm (u+v)}\int^{u\land v}_0 e^{2\lm s} ds\\
+& = & \bb{X_0 e^{-\lm t} + \mu\bb{1-e^{-\lm t}}}^2 + \sigma^2 e^{-\lm (u+v)} \frac{1}{2\lm} \bb{e^{2\lm (u\land v)} -1} \\
+& = & \bb{X_0 e^{-\lm t} + \mu\bb{1-e^{-\lm t}}}^2 +  \frac{\sigma^2}{2\lm} \bb{e^{-\lm \abs{u-v}} - e^{-\lm (u+v)}}
+\eeast
+
+Now let $Y_t = X_t - X_0 e^{-\lm t} - \mu\bb{1-e^{-\lm t}}$ and $\frac{\sigma^2}{2\lm} = b$,
+\be
+\E(Y_t) = 0,\quad\quad \E(Y_uY_v) = b \bb{e^{-\lm \abs{u-v}} - e^{-\lm (u+v)}}
+\ee
+
+Let 
+\be
+\beta_n = \frac 1K \int^K_0 e^{i2\pi nt/K} Y_t dt\quad\quad\text{is a Gaussian zero-mean $\C$-valued}
+\ee
+
+Thus, $Y_t = \sum^{N}_{n=0} \beta_n e^{-i2\pi nt/K}$
+\beast
+\E\bb{\beta_m\beta_n^*} & = & \frac b{K^2}\int^K_0 \int^K_0  e^{i2\pi m u/K - i2\pi nv/K} \bb{e^{-\lm \abs{u-v}} - e^{-\lm (u+v)}} du dv \\
+& = & \frac b{K^2}\lob \int^K_0 e^{i2\pi m u/K-\lm u} \int^u_0  e^{-i2\pi nv/K+\lm v} dv du + \int^K_0 e^{i2\pi m u/K + \lm u} \int^K_u  e^{-i2\pi nv/K - \lm v} dv du \right. \\
+& &\quad\quad \left. - \int^K_0  e^{i2\pi m u/K - \lm u} du \int^K_0 e^{-i2\pi n v/K -\lm v} dv\rob. 
+\eeast
+
+We know that if $m\neq n,m,n\neq 0$,
+\beast
+\int^K_0 e^{i2\pi m u/K-\lm u} \int^u_0  e^{-i2\pi nv/K+\lm v} dv du & = &  \frac K{-i2\pi n+\lm K}\int^K_0 e^{i2\pi m u/K -\lm u} \bb{\left. e^{-i2\pi nv/K+\lm v}\right|^u_0 } du\\
+& = & \frac K{-i2\pi n+\lm K} \int^K_0 e^{i2\pi m u/K -\lm u}  \bb{ e^{-i2\pi nu/K+\lm u}-1 } du\\
+& = & \frac K{-i2\pi n+\lm K} \int^K_0 \bb{e^{i2\pi (m-n)u/K} - e^{i2\pi m u/K -\lm u} }du\\
+& = & \frac K{-i2\pi n+\lm K} \frac {-K}{i2\pi m - \lm K} \left.e^{i2\pi m u/K -\lm u}\right|^K_0\\
+& = & \frac K{\lm K-i2\pi n} \frac K{\lm K - i2\pi m} \bb{e^{-\lm K} -1}.
+\eeast
+
+\beast
+& & \int^K_0 e^{i2\pi m u/K + \lm u} \int^K_u  e^{-i2\pi nv/K - \lm v} dv du \\
+& = & \frac K{-i2\pi n-\lm K}  \int^K_0  e^{i2\pi m u/K+\lm u}\bb{\left. e^{-i2\pi nv/K -\lm v}\right|^K_u } du\\
+& = & \frac K{-i2\pi n-\lm K} \int^K_0  e^{i2\pi m u/K + \lm u}\bb{e^{-\lm K} - e^{-i2\pi nu/K-\lm u}} du\\
+& = & \frac K{-i2\pi n-\lm K} \int^K_0  \bb{e^{i2\pi m u/K + \lm u-\lm K}  - e^{i2\pi m u/K - i2\pi nu/K}} du\\
+& = & \frac K{-i2\pi n-\lm K} \bb{ \frac {Ke^{-\lm K}}{i2\pi m + \lm K} \left.e^{i2\pi m u/K + \lm u} \right|^K_0 - \left.\frac {Ke^{i2\pi m u/K - i2\pi nu/K}}{i2\pi m - i2\pi n} \right|^K_0} \\
+& = & \frac K{-i2\pi n-\lm K} \bb{ \frac {Ke^{-\lm K}}{i2\pi m + \lm K} \bb{e^{\lm K} -1} } =  \frac {K}{ \lm K + i2\pi m}\frac K{\lm K + i2\pi n} \bb{e^{-\lm K} -1}
+\eeast
+
+\beast
+\int^K_0  e^{i2\pi m u/K - \lm u} du \int^K_0 e^{-i2\pi n v/K -\lm v} dv & = & \frac {K}{i2\pi m - \lm K}\frac K{-i2\pi n-\lm K} \bb{e^{-\lm K}-1}^2 = \frac{K^2\bb{e^{-\lm K} -1}^2}{\bb{\lm K - i2\pi m }\bb{\lm K+i2\pi n}}
+\eeast
+
+Thus, 
+\beast
+& & \E\bb{\beta_m\beta_n^*} \\
+& = & b\bb{e^{-\lm K} -1}\bb{\frac 1{\bb{\lm K - i2\pi m} \bb{\lm K-i2\pi n}} + \frac 1{\bb{\lm K + i2\pi m} \bb{\lm K+i2\pi n}} - \frac {e^{-\lm K} -1}{\bb{\lm K -i2\pi m} \bb{\lm K +i2\pi n}}}\\
+& = & \frac{b\bb{e^{-\lm K} -1}\bb{ \bb{\lm K + i2\pi m} \bb{\lm K+i2\pi n} + \bb{\lm K - i2\pi m} \bb{\lm K-i2\pi n} + \bb {e^{-\lm K} -1}\bb{\lm K + i2\pi m} \bb{\lm K - i2\pi n}}}{\bb{4\pi^2 m^2+\lm^2 K^2}\bb{4\pi^2 n^2+\lm^2 K^2}}\\
+& = & \frac{b\bb{e^{-\lm K} -1}\bb{ 2\lm^2K^2 - 8\pi^2 mn - \bb {e^{-\lm K} -1}\bb{\lm K + i2\pi m} \bb{\lm K - i2\pi n}}}{\bb{4\pi^2 m^2+\lm^2 K^2}\bb{4\pi^2 n^2+\lm^2 K^2}}
+\eeast
+
+If $n=0$,
+\beast
+\E\bb{\beta_m\beta_n^*} & = & \frac b{K^2}\lob \int^K_0 e^{i2\pi m u/K-\lm u} \int^u_0  e^{\lm v} dv du + \int^K_0 e^{i2\pi m u/K + \lm u} \int^K_u  e^{- \lm v} dv du  - \int^K_0  e^{i2\pi m u/K - \lm u} du \int^K_0 e^{ -\lm v} dv\rob. 
+\eeast
+
+If $m=0$, we have
+\beast
+\E\bb{\beta_m\beta_n^*} & = & \frac b{K^2}\lob \int^K_0 e^{-\lm u} \int^u_0  e^{\lm v} dv du + \int^K_0 e^{\lm u} \int^K_u  e^{- \lm v} dv du  - \int^K_0  e^{- \lm u} du \int^K_0 e^{ -\lm v} dv\rob\\
+& = & \frac b{K^2}\bb{\frac 1{\lm} \int^K_0 e^{-\lm u}  \bb{e^{\lm u}-1} du - \frac 1{\lm} \int^K_0 e^{\lm u} \bb{ e^{- \lm K}- e^{-\lm u}} du  - \frac 1{\lm^2} \bb{e^{- \lm K} -1}^2}\\
+& = &  \frac b{K^2}\bb{\frac 1{\lm} \int^K_0  \bb{1 - e^{-\lm u}} du - \frac 1{\lm} \int^K_0  \bb{ e^{\lm (u-K)}- 1} du  - \frac 1{\lm^2} \bb{e^{- \lm K} -1}^2}\\
+& = &  \frac b{K^2}\bb{\frac {2K}{\lm}  + \frac 2{\lm^2}\bb{e^{-\lm K} -1}  - \frac 1{\lm^2} \bb{e^{- \lm K} -1}^2} %=  \frac b{K^2}\bb{\frac {2K}{\lm}  + \frac 1{\lm^2}\bb{e^{-\lm K} -1}  \bb{3-e^{- \lm K} }}
+\eeast
+
+If $m\neq 0$, we have
+\beast
+& & \E\bb{\beta_m\beta_n^*} \\
+& = & \frac b{K^2}\lob \int^K_0 e^{i2\pi m u/K-\lm u} \int^u_0  e^{\lm v} dv du + \int^K_0 e^{i2\pi m u/K + \lm u} \int^K_u  e^{- \lm v} dv du  - \int^K_0  e^{i2\pi m u/K - \lm u} du \int^K_0 e^{ -\lm v} dv\rob\\ 
+ & = & \frac b{\lm K^2}\lob \int^K_0 e^{i2\pi m u/K-\lm u} \bb{ e^{\lm u} -1} du - \int^K_0 e^{i2\pi m u/K + \lm u} \bb{ e^{- \lm K}- e^{-\lm u}} du + \int^K_0  e^{i2\pi m u/K - \lm u} du \bb{ e^{ -\lm K}-1}\rob\\
+ & = & \frac b{\lm K^2}\lob -\int^K_0 e^{i2\pi m u/K-\lm u} du - e^{- \lm K}\int^K_0 e^{i2\pi m u/K + \lm u } du + \int^K_0  e^{i2\pi m u/K - \lm u} du \bb{ e^{ -\lm K}-1}\rob\\
+ & = & \frac b{\lm K^2}\lob \frac {K\bb{e^{-\lm K} -1}}{\lm K-i2\pi m} + \frac {K\bb{e^{-\lm K} -1}}{\lm K + i2\pi m} - \frac {K}{\lm K - i2\pi m } \bb{ e^{ -\lm K}-1}^2\rob\\
+ & = & \frac {b\bb{e^{-\lm K} -1}}{\lm K \bb{\lm^2K^2 + 4\pi^2m^2}}\lob 2\lm K - \bb{e^{-\lm K} -1}\bb{\lm K+i2\pi m} \rob
+\eeast
+
+If $m=n\neq 0$, we have
+\beast
+\int^K_0 e^{i2\pi n u/K-\lm u} \int^u_0  e^{-i2\pi nv/K+\lm v} dv du & = &  \frac K{-i2\pi n+\lm K}\int^K_0 e^{i2\pi n u/K -\lm u} \bb{\left. e^{-i2\pi nv/K+\lm v}\right|^u_0 } du\\
+& = & \frac K{-i2\pi n+\lm K} \int^K_0 e^{i2\pi n u/K -\lm u}  \bb{ e^{-i2\pi nu/K+\lm u}-1 } du\\
+& = & \frac K{-i2\pi n+\lm K} \int^K_0 \bb{1 - e^{i2\pi n u/K -\lm u} }du\\
+& = & \frac K{-i2\pi n+\lm K} \bb{K + \frac K{-i2\pi n+\lm K} \left.e^{i2\pi n u/K -\lm u}\right|^K_0}\\
+& = & \frac K{\lm K-i2\pi n} \bb{K + \frac K{\lm K-i2\pi n} \bb{e^{-\lm K} -1}}.
+\eeast
+
+\beast
+& & \int^K_0 e^{i2\pi n u/K + \lm u} \int^K_u  e^{-i2\pi nv/K - \lm v} dv du \\
+& = & \frac K{-i2\pi n-\lm K}  \int^K_0  e^{i2\pi n u/K+\lm u}\bb{\left. e^{-i2\pi nv/K -\lm v}\right|^K_u } du\\
+& = & \frac K{-i2\pi n-\lm K} \int^K_0  e^{i2\pi n u/K + \lm u}\bb{e^{-\lm K} - e^{-i2\pi nu/K-\lm u}} du\\
+& = & \frac K{-i2\pi n-\lm K} \int^K_0  \bb{e^{i2\pi n u/K + \lm u-\lm K}  - 1} du\\
+& = & \frac K{-i2\pi n-\lm K} \bb{ \frac {Ke^{-\lm K}}{i2\pi n + \lm K} \left.e^{i2\pi n u/K + \lm u} \right|^K_0 - K} \\
+& = & \frac K{-i2\pi n-\lm K} \bb{ \frac {Ke^{-\lm K}}{i2\pi n + \lm K} \bb{e^{\lm K} -1} -K } =  \frac {K}{i2\pi n + \lm K}\bb{\frac K{i2\pi n+\lm K} \bb{e^{-\lm K} -1} +K}  
+\eeast
+
+\beast
+\int^K_0  e^{i2\pi n u/K - \lm u} du \int^K_0 e^{-i2\pi n v/K -\lm v} dv & = & \frac {K^2}{\lm^2 K^2 + 4\pi^2 n^2} \bb{e^{-\lm K}-1}^2
+\eeast
+
+Hence, 
+\beast
+\E\bb{\beta_n\beta_n^*} & = & b\lob\frac 1{\lm K-i2\pi n} \bb{1 + \frac 1{\lm K-i2\pi n} \bb{e^{-\lm K} -1}} + \frac {1}{\lm K + i2\pi n }\bb{\frac 1{\lm K + i2\pi n} \bb{e^{-\lm K} -1} +1}  \right.\\
+& & \quad\quad - \left.\frac {1}{\lm^2 K^2 + 4\pi^2 n^2} \bb{e^{-\lm K}-1}^2\rob\\
+& = & b\bb{\frac {2\lm K}{\lm^2 K^2 + 4\pi^2 n^2}  + \frac {2\lm^2K^2 - 8\pi^2n^2}{\bb{\lm^2 K^2 + 4\pi^2 n^2}^2}  \bb{e^{-\lm K} -1}  - \frac {1}{\lm^2 K^2 + 4\pi^2 n^2} \bb{e^{-\lm K}-1}^2 }
+\eeast
+
+Thus, we have
+\be
+\E\bb{\beta_m^*\beta_n} = \left\{\ba{ll}
+\frac{b\bb{e^{-\lm K} -1}\bb{ 2\lm^2K^2 - 8\pi^2 mn - \bb {e^{-\lm K} -1}\bb{\lm K + i2\pi m}\bb{\lm K - i2\pi n}}}{\bb{4\pi^2 m^2+\lm^2 K^2}\bb{4\pi^2 n^2+\lm^2 K^2}}\quad\quad & m\neq n,\ m,n \neq 0\\
+\\
+\frac {b\bb{e^{-\lm K} -1}}{\lm K \bb{\lm^2K^2 + 4\pi^2m^2}}\lob 2\lm K - \bb{e^{-\lm K} -1}\bb{\lm K+ i2\pi m} \rob \quad\quad & n = 0,\ m\neq 0\\
+\\
+\frac {b\bb{e^{-\lm K} -1}}{\lm K \bb{\lm^2K^2 + 4\pi^2n^2}}\lob 2\lm K - \bb{e^{-\lm K} -1}\bb{\lm K-i2\pi n} \rob \quad\quad & m = 0,\ n\neq 0\\
+\\
+b\bb{\frac {2\lm K}{\lm^2 K^2 + 4\pi^2 n^2}  + \frac {2\lm^2K^2 - 8\pi^2n^2}{\bb{\lm^2 K^2 + 4\pi^2 n^2}^2}  \bb{e^{-\lm K} -1}  - \frac {1}{\lm^2 K^2 + 4\pi^2 n^2} \bb{e^{-\lm K}-1}^2 } \quad\quad & m= n \neq 0\\
+\\
+\frac b{K^2}\bb{\frac {2K}{\lm}  + \frac 2{\lm^2}\bb{e^{-\lm K} -1}  - \frac 1{\lm^2} \bb{e^{- \lm K} -1}^2} & m= n = 0
+\ea\right.
+\ee

@@ -1,0 +1,89 @@
+\chapter{Linear Analysis}
+
+\section{Normed Space}
+
+\begin{definition}[separable normed space\index{separable!normed space}]\label{def:separable_normed_space}
+A normed space $(X,\dabs{\cdot})$ is called separable if there exist countably many dense subsets of $X$.
+\end{definition}
+
+\begin{example}
+$\forall p\in [1,\infty)$, $\ell_p(\F)$ is separable. However, $\ell_\infty(\F)$ is not separable\footnote{proof needed.}.
+\end{example}
+
+
+\section{Hahn-Banach Theorem}
+
+\begin{definition}[partial ordering\index{partial ordering}]\label{def:partial ordering}
+Let $X$ be a set. A partial ordering on $X$ is a relation $\leq$ such that for any $a,b,c\in X$,
+\ben
+\item [(i)] $a\leq a$.
+\item [(ii)] $a\leq b, b\leq a\ \ra\ a=b$.
+\item [(iii)] $a\leq b,b\leq c\ \ra \ a\leq c$.
+\een
+
+Then $(X,\leq)$ is a partially ordered set\index{partially ordered set}.
+\end{definition}
+
+\begin{definition}[total ordering\index{total ordering}]\label{def:total ordering}
+Let $X$ be a partially ordered set. $S \subseteq X$ is a total ordering if $\forall a,b\in S$, either $a\leq b$ or $b\leq a$.
+\end{definition}
+
+\begin{definition}[maximal element\index{maximal element}]\label{def:maximal_element}
+Let $X$ be a partially ordered set. $m \in X$ is a maximal element if $m\leq x\ \ra \ m =x$.
+\end{definition}
+
+\begin{definition}[upper bound\index{upper bound!patially ordered set}]\label{def:upper_bound_partially_ordered_set}
+Let $X$ be a partially ordered set. $b \in X$ is a upper bound for $S\subseteq X$ if $\forall a\in S, a\leq b$.
+\end{definition}
+
+
+\subsection{Zorn's lemma}
+
+\begin{lemma}[Zorn's lemma\index{Zorn's lemma}]\label{lem:zorn}
+Suppose that every totally ordered subset $S$ of a non-empty, totally ordered set $X$ has an upper bound. Then $X$ has a maximal element.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed. This is equivalent to the Axiom of Choice.}
+\end{proof}
+
+
+\section{Unsorted}
+
+\begin{theorem}[arithmetic-geometric mean inequality\index{arithmetic-geometric mean inequality}]\label{thm:arithmetic_geometric_mean_inequality}
+For positive real numbers $x_1, \dots, x_n$,
+\be
+\bb{\prod^n_{i=1} x_i}^{1/n} \leq \frac 1n \sum^n_{i=1} x_i.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+See Example \ref{exa:arithmetic_geometric_mean_inequality_probability_proof}.
+\end{proof}
+
+\begin{definition}[Banach space\index{Banach space}]\label{def:banach_space}
+\footnote{definition needed.}
+\end{definition}
+
+\begin{theorem}[Stone-Weierstrass theorem\index{Stone-Weierstrass theorem}]\label{thm:stone_Weierstrass_separates_points}
+Suppose $X$ is a compact Hausdorff space and $\sA$ is a subalgebra of $C(X)$ which contains a non-zero constant function. Then $A$ is dense in $C(X)$ if and only if it separates points, i.e., $\forall x\in X$, there exist elements $f,g\in \sA$ such that $f(x) \neq g(x)$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+see \cite{Rogers_1994}.II80
+\end{proof}
+
+
+\begin{corollary}[Weierstrass' approximation theorem\index{Weierstrass' approximation theorem}]\label{cor:weierstrass_approximation} Since the polynomials on $[a,b]$ form a subalgebra of $C[a,b]$, $\sA$, which contains the constants and separates points, $\sA$ is dense.
+\end{corollary}
+
+
+\section{Summary}
+
+normed space $\subseteq$ metric space.
+
+normed space $\subseteq$ topological space\footnote{with respect to the norm topology}.
+
+topological vector space $\subseteq$ Hausdorff.
+
+complete metric space $\subseteq$ Baire space.

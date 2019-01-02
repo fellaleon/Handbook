@@ -1,0 +1,4019 @@
+\chapter{Complex Analysis (draft)}
+
+\section{Complex differentiability is like real differentiability}%
+\label{S Algebra}
+The complex numbers
+have algebraic properties which are very similar to
+those of the real numbers (formally they are both fields)
+except that there is no order on the complex numbers.
+This similarity means that we can define differentiability
+in the complex case in exactly the same way as we
+did in the real case.
+\begin{definition} A function $f:{\mathbb C}\rightarrow{\mathbb C}$
+is differentiable at $z$ with derivative $f'(z)$ if 
+\[\left|\frac{f(z+h)-f(z)}{h}-f'(z)\right|\rightarrow 0\]
+as $|h|\rightarrow 0$.
+\end{definition}
+Exactly the same proofs as in the real case produce
+exactly the same elementary properties of differentiation.
+\begin{lemma}\label{L Easy differentiation}
+(i) The constant function given by $f(z)=c$ for all $z\in{\mathbb C}$
+is everywhere differentiable with derivative $f'(z)=0$.
+
+(ii) The function given by $f(z)=z$ for all $z\in{\mathbb C}$
+is everywhere differentiable with $f'(z)=1$.
+
+(iii) If $f,\ g:{\mathbb C}\rightarrow{\mathbb C}$ are 
+both differentiable at $z$, then so is $f+g$ with
+$(f+g)'(z)=f'(z)+g'(z)$.
+
+(iii) If $f,\ g:{\mathbb C}\rightarrow{\mathbb C}$ are 
+both differentiable at $z$, then so is their product $f\times g$ with
+$(f\times g)'(z)=f'(z)g(z)+f(z)g'(z)$.
+
+(iv) If $f:{\mathbb C}\rightarrow{\mathbb C}$ is nowhere zero
+and $f$ is differentiable at $z$, then so is $1/f$ with
+$(1/f)'(z)=-f'(z)/(f(z))^{2}$.
+
+(v) If $f:{\mathbb C}\rightarrow{\mathbb C}$ is
+differentiable at $z$ and $g:{\mathbb C}\rightarrow{\mathbb C}$
+is differentiable at $f(z)$ then the composition
+$g\circ f$ is differentiable at $z$ with
+$(g\circ f)'(z)=f'(z)g'(f(z))$.
+
+(vi) If $P(z)=\sum_{n=0}^{N}a_{n}z^{n}$, then $P$ is everywhere
+differentiable with derivative given by
+$P'(z)=\sum_{n=1}^{N}na_{n}z^{n-1}$.
+\end{lemma}
+The following extensive generalisation of 
+part~(iv) of Lemma~\ref{L Easy differentiation}
+was proved
+in Analysis~I (course~C5).
+\begin{theorem}\label{T, power series analytic}
+Let $a_{j}\in{\mathbb C}$ $[0\leq j]$. Then,
+either $\sum_{n=0}^{\infty}a_{n}z^{n}$ converges for all
+$z$ and we write $R=\infty$, or there exists a real number 
+$R\geq 0$ such that $\sum_{n=0}^{\infty}a_{n}z^{n}$
+converges for all $|z|<R$ and diverges for all $|z|>R$.
+($R$ is called the \emph{radius of convergence}
+of $\sum_{n=0}^{\infty}a_{n}z^{n}$.)
+
+If we write $f(z)=\sum_{n=0}^{\infty}a_{n}z^{n}$
+for $|z|<R$, then $f$ is differentiable at all $z$
+with $|z|<R$ and
+\[f'(z)=\sum_{n=1}^{\infty}na_{n}z^{n-1}.\]
+\end{theorem}
+We shall see (for example in Theorems~\ref{T; Taylor}
+and~\ref{T, power})
+that the study of power series and complex differentiable
+functions are closely linked.
+
+In  Analysis~I you studied a particular power series of
+great importance to us.
+\begin{theorem}\label{T Exponential} 
+(i) $\sum_{n=0}^{\infty}z^{n}/n!$ converges for all
+$z$. If we write
+\[\exp z=\sum_{n=0}^{\infty}\frac{1}{n!}z^{n},\]
+then $\exp$ is everywhere differentiable with
+$\exp' z=\exp z$.
+
+(ii) $\exp z\exp w=\exp(z+w)$ for all $z,\ w\in{\mathbb C}$.
+
+(iii) The equation $\exp z=0$ has no solution. If $w\neq 0$
+the equation $\exp z=w$ has the solutions 
+\[z=\log |w|+i\theta+2n\pi i\]
+with $n\in{\mathbb Z}$, where $\theta$ is any particular
+real solution of
+\[\frac{w}{|w|}=\cos\theta+i\sin\theta.\]
+
+(iv) If we write $e^{z}=\exp z$ and
+\[\sin z=\frac{e^{iz}-e^{-iz}}{2i},
+\ \cos z=\frac{e^{iz}+e^{-iz}}{2}\]
+then, when $z$ is real, we recover the traditional
+real functions $\sin:{\mathbb R}\rightarrow{\mathbb R}$
+and $\cos:{\mathbb R}\rightarrow{\mathbb R}$.
+\end{theorem}
+Combining the results of this section, we see that we have
+obtained a useful library of complex differentiable functions.
+\section{Complex differentiability is not like real differentiability}
+The first hint that complex differentiability is different
+from real differentiability is given by the following
+example.
+\begin{example}\label{Example, conjugate} 
+The function $F:{\mathbb C}\rightarrow{\mathbb C}$
+given by $F(z)=z^{*}$ is nowhere differentiable.
+\end{example}
+
+To understand Example~\ref{Example, conjugate} it is helpful
+to view matters not algebraicly (as we did in 
+Section~\ref{S Algebra}) but geometrically. Observe
+that, if we ignore multiplication,
+${\mathbb C}$ can be considered as the vector space
+${\mathbb R}^{2}$. If we have a function
+$f:{\mathbb C}\rightarrow{\mathbb C}$ we can write
+\[f(x+iy)=u(x,y)+iv(x,y)\]
+with $x$, $y$, $u$ and $v$ real, obtaining
+the map from ${\mathbb R}^{2}\rightarrow{\mathbb R}^{2}$
+\[\left(\begin{matrix}x\\y\end{matrix}\right)
+\mapsto
+\left(\begin{matrix}u(x,y)\\v(x,y)\end{matrix}\right).\]
+\begin{theorem} If the map 
+$T:{\mathbb R}^{2}\rightarrow{\mathbb R}^{2}$
+given by
+${\displaystyle
+\left(\begin{matrix}x\\y\end{matrix}\right)
+\mapsto
+\left(\begin{matrix}u(x,y)\\v(x,y)\end{matrix}\right)
+}$
+is differentiable in the sense of the course Analysis~II
+(Course~P9),
+then the following statements are equivalent.
+
+(i) $f$ is complex differentiable at $z_{0}$.
+
+(ii) The map $h\mapsto f(z_{0}+h)-f(z_{0})$ is locally
+the composition of a rotation and a dilation.
+
+(iii) The Jacobian matrix of the map $T$ satisfies
+\[
+\left(\begin{matrix}
+\frac{\partial u}{\partial x}&\frac{\partial u}{\partial y}\\ 
+\frac{\partial v}{\partial x}&\frac{\partial v}{\partial y}
+\end{matrix}\right)
+=\lambda
+\left(\begin{matrix}
+\cos\theta&-\sin\theta\\ \sin\theta&\cos\theta
+\end{matrix}\right)
+\]
+with $\lambda$ real and $\lambda\geq 0$.
+
+(iv) The map $T$ satisfies the Cauchy-Riemann conditions
+\[
+\frac{\partial u}{\partial x}=\frac{\partial v}{\partial y}
+,\ \frac{\partial v}{\partial x}=-\frac{\partial u}{\partial y}.
+\]
+\end{theorem} 
+
+Thus $z\mapsto z^{*}$ is not complex differentiable
+because it is a reflection.
+
+Most Cambridge examinees and a worryingly high proportion
+of Cambridge examiners believe that the Cauchy-Riemann
+relations are the best way of testing for complex 
+differentiability. This is not the case in general.
+The methods of Section~\ref{S Algebra} usually
+furnish a more efficient tool. (One problem with
+the use of the Cauchy-Riemann equations is that,
+as is shown in Analysis~II, the existence of partial
+derivatives does not imply differentiability.)
+
+In any case it is the act of a lunatic (or a Cambridge
+examiner) to ask about complex differentiability
+at a single point. The subject of complex differentiability
+only becomes interesting when applied to functions
+differentiable on an open set.
+\begin{definition} A set $\Omega\subseteq{\mathbb C}$
+is said to be open if, given $w\in\Omega$, we can find a $\delta>0$
+such that $z\in\Omega$ whenever $|z-w|<\delta$.
+\end{definition}
+Thus, wherever we are in an open set, we can move some
+fixed distance (depending on the point chosen)
+in any direction whilst remaining within
+the set.
+\begin{definition} Let $\Omega\subseteq{\mathbb C}$
+be an open set. We say that a function $f:\Omega\rightarrow{\mathbb C}$
+is analytic on $\Omega$ if $f$ is differentiable at
+every point of $\Omega$.
+\end{definition}
+
+Since this is a non-rigorous treatment, it operates under
+the assumption that everything is well behaved. One of the
+surprises and one the great advantages of the rigorous
+treatment given in course~C12 (Further Analysis) is that
+it reveals that \emph{all analytic functions are well behaved
+analytic functions}.
+
+The rigorous treatment reveals that the next lemma is
+true for all analytic functions although our `proof'
+seems to require extra conditions.
+\begin{lemma}\label{L, analytic to harmonic} 
+Suppose $\Omega\subseteq{\mathbb C}$ is open
+and $f:\Omega\rightarrow{\mathbb C}$ is analytic. Then,
+defining $u$ and $v$, as usual we have $u$ 
+harmonic (that is, satisfying Laplace's equation
+$\triangledown^{2}u=0$)
+on $\tilde{\Omega}=\{(x,y)\in{\mathbb R}^{2}\,:\,x+iy\in\Omega\}$. 
+The same is true of $v$.
+\end{lemma}
+Lemma~\ref{L, analytic to harmonic} has an important converse.
+\begin{lemma}\label{L, hamonic to analytic}
+If $u$ is harmonic, then it is locally 
+the real part of an analytic function.
+\end{lemma}
+Formally, we can restate Lemma~\ref{L, hamonic to analytic}
+as follows.
+\begin{lemma} Let $D=\{z\in{\mathbb C}\,:\,|z-a|<r\}$
+and $\tilde{D}=\{(x,y)\in{\mathbb R}^{2}\,:\,x+iy\in D\}$.
+If $u:\tilde{D}\rightarrow{\mathbb R}^{2}$ is harmonic,
+we can find a $v:\tilde{D}\rightarrow{\mathbb R}^{2}$
+(unique up to the addition of a constant) such
+that, if we write $f(x+iy)=u(x,y)+iv(x,y)$, the
+function $f:D\rightarrow{\mathbb C}$ is an analytic.
+\end{lemma}
+The result can clearly be extended to a result which we state
+informally (since we do not yet have the apparatus to state
+it, let alone prove it).
+\begin{lemma} A harmonic function on a simply connected
+open set (that is one which consists of a single piece
+with no holes) is a real part of an analytic function.
+\end{lemma}
+
+However there are genuine topological limitations.
+\begin{example} 
+(i) Let
+\[\Omega=\{z=re^{i\theta}\,:\,r>0,
+\ 2\pi+\theta_{0}>\theta>\theta_{0}\}\]
+and $\tilde{\Omega}=\{(x,y)\,:\,x+iy\in\Omega\}$. If
+$u(x,y)=\log |x+iy|=\log (x^{2}+y^{2})^{1/2}$, then $u$
+is the real part of an analytic function
+defined by $\log z=\log r+i\theta$
+where $r$ and $\theta$ form the unique solution
+of $z=re^{i \theta}$ with $r>0$ and 
+$2\pi+\theta_{0}>\theta>\theta_{0}$.
+
+(ii) If we define a real valued function $u$ on 
+$\tilde{\Gamma}={\mathbb R}^{2}\setminus\{{\boldsymbol 0}\}$
+by $u(x,y)=\log |x+iy|$,
+then $u$ is harmonic but we cannot find a real valued function $v$
+on $\tilde{\Gamma}$ such that,
+if we write $f(x+iy)=u(x,y)+iv(x,y)$, the
+function $f:\Gamma={\mathbb C}\setminus\{0\}
+\rightarrow{\mathbb C}$ is analytic.
+\end{example}
+\begin{definition}\label{D, logarithm} 
+Let
+\[\Omega=\{z=re^{i\theta}\,:\,r>0,
+\ 2\pi+\theta_{0}>\theta>\theta_{0}\}.\]
+If we define
+\[\log z=\log r+i\theta,\]
+where $r$ and $\theta$ form the unique solution
+of $z=re^{i \theta}$ with $r>0$ and 
+$2\pi+\theta_{0}>\theta>\theta_{0}$,
+then $\log$ is called a branch of the logarithm function.
+\end{definition}
+\begin{lemma}\label{L, properties logarithm}
+With the notation of Definition~\ref{D, logarithm},
+we have the following results.
+
+(i) $\log:\Omega\rightarrow{\mathbb C}$ is analytic.
+
+(ii) $\log(\Omega)=\{w\,:\, 2\pi+\theta_{0}>\Im w>\theta_{0}\}
+=\Lambda$, say.
+
+(iii) $\exp(\log z)=z$ for all $z\in\Omega$.
+
+(iv) If $\Im w\notin 2\pi{\mathbb Z}+\theta_{0}$, then
+$\log(\exp w)=w$.
+
+(v) $\log'(z)=z^{-1}$ for all $z\in\Omega$.
+
+(vi) If $z_{1}$, $z_{2}$, $z_{1}z_{2}\in\Omega$,
+then $\log z_{1}z_{2}=\log z_{1}+\log z_{2}+2n\pi i$ for
+some $n\in{\mathbb Z}$.
+\end{lemma} 
+\begin{lemma} There does not exist a continuous
+function $L:{\mathbb C}\setminus\{0\}\rightarrow{\mathbb C}$
+such that $\exp(L(z))=z$.
+\end{lemma} 
+\begin{exercise}\label{Exercise, logarithm 1}
+We use the notation of
+Definition~\ref{D, logarithm}. Show that we cannot choose
+$\theta_{0}$ so that $\log z_{1}z_{2}=\log z_{1}+\log z_{2}$
+for all $z_{1}$, $z_{2}$, $z_{1}z_{2}\in\Omega$.
+\end{exercise}  
+
+In Analysis~I, you saw that the easiest way to
+define $x^{\alpha}$ when $x$ and $\alpha$ are real
+and $x>0$ is to write $x^{\alpha}=\exp(\alpha \log x)$.
+\begin{definition}\label{D, power} 
+We use the notation of
+Definition~\ref{D, logarithm}. Suppose $\alpha\in{\mathbb C}$.
+We define the map $z\mapsto z^{\alpha}$ on
+$\Omega$ by $z^{\alpha}=\exp(\alpha\log z)$.
+We call the resulting function a branch of $z^{\alpha}$.
+\end{definition}
+\begin{lemma} If we define $p_{\alpha}:\Omega\rightarrow{\mathbb C}$
+by $p_{\alpha}(z)=z^{\alpha}$ as in Definition~\ref{D, power},
+then $p_{\alpha}$ is analytic on $\Omega$. We have
+\[p_{\alpha}'(z)=\alpha p_{\alpha-1}(z).\]
+
+If $\alpha$ is real,
+$r>0$ and $2\pi+\theta_{0}>\theta>\theta_{0}$ then
+$p_{\alpha}(z)=r^{\alpha}\exp i\alpha\theta$
+where $r^{\alpha}$ has its traditional meaning.
+\end{lemma}
+Except in the simplest circumstances, it is probably
+best to deal with $z^{\alpha}$ by rewriting it
+as $\exp(\alpha\log z)$.
+
+If $0>\theta_{0}>-2\pi$, it is traditional to refer to
+the function defined by
+\[\log re^{i\theta}=\log r +i\theta\]
+for $r>0$ and $2\pi+\theta_{0}>\theta>\theta_{0}$
+as the principal branch of the logarithm
+(with a similar convention for the associated powers).
+This has the same effect and utility as my referring
+to myself as the King of Siam.
+\section{Conformal mapping} We start with our definition
+of a conformal map.
+\begin{definition} Let $\Omega$ and $\Gamma$ be open subsets 
+of ${\mathbb C}$. We say that $f:\Omega\rightarrow\Gamma$
+is a conformal map if $f$ is bijective and analytic
+and $f'$ never vanishes.
+\end{definition}
+In more advanced work it is shown that, if 
+$f$ is bijective and analytic, then $f'$ never
+vanishes. The phrase `and $f'$ never vanishes' can
+then be omitted from the definition.
+\begin{lemma}\label{L conformal inverse} 
+Let $\Omega$ and $\Gamma$ be open subsets 
+of ${\mathbb C}$. If $f:\Omega\rightarrow\Gamma$
+is conformal, then $f^{-1}:\Gamma\rightarrow\Omega$
+is analytic. We have
+\[(f^{-1})'(w)=\frac{1}{f'(f^{-1}(w))},\]
+so $f^{-1}$ is also conformal.
+\end{lemma}
+\begin{exercise}\label{E, conformal equivalence} 
+We say that open subsets $\Omega$ and $\Gamma$
+of ${\mathbb C}$ are conformally equivalent 
+if there exists a conformal map $f:\Omega\rightarrow\Gamma$.
+Show that conformal equivalence is an equivalence relation.
+\end{exercise}
+The reader is warned that some mathematicians use
+definitions of conformal mapping
+which are not equivalent
+to ours. (The most common change is to drop the
+condition that $f$ is bijective but to continue
+to insist that $f'$ is never zero.) Sometimes
+people use conformal simply to mean angle
+preserving, so you must be prepared to be asked
+`Show that an analytic map with non-zero derivative
+is conformal'.
+
+So far as~1B examinations are concerned, we are chiefly 
+interested in the following conformal maps.
+
+(i) $z\mapsto z+a$. Translation. Takes ${\mathbb C}$ to
+${\mathbb C}$.
+
+(ii) $z\mapsto e^{i\theta}z$ where $\theta$ is real. 
+Rotation. Takes ${\mathbb C}$ to ${\mathbb C}$.
+
+(iii) $z\mapsto \lambda z$ where $\lambda$ is real and $\lambda>0$.
+Dilation (scaling). Takes ${\mathbb C}$ to ${\mathbb C}$.
+
+(iv) $z\mapsto z^{-1}$. Inversion in unit circle
+followed by reflection in real axis. Takes circles and straight 
+lines `not through the origin' to circles
+and circles and lines `through the origin'
+to straight lines.
+Takes ${\mathbb C}\setminus\{0\}$ to ${\mathbb C}\setminus\{0\}$.
+[Note, in this course we are not interested in the
+`point at infinity'.]
+
+(v) $z\mapsto z^{\alpha}$ with $\alpha$ real and $\alpha>0$.
+[N.B. You must specify a branch!] 
+Takes (appropriate) sectors
+(of the form $\{re^{i\theta}\,:\,r>0,\ \theta_{1}>\theta>\theta_{2}\}$)
+to sectors with base angle multiplied by $\alpha$. 
+
+(vi) $z\mapsto \exp z$. Takes (appropriate) planks
+\[\{z\,:\, \theta_{1}>\Im z>\theta_{2}\}\]
+to sectors. The map $z\mapsto\log z$
+[N.B. You must specify a branch!] does the reverse.
+
+We observe that maps of the type~(i) to~(iv) are M\"{o}bius
+and together generate the M\"{o}bius group. 
+M\"{o}bius maps were extensively discussed in the
+first year course `Algebra and Geometry'.
+Observe also
+that we do not really need maps of type~(v) explicitly,
+since we can obtain them using maps of the type~(iii)
+and~(vi).
+
+The author strongly recommends constructing conformal
+maps in a large number of simple steps, as the composition
+of the simple maps given above, rather than trying to
+do everything at once.
+\begin{example}\label{Example, sector to disc}
+Find a conformal map taking
+\[\Omega=\{z\,:\,\Im z>0,\ \Re z>0,\ |z|<1\}\]
+to the unit disc $D=\{z\,:\, |z|<1\}$.
+
+Explain why the map $z\mapsto z^{4}$ does not work.
+\end{example}
+It should be noted that conformal mapping problems like 
+Example~\ref{Example, sector to disc}  do not have
+unique solutions since there are non-trivial conformal
+maps of the disc into itself (for example rotation).
+
+In the early days of aviation, conformal mappings
+(of a very slightly more complicated kind) were
+used to find the flow of air past the wings of aeroplanes.
+The method depended on the following result.
+\begin{lemma}\label{L conformal harmonic}
+Let $\Omega$ and $\Gamma$ be open subsets 
+of ${\mathbb C}$ and $f:\Omega\rightarrow\Gamma$
+a conformal map. Set
+\[\tilde{\Omega}=\{(x,y)\,:\,x+iy\in\Omega\},
+\ \tilde{\Gamma}=\{(x,y)\,:\,x+iy\in\Gamma\}\]
+and let
+${\displaystyle
+\left(
+\begin{matrix}u\\v\end{matrix}
+\right)
+:\tilde{\Omega}\rightarrow\tilde{\Gamma}}$
+be the mapping given by $f(x+iy)=u(x,y)+iv(x,y)$.
+Then, if $\phi:\tilde{\Gamma}\rightarrow{\mathbb R}$
+is harmonic, so is $\psi:\tilde{\Omega}\rightarrow{\mathbb R}$
+where $\psi(x,y)=\phi(u(x,y),v(x,y))$.
+\end{lemma}
+It must be admitted that the use of Lemma~\ref{L conformal harmonic}
+and the general practice of conformal mapping at
+1B level and substantially above it depends on the
+fact that, for the kind of $\Omega$ and $\Gamma$ considered,
+the conformal map $f:\Omega\rightarrow\Gamma$
+does, indeed,
+behave well near the boundaries. The reader is warned
+that, should she ever attend an advanced pure course
+on conformal maps or try to use theorems which merely
+guarantee the existence of such a map $f$ without
+actually giving an explicit construction, this
+assumption can no longer be relied
+on\footnote{\begin{verse}
+In the midst of the word he was trying to say,\\
+In the midst of his laughter and glee,\\
+He had softly and silently vanished away --\\
+For the Snark \emph{was} a Boojum, you see.
+\end{verse}}.
+\section{Contour integration and Cauchy's theorem}
+It is natural to define the integral of a function
+$F:{\mathbb R}\rightarrow{\mathbb C}$ by
+\[\int_{a}^{b}F(t)\,dt=\int_{a}^{b}\Re F(t)\,dt
++i\int_{a}^{b}\Im F(t)\,dt.\]
+In the course C9 (Analysis) it is shown that
+this definition produces an integral with all the
+properties we want. In addition, the following useful
+lemma is proved.
+\begin{lemma}\label{L; bound integral}
+If $F:[a,b]\rightarrow{\mathbb C}$
+is continuous then
+\[\left|\int_{a}^{b}F(t)\,dt\right|
+\leq (b-a)\sup_{t\in[a,b]}|F(t)|.\]
+\end{lemma}
+We summarise this result in a slogan
+\begin{center}
+{\bf modulus integral $\leq$ length $\times$ supremum}.
+\end{center}
+
+Next we wish to define the contour integral.
+\[\int_{C}f(z)\,dz\]
+where $C$ is a path in $\mathbb C$.
+Roughly speaking 
+\[\int_{C}f(z)\,dz\approx\sum_{j=1}^{N}f(z_{j})(z_{j}-z_{j-1})\]
+where the polygonal path joining $z_{0}$, $z_{1}$,
+\dots $z_{N}$ is a `good approximation to $C$'.
+We formalise this idea as follows.
+(A function $g:{\mathbb R}\rightarrow{\mathbb C}$ is said
+to be differentiable if $\Re g$ and $\Im g$ are.
+We write $g'(t)=(\Re g)'(t)+i(\Im g)'(t)$.)
+\begin{definition} If $\gamma:[a,b]\rightarrow{\mathbb C}$
+is a sufficiently smooth\footnote{Continuously differentiable
+will certainly do.} function describing the path $C$
+and $f:{\mathbb C}\rightarrow{\mathbb C}$ is continuous,
+we define
+\[\int_{C}f(z)\,dz=\int_{a}^{b}f(\gamma(t))\,\gamma'(t)dt.\]
+\end{definition}
+If a path $C$ is made up of a path $C_{1}$ followed by a path $C_{2}$
+followed by a path $C_{3}$ \dots followed by a path $C_{n}$
+with each path satisfying the conditions of our definition,
+then we take
+\[\int_{C}f(z)\,dz=\sum_{r=1}^{n}\int_{C_{r}}f(z)\,dz.\] 
+It is, more or less, clear that our definitions are unambiguous
+but a rigorous development would need to prove this. 
+If a contour begins and ends at the same point
+we call it at closed contour. In this case,
+some older texts use the
+pleasant notation
+\[\oint_{C}f(z)\,dz=\int_{C}f(z)\,dz.\]
+
+Lemma~\ref{L; bound integral} now takes the following form.
+\begin{lemma} Under the conditions above,
+\[\left|\int_{C}f(z)\,dz\right|\leq \text{length $C$}\times
+\sup_{z\in C}|f(z)|.\]
+\end{lemma}
+
+The next result is very important.
+\begin{lemma}\label{L; simplest pole} 
+Suppose $a,\ w\in{\mathbb C}$ and $r\in{\mathbb R}$
+with $r>0$.
+Let $C$ be the path $w+r\exp i\theta$ described
+as $\theta$ runs from $0$ to $2\pi$ (less formally, the
+circle radius $r$ and centre $w$ described once anticlockwise). 
+Then
+\begin{alignat*}{2}
+\int_{C}\frac{1}{z-a}\,dz&=2\pi i&&\qquad\text{if $|a-w|<r$},\\
+\int_{C}\frac{1}{z-a}\,dz&=0&&\qquad\text{if $|a-w|>r$}.
+\end{alignat*}
+\end{lemma}
+Note that this illustrates an important point
+\begin{center}
+\begin{bf} 
+Change of contour is not change of variable.
+\end{bf}
+\end{center}
+
+The next result has very little to do with the course
+but I could not resist including it.
+\begin{lemma}
+If $C$ is a closed contour which does not cross over itself
+and is described once anticlockwise  then
+\[\int_{C}z^{*}\,dz=2i\times\text{Area enclosed by $C$}.\]
+\end{lemma}
+
+We now come to our master theorem.
+\begin{theorem}[Cauchy's theorem] Let $\Omega$ be an
+open, simply connected (that is all in a single piece 
+and with no holes) set in ${\mathbb C}$ and
+$f:\Omega\rightarrow{\mathbb C}$ be an analytic function.
+Then
+\[\int_{C}f(z)\,dz=0\]
+\end{theorem}
+\noindent{\bf Note} Observe that Lemma~\ref{L; simplest pole}
+shows that the `no holes' condition can not be dropped.
+Given a particular $\Omega$ it is usually trivial to check
+that it has no holes but a rigorous development 
+of complex analysis for general $\Omega$ is somewhat delicate.
+With our sturdy English common sense we have banished
+the study of holes\footnote{Called homology by its
+practitioners.} to the higher reaches of pure mathematics
+but, in the US, some textbooks of mathematical methods for
+engineers devote quite a lot of time to it.
+
+To save ink in future, we shall call $\Omega$ a simply connected
+domain if it is
+an open simply connected (that is one piece without holes)
+subset of ${\mathbb C}$. You should note that this notation is
+not universal.
+
+Here is a nice application of Cauchy's theorem which
+foreshadows much of the course.
+\begin{lemma} If $\lambda$ is real, then
+\[\int_{-\infty}^{\infty}e^{-i\lambda x}e^{-x^{2}/2}\,dx
+=(2\pi)^{1/2}e^{-\lambda^{2}/2}.\]
+In particular,
+\[\int_{-\infty}^{\infty}\cos(\lambda x)e^{-x^{2}/2}\,dx
+=(2\pi)^{1/2}e^{-\lambda^{2}/2}.\]
+\end{lemma}
+We remind the reader that
+`Change of contour is not change of variable'.
+\section{Applications of Cauchy's theorem} 
+Cauchy's theorem has far reaching implications.
+Our first result depends on the introduction of
+a well understood singularity.
+\begin{theorem}[Cauchy's formula]%\label{T; Cauchy formula} 
+Let $\Omega$
+be a simply connected domain and $f:\Omega\rightarrow{\mathbb C}$
+be analytic. If $C$ is a closed contour in $\Omega$
+which does not cross over itself
+and is described once anticlockwise,
+and $a$ lies inside $C$,
+then
+\[\int_{C}\frac{f(z)}{z-a}\,dz=2\pi if(a).\]
+\end{theorem}
+Given a particular $C$ and a particular $a$,
+it is usually trivial to check that $C$
+does not cross over itself
+and is described once anticlockwise, and 
+that $a$ lies inside $C$.
+However a rigorous development 
+of these notions is somewhat delicate (to repeat
+the refrain of our song). We shall say that a $C$
+which does not cross over itself
+and is described once anticlockwise
+is a simple closed contour.
+
+Differentiating under the integral (not hard to justify
+with the ideas of Analysis II) 
+with respect to $a$ we get
+the following result.
+\begin{theorem}[Cauchy's formula, extended version]%
+\label{T; extended Cauchy} 
+Let $\Omega$
+be a simply connected domain and $f:\Omega\rightarrow{\mathbb C}$
+be analytic. If $C$ is a simple closed contour in $\Omega$,
+and $a$ lies inside $C$
+then $f$ is $n$ times differentiable with
+\[n!\int_{C}\frac{f(z)}{(z-a)^{n+1}}\,dz=2\pi i f^{(n)}(a).\]
+\end{theorem}
+It is worth emphasising part of the result just given.
+\begin{theorem} 
+Let $\Omega$ be a open subset of ${\mathbb C}$.
+If $f:{\Omega}\rightarrow{\mathbb C}$ is once
+complex differentiable then it is infinitely complex
+differentiable.
+\end{theorem}
+This is a truly remarkable result, it is surely worth
+going to course~C12 simply to see it proved rigorously!
+
+Another remarkable result is the following.
+\begin{theorem}[Taylor's theorem]\label{T; Taylor}
+Let $\Omega$ be a open subset of ${\mathbb C}$
+and $f:{\Omega}\rightarrow{\mathbb C}$ be an analytic
+function. Suppose the disc
+\[D(b,\rho)=\{z\,:\,|z-b|<\rho\}\]
+(with $\rho>0$) is a subset of $\Omega$.
+Then we can find $a_{n}$ such that
+\[f(z)=\sum_{n=0}^{\infty}a_{n}(z-b)^{n}\]
+for all $z\in D(b,\rho)$.
+If $0<r<\rho$ then
+\[a_{n}=\frac{1}{2\pi i}\int_{C(r)}\frac{f(z)}{(z-b)^{n+1}}\,dz,\]
+where $C(r)$ is the circular contour centre $b$
+and radius $r$ described once anticlockwise.
+\end{theorem} 
+Note (as is shown in Exercise~\ref{Exercise, no Taylor}, 
+also due to Cauchy) that
+there exist infinitely differentiable functions
+$E:{\mathbb R}\rightarrow{\mathbb R}$ which have
+no Taylor expansion. Taylor's theorem has the following
+important corollary.
+\begin{theorem}\label{T, power}
+Let $\Omega$ be a open subset of ${\mathbb C}$.
+A function $f:{\Omega}\rightarrow{\mathbb C}$ is analytic
+if and only if it can be expanded locally as a power
+series. (That is, given $w\in\Omega$, we can find a $\rho>0$
+such that $D(w,\rho)\subseteq\Omega$ and $a_{n}\in{\mathbb C}$
+such that 
+$f(z)=\sum_{n=0}^{\infty}a_{n}(z-w)^{n}$
+for all $z\in D(w,\rho)$.)
+\end{theorem}
+\begin{exercise} Deduce Theorem~\ref{T; extended Cauchy},
+in the case that $C$ is a circle, from Theorem~\ref{T; Taylor}
+and results on power series.
+\end{exercise}
+
+Taylor's theorem for analytic functions has a striking
+and useful generalisation.
+\begin{theorem}[Laurent's expansion]\label{T; Laurent}
+Let $\Omega$ be a open subset of ${\mathbb C}$
+and let $b\in{\Omega}$.
+Suppose that $f:{\Omega}\setminus\{b\}
+\rightarrow{\mathbb C}$ is an analytic
+function and the disc
+\[D(w,\rho)=\{z\,:\,|z-b|<\rho\}\]
+(with $\rho>0$) is a subset of $\Omega$.
+Then we can find $a_{n}$ such that
+\[f(z)=\sum_{n=-\infty}^{\infty}a_{n}(z-b)^{n}\]
+for all $z\in D(b,\rho)$.
+If $0<r<\rho$ and $C(r)$ is the circular contour centre $b$
+and radius $r$ described once anticlockwise, then
+\[a_{n}=\frac{1}{2\pi i}\int_{C(r)}\frac{f(z)}{(z-b)^{n+1}}\,dz\]
+for all $n\in{\mathbb Z}$.
+\end{theorem}
+
+\begin{definition}\label{D; singularity} 
+In Theorem~\ref{T; Laurent},
+we call $b$ an \emph{isolated singularity}.
+
+We call $a_{-1}$ the \emph{residue} at $w$.
+
+If $a_{n}=0$ for all $n\leq -1$, we say that
+$w$ is a \emph{removable singularity}.
+
+If there exists an $N\geq 1$ such that $a_{-N}\neq 0$
+but $a_{-n}=0$ for all $n>N$, we say that
+$w$ is a \emph{pole} or more specifically
+that $w$ is a \emph{pole of order} $N$.
+Sometimes a pole of order $1$ is called a 
+\emph{simple pole}\footnote{Complex analysts are much
+attached to the word `simple'. Comment is unnecessary.}.
+
+If there does not exist an $N$ with
+$a_{-n}=0$ for all $n\geq N$, we call $w$
+an \emph{essential singularity}.
+\end{definition}
+
+The next lemma is really just a commentary on
+Definition~\ref{D; singularity}
+\begin{lemma} We continue with the notation
+of Theorem~\ref{T; Laurent} and Definition~\ref{D; singularity}.
+
+(i) The point $b$ is a removable singularity if and
+only if we can find
+an analytic function 
+$\tilde{f}:\Omega\rightarrow{\mathbb C}$
+such that $f(z)=\tilde{f}(z)$ for all $z\in\Omega\setminus\{b\}$.
+
+(ii) The point $b$ is a pole of order exactly $N$ if and
+only if we can find
+an analytic function $h:\Omega\rightarrow{\mathbb C}$
+with $h(b)\neq 0$
+such that $f(z)=(z-b)^{-N}h(z)$  
+for all $z\in\Omega\setminus\{b\}$.
+\end{lemma}
+Thus the behaviour of an analytic function in
+the neighbourhood of a removable singularity
+or a pole is no more difficult to understand
+than the behaviour of an analytic function 
+away from singularities.
+
+We shall see in the next section that there are
+particular reasons for wishing to calculate
+the residue.
+\begin{lemma} (i) If $f(z)=g(z)(z-a)^{-1}$ with $g$
+analytic in a disc centre $a$ and, then, if $g(a)\neq 0$,
+$f$ has simple pole at $a$ with residue
+$g(a)$ and, if $g(a)=0$, $f$ has a removable singularity at $a$.
+
+(i) If $f(z)=g(z)/h(z)$ with $g$ and $h$
+analytic in a disc centre $a$ and $h(a)=0$, $h'(a)\neq 0$
+then, if $g(a)\neq 0$, $f$ has simple pole at $a$ with residue
+$g(a)/h'(a)$ and, if $g(a)=0$, 
+$f$ has a removable singularity at $a$. 
+\end{lemma}
+If the pole is not simple, then power series expansion
+is often, though not always, the simplest way of proceeding.
+\begin{example} (The short question on paper I, 1998.) 
+Find the residues of the following functions at $z=0$,
+using the principle branch of $\log$ in (iii).
+\begin{center}
+(i) $\cot z$,\ \ (ii) ${\displaystyle \frac{\sin z -z}{z^{4}}}$,
+\ \ (iii) ${\displaystyle \frac{\log(\cos z)}{z(1-\cos z)}}$,\\
+(iv) ${\displaystyle \frac{\cos z}{z^{2}}}$
+\ \ \text{and}
+\ \ \ (v) ${\displaystyle z^{3}\exp\left(\frac{1}{z}\right)}$.
+\end{center}
+\end{example}
+\section{Calculus of residues} 
+The reason for devoting special attention to the
+coefficient of $(z-w)^{-1}$ in the Laurent expansion
+(recall that we called it the `residue') is revealed
+in the next theorem\footnote{If you
+invent a new and useful branch of mathematics, 
+then you too can
+have all the theorems named after you.}.
+\begin{theorem}[Cauchy's residue theorem]%
+\label{T; Residue} Let
+$\Omega$ be a simply connected
+domain and $w_{1}$, $w_{2}$, \dots, $w_{n}$
+distinct points in $\Omega$. Let
+\[f:\Omega\setminus\{w_{1},\ w_{2},\ \dots ,\ w_{n}\}\rightarrow{\mathbb C}\]
+be analytic and let the residue at $w_{j}$ be $\tau_{j}$
+$[1\leq j\leq n]$. If $C$ is a simple closed contour
+enclosing a region which contains 
+$\{w_{1},\ w_{2},\ \dots ,\ w_{n}\}$ [N.B. we do not
+allow the $w_{j}$ to lie on C], then
+\[\int_{C}f(z)\,dz=2\pi i\sum_{j=1}^{n}\tau_{j}.\]
+\end{theorem}
+\begin{exercise} Show that Theorem~\ref{T; extended Cauchy}
+is a special case of Theorem~\ref{T; Residue}.
+
+In the same spirit, deduce Theorem~\ref{T; extended Cauchy}
+from Theorem~\ref{T; Residue} and the statement that
+every analytic function satisfies Taylor's theorem
+\[f(w+h)=\sum_{j=0}^{\infty}\frac{f^{(j)}(w)}{j!}h^{j}\]
+for $|h|$ sufficiently small.
+\end{exercise}
+
+Here are some typical applications of Cauchy's residue theorem.
+I have tried to place them in increasing order of complexity.
+\begin{example} Show that
+\[\int_{-\infty}^{\infty}\frac{1}{1+x^{4}}\,dx
+=\frac{\pi}{2^{1/2}}.\]
+Deduce the value of $\int_{0}^{\infty}\frac{1}{1+x^{4}}\,dx$.
+\end{example}
+\begin{example} Show that, if $\lambda$ is real,
+\[\int_{-\infty}^{\infty}\frac{e^{i\lambda x}}{1+x^{2}}\,dx
+=\pi e^{-|\lambda|}.\]
+\end{example}
+Our next integral requires a preliminary lemma.
+\begin{lemma}[Jordan's lemma] Suppose 
+$f:{\mathbb C}\rightarrow{\mathbb C}$ is continuous
+on the region $|z|>R_{0}$ and satisfies the inequality
+$|f(z)|<K/|z|$ for $|z|>R_{0}$. If $C(r)$ is the contour
+consisting of the semicircle $re^{i\theta}$ described
+as $\theta$ runs from $0$ to $\pi$ then,
+provided $\lambda$ is real and strictly positive,
+\[\int_{C(r)}f(z)e^{i\lambda z}\,dz\rightarrow 0\]
+as $r\rightarrow\infty$.
+\end{lemma}
+In the opinion of the writer, it is slightly
+unsporting to use Jordan's lemma when simpler estimates
+will do. It should also be noted that, if we \emph{genuinely}
+need to use Jordan's lemma in the evaluation of a real 
+integral, then that integral may only exist for certain definitions
+of the integral.
+\begin{example}\label{Example; Hardy} Show that
+\[\int_{0}^{\infty}\frac{\sin x}{x}\,dx=\frac{\pi}{2}.\]
+\end{example}
+\begin{exercise} If $t\in{\mathbb R}$, let us write
+\[F(t)=\int_{0}^{\infty}\frac{\sin tx}{x}\,dx.\]
+Show, using the result of Example~\ref{Example; Hardy}
+and change of variable, that
+\begin{alignat*}{2}
+F(t)&=\frac{\pi}{2}&&\qquad\text{for $t>0$},\\
+F(0)&=0,\\
+F(t)&=-\frac{\pi}{2}&&\qquad\text{for $t<0$}.
+\end{alignat*}
+\end{exercise}
+\begin{example} Show that, if $\alpha$ is real and $-1<\alpha<1$,
+then 
+\[\int_{0}^{\infty}\frac{x^{\alpha}}{1+x^{2}}\,dx=
+\frac{\pi}{2\cos(\alpha\pi/2)}.\]
+What happens if $\alpha$ lies outside the range $(-1,1)$?
+\end{example}
+Our final example uses a slightly different idea.
+\begin{example}
+Show that, if $a$ is real and $a>0$,
+\[\int_{0}^{\pi}\frac{a}{a^{2}+\sin^{2}\theta}\,d\theta
+=\frac{\pi}{(1+a^{2})^{1/2}}.\]
+\end{example}
+
+There is a mixture of good and bad news about contour
+integration.
+
+(1) Most examples (particularly at 1B level) are based
+on combining a limited number of tricks. If you are stuck,
+try to identify parts of the problem which you have met before.
+
+(2) The only way, for most people, to become fluent
+in contour integration is to do lots of examples
+yourself.
+
+(3) Almost every book on complex analysis in your
+college library\footnote{Often an architectural
+gem and well worth visiting for its own sake.}
+will contain a chapter with a large collection of
+worked examples for you to take as model. 
+\section{Fourier transforms} Many systems
+in nature, engineering and mathematics are
+linear and allow us to build complex solutions
+as linear combinations of simpler solutions.
+Thus, for example, light and sound may be considered
+as a mixture of simple, single frequency waves.
+
+Mathematically we start by considering a single
+frequency wave
+\[e^{i\omega t},\]
+we then consider a sum of a finite number of such
+simple waves
+\[\sum_{j=1}^{n}a_{j}e^{i\omega_{j} t}\]
+with $a_{j}\in{\mathbb C}$ and are then driven to consider
+the integral analogue
+\[\int_{-\infty}^{\infty}F(\omega)e^{i\omega t}\,d\omega.\]
+
+To emphasise the connection with Fourier series
+(see the course Mathematical Methods,~C10) we use the 
+following definition.
+\begin{definition} If $f:{\mathbb R}\rightarrow{\mathbb C}$
+is reasonably well behaved, we define
+\[\hat{f}(\lambda)
+=\int_{-\infty}^{\infty}f(t)e^{-i\lambda t}\,dt,\]
+and call the function
+$\hat{f}:{\mathbb R}\rightarrow{\mathbb C}$
+the \emph{Fourier transform}.
+\end{definition}
+This is a methods course, so we shall not go into what is meant
+by good behaviour. However, the condition that $f$, $f'$ and $f''$
+are continuous and 
+$t^{2}f(t),\ t^{2}f'(t),\ t^{2}f''(t)\rightarrow 0$
+as $|t|\rightarrow\infty$ are amply sufficient
+for our purpose (much less is required,  but there
+always has to be some control over behaviour towards
+infinity).
+
+The following results form part of the grammar of 
+Fourier transforms.
+\begin{lemma} (i) If $a\in{\mathbb R}$, let us write
+$f_{a}(t)=f(t-a)$. Then 
+\[\hat{f}_{a}(\lambda)=e^{-ia\lambda}\hat{f}(\lambda).\]
+(Translation on one side gives phase change on other.)
+
+(ii) If $K\in{\mathbb R}$ and $K>0$, let us write
+$f_{K}(t)=f(Kt)$. Then
+\[\hat{f}_{K}(\lambda)=K^{-1}\hat{f}(\lambda/K).\]
+(Narrowing on one side gives broadening on the other.)
+
+(iii) $\hat{f}(\lambda)^{*}=(f^{*})\hat{\ }(-\lambda)$.
+
+(iv) $(\hat{f})'(\lambda)
+=-i\hat{F}(\lambda)$ where $F(t)=tf(t)$.
+
+(v) $(f')\hat{\ }(\lambda)=i\lambda\hat{f}(\lambda)$.
+\end{lemma}
+
+The next result is both elegant and important.
+\begin{lemma}\label{L, Dual formula} 
+We have
+\[\int_{-\infty}^{\infty}f(t)\hat{g}(t)\,dt
+=\int_{-\infty}^{\infty}\hat{f}(\lambda)g(\lambda)\,d\lambda.\]  
+\end{lemma}
+Taking $g(\lambda)=\exp(-(K^{-1}\lambda)^{2}/2)$ 
+and allowing $K\rightarrow\infty$,
+we obtain the key inversion formula.
+\begin{theorem}[Inversion formula]
+We have $f\hat{\ }\hat{\ }(t)=2\pi f(-t)$.
+\end{theorem}
+In other words,
+\[f(t)=\frac{1}{2\pi}
+\int_{-\infty}^{\infty}\hat{f}(\omega)e^{i\omega t}\,d\omega.\] 
+Thus we can break down any (well behaved) function
+into its constituent frequencies and then reconstruct it.
+
+The inversion formula gives a uniqueness result which
+is often more useful than the inversion formula itself.
+\begin{theorem}[Uniqueness] If $\hat{f}=\hat{g}$ then
+$f=g$.
+\end{theorem}
+
+Combining the inversion formula with Lemma~\ref{L, Dual formula},
+we get the following formula which is much loved by
+1B~examiners and of considerable theoretical importance.
+\begin{lemma}[Parseval's formula]\footnote{The opera has
+an `f' and goes on for longer.} We have
+\[\int_{-\infty}^{\infty}|f(t)|^{2}\,dt
+=\frac{1}{2\pi}\int_{-\infty}^{\infty}|\hat{f}(\lambda)|^{2}\,d\lambda.\]
+\end{lemma}
+
+Fourier transforms are closely linked with the
+important operation of convolution.
+\begin{definition} If $f,\ g:{\mathbb R}\rightarrow{\mathbb C}$
+are well behaved, we define their \emph{convolution}
+$f*g:i{\mathbb R}\rightarrow{\mathbb C}$ by
+\[f*g(t)=\int_{-\infty}^{\infty}f(t-s)g(s)\,ds.\]
+\end{definition}
+\begin{lemma} We have 
+$\widehat{f*g}(\lambda)=\hat{f}(\lambda)\hat{g}(\lambda)$.
+\end{lemma}
+For many mathematicians and engineers, Fourier transforms are
+important because they convert convolution into multiplication
+and convolution is important because it is transformed
+by Fourier transforms into multiplication.
+We shall see that convolutions occur naturally in the
+study of differential equations.
+It also occurs in probability theory where the sum $X+Y$
+of two independent random variables $X$ and $Y$ with
+probability densities $f_{X}$ and $f_{Y}$ is
+$f_{X+Y}=f_{X}*f_{Y}$. In the next section
+we outline the connection of convolution with signal
+processing.
+\section{Signals and such like} Suppose we have a black box
+${\mathcal K}$. If we feed in a signal 
+$f:{\mathbb R}\rightarrow{\mathbb C}$ we will get out
+a transformed signal 
+${\mathcal K}f:{\mathbb R}\rightarrow{\mathbb C}$.
+Simple black boxes will have the following properties
+
+(1) \emph{Time invariance} If ${\mathcal T}_{a}f(t)=f(t-a)$,
+then ${\mathcal K}({\mathcal T}_{a}f)(t)=({\mathcal K}f)(t-a)$.
+In other words, ${\mathcal K}{\mathcal T}_{a}
+={\mathcal T}_{a}{\mathcal K}$.
+
+(2) \emph{Causality} If $f(t)=0$ for $t<0$, then
+$({\mathcal K}f)(t)=0$ for $t<0$. (The response
+to a signal cannot precede the signal.)
+
+(3) \emph{Stability} Roughly speaking, the black box
+should consume rather than produce energy. Roughly
+speaking, again, if there exists a $R$ such that
+$f(t)=0$ for $|t|\geq R$, then we should have
+$({\mathcal K}f)(t)\rightarrow 0$ as $t\rightarrow\infty$.
+If conditions like this do not apply, both our mathematics
+and our black box have a tendency to explode. 
+(Unstable systems may be investigated using a close
+relative of the Fourier transform called the Laplace transform.)
+
+(4) \emph{Linearity} In order for the methods of this course
+to work, our black box must be linear, that is
+\[{\mathcal K}(af+bg)=a{\mathcal K}(f)+b{\mathcal K}(g).\]
+(Engineers sometimes spend a lot of effort converting
+non-linear systems to linear for precisely this reason.)
+
+As our first example of such a system, let us consider
+the differential equation
+\begin{equation*}
+\tag*{$\bigstar$}
+F''(t)+(a+b)F'(t)+ab F(t)=f(t)
+\end{equation*}
+(where $a,\ b>0$), subject to the boundary condition
+$F(t),\ F'(t)\rightarrow 0$ as $t\rightarrow -\infty$. 
+We take ${\mathcal K}f=F$.
+
+Before we can solve the system using Fourier transforms
+we need a preliminary definition and lemma.
+\begin{definition} The Heaviside function
+$H:{\mathbb R}\rightarrow{\mathbb R}$ is given by
+\begin{alignat*}{2}
+H(t)&=0&&\qquad\text{for $t<0$},\\
+H(t)&=1&&\qquad\text{for $t\geq 0$.}
+\end{alignat*}
+\end{definition}
+\begin{lemma} Suppose that $\Re \alpha<0$. Then, if we set
+$e_{\alpha}(t)=e^{\alpha t}H(t)$, we obtain
+\[\hat{e}_{\alpha}(\lambda)=\frac{1}{i\lambda-\alpha}.\]
+\end{lemma}
+(Some applied mathematicians would leave out
+the condition $\Re \alpha<0$ in the lemma
+just given and most would write $\hat{H}(\lambda)=1/(i\lambda)$.
+The study of Laplace transforms reveals why this reckless
+behaviour does not lead to disaster.)
+
+\begin{lemma}\label{Lemma, big star}
+The solution $F={\mathcal K}f$ of
+\begin{equation*}
+\tag*{$\bigstar$}
+F''(t)+(a+b)F'(t)+ab F(t)=f(t)
+\end{equation*}
+(where $a,\ b>0$), subject to the boundary condition
+$F(t),\ F'(t)\rightarrow 0$ as $t\rightarrow -\infty$,
+is given by
+\[{\mathcal K}f=K\star f
+\ \text{where}\ K(t)=\frac{e^{-bt}-e^{-at}}{a-b}H(t).\]
+\end{lemma}
+
+Observe that $K(t)=0$ for $t\leq 0$ and so, if $f(t)=0$
+for $t\leq 0$, we have
+\begin{alignat*}{2}
+{\mathcal K}f(t)&=K\star f(t)=0\qquad\text{for $t\leq 0$},\\
+{\mathcal K}f(t)&=K\star f(t)=\int_{0}^{t}f(s)K(t-s)\,ds
+\qquad\text{for $t>0$}.
+\end{alignat*}
+Thus ${\mathcal K}$ is indeed causal.
+
+There is another way of analysising black boxes. Let
+$g_{n}$ be a sequence of functions such that
+
+(i) $g_{n}(t)\geq 0$ for all $t$,
+
+(ii) ${\displaystyle \int_{-\infty}^{\infty}g_{n}(t)\,dt=1}$,
+
+(iii) $g_{n}(t)=0$ for $|t|>1/n$.
+
+\noindent In some sense, the $g_{n}$ `converge' towards
+the `idealised impulse function' $\delta$ whose
+defining property runs as follows.
+\begin{definition} If $f:{\mathbb R}\rightarrow{\mathbb R}$
+is a well behaved function then
+\[\int_{-\infty}^{\infty}f(t)\delta(t)\,dt=f(0).\]
+\end{definition}
+If the black box is well behaved we expect ${\mathcal K}f_{n}$
+to converge to some function $E$. We write
+\[{\mathcal K}\delta=E\]
+and say that the response of the black box to the delta
+function is the elementary solution $E$. Note that,
+since our black box is causal, $K(t)=0$ for $t<0$.
+
+If $f$ is a ordinary function, we define its translate
+by some real number $a$ to be $f_{a}$ where
+$f_{a}(t)=f(t-a)$. In the same way, we define the
+translate by $a$ of the delta function by $a$ to be
+$\delta_{a}$ where $\delta_{a}(t)=\delta(t-a)$ or,
+more formally, by
+\[\int_{-\infty}^{\infty}f(t)\delta_{a}(t)\,dt=
+\int_{-\infty}^{\infty}f(t)\delta(t-a)\,dt=f(a).\]
+Since our black box is time invariant, we have
+\[{\mathcal K}\delta_{a}=E_{a}\]
+and, since it is linear,
+\[{\mathcal K}\sum_{j=1}^{n}\lambda_{j}\delta_{a_{j}}(t)=
+\sum_{j=1}^{n}\lambda_{j}E_{a_{j}}(t).\]
+In particular, if $F$ is a well behaved function,
+\begin{align*}
+{\mathcal K}\sum_{j=-MN}^{MN}N^{-1}F(j/N)\delta_{j/N}(t)&=
+\sum_{j=-MN}^{MN}N^{-1}F(j/N)E_{j/N}(t)\\
+&=\sum_{j=-MN}^{MN}N^{-1}F(j/N)E(t-j/N).
+\end{align*}
+Crossing our fingers and allowing $M$ and $N$ to tend
+to infinity, we obtain
+\[{\mathcal K}F(t)=\int_{-\infty}^{\infty}F(s)E(t-s)\,ds,\]
+so
+\[{\mathcal K}F=F*E.\]
+
+Thus the response of the black box to a signal $F$
+is obtained by convolving $F$ with the response of
+the black box to the delta function. (This is why
+the acoustics of concert halls are tested by letting off
+starting pistols.) We now understand the importance
+of convolution, delta functions and elementary solutions
+in signal processing and the study of partial differential
+equations.
+
+To see what happens in our specific example, we use Fourier
+transform methods find the elementary solution
+of equation $\bigstar$.
+\begin{lemma}\label{Lemma, Big elementary}
+The solution $E={\mathcal K}\delta$ of
+\begin{equation*}
+\tag*{$\bigstar$}
+E''(t)+(a+b)E'(t)+ab E(t)=\delta(t)
+\end{equation*}
+(where, $a,\ b>0$), subject to the boundary condition
+$E(t),\ E'(t)\rightarrow 0$ as $t\rightarrow -\infty$,
+is given by
+\[E(t)=\frac{e^{-bt}-e^{-at}}{a-b}H(t).\]
+\end{lemma}
+Observe that Lemma~\ref{Lemma, Big elementary}
+implies Lemma~\ref{Lemma, big star} and vice versa.
+\section{Miscellany} The previous sections form a complete
+course and I shall be happy simply to cover it.
+If there is more time I will talk about some secondary
+topics.
+\begin{example} (Question~7, Paper II, 1996.) 
+
+(i) Find the poles of $\cot z$, and the residues at them.
+Show that the first three terms of the Laurent expansion
+of $\cot z$ in $0<|z|<\pi$ are
+\[\frac{1}{z}-\frac{z}{3}-\frac{z^{3}}{45}.\]
+
+(ii) Let $\Gamma_{N}$ be the rectangular contour with
+vertices at $\pm(N+\frac{1}{2})\pm iN$, where $N$
+is any positive integer. Show that, on this contour,
+$|\cot\pi z|\leq\coth \pi N$. Hence, show that, for any
+integer $r\geq 2$,
+\[\int_{\Gamma_{N}}\frac{\cot\pi z}{z^{r}}\,dz
+\rightarrow 0\ \text{as}\ N\rightarrow\infty.\]
+
+Hence, using Part (a), show that
+\[\sum_{n=1}^{\infty}\frac{1}{n^{2}}=\frac{\pi^{2}}{6},
+\ \ \sum_{n=1}^{\infty}\frac{1}{n^{4}}=\frac{\pi^{4}}{90}.\]
+\end{example}
+The interested student can push matters a little further.
+\begin{exercise} Show that, if $k$ is a strictly positive integer,
+\[\sum_{n=1}^{\infty}\frac{1}{n^{2k}}=A_{k}\pi^{2k}\]
+where $A_{k}$ is rational.
+\end{exercise}
+Over two centuries have passed since Euler obtained
+the correct formula for $\sum_{n=1}^{\infty}\frac{1}{n^{2k}}$
+but, apart from a recent result of Ap{\'e}ry to the
+effect that $\sum_{n=1}^{\infty}\frac{1}{n^{3}}$ is
+irrational, we know nothing about
+$\sum_{n=1}^{\infty}\frac{1}{n^{2k+1}}$. 
+
+The next result is not part of the course but crops
+up from time to time as a problem in the examinations.
+It is also quite useful to have the general idea
+of this result before embarking on the more
+cautious modern treatment in more advanced courses like C12.
+\begin{theorem} 
+Let $\Omega$
+be a simply connected domain and $f:\Omega\rightarrow{\mathbb C}$
+be analytic. Suppose that
+$C$ is a simple closed contour in $\Omega$.
+If $f$ has no zeros on $C$ and finitely many
+zeros within $C$, then the change in argument of $f$
+round $C$
+\[[\arg f]_{C}=2\pi N\]
+where $N$ is the number of zeros of $f$ within $C$,
+multiple zeros being counted multiply.
+\end{theorem}
+
+Finally, I include a note on the derivative $\delta'$
+of the $\delta$ function. Personally, I consider this
+a bridge too far for this level, but some examiners
+can not refrain from introducing it. 
+
+Suppose
+$f$, $g:{\mathbb R}\rightarrow{\mathbb C}$ are well
+behaved (in particular $f$, $f'$, $g$, $g'$ decrease
+rapidly towards infinity). Then integration by
+parts gives
+\[\int_{-\infty}^{\infty}f(t)g'(t)\,dt
+=-\int_{-\infty}^{\infty}f'(t)g(t)\,dt.\]
+If $f$ and all its derivatives are well behaved (with rapid
+decrease towards infinity) we are tempted to relax the conditions
+on $g$. If $g=H$, the Heaviside function, this 
+leads to the \emph{formal} manipulations
+\begin{align*}
+\int_{-\infty}^{\infty}f(t)H'(t)\,dt
+&=-\int_{-\infty}^{\infty}f'(t)H(t)\,dt\\
+&=-\int_{0}^{\infty}f'(t)\,dt\\
+&=f(0)
+\end{align*}
+and to the satisfactory conclusion that, in
+some sense, $H'=\delta$.
+
+If $g=\delta$ we get
+\[\int_{-\infty}^{\infty}f(t)\delta'(t)\,dt
+=-\int_{-\infty}^{\infty}f'(t)\delta(t)\,dt=-f'(0).\]
+The minus sign confuses many students (and, possibly,
+some of their elders and betters) but leaving out the 
+minus sign leads to all sorts of inconsistencies.
+\section{Exercises} These exercises are divided into
+three groups. I suggest that you work through the
+questions in Part~A in order, getting as far as you
+can in your alloted supervisions. Part~B consists
+of questions for those who get through Part~A quickly.
+They are not more difficult and will give you
+further practice. Part~C consists of a few questions
+which are a bit skew to the course but which
+are quite interesting. The notation (Q$x$, Paper~X, 19AB)
+tells you that the question is based on question~$x$
+on Paper~X in 19AB, but I have often made slight changes. 
+
+\pagebreak[3]
+\begin{center}
+\bf{Part A}
+\end{center}
+
+\begin{question} Prove Lemma~\ref{L Easy differentiation}.
+\end{question}
+\begin{question} Prove Theorem~\ref{T Exponential}.
+\end{question}
+\begin{question} (This is Exercise~\ref{Exercise, logarithm 1}.)
+We use the notation of
+Definition~\ref{D, logarithm}. Show that we can not choose
+$\theta_{0}$ so that $\log z_{1}z_{2}=\log z_{1}+\log z_{2}$
+for all $z_{1}$, $z_{2}$, $z_{1}z_{2}\in\Omega$.
+\end{question}
+\begin{question} (i) Write out the standard properties of powers
+$x^{\alpha}$ when $x$ and $\alpha$ are real and $x>0$.
+(For example $(xy)^{\alpha}=x^{\alpha}y^{\alpha}$.)
+Investigate the extent to which they remain true
+in the complex case.
+
+(ii) Show that $z^{1/3}$ has three possible branches
+on ${\mathbb C}\setminus\{x\, :\, \text{$x$ real and $x\geq 0$}\}$.
+Show that the same is true for $z^{2/3}$. 
+
+For each real $\alpha$ determine the number of branches
+(possibly infinite) of $z^{\alpha}$.
+\end{question}
+\begin{question} (This is Exercise~\ref{E, conformal equivalence}.) 
+We say that open subsets $\Omega$ and $\Gamma$
+of ${\mathbb C}$ are conformally equivalent 
+if there exists a conformal map $f:\Omega\rightarrow\Gamma$.
+Show that conformal equivalence is an equivalence relation.
+\end{question}
+\begin{question} Let
+\[\Lambda=\{w\,|\, 2\pi+\theta_{0}>\Im w>\theta_{0}\},
+\ \Omega=\{z=re^{i\theta}\,:\,r>0,
+\ 2\pi+\theta_{0}>\theta>\theta_{0}\}.\]
+Let $f(z)=\exp z$ for $z\in\Lambda$. Show that 
+$f:\Lambda\rightarrow\Omega$ is conformal and use
+Lemma~\ref{L conformal inverse} to establish 
+the existence of a function $\log$ with properties
+given in Lemma~\ref{L, properties logarithm}.
+\end{question}
+\begin{question} (Q7(b), Paper~I, 1993)
+For each of the following conformal
+maps $f_{j}$ and simply connected 
+domains $D_{j}$ find the image of the
+domain under the map (as usual $z=x+iy$).
+\begin{alignat*}{4}
+\text{(i)}&\ \ &f_{1}(z)&=1/(1+z),&&\qquad 
+D_{1}=\{x+iy\,:\, x^{2}+y^{2}<1,\ y>0\}\\
+\text{(ii)}&\ \ &f_{2}(z)&=z^{2},&&\qquad 
+D_{2}=\{x+iy\,:\, x>0,\ y<0\}\\
+\text{(iii)}&\ \ &f_{3}(z)&=\log z,&&\qquad 
+D_{3}=\{x+iy\,:\, y>0\}
+\end{alignat*}
+(You should make it clear which branch of $\log$ you
+choose for $f_{3}$.)
+
+Hence, or otherwise, show that
+\[g(z)=\frac{1}{\pi}\log\left(
+-\frac{1}{4}\left(\frac{1-z}{1+z}\right)^{2}
+\right)\]
+is a conformal map of $\{x+iy\,:\, x^{2}+y^{2}<1,\ y>0\}$
+onto the infinite strip
+\[\{x+iy\,:\, 0<y<1\}.\]
+\end{question}
+\begin{question} (Q7, Paper I, 2000) Let $\phi$ be a function
+of $u(x,y)$ and $v(x,y)$ which can also be regarded
+as a function of $x$ and $y$. [I repeat the examiner's wording
+without necessarily approving it.] Starting from the formula
+\[\frac{\partial \phi}{\partial x}
+=\frac{\partial \phi}{\partial u}\frac{\partial u}{\partial x}
++\frac{\partial \phi}{\partial v}\frac{\partial v}{\partial x},\]
+obtain the formula
+\[\frac{\partial^{2} \phi}{\partial x^{2}}
+=\frac{\partial^{2} \phi}{\partial u^{2}}
+\left(\frac{\partial u}{\partial x}\right)^{2}
++\frac{\partial^{2} \phi}{\partial v^{2}}
+\left(\frac{\partial v}{\partial x}\right)^{2}
++\frac{\partial \phi}{\partial u}
+\frac{\partial^{2} u}{\partial x^{2}}
++\frac{\partial \phi}{\partial v}
+\frac{\partial^{2} v}{\partial x^{2}}
++2\frac{\partial^{2} \phi}{\partial u \partial v}
+\frac{\partial u}{\partial x}\frac{\partial v}{\partial x}.\]
+By using the Cauchy-Riemann equations and associated
+results, deduce that, if $w=u+iv$ is an analytic function of
+$z=x+iy$, then
+\[\frac{\partial^{2} \phi}{\partial x^{2}}
++\frac{\partial^{2} \phi}{\partial y^{2}}
+=|w'(z)|^{2}
+\left(
+\frac{\partial^{2} \phi}{\partial u^{2}}
++\frac{\partial^{2} \phi}{\partial v^{2}}
+\right).
+\]
+
+Explain briefly the relevance of this result to the solution
+of Laplace's equation via conformal mapping.
+\end{question}
+\begin{question} (Q7(b), Paper~I, 1994) Find a conformal
+mapping $f$ that sends the unit disc ${\mathcal D}=\{z\,:\,|z|<1\}$
+onto the strip $\{z:-\pi/2<\Im(z)<\pi/2\}$ for which
+$f(0)=0$ and $f'(0)$ is real and positive.
+
+\noindent[Cambridge exams are often a conspiracy between 
+examiner and examinee. If you choose the `obvious' conformal
+maps then you will either get the answer at once
+or obtain one which is easily converted into the required
+one. If you get a 
+$f$ that sends the unit disc
+onto the strip $\{z:-\pi/2<\Im(z)<\pi/2\}$ but which you can not
+bring to the right form do not worry unduly but do not
+go on to the rest of the question.]
+
+Find an analytic function $h$ on ${\mathcal D}$ with the
+property
+that $|h(re^{i\theta})|\rightarrow e^{\pi/2}$
+as $r\nearrow 1$ for $0<\theta<\pi$ and
+$|h(re^{i\theta})|\rightarrow e^{-\pi/2}$
+as $r\nearrow 1$ for $-\pi<\theta<0$.
+\end{question}
+\begin{question} (Q7(a), Paper~II, 1993) Suppose $f$ has a pole
+of order $k$ at $z=0$. Show that the residue of $f$ at $0$
+is
+\[\left.\frac{1}{(k-1)!}\frac{d^{k-1}}{dz^{k-1}}(z^{k}f(z))
+\right|_{z=0}.\]
+
+Let $r$ and $s$ be analytic functions such that $r(0)\neq 0$
+and $s(0)=s'(0)=0$, $s''(0)\neq 0$. Show that
+the residue of $r(z)/s(z)$ at $z=0$ is
+\[\frac{6r'(0)s''(0)-2r(0)s'''(0)}{3(s''(0))^{2}}.\]
+
+\noindent[My reason for including this is not to provide
+a formula for you to learn but to show that, once we
+move from simple poles, we can not expect simple
+`one size fits all' methods for finding residues.]
+\end{question}
+\begin{question} (Q7, Paper~II, 2000) Evaluate the integrals
+$\oint_{C}f(z)\,dz$, where $C$ is the unit circle centred at the 
+origin and $f(z)$ is given by the following
+\begin{alignat*}{4}
+\text{(a)}&\ \frac{\sin z}{z},&\ &\text{(b)}&\ \frac{\sin z}{z^{2}},
+&\ &\text{(c)}&\ \frac{\cosh z-1}{z^{3}},\\
+\text{(d)}&\ \frac{1}{z^{2}\sin z},&\ &\text{(e)}&\ \frac{1}{\cos 2z},
+&\ &\text{(f)}&\ e^{1/z}.
+\end{alignat*}
+\end{question}
+\begin{question} Use a result about
+$\int_{-\infty}^{\infty}e^{i\lambda x}/(1+x^{2})\,dx$
+already obtained in the course to show that
+\[\int_{0}^{\infty}\frac{\cos mx}{1+x^{2}}\,dx
+=\frac{\pi}{2}e^{-m}\]
+for $m>0$. 
+
+Hence evaluate
+\[\int_{0}^{\infty}\frac{\sin^{2}x}{1+x^{2}}\,dx.\]
+\end{question}
+\begin{question} (Q8(b), Paper~IV, 1994) Consider
+the integral
+\[I(a)=\int_{0}^{2\pi}\frac{d\theta}{(1+a\cos\theta)^{2}}\]
+where $0<|a|<1$. By means of the substitution $z=e^{i\theta}$,
+express $I(a)$ as an integral around the contour
+$|z|=1$ and hence show that
+\[I(a)=\frac{2\pi}{(1-a^{2})^{3/2}}.\]
+
+\noindent[The examiner added that no credit would be given
+for answers obtained by real methods.]
+\end{question}
+\begin{question} (Q16, Paper~II, 1997)
+By integrating a branch of $(\log z)/(1+z^{4})$ 
+about a suitable contour, show that
+\[\int_{0}^{\infty}\frac{\log x}{1+x^{4}}\,dx
+=-\frac{\pi^{2}}{8\sqrt{2}}\ ,\]
+and evaluate
+\[\int_{0}^{\infty}\frac{1}{1+x^{4}}\,dx.\]
+\end{question}
+\begin{question} (A golden oldie, last set as Q16, Paper~I, 1998)
+Let
+\[I(\alpha)=\int_{0}^{\infty}\frac{x^{\alpha}}{(x+1)^{3}}\,dx,\]
+where $\alpha$ is real.
+Use real methods to find the range of $\alpha$ for which the integral
+converges. Use real methods to evaluate $I(0)$ and $I(1)$.
+
+Now consider the integral of $z^{\alpha}/(z+1)^{3}$ around
+a contour consisting of two circles of radius $R$ and $\epsilon$ and
+straight lines on both sides of a cut along the positive
+real axis. What restrictions must be placed on $\alpha$
+for the contributions from the circles to become negligible
+as $r\rightarrow\infty$ and $\epsilon\rightarrow 0$?
+Under such conditions, show that
+\[I(\alpha)=\frac{\pi\alpha(1-\alpha)}{2\sin\pi\alpha}.\]
+Show that $I$ is continuous at $0$ and $1$.
+\end{question}
+\begin{question} (Q7(a), Paper~II, 1994) The
+function $h(t)$ vanishes for $t<0$. The integral
+\[P(t)=\int_{-\infty}^{t}h(t-\tau)f(\tau)\,d\tau\]
+has the property that
+\[\frac{df}{dt}=\int_{-\infty}^{t}h(t-\tau)P(\tau)\,d\tau\] 
+for all well behaved $f$.
+Find $\hat{h}(\omega)^{2}$.
+\end{question}
+\begin{question} (Q7, Paper~II, 1998)
+Suppose that
+\[\hat{f}(\omega)=\frac{e^{i\omega}-e^{-i\omega}}{i\omega}\]
+Find $f$ by the following two methods.
+
+(i) By using formulae for such things as the Fourier
+transforms of derivatives, translates
+and Heaviside type functions
+together with the uniqueness of Fourier transforms.
+
+(ii) Directly from the inversion formula.
+
+\noindent[\emph{Hint: You will need to distinguish between,
+$t<-1$, $-1<t<1$ and $t>1$.}] 
+\end{question}
+\begin{question} (Q16, Paper~II, 1998) Use Fourier transform
+methods to solve the following integral equation
+for $f(t)$,
+\begin{equation*}
+f(t)+\int_{0}^{\infty}e^{-s}f(t-s)\,ds=
+\begin{cases}
+e^{-t}& \text{if $t\geq 0$,}\\
+0& \text{if $t<0$.}
+\end{cases}
+\end{equation*}
+Evaluate the convolution integral for your solution
+and hence confirm that $f(t)$ solves the
+integral equation in the form stated above.
+\end{question}
+
+\begin{question} (Q8(a), Paper~IV, 1994)
+The analytic function $f(z)$ has $P$ poles and $Z$ zeros.
+All the poles and zeros lie strictly within the smooth,
+non-self-intersecting curve $C$. Using Cauchy's integral
+formulas, show that, if all the poles and zeros are simple,
+\[\int_{C}\frac{f'(z)}{f(z)}\,dz=2\pi(Z-P).\]
+
+Explain how your result must be modified if the poles and zeros
+are not simple and prove the modified result.
+
+Restate your result in terms of the argument of $f$.
+\end{question}
+
+\begin{center}
+\bf{Part B}
+\end{center}
+
+\begin{question}\label{Exercise, no Taylor}
+Cauchy gave the following example of a well behaved
+real function with no useful Taylor expansion 
+about $0$. It is important that you work through it
+at some stage in your mathematical life.
+
+Let $E:{\mathbb R}\rightarrow{\mathbb R}$ be defined
+by $E(t)=\exp(-1/t^{2})$ for $t\neq 0$ and $E(0)$.
+Use induction to show that $E$ is infinitely differentiable
+with
+\begin{align*}
+E^{(n)}(t)&=Q_{n}(1/t)E(t)\qquad\text{for $t\neq 0$},\\
+E^{(n)}(0)&=0.
+\end{align*}
+For which values of $t$ is it true that
+\[E(t)=\sum_{n=0}^{\infty}\frac{E^{n}(0)t^{n}}{n!}?\] 
+
+Why does this not contradict Theorem~\ref{T; Taylor}?
+\end{question}
+\begin{question} (Q7, Paper~I, 1999) For each of the following
+five functions, state the region of the complex plane
+in which it is complex differentiable. State also the region in which
+it has partial derivatives and the region in which
+they satisfy the Cauchy-Riemann conditions.
+\begin{align*}
+f_{1}(z)&=|z|,\\
+f_{2}(z)&=e^{-z},\\
+f_{3}(z)&=z^{*},\\
+f_{4}(z)&=(z-1)^{3},\\
+f_{5}(z)&=|z|^{2}\\
+\end{align*}
+and $f_{6}$ given by
+\begin{equation*}
+f_{6}(x+iy)=
+\begin{cases}
+\frac{xy}{(x^{2}+y^{2})^{1/2}}& \text{if $x+iy\neq0$,}\\
+0& \text{if $x+iy=0$.}
+\end{cases}
+\end{equation*}
+\noindent[\emph{Note that, in one case, the region of 
+complex differentiability does not coincide with that
+of the validity of the Cauchy-Riemann equations.}]
+\end{question}
+\begin{question} (Q17, Paper~IV, 1999) Write down the
+Cauchy-Riemann equations for the real and imaginary parts
+of the analytic function $w(z)=u(x,y)+iv(x,y)$, where $z=x+iy$.
+Show that $\triangledown^{2}u=\triangledown^{2}v=0$
+(i.e. that $u$ and $v$ are harmonic functions). Prove
+also that the curves of constant $u$ in the $x,y$ plane
+intersect those of constant $v$ orthogonally.
+
+Find analytic functions $w_{1}(z)$ and $w_{2}(z)$ that are real
+for real $z$ and for which the following functions are
+their respective real parts:
+
+(i)\ \ \ $u_{1}(x,y)=e^{x}\cos y$,
+
+(ii)\ \ \ ${\displaystyle u_{2}(x,y)=
+\frac{x(x^{2}+y^{2}+1)}{2(x^{2}+y^{2})}.}$
+
+From your answer to (ii) find a non-zero harmonic function that
+vanishes on the circle $x^{2}+y^{2}=1$ and on the line
+$y=0$.
+
+In case~(i), find the images in the $z$-plane of the circles
+$|w_{1}|=\rho$, for constant $\rho$.
+
+In case~(ii), find the images in the $w_{2}$-plane of the circles
+$|z|=r$, for constant $r>1$.
+\end{question}
+
+\begin{question} (Q7(b), Paper~I, 1996)
+In four of the following five cases
+there exists a bijective analytic map $f:U\rightarrow V$.
+In one case there is a topological reason why no
+such map is possible. Find a suitable $f$ in the four cases
+and briefly explain the fifth.
+
+\begin{alignat*}{3}
+&\text{(i)}&&\ U=\{z\in{\mathbb C}\,:\,\Im(z)>0\},&&
+\qquad V=\{z\in{\mathbb C}\,:\,\Im(z)>0\}\\
+&\text{(ii)}&&\ U=\{z\in{\mathbb C}\,:\,|z|<1\},&&
+\qquad V=\{z\in{\mathbb C}\,:\,\Re(z)>0,\ \Im(z)>0\}\\
+&\text{(iii)}&&\ U=\{z\in{\mathbb C}\,:\,2>|z|>1\},&&
+\qquad V=\{z\in{\mathbb C}\,:\,|z|<1\}\\
+&\text{(iv)}&&\ U={\mathbb C}\setminus\{z\in{\mathbb R}\,:\,z\geq 0\},&&
+\qquad V={\mathbb C}\setminus\{z\in{\mathbb R}\,:\,|z|\geq 1\}\\ 
+&\text{(v)}&&\ U=\{z\in{\mathbb C}\,:\,0<\Im(z)<1\},&&
+\qquad V={\mathbb C}\setminus\{z\in{\mathbb R}\,:\,z\geq 0\}.
+\end{alignat*}
+\noindent[\emph{In case (iv) you may find it useful to consider
+the effect of a translation followed by the map $z\mapsto 1/z$.}]
+\end{question}
+\begin{question} (Q7(a), Paper~I, 1995) Find the residue
+at each of the poles of the function
+\[f(z)=\frac{1}{z^{2}(1+z^{4})}\]
+in the complex plane. 
+\end{question}
+\begin{question} (Q7, Paper~II, 1999) You are asked to find the
+Laurent expansion about $z=0$ for each of the following
+three functions.
+\begin{align*}
+f_{1}(z)&=e^{1/z},\\
+f_{2}(z)&=z^{-1/2},\\
+f_{3}(z)&=\frac{\sinh z}{z^{3}}.
+\end{align*}
+In one case, you reply that you can not supply such
+an expansion. Why?
+
+In the other two cases, where there is a Laurent expansion,
+state the nature of the singularity at $z=0$ and find its residue.
+
+Show that there is a function $f$ analytic on ${\mathbb C}$
+except, possibly, at finitely many points such that
+\[f(z)=\sum_{n=1}^{\infty}z^{-n}\]
+for $|z|>1$. Find any singularities of $f(z)$ in the region
+$|z|\leq 1$ and find the residues at those singularities.
+\end{question} 
+\begin{question} (Q7(a), Paper~II, 1995)
+What are the poles and associated residues of $f(z)=(\cosh z)^{-1}$
+in the complex $z$-plane?
+
+By considering a rectangular contour, or otherwise, evaluate
+the Fourier transform
+\[\int_{-\infty}^{\infty}
+\frac{e^{-ikx}}{\cosh x}\,dx.\]
+\end{question}
+\begin{question} Show that, for $a>b>0$, we have
+\[I(a,b)=\int_{0}^{\infty}\frac{\cos x}{(x^{2}+a^{2})(x^{2}+b^{2})}\,dx
+=\frac{\pi}{2(a^{2}-b^{2})}\left(\frac{1}{be^{b}}-\frac{1}{ae^{a}}\right).\]
+
+Find $I(a,a)$ for $a>0$ and check that $I(a,b)\rightarrow I(a,a)$
+as $b\rightarrow a$.
+
+Find $I(a,b)$ for all real non-zero values of $a$ and $b$.
+\end{question}  
+\begin{question} (Q7(b), Paper~II, 1993) 
+By integrating around an appropriate closed curve in the
+complex plane cut along one half of the real axis,
+show that
+\[I(a)=\int_{0}^{\infty}\frac{x^{a-1}}{1+x+x^{2}}\,dx
+=\frac{2\pi}{\sqrt{3}}
+\cos\left(\frac{2\pi a+\pi}{6}\right)
+\csc(\pi a)\]
+if $0<a<2$ and $a\neq 1$.
+
+Evaluate $I(1)$ and show that $I(a)\rightarrow I(1)$ as $a\rightarrow 1$.
+\end{question}
+\begin{question} (Q8, Paper~IV, 1999) By interpreting
+the angle $\theta$ as the argument of a complex variable $z$,
+convert the real integral
+\[I(\alpha)=\int_{0}^{2\pi}(1+\alpha\cos\theta)^{-1}\,d\theta
+\ \ \ \ \ (|\alpha|<1)\]
+into a contour integral in the $z$ plane and hence evaluate it
+using the calculus of residues.
+\end{question} 
+\begin{question} (Q16, Paper~I, 2000) By using a rectangular contour
+with corners at $\pm R$, $\pm R+i$ and taking the limit 
+as $R\rightarrow\infty$, or otherwise, show that if $a$ is
+real and $|a|<\pi$, then
+\[\int_{0}^{\infty}\frac{\cosh ax}{\cosh \pi x}\,dx
+=\frac{1}{2}\sec\left(\frac{a}{2}\right).\]
+\end{question}
+\begin{question} (Q16, Paper~II, 1999) A real function
+$y(t)$ satisfies the differential equation
+\[\ddot{y}+4\dot{y}+3y=f(t),\]
+where $f(t)$ vanishes as $|t|\rightarrow\infty$ and has
+Fourier transform $F(\omega)$. Assuming that $y(t)$
+and $\dot{y}(t)$ vanish as $|t|\rightarrow\infty$,
+find the Fourier transform $Y(\omega)$ of $y(t)$
+in terms of in terms of $F(\omega)$. Hence show that
+$y(t)$ vanishes for $t<0$ if $f(t)$ vanishes for $t<0$.
+Comment on the significance of this fact.
+
+Find the Fourier transform of the function
+\[f(t)=H(t)e^{-t},\]
+where $H(t)$ is the unit step function
+\begin{equation*}
+H(t)=
+\begin{cases}
+1& \text{if $t>0$,}\\
+0& \text{if $t<0$.}
+\end{cases}
+\end{equation*}
+Hence determine the function $y(t)$.
+
+Check, by direct substitution, that $y$ is, indeed, the 
+required solution.
+
+\noindent[\emph{The examiner said that you could use
+the Fourier inversion theorem and Jordan's lemma without
+proof. In spite of this invitation, I suggest you might
+be better off using the uniqueness of Fourier transforms.}]
+\end{question}
+\begin{question} (Q17, Paper~IV, 1997) Use
+Fourier transforms to find $g$ in the equation
+\[5e^{-|t|}-8e^{-2|t|}+3e^{-3|t|}
+=\int_{-\infty}^{\infty}g(\tau)e^{-|t-\tau|}\,d\tau.\]
+\end{question}
+\begin{question} (Q17, Paper~IV, 2000)
+Assuming suitable decay of the function $w(x)$
+as $x\rightarrow\pm\infty$, express the Fourier transforms
+of $w'(x)$ and $xw(x)$ in terms of the Fourier transform of
+$w(x)$.
+
+Find the form of the Fourier transform of $w(x)$, if
+\begin{equation*}
+\tag*{($*$)}
+x(w''(x)-w(x))+w'(x)=0.
+\end{equation*}
+By using the inversion formula and a suitable
+change of variables, or otherwise, deduce that
+\[w(x)=\frac{1}{\pi}\int_{0}^{\infty}
+\cos(x\sinh u)\,du\]
+is a solution of $(*)$.
+\end{question}
+\begin{center}
+\bf{Part C}
+\end{center}
+\begin{question}(Q16, Paper~II, 2000) [This is not
+really very hard but is a bit out of the ordinary
+and a bit beyond the syllabus.]
+
+The complex plane is cut along the real axis from $z=-1$
+to $z=1$, and the branch of $f(z)=(z^{2}-1)^{1/2}$ is chosen
+so that $f(z)$ is real and positive when $z$ is real
+and $z>1$. Obtain expressions for $f(z)$ just above and
+just below the cut and also when $|z|\gg 1$.
+
+Show that
+\[\int_{-1}^{1}\frac{\sqrt{1-x^{2}}}{1+x^{2}}\,dx
+=\pi(\sqrt{2}-1),\]
+where the square root gives positive values for $-1<x<1$.
+\end{question}
+
+\begin{question}(Q8(b), Paper~IV, 1996) [This is very much
+on the hard side, involves fairly messy calculations
+and is beyond the syllabus so you may consider it as
+starred. Unfortunately the examiner did not.]
+
+In real life, Fourier integral techniques are most useful
+not for solving differential equations but for solving
+partial differential equations in the manner shown below.
+As a warm up, explain why the general solution of the
+partial differential equation
+\[\frac{\partial F}{\partial x}(x,y)=0\]
+is $F(x,y)=A(y)$ and the general solution of
+\[\frac{\partial^{2} F}{\partial x^{2}}(x,y)+F(x,y)=0\]
+is $F(x,y)=A(y)\sin x+B(y)\cos x$.
+
+A slab of material occupies the region $\{(x,y)\,:\,0\leq y\leq 1\}$
+and moves with constant velocity $U$ in the $x$-direction.
+The temperature $T(x,y)$ in the slab satisfies the
+`advection diffusion equation'
+\[U\frac{\partial T}{\partial x}=
+\frac{\partial^{2} T}{\partial x^{2}}
++\frac{\partial^{2} T}{\partial y^{2}},\]
+and the boundary conditions are such that
+\begin{align*}
+T(x,0)&=T_{0}e^{-x^{2}},\\
+T(x,1)&=0.
+\end{align*}
+Let
+\[\hat{T}(k,y)=\int_{-\infty}^{\infty}T(x,y)e^{-ikx}\,dx\]
+(i.e. let $\hat{T}$ be the Fourier transform of $T$
+with respect to the first variable). Explain why
+\[T(x,y)=\frac{1}{2\pi}
+\int_{-\infty}^{\infty}\hat{T}(k,y)e^{ikx}\,dk.\]
+By using differentiation under the integral and the
+uniqueness of the Fourier transform, obtain
+a partial differential equation for $\hat{T}$
+only involving partial differentiation with respect
+to $y$.
+
+Solve this differential equation, obtaining a result
+involving two unknown functions of $k$, call them
+$A(k)$ and $B(k)$. By setting $y=0$ and $y=1$
+obtain $A(k)$ and $B(k)$ in terms of $\hat{T}(k,0)$  
+and $\hat{T}(k,1)$. Hence, find the function $\hat{T}(k,y)$.
+By exploiting symmetry, verify that $T(x,y)$ is real.
+\end{question}
+\begin{question}(Q7(b), Paper~II, 1995) [The first paragraph
+is routine. The second paragraph is heavily starred.]
+A linear system is such that that an input $g(t)$ is related
+to an output $f(t)$ by 
+\[f(t)=\int_{-\infty}^{t}K(t-t')g(t')\,dt'.\]
+Let $\theta(t)$ be the step function defined by
+$\theta(t)=0$ for $t<0$ and $\theta(t)=1$ for
+$t\geq 0$. Suppose that $g(t)=\theta(t)e^{-\gamma t}$
+where $\gamma>0$ and that $f(t)=\theta(t)e^{-\gamma t}(1-e^{-t})$.
+Find $K(t)$ for $t>0$ assuming that $K(t)=0$
+for $t<0$. Explain why you can drop the assumption
+$K(t)=0$ for $t<0$. Is it possible to find $K(t)$
+for $t<0$ from the information given? Why?
+
+When $g(t)=\delta'(t)$, use the expression previously found
+for $K(t)$ to calculate $f(t)$ both 
+(i) by direct evaluation of the integral and
+(ii) by calculating the Fourier transform of $g$
+in this case and hence finding the Fourier transform
+of $f$.
+
+\noindent[Most students obtain different answers for~(i)
+and~(ii). If this happens to you, the object of the game
+is to discover what has gone wrong.]
+\end{question}
+
+\section{Simple connectedness and the logarithm} 
+This is a second course in
+complex variable theory with an emphasis on technique
+rather than theory. None the less I intend to be
+rigorous and you should feel free to question any
+`hand waving' that I indulge in.
+
+But where should rigour start? It is neither necessary nor
+desirable to start by reproving all the results of 
+a first course. Instead I shall proceed on the assumption
+that all the standard theorems (Cauchy's theorem, Taylor's
+theorem, Laurent's theorem and so on) have been proved
+rigourously for analytic functions\footnote{Analytic functions
+are sometimes called `holomorphic functions'. We shall call
+a function which is `analytic except for poles' a
+`meromorphic function'.} on an open disc
+and extend them as necessary. 
+
+Cambridge students are 
+(or, at least ought to be)
+already familiar with one sort of extension.
+\begin{definition} An open set $U$ in ${\mathbb C}$
+is called \emph{disconnected}
+if we can find open sets $U_{1}$ and $U_{2}$ such that
+
+(i) $U_{1}\cup U_{2}=U$,
+
+(ii) $U_{1}\cap U_{2}=\emptyset$,
+
+(iii) $U_{1},U_{2}\neq\emptyset$.
+
+An open set which is not disconnected is called 
+\emph{connected}.
+\end{definition}
+\begin{theorem}\label{no isolated}
+If $U$ is an open connected set
+in ${\mathbb C}$ and $f:U\rightarrow {\mathbb C}$
+is analytic and not identically zero then
+all the zeros of $f$ are isolated that is,
+given $w\in U$ with $f(w)=0$ we can find a $\delta>0$
+such that $D(w,\delta)\subseteq U$ and $f(z)\neq 0$
+whenever $z\in D(w,\delta)$ and $z\neq w$.
+\end{theorem}
+Here and elsewhere
+\[D(w,\delta)=\{z:|w-z|<\delta\}.\]
+The hypothesis of connectedness is exactly what we need
+in Theorem~\ref{no isolated}.
+\begin{theorem} If $U$ is an open set then
+$U$ is connected if and only if the zeros of
+every non-constant analytic function on $U$
+are isolated.
+\end{theorem}
+If necessary, I shall quote results along the lines of
+Theorem~\ref{no isolated} without proof but I will be
+happy to give proofs in supplementary lectures if requested.
+\begin{exercise}[Maximum principle]\label{Maximum principle} 
+(i) Suppose that $a,b\in{\mathbb C}$ 
+with $b\neq 0$ and $N$ is an integer with $N\geq 1$.
+Show that there is a $\theta\in{\mathbb R}$ such that
+\[|a+b(\delta\exp i\theta)^{N}|=|a|+|b|\delta^{N}\]
+for all real $\delta$ with $\delta\geq 0$.
+
+(ii) Suppose that 
+$f:D(0,1)\rightarrow{\mathbb C}$ is analytic.
+Show that
+\[f(z)=\sum_{n=0}^{\infty}a_{n}z^{n}\]
+where there is some constant $M$ such that $|a_{n}|\leq M2^{n}$
+(we can make much better estimates). Deduce that
+either $f$ is constant or we can find $N\geq 1$
+and $a_{N}\neq 0$ such that
+\[f(z)=a_{0}+(a_{N}+\eta(z))z^{N}\]
+with $\eta_{z}\rightarrow 0$ as $z\rightarrow 0$.
+
+(iii) If $U$ is a connected open subset of ${\mathbb C}$
+and $f$ is a non-constant analytic function on $U$, show
+that $|f|$
+has no maxima. 
+
+(iv) Does the result of (iii) mean that $f$ is unbounded on $U$?
+Give reasons.
+
+(v) Show that if is an open set which is not connected then
+there exists a non-constant analytic function $f$ on $U$
+such that $|f|$ has a maximum. 
+\end{exercise} 
+\begin{exercise}\label{Open mapping theorem}
+(i) Suppose $f:D(0,1)\rightarrow{\mathbb C}$ is
+a non-constant analytic function with $f(0)=0$.
+Show that we can find a $\delta$ with $0<\delta<1$
+such that $f(z)\neq 0$ for all $|z|=\delta$ and
+an $\epsilon>0$ such that $|f(z)|\geq\epsilon$ for all
+$|z|=\delta$. Use Rouch\'{e}'s theorem to deduce
+that $f(D(0,1))\supseteq D(0,\epsilon)$.
+
+(ii) {\bf (Open mapping theorem)}
+If $U$ is a connected open subset of ${\mathbb C}$
+and $f$ is a non-constant analytic function on $U$ show
+that $f(U)$ is open.
+
+(iii) Deduce the result of Exercise~\ref{Maximum principle}.
+(Thus the maximum principle follows from the open
+mapping theorem.)
+\end{exercise}
+
+It can be argued that much of complex analysis reduces
+to the study of the logarithm and this course is no
+exception. We need a general condition on an open set
+which allows us to define a logarithm. Recall
+that we write ${\mathbb T}={\mathbb R}/2\pi{\mathbb Z}$.
+\begin{definition} An open set $U$ in ${\mathbb C}$
+is said to be \emph{simply connected} if it is connected
+and given any continuous function 
+$\gamma:{\mathbb T}\rightarrow U$ we can find
+a continuous function 
+$G:[0,1]\times{\mathbb T}\rightarrow U$
+such that 
+\begin{align*}
+G(0,t)&=\gamma(t)\\
+G(1,t)&=G(1,0)
+\end{align*}
+for all $t\in {\mathbb T}$.
+\end{definition}
+In the language of elementary algebraic topology 
+a connected open set is simply connected if every
+loop can be homotoped to a point.
+\begin{theorem}\label{logarithm} 
+If $U$ is an open simply connected
+set in ${\mathbb C}$ that does not contain $0$
+we can find an analytic function $\log:U\rightarrow{\mathbb C}$
+such that $\exp(\log z)=z$ for all $z\in U$. The
+function $\log$ is unique up to the addition of
+integer multiple of $2\pi i$.
+\end{theorem} 
+
+From an elementary viewpoint, the most direct 
+way of proving Theorem~\ref{logarithm} is to show
+that any piece wise smooth loop can be homotoped
+\emph{through piecewise smooth loops} to
+a point and then use the integral definition of 
+the logarithm. However, the proof is a little
+messy and we shall use a different approach
+which is longer but introduces some useful ideas.
+\begin{theorem}\label{logarithm exists}
+(i) If  $0<r<|w|$
+we can find an analytic function 
+$\log:D(w,r)\rightarrow{\mathbb C}$
+such that $\exp(\log z)=z$ for all $z\in D(w,r)$. The
+function $\log$ is unique up to the addition of
+integer multiple of $2\pi i$.
+ 
+(ii) If $\gamma:[a,b]\rightarrow{\mathbb C}\setminus\{0\}$
+is continuous we can find a continuous function
+$\tilde{\gamma}:[a,b]\rightarrow{\mathbb C}$
+such that $\exp\circ\tilde{\gamma}=\gamma$ for all
+
+(iii) Under the hypotheses of (ii), if 
+$\tilde{\tilde{\gamma}}:[a,b]\rightarrow{\mathbb C}$
+is a continuous function such that 
+$\exp\circ\tilde{\tilde{\gamma}}=\gamma$
+then we can find an integer $n$ such that
+$\tilde{\tilde{\gamma}}=\tilde{\gamma}+2\pi i n$.
+
+(iv) If $U$ is a simply connected open set
+not containing $0$ then, if 
+$\gamma:[a,b]\rightarrow U$ is continuous, 
+$\gamma(a)=\gamma(b)$, 
+and $\tilde{\gamma}:[a,b]\rightarrow{\mathbb C}$
+is a continuous function such that  
+$\exp\circ\tilde{\gamma}=\gamma$
+then $\tilde{\gamma}(a)=\tilde{\gamma}(b)$.
+\end{theorem}
+Theorem~\ref{logarithm} is now relatively easy to prove.
+
+It would be nice to show that simple connectedness is
+the correct condition here.
+The following result, although not the best possible,
+is hard enough and shows that this is effectively the case.
+\begin{lemma}\label{logarithm exact}
+Suppose that $U$ is a  non-empty open connected
+set in ${\mathbb C}$ with non-empty complement.
+The following two conditions are equivalent.
+
+(i) The set $U$ is simply connected.
+
+(ii) If $f:U\rightarrow{\mathbb C}$ is a 
+non-constant analytic
+function with no zeros 
+then we can find an analytic function 
+$\log:f(U)\rightarrow{\mathbb C}$
+with $\exp(\log f(z))=f(z)$ for all $z\in U$
+\end{lemma}
+(In looking at condition~(ii), recall that the open mapping
+theorem given in Exercise~\ref{Open mapping theorem}
+tells us that $f(U)$ is open.)
+The reader is invited to try and prove this result 
+directly but
+we shall obtain it only after a long chain of arguments
+leading to the Riemann mapping theorem.
+
+The following result is trivial but worth noting.
+\begin{lemma} If $U$ and $V$ are open subsets of ${\mathbb C}$
+such that there exists a homeomorphism $f:U\rightarrow V$
+then if $U$ is simply connected so is $V$.
+\end{lemma}
+\begin{exercise} In the next two exercises
+we develop an alternative approach to
+Theorem~\ref{logarithm} along the lines suggested above.
+
+(i) Suppose that $U$ is an open set in ${\mathbb C}$
+and that $G:[0,1]\times{\mathbb T}\rightarrow U$
+is a continuous function. Show, by using compactness 
+arguments or otherwise, that there exists an $\epsilon>0$
+such that $N(G(s,t),\epsilon)\subseteq U$ for all
+$(s,t)\in [0,1]\times{\mathbb T}$, and that we can find
+an integer $N\geq 1$ such that if  
+\[(s_{1},t_{1}),(s_{2},t_{2})\in [0,1]\times{\mathbb T}
+\ \text{and}\ |s_{1}-s_{2}|<4N^{-1},
+\ |t_{1}-t_{2}|<8\pi N^{-1}\]
+then $|G(s_{1},t_{1})-G(s_{2},t_{2})|<\epsilon/4$.
+
+(ii) Continuing with the notation and hypotheses of
+of (i) show that if 
+$\gamma_{1},\gamma_{2}:{\mathbb T}\rightarrow{\mathbb C}$
+are the piecewise linear functions\footnote{Strictly speaking
+the simplest piecewise linear functions.} with
+\begin{align*}
+\gamma_{0}(2\pi r/N)&=G(0,2\pi r/N)\\
+\gamma_{1}(2\pi r/N)&=G(1,2\pi r/N)
+\end{align*}
+for all integers $r$ with $0\leq r\leq N$
+then there exists a constant $\lambda$
+and a continuous function
+$H:[0,1]\times{\mathbb T}\rightarrow U$
+with
+\begin{align*}
+H(0,t)=\gamma_{0}(0,t)\\
+H(1,t)=\gamma_{1}(1,t)
+\end{align*}
+for all $t\in [0,1]$, such that, for each fixed $t$,
+$H(s,t)$ is a piecewise
+linear function of $s$ and the curve
+$H(\ ,t):{\mathbb T}\rightarrow U$ is of length less than
+$\lambda$.
+
+(iii) Continuing with the notation and hypotheses of
+of (i) show that if $G(s,1)$ and $G(s,0)$ are piecewise
+smooth functions of $s$
+then there exists a constant $\lambda$ and 
+a continuous function
+$F:[0,1]\times{\mathbb T}\rightarrow U$
+with
+\begin{align*}
+F(0,t)=\gamma_{0}(0,t)\\
+F(1,t)=\gamma_{1}(1,t)
+\end{align*}
+for all $t\in [0,1]$, such that, for each fixed $t$,
+$F(s,t)$ is a piecewise
+smooth function of $s$ and the curve
+$F(\ ,t):{\mathbb T}\rightarrow U$ is of length less than
+$\lambda$.
+
+(iv) Show that in any simply connected open set
+any piece wise smooth loop can be homotoped
+through piecewise smooth loops of bounded length to
+a point.
+\end{exercise}
+\begin{exercise} (i) Suppose that $U$ is an open set
+in ${\mathbb C}$ and
+$F:[0,1]\times{\mathbb T}\rightarrow U$ is a continuous
+function such that, for each fixed $t$,
+$F(s,t)$ is a piecewise
+smooth function of $s$ and the curve
+$F(\ ,t):{\mathbb T}\rightarrow U$ is of length less than
+$\lambda$. We write $\Gamma_{s}$ for the contour
+defined by $F(\ ,t)$. Show by a compactness argument, or
+otherwise, that if $f:U\rightarrow{\mathbb C}$ is continuous
+then
+$\int_{\Gamma_{s}}f(z)\,dz$ is a continuous function of $s$.
+
+(ii) If $0<\delta<|w|$ show that if $\Gamma$ is a contour
+lying entirely within $N(w,\delta)$ joining 
+$z_{1}=r_{1}e^{i\theta_{1}}$ to $z_{2}=r_{2}e^{i\theta_{2}}$
+[$r_{1},r_{2}>0$, $\theta_{1},\theta_{2}\in{\mathbb R}$]
+show that
+\[\int_{\Gamma}\frac{1}{z}\,dz=(\log r_{2}-\log r_{1})
++i(\theta_{1}-\theta_{2})+2n\pi i\]
+for some integer $n$.
+
+(iii) By using compactness arguments to split
+$\Gamma$ into suitable bits, or otherwise,
+show that if $U$ is any open set not containing $0$
+and $\Gamma$ is any closed contour (i.e. loop)
+lying entirely within $U$ then
+\[\int_{\Gamma}\frac{1}{z}\,dz=2N\pi i\]
+for some integer $N$.
+
+(iv) Use results from this exercise and its 
+predecessor to show that if $U$ is any simply
+connected open set not containing $0$
+and $\Gamma$ is any closed contour
+lying entirely within $U$ then
+\[\int_{\Gamma}\frac{1}{z}\,dz=0.\]
+Hence, prove Theorem~\ref{logarithm}.
+\end{exercise} 
+\section{The Riemann mapping theorem} By using a very 
+beautiful physical argument,  Riemann obtained the
+following result.
+\begin{theorem}[Riemann mapping theorem]%
+\label{Riemann mapping theorem}
+If $\Omega$ is an non-empty,
+open, simply connected subset
+of $\mathbb C$ with non-empty complement
+then there exists a conformal
+map of $\Omega$ to the unit disc $D(0,1)$.
+\end{theorem}
+Unfortunately his argument depended on the assumption
+of the existence
+of a function which minimises a certain energy.
+Since Riemann was an intellectual giant 
+and his result is correct
+it is often suggested that all that was needed was
+a little rigour to be produced by pygmies.
+However, Riemann's argument actually fails in
+the related three dimensional case  so (in
+the lecturer's opinion) although Riemann's
+argument certainly showed that a  very wide class
+of sets could be conformally transformed into
+the unit disc the extreme generality of the final
+result could not reasonably have been expected
+from his argument alone.
+
+In order to rescue the Riemann mapping theorem
+mathematicians embarked on two separate programmes.
+The first was to study conformal mapping in more detail
+and the second to find abstract principles to guarantee
+the existence of minima in a wide range of general
+circumstances (in modern terms, to find appropriate
+compact spaces). The contents of this section
+come from the first of these programmes,
+the contents of the next (on normal families) come
+from the second. (As a point of history, the first
+complete proof of the Riemann mapping theorem
+was given by Poincar\'{e}.)
+
+\begin{theorem}[Schwarz's inequality]%
+\label{Schwarz's inequality}
+If  $f:D(0,1)\rightarrow D(0,1)$ is analytic and
+$f(0)=0$ then
+
+(i) $|f(z)|\leq |z|$ for all $|z|<1$ and $|f'(0)|\leq 1$.
+
+(ii) If $|f(w)|=|w|$ for some $|w|<1$ with $w\neq 0$,
+or if $|f'(0)|=1$, then we can find a $\theta\in{\mathbb R}$
+such that $f(z)=e^{i\theta}z$ for all $|z|<1$.
+\end{theorem}
+
+Schwarz's inequality enables us to classify the conformal
+maps of the unit disc into itself. If $a\in D(0,1)$
+and $\theta\in{\mathbb R}$ let us write
+\begin{align*}
+T_{a}(z)&=\frac{z-a}{1-a^{*}z}\\
+R_{\theta}(z)&=e^{i\theta}z
+\end{align*}
+\begin{lemma} $a\in D(0,1)$
+and $\theta\in{\mathbb R}$ then $T_{a}$ and $R_{\theta}$
+map $D(0,1)$ conformally into itself. Further $T_{a}^{-1}=T_{a}$.
+\end{lemma}
+\begin{theorem}\label{unique conformal} 
+(i) If $S$ maps $D(0,1)$ conformally into itself
+then we can find $a\in D(0,1)$ and $\theta\in \mathbb{R}$
+such that $S=R_{\theta}T_{a}$. If $S=R_{\theta'}T_{a'}$
+with $a'\in D(0,1)$ and $\theta'\in \mathbb{R}$ then
+$a=a'$ and $\theta-\theta'\in 2\pi{\mathbb Z}$.
+
+(ii) Let $U$ be a simply connected open set and $a\in U$.
+If there exists a
+conformal map $g:U\rightarrow D(0,1)$
+then there exists precisely one conformal map
+$f:U\rightarrow D(0,1)$ with $f(a)=0$ and $f'(a)$ real
+and positive.
+\end{theorem} 
+Theorem~\ref{unique conformal}~(ii) can be modified in various
+simple but useful ways. 
+
+We conclude this section with some results which are not
+needed for the proof of the Riemann mapping theorem but
+which show that the `surrounding scenery' is also
+interesting and provide a useful revision of some results
+from earlier courses on complex variable. (If these results
+are strange to you, the lecturer can give a supplementary
+lecture.)
+\begin{example} If $a,b\in D(0,1)$ then there exists
+a conformal map 
+\[f:D(0,1)\setminus\{a\}\rightarrow D(0,1)\setminus\{b\}.\]
+\end{example}
+\begin{example}\label{two points} 
+If $a_{1},a_{2},b_{1},b_{2}\in D(0,1)$ 
+then there exists
+a conformal map 
+\[f:D(0,1)\setminus\{a_{1},a_{2}\}\rightarrow 
+D(0,1)\setminus\{b_{1},b_{2}\}\]
+if and only if
+\[\left|\frac{a_{2}-a_{1}}{a_{1}^{*}a_{2}-1}\right|
+=\left|\frac{b_{2}-b_{1}}{b_{1}^{*}b_{2}-1}\right|.\]
+\end{example}
+In Example~\ref{two points} we see the the `natural rigidity'
+of complex analysis reassert itself.
+\section{Normal families} Consider an open set $U$ 
+in ${\mathbb C}$ and the collection ${\mathcal F}$
+of analytic functions $f:U\rightarrow{\mathbb C}$.
+What is the `natural topology' on ${\mathcal F}$
+or, in the more old fashioned language of this course,
+what is the `natural mode of convergence' for ${\mathcal F}$?
+Looking at the convergence of power series and
+at results like Morera's theorem suggests the following
+approach.   
+\begin{definition} If $U$ is an open set
+in ${\mathbb C}$ and $f_{n}:U\rightarrow {\mathbb C}$
+we say that $f_{n}\rightarrow f_{0}$ 
+\emph{uniformly on compacta} if, whenever $K$ is
+a compact subset of $U$, $f_{n}|K\rightarrow f_{0}|K$ 
+uniformly on $K$.
+\end{definition}
+
+We shall prove the chain of equivalences in the next lemma,
+but the proof (and, sometimes, the explicit statement)
+of similar chains will be left to the reader.
+Here and elsewhere $\overline{E}$ is the closure
+of $E$.
+\begin{lemma} Let $U$ be an open set
+in ${\mathbb C}$ and $f_{n}:U\rightarrow {\mathbb C}$
+a sequence of functions. The following four
+statements are equivalent.
+
+(i) $f_{n}\rightarrow f_{0}$ uniformly on compacta. 
+
+(ii) Whenever 
+$\overline{D(w,\delta)}\subseteq U$
+then $f_{n}|\overline{D(w,\delta)}
+\rightarrow f_{0}|\overline{D(w,\delta)}$ 
+uniformly on $\overline{D(w,\delta)}$.
+
+(iii) Whenever $D(w,\delta)$ is 
+an open disc with $\overline{D(w,\delta)}\subseteq U$
+then $f_{n}|D(w,\delta)
+\rightarrow f_{0}|D(w,\delta)$ 
+uniformly on $D(w,\delta)$.
+
+(iv) If $w\in U$ we can find a $\delta>0$ such that
+$D(w,\delta)\subseteq U$ and $f_{n}|D(w,\delta)
+\rightarrow f_{0}|D(w,\delta)$ 
+uniformly on $D(w,\delta)$.
+\end{lemma}
+We shall make use of the following  result.
+\begin{lemma} If $U$ is an open subset of ${\mathbb C}$
+we can find compact sets $K_{1}\subseteq K_{2}
+\subseteq K_{3}\subseteq\dots$ such that 
+$U=\bigcup_{j=1}^{\infty}\Int K_{j}=\bigcup_{j=1}^{\infty}K_{j}$.
+\end{lemma}
+\begin{exercise}\label{uniform on compacta metric} 
+(i) If $d_{1}$, $d_{2}$, \dots are
+metrics on a space $X$ show that
+\[d(x,y)=\sum_{j=1}^{\infty}2^{-j}\min(1,d_{j}(x,y))\]
+defines a metric on $X$. Show that, if each $d_{j}$
+is a complete metric and each $d_{j}$ defines the same
+topology (i.e. has the same open sets)
+then $d$ is complete.
+
+(ii) If $U$ is an open set in ${\mathbb C}$ show that
+there is a complete metric $d$ on the space $C(U)$
+of continuous functions $f:U\rightarrow{\mathbb C}$
+such that if $f_{n}\in C(U)$ then $d(f_{n},f_{0})\rightarrow 0$
+if and only if $f_{n}\rightarrow f_{0}$ uniformly on 
+compacta.
+\end{exercise}
+We also note the following simple but important 
+consequence of Morera's theorem.
+\begin{lemma} Let $U$ be an open set
+in ${\mathbb C}$ and $f_{n}:U\rightarrow {\mathbb C}$
+a sequence of functions with the property that
+$f_{n}\rightarrow f_{0}$ uniformly on compacta.
+If $f_{n}$ is analytic for each $n\geq 1$
+then $f$ is analytic.
+\end{lemma}
+\begin{exercise}\label{exercise compacta} If $U$ is an open set 
+in ${\mathbb C}$ show that
+there is a complete metric $d$ on the space $A(U)$
+of analytic functions $f:U\rightarrow{\mathbb C}$
+such that if $f_{n}\in A(U)$ then $d(f_{n},f_{0})\rightarrow 0$
+if and only if $f_{n}\rightarrow f_{0}$ uniformly on 
+compacta.
+\end{exercise}
+ 
+We now talk about what in modern terms would be called
+compactness.
+\begin{definition} Let $U$ be an open set
+in ${\mathbb C}$ and let $\mathcal{G}$ be a collection
+of analytic functions on $U$. We say that 
+$\mathcal{G}$ is \emph{normal} if given any sequence
+$f_{n}\in\mathcal{G}$ we can find a subsequence
+$f_{n(j)}$ which converges uniformly on compacta
+to a limit.
+\end{definition}
+Note that we do not demand that the limit lies
+in $\mathcal{G}$.
+
+Fortunately normal families have a simpler characterisation. 
+\begin{definition} Let $U$ be an open set
+in ${\mathbb C}$ and let $\mathcal{G}$ be a collection
+of functions on $U$. We say that $\mathcal{G}$
+is \emph{uniformly bounded on compacta} if
+given any compact subset $K$ of $U$ we can find
+a constant $C_{K}$ such that $|f(z)|\leq C_{K}$
+for all $f\in \mathcal{G}$ and all $z\in K$.
+\end{definition}
+\begin{theorem}\label{Normal} Let $U$ be an open set
+in ${\mathbb C}$ and let $\mathcal{G}$ be a collection
+of analytic functions on $U$. Then $\mathcal{G}$
+is normal if and only if it is uniformly bounded on compacta.
+\end{theorem}
+
+We shall prove Theorem~\ref{Normal} via the following
+lemma.
+\begin{lemma} Let $\mathcal{G}$ be a collection
+of analytic functions on the unit disc $D(0,1)$
+with the property that $|f(z)|\leq 1$ for all $z\in D(0,1)$
+and $f\in \mathcal{G}$. Then given any sequence
+$f_{n}\in\mathcal{G}$ we can find a subsequence
+$f_{n(j)}$ which converges uniformly on $D(0,1/2)$.
+\end{lemma}                      
+\begin{exercise} The following is a slightly different
+treatment of Theorem~\ref{Normal}.
+Recall that that we call a metric space $(X,d)$
+\emph{sequentially compact} if given any sequence
+$x_{n}\in X$ we can find a convergent subsequence
+$x_{n(j)}$. (It can be shown that, for a metric space,
+sequential compactness is equivalent to compactness
+but we shall not need this.) 
+
+(i) Show that if we adopt the notation
+of Exercise~\ref{exercise compacta} a subset
+$\mathcal{G}$ of $A(U)$ is normal if and only
+if its closure $\overline{\mathcal{G}}$ 
+is sequentially compact with respect to the metric $d$.
+
+(ii) {\bf (Arzeli-Ascoli theorem)}
+Let $K$ be a compact subset of ${\mathbb C}$. Consider the
+space $C(K)$ of continuous functions $f:K\rightarrow{\mathbb C}$
+with the uniform norm. If $\mathcal{F}$ is a subset of
+$C(K)$ show that $\overline{\mathcal{F}}$ 
+is sequentially compact if and only if
+
+\ \ (1) $\mathcal{F}$ is bounded, that is, there exists
+a constant $\lambda$ such that $\|f\|\leq\lambda$
+for all $f\in \mathcal{F}$.
+
+\ \ (2) $\mathcal{F}$ is equicontinuous, that is, given any
+$\epsilon>0$ there exists a $\delta(\epsilon)>0$
+such that whenever $z,w\in U$, $|z-w|<\delta(\epsilon)$
+and $f\in\mathcal{F}$ then $|f(z)-f(w)|<\epsilon$.
+
+(iii) Let $U$ be a compact subset of ${\mathbb C}$. Consider the
+space $C(U)$ of continuous functions $f:U\rightarrow{\mathbb C}$
+under the metric $d$ defined in 
+Exercise~\ref{uniform on compacta metric}. 
+If $\mathcal{F}$ is a subset of
+$C(K)$ show that $\overline{\mathcal{F}}$ 
+is sequentially compact if and only if
+
+\ \ (1) $\mathcal{F}$ is bounded on compacta, 
+that is, whenever $K$ is a compact subset of $U$,
+there exists
+a constant $\lambda_{K}$ such that $|f(z)|\leq\lambda_{K}$
+for all $z\in K$ and $f\in \mathcal{F}$.
+
+\ \ (2) $\mathcal{F}$ is equicontinuous on compacta, 
+that is, given any $K$ is a compact subset of $U$ and any
+$\epsilon>0$ there exists a $\delta(\epsilon,K)>0$
+such that whenever $z,w\in K$, $|z-w|<\delta(\epsilon,K)$
+and $f\in\mathcal{F}$ then $|f(z)-f(w)|<\epsilon$.
+
+(iv) Suppose that $\mathcal{F}$ is a collection
+of analytic functions
+$f:D(0,1)\rightarrow{\mathbb C}$ with $|f(z)|\leq \lambda$
+for all $z\in D(0,1)$. Show, by using Cauchy's
+formula, or otherwise that $\mathcal{F}$
+is equicontinuous on $\overline{D(0,1-\epsilon)}$ 
+for every $\epsilon$ with $1>\epsilon>0$.
+
+(v) Prove Theorem~\ref{Normal} using the ideas of~(iii)
+and~(iv).    
+\end{exercise}
+\section{Proof of the Riemann mapping theorem}
+We now embark on a series of lemmas which together
+prove the Riemann mapping theorem
+stated in Theorem~\ref{Riemann mapping theorem}.
+\begin{lemma}
+If $\Omega$ is an non-empty, open, simply connected subset
+of $\mathbb C$ with non-empty complement
+then there exists a conformal
+map of $\Omega$ to a set $\Omega'$
+such that ${\mathbb C}\setminus\Omega'$ 
+contains a disc $D(w,\delta)$ with $\delta>0$.
+\end{lemma}
+\begin{lemma}
+If $\Omega$ is an non-empty, open, simply connected subset
+of $\mathbb C$ with non-empty complement
+then there exists a conformal
+map of $\Omega$ to a set $\Omega''$
+such that $\Omega''\subseteq D(0,1)$. 
+\end{lemma}
+It is worth remarking that the condition
+`$\Omega$ has non-empty complement' cannot be removed.
+\begin{lemma} There does not exist a conformal map
+$f:{\mathbb C}\rightarrow D(0,1)$.
+\end{lemma}
+Thus the Riemann mapping theorem follows from
+the following slightly simpler version.
+\begin{lemma}
+If $\Omega$ is an non-empty,
+open, simply connected subset
+of $D(0,1)$
+then there exists a conformal
+map of $\Omega$ to the unit disc $D(0,1)$.
+\end{lemma}
+
+We expect the proof of the Riemann mapping theorem
+to involve a maximisation argument and
+Theorem~\ref{unique conformal}~(ii) suggests
+one possibility.
+\begin{lemma}\label{right familly}
+Suppose $\Omega$ is a open, non-empty,
+simply connected subset of $D(0,1)$.
+If $a\in \Omega$ then the set ${\mathcal F}$
+of injective
+analytic functions $f:\Omega\rightarrow D(0,1)$
+with $f(a)=0$, $f'(a)$ real and $f'(a)\geq 0$
+then $\mathcal{F}$ is a non-empty normal set.
+\end{lemma}
+\begin{lemma} With the hypotheses and notation
+of Lemma~\ref{right familly} there exists a
+$\kappa$ such that $f'(a)\leq\kappa$ for
+all $f\in\mathcal{F}$.
+\end{lemma}
+\begin{lemma} Suppose that $U$ is an open connected subset
+of $\mathbb{C}$ and we have a sequence
+of analytic functions $f_{n}$ on $U$ with $f_{N}\rightarrow f$
+uniformly. If each $f_{n}$ is injective then either
+$f$ is constant or $f$ is injective.
+\end{lemma}
+\begin{lemma} With the hypotheses and notation
+of Lemma~\ref{right familly} there exists 
+a $g\in\mathcal{F}$ such that $g'(a)\geq f'(a)$
+for all $f\in\mathcal{F}$.
+\end{lemma}
+It may be worth remarking that though $g$ is, in fact,
+unique we have not yet proved this.
+
+All we need now is a little ingenuity and this is
+supplied by an idea of Koebe.
+\begin{lemma}  (i) If $U$ is an open simply connected
+subset of $D(0,1)$ containing $0$ but with $U\neq D(0,1)$
+then we can find a bijective analytic function
+$h:U\rightarrow D(0,1)$ such that $h(0)=0$, $h'(0)$
+is real and $h'(0)>1$.
+
+(ii) With the hypotheses and notation
+of Lemma~\ref{right familly}, if $g\in\mathcal{F}$
+and $g(\Omega)\neq D(0,1)$ we can find an $f\in\mathcal{F}$
+with $f'(0)>g'(0)$.
+\end{lemma}
+
+Theorem~\ref{Riemann mapping theorem} now follows at
+once. Combining Theorem~\ref{Riemann mapping theorem}
+with Theorem~\ref{unique conformal}~(ii) we obtain
+the following mild sharpening
+without further work.
+\begin{theorem} If $U$ be a simply connected open set 
+with $U\neq{\mathbb C}$ and $a\in U$.
+then there exists precisely one conformal map
+$f:U\rightarrow D(0,1)$ with $f(a)=0$ and $f'(a)$ real
+and positive.
+\end{theorem}
+
+By reviewing the proof of the Riemann mapping theorem
+that we have given it  becomes clear that we have
+in fact proved Lemma~\ref{logarithm exact}.
+\begin{exercise} Check that we can prove
+Lemma~\ref{logarithm exact} by the method used to prove
+the Riemann mapping theorem.
+\end{exercise}
+
+
+It is important to realise that the intuition
+we gather from the use of simple conformal transforms
+in physics and elsewhere may be an unreliable guide
+in the more general context of the Riemann mapping theorem.
+\begin{example}\label{bad boundary}
+There is a bounded non-empty
+simply connected open set $U$ such that if
+we have conformal map $f:D(0,1)\rightarrow U$
+there does not exist a continuous bijective map
+$\tilde{f}:\overline{D(0,1)}\rightarrow\overline{U}$
+with $\tilde{f}|D(0,1)=f$.
+\end{example}
+
+Riemann's mapping theorem is a beginning and not an
+end. Riemann stated his result in a more general context
+than we have done here and the continuation of
+Riemann's ideas leads to Klein's uniformisation
+theorem. On the other hand, if we continued the
+development suggested here we would look at topics
+like
+Green's functions, boundary behaviour and the Picard
+theorems. If time permits I shall look at some
+of these ideas later but I am anxious not to hurry
+through the topics from number theory which
+will be discussed in the next few lectures.
+\section{Infinite products} Our object in the next few
+lectures will be to prove the following remarkable
+theorem of Dirichlet on primes in arithmetic
+progression.
+\begin{theorem}[Dirichlet]\label{Dirichlet} 
+If $a$ and $d$ are strictly
+positive coprime integers then there are infinitely
+many primes of the form $a+nd$ with $n$ a positive integer.
+\end{theorem}
+(Obviously the result must fail if $a$ and $d$ are not
+coprime.) 
+
+There exist a variety of proofs of special cases
+when $d$ has particular values but, so far as I know,
+Dirichlet's proof of his theorem remains, essentially,
+the only approachable one. In particular there is no
+known reasonable\footnote{In the sense that most
+reasonable people would call reasonable. Selberg produced
+a (technically)  elementary proof which may be found in his
+collected works.} elementary
+(in the technical sense of not using analysis) 
+proof.
+
+Dirichlet's method starts from an observation of Euler.
+\begin{lemma}\label{Euler prime start}
+If $s$ is real with $s>1$ then
+\[\prod_{\substack{\text{$p$ prime}\\p\leq N}}
+\left(1-\frac{1}{p^{s}}\right)^{-1}\rightarrow
+\sum_{n=1}^{\infty}\frac{1}{n^{s}}.\]
+\end{lemma}
+Using this result, we get a new proof of the existence
+of an infinity of primes.
+\begin{theorem}[Euclid] There exist an infinity of primes.
+\end{theorem}
+
+This suggests that it may be worth investigating 
+infinite products a bit more.
+\begin{definition} Let $a_{j}\in{\mathbb C}$. If
+$\prod_{n=1}^{N}(1+a_{n})$ tends to a limit $L$
+as $N\rightarrow\infty$ we say that the 
+\emph{infinite product} $\prod_{n=1}^{\infty}(1+a_{n})$
+\emph{converges} to a value $L$ and write
+\[\prod_{n=1}^{\infty}(1+a_{n})=L.\]
+If the infinite product $\prod_{n=1}^{\infty}(1+|a_{n}|)$
+converges then we say that $\prod_{n=1}^{\infty}(1+a_{n})$
+is \emph{absolutely convergent}.
+\end{definition}
+The next result was removed from the first year of
+the Tripos a couple of years before I took it.
+\begin{lemma}\label{absolute convergence} 
+Let $a_{j}\in{\mathbb C}$.
+
+(i) $\prod_{n=1}^{\infty}(1+a_{n})$ is absolutely
+convergent if and only if $\sum_{n=1}^{\infty}a_{n}$
+is.
+
+(ii) If $\prod_{n=1}^{\infty}(1+a_{n})$ is absolutely
+convergent and $1+a_{n}\neq 0$ for each $n$ then
+\[\prod_{n=1}^{\infty}(1+a_{n})\neq 0.\]
+\end{lemma}
+\begin{exercise} Find $a_{j}\in{\mathbb C}$ such that
+$\prod_{n=1}^{\infty}(1+a_{n})$ is not absolutely
+convergent but is convergent to a non-zero value.
+\end{exercise}
+We shall only make use of absolute convergent infinite
+products.
+\begin{exercise} If $\prod_{n=1}^{\infty}(1+a_{n})$ is 
+absolutely convergent and 
+$\sigma:{\mathbb N}\rightarrow{\mathbb N}$
+is a bijection 
+(that is, $\sigma$ is a permutation of ${\mathbb N}$)
+show that $\prod_{n=1}^{\infty}(1+a_{\sigma(n)})$ is 
+absolutely convergent and
+\[\prod_{n=1}^{\infty}(1+a_{\sigma(n)})
+=\prod_{n=1}^{\infty}(1+a_{n})\]
+\end{exercise}
+Whilst this is a useful result to know, we shall make no essential
+use of it. When we write
+$\sum_{\text{$p$ prime}}$ or $\prod_{\text{$p$ prime}}$
+we mean the primes $p$ to be taken in order of increasing
+size.
+
+Using Lemma~\ref{absolute convergence} we obtain
+the following strengthening of Euclid's theorem.
+\begin{theorem}[Euler]
+${\displaystyle \sum_{\text{$p$ prime}}\frac{1}{p}=\infty.}$
+\end{theorem}
+
+Since we wish to consider infinite products of functions
+it is obvious that we shall need an analogue
+of the Weierstrass M-test for products, obvious what that
+analogue should be and obvious how to prove it.
+\begin{lemma} Suppose $U$ is an open subset of ${\mathbb C}$
+and that we have a sequence of functions 
+$g_{n}:U\rightarrow{\mathbb C}$ and a sequence of positive
+real numbers $M_{n}$ such that $M_{n}\geq |g_{n}(z)|$
+for all $z\in U$. If $\sum_{n=1}^{\infty}M_{n}$
+converges then $\prod_{n=1}^{N}(1+g_{n}(z))$ converges
+uniformly on $U$.
+\end{lemma}
+Later we shall need to consider $\sum n^{-s}$ with $s$ complex.
+To avoid ambiguity, we shall take $n^{-s}=\exp(-s\log n)$
+where $\log n$ is the real logarithm of $n$.
+\begin{lemma} If $\Re s>1$ we have
+\[\prod_{\text{$p$ prime}}(1-p^{-s})^{-1}=\sum_{n=1}^{\infty}n^{-s}\]
+both sides being absolutely convergent for each $s$
+and uniformly convergent for $\Re s>1+\epsilon$ for
+each fixed $\epsilon>0$.
+\end{lemma}
+
+We now detour briefly from the main argument to show
+how infinite products can be used to answer a
+very natural question. `Can we always find an analytic
+function
+with specified zeros?' (We count multiple zeros
+multiply in the usual way.) Naturally we need to
+take account of the following fact.
+\begin{lemma} If $z_{1}$, $z_{2}$, \dots are distinct zeros
+of an analytic function which is not identically
+zero then $z_{n}\rightarrow\infty$ as $n\rightarrow\infty$.
+\end{lemma}
+
+A little thought suggests the path we ought to take
+though we may not see how to reach it. A way to
+reach the path is provided by the Weierstrass
+primary function $E(z,m)$.
+\begin{definition} If $m$ is a strictly positive integer
+\[E(z,m)=(1-z)e^{z+z^{2}/2+z^{3}/3+\dots+z^{m}/m}.\]
+\end{definition}
+\begin{lemma} The function $E(\ ,m):\mathbb{C}\rightarrow\mathbb{C}$
+is analytic with a unique zero at 1. If $|z|\leq 1$
+then
+\[|1-E(z,m)|\leq |z|^{m+1}.\]
+\end{lemma}
+(It is nice to have such a neat result but for our purposes
+$|1-E(z,m)|\leq A|z|^{m+1}$ for $|z|\leq R$ with any $A$
+and $R$ would be just as good.)
+
+\begin{theorem}[Weierstrass] If $k$ is a positive integer
+and $z_{1},z_{2},\dots$ is a sequence of non-zero complex
+numbers with $z_{n}\rightarrow\infty$ then
+\[F(z)=z^{k}\prod_{j=1}^{\infty}E(z/z_{j},j)\]
+is a well defined
+analytic function with a zero of order $k$ at $0$,
+and zeros at the $z_{j}$ (multiple zeros counted multiply)
+and no others.
+\end{theorem}
+\begin{lemma} If $f_{1}$ and $f_{2}$ are analytic functions
+on ${\mathbb C}$ with the same zeros (multiple zeros counted
+multiply) then there exists an analytic function $g$
+such that
+\[f_{1}(z)=e^{g(z)}f_{2}(z).\]
+\end{lemma}
+\begin{lemma} If $z_{1},z_{2},\dots$ and $w_{1},w_{2},\dots$
+are sequences of complex numbers with 
+$z_{j},w_{j}\rightarrow\infty$ as $j\rightarrow\infty$
+and $z_{j}\neq w_{k}$ for all $j,k$ then there exists
+a meromorphic function with zeros at the $z_{j}$ 
+and poles at the $w_{k}$ (observing the usual multiplicity
+conventions).
+\end{lemma}
+\begin{exercise} (It may be helpful to attack parts
+of this question non-rigourously first and then tighten up
+the argument second.)
+
+(i) If $C_{N}$ is the contour consisting of the square
+with vertices $\pm (N+1/2)\pm (N+1/2)i$ described
+anti-clockwise show that there is a constant $K$
+such that
+\[|\cot \pi z|\leq K\]
+for all $z\in C_{N}$ and all integers $N\geq 1$.
+
+(ii) By integrating an appropriate function round the
+contour $C_{N}$, or otherwise,
+show that, if $w\notin{\mathbb Z}$,
+\[\sum_{n=-N}^{n=N}\frac{1}{w-n}\rightarrow  \pi\cot\pi w.\]
+
+(iii) Is it true that, if $w\notin{\mathbb Z}$,
+\[\sum_{n=-M}^{n=N}\frac{1}{w-n}\rightarrow  \pi\cot\pi w,\]
+as $M,N\rightarrow\infty$? Give reasons.
+
+(iv) Show that
+\[P(z)=z\prod_{n=1}^{\infty}\left(1-\frac{z^{2}}{n^{2}}\right)\]
+is a well defined analytic function and that there exists
+an analytic function $g$ such that
+\[\sin\pi z=e^{g(z)}P(z).\]
+
+(v) Find a simple expression for
+$P'(z)/P(z)$. [Hint: If $p(z)=\prod_{j=1}^{N}(z-\alpha_{j})$,
+what is $p'(z)/p(z)$?] Find a related expression for
+$\frac{d\ }{dz}\sin \pi z/\sin \pi z$.
+
+(vi) Show that
+\[\sin\pi z=\pi z\prod_{n=1}^{\infty}\left(1-\frac{z^{2}}{n^{2}}\right).\]
+
+(vii) Find a similar expression for $\cos\pi z$. (These
+results are due to Euler.)
+\end{exercise}
+\begin{exercise} (This makes use of some of the
+techniques of the previous exercise.) (i) Show that the infinite product
+\[g(z)=\prod_{n=1}^{\infty}\left(1-\frac{z}{n}\right)\]
+exists and is analytic on the whole complex plane.
+
+(ii) Show that
+\[g'(z)=g(z)
+\sum_{n=1}^{\infty}\left(\frac{1}{z-n}+\frac{1}{n}\right).\]
+Explain why $\sum_{n=1}^{\infty}(\frac{1}{z-n}+\frac{1}{n})$
+is indeed a well defined everywhere analytic function.
+
+(iii) By using (ii), or otherwise, show that
+\begin{equation*}
+g(z+1)=-Azg(z) \tag*{(*)}
+\end{equation*}
+for some constant $A$.
+
+(iv) By considering a particular value of $z$, or otherwise,
+show that $A$ is real and positive and
+\[\sum_{n=1}^{N}\frac{1}{n}-\log N\rightarrow \log A\]
+as $N\rightarrow\infty$.
+Deduce the existence of Euler's constant
+$\gamma=i(\lim_{N\rightarrow\infty}\sum_{n=1}^{N}n^{-1}-\log N)$
+and rewrite $(*)$ as
+\begin{equation*}
+g(z+1)=-e^{\gamma}zg(z) 
+\end{equation*}
+
+(v) Find a simple expression for $zg(z)g(-z)$. Use $(*)$
+to show that $\sin \pi z$ is periodic.
+\end{exercise}
+\section{Fourier analysis on finite Abelian groups} One
+of Dirichlet's main ideas is a clever extension of 
+Fourier analysis from its classical frame. Recall
+that classical Fourier analysis deals with formulae
+like
+\[f(t)=\sum_{n=-\infty}^{\infty}\hat{f}(n)e_{n}(t)\]
+where $e_{n}(t)=\exp(int)$. The clue to further extension
+lies in the following observation.
+\begin{lemma} Consider the Abelian group 
+${\mathbb T}={\mathbb R}/(2\pi{\mathbb Z})$ and the
+subgroup $S=\{z:|z|=1\}$ of $({\mathbb C}\setminus\{0\},\times)$.
+The continuous homomorphisms 
+$\theta:{\mathbb T}\rightarrow S$ are precisely
+the functions $e_{n}:{\mathbb T}\rightarrow S$ given
+by $e_{n}(t)=\exp(int)$ with $n\in{\mathbb Z}$.
+\end{lemma}
+\begin{exercise} (i) Find (with proof) all the
+continuous homomorphisms 
+$\theta:({\mathbb R},+)\rightarrow (S,\times)$.
+What is the connection with Fourier transforms?
+
+(ii) (Only for those who know Zorn's lemma%
+\footnote{And, particularly, those who only know Zorn's lemma.}.)
+Assuming Zorn's lemma show that any linearly independent
+set in a vector space can be extended
+to a basis. If we consider ${\mathbb R}$ as a vector
+space over ${\mathbb Q}$ show that there exists
+a linear map $T:{\mathbb R}\rightarrow{\mathbb R}$ such
+that $T(1)=1$, $T(\surd 2)=0$. Deduce the existence
+of a function $T:{\mathbb R}\rightarrow{\mathbb R}$
+such that $T(x+y)=T(x)+T(y)$ for all $x,y\in {\mathbb R}$
+which is not continuous (with respect to the usual metric).
+Show that, if we accept Zorn's lemma, there exist
+discontinuous homomorphisms
+$\theta:({\mathbb R},+)\rightarrow (S,\times)$.
+\end{exercise}
+
+This suggests the following definition.
+\begin{definition} If $G$ is a finite Abelian group
+we say that a homomorphism $\chi:G\rightarrow S$
+is a \emph{character}. We write $\hat{G}$ for the
+collection of such characters.
+\end{definition}
+In this section we shall accumulate a
+substantial amount of information about $\hat{G}$
+by a succession of small steps.
+
+\begin{lemma} Let $G$ be a finite Abelian group.
+
+(i) If $x\in G$ has order $m$ and $\chi\in\hat{G}$
+then $\chi(x)$ is an $m$th root of unity.
+
+(ii) $\hat{G}$ is a finite Abelian group under
+pointwise multiplication. 
+\end{lemma}
+
+To go further we consider for each finite Abelian group
+$G$ the collection $C(G)$ of functions $f:G\rightarrow{\mathbb C}$.
+If $G$ has order $|G|$ then $C(G)$ is a vector space of 
+dimension $N$ which can be made into a  complex inner
+product space by means of the inner product
+\[\langle f,g\rangle=\frac{1}{|G|}\sum_{x\in G}f(x)g(x)^{*}.\]
+\begin{exercise} Verify the statements just made.
+\end{exercise}
+
+\begin{lemma} Let $G$ be a finite Abelian group.
+The elements of $\hat{G}$ form an orthonormal
+system in  $C(G)$.
+\end{lemma}
+Does $\hat{G}$ form an orthonormal basis of $C(G)$? The
+next lemma tells us how we may hope to resolve this
+question.
+\begin{lemma} Let $G$ be a finite Abelian group.
+The elements of $\hat{G}$  form an orthonormal basis
+if an only if given an element $x\in G$ which is
+not the identity we can find a character $\chi$
+with $\chi(x)\neq 1$.
+\end{lemma}
+
+The way forward is now clear.
+\begin{lemma} 
+Suppose that $H$ is a subgroup of a finite Abelian
+group  $G$ and that $\chi\in\hat{H}$. If $K$
+is a subgroup of $G$ generated by $H$ and an element
+$a\in G$ then we can find a $\tilde{\chi}\in\hat{K}$
+such that $\tilde{\chi}|H=\chi$.
+\end{lemma}
+\begin{lemma} Let $G$ be a finite Abelian group
+and $x$ an element of $G$ of order $m$. Then
+we can find a $\chi\in\hat{G}$ with
+$\chi(x)=\exp 2\pi i/m$.
+\end{lemma}
+\begin{theorem} If $G$ is a finite Abelian group
+then $\hat{G}$ has the same number of elements
+as $G$ and they form an orthonormal basis
+for $C(G)$.
+\end{theorem}
+\begin{lemma} If $G$ is a finite Abelian group
+and $f\in C(G)$ then
+\[f=\sum_{\chi\in\hat{G}}\hat{f}(\chi)\chi\]
+where $\hat{f}(\chi)=\langle f,\chi \rangle$.
+\end{lemma}
+\begin{exercise} Suppose that $G$ is a finite Abelian
+group. Show that if we define 
+$\theta_{x}:\hat{G}\rightarrow {\mathbb C}$ by
+$\theta_{x}(\chi)=\chi(x)$ for $\chi\in \hat{G}$,
+$x\in G$ then the map $\Theta:G\rightarrow\hathatG$
+given by $\Theta(x)=\theta_{x}$ is an isomorphism.
+
+If we now identify $x$ with $\theta_{x}$ (and, so,
+$G$ with $\hathatG$) show that
+\[\hathatf(x)=|G|f(x^{-1})\]
+for all $f\in C(G)$ and $x\in G$.
+\end{exercise}     
+
+We have now done all that that is required to
+understand Dirichlet's motivation. However, it
+seems worthwhile to make a slight detour to
+put `computational' bones on this section by
+exhibiting the structure of $G$ and $\hat{G}$.
+\begin{lemma} Let $(G,\times)$ be an Abelian group.
+
+(i) Suppose that $x,y\in G$ have order $r$ and $s$
+with $r$ and $s$ coprime. Then $xy$ has order $rs$.
+
+(ii) If $G$ contains elements of order $n$ and $m$
+then $G$ contains an element of order the least
+common multiple of $n$ and $m$.
+\end{lemma}
+\begin{lemma}\label{maximum order}
+Let $(G,\times)$ be a finite Abelian group.
+Then there exists an integer $N$ and an element $k$
+such that $k$ has order $N$ and, whenever $x\in G$
+we have $x^{N}=e$.
+\end{lemma}
+\begin{lemma} With the hypotheses and notation
+of Lemma~\ref{maximum order} we can write $G=K\times H$
+where $K$ is the cyclic group generated by $x$
+and $H$ is another subgroup of $K$.
+\end{lemma}
+As usual we write $C_{n}$ for the cyclic group
+of order $n$.
+\begin{theorem} If $G$ is a finite Abelian group we can find
+$n(1)$, $n(2)$, \dots $n(m)$ with $n(j+1)|n(j)$
+such that $G$ is isomorphic to 
+\[C_{n(1)}\times C_{n(2)}\times \dots C_{n(m)}.\]
+\end{theorem}
+\begin{lemma} If we have two sequences
+$n(1)$, $n(2)$, \dots $n(m)$ with $n(j+1)|n(j)$
+and
+$n'(1)$, $n'(2)$, \dots $n'(m')$ with $n'(j+1)|n'(j)$
+then
+\[C_{n(1)}\times C_{n(2)}\times \dots C_{n(m)}
+\ \text{is isomorphic to}
+\ C_{n'(1)}\times C_{n'(2)}\times \dots C_{n'(m')}\]
+if and only if $m=m'$ and $n(j)=n'(j)$ for each $1\leq j\leq m$.
+\end{lemma}
+
+It is easy to identify $\hat{G}$.
+\begin{lemma} Suppose that
+\[G=C_{n(1)}\times C_{n(2)}\times \dots C_{n(m)}\]
+with $C_{n(j)}$ a cyclic group of order $n(j)$ generated
+by $x_{j}$. Then the elements of $\hat{G}$ have the
+form 
+$\chi_{\omega_{n(1)}^{r(1)},\omega_{n(2)}^{r(2)}},\dots
+\omega_{n(m)}^{r(m)}$ with $\omega_{n(j)}=\exp(2\pi i/n(j)$
+and
+\[\chi_{\omega_{n(1)}^{r(1)},\omega_{n(2)}^{r(2)}},\dots
+\omega_{n(m)}^{r(m)}(x_{1}^{s(1)}x_{2}^{s(2)}\dots x_{m}^{s(m)})
+=\omega_{n(1)}^{r(1)s(1)}\omega_{n(2)}^{r(2)s(2)}\dots
+\omega_{n(m)}^{r(m)s(m)}.\]
+\end{lemma}
+My readers will see that $\hat{G}$ is isomorphic to $G$
+but the more sophisticated algebraists will also
+see that this is \emph{not a natural isomorphism}
+(whereas $G$ and $\hathatG$ are \emph{naturally isomorphic}).
+Fortunately such matters are of no importance
+for the present course.
+\section{The Euler-Dirichlet formula} Dirichlet was interested
+in a particular group. If $d$ is a positive integer consider
+${\mathbb Z}/(n)$ the set of equivalence classes
+\[[m]=\{r:r\equiv m \mod{d}\}\]
+under the usual multiplication modulo $n$.
+We set
+\[G_{d}=\{[m]:\text{$m$ and $d$ coprime}\}\]
+and write $\phi(d)$ for the order of $G_{d}$ ($\phi$ is
+called Euler's totient function).
+\begin{lemma} The set $G_{d}$ forms a finite
+Abelian group under
+standard multiplication.
+\end{lemma}
+The results of the previous section show that, if $[a]\in G_{n}$
+and we define $\delta_{a}:G_{d}\rightarrow{\mathbb C}$ by
+\begin{align*}
+\delta_{a}([a])&=1\\
+\delta_{a}([m])&=0\qquad \text{if $[m]\neq [a]$},
+\end{align*}
+then
+\[\delta_{a}=\phi(d)^{-1}\sum_{\chi\in G_{d}}\chi([a])^{*}\chi\]
+
+We now take up the proof of Dirichlet's theorem in earnest.
+We shall operate under the standing assumption that $a$ and $d$  
+are positive coprime integers and our object is to show
+that the sequence
+\[a,\ a+d,\ a+2d,\ \dots, a+nd,\ \dots\]
+contains infinitely many primes. Following
+Euler's proof that there exist infinitely many primes
+we shall seek to prove this by showing that
+\[\sum_{\substack{\text{$p$ prime}\\p=a+nd\ \text{for some $n$}}}
+\frac{1}{p}=\infty.\]
+Henceforward, at least in the number theory part of the 
+course $p$ will be a prime,  $\sum_{p}$ will mean the
+sum over all primes and so on.
+
+In order to simplify our notation it will also be convenient
+to modify the definition of a character. From now on, we say
+that $\chi$ is a character if $\chi$ is a map from
+${\mathbb N}$ to ${\mathbb C}$ such that there exists a character
+(in the old sense) $\tilde{\chi}\in \hat{G}_{d}$
+such that
+\begin{alignat*}{2}
+\chi(m)&=\tilde{\chi}([m])&&\qquad\text{if $m$ and $d$ are coprime}\\
+\chi(m)&=0&&\text{otherwise}.
+\end{alignat*}
+We write $\sum_{\chi}$ to mean the sum over all characters
+and take $\chi_{0}$ to be the character with
+$\chi_{0}([m])=1$ whenever $m$ and $d$ are coprime.
+
+\begin{lemma} (i) If $\chi$ is a character then
+$\chi(m_{1}m_{2})=\chi(m_{1})\chi(m_{2})$
+for all $m_{1},m_{2}\geq 0$.
+
+(ii) If $\chi\neq\chi_{0}$ then
+$\sum_{m=k+1}^{k+d}\chi(m)=0$.
+
+(iii) If $\delta_{a}(m)=\phi(d)^{-1}\sum_{\chi}\chi(a)^{*}\chi(m)$
+then $\delta_{a}(m)=1$ when $m=a+nd$ and $\delta_{a}(m)=0$
+otherwise.
+
+(iv) $\displaystyle{\sum_{p=a+nd}p^{-s}
+=\phi(d)^{-1}\sum_{\chi}\chi(a)^{*}\sum_{p}\chi(p)p^{-s}}$.
+\end{lemma}
+\begin{lemma} The sum $\sum_{p=a+nd}p^{-1}$ diverges if
+$\sum_{p}\chi(p)p^{-s}$ remains bounded
+as $s$ tends to $1$ through real values of $s>1$
+for all $\chi\neq\chi_{0}$.
+\end{lemma}
+
+We now prove a new version of Euler's formula.
+\begin{theorem}[Euler-Dirichlet formula]
+With the notation of this section,
+\[\prod_{n=1}^{\infty}(1-\chi(p)p^{-s})^{-1}=
+\sum_{n=1}^{\infty}\chi(n)n^{-s},\]
+both sides being absolutely convergent for $\Re s>1$.
+\end{theorem}
+To link $\prod_{n=1}^{\infty}(1-\chi(p)p^{-s})^{-1}$
+with $\sum_{p}\chi(p)p^{-s}$ we use logarithms.
+(If you go back to our discussion of infinite products
+you will see that this is not unexpected.) However,
+we must, as usual, use care when choosing our logarithm
+function. For the rest of the argument $\log$
+will be the function on
+\[{\mathbb C}\setminus\{x:\text{$x$ real and $x\leq 0$}\}\]
+defined by $\log (re^{i\theta})=\log r+i\theta$
+[$r>0$, $-\pi<\theta<\pi$].
+\begin{lemma} (i) If $|z|\leq 1/2$  then $|\log(1-z)+z|\leq |z|^{2}$.
+
+(ii) If $\epsilon>0$ then $\sum_{p}\log(1-\chi(p)p^{-s})$
+and $\sum_{p}\chi(p)p^{-s}$ converge uniformly in 
+$\Re s\geq 1+\epsilon$, whilst
+\[\left|\sum_{p}\log(1-\chi(p)p^{-s})+\sum_{p}\chi(p)p^{-s}\right|
+\leq \sum_{n=1}^{\infty}n^{-2}.\]
+\end{lemma}
+
+We have thus shown that if $\sum_{p}\log(1-\chi(p)p^{-s})$
+remains bounded as $s\rightarrow 1+$  then $\sum_{p}\chi(p)p^{-s}$
+does. Unfortunately we can not equate $\sum_{p}\log(1-\chi(p)p^{-s})$
+with $\log(\prod_{n=1}^{\infty}(1-\chi(p)p^{-s})^{-1})$.
+
+However we can refresh our spirits by proving Dirichlet's
+theorem in some special cases.
+\begin{example} There are an infinity of primes 
+of the form $3n+1$ and $3n+2$.
+\end{example}
+\begin{exercise} Use the same techniques to show that
+there are an infinity of primes 
+of the form $4n+1$ and $4n+3$.
+\end{exercise} 
+\section{Analytic continuation of the Dirichlet functions}
+Dirichlet completed his argument without having to consider
+$\sum_{n=1}^{\infty}\chi(n)n^{-s}$ for anything other
+than real $s$ with $s>1$. However, as we have already seen,
+$\sum_{n=1}^{\infty}\chi(n)n^{-s}=L(s,\chi)$ is defined and well
+behaved in $\Re s>1$. Riemann showed that it is advantageous
+to extend the definition of analytic
+functions like $L(s,\chi)$
+to larger domains.
+
+There are many ways of obtaining such 
+\emph{analytic continuations}. Here is one.
+\begin{lemma} If $f:{\mathbb R}\rightarrow{\mathbb R}$
+is bounded on ${\mathbb R}$ and 
+locally integrable\footnote{Riemann or Lebesgue at
+the reader's choice} then
+\[F(s)=\int_{1}^{\infty}f(x)x^{-s}\,dx\]
+is a well defined analytic function on the set of $s$ with
+$\Re s>1$.
+\end{lemma}
+\begin{lemma}\label{Extend Dirichlet 1} 
+(i) If $\chi\neq \chi_{0}$ and 
+$S(x)=\sum_{1\leq m\leq x}\chi(m)$ then 
+$S:{\mathbb R}\rightarrow{\mathbb R}$ is bounded
+and locally integrable. We have
+\[\sum_{n=1}^{N}\chi(n)n^{-s}
+\rightarrow s\int_{1}^{\infty}S(x)x^{-s-1}\, dx\]
+as $N\rightarrow\infty$ for all $s$ with $\Re s>1$.
+
+(ii) If $S_{0}(x)=0$ for $x\leq 0$ and
+$S_{0}(x)=\sum_{1\leq m\leq x}\chi_{0}(m)$ then,
+writing $T_{0}(x)=S_{0}(x)-d^{-1}\phi(d)x$, 
+$T_{0}:{\mathbb R}\rightarrow{\mathbb R}$ is bounded
+and locally integrable. We have
+\[\sum_{n=1}^{N}\chi(n)n^{-s}\rightarrow 
+s\int_{1}^{\infty}T_{0}(x)x^{-s-1}\, dx+\frac{\phi(d)s}{d(s-1)}\]
+as $N\rightarrow\infty$ for all $s$ with $\Re s>1$.
+\end{lemma}
+\begin{lemma}\label{Extend Dirichlet 2}
+(i) If $\chi\neq\chi_{0}$ then 
+$\sum_{n=1}^{\infty} \chi(n)n^{-s}$ converges to an analytic
+function $L(s,\chi)$, say, on $\{s\in{\mathbb C}:\Re s>0\}$.
+
+(ii) There exists an meromorphic function $L(s,\chi_{0})$
+analytic on $\{s\in{\mathbb C}:\Re s>0\}$ except for
+a simple pole, residue $\phi(d)/d$ at $1$ such that
+$\sum_{n=1}^{\infty} \chi_{0}(n)n^{-s}$ converges to 
+$L(s,\chi)$ for $\Re s>1$.
+\end{lemma}
+\begin{exercise}
+(i) Explain carefully why
+$L(\ ,\chi_{0})$ is defined uniquely by
+the conditions given.
+
+(ii) Show that
+$\sum_{n=1}^{\infty} \chi_{0}(n)n^{-s}$ diverges
+for $s$ real and $1\geq s >0$.
+\end{exercise}
+
+We now take up from where we left off at the end 
+of the previous section.
+\begin{lemma}  (i) If $\Re s>1$ then
+$\exp(-\sum_{p}\log(1-\chi(p)p^{-s})=L(s,\chi)$.
+
+(ii) If $\Re s>1$ then $L(s,\chi)\neq 0$.
+
+(iii) There exists a function $\Log L(s,\chi)$ analytic
+on $\{s: \Re s>1\}$ such that $\exp(\Log L(s,\chi))=L(s,\chi)$
+for all $s$ with $\Re s>1$.
+
+(iv) If $\chi\neq \chi_{0}$ and
+$L(1,\chi)\neq 0$ then $\Log L(s,\chi))$ tends to
+a finite limit as $s\rightarrow 1$ through real values with $s>1$.
+
+(v) There is a fixed integer $M_{\chi}$ such that
+\[\Log L(s,\chi)+\sum_{p}\log(1-\chi(p)p^{-s})=2\pi M_{\chi}\]
+for all $\Re s>1$.
+
+(vi) If $\chi\neq\chi_{0}$ and $L(1,\chi)\neq 0$ then
+$\sum_{p}\chi(p)p^{-s}$ remains bounded as 
+$s\rightarrow 1$ through real values with $s>1$.
+\end{lemma}
+
+We mark our progress with a theorem.
+\begin{theorem} If $L(1,\chi)\neq 0$ for all $\chi\neq\chi_{0}$
+then there are an infinity of primes of the form
+$a+nd$.
+\end{theorem}
+
+Since it is easy to find the characters $\chi$ in any given case
+and since it is then easy to compute $\sum_{n=1}^{N}\chi(n)n^{-1}$
+and to estimate the error $\sum_{n=N+1}^{\infty}\chi(n)n^{-1}$
+to sufficient accuracy to prove that
+$L(1,\chi)=\sum_{n=1}^{\infty}\chi(n)n^{-1}\neq 0$,
+it now becomes possible to prove Dirichlet's theorem
+for any particular coprime  $a$ and $d$.
+\begin{exercise} Choose $a$ and $d$ and carry out the
+program just suggested.
+\end{exercise}
+However, we still need to show that the  theorem holds
+in all cases.
+\section{$L(1,\chi)$ is not zero} Our first steps are easy.
+\begin{lemma} (i) If $s$ is real and $s>1$ then
+\[\prod_{\chi}L(s,\chi)=
+\exp(-\sum_{p}\sum_{\chi}\log(1-\chi(p)p^{-s}).\]
+
+(ii) If $s$ is real and $s>1$ then $\prod_{\chi}L(s,\chi)$
+is real and $\prod_{\chi}L(s,\chi)\geq 1$.
+
+(iii) $\prod_{\chi}L(s,\chi)\nrightarrow 0$ as
+$s\rightarrow 1$.
+\end{lemma}
+\begin{lemma} (i) There can be at most one character
+$\chi$ with $L(1,\chi)=0$.
+
+(ii) If a character $\chi$ takes non-real values
+then $L(1,\chi)\neq 0$.
+\end{lemma}
+
+We have thus reduced the proof of Dirichlet's theorem
+to showing that if  $\chi$ is a character
+with $\chi\neq \chi_{0}$ which only
+takes the values $1$, $-1$ and $0$ then $L(1,\chi)\neq 0$.
+There are several approaches to this problem but
+none are short and transparent. We use a proof
+of de la Vall{\'{e}}e Poussin which is quite short
+but not, I think, transparent.
+\begin{lemma}\label{Smoke 1} Suppose that the
+character $\chi\neq \chi_{0}$ and only
+takes the values $1$, $-1$ and $0$. Set
+\[\psi(s)=\frac{L(s,\chi)L(s,\chi_{0})}{L(2s,\chi_{0})}.\]
+
+(i) The function $\psi$ is well defined and meromorphic
+for $\Re s>\frac{1}{2}$. It analytic except, possibly
+for a simple pole at $1$.
+
+(ii) If  $L(1,\chi)=0$  then $1$ is a removable singularity
+and $\psi$ is analytic everywhere on $\{s:\Re s>\frac{1}{2}\}$.
+
+(iii) We have $\psi(s)\rightarrow 0$ as $s\rightarrow \frac{1}{2}$
+through real values of $s$ with $s\geq \frac{1}{2}$.
+\end{lemma}
+\begin{lemma}~\label{Smoke 2}
+We adopt the hypotheses and notation of
+Lemma~\ref{Smoke 1}. If $\Re s>1$ then the following is true.
+
+(i) ${\displaystyle
+\psi(s)=\prod_{\chi(p)=1}\frac{1+p^{-s}}{1-p^{-s}}.}$
+
+(ii) We can find subsets $Q_{1}$ and $Q_{2}$ of $\mathbb{Z}$
+such that
+\begin{align*}
+\prod_{\chi(p)=1}(1+p^{-s})&=\sum_{n\in Q_{1}}n^{-s}\\
+\prod_{\chi(p)=1}(1-p^{-s})^{-1}&=\sum_{n\in Q_{2}}n^{-s}.
+\end{align*}
+
+(iii) There is a sequence of real positive numbers $a_{n}$
+with $a_{1}=1$ such that
+\[\psi(s)=\sum_{n=1}^{\infty}a_{n}n^{-s}.\]
+\end{lemma}
+\begin{lemma} We adopt the hypotheses and notation of
+Lemmas~\ref{Smoke 1} and~\ref{Smoke 2}.
+
+(i) If $\Re s>1$ then
+\[\psi^{(m)}(s)=\sum_{n=1}^{\infty}a_{n}(-\log n)^{m}n^{-s}.\]
+
+(ii) If $\Re s>1$ then $(-1)^{m}\psi^{(m)}(s)>0$.
+
+(iii) If $\psi$ has no pole at $1$ then if $\Re s_{0}>1$
+and $|s-s_{0}|<\Re s_{0}-1/2$ we have
+\[\psi(s)=\sum_{m=0}^{\infty}
+\frac{\psi^{(m)}(s_{0})}{m!}(s-s_{0})^{m}.\]
+
+(iv) If $\psi$ has no pole at $1$ then
+$\psi(s)\nrightarrow 0$ as $s\rightarrow \frac{1}{2}$
+through real values of $s$ with $s\geq \frac{1}{2}$.
+\end{lemma}
+
+We have proved the result we set out to obtain.
+\begin{lemma} If a character $\chi\neq\chi_{0}$ 
+only takes real values
+then $L(1,\chi)\neq 0$.
+\end{lemma}
+\begin{theorem} If $\chi\neq\chi_{0}$ then $L(1,\chi)\neq 0$.
+\end{theorem}
+We have thus proved Theorem~\ref{Dirichlet}, 
+If $a$ and $d$ are strictly
+positive coprime integers then there are infinitely
+many primes of the form $a+nd$ with $n$ a positive integer.
+
+\section{Natural boundaries} This section is included
+partly for light relief between two long and tough
+topics and partly to remind the reader that analytic
+continuation is not quite as simple as it looks.
+\begin{lemma} If
+\[f(z)=\sum_{n=0}^{\infty}z^{n!}\]
+for $|z|<1$ then $f:D(0,1)\rightarrow{\mathbb C}$
+is analytic but if $U$ is any connected open set with
+$U\cap D(0,1)\neq\emptyset$ and $U\setminus D(0,1)\neq\emptyset$
+then there does not exist an analytic function
+$g:U\rightarrow{\mathbb C}$ with $g(z)=f(z)$ for all 
+$z\in U\cap D(0,1)$.
+\end{lemma}
+More briefly we say that the unit circle is a natural boundary
+for $f$.
+
+Here is a much more subtle result whose central idea
+goes back to Borel.
+\begin{theorem}
+Suppose $\sum_{n=0}^{\infty}a_{n}z^{n}$ has radius of 
+convergence~$1$ and suppose  $Z_{1}$, $Z_{2}$, \dots
+is a sequence of independent random variables with
+each $Z_{j}$ uniformly distributed over 
+$\{z\in{\mathbb C}:|z|=1\}$. Then, with probability~$1$,
+the unit circle is a natural boundary
+for
+\[\sum_{n=1}^{\infty}Z_{n}a_{n}z^{n}.\]
+\end{theorem}
+Our proof will require the following result due to
+Kolmogorov.
+\begin{theorem}[Kolmogorov zero-one law]
+Let $P$ be a reasonable property 
+which any sequence of complex numbers $w_{n}$
+either does or does not have and such that any
+two sequences $w_{n}$ and $w'_{n}$ with $w_{n}=w'_{n}$
+for $n$ sufficiently large either both have or
+both do not have. Then if $W_{n}$ is a sequence
+of independent complex valued random variables,
+it follows that $W_{n}$  has property $P$ with
+probability~0 or has property $P$ with
+probability~1.
+\end{theorem}
+I will try to explain why this result is plausible
+but for the purposes of the exam this result may be
+assumed without discussion.
+
+We remark the following simple consequence.
+\begin{lemma}\label{softly} There exists a power series 
+$f(z)=\sum_{n=0}^{\infty}a_{n}z^{n}$ with the unit
+circle as natural boundary having the property
+that $f$ and all its derivatives can be extended
+to continuous functions on $\overline{D(0,1)}$.
+\end{lemma}
+\begin{exercise} Obtain Lemma~\ref{softly} by
+non-probabilistic means. One possibility is to consider
+$f(z)=\sum_{n=1}^{\infty}\epsilon_{n}g((1-n^{-1})z^{n!})$ where
+$g(z)=(1-z)^{-1}$ and $\epsilon_{n}$ is a very rapidly decreasing
+sequence of positive numbers.
+\end{exercise}
+
+Finally we remark that whilst it is easy to define
+a natural boundary for a power series the notion
+does not easily extend.
+\begin{lemma} 
+Let $\Omega={\mathbb C}\setminus\{x\in{\mathbb R}:x\geq 0\}$
+We  can find an analytic function $f:\Omega\rightarrow{\mathbb C}$
+with the following properties.
+
+(i) There exists an analytic function 
+$F:\{z:\Re z>0\}\rightarrow{\mathbb C}$ such that $F(z)=f(z)$
+whenever $\Re z>0$, $\Im z<0$.
+
+(2) If $D$ is an open disc which contains $z_{1}$, $z_{2}$
+with $\Re z_{1}>0$, $\Im z_{1}>0$ and
+$\Re z_{2}>0$, $\Im z_{2}<0$ there exists no analytic
+function $g$ on $D$ with $g(z)=f(z)$ for all $z\in D$
+with $\Re z>0$, $\Im z>0$.
+\end{lemma}
+\section{Chebychev and the distribution of primes}
+On the strength of numerical evidence, Gauss was
+lead to conjecture that the number $\pi(n)$
+of primes less than $n$
+was approximately $n/\log n$. The theorem which
+confirms this conjecture is known as the
+prime number theorem.
+The first real
+progress in this direction was due to 
+Chebychev\footnote{His prefered transliteration
+seems to have been Tchebycheff, but he has
+been over-ruled.} We give his results, not out
+of historical piety, but because we shall make
+use of them in our proof of the prime number
+theorem. (Note the obvious conventions that
+$n$ is an integer with $n\geq 1$,
+$\prod_{n<p\leq 2n}$ means the product over all primes 
+$p$ with $n<p\leq 2n$ and so on. It is sometimes
+useful to exclude small values of $n$.)
+\begin{lemma}\label{Chebychev lemma} (i) ${\displaystyle
+2^{n}<\binom{2n}{n}<2^{2n}}$.
+
+(ii) ${\displaystyle \binom{2n}{n}\ \text{divides}
+\ \prod_{p<2n} p^{[(\log 2n)/(\log p)]}}$
+and 
+${\displaystyle \prod_{n<p\leq 2n} p\ \text{divides}
+\ \binom{2n}{n}}$.
+
+(iii) We have $\pi(2n)>(\log 2)n/(\log 2n)$.
+
+(iv)  There exists a constant $A>0$ such that
+$\pi(n)\geq An(\log n)^{-1}$.
+
+(v) There exists a constant $B'$ such that
+$\sum_{p\leq n} \log p\leq B'n$.
+
+(vi)There exists a constant $B$ such that
+$\pi(n)\leq Bn(\log n)^{-1}$.
+\end{lemma}
+We restate the main conclusions of Lemma~\ref{Chebychev lemma}.
+\begin{theorem}[Chebychev]\label{Chebychev theorem} 
+There exist constants $A$ and $B$
+with $0<A\leq B$ such that
+\[An(\log n)^{-1}\leq\pi(n)\leq Bn(\log n)^{-1}.\]
+\end{theorem}
+
+Riemann's approach to the prime number theorem involves
+considering $\theta(n)=\sum_{p\leq n}\log p$ rather than
+$\pi(n)$.
+\begin{lemma} Let $Q$ be a set of positive integers
+and write $\alpha(n)=\sum_{q\in Q,q\leq n} 1$ 
+and $\beta(n)=\sum_{q\in Q,q\leq n} \log q$.
+If there exist constants $A$ and $B$ with
+$0<A\leq B$ such that
+\[An(\log n)^{-1}\leq\alpha(n)\leq Bn(\log n)^{-1},\]
+then $n^{-1}(\log n)\alpha(n)\rightarrow 1$
+as $n\rightarrow\infty$
+if and only if $n^{-1}\beta(n)\rightarrow 1$
+as $n\rightarrow\infty$.
+\end{lemma}
+\begin{lemma}\label{logarithm transfer}
+If $n^{-1}\theta(n)\rightarrow 1$
+as $n\rightarrow\infty$ then
+$n^{-1}(\log n)\pi(n)\rightarrow 1$
+as $n\rightarrow\infty$.
+\end{lemma}
+\section{The prime number theorem} We start by recalling various
+facts about the Laplace transform.
+\begin{exercise}\label{Laplace}
+If $a$ is a real number
+let us write ${\mathcal E}_{a}$  for the collection
+of locally integrable\footnote{Use your favourite
+definition of this or replace by `well behaved'.}
+functions $F:{\mathbb R}\rightarrow{\mathbb C}$
+such that $F(t)=0$ for all $t<0$ and
+$F(t)e^{-at}\rightarrow 0$ as $t\rightarrow\infty$.
+
+(i) If $F\in {\mathcal E}_{a}$ explain why the
+\emph{Laplace transform} 
+\[f(z)={\mathcal L}F(z)=\int_{-\infty}^{\infty}F(t)\exp(-zt)\,dt\]
+is well defined and analytic on $\{z\in{\mathbb C}:\Re z>a\}$.
+
+(ii) We  define the Heaviside function $H$ by
+writing $H(t)=0$ for $t<0$ and $H(t)=1$ for $t\geq 0$.
+If $a\in {\mathbb R}$ and $b\geq 0$ consider
+$H_{a,b}(t)=H(t-b)e^{at}$. Show  that $H_{a,b}\in {\mathcal E}_{a}$
+and that ${\mathcal L}H_{a,b}(z)$ can be extended
+to a meromorphic function on ${\mathbb C}$ with a simple
+pole at $a$. 
+\end{exercise}
+Engineers are convinced that the converse to 
+Exercise~\ref{Laplace}~(i) holds in the sense that if
+$F\in {\mathcal E}_{a}$ has a Laplace transform $f$
+which can be extended to a function $\tilde{f}$
+analytic on $\{z\in{\mathbb C}:\Re z>b\}$ 
+[$a$, $b$ real, $a\geq b$] then $F\in {\mathcal E}_{b}$.
+Unfortunately, this is not true but it represents
+a good heuristic principle to bear in mind in what follows.
+Number theorists use the Mellin transform
+\[{\mathcal M}F(z)=\int_{0}^{\infty}F(t)t^{z-1}\,dt\]
+in preference to the Laplace transform but the
+two transforms are simply related.
+\begin{exercise} Give the relation explicitly.
+\end{exercise}
+
+Riemann considered the two functions
+\[\Phi(s)=\sum_{p}p^{-s}\log p\]
+and the \emph{Riemann zeta function}
+\[\zeta(s)=\sum_{n=1}^{\infty}n^{-s}.\]
+Both of these functions are defined for $\Re s>1$ 
+but Riemann saw that they could be extended
+to analytic functions over a larger domain.
+
+The next lemma is essentially a repeat of 
+Lemmas~\ref{Extend Dirichlet 1}~(ii)
+and~\ref{Extend Dirichlet 2}~(ii).
+\begin{lemma} 
+(i) Let $S_{0}(x)=0$ for $x\leq 0$ and
+$S_{0}(x)=\sum_{1\leq m\leq x}1$. If
+$S_{0}:{\mathbb R}\rightarrow{\mathbb R}$
+and $T_{0}(x)=S_{0}(x)-x$ then $T_{0}$ is bounded
+and locally integrable. We have
+\[\sum_{n=1}^{N}n^{-s}\rightarrow 
+s\int_{1}^{\infty}T_{0}(x)x^{-s-1}\, dx+\frac{s}{s-1}\]
+as $N\rightarrow\infty$ for all $s$ with $\Re s>1$.
+
+(ii) There exists an meromorphic function $\zeta$
+analytic on $\{s\in{\mathbb C}:\Re s>0\}$ except for
+a simple pole, residue $1$ at $1$ such that
+$\sum_{n=1}^{\infty}n^{-s}$ converges to 
+$\zeta(s)$ for $\Re s>1$.
+\end{lemma}
+The use of $s$ rather than $z$ goes back to Riemann.
+Riemann showed that $\zeta$ can be extended to a meromorphic
+function over ${\mathbb C}$ but we shall not need this.
+
+How does this help us study $\Phi$?
+\begin{lemma}\label{extend half}
+(i) We have $\prod{p<N}(1-p^{s})^{-1}\rightarrow \zeta(s)$
+uniformly for $\Re s>1+\delta$ whenever $\delta>0$.
+
+(ii) We have
+\[\frac{\zeta'(s)}{\zeta(s)}=-\sum_{p}\frac{\log p}{p^{s}-1}\]
+for all $\Re s>1$.
+
+(iii) We have
+\[\Phi(s)=-\frac{\zeta'(s)}{\zeta(s)}-
+\sum_{p}\frac{\log p}{(p^{s}-1)p^{s}}\]
+for all $\Re s>1$.
+
+(iv) The function $\Phi$ can be analytically extended
+to a meromorphic function on
+$\{s:\Re s>\frac{1}{2}\}$. It has a simple pole at 1
+with residue $1$ and simple poles at the zeros of
+$\zeta$ but nowhere else.
+\end{lemma}
+
+
+The next exercise is long and will not be used later but is,
+I think, instructive.
+\begin{exercise} (i) Show by grouping in pairs
+that $\sum_{n=1}^{\infty}(-1)^{n-1}n^{-s}$
+converges to an analytic function $g(s)$ in the
+region $\{s:\Re s>0\}$.
+
+(ii) Find $A$ and $B$ such that $g(s)=A\zeta(s)+B2^{-s}\zeta(s)$
+for all $\Re s>1$. Why does this give another proof
+that $\zeta$ can be extended to an analytic function 
+on $\{s:\Re s>0\}$.
+
+(iii) Show that $g(1/2)\neq 0$ and deduce that $\zeta(1/2)\neq 0$.
+
+(iv) By imitating the arguments of Lemma~\ref{extend half}
+show that we we can find an analytic function $G$ defined
+on $\{s:\Re s>1/3\}$ such that
+\[\Phi(s)=-\frac{\zeta'(s)}{\zeta(s)}-\Phi(2s)-G(s).\]
+Deduce that $\Phi$ can be extended to a meromorphic
+function on $\{s:\Re s>1/3\}$. 
+
+(v) Show, using (iii), that $\Phi$ has a pole at $1/2$.
+
+(vi) Show that the assumption that 
+$|\sum_{p<N}\log p -N|\leq A N^{1/2-\epsilon}$ for
+some $\epsilon>0$ and $A>0$ and all large enough $N$
+leads to the conclusion that
+$\Phi$ can be analytically extended from $\{s:\Re s>1\}$
+to an everywhere analytic function
+on $\{s:\Re s>1/2-\epsilon\}$.
+
+(vii) Deduce that if $\epsilon>0$ and $A>0$
+\[|\sum_{p<N}\log p -N|\geq A N^{1/2-\epsilon}
+\ \text{for infinitely many values of $N$.}\]
+\end{exercise}
+
+It is well known that Riemann conjectured that $\zeta$
+has no zeros in $\{s:\Re s>1/2\}$ and that his conjecture
+is the most famous open problem in mathematics.
+The best we can do is to follow Hadamard and
+de la Vall\'{e}e Poussin and show that $\zeta$
+has no zero on $\{s:\Re s=1\}$. Our proof makes
+use of the slightly unconventional convention
+that if $h$ and $g$ are analytic in a neighbourhood of $w$,
+$g(w)\neq 0$ and
+and $h(z)=(z-w)^{k}g(z)$ then we say that $h$ has a zero
+of order $k$ at $w$. (The mild unconventionality arises
+when $k=0$.)
+\begin{lemma} Suppose that $\zeta$ has a zero of order
+$\mu$ at $1+i\alpha$ 
+and a zero of order $\nu$ at $1+2i\alpha$
+with $\alpha$ real and $\alpha>0$. Then
+
+(i) $\zeta$ has a zero of order $\mu$ at $1-i\alpha$
+and a zero of order $\nu$ at $1-2i\alpha$.
+
+(ii) As $\epsilon\rightarrow 0$ through
+real positive values of $\epsilon$
+\begin{align*}
+\epsilon\Phi(1+\epsilon \pm i\alpha)&\rightarrow -\mu\\
+\epsilon\Phi(1+\epsilon \pm 2i\alpha)&\rightarrow -\nu\\
+\epsilon\Phi(1+\epsilon)&\rightarrow 1.
+\end{align*}
+
+(iii) If $s=1+\epsilon$ with $\epsilon$ real and positive
+then
+\begin{align*}
+0&\leq\sum_{p}p^{-s}\log p (e^{(i\alpha\log p)/2}+
+e^{-(i\alpha\log p)/2})^{4}\\
+&=\Phi(s+2i\alpha)+\Phi(s-2i\alpha)
++4(\Phi(s+i\alpha)+\Phi(s-i\alpha))
++6\Phi(s).
+\end{align*}
+
+(iv) We have $0\leq-2\nu-8\mu+6$.
+\end{lemma}
+\begin{theorem} If $\Re s=1$ then $\zeta(s)\neq 0$.
+\end{theorem}
+We note the following trivial consequence.
+\begin{lemma}
+If we write
+\[T(s)=\frac{\zeta'(s)}{\zeta(s)}-(s-1)^{-1},\]
+then given any $R>0$ we can find a $\delta(R)$
+such that $T$ has no poles in
+$\{z:\Re z\geq 1-\delta(R),\ Im z\leq R\}$
+\end{lemma}
+
+We shall show that the results we have obtained on 
+the behaviour of $\zeta$ suffice to show that
+\[\int_{1}^{X}\frac{\theta(x)-x}{x^{2}}\,dx\]
+tends to a finite limit as $X\rightarrow\infty$.
+The next lemma shows that this is sufficient to
+give the prime number theorem.
+\begin{lemma} Suppose that 
+$\beta:[1,\infty)\rightarrow{\mathbb R}$
+is an increasing (so integrable) function.
+
+(i) If $\lambda>1$, $y>1$ and $y^{-1}\beta(y)>\lambda$
+then
+\[\int_{y}^{\lambda y}\frac{\beta(x)-x}{x^{2}}\,dx
+\geq A(\lambda)\]
+where $A(\lambda)$ is a strictly positive number
+depending only on $\lambda$.
+
+(ii) If $\int_{1}^{X}\frac{\beta(x)-x}{x^{2}}\,dx$
+tends to limit as $X\rightarrow\infty$ then
+$x^{-1}\beta(x)\rightarrow 1$ as $x\rightarrow\infty$.
+\end{lemma}
+
+We need a couple of further preliminaries.
+First we note a simple consequence of the Chebychev
+estimates (Theorem~\ref{Chebychev theorem}).
+\begin{lemma} There exists a constant $K$
+such that
+\[\frac{|\theta(x)-x|}{x}\leq K\]
+for all $x\geq 1$.
+\end{lemma}
+Our second step is to translate our results into
+the language of Laplace transforms. (It is 
+just a matter of taste whether to work with Laplace
+transforms or Mellin transforms.)
+\begin{lemma} Let $f(t)=\theta(e^{t})e^{-t}-1$ for
+$t\geq 0$ and $f(t)=0$ otherwise. Then
+\[\mathcal{L}f(z)=\int_{-\infty}^{\infty}f(t)e^{-tz}\,dt\]
+is well defined and 
+\[\mathcal{L}f(z)=\frac{\Phi(z-1)}{z}-\frac{1}{z}\]
+for all $\Re z>0$.
+
+The statement $\int_{1}{\infty}(\theta(x)-x)/x^{2}\,dx$
+convergent is equivalent to the statement that
+$\int_{-\infty}^{\infty}f(t)\,dt$ converges.
+\end{lemma}
+
+We have reduced the proof of the prime number theorem
+to the proof of the following lemma.
+\begin{lemma} Suppose $\Omega$ is an open set
+with $\Omega\supseteq \{z:\Re z\geq 0\}$,
+$F:\Omega\rightarrow{\mathbb C}$  is an analytic
+function and $f:[0,\infty]\rightarrow{\mathbb R}$
+is bounded locally integrable function such that
+\[F(z)=\mathcal{L}f(z)=\int_{0}^{\infty}f(t)e^{-tz}\,dt\]
+for $\Re z>0$. Then $\int_{0}^{\infty}f(t)\,dt$ converges.
+\end{lemma}
+This lemma and its use to prove the prime number theorem
+are due to D.~Newman. (A version will be found in~\cite{Newman}.)
+
+\section{Boundary behaviour of conformal maps}%
+\label{Good boundary} 
+We now return to the boundary behaviour
+of the Riemann mapping. (Strictly speaking we should
+say, a Riemann mapping but we have seen that it
+is `essentially unique'. We saw in Example~\ref{bad boundary}
+that there is no general theorem but the following result
+is very satisfactory.
+\begin{theorem}\label{Jordan boundary}
+If $\Omega$ is a simply connected
+open set in ${\mathbb C}$ with boundary a Jordan curve
+then any bijective analytic map $f:D(0,1)\rightarrow \Omega$
+can be extended to a bijective continuous map
+from $\overline{D(0,1)}\rightarrow\overline{\Omega}$.
+\end{theorem}
+Recall\footnote{In the normal weasel-worded mathematical
+sense.} that a \emph{Jordan curve} is
+a continuous injective
+map $\gamma:{\mathbb T}\rightarrow{\mathbb C}$.
+We say that $\gamma$ is the boundary of $\Omega$
+if the image of $\gamma$ is 
+$\overline{\Omega}\setminus\Omega$.
+
+I shall use the proof in Zygmund's magnificent
+treatise~\cite{Zygmund}
+(see Theorem~10.9 of Chapter~VII)
+which has the advantage of minimising the topology
+but the minor disadvantage of using measure theory
+(students who do not know measure theory may take
+the results on trust) and the slightly greater disadvantage
+of using an idea from Fourier analysis 
+(the \emph{conjugate} trigonometric sum $\tilde{S}_{N}(f,t)$)
+which
+can not be properly placed in context here.
+\begin{definition} If $f:{\mathbb T}\rightarrow{\mathbb C}$
+is an integrable\footnote{Use whichever integral you
+are happiest with.} function we define
+\[\hat{f}(n)=\frac{1}{2\pi}\int_{\mathbb T}f(t)\exp(-int)\,dt.\]
+We set
+\begin{align*}
+S_{N}(f,t)&=\sum_{n=-N}^{N}\hat{f}(n)\exp(int)\\
+\tilde{S}_{N}(f,t)&=-i\sum_{n=-N}^{N}\sgn(n)\hat{f}(n)\exp(int)\\
+\sigma_{N}(f,t)&=(N+1)^{-1}\sum_{n=0}^{N}S_{n}(f,t)
+\end{align*}
+\end{definition}
+Recall that
+\[f*g(x)=\frac{1}{2\pi}\int_{\mathbb T}f(t)g(x-t)\,dt.\]
+\begin{lemma} We have
+\[S_{N}(f)=D_{N}*f,\ \tilde{S}_{N}(f)=\tilde{D}_{N}*f,
+\sigma_{N}(f)=K_{N}*f,\]
+with
+\begin{align*} 
+D_{N}(t)&=\sum_{n=-N}^{N}\exp int=\frac{\sin(N+\tfrac{1}{2})t}
+{\tfrac{t}{2}}\\
+\tilde{D}_{N}(t)&=2\sum_{n=1}^{N}\sin nt
+=\frac{\cos\tfrac{1}{2}t-\cos(N+\tfrac{1}{2})t}{\sin\tfrac{1}{2}t}\\
+\ K_{N}(t)&=\frac{1}{N+1}\left(\tfrac{\sin\frac{N+1}{2}t}
+{\sin\tfrac{1}{2}t}\right)^{2}.
+\end{align*}
+\end{lemma}
+(Formally speaking, we have not defined $D_{N}(t)$, 
+$K_{N}(t)$ and $\tilde{D}_{N}(t)$ when $t=0$.
+By inspection 
+$D_{N}(0)=2N+1$, $K_{N}(0)=N+1$, $\tilde{D}_{N}(0)=0$.)
+
+By looking at the properties of the \emph{kernels}
+$K_{N}(t)$ and $\tilde{D}_{N}(t)$ we obtain results
+about the associated sums.
+\begin{lemma} We have
+\begin{alignat*}{2}
+K_{N}(t)&>0&&\qquad\text{for all $t$}\\
+K_{N}(t)&\rightarrow 0&&\qquad
+\text{uniformly for $|t|\geq \delta$
+whenever $\delta>0$}\\
+\frac{1}{2\pi}\int_{\mathbb T}K_{N}(t)\,dt&=1.
+\end{alignat*}
+\end{lemma}
+\begin{theorem}[F\'{e}jer] If $f:{\mathbb T}\rightarrow{\mathbb C}$
+is integrable and $f$ is continuous at $x$ then
+\[\sigma_{N}(f,x)\rightarrow f(x)\ \text{as $N\rightarrow\infty$}.\]
+\end{theorem}
+We shall only use the following simple consequence.
+\begin{lemma} If $f:{\mathbb T}\rightarrow{\mathbb R}$
+is integrable but $S_{N}(f,x)\rightarrow\infty$
+as $N\rightarrow\infty$ then
+$f$ can not be continuous at $x$.
+\end{lemma}
+\begin{exercise} If $f:{\mathbb T}\rightarrow{\mathbb R}$
+is integrable and there exist $\delta>0$ and $M>0$
+such that $|f(t)|\leq M$ for all $|t|<\delta$ show that
+it is not possible to have $S_{N}(f,0)\rightarrow\infty$
+as $N\rightarrow\infty$.
+\end{exercise}
+
+\begin{lemma} (i) If $f:{\mathbb T}\rightarrow{\mathbb C}$
+is integrable and $f$ is continuous at $x$ then
+\[\frac{\tilde{S}_{N}(f,x)}{\log N}\rightarrow 0\]
+as $N\rightarrow 0$.
+
+(ii) If $h(t)=\sgn(t)-t/\pi$ then there is a non-zero
+constant $L$ such that
+\[\frac{\tilde{S}_{N}(h,0)}{\log N}\rightarrow L\]
+as $N\rightarrow \infty$.
+
+(iii) If $f:{\mathbb T}\rightarrow{\mathbb C}$
+is integrable and $f(x+\eta)\rightarrow f(x+)$,
+$f(x-\eta)\rightarrow f(x-)$ as $\eta\rightarrow 0$
+through positive values then
+\[\frac{\tilde{S}_{N}(f,x)}{\log N}\rightarrow 
+\frac{L(f(x+)-f(x-))}{2}\]
+as $N\rightarrow 0$.
+\end{lemma}
+
+We now come to the object of our Fourier analysis.
+\begin{lemma}\label{jump} If $f:{\mathbb T}\rightarrow{\mathbb C}$
+is integrable with $\hat{f}(n)=0$ for $n<0$. If
+$f(x+\eta)\rightarrow f(x+)$,
+$f(x-\eta)\rightarrow f(x-)$ as $\eta\rightarrow 0$
+through positive values then $f(x+)=f(x-)$.
+\end{lemma}
+In other words, power series cannot have `discontinuities
+of the first kind'.
+\begin{exercise} Give an example of a discontinuous
+function with no discontinuities
+of the first kind.
+\end{exercise}
+
+Once Lemma~\ref{jump} has been got out of the way
+we can return to the proof of Theorem~\ref{Jordan boundary}
+on the boundary behaviour of the Riemann mapping.
+The proof turns out to be long but reasonably clear.
+We start with a very general result. 
+\begin{lemma}
+If $\Omega$ is a simply connected
+open set in ${\mathbb C}$
+and $f:D(0,1)\rightarrow \Omega$ is a bijective
+bicontinuous map then given any compact subset $K$ of $\Omega$
+we can find an $1>r_{K}>0$ such that, whenever
+$1>|z|>r_{K}$, $f(z)\notin K$. 
+\end{lemma}
+Any bounded open set $\Omega$ has an area $|\Omega|$
+and a simple application of the Cauchy-Riemann equations
+yields the following result.
+\begin{lemma}
+Suppose that $\Omega$ is a simply connected bounded
+open set in ${\mathbb C}$
+and $f:D(0,1)\rightarrow \Omega$ is a bijective
+analytic map. Then
+\[|\Omega|=\int_{0\leq r<1}\int_{0}^{2\pi}
+|f'(r e^{i\theta})|^{2}r\,d\theta\,dr.\]
+\end{lemma}
+\begin{lemma}\label{Jordan almost} 
+Suppose that $\Omega$ is a simply connected bounded
+open set in ${\mathbb C}$
+and $f:D(0,1)\rightarrow \Omega$ is a bijective
+analytic map. The set $X$
+of $\theta [0,2\pi)$ such that $f(r e^{i\theta})$ tends
+to a limit as $r\rightarrow 1$ from below
+has complement of Lebesgue
+measure $0$.
+\end{lemma}
+
+From now on until the end of the section we operate
+under the standing hypothesis that
+$\Omega$ is a simply connected
+open set in ${\mathbb C}$ with boundary a Jordan curve.
+This means that $\Omega$ is bounded (we shall accept
+this as a topological fact). We take $X$ as 
+in Lemma~\ref{Jordan almost} and write
+$f(e^{i\theta})=\lim_{r\rightarrow 1-}f(r e^{i\theta})$
+whenever $\theta\in X$. We shall assume
+(as we may without loss of generality) that $0\in X$.
+\begin{lemma}~\label{increasing Jordan}
+Under our standing hypotheses we
+can find a continuous bijective
+map $g:{\mathbb T}\rightarrow{\mathbb C}$
+such that $g(0)=f(1)$ and
+such that, if $x_{1}$, $x_{2}\in X$ with
+$0\leq x_{1}\leq x_{2} <2\pi$ and $t_{1}$, $t_{2}$
+satisfy $g(t_{1})=x_{1}$, $g(t_{2})=x_{2}$
+and $0\leq t_{1}, t_{2}<2\pi$ then $t_{1}\leq t_{2}$.
+\end{lemma}
+(The reader will, I hope, either excuse
+or correct the slight abuse of notation.)
+
+
+We now need a simple lemma.
+\begin{lemma} Suppose $G:D(0,1)\rightarrow{\mathbb C}$ 
+is a bounded analytic function such that
+$G(r e^{i\theta})\rightarrow 0$ as $r\rightarrow 1-$
+for all $|\theta|<\delta$
+and some $\delta>0$. Then $G=0$.
+\end{lemma}
+Using this we can strengthen Lemma~\ref{increasing Jordan}
+\begin{lemma}~\label{strictly increasing Jordan}
+Under our standing hypotheses we
+can find a continuous bijective
+map $\gamma:{\mathbb T}\rightarrow{\mathbb C}$
+such that $\gamma(0)=f(1)$ and
+such that, if $x_{1}$, $x_{2}\in X$ with
+$0\leq x_{1}< x_{2} <2\pi$ and $t_{1}$, $t_{2}$
+satisfy $g(t_{1})=x_{1}$, $g(t_{2})=x_{2}$
+and $0\leq t_{1}, t_{2}<2\pi$ then $t_{1}< t_{2}$.
+\end{lemma}
+From now on we add to our standing hypotheses
+the condition that $\gamma$ satisfies the conclusions
+of Lemma~\ref{strictly increasing Jordan}.
+
+We now `fill in the gaps'.
+\begin{lemma} We can find a strictly increasing function                     $w:[0,2\pi]\rightarrow [0,2\pi]$ with $w(0)=0$ 
+and $w(2\pi)=2\pi$,
+such that $\gamma(w(\theta))=f(e^{i\theta})$ for all
+$\theta\in X$.
+\end{lemma}
+We now set $f(e^{i\theta})=\gamma(w(\theta))$ 
+and $F(\theta)=f(e^{i\theta})$ for all $\theta$.
+A simple use of dominated convergence gives us the next lemma.
+\begin{lemma} If $f(z)=\sum_{n=1}^{\infty}c_{n}z^{n}$
+for $|z|<1$ then,
+we have $\hat{F}(n)=c_{n}$ for $n\geq 0$ and
+$\hat{\gamma}(n)=0$ for $n<0$.
+\end{lemma}
+However increasing functions
+can only have discontinuities of the first kind.
+Thus $w$ and so $F$ can only have discontinuities
+of the first kind. But, using our investment in Fourier
+analysis (Lemma~\ref{jump}) we see that $F$ can have no
+discontinuities
+of the first kind..
+\begin{lemma} The function $F:{\mathbb T}\rightarrow{\mathbb C}$
+is continuous.
+\end{lemma}
+Using the density of $X$ in ${\mathbb T}$ we have the required
+result.
+\begin{lemma} The function 
+$f:\overline{D(0,1)}\rightarrow\overline{\Omega}$
+is continuous and bijective.
+\end{lemma} 
+This completes the proof of Theorem\ref{Jordan boundary}.
+
+Using a little analytic topology we may restate
+Theorem\ref{Jordan boundary} as follows.
+is very satisfactory.
+\begin{theorem}\label{Jordan boundary both}
+If $\Omega$ is a simply connected
+open set in ${\mathbb C}$ with boundary a Jordan curve
+then any bijective analytic map $f:D(0,1)\rightarrow \Omega$
+can be extended to a bijective continuous map
+from $\overline{D(0,1)}\rightarrow\overline{\Omega}$.
+The map $f^{-1}\overline{\Omega}\rightarrow\overline{D(0,1)}$
+is continuous on $\overline{\Omega}$.
+\end{theorem}.
+\section{Picard's little theorem} The object of this section
+is to prove the following remarkable result.
+\begin{theorem}[Picard's little theorem] If
+$f:{\mathbb C}\rightarrow{\mathbb C}$ is analytic then
+${\mathbb C}\setminus f({\mathbb C})$ contains
+at most one point.
+\end{theorem}
+The example of $\exp$ shows that 
+${\mathbb C}\setminus f({\mathbb C})$
+may contain one point.
+
+The key to Picard's theorem is the following result.
+\begin{theorem}\label{Picard cover}
+There exists an analytic map 
+$\lambda:D(0,1)\rightarrow {\mathbb C}\setminus\{0,1\}$
+with the property that given $z_{0}\in {\mathbb C}\setminus\{0,1\}$,
+$w_{0}\in D(0,1)$ and $\delta>0$ such that
+$\lambda(w_{0})=z_{0}$ and
+$D(z_{0},\delta)\subseteq {\mathbb C}\setminus\{0,1\}$
+we can find 
+an analytic function 
+$g:D(z_{0},\delta)\rightarrow D(0,1)$
+such that $\lambda (g(z))=z$ for all $z\in D(z_{0},\delta)$.
+\end{theorem}
+
+We combine this with a result whose proof differs hardly at all
+from that of Theorem~\ref{logarithm}.
+\begin{lemma}\label{pull up}
+Suppose that $U$ and $V$ are
+open sets and that $\tau:U\rightarrow V$ is a
+analytic map with the following property.
+Given $u_{0}\in U$
+and $v_{0}\in V$ such that
+$\tau(u_{0})=v_{0}$ then, given any $\delta>0$ with
+$D(v_{0},\delta)\subseteq V$, we can find   
+an analytic function 
+$g:D(v_{0},\delta)\rightarrow U$
+such that $\lambda (g(z))=z$ for all $z\in D(v_{0},\delta)$.
+Then if $W$ is an open simply connected set
+and $f:W\rightarrow U$
+is analytic we can find an analytic
+function $F:W\rightarrow U$
+such that $\tau(F(z))=f(z)$ for all $z in W$. 
+\end{lemma}
+(The key words here are `lifting' and `monodromy'. It is at points
+like this that the resolutely `practical' nature of the presentation
+shows its weaknesses. A little more theory about analytic
+continuation for its own sake would turn a `technique'
+into a theorem.)
+
+In the case that we require, 
+Lemma~\ref{pull up} gives the following result.
+\begin{lemma} If $\lambda$ is as in Theorem~\ref{Picard cover}
+and $f:{\mathbb C}\rightarrow{\mathbb C}\setminus\{0,1\}$
+is analytic we can find $F:{\mathbb C}\rightarrow D(0,1)$
+such that $\lambda(F(z))=f(z)$.
+\end{lemma}
+Picard's little theorem follows on considering Louiville's
+theorem that a bounded analytic function on ${\mathbb C}$
+is constant.                                                                  
+The proof of Picard's theorem thus reduces to the 
+construction of the function
+$\lambda$ of Theorem~\ref{Picard cover}.
+We make use ideas concerning reflection which
+I assume the reader has already met.
+\begin{definition} (i) Let ${\mathbf p}$ and ${\mathbf q}$
+are orthonormal vectors in ${\mathbb R}^{2}$.
+If ${\mathbf a}$ is a vector in ${\mathbb R}^{2}$
+and $x,y\in{\mathbb R}$ the reflection of 
+${\mathbf a}+x{\mathbf p}+y{\mathbf q}$ in the
+line through ${\mathbf a}$ parallel to ${\mathbf p}$
+is ${\mathbf a}+x{\mathbf p}-y{\mathbf q}$.
+
+(ii) If ${\mathbf a}$ and ${\mathbb b}$
+are vectors in ${\mathbb R}^{2}$ and $R,r>0$
+then the reflection of ${\mathbf a}+r{\mathbf b}$
+in the circle centre ${\mathbf a}$ and radius $R$
+is ${\mathbf a}+r^{-1}R^{2}{\mathbf b}$.
+\end{definition}
+
+\begin{lemma}[Schwarz reflection principle]
+Let $\Sigma_{1}$ and $\Sigma_{2}$ be two circles
+(or straight lines).
+Suppose $G$ is an open set which is taken to
+itself by reflection in $\Sigma_{1}$. Write $G_{+}$
+for that part of $G$ on one side\footnote{There are no
+topological difficulties here. The two sides of $|z-a|=r$
+are $\{z:|z-a|<r\}$ and $\{z:|z-a|>r\}$.} of 
+$\Sigma_{1}$ and $G_{0}=G\cap\Sigma_{1}$.
+If $f:G_{+}\cup G_{0}$ is a continuous function,
+analytic on $G_{+}$ with $f(G_{0})\subseteq \Sigma_{2}$
+then we can find an analytic function 
+$\tilde{f}:G\rightarrow{\mathbb C}$ with
+$\tilde{f}(z)=f(z)$ for all $z\in G_{+}\cup G_{0}$.
+If $f(G_{+})$ lies on one side of $\Sigma_{2}$
+then we can ensure that $\tilde{f}(G_{-})$ lies on the other.
+\end{lemma}
+We first prove the result when $\Sigma_{1}$ and $\Sigma_{2}$
+are the real axis and then use M\"{o}bius transforms
+to get the full result.
+
+We now use the work of section~\ref{Good boundary}
+on boundary behaviour.
+\begin{lemma} Let $\mathcal{H}$ be the upper half plane $\{z:\Im z>0$
+and $V$ the region bounded by the lines $C_{1}=\{iy:y\geq 0\}$,
+$C_{3}=\{1+iy:y\geq 0\}$,
+and the arc $C_{2}=\{z:|z-\frac{1}{2}|=\frac{1}{2},\ \Im z\geq 0\}$
+and containing the point $\frac{1}{2}+i$. There
+is a continuous bijective map 
+$f:\overline{V}\rightarrow \overline{\mathcal{H}}$
+which is analytic on $V$, takes $0$ to $0$, $1$ to $1$,
+$C_{1}$ to $\{x:x\leq 0\}$, $C_{2}$ to $\{x:0\leq x\leq 1\}$,
+and $C_{3}$ to $\{x:x\geq  1\}$.
+\end{lemma}
+By repeated use of the Schwarz reflection principle
+we continue $f$ analytically to the whole of $\mathcal{H}$.
+\begin{lemma}\label{Picard cover upper}
+Let $\mathcal{H}$ be the upper half plane.
+There exists an analytic map 
+$\tau:\mathcal{H}\rightarrow {\mathbb C}\setminus\{0,1\}$
+with the property that given $z_{0}\in {\mathbb C}\setminus\{0,1\}$
+and $w_{0}\in \mathcal{H}$ such that
+$\tau(w_{0})=z_{0}$ we can find $\delta>0$ with
+$D(z_{0},\delta)\subseteq {\mathbb C}\setminus\{0,1\}$ and 
+an analytic function 
+$g:D(z_{0},\delta)\rightarrow \mathcal{H}$
+such that $\tau (g(z))=z$ for all $z\in D(z_{0},\delta)$.
+\end{lemma}
+Since $\mathcal{H}$ can be mapped conformally to $D(0,1)$
+Theorem~\ref{Picard cover} follows at once and
+we have proved Picard's little theorem.
+\section{References and further reading} There exist many
+good books on advanced classical complex variable
+theory which cover what is in this course and much more.
+I particularly like~\cite{Veech} and~\cite{Epstein}.
+For those who wish to study from the masters there
+are Hille's two volumes~\cite{Hille} and
+the elegant text of Nevanlinna~\cite{Nevanlinna}.
+There is an excellent treatment of Dirichlet's
+theorem and much more in Davenport's
+\emph{Multiplicative Number Theory}~\cite{Davenport}
+[The changes between the first and second editions
+are substantial but do not affect that part which
+deals with material in this course.]
+If you wish to know more about the Riemann zeta-function
+you can start with~\cite{Patterson}.
+In preparing this course I have also used~\cite{Korner1}
+and~\cite{Korner2} since I find the author sympathetic.
+\begin{thebibliography}{99}
+\bibitem{Newman} J.~Bak and D.~J.~Newman
+\emph{Complex Analysis}
+Springer, New York, 1982.
+\bibitem{Davenport} H.~Davenport
+\emph{Multiplicative Number Theory}
+(2nd Edition), Springer, New York, 1980.
+\bibitem{Epstein} L.-S.~Hahn and B.~Epstein
+\emph{Classical Complex Analysis}
+Jones and Bartlett, Sudbury, Mass, 1996.
+\bibitem{Hille} E. Hille
+\emph{Analytic Function Theory} (2 Volumes)
+Ginn and Co (Boston), 1959.
+\bibitem{Korner1} T.~W.~K\"{o}rner 
+\emph{Fourier Analysis}
+CUP, 1988.
+\bibitem{Korner2} T.~W.~K\"{o}rner 
+\emph{Exercises for Fourier Analysis}
+CUP, 1993.
+\bibitem{Nevanlinna} R.~Nevanlinna and V.~Paatero
+\emph{Introduction to Complex Analysis}
+(Translated from the German), Addison-Wesley
+(Reading, Mass), 1969.
+\bibitem{Patterson} S.~J.~Patterson
+\emph{An Introduction to the Theory of the Riemann zeta-function}
+CUP, 1988.
+\bibitem{Veech} W.~A.~Veech 
+\emph{A Second Course in Complex Analysis}
+Benjamin, New York, 1967.
+\bibitem{Zygmund} A.~Zygmund
+\emph{Trigonometric Series} (2 Volumes)
+CUP, 1959. 
+\end{thebibliography}

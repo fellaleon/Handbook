@@ -1,0 +1,112 @@
+\chapter{Linear Analysis}
+
+\section{Normed Space}
+
+\subsection{Normed space}
+
+\begin{definition}[normed space\index{normed space}]\label{def:normed_space}
+A normed (vector) space over field $\F$\footnote{Usually, we take $\F = \R,\C$} is a pair $(X,\dabs{\cdot})$ where $X$ is a vector space over $\F$ and $\dabs{\cdot} : X\to \R^+\cup \bra{0}, x\mapsto \dabs{x}$ such
+that:
+\ben
+\item [(i)] $\dabs{x}\geq 0,\forall x\in X$.
+\item [(ii)] $\dabs{x} = 0 \ \lra\ x = 0$.
+\item [(iii)] $\dabs{\lm x} = \abs{\lm}\dabs{x}$, $\forall \lm \in \F$, $\forall x\in X$.
+\item [(iv)] $\dabs{x+y} \leq \dabs{x} + \dabs{y}$, $\forall x,y\in X$.
+\een
+
+$\dabs{\cdot}$ is called a norm\index{norm} on $X$.
+\end{definition}
+
+\begin{example}
+Euclidean space\footnote{definition needed.} $X = \R^n$ with $\dabs{x} = \sqrt{\sum^n_{i=1}x_i^2}$ for $x\in X$.
+\end{example}
+
+\begin{remark}\label{rem:normed_space_is_metric_space}
+Note that every normed space is a metric space. Recalling the definition of metric space (Definition \ref{def:metric_space}), we can define a metric $d(x,y) = \dabs{x-y}$ on $X$.
+
+Conversely, if $X$ is a vector space over $\F$ and $d$ is a metric on $X$ with
+\be
+d(\lm x, \lm y) = \abs{\lm} d(x,y),\qquad d(x+z,y+z) = d(x,y),\qquad \forall \lm \in \F,x,y,z\in X,
+\ee
+then $\dabs{x} = d(x,0)$ is a norm on $X$. So metric space is not normed space in general case.
+\end{remark}
+
+\subsection{Typical spaces}
+
+\subsection{Formulas}
+
+\begin{theorem}[arithmetic-geometric mean inequality\index{arithmetic-geometric mean inequality}]\label{thm:arithmetic_geometric_mean_inequality}
+For positive real numbers $x_1, \dots, x_n$, \be \bb{\prod^n_{i=1} x_i}^{1/n} \leq \frac 1n \sum^n_{i=1} x_i. \ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+See Example \ref{exa:arithmetic_geometric_mean_inequality_probability_proof}.
+\end{proof}
+
+
+\subsection{Separable normed space}
+
+
+\begin{definition}[separable normed space\index{separable!normed space}]\label{def:separable_normed_space}
+A normed space $(X,\dabs{\cdot})$ is called separable if there exist countably many dense subsets of $X$.
+\end{definition}
+
+\begin{example}
+$\forall p\in [1,\infty)$, $\ell_p(\F)$ is separable. However, $\ell_\infty(\F)$ is not separable\footnote{proof needed.}.
+\end{example}
+
+
+\section{Hahn-Banach Theorem}
+
+
+
+
+\subsection{Zorn's lemma}
+
+\begin{lemma}[Zorn's lemma\index{Zorn's lemma}]\label{lem:zorn}
+Suppose that every totally ordered subset $S$ of a non-empty, totally ordered set\footnote{it is partially ordered set in Bollobas book. check needed.} $X$ has an upper bound. Then $X$ has a maximal
+element.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed. This is equivalent to the Axiom of Choice.}
+\end{proof}
+
+
+\section{Banach Space}
+
+
+
+\begin{definition}[Banach space\index{Banach space}]\label{def:banach_space}
+\footnote{definition needed.}
+\end{definition}
+
+\begin{theorem}[Stone-Weierstrass theorem\index{Stone-Weierstrass theorem}]\label{thm:stone_Weierstrass_separates_points}
+Suppose $X$ is a compact Hausdorff space and $\sA$ is a subalgebra of $C(X)$ which contains a non-zero constant function. Then $\sA$ is dense in $C(X)$ if and only if it separates points, i.e.,
+$\forall x\in X$, there exist elements $f,g\in \sA$ such that $f(x) \neq g(x)$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+see \cite{Rogers_1994}.II80
+\end{proof}
+
+
+\begin{corollary}[Weierstrass' approximation theorem\index{Weierstrass' approximation theorem}]\label{cor:weierstrass_approximation}
+Since the polynomials on $[a,b]$ form a subalgebra of $C[a,b]$\footnote{Note that the coefficients of the polynomial can be outside of $[a,b]$}, $\sA$, which contains the constants and separates
+points, $\sA$ is dense.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+\footnote{see Rogers' book}
+\end{proof}
+
+
+\section{Summary}
+
+normed space $\subseteq$ metric space (see Remark \ref{rem:normed_space_is_metric_space}).
+
+normed space $\subseteq$ topological space\footnote{with respect to the norm topology}.
+
+topological vector space $\subseteq$ Hausdorff.
+
+complete metric space $\subseteq$ Baire space.

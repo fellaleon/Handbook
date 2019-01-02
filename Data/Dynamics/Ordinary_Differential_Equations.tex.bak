@@ -1,0 +1,139 @@
+\chapter{Ordinary Differential Equations}
+
+\section{Some literature reviews}
+
+There is a striking difference between ordinary differential equations and partial differential equations. A classical result of Peano states that the ordinary differential equation $dy/dx = f(x,y)$ has a solution under a single condition of the continuity of the function $f$. This result has also been extended to equations of higher order or to systems of equations. However, for partial differential equations, the situation is entirely different (see \cite{Yoshida_1980}.$P_{182}$).
+
+\section{Linear Systems of Ordinary Differential Equations}
+
+The application of Jordan canonical form for multi-dimension ODE (see \cite{Horn_Johnson_1990}.$P_{132}$).
+
+\section{Legendre Polynomials}
+
+
+
+\section{Bessel Functions}
+
+
+
+\section{Modified Bessel Functions}
+
+\subsection{Definition}
+
+\begin{definition}\label{def:modified_bessel_function}
+The solutions of
+\be
+z^2 \frac{d^2w}{dz^2} + z \frac{dw}{dz} - (z^2 + \nu^2)w = 0
+\ee
+are $I_{\pm \nu}(z)$ and $K_\nu(z)$ where $\nu,z\in\C$.
+\end{definition}
+
+\begin{proposition}\label{pro:modified_bessel_function_first_ascending_series}
+\be I_\nu(z) = \bb{\frac 12 z}^\nu \sum^\infty_{k=0} \frac{\bb{\frac 14z^2}^k}{k!\Gamma(\nu+k+1)} = i^{-\nu} J_\nu(iz). \ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+\begin{remark}
+By this proposition, we have that $I_{-\nu}(z) = I_\nu(z),\qquad \nu = 1,2,\dots.$
+\end{remark}
+
+\begin{proposition}\label{pro:modified_bessel_function_first_second_relation}
+\be
+K_\nu(z) = \frac 12\pi \frac{I_{-\nu}(z) - I_\nu(z)}{\sin (\nu \pi)}.
+\ee
+\end{proposition}
+
+\begin{remark}
+By this proposition, we have that $K_{\nu}(z) = K_{-\nu}(z)$.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+\subsection{General case $\nu$}
+
+\begin{proposition}\label{pro:modified_bessel_function_first_close_to_zero}
+When $\nu$ is fixed and $z\to 0$,
+\be
+I_\nu(z) \sim \left.\bb{\frac 12z}^\nu\right/\Gamma(\nu+1),\qquad \nu \neq -1,-2,\dots.
+\ee
+\end{proposition}
+
+\begin{proposition}\label{pro:modified_bessel_function_first_difference}
+\be
+I_{\nu - 1}(z) - I_{\nu+1}(z) = \frac {2\nu}z I_\nu(z).
+\ee
+\end{proposition}
+
+
+\begin{proposition}\label{pro:modified_bessel_function_second_close_to_zero}
+When $\nu$ is fixed and $z\to 0$,
+\be
+K_0(z) \sim -\ln z,\qquad K_\nu(z) \sim \frac 12 \Gamma(\nu) \bb{\frac 12z}^{-\nu},\quad \Re\nu > 0.
+\ee
+\end{proposition}
+
+\begin{proposition}\label{pro:modified_bessel_function_second_sinh_integral}
+\beast
+K_\nu(z) = \frac{\sqrt{\pi}\bb{\frac 12 z}^\nu}{\Gamma(\nu + 1/2)} \int^\infty_0 e^{-z\cosh t}\sinh^{2\nu}t dt = \frac{\sqrt{\pi}\bb{\frac 12 z}^\nu}{\Gamma(\nu + 1/2)} \int^\infty_1 e^{-zt}(t^2-1)^{\nu - \frac 12}dt, \qquad \Re \nu > - \frac 12,\ x>0,\ \abs{\arg z} < \frac 12\pi.
+\eeast
+\end{proposition}
+
+\begin{proposition}\label{pro:modified_bessel_function_second_cosh_integral}
+\be
+K_\nu(z) = \int^\infty_0 e^{-z\cosh t} \cosh(\nu t)dt, \qquad \abs{\arg z} < \frac 12\pi.
+\ee
+\end{proposition}
+
+
+\begin{proposition}\label{pro:modified_bessel_function_second_cos_integral}
+\be
+K_\nu(xz) = \frac{\Gamma(\nu + 1/2)(2z)^\nu}{\sqrt{\pi}x^\nu} \int^\infty_0 \frac{\cos(xt)dt}{(t^2 + z^2)^{\nu + \frac 12}}, \qquad \Re \nu > - \frac 12,\ x>0,\ \abs{\arg z} < \frac 12\pi.
+\ee
+\end{proposition}
+
+\begin{proposition}\label{pro:modified_bessel_function_second_difference}
+\be
+e^{(\nu-1)\pi i}K_{\nu - 1}(z) - e^{(\nu+1)\pi i} K_{\nu+1}(z) = \frac {2\nu}z e^{\nu \pi i} K_\nu(z).
+\ee
+\end{proposition}
+
+\begin{proposition}\label{pro:modified_bessel_function_first_asymptotic_expansions}
+When $\nu$ is fixed, $\abs{z}$ is large and $\mu = 4\nu^2$,
+\be
+I_\nu(z)\sim \frac{e^z}{\sqrt{2\pi z}}\bb{1-\frac{\mu-1}{8z} + \frac{(\mu-1)(\mu-9)}{2!(8z)^2} - \frac{(\mu-1)(\mu-9)(\mu-25)}{3!(8z)^3} +\cdots},\qquad \abs{\arg z} < \frac 12\pi.
+\ee
+\end{proposition}
+
+
+\begin{proposition}\label{pro:modified_bessel_function_second_asymptotic_expansions}
+When $\nu$ is fixed, $\abs{z}$ is large and $\mu = 4\nu^2$,
+\be
+K_\nu(z)\sim \sqrt{\frac{\pi}{2z}} e^{-z} \bb{1 + \frac{\mu-1}{8z} + \frac{(\mu-1)(\mu-9)}{2!(8z)^2} + \frac{(\mu-1)(\mu-9)(\mu-25)}{3!(8z)^3} +\cdots},\qquad \abs{\arg z} < \frac 32\pi.
+\ee
+\end{proposition}
+
+
+\subsection{Special case $\nu$}
+
+\begin{proposition}\label{pro:modified_bessel_function_first_nu_special_value}
+\beast
+& & \sqrt{\frac12 \pi /z}\, I_{1/2}(z) = \frac{\sinh z}z,\qquad \sqrt{\frac12 \pi /z}\, I_{3/2}(z) = -\frac{\sinh z}{z^2} + \frac{\cosh z}z,\qquad \sqrt{\frac12 \pi /z}\, I_{5/2}(z) = \bb{\frac 3{z^3} + \frac 1z}\sinh z - \frac 3{z^2}\cosh z,\\
+& & \sqrt{\frac12 \pi /z}\, I_{-1/2}(z) = \frac{\cosh z}z,\qquad \sqrt{\frac12 \pi /z}\, I_{-3/2}(z) = \frac{\sinh z}{z} - \frac{\cosh z}{z^2},\qquad \sqrt{\frac12 \pi /z}\, I_{-5/2}(z) = - \frac 3{z^2}\sinh z + \bb{\frac 3{z^3} + \frac 1z}\cosh z .
+\eeast
+\end{proposition}
+
+This is from \cite{Abramowitz_1972}.$P_{443}$.
+
+\begin{proposition}\label{pro:modified_bessel_function_second_nu_special_value}
+\be
+K_{1/2}(z) = K_{-1/2}(z) = \sqrt{\frac {\pi}{ 2z}}e^{-z},\qquad K_{3/2}(z) = K_{-3/2}(z) = \sqrt{\frac 12 \pi z}\bb{\frac 1z + \frac 1{z^2}}e^{-z},
+\ee
+\be
+K_{5/2}(z) = K_{-5/2}(z) = \sqrt{\frac 12 \pi z}\bb{\frac 1z -\frac 3{z^2} + \frac 3{z^3}}e^{-z}.
+\ee
+\end{proposition}

@@ -1,0 +1,3516 @@
+
+
+\chapter{Statistics}
+
+\section{Statistics}
+
+\ben
+
+\item If $X\sim\mathcal{E}(\lambda)$ and  $Y\sim\mathcal{E}(\mu)$ are independent, derive the distribution of $\min(X,Y)$. If  $X\sim\Gamma(\alpha,\lambda)$ and $Y\sim\Gamma(\beta,\lambda)$ are independent, derive the distribution of $X+Y$ and $X/(X+Y)$.
+
+
+
+Solution. For $x>0$, we have
+\begin{equation}
+\mathbb{P}\left(\min(X,Y)>x\right) = \mathbb{P}(X>x,Y>x) =\mathbb{P}(X>x)\mathbb{P}(Y>x) = e^{-(\lambda+\mu)x} \ \Rightarrow\ \min(X,Y)\sim \mathcal{E}(\lambda+\mu).
+\end{equation}
+
+Now suppose that $X\sim\Gamma(\alpha,\lambda)$ and $Y\sim\Gamma(\beta,\lambda)$ are independent. Using the expressions for the moment generating functions, we have for $t<\lambda$ that he moment generating function of $X+Y$ is
+\begin{equation}
+M_{X+Y}(t) = \mathbb{E}(e^{t(X+Y)}) =\mathbb{E}(e^{tX})\mathbb{E}(e^{tY}) = \left(\frac{\lambda}{\lambda-t}\right)^{\alpha+\beta} \ \Rightarrow\ X+Y\sim \Gamma(\alpha+\beta,\lambda).
+\end{equation}
+
+For the last part, set $u=x+y, v=x/(x+y)$, so that $x = uv, y= u(1-v)$. Then the determinant of the Jocabian of this inverse transformation si
+\begin{equation}
+\left|\begin{array}{cc}
+v & u \\
+1-v & \ -u
+\end{array}
+\right|=-u
+\end{equation}
+
+We have
+\begin{eqnarray}
+f_{X,Y}(x,y) & = & \frac{\lambda^{\alpha+\beta}}{\Gamma(\alpha)\Gamma(\beta)}x^{\alpha-1}y^{\beta-1}e^{-\lambda(x+y)}, \ x>0,y>0 \nonumber\\
+ \Rightarrow \ f_{U,V}(u,v) & = & \frac{\lambda^{\alpha+\beta}}{\Gamma(\alpha)\Gamma(\beta)}u^{\alpha+\beta-2}v^{\alpha-1}(1-v)^{\beta-1}e^{-\lambda u}u, \ u>0,v\in(0,1) \nonumber\\
+ \Rightarrow \ f_{U,V}(u,v) & = & \left(\frac{\lambda^{\alpha+\beta}}{\Gamma(\alpha+\beta)}u^{\alpha+\beta-1} e^{-\lambda u} \right)\left(\frac{\Gamma(\alpha+\beta)}{\Gamma(\alpha)\Gamma(\beta)}v^{\alpha-1}(1-v)^{\beta-1}\right), \ u>0,v\in(0,1)
+\end{eqnarray}
+Thus, we can see that $V=X/(X+Y)\sim\text{Beta}(\alpha,\beta)$ and $U$ and $V$ are independent.
+
+
+
+
+
+\item If $Y\sim \chi^2_m$ and $Z\sim\chi^2_n$ are independent, we say $X=\frac{Y/m}{Z/n}$ has an $F$-distribution with $m$ and $n$ degrees of freedom, and write $X\sim F_{m,n}$. Show that the probability density function of $X$ is
+\begin{equation}
+f_X(x;m,n) = \frac{\Gamma\left(\frac{m+n}{2}\right)(m/n)^{m/2}x^{m/2-1}}{\Gamma(m/2)\Gamma(n/2)\left(1+\frac{mx}{n}\right)^{(m+n)/2}}, \quad x>0.
+\end{equation}
+
+
+
+Solution. We have $Y\sim \chi^2_m \sim \Gamma\left(\frac{m}{2},\frac{1}{2}\right)$ and $Z\sim\chi^2_n\sim \Gamma\left(\frac{n}{2},\frac{1}{2}\right)$ and the pdfs are given by
+\begin{equation}
+f_Y(y) = \frac{(1/2)^{m/2}}{\Gamma(m/2)}y^{m/2-1}e^{-y/2},\quad f_Z(z) = \frac{(1/2)^{n/2}}{\Gamma(n/2)}z^{n/2-1}e^{-z/2}
+\end{equation}
+
+We have $Y=XZm/n$, thus the Jacobian of transformation is $zm/n$. So the joint density function of $X$ and $Z$ is
+\begin{eqnarray}
+f_{X,Z}(x,z) & = & \frac{(1/2)^{m/2}}{\Gamma(m/2)}\left(\frac{xzm}{n}\right)^{m/2-1}e^{-xzm/2n} \frac{(1/2)^{n/2}}{\Gamma(n/2)}z^{n/2-1}e^{-z/2} \frac{zm}{n}\nonumber\\
+& = & \frac{(1/2)^{(m+n)/2}}{\Gamma(m/2)\Gamma(n/2)}\left(\frac{m}{n}\right)^{m/2}z^{(m+n)/2-1}e^{-(xm/n+1)z/2} x^{m/2-1} \nonumber\\
+& = & \frac{(1/2)^{(m+n)/2}\Gamma\left(\frac{m+n}{2}\right)\left(m/n\right)^{m/2}x^{m/2-1} }{\Gamma(m/2)\Gamma(n/2)\left(1+\frac{mx}{n}\right)^{(m+n)/2}} \frac{\left(1+\frac{mx}{n}\right)^{(m+n)/2}}{\Gamma\left(\frac{m+n}{2}\right)}z^{(m+n)/2-1}e^{-(1+xm/n)z/2} \nonumber\\
+& = & \frac{\Gamma\left(\frac{m+n}{2}\right)\left(m/n\right)^{m/2}x^{m/2-1} }{\Gamma(m/2)\Gamma(n/2)\left(1+\frac{mx}{n}\right)^{(m+n)/2}} \left(\frac{\left(\frac{1+\frac{mx}{n}}{2}\right)^{(m+n)/2}}{\Gamma\left(\frac{m+n}{2}\right)}z^{(m+n)/2-1}e^{-\frac{1+xm/n}{2}z}\right)
+\end{eqnarray}
+
+The expression in the bracket is the pdf of $\Gamma\left(\frac{m+n}{2},\frac{1+\frac{mx}{n}}{2}\right)$ whose integral with respect to $z$ is 1. Thus, we have the pdf of $X$ as required.
+
+
+
+
+
+\item Suppose that $(X,T)$ have a joint probability density function $f_{X,T}(x,t;\theta)$. Prove that the factorisation criterion for the sufficiency of $T$.
+
+
+
+Solution. If $T$ is sufficient, let $g(t(x);\theta)=f_T(t(x);\theta)$, the marginal density of $T$, and let $h(x)=f_{X|T}(x|u)$ denote the conditional density of $X$ given $T=t(x)=u$. Observe that $h(x)$ does not depend on $\theta$ because $T$ is sufficient. Then for $x\in \mathcal{X}$, we have
+\begin{equation}
+f_X(x;\theta) = f_T(u;\theta)f_{X|T}(x|u;\theta) = f_T(t(x);\theta)f_{X|T}(x|u) = g(t(x);\theta) h(x)
+\end{equation}
+
+Conversely, if we have the given factorisation, then for $x\in\mathcal{X}$ we have
+\begin{equation}
+f_{X|T}(x|T=u;\theta) = \frac{f_X(x;\theta)}{f_T(u;\theta)}  = \frac{g(u;\theta)h(x)}{\int_{y\in\mathcal{X}:t(y)=u}g(t(y);\theta)h(y)dy} = \frac{g(u;\theta)h(x)}{g(u;\theta)\int_{y\in\mathcal{X}:t(y)=u}h(y)dy} = \frac{h(x)}{\int_{y\in\mathcal{X}:t(y)=u}h(y)dy}
+\end{equation}
+
+Since, for every $u$, this conditional density does not depend on $\theta$, we see that $T$ is sufficient.
+
+
+
+
+
+\item (a) Let $X_1,\dots,X_n$ be independent Poisson random variables, with $X_i$ having parameter $i\theta$ for some $\theta>0$. Find a real-valued sufficient statistic $T$, and compute its distribution. Show that the maximum likelihood estimator $\hat{\theta}$ of $\theta$ is a function of $T$, and show that it is unbiased.
+
+(b) For some $n>2$, let $X_1,\dots,X_n \stackrel{iid}{\sim} \mathcal{E}(\theta)$. Find a minimal sufficient statistic $T$, and compute its distribution. Show that the maximum likelihood estimator $\hat{\theta}$ of $\theta$ is a function of $T$, and is biased but asymptotically unbiased. Find a reparametrisation of the model in terms of a parameter $\psi=h(\theta)$, where $h$ is bijective, such that the maximum likelihood estimator $\hat{\psi}$ is unbiased.
+
+
+
+Solution. (a) The mass function of $X=(X_1,\dots,X_n)$ is
+\begin{equation}
+f_X(x;\theta) = \prod^n_{i=1}e^{-i\theta}\frac{(i\theta)^{x_i}}{x_i!} =e^{-n(n+1)\theta/2}\theta^{\sum^n_{i=1}x_i}\prod^n_{i=1}\frac{i^{x_i}}{x_i!},\quad x\in\{0,1,\dots\}^n,
+\end{equation}
+
+from which we see that $T=\sum^n_{i=1}X_i$ is sufficient. Recall that if $X\sim\text{Poi}(\lambda)$ and $Y\sim\text{Poi}(\mu)$ are independent, then $X+Y\sim\text{Poi}(\lambda+\mu)$. We deduce that $\sum^n_{i=1}X_i\sim\text{Poi}\left(\frac 12n(n+1)\theta\right)$. The log-likelihood function is
+\begin{equation}
+\mathcal{L}(\theta) = -\frac 12 n(n+1)\theta + \sum^n_{i=1}X_i\log\theta
+\end{equation}
+
+so by differentiation we find that $\hat{\theta} = \frac{2}{n(n+1)}\sum^n_{i=1}X_i$, a function of $T$. Its expression is
+\begin{equation}
+\mathbb{E}_\theta(\hat{\theta}) = \frac{2}{n(n+1)}\sum^n_{i=1}i\theta=\theta.
+\end{equation}
+so $\hat{\theta}$ is unbiased.
+
+(b) Writing $f_X(\cdot;\theta)$ for the joint density of $X=(X_1,\dots,X_n)$, we have
+\begin{equation}
+\frac{f_X(x;\theta)}{f_X(y;\theta)}=\frac{\prod^n_{i=1}\theta e^{-\theta x_i}}{\prod^n_{i=1}\theta e^{-\theta y_i}} = \exp\left\{-\theta\left(\sum^n_{i=1}x_i-\sum^n_{i=1}y_i\right)\right\}, \quad x,y\in(0,\infty)^n
+\end{equation}
+
+This ratio is constant as a function of $\theta$ if and only if $\sum^n_{i=1}x_i=\sum^n_{i=1}y_i$. Thus $T=\sum^n_{i=1}X_i$ is minimal sufficient. The log-likelihood is
+\begin{equation}
+\mathcal{L}(\theta) = n\log\theta - \theta\sum^n_{i=1}X_i,
+\end{equation}
+so that $\hat{\theta}=n/\sum^n_{i=1}X_i$. Since $\sum^n_{i=1}X_i\sim\Gamma(n,\theta)$, we have
+\begin{equation}
+\mathbb{E}_\theta(\hat{\theta}) = \mathbb{E}_\theta\left(\frac{n}{\sum^n_{i=1}X_i}\right) = \int^\infty_0\frac{n}{x}\frac{\theta^nx^{n-1}e^{-\theta x}}{(n-1)!}dx = \frac{n\theta}{n-1}\int^\infty_0\frac{\theta^{n-1}x^{n-2}e^{-\theta x}}{(n-2)!}dx = \frac{n\theta}{n-1}
+\end{equation}
+so $\hat{\theta}$ is biased, but asymptotically unbiased.
+
+Set $\psi=h(\theta)=1/\theta$, so by the invariance property of MLEs, we have $\hat{\psi}=h(\hat{\theta})=\bar{X}$, where $\bar{X}=n^{-1}\sum^n_{i=1}X_i$. Then
+\begin{equation}
+\mathbb{E}_\psi(\hat{\psi}) = \mathbb{E}_\psi(X_1) = \psi,
+\end{equation}
+so $\hat{\psi}$ is unbiased.
+
+
+
+
+
+\item For some $n\geq 2$ let $X_1,\dots,X_n\stackrel{iid}{\sim}U[\theta,2\theta]$, for some $\theta>0$. Show that $\tilde{\theta}=\frac 23 X_1$ is an unbiased estimator of $\theta$. Find an unbiased estimator $\hat{\theta}$ which is a function of a minimal sufficient statistic and which satisfies $\mathbf{var}\hat{\theta}<\mathbf{var}\tilde{\theta}$ for all $\theta>0$.
+
+
+
+Solution. We have $\mathbb{E}_\theta(2X_1/3)=\frac 23\mathbb{E}_\theta\left(\frac{\theta+2\theta}{2}\right)=\theta$ for all $\theta>0$, so $\tilde{\theta}$ is unbiased. Since $X=(X_1,\dots,X_n)$ has probability density function
+\begin{equation}
+f_X(x;\theta)= \prod^n_{i=1}\frac 1\theta \mathbbm{1}_{\{x_i\in[\theta,2\theta]\}} = \frac{1}{\theta^n}\mathbbm{1}_{\{\min x_i\geq \theta\}}\mathbbm{1}_{\{\max x_i\leq 2\theta\}}
+\end{equation}
+
+we see that $T=(\min X_i,\max X_i)$ is sufficient. Since $\tilde{\theta}$ is not a function of the sufficient statistic, the Rao-Blackwell tells that $\text{MSE}_\theta \hat{\theta}< \text{MSE}_{\theta} \tilde{\theta}$ which implies that $\mathbf{var}\hat{\theta}<\mathbf{var}\tilde{\theta}$ since $\tilde{\theta}$ is unbiased, for all $\theta>0$, where
+\begin{eqnarray}
+\hat{\theta} & = & \mathbb{E}_\theta(\tilde{\theta}|T) = \frac 23 \left[\mathbb{E}_\theta(X_1\mathbbm{1}_{\{X_1=\min X_i\}}|T) + \mathbb{E}_\theta(X_1\mathbbm{1}_{\{X_1=\max X_i\}}|T) + \mathbb{E}_\theta(X_1\mathbbm{1}_{\{\min X_i< X_1<\max X_i\}}|T)\right] \nonumber\\
+& = & \frac 23 \left[\frac{\min X_i}{n} + \frac{\max X_i}{n} + \frac{(n-2)(\min X_i + \max X_i)}{2n}\right] = \frac 13 (\min X_i +\max X_i).
+\end{eqnarray}
+
+
+
+
+
+
+\item Let $X_1,\dots,X_n\stackrel{iid}{\sim}U[0,\theta]$. Find the maximum likelihood estimator $\hat{\theta}$ of $\theta$, and for $\alpha\in(0,1)$, find a $100(1-\alpha)\%$ confidence interval for $\theta$ based on $\hat{\theta}$.
+
+
+
+Solution. The likelihood is
+\begin{equation}
+\mathcal{L}(\theta) = \prod^n_{i=1}\frac 1\theta \mathbbm{1}_{\{X_i\in[0,\theta]\}} = \frac{1}{\theta^n}\mathbbm{1}_{\{\max X_i\leq \theta\}}\mathbbm{1}_{\{\min X_i\geq 0\}}
+\end{equation}
+
+The likelihood is 0 for $\theta<\max X_i$ and positive and decreasing for $\theta\geq \max X_i$. Thus,we see that $\hat{\theta}=\max X_i$ is the maximum likelihood estimator of $\theta$. Let $R(X,\theta)=\frac{1}{\theta}\max X_i$. Then, for $x\in[0,1]$,
+\begin{equation}
+\mathbb{P}(R(X,\theta)\leq x) = \mathbb{P}(\max X_i \leq x\theta) = \left(\mathbb{P}(X_1 \leq x\theta)\right)^n = x^n,
+\end{equation}
+which does not depend on $\theta$. Thus
+\begin{equation}
+1-\alpha =\mathbb{P}_\theta(1>R(X,\theta)> \alpha^{1/n}) = \mathbb{P}_\theta\left(\max X_i <\theta < \frac{\max X_i}{\alpha^{1/n}}\right)
+\end{equation}
+so a $100(1-\alpha)\%$ confidence interval for $\theta$ is $(\max X_i, \alpha^{-1/n}\max X_i)$.
+
+
+
+
+
+\item Suppose that $X_1\sim\mathcal{N}(\theta_1,1)$ and $X_2\sim\mathcal{N}(\theta_2,1)$ independently, where $\theta_1$ and $\theta_2$ are unknown. Show that both the square $S$ and circle $C$ in$\mathbb{R}^2$, given by
+\begin{equation}
+\begin{array}{ccl}
+S & = & \left\{(\theta_1,\theta_2):|\theta_1-X_1|\leq 2.236, |\theta_2-X_2|\leq 2.236\right\} \\
+C & = & \left\{(\theta_1,\theta_2):(\theta_1-X_1)^2+(\theta_2-X_2)^2\leq 5.991\right\}
+\end{array}
+\end{equation}
+are $95\%$ confidence set for $\theta_1,\theta_2$. [Hint: $\Phi(2.236)=(1+\sqrt{0.95})/2$, where $\Phi$ is the distribution function of the $\mathcal{N}(0,1)$ distribution.] What might be a sensible criterion for choosing between $S$ and $C$?
+
+
+
+Solution. Let $\theta=(\theta_1,\theta_2)$. Since $X_1-\theta_1\sim\mathcal{N}(0,1)$ and $\Phi(x)=1-\Phi(-x)$, we have for all $\theta\in\mathbb{R}^2$ that
+\begin{equation}
+\mathbb{P}_\theta(\theta\in S) = \mathbb{P}_\theta(|X_1-\theta_1|\leq 2.236)^2= (\Phi(2.236)-\Phi(-2.236))^2 = \left(\frac{1+\sqrt{0.95}}{2}-\left(1-\frac{1+\sqrt{0.95}}{2}\right)\right)^2=0.95.
+\end{equation}
+
+Similarly, we have $(X_1-\theta_1)^2+(X_2-\theta_2)^2\sim\chi^2_2$, or equivalently, $(X_1-\theta_1)^2+(X_2-\theta_2)^2\sim\Gamma(2/2,1/2)\sim\mathcal{E}(1/2)$. Letting $Y\sim\mathcal{E}(1/2)$, we have for all $\theta\in\mathbb{R}^2$,
+\begin{equation}
+\mathbb{P}_\theta(\theta\in C) = \mathbb{P}_\theta(Y\leq 5.991)= 1-e^{-5.991/2}=0.949988\approx 0.95.
+\end{equation}
+
+Different confidence sets are often compared on the grounds of volume. In this case,
+\begin{equation}
+\text{Area}(S)=(2\times2.236)^2=19.999,\quad \text{Area}(C)= 5.991\pi=18.824
+\end{equation}
+so by this measure $C$ would be preferable, on the basis that it pin down the value of $\theta$ better than does $S$.
+
+
+
+
+
+\item Suppose that the number of defects on a roll of magnetic recording tape can be modelled with Poisson distribution for which the parameter $\lambda$ is known to be either 1 or 1.5. Suppose the prior mass function for $\lambda$ is
+\begin{equation}
+\pi_\lambda(1)=0.4,\quad \pi_\lambda(1.5) =0.6
+\end{equation}
+
+A random sample of five rolls of tape finds $x=(3,1,4,6,2)$ defects respectively. Show that the posterior distribution for $\lambda$ given $x$ is
+\begin{equation}
+\pi_{\lambda|X}(1|x)=0.012,\quad \pi_{\lambda|X}(1.5|x) =0.988.
+\end{equation}
+
+
+
+Solution. By Bayes' theorem, we have
+\begin{equation}
+\pi_{\lambda|X}(1|x)=\frac{f_{X|\theta}(x|1)\pi_\lambda(1)}{f_{X|\theta}(x|1)\pi_\lambda(1)+ f_{X|\theta}(x|1.5)\pi_\lambda(1.5)} = \frac{e^{-5}1^{16(=3+1+4+6+2)}\times 0.4}{e^{-5}1^{16}\times 0.4 + e^{-7.5}1.5^{16}\times 0.6}=0.012
+\end{equation}
+and similarly $\pi_{\lambda|X}(1.5|x)=0.988$.
+
+
+
+
+
+\item Let $X_1,\dots,X_n$ be independent and identically distributed with conditional probability density function $f(x|\theta)=\theta x^{\theta-1}\mathbbm{1}_{\{x\in(0,1)\}}$ for some $\theta>0$. Suppose the prior distribution for $\theta$ is $\Gamma(\alpha,\lambda)$. Find the posterior distribution of $\theta$ given $X=(X_1,\dots,X_n)$ and the Bayesian point estimator of $\theta$ under the quadratic loss function.
+
+
+
+Solution. The posterior distribution for $\theta$ given $X$ is
+\begin{equation}
+\pi_{\Theta|X}(\theta|x) \propto f_{X|\Theta}(x|\theta)\pi_\Theta(\theta) = \theta^n\prod^n_{i=1} x_i^{\theta-1} \frac{\lambda^\alpha}{\Gamma(\alpha)}\theta^{\alpha-1}e^{-\lambda \theta} \propto \theta^{n+\alpha-1}\exp\left\{-\theta(\lambda-\sum^n_{i=1}\log x_i)\right\}
+\end{equation}
+so $\Theta|X=\Gamma\left(n+\alpha,\lambda-\sum^n_{i=1}\log X_i\right)$. The Bayesian point estimator under quadratic loss is the posterior mean, namely
+\begin{equation}
+\frac{n+\alpha}{\lambda-\sum^n_{i=1}\log X_i}.
+\end{equation}
+
+
+
+
+
+\item ({\bf Law of small numbers}) For each $n\in\mathbb{N}$, let $X_{n1},\dots,X_{nn}\stackrel{iid}{\sim}\text{Bernoulli}(p_n)$ and let $S_n=\sum^n_{i=1}X_{ni}$. Prove that if $np_n\to\lambda\in(0,\infty)$ as $n\to\infty$, then for each $x\in\{0,1,\dots\}$,
+\begin{equation}
+\mathbb{P}(S_n=x)\to\mathbb{P}(Y=x)
+\end{equation}
+as $n\to\infty$, where $Y\sim\text{Poi}(\lambda)$.
+
+
+
+Solution. Since $S_n\sim\text{Bin}(n,p_n)$, we have for $x\in\{0,1,\dots\}$ that
+\begin{equation}
+\mathbb{P}(S_n=x)=\binom{n}{x}p_n^x(1-p_n)^{n-x} = \frac{1}{x!}\frac{n(n-1)\dots(n-x+1)}{n^x}(np_n)^x(1-p_n)^{n-x}
+\end{equation}
+To study the limit as $n\to \infty$ of $(1-p_n)^n$, note that when $\epsilon\in(-1,1)$,
+\begin{equation}
+\left|\left(1+\frac{\epsilon}{n}\right)^n-1\right| = \left|\sum^n_{r=1}\binom{n}{r}\left(\frac{\epsilon}{n}\right)^r\right| \leq \sum^n_{r=1}\frac{n(n-1)\dots(n-r+1)}{n^rr!}|\epsilon|^r = \sum^n_{r=1}\frac{n(n-1)\dots(n-r+1)}{n(2n)(3n)\dots(rn)}|\epsilon|^r
+\end{equation}
+We have $\frac{n-r+1}{rn}\leq \frac 12$ for all $r\geq 2$. Thus
+\begin{equation}
+\left|\left(1+\frac{\epsilon}{n}\right)^n-1\right| \leq \sum^n_{r=1}\frac{|\epsilon|^r}{2^{r-1}}\leq \sum^\infty_{r=1}\frac{|\epsilon|^r}{2^{r-1}} = \frac{|\epsilon|}{1-|\epsilon|/2}\leq 2|\epsilon|
+\end{equation}
+
+So, for sufficiently large $n$,
+\begin{equation}
+\left|(1-p_n)^n-\left(1-\frac{\lambda}{n}\right)^n\right| = \left|\left(1-\frac{\lambda}{n}\right)^n\right| \left|\left(1-\frac{np_n-\lambda}{n(1-\lambda/n)}\right)^n-1\right| \leq 2|np_n-\lambda|\to 0
+\end{equation}
+as $n\to\infty$. Since $(1-\lambda/n)^n\to e^{-\lambda}$ as $n\to\infty$, we deduce that $(1-p_n)^n\to e^{-\lambda}$ and hence that
+\begin{equation}
+\mathbb{P}(S_n=x)\to \frac{1}{x!}\lambda^xe^{-\lambda} = \mathbb{P}(Y=x)
+\end{equation}
+where $Y\sim\text{Poi}(\lambda)$.
+
+
+
+
+
+\item For some $n\geq 3$, let $\epsilon_1,\dots,\epsilon_n\stackrel{iid}{\sim}\mathcal{N}(0,1)$, set $X_1=\epsilon_1$ and $X_i=\theta X_{i-1}+(1-\theta^2)^{1/2}\epsilon_i$ for $i=2,\dots,n$ and some $\theta\in(-1,1)$. Find a sufficient statistic for $\theta$ that takes values in a subset of $\mathbb{R}^3$.
+
+
+
+Solution. The conditional distribution of $X_i$ given $X_1,\dots,X_{i-1}$, namely $\mathcal{N}\left(\theta X_{i-1},(1-\theta^2)\right)$, depends only on $X_{i-1}$. It follows that the joint density of $X=(X_1,\dots,X_n)$ is
+\begin{eqnarray}
+f_X(x;\theta) & = & f_{X_1}(x_1;\theta) \prod^n_{i=2}f_{X_i|X_{i-1}}(x_i|x_{i-1};\theta) \nonumber\\
+& = & \frac{1}{\sqrt{2\pi}}e^{-x_1^2/2} \prod^n_{i=2}\frac{1}{\left(2\pi(1-\theta^2)\right)^{1/2}}\exp\left\{-\frac{1}{2\left(1-\theta^2\right)}(x_i-\theta x_{i-1})^2\right\}\nonumber\\
+& = & \frac{1}{(2\pi)^{n/2}\left(1-\theta^2\right)^{(n-1)/2}} \exp\left\{-\frac{x_1^2+x_n^2}{2\left(1-\theta^2\right)} -\frac{1+\theta^2}{2\left(1-\theta^2\right)}\sum^{n-1}_{i=2}x_i^2 + \frac{\theta}{2\left(1-\theta^2\right)}\sum^n_{i=2}x_ix_{i-1}\right\},
+\end{eqnarray}
+so $T = \left(X_1^2+X_n^2,\ \sum^{n-1}_{i=2}X_i^2,\ \sum^n_{i=2}X_iX_{i-1}\right)$ is sufficient for $\theta$.
+
+
+
+
+
+\item Let $\hat{\theta}$ be an unbiased estimator of $\theta\in\Theta\subseteq \mathbb{R}$ satisfying $\mathbb{E}_\theta(\hat{\theta}^2)<\infty$ for all $\theta\in\Theta$. We say $\hat{\theta}$ is a \emph{uniform minimum variance unbiased} (UMVU) estimator if $\mathbf{var}_\theta\hat{\theta}\leq \mathbf{var}_\theta\tilde{\theta}$ for all $\theta\in\Theta$ and any other unbiased estimator $\tilde{\theta}$. Prove that a necessary and sufficient condition for $\hat{\theta}$ to be a UMVU estimator is that $\mathbb{E}_\theta(\hat{\theta}U)=0$ for all $\theta\in\Theta$ and all estimator $U$ with $\mathbb{E}_\theta(U)=0$ and $\mathbb{E}_\theta(U^2)<\infty$ (i.e. '$\hat{\theta}$ is uncorrelated with every unbiased estimator of 0'). Is the estimator $\hat{\theta}$ for $U[\theta,2\theta]$ (in previous question) a UMVU estimator?
+
+
+
+Solution. Suppose $\hat{\theta}$ is UMVU, let $U$ satisfy $\mathbb{E}_\theta(U)=0$ and $\mathbb{E}_\theta(U^2)<\infty$. For arbitrary $\lambda\in\mathbb{R}$, define $\hat{\theta}_{\lambda}=\hat{\theta}+\lambda U$. We have
+\begin{equation}
+0\leq \mathbf{var}\hat{\theta}_{\lambda} - \mathbf{var}\hat{\theta}= 2\lambda\mathbf{cov}_\theta\left(\hat{\theta},U \right)+\lambda^2\mathbb{E}_\theta U^2 = \mathbb{E}_\theta U^2\left(\lambda + \frac{\mathbf{cov}_\theta\left(\hat{\theta},U \right)}{\mathbb{E}_\theta U^2}\right)^2 - \frac{\mathbf{cov}^2_\theta\left(\hat{\theta},U \right)}{\mathbb{E}_\theta U^2}
+\end{equation}
+
+If $\lambda = -\frac{\mathbf{cov}_\theta\left(\hat{\theta},U \right)}{\mathbb{E}_\theta U^2}$, the inequality can only be satisfied when $\mathbf{cov}_\theta\left(\hat{\theta},U \right)=0$, or equivalently, $\mathbb{E}_\theta(\hat{\theta}U)=0$ for all $\theta\in \Theta$.
+
+Conversely, suppose $\mathbb{E}_\theta(\hat{\theta}U)=0$ for all $\theta\in \Theta$ for all $U$ with $\mathbb{E}_\theta(U)=0$ and $\mathbb{E}_\theta(U^2)<\infty$. Let $\tilde{\theta}$ be any other unbiased estimator. We may assume $\mathbf{var}_\theta\tilde{\theta}<\infty$ for all $\theta\in \Theta$, or equivalently, $\mathbb{E}_\theta(\tilde{\theta}^2)<\infty$ for all $\theta\in \Theta$. Then set $U=\hat{\theta}-\tilde{\theta}$,
+\begin{equation}
+0=\mathbb{E}_\theta \left[\hat{\theta} \left(\hat{\theta}-\tilde{\theta}\right)\right] = \mathbb{E}_\theta \hat{\theta}^2 - \mathbb{E}_\theta \left(\hat{\theta}\tilde{\theta}\right).
+\end{equation}
+
+Hence, since $\hat{\theta}$ and $\tilde{\theta}$ have the same expectation, for all $\theta\in \Theta$,
+\begin{equation}
+\mathbf{var}_\theta \hat{\theta} = \mathbb{E}_\theta \hat{\theta}^2 - \left(\mathbb{E}_\theta \hat{\theta}\right)^2 =  \mathbb{E}_\theta \left(\hat{\theta}\tilde{\theta}\right) - \mathbb{E}_\theta \hat{\theta}\mathbb{E}_\theta \tilde{\theta} = \mathbf{cov}\left(\hat{\theta},\tilde{\theta}\right) \leq \mathbf{var}_\theta^{1/2} \hat{\theta}\mathbf{var}_\theta^{1/2} \tilde{\theta}.
+\end{equation}
+by Cauchy-Schwarz inequality. Thus, $\mathbf{var}_\theta\hat{\theta}\leq \mathbf{var}_\theta\tilde{\theta}$ for all $\theta\in\Theta$.
+
+For $x\in[\theta,2\theta]$, the distribution function of $Y=\max X_i$ is
+\begin{equation}
+F_Y(y;\theta) = \mathbb{P}_\theta (Y\leq y) = \left(\mathbb{P}_\theta (X_1\leq y)\right)^n =  \left(\frac{y-\theta}{\theta}\right)^n \ \Rightarrow \ f_Y(y;\theta) =  \frac{n}{\theta^n}\left(y-\theta\right)^{n-1},\ y\in[\theta,2\theta]
+\end{equation}
+Thus,
+\begin{equation}
+\mathbb{E}_\theta Y = \frac{1}{\theta^n}\int^{2\theta}_\theta ny \left(y-\theta\right)^{n-1}dy = \frac{1}{\theta^n}\left[y\left.\left(y-\theta\right)^n\right|^{2\theta}_\theta - \int^{2\theta}_\theta  \left(y-\theta\right)^ndy \right]= 2\theta -  \frac{1}{\theta^n}\int^{\theta}_0  y^ndy = \frac{2n+1}{n+1}\theta
+\end{equation}
+
+Similarly, if $Z=\min X_i$, then
+\begin{equation}
+F_Z(z;\theta) =  1 - \mathbb{P}_\theta (Z > z) = 1- \left(\mathbb{P}_\theta (X_1> z)\right)^n = 1- \left(\frac{2\theta-z}{\theta}\right)^n \ \Rightarrow \ f_Z(z;\theta) =  \frac{n}{\theta^n}\left(2\theta-z\right)^{n-1},\ z\in[\theta,2\theta]
+\end{equation}
+Thus,
+\begin{equation}
+\mathbb{E}_\theta Z = \frac{1}{\theta^n} \int^{2\theta}_\theta  nz\left(2\theta-z\right)^{n-1}dz = \frac{1}{\theta^n}\left[z\left.\left(2\theta-z\right)^n\right|_{2\theta}^\theta + \int^{2\theta}_\theta  \left(2\theta-z\right)^ndz\right] = \theta +\frac{1}{\theta^n}\int^{\theta}_0  z^ndz = \frac{n+2}{n+1}\theta
+\end{equation}
+
+Hence, we construct
+\begin{equation}
+U = (n+2)Y - (2n+1)Z
+\end{equation}
+which is an unbiased estimator of zero. In order to compute $\mathbb{E}_\theta \left(\hat{\theta}U\right) $, we must also observe that
+\begin{eqnarray}
+\mathbb{E}_\theta Y^2 & = & \frac{1}{\theta^n}\int^{2\theta}_\theta  ny^2\left(y-\theta\right)^{n-1}dy = \frac{1}{\theta^n}\left[y^2\left.\left(y-\theta\right)^n\right|^{2\theta}_\theta - 2\int^{2\theta}_\theta  y\left(y-\theta\right)^ndy\right] \nonumber\\
+& = & 4\theta^2 -  \frac{2}{n+1}\frac{1}{\theta^n}\int^{2\theta}_\theta  (n+1)y\left(y-\theta\right)^{n}dy = 4\theta^2 -  \frac{2}{n+1} \frac{2n+3}{n+2}\theta^2 = \frac{2(2n^2+4n+1)}{(n+1)(n+2)}\theta^2
+\end{eqnarray}
+\begin{eqnarray}
+\mathbb{E}_\theta Z^2 & = & \frac{1}{\theta^n}\int^{2\theta}_\theta  nz^2\left(2\theta-z\right)^{n-1}dz = \frac{1}{\theta^n}\left[z^2\left.\left(2\theta-z\right)^n\right|_{2\theta}^\theta + 2\int^{2\theta}_\theta  z\left(2\theta-z\right)^ndz\right]  \nonumber\\
+& = & \theta^2 +  \frac{2}{n+1}\frac{1}{\theta^n} \int^{2\theta}_\theta  (n+1)z\left(2\theta-z\right)^{n}dz   = \theta^2 + \frac{2}{n+1} \frac{n+3}{n+2}\theta^2 = \frac{n^2+5n+8}{(n+1)(n+2)}\theta^2
+\end{eqnarray}
+
+The final ingredient is to compute $\mathbb{E}_\theta \left(YZ\right)$. Now the joint distribution function of $(Y,Z)$ is
+\begin{equation}
+F_{Y,Z}(y,z;\theta) = \mathbb{P}_\theta (Y\leq y) - \mathbb{P}_\theta (Y\leq y, Z>z) = \left(\mathbb{P}_\theta (X_1\leq y)\right)^n - \left(\mathbb{P}_\theta (z<X_1<y)\right)^n = \left(\frac{y-\theta}{\theta}\right)^n - \left(\frac{y-z}{\theta}\right)^n
+\end{equation}
+Thus,
+\begin{equation}
+f_{Y,Z}(y,z;\theta) = \frac{\partial^2F_{Y,Z}(y,z;\theta)}{\partial x\partial y} = \frac{n}{\theta}\frac{n-1}{\theta} \left(\frac{y-z}{\theta}\right)^{n-2} = \frac{n(n-1)}{\theta^n} \left(y-z\right)^{n-2}
+\end{equation}
+\begin{eqnarray}
+\mathbb{E}_\theta (YZ) & = & \frac{n(n-1)}{\theta^n}\int^{2\theta}_\theta  \int^y_\theta yz\left(y-z\right)^{n-2}dzdy = \frac{n}{\theta^n}\int^{2\theta}_\theta \left[\left.z\left(y-z\right)^{n-1}\right|_y^\theta + \int^y_\theta \left(y-z\right)^{n-1}dz \right]ydy \nonumber\\
+& = & \frac{1}{\theta^n}\int^{2\theta}_\theta \left[n\theta\left(y-\theta\right)^{n-1} - \left.\left(y-z\right)^n\right|^y_\theta\right]ydy = \frac{1}{\theta^n}\int^{2\theta}_\theta \left[n\theta\left(y-\theta\right)^{n-1} + \left(y-\theta\right)^n\right]ydy \nonumber \\
+& = & \frac{2n+1}{n+1}\theta^2 + \frac{1}{n+1} \frac{2n+3}{n+2}\theta^2 = \frac{2n+5}{n+2}\theta^2
+\end{eqnarray}
+Thus, we deduce that
+\begin{eqnarray}
+3\mathbb{E}_\theta (\hat{\theta}U) & = & \mathbb{E}_\theta\left[(Y+Z)((n+2)Y - (2n+1)Z) \right] = (n+2)\mathbb{E}_\theta Y^2 - (2n+1)\mathbb{E}_\theta Z^2 - (n-1)\mathbb{E}_\theta (YZ) \nonumber\\
+& = & (n+2) \frac{2(2n^2+4n+1)}{(n+1)(n+2)}\theta^2 - (2n+1) \frac{n^2+5n+8}{(n+1)(n+2)}\theta^2 - (n-1) \frac{2n+5}{n+2}\theta^2 \nonumber\\
+& = & \frac{2(n+2)(2n^2+4n+1)}{(n+1)(n+2)}\theta^2 -  \frac{(2n+1)(n^2+5n+8)}{(n+1)(n+2)}\theta^2 - (n-1) \frac{(n+1)(2n+5)}{(n+1)(n+2)}\theta^2 \nonumber\\
+& = &  - \frac{n-1}{(n+1)(n+2)}\theta^2
+\end{eqnarray}
+which is not identically zero. Hence $\hat{\theta}$ is not a UMVU estimator.
+
+
+
+\item Let $X$ have density function
+\begin{equation}
+f(x;\theta)=\frac{\theta}{(x+\theta)^2},\quad x>0,
+\end{equation}
+where $\theta\in(0,\infty)$ is an unknown parameter. Find the likelihood ratio test of size 0.05 of $H_0:\theta=1$ against $H_1:\theta=2$ and show that the probability of Type II error is 19/21.
+
+
+
+Solution. The likelihood ratio is
+\begin{equation}
+\Lambda_x(H_0,H_1) = \frac{\mathcal{L}(2;x)}{\mathcal{L}(1;x)} = \frac{2(x+1)^2}{(x+2)^2} = 2- \frac{4x+6}{x^2+4x+4},\quad x>0.
+\end{equation}
+
+Let $g(x)={4x+6}/{x^2+4x+4}$, then
+\begin{equation}
+g'(x) = \frac{4(x^2+4x+4) - (4x+6)(2x+4)}{x^2+4x+4} = - \frac{4x^2+12x+8}{x^2+4x+4} <0
+\end{equation}
+for all $x>0$, so the likelihood ratio is a monotone increasing function of $x$. Hence, the likelihood ratio test of size 0.05 rejects $H_0$ if $X>k$, where $\mathbb{P}_{\theta=1}(X>k)=0.05$. In other words,
+\begin{equation}
+0.05 = \int^\infty_k \frac{1}{(1+x)^2}dx = \frac{1}{1+k},
+\end{equation}
+so $k=19$. So we reject $H_0$ if $X>19$. Furthermore,
+\begin{equation}
+\mathbb{P}(\text{Type II error})= \mathbb{P}_{\theta=2}(X\leq k) = \int^{19}_0 \frac{2}{(2+x)^2}dx = \left[\frac{-2}{2+x}\right]^{19}_0=\frac{19}{21}.
+\end{equation}
+
+
+
+
+
+\item Let $X_1,\dots,X_n,Y_1,\dots,Y_n$ be independent, with $X_1,\dots,X_n\sim\mathcal{E}(\theta_1)$ and $Y_1,\dots,Y_n\sim\mathcal{E}(\theta_2)$. Find the likelihood ratio test of size $\alpha$ of $H_0:\theta_1=\theta_2$ against $H_1:\theta_1\neq\theta_2$, expressing it in terms of the statistic
+\begin{equation}
+T=\frac{\sum^n_{i=1}X_i}{\sum^n_{i=1}X_i+\sum^n_{i=1}Y_i},
+\end{equation}
+and the quantiles of a standard distribution.
+
+
+
+Solution. The likelihood ratio is given by
+\begin{equation}
+\Lambda_{X,Y}(H_0,H_1) = \frac{\sup_{\theta_1,\theta_2}\theta_1^n\exp(-\theta_1\sum X_i)\theta_2^n\exp(-\theta_2\sum Y_i)}{\sup_{\theta}\theta^{2n}\exp(-\theta(\sum X_i+\sum Y_i))}.
+\end{equation}
+
+We know that the MLE are $\hat{\theta}_1=n/\sum^n_{i=1}X_i$, $\hat{\theta}_2=n/\sum^n_{i=1}Y_i$ and $\hat{\theta}=n/\left(\sum^n_{i=1}X_i+ \sum^n_{i=1}Y_i\right)$. Thus the likelihood ratio can be written as
+\begin{equation}
+\Lambda_{X,Y}(H_0,H_1) = \frac{\left(\frac{n}{\sum^n_{i=1}X_i}\right)^ne^{-n}\left(\frac{n}{\sum^n_{i=1}Y_i}\right)^ne^{-n}}{\left(\frac{2n}{\sum^n_{i=1}X_i+\sum^n_{i=1}Y_i}\right)^{2n}e^{-2n}} = \frac{1}{2^{2n}}\left(\frac{1}{T(1-T)}\right)^n
+\end{equation}
+
+This is a monotone decreasing function of $T(1-T)$ (which is a parabola centred on the line $T=\frac 12$), so the likelihood ratio test rejects $H_0$ if $\left|T-\frac 12\right|>k$, where $k$ is chosen so that the test has the required size.
+
+To find $k$ explicitly, we have that $T\sim\text{Beta}(n,n)$ since
+\begin{equation}
+X\sim\Gamma(m,\lambda),Y\sim\Gamma(n,\lambda)\Rightarrow X/(X+Y)\sim \text{Beta}(m,n)
+\end{equation}
+
+A test of exact size $\alpha$ is therefore one which rejects $H_0$ if $\left|T-\frac 12\right|>\text{Beta}_{n,n}(\alpha/2)-\frac 12$, where $\text{Beta}_{n,n}(\alpha/2)$ is the upper $\alpha/2$ point of the $\text{Beta}(n,n)$ distribution.
+
+
+
+
+
+\item Let $X_1,\dots,X_n\stackrel{iid}{\sim}\mathcal{E}(\theta)$. Find the likelihood ratio test of size $\alpha$ of $H_0:\theta=\theta_0$ against $H_1:\theta= \theta_1(>\theta_0)$ and write down an expression for the power function. Is the test uniformly most powerful for testing $H_0:\theta\leq\theta_0$ against $H_1:\theta >\theta_0$?
+
+Find chi-squared distribution tables either by looking in a textbook or downloading the statistical programming language $\mathbf{R}$ from {\bf http://cran.r-project.org/} and using one of the manuals on that site to help you write your own tables.
+
+Use these tables to find the smallest sample size yielding a test of size 0.05 of $H_0:\theta\leq 1$ against $H_1:\theta >1$ whose power function is at least 0.9 at $\theta=3$.
+
+
+
+Solution. The likelihood ratio is given by
+\begin{equation}
+\Lambda_{X}(H_0,H_1) = \frac{\prod^n_{i=1}\theta_1\exp(-\theta_1X_i)}{\prod^n_{i=1}\theta_0\exp(-\theta_0X_i)} = \left(\frac{\theta_1}{\theta_0}\right)^n\exp\left(-(\theta_1-\theta_0)\sum^n_{i=1}X_i\right).
+\end{equation}
+
+This is a monotone decreasing function of $\sum^n_{i=1}X_i$, so the likelihood ratio test of size $\alpha$ is to reject $H_0$ if $\sum^n_{i=1}X_i<k$, where $\mathbb{P}_{\theta_0}\left(\sum^n_{i=1}X_i<k\right)=\alpha$. Now, under $H_0$, we have $\sum^n_{i=1}X_i\sim\Gamma(n,\theta_0)\equiv \frac{1}{2\theta_0}\chi^2_{2n}$. Thus,
+\begin{equation}
+\alpha = \mathbb{P}_{\theta_0}\left(2\theta_0\sum^n_{i=1}X_i<2\theta_0k\right) = F^{(2n)}(2\theta_0k)
+\end{equation}
+where $F^{(n)}(\cdot)$ is the distribution of the $\chi_n^2$ distribution. So the likelihood ratio test size $\alpha$ of $H_0:\theta=\theta_0$ against $H_1: \theta=\theta_1$ rejects $H_0$ if $\sum^n_{i=1}X_i<k\equiv \chi_{2n}^2(\alpha)/(2\theta_0)$, where $\chi_{2n}^2(\gamma)$ is the lower $\gamma$-point of the $\chi_{2n}^2$ distribution. The power function of the test is
+\begin{equation}
+w(\theta) = \mathbb{P}_{\theta}\left(2\theta\sum^n_{i=1}X_i<2\theta k\right) = F^{(2n)}(2\theta k).
+\end{equation}
+
+The form of this test is the same for any $\theta_1$ that is greater than $\theta_0$, so by the Neyman-Pearson lemma the test is the most powerful size $\alpha$ test of $H_0$ against any $\theta_1$ that is greater than $\theta_0$. Hence {\bf the test is uniformly most powerful for testing $H_0:\theta = \theta_0$ against $H'_1:\theta >\theta_0$}.
+
+Now consider any other test of size at most $\alpha$ of $H'_0:\theta\leq \theta_0$ against $H'_1:\theta >\theta_0$. This other test must be of the size at most $\alpha$ for testing $H_0:\theta=\theta_0$ against $H'_1:\theta >\theta_0$, so has no greater power than our likelihood ratio test at every $\theta_1>\theta_0$. ($w(\theta)$ is an increasing function of $\theta$.) Hence {\bf the likelihood ratio test is uniformly most powerful for testing $H'_0:\theta\leq \theta_0$ against $H'_1:\theta >\theta_0$}.
+
+Under $H_0$, we have $\sum^n_{i=1}X_i\sim\Gamma(n,1)=\frac{1}{2}\chi_{2n}^2$. Since the power function of the likelihood ratio test is increasing in $\theta$, and taking $\alpha=0.05$,
+\begin{equation}
+0.05 = \mathbb{P}_{\theta=1}\left(2\sum^n_{i=1}X_i<2k\right) = F^{(2n)}(2k)
+\end{equation}
+
+Similarly, under $H_1$, we have $\sum^n_{i=1}X_i\sim\Gamma(n,3)=\frac{1}{6}\chi_{2n}^2$, so taking $\beta\geq 0.9$
+\begin{equation}
+0.9 \leq \mathbb{P}_{\theta=3}\left(6\sum^n_{i=1}X_i<6k\right) = F^{(2n)}(6k)
+\end{equation}
+
+We use $\chi^2$ table to solve these equations simultaneously and find that
+\begin{equation}
+F^{(16)}(2k) = 0.05 \ \Rightarrow \ 2k = 7.96165\ \Rightarrow \ 6k = 23.88495 \ \Rightarrow \ F^{(16)}(6k) = F^{(16}(23.88495) \geq F^{(16)}(23.54183) = 0.9
+\end{equation}
+which can not be satisfied when $2n<16$. Thus, $2n\geq 16$, so $n=8$ is the smallest sample size that satisfies the requirements.
+\centertexdraw{
+    \drawdim in
+
+    \arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+
+    \linewd 0.01 \setgray 0
+
+    \move (0 0)
+    \clvec (0.1 0.1)(0.15 0.2)(0.2 0.5)
+    \lvec (0.2 0)\lvec (0 0)
+    \lfill f:0.8
+
+    \move (0.2 0.5)
+    \clvec (0.3 1.2)(0.4 1.5)(0.9 0.6)
+
+    \move (0.9 0.6)
+    \clvec (1.1 0.2)(1.5 0.0)(2.2 0.01)
+
+    \move (-0.2 0) \avec(2.3 0)
+    \move (0 -0.2) \avec(0 1.3)
+
+    \htext (1.8 0.8){$\chi^2$}
+
+}
+
+{\tiny
+\begin{center}
+\begin{tabular}{c|cccccccccccccccccccccccccc}
+\backslashbox{df}{area}  \ & \	0.005	\ & \	0.010	\ & \	0.025	\ & \	0.050	\ & \	0.100	\ & \	0.250	\ & \	0.500	\ & \	0.750	\ & \	0.900	\ & \	0.950	\ & \	0.975	\ & \	0.990	\ & \	0.995 \\
+1	\ & \	0.00004	\ & \	0.00016	\ & \	0.00098	\ & \	0.00393	\ & \	0.01579	\ & \	0.10153	\ & \	0.45494	\ & \	1.32330	\ & \	2.70554	\ & \	3.84146	\ & \	5.02389	\ & \	6.63490	\ & \	7.87944 \\
+2	\ & \	0.01003	\ & \	0.02010	\ & \	0.05064	\ & \	0.10259	\ & \	0.21072	\ & \	0.57536	\ & \	1.38629	\ & \	2.77259	\ & \	4.60517	\ & \	5.99146	\ & \	7.37776	\ & \	9.21034	\ & \	10.59663 \\
+3	\ & \	0.07172	\ & \	0.11483	\ & \	0.21580	\ & \	0.35185	\ & \	0.58437	\ & \	1.21253	\ & \	2.36597	\ & \	4.10834	\ & \	6.25139	\ & \	7.81473	\ & \	9.34840	\ & \	11.34487	\ & \	12.83816 \\
+4	\ & \	0.20699	\ & \	0.29711	\ & \	0.48442	\ & \	0.71072	\ & \	1.06362	\ & \	1.92256	\ & \	3.35669	\ & \	5.38527	\ & \	7.77944	\ & \	9.48773	\ & \	11.14329	\ & \	13.27670	\ & \	14.86026 \\
+5	\ & \	0.41174	\ & \	0.55430	\ & \	0.83121	\ & \	1.14548	\ & \	1.61031	\ & \	2.67460	\ & \	4.35146	\ & \	6.62568	\ & \	9.23636	\ & \	11.07050	\ & \	12.83250	\ & \	15.08627	\ & \	16.74960 \\
+6	\ & \	0.67573	\ & \	0.87209	\ & \	1.23734	\ & \	1.63538	\ & \	2.20413	\ & \	3.45460	\ & \	5.34812	\ & \	7.84080	\ & \	10.64464	\ & \	12.59159	\ & \	14.44938	\ & \	16.81189	\ & \	18.54758 \\
+7	\ & \	0.98926	\ & \	1.23904	\ & \	1.68987	\ & \	2.16735	\ & \	2.83311	\ & \	4.25485	\ & \	6.34581	\ & \	9.03715	\ & \	12.01704	\ & \	14.06714	\ & \	16.01276	\ & \	18.47531	\ & \	20.27774 \\
+8	\ & \	1.34441	\ & \	1.64650	\ & \	2.17973	\ & \	2.73264	\ & \	3.48954	\ & \	5.07064	\ & \	7.34412	\ & \	10.21885	\ & \	13.36157	\ & \	15.50731	\ & \	17.53455	\ & \	20.09024	\ & \	21.95495 \\
+9	\ & \	1.73493	\ & \	2.08790	\ & \	2.70039	\ & \	3.32511	\ & \	4.16816	\ & \	5.89883	\ & \	8.34283	\ & \	11.38875	\ & \	14.68366	\ & \	16.91898	\ & \	19.02277	\ & \	21.66599	\ & \	23.58935 \\
+10	\ & \	2.15586	\ & \	2.55821	\ & \	3.24697	\ & \	3.94030	\ & \	4.86518	\ & \	6.73720	\ & \	9.34182	\ & \	12.54886	\ & \	15.98718	\ & \	18.30704	\ & \	20.48318	\ & \	23.20925	\ & \	25.18818 \\
+11	\ & \	2.60322	\ & \	3.05348	\ & \	3.81575	\ & \	4.57481	\ & \	5.57778	\ & \	7.58414	\ & \	10.34100	\ & \	13.70069	\ & \	17.27501	\ & \	19.67514	\ & \	21.92005	\ & \	24.72497	\ & \	26.75685 \\
+12	\ & \	3.07382	\ & \	3.57057	\ & \	4.40379	\ & \	5.22603	\ & \	6.30380	\ & \	8.43842	\ & \	11.34032	\ & \	14.84540	\ & \	18.54935	\ & \	21.02607	\ & \	23.33666	\ & \	26.21697	\ & \	28.29952 \\
+13	\ & \	3.56503	\ & \	4.10692	\ & \	5.00875	\ & \	5.89186	\ & \	7.04150	\ & \	9.29907	\ & \	12.33976	\ & \	15.98391	\ & \	19.81193	\ & \	22.36203	\ & \	24.73560	\ & \	27.68825	\ & \	29.81947 \\
+14	\ & \	4.07467	\ & \	4.66043	\ & \	5.62873	\ & \	6.57063	\ & \	7.78953	\ & \	10.16531	\ & \	13.33927	\ & \	17.11693	\ & \	21.06414	\ & \	23.68479	\ & \	26.11895	\ & \	29.14124	\ & \	31.31935 \\
+15	\ & \	4.60092	\ & \	5.22935	\ & \	6.26214	\ & \	7.26094	\ & \	8.54676	\ & \	11.03654	\ & \	14.33886	\ & \	18.24509	\ & \	22.30713	\ & \	24.99579	\ & \	27.48839	\ & \	30.57791	\ & \	32.80132 \\
+16	\ & \	5.14221	\ & \	5.81221	\ & \	6.90766	\ & \	{\bf\scriptsize 7.96165}	\ & \	9.31224	\ & \	11.91222	\ & \	15.33850	\ & \	19.36886	\ & \	{\bf\scriptsize 23.54183}	\ & \	26.29623	\ & \	28.84535	\ & \	31.99993	\ & \	34.26719 \\
+17	\ & \	5.69722	\ & \	6.40776	\ & \	7.56419	\ & \	8.67176	\ & \	10.08519	\ & \	12.79193	\ & \	16.33818	\ & \	20.48868	\ & \	24.76904	\ & \	27.58711	\ & \	30.19101	\ & \	33.40866	\ & \	35.71847 \\
+18	\ & \	6.26480	\ & \	7.01491	\ & \	8.23075	\ & \	9.39046	\ & \	10.86494	\ & \	13.67529	\ & \	17.33790	\ & \	21.60489	\ & \	25.98942	\ & \	28.86930	\ & \	31.52638	\ & \	34.80531	\ & \	37.15645 \\
+19	\ & \	6.84397	\ & \	7.63273	\ & \	8.90652	\ & \	10.11701	\ & \	11.65091	\ & \	14.56200	\ & \	18.33765	\ & \	22.71781	\ & \	27.20357	\ & \	30.14353	\ & \	32.85233	\ & \	36.19087	\ & \	38.58226 \\
+20	\ & \	7.43384	\ & \	8.26040	\ & \	9.59078	\ & \	10.85081	\ & \	12.44261	\ & \	15.45177	\ & \	19.33743	\ & \	23.82769	\ & \	28.41198	\ & \	31.41043	\ & \	34.16961	\ & \	37.56623	\ & \	39.99685 \\
+21	\ & \	8.03365	\ & \	8.89720	\ & \	10.28290	\ & \	11.59131	\ & \	13.23960	\ & \	16.34438	\ & \	20.33723	\ & \	24.93478	\ & \	29.61509	\ & \	32.67057	\ & \	35.47888	\ & \	38.93217	\ & \	41.40106 \\
+22	\ & \	8.64272	\ & \	9.54249	\ & \	10.98232	\ & \	12.33801	\ & \	14.04149	\ & \	17.23962	\ & \	21.33704	\ & \	26.03927	\ & \	30.81328	\ & \	33.92444	\ & \	36.78071	\ & \	40.28936	\ & \	42.79565 \\
+23	\ & \	9.26042	\ & \	10.19572	\ & \	11.68855	\ & \	13.09051	\ & \	14.84796	\ & \	18.13730	\ & \	22.33688	\ & \	27.14134	\ & \	32.00690	\ & \	35.17246	\ & \	38.07563	\ & \	41.63840	\ & \	44.18128 \\
+24	\ & \	9.88623	\ & \	10.85636	\ & \	12.40115	\ & \	13.84843	\ & \	15.65868	\ & \	19.03725	\ & \	23.33673	\ & \	28.24115	\ & \	33.19624	\ & \	36.41503	\ & \	39.36408	\ & \	42.97982	\ & \	45.55851 \\
+25	\ & \	10.51965	\ & \	11.52398	\ & \	13.11972	\ & \	14.61141	\ & \	16.47341	\ & \	19.93934	\ & \	24.33659	\ & \	29.33885	\ & \	34.38159	\ & \	37.65248	\ & \	40.64647	\ & \	44.31410	\ & \ 	46.92789  \\
+26	\ & \	11.16024	\ & \	12.19815	\ & \	13.84390	\ & \	15.37916	\ & \	17.29188	\ & \	20.84343	\ & \	25.33646	\ & \	30.43457	\ & \	35.56317	\ & \	38.88514	\ & \	41.92317	\ & \	45.64168	\ & \	48.28988 \\
+27	\ & \	11.80759	\ & \	12.87850	\ & \	14.57338	\ & \	16.15140	\ & \	18.11390	\ & \	21.74940	\ & \	26.33634	\ & \	31.52841	\ & \	36.74122	\ & \	40.11327	\ & \	43.19451	\ & \	46.96294	\ & \	49.64492 \\
+28	\ & \	12.46134	\ & \	13.56471	\ & \	15.30786	\ & \	16.92788	\ & \	18.93924	\ & \	22.65716	\ & \	27.33623	\ & \	32.62049	\ & \	37.91592	\ & \	41.33714	\ & \	44.46079	\ & \	48.27824	\ & \	50.99338 \\
+29	\ & \	13.12115	\ & \	14.25645	\ & \	16.04707	\ & \	17.70837	\ & \	19.76774	\ & \	23.56659	\ & \	28.33613	\ & \	33.71091	\ & \	39.08747	\ & \	42.55697	\ & \	45.72229	\ & \	49.58788	\ & \	52.33562 \\
+30	\ & \	13.78672	\ & \	14.95346	\ & \	16.79077	\ & \	18.49266	\ & \	20.59923	\ & \	24.47761	\ & \	29.33603	\ & \	34.79974	\ & \	40.25602	\ & \	43.77297	\ & \	46.97924	\ & \	50.89218	\ & \	53.67196
+\end{tabular}
+\end{center}
+}
+
+
+
+
+
+\item A machine produces plastic articles in bunches of three articles at a time. The process is rather unreliable, and quite a few defective articles are produced. In an experimental run of the machine, 512 bunches were produced. Of these, the numbers of bunches with $i=0,1,2,3$ defective articles were 213($i=0$),  228($i=1$),  57($i=2$) and  14($i=3$). Test the hypothesis that each article has a constant (but unknown) probability $\theta$ of being defective, independently of all other articles.
+
+
+
+Solution. The null hypothesis is
+\begin{equation}
+H_0: p_0(\theta)=(1-\theta)^3,\ p_1(\theta)=\theta(1-\theta)^2,\ p_2(\theta)=3\theta^2(1-\theta),\ p_3(\theta)=\theta^3
+\end{equation}
+for some $\theta\in(0,1)$. Under $H_0$, the total number of defective articles, X, has a $\text{Bin}(1536,\theta)$ distribution, and the MLE for $\theta$ is $\hat{\theta}=X/1536 = (1\times 228+ 2\times 57 + 3\times 14)/1536=1/4$. Thus
+\begin{equation}
+(e_0,e_1,e_2,e_3)= 512\left(\left(\frac 34\right)^3,\left(\frac 34\right)^2\left(\frac 14\right),\left(\frac 34\right)\left(\frac 14\right)^2,\left(\frac 14\right)^3 \right) = (216,216,72,8).
+\end{equation}
+
+The generalised likelihood ratio test statistic is given by
+\begin{eqnarray}
+2\sum^k_{j=1}o_j\log(o_j/e_j) & = & 2\left[213\log\left(\frac{213}{216}\right) + 228\log\left(\frac{228}{216}\right) + 57\log\left(\frac{57}{72}\right) + 14\log\left(\frac{14}{8}\right)\right] \nonumber\\
+& = & 2\left[-2.97906954 + 12.32732645 - 13.31604652 + 7.83462103\right] = 7.73366285
+\end{eqnarray}
+
+Pearson's chi-squared statistic is given by
+\begin{eqnarray}
+\sum^k_{j=1}\frac{(o_j-e_j)^2}{e_j} & = & \frac{(213-216)^2}{216} + \frac{(228-216)^2}{216} + \frac{(57-72)^2}{72} + \frac{(14-8)^2}{8}\nonumber\\
+& = & \frac{9}{216} + \frac{144}{216}+ \frac{225}{72} + \frac{36}{8} = \frac{9+144+675+972}{216} = \frac{1800}{216} = 8.33333333
+\end{eqnarray}
+
+The null hypothesis parameter space has dimension 1 ($\theta$), while the alternative hypothesis parameter space has dimension 3 (sum of four probabilities is 1), and the $\chi_2^2$(3-1=2) distribution has upper $5\%$ point 5.99 and upper $1\%$ point 9.21. Hence both tests would reject $H_0$ at the $5\%$ level, but not at the $1\%$ level.
+
+
+
+
+
+\item A random sample of 59 people from the planet Krypton yielded the result below. Carry out a chi-squared test at the $5\%$ level that sex and eye-colour are independent factors on Krypton. Now carry out a chi-squared test at the $5\%$ level of the hypothesis that each of the cell probability is equal to $1/4$. Comment on your results.
+
+\begin{center}
+\begin{tabular}{c|cc}
+\backslashbox{Sex}{Eye-colour} & \ 1 (Blue) \  & \ 2 (Brown) \  \\ \hline
+1 (Male) & 19  & 10  \\
+2 (Female) & 9 & 21
+\end{tabular}
+\end{center}
+
+
+
+Solution. For the first hypotheses are
+\begin{equation}
+H_0: p_{ij}=p_{i+}p_{+j},\ p_{1+}+p_{2+} = 1 = p_{+1}p_{+2}; \quad H_1: p_{ij}\geq 0,\ p_{11} + p_{12} + p_{21} + p_{22} =1.
+\end{equation}
+
+Under $H_0$, the MLEs for $p_{1+}$ and $p_{+1}$ are $\hat{p}_{1+} = 29/59,\ \hat{p}_{+1}=28/59$. Thus the fitted values under $H_0$ in each cell are
+\begin{eqnarray}
+(e_{11},e_{12},e_{21},e_{22}) & = & 59\left(p_{1+}p_{+1},p_{1+}p_{+2},p_{2+}p_{+1},p_{2+}p_{+2} \right) \nonumber\\
+& = &  59\left(\frac{29}{59}\frac{28}{59},\frac{29}{59}\frac{31}{59},\frac{30}{59}\frac{28}{59},\frac{30}{59}\frac{31}{59}\right) = \left(\frac{812}{59},\frac{899}{59},\frac{840}{59},\frac{930}{59}\right).
+\end{eqnarray}
+
+The generalised likelihood ratio statistic is
+\begin{eqnarray}
+2\sum^k_{j=1}o_j\log(o_j/e_j) & = & 2\left[19\log\left(\frac{19}{812/59}\right) + 10\log\left(\frac{10}{899/59}\right) + 9\log\left(\frac{9}{840/59}\right) + 21\log\left(\frac{21}{930/59}\right)\right] \nonumber\\
+& = & 2\left[6.12704558 - 4.21160498 - 4.12775884 + 6.02438121\right] = 7.62412594
+\end{eqnarray}
+
+Pearson's chi-squared statistic is
+\begin{eqnarray}
+\sum^k_{j=1}\frac{(o_j-e_j)^2}{e_j} & = & \left[\frac{(19-812/59)^2}{812/59} + \frac{(10-899/59)^2}{899/59} + \frac{(9-840/59)^2}{840/59} + \frac{(21-930/59)^2}{930/59}\right]\nonumber\\
+& = & \frac{309^2}{59}\left[\frac{1}{812} + \frac{1}{899}+ \frac{1}{840} + \frac{1}{930}\right] = 7.45984800
+\end{eqnarray}
+
+Both of the tests are significant at the $5\%$ level in comparison with $\chi_1^2$ (1=3-2), whose upper $5\%$ point is 3.84. Hence we would reject $H_0$.
+
+For the second test, the hypotheses are
+\begin{equation}
+H_0: p_{11}=p_{12}=p_{21}=p_{22} = \frac 14; \quad H_1: p_{ij}\geq 0,\ p_{11} + p_{12} + p_{21} + p_{22} =1.
+\end{equation}
+
+The fitted values under $H_0$ in each cell are
+\begin{eqnarray}
+(e_{11},e_{12},e_{21},e_{22}) & = & 59\left(p_{11},p_{12},p_{21},p_{22} \right) =  59\left(\frac 14, \frac 14, \frac 14, \frac 14\right) = \left(\frac{59}{4},\frac{59}{4},\frac{59}{4},\frac{59}{4}\right).
+\end{eqnarray}
+
+The generalised likelihood ratio statistic increase to
+\begin{eqnarray}
+2\sum^k_{j=1}o_j\log(o_j/e_j) & = & 2\left[19\log\left(\frac{19}{59/4}\right) + 10\log\left(\frac{10}{59/4}\right) + 9\log\left(\frac{9}{59/4}\right) + 21\log\left(\frac{21}{59/4}\right)\right] \nonumber\\
+& = & 2\left[4.81072231 - 3.88657990 - 4.44616655 + 7.41886645 \right] = 7.79368408
+\end{eqnarray}
+
+Pearson's chi-squared statistic increase to
+\begin{eqnarray}
+\sum^k_{j=1}\frac{(o_j-e_j)^2}{e_j} & = & \left[\frac{(19-59/4)^2}{59/4} + \frac{(10-59/4)^2}{59/4} + \frac{(9-59/4)^2}{59/4} + \frac{(21-59/4)^2}{59/4}\right]\nonumber\\
+& = & \frac{1}{59\times 4}\left[17^2 + 19^2 + 23^2 + 25^2\right] = \frac{1804}{4\times 59} = 7.64406780
+\end{eqnarray}
+
+But this time we refer them to the upper $5\%$ point of the $\chi_3^2$ (3=3-0) distribution, namely 7.81. Hence we would not reject $H_0$.
+
+This result seems paradoxical because the first null hypothesis contains the second, so intuitively, we should not reject the first null hypothesis unless we also reject the second. There is nothing in the theory of the Pearson chi-squared statistic to guarantee the sort of monotonicity that our intuition expects to hold.
+
+
+
+
+
+\item Wirte down the model and hypothesis for a test of homogeneity in a two-way contingency table. Show that the likelihood ratio and Pearson's chi-squared tests are identical to those for the independence test. Perform the homogeneity test on the data below from a clinical trial for a drug, obtained by randomly allocating 150 patients to three equal groups.
+\begin{center}
+\begin{tabular}{cccc}
+ & \ Improved \  & \ No difference \  & \ Worse \ \\ \hline
+Placebo & 18  & 17 & 15  \\
+Half dose & 20  & 10 & 20 \\
+Full dose & 25 & 13 & 12
+\end{tabular}
+\end{center}
+
+
+
+Solution. For $i=1,\dots,I$ and $j=1,\dots,J$, let $p_{ij}$ denote the probability that an observation falls into the $(i,j)$th cell. Let $N_{ij}$ denote the number of the $n$ observations falling into the $(i,j)$th cell and let $n_{i+}=\sum^J_{j=1}N_{ij}$ denote the $i$th row total and $n_{+j}=\sum^I_{i=1}N_{ij}$ denote the $j$th column total. We model
+\begin{equation}
+(N_{i1},\dots,N_{iJ})\sim\text{Multi}(n_{i+}:p_{i1},\dots,p_{iJ})
+\end{equation}
+independently for $i=1,\dots,I$. The null hypothesis is that the cell probabilities depend only on the column, so we have $H_0: p_{1j}=p_{2j}=\dots=p_{Ij}=p_j$, say, where $\sum^J_{j=1}p_j=1$, while the alternative is $H_1: p_{ij}\geq 0$ with $\sum^J_{j=1}p_{ij}=1$ for all $i$.
+
+Under $H_1$, we have likelihood
+\begin{equation}
+\mathcal{L}(p_{11},\dots,p_{IJ}) = \sum^I_{i=1}\sum^J_{j=1}N_{ij}\log p_{ij}-\sum^I_{i=1}\lambda_i\left(\sum^J_{j=1}p_{ij}-1\right)
+\end{equation}
+which gives $\hat{p}_{ij}=N_{ij}/\lambda_i$. With the condition $1=\sum^J_{j=1}\hat{p}_{ij}$, we have $\lambda_i=n_{i+}$, thus $\hat{p}_{ij}=N_{ij}/n_{i+}$. Under $H_0$, we have
+\begin{equation}
+\mathcal{L}(p_{1},\dots,p_{J}) = \sum^I_{i=1}\sum^J_{j=1}N_{ij}\log p_{j}-\lambda\left(\sum^J_{j=1}p_{j}-1\right)
+\end{equation}
+which gives $\hat{\hat{p}}_{j}=n_{+j}/\lambda$. With the condition $1=\sum^J_{j=1}\hat{p}_{j}$, we have $\lambda=n$, thus $\hat{\hat{p}}_{j}=n_{+j}/n$.
+
+The generalised likelihood ratio statistic is therefore
+\begin{equation}
+2\log\lambda_X(H_0,H_1) = 2\sum^I_{i=1}\sum^J_{j=1}N_{ij}\log\left(\frac{\hat{p}_{ij}}{\hat{\hat{p}}_{j}}\right) = 2\sum^I_{i=1}\sum^J_{j=1}N_{ij}\log\left(\frac{N_{ij}n}{n_{i+}n_{+j}}\right) = 2\sum^I_{i=1}\sum^J_{j=1}N_{ij}\log\left(\frac{o_{ij}}{e_{ij}}\right)
+\end{equation}
+where $e_{ij}=n_{i+}n_{+j}/n$. This is the same statistic as for the independent test, and the same approximation yields Pearson's chi-squared statistic. The dimension of the alternative hypothesis parameter space is $I(J-1)$, while the dimension of the null hypothesis parameter space is $J-1$, so we refer both test statistic to $\chi^2_{(I-1)(J-1)}$, as was the case for the independent test.
+
+In the example, we find fitted values under $H_0$ given in the table below.
+\begin{center}
+\begin{tabular}{cccc}
+ & \ Improved \  & \ No difference \  & \ Worse \ \\ \hline
+Placebo & 21  & 40/3 & 47/3  \\
+Half dose & 21  & 40/3 & 47/3 \\
+Full dose & 21  & 40/3 & 47/3
+\end{tabular}
+\end{center}
+where $21=(18+20+25)/3,\ 40/3=(17+10+13)/3,\ 47/3=(15+20+12)/3$. Thus we have generalised likelihood ratio statistic and Pearson's chi-squared statistic
+\begin{eqnarray}
+2\sum^I_{i=1}\sum^J_{j=1}o_{ij}\log(o_{ij}/e_{ij}) & = & 2\left[18\log\left(\frac{18}{21}\right) + 17\log\left(\frac{17}{40/3}\right) + 15\log\left(\frac{15}{47/3}\right) + 20\log\left(\frac{20}{21}\right) + 10\log\left(\frac{10}{40/3}\right)\right. \nonumber\\
+& & \quad \left. 20\log\left(\frac{20}{47/3}\right) + 25\log\left(\frac{25}{21}\right) + 13\log\left(\frac{13}{40/3}\right)+ 12\log\left(\frac{12}{47/3}\right)\right] \nonumber\\
+& = & 5.12914108
+\end{eqnarray}
+\begin{eqnarray}
+\sum^I_{i=1}\sum^J_{j=1}\frac{(o_{ij}-e_{ij})^2}{e_{ij}} & = & \left[\frac{(18-21)^2}{21} + \frac{(17-40/3)^2}{40/3} + \frac{(15-47/3)^2}{47/3} + \frac{(20-21)^2}{21} + \frac{(10-40/3)^2}{40/3} \right]\nonumber\\
+& & \quad \left. \frac{(20-47/3)^2}{47/3} + \frac{(25-21)^2}{21} + \frac{(13-40/3)^2}{40/3}  \frac{(12-47/3)^2}{47/3}  \right] \nonumber\\
+& = & \frac{9+1+16}{21} + \frac{121+100+1}{120} + \frac{4+169+121}{141} = 5.17320162
+\end{eqnarray}
+both of which referred to the upper $5\%$ point of the $\chi^2_4$ (4=(I-1)(J-1)=(3-1)(3-1)) distribution, which is 9.488. Therefore we do not reject $H_0$.
+
+
+
+
+
+\item Let $C=\{x:t(x)<k\}$ denote the critical region of a test of a simple null hypothesis based on a test statistic $T=t(X)$. Show that if the null distribution function $F$ of $T$ is continuous then under this hypothesis the $p$-value $P=F(T)$ has a $U(0,1)$ distribution.
+
+[Hint: For $u\in(0,1]$, let $F^{-1}(u)=\inf\{x\in\mathbb{R}:F(x)\geq u\}$ and show that $x\geq F^{-1}(u)$ iff $F(x)\geq u$.]
+
+
+
+Solution. For $u\in(0,1]$, let $F^{-1}(u)=\inf\{x\in\mathbb{R}:F(x)\geq u\}$. Since $F$ is non-decreasing, the set $\{x\in\mathbb{R}: F(x)\geq u\}$ is an interval stretching to $\infty$, and since $F$ is right-continuous, this interval is closed on the left. Therefore $\{x\in\mathbb{R}: F(x)\geq u\}=[F^{-1}(u),\infty)$ for $u\in(0,1]$, so $F^{-1}(u)\leq x$ if and only if $u\leq F(x)$.
+
+Since $F$ is continuous, byt the intermediate value theorem, for each $u\in(0,1)$, there exists at least one solution to $F(x)=u$, and by right-continuity of $F$, we have that $F^{-1}(u)=\inf\{x\in\mathbb{R}:F(x)= u\}$ satisfies $F(F^{-1}(u))=u$. It follow that for $u\in(0,1)$,
+\begin{equation}
+\mathbb{P}(P<u) = \mathbb{P}(F(T)<u) = \mathbb{P}(T<F^{-1}(u)) = \mathbb{P}(T\leq F^{-1}(u)) = F(F^{-1}(u))=u,
+\end{equation}
+so $P\sim U(0,1)$.
+
+
+
+
+
+\item Let $f_0$ and $f_1$ be probability mass functions on a countable set $\mathcal{X}$. State and prove a version of the Neyman-Pearson lemma for a size $\alpha$ test of $H_0:f=f_0$ against $H_1:f= f_1$ assuming that $\alpha$ is such that there exists a likelihood ratio test of exact size $\alpha$. Does there exist a version of the Neyman-Pearson lemma when a likelihood ratio test of exact size $\alpha$ does not exist?
+
+
+
+Solution. \emph{Theorem}: Let $f_0$ and $f_1$ be two probability mass functions on a countable set $\mathcal{X}$, and suppose we are interested in test $H_0: f=f_0$ against $H_1: f=f_1$. Then, among all tests of size at most $\alpha$, the likelihood ratio test with critical region $C=\{x\in\mathcal{X}: \frac{f_1(x)}{f_0(x)}\geq k\}$ minimises the probability of Type II error, where $k$ is chosen such that
+\begin{equation}
+\sum_{x\in C}f_0(x)=\alpha.
+\end{equation}
+
+[It is assumed that $\alpha$ is chosen in such a way that such $k$ exists.]
+
+\emph{Proof}: Let $\beta=\sum_{x\in C^c}f_1(x)$. Let $C_*$ denote the critical region of any other test of size at most $\alpha$, and let $\alpha_*$ and $\beta_*$ denote its Type I and Type II error probabilities respectively. Then
+\begin{eqnarray}
+\beta - \beta_* & = & \sum_{x\in C^c\cap C_*}f_1(x) + \sum_{x\in C^c\cap C_*^c}f_1(x) - \sum_{x\in C\cap C_*^c}f_1(x) - \sum_{x\in C^c\cap C_*^c}f_1(x) \leq k \sum_{x\in C^c\cap C_*}f_0(x)  - k \sum_{x\in C\cap C_*^c}f_0(x)  \nonumber\\
+& = & k\sum_{x\in C^c\cap C_*}f_0(x) + k\sum_{x\in C\cap C_*}f_0(x) - k\sum_{x\in C\cap C_*^c}f_0(x) - k\sum_{x\in C\cap C_*}f_0(x) \leq k(\alpha_*-\alpha)\leq 0.
+\end{eqnarray}
+
+We introduce the notion of a test function, which is a function $\phi:\mathcal{X}\to[0,1]$, with the interpretation that on seeing data $x\in\mathcal{X}$, we reject $H_0$ with probability $\phi(x)$. Notice that this formulation allows the use of randomised tests.
+
+\emph{Theorem}: Let $f_0$ and $f_1$ be two probability mass functions on a countable set $\mathcal{X}$, and suppose we are interested in testing $H_0: f=f_0$ against $H_1: f=f_1$. Then among all tests of size at most $\alpha$, the test with function $\phi: \mathcal{X}\to[0,1]$ defined by
+\begin{equation}
+\phi(x)=\left\{
+\begin{array}{cl}
+0 & \text{if } f_1(x)<kf_0(x)\\
+\gamma & \text{if } f_1(x) = kf_0(x)\\
+1 & \text{if } f_1(x)>kf_0(x)
+\end{array}
+\right.
+\end{equation}
+minimises the probability of Type II error. Here, $\gamma\in[0,1]$ and $k\geq 0$ are chosen such that
+\begin{equation}
+\sum_{x:f_1(x)>kf_0(x)}f_0(x) + \gamma\sum_{x:f_1(x)=kf_0(x)}f_0(x)=\alpha.
+\end{equation}
+
+\emph{Proof}: Let $\beta=\sum_{\mathcal{X}}f_1(x)(1-\phi(x))$ denote the Type II error probability of the test with test function $\phi$. Let $\phi_*$ denote the test function of another test of size at most $\alpha$, and let $\alpha_*$ and $\beta_*$ denote its Type I and Type II error probabilities respectively. Then
+\begin{eqnarray}
+0 & \leq & \sum_{\mathcal{X}}(f_1(x) -kf_0(x))(\phi(x)-\phi_*(x))  \nonumber\\
+& = & - \sum_{\mathcal{X}}f_1(x)(1-\phi(x)) + \sum_{\mathcal{X}}f_1(x)(1-\phi_*(x)) - k\sum_{\mathcal{X}}f_0(x)\phi(x) + k\sum_{\mathcal{X}}f_0(x)\phi_*(x) \nonumber\\
+& = & -\beta + \beta_* -k(\alpha-\alpha_*)\leq \beta_*  -\beta.
+\end{eqnarray}
+
+
+
+
+
+
+\item If $X\sim\mathcal{N}(0,1)$ and $Y\sim\chi^2_n$ are independent, we say that $T=\frac{X}{\sqrt{Y/n}}$ has a $t$-distribution with $n$ degrees of freedom and write $T\sim t_n$. Derive the probability density function of $T$.
+
+
+
+Solution. The joint density of $X$ and $Y$ is
+\begin{equation}
+f_{X,Y}(x,y) = \left(\frac{1}{(2\pi)^{1/2}}e^{-x^2/2}\right)\left(\frac{y^{\frac n2-1}e^{-y/2}}{\Gamma(n/2)2^{n/2}}\right),\quad x\in\mathbb{R},y>0.
+\end{equation}
+
+Let $u=\frac{x}{\sqrt{y/n}}$ and let $v=y$. Then the inverse transformation is $x=u\sqrt{v/n}$ and $y=v$, and the Jacobian is
+\begin{equation}
+J=\left(
+\begin{array}{cc}
+\sqrt{\frac{v}{n}} & \frac{u}{2\sqrt{nv}} \\
+0 & 1
+\end{array}
+\right)
+\end{equation}
+with determinant $\sqrt{v/n}$. Thus the joint density of $T$ and $W$ is
+\begin{equation}
+f_{U,V}(u,v) = \left(\frac{1}{(2\pi)^{1/2}}e^{-u^2v/(2n)}\right)\left(\frac{v^{\frac n2-1}e^{-v/2}}{\Gamma(n/2)2^{n/2}}\right)\sqrt{\frac{v}{n}}= \frac{e^{-\frac 12(1+u^2/n)v}v^{\frac{n-1}{2}}}{(2\pi n)^{1/2}\Gamma(n/2)2^{n/2} } ,\quad u\in\mathbb{R},v>0.
+\end{equation}
+and the marginal density of $U$ is
+\begin{equation}
+f_{U}(u) = \frac{1}{(2\pi n)^{1/2}\Gamma(n/2)2^{n/2}} \int^\infty_0 e^{-\frac 12(1+u^2/n)v}v^{\frac{n-1}{2}} dv = \frac{\Gamma\left(\frac{n+1}{2}\right)}{\Gamma\left(\frac{n}{2}\right)} \frac{1}{(n\pi)^{1/2}}\frac{1}{(1+u^2/n)^{(n+1)/2}}, \quad u\in \mathbb{R}.
+\end{equation}
+
+
+
+
+
+\item Let $X_1,\dots,X_n\stackrel{iid}{\sim}\mathcal{N}(\mu,\sigma^2)$ where $\sigma^2$ is unknown, and suppose we are interested in testing $H_0:\mu=\mu_0$ against $H_1:\mu\neq \mu_0$. Derive the likelihood ratio test of size $\alpha$.
+
+
+
+Solution. The log-likelihood is
+\begin{equation}
+\mathcal{L}(\mu,\sigma^2) = -\frac{n}{2}\log\sigma^2 - \frac{1}{2\sigma^2}\sum^n_{i=1}(X_i-\mu)^2,
+\end{equation}
+so under $H_1$, an MLE $\left(\hat{\mu}, \hat{\sigma}^2\right)$ satisfies
+\begin{eqnarray}
+0 & = & \left.\frac{\partial\mathcal{L}}{\partial\mu}\right|_{\left(\hat{\mu}, \hat{\sigma}^2\right)} = \frac{1}{\hat{\sigma}^2}\sum^n_{i=1}(X_i-\hat{\mu}),  \nonumber\\
+0 & = & \left.\frac{\partial\mathcal{L}}{\partial\sigma^2}\right|_{\left(\hat{\mu}, \hat{\sigma}^2\right)} = -\frac{n}{2\hat{\sigma}^2} + \frac{1}{2\hat{\sigma}^4}\sum^n_{i=1}(X_i-\hat{\mu})^2.
+\end{eqnarray}
+
+We deduce that $\hat{\mu}=n^{-1}\sum^n_{i=1}X_i\equiv \bar{X}$ and $\hat{\sigma}^2 = n^{-1}\sum^n_{i=1}(X_i -\bar{X})^2 $.
+
+Under $H_0$, a very similar calculation yields $\hat{\hat{\sigma}}^2 = n^{-1}\sum^n_{i=1}(X_i -\mu_0)^2 $ as the MLE of $\sigma^2$. It follows that the likelihood ratio for $X=(X_1,\dots,X_n)$ is
+\begin{equation}
+\Lambda_{X}(H_0,H_1) = \frac{(2\pi\hat{\sigma}^2)^{-n/2}\exp\left(-\frac{1}{2\hat{\sigma}^2}\sum^n_{i=1}(X_i-\bar{X})^2\right)}{(2\pi\hat{\hat{\sigma}}^2)^{-n/2}\exp\left(-\frac{1}{2\hat{\hat{\sigma}}^2}\sum^n_{i=1}(X_i-\mu_0)^2\right)} = \left(\frac{\sum^n_{i=1}(X_i-\bar{X}+ \bar{X}-\mu_0)^2}{\sum^n_{i=1}(X_i-\bar{X})^2}\right)^{n/2} = \left(1+\frac{T^2}{n-1}\right)^{n/2}
+\end{equation}
+where
+\begin{equation}
+T = \frac{\sqrt{n}(\bar{X}-\mu_0)}{\left(\frac{1}{n-1}\sum^n_{i=1}(X_i-\bar{X})^2\right)^{1/2}}.
+\end{equation}
+
+We deduce that the likelihood ratio test rejects $H_0$ for large values of $|T|$. Now, under $H_0$, we know that $\frac{\sqrt{n}}{\sigma}(\bar{X}-\mu_0)\sim\mathcal{N}(0,1)$, independently of $\frac{1}{\sigma^2}\sum^n_{i=1}(X_i-\bar{X})^2\sim \chi_{n-1}^2$. It follows that $T\sim t_{n-1}$ under $H_0$, and the likelihood ratio test of size $\alpha$ rejects $H_0$ if $|T|>t_{n-1}(\alpha/2)$, the upper $\alpha/2$-point of the $t_{n-1}$ distribution.
+
+
+
+
+
+\item Statisticians $A$ and $B$ obtain independent samples $X_1,\dots,X_{10}$ and $Y_1,\dots,Y_{17}$, both independent and identically distributed from a $\mathcal{N}(\mu,\sigma^2)$ distribution with both $\mu$ and $\sigma$ unknown. They estimate $(\mu,\sigma^2)$ by $\bar{X},S_{XX}/9$ and $(\bar{Y},S_{YY}/16)$ respectively, where, for example, $\bar{X}=\frac{1}{10}\sum^{10}_{i=1}X_i$ and $S_{XX} = \sum^{10}_{i=1}(X_i-\bar{X})^2$. Given that $\bar{X}=5.5$ and $\bar{Y}=5.8$, which statistician's estimate of $\sigma^2$ is more probable to have exceeded the true value by more than $50\%$? Find this probability (approximately) in each case.
+
+
+
+Solution. We know that $S_{XX}\sim\sigma^2\chi_9^2$ and $S_{YY}\sim\sigma^2\chi_{16}^2$. Hence
+\begin{equation}
+\mathbb{P}\left(\frac{S_{XX}}{9}>1.5\sigma^2\right) = \mathbb{P}\left(\frac{S_{XX}}{\sigma^2}>13.5\right) = 1 - F^{(9)}(13.5)\approx 0.14
+\end{equation}
+\begin{equation}
+\mathbb{P}\left(\frac{S_{YY}}{16}>1.5\sigma^2\right) = \mathbb{P}\left(\frac{S_{YY}}{\sigma^2}>24\right) = 1 - F^{(16)}(24)\approx 0.09
+\end{equation}
+where $F^{(n)}$ is the distribution function of $\chi_n^2$. Hence Statistician $A$'s estimate of $\sigma^2$ is more likely to have exceeded the true value of $\sigma^2$ by more than $50\%$. The 'trick' in this question is that the given values of $\bar{X}$ and $\bar{Y}$ are irrelevant because $\bar{X}$ and $S_{XX}$ are independent (as are $\bar{Y}$ and $S_{YY}$).
+
+
+
+\item Let $X\sim \mathcal{N}_n(\mu,\Sigma)$, and let $A$ be an arbitrary $m\times n$ matrix. Prove directly from the definition that $AX$ has an $m$-variate normal distribution. Show further that $AX\sim \mathcal{N}_m(A\mu,A\Sigma A^T)$. Give an alternative proof of this result using moment generating functions.
+
+
+
+Solution. Let $t\in\mathbb{R}^m$. Then $t^TAX=(A^Tt)^TX$ is a linear combination of the components of $X$, so has a univariate normal distribution. Hence $AX$ has an $m$-variate normal distribution. Moreover,
+\begin{equation}
+\mathbb{E}_{\mu,\Sigma}(AX) = A\mathbb{E}_{\mu,\Sigma}(X) = A\mu
+\end{equation}
+and
+\begin{equation}
+\mathbf{cov}_{\mu,\Sigma}((AX)_i,(AX)_j) = \mathbf{cov}_{\mu,\Sigma}\left(\sum^n_{k=1}a_{ik}X_k,\sum^n_{l=1}a_{jl}X_l\right) = \sum^n_{k=1}\sum^n_{l=1}a_{ik}a_{jl}\Sigma_{kl} = (A\Sigma A^T)_{ij}.
+\end{equation}
+
+Thus $AX\sim \mathcal{N}_m(A\mu,A\Sigma A^T)$.
+
+Alternatively, the moment generating function of $AX$ is given by
+\begin{equation}
+M_{AX}(t) = \mathbb{E}_{\mu,\Sigma}\left(e^{t^T(AX)}\right) = \mathbb{E}_{\mu,\Sigma}\left(e^{(A^Tt)^TX}\right) = M_X(A^Tt) = e^{(A^Tt)\mu + (A^Tt)^T\Sigma(A^Tt)/2} = e^{t^TA\mu + t^TA\Sigma A^Tt/2}
+\end{equation}
+
+Since the moment generating function is finite for all $t\in\mathbb{R}^m$, we deduce that $AX\sim \mathcal{N}_m(A\mu,A\Sigma A^T)$.
+
+
+
+
+
+\item Let $X_1,\dots,X_n\stackrel{iid}{\sim}\mathcal{N}(\mu,\sigma^2)$. By considering the distribution of the random vector
+\begin{equation}
+\left(\bar{X},X_1-\bar{X},X_2-\bar{X},\dots,X_n-\bar{X}\right),
+\end{equation}
+where $\bar{X}=n^{-1}\sum^n_{i=1}X_i$, show that $\bar{X}$ and $\left(X_1-\bar{X},\dots,X_n-\bar{X}\right)$ are independent. Hence give an alternative proof to the one from lectures of the fact that $\bar{X}$ and $S_{XX}=\sum^n_{i=1}(X_i-\bar{X})^2$ are independent.
+
+
+
+Solution. The random vector $\left(\bar{X},X_1-\bar{X},X_2-\bar{X},\dots,X_n-\bar{X}\right)$ is a linear transformation of $\left(X_1,\dots,X_n\right)$, so has a multivariate normal distribution.
+
+Thus to show $\bar{X}$ and $\left(X_1-\bar{X},\dots,X_n-\bar{X}\right)$ are independent, it suffices to show $\mathbf{cov}\left(\bar{X},X_i-\bar{X}\right)=0$ for $i=1,\dots,n$. But by symmetry, $\mathbf{cov}\left(\bar{X},X_i-\bar{X}\right)$ does not depend on $i$, and
+\begin{equation}
+\sum^n_{i=1} = \mathbf{cov}\left(\bar{X},X_i-\bar{X}\right) = \mathbf{cov}\left(X_i,\sum^n_{i-1}\left(X_i-\bar{X}\right)\right) = 0,
+\end{equation}
+
+So $\mathbf{cov}\left(\bar{X},X_i-\bar{X}\right)=0$ for $i=1,\dots,n$. Hence $\bar{X}$ and $Y=\left(X_1-\bar{X},\dots,X_n-\bar{X}\right)$ are independent. It follows that $\bar{X}$ and $S_{XX}=\sum^n_{i=1}(X_i-\bar{X})^2=\|Y\|^2$ are independent.
+
+
+
+
+
+\item Consider the simple linear regression model
+\begin{equation}
+Y_i = a + bx_i+\epsilon_i,\quad i=1,\dots,n
+\end{equation}
+where $\epsilon_1,\dots,\epsilon_n\stackrel{iid}{\sim}\mathcal{N}(0,\sigma^2)$ and $\sum^n_{i=1}x_i=0$. Derive from first principles explicit expression for the MLEs $\hat{a}$, $\hat{b}$ and $\hat{\sigma}^2$. Show that we can obtain the same expressions if we regard the simple linear regression model as a special case of the general linear model $Y=X\beta+\epsilon$ and specialise the formulae $\hat{\beta}=(X^TX)^{-1}X^TY$ and $\hat{\sigma}^2=n^{-1}\left\|Y-X\hat{\beta}\right\|^2$.
+
+Let $A$ be an $n\times n$ orthogonal matrix where the entries in the first row are all equal to $1/\sqrt{n}$, and where the $j$th entry in the second row is $x_j/\sqrt{S_{xx}}$. By considering the distribution of $Z=AY$, where $Y=(Y_1,\dots,Y_n)^T$, derive the joint distribution of $\hat{a}$, $\hat{b}$ and $\hat{\sigma}^2$.
+
+
+
+Solution. The log-likelihood is
+\begin{equation}
+\mathcal{L}(a,b,\sigma^2) = -\frac{n}{2}\log\sigma^2 - \frac{1}{2\sigma^2}\sum^n_{i=1}(Y_i-a-bx_i)^2,
+\end{equation}
+so an MLE $\left(\hat{\mu}, \hat{\sigma}^2\right)$ satisfies
+\begin{eqnarray}
+0 & = & \left.\frac{\partial\mathcal{L}}{\partial a}\right|_{\left(\hat{a}, \hat{b}, \hat{\sigma}^2\right)} = \frac{1}{\hat{\sigma}^2}\sum^n_{i=1}(Y_i-\hat{a}-\hat{b}x_i) =  \frac{1}{\hat{\sigma}^2}\sum^n_{i=1}(Y_i-\hat{a}),  \nonumber\\
+0 & = & \left.\frac{\partial\mathcal{L}}{\partial b}\right|_{\left(\hat{a}, \hat{b}, \hat{\sigma}^2\right)} = \frac{1}{\hat{\sigma}^2}\sum^n_{i=1}x_i(Y_i-\hat{a}-\hat{b}x_i) = \frac{1}{\hat{\sigma}^2}\sum^n_{i=1}x_i(Y_i-\hat{b}x_i),    \nonumber\\
+0 & = & \left.\frac{\partial\mathcal{L}}{\partial\sigma^2}\right|_{\left(\hat{a}, \hat{b}, \hat{\sigma}^2\right)} = -\frac{n}{2\hat{\sigma}^2} + \frac{1}{2\hat{\sigma}^4}\sum^n_{i=1}(Y_i-\hat{a}-\hat{b}x_i)^2.
+\end{eqnarray}
+
+We deduce that
+\begin{equation}
+\hat{a} = \frac 1n\sum^n_{i=1}Y_i=\bar{Y},\ \hat{b} = \frac{\sum^n_{i=1}x_iY_i}{\sum^n_{i=1}x_i^2},\ \hat{\sigma}^2 = \frac 1n\sum^n_{i=1}(Y_i-a-bx_i)^2.
+\end{equation}
+
+Now let $X$ denote the $n\times 2$ matrix whose entries in the first column are all equal to 1, and whose $i$th entry in the second column is $x_i$. From the given expressions, we deduce that
+\begin{equation}
+\left(\begin{array}{c}
+\hat{a} \\
+\hat{b}
+\end{array}\right)
+=\hat{\beta} = (X^TX)^{-1}X^TY =
+\left(\begin{array}{cc}
+n & 0 \\
+0 & \sum^n_{i=1}x_i^2
+\end{array}\right)^{-1}
+\left(\begin{array}{c}
+\sum^n_{i=1}Y_i \\
+\sum^n_{i=1}x_iY_i
+\end{array}\right)=
+\left(\begin{array}{c}
+\bar{Y} \\
+\sum^n_{i=1}x_iY_i/\sum^n_{i=1}x_i^2
+\end{array}\right)
+\end{equation}
+as required. Furthermore,
+
+\begin{equation}
+\hat{\sigma}^2=n^{-1}\left\|Y-X\hat{\beta}\right\|^2 = \frac 1n\sum^n_{i=1}(Y_i-a-bx_i)^2,
+\end{equation}
+also as required.
+
+Let $A=(a_{ij})$ be $n\times n$ orthogonal matrix where the entries in the first row are all equal to $1/\sqrt{n}$, and where the $j$th entry in the second row is $x_j/\sqrt{S_{xx}}$. Set
+\begin{equation}
+\mu=(a+bx_1,\dots,a+bx_n)^T
+\end{equation}
+
+If $Z=AY$ then $Z\sim \mathcal{N}_n(A\mu,A\sigma^2IA^T)\sim \mathcal{N}_n(A\mu,\sigma^2I)$. Now, due to the orthogonal matrix, we have
+\begin{equation}
+\sum^n_{k=1}a_{ik}a_{jk} = 1, \ i= j \quad\quad \sum^n_{k=1}a_{ik}a_{jk} = 0, \  i\neq j
+\end{equation}
+
+Thus,
+\begin{eqnarray}
+(A\mu)_1 & = & \sum^n_{j=1}a_{1j}(a+bx_j) = a\sum^n_{j=1}a_{1j} + b\sum^n_{j=1}a_{1j}x_j = a\sum^n_{j=1}\frac{1}{\sqrt{n}} + \frac{b}{\sqrt{n}}\sum^n_{j=1}x_j = a\sqrt{n}\nonumber\\
+(A\mu)_2 & = & \sum^n_{j=1}a_{2j}(a+bx_j) = a\sum^n_{j=1}a_{2j} + b\sum^n_{j=1}a_{2j}x_j = a\sum^n_{j=1}\frac{x_j}{\sqrt{S_{xx}}} + \frac{b}{\sqrt{S_{xx}}}\sum^n_{j=1}x_j^2 = \frac{b}{\sqrt{S_{xx}}}S_{xx} = b{\sqrt{S_{xx}}} \nonumber\\
+(A\mu)_i & = & a\sum^n_{j=1}a_{ij} + b\sum^n_{j=1}a_{ij}x_j = a\sqrt{n}\sum^n_{j=1}\frac{1}{\sqrt{n}}a_{ij} + b\sqrt{S_{xx}}\sum^n_{j=1}a_{ij}\frac{x_j}{\sqrt{S_{xx}}} = a\sqrt{n}\sum^n_{j=1}a_{1j}a_{ij} + b\sqrt{S_{xx}}\sum^n_{j=1}a_{2j}a_{ij} =0 \nonumber
+\end{eqnarray}
+for $i=3,\dots,n$. We deduce that
+
+\begin{eqnarray}
+\hat{a} & = & \frac 1n\sum^n_{j=1}Y_j=\frac{1}{\sqrt{n}}\sum^n_{j=1}\frac{1}{\sqrt{n}}Y_j = \frac{1}{\sqrt{n}}Z_1\sim\mathcal{N}(a,\sigma^2/n) \nonumber\\
+\hat{b} & = & \frac{\sum^n_{i=1}x_jY_j}{\sum^n_{j=1}x_j^2} = \frac{1}{\sqrt{S_{xx}}}\sum^n_{j=1}\frac{x_j}{\sqrt{S_{xx}}} Y_j = \frac{1}{\sqrt{S_{xx}}}Z_2\sim\mathcal{N}(b,\sigma^2/S_{xx}).
+\end{eqnarray}
+
+Moreover,
+\begin{eqnarray}
+\sum^n_{j=1}(Y_j-\hat{a}-\hat{b}x_j)^2 & = & \sum^n_{j=1}(Y_j-\bar{Y})^2 -2\hat{b}S_{xY} + \hat{b}^2S_{xx} = \|Y\|^2 -n\bar{Y}^2 - \hat{b}^2S_{xx} \nonumber\\
+& = & Y^TY -Z_1^2 - Z_2^2 = Y^TA^TAY - Z_1^2 - Z_2^2 = Z^TZ - Z_1^2 - Z_2^2 = \sum^n_{j=3}Z_j^2
+\end{eqnarray}
+
+so that $\hat{\sigma}^2\sim \frac{\sigma^2}{n}\chi_{n-2}^2$. Finally, $Z_1,\dots,Z_n$ are independent; $\hat{a}$ is a function of $Z_1$; $\hat{b}$ is a function of $Z_2$; and $\hat{\sigma}^2$ is a function of $(Z_3,\dots,Z_n)$, we deduce that $\hat{a}$, $\hat{b}$ and $\hat{\sigma}^2$ are independent.
+
+
+
+
+
+\item The relationship between the range in metres, $Y$, of a howitzer with muzzle velocity $v$ metres per second fired at angle of elevation $\alpha$ degrees is assume to be
+\begin{equation}
+Y = \frac{v^2}{g}\sin2\alpha+\epsilon,
+\end{equation}
+where $g=9.81$ and where $\epsilon\sim\mathcal{N}(0,\sigma^2)$. Estimate $v$ from the following independent observations made on 9 shells. Provide a $95\%$ confidence interval for $v$ based on a root which has a $t$-distribution.
+\begin{center}
+\begin{tabular}{cccccccccc}
+$\alpha$ (deg) & 5 & 10 & 15 & 20 & 25 & 30 & 35 & 40 & 45  \\
+$\sin 2\alpha$ & \ 0.1736\ &\  0.3420 \ &\ 0.5\ &\ 0.6428\ &\ 0.7660\ &\ 0.8660\ &\ 0.9397\ &\ 0.9848\ &\ 1\ \\
+range (m) & 4860 & 9580 & 14080 & 18100 & 21550 & 24350 & 26400 & 27700 & 28300
+\end{tabular}
+\end{center}
+
+
+
+Solution. Writing $\beta=v^2/g$, and $x_i=\sin2\alpha_i$, the log-likelihood is
+\begin{equation}
+\mathcal{L}(\beta,\sigma^2) = -\frac{n}{2}\log\sigma^2 - \frac{1}{2\sigma^2}\sum^n_{i=1}(Y_i-\beta x_i)^2,
+\end{equation}
+from which we deduce $\hat{\beta}=(X^TX)^{-1}X^TY\sim \mathcal{N}(\beta,\sigma^2(X^TX)^{-1})$ and $\|Y-X\hat{\beta}\|^2\sim \sigma^2\chi_{n-1}^2$ are independent. Thus,
+\begin{equation}
+\hat{v} = \sqrt{g\hat{\beta}} = \sqrt{g(X^TX)^{-1}X^TY} = \sqrt{gS_{XY}/S_{XX}} = \sqrt{\frac{9.81\times140776.176}{4.99987193}} = 525.5568
+\end{equation}
+\begin{eqnarray}
+1-\alpha & = & \mathbb{P}_{\beta,\sigma^2}\left(-t_{n-1}(\alpha/2) \leq \frac{\frac{1}{\sqrt{\sigma^2(X^TX)^{-1}}}\left(\hat{\beta}-\beta\right)}{\sqrt{\frac{\|Y-X\hat{\beta}\|^2}{\sigma^2(n-1)}}}\leq t_{n-1}(\alpha/2) \right)\nonumber\\
+& = & \mathbb{P}_{\beta,\sigma^2}\left(\beta\in \left[\hat{\beta} - \frac{\|Y-X\hat{\beta}\|}{\sqrt{(n-1)S_{XX}}}t_{n-1}(\alpha/2),\ \hat{\beta} + \frac{\|Y-X\hat{\beta}\|}{\sqrt{(n-1)S_{XX}}}t_{n-1}(\alpha/2) \right]\right)\nonumber\\
+& = & \mathbb{P}_{\beta,\sigma^2}\left(v \in \left[\sqrt{\hat{v}^2 - \frac{g\|Y-X\hat{\beta}\|}{\sqrt{(n-1)S_{XX}}}t_{n-1}(\alpha/2)},\ \sqrt{\hat{v}^2 + \frac{g\|Y-X\hat{\beta}\|}{\sqrt{(n-1)S_{XX}}}t_{n-1}(\alpha/2)} \right]\right)
+\end{eqnarray}
+
+We have $\alpha=0.05$, $n=9$, $t_{n-1}(\alpha/2)=2.30600$, $S_{XX} = 4.99987193$ and
+\begin{equation}
+\|Y-X\hat{\beta}\| = \|Y-X(X^TX)^{-1}X^TY\| = \sqrt{\left\|\left(I-\frac{XX^T}{S_{XX}}\right)Y\right\|^2} = \sqrt{Y^T\left(I-\frac{XX^T}{S_{XX}}\right)Y} = \sqrt{S_{YY}-\frac{S_{XY}^2}{S_{XX}}}
+\end{equation}
+
+So we have $\frac{g\|Y-X\hat{\beta}\|}{\sqrt{(n-1)S_{XX}}}t_{n-1}(\alpha/2) = \frac{g\sqrt{S_{XX}S_{YY}-S_{XY}^2}t_{n-1}(\alpha/2)}{S_{XX}\sqrt{n-1}}= 614.647975$. Thus, the $95\%$ confidence interval for $v$ is $[524.971699,\ 526.141217]$.
+
+{\scriptsize
+\begin{center} t table
+\begin{tabular}{c|cccccccc}
+\backslashbox{df}{area} &\ 0.40000\	& \ 0.25000\	&\	0.10000	\ &\	0.05000	\ &\	0.02500	\ &\	0.01000\	&\	0.00500\	& \ 0.00050\	\\\hline
+1	&	0.32492	&	1.00000	&	3.07768	&	6.31375	&	12.70620	&	31.82052	&	63.65674	&	636.61920	\\
+2	&	0.28868	&	0.81650	&	1.88562	&	2.91999	&	4.30265	&	6.96456	&	9.92484	&	31.59910	\\
+3	&	0.27667	&	0.76489	&	1.63774	&	2.35336	&	3.18245	&	4.54070	&	5.84091	&	12.92400	\\
+4	&	0.27072	&	0.74070	&	1.53321	&	2.13185	&	2.77645	&	3.74695	&	4.60409	&	8.61030	\\
+5	&	0.26718	&	0.72669	&	1.47588	&	2.01505	&	2.57058	&	3.36493	&	4.03214	&	6.86880	\\
+6	&	0.26484	&	0.71756	&	1.43976	&	1.94318	&	2.44691	&	3.14267	&	3.70743	&	5.95880	\\
+7	&	0.26317	&	0.71114	&	1.41492	&	1.89458	&	2.36462	&	2.99795	&	3.49948	&	5.40790	\\
+8	&	0.26192	&	0.70639	&	1.39682	&	1.85955	&	{\bf\small 2.30600}	&	2.89646	&	3.35539	&	5.04130	\\
+9	&	0.26096	&	0.70272	&	1.38303	&	1.83311	&	2.26216	&	2.82144	&	3.24984	&	4.78090	\\
+10	&	0.26019	&	0.69981	&	1.37218	&	1.81246	&	2.22814	&	2.76377	&	3.16927	&	4.58690	\\
+11	&	0.25956	&	0.69745	&	1.36343	&	1.79589	&	2.20099	&	2.71808	&	3.10581	&	4.43700	\\
+12	&	0.25903	&	0.69548	&	1.35622	&	1.78229	&	2.17881	&	2.68100	&	3.05454	&	4.31780	\\
+13	&	0.25859	&	0.69383	&	1.35017	&	1.77093	&	2.16037	&	2.65031	&	3.01228	&	4.22080	\\
+14	&	0.25821	&	0.69242	&	1.34503	&	1.76131	&	2.14479	&	2.62449	&	2.97684	&	4.14050	\\
+15	&	0.25789	&	0.69120	&	1.34061	&	1.75305	&	2.13145	&	2.60248	&	2.94671	&	4.07280	\\
+16	&	0.25760	&	0.69013	&	1.33676	&	1.74588	&	2.11991	&	2.58349	&	2.92078	&	4.01500	\\
+17	&	0.25735	&	0.68920	&	1.33338	&	1.73961	&	2.10982	&	2.56693	&	2.89823	&	3.96510	\\
+18	&	0.25712	&	0.68836	&	1.33039	&	1.73406	&	2.10092	&	2.55238	&	2.87844	&	3.92160	\\
+19	&	0.25692	&	0.68762	&	1.32773	&	1.72913	&	2.09302	&	2.53948	&	2.86093	&	3.88340	\\
+20	&	0.25674	&	0.68695	&	1.32534	&	1.72472	&	2.08596	&	2.52798	&	2.84534	&	3.84950	\\
+21	&	0.25658	&	0.68635	&	1.32319	&	1.72074	&	2.07961	&	2.51765	&	2.83136	&	3.81930	\\
+22	&	0.25643	&	0.68581	&	1.32124	&	1.71714	&	2.07387	&	2.50832	&	2.81876	&	3.79210	\\
+23	&	0.25630	&	0.68531	&	1.31946	&	1.71387	&	2.06866	&	2.49987	&	2.80734	&	3.76760	\\
+24	&	0.25617	&	0.68485	&	1.31784	&	1.71088	&	2.06390	&	2.49216	&	2.79694	&	3.74540	\\
+25	&	0.25606	&	0.68443	&	1.31635	&	1.70814	&	2.05954	&	2.48511	&	2.78744	&	3.72510	\\
+26	&	0.25596	&	0.68404	&	1.31497	&	1.70562	&	2.05553	&	2.47863	&	2.77871	&	3.70660	\\
+27	&	0.25586	&	0.68369	&	1.31370	&	1.70329	&	2.05183	&	2.47266	&	2.77068	&	3.68960	\\
+28	&	0.25577	&	0.68335	&	1.31253	&	1.70113	&	2.04841	&	2.46714	&	2.76326	&	3.67390	\\
+29	&	0.25568	&	0.68304	&	1.31143	&	1.69913	&	2.04523	&	2.46202	&	2.75639	&	3.65940	\\
+30	&	0.25561	&	0.68276	&	1.31042	&	1.69726	&	2.04227	&	2.45726	&	2.75000	&	3.64600	\\
+inf	&	0.25335	&	0.67449	&	1.28155	&	1.64485	&	1.95996	&	2.32635	&	2.57583	&	3.29050	\\
+\end{tabular}
+\end{center}
+}
+
+
+
+
+
+\item Consider the one-way analysis of variance (ANOVA) model
+\begin{equation}
+Y_{ij} = \mu_i + \epsilon_{ij}, \ i=1,\dots,I,j=1,\dots,n_i,
+\end{equation}
+where $(\epsilon_{ij})\stackrel{iid}{\sim}\mathcal{N}(0,\sigma^2)$. Derive from first principles explicit expressions for the MLEs $\hat{\mu}_1,\dots,\hat{\mu}_I$ and $\hat{\sigma}^2$. Show that we can obtain the same expression if we regard the ANOVA model as a special case of the general linear model $Y=X\beta +\epsilon$ and specialise the formulae $\hat{\beta}=(X^TX)^{-1}X^TY$ and $\hat{\sigma}^2=n^{-1}\left\|Y-X\hat{\beta}\right\|^2$.
+
+Derive from first principles the form of the size $\alpha$ likelihood ratio test of equality of means.
+
+
+
+Solution. Write $n=n_1+\dots+n_I$. The log-likelihood for $\hat{\mu}_1,\dots,\hat{\mu}_I$ and $\hat{\sigma}^2$ is
+\begin{equation}
+\mathcal{L}(\mu_1,\dots,\mu_I,\sigma^2) = -\frac{n}{2}\log\sigma^2 - \frac{1}{2\sigma^2}\sum^I_{i=1}\sum^{n_i}_{j=1}(Y_{ij}-\mu_i)^2
+\end{equation}
+
+An MLE $(\hat{\mu}_1,\dots,\hat{\mu}_I$ and $\hat{\sigma}^2)$ satisfies
+\begin{eqnarray}
+0 & = & \left.\frac{\partial\mathcal{L}}{\partial \mu_i}\right|_{\left(\hat{\mu}_1,\dots,\hat{\mu}_I, \hat{\sigma}^2\right)} = \frac{1}{\hat{\sigma}^2}\sum^{n_i}_{j=1}(Y_{ij}-\hat{\mu}_i), \nonumber\\
+0 & = & \left.\frac{\partial\mathcal{L}}{\partial\sigma^2}\right|_{\left(\hat{\mu}_1,\dots,\hat{\mu}_I, \hat{\sigma}^2\right)} = -\frac{n}{2\hat{\sigma}^2} + \frac{1}{2\hat{\sigma}^4}\sum^I_{i=1}\sum^{n_i}_{j=1}(Y_{ij}-\hat{\mu}_i)^2.
+\end{eqnarray}
+
+We deduce that
+\begin{equation}
+\hat{\mu}_i = \frac{1}{n_i}\sum^{n_i}_{j=1}Y_{ij} \equiv \bar{Y}_i, \ i=1,\dots,I,\quad \hat{\sigma}^2 = \frac{1}{n}\sum^I_{i=1}\sum^{n_i}_{j=1}\left(Y_{ij} -\bar{Y}_i\right)^2.
+\end{equation}
+
+Now let $X$ be the $n\times I$ matrix where the $x_{ji}$ is equal to 1 if $n_1+\dots+n_{i-1}+1\leq j\leq n_1+\dots+n_i$, and all other entries are zero.
+\begin{equation}
+Y = \left(
+\begin{array}{c}
+Y_{11}\\
+\vdots \\
+Y_{1n_1} \\
+\vdots \\
+Y_{I1}\\
+\vdots \\
+Y_{In_I}
+\end{array}
+\right),\quad
+X = \left(
+\begin{array}{cccc}
+1  & & & \\
+\vdots\quad  & & O & \\
+1 & & & \\
+0 & 1 & & \\
+\vdots & \vdots\quad & & \\
+0 & 1 & &  \\
+& & \quad \ddots\quad & \\
+& & & 1\\
+O & & & \vdots\quad \\
+& & & 1
+\end{array}
+\right)
+\begin{array}{c}
+\stackrel{-}{\uparrow}  \\
+n_1 \\
+\stackrel\downarrow{-}  \\
+\stackrel{-}{\uparrow}  \\
+n_2 \\
+\stackrel\downarrow{-}   \\
+\\
+\stackrel{-}{\uparrow}  \\
+n_I \\
+\stackrel\downarrow{-}  \\
+\end{array}
+\quad\Rightarrow \quad
+\begin{array}{c}
+\left(
+\begin{array}{c}
+\hat{\mu}_1\\
+\vdots \\
+\hat{\mu}_I
+\end{array}
+\right) = \hat{\beta}= (X^TX)^{-1}X^TY
+ \quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\quad\\
+= \left(
+\begin{array}{ccc}
+n_1 & & \\
+& \ddots & \\
+& & n_I
+\end{array}
+\right)^{-1}
+\left(
+\begin{array}{c}
+\sum^{n_1}_{j=1}Y_{1j} \\
+\vdots \\
+\sum^{n_I}_{j=1}Y_{Ij}
+\end{array}
+\right) = \left(
+\begin{array}{c}
+\bar{Y}_1\\
+\vdots \\
+\bar{Y}_I
+\end{array}
+\right),
+\end{array}
+\end{equation}
+as required. Moreover,
+\begin{equation}
+\hat{\sigma}^2 = \frac{1}{n}\|Y-X\hat{\beta}\|^2 = \frac{1}{n}\sum^I_{i=1}\sum^{n_i}_{j=1}\left(Y_{ij} -\bar{Y}_i\right)^2.
+\end{equation}
+also as required.
+
+If we wish to test $H_0: \mu_1=\dots=\mu_I=\mu$ against the alternative $H_1$ that $H_0$ is not true. The MLEs under $H_0$ are
+\begin{equation}
+\hat{\hat{\mu}}=\frac{1}{n}\sum^I_{i=1}\sum^{n_i}_{j=1}Y_{ij} = \bar{Y},\quad \hat{\hat{\sigma}}^2 = \frac{1}{n}\sum^I_{i=1}\sum^{n_i}_{j=1}\left(Y_{ij} -\bar{Y}\right)^2,
+\end{equation}
+where $n$ is the total sample size and $\bar{Y} = n^{-1}\sum^I_{i=1}\sum^{n_i}_{j=1}Y_{ij}$. Under $H_1$, the MLEs are
+\begin{equation}
+\hat{\mu}_i = \frac{1}{n_i}\sum^{n_i}_{j=1}Y_{ij} \equiv \bar{Y}_i, \ i=1,\dots,I,\quad \hat{\sigma}^2 = \frac{1}{n}\sum^I_{i=1}\sum^{n_i}_{j=1}\left(Y_{ij} -\bar{Y}_i\right)^2.
+\end{equation}
+
+Hence the likelihood ratio is
+\begin{equation}
+\Lambda_{X}(H_0,H_1) = \left(\frac{\hat{\hat{\sigma}}^2}{\hat{\sigma}^2}\right)^{n/2} = \left(\frac{\sum^I_{i=1}\sum^{n_i}_{j=1}\left(Y_{ij} -\bar{Y}_i+\bar{Y}_i - \bar{Y}\right)^2}{\sum^I_{i=1}\sum^{n_i}_{j=1}\left(Y_{ij} -\bar{Y}_i\right)^2}\right)^{n/2}  = \left(1+\frac{\sum^I_{i=1} n_i\left(\bar{Y}_i - \bar{Y}\right)^2}{\sum^I_{i=1}\sum^{n_i}_{j=1}\left(Y_{ij} -\bar{Y}_i\right)^2}\right)^{n/2}.
+\end{equation}
+
+It follows that the likelihood ratio is an increasing function of
+\begin{equation}
+\frac{\sum^I_{i=1} n_i\left(\bar{Y}_i - \bar{Y}\right)^2}{\sum^I_{i=1}\sum^{n_i}_{j=1}\left(Y_{ij} -\bar{Y}_i\right)^2}.
+\end{equation}
+
+Now, under $H_0$, we have $\sum^{n_i}_{j=1}\left(Y_{ij} -\bar{Y}_i\right)^2\sim\sigma^2\chi_{n_i-1}^2$ since $\bar{Y}_i = \frac{1}{n_i}\sum^{n_i}_{j=1}Y_{ij}$, so that we have
+\begin{equation}
+\sum^I_{i=1}\sum^{n_i}_{j=1}\left(Y_{ij} -\bar{Y}_i\right)^2 = \sum^I_{i=1}\left( \sum^{n_i}_{j=1}\left(Y_{ij} -\bar{Y}_i\right)^2\right)\sim \sigma^2\chi_{n_1-1}^2 +\dots + \sigma^2\chi_{n_I-1}^2 \sim \sigma^2\chi_{\sum^I_{i=1}(n_i-1)}^2 \sim \sigma^2\chi_{n-I}^2
+\end{equation}
+
+Also, we see that $\sum^I_{i=1} n_i\left(\bar{Y}_i - \bar{Y}\right)^2$ is independent of $\bar{Y}$, so $\sum^I_{i=1} n_i\left(\bar{Y}_i - \bar{Y}\right)^2 \sim \sigma^2\chi_{I-1}^2$. Alternatively, we deduce the same result with
+\begin{equation}
+\sum^I_{i=1} n_i\left(\bar{Y}_i - \bar{Y}\right)^2 = \sum^I_{i=1}\sum^{n_i}_{j=1}\left(Y_{ij}-\bar{Y}\right)^2 - \sum^I_{i=1}\sum^{n_i}_{j=1}\left(Y_{ij} -\bar{Y}_i\right)^2 \sim \sigma^2\chi_{n-1}^2 -\sigma^2\chi_{n-I}^2  \sim \sigma^2\chi_{I-1}^2
+\end{equation}
+
+Moreover, the vector
+\begin{equation}
+\left(\bar{Y}_1 - \bar{Y}, \dots, \bar{Y}_I - \bar{Y}, \quad Y_{11} - \bar{Y}_1,\dots,Y_{1n_1} - \bar{Y}_1,\dots, Y_{I1} - \bar{Y}_I, \dots, Y_{In_I} - \bar{Y}_I,\right)
+\end{equation}
+has a multivariate normal distribution. We can therefore prove that $\left(\bar{Y}_1 - \bar{Y}, \dots, \bar{Y}_I - \bar{Y}\right)$ and $\left(Y_{11} - \bar{Y}_1,\dots,Y_{1n_1} - \bar{Y}_1,\dots, Y_{I1} - \bar{Y}_I, \dots, Y_{In_I} - \bar{Y}_I,\right)$ are independent by deducing $\mathbf{cov}\left(\bar{Y}_i - \bar{Y}, Y_{kl} - \bar{Y}_k\right)=0$. In fact, $\mathbf{cov}\left(\bar{Y}_i - \bar{Y}, Y_{kl} - \bar{Y}_k\right)$ does not depend on $l$ (by symmetry), and
+\begin{equation}
+\sum^{n_k}_{l=1}\mathbf{cov}\left(\bar{Y}_i - \bar{Y}, Y_{kl} - \bar{Y}_k\right) = \mathbf{cov}\left(\bar{Y}_i - \bar{Y}, \sum^{n_k}_{l=1}(Y_{kl} - \bar{Y}_k)\right)=0
+\end{equation}
+
+We therefore reject $H_0$ if
+\begin{equation}
+F\equiv \frac{\frac{1}{I-1}\sum^I_{i=1} n_i\left(\bar{Y}_i - \bar{Y}\right)^2}{\frac{1}{n-I}\sum^I_{i=1}\sum^{n_i}_{j=1}\left(Y_{ij} -\bar{Y}_i\right)^2} > F_{I-1,n-I}(\alpha).
+\end{equation}
+
+
+
+
+
+\item Consider the linear model $Y=X\beta+\epsilon$, where $\mathbb{E}(\epsilon)=0$ and $\mathbf{cov}(\epsilon)=\sigma^2\Sigma$, for some unknown parameter $\sigma^2>0$ and known positive definite matrix $\Sigma$. Derive the form of the Generalised Least Squares estimator $\tilde{\beta}^{GLS}$, defined by
+\begin{equation}
+\tilde{\beta}^{GLS}=\underset{\beta}{\operatorname{argmin}}(Y-X\beta)^T\Sigma^{-1}(Y-X\beta).
+\end{equation}
+State and prove a version of the Gauss-Markov theorem for $\tilde{\beta}^{GLS}$.
+
+
+
+Solution. Let
+\begin{equation}
+g(\beta)=(Y-X\beta)^T\Sigma^{-1}(Y-X\beta) = \sum^n_{i=1}\sum^n_{j=1}(Y_i-x_i^T\beta)(\Sigma^{-1})_{ij}(Y_j-x_j^T\beta).
+\end{equation}
+
+Then, for $k=1,\dots,p$, the Generalised Least Squares estimator $\tilde{\beta}^{GLS}$ satisfies
+\begin{equation}
+0 = \left.\frac{\partial g}{\partial \beta_k}\right|_{\tilde{\beta}^{GLS}}= -2 \sum^n_{i=1}x_{ik}(\Sigma^{-1})_{ij}(Y_j-x_j^T\tilde{\beta}^{GLS}).
+\end{equation}
+so that $(X^T\Sigma^{-1}Y)_k= (X^T\Sigma^{-1}X\tilde{\beta}^{GLS})_k$. Since $\Sigma$ is positive definite, we can find an orthogonal matrix $Q$ such that $Q^T\Sigma Q=D$, where $D$ is a diagonal matrix with positive diagonal entries. But then if $z$ is a non-zero vector in $\mathbb{R}^p$, we have
+\begin{equation}
+z^TX^T\Sigma^{-1}Xz = z^TX^TQD^{-1}Q^TXz = \left\|D^{-1/2}Q^TXz\right\|^2>0,
+\end{equation}
+where $D^{-1/2}$ is the diagonal matrix whose $i$th diagonal entry is the reciprocal of the square root of the $i$th diagonal entry of $D$. We deduce that $X^T\Sigma^{-1}X$ is positive definite, so
+\begin{equation}
+\tilde{\beta}^{GLS}=(X^T\Sigma^{-1}X)^{-1}X^T\Sigma^{-1}Y.
+\end{equation}
+
+\emph{Gauss-Markov theorem}: Let $\beta^*$ denote any other linear unbiased estimator of $\beta$ in this model. Then $t^T\mathbf{cov}(\tilde{\beta}^{GLS})t\leq t^T\mathbf{cov}(\beta^*)t$ for all $t\in\mathbb{R}^p$.
+
+\emph{Proof}. First note that
+\begin{equation}
+\mathbf{cov}(\tilde{\beta}^{GLS})=(X^T\Sigma^{-1}X)^{-1}X^T\Sigma^{-1}YY^T\Sigma^{-1}X(X^T\Sigma^{-1}X)^{-1} = \sigma^2(X^T\Sigma^{-1}X)^{-1}
+\end{equation}
+since $YY^T= \sigma^2\Sigma $. Let $\beta^*=AY$ be any other linear unbiased estimator of $\beta$. Since $\beta^*$ is unbiased, we have
+\begin{equation}
+\beta = \mathbb{E}_{\beta}(\beta^*) = AX\beta
+\end{equation}
+for all $\beta\in\mathbb{R}^p$, so $AX=I_p$. Now
+\begin{equation}
+\mathbf{cov}(\beta^*) = \mathbb{E}_{\beta,\sigma^2}(\beta^*-\beta)(\beta^*-\beta)^T = \mathbb{E}_{\beta,\sigma^2}(AX\beta + A\epsilon -\beta)(AX\beta + A\epsilon -\beta)^T = \mathbb{E}_{\beta,\sigma^2}A\epsilon\epsilon^TA^T= \sigma^2A\Sigma A^T
+\end{equation}
+
+Now let $B=A-(X^T\Sigma^{-1}X)^{-1}X^T\Sigma^{-1}$, so that $BX=AX - (X^T\Sigma^{-1}X)^{-1}X^T\Sigma^{-1}X=0$, and
+\begin{eqnarray}
+\mathbf{cov}(\beta^*) & = & \sigma^2\left(B+(X^T\Sigma^{-1}X)^{-1}X^T\Sigma^{-1}\right)\Sigma \left(B+(X^T\Sigma^{-1}X)^{-1}X^T\Sigma^{-1}\right)^T  \nonumber\\
+& = & \sigma^2\left(B\Sigma B^T +(X^T\Sigma^{-1}X)^{-1}\right) = \sigma^2 B\Sigma B^T + \mathbf{cov}(\tilde{\beta}^{GLS}).
+\end{eqnarray}
+Since $t^TB\Sigma B^Tt = t^TBQDQ^TB^Tt  = \left\|D^{1/2}Q^TB^Tt\right\|^2\geq 0$, we deduce that $t^T\mathbf{cov}(\tilde{\beta}^{GLS})t\leq t^T\mathbf{cov}(\beta^*)t$.
+
+
+
+
+
+\item Download the 'Cars data demo' at {\bf http://www.statslab.cam.ac.uk/\~{}rjs57/Teaching.html} and work through the commands in $\mathbf{R}$. Carry out the exercise at the end.
+
+
+
+Solution. The necessary commands are:
+
+$>$ Xdstar $<$- cbind(Xstar,X\^{}2)
+
+$>$ beta.hat.dstar $<$- solve(t(Xdstar)\%*\%Xdstar)\%*\%t(Xdstar)\%*\%Y
+
+$>$ beta.hat.dstar
+
+$>$ Xtstar $<$- cbind(X,X\^{}2)
+
+$>$ beta.hat.tstar $<$- solve(t(Xtstar)\%*\%Xtstar)\%*\%t(Xtstar)\%*\%Y
+
+$>$ beta.hat.tstar
+
+
+
+
+
+\item In the standard linear model $Y=X\beta+\epsilon$ with $\epsilon\sim\mathcal{N}_n(0,\sigma^2I)$ and MLE $\hat{\beta}$, determine the distribution of the quadratic form $\left(\hat{\beta}-\beta\right)^TX^TX\left(\hat{\beta}-\beta\right)$. Hence find a $(1-\alpha)$-level confidence set for $\beta$ based on a root which has an $F$-distribution. What shape is this confidence set?
+
+
+
+Solution. We know that $\hat{\beta}\sim \mathcal{N}(\beta,\sigma^2(X^TX)^{-1})$. Recall that if $\Sigma$ is non-negative definite, we can find an orthogonal matrix $Q$ such that $Q^T\Sigma Q=D$, where $D$ is diagonal.
+
+Setting $\Sigma^{1/2}=PD^{1/2}P^T$ (where $D^{1/2}$ is the diagonal matrix whose diagonal entries are the non-negative square roots of the diagonal entries of $D$), we have $\Sigma^{1/2}\Sigma^{1/2}=PD^{1/2}P^TPD^{1/2}P^T=PDP^T=\Sigma$. Thus we have an appropriate definition of a matrix square root for non-negative definite matrices.
+
+It follows that $Z=(X^TX)^{1/2}(\hat{\beta}-\beta)$ is $p$-variate normal, as $Z$ is a linear transformation of $\hat{\beta}$, and $\mathbb{E}Z=0,\mathbf{cov}Z=\sigma^2I$. Hence,
+\begin{equation}
+\left(\hat{\beta}-\beta\right)^TX^TX\left(\hat{\beta}-\beta\right) = \|Z\|^2\sim\sigma^2\chi_p^2.
+\end{equation}
+
+Now $\tilde{\sigma}^2=\frac{1}{n-p}\|Y-X\hat{\beta}\|^2 \sim \frac{\sigma^2}{n-p}\chi_{n-p}^2$ independently of $\hat{\beta}$. So
+\begin{equation}
+\frac{\frac{1}{p}\left(\hat{\beta}-\beta\right)^TX^TX\left(\hat{\beta}-\beta\right)}{\tilde{\sigma}^2}\sim F_{p,n-p} \ \Rightarrow \ \mathbb{P}_{\beta,\sigma^2}\left(\frac{\frac{1}{p}\left(\hat{\beta}-\beta\right)^TX^TX\left(\hat{\beta}-\beta\right)}{\tilde{\sigma}^2}\leq F_{p,n-p}(\alpha)\right) = 1-\alpha
+\end{equation}
+
+so a $(1-\alpha)$-level confidence set for $\beta$ is given by
+\begin{equation}
+\left\{b\in\mathbb{R}^p: \frac{\frac{1}{p}\left(b-\hat{\beta}\right)^TX^TX\left(b-\hat{\beta}\right)}{\tilde{\sigma}^2}\leq F_{p,n-p}(\alpha)\right\}.
+\end{equation}
+
+This is an ellipsoidal confidence set.
+
+
+
+
+
+\item Use $\mathbf{R}$ to compute a $95\%$ confidence set for the vector of mean chick weights for the different food supplements in the 'chickwts' data set (one of the in-built data sets in $\mathbf{R}$).
+
+[Hint: Type {\bf ?model.matrix} to find out how to obtain the design matrix.]
+
+Now use $\mathbf{R}$ to compute $95\%$ confidence intervals for each of the individual mean chick weights. Which intervals exclude the estimate of the overall mean chick weight in the null model which assumes that the mean chick weight does not depend on the food supplement?
+
+
+
+Solution. Appropriate $\mathbf{R}$ commands are:
+
+$>$ Y $<$- chickwts[,1]
+
+$>$ X $<$- chickwts[,2]
+
+$>$ n $<$- length(Y)
+
+$>$ p $<$- 6
+
+$>$ Mod $<$- lm(Y\~{}X-1)
+
+$>$ beta.hat $<$- Mod\$coef
+
+$>$ beta.hat
+
+$>$ X $<$- model.matrix(Mod)
+
+$>$ t(X) \%*\% X
+
+$>$ sigma.tildesqd $<$- sum((Y-X\%*\%beta.hat)\^{}2)/(n-p)
+
+$>$ sigma.tilde.sqd*qf(0.95,p,n-p)*p
+
+From these commands, we deduce that the $95\%$ confidence set is
+\begin{eqnarray}
+\left\{b\in\mathbb{R}^6: 12(b_1-323.6)^2 \right. & + & 10(b_2-160.2)^2 + 12(b_3-218.8)^2 + 11(b_4-276.9)^2\nonumber\\
+& + & \left. 14(b_5-246.4)^2 + 12(b_6-328.9)^2 \leq 40466\right\}.
+\end{eqnarray}
+
+Since $\hat{\beta}_j \sim \mathcal{N}(\beta_j,\sigma^2((X^TX)^{-1})_{jj})$ and the matrix $X^TX$ is diagonal, we have that
+\begin{equation}
+\frac{\left(\hat{\beta}_j-\beta_j\right)^2(X^TX)_{jj}}{\tilde{\sigma}^2}\sim F_{1,n-p}
+\end{equation}
+
+We therefore only need the following $\mathbf{R}$ command (following on from the previous question):
+
+$>$ qf(0.95,1,n-p)*tilde.sigma.sqd
+
+We deduce that the $95\%$ confidence intervals are given by
+\begin{eqnarray}
+\left\{b_1: 12(b_1-323.6)^2 \leq 12000\right\} = [292.0,\ 355.2] & ,\quad & \left\{b_2: 10(b_2-160.2)^2 \leq 12000\right\} =  [125.6,\ 194.8] \nonumber\\
+\left\{b_3: 12(b_3-218.8)^2 \leq 12000\right\} = [187.2,\ 250.4] & ,\quad & \left\{b_4: 11(b_4-276.9)^2 \leq 12000\right\} =  [243.9,\ 309.9] \nonumber\\
+\left\{b_5: 14(b_5-246.4)^2 \leq 12000\right\} = [217.1,\ 275.7] & ,\quad & \left\{b_6: 12(b_6-328.9)^2 \leq 12000\right\} =  [297.3,\ 360.5]
+\end{eqnarray}
+
+We can fit the null model using
+
+$>$ ModO $<$- lm(Y\~{}1)
+
+$>$ ModO\$coef
+
+and see that the estimate of the overall mean chick weight in the null model which assumes that the mean chick weight does not depend on the food supplement is 261.3. Hence all but the fourth and fifth intervals exclude this value.
+
+
+
+\een
+
+\section{PoS}
+
+\ben
+
+\item H\"older's inequality states
+\be
+\int |fg| d\mu  \leq \left\{ \int |f|^p d\mu \right\}^{\frac 1p} \left\{\int |g|^q d\mu \right\}^{\frac 1q},
+\ee
+for $p, q > 1$ with $p^{-1} + q^{-1} = 1$. (The case $p = q = 2$ is the Cauchy-Schwarz inequality). Use H\"older's inequality to prove that the function $k$ defined by
+\be
+\exp\{k(\phi )\} = \int_{\X} \exp\{a(x) + \phi^Tt(x)\} d\mu (x)
+\ee
+is convex.
+
+
+
+Solution. Write $\frac 1p = \alpha$, $\frac 1q = 1-\alpha$. H\"older's inequality applied to
+\be
+f(x) =  \exp\lob \alpha \{a(x) + \phi_1^T t(x)\rob ,\quad\quad g(x) =  \exp\lob (1-\alpha) \{a(x) + \phi_2^T t(x)\rob
+\ee
+with $\phi = \alpha \phi_1 + (1-\alpha)\phi_2$. Thus
+\be
+\int_{\X} \exp\{a(x) + \phi^Tt(x)\} d\mu (x) \leq \lob \int_{\X} \exp\{a(x) + \phi_1^Tt(x)\} d\mu (x)\rob^{\alpha} \lob \int_{\X} \exp\{a(x) + \phi_2^Tt(x)\} d\mu (x)\rob^{1-\alpha}
+\ee
+as required.
+
+
+
+
+
+\item Show that each of the following families of distributions for $X$ is an exponential family, identifying the the reference measure $\mu$ on $\X$, the natural statistic $T$, the natural parameter $\Phi $, the cumulant function $k(\phi)$, and the mean-value parameter $H$ (for a single observation); and the MLEs of $H$ and of $\Phi$ based on $n$ independent and identically distributed observations $(x_1,\dots, x_n)$.
+\ben
+\item [(a)] $\sN(\mu , v)$ $((\mu , v) \in R \times (0,\infty))$.
+\item [(b)] $\sN(\theta, \theta)$ $(\theta > 0)$.
+\item [(c)] $\sP(\lm)$ $(\lm > 0)$.
+\item [(d)] $\Gamma (a, b)$ $(a, b > 0)$.
+\item [(e)] $\sB(N; p)$ ($N$ fixed, $p \in (0, 1)$).
+\item [(f)] $\mathcal{NB}(K; p)$ ($K$ fixed, $p \in (0, 1)$).
+\item [(g)] The family ${\mathcal{W}(\theta, a) : \theta > 0}$ (with $a\neq 0$ fixed), where $\mathcal{W}(\theta, a)$ is the Weibull distribution with density
+\be
+p(x) = \frac{|a| x^{a-1}}{\theta^a} \exp\lob -\lob \frac x{\theta}\rob^a \rob \quad\quad (x > 0).
+\ee
+\een
+
+
+
+Solution. First we define
+\be
+\bar{x} = \frac 1n\sum x_i ,\quad\quad c_{xx} = \frac 1n \sum x_i^2,\quad\quad s_{xx} = \frac 1n \sum(x_i - \bar{x})^2,\quad\quad l_{xx} = \frac 1n \sum\log x_i .
+\ee
+
+\ben
+\item [(a)] For $\sN(\mu , v)$ $((\mu , v) \in R \times (0,\infty))$,
+\be
+f(x|\mu,v) = \frac 1{\sqrt{2\pi v}}\exp \lob - \frac {(x-\mu)^2}{2v}\rob = \frac 1{\sqrt{2\pi}}\exp\lob -\frac 12 \lob \log v + \frac {\mu^2}{v}\rob + \lob \frac 1v, \frac{\mu}v \rob\cdot \lob -\frac {x^2}2,x\rob\rob
+\ee
+Thus,
+\be
+d\mu(x) = \frac 1{\sqrt{2\pi}}dx,\quad\quad T = \lob -\frac {x^2}2,x\rob, \quad\quad \phi = \lob \frac{\mu}v, \frac 1v \rob,\quad \quad k(\phi) = \frac 12 \lob \frac {\phi_1^2}{\phi_2} - \log \phi_2 \rob  .
+\ee
+and
+\be
+H = \nabla (k(\phi)) = \lob \frac{\phi_1}{\phi_2}, -\frac 12\lob\frac{\phi_1^2}{\phi_2^2}+ \frac 1{\phi_2}\rob\rob
+\ee
+
+Then we have
+\be
+\hat{\phi}_2 = \frac 1{\hat{v}} = \frac 1{s_{xx}} \ \ra \ \hat{\phi_1} = \frac{\hat{\mu}}{\hat{v}} = \frac{\bar{x}}{s_{xx}} \ \ra \ \hat{\phi} =  \lob \frac{\bar{x}}{s_{xx}}, \frac 1{s_{xx}} \rob.
+\ee
+
+Thus,
+\be
+\hat{H} = \lob \frac {\frac{\bar{x}}{s_{xx}}}{\frac 1{s_{xx}}}, -\frac 12\lob\frac{\lob \frac{\bar{x}}{s_{xx}}\rob^2}{\lob \frac 1{s_{xx}} \rob^2}+ \frac 1{\frac 1{s_{xx}}}\rob\rob  = \lob \bar{x}, -\frac 12c_{xx}\rob.
+\ee
+
+\item [(b)] For $\sN(\theta, \theta)$ $(\theta > 0)$,
+\be
+f(x|\theta) = \frac 1{\sqrt{2\pi \theta}}\exp \lob - \frac {(x-\theta)^2}{2\theta}\rob = \frac 1{\sqrt{2\pi}}\exp\lob -\frac 12 \lob \log \theta + \theta\rob + x - \frac{x^2}{2\theta}\rob
+\ee
+
+Thus,
+\be
+d\mu(x) = \frac 1{\sqrt{2\pi}}e^x dx,\quad\quad T = -\frac {x^2}2, \quad\quad \phi = \frac 1{\theta},\quad \quad k(\phi) = \frac 12 \lob \frac 1{\phi} - \log \phi \rob  .
+\ee
+and
+\be
+H = \nabla (k(\phi)) = - \frac 12\lob \frac 1{\phi} + \frac 1{\phi^2}\rob
+\ee
+
+Then we have
+\be
+0 = \left.\frac{\partial \ell}{\partial \theta}\right|_{\hat{\theta}} = - \frac n{2\theta} - \frac n2 + \frac 1{2\hat{\theta}^2} \sum x_i^2 = \hat{\theta}^2 + \hat{\theta} - c_{xx} = 0 \ \ra \ \hat{\theta} = \frac{-1+\sqrt{1+4c_{xx}}}{2}
+\ee
+
+\be
+\hat{\phi} = \frac 1{\hat{\theta}} = \frac 1{\frac{-1+\sqrt{1+4c_{xx}}}{2}} = \frac{1+\sqrt{1+4c_{xx}}}{2c_{xx}}
+\ee
+
+Thus,
+\be
+\hat{H} = -\frac 12 \lob \frac{-1+\sqrt{1+4c_{xx}}}{2} + \frac{\lob -1+\sqrt{1+4c_{xx}}\rob^2}{4}\rob = -\frac 12 c_{xx}.
+\ee
+
+\item [(c)] For $\sP(\lm)$ $(\lm > 0)$,
+\be
+f(x|\theta) = \frac {e^{-\theta}\theta^x}{x!} = \exp\lob -\log x! -\theta + x\log \theta\rob
+\ee
+
+Thus,
+\be
+d\mu(x) = \frac 1{x!} dx,\quad\quad T = x, \quad\quad \phi = \log \theta,\quad \quad k(\phi) = e^{\phi}  .
+\ee
+and
+\be
+H = \nabla (k(\phi)) = e^{\phi}.
+\ee
+
+Then we have
+\be
+0 = \left.\frac{\partial \ell}{\partial \theta}\right|_{\hat{\theta}} = -n + \frac 1{\hat{\theta}} \sum x_i \ \ra \ \hat{\theta} = \bar{x}
+\ee
+
+Thus,
+\be
+\hat{\phi} = \log \hat{\theta} = \log \bar{x},\quad\quad \hat{H} = \bar{x}.
+\ee
+
+\item [(d)] For $\Gamma (a, b)$ $(a, b > 0)$,
+\be
+f(x|a,b) = \frac {b^a}{\Gamma(a)} x^{a-1}e^{-bx} = \exp \lob a\log b - \log \Gamma(a) + (a-1)\log x - bx\rob
+\ee
+Thus,
+\be
+d\mu(x) = \frac 1{x}dx,\quad\quad T = \lob \log x ,-x\rob, \quad\quad \phi = \lob a, b \rob,\quad \quad k(\phi) = \log (\Gamma(\phi_1)) - \phi_1 \log \phi_2
+\ee
+and
+\be
+H = \nabla (k(\phi)) = \lob \psi(\phi_1) -\log \phi_2, -\frac {\phi_1}{\phi_2}\rob
+\ee
+where $\psi(x)$ is the digamma function $\lob \log \Gamma(x)\rob'$. Then we have
+\beast
+0 & = & \left.\frac{\partial \ell}{\partial a}\right|_{\hat{a},\hat{b}} = n\log \hat{b} - n\psi(\hat{a}) + \sum \log x_i \ \ra \ \psi(\hat{a}) - \log \hat{b} = l_{xx}\\
+0 & = & \left.\frac{\partial \ell}{\partial b}\right|_{\hat{a},\hat{b}} = n\frac{\hat{a}}{\hat{b}} - n\bar{x} \ \ra \ \frac{\hat{a}}{\hat{b}} = \bar{x}
+\eeast
+
+Thus, there is no simple closed form for $\hat{\phi}$ and
+\be
+\hat{H} = \lob l_{xx},\bar{x}\rob.
+\ee
+
+\item [(e)] For $\sB(N; p)$ ($N$ fixed, $p \in (0, 1)$,
+\be
+f(x|p) = \frac {N!}{x!(N-x)!} p^x(1-p)^{N-x} = \exp \lob \log N! - \log x! - \log (N-x)! + x\log p + (N-x)\log (1-p)\rob
+\ee
+Thus,
+\be
+d\mu(x) = \frac {N!}{x!(N-x)!}dx,\quad\quad T = x, \quad\quad \phi = \log \frac p{1-p},\quad \quad k(\phi) = -N\log (1-p))
+\ee
+and
+\be
+H = \nabla (k(\phi)) = \frac {Ne^\phi}{1+e^\phi}.
+\ee
+
+Then we have
+\beast
+0 & = & \left.\frac{\partial \ell}{\partial p}\right|_{\hat{p}} = \frac 1{\hat{p}} \sum x_i - \frac 1{1-\hat{p}} \sum(N-x_i) \ \ra \ \hat{p} = \frac{\bar{x}}N.
+\eeast
+
+Thus,
+\be
+\hat{\phi} = \log \frac {\bar{x}}{N-\bar{x}},\quad\quad \hat{H} = \frac {Ne^{\hat{\phi}}}{1+e^{\hat{\phi}}} = \bar{x}.
+\ee
+
+\item [(f)] For $\mathcal{NB}(K; p)$ ($K$ fixed, $p \in (0, 1)$),
+\be
+f(x|p) = \frac {(x+K-1)!}{x!(K-1)!} p^x(1-p)^K = \exp \lob \log (x+K-1)! - \log x! - \log (K-1)! + x\log p + K\log (1-p)\rob
+\ee
+Thus,
+\be
+d\mu(x) = \frac {(x+K-1)!}{x!(K-1)!} dx,\quad\quad T = x, \quad\quad \phi = \log p,\quad \quad k(\phi) = -K\log (1-p)
+\ee
+and
+\be
+H = \nabla (k(\phi)) = \frac {Ke^\phi}{1-e^\phi}.
+\ee
+
+Then we have
+\beast
+0 & = & \left.\frac{\partial \ell}{\partial p}\right|_{\hat{p}} = \frac 1{\hat{p}} \sum x_i - \frac {nK}{1-\hat{p}}  \ \ra \ \hat{p} = \frac{\bar{x}}{\bar{x}+K}.
+\eeast
+
+Thus,
+\be
+\hat{\phi} = \log \frac{\bar{x}}{\bar{x}+K},\quad\quad \hat{H} = \frac {Ke^{\hat{\phi}}}{1-e^{\hat{\phi}}} = \bar{x}.
+\ee
+
+\item [(g)] The family ${\mathcal{W}(\theta, a) : \theta > 0}$ (with $a\neq 0$ fixed), where $\mathcal{W}(\theta, a)$ is the Weibull distribution then
+\be
+f(x|\theta) = \frac{|a| x^{a-1}}{\theta^a} \exp\lob - \lob \frac x{\theta}\rob^a \rob = \exp\lob  \log |a| + (a-1)\log x - a \log\theta  - \lob \frac x{\theta}\rob^a \rob
+\ee
+Thus,
+\be
+d\mu(x) = |a| x^{a-1}dx,\quad\quad T = x^a, \quad\quad \phi = \frac 1{\theta^a},\quad \quad k(\phi) = a\log \theta = -\log \phi
+\ee
+and
+\be
+H = \nabla (k(\phi)) = -\frac 1{\phi}.
+\ee
+
+Then we have
+\beast
+0 & = & \left.\frac{\partial \ell}{\partial \theta}\right|_{\hat{\theta}} = -\frac {na}{\hat{\theta}}  + a \hat{\theta}^{-(a+1)}\sum x_i^a \ \ra \ \hat{\theta} = \lob \frac 1n \sum x_i^a\rob^{1/a}.
+\eeast
+
+Thus,
+\be
+\hat{\phi} = \frac n{\sum x_i^a},\quad\quad \hat{H} = -\hat{\theta}^a = -\frac 1n \sum x_i^a.
+\ee
+
+\een
+
+
+
+
+
+\item
+\ben
+\item [(a)] Show that the family $\{U[0, \theta] : \theta > 0\}$ of uniform distributions is not an exponential family. What is the MLE of $\theta$ based on a sample of $n$ observations?
+
+\item [(b)] Consider the exponential family of distributions on $(0,\infty)$ with densities
+\be
+p(x | \phi ) \propto \exp(-\phi x^{1/a})\quad (\phi  > 0)
+\ee
+where $a > 0$ is fixed. Find the normalising constants for these densities, and calculate the MLE $\hat{\phi}_n$ of $\Phi$ based on a sample of $n$ observations. Comment on the limiting behaviour of $\hat{\phi}^{-a}_n$ as $a \to 0$ with $n$ fixed.
+\een
+
+
+
+Solution. \ben
+\item [(a)] Since the density vanishes for $x>\theta$, it cannot be expressed as an exponential of anything. The MLE of $\theta$ based on a sample of $n$ observations is $\hat{\theta} = \max_i x_i$.
+
+\item [(b)] We have
+\be
+\int^\infty_0 \exp(-\phi x^{1/a})dx = \int^\infty_0 \exp(-\phi y)dy^a = \int^\infty_0 a y^{a-1}\exp(-\phi y) dy = \frac {a \Gamma(a)}{\phi^a} = \frac {\Gamma(a+1)}{\phi^a}
+\ee
+Thus, the density function is
+\be
+f(x|\phi) = \frac {\phi^a}{\Gamma(a+1)} \exp(-\phi x^{1/a}) = \exp \lob a\log \phi -\log \Gamma(a+1)-\phi x^{1/a}\rob
+\ee
+\be
+0 = \left.\frac{\partial \ell}{\partial \phi}\right|_{\hat{\phi}} = \frac {na}{\hat{\phi}} -\sum^n_{i=1} x_i^{1/a} \ \ra \ \hat{\phi}_n = \frac {na}{\sum^n_{i=1} x_i^{1/a}}.
+\ee
+
+Also,
+\be
+\lim_{a\to 0}\hat{\phi}^{-a}_n = \lim_{a\to 0}\frac{\lob \sum^n_{i=1}x_i^{1/a}\rob^a}{(na)^a} = \lim_{a\to 0}\lob \sum^n_{i=1}x_i^{1/a}\rob^a = \|x\|_{\infty} = \max_i x_i.
+\ee
+
+\een
+
+
+
+
+
+\item The family of densities
+\be
+p(x | \varphi ) = \frac{\cos(\pi \varphi /2)}{\pi } \frac{e^{\varphi x}}{\cosh x} \quad \quad (x \in \R)
+\ee
+indexed by $\varphi \in (-1, 1)$ is an exponential family. Show that the MLE $\hat{\varphi}_n$ of $\varphi$ based on a sample of size $n$ is
+\be
+\hat{\varphi}_n = \frac 2{\pi} \arctan \lob \frac{2\bar{x}}{\pi }\rob.
+\ee
+Compute the Fisher information for this family.
+
+
+
+Solution. First we have
+\be
+f(x|\varphi) = \frac{\cos(\pi \varphi /2)}{\pi } \frac{e^{\varphi x}}{\cosh x} = \exp \lob \log\cos(\pi \varphi /2) - \log \pi + \varphi x - \log \cosh x\rob
+\ee
+Thus,
+\be
+T = x, \quad\quad \phi = \varphi,\quad \quad k(\phi) = -\log\cos(\pi \varphi /2)
+\ee
+and mean value parameter is
+\be
+H = k'(\phi) = \frac {\pi}2\frac {\sin(\pi \varphi /2)}{\cos(\pi \varphi /2)} = \frac {\pi}2\tan(\pi \varphi /2).
+\ee
+
+Then we have
+\beast
+0 & = & \left.\frac{\partial \ell}{\partial \varphi}\right|_{\hat{\varphi}} = -n\frac {\pi}2\tan(\pi \hat{\varphi} /2) + \sum^n_{i=1}x_i  \ \ra \ \hat{\phi}_n = \frac 2{\pi} \arctan \lob \frac{2\bar{x}}{\pi }\rob.
+\eeast
+
+Then the Fisher information is
+\be
+i(\varphi) = k''(\varphi) = \frac{\pi^2}4\sec^2(\pi \varphi /2).
+\ee
+
+
+
+
+
+\item The Pareto distribution $\text{Par}(a, b)$ has density
+\be
+p(x| a, b) = \frac ba \lob \frac a{a + x}\rob^{b+1}\quad\quad (x > 0)
+\ee
+where $a, b > 0$. Is the family $\sP := {\text{Par}(a, b) : a, b > 0}$ an exponential family?
+\ben
+\item [(a)] If $U \sim U[0, 1]$, show that $a(U^{-1/b} - 1) \sim \text{Par}(a, b)$.
+\item [(b)] Compute the Fisher information matrix for the Pareto parameter $(A,B)$.
+\een
+
+
+
+Solution. The density function is
+\be
+f(x| a, b) = \frac ba \lob \frac a{a + x}\rob^{b+1} = \exp\lob \log b - \log a + (b+1)\log a - (b+1)\log (a+x)\rob
+\ee
+This is not an exponential family.
+
+\ben
+\item [(a)] We have
+\beast
+\pro\lob U\leq x\rob = x &\  \lra \ & \pro\lob U^{-1/b}\geq x^{-1/b}\rob = x \ \lra \ \pro\lob U^{-1/b}\geq x\rob = x^{-b}\\
+& \lra & \pro\lob U^{-1/b}-1\geq x-1\rob = x^{-b} \ \lra \ \pro\lob U^{-1/b}-1\geq x\rob = (1+x)^{-b}\\
+& \lra & \pro\lob a\lob U^{-1/b}-1\rob \geq ax \rob = (1+x)^{-b} \ \lra \ \pro\lob a\lob U^{-1/b}-1\rob \geq x\rob = \lob 1+\frac xa\rob^{-b}\\
+\eeast
+So
+\be
+f(x) = - \lob \lob \frac {a}{x+a} \rob^{b}\rob' = \frac ba \lob \frac a{a + x}\rob^{b+1}
+\ee
+
+\item [(b)]
+\beast
+I(A,B)_{aa} & = & -\E\lob \frac{\partial^2 \ell(x;a,b)}{\partial a^2}\rob = \E\lob \frac{b}{a^2} - \frac{b+1}{(a+x)^2}\rob\\
+& = & \frac{b}{a^2} - \int^\infty_0 \frac{b+1}{(a+x)^2}\frac ba \lob \frac a{a + x}\rob^{b+1} dx = \frac{b}{a^2} - \int^\infty_0 \frac{b(b+1)}{a^2}\lob \frac {a + x}a\rob^{-(b+3)} d\lob \frac{x+a}a\rob\\
+& = & \frac{b}{a^2} + \int^\infty_0 \frac{b(b+1)}{a^2(b+2)}d\lob \frac {a + x}a\rob^{-(b+2)} = \frac{b}{a^2} - \frac{b(b+1)}{a^2(b+2)} = \frac{b}{a^2(b+2)}.
+\eeast
+\beast
+I(A,B)_{ab} & = & -\E\lob \frac{\partial^2 \ell(x;a,b)}{\partial a\partial b}\rob = \E\lob \frac{1}{a+x} - \frac{1}{a}\rob\\
+& = & \int^\infty_0 \frac{1}{a+x}\frac ba \lob \frac a{a + x}\rob^{b+1} dx - \frac{1}{a} = \int^\infty_0 \frac{b}{a}\lob \frac {a + x}a\rob^{-(b+2)} d\lob \frac{x+a}a\rob -  \frac{1}{a}\\
+& = & - \int^\infty_0 \frac{b}{a(b+1)}d\lob \frac {a + x}a\rob^{-(b+1)} - \frac{1}{a} = \frac{b}{a(b+1)} - \frac{1}{a} = - \frac{1}{a(b+1)}.
+\eeast
+\beast
+I(A,B)_{bb} & = & -\E\lob \frac{\partial^2 \ell(x;a,b)}{\partial b^2}\rob = \E\lob \frac1{b^2} \rob = \frac1{b^2}.
+\eeast
+
+Hence,
+\be
+I(A,B) = \bepm
+\frac{b}{a^2(b+2)} &  - \frac{1}{a(b+1)}\\
+\\
+ - \frac{1}{a(b+1)} & \frac1{b^2}
+\eepm.
+\ee
+
+\een
+
+
+
+
+
+\item Find the minimal sufficient statistic based on a sample of random size $N$, with known distribution, $\text{Prob}(N = n) = p(n)$, from each of the following models:
+\ben
+\item [(a)] Gamma distribution, $\Gamma (A, B)$ ($A,B > 0$).
+\item [(b)] Multivariate normal distribution, $\sN(M, V)$ ($M \in \R^d$, $V$ positive definite $d \times d$), with density
+\be
+p(x | \mu , v) = \{(2\pi )^d \det v\}^{-1/2} \exp -\left\{\frac 12 (x - \mu )^Tv^{-1}(x - \mu )\right\}\quad (x \in \R^d).
+\ee
+\item [(c)] Uniform distribution, $U(\Theta,\Theta + 1)$ ($\Theta \in \R$).
+\item [(d)] Cauchy distribution, $C(\Theta, 1)$ ($\Theta \in \R$).
+\een
+
+
+
+Solution. For $x= \lob x_1,\dots,x_m\rob$, $y =\lob y_1,\dots,y_n\rob$
+\ben
+\item [(a)]
+\be
+\frac{f(x;\alpha,\beta)}{f(y;\alpha,\beta)} = \frac{p(m)}{p(n)}\lob \frac{\beta^\alpha}{\Gamma(\alpha)}\rob^{m-n}\exp \lob -\beta \lob \sum^m_{i=1}x_i - \sum^n_{i=1}y_i\rob + (\alpha -1)\lob \sum^m_{i=1}\log x_i - \sum^n_{i=1}\log y_i \rob\rob
+\ee
+so
+\be
+\lob N,\ \sum^N_{i=1} X_i,\ \sum^N_{i=1}\log X_i\rob
+\ee
+is minimal sufficient.
+
+\item [(b)]
+\beast
+&& \frac{f(x;\mu,v)}{f(y;\mu,v)}\\
+& = & \frac{p(m)}{p(n)}\lob \frac 1{\sqrt{(2\pi)^d\det v}}\rob^{m-n}\exp \lob - \frac 12 \sum^m_{i=1} \lob  x_i -\mu \rob^T v^{-1}\lob x_i -\mu \rob  +\frac 12 \sum^n_{i=1}\lob y_i -\mu \rob^T v^{-1}\lob y_i -\mu \rob\rob\\
+& = & \frac{p(m)}{p(n)}\lob \frac 1{\sqrt{(2\pi)^d\det v}}\rob^{m-n}\exp \lob - \frac 12 \sum^m_{i=1} \lob  x_i -\bar{x} + \bar{x} - \mu \rob^T v^{-1}\lob x_i -\bar{x} + \bar{x} - \mu \rob  \right.\\
+& & \hspace{5cm} \left. +\frac 12 \sum^n_{i=1}\lob y_i -\bar{y} + \bar{y} -\mu \rob^T v^{-1}\lob y_i -\bar{y} + \bar{y}-\mu \rob\rob\\
+& = & \frac{p(m)}{p(n)}\lob \frac 1{\sqrt{(2\pi)^d\det v}}\rob^{m-n}\exp \lob - \frac 12 \sum^m_{i=1} \lob  x_i -\bar{x} \rob^T v^{-1}\lob x_i -\bar{x} \rob  - \frac 12 \sum^m_{i=1} \lob \bar{x} -\mu \rob^T v^{-1} \lob \bar{x} -\mu \rob\right.\\
+& & \hspace{5cm} \left. +\frac 12 \sum^n_{i=1}\lob y_i -\bar{y} \rob^T v^{-1}\lob y_i -\bar{y} \rob + \frac 12 \sum^n_{i=1}\lob \bar{y} -\mu \rob^T v^{-1}\lob \bar{y} -\mu \rob\rob\\
+& = & \frac{p(m)}{p(n)}\lob \frac 1{\sqrt{(2\pi)^d\det v}}\rob^{m-n}\exp \lob - \frac 12 \sum^m_{i=1} \sum_j\sum_k \lob  x_i -\bar{x} \rob_j \lob v^{-1}\rob_{jk}\lob x_i -\bar{x} \rob_k  - \frac 12 \sum^m_{i=1} \lob \bar{x} -\mu \rob^T v^{-1} \lob \bar{x} -\mu \rob\right.\\
+& & \hspace{5cm} \left. +\frac 12 \sum^n_{i=1}\sum_j\sum_k\lob y_i -\bar{y} \rob_j \lob v^{-1}\rob_{jk}\lob y_i -\bar{y} \rob_k + \frac 12 \sum^n_{i=1}\lob \bar{y} -\mu \rob^T v^{-1}\lob \bar{y} -\mu \rob\rob\\
+& = & \frac{p(m)}{p(n)}\lob \frac 1{\sqrt{(2\pi)^d\det v}}\rob^{m-n}\exp \lob - \frac 12 \sum_j\sum_k \lob v^{-1}\rob_{jk} \sum^m_{i=1}  \lob  x_i -\bar{x} \rob_j \lob x_i -\bar{x} \rob_k  - \frac 12 \sum^m_{i=1} \lob \bar{x} -\mu \rob^T v^{-1} \lob \bar{x} -\mu \rob\right.\\
+& & \hspace{5cm} \left. +\frac 12 \sum_j\sum_k \lob v^{-1}\rob_{jk} \sum^n_{i=1}\lob y_i -\bar{y} \rob_j \lob y_i -\bar{y} \rob_k + \frac 12 \sum^n_{i=1}\lob \bar{y} -\mu \rob^T v^{-1}\lob \bar{y} -\mu \rob\rob
+\eeast
+
+Thus,
+\be
+\lob N, \ \bar{X},\ \sum^N_{i=1} \lob X_i -\bar{X} \rob \lob X_i -\bar{X} \rob^T\rob
+\ee
+is minimal sufficient.
+
+\item [(c)] We know that
+\be
+f(x;\theta) = p(n) \mathbbm{1}_{\{\max_n x_i\leq \theta+1\}} \mathbbm{1}_{\{\min_n x_i \geq \theta\}}
+\ee
+
+Thus,
+\beast
+\frac{f(x;\theta)}{f(y;\theta)} & = & \frac{p(m)}{p(n)}\frac{\mathbbm{1}_{\{\max_m x_i\leq \theta+1\}} \mathbbm{1}_{\{\min_m x_i \geq \theta\}}}{\mathbbm{1}_{\{\max_n y_i \leq \theta+1\}} \mathbbm{1}_{\{\min_n y_i \geq \theta\}}}\\
+\eeast
+
+Thus, $\frac{p(m)}{p(n)}$ is constant as function of $\theta$ and
+\be
+\lob \min X_i,\ \max X_i\rob
+\ee
+is minimal sufficient. ($N$ is not required.)
+
+\item [(d)] We have
+\be
+f(x;\theta,1) = \frac{1}{\pi \lob 1 + \lob x-\theta\rob^2\rob}
+\ee
+
+Then
+\beast
+\frac{f(x;\theta,1)}{f(y;\theta,1)} & = & \frac{p(m)}{p(n)}\frac{\prod^n_{i=1}\lob 1 + \lob y_i-\theta\rob^2\rob}{\prod^m_{i=1}\lob 1 + \lob x_i-\theta\rob^2\rob}
+\eeast
+
+Thus, $x$ and $y$ will yield proportional likelihoods iff
+\be
+\prod^m_{i=1}\lob 1 + \lob x_i-\theta\rob^2\rob \propto \prod^n_{i=1}\lob 1 + \lob y_i-\theta\rob^2\rob
+\ee
+We can ignore the possibility of repetitions in the data since this has probability 0; then each side is a polynomial having distinct (complex) roots $\{x_i\pm \sqrt{-1}\}$. Hence we require the unordered set $\{x_i\}$ and $\{y_i\}$ to be the same. This means that minimal sufficient statistic is $\{X_i\}$.
+
+\een
+
+
+
+
+
+\item A coin has unknown probability $\Theta\in (0, 1)$ of landing heads. To learn about $\Theta$ the following compound experiment $\sE$ is performed. First a random variable $Z$ is generated, where $Z = 1$ or $2$ each with probability $\frac 12$. If $Z = 1$ the coin is tossed $n$ times (the binomial subexperiment, $\sE_1$); if $Z = 2$, it is tossed until the $k$th tail appears (the negative binomial sub-experiment, $\sE_2$). Here $n$ and $k$ are fixed, with $2 \leq  k \leq  n$. The data recorded are $Z$, and the resulting sequence of heads and tails.
+
+Let $R$, $S$ denote respectively the numbers of heads and tails observed. Which of the following statistics is sufficient for $\Theta$? Which is minimal sufficient?
+\ben
+\item [(a)] $R$
+\item [(b)] $(Z,R)$
+\item [(c)] $(R, S)$
+\item [(d)] $(Z,R + S)$
+\item [(e)] $(Z,R, S)$
+\item [(f)] $Y:= 2R + Z$ if $R \neq n - k$, $Y = 0$ if $R = n - k$.
+\een
+
+
+
+Solution. If $Z=1$, we have
+\be
+\pro(x;Z,R) = \theta^R (1-\theta)^{n-R}.%\frac {n!}{R!(n-R)!}\theta^R (1-\theta)^{n-R}.
+\ee
+
+If $Z=2$, since the last toss must be the tail
+\be
+\pro(x;Z,R) = \theta^R(1-\theta)^k.%\frac{(R+k-1)!}{R!(k-1)!}\theta^R(1-\theta)^k.
+\ee
+
+Note that whether the data arise from $\sE_1$ or $\sE_2$, any minimal sufficient statistic must take the same value in these two case. Thus,
+\ben
+\item [(a)] No sufficient since it does not distinguish cases $Z=1$ and $Z=2$ which have non-proportional likelihood if $R\neq n-k$.
+\item [(b)] Sufficient since knowing $(Z,R)$ we can find $S$. However, it is not minimal, since the ratio
+\be
+\frac{\pro(x;Z_1,R=n-k)}{\pro(x;Z_2,R=n-k)}
+\ee
+is constant as a function of $\theta$ no matter $Z_1$ is equal to $Z_2$.
+\item [(c)] Minimal sufficient.
+\item [(d)] No sufficient since it does not distinguish any sequences having $Z=1$.
+\item [(e)] Sufficient but not minimal (equivalent to (b)).
+\item [(f)] For $R=n-k$, it is obvious that $Y=0$ (with no additional information) is minimal sufficient. For $R \neq n-k$, the information in $2R+Z$ is the same as that in $(Z,R)$ (if $Y$ is odd, $Z=1$, if $Y$ is even then $Z=2$.) Thus, for $R\neq n-k$, $Y$ is minimal sufficient. Hence, $Y$ is minimal sufficient.
+\een
+
+
+
+
+
+\item You are given a coin of unknown bias (probability of heads) $p$. Consider two possible experiments and associated outcomes:
+\ben
+\item [(i)] You toss the coin 12 times, and observe 9 heads, 3 tails.
+\item [(ii)] You toss the coin until the third tail turns up, which occurs on the 12th toss.
+\een
+\ben
+\item [(a)] Show that the likelihood functions for $P$, based on the above data in the two experiments, are proportional.
+\item [(b)] You test the null hypothesis $H_0$: $P = \frac 12$ against the alternative $H_1$ : $P > \frac 12$, using a significance level of 5\%. What is your conclusion in each case?
+\item [(c)] Suppose the prior distribution of $P$ is uniform on $[0, 1]$. Find the posterior probability that $P \leq  \frac 12$ in each case.
+\een
+
+
+
+Solution. \ben
+\item [(a)]
+\ben
+\item [(i)] The binomial distribution. Let $X$ be the number of heads on first 12 tosses. Likelihood function is
+\be
+\sL_1(p) = \pro(X=9|p) = \frac {12!}{9!3!} p^9(1-p)^3.
+\ee
+\item [(ii)] The negative binomial distribution. Let $X$ be the number of heads before 3rd tail. Likelihood function is
+\be
+\sL_2(p) = \pro(Y=9|p) = \frac{11!}{9!2!} p^9(1-p)^3.
+\ee
+\een
+
+\item [(b)]
+\ben
+\item [(i)]
+\be
+\pro_{\frac 12}(X\geq 9) = \lob \frac {12!}{9!3!} + \frac {12!}{10!2!} + \frac {12!}{11!1!} + \frac {12!}{12!}\rob \lob \frac 12\rob^{12} = \frac{149}{2048}= 0.07275.
+\ee
+so we do not reject null.
+
+\item [(ii)]
+\beast
+\pro_{\frac 12}(Y\geq 9) & = & \frac {11!}{9!2!}\lob \frac 12\rob^{12} + \frac {12!}{10!2!} \lob \frac 12\rob^{13} + \dots = 1 - \lob \frac {2!}{2!}\lob \frac 12\rob^{3} + \dots + \frac {10!}{8!2!}\lob \frac 12\rob^{11}\rob\\
+& = & \frac {67}{2048} = 0.03271.
+\eeast
+so we do reject null.
+\een
+
+\item [(c)] We have
+\be
+f(p|x) \propto f(p)\pro(x|p) \propto \pro(x|p) = \frac {12!}{9!3!} p^9(1-p)^3
+\ee
+Thus, in both cases, posterior of $p$ is $\beta(10,4)$ with density
+\be
+f(p|x) = \frac {13!}{9!3!}p^9(1-p)^3
+\ee
+
+Thus,
+\beast
+\pro\lob p\leq \frac 12\rob & = & \int^{\frac 12}_0 \frac {13!}{9!3!}p^9(1-p)^3 dp = \frac {13!}{9!3!}\int^{\frac 12}_0 \lob p^9 - 3p^{10} + 3p^{11} - p^{12} \rob dp\\
+& = & \left. 286p^{10} - 780p^{11} + 715p^{12} - 220p^{13}\right|^{\frac 12}_0 = \frac{189}{4096} = 0.04614.
+\eeast
+
+Thus, hypothesis testing does not respect Likelihood Principle, Bayesian inference does.
+\een
+
+
+
+
+
+\item 1. Let $X_i \sim  \sE(\lm)$, independent and identically distributed ($i = 1,\dots,n$). Show that:
+\ben
+\item [(i)] The distribution of $Y_n := \sum^n_{i=1} X_i$ is $\Gamma (n, \lm)$, with density
+\be
+\frac{\lm^n }{(n- 1)!} y^{n- 1} \exp(-\lm y)\quad (y > 0).
+\ee
+\item [(ii)] The distribution of $Z_n := \min^n_{i=1} X_i$ is $\sE(n\lm)$.
+\een
+Compare the means and variances of $Y_n/n$ and $nZ_n$.
+
+
+
+Solution. \ben
+
+\item [(a)] We prove it by induction. For $n=1$, it is obvious. If true for k, the density of
+\be
+Y_{k} = Y_{k-1} + X_k
+\ee
+is the convolution
+\beast
+\int^y_0 f_{y_{k-1}}(x)f_{x_k}(y-x)dx & = & \int^y_0 \frac{\lm^{k-1} }{(k-2)!} x^{k-2} e^{-\lm x} \lm e^{-\lm (y-x)}dx = \frac{\lm^{k}e^{-\lm y} }{(k-2)!}  \int^y_0  x^{k-2} dx\\
+& = & \frac{\lm^{k}}{(k-1)!} y^{k-1}\exp \lob -\lm y\rob.
+\eeast
+
+\item [(b)] The distribution of $Z_n := \min^n_{i=1} X_i$ is
+\be
+\pro\lob Z_n \geq x\rob = \prod^n_{i=1} \pro\lob X_i \geq x\rob = \prod^n_{i=1} \exp(-\lm x) = \exp(-n\lm x) \ \ra \ Z_n\sim \sE(n\lm).
+\ee
+\een
+
+Thus,
+\be
+\E (Y_n/n) = \frac 1n \E(Y_n) = \frac 1n \frac n{\lm} =  \frac 1{\lm}, \quad\quad \var\lob Y_n/n\rob = \frac 1{n^2}\var\lob Y_n\rob = \frac 1{n^2}\frac n{\lm^2} = \frac 1{n\lm^2}.
+\ee
+\be
+\E (nZ_n) = n \E(Z_n) = n \frac 1{n\lm} =  \frac 1{\lm}, \quad\quad \var\lob nZ_n\rob = n^2\var\lob Z_n\rob = n^2 \frac 1{\lob n\lm\rob ^2} = \frac 1{\lm^2}.
+\ee
+
+
+
+
+
+\item Consider the family of densities
+\be
+p(x | \theta) = \exp \{-(x - \theta)\}\quad (x \geq \theta).
+\ee
+
+Find the MLE $\hat{\theta}$ of $\Theta$ based on a sample $(x_1,\dots,x_n)$ of size $n$, and use it to construct an unbiased estimator of $\Theta$. What is its variance? What goes wrong if you try and apply the Cram\'er-Rao lower bound in this example, and why?
+
+
+
+Solution. The likelihood function is
+\be
+\sL(x_1,\dots,x_n|\theta) = \exp\lob - \lob \sum^n_{i=1}x_i - n\theta \rob\rob \mathbbm{1}_{\{\min x_i \geq \theta\}}
+\ee
+
+This is maximised when $\theta = \min x_i$, thus,
+\be
+\hat{\theta} = \min X_i \ \ra \ \pro \lob \hat{\theta} \geq x\rob = \prod^n_{i=1}\pro(x_i\geq x) = \exp\lob -n(x-\theta)\rob \ \ra \ f_{\hat{\theta}}(x) = n \exp\lob -n(x-\theta)\rob
+\ee
+
+So
+\beast
+\E\lob \hat{\theta} \rob & = & \int^\infty_\theta x n\exp\lob -n(x-\theta)\rob dx = \int^\infty_\theta (x-\theta) n\exp\lob -n(x-\theta)\rob dx + \theta \int^\infty_\theta  n\exp\lob -n(x-\theta)\rob dx \\
+& = & \int^\infty_0 x n\exp\lob -nx\rob dx + \theta \int^\infty_0 n \exp\lob -nx\rob dx = \frac 1n + \theta.
+\eeast
+
+Thus,
+\be
+\min X_i - \frac 1n
+\ee
+is an unbiased estimator. Accordingly,
+
+\beast
+\var\lob \min X_i - \frac 1n\rob & = &  \var\lob \min X_i \rob = \int^\infty_\theta x^2 n\exp\lob -n(x-\theta)\rob dx - \lob \frac 1n + \theta \rob^2\\
+& = & \int^\infty_0 \lob x^2 + 2\theta x + \theta^2\rob n\exp\lob -nx\rob dx - \lob \frac 1n + \theta \rob^2 = \frac 1{n^2}.
+\eeast
+
+Also, the Fisher information is
+
+\be
+\ell(X;\theta) \propto -\lob x-\theta\rob \ \ra \ U(X;\theta) \propto 1 \ \ra \ i(\theta) \propto 1 \ \ra \ i_n(\theta) \propto n.
+\ee
+
+Thus, if applicable, CRLB on variance would be $\propto \frac 1n$, which is clearly false. Due to support of distribution varying with $\theta$, disallowing interchange of integration over $x$ and differentiation with respect to $\theta$.
+
+
+
+
+
+\item Let $\tilde{\Theta} = \tilde{\theta}(X)$ be an estimator of $\Theta \in \R$ with bias function $b(\theta)$ and variance function $v(\theta)$. Show that
+\be
+\var(\hat{\theta}) \geq \frac{\{1 + b'(\theta)\}^2}{I(\theta)}
+\ee
+where $I(\theta)$ is the Fisher information function for $\Theta$ based on $X$. When is this bound achieved?
+
+
+
+Solution. With
+\beast
+b(\theta) = \E\hat{\theta} - \theta \ \ra \ \lob 1+b'(\theta)\rob^2 & = & \lob \frac {\partial }{\partial \theta} \int \hat{\theta} f(x;\theta) dx \rob^2\\
+& = & \lob  \int \hat{\theta} \frac {\partial }{\partial \theta} f(x;\theta) dx \rob^2 = \lob  \int \hat{\theta} U(x,\theta) f(x;\theta) dx \rob^2\\
+& = & \lob \cov \lob \hat{\theta}, U(x,\theta)\rob\rob^2
+\eeast
+where $U$ is the score function with $\E_\theta U = 0$. Now apply Cauchy-Schwarz inequality, we have
+\be
+\lob \cov \lob \hat{\theta}, U(x,\theta)\rob\rob^2 \leq \var \hat{\theta} \var U = \var \hat{\theta} \lob \E U^2 + \lob\E U \rob^2\rob = \var \hat{\theta} \E U^2 = \var \hat{\theta} I(\theta)
+\ee
+where $I(\theta)$ is the Fisher information. Thus, we have
+\be
+\var(\hat{\theta}) \geq \frac{\{1 + b'(\theta)\}^2}{I(\theta)},
+\ee
+the equality is achieved iff $\hat{\theta}$ and $U$ are linearly dependent,
+\be
+\nabla_\theta \ell(x,\theta) = U(x,\theta) = B(\theta) + W(\theta)\hat{\theta}(x)
+\ee
+Thus, the exponential family achieves the equality and $\hat{\theta}$ is its natural statistic.
+
+
+
+
+
+\item Let the parameter-space be $\theta \subset \R^p$, and let $\hat{\theta}$ be an unbiased estimator of the vector $\theta$, with dispersion (variance-covariance) matrix $V (\theta)$. Let $I(\theta)$ be the Fisher information matrix. Show that $V (\theta) - I(\theta)^{-1}$ is non-negative definite, i.e. for any $a \in \R^p$, $a^T \{V (\theta) - I(\theta)^{-1}\}a \geq 0$. Show further that if $V (\theta) = I(\theta)^{-1}$ for all $\theta$ then the statistical model is a $p$-parameter exponential family with mean-value parameter $\Theta$.
+
+
+
+Solution. First we have
+\beast
+\E_\theta \lob \lob \hat{\theta}-\theta\rob U^T(\theta)\rob & = & \E_\theta\lob \hat{\theta} U^T(x,\theta)\rob = \int \hat{\theta} \frac{\partial }{\partial \theta } \ln f(x,\theta) f(x,\theta) dx\\
+& = & \int \hat{\theta} \frac{\partial }{\partial \theta } f(x,\theta) dx = \frac{\partial }{\partial \theta }  \int \hat{\theta} f(x,\theta) dx = \frac{\partial }{\partial \theta } \E\hat{\theta} = \frac{\partial }{\partial \theta } \theta = I.
+\eeast
+
+Then for arbitary vectors $a$ and $b$, we have $a^Tb = \E\lob a^T \lob \hat{\theta} - \theta\rob U^T(x,\theta) b\rob$. Thus, for
+\be
+g(x,\theta) = \sqrt{f(x,\theta)}a^T \lob \hat{\theta}-\theta\rob,\quad\quad h(x,\theta) = \sqrt{f(x,\theta)}U^T(x,\theta) b
+\ee
+we have
+\be
+\lob\int gh dx \rob^2 \leq \lob \int g^2 dx\rob \lob \int h^2 dx\rob
+\ee
+which gives
+\beast
+\lob a^Tb\rob^2 & = & \lob \E\lob a^T \lob \hat{\theta} -\theta \rob U^T(x,\theta) b\rob \rob^2 \leq \E\lob a^T  \lob \hat{\theta} -\theta \rob  \lob \hat{\theta} -\theta \rob^Ta\rob  \E \lob b^T U(x,\theta) U^T(x,\theta) b \rob\\
+& = & a^T \ \var \hat{\theta}\ a b^T\ I(\theta)\ b
+\eeast
+
+Let $b = I(\theta)^{-1}a$, we have
+\be
+\lob a^TI(\theta)^{-1}a \rob^2 \leq a^T \ \var \hat{\theta}\ a a^T I^{-1}(\theta) I(\theta)\ I(\theta)^{-1}a = \lob a^T\ \var \hat{\theta} \ a \rob \lob a^TI(\theta)^{-1}a \rob
+\ee
+We know that
+\be
+\lob a^TI(\theta)^{-1}a \rob \geq 0 \quad \text{since } I(\theta) \text{ is symmetric and non-negative definite.}
+\ee
+Then we get the required result.
+
+
+
+
+
+\item Consider a family of densities on $\R$ of the form
+\be
+p(x | a, b) = b^{-1} \exp\left\{-\psi \lob \frac {x - a}b\rob\right\},
+\ee
+with parameter $(A,B) \in \R \times (0,1)$, where $\int \exp\{-\psi(x)\} dx = 1$. Show that the Fisher information matrix is
+\be
+b^{-2}\bepm
+\int \psi'(x)^2 e^{-\psi(x)} dx & \int x\psi'(x)^2e^{-\psi(x)} dx\\
+\int x\psi'(x)^2 e^{-\psi(x)} dx & \int x^2\psi'(x)^2e^{-\psi(x)} dx-1\\
+\eepm
+\ee
+
+In the case of the Cauchy distribution,
+\be
+p(x | a, b) = \frac b{\pi \{b^2 + (x - a)^2\}},
+\ee
+show that the Fisher information matrix is
+\be
+b^{-2}
+\bepm
+1/2 & 0\\
+0 & 1/2
+\eepm.
+\ee
+
+
+
+Solution. First we have
+\be
+f(x|a,b) = \exp \lob -\log b -\psi \lob \frac {x - a}b\rob\rob
+\ee
+
+Thus,
+\beast
+I_{aa} & = & \E\lob \lob \frac{\partial \ell}{\partial a} \rob^2 \rob = \E\lob \lob \frac{\partial \lob -\log b -\psi \lob \frac {x - a}b \rob\rob }{\partial a}\rob^2 \rob = \frac 1{b^2}\E\lob \lob \psi'\lob \frac {x - a}b \rob\rob^2\rob\\
+& = & \frac 1{b^2}\int^\infty_{-\infty } \lob \psi'\lob \frac {x - a}b \rob\rob^2 \frac 1b \exp\lob-\psi \lob \frac {x - a}b\rob\rob dx = \frac 1{b^2}\int^\infty_{-\infty } \psi'\lob x\rob^2 e^{-\psi (x)} dx
+\eeast
+\beast
+I_{ab} & = & \E\lob \lob \frac{\partial \ell}{\partial a} \rob\lob \frac{\partial \ell}{\partial b} \rob \rob = \E\lob \lob \frac{\partial \lob -\log b -\psi \lob \frac {x - a}b \rob\rob }{\partial a}\rob\lob \frac{\partial \lob -\log b -\psi \lob \frac {x - a}b \rob\rob }{\partial b}\rob \rob \\
+& = & \frac 1{b^2}\E\lob \psi'\lob \frac {x - a}b \rob\lob \frac {x - a}b \psi'\lob \frac {x - a}b \rob - 1\rob \rob = \frac 1{b^2}\int^\infty_{-\infty } \psi'\lob x\rob\lob x\psi'\lob x\rob - 1\rob e^{-\psi (x)} dx
+\eeast
+\beast
+I_{bb} & = & \E\lob \lob \frac{\partial \ell}{\partial b} \rob^2 \rob = \E\lob \lob \frac{\partial \lob -\log b -\psi \lob \frac {x - a}b \rob\rob }{\partial b}\rob^2 \rob = \frac 1{b^2}\E\lob \lob \frac {x - a}b \psi'\lob \frac {x - a}b \rob - 1\rob^2\rob\\
+& = & \frac 1{b^2}\int^\infty_{-\infty } \lob x\psi'\lob x\rob-1\rob^2 e^{-\psi (x)} dx
+\eeast
+
+Thus, we have
+\be
+I = \frac 1{b^2}\bepm
+\int^\infty_{-\infty } \psi'\lob x\rob^2 e^{-\psi (x)} dx & \int^\infty_{-\infty } \psi'\lob x\rob\lob x\psi'\lob x\rob - 1\rob e^{-\psi (x)} dx\\
+\int^\infty_{-\infty } \psi'\lob x\rob\lob x\psi'\lob x\rob - 1\rob e^{-\psi (x)} dx & \int^\infty_{-\infty } \lob x\psi'\lob x\rob-1\rob^2 e^{-\psi (x)} dx
+\eepm
+\ee
+
+If we differentiate the identity
+\be
+\int \alpha \exp\lob - \psi\lob \beta (x-a)\rob\rob dx = 1
+\ee
+with respect to $a$ and $\beta$, we have
+\be
+\int^\infty_{-\infty } \psi'\lob x\rob e^{-\psi (x)} dx = 0,\quad \quad \int^\infty_{-\infty } \lob 1-x\psi'\lob x\rob\rob e^{-\psi (x)} dx = 0.
+\ee
+
+Hence,
+\be
+I = \frac 1{b^2}\bepm
+\int^\infty_{-\infty } \psi'\lob x\rob^2 e^{-\psi (x)} dx & \int^\infty_{-\infty } x\psi'\lob x\rob^2  e^{-\psi (x)} dx\\
+\int^\infty_{-\infty } x\psi'\lob x\rob^2  e^{-\psi (x)} dx & \int^\infty_{-\infty } x^2\psi'\lob x\rob^2 e^{-\psi (x)} dx-1
+\eepm
+\ee
+
+Now consider Cauchy distribution,
+\be
+f(x|a,b) = \frac b{\pi \{b^2 + (x - a)^2\}} \ \ra \ \psi(x) = \log \lob \pi\lob 1+x^2\rob\rob
+\ee
+
+Let $x= \tan\theta$ we have $e^{-\psi (x)} = \cos^2 \theta / \pi$, $\psi'\lob x\rob = \sin 2\theta$, $dx = \sec^2\theta d\theta$ and
+\be
+I = \frac 1{b^2}\bepm
+\frac 1{\pi}\int^{\pi/2}_{-\pi/2} \sin^2 2\theta d\theta & \frac 1{\pi}\int^{\pi/2}_{-\pi/2} \sin^3\theta \cos \theta d\theta\\
+\frac 1{\pi}\int^{\pi/2}_{-\pi/2} \sin^3\theta \cos \theta d\theta \ & \ \frac 1{\pi}\int^{\pi/2}_{-\pi/2} \lob 1-\cos 2\theta \rob^2 d\theta -1
+\eepm = \frac 1{b^2}\bepm
+\frac 12 & 0\\
+0 & \frac 12
+\eepm.
+\ee
+
+
+
+
+
+\item Let $X_i \sim  \sN(0, \theta)$, independent and identically distributed $(i = 1, \dots, n,\ n > 4)$. Show that the statistic $T = \sum^n_{i=1} X_i^2$ is complete sufficient for $\theta$. Compare the variance of the MVUE of $\psi = \theta^{-1}$ with the Cram\'er-Rao lower bound.
+
+
+
+Solution. The density function is
+\be
+f(x|\theta) = \frac 1{(2\pi \theta)^{n/2}}\exp\lob -\frac 1{2\theta}\sum^n_{i=1} x_i^2\rob
+\ee
+
+Clearly $\sum^n_{i=1} X_i^2$ is a natural sufficient statistic for $\theta$ of an exponential family, so it is complete. By Lehmann-Scheff\'e theorem, if we have a complete sufficient statistic $T$, then the MVUE will be a function of $T$.
+
+Consider
+\be
+Z = \frac {\theta}T = \frac {\theta}{\sum^n_{i=1} X_i^2} \ \ra \ Z \sim \chi^{-2}_n \ \ra \ f_Z(x) = \frac{2^{-n/2}}{\Gamma(n/2)} x^{-n/2-1}e^{-\frac 1{2x}},\quad x >0,
+\ee
+we have
+\beast
+\E(Z) & = & \int^\infty_0 x\frac{2^{-n/2}}{\Gamma(n/2)} x^{-n/2-1}e^{-\frac 1{2x}}dx = \int^\infty_0 \frac{2^{-n/2}}{\Gamma(n/2)} x^{n/2-2}e^{-\frac 12 x}dx\\
+& = & \frac 12 \frac{\Gamma(n/2-1)}{\Gamma(n/2)}\underbrace{\int^\infty_0 \lob \frac 12 \rob^{n/2-1}\frac 1{\Gamma(n/2-1)} x^{n/2-2}e^{-\frac 12 x}dx}_{=1 \quad (\text{Gamma distribution})} = \frac 12 \frac {1}{n/2 -1} = \frac 1{n -2}
+\eeast
+which gives
+\be
+\E\lob \frac{(n-2)Z}{\theta}\rob = \frac 1{\theta}.
+\ee
+
+Thus, $\hat{\psi} = \frac{(n-2)Z}{\theta} = \frac {n-2}T = \frac {n-2}{\sum^n_{i=1} X_i^2}$ is an unbiased estimator for $\psi = 1/\theta$. Now we calcuate the variance of $\frac{(n-2)Z}{\theta}$.
+\beast
+\var Z & = & \int^\infty_0 x^2\frac{2^{-n/2}}{\Gamma(n/2)} x^{-n/2-1}e^{-\frac 1{2x}}dx - \frac 1{(n-2)^2} = \int^\infty_0 \frac{2^{-n/2}}{\Gamma(n/2)} x^{n/2-3}e^{-\frac 12 x}dx - \frac 1{(n-2)^2}  \\
+& = & \frac 14 \frac{\Gamma(n/2-2)}{\Gamma(n/2)}\underbrace{\int^\infty_0 \lob \frac 12 \rob^{n/2-2}\frac 1{\Gamma(n/2-2)} x^{n/2-3}e^{-\frac 12 x}dx}_{=1 \quad (\text{Gamma distribution})} - \frac 1{(n-2)^2}\\
+& = & \frac 14 \frac 1{(n/2-1)(n/2-2)} - \frac 1{(n-2)^2} = \frac 2{(n-2)^2(n-4)}.
+\eeast
+
+Thus,
+\be
+\var \hat{\psi} = \frac {(n-2)^2}{\theta^2} \frac 2{(n-2)^2(n-4)} = \frac 2{\theta^2(n-4)} = \frac {2\psi^2}{n-4}.
+\ee
+
+The Fisher information is
+\be
+-\E \lob \frac{\partial^2}{\partial \psi^2} \lob -\frac n2 \log 2\pi + \frac n2 \log \psi - \frac {\psi \sum^n_{i=1}x_i^2}2 \rob\rob = \frac {n}{2\psi^2}
+\ee
+CRLB bound is
+\be
+\frac {2\psi^2}n \leq \frac {2\psi^2}{n-4}.
+\ee
+
+
+
+
+
+\item A coin has unknown probability $\theta\in (0, 1)$ of landing heads. To learn about $\theta$ the following compound experiment $\sE$ is performed. First a random variable $Z$ is generated, where $Z = 1$ or $2$ each with probability $\frac 12$. If $Z = 1$ the coin is tossed $n$ times (the binomial subexperiment, $\sE_1$); if $Z = 2$, it is tossed until the $k$th tail appears (the negative binomial sub-experiment, $\sE_2$). Here $n$ and $k$ are fixed, with $2 \leq  k \leq  n$. The data recorded are $Z$, and the resulting sequence of heads and tails.
+
+Let $R$, $S$ denote respectively the numbers of heads and tails observed. Suppose that $\theta$ is estimated by the (unique) unbiased estimator in the relevant sub-experiment, viz. $\hat{\theta} = R/n$ if $Z = 1$, $\hat{\theta} = R/(R + k - 1)$ if $Z = 2$. Show that $\hat{\theta}$ is an unbiased estimator of $\theta$ in $\sE$. Does this estimator respect the weak sufficiency principle? Find an unbiased estimator of $\theta$ in $\sE$ with uniformly smaller variance than $\hat{\theta}$.
+
+
+
+Solution. We have the density function for $Z=1,2$
+\be
+\pro(R=r) = \frac {n!}{r!(n-r)!}\theta^r (1-\theta)^{n-r},\quad\quad \pro (R=r) = \frac {(r+k-1)!}{r!(k-1)!}\theta^r (1-\theta)^k
+\ee
+\beast
+\E(\hat{\theta}|\theta) & = & \frac 12 \E\lob \hat{\theta} | Z=1,\theta \rob + \frac 12 \E\lob \hat{\theta} | Z=2,\theta \rob = \frac 12 \E\lob \frac Rn \rob + \frac 12 \E\lob \frac {R}{R+k-1} \rob\\
+& = & \frac 1{2n} \sum^{n}_{r=0} r \frac {n!}{r!(n-r)!}\theta^r (1-\theta)^{n-r}  + \frac 12 - \frac {k-1}2 \sum^\infty_{r=0} \frac 1{r+k-1} \frac {(r+k-1)!}{r!(k-1)!}\theta^r (1-\theta)^k\\
+& = & \frac 1{2n} n\theta \sum^{n}_{r=1} \frac {(n-1)!}{(r-1)!(n-r)!}\theta^{r-1} (1-\theta)^{n-r}  + \frac 12 - \frac {k-1}2 \sum^\infty_{r=0} \frac {(r+k-2)!}{r!(k-1)!}\theta^r (1-\theta)^k\\
+& = & \frac 1{2n} n\theta \underbrace{\sum^{n-1}_{r=0} \frac {(n-1)!}{r!(n-r-1)!}\theta^{r} (1-\theta)^{n-r-1} }_{=1} + \frac 12 - \frac {(1-\theta)}2 \underbrace{\sum^\infty_{r=0} \frac {(r+k-2)!}{r!(k-2)!}\theta^r (1-\theta)^{k-1}}_{=1}\\
+& = & \frac 12 \theta + \frac 12 \theta = \theta.
+\eeast
+
+However, $\hat{\theta}$ takes different values
+\be
+\hat{\theta} = \left\{\ba{ll}
+\frac {n-k}n\quad\quad  & Z=1,R=n-k,S=k\\
+\frac {n-k}{n-1} & Z=2,R=n-k,S=k
+\ea\right.
+\ee
+which yield proportional likelihoods, so does not respect weak sufficient principle. Thus, we can produce a better estimator by Rao-Blackwellisation. Consider $\E(\hat{\theta}|R,S) = \tilde{\theta}$ where $\hat{\theta}$ is a random variable that depends on $R$ and $S$.
+
+For $S\neq k$ we have $Z=1$ and
+\be
+\E\lob \left.\hat{\theta} \right|R,S\rob = \E\lob \left.\frac{R}{n} \right|R,S \rob = \frac{R}{n} = \hat{\theta}.
+\ee
+
+For $S = k$ and $R \neq n-k$ we have $Z=2$ and
+\be
+\E\lob \left.\hat{\theta} \right|R,S\rob = \E\lob \left.\frac{R}{R+k-1} \right|R,S \rob = \frac{R}{R+k-1} = \hat{\theta}.
+\ee
+
+For $S=k$ and $R=n-k$ we have
+\beast
+& & \E\lob \left.\hat{\theta} \right|R=n-k,S=k\rob = \E \lob \E\lob \left.\hat{\theta} \right|R=n-k,S=k,Z\rob \rob\\
+& = & \E\lob \left.\hat{\theta} \right|R=n-k,S=k,Z=1\rob \pro\lob \left.Z=1\right|R=n-k,S=k\rob \\
+& & \quad\quad + \E\lob \left.\hat{\theta} \right|R=n-k,S=k,Z=2\rob \pro\lob \left.Z=2\right|R=n-k,S=k\rob
+\eeast
+
+Since
+\beast
+\pro\lob \left.Z=1\right|R=n-k,S=k\rob &= &\frac {\pro\lob Z=1,R=n-k,S=k\rob}{\pro\lob R=n-k,S=k\rob} \\
+& = & \frac {\pro\lob Z=1,R=n-k,S=k\rob}{\pro\lob Z=1,R=n-k,S=k\rob + \pro\lob Z=2,R=n-k,S=k\rob} \\
+& = & \frac{\frac {n!}{k!(n-k)!}\theta^{n-k} (1-\theta)^{k}}{\frac {n!}{k!(n-k)!}\theta^{n-k} (1-\theta)^{k} + \frac {(n-1)!}{(n-k)!(k-1)!}\theta^{n-k} (1-\theta)^k}\\
+& = & \frac{\frac {n(n-1)!}{k(k-1)!(n-k)!}}{\frac {n(n-1)!}{k(k-1)!(n-k)!} + \frac {(n-1)!}{(n-k)!(k-1)!}} = \frac {\frac nk}{\frac nk + 1} = \frac n{n+k}.
+\eeast
+
+Similarly,
+\be
+\pro\lob \left.Z=2\right|R=n-k,S=k\rob = \frac k{n+k}.
+\ee
+
+Thus, we have
+\be
+\tilde{\theta} = \E\lob \left.\hat{\theta} \right|R=n-k,S=k\rob = \frac {n-k}n \frac n{n+k} + \frac{n-k}{n-1} \frac{k}{n+k} = \frac{(n-k)(n+k-1)}{(n+k)(n-1)}.
+\ee
+
+Hence,
+\be
+\tilde{\theta} = \left\{\ba{ll}
+\hat{\theta} & S\neq k \text{ or } R\neq n-k\\
+\frac{(n-k)(n+k-1)}{(n+k)(n-1)} \quad\quad & S=k, R=n-k
+\ea\right..
+\ee
+
+%First, we calculate the variance of $\hat{\theta}$
+%\beast
+%& & \var\hat{\theta}  = \var \lob \E(\hat{\theta}|Z)\rob + \E\lob \var\lob \hat{\theta}|Z\rob\rob = 0 + \E\lob \var\lob \hat{\theta}|Z\rob\rob \\
+%& = & \frac 12 \lob \sum^{n}_{r=0} \lob\frac {r}{n}\rob^2 \frac {n!}{r!(n-r)!}\theta^r (1-\theta)^{n-r} + \sum^\infty_{r=0} \lob \frac r{r+k-1}\rob^2 \frac {(r+k-1)!}{r!(k-1)!}\theta^r (1-\theta)^k \rob - \theta^2  \\
+%& = & \frac 12 \lob \theta \sum^{n}_{r=1} \frac rn \frac {(n-1)!}{(r-1)!(n-r)!}\theta^{r-1} (1-\theta)^{n-r} + \sum^\infty_{r=1} \lob 1 -\frac {k-1}{r+k-1}\rob \frac {(r+k-2)!}{(r-1)!(k-1)!}\theta^r (1-\theta)^k \rob - \theta^2  \\
+%& = & \frac 12 \lob \frac {\theta}n \sum^{n-1}_{r=0} (r+1) \frac {(n-1)!}{(r-1)!(n-r-1)!}\theta^{r} (1-\theta)^{n-r-1} + \theta - (k-1)\sum^\infty_{r=1} \frac {1}{r+k-1} \frac {(r+k-2)!}{(r-1)!(k-1)!}\theta^r (1-\theta)^k \rob - \theta^2  \\
+%& = & \frac 12 \lob \frac {\theta}n \lob (n-1)\theta + 1\rob + \theta - (k-1)\theta\sum^\infty_{r=0} \frac {1}{r+k} \frac {(r+k-1)!}{r!(k-1)!}\theta^r (1-\theta)^k \rob - \theta^2  \\
+%\eeast
+
+
+
+
+
+\item Let $N = 1$ or $2$, each with probability $\frac 12$. Given $N = n$, $X \sim  \sN(\theta, 1/n)$. Show that $X$ is not sufficient, and that $(N,X)$ is minimal sufficient but not complete. Compare the variance of the unbiased estimator $X$ with the Cram\'er-Rao lower bound. Show that $S := (1/4) + (-1)^N X^2$ is an unbiased estimator of $0$. Show further that $T = X + S/10$ is an unbiased estimator of $\theta$ whose variance when $\theta = 1$ is less than that of $X$. (NB: If $Y \sim  \sN(0, 1)$, then $E(Y^4) = 3$).
+
+
+
+Solution. The density function is
+\be
+f(x,n|\theta) = \frac 12 \mathbbm{1}_{\{N=1\}}\lob 2\pi\rob^{-1/2} \exp\lob -\frac {(x-\theta)^2}2\rob + \frac 12 \mathbbm{1}_{\{N=2\}}\lob \pi\rob^{-1/2} \exp\lob -(x-\theta)^2\rob
+\ee
+
+Then $T$ is a minimal sufficient statistic
+\be
+\frac {f(N',X'|\theta)}{f(N,X|\theta)}
+\ee
+is indepedent of $\theta$ iff $T(N,X) = T(X',N')$. So $T = (N,X)$ is minimal sufficient statistic. However, the function $N-1.5$ of $T$ has expectation 0 for all $\theta$, but $N-1.5\neq 0$. Thus $T=(N,X)$ is not complete. Then $X$ is unbiased estimator for $\theta$, we have
+\beast
+\var(X) & = & \E\lob \var \lob X|N,\theta\rob\rob + \var\lob \E (X|N,\theta)\rob\\
+& = & \frac 12\lob 1+ \frac 12\rob + 0 = \frac 34.
+\eeast
+The Fisher information is
+\beast
+i(\theta) & = & \E\lob \lob \frac {\partial \ell}{\partial \theta}\rob^2\rob = \E\lob \E \lob \left. \lob \frac {\partial \ell}{\partial \theta}\rob^2\right|N \rob\rob = \E\lob \E \lob \left. \lob N(X-\theta)\rob^2\right|N \rob\rob \\
+& = & = \frac 12 \underbrace{1\cdot 1}_{N=1} + \frac 12 \underbrace{4\cdot \frac 12}_{N=2} = \frac 32.
+\eeast
+Thus, CRLB bound is $\frac 23$.
+
+For $S := (1/4) + (-1)^N X^2$,
+\be
+\E_\theta S = \frac 12 \E(S|N=1) + \frac 12 \E(S|N=2) = \frac 12 \lob \frac 14 - \lob 1+\theta^2 \rob  + \frac 14 + \lob \frac 12 + \theta^2\rob \rob = 0.
+\ee
+
+For $T = X + S/10$,
+\be
+\E T = \E X + 0 = \theta
+\ee
+thus $T$ is an unbiased estimator of $\theta$. Now consider $\theta = 1$
+\be
+\var T = \var X + \frac 1{100}\var S + \frac 2{10}\cov (X,S)
+\ee
+So
+\beast
+\var S & = & \E S^2 = \E \lob \E (S^2|N)\rob = \frac 12 \lob \E \lob \left. \lob \frac 14 - X^2\rob^2\right|N=1\rob + \E \lob \left.\lob \frac 14 + X^2\rob^2\right|N=2\rob\rob
+\eeast
+
+We know that if $X\sim \sN(\mu,\sigma^2)$
+\be
+\E(X^3) = \mu^3 + 3\mu\sigma^2 ,\quad\quad \E(X^4) = \mu^4 + 6\mu \sigma^2 + 3\sigma^4.
+\ee
+
+Thus,
+\be
+\var S = \frac 12 \lob \frac 1{16} - \frac 12(1+1) + (1+6+3) + \frac 1{16} + \frac 12\lob \frac 12 + 1\rob + \lob 1+3+\frac 34\rob \rob = 7+ \frac 5{16} = 7.3125.
+\ee
+
+Similarly
+\beast
+\cov(X,S) & = & \E(XS) = \frac 14\E X + \E\lob (-1)^N X^3 \rob\\
+& = & \frac 14 + \frac 12 \lob - \E \lob \left. X^3 \right|N=1\rob + \E \lob \left. X^3\right|N=2\rob\rob \\
+& = & \frac 14 + \frac 12 \lob - \lob 1+ 3\rob + \lob 1+\frac 32 \rob\rob = -\frac 12.
+\eeast
+
+Thus,
+\be
+\var T = \var X + \frac 1{100}\var S + \frac 2{10}\cov (X,S) = \var X + \frac 1{100} \frac {117}{16} - \frac 15\frac 12 = \var X - \frac {43}{1600} = \var X - 0.026875
+\ee
+which is saying that $T$'s variance is less than that of $X$.
+
+
+
+
+
+\item $X_i\ (i = 1, \dots, n)$ are independent and identically distributed from the uniform distribution $U[0, 1]$. Let $X_{(r)}\ (1 \leq  r \leq  n)$ denote the $r$th smallest value among the ($X_i$).
+\ben
+\item [(i)] Show that, for small $dx$,
+\be
+\pro(X_{(r)}\in [x, x+dx)) \approx \frac{n!}{(r -1)! (n -r)!} x^{r-1}(1-x)^{n-r} dx\quad (0 < x < 1)
+\ee
+(so $X_{(r)}$ has the Beta Distribution $\beta(r, n + 1 -r)$).
+
+\item [(ii)] Deduce that
+\be
+\int^z_0 \frac{n!}{(r-1)! (n-r)!} x^{r-1} (1-x)^{n-r} dx = \sum^n_{s=r} \frac{n!}{s! (n-s)!} z^s(1-z)^{n-s}.
+\ee
+\een
+
+
+
+Solution. \ben
+\item [(i)] We have
+\beast
+\pro(X_{(r)}\in [x, x+dx)) & = & \pro\lob (r-1)\ X's \leq x,\ \text{one }X \in [x,x+dx),\ (n-r)\ X's \geq x+dx\rob \\
+& = & \frac {n!}{(r-1)!1!(n-r)!} \pro\lob (r-1)\ X's \leq x\rob \pro\lob \text{one }X \in [x,x+dx)\rob  \pro\lob (n-r)\ X's \geq x+dx\rob\\
+& = & \frac {n!}{(r-1)!(n-r)!} x^{r-1} dx (1-x-dx)^{n-r} \approx \frac{n!}{(r -1)! (n -r)!} x^{r-1}(1-x)^{n-r} dx
+\eeast
+\item [(ii)] Let $N_z$ ($0<z<1$) be the number the $(X_i)$ falling below $z$
+\beast
+& & \int^z_0 \frac{n!}{(r-1)! (n-r)!} x^{r-1} (1-x)^{n-r} dx \\
+& = & \pro\lob \text{at least $r$ of }(X_i) \leq z\rob = \sum^n_{s=r} \pro\lob s \text{ of } (X_i) \leq z,\ (n-s)\text{ of } (X_i) \geq z\rob \\
+& = & \sum^n_{s=r} \frac{n!}{s! (n-s)!} \pro\lob X_1 \leq z \rob^s \pro\lob X_1 \geq z \rob^{n-s} = \sum^n_{s=r} \frac{n!}{s! (n-s)!} z^s(1-z)^{n-s}.
+\eeast
+
+\een
+
+
+
+\item $X_1, \dots,X_n$ are independent and identically distributed from the truncated Poisson distribution $\sP^*(\Lambda)$, with
+\be
+p(x| \lm) = (1 - e^{-\lm})^{-1}e^{-\lm} \lm^x /x! \quad \quad (x = 1, 2, \dots, \lm > 0).
+\ee
+Show that for any data there exists a unique root of the likelihood equation, which is the MLE of $\Lambda$. What is its asymptotic distribution?
+
+
+
+Solution. The likelihood function is
+\be
+f(x|\lm) = \frac{\lm^{\sum^n_{i=1} x_i}}{\lob e^{\lm}-1\rob^n}\frac 1{\prod^n_{i=1}x_i!}
+\ee
+
+Thus,
+\be
+\ell_n (x|\lm) = \log \lob f(x|\lm )\rob = -n\log(e^{\lm} -1) + \sum^n_{i=1} x_i \log \lm - \log \lob \prod^n_{i=1}x_i!\rob
+\ee
+and
+\be
+0 = \left.\frac{\partial \ell_n}{\partial \lm }\right|_{\hat{\lm}} = -\frac{ne^{\hat{\lm}}}{e^{\hat{\lm}} -1} + \frac 1{\hat{\lm}}\sum^n_{i=1} x_i \ \ra \ \bar{x} = \frac{\hat{\lm}e^{\hat{\lm}}}{e^{\hat{\lm}} -1} := g(\hat{\lm}).
+\ee
+
+So the root satisfies $g(\lm) = \bar{x}$. We know that
+\be
+g'(\lm) = \frac{\lob e^\lm + \lm e^\lm \rob\lob e^\lm -1\rob - e^\lm \lm e^\lm}{\lob e^\lm -1\rob^2} = \frac{e^\lm \lob e^\lm - 1-\lm \rob}{\lob e^\lm -1\rob^2} >0
+\ee
+so $g$ is strictly increasing. Note that
+\be
+g(0^+) = \lim_{\lm \downarrow 0} g(\lm) = 1 \quad\quad (\text{by L'H\^opital's rule}), \quad\quad g(\lm) \to \infty \text{ as } \lm \to \infty.
+\ee
+
+Thus since $\bar{x}\geq 1$, there exists a unique $\hat{\lm} >0$ s.t. $g(\hat{\lm}) = \bar{x}$ i.e. a unique root of the likelihood equation. Now note that
+\be
+\ell_n'(\lm) = \frac n{\lm}\lob -g(\lm) + \bar{x}\rob \ \ra \ \ell_n''(\hat{\lm}) = -\frac{n}{\hat{\lm}^2} \underbrace{\lob -g(\hat{\lm}) + \bar{x}\rob}_{=0} - \frac n{\hat{\lm}}g'(\hat{\lm}) = - \frac n{\hat{\lm}}g'(\hat{\lm}) <0
+\ee
+since $g'(\lm) >0$. Thus, $\hat{\lm}$ achieves a maximum. Thus, it is the MLE of $\Lambda$.
+
+Since $\hat{\lm} = \hat{\lm}_n$ is the MLE, we know from standard asymptotic theory that
+\be
+\hat{\lm}_n \stackrel{d}{\to} \sN\lob \lm, I_n(\lm)^{-1}\rob \text{ as }n\to \infty
+\ee
+where
+\be
+I_n(\lm) = -\E\lob \ell_n''(X,\lm)\rob = \frac{n}{\lm^2} \lob -g(\lm) + \E \bar{X}\rob + \frac n{\lm}g'(\lm)
+\ee
+
+We know that
+\be
+0 = \E U =\E \lob \frac{\partial \ell_n(\lm)}{\partial \lm}\rob = \frac n{\lm}\lob -g(\lm) + \E \bar{X}\rob \ \ra \ g(\lm) = \E \bar{X}
+\ee
+
+Thus,
+\be
+I_n(\lm) = \frac n{\lm}g'(\lm) = \frac{ne^\lm \lob e^\lm - 1-\lm \rob}{\lm \lob e^\lm -1\rob^2} .
+\ee
+
+
+
+
+
+\item $X_1, \dots ,X_n \sim  \sE(\Theta)$, independent and identically distributed. It is desired to test $H_0:\ \Theta = \theta_0$ against $H_1:\ \Theta \neq \theta_0$. Find the forms of the Wald test, the score test, and the likelihood ratio test, and compare them.
+
+
+
+Solution. To test $H_0:\ \Theta = \theta_0$ against $H_1:\ \Theta \neq \theta_0$. First, $X_1, \dots ,X_n \sim  \sE(\Theta)$, the likelihood function is
+\be
+f(x|\theta) = \theta e^{-\theta x} \ \ra \ \ell_n(x,\theta) = n\log \theta - \theta \sum^n_{i=1}x_i.
+\ee
+Then MLE is given by
+\be
+0 = \left.\frac{\partial \ell}{\partial \theta}\right|_{\hat{\theta}_n} = \frac n{\hat{\theta}_n} - \sum^n_{i=1}x_i \ \ra \ \hat{\theta}_n = \frac 1{\bar{x}}.
+\ee
+
+By the central limit theorem (CLT), we have
+\be
+\frac{\sum^n_{i=1}X_i - n\E X_i}{\sqrt{n\var(X_1)}} \stackrel{d}{\to} \sN(0,1) \ \ra \ \sqrt{n}\lob \bar{X}\theta -1\rob \stackrel{d}{\to} \sN(0,1)\ \ra \ Z:=\sqrt{n}\lob \frac{\theta_0}{\hat{\theta}_n} -1\rob \stackrel{d}{\to} \sN(0,1) \text{ under }H_0.
+\ee
+
+{\bf Wald test}
+
+We use the statistic $k_n^{\frac 12}\lob \hat{\theta}_n - \theta_0\rob$ where $k_n$ is one of $I_n(\theta)$, $\hat{i}_n\lob \hat{\theta}_n\rob$, $J_n(\theta)$ and $\hat{j}_n\lob \hat{\theta}_n\rob$. In our case:
+\be
+-\ell''(\theta) =  -\frac n{\theta^2} \ \ra \ I_n(\theta_0) = -\E\lob \ell''(\theta_0)\rob = \frac n{\theta_0^2} = J_n(\theta_0),\quad\quad \hat{i}_n\lob \hat{\theta}_n\rob = I\lob \hat{\theta}_n\rob = \frac n{\hat{\theta}_n^2} = n\bar{x}^2 = \hat{j}_n\lob \hat{\theta}_n\rob
+\ee
+
+So for $k_n = I_n(\theta_0) = J_n(\theta_0)$ test statistic is
+\be
+k_n(\theta_0)\lob \hat{\theta}_n - \theta_0\rob^2 = \frac n{\theta_0^2}\lob \hat{\theta}_n - \theta_0\rob^2 = Z^2 \lob \frac{\hat{\theta}_n}{\theta_0}\rob^2
+\ee
+and for $k_n = \hat{i}_n\lob \hat{\theta}_n\rob = \hat{j}_n\lob \hat{\theta}_n\rob$ test statistic is
+\be
+k_n(\theta_0)\lob \hat{\theta}_n - \theta_0\rob^2 = \frac n{\hat{\theta}_n^2}\lob \hat{\theta}_n - \theta_0\rob^2 = Z^2
+\ee
+which is a $\chi^2_1$ distribution.
+
+{\bf Score test}
+
+The score test is
+\be
+I_n(\theta_0)^{-1}U_n(\theta_0)^2 = \frac {\theta_0^2}n \lob \frac n{\theta_0}-n\bar{x}\rob^2 = n(1-\theta_0 \bar{x})^2 = n\lob 1-\frac{\theta_0}{\hat{\theta}_n}\rob^2 = Z^2.
+\ee
+Again test this against a $\chi^2_1$ distribution.
+
+{\bf Wilks test} (Likelihood ratio test)
+
+The likelihood ratio test statistic is
+\be
+\frac{L_n(\theta_0)}{L_n\lob \hat{\theta}_n\rob}.
+\ee
+
+Wilks statistic is
+\beast
+-2\lob \ell_n(\theta_0) - \ell_n\lob \hat{\theta}_n\rob\rob & = & -2n\lob \log\lob \frac{\theta_0}{\hat{\theta}_n}\rob - \lob\theta_0-\hat{\theta}_n\rob\bar{x}\rob = -2n\lob \log\lob \frac{\theta_0}{\hat{\theta}_n}\rob - \lob\frac{\theta_0}{\hat{\theta}_n} -1\rob\rob \\
+& = & -2n\lob \log\lob 1+\frac{Z}{\sqrt{n}}\rob - \frac{Z}{\sqrt{n}}\rob \approx -2n\lob \frac{Z}{\sqrt{n}} - \frac 12\lob\frac{Z}{\sqrt{n}}\rob^2 - \frac{Z}{\sqrt{n}}\rob = Z^2.
+\eeast
+Again test this against a $\chi^2_1$ distribution.
+
+
+
+
+
+\item Observables $y_i \sim  \sN(A + Bx_i, V )$, independently for $i = 1, \dots , n$. Here $A$, $B$ are unknown parameters, while the $(x_i)$ are fixed constants with $\sum x_i = 0$, $\sum x_i^2 = n$.
+\ben
+\item [(i)] Suppose that the variance $V$ is known to have value $v$, and it is desired to test $H_0$: $(A, B) = (0, 0)$ against $H_1$: $(A, B) \neq (0, 0)$. Let $\sL_0$ be the likelihood under $H_0$, and $\hat{L}$ the maximised likelihood under $H_1$. Show that, under $H_0$, the distribution of $W := -2 \log(L_0/\hat{L})$ is exactly $\chi^2_2$.
+\item [(ii)] Suppose now $V$ is not known. Describe the form of the likelihood-ratio test of $(A,B,V) = (0,0,1)$ against $(A,B,V ) \neq (0, 0, 1)$.
+\een
+
+
+
+Solution. For $y_i \sim  \sN(A + Bx_i, V )$, we have
+\be
+f(y|A,B,V,x) = \prod^n_{i=1}\frac 1{\sqrt{2\pi V}}\exp\lob - \frac{(y_i - A -Bx_i)^2}{2V}\rob = \lob 2\pi V \rob^{-n/2} \exp\lob - \frac 1{2V}\sum^n_{i=1} (y_i - A -Bx_i)^2\rob
+\ee
+
+Thus
+\be
+\ell_n = \frac n2 \log 2\pi - \frac n2 \log V - \frac 1{2V}\sum^n_{i=1} (y_i - A -Bx_i)^2
+\ee
+
+\ben
+\item [(i)] Assume $V$ is known
+\be
+0 = \left.\frac{\partial \ell_n}{\partial A}\right|_{\hat{A},\hat{B}} = \frac 1V \sum^n_{i=1}\lob y_i - \hat{A} -\hat{B}x_i \rob = \frac 1V \lob n\bar{y} - n\hat{A} - \hat{B}\underbrace{\sum^n_{i=1}x_i}_{=0}\rob \ \ra \ \hat{A} = \bar{y}.
+\ee
+\be
+0 = \left.\frac{\partial \ell_n}{\partial B}\right|_{\hat{A},\hat{B}} = \frac 1V \sum^n_{i=1} x_i\lob y_i - \hat{A} -\hat{B}x_i \rob = \frac 1V \lob \sum^n_{i=1} x_iy_i - \hat{A}\underbrace{\sum^n_{i=1}x_i}_{=0} - \hat{B}\underbrace{\sum^n_{i=1}x_i^2}_{=n}\rob \ \ra \ \hat{B} = \frac{\sum^n_{i=1} x_iy_i}n.
+\ee
+
+Thus, consider $H_0$: $(A, B) = (0, 0)$ against $H_1$: $(A, B) \neq (0, 0)$. So
+\beast
+W & = & -2 \log(L_0/\hat{L}) = -2\log \lob \frac{f(y|0,0,V,x)}{f(y|\hat{A},\hat{B},V,x)}\rob = -2(\ell_0 - \hat{\ell})\\
+& = & -2 \lob \frac {-1}{2V}\lob \sum^n_{i=1} y_i^2 - \sum^n_{i=1} (y_i - \hat{A} -\hat{B} x_i)^2\rob \rob = \frac 1V \lob \sum^n_{i=1} (2y_i - \hat{A} -\hat{B} x_i)(\hat{A}+\hat{B} x_i)\rob\\
+& = & \frac 1V \lob 2\sum^n_{i=1} y_i (\hat{A}+\hat{B} x_i) - \sum^n_{i=1} \lob \hat{A} +\hat{B} x_i\rob^2\rob = \frac nV\lob \hat{A}^2+\hat{B}^2 \rob.
+\eeast
+
+Accordingly, we have
+\be
+\E\hat{A} = \E \bar{y} = \frac 1n \E \sum^n_{i=1}y_i = \frac 1n\E \sum^n_{i=1} \lob A + Bx_i \rob = A
+\ee
+\be
+\E\hat{B} = \E \frac{\sum^n_{i=1} x_iy_i}n = \frac 1n  \sum^n_{i=1}x_i\E y_i = \frac 1n \sum^n_{i=1} x_i\lob A + Bx_i \rob = \frac Bn \sum^n_{i=1} x_i^2 = B.
+\ee
+\be
+\var \hat{A} = \frac 1{n^2} \sum^n_{i=1}\var y_i = \frac Vn,\quad\quad \var \hat{B} = \frac 1{n^2} \sum^n_{i=1} x_i^2\var y_i = \frac Vn.
+\ee
+\beast
+\cov \lob \hat{A},\hat{B}\rob & = & \E \lob \hat{A}\hat{B}\rob - AB = \frac 1{n^2}\E \lob \lob \sum^n_{i=1}y_i \rob \lob \sum^n_{j=1} x_jy_j \rob \rob -AB\\
+& = & \frac 1{n^2}\lob \sum^n_{i=1}\sum_{j\neq i} x_j \E y_iy_j + \sum^n_{i=1} x_i\E y_i^2 \rob -AB\\
+& = & \frac 1{n^2}\lob \sum^n_{i=1}\sum_{j\neq i} x_j \lob A + Bx_i \rob\lob A + Bx_j \rob + \sum^n_{i=1} x_i \lob V+\lob A + Bx_i \rob^2\rob \rob -AB\\
+& = & \frac 1{n^2}\lob \sum^n_{i=1}\sum^n_{j=1} x_j \lob A + Bx_i \rob\lob A + Bx_j \rob \rob -AB \\
+& = & \frac 1{n^2} \sum^n_{j=1} nx_j^2 -AB = 0.
+\eeast
+
+Thus, under $H_0$, $\hat{A}$ and $\hat{B}$ are independent Gaussian random variables with mean 0 and covariance matrix $\frac Vn I_2$. Hence
+\be
+\frac nV \lob \hat{A},\hat{B}\rob \sim \sN_2(0,I_2) \ \ra \ W = \frac nV \lob \hat{A}^2+\hat{B}^2\rob  \sim \chi^2_2.
+\ee
+
+\item [(ii)] For the test $H_0$: $(A, B,V) = (0, 0,1)$ against $H_1$: $(A, B,V) \neq (0, 0,1)$, we have same $\hat{A}$ and $\hat{B}$ with (i).
+\be
+0 = \left.\frac{\partial \ell_n}{\partial V}\right|_{\hat{A},\hat{B},\hat{V}} = -\frac n{2\hat{V}} + \frac 1{2\hat{V}^2}\sum^n_{i=1} \lob y_i - \hat{A} -\hat{B}x_i \rob^2 \ \ra \ \hat{V} = \frac 1n\sum^n_{i=1} \lob y_i - \hat{A} -\hat{B}x_i \rob^2.
+\ee
+
+Thus, we have
+
+\beast
+W & = & -2 \log(L_0/\hat{L}) = -2\log \lob \frac{f(y|0,0,V,x)}{f(y|\hat{A},\hat{B},V,x)}\rob = -2(\ell_0 - \hat{\ell})\\
+& = & -2 \lob - \lob \frac 12 \sum^n_{i=1} y_i^2 - \frac n2 \log \hat{V} - \frac 1{2\hat{V}}\sum^n_{i=1} (y_i - \hat{A} -\hat{B} x_i)^2\rob \rob = \sum^n_{i=1}y_i^2 - n\lob \log \hat{V} +1\rob.
+\eeast
+
+Since we have 3 parameters, $W$ will be $\chi^2_3$ asymptotically under $H_0$ (Wilk's Lemma).
+
+\een
+
+
+
+
+
+\item Let $X_1, \dots ,X_n$ be independent and identically distributed $\sN(\mu, V)$. Obtain the form of the profile log-likelihood for $V$, and show that the profile score has non-zero expectation.
+
+
+
+Solution. We have
+\be
+\ell_n = -\frac n2 \log (2\pi V) - \frac 1{2V} \sum^n_{i=1} (x_i -\mu)^2
+\ee
+\be
+0 = \left.\frac{\partial \ell_n}{\partial \mu}\right|_{\hat{\mu},\hat{V}} = \frac 1{\hat{V}}\sum^n_{i=1}(x_i-\hat{\mu}) \ \ra \ \hat{\mu} = \bar{x}.
+\ee
+
+So this maximizes $\ell_n$ wrt $\mu$. The profile log-likelihood is
+\be
+\ell_p(V) = \sup_\mu \ell_p(\mu,V) = \ell(\hat{\mu},V) = -\frac n2\log(2\pi V) - \frac 1{2V} \sum^n_{i=1}(x_i - \bar{x})^2 = -\frac n2\log(2\pi V) - \frac {n-1}{2V} S^2
+\ee
+where
+\be
+S^2 = \frac{\sum^n_{i=1}(x_i - \bar{x})^2}{n-1}
+\ee
+is an unbiased estimator for $V$. The profile score is
+\be
+\frac{\partial \ell_p}{\partial V} = -\frac n{2V} + \frac{n-1}{2V^2}S^2
+\ee
+with expectation
+\be
+\E \lob \frac{\partial \ell_p}{\partial V} \rob =  -\frac n{2V} + \frac{n-1}{2V^2}\E S^2 = -\frac n{2V} + \frac{n-1}{2V^2}V = -\frac 1{2V}\neq 0.
+\ee
+
+
+
+
+
+\item Dependent real random variables $(X_1, \dots ,X_n)$ have joint distribution $\pro$. For $i = 1, \dots , n$, let
+\be
+F_i(x_i|x_1, \dots , x_{i-1}) := \pro(X_i \leq  x_i | X_1 = x_1\dots ,X_{i-1} = x_{i-1}),
+\ee
+assumed to be continuous as a function of $x_i$. Define $U_i := F_i(X_i |X_1, \dots ,X_{i-1})$. Show that the $(U_i)$ are independent and identically distributed as $U(0, 1)$. Explain how the Kolmogorov-Smirnov test could be applied to test the hypothesis $\pro = \pro^*$, a fully specified joint distribution.
+
+
+
+Solution. Conditional on $X_1=x_1,\dots,X_n=x_n$, $X_i$ has cdf $F_i(\cdot|x_1,\dots,x_n)$, so $U_i \sim U(0,1)$. As this conditional distribution does not depend on the conditioning variables, $U_i\perp \lob X_1,\dots,X_{i-1}\rob$, whence $U_i \perp \lob U_1,\dots,U_{i-1}\rob$.
+
+{\bf Kolmogorov-Smirnov test}
+
+Given data $x=(x_1,\dots,x_n)$, calculate $u_i:=F_i^*(x_i|x_1,\dots,x_{i-1})$ where as usual we are testing
+\be
+H_0:\ F=F^* \text{ against } H_1:\ F\neq F^*
+\ee
+Then under $H_0$ we would expect the $(U_i)$ to be i.i.d. $U(0,1)$ random variables. So as usual we obtain the K-S statistic
+\be
+K_n = \sup_{0\leq u\leq 1}\left|\hat{F}_n^*(u) - u\right|
+\ee
+where $\hat{F}^*$ is the empirical distribution function of the $(U_i)$.
+
+
+
+
+
+\item Let $X_1,X_2, \dots ,X_n$ be independent and identically distributed from an unknown continuous distribution $\pro$. Let $\hat{\theta}(X_1,\dots,X_n)$ be a statistic. Suppose we have (distinct) observations $x_1, x_2, \dots , x_n$ on $X_1,X_2, \dots ,X_n$. Explain how one could use the nonparametric bootstrap to obtain a Monte Carlo estimate of the standard deviation of $\hat{\theta}$.
+
+Suppose that $n = 2m - 1$ and that $\hat{\theta}$ is $X_{(m)}$, the middle order statistic. Show that its bootstrap distribution is concentrated on the observed data points, and obtain an explicit expression for associated probability of the point $x_{(k)}$, the $k$th largest observed value.
+
+
+
+Solution. If we observe $X_1,\dots,X_n$ to be independent and identically distributed according to the empirical density function
+\be
+\frac 1n \sum^n_{i=1}\delta_{x_i},
+\ee
+then sample $(X_1^{(1)},\dots,X_n^{(1)}),\dots,(X_1^{(M)},\dots,X_n^{(M)})$ in an i.i.d. manner from $\hat{f}_n$ to get $M$ random vectors of length $n$ entries. $\lob X_j^{(i)} \sim \hat{f}_n\rob$ The bootstrap estimate of the SD of $\hat{\theta}$ is the SD of $\hat{\theta}(X_1,\dots,X_n)$ which is
+\be
+\sqrt{\frac 1M \sum^M_{m=1}\lob \hat{\theta} (X_1^{(m)},\dots,X_n^{(m)})- \bar{\theta}\rob }\quad \text{where} \quad \bar{\theta} = \frac 1M \sum^M_{m=1}\hat{\theta} (X_1^{(m)},\dots,X_n^{(m)})
+\ee
+
+Now $n=2m-1$ and $\hat{\theta} = X_{(m)}$. Since $\hat{f}_n$ only assigns non-zero probability to $\{X_1,\dots,X_n\}$ any data generated from $\hat{f}_n$ will take values in $\{X_1,\dots,X_n\}$. Thus any bootstrap estimate of $X_{(m)}$ will take values in $\{X_1,\dots,X_n\}$.
+\beast
+\pro\lob \hat{\theta} < x_{(k)}\rob & = & \pro\lob \text{no more than $m-1$ values of the $n$ observation are }\leq x_{(k)}\rob\\
+& = & \sum^{m-1}_{i=0} \pro\lob \text{exactly $i$ values of the $n$ observation are }\leq x_{(k)}\rob\\
+& = & \sum^{m-1}_{i=0} \binom{n}{i}\lob \frac kn\rob^i \lob 1- \frac kn\rob^{n-i}.
+\eeast
+
+
+
+
+
+\item A sociologist wishes to compare the amounts of time that boys and girls aged 8 to 10 years spend watching television. To do this he wishes to compare $\theta_B$, the population average hours per week for boys, with $\theta_G$, the population average hours per week for girls. From past experience and other prior information, he believes that $\theta_B$ is somewhere between 9 hours and 11 hours per week and $\theta_G$ is between 8 hours and 11 hours per week. These assessments may be regarded as independent and his degree of belief may be interpreted as his being "95\% sure".
+
+In order to get a more accurate view of this comparison data are collected, consisting of independent random samples of 60 boys and 68 girls. The sample means of weekly viewing hours for these samples are 10.7 for boys and 9.3 for girls. The population standard deviations for weekly viewing times are known to be 3.4 hours for boys and 3.1 hours for girls. Suggest suitable sampling distributions for these means. Construct separate conjugate prior distributions for $\theta_B$ and $\theta_G$ to represent the sociologist's prior information, and derive the corresponding posterior distributions. What is the posterior probability that $\theta_B > \theta_G$?
+
+
+
+Solution. The normal distribution seems a simple and appropriate model for the data.
+
+Thus, each boy watches $\theta_B$ hours on average with known standard deviation 3.4, then sampling distribution is
+\be
+\bar{X}_B \sim \sN\lob \theta_B,\frac {3.4^2}{60}\rob = \sN\lob \theta_B,0.1927\rob := \sN\lob \theta_B,\tau_B^2 \rob.
+\ee
+where $\bar{X}_B$ is the average from the 60 boys. Similarly,
+\be
+\bar{X}_G \sim \sN\lob \theta_G,\frac {3.1^2}{68}\rob = \sN\lob \theta_G,0.1413\rob := \sN\lob \theta_G,\tau_G^2 \rob.
+\ee
+
+It seems appropriate to pick a conjugate prior, i.e., normal priors. Suppose $\theta_B \sim \sN\lob \mu_B,\sigma^2_B\rob$. A 95\% (symmetric) interval in which $\theta_B$ will lie is
+\be
+\left[\mu_B-1.97\sigma_B,\ \mu_B+1.97\sigma_B\right].
+\ee
+We are given that such an interval is [9,11], thus
+\be
+\mu_B = \frac{9+11}2 = 10,\quad\quad \sigma_B = \frac{11-10}{1.96} = 0.5102 \ \ra \ \theta_B \sim \sN\lob \underbrace{10}_{\mu_B},\ \underbrace{0.2603}_{\sigma_B^2}\rob.
+\ee
+
+Similarly,
+\be
+\mu_G = \frac{8+11}2 = 9.5,\quad\quad \sigma_G = \frac{11-9.5}{1.96} = 0.7653 \ \ra \ \theta_G \sim \sN\lob 9.5,\ 0.5857\rob.
+\ee
+
+Now we calculate the posterior distributions,
+\beast
+\pi(\theta_B|\bar{x}_B) & \propto & \pi(\theta_B) p\lob\bar{x}_B|\theta_B\rob\\
+& \propto & \exp\lob -\frac 1{2\sigma_B^2}(\theta_B - \mu_B)^2\rob\exp\lob -\frac 1{2\tau_B^2}(\bar{x}_B - \theta_B)^2\rob\\
+& \propto & \exp\lob -\frac {\theta_B^2}{2\sigma_B^2} + \frac {2\theta_B\mu_B}{2\sigma_B^2} -\frac {\theta_B^2}{2\tau_B^2} + \frac {2\theta_B\bar{x}_B}{2\tau_B^2}\rob\\
+& \propto & \exp\lob -\frac 12 \lob \frac 1{\sigma_B^2} + \frac 1{\tau_B^2}\rob \lob \theta_B^2 - 2\theta_B \lob \frac{\mu_B\tau_B^2+\bar{x}_B\sigma_B^2}{\sigma_B^2\tau_B^2}\rob \lob \frac 1{\sigma_B^2} + \frac 1{\tau_B^2}\rob^{-1}\rob \rob
+\eeast
+Thus, we have
+\be
+\theta_B|\bar{x}_B \sim \sN\lob \frac{\mu_B\tau_B^2+\bar{x}_B\sigma_B^2}{\sigma_B^2 + \tau_B^2},\ \frac{\tau_B^2\sigma_B^2}{\sigma_B^2 + \tau_B^2}\rob
+\ee
+
+Note that $\tau_B^2$, the mean $\bar{X}_B$'s variance, depends on the sample size $n$, and so will dominate the posterior as $n$ becomes large. Applying this to our case,
+\be
+\E\lob \theta_B|\bar{x}_B \rob = \frac{\mu_B\tau_B^2+\bar{x}_B\sigma_B^2}{\sigma_B^2 + \tau_B^2} = \frac{10 \times 0.1927+10.7\times 0.2603}{0.2603+ 0.1927} = 10.40.
+\ee
+\be
+\var\lob\theta_B|\bar{x}_B  \rob = \frac{\tau_B^2\sigma_B^2}{\sigma_B^2 + \tau_B^2} = \frac {0.1927 \times 0.2603}{0.2603 + 0.1927} = 0.1107.
+\ee
+
+Similarly,
+\be
+\E\lob \theta_G|\bar{x}_G \rob = \frac{\mu_G\tau_G^2+\bar{x}_G\sigma_G^2}{\sigma_G^2 + \tau_G^2} = \frac{9.5 \times 0.1413+9.3\times 0.5857}{0.5857+ 0.1413} = 9.34.
+\ee
+\be
+\var\lob\theta_G|\bar{x}_G  \rob = \frac{\tau_G^2\sigma_G^2}{\sigma_G^2 + \tau_G^2} = \frac {0.1413 \times 0.5857}{0.5857 + 0.1413} = 0.1139.
+\ee
+
+Note that $\theta_B$ and $\theta_G$ are independent so
+\be
+\theta_B - \theta_G |\bar{x} \sim \sN\lob 10.40 - 9.34, 0.1107 + 0.1139\rob = \sN\lob 1.06, 0.2246\rob
+\ee
+
+then we have for $Z\sim \sN(0,1)$,
+\beast
+\pro \lob \theta_B > \theta_G |\bar{x} \rob & = & \pro\lob \theta_B - \theta_G >0 |\bar{x} \rob = \pro\lob \sqrt{0.2246}Z+1.06\rob = \pro\lob Z > \frac{-1.06}{\sqrt{0.2246}}\rob \\
+& = & 1 - \Phi\lob \frac{-1.06}{\sqrt{0.2246}} \rob = 0.987.
+\eeast
+
+
+
+
+
+\item Observables $X_i \sim  \sN(\theta, h^{-1})$, independent and identically distributed. In the prior distribution, $\theta \sim  \mu_0+\sigma_0t_{\nu_0}$. An auxiliary parameter $K$ is introduced, with marginal distribution $K \sim  \chi^2_{\nu_0} /\nu_0\sigma^2_0$, and with $\theta|K \sim  \sN(\mu_0,K^{-1})$. Show that this construction reproduces the assumed prior distribution for $\theta$.
+
+Given data $X = x$, find the posterior conditional distributions of $\theta|K$ and $K| \theta$. Explain how these can be used to estimate the posterior density of $\theta$.
+
+
+
+Solution. Now consider
+\be
+\theta |K \sim \sN\lob \mu_0,K^{-1}\rob,\quad\quad K\sim \frac 1{\sigma_0^2\nu_0}\chi_{\nu_0}^2
+\ee
+we have
+\be
+A:= \sqrt{K}(\theta - \mu_0) \sim \sN(0,1),\quad B:= \sigma_0^2 \nu_0 K \sim \chi_{\nu_0}^2 \ \ra \ \frac{\theta-\mu_0}{\sigma_0} = \frac{A}{\sqrt{B/\nu_0}} \sim t_{\nu_0}
+\ee
+as required. Now for $\theta|K$,
+\beast
+\pi(\theta|K,x) & \propto & \pi(\theta|K)p(x|\theta,K) \propto \exp\lob -\frac K2 (\theta-\mu_0)^2\rob\exp\lob -\frac h2\sum^n_{i=1} (x_i - \theta)^2 \rob\\
+& \propto & \exp\lob  -\frac {K+nh} 2 \lob \theta - \frac {K\mu_0 + nh\bar{x}}{K+nh}\rob^2\rob
+\eeast
+
+Thus, we have
+\be
+\theta|K,x \sim \sN\lob \frac {K\mu_0 + nh\bar{x}}{K+nh},\ \frac 1{K+nh}\rob
+\ee
+
+We know that $X\sim \chi^2_k$, then
+\be
+p(x) = \frac{1}{2^{k/2}\Gamma(k/2)} x^{k/2-1} e^{-x/2}
+\ee
+
+For $K|\theta$, $K \sim \chi^2_{\nu_0} /\nu_0\sigma^2_0$
+\beast
+\pi(K|\theta) & \propto & \pi(\theta|K)p(K) \propto K^{\frac 12} \exp\lob -\frac K2(\theta-\mu_0)^2\rob \cdot \lob K\nu_0\sigma_0^2\rob^{\frac {\nu_0}2-1}\exp\lob - \frac {K\nu_0 \sigma_0^2}2\rob \\
+& \propto & K^{\frac {\nu_0+1}2-1}\exp\lob - \frac K2\lob (\theta-\mu_0)^2 + \nu_0 \sigma_0^2\rob\rob
+\eeast
+
+Thus,
+\be
+K|\theta \sim \frac 1{(\theta-\mu_0)^2 + \nu_0 \sigma_0^2 }\chi_{\nu_0+1}^2.
+\ee
+
+We can use Gibbs sampling. Starting from an initial point $(\theta_0,K_0)$, repeatedly generating $\theta_t \sim \theta|K=K_{t-1}$ and then $K_t \sim K|\theta = \theta_t$. At equilibrium, $(K,\theta)$ has correct posterior distribution. Now estimate $\pi(\theta|x)$ as a mixture of normals,
+\be
+\frac 1N\sum^N_{i=1} \pi(\theta|k_i,x)
+\ee
+where $k_i$ are values for $K$ generated as above. (e.g. start after initial run-in, then use thinned sequence; or run may independent parallel chains to equilibrium and extract their final values).
+
+
+
+
+
+\item Suppose that $(X, Y)$ is bivariate normal, with each component being standard normal, and with correlation $\rho$. What is the conditional distribution of $Y$ given $X = x$?
+
+Suppose that $(\epsilon_n)$ and $(\delta_n)$ are two independent and identically distributed sequences of independent standard Normal variables, and we successively generate $(X_n, Y_n) (n = 0, 1, \dots)$ by:
+\beast
+X_0 = Y_0 & = & 0\\
+X_{n+1} & = & \rho Y_n + \alpha\epsilon_n\\
+Y_{n+1} & = & \rho X_{n+1} + \alpha\delta_{n+1}
+\eeast
+where $\alpha = \sqrt{1-\rho^2}$. Show that each of $X_n$, $Y_n$ has a zero-mean normal distribution, find their variances, and the limiting distribution of $(X_n, Y_n)$ as $n \to \infty$. How is this relevant to Gibbs sampling?
+
+
+
+Solution. Let
+\be
+V = \bepm
+1 & \rho\\
+\rho & 1
+\eepm.
+\ee
+
+\beast
+p(y|x) = \frac {p(x,y)}{p_X(x)} & \propto & p(x,y) \\
+& \propto & \exp\lob -\frac 12 \bepm x & y\eepm V^{-1}\bepm x\\ y \eepm \rob = \exp\lob -\frac 1{1-\rho^2} \bepm x & y\eepm \bepm 1 & -\rho \\ -\rho & 1\eepm \bepm x\\ y \eepm \rob \\
+& = & \exp\lob -\frac 1{1-\rho^2} \lob x^2 - 2\rho xy +y^2\rob\rob \propto \exp\lob -\frac 1{1-\rho^2} \lob y - \rho x \rob^2\rob
+\eeast
+
+Thus,
+\be
+Y|x \sim \sN\lob \rho x, \ 1-\rho^2 \rob.
+\ee
+
+Induction by $n$, $n=1$ we have
+\be
+X_1 = \rho Y_0 + \alpha \epsilon_0 = \alpha \epsilon_0 \sim \sN(0,\alpha^2),\quad \quad Y_1 = \rho X_1 + \alpha \delta_1 \sim \sN(0,\rho^2\alpha^2 + \alpha^2).
+\ee
+
+Assume $X_n$ and $Y_n$ are zero-mean normal random variables, then
+\be
+X_{n+1} = \rho Y_n + \alpha \epsilon_n,\quad Y_{n+1} = \rho X_{n+1} + \alpha \delta_{n+1}
+\ee
+are both the sum of independent mean-zero normal random variables and so are mean-zero normal. Now we have
+\be
+\left\{\ba{l}
+\var X_{n+1} = \rho^2 \var Y_n + \alpha^2 = \rho^2 \var Y_n + 1- \rho^2\\
+\var Y_{n+1} = \rho^2 \var X_{n+1} + \alpha^2 = \rho^2 \var X_{n+1} + 1- \rho^2
+\ea\right.
+\ee
+
+Thus, we have
+\be
+\var X_{n+1} = \rho^2 \lob \rho^2 \var X_n + 1- \rho^2\rob + 1- \rho^2 \ \ra \ \var X_{n+1}-1 = \rho^4\lob \var X_n-1 \rob
+\ee
+
+Then
+\be
+\var X_{n} = 1 + \rho^{4(n-1)}\lob \var X_1 -1\rob = 1 - \rho^{4n-2} \ \ra \ \var Y_n = 1-\rho^{4n}.
+\ee
+
+Hence,
+\be
+X_n \sim \sN\lob 0, 1-\rho^{4n-2}\rob \stackrel{d}{\to} \sN(0,1)
+\ee
+and
+\be
+Y_n|X_n \sim \sN\lob \rho X_n, 1-\rho^2\rob
+\ee
+so
+\be
+(X_n,Y_n)\stackrel{d}{\to}(X,Y)
+\ee
+which shows correctness of the Gibbs sampling algorithm from joint distribtion of $(X,Y)$.
+
+
+
+
+
+\item A parameter $\Theta \sim  U[0, 1]$. Given $\Theta = \theta, X_1, \dots ,X_N$ are independent and identically distributed with
+\be
+\pro(X_i = 1 | \theta) = 1 - \pro(X_i = 0 |\theta) = \theta.
+\ee
+
+What is the prior predictive distribution of $Q := \sum^N_{i=1} X_i$?
+
+There are $N$ fish in a lake, of which an unknown number $Q$ are diseased. The prior distribution of $Q$ is discrete uniform on $\{0, 1, \dots ,N\}$. Let $R$ denote the number of diseased fish in a random sample of $n$ fish. Show that
+\be
+\pro(Q = q |R = r) = \frac{\binom{q}{r} \binom{N - q}{n - r}}{\binom{N + 1}{n + 1}}\quad\quad (r \leq  q \leq  N - n + r).
+\ee
+What is the posterior expectation of $Q$ given $R = r$?
+
+
+
+Solution. The prior predictive distribution of $Q=\sum^N_{i=1}X_i \sim \sB(n,\theta)$ is
+\beast
+p(x) & = & \int^1_0 \pi(\theta) p(x|\theta) d \theta = \int^1_0 1\cdot \binom{n}{x} \theta^x (1-\theta)^{n-x}d\theta \\
+& = & \binom{n}{x}\text{Beta}(x+1,n-x+1) = \frac {n!}{x!(n-x)!} \frac{\Gamma(x+1)\Gamma(n-x+1)}{\Gamma(n+2)} = \frac 1{n+1}
+\eeast
+where
+\be
+\text{Beta}(x,y) = \int^1_0 \theta^{x-1}\lob 1-\theta\rob^{y-1} d\theta = \frac {\Gamma(x)\Gamma(y)}{\Gamma(x+y)}
+\ee
+is the beta function. Thus $Q$ has a discrete uniform prior.
+
+By Bayes theorem
+\be
+\pro\lob Q=q|R=r\rob = \frac{\pro(Q=q,R=r)}{\pro(R=r)}=  \frac {\pro(R=r|Q=q)\pro(Q=q)}{\pro(R=r)}
+\ee
+
+The prior is
+\be
+\pro(Q=q) = \frac 1{N+1}.
+\ee
+and
+\beast
+\pro(R=r|Q=q) & = & \frac{\lob \text{\# of ways to choose $r$ diseased fish}\rob\times \lob \text{\# of ways to choose $n-r$ undiseased fish}\rob}{\text{\# of ways to choose $n$ fish}}\\
+& = & \frac{\binom{q}{r}\cdot \binom{N-q}{n-r}}{\binom{N}{n}}.
+\eeast
+
+Now we have shown above that if $\theta \sim U[0,1]$ and $N$ fish are assumed to be diseased with probability $\theta$ independently, we recover the correct prior (i.e. $\pro(Q=q) = \frac 1{N+1}$). So we can therefore construct an equivalent distribution in this way. Under this model, we can apply the same argument to $R$ to show that
+\be
+\pro(R=r) = \frac 1{n+1}.
+\ee
+Thus,
+\be
+\pro\lob Q=q|R=r\rob = \frac {\pro(R=r|Q=q)\pro(Q=q)}{\pro(R=r)} = \frac{\binom{q}{r}\cdot \binom{N-q}{n-r}}{\binom{N}{n}} \frac{n+1}{N+1} = \frac{\binom{q}{r}\cdot \binom{N-q}{n-r}}{\binom{N+1}{n+1}}
+\ee
+
+Now consider the posterior distribution of $\theta$ given $R=r$
+\be
+\pi(\theta|r) \propto \pi(\theta) p(r|\theta) = 1\cdot \binom{n}{r} \theta^r(1-\theta)^{n-r} \propto \theta^r(1-\theta)^{n-r} \ \ra \ \theta|r \sim \text{Beta}(r+1,n-r+1)
+\ee
+
+Hence,
+\beast
+\E(Q|R=r,\theta) & = & \E\lob R+ (N-n)\mathbbm{1}_{\{\text{diseased fish}\}}|R=r,\theta\rob = r + (N-n)\theta.
+\eeast
+\beast
+\E(Q|R=r) & = & \E\lob \E(Q|R=r,\theta)\rob = r + (N-n)\E(\theta|r) = r + (N-n)\frac{\Gamma(n+2)}{\Gamma(r+1)\Gamma(n-r+1)} \int^1_0 \theta \theta^r (1-\theta)^{n-r} d\theta\\
+& = & r + (N-n)\frac{\Gamma(n+2)}{\Gamma(r+1)\Gamma(n-r+1)} \frac{\Gamma(r+2)\Gamma(n-r+1)}{\Gamma(n+3)} = r + (N-n)\frac {r+1}{n+2}.
+\eeast
+
+
+
+
+
+\item At a critical stage in the development of a new plane, a decision must be taken whether to continue or to abandon the project. The viability of the project can be measured by a parameter $\Theta \in (0, 1)$. If $\Theta < 1/2$, the cost of continuing the project is $1/2 - \Theta$, whereas if $\Theta > 1/2$ it is zero (since the project will be privatised if profitable). If $\Theta > 1/2$ the cost of abandoning the project is $\Theta - 1/2$, whereas if $\Theta < 1/2$ it is zero. Derive the optimal decision in terms of the distribution of $\Theta$.
+
+The Minister of Aviation has prior density $6\theta(1 - \theta)$ for $\Theta$. The Prime Minister has prior density $4\theta^3$. The prototype plane is subjected to trials, each independently having probability $\Theta$ of success, until the first successful result is obtained, at trial $x$. For what values of $x$ will there be serious ministerial disagreement?
+
+
+
+Solution. The loss function is
+\be
+L(\theta,d) = \left\{\ba{ll}
+\mathbbm{1}_{\{\theta>\frac 12\}}\lob \theta-\frac 12\rob \quad\quad & d = \text{Abandon} \\
+\mathbbm{1}_{\{\theta<\frac 12\}}\lob \frac 12 - \theta \rob \quad\quad & d = \text{Continue}
+\ea\right.
+\ee
+
+Thus,
+\beast
+\text{continue} & \lra & \E\lob L(\theta,C)\rob <  \E\lob L(\theta,A)\rob\\
+& \lra & \E\lob L(\theta,C)- L(\theta,A)\rob = \E\lob \mathbbm{1}_{\{\theta<\frac 12\}}\lob \frac 12 - \theta \rob - \mathbbm{1}_{\{\theta>\frac 12\}}\lob \theta-\frac 12\rob\rob = \E\lob \frac 12 - \theta \rob <0 \ \lra \ \E\theta >\frac 12.
+\eeast
+so abandon if $\E\theta <\frac 12$ and do either if $\E \theta = \frac 12$.
+
+Now we calculate the posterior distribution of $X\sim \sN\sB(\theta,1)$. For Minister of Aviation
+\be
+\pi_{MA}(\theta|x)\  \propto \ \pi_{MA}(\theta)p(x|\theta) \ \propto\  6\theta(1-\theta)\cdot \binom{x-1}{1}\theta(1-\theta)^{x-1}\ \propto \ \theta^2(1-\theta)^x
+\ee
+Thus,
+\be
+\lob \theta|x\rob_{MA} \sim \text{Beta}(3,x+1) \ \ra \ \E\lob \theta|x\rob = \frac 3{x+4}.
+\ee
+Similary,
+\be
+\pi_{PM}(\theta|x)\  \propto \ \pi_{PM}(\theta)p(x|\theta) \ \propto\  4\theta^3 \cdot \binom{x-1}{1}\theta(1-\theta)^{x-1}\ \propto \ \theta^4(1-\theta)^{x-1}
+\ee
+Thus,
+\be
+\lob \theta|x\rob_{MA} \sim \text{Beta}(5,x)\ \ra \ \E\lob \theta|x\rob = \frac 5{x+5}.
+\ee
+We have
+\begin{center}
+\begin{tabular}{ccccccc}
+$x$ & \quad 1 \quad & \quad 2 \quad & \quad 3 \quad & \quad 4 \quad  & \quad 5 \quad & \quad 6 \quad  \\ \hline
+$E_{MA}(\theta|x)$ & 0.6 & 0.5 & 0.43 & 0.38 & 0.33 & 0.3   \\
+$E_{PM}(\theta|x)$ & 0.83 & 0.71 & 0.63 & 0.55 & 0.5 & 0.45  \\
+\end{tabular}
+\end{center}
+
+So if $x=3,4$ they want to do the opposite actions. If $x=2,5$ then one has expectation 0.5 and so does not mind acting either way.
+
+
+
+
+
+\item A parameter $\Theta$ has a distribution over $\R^+$. Find the general form of the Bayes estimate $a^*$ and Bayes loss $b^*$ for the loss function $L(\theta, a) = (\theta - a)^2/\theta$.
+
+In the prior distribution, $\Theta \sim  \Gamma (\alpha, \beta)$, where $\alpha > 1$, $\beta > 0$. Show that $\theta^*$ is the mode of this distribution, and find $b^*$.
+
+Given $\Theta = \theta, X_1, \dots ,X_n \sim  \sP(\theta)$, independent and identically distributed. What is the posterior distribution of $\Theta$ given data $X_1 = x_1, \dots ,X_n = x_n$? Find the sampling mean and variance of the Bayes estimator $\Theta^* = \theta^*(X)$ for the above loss function, and the expected loss resulting from its use, when $\Theta = \theta$. Show that the prior expectation of this expected sampling loss is $1/(\beta + n)$.
+
+
+
+Solution. For $\theta\in \R^+$, $L(\theta,a) = \frac {(\theta-a)^2}{\theta}$
+\be
+\E\lob L(\theta,a)\rob = \E\theta - 2a\E 1 + a^2 \E\lob \theta^{-1}\rob \ \ra \ 0 = \frac{\partial \E\lob L(\theta,a)\rob}{\partial a} = -2 + 2a\E\lob \theta^{-1}\rob \ \ra \ a^* = \frac 1{\E\lob \theta^{-1}\rob}
+\ee
+which is the Bayes estimate. The Bayes loss is
+\be
+b^* = \E\lob L(\theta,a^*)\rob = \E\theta - \frac 1{\E\lob \theta^{-1}\rob}.
+\ee
+
+For $\theta \sim \Gamma(\alpha,\beta)$, $\alpha >1$, $\beta > 0$,
+\be
+f(\theta) = \frac{\beta^\alpha}{\Gamma(\alpha)}\theta^{\alpha-1}e^{-\beta \theta},\quad\quad \E\lob \theta^{-1}\rob = \int^\infty_0 \frac 1{\theta} \frac{\beta^\alpha}{\Gamma(\alpha)}\theta^{\alpha-1}e^{-\beta \theta}d\theta = \frac {\beta}{\alpha -1} \ \ra \ a^* = \frac {\alpha -1}{\beta}
+\ee
+and
+\be
+\left.\frac{\partial f(\theta)}{\partial \theta} \right|_{\theta = a^*} = \frac{\beta^\alpha}{\Gamma(\alpha)}\left. \frac {\partial}{\partial \theta}\lob \theta^{\alpha-1}e^{-\beta \theta}\rob\right|_{\theta = a^*} \propto \left.\lob (\alpha-1 -\beta \theta) \theta^{\alpha-1}e^{-\beta \theta} \rob\right|_{\theta = a^*} = 0.
+\ee
+where $\theta = a^*$ is the mode. Thus,
+\be
+b^* = \E\theta - \frac 1{\E\lob \theta^{-1}\rob} = \frac{\alpha}{\beta} - \frac {\alpha -1}{\beta} = \frac 1{\beta}.
+\ee
+
+Given $\Theta = \theta, X_1, \dots ,X_n \sim  \sP(\theta)$, we have
+\be
+\pi(\theta|x) \propto \pi(\theta) \prod^n_{i=1} p(x_i|\theta) \propto \theta^{\alpha-1}e^{-\beta\theta} \prod^n_{i=1} \frac {\theta^{x_i}}{x_i!}e^{-\theta} \propto \theta^{\alpha + \sum^n_{i=1}x_i -1}e^{-(\beta + n)\theta}
+\ee
+which implies that
+\be
+\theta|x \sim \Gamma\lob \alpha + \sum^n_{i=1}x_i, \ \beta +n \rob
+\ee
+
+Thus,
+\be
+a^*(x) = \frac 1{\E\lob \theta^{-1}|x \rob} = \frac{ \alpha + \sum^n_{i=1}x_i-1}{\beta+n}
+\ee
+So the sampling mean is
+\be
+\E \lob a^*(x)\rob = \E\lob  \frac{ \alpha + \sum^n_{i=1}x_i-1}{\beta+n} \rob =  \frac{ \alpha + n\theta-1}{\beta+n}
+\ee
+and the sampling variance is
+\be
+\var \lob a^*(x)\rob = \frac{ \var\lob \sum^n_{i=1}x_i\rob}{(\beta+n)^2} =  \frac{ n\theta}{(\beta+n)^2}.
+\ee
+
+The expected loss is
+\beast
+\E\lob L(\theta,a^*(x))|\theta\rob & = & \E \lob \theta - 2a^*(x) + a^*(x)^2\theta^{-1}\rob = \theta - 2\E \lob a^*(x)\rob + \theta^{-1}\lob \var \lob a^*(x)\rob + \E \lob a^*(x)\rob^2 \rob\\
+& = & \theta - 2\frac{ \alpha + n\theta-1}{\beta+n} + \theta^{-1}\lob \frac{ n\theta}{(\beta+n)^2} + \lob \frac{ \alpha + n\theta-1}{\beta+n}\rob^2\rob\\
+& = & \frac 1{(\beta+n)^2}\lob \theta(\beta+n)^2 - 2\lob \alpha + n\theta-1\rob (\beta+n) + n + \theta^{-1}\lob \alpha + n\theta-1\rob^2\rob \\
+& = & \frac 1{(\beta+n)^2}\lob \theta \beta^2 - 2\beta(\alpha -1)+ n + \theta^{-1}(\alpha -1)^2\rob
+\eeast
+Finally, the expected prior loss has expectation (over both $x$ and $\theta$)
+\be
+\E\lob \E\lob L(\theta,a^*)|\theta\rob\rob = \E\lob L(\theta,a^*(x))\rob = \E\lob \E\lob L(\theta,a^*(x))|x\rob\rob
+\ee
+we can calculate it with
+\beast
+\E\lob \E\lob L(\theta,a^*)|\theta\rob\rob & = & \frac 1{(\beta+n)^2} \E\lob \theta \beta^2 - 2\beta(\alpha -1)+ n + \theta^{-1}(\alpha -1)^2\rob\\
+& = & \frac 1{(\beta+n)^2} \lob \beta^2 \E\theta  - 2\beta(\alpha -1)+ n + \E\theta^{-1}(\alpha -1)^2\rob\\
+& = & \frac 1{(\beta+n)^2} \lob \beta^2 \frac {\alpha}{\beta}  - 2\beta(\alpha -1)+ n + \frac{\beta}{\alpha -1}(\alpha -1)^2\rob = \frac 1{\beta+n}.
+\eeast
+or with $\theta|x \sim \Gamma\lob \alpha + \sum^n_{i=1}x_i, \ \beta +n \rob$, $a^*(x) =\frac{ \alpha + \sum^n_{i=1}x_i-1}{\beta+n}$,
+\beast
+\E\lob \E\lob L(\theta,a^*(x))|x\rob\rob & = & \E\lob \E \lob \left.\theta - 2a^*(x) + \theta^{-1}{a^*}^2(x)\right|x\rob\rob\\
+& = & \E\lob \E(\theta|x) - 2a^*(x) + \E\lob\theta^{-1}|x\rob {a^*}^2(x)\rob\\
+& = & \E\lob \frac{\alpha + \sum^n_{i=1}x_i}{\beta +n} - 2a^*(x) + \frac{\beta +n}{\alpha + \sum^n_{i=1}x_i -1}  {a^*}^2(x) \rob \\
+& = & \E\lob \frac{\alpha + \sum^n_{i=1}x_i}{\beta +n} - \frac{\alpha + \sum^n_{i=1}x_i -1}{\beta +n} \rob = \E\lob \frac 1{\beta+n}\rob = \frac 1{\beta+n}.
+\eeast
+
+
+
+
+
+\item $X \sim  \sB(n, \Theta)$. The loss function is $L(\theta, a) = (\theta - a)^2/\{\theta(1 - \theta)\}$. Calculate the Bayes rule $d^*(X)$ for the prior $\Theta \sim  U[0, 1]$, and and show that its risk function is constant. Is it minimax? Is it admissible?
+
+
+
+Solution. We want to minimize the expected posterior loss
+\be
+\pi(\theta|x) \propto p(\theta)\pi(x|\theta) \propto 1\cdot \binom{n}{x}\theta^x(1-\theta)^{n-x}
+\ee
+which gives that
+\be
+\theta|x \sim \text{Beta}(x+1,n-x+1)
+\ee
+
+Thus, for $L(\theta, a) = (\theta - a)^2/\{\theta(1 - \theta)\}$, we have
+\beast
+\E\lob\left. L(\theta,d)\right|x \rob & = & \E\lob\left. \frac{\theta}{1-\theta} - 2\frac{d(x)}{1-\theta} + \frac{d^2(x)}{\theta(1-\theta)}\right|x \rob\\
+& = & \frac{\Gamma(n+2)}{\Gamma(x+1)\Gamma(n-x+1)} \lob \frac{\Gamma(x+2)\Gamma(n-x)}{\Gamma(n+2)} - 2d(x)\frac{\Gamma(x+1)\Gamma(n-x)}{\Gamma(n+1)} + d^2(x)\frac{\Gamma(x)\Gamma(n-x)}{\Gamma(n)} \rob \\
+& = & \frac{x+1}{n-x} - 2d(x) \frac{n+1}{n-x} + d^2(x) \frac{n(n+1)}{x(n-x)}
+\eeast
+
+So to minimise the expected posterior loss, we need
+\be
+d^*(x) = \frac xn.
+\ee
+
+Then its risk function is
+\beast
+\E\lob\left. L(\theta,d^*(x))\right|x \rob & = & \frac{x+1}{n-x} - 2d^*(x) \frac{n+1}{n-x} + {d^*}^2(x) \frac{n(n+1)}{x(n-x)}\\
+& = & \frac{x+1}{n-x} - \frac{x(n+1)}{n(n-x)} = \frac 1n
+\eeast
+which is a constant. Since the Bayes rule is unique, it is admissible. Also, we have the following theorem:
+
+If $R(\theta,d)$ is constant in $\theta$ (such a $d$ is called an equalizer rule) and then it is minimax.
+
+
+
+
+
+\item A decision rule $d$ is termed unbiased if, for all $\theta, \theta' \in {bbtheta}$, $\E_\theta[L\{\theta', d(X)\}] \geq \E_\theta[L\{(\theta, d(X)\}]$.
+Show that, when $\mathbb{A} = {bbtheta} = \R$ and the loss is squared error, $d$ is unbiased as a decision rule if and only if it is unbiased as an estimator.
+
+
+
+Solution. First, suppose $d$ is unbiased as a decision rule
+\beast
+\E_\theta(L(\theta',d(x))) & = & \E_\theta\lob(d-\theta')^2\rob =  \E_\theta\lob(d-\theta)^2 + 2(d-\theta)(\theta-\theta') + (\theta-\theta')^2\rob\\
+& = & \E_\theta\lob(d-\theta-b(\theta))^2 + 2b(\theta)(d-\theta) - b^2(\theta) + 2(d-\theta)(\theta-\theta') + (\theta-\theta')^2\rob
+\eeast
+where
+\be
+b(\theta) = \E(d(x))-\theta
+\ee
+is the bias. Thus,
+\beast
+\E_\theta(L(\theta',d(x))) & = & \var_\theta\lob d(x)|\theta\rob + 2b^2(\theta) - b^2(\theta) + 2b(\theta)(\theta-\theta') + (\theta-\theta')^2\\
+& = & \var_\theta\lob d(x)|\theta\rob + \lob b(\theta) + \theta -\theta'\rob^2
+\eeast
+
+Let $\theta' = \theta + b(\theta)$,
+\be
+\E_\theta(L(\theta',d(x))) = \E_\theta\lob\lob d(x) - \theta -b(\theta)\rob^2\rob = \var_\theta\lob d(x)|\theta\rob \geq \E_\theta(L(\theta,d(x))) = \E\lob (d(x)-\theta)^2\rob
+\ee
+by the definition of unbiased decision rule. However, we know that $\theta + b(\theta) = \E(d(x)|x)$ minimizes the expected quadratic loss, thus the equality above holds, so
+\be
+\theta + b(\theta) = \theta \ \ra \ b(\theta) = 0.
+\ee
+
+Conversely, if $d(x)$ is unbiased as an estimater of $\theta$ then $\forall \theta'$
+\be
+\E_\theta\lob (d(x)-\theta')^2\rob =\E_\theta\lob (d(x)-\theta)^2\rob + (\theta-\theta')^2 \geq \E_\theta\lob (d(x)-\theta)^2\rob.
+\ee
+
+
+
+
+
+\item The function $t \mapsto t \log t - t + 1$ is strictly positive for $t \geq 0$, $t \neq 1$. Deduce that, if $p$ and $q$ are the densities with respect to Lebesgue measure of distinct distributions $\mathbb{P}$ and $\Q$, $p(x) \log\{p(x)/q(x)\} dx > 0$.
+
+A decision problem has parameter-space ${bbtheta} = \R$, and its action-space $\mathbb{A}$ is the set of probability distributions $Q$ having a density function $q(\cdot)$ with respect to Lebesgue measure on $\R$. The loss function is $L(\theta,Q) = - \log q(\theta)$. Show that, when $\Theta \sim \Pi$, having Lebesgue density $\pi (\cdot)$, the unique Bayes act is $Q_\Pi = \Pi$. What is the Bayes loss $H(\Pi)$? Describe the Bayes rule based on data $X$ generated by a statistical experiment depending on the value of $\theta$.
+
+
+
+Solution. First, we have
+\be
+\int p(x) \log\{p(x)/q(x)\} dx = \int q(x)\lob \frac {p(x)}{q(x)}\log \lob \frac{p(x)}{q(x)}\rob - \underbrace{\frac {p(x)}{q(x)}}_{\text{has integral 1}} + \underbrace{1}_{\text{has integral 1}}\rob dx \geq 0
+\ee
+with equality iff $p(x)/q(x)=1$ a.s., i.e., $\mathbb{P}=\Q$ a.s.
+
+Suppose that $Q\neq \Pi$
+\beast
+L(\Pi,Q) - L(\Pi,\Pi) & = & \E\lob L(\theta,Q)\rob - \E\lob L(\theta,\Pi)\rob \\
+& = & \int -\pi(\theta)\log q(\theta) + \pi(\theta)\log \pi(\theta)d\theta = \int \pi(\theta) \log \lob \frac{\pi(\theta)}{q(\theta)}\rob d\theta > 0
+\eeast
+Thus $L(\Pi,Q) > L(\Pi,\Pi)$, i.e., the unique Bayes act is $Q_\Pi = \Pi$. Then the Bayes loss is
+\be
+H(\Pi) = - \int \pi(\theta) \log \pi(\theta) d\theta.
+\ee
+
+So if we have datea $X$ generated by some distribution dependent on $\theta$, we use it to calculate the posterior $\pi(\theta|X)$. Applying the above procedure yields the Bayes rule $Q_{\Pi|X} = \pi(\cdot|X)$.
+
+
+
+
+
+\item $\Sigma$ is a $(p + q) \times (p + q)$ positive definite symmetric matrix, partitioned as
+\be
+\Sigma = \bepm
+\Sigma_{11} & \Sigma_{12}\\
+\Sigma_{21} & \Sigma_{22}
+\eepm
+\ee
+where $\Sigma_{11}$ is $(p \times p)$ etc. Let $K := \Sigma^{-1}$ be partitioned similarly. Show that
+\beast
+K_{12}K^{-1}_{22} & = & - \Sigma^{-1}_{11} \Sigma_{12}\\
+K^{-1}_{22} & = & \Sigma_{22} - \Sigma_{21}\Sigma^{- 1}_{11} \Sigma_{12}.
+\eeast
+
+
+
+Solution. Since $K=\Sigma^{-1}$, we have
+\be
+I_{p+q} = \Sigma K = \bepm
+\Sigma_{11} & \Sigma_{12} \\
+\Sigma_{21} & \Sigma_{22}
+\eepm
+\bepm
+K_{11} & K_{12}\\
+K_{21} & K_{22}
+\eepm = \bepm
+\Sigma_{11}K_{11} + \Sigma_{12}K_{21} & \Sigma_{11}K_{12} + \Sigma_{12}K_{22} \\
+\Sigma_{21}K_{11} + \Sigma_{22}K_{21} & \Sigma_{21}K_{12} + \Sigma_{22}K_{22}
+\eepm =\bepm
+I_p & 0\\
+0 & I_q
+\eepm
+\ee
+Thus,
+\be
+\Sigma_{11}K_{12} + \Sigma_{12}K_{22} = 0 \ \ra \ K_{12}K^{-1}_{22} = - \Sigma^{-1}_{11} \Sigma_{12}
+\ee
+and
+\be
+\Sigma_{21}K_{12} + \Sigma_{22}K_{22} = I_q \ \ra \ \Sigma_{21}K_{12}K_{22}^{-1} + \Sigma_{22} = K_{22}^{-1} \ \ra \ K_{22}^{-1} = \Sigma_{22} + \Sigma_{21}K_{12}K_{22}^{-1} = \Sigma_{22} - \Sigma_{21}\Sigma^{-1}_{11} \Sigma_{12} .
+\ee
+
+
+
+
+
+\item Let $\underline{X}_i = (\underline{Z}_i, \underline{Y}_i)$, where $\underline{Z}_i$ is $(1 \times p)$ and $\underline{Y}_i$ is $(1 \times q)$. The $(\underline{X}_i)$ are independent and identically distributed as $\sN_{(p+q)}(0, \Sigma)$ ($\Sigma$ positive definite), and form the rows of the $n\times(p+q)$ matrix $X = (Z,Y)$, where $Z$ is $(n\times p)$, $Y$ is $(n\times q)$, and $n > p$. Denote $\E(\underline{Z}_i^T\underline{Y}_i)$ by $\Sigma_{ZY}$ etc., also, $Z^TY$ by $S_{ZY}$, etc. Further define
+\be
+\Sigma_{YY \cdot Z} = \Sigma_{Y Y} - \Sigma_{Y Z}\Sigma^{-1}_{ZZ}\Sigma_{ZY},
+\ee
+and $S_{Y Y \cdot Z}$ similarly. Finally let $B := \Sigma^{-1}_{ZZ} \Sigma_{ZY}$, and $\underline{Y}_i \cdot \underline{Z}_i := \underline{Y}_i - \underline{Z}_i B$.
+\ben
+\item [(i)] Show that $\underline{Y}_i \cdot \underline{Z}_i \sim \sN_q(0,\Sigma_{Y Y \cdot Z})$, and is independent of $\underline{Z}_i$. Deduce that, given $\underline{Z}_i$, the distribution of $\underline{Y}_i$ is $\sN_q(\underline{Z}_iB,\Sigma_{Y Y \cdot Z})$.
+\item [(ii)] Let $W = \Pi Y$, with $\Pi  := I_n - ZS^{-1}_{ZZ}Z^T$ (thus $\Pi$ is a $(n\times n)$ projection matrix, depending on $Z$, of rank $\nu := n-p$, with $\Pi Z = 0$). You may assume that there exists an $(n \times \nu)$ matrix $A$ (depending on $Z$) such that $A^TA = I_{\nu}$ and $AA^T = \Pi$ (and hence $A^T = A^T\Pi$). Let $Y ^* := A^TY$. Show that, conditionally on $Z$, the rows of $Y ^*$ are independent and identically distributed as $\sN(\underline{0},\Sigma_{Y Y \cdot Z})$.
+\item [(iii)] Show that $S_{Y Y \cdot Z} = (Y^*)^TY^*$, and deduce that $S_{Y Y \cdot Z} \sim  W_q(\nu,\Sigma_{Y Y\cdot X})$.
+\een
+
+
+
+Solution. \ben
+\item [(i)] $\underline{Y}_i \cdot \underline{Z}_i = \underline{Y}_i - \underline{Z}_i  \Sigma^{-1}_{ZZ} \Sigma_{ZY} $, thus it is a linear combination of Gaussians and hence Gaussian.
+\be
+\E\lob \underline{Y}_i \cdot \underline{Z}_i\rob = \E\underline{Y}_i - \E\lob \underline{Z}_i  \Sigma^{-1}_{ZZ} \Sigma_{ZY}\rob = \underline{0}.
+\ee
+\beast
+\cov \lob \lob \underline{Y}_i \cdot \underline{Z}_i\rob^T, \lob \underline{Y}_i \cdot \underline{Z}_i\rob \rob & = & \cov \lob \underline{Y}_i^T,\underline{Y}_i \rob - 2\cov \lob \underline{Y}_i^T,\underline{Z}_i \rob B + B^T\cov \lob \underline{Z}_i^T,\underline{Z}_i \rob B\\
+& = & \Sigma_{YY} - 2 \Sigma_{YZ} B + B^T\Sigma_{ZZ} B\\
+& = & \Sigma_{YY} - 2 \Sigma_{YZ} \Sigma^{-1}_{ZZ} \Sigma_{ZY} + \Sigma_{ZY} \Sigma^{-1}_{ZZ} \Sigma_{ZZ} \Sigma^{-1}_{ZZ} \Sigma_{ZY}\\
+& = & \Sigma_{YY} - \Sigma_{YZ} \Sigma^{-1}_{ZZ} \Sigma_{ZY} = \Sigma_{YY \cdot Z}
+\eeast
+Now we check the independence of $\underline{Y}_i \cdot \underline{Z}_i$ and $\underline{Z}_i$
+\be
+\cov\lob \underline{Z}_i^T, \underline{Y}_i \cdot \underline{Z}_i\rob = \cov\lob \underline{Z}_i^T, \underline{Y}_i\rob- \cov\lob \underline{Z}_i^T, \underline{Z}_i\rob B = \Sigma_{YZ} - \Sigma_{ZZ} \Sigma^{-1}_{ZZ} \Sigma_{ZY} = 0.
+\ee
+
+Accordingly, we have
+\be
+\underline{Y}_i|\underline{Z}_i \sim \sN_q(\underline{Z}_iB,\Sigma_{Y Y \cdot Z}).
+\ee
+
+\item [(ii)] $Y^*$ is clearly Gaussian and
+\be
+\E\lob Y^*|Z\rob = A^T\E\lob Y|Z\rob = A^TZB = A^T\Pi ZB = A^T\lob I_n - ZS^{-1}_{ZZ}Z^T\rob ZB = \underline{0}.
+\ee
+Let $a_i$ be the $i$th column of $A$.
+\beast
+\cov \lob Y^*_{ij}, Y^*_{rs}|Z\rob & = & \cov \lob \left.\sum^n_{a=1} A_{ia}^T Y_{aj}, \sum^n_{b=1} A_{rb}^T Y_{bs}  \right|Z\rob = \sum_a\sum_b A_{ai} A_{br} \cov \lob \left. Y_{aj}, Y_{bs} \right|Z\rob  \\
+& = & \sum_a\sum_b A_{ai} A_{br} \delta_{ab} \lob \Sigma_{YY\cdot Z}\rob_{js} = (A^T A)_{ir} \lob \Sigma_{YY\cdot Z}\rob_{js} = \delta_{ir}\lob \Sigma_{YY\cdot Z} \rob_{js}.
+\eeast
+
+\item [(iii)] From (ii), we have
+\be
+{Y^*}^TY^* = Y^TAA^T Y= Y^T\Pi  Y = Y^T\lob I_n - ZS^{-1}_{ZZ}Z^T \rob  Y = \lob S_{YY} - S_{YZ} S_{ZZ}^{-1} S_{ZY}\rob = S_{YY \cdot Z}
+\ee
+Now $Y^*$ has $\nu$-independent rows, and $\sim \sN_q\lob \underline{0}, \Sigma_{YY \cdot Z}\rob$. So by the definition of the Wishart distribution
+\be
+S_{YY \cdot Z} \sim  W_q\lob \nu,\Sigma_{Y Y\cdot X}\rob.
+\ee
+
+\een
+
+
+
+
+
+\item A $(1 \times p)$ random vector $\underline{X}$ has distribution $\sN(\underline{\mu}_i,\Sigma_i)$ in population $\Pi_i (i = 1, 2)$. Show that a likelihood ratio test is of the form: "Assign the observation $\underline{x}$ to $\Pi_2$ when $Q(\underline{x}) > k$", where $Q$ is a quadratic form in $\underline{x}$, without constant term, which you should identify. What does this become for the special case $\underline{\mu}_1 = \underline{\mu}_2 = \underline{0}$, $\Sigma_2 = 2\Sigma_1$? In this case find the LRT for which the sum $\alpha + \beta$ of the two types of error is minimised, and express $\alpha$ and $\beta$ in terms of the $\chi^2$-distribution.
+
+
+
+Solution. The test is
+\be
+H_0:\ \underline{X}\sim \Pi_1 \quad \text{against} \quad H_1:\ \underline{X}\sim \Pi_2
+\ee
+where $\Pi = \sN(\underline{\mu}_i,\Sigma_i)$. LRT test assigns to $\Pi_2$ if LR exceeds some cut-off, i.e. we reject $H_0$ if $LR>k'$ for some $k'$. which is equivalent to reject $H_0$ if
+\be
+2\log \text{LR } > k.
+\ee
+
+Now we have
+\be
+p(\underline{x}|\underline{\mu}_i,\Sigma_i) = \frac 1{(2\pi)^{p/2}|\det \Sigma_i|^{1/2}}\exp \lob -\frac 12 (\underline{x}-\underline{\mu}_i)\Sigma_i^{-1} (\underline{x}-\underline{\mu}_i)^T\rob
+\ee
+
+Thus,
+\beast
+2\log \text{LR} & = & 2\log \lob \frac{p(\underline{x}|\underline{\mu}_2,\Sigma_2)}{p(\underline{x}|\underline{\mu}_1,\Sigma_1)}\rob = \log \frac{|\det \Sigma_1|}{|\det \Sigma_2|} - (\underline{x}-\underline{\mu}_2)\Sigma_2^{-1} (\underline{x}-\underline{\mu}_2)^T + (\underline{x}-\underline{\mu}_1)\Sigma_1^{-1} (\underline{x}-\underline{\mu}_1)^T\\
+& = & \log \frac{|\det \Sigma_1|}{|\det \Sigma_2|} + \underline{x} \lob \Sigma_1^{-1}-\Sigma_2^{-1}\rob \underline{x}^T - 2\lob \underline{\mu}_1\Sigma_1^{-1} - \underline{\mu}_2\Sigma_2^{-1} \rob \underline{x}^T + \underline{\mu}_1 \Sigma_1^{-1} \underline{\mu}_1^T -\underline{\mu}_2 \Sigma_2^{-1} \underline{\mu}_2^T
+\eeast
+
+So
+\be
+Q(x) = \underline{x} \lob \Sigma_1^{-1}-\Sigma_2^{-1}\rob \underline{x}^T - 2\lob \underline{\mu}_1\Sigma_1^{-1} - \underline{\mu}_2\Sigma_2^{-1} \rob \underline{x}^T
+\ee
+
+For special case $\underline{\mu}_2 = \underline{\mu}_2 = \underline{0}$, $\Sigma_2 = 2\Sigma_1$, we have
+\be
+Q(x) = \frac 12 \underline{x} \Sigma_1^{-1} \underline{x}^T
+\ee
+
+Thus, under
+\be
+H_0:\ \underline{x} \Sigma_1^{-1} \underline{x}^T \sim \chi^2_p,\quad\quad H_1:\ \frac 12 \underline{x} \Sigma_1^{-1} \underline{x}^T \sim \chi^2_p
+\ee
+
+So
+\be
+2\log \text{LR} = \frac 12 \underline{x} \Sigma_1^{-1} \underline{x}^T + \log \frac{|\det \Sigma_1|}{2^p|\det \Sigma_1|} = Q(x) - p\log 2 >k \ \lra \ \underline{x} \Sigma_1^{-1} \underline{x}^T > 2p\log 2 + 2k.
+\ee
+
+Then
+\be
+\alpha = \pro\lob \text{reject }H_0|H_0\rob = \pro\lob \chi^2_p > 2p \log 2 + 2k \rob, \quad \quad \beta = \pro\lob \text{accept }H_0|H_1\rob = \pro\lob \chi^2_p < p \log 2 + k \rob
+\ee
+Thus,
+\be
+\alpha+\beta = \pro\lob\chi^2_p < p \log 2 + k,\ \chi^2_p > 2p \log 2 + 2k  \rob
+\ee
+
+Differentiating this expression and using the pdf of a $\chi^2_p$ distribution, we can show that this is minimized for $k=0$.
+
+
+
+
+
+
+\item Let $\underline{V} = (V_1, V_2)$, and $\var(V_1) = \var(V_2)$. Show that the principal components are proportional to $V_1 + V_2$ and to $V_1- V_2$, and identify the corresponding eigenvalues.
+
+What happens for $\underline{V} = (V_1, \dots , V_p)$ with $\var(V_i) = 1$, $\cov(V_i, V_j) = \rho$ $(i \neq j)$?
+
+
+
+Solution. The covariance matrix is
+\be
+\Sigma = \bepm
+\sigma^2 & \rho \sigma^2\\
+\rho \sigma^2 & \sigma^2
+\eepm = A\Lambda A^T
+\ee
+where $\Lambda = \text{diag}(\sigma^2(1+\rho), \sigma^2(1- \rho))$ and
+\be
+A = \frac 1{\sqrt{2}} \bepm
+1 & 1\\
+1 & -1
+\eepm
+\ee
+Thus, the principal components are
+\be
+V^* = VA = (V_1\quad V_2) \frac 1{\sqrt{2}} \bepm
+1 & 1\\
+1 & -1
+\eepm = \frac 1{\sqrt{2}} \bepm
+V_1 + V_2,\ V_1-V_2
+\eepm
+\ee
+
+For $\underline{V} = (V_1, \dots , V_p)$ with $\var(V_i) = 1$, $\cov(V_i, V_j) = \rho$ $(i \neq j)$
+\be
+\Sigma = \bepm
+1 & \rho & \dots & \rho \\
+\rho & 1 & \dots & \rho \\
+\vdots & \vdots & \ddots & \rho\\
+\rho & \dots & \rho & 1
+\eepm
+\ee
+
+By using row/column operations to evaluate the determinant of matrix. We have one principal component $p^{-1/2} \sum V_i$ with corresponding eigenvalue $1+(p-1)\rho$. The other $p-1$ eigenvalues are all equal to $(1-\rho)$, and we can take as their corresponding principal components any set of $p-1$ standardised variables that are uncorrelated and span the eigenspace $\{\underline{V}a:\sum_i a_i = 0\}$.
+
+\een
+
+F-distribution
+
+\begin{definition}[$F$ random variable\index{f-distributed random variable}]\label{def:f_rv}
+A random variable $X \in [0,+\infty)$ is called $F$-distributed if, for some positive integers $d_1,d_2 >0$ (degree of freedom), its density function is
+\be
+f_X(x) = \frac{1}{B\left(\frac{d_1}{2},\frac{d_2}{2}\right)} \left(\frac{d_1}{d_2}\right)^{\frac{d_1}{2}} x^{\frac{d_1}{2} - 1} \left(1+\frac{d_1}{d_2}\,x\right)^{-\frac{d_1+d_2}{2}},
+\ee
+where $B(a,b)$ is Beta function. We write $X \sim F(d_1, d_2)$.
+\end{definition}
+
+\begin{remark}
+Note that the cdf of $F$-distribution is $I_{\frac{d_1 x}{d_1x +d_2}}\bb{\frac{d_1}2,\frac{d_2}2}$ where $I$ is regularized incomplete beta function (see \ref{def:regularized_incomplete_beta_function})\footnote{need to prove}.
+\end{remark}
+
+\begin{proposition}
+If $U \sim \chi^2_{d_1}, V \sim \chi^2_{d_2}$ are independent, then $X:=\frac{U / d_1}{V / d_2} \sim F(d_1, d_2)$
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\beast
+\pro\bb{\frac{U/d_1}{V/d_2} \leq x} & = & \pro\bb{U \leq \frac{Vd_1x}{d_2}} = \int^\infty_0 \int^{\frac{vd_1x}{d_2}}_{0} \frac{1}{\Gamma\left(d_1/2\right)} 2^{-d_1/2} u^{d_1/2-1} e^{-u/2} \frac{1}{\Gamma\left(d_2/2\right)} 2^{-d_2/2} v^{d_2/2-1} e^{-v/2}  du dv
+\eeast
+
+Taking the differentiation wrt $x$ under the integral sign, we have (by Theorem \ref{thm:differentiation_under_integral_sign})
+\beast
+f_X(x) & = & \frac{1}{\Gamma\left(d_1/2\right)\Gamma\left(d_2/2\right)} 2^{-(d_1+d_2)/2} \int^\infty_0 \frac{vd_1}{d_2} \bb{\frac{vd_1x}{d_2}}^{d_1/2-1} v^{d_2/2-1} e^{-\bb{\frac{vd_1x}{d_2}+1}v/2} dv \\
+& = & \frac{1}{\Gamma\left(d_1/2\right)\Gamma\left(d_2/2\right)} 2^{-(d_1+d_2)/2} \bb{\frac{d_1}{d_2}}^{d_1/2} x^{d_1/2-1} \int^\infty_0  v^{(d_1+d_2)/2-1} e^{-\bb{\frac{vd_1x}{d_2}+1}v/2} dv \\
+& = & \frac{\Gamma\bb{(d_1+d_2)/2}}{\Gamma\left(d_1/2\right)\Gamma\left(d_2/2\right)}  \bb{\frac{d_1}{d_2}}^{\frac{d_1}{2}} x^{\frac{d_1}2-1}\left(1+\frac{d_1}{d_2}\,x\right)^{-\frac{d_1+d_2}{2}} = \frac{1}{B\left(\frac{d_1}{2},\frac{d_2}{2}\right)}  \bb{\frac{d_1}{d_2}}^{\frac{d_1}{2}} x^{\frac{d_1}2-1}\left(1+\frac{d_1}{d_2}\,x\right)^{-\frac{d_1+d_2}{2}}
+\eeast
+which is the density function of $F$-distribution.
+\end{proof}
+
+\begin{proposition}\label{pro:k_moments_f}
+Suppose $X \sim F(d_1,d_2)$. Then
+\be
+\E X^k = \bb{\frac{d_2}{d_1}}^k \frac{\Gamma\bb{\frac{d_1}{2}+k}\Gamma\bb{\frac{d_2}{2}-k}}{\Gamma\bb{\frac{d_1}{2}}\Gamma\bb{\frac{d_2}{2}}}.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Using the distribution of beta prime distribution, %for $d_2$
+\beast
+\E X^k & = & \int^\infty_0 \frac{1}{B\left(\frac{d_1}{2},\frac{d_2}{2}\right)} \left(\frac{d_1}{d_2}\right)^{\frac{d_1}{2}} x^{\frac{d_1}{2} +k-1 } \left(1+\frac{d_1}{d_2}\,x\right)^{-\frac{d_1+d_2}{2}} dx = \int^\infty_0 \frac{1}{B\left(\frac{d_1}{2},\frac{d_2}{2}\right)} \left(\frac{d_1}{d_2}\right)^{-k} x^{\frac{d_1}{2}+k-1} \left(1+x\right)^{-\frac{d_1+d_2}{2}} dx\\
+& = & \frac{1}{B\left(\frac{d_1}{2},\frac{d_2}{2}\right)} \left(\frac{d_1}{d_2}\right)^{-k} B\bb{\frac{d_1}{2}+k,\frac{d_2}{2}-k} = \bb{\frac{d_2}{d_1}}^k \frac{\Gamma\bb{\frac{d_1}{2}+k}\Gamma\bb{\frac{d_2}{2}-k}}{\Gamma\bb{\frac{d_1}{2}}\Gamma\bb{\frac{d_2}{2}}}
+\eeast
+as required.
+\end{proof}
+
+
+\begin{proposition}\label{pro:moments_f}
+Suppose $X \sim F(d_1,d_2)$. Then
+\beast
+\text{(i)}\ \E X = \begin{cases} \frac{d_2}{d_2 - 2}  & d_2 > 2 \\ \infty & \text{otherwise} \end{cases}, \qquad \text{(ii)}\ \var X = \begin{cases} \frac{2d_2^2(d_1+d_2-2)}{d_1 (d_2-2)^2 (d_2-4)}  & d_2 > 4\\ \infty & 2 < d_2 \leq 4\\ \text{undefined} & \text{otherwise} \end{cases},
+\eeast
+\beast
+\text{(iii)}\ \skewness(X) = \begin{cases} \frac{(2 d_1 + d_2 - 2) \sqrt{8 (d_2-4)}}{(d_2-6) \sqrt{d_1 (d_1 + d_2 -2)}} & d_2 > 6 \\ \infty & 4 < d_2 \leq 6\\ \text{undefined} & \text{otherwise} \end{cases}, \qquad  \text{(iv)}\ \kurt(X) = \begin{cases} 12\frac{d_1(5d_2-22)(d_1+d_2-2)+(d_2-4)(d_2-2)^2}{d_1(d_2-6)(d_2-8)(d_1+d_2-2)} & d_2 > 8 \\ \infty & 6 < d_2 \leq 8\\ \text{undefined} & \text{otherwise} \end{cases}.
+\eeast
+\end{proposition}
+
+\begin{proof}[\bf Proof]%(i) and (ii) can be done using integration by parts. Or %With Propositions \ref{pro:mgf_t}, \ref{pro:mgf_finite_moment}, (1-1)\int^{1}_{0} \frac{1}{B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  x^{\frac{\nu-1}2-1} (1-x)^{1-1} dx = 0 \eeast
+From Proposition \ref{pro:k_moments_f}, we have that if $d_2 > 2$, we have
+\be
+\E X = \frac{d_2}{d_1} \frac{\frac{d_1}{2}}{\frac{d_2}{2}-1} = \frac{d_2}{d_2 - 2}.
+\ee
+
+Otherwise, the expectation is infinity. For $d_2 > 4$,
+\be
+\E X^2 = \bb{\frac{d_2}{d_1}}^2 \frac{\frac{d_1}{2}\bb{\frac{d_1}{2}+1}}{\bb{\frac{d_2}{2}-2}\bb{\frac{d_2}{2}-1}} = \frac{d_2^2(d_1 + 2)}{d_1(d_2 - 2)(d_2 - 4)}.
+\ee
+
+If $d_2 \leq 4$, $\E X^2 = \infty$. Thus, if $d_2 > 4$, we have
+\be
+\var X = \frac{d_2^2(d_1 + 2)}{d_1(d_2 - 2)(d_2 - 4)} -  \frac{d_2^2}{(d_2 - 2)^2} = \frac{2d_2^2(d_1+d_2-2)}{d_1 (d_2-2)^2 (d_2-4)}.
+\ee
+
+If $2< d_2 \leq 4$, we have $\var X = \infty$ and if $d_2\leq 2$ it is undefined. For $d_2 > 6$,
+\be
+\E X^3 = \bb{\frac{d_2}{d_1}}^3 \frac{\frac{d_1}{2}\bb{\frac{d_1}{2}+1}\bb{\frac{d_1}{2}+2}}{\bb{\frac{d_2}{2}-3}\bb{\frac{d_2}{2}-2}\bb{\frac{d_2}{2}-1}} = \frac{d_2^3(d_1 + 2)(d_1 + 4)}{d_1^2(d_2 - 2)(d_2 - 4)(d_2 - 6)}.
+\ee
+
+If $d_2 \leq 6$, $\E X^2 = \infty$. Thus, if $d_2 > 6$, we have
+\beast
+\skewness X & = & \left.\bb{\frac{d_2^3(d_1 + 2)(d_1 + 4)}{d_1^2(d_2 - 2)(d_2 - 4)(d_2 - 6)} - 3 \frac{d_2}{d_2 - 2}\frac{d_2^2(d_1 + 2)}{d_1(d_2 - 2)(d_2 - 4)} + 2\bb{\frac{d_2}{d_2 - 2}}^3}\right/\bb{\frac{2d_2^2(d_1+d_2-2)}{d_1 (d_2-2)^2 (d_2-4)}}^{3/2}\\
+& = & \left.\bb{\frac{8(2d_1+d_2 -2)(d_1+d_2 -2)}{d_1^2(d_2 - 4)(d_2 - 6)}} \right/\bb{\frac{2(d_1+d_2-2)}{d_1 (d_2-4)}}^{3/2} = \frac{(2 d_1 + d_2 - 2) \sqrt{8 (d_2-4)}}{(d_2-6) \sqrt{d_1 (d_1 + d_2 -2)}}.
+\eeast
+
+If $4< d_2 \leq 6$, we have $\skewness X = \infty$ and if $d_2\leq 4$ it is undefined (for $\infty/\infty$). For $d_2 > 8$,
+\be
+\E X^4 = \bb{\frac{d_2}{d_1}}^4 \frac{\frac{d_1}{2}\bb{\frac{d_1}{2}+1}\bb{\frac{d_1}{2}+2}\bb{\frac{d_1}{2}+3}}{\bb{\frac{d_2}{2}-4}\bb{\frac{d_2}{2}-3}\bb{\frac{d_2}{2}-2}\bb{\frac{d_2}{2}-1}} = \frac{d_2^4(d_1 + 2)(d_1 + 4)(d_1 + 6)}{d_1^3(d_2 - 2)(d_2 - 4)(d_2 - 6)(d_2 - 8)}.
+\ee
+
+If $d_2 \leq 8$, $\E X^2 = \infty$. Thus, if $d_2 > 8$, we have\footnote{need mathematica to prove}
+\beast
+\kurt X & = & \left.\bb{\frac{d_2^4(d_1 + 2)(d_1 + 4)(d_1 + 6)}{d_1^3(d_2 - 2)(d_2 - 4)(d_2 - 6)(d_2 - 8)}- \frac{4d_2^4(d_1 + 2)(d_1 + 4)}{d_1^2(d_2 - 2)^2(d_2 - 4)(d_2 - 6)} + \frac{6d_2^4(d_1 + 2)}{d_1(d_2 - 2)^3(d_2 - 4)}- \frac{3d_2^4}{(d_2 - 2)^4}}\right/\\
+& & \qquad \bb{\frac{2d_2^2(d_1+d_2-2)}{d_1 (d_2-2)^2 (d_2-4)}}^2- 3\\
+& = & 12\frac{d_1(5d_2-22)(d_1+d_2-2)+(d_2-4)(d_2-2)^2}{d_1(d_2-6)(d_2-8)(d_1+d_2-2)}.
+\eeast
+
+If $6< d_2 \leq 8$, we have $\kurt X = \infty$ and if $d_2\leq 6$ it is undefined.
+\end{proof}

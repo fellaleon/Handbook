@@ -1,0 +1,40 @@
+\chapter{Notations}
+
+\section{Statement}
+
+`iff' is shorthand for `if and only if'.
+
+`x:=y' denotes the statement that $x$ is defined to equal $y$.
+
+\section{Elementary}
+
+\subsection{Number}
+
+$\Z^+ := \bra{1,2,\dots}$. $\N := \bra{0,1,2,3,\dots}$. Clearly, $\Z^+ \subset \N$.
+
+$\R^+ := (0,\infty)$, $\Q^+ := \Q \cap \R^+$. $\R^{++} := [0,\infty)$. $\ol{\R} = \R \cup \bra{\pm \infty}$.
+
+$f\vee g = \max\bra{f,g}$, $f\land g = \min\bra{f,g}$, $f^+ = f \vee 0$, $f^- = (-f)\vee 0$.
+
+$\ol{z}$ for conjugate of $z$ (number), $\ol{A}$ for conjugate of $A$ (vector, matrix, etc.)
+
+$\alpha^*$ is the dual of $\alpha$ where $\alpha$ is a linear map.
+
+\subsection{Function}
+
+$Y^X$ is the set of all function maps from $X$ to $Y$, i.e., $f:X\to Y$.
+
+\section{Algebra}
+
+$\F_p$ is a field with $p$ elements. 
+
+If $p$ is a prime number, we have $\F_p \cong \Z/p\Z := \bra{0, 1,\dots , p - 1}$.
+
+$\F_p^* = \F_p\bs \bra{0}$ where $p$ is a prime number.
+
+$M_{m,n}(\F)$ are $m\times n$ matrices over field $\F$.
+
+\section{Analysis}
+
+\section{Probability}
+

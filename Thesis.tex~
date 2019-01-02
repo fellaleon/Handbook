@@ -1,0 +1,213 @@
+
+%\documentclass{lsethesis}
+\documentclass[a4paper,12pt,harvard]{lsethesis}
+
+\usepackage{texdraw}
+%\usepackage{tipa}
+%\usepackage{natbib}
+\usepackage{stmaryrd}
+\usepackage{amssymb}   % Remove [includeprompt] to process all
+%%% These are the packages I usually use. You can always add or take away packages to make your life easier
+\usepackage{graphics}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{mathrsfs}
+%\usepackage[language]{babel}
+%\usepackage[encoding]{inputenc}
+\usepackage{inputenc}
+\usepackage{array,longtable,supertabular,afterpage}
+\usepackage[german]{babel}
+\usepackage{harvard}
+%\usepackage[usenames]{color}
+%\usepackage{colortbl, booktabs}
+%\usepackage[left=3.5cm,top=1cm,right=2cm,nohead,nofoot]{geometry}
+\usepackage[bbgreekl]{mathbbol} 
+\usepackage{stmaryrd}
+\usepackage{amssymb}   % Remove [includeprompt] to process all
+\usepackage{graphics}
+%\usepackage{rotating}
+\usepackage{bbm}
+\usepackage{slashbox}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sA}{{\cal A}}
+\newcommand{\sB}{{\cal B}}
+\newcommand{\sC}{{\cal C}}
+\newcommand{\sD}{{\cal D}}
+\newcommand{\sE}{{\cal E}}
+\newcommand{\sF}{{\cal F}}
+\newcommand{\sG}{{\cal G}}
+\newcommand{\sH}{{\cal H}}
+\newcommand{\sI}{{\cal I}}
+\newcommand{\sJ}{{\cal J}}
+\newcommand{\sK}{{\cal K}}
+\newcommand{\sL}{{\cal L}}
+\newcommand{\sM}{{\cal M}}
+\newcommand{\sN}{{\cal N}}
+\newcommand{\sO}{{\cal O}}
+\newcommand{\sP}{{\cal P}}
+\newcommand{\sQ}{{\cal Q}}
+\newcommand{\sR}{{\cal R}}
+\newcommand{\sS}{{\cal S}}
+\newcommand{\sT}{{\cal T}}
+\newcommand{\sU}{{\cal U}}
+\newcommand{\sV}{{\cal V}}
+\newcommand{\sW}{{\cal W}}
+\newcommand{\sX}{{\cal X}}
+\newcommand{\sY}{{\cal Y}}
+
+\newcommand{\lbp}{ \hbox{\rm lb}{\cal P} }
+\newcommand{\half}{  {\scriptstyle \frac{1}{2} } }
+\newcommand{\mn}{ {\pounds} }
+\newcommand{\s}{ \bar S}
+\newcommand{\tb}{\bar\theta}
+
+
+\newcommand{\C}{\mathbb C}
+\newcommand{\E}{\mathbb E}
+\newcommand{\F}{\mathbb F}
+\newcommand{\I}{\mathbb I}
+\newcommand{\N}{\mathbb N}
+\newcommand{\pro}{\mathbb P}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\T}{\mathbb T}
+\newcommand{\X}{\mathbb X}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\nl}{\vskip 0.05 in \noindent}
+\newcommand{\med}{\vskip 0.10 in \noindent}
+\newcommand{\lb}{\llbracket}
+\newcommand{\rb}{\rrbracket}
+\newcommand{\bs}{\backslash}
+
+\DeclareMathOperator{\PPP}{\mathbb E}
+\DeclareMathOperator{\cosec}{cosec} 
+\DeclareMathOperator{\sech}{sech} 
+\DeclareMathOperator{\arcosh}{arcosh} 
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+\newcommand{\beast}{ \begin{eqnarray*} }
+\newcommand{\eeast}{ \end{eqnarray*} }
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+\newcommand{\bed}{\begin{description}}
+\newcommand{\eed}{\end{description}}
+\newcommand{\bepm}{\begin{pmatrix}}
+\newcommand{\eepm}{\end{pmatrix}}
+\newcommand{\bebm}{\begin{bmatrix}}
+\newcommand{\eebm}{\end{bmatrix}}
+\newcommand{\bevm}{\begin{vmatrix}}
+\newcommand{\eevm}{\end{vmatrix}}
+
+\newcommand{\eoproof}{\hfill \makebox{\rule{0.8ex}{1.7ex}}\medskip}
+\newcommand{\wun}{ {\bf 1} }
+\newcommand{\pp}{\text{PP}}
+\newcommand{\cov}{ \hbox{\rm Cov}}
+\newcommand{\var}{ \hbox{\rm Var}}
+\newcommand{\tpi}{\tilde\pi}
+\newcommand{\tr}{ \hbox{\rm tr}}
+
+\newcommand{\lob}{\left(}
+\newcommand{\rob}{\right)}
+
+\newcommand{\ra}{\Rightarrow}
+\newcommand{\la}{\Leftarrow}
+\newcommand{\lra}{\Leftrightarrow}
+
+\newcommand{\ve}{\varepsilon}
+\newcommand{\lm}{\lambda}
+
+\newcommand{\hthe}{ \hat \theta}
+
+\newcommand{\tthe}{{\tilde{\theta}}}
+\newcommand{\tThe}{{\tilde{\Theta}}}
+\newcommand{\tchi}{{\tilde{\chi}}}
+
+\newcommand{\qcutline}{------------------------------------------------------------------------------------------------------------------}
+\newcommand{\scutline}{---------------------------------------------------------}
+
+\newcommand{\wh}{\widehat}
+\newcommand{\abs}[1]{\left| #1\right|}
+\newcommand{\dabs}[1]{\left\| #1\right\|}
+\newcommand{\bb}[1]{\lob #1\rob}
+\newcommand{\bsb}[1]{\left[#1\right]}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\ind}{\mathbbm{1}}
+\newcommand{\interior}{\mathrm{int}\,}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\inner}[2]{\langle #1 , #2\rangle}
+\newcommand{\br}{{\bf r}}
+\newcommand{\bu}{{\bf u}}
+\newcommand{\bv}{{\bf v}}
+\newcommand{\bw}{{\bf w}}
+\newcommand{\bx}{{\bf x}}
+\newcommand{\by}{{\bf y}}
+\newcommand{\hcf}{\text{hcf}}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\ol}{\overline}
+
+\newcommand{\fp}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\adj}{\text{adj }}
+
+\title{\LARGE \textbf{Mathematics Handbook}}
+\author{\Large Liang Zhang}
+%\year{2007}
+%\thesis{thesis}    % the word dissertation can be inserted between {}
+%%% You need to repeat the main title of the thesis in the next spot.
+\newcommand{\thesistitle}{}
+\monthname{September} 
+
+\begin{document}
+
+\input txdtools
+\input blockdiagram
+\graphicspath{{Figures/}}
+
+\makethesistitle
+\pagenumbering{roman}     % resets page counter to one
+%\setcounter{page}{2}
+%\altchapter[Approval Page]{THE UNIVERSITY OF CALGARY \\ FACULTY OF GRADUATE STUDIES}
+\pagestyle{plain}
+
+\tableofcontents
+
+%\begin{singlespace}
+%\listoffigures
+%\listoftables
+%\end{singlespace}
+
+%\include{Data/Acknowledgement}
+%\include{Data/Abstract}
+
+\clearpage                   % otherwise tables will be numbered wrong
+%\pagestyle{myheadings}
+\pagenumbering{arabic}
+
+%\linespread{1.3}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\include{Data/Numbers_and_Sets}
+\include{Data/Numbers_and_Sets/Numbers}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\bibliographystyle{harvard}
+%\bibliographystyle{elsart-harv}
+%\bibliographystyle{automatica}
+%\bibliographystyle{agsm}
+%\bibliographystyle{kluwer}
+%\bibliographystyle{lse}
+%\bibliographystyle{apalike}
+%\bibliographystyle{unsrtnat}
+%\bibliography{Data/Refs} %%% Use the name of your bib file
+%\include{Data/Acknowledgement}
+%\appendix 
+%\include{Data/Appendices} %%% The name of your appendix file. Note: you can have more than one appendix, just use multiple \include commands
+\end{document}

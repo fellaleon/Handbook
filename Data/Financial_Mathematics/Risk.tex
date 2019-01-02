@@ -1,0 +1,123 @@
+\chapter{Risk}
+
+\section{Value at Risk}
+
+\subsection{Long Gamma position}
+
+\begin{center}
+ \psset{xunit=0.5cm,yunit=20cm,arrowscale=1.5}
+ \begin{pspicture}(-1,-0.05)(21,0.2)
+ \psChiIIDist[linewidth=1pt,nue=5]{0.01}{19.5}
+ \psaxes[labels=none,ticks=none]{->}(20,0.2)
+ \pscustom[fillstyle=solid,fillcolor=red!30]{%
+ \psChiIIDist[linewidth=1pt,nue=5]{1}{19.5}%
+ \psline(20,0)(1,0)}
+ \end{pspicture}
+\end{center}
+
+\subsection{Statistical error of VaR}
+
+Note that by Theorem \ref{thm:asymptotic_distribution_central_order_statistic},
+\be
+\sqrt{n}f\bb{F^{-1}(p)} \frac{X_i - F^{-1}(p)}{\sqrt{p(1-p)}} \stackrel{d}{\to} \sN(0,1).
+\ee
+
+Thus, $X_i = \wh{\VAR}_p$ is normal distributed random variable with mean $\VAR_p = F^{-1}(p)$ and standard deviation
+\be
+\sigma_{\wh{\VAR}_p} = \frac 1{f\bb{F^{-1}(p)}}\sqrt{\frac{p(1-p)}{n }}.
+\ee
+
+If $F$ is distribution function of standard normal random variable ($f(x) = \phi(x) = \frac 1{\sqrt{2\pi}} e^{-\frac{x^2}2}$), we have $F^{-1}(p) = 2.326$ for $p = 99\%$. Then for $n=10000$,
+\be
+\frac{\sigma_{\wh{\VAR}_p}}{\VAR_p} =  \frac 1{F^{-1}(p) \cdot f\bb{F^{-1}(p)}}\sqrt{\frac{p(1-p)}{n }} \approx \frac 1{2.326 \cdot \phi\bb{2.326}}\sqrt{\frac{0.99\cdot 0.01}{10000}} \approx 1.60\%
+\ee
+
+Thus, the error of confidence level (two-sided) $\alpha$ is
+\be
+\Phi^{-1}\bb{\frac{1+\alpha}2}\frac{\sigma_{\wh{\VAR}_p}}{\wh{\VAR}_p}
+\ee
+
+Then for confidence level $\alpha = 95\%$, the value is 1.96 (no matter the distribution $F$ is) and error is approximately
+\be
+\Phi^{-1}\bb{0.975}\frac{\sigma_{\wh{\VAR}_p}}{\VAR_p} \approx 1.96\cdot 1.60\% = 3.14\%.
+\ee
+
+
+\subsection{Estimation statistical error of VaR under empirical distribution}
+
+Given the 10000 P\&L from Monte Carlo simulation, we can estimate the $F^{-1}(q)f\bb{F^{-1}(q)}$ empirically, then derive the VaR error.
+
+If VaR is the 101th worst loss in the 10000 scenarios, $F^{-1}(q)= \pnl_{101}$. We can calculate empirically
+\be
+f\bb{F^{-1}(q)} = \frac{F\bb{F^{-1}(q)+\Delta}- F\bb{F^{-1}(q)-\Delta}}{2\Delta} = \frac{0.0002}{\pnl_{100}  - \pnl_{102}}.
+\ee
+
+Therefore, the 1 standard deviation of $\VAR$ is
+\be
+\frac{\sigma_{\wh{\VAR}_p}}{\wh{\VAR}_p} \approx \frac 1{F^{-1}(p) \cdot f\bb{F^{-1}(p)}}\sqrt{\frac{p(1-p)}{n }} \approx \frac{\pnl_{100} - \pnl_{102}}{0.0002\cdot \pnl_{101}} \sqrt{\frac{0.99\cdot 0.01}{10000}} \approx 4.9749 \cdot \frac{\pnl_{100} - \pnl_{102}}{\pnl_{101}}.
+\ee
+
+
+\section{VaR and ES derived by EVT}
+
+We simply assume the distributions are continuous in this section.
+
+\subsection{ES derived from MV}
+
+Theoretically, the expectation of maximum value is larger than expected shortfall. Thus, we can use the sample data to fit GEV distribution and estimate the parameters $\wh{\xi},\wh{\sigma},\wh{\mu}$ by applying the property in the appendix. Then we can calculate the estimate maximum value $\wh{M}$
+\be
+\wh{M} = \left\{\ba{ll}
+\wh{\mu} + \wh{\sigma}\frac{\Gamma\bb{1-\wh{\xi}}-1}{\wh{\xi}} \quad\quad & \wh{\xi} <1,\wh{\xi} \neq 0\\
+\wh{\mu} + \wh{\sigma} \gamma & \wh{\xi} = 0
+\ea\right.
+\ee
+where $\gamma$ is Euler's constant.
+
+Therefore, if P\&L is larger than $\wh{M}$, we can assert that it exceeds expected shortfall $\ES_p$ (for any $p$). It is clear that maximum value method froms a necessary condition for the backtesting.
+
+\subsection{VaR and ES derived from POT}
+
+Assuming a GPD function for the taildistribution, analytical expressions for $\VAR_p$ and $\ES_p$ can be defined as a function of GPD parameters. Isolating $F(x)$ by
+\be
+F(x) = (1-F(u))F_u(y) + F(u)
+\ee
+and replacing $F_u$ by the GDP and $F(u)$by the estimation $1-N_u/N$, where $N$ is the total number of observations and $N_u$ the number of observations above the threshold $u$, we obtain
+\beast
+\wh{F}(x) & = & \frac{N_u}{N} \bb{1-\bb{1+\frac{\wh{\xi} (x-u)}{\wh{\sigma}}}^{-1/\wh{\xi}}} + \bb{1-\frac {N_u}{N}} \\
+& = &  1-\frac{N_u}{N} \bb{1+\frac{\wh{\xi} (x-u)}{\wh{\sigma}}}^{-1/\wh{\xi}}
+\eeast
+
+Note that $\xi$ and $\sigma$ are calibrated by the sample data and $\wh{\xi}$ and $\wh{\sigma}$ are given (see \cite{Gilli_Kellezi_2006}). Then inverting the above formula for a given probability $p$ (usually is 99\%) gives
+\be
+\wh{\VAR}_p = u + \frac{\wh{\xi}}{\wh{\sigma}}\bb{\bb{\frac N{N_u}(1-p)}^{-\wh{\xi}}-1}%\bb{1+ \frac{\wh{\xi}}{\wh{\sigma}} (x-u)}^{-1/\wh{\xi}}
+\ee
+%where $N_u$ is the number of observations above the threshold $u$. Then
+
+Furthermore, from the result in appendix for GPD with $0<\xi <1$ %the mean excess function can be defined by $ME(z) := \E\bb{X-z|X>z}$
+and the definition of expected shortfall, we have
+\beast
+\wh{\ES}_p = \E\bb{X|X>\wh{\VAR}_p } & = & %\frac{\E\bb{X\ind_{\bra{X>\wh{\VAR}_p}}}}{1-F\bb{\wh{\VAR}_p}}=\frac{\wh{\VAR}_p + \frac{\wh{\sigma}}{1-\wh{\xi}}}{1-F\bb{\wh{\VAR}_p}}
+\wh{\VAR}_p + \E\bb{X-\wh{\VAR}_p|X>\wh{\VAR}_p } \\%= \wh{\VAR}_p + ME\bb{\wh{\VAR}_p } \\
+& = & \wh{\VAR}_p + \frac{\wh{\sigma} + \wh{\xi}\bb{\wh{\VAR}_p-u}}{1-\wh{\xi}} = \frac{\wh{\VAR}_p}{1-\wh{\xi}} + \frac{\wh{\sigma}-\wh{\xi}u}{1-\wh{\xi}}.
+\eeast
+
+If $p = 1- \frac {N_u}{N}$, we can plug the definition of $\wh{\ES}_p$ into the above formula and get
+\be
+\wh{\ES}_p = \wh{\VAR}_p + \frac{\wh{\sigma}}{1-\wh{\xi}}
+\ee
+
+This is obvious that the expected shortfall is more conservative than Value at Risk for the same confidence level.
+
+For $\xi = 0$ case,
+\be
+\wh{F}(x) = \frac{N_u}{N} \bb{1-\exp\bb{-\frac{\wh{\xi} (x-u)}{\wh{\sigma}}}} + \bb{1-\frac {N_u}{N}}
+\ee
+
+\be
+\wh{\VAR}_p = u - \frac{\wh{\xi}}{\wh{\sigma}}\ln\bb{\frac N{N_u}(1-p)}%\bb{1+ \frac{\wh{\xi}}{\wh{\sigma}} (x-u)}^{-1/\wh{\xi}}
+\ee
+
+Then from the result in appendix for GPD with $\xi =0$,
+\be
+\wh{\ES}_p = \E\bb{X|X>\wh{\VAR}_p } = \wh{\VAR}_p + \E\bb{X-\wh{\VAR}_p|X>\wh{\VAR}_p } = \wh{\VAR}_p + \wh{\sigma}.
+\ee

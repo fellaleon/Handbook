@@ -1,0 +1,1732 @@
+\chapter{Elementary Number Theory}
+
+\section{Division}
+
+\subsection{Division algorithm}
+
+\begin{definition}[division\index{division}]
+Let $a,b\in \Z$. We say $b$ divides $a$, denoted by $b\mid a$, if there exists an integer $c$ such that $a = bc$. $b$ is called a factor\index{factor!division} (or \index{divisor!division}divisor) of $a$.
+\end{definition}
+
+\begin{lemma}\label{lem:integer_division_remainder}
+Let $a,b \in \Z, b>0$, then $\exists q,r \in \Z$ such that $a=bq+r$, where $0 \leq r <b$.
+\end{lemma}
+
+\begin{proof}[\bf Proof] 
+Let $S =\bra{a - nb: n \in \Z}$. If $0\in S$ then exists $q$ such that $a-bq =0$. 
+
+If $0\notin S$, then clearly $S$ contains some positive integer. Let $r$ be the smallest positive integer in $S$. For any $x\in S$, $x-b\in S$. Therefore, if $r\geq b$ then $r-b$ is another positive integer in $S$ and $r-b<r$ which is a contradiction.% a least non-zero integer, say $r$, and let $r=b-qa$. Then $r < a$ because if $r \ge a$ then $r-a =b - (q+1)a \in S$, which contradicts $r$ being least in $S$. This is a special case of Euclidean algorithm in group theory, which we will discuss later.
+\end{proof}
+
+\begin{definition}[prime number\index{prime!number theory}, composite number\index{composite!number thoery}]
+A prime number (or a prime) is a natural number greater than 1 that has no positive divisors other than 1 and itself. 
+
+A natural number greater than 1 that is not a prime number is called a composite number.
+\end{definition}
+
+\begin{example}
+5 is prime because 1 and 5 are its only positive integer factors, whereas 6 is composite because it has the divisors 2 and 3 in addition to 1 and 6. 
+\end{example}
+
+
+\subsection{Greatest common divisor}
+
+\begin{definition}[greatest common divisor (gcd)\index{greatest common divisor}]
+Let $a_1,\dots, a_n\in \Z$. The greatest common divisor $d$ of $a_1,\dots,a_n$, denoted by $\gcd\bb{a_1,\dots,a_n}$ (or simply $\bb{a_1,\dots,a_n}$), is a positive integer $d$ such that $d\mid a_i$ for all $i$, and every common divisor of $a_1,\dots, a_n$ also divides $d$.
+
+$a_1,\dots, a_n$ are called coprime if $\gcd\bb{a_1,\dots,a_n} =1$.
+
+The greatest common divisor is also called highest common factor (hcf)\index{highest common factor}.
+\end{definition}
+
+\begin{remark}
+The existence is guaranteed since at least 1 can divides all $a_i$. The uniqueness is also promised as followed. If $d_1,d_2$ are two gcds, then $d_1\mid d_2$ and $d_2\mid d_1$. This gives that $d_1=d_2$.
+\end{remark}
+
+\begin{lemma}\label{lem:linear_combination_set_of_integers}
+Given $a_1,\dots, a_n\in \Z$, not all zero, let 
+\be
+I =\bra{a_1 x_1 + \ldots +a_n x_n: x_i \in \Z}. 
+\ee
+
+Then there exists $d>0$, such that $I = d \Z$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Let $d$ be the smallest positive integer in $I$. Then clearly, $d\Z \subseteq I$. $\forall a\in I$, then by Lemma \ref{lem:integer_division_remainder} there exist $q$ and $r$ such that $a = qd+r$ where $0\leq r<d$. Since $d$ is the smallest integer $I$, so $r=0$. Therefore $d\mid a$ and so $I \subseteq d\Z$. Hence, $I = d\Z$.
+\end{proof}
+
+\begin{lemma}\label{lem:linear_combination_set_gcd}
+Let $a_1,\dots,a_n\in \Z$, not all zero. Then the greatest common divisor of $a_1,\dots,a_n$ is $d$ where
+\be
+d\Z =\bra{\sum^n_{i=1}a_ix_i: x_i \in \Z}.
+\ee
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Let $I := \bra{\sum^n_{i=1}a_ix_i: x_i \in \Z} = d\Z$ for some $d$ by Lemma \ref{lem:linear_combination_set_of_integers}. Since $a_i\in I$ we have $d\mid a_i$ for all $i$. Let $d'$ be a common factor of $a_1,\dots,a_n$, then $a_i\in d'\Z$ for all $i$ so $d\Z = I \subseteq d'\Z$. Therefore $d'\mid d$ and $d$ is the gcd.
+\end{proof}
+
+\begin{theorem}\label{thm:gcd_divides_linear_combination}
+Let $a_1,\dots,a_n\in \Z$, not all zero. Then there exist $x_1,\dots,x_n\in \Z$ such that 
+\be
+\sum^n_{i=1}a_ix_i=c \ \lra\ d\mid c
+\ee
+where $d$ is the greatest common divisor of $a_1,\dots,a_n$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+By Lemma \ref{lem:linear_combination_set_of_integers} and Lemma \ref{lem:linear_combination_set_gcd}, $d$ is greatest common divisor of $a_1,\dots,a_n$ such that
+\be
+d\Z = \bra{\sum^n_{i=1}a_ix_i: x_i \in \Z}.
+\ee
+
+So there exist integer $x_1,\dots,x_n$ such that $\sum^n_{i=1}a_ix_i = d$. So if $d\mid c$ then $\frac{c}{d} \in \Z$ and
+\be
+\sum^n_{i=1}a_i \bb{\frac{x_i c}{d}} = \frac{c}{d} \sum^n_{i=1}a_i x_i = c,\qquad \frac{x_i c}{d}\in \Z.
+\ee
+
+Conversely, if there exist $x_1,\dots,x_n\in \Z$ such that $\sum^n_{i=1}a_ix_i = c$, then
+\be
+c \in \bra{\sum^n_{i=1}a_ix_i: x_i \in \Z} = d\Z \ \ra\ d\mid c.
+\ee
+\end{proof}
+
+Then we can have 
+
+\begin{corollary}\label{cor:linear_combination_set_1_coprime}
+Let $a_1,\dots,a_n\in \Z$, not all zero. Then there exist $x_1,\dots,x_n\in \Z$ such that
+\be
+\sum^n_{i=1}a_ix_i= 1  \lra\ \gcd \bb{a_1,\dots,a_n} = 1.
+\ee
+\end{corollary}
+
+\begin{lemma}\label{lem:prime_coprime_power_coprime}
+For any positive integer $n,a$ and prime $p$, we have 
+\be
+\gcd\bb{n,p^a}=1 \ \lra \ \gcd(n,p)=1.
+\ee
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+If $\gcd\bb{n,p^a} = 1$, then by Corollary \ref{cor:linear_combination_set_1_coprime} there exist $x,y\in \Z$ such that 
+\be
+n x + p^a y = 1 \ \ra\ nx + p\bb{p^{a-1}y} = 1 \ \ra\ \gcd\bb{n,p}=1.
+\ee
+
+Conversely, if $\gcd\bb{n,p^a} > 1$, then gcd must be the power of $p$ and therefore $p \mid n$. Then we have $\gcd\bb{n,p} = p >1$. 
+\end{proof}
+
+
+\begin{proposition}\label{pro:gcd_associativity}
+For $a,b,c\in \Z$,
+\be
+\gcd(a,b,c) = \gcd(\gcd(a,b),c) = \gcd(a,\gcd(b,c)).
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+This is the direct result from Theorem \ref{thm:gcd_divides_linear_combination}.
+\end{proof}
+
+\subsection{Euclidean algorithm}
+
+
+We now give an algorithm to compute the greatest common divisor of two positive integers $a,b$. Since $\gcd(a,b,c) = \gcd(\gcd(a,b),c)$ by Proposition \ref{pro:gcd_associativity}, this can be used to compute the greatest common factor of $a_1,\dots,a_n$.
+
+\begin{algorithm}\label{alg:euclidean_number_theory}
+If $a=b$ then $\gcd(a,b) = a$. So we may assume $a>b>0$. Let $a= r_0$ and $b = r_1$. For each $i\geq 1$, by Lemma \ref{lem:integer_division_remainder}, take $q_i,r_{i+1}$ to be positive integers such that
+\be
+r_{i-1} = r_i q_i + r_{i+1}, \qquad 0\leq r_{i+1} < r_i
+\ee
+until $r_{k+1} = 0$ for some $k$. So we have
+\beast
+r_0 & = & r_1 q_1 + r_2 ,\qquad 0< r_2 <r_1 \\
+r_1 & = & r_2 q_2 + r_3 ,\qquad 0< r_3 <r_2 \\
+& \vdots & \\
+r_{k-2} & = & r_{k-1} q_{k-1} + r_k ,\qquad 0< r_k <r_{k-1} \\ 
+r_{k-1} & = & r_k q_k.
+\eeast
+
+We claim that $r_k = \gcd(a,b)$. Indeed,
+\be
+\gcd(a,b) = \gcd(r_0,r_1) = \gcd(r_1,r_2) = \dots = \gcd(r_{k-1},r_k) = r_k.
+\ee
+
+Moreover, by Theorem \ref{thm:gcd_divides_linear_combination} there exist $x,y\in \Z$ such that $ax+by = d$ where $d = \gcd(a,b)$. 
+\end{algorithm}
+
+\begin{remark}
+Euclidean algorithm gives a way to compute the integers $x,y$. We simply work backwards:
+\be
+d = r_k = r_{k-2} - r_{k-1}q_{k-1} = r_{k-2} - q_{k-1}(r_{k-3} - r_{k-2}q_{k-2}) = \dots
+\ee
+is an function of $r_0,r_1$ (linear combination of $a,b$).
+\end{remark}
+
+\begin{example}
+Compute $x$ and $y$ such that $32x + 12y = 4$ as $\gcd(32,12) = 4$. We have
+\be
+32 = 12\cdot 2 + 8, \quad 12 = 8\cdot 1 + 4,\quad 8 = 4\cdot 2 
+\ee
+and so 
+\be
+4 = 12 - 8 = 12 - (32 - 12\cdot 2) = 12\cdot 3 - 32 \ \ra\ x = -1,\ y = 3.
+\ee
+\end{example}
+
+\subsection{Fundamental theorem of arithmetic}
+
+\begin{lemma}\label{lem:prime_divides_product}
+Let $p$ be a prime. If $p\mid ab$ then $p\mid a$ or $p\mid b$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+If $p\mid ab$ and $p\nmid a$, then $\gcd(p,a) = 1$. By Corollary \ref{cor:linear_combination_set_1_coprime}, there exists $x,y$ such that $px + ay =1$. Therefore, $pxb + aby = b$. Since $p\mid ab$ and $p\mid pxb$ so $p\mid b$. 
+\end{proof}
+
+\begin{lemma}\label{lem:integer_divides_product}
+Let $n$ be a positive integer. If $n\mid ab$ then $\gcd(n,a)>1$ or $n\mid b$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+If $\gcd(n,a) = 1$, then there exist $x,y$ such that $nx+ay = 1$ by Corollary \ref{cor:linear_combination_set_1_coprime}. Therefore, 
+\be
+nxb + aby = b \ \ra\ n\mid nxb,\ n\mid ab,\ \ra\ n\mid b.
+\ee
+\end{proof}
+
+\begin{theorem}[fundamental theorem of arithmetic]\label{thm:fundamental_theorem_arithmetic}
+Every integer $n\geq 1$ can be written as a product of primes. The representation is unique up to order.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Existence is clear. If $n$ is a prime, then we are done. Otherwise there exists a factor $m$ of $n$ such that $1<m<n$. Let $m$ be the smallest such factor between 1 and $n$. Then $m$ must be a prime. Now repeat this with $n/m$.
+
+For uniqueness, suppose
+\be
+n = p_1 \dots p_r = q_1 \dots q_k.
+\ee
+
+Since $p_1\mid n$ so $p_1 \mid q_1\dots q_k$. Apply Lemma \ref{lem:prime_divides_product} repeatedly we conclude $p_1\mid q_i$ for some $i$. We may relabel $q_1,\dots,q_k$ so that $p_1\mid q_1$. Then $p_1 = q_1$ since $p_1$ and $q_1$ are primes. Then we have
+\be
+\frac{n}{p_1} = p_2\dots p_r = q_2 \dots q_k.
+\ee
+
+Repeat the above so we conclude $r=k$ and $p_i = q_i$ after relabeling $q_1,\dots,q_k$.
+\end{proof}
+
+\subsection{Least common multiple}
+
+\begin{definition}[least common multiple]\label{def:least_common_multiple}
+Let $a_1,\dots,a_n$ be positive integers. $m$ is a common multiple\index{common multiple!number theory} of $a_1,\dots,a_n$ if $a_i\mid c$ for all $i$. $m$ is called the least common multiple\index{least common multiple!number theory} of $a_1,\dots,a_n$, denoted by $\lcm\bb{a_1,\dots,a_n}$ (or simply $\bra{a_1,\dots,a_n}$), if $m$ is a common multiple of $a_1,\dots,a_n$ and $m\mid m'$ for any other common multiple $m'$ of $a_1,\dots,a_n$.
+\end{definition}
+
+\begin{theorem}
+Let $a,b$ be two positive integer. Then
+\be
+\gcd\bb{a,b}\cdot \lcm\bb{a,b} = ab.
+\ee 
+\end{theorem}
+
+\begin{remark}
+Note that the existence and uniqueness of least common multiple is guaranteed by this theorem and the existence and uniqueness of greatest common divisor.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+By fundamental theorem of arithmetic (Theorem \ref{thm:fundamental_theorem_arithmetic}),
+\be
+a = \prod^r_{i=1} p_i^{a_i},\qquad b = \prod^r_{i=1} p_i^{b_i} 
+\ee 
+where $p_1,\dots,p_r$ are distinct primes and $a_i,b_i\geq 0$. Then
+\be
+\gcd\bb{a,b} = \prod^r_{i=1}p_i^{c_i},\qquad \lcm\bb{a,b} = \prod^r_{i=1}p_i^{d_i}
+\ee
+where $c_i = \min\bra{a_i,b_i}$ and $d_i = \max\bra{a_i,b_i}$. Note that $a_i+b_i = c_i + d_i$ so we have the required result.
+\end{proof}
+
+\section{Arithmetic Functions}
+
+\subsection{Arithmetic functions}
+
+\begin{definition}[arithmetic function\index{arithmetic function}]\label{def:arithmetic_function}
+An arithmetic function (or arithmetical, or number-theoretic function) is a real or complex valued function $f(n)$ defined on the set of positive integers $n$.
+\end{definition}
+
+\begin{lemma}[sum over divisors equals sum over quotients]\label{lem:sum over_divisors_equals_sum_over_quotients}
+Let $n$ be a positive integer and $f:\Z^+\to \Z^+$ be arithmetic function. Then
+\be
+\sum_{d\mid n} f(d) = \sum_{d\mid n}f\bb{\frac{n}{d}}.
+\ee 
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+If $d$ is a divisor of $n$ then $d\times \frac{n}{d} =n$ and so $\frac nd$ is also a divisor of $n$. Therefore, if $d_1,\dots,d_r$ are divisors of $n$, then so are $\frac {n}{d_1},\dots,\frac{n}{d_r}$ except in a different order. Hence,
+\be
+\sum_{d\mid n}f\bb{\frac{n}{d}} = f\bb{\frac{n}{d_1}} + \dots + f\bb{\frac{n}{d_2}} = f(d_1) + \dots + f(d_r) = \sum_{d\mid n} f(d).
+\ee
+\end{proof}
+
+\begin{definition}[convolution\index{convolution!arithmetic function}]
+Let $f,g$ be two arithmetic functions. For positive integer $n$, an arithmetic function, the convolution of $f$ and $g$, written by $f*g$, is defined by%\footnote{definition needed.}
+\be
+f*g(n) = \sum_{d\mid n}f(d)g\bb{\frac nd}.
+\ee
+\end{definition}
+
+\begin{example}
+By convention, the function $1(n)$ is defined to be $1(n)=1$ for all $n$. Therefore, 
+\be
+\sum_{d\mid n}f(d) = f*1.
+\ee
+\end{example}
+
+\begin{proposition}[commutativity and associativity of convolution]
+Let $f,g,h$ be any three arithmetic functions. Then $f*g = g*f$. Furthermore, $(f*g)*h = f*(g*h)$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+For any $f,g$, $d$ and $\frac nd$ are factors with different order and
+\be
+f* g = \sum_{d\mid n}f(d) g\bb{\frac nd} = \sum_{d\mid n}f\bb{\frac nd} g(d) = g* f.
+\ee
+
+For any $f,g,h$,
+\beast
+(f*g)*h & = & \sum_{d\mid n}(f* g)(d)h\bb{\frac nd}= \sum_{d\mid n}\sum_{e\mid d}f(e) g\bb{\frac de}h\bb{\frac nd} \\
+& = & \sum_{dd' = n}\sum_{ee'= d} f(e) g(e')h(d') = \sum_{ee'd' = n} f(e) g(e')h(d').
+\eeast
+
+Since $f*(g*h) = (g*h)* f = (h*g)*f$, by symmetry,
+\beast
+ (h*g)*f & = & \sum_{d\mid n}(h*g)(d)f\bb{\frac nd} = \sum_{d\mid n}\sum_{e\mid d}h(e) g\bb{\frac de}f\bb{\frac nd} \\
+ & = & \sum_{dd' = n}\sum_{ee' = d} h(e) g(e')f(d') = \sum_{ee'd' =  n} h(e) g(e')f(d').
+\eeast
+
+So $(f*g)*h = f*(g*h) $.
+\end{proof}
+
+\subsection{Multiplicative functions}
+
+\begin{definition}[multiplicative function\index{multiplicative function}]
+An arithmetic function $f$ is said to be multiplicative if for all $m,n$ with $\gcd\bb{m,n}=1$,
+\be
+f(mn) = f(m)f(n).
+\ee
+
+It is said to be completely multiplicative\index{completely multiplicative function} if for all positive integers $m,n$,
+\be
+f(mn) = f(m)f(n).
+\ee 
+
+In particular, if $n = \prod^k_{i=1} p_i^{a_i}$ for $p_i$ and $a_i$, then
+\be
+f(n) = \prod^k_{i=1} f\bb{p_i^{a_i}}.
+\ee 
+\end{definition}
+
+\begin{example}
+\ben
+\item [(i)] For fixed integer $k$, $f(n) = \gcd(n,k)$ is multiplicative but not completely multiplicative.
+
+For $k=2$, $m =3$ and $n=5$,
+\be
+f(mn) = \gcd(mn,k) = \gcd(15,2) = 1 = \gcd (3,2)\gcd(5,2) = f(m)f(n).
+\ee
+
+%We can conclude that $f(mn)$
+
+For $k=2$, $m=4$ and $n=6$,
+\be
+f(mn) = \gcd(mn,k) = \gcd(24,2) = 2 \neq 4 = 2\cdot 2 = \gcd(4,2)\gcd(6,2) = \gcd(m,k)\gcd(n,k) = f(m)f(n).
+\ee
+\item [(ii)] The power function $f(n) = n^k$ for any complex number $k$ is completely multiplicative.
+\een
+\end{example}
+
+\begin{lemma}\label{lem:bijective_function_coprime_product}
+For all $\gcd(m,n) =1$, there is a bijective function
+\be
+f: \bra{(d_1,d_2)\in \N^2:d_1\mid m,d_2\mid n} \to \bra{d\in \N:d\mid mn}, \quad (d_1,d_2)\mapsto d_1d_2.
+\ee%In particular, $f$ is multiplicative.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Obviously, $d_1d_2\mid mn$ so the map is well-defined. 
+
+It is injective. Suppose $d_1d_2 = d_3d_4$ where 
+\be
+d_1,d_3 \mid m,\quad d_2,d_4 \mid n
+\ee
+and $d_1\mid d_3d_4$. But $\gcd(d_1,d_4) = 1$ since $\gcd(m,n)=1$. Therefore $d_1\mid d_3$ by Lemma \ref{lem:integer_divides_product}. Similarly, $d_3\mid d_1$ so $d_1=d_3$ and $d_2= d_4$.
+
+It is surjective. By fundamental theorem of arithmetic (Theorem \ref{thm:fundamental_theorem_arithmetic}) we have
+\be
+m = \prod_i p_i^{a_i},\quad n = \prod_j q_j^{b_j},\qquad p_i \neq q_j \text{ for all }i,j.
+\ee
+
+Then $mn = \prod_{i,j}p_i^{a_i}q_j^{b_j}$. For any $d\mid mn$ we have 
+\be
+d = \prod_{i,j}p_i^{a'_i}q_j^{b'_j},\qquad a'_i \leq a_i,b'_j \leq b_j.
+\ee
+
+Let 
+\be
+d_1 = \prod_{i}p_i^{a'_i},\quad d_2 = \prod_{j}q_j^{b'_j} \ \ra \ d_1\mid m, \ d_2 \mid n.
+\ee
+
+So the map is bijective.
+\end{proof}
+
+\begin{proposition}\label{pro:multiplicative_function_factor_sum_is_multiplicative}
+Let $f$ be multiplicative and $g(n) = \sum_{d\mid n}f(d)$ for $n\in \Z^+$. Then the function $g$ is also multiplicative.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+By Lemma \ref{lem:bijective_function_coprime_product}, we have a bijective function 
+\be
+\bra{(d_1,d_2)\in \N^2:d_1\mid m,d_2\mid n} \to \bra{d\in \N:d\mid mn}, \quad (d_1,d_2)\mapsto d_1d_2 \qquad (*)
+\ee
+for any $\gcd(m,n)=1$. Therefore, %since $f$ is multiplicative,
+\beast
+g(mn) = \sum_{d\mid mn}f(d) & = & \sum_{d_1\mid m,d_2\mid n}f(d_1d_2)\qquad \text{(by bijection of $d = d_1d_2 \to (d_1,d_2)$)}\\ 
+& = & \sum_{d_1\mid m,d_2\mid n}f(d_1)f(d_2) \qquad \text{(since $f$ is multiplicative)}\\
+& = & \sum_{d_1\mid m,d_2\mid n}f(d_1)f(d_2) = g(m)g(n).
+\eeast
+\end{proof}
+
+
+
+
+
+\subsection{Ramanujan tau function $\tau(n)$}
+
+\begin{definition}[Ramanujan tau function\index{Ramanujan tau function}]\label{def:ramanujan_tau_function}
+For $n\in \Z^+$, Ramanujan tau function $\tau$ is the number of all positive factors of $n$, denoted by
+\be
+\tau(n) = \sum_{d\mid n} 1.
+\ee
+\end{definition}
+
+\begin{example}
+For $n= 6,20,32$,
+\beast
+\tau(6) & = & \#\bra{1,2,3,6} = 4, \\
+\tau(20) & = & \#\bra{1,2,4,5,10,20} = 6,\\ 
+\tau(32) & = & \#\bra{1,2,4,8,16,32} = 6.
+\eeast
+\end{example}
+
+\begin{proposition}
+Ramanujan tau function $\tau(n)$ is multiplicative.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Since $1(n) = 1$ is multicative, then $\tau$ is multiplicative by Proposition \ref{pro:multiplicative_function_factor_sum_is_multiplicative}.
+\end{proof}
+
+\begin{proposition}
+Let $n = \prod_i^m p_i^{a_i}$ where $p_i$, $i=1,\dots,m$ are primes. Then
+\be
+\tau(n) = \prod_i^m (a_i + 1).
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+By fundamental theorem of arithmetic (Theorem \ref{thm:fundamental_theorem_arithmetic}), it suffices to show that
+\be
+\tau\bb{p^a} = a+1
+\ee
+for all prime $p$. Indeed, the factors of $p^a$ are $\bra{1,p,p^2,\dots, p^{a-1},p^a}$ with size $a+1$.
+\end{proof}
+
+
+\subsection{Euler's totient function $\phi(n)$}
+
+\begin{definition}[Euler's totient function\index{Euler's totient function}]\label{def:euler_totient_function}%The order of $R^*_n$ is $\phi(n)$, 
+For $n\in \Z^+$, Euler's totient function\index{Euler's totient function} is defined by the set size of the numbers smaller than $n$ and coprime to $n$. That is,
+\be
+\phi(n) = \#\bra{a:\hcf(a,n)=1,1\leq a\leq n}.
+\ee
+\end{definition}
+
+\begin{remark}
+Note that $\phi(p) = p-1$ for prime $p$.
+\end{remark}
+
+\begin{example}
+\ben
+\item [(i)] $\phi(5) = \#\bra{1,2,3,4} = 4$.
+\item [(ii)] $\phi(20) = \#\bra{1,3,7,9,11,13,17,19} = 8$.
+\een
+\end{example}
+
+
+\begin{lemma}\label{lem:bijiective_function_coprime_remainder}
+For all $\gcd(m,n)=1$, there is a bijection
+\be
+\bra{d\in \Z^+: d\leq mn,\gcd(d,mn)=1} \to \bra{(d_1,d_2)\in \bb{\Z^+}^2: d_1\leq m_1,\gcd(d_1,m)=1, d_2\leq n,\gcd(d_2,n)=1}, \quad d\mapsto (d_1,d_2) \nonumber
+\ee
+where $0\leq d_1< m$, $0\leq d_2<n$ such that
+\be
+d= q_1m + d_1,\quad d = q_2n + d_2
+\ee
+for some integers $q_1,q_2$. %In particular, $\phi$ is multiplicative.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Let $\gcd(d,mn)=1$. Since 
+\be
+d = q_1m + d_1,\quad d = q_2n + d_2,
+\ee
+we conclude that $\gcd(d_1,m)=1$ and $\gcd(d_2,n)=1$ as
+\beast
+m n x_1 + dy_1 = 1 & \ra & mn x_1 + q_1m y_1 + d_1y_1 = 1 \ \ra\ (nx_1 + q_1y_1) m + d_1y_1 = 1 \ \ra \ \gcd(m,d_1) =1 ,\\
+m n x_2 + dy_2 = 1 & \ra & mn x_2 + q_2n y_2 + d_2y_2 = 1 \ \ra\ (mx_2 + q_2y_2) n + d_2y_2 = 1 \ \ra \ \gcd(n,d_2) =1 
+\eeast
+by Corollary \ref{cor:linear_combination_set_1_coprime}. So the map is well-defined. 
+
+It is injective. Suppose that 
+\be
+d= q_1m + d_1,\ d= q_2n + d_2,\qquad d'= q_3m + d_1,\ d'= q_4n + d_2.
+\ee
+
+Then
+\be
+m\mid (q_1-q_3)m\mid (d-d'),\quad n\mid (q_2-q_4)n\mid (d-d') .
+\ee
+
+Since $\gcd(m,n)=1$ so $mn\mid (d-d')$ and so $d-d'=0$ because $0<d,d' \leq mn$.
+
+It is surjective. Given $d_1,d_2$ with $d_1\leq m$ with $\gcd(d_1,m)=1$ and $d_2\leq n$ with $\gcd(d_2,n)=1$, let
+\be
+d:= d_1ny + d_2mx + mnz
+\ee
+where $mx + ny =1$ and $z$ is an integer such that $0<d\leq mn$. Write $ny = 1-mx$ we have 
+\be
+d = d_1 + (d_2-d_1)mx + mnz \ \ra\ d = \bb{(d_2-d_1)x + zn}m + d_1
+\ee
+and similarly by writing $mx - 1-ny$ we have
+\be
+d = \bb{(d_1-d_2)y + mz}n + d_2.
+\ee
+
+So $d\mapsto (d_1,d_2)$. Finally, 
+\beast
+\gcd(d,m) & = & \gcd(d_1ny + d_2mx + mnz,m) = \gcd(d_1ny,m) = \gcd (d_1-d_1mx,m) = \gcd(d_1,m) = 1,\\
+\gcd(d,n) & = & \gcd(d_1ny + d_2mx + mnz,n) = \gcd(d_2my,n) = \gcd (d_2-d_2ny,n) = \gcd(d_2,n) = 1.
+\eeast
+
+Thus, $\gcd(d,mn)=1$. So $d$ is the preimage of $(d_1,d_2)$.
+\end{proof}
+
+\begin{proposition}\label{pro:euler_totient_multiplicative}
+Euler's totient function $\phi(n)$ is multiplicative.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Let $\gcd(m,n)=1$. Then
+\beast
+\phi(mn) & = & \# \bra{d:\hcf(d,mn)=1,1\leq d\leq mn} \\
+& = & \#\bra{(d_1,d_2): 1\leq d_1\leq m,\gcd(d_1,m)=1, 1\leq d_2\leq n,\gcd(d_2,n)=1} \qquad \text{Lemma \ref{lem:bijiective_function_coprime_remainder}}\\
+& = & \#\bra{d_1: 1\leq d_1\leq m,\gcd(d_1,m)=1}\times \#\bra{d_2: 1\leq d_2\leq n,\gcd(d_2,n)=1} \\
+& = & \phi(m)\phi(n).
+\eeast
+\end{proof}
+
+\begin{proposition}\label{pro:euler_totient_function_prime_product}
+Let $n = \prod^m_{i=1} p_i^{a_i}$. Then its Euler's totient function is
+\be
+\phi(n) = \prod^m_{i=1} p_i^{a_i-1}\bb{p_i -1}.
+\ee
+\end{proposition}
+
+\begin{remark}
+Note that this also shows that $\phi(n)$ is always even for all $n>2$. 
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Since $\phi$ is multiplicative (see Proposition \ref{pro:euler_totient_multiplicative}), it suffices to show that 
+\be
+\phi(p^a) = p^{a-1}(p-1)
+\ee
+for a prime $p$ by fundamental theorem of arithmetic (Theorem \ref{thm:fundamental_theorem_arithmetic}). Indeed, for any $n$, $\gcd\bb{n,p^a}=1$ if and only if $\gcd(n,p)=1$ (see Lemma \ref{lem:prime_coprime_power_coprime}). Therefore, the number of positive integers less than $p^a$ which are divisible by $p$ is $p^{a-1}$, so
+\be
+\phi(p^a) = p^a - p^{a-1} = p^{a-1}(p-1).
+\ee
+\end{proof}
+
+\begin{example}
+For $n = 1000 = 2^3\cdot 5^3$,
+\be
+\phi(1000) = \phi(8)\phi(125) = 2^2(2-1)\cdot 5^2(5-1) = 400.
+\ee
+\end{example}
+
+
+\begin{theorem}\label{thm:sum_of_factor_totient_equals_n}
+Let $n$ be a positive integer and $\phi$ be Euler's totient function. Then
+\be
+\sum_{d\mid n}\phi(d) = n.
+\ee
+
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+{\bf Approach 1.} Since $\phi$ is multiplicative (Proposition \ref{pro:euler_totient_multiplicative}), then $\sum_{d\mid n} \phi(d)$ is also multiplicative by Proposition \ref{pro:multiplicative_function_factor_sum_is_multiplicative}. So it suffices to show that 
+\be
+\sum_{d\mid p^a} \phi(d) = p^a
+\ee
+for any prime $p$. Indeed, by Proposition \ref{pro:euler_totient_function_prime_product},
+\be
+\sum_{d\mid p^a} \phi(d) = \sum^a_{i=0} \phi\bb{p^i} = 1 + \sum^a_{i=1} \bb{p^i - p^{i-1}} = p^a.
+\ee
+
+{\bf Approach 2.} Let $S_d$ is all the numbers less than or equal to $n$ whose greatest common factor with $n$ is $d$. 
+\be
+S_d = \bra{m\in \Z: 1\leq m\leq n, \gcd(m,n)=d}.
+\ee%\footnote{proof needed.}
+
+Consider the bijective mapping (guaranteed by Theorem \ref{thm:gcd_divides_linear_combination}) 
+\be
+\bra{m\in \Z^+: 1\leq m\leq n, \gcd (m,n) = d} \to \bra{k\in\Z^+,1\leq k\leq \frac nd, \gcd\bb{k,\frac nd} =1},\ m \mapsto \frac{m}{d}.
+\ee
+
+%If $k_1 = k_2\leq \frac nd$, $dk_1 = dk_2 \leq n$ we have that 
+%\be
+%\gcd \bb{k_1,\frac nd} =\gcd \bb{k_2,\frac nd} = 1, \ \ra\ k 
+%\ee
+
+We can have that the number of $S_d$ equals the number of positive integers no bigger than $\frac nd$ which are coprime to $\frac nd$. That is, the size of $S_d$
+\be
+\abs{S_d} = \phi\bb{\frac nd}.
+\ee
+
+Also, from the definition of $S_d$, we have that
+\be
+\bigcup_{d\mid n} S_d = \bra{1,2,\dots, n}
+\ee
+as $S_d$ are pairwise disjoint. Thus, we have
+\be
+n = \sum_{d\mid n} \abs{S_d} = \sum_{d\mid n} \phi\bb{\frac nd}.
+\ee
+
+Then by Lemma \ref{lem:sum over_divisors_equals_sum_over_quotients}, we have
+\be
+\sum_{d\mid n} \phi\bb{d} = \sum_{d\mid n} \phi\bb{\frac nd} = n.
+\ee
+\end{proof}
+
+\subsection{Divisor sum $\sigma(n)$}
+
+\begin{definition}[divisor sum\index{divisor sum!number theory}]
+The divisor sum function $\sigma(n)$ is defined to the sum of all positive factors of $n$. That is,
+\be
+\sigma(n) = \sum_{d\mid n} d.
+\ee
+\end{definition}
+
+\begin{proposition}\label{pro:divisor_sum_multiplicative}
+The divisor sum function $\sigma(n)$ is multiplicative.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Since $f(n)= n$, we have the conclusion by Proposition \ref{pro:multiplicative_function_factor_sum_is_multiplicative}.
+\end{proof}
+
+\begin{proposition}
+Let $n = \prod^m_{i=1} p_i^{a_i}$. Then
+\be
+\sigma(n) = \prod^m_{i=1} \frac{p_i^{a_i+1}-1}{p_i-1}.
+\ee
+\end{proposition}
+
+\begin{example}
+For $n = 20 = 2^2 \cdot 5$, the factors are $\bra{1,2,4,5,10,20}$ and thus
+\be
+\sigma(20) = 1 + 2 +4 +5 +10 + 20 = 42
+\ee
+which is consistent with
+\be
+\prod^2_{i=1}\frac{p_i^{a_i+1}-1}{p_i-1} = \frac{2^3-1}{2-1}\cdot \frac{5^2 -1}{5-1} = \frac 71\cdot \frac {24}{4} = 42.
+\ee
+\end{example}
+
+\begin{proof}[\bf Proof]
+By fundamental theorem of arithmetic (Theorem \ref{thm:fundamental_theorem_arithmetic}), it suffices to show that
+\be
+\sigma\bb{p^a} = \frac{p^{a+1}-1}{p-1}
+\ee
+for all primes $p$. Indeed,
+\be
+\sigma\bb{p^a} = \sum^a_{i=0} p^i = \frac{p^{a+1}-1}{p-1}.
+\ee
+\end{proof}
+
+\subsection{M\"obius function $\mu(n)$}
+
+\begin{definition}[M\"obius function]
+For positive integer $n$, the M\"obius function $\mu(n)$ is defined to be
+\be
+\mu(n) = \left\{\ba{ll}
+1 & n=1 \\
+0 & n \text{ is divisible by $p^2$ for some prime $p$}\\
+(-1)^k\quad\quad  & \text{$n=p_1\dots p_k$ where $p_i$ are distinct primes.}
+\ea\right.
+\ee
+\end{definition}
+
+\begin{proposition}\label{pro:mobius_function_multiplicative}
+M\"obius function $\mu(n)$ is multiplicative.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Let $\gcd (m,n)=1$. If one of $m,n$ is divisible by $p^2$ for some $p$, so is $mn$. So $\mu(mn) = 0 = \mu(m)\mu(n)$. 
+
+If $m,n$ are both square free (i.e., not divisible by $p^2$ for any prime) then $mn$ is also square free (otherwise there exists a gcd greater than 1). 
+
+Since $(-1)^{k_1+k_2} = (-1)^{k_1}(-1)^{k_2}$, $\mu$ is multiplicative. 
+\end{proof}
+
+\begin{proposition}\label{pro:nu_number_theory}
+For positive integer $n$, let
+\be
+\nu(n) := \sum_{d\mid n}\mu(d).
+\ee
+
+Then $\nu(n)$ is multiplicative and 
+\be
+\nu(n) = \left\{\ba{ll}
+1 & n=1\\
+0 \quad\quad & n\geq 2
+\ea\right..
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+By Proposition \ref{pro:multiplicative_function_factor_sum_is_multiplicative}, we have that $\nu(n)$ is multiplicative. 
+
+If $n=1$, $\nu(n) = \mu(n) =1$. Then by fundamental theorem of arithmetic (Theorem \ref{thm:fundamental_theorem_arithmetic}), it suffices to show that for any $a\in \N$ and prime $p$,
+\be
+\nu\bb{p^a} = \sum_{d\mid p^a} \mu(d) = 1 - 1 + 0 + 0 + \dots = 0.
+\ee
+
+Therefore $\nu(n)=0$ for all $n\geq 2$.
+\end{proof}
+
+\begin{theorem}[M\"obius inversion formula\index{M\"obius inversion formula}]\label{thm:mobius_inversion}
+Let $f$ be any arithmetic function (not necessarily multiplicative). Then 
+\be
+g = f*1 \ \lra \ f = g* \mu.
+\ee%$. Conversely, if $f =g*\mu$, then $g = f*1$
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $g = f*1$. Then
+\beast
+g*\mu & = & \sum_{d\mid n} g\bb{\frac nd}\mu(d) = \sum_{d\mid n}\sum_{e\mid \frac nd} f(e)1\bb{\frac n{de}} \mu(d) = \sum_{dd'=n}\sum_{e\mid d'} f(e)1\bb{\frac {d'}{e}} \mu(d) = \sum_{dee'=n}f(e)\mu(d)1\bb{e'} \\
+& = & \sum_{e\mid n}f(e) \sum_{d\mid \frac ne}\mu(d)1\bb{\frac{n}{de}}  = \sum_{e\mid n}f(e) \sum_{d\mid \frac ne}\mu(d) = \sum_{e\mid n}f(e) \nu\bb{\frac ne} = f(n) 
+\eeast
+by the property of $\nu$ (Proposition \ref{pro:nu_number_theory}).
+
+Conversely, if $f =g*\mu$, then
+\beast
+f*1 & = & \sum_{d\mid n}f(d) = \sum_{d\mid n}\sum_{e\mid d}g(e)\mu\bb{\frac de} = \sum_{dd' = n}\sum_{e\mid d}g(e)\mu\bb{\frac de} 1\bb{d'} = \sum_{d'ee'=n} g(e)\mu(e')1\bb{d'} \\
+& = &  \sum_{e\mid n}g(e) \sum_{e'\mid \frac ne}\mu(e')1\bb{\frac n{ee'}} = \sum_{e\mid n}g(e) \sum_{e'\mid \frac ne}\mu(e') =\sum_{e\mid n}g(e) \nu\bb{\frac ne} = g(n) 
+\eeast
+as required.
+\end{proof}
+
+\begin{corollary}
+Let $f$ be an arithmetic function. Then for any positive integer $n$,
+\be
+F(n) = \prod_{d\mid n}f(d) \ \ra\ f(n) = \prod_{d\mid n} F(d)^{\mu\bb{\frac nd}}.
+\ee
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+Let $G(n) = \log F(n)$ and $g(n) = \log f(n)$. Then $G(n) = \sum_{d\mid n} g(d)$ and so by M\"obius inversion formula (Theorem \ref{thm:mobius_inversion})
+\be
+g(n) = \sum_{d\mid n}G(d) \mu\bb{\frac nd}.
+\ee
+
+Therefore,
+\be
+f(n) = \exp\bb{g(n)} = \prod_{d\mid n} F(d)^{\mu\bb{\frac nd}}.
+\ee
+\end{proof}
+
+
+\section{Congruences}%Basic Properties}
+
+%In this section we introdue the concept of congruences. We shall assume  $n\geq 2$.
+
+\subsection{Definitions}
+
+\begin{definition}
+Let $a,b\in \Z$ and $n\in\Z^+$ with $n\geq 2$. If $n\mid (a-b)$, we say $a$ is congruent to $b$ with respect to $n$, written
+\be
+a\equiv b \lmod{n}.
+\ee
+\end{definition}
+
+\begin{remark}
+The congruence is an equivalence relation\footnote{details needed.}.
+\end{remark}
+
+\begin{example}
+$4\equiv 1 \lmod{3}$.
+\end{example}
+
+\begin{lemma}
+Let $a,a',b,b'$ be integers and $n$ be positive integer with $n\geq 2$. If $a\equiv a' \lmod{n},b\equiv b'\lmod{n}$, then
+\be
+a+b \equiv a'+b' \lmod{n},\qquad ab\equiv a'b'\lmod{n}.
+\ee
+
+For any integer $c$, $ca \equiv ca' \lmod{n}$. Conversely, if $ca \equiv ca' \lmod{n}$ and $\gcd(c,n)=1$, then $a\equiv a' \lmod{n}$.
+
+Furthermore, if $f$ is a polynomial with integer coefficients, then $f(a)\equiv f(a') \lmod{n}$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]%\footnote{proof needed.}
+The first statement is clear because if $n\mid (a-a')$, $n\mid (b-b')$ then $n\mid (a+b-a'-b')$. 
+
+Now $ab-a'b' = ab- ab'+ ab'- a'b' = a(b-b') + (a-a')b'$, so $n\mid (ab-a'b')$. 
+
+It is clear that if $n\mid (a-a')$ then $n\mid\bb{ca-ca'}$ for any $c$. Converserly, if $n\mid c\bb{a-a'}$ and $\gcd(c,n)=1$ then $n\mid (a-a')$ by Lemma \ref{lem:prime_divides_product}.
+
+Finally, $n\mid (a-a')\mid (f(a) - f(a'))$ for any polynomial $f$ with integer coefficients.
+\end{proof}
+
+\subsection{Basic properties of congruences}
+
+\begin{lemma}
+For any integers $x$ and $y$ and for any prime $p$, 
+\be
+(x + y)^p \equiv x^p + y^p \lmod{p}.
+\ee
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+%\section{Fermat's Little Theorem}
+
+
+\subsection{Fermat-Euler theorem and Fermat's little theorem}
+
+\begin{theorem}[Fermat-Euler theorem]\label{thm:fermat_euler}
+If $n\in\N$, $a\in \Z$ with $\gcd(a, n) = 1$, then 
+\be
+a^{\phi(n)}\equiv 1\lmod{n}.
+\ee
+
+In particular, for prime $p$, if $p\nmid a$ then 
+\be
+a^{p-1} \equiv 1 \lmod{p}.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Since $\bb{\Z/n\Z}^\times$ has size $\phi(n)$ (Theorem \ref{thm:multiplicative_group_znz_size_euler_totient}), then for any element $a\in \bb{\Z/n\Z}^\times$, its order $d\mid \phi(n)$ by Lagrange theorem (Corollary \ref{cor:lagrange_group}). Therefore,
+\be
+a^{\phi(n)}\equiv 1\lmod{n}.
+\ee%Since $\abs{R^*_n} = \phi(n)$, $r_n(a^{\phi(n)}) =1$ in $R^*_n$ by Corollary \ref{cor:lagrange_group}. Hence $a^{\phi(n)} \equiv 1\lmod{n}$. \footnote{There is another proof in Numbers and Sets.}
+\end{proof}
+
+\begin{example}
+Let $a = 5, n = 8$ with $\gcd(5,8)=1$. Also, $\phi(n) = \#\bra{1,3,5,7} = 4$ and then
+\be
+a^{\phi(n)} = 5^4 = 25^2 \equiv 1^2 \equiv 1 \lmod{8}.
+\ee
+\end{example}
+
+%\begin{theorem}[Fermat's little theorem]\label{thm:fermat_little_group}
+%If $p$ is a prime and $a\in \Z$ with $p\nmid a$, then $a^{p-1} \equiv 1\lmod{p}$.
+%\end{theorem}
+
+%\begin{proof}[\bf Proof]
+%This is just the special case of Theorem \ref{thm:fermat_euler} when $n$ is prime.
+%\end{proof}
+
+
+\begin{theorem}[Fermat's little theorem]\label{thm:fermat_little}
+If $p$ is a prime number, then for any integer $a$, the number $a^p - a$ is an integer multiple of $p$. In the notation of modular arithmetic, this is expressed as
+\be
+a^p \equiv a \lmod{p}.
+\ee
+
+In particular, if $p\nmid a$, then
+\be
+a^{p-1} \equiv 1 \lmod{p}.
+\ee
+\end{theorem}
+
+\begin{remark}
+For example, if $a = 2$ and $p = 7$, $2^7 = 128$, and $128 - 2 = 7 \times 18$ is an integer multiple of 7.
+
+If $a$ is not divisible by $p$, Fermat's little theorem is equivalent to the statement that $a^{p - 1}- 1$ is an integer multiple of $p$, for example, if $a = 2$ and $p = 7$ then $2^6 = 64$ and 64 -1 = 63 is thus a multiple of 7.
+
+Fermat's little theorem is the basis for the Fermat primality test and is one of the fundamental results of elementary number theory.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed}%. Also see Theorem \ref{thm:fermat_little_group}}.
+\end{proof}
+
+\subsection{Chinese remainder theorem}
+
+The earliest known statement of the theorem, as a problem with specific numbers, appears in the 3rd-century book Sunzi Suanjing by the Chinese mathematician Sunzi:
+
+``There are certain things whose number is unknown. If we count them by threes, we have two left over; by fives, we have three left over; and by sevens, two are left over. How many things are there? ''
+
+\begin{lemma}\label{lem:congruence_equation_soluble_iff_gcd_division}
+The linear congruence $ax\equiv b\lmod{n}$ is soluble (i.e., there exists such $x$) for some integer $x$ if and only if $\gcd(a,n)\mid b$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Suppose such $x$ exists, then $n\mid (ax-b)$ and so 
+\be
+\gcd(a,n)\mid n \ \ra\ \gcd(a,n)\mid (ax-b).
+\ee
+ 
+Since $\gcd(a,n)\mid ax$ so $\gcd(a,n)\mid b$.
+
+Conversely, if $\gcd(a,n)\mid b$ then there exist $x,y$ such that $ax + ny = \gcd(a,n)$ and so
+\be
+ax \frac b{\gcd(a,n)} + ny \frac b{\gcd(a,n)} = b \ \ra\ a\bb{\frac {bx}{\gcd(a,n)}} \equiv b \mod{n}.
+\ee
+\end{proof}
+
+\begin{theorem}[Chinese remainder theorem\index{Chinese remainder theorem!number theory}]\label{thm:chinese_remainder_number_theory}
+Let $n_1,\dots,n_k$ be positive integers and suppose that they are pairwise coprime, that is $\gcd(n_i,n_j)=1$ for all $i\neq j$. Then $\forall c_1,\dots,c_k$, the congruences
+\be
+x\equiv c_i \lmod{n_i},\quad 1\leq i\leq k 
+\ee
+are soluble simultaneously for some integer $x$. The solution $x$ is unique with respect to modulo $n = \prod^m_{i=1} n_i$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+{\bf Existence.} Let $n = \prod^k_{i=1} n_i$ and $m_i = n/n_i$ for all $i$. Then we have that $n_i\mid m_j$ for all $i\neq j$ and $m_i$ is coprime to $n_i$.\footnote{If there exists prime $p>1$ such that $p = \gcd(n_i,m_i)$, then $p\mid n_i$ and $p\mid m_i$ then $p\mid n_j$ for some $j\neq i$, contradiction.} So $\gcd(n_i,m_i) = 1 \mid c_i$ and by Lemma \ref{lem:congruence_equation_soluble_iff_gcd_division} there exists $x_i$ such that 
+\be
+m_i x_i \equiv c_i\lmod{n_i}.
+\ee
+
+Then let $x := \sum^k_{i=1} x_im_i$, then
+\be
+x = \sum^k_{i=1} x_i m_i \equiv x_i m_i \equiv c_i\lmod{n_i}.
+\ee
+
+{\bf Uniqueness.} Suppose $x\equiv y \equiv c_i\lmod{n_i}$ for all $i$. Then $n_i\mid (x-y)$ for all $i$ so $n\mid (x-y)$.
+\end{proof}
+
+\begin{example}
+Use the statement in Sunzi Suanjing, we want to find $x$ such that 
+\be
+x \equiv 2\lmod{3},\quad x\equiv 3 \lmod{5},\quad x\equiv 2\lmod{7}.
+\ee
+which means 
+\beast
+& & n_1 = 3,\quad m_1 = 35, \quad c_1 = 2,\\
+& & n_2 = 5,\quad m_2 = 21, \quad c_2 = 3,\\
+& & n_3 = 7,\quad m_3 = 15, \quad c_3 = 2.
+\eeast
+
+First, by Euclidean algorithm (Algorithm \ref{alg:euclidean_number_theory}) we have that 
+\beast
+& & 35 - 3\cdot 11 = 2 \ \ra \ 3 -2 =1 \ \ra\ 1 = 3 - (35 - 3\cdot 11) =  - 35 + 3\cdot 12\ \ra\ y_1 = -1 \\
+& & 21 - 5\cdot 4 = 1 \ \ra \ 1 = 21 - 5\cdot 4 \ \ra\ y_2 = 1 \\
+& & 15 - 7\cdot 2 = 1 \ \ra \ 1 = 15 - 7\cdot 2 \ \ra\ y_3 = 1
+\eeast
+
+Thus, $x_i = y_ic_i $ with $x_1 = y_1c_1 = -1\cdot 2 = -2$, $x_2 = y_2 c_2 = 1\cdot 3 = 3$, $x_3 = y_3 c_3 = 1\cdot 2 = 2$. Thus,
+\be
+x = \sum_i m_ix_i = 35 \cdot (-2) + 21 \cdot 3 +15 \cdot 2 = -70 + 63 + 30 = 23.
+\ee
+\end{example}
+
+\subsection{Wilson's theorem}
+
+\begin{theorem}[Wilson's theorem\index{Wilson's theorem}]\label{thm:wilson_number_theory}
+For any prime $p$,
+\be
+(p-1)!\equiv -1 \lmod{p}.
+\ee
+\end{theorem}
+
+\begin{example}
+For $p=7$, $(p-1)!= 6! = 720 = 721 -1 = 7\cdot 103 -1 \equiv -1 \lmod{7}$.
+\end{example}
+
+\begin{proof}[\bf Proof]
+{\bf Approach 1.} For $p=2$ the conclusion is obvious. Assume $p$ is an odd prime, then for each $a=1,2,\dots, p-1$, we have $a^2 \equiv  1\lmod{p}$ if and only if $p\mid (a-1)(a+1)$, if and only if $a\equiv \pm 1\lmod{p}$. Therefore, if $a\not\equiv \pm 1 \lmod{p}$, then there exists $b\not\equiv a \lmod{p}$ such that $ab\equiv 1\lmod{p}$. Since the inverse $b$ is unique, we can pair them up and get $\frac 12 (p-3)$ pairs whose product is congruent to 1 with respect to $p$. So
+\be
+(p-1)! \equiv 1\cdot (p-1) = -1\lmod{p}.
+\ee
+
+{\bf Approach 2.} By considering $f\in R[X]$ where $R= \Z/p\Z$ and $p$ is prime, let
+\be
+f(X) = X^{p-1} -1 -\prod^{p-1}_{i=1}(X-i).
+\ee%we have another proof of Wilson's theorem (Theorem \ref{thm:wilson_number_theory}) by using Lagrange's theorem. 
+
+Indeed, $f$ has degree at most $p-2$ but $X=1,\dots, p-1$ are roots of $f$. Therefore, $f=0$ by Lagrange's theorem (Theorem \ref{thm:lagrange_ring}). By considering the constant term we have $-1\equiv (p-1)!\lmod{p}$.
+\end{proof}
+
+\begin{corollary}
+Let $p$ be an odd prime. Then there exists $x$ such that
+\be
+x^2 \equiv -1\lmod{p} \ \lra \ p\equiv 1 \lmod 4.
+\ee
+\end{corollary}
+
+\begin{example}
+For $p=13$, we can find $x =720$ such that
+\be
+720^2 = (55 \cdot 13 + 5)^2 \equiv 5^2 = 25 \equiv -1 \lmod{13}.
+\ee
+\end{example}
+
+\begin{proof}[\bf Proof]
+Suppose there exists $x$ such that $x^2 \equiv -1\lmod{p}$ (i.e., $-x^2 + py = 1$ thus $\gcd(x,p)=1$). Then we can apply Fermat little theorem (Theorem \ref{thm:fermat_little}), $1\equiv x^{p-1} \lmod{p}$. Then
+\be
+1 \equiv x^{p-1} = \bb{x^2}^{\frac 12(p-1)} \equiv (-1)^{\frac 12(p-1)}\lmod{p}.
+\ee
+
+This implies that $\frac 12 (p-1)$ is even and so $p\equiv 1 \lmod{4}$.
+
+Conversely, suppose $p\equiv 1\lmod{4}$. Let $r = \frac 12(p-1)$ and so $r$ is even. Then by Wilson's theorem (Theorem \ref{thm:wilson_number_theory}) and symmetry of $\bra{1,2\dots, p-1}$,
+\be
+(-1) \equiv (p-1)! \equiv (r!)^2 (-1)^r \equiv (r!)^2 \lmod{p}
+\ee
+where we write every integer $i$ between $r+1$ and $p-1$ as $p-j$ for some $j\leq r$. Then let $x:=r!$.
+\end{proof}
+
+
+%---------------------
+
+
+
+
+
+%\subsubsection{Equivalence relations and Lagrange's theorem}
+%\subsection{An application of Lagrange's theorem: Fermat's little theorem}
+
+
+%\begin{definition}[numbers coprime to $n$]
+%Let $n\in \N$. Define $R^*_n = \bra{a\in R_n|\hcf(a,n) =1}$\footnote{need definition of $\hcf$}. Define the operation $\otimes_n$ to be multiplication $\lmod{n}$, that is, $a\otimes_n b = r_n(ab)$.
+%\end{definition}
+
+%\begin{lemma}
+%$R^*_n$ is an abelian group with operation $\otimes_n$.
+%\end{lemma}
+
+%\begin{proof}[\bf Proof]
+%\ben
+%\item [(i)] Closure. If $\hcf(a,n) =1 = \hcf(b,n)$, then $\hcf(ab,n)=1$, so $(a\otimes_n b)\in R^*_n$.
+%\item [(ii)] Abelian. Multiplication in $\Z$ is abelian, so $a\otimes_n b = b\otimes_n a$.
+%\item [(iii)] Identity is 1, since $a\otimes_n 1 = a,\forall a \in R^*_n$.
+%\item [(iv)] Associativity. Multiplication in $\Z$ is associative.
+%\item [(v)] Inverses. Given $a\in R^*_n$, there exist $u,v\in \Z$ with $au+nv = 1$\footnote{see Numbers and Sets}. So $a\otimes_n u = 1\lmod{n}$. Then $r_n(u)$ is the inverse of $a$ under $\otimes_n$.
+%\een
+%\end{proof}
+
+
+
+\section{Quadratic Residues}
+
+\subsection{Quadratic Residues}
+
+\begin{definition}[quadratic residue\index{quadratic residue}, quadratic non-residue\index{quadratic non-residue}]\label{def:quadratic_residue_number_theory}
+Let $a\in \Z$ and $n\in \Z^+$ such that $\gcd(a,n)=1$. 
+
+$a$ is called a quadratic residue (QR) $\bmod\, n$ (with respect to modulo $n$) if the congruence $x^2\equiv a\lmod{n}$ has a solution. Otherwise $a$ is called a quadratic non-residue (QNR) $\bmod\, n$.
+\end{definition}
+
+\begin{remark}
+\ben
+\item [(i)] Clearly, we all QR $\bmod\, n$ and QNR  $\bmod\, n$ are in $\bb{\Z/n\Z}^\times$. Furthermore,
+\be
+\bra{\text{QR }\bmod\, n} \cup \bra{\text{QNR }\bmod\, n} = \bb{\Z/n\Z}^\times.
+\ee
+\item [(ii)] Note that if $a\mid n$ then $x^2\equiv a \lmod{n}$ is also soluble (though in this case $a$ is not a QR $\bmod n$). For instance, $a =5$ and $n=10$ with $a\mid n$, we can find $x = 5$ such that
+\be
+x^2 = 25 \equiv 5 \lmod{10}.
+\ee
+\een
+\end{remark}
+
+\begin{example}
+For $a = 4$ and $n = 5$ with $\gcd(4,5) = 1$, we can find $x=3$ such that 
+\be
+x^2 = 9 \equiv 4 \lmod{5}.
+\ee
+\end{example}
+
+\begin{lemma}
+For each $n\in \Z^+$, the set of QR $\bmod\, n$ forms a group $G$ under multiplication.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Clearly, 1 is a QR $\bmod\, n$ because $1^2 \equiv 1\lmod{n}$. If $a,b\in G$ then there exist $x,y$
+\be
+x^2 \equiv a \lmod n,\ y^2 \equiv b \lmod{n} \ \ra\ (xy)^2 \equiv ab \lmod{n}.
+\ee
+
+Let $a\in G$. Since $\gcd\bb{x^2,n} = \gcd(a,n) = 1$, we have $\gcd(x,n) =1$ thus there exists $y:=x^{-1}$ such that $xy \equiv 1 \lmod{n}$. Therefore, there exist $z,z'$
+\be
+x^2 y^2 + nz = 1 \ \ra\ a y^2 + nz' = 1 \ \ra\ y^2 \equiv a^{-1}\lmod{n} \ \ra\ a^{-1}\in G.
+\ee
+\end{proof}
+
+
+\subsection{Legendre's symbol}
+
+\begin{definition}[Legendre symbol\index{Legendre symbol}]
+Let $p$ be a prime and $a\in \Z$. Then the Legendre symbol 
+\be
+\bb{\frac{a}{p}} = \left\{\ba{ll}
+1 \quad\quad & a\text{ is a QR }\bmod\, p \\
+-1 \quad\quad & a\text{ is a QNR }\bmod\, p \\
+0 & a \equiv 0 \lmod{p}\quad (i.e., p \mid a) 
+\ea\right.
+\ee
+\end{definition}
+
+\begin{remark}
+Clearly, if $a\equiv b\lmod{p}$ for $a,b\in \Z$, then
+\be
+\bb{\frac ap} = \bb{\frac bp}.
+\ee
+\end{remark}
+
+\begin{example}
+We can see
+\be
+\bb{\frac 23} = -1,\quad \bb{\frac 27} = 1,\quad \bb{\frac {3}{13}} = 1
+\ee
+since $ 3^2 \equiv 2 \lmod{7}$ and $4^2 \equiv 3 \lmod{13}$.
+\end{example}
+
+\begin{lemma}\label{lem:size_of_qr_group_modulo_n}
+For each $n>2$, the set of QR $\bmod\, n$ has size $\phi(n)/\vp(n)$ where $\vp(n)$ is number of elements $x\in \bb{\Z/n\Z}^\times$ such that $x^2 \equiv 1\mod n$. 
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Consider the map $\theta$:
+\be
+\bb{\Z/n\Z}^\times \to \bb{\Z/n\Z}^\times, \ x\mapsto x^2.
+\ee
+
+This map is a group homomorphism under multiplication since for $x_1,x_2\in \bb{\Z/n\Z}^\times$,
+\be
+\theta(x_1x_2) = \bb{x_1x_2}^2 = x_1^2 x_2^2 = \theta(x_1)\theta(x_2).
+\ee
+
+Also, the image $\im\theta$ is the set of QR $\bmod \, n$. The kernel is the set of elements $x$ such that $x^2 \equiv 1\lmod{n}$ and thus $\abs{\ker\theta}=\vp(n)$. Then by first isomorphism theorem (Theorem \ref{thm:isomorphism_1_group}), we have
+\be
+\left.\bb{\Z/n\Z}^\times \right/ \ker\theta \cong \im \theta.
+\ee
+
+Thus, by Proposition \ref{pro:quotient_groups_order_product},
+\be
+\abs{\im \theta} = \abs{\left.\bb{\Z/n\Z}^\times \right/ \ker\theta} = \frac{\abs{\bb{\Z/n\Z}^\times}}{\abs{\ker\theta}} = \frac{\phi(n)}{\vp(n)}.
+\ee
+\end{proof}
+
+
+In particular, we have the following lemma.
+
+\begin{lemma}\label{lem:qr_mod_prime_number}
+The set (group) $G$ of QR $\bmod\, p$ has size $(p-1)/2$ for any odd prime $p$.
+\end{lemma}
+
+\begin{remark}
+The set of QNR $\bmod\, p$ also has size $(p-1)/2$ by definition since 
+\be
+\phi(p)- \abs{G} = p-1 - (p-1)/2 = (p-1)/2.
+\ee
+\end{remark}
+
+\begin{proof}[\bf Proof]
+We have $a^2\equiv 1 \lmod{p}$ if and only if $p\mid (a-1)(a+1)$, if and only if $a\equiv \pm 1\lmod{p}$. This gives that $\vp(p) = 2$. Since $\phi(p)= p-1$, we have the required result by Lemma \ref{lem:size_of_qr_group_modulo_n}.
+\end{proof}
+
+\begin{example}
+For $p=7$, The set of QR $\bmod\, 7$ is $\bra{1,2,4}$ whose size is $3 = (7-1)/2$ since
+\be
+1^2 \equiv 1 \lmod{7},\ 2^2 \equiv 4 \lmod{7},\ 3^2 \equiv 2 \lmod{7}, 4^2 \equiv 2 \lmod{7},\ 5^2 \equiv 4 \lmod{7},\ 6^2 \equiv 1 \lmod{7}.
+\ee
+
+The set of QNR $\bmod\, 7$ is $\bra{3,5,6}$ whose size is $3 = (7-1)/2$.
+\end{example}
+
+\subsection{Euler's criterion}
+
+\begin{theorem}[Euler's criterion]\label{thm:euler_criterion_number_theory}
+Let $p$ be an odd prime and $a\in \Z$. Then
+\be
+\bb{\frac ap} \equiv a^{\frac{p-1}2}\lmod{p}.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $g$ be a generator of $\bb{\Z/p\Z}^\times$. Then $g^{2k}$ are QR $\bmod\, p$ for $k=1,2,\dots, (p-1)/2$. Since there are $(p-1)/2$ QR $\bmod\, p$ by Lemma \ref{lem:qr_mod_prime_number} so these are all the QR $\bmod\, p$ and every QNR $\bmod,\ p$ has the form $g^{2k+1}$ for some $k=1,2,\dots,(p-1)/2$. If $a$ is a QR $\bmod\, p$ then $a = g^{2k}$ and so 
+\be
+\bb{\frac ap} =1 \equiv g^{k(p-1)} = a^{\frac{p-1}2}\lmod{p}.
+\ee
+as $g$ has order $p-1$. Since $x^2 \equiv 1\lmod{p}$ if and only if $x\equiv \pm 1\lmod{p}$, so $g^{\frac {p-1}2} \equiv -1 \lmod{p}$. Therefore, if $a$ is a QNR $\bmod\, p$ and $a = g^{2k+1}$ for some $k$, then
+\be
+\bb{\frac ap} = -1 \equiv g^{k(p-1) + \bb{p-1}/2} = a^{(p-1)/2}\lmod{p}.
+\ee
+
+Hence, we get the required result as it is obvious for the case $p\mid a$.
+\end{proof}
+
+\begin{corollary}\label{cor:minus_1_is_qr_iff_prime_1_mod_4}
+Let $p$ be an odd prime. Then -1 is a square with respect to modulo $p$ if and only if $p\equiv 1\lmod 4$.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+Applying Euler's criterion (Theorem \ref{thm:euler_criterion_number_theory}) with $a = -1$, we have
+\be
+\bb{\frac{-1}p} \equiv (-1)^{\frac{p-1}2}\lmod{p}.
+\ee
+
+Thus, we can have
+\be
+\bb{\frac{-1}p} = 1 \ \lra\ p\equiv 1\lmod{4} 
+\ee
+as required.
+\end{proof}
+
+
+We can use this concept to reprove Corollary \ref{cor:square_sum_iff_prime_3_mod_4_even_power}.
+
+\begin{theorem}
+Let $n$ be a positive integer. $n$ is the sum of two squares (could be zero) if and only if every prime number $p\mid n$ with $p\equiv 3\lmod{4}$ divides $n$ with an even power.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+($\ra$).  Suppose $n = x^2 + y^2$ for some $x,y$ and $p\mid n$ where $p\equiv 3\lmod{4}$. Then $x^2 \equiv -y^2\lmod{p}$. Since $-1$ is not a square $\bmod\, p$ by Corollary \ref{cor:minus_1_is_qr_iff_prime_1_mod_4}, so we must have
+\be
+x\equiv y \equiv 0\lmod{p}. \qquad (\text{Otherwise, }x^2y^{-2} \equiv -1 \lmod{p})
+\ee
+
+This means $p\mid x,y$ and so $p^2 \mid (x^2+y^2)$. Then $n^2/p^2$ is a sum of two squares and we repeat the above until $p\nmid n$. Therefore $p$ divides $n$ with an even power.
+
+($\la$). Conversely, let $n = mb^2$ where $m$ is square free. It suffices to prove that $m$ can be written as a sum of two squares. Suppose that if $p\mid n$ where $p \equiv 3\lmod{4}$ then $p$ divides $n$ with an even power. Therefore, $p\nmid m$ and so $p\mid m$ then $p=2$ or $p\equiv 1\lmod{4}$. Each such $p$ can be written as sum of two squares (by Corollary \ref{cor:prime_equals_square_sum}), and since 
+\be
+(x^2+y^2)(x'^2 + y'^2) = (xx' + yy')^2+ (xy'-x'y)^2
+\ee
+so $m$ can be written as a sum of two squares.
+\end{proof}
+
+
+
+\begin{proposition}\label{pro:product_of_legendre_symbol}
+for all integers $a,b$ and odd prime $p$,
+\be
+\bb{\frac{ab}p} = \bb{\frac ap}\bb{\frac bp}.
+\ee
+
+In particular, the map $\theta$:
+\be
+\bb{\Z/p\Z}^\times \to \bra{\pm 1},\quad a\mapsto \bb{\frac ap}
+\ee
+is a group homomorphism with kernel the set of QR $\bmod\, p$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+By Euler's criterion (Theorem \ref{thm:euler_criterion_number_theory}) we have
+\be
+\bb{\frac {ab}p} \equiv \bb{ab}^{(p-1)/2} = a^{(p-1)/2}b^{(p-1)/2}\equiv \bb{\frac ap}\bb{\frac bp}\lmod{p}. 
+\ee
+
+Since they can only be $\pm 1$, we have $\bb{\frac{ab}p} = \bb{\frac ap}\bb{\frac bp}$. This implies that $\theta$ is a group homomorphism whose kernel is the set of QR $\bmod \, p$.
+\end{proof}
+
+
+\begin{proposition}
+Let $p$ be an odd prime. Then
+\ben
+\item [(i)] $\sum^{p-1}_{a=1}\bb{\frac ap} = 0$.
+\item [(ii)] $\sum^{p-1}_{a=1}a\bb{\frac ap} \equiv 0\lmod{p}$ if $p>3$.
+\item [(iii)] $\sum^{p-1}_{a=1}\bb{\frac{a(a+1)}p} = -1$.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Let $b$ be a QNR $\bmod\, p$ (which exists for $p>2$, see Lemma \ref{lem:qr_mod_prime_number}). Then $\theta$:
+\be
+\bb{\Z/p\Z}^\times \to \bb{\Z/p\Z}^\times, \quad a\mapsto ab
+\ee
+is a bijection\footnote{Note that if $b$ is a QR $\bmod\, p$, this mapping is also bijective as all QR and QNR belong to $\bb{\Z/p\Z}^\times$.}. So
+\be
+\sum^{p-1}_{a=1}\bb{\frac ap}  = \sum^{p-1}_{a=1}\bb{\frac {ab}p} = \bb{\frac bp}\sum^{p-1}_{a=1}\bb{\frac ap}  \ \ra\ \sum^{p-1}_{a=1}\bb{\frac ap}  = 0.
+\ee
+
+\item [(ii)] Since $p>3$, we pick $b\in \bb{\Z/p\Z}^\times$ such that $b \not\equiv \pm 1, 0\lmod{p}$, and by the bijection in (i) we have
+\be
+\sum^{p-1}_{a=1}a \bb{\frac ap} \equiv \sum^{p-1}_{a=1} ab\bb{\frac {ab}p}  = b\bb{\frac bp}\sum^{p-1}_{a=1}a\bb{\frac ap} = \pm b \sum^{p-1}_{a=1}a\bb{\frac ap} 
+\ee
+
+So we have
+\be
+(1\pm b)\sum^{p-1}_{a=1}a\bb{\frac ap} \equiv 0 \lmod{p} \ \ra\ \sum^{p-1}_{a=1}a\bb{\frac ap} \equiv 0 \lmod{p}.
+\ee
+
+\item [(iii)] Since all elements in $\bb{\Z/p\Z}^\times$ have inverses, the mapping $\theta$:
+\be
+\bb{\Z/p\Z}^\times \to \bb{\Z/p\Z}^\times,\quad a\mapsto a^{-1}
+\ee
+is bijective. So by Proposition \ref{pro:product_of_legendre_symbol} we have
+\be
+\sum^{p-1}_{a=1} \bb{\frac {a(a+1)}p}  = \sum^{p-1}_{a=1} \bb{\frac{a^2}p}\bb{\frac {1+a^{-1}}p} = \sum^{p}_{b=2} \bb{\frac bp}
+\ee
+where in the last step we set $b = 1+a^{-1}$. Then by (i), we have
+\be
+\sum^{p}_{b=2} \bb{\frac bp} = \sum^{p}_{b=1} \bb{\frac bp}  - 1 = -1.
+\ee
+\een
+\end{proof}
+
+\begin{example}
+\ben
+\item [(i)] For $p = 7$, 
+\be
+1^2 \equiv 1\mod{7},\ 2^2 \equiv 4 \mod{7},\ 3^2 \equiv 2\lmod{7},\ 4^2 \equiv 2\lmod{7},\ 5^2\equiv 4\lmod{7},\ 6^2 \equiv 1 \lmod{7}.
+\ee
+
+So
+\be
+\sum^{6}_{a=1}\bb{\frac a7} = \bb{\frac 17} + \bb{\frac 27} + \bb{\frac 37}+ \bb{\frac 47} + \bb{\frac 57} + \bb{\frac 67} = 1 + 1 - 1+ 1- 1 -1 = 0.
+\ee
+
+\item [(ii)] For $p=3$, 
+\be
+\sum^2_{a=1}a\bb{\frac a3} = 1\bb{\frac 13} + 2\bb{\frac 23} = 1 \cdot 1 + 2\cdot (-1) = -1 \not\equiv 0 \lmod{3}.
+\ee
+
+For $p=5$,
+\be
+1^2 \equiv 1\mod{5},\ 2^2 \equiv 4 \mod{5},\ 3^2 \equiv 4\lmod{5},\ 4^2 \equiv 1\lmod{5}.
+\ee
+
+Thus,
+\be
+\sum^4_{a=1}a\bb{\frac a5} = 1\bb{\frac 15} + 2\bb{\frac 25} + 3\bb{\frac 35} + 4\bb{\frac 45}  = 1 \cdot 1 +  2\cdot (-1) +  3\cdot (-1) + 4\cdot 1  = 0\equiv 0 \lmod{5}.
+\ee
+
+For $p = 7$, 
+\be
+\sum^6_{a=1}a\bb{\frac a7} = 1 \cdot 1 +  2\cdot 1 +  3\cdot (-1) + 4\cdot 1 + 5\cdot (-1) + 6\cdot (-1) = -7\equiv 0 \lmod{7}.
+\ee
+
+\item [(iii)] For $p = 7$, 
+\beast
+\sum^{6}_{a=1}\bb{\frac{a(a+1)}7} & = & \bb{\frac 27} + \bb{\frac 67} + \bb{\frac {12}7} + \bb{\frac {20}7} + \bb{\frac {30}7} + \bb{\frac {42}7} \\
+& = & \bb{\frac {2}7} + \bb{\frac {6}7} + \bb{\frac 57} + \bb{\frac {6}7} + \bb{\frac {2}7} + 0 =1 -1 -1 - 1 +1 = -1.
+\eeast
+\een
+\end{example}
+
+\subsection{Gauss's lemma}
+
+\begin{theorem}[Gauss's lemma]\label{thm:gauss_lemma_number_theory}
+Let $p$ be an odd prime and $a\in\Z$ such that $\gcd(a,p)=1$. Let $a_k$ be the integer such that
+\be
+a_k \equiv a k \lmod{p},\qquad -\frac{p-1}2 \leq a_k \leq \frac{p-1}2.
+\ee
+
+Then 
+\be
+\bb{\frac ap} = (-1)^{\nu}.
+\ee
+where $\nu$ is the size of $\bra{k:a_k <0,\ 1\leq k\leq \frac{p-1}2}$, 
+\be
+\nu = \sum_{i=1}^{2m}(-1)^i\floor{\frac{ip}{2a}},\qquad m = \floor{\frac a2}.\qquad (*)
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+For each $1\leq i,j\leq \frac{p-1}2$, if $a_i = \pm a_j$, then we have
+\be
+\bb{j\pm i}a \equiv 0 \lmod{p}.
+\ee
+
+Since $-p < j\pm i< p$ and $\gcd(a,p)=1$, $j\pm i = 0$. Therefore, for all $1\leq i\neq j \leq \frac{p-1}2$, $a_i\neq \pm \abs{a_j}$. So 
+\be
+\bra{\abs{a_1},\dots, \abs{a_{\frac{p-1}2}}} = \bra{1,2,\dots, \frac{p-1}2}.
+\ee
+
+Therefore, for $k = 1,2,\dots, (p-1)/2$, 
+\be
+(-1)^\nu \bb{\frac{p-1}{2}}! = \prod_k a_k \equiv \prod_k (ak) = a^{\frac {p-1}2} \prod_k k  = a^{\frac {p-1}2} \bb{\frac{p-1}{2}}! \lmod{p} \ \ra\ a^{\frac {p-1}2} \equiv (-1)^\nu \lmod{p}
+\ee
+where $\nu$ is the size of $\bra{k:a_k <0,\ 1\leq k\leq \frac{p-1}2}$. Then we have the required result by applying Euler's criterion (Theorem \ref{thm:euler_criterion_number_theory}).
+
+Furthermore, we can assume that $a\in \bb{\Z/p\Z}^\times$, since $\bb{\frac ap} = \bb{\frac bp}$ if $a\equiv b  \lmod{p}$. We can see that $\nu$ is the number of $k$ (which can be $1,2,\dots,\frac{p-1}2$) such that $ak$ is inside one of the following intervals
+\be
+\bsb{\frac p2, p},\ \bsb{\frac{3p}{2},2p},\ \dots\ , \bsb{\bb{m - \frac 12}p,mp}, \qquad m = \floor{\frac a2}.
+\ee
+
+Note that $ak$ is bounded by $mp$. If $a = 2j$, $j\in\Z$, we have
+\be
+ak \leq a \frac{p-1}2 = (p-1)j < pj = p\frac{a}{2}= mp < \bb{m+\frac 12}p.
+\ee
+
+If $a=2j+1 $, $j\in \Z$, we have $a\leq p-2 \ \ra\ j\leq \frac{p-3}2$ and
+\be
+ak \leq a\frac{p-1}2 = \frac 12\bb{2j+1}(p-1) = pj + \frac p2 - \frac 12 -j < \bb{j + \frac 12}p = \bb{m+\frac 12}p.
+\ee
+
+Therefore $\nu$ is the number $k$ such that $k$ is in one of the intervals
+\be
+\bsb{\frac p{2a}, \frac{2p}{2a}},\ \bsb{\frac{3p}{2a},\frac{4p}{2a}},\ \dots\ , \bsb{\frac{\bb{2m - 1}p}{2a},\frac{2mp}{2a}}.
+\ee 
+
+The end points of the intervals are not integers since $\gcd(a,p) =1$. Since the number of integers inside an interval $[\alpha,\beta]$ with $\alpha,\beta\notin\Z$ is $\floor{\beta} - \floor{\alpha}$, this proves the statement.
+\end{proof}
+
+\begin{example}
+\ben
+\item [(i)] For $p=7$ and $a=3$, we have that 
+\be
+\bra{a_1,a_2,a_3} = \bra{3,-1,2} \ \ra\ \bra{\abs{a_1},\abs{a_2},\abs{a_3}} = \bra{1,2,3}.
+\ee
+
+Therefore, $\nu = 1$ and thus
+\be
+\bb{\frac 37} = (-1)^1 = -1
+\ee
+which is consistent with the fact that 3 is QNR $\bmod\, 7$.
+
+Furthermore, $m = \floor{\frac{a}{2}} = 1$. Thus,
+\be
+\nu = \sum^2_{k=1}(-1)^k\floor{\frac {7k}6} = - \floor{\frac 76} + \floor{\frac {14}6} = -1 + 2 = 1.
+\ee
+
+\item [(ii)] For $p =13$ and $a = 5$, we can see that $\bb{\frac 5{13}} = -1$ by definition. Alternatively, we can have $m = 2$ and 
+\be
+\nu = \sum^4_{k=1} (-1)^k\floor{\frac{13k}{10}} = -\floor{\frac {13}{10}} + \floor{\frac {26}{10}}  -\floor{\frac {39}{10}} +  \floor{\frac {52}{10}} = -1 + 2-3 + 5 = 3.
+\ee
+
+Thus $\bb{\frac 5{13}} = (-1)^3 = -1$.
+\een
+\end{example}
+
+\begin{corollary}
+Let $p$ be an odd prime. Then $\bb{\frac 2p} = 1$ if and only if $p \equiv \pm 1\lmod{8}$.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+Using Gauss's lemma (Theorem \ref{thm:gauss_lemma_number_theory}), we let $a=2$. Thus, $a_k = 2k$ for $1\leq k \leq \floor{\frac p4}$ and $a_k = 2k-p<0$ for $\floor{\frac p4} < k \leq \frac{p-1}2$. Therefore, $\nu = \frac{p-1}2 - \floor{\frac p4}$ and 
+\be
+\nu \text{ is even} \ \lra \ p \equiv \pm 1\lmod{8}.
+\ee
+\end{proof}
+
+\begin{example}
+For $p=7$, $7\equiv -1 \lmod{8}$ and thus $\bb{\frac 27} = 1$.
+
+For $p=5$, $5\not\equiv \pm 1\lmod{8}$ and thus $\bb{\frac 25} = -1$.
+\end{example}
+
+\subsection{Law of quadratic reciprocity}
+
+We now study the relation between $\bb{\frac pq}$ and $\bb{\frac qp}$ for odd primes $p$ and $q$.
+
+\begin{lemma}\label{lem:distinct_odd_primes_pm_congruence_legendre_symbol}
+Let $p,q$ be distinct odd primes and $a\in \Z$ such that $\gcd(a,p) = \gcd(a,q)=1$. If $p\equiv \pm q\lmod{4a}$, then $\bb{\frac ap} = \bb{\frac aq}$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Let $\nu_1,\nu_2$ be the numbers for $p,q$ respectively as in Gauss's lemma (Theorem \ref{thm:gauss_lemma_number_theory}). Then by Gauss's lemma it suffices to show that $\nu_1$ and $\nu_2$ have the same parity (i.e., the difference is even). 
+
+Suppose $p\equiv q \lmod{4a}$, then $\floor{\frac{ip}{2a}}$ and $\floor{\frac{iq}{2a}}$ have the same parity for all $i$. Then $\nu_1,\nu_2$ have the same parity by ($*$) in Gauss's lemma.
+
+Suppose $p\equiv -q\lmod{4a}$, then $\floor{\frac{ip}{2a}}$ and $\floor{\frac{-iq}{2a}}$ have the same parity for all $i$. Since $\floor{\alpha} = -\floor{\alpha}-1$ for all non-integer real number $\alpha$ and so non-integer $\floor{\frac{ip}{2a}}$ and $\floor{\frac{iq}{2a}}$ have different parities. Since there are $2m$ terms having different parities, $\nu_1$ and $\nu_2$ have the same parity by ($*$) in Gauss's lemma.
+\end{proof}
+
+\begin{theorem}[law of quadratic reciprocity for Legendre's symbol]\label{thm:law_of_quadratic_reciprocity_legendre_symbol}
+Let $p,q$ be distinct odd primes. Then
+\be
+\bb{\frac pq} \bb{\frac qp} = (-1)^{\frac{(p-1)(q-1)}4}.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Suppose $p\not\equiv q\lmod{4}$ then $4\mid (p+q)$ and let $p+q=4a$ for some $a\in \Z$. Then
+\be
+\bb{\frac pq} = \bb{\frac{4a-q}{q}} = \bb{\frac{4a}{q}} = \bb{\frac{4}{q}}\bb{\frac{a}{q}} = \bb{\frac{a}{q}} 
+\ee
+since $4$ is always a QR $\bmod\, q$ and $\bb{\frac 4q} = 1$. Similarly, we have 
+\be
+\bb{\frac qp} = \bb{\frac ap} 
+\ee
+
+Then by Lemma \ref{lem:distinct_odd_primes_pm_congruence_legendre_symbol}, since $p \equiv -q\lmod{4a}$ so
+\be
+\bb{\frac{p}{q}} = \bb{\frac{a}{q}} =\bb{\frac{a}{p}} =  \bb{\frac{q}{p}} \ \ra\ \bb{\frac{p}{q}}\bb{\frac{q}{p}} = 1 \quad \text{if }p+q\equiv 0\lmod{4}.
+\ee
+
+Suppose now $p\equiv q\lmod{4}$, then $4\mid\bb{p-q}$ and $p-q = 4a$ for some $a\in \Z$. Then
+\be
+\bb{\frac pq} = \bb{\frac{4a+q}{q}} = \bb{\frac{4a}{q}} = \bb{\frac{a}{q}} ,\quad \bb{\frac qp}  = \bb{\frac {p-4a}p} = \bb{\frac{-a}{p}}.
+\ee
+
+Then by Lemma \ref{lem:distinct_odd_primes_pm_congruence_legendre_symbol}, since $p \equiv q\lmod{4a}$ so
+\be
+\bb{\frac{p}{q}} = \bb{\frac{a}{q}} = \bb{\frac{a}{p}}=   \bb{\frac{-1}{p}} \bb{\frac{-a}{p}} = \bb{\frac{-1}{p}} \bb{\frac{q}{p}} \equiv \bb{-1}^{\frac{p-1}2} \bb{\frac{q}{p}} \lmod{p}
+\ee
+by Euler's criterion (Theorem \ref{thm:euler_criterion_number_theory}). Thus, we have if $p\equiv q \equiv 1\lmod{4}$,
+\be
+\bb{\frac{p}{q}} \bb{\frac {q}p} = \bb{-1}^{\frac{p-1}2} = 1
+\ee
+and if $p\equiv q\equiv 3\lmod{4}$.,
+\be
+\bb{\frac{p}{q}} \bb{\frac {q}p} = \bb{-1}^{\frac{p-1}2} = -1.
+\ee
+
+This is what we want in the statement by checking $p$ and $q$.
+\be
+ \ \ra\ \bb{\frac{p}{q}}\bb{\frac{q}{p}} = 1 \quad \text{if }p+q\equiv 0\lmod{4}.
+\ee
+\end{proof}
+
+\begin{example}
+For $p =5$ and $q = 7$,
+\be
+\bb{\frac pq} \bb{\frac qp} = \bb{\frac 57} \bb{\frac 75} =  \bb{\frac 57} \bb{\frac 25} = (-1)(-1) = 1 = (-1)^{\frac{4\cdot 6}4} = (-1)^{\frac{(5-1)(7-1)}4}.
+\ee
+\end{example}
+
+\begin{corollary}
+Let $p$ be an odd prime. Then -3 is quadratic residue $\bmod\, p$ if and only if $p\equiv 1\lmod{3}$. 
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+By Euler criterion (Theorem \ref{thm:euler_criterion_number_theory}) and law of quadratic reciprocity (Theorem \ref{thm:law_of_quadratic_reciprocity_legendre_symbol}), we have
+\be
+\bb{\frac{-3}p} = \bb{\frac{-1}{p}}\cdot \bb{\frac 3p} =\underbrace{ (-1)^{\frac{p-1}2}}_{\text{Euler criterion}} \cdot \underbrace{(-1)^{\frac{(p-1)(3-1)}4}\bb{\frac p3}}_{\text{law of quadratic reciprocity}} = \bb{\frac p3}.
+\ee
+
+Therefore $\bb{\frac{-3}p} = 1$ if and only if $\bb{\frac p3} = 1$, if and only if $p\equiv 1\lmod{3}$.
+\end{proof}
+
+\subsection{Jacobi's symbol}
+
+Now we make the generalization of Legendre's symbol.
+
+\begin{definition}[Jacobi's symbol]
+Let $n>1$ be a positive odd integer and $n = \prod_i p_i$ as a product of primes, not necessarily distinct. Then for any integer $a\in \Z$, the Jacobi's symbol is defined by
+\be
+\bb{\frac an} = \prod_i \bb{\frac a{p_i}}.
+\ee
+
+By convention we also define $\bb{\frac an} =1$ if $n=1$.
+\end{definition}
+
+\begin{remark}
+This definition implies that $\bb{\frac an} = 0$ if $\gcd(a,n) >1$. 
+
+Note that $\bb{\frac an} = 1$ does not imply $a$ is QR $\bmod\, n$. For example, if $a=2$ and $n=15$ then
+\be
+\bb{\frac 2{15}} = \bb{\frac{2}{3}}\bb{\frac{2}{5}} = (-1)(-1) = 1.
+\ee
+
+But if 2 is QR $\bmod\, 15$ then 2 is QR $\bmod\,3$, which is a contradiction. 
+
+But if $\bb{\frac an} = -1$ then $a$ is a QNR $\bmod\, n$ because by definition, $\bb{\frac an} =-1$ implies $\bb{\frac ap} = -1$ for some prime $p\mid n$. So $a$ is a QNR $\bmod\, p$ and hence a QNR $\bmod \, n$ (see Lemma \ref{lem:qr_product_iff_qr_coprime_factor}).
+\end{remark}
+
+\begin{proposition}
+Let $n>1$ be a positive odd integer and $a\equiv b\lmod{n}$ for $a,b\in \Z$. Then their Jacobi's symbols 
+\be
+\bb{\frac an} = \bb{\frac bn}.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Since $a\equiv b\lmod{n}$, there exists $x\in \Z$ such that $b = a+ xn$. So by definition we have $n = \prod_i p_i$ and
+\be
+\bb{\frac bn} = \prod_i\bb{\frac b{p_i}} = \prod_i\bb{\frac {a+xn}{p_i}} =\prod_i\bb{\frac {a}{p_i}} = \bb{\frac an}.
+\ee
+\end{proof}
+
+\begin{proposition}\label{pro:jacobi_symbol_product}
+Let $n>1$ be a positive odd integer. Then for any $a,b\in \Z$,
+\be
+\bb{\frac {ab}n} = \bb{\frac an}\bb{\frac bn}.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+By definition of Jacobi's symbol, we have $n = \prod_i p_i$ and
+\be
+\bb{\frac {ab}n} = \prod_i\bb{\frac {ab}{p_i}}= \prod_i\bb{\frac {a}{p_i}}\bb{\frac {b}{p_i}} = \prod_i\bb{\frac {a}{p_i}}\prod_i\bb{\frac {b}{p_i}} = \bb{\frac {a}n}\bb{\frac {b}n}.
+\ee
+\end{proof}
+
+\begin{proposition}
+Let $n$ be a positive odd integer. $\bb{\frac 2n}=1$ if and only if $n\equiv \pm 1\lmod{8}$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Let $n = \prod_i p_i$ and so $\bb{\frac 2n} = \prod_i \bb{\frac 2{p_i}}$. If $p_i\equiv \pm 3\lmod{8}$, by Lemma \ref{lem:distinct_odd_primes_pm_congruence_legendre_symbol} we have
+\be
+\bb{\frac{2}{p_i}} = \bb{\frac 23} = -1.
+\ee
+
+Similarly, if $p_i\equiv \pm 1\lmod{8}$, by Lemma \ref{lem:distinct_odd_primes_pm_congruence_legendre_symbol} we have
+\be
+\bb{\frac{2}{p_i}} = \bb{\frac 13} = 1.
+\ee
+
+Thus, 
+\be
+\bb{\frac 2n} = \prod_i \bb{\frac 2{p_i}} = (-1)^m
+\ee
+where $m$ is the number of $p_i$ such that $p_i \equiv \pm 3\lmod{8}$. So $m$ is even if and only if $n\equiv \pm 1\lmod{8}$.
+\end{proof}
+
+\begin{example}
+\ben
+\item [(i)] For $n = 15$, we have $15\equiv - 1\lmod{8}$ and thus we can assert that $\bb{\frac 2{15}} = 1$. %Indeed, we can find 
+
+\item [(ii)] For $n= 17$, we have $17\equiv 1\lmod{8}$ and thus we can assert that $\bb{\frac 2{17}} = 1$. Indeed, we can find 6 such that $6^2 \equiv 2 \lmod{17}$.
+\een
+\end{example}
+
+
+\begin{theorem}[law of quadratic reciprocity for Jacobi's symbol]\label{thm:law_of_quadratic_reciprocity_jacobi_symbol}
+Let $m,n$ be odd positive integers such that $\gcd(m,n) = 1$. Then Jacobi's symbols have relation
+\be
+\bb{\frac mn}\bb{\frac nm} = (-1)^{\frac{(m-1)(n-1)}4}.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $n = \prod_i p_i$ and $m = \prod_j q_j$ where $p_i \neq q_j$ for all $i,j$. Then by definition of Jacobi's symbol, Proposition \ref{pro:jacobi_symbol_product} and law of quadratic reciprocity for Legendre's symbol]\label{thm:law_of_quadratic_reciprocity_legendre_symbol}
+\be
+\bb{\frac mn}\bb{\frac nm} = \prod_i \bb{\frac{m}{p_i}} \prod_j \bb{\frac{n}{q_j}} = \prod_i \prod_j \bb{\frac{q_j}{p_i}} \bb{\frac{p_i}{q_j}} = \prod_i \prod_j (-1)^{\frac{(p_i-1)(q_j-1)}4} = \prod_i \prod_j (-1)^{a_{ij}}
+\ee
+where $a_{ij} =-1$ if $p_i \equiv q_j\equiv 3\lmod{4}$ and $a_{ij} = 1$ otherwise.
+
+Therefore, $\prod_i\prod_j (-1)^{a_{ij}} = (-1)^{uv}$ where $u$ is the number of $p_i \equiv 3\lmod{4}$ and $v$ is the number of $q_j$ such that $q_j\equiv 3\lmod{4}$. Note that $u$ is even if and only if $n\equiv 1 \lmod{4}$ and $v$ is even if and only if $m\equiv 1 \lmod{4}$. So $uv$ has the same parity as $\frac{m-1}2\frac{n-1}2$.
+\end{proof}
+
+
+\begin{example}
+For $m= 7$ and $n = 9$, we have that $4^2 \equiv 7\lmod{9}$, $3^2 \equiv 9\lmod{7}$
+\be
+\bb{\frac {7}{9}} = 1, \ \bb{\frac 97} = 1 \ \ra\ \  \bb{\frac {7}{9}}\bb{\frac 97} = 1 = (-1)^{\frac{(7-1)(9-1)}{4}}.
+\ee
+\end{example}
+
+
+\subsection{Hensel's lemma and QR with respect to modulo $\mathbf{n}$}
+
+We want to determine whether $a$ is a QR $\bmod\, n$ for given integers $a$ and $n$. First we want to decompose the integer $n$.
+
+\begin{lemma}\label{lem:qr_product_iff_qr_coprime_factor}
+For integer $n>1$ and $n = \prod_i n_i$ where $n_i\in \Z^+$ are pairwise coprime. Then an integer $x$ with $\gcd(x,n)=1$ is a QR $\bmod\, n$ if and only if $x$ is a QR $\bmod\, n_i$ for each $i$. 
+\end{lemma}
+
+\begin{remark}
+This lemma can imply that for $n = \prod_i p_i^{a_i}$ with distinct primes $p_i$, $x$ is a QR $\bmod\, n$ if and only if $x$ is a QR $\bmod\, p_i^{a_i}$ for each $i$. 
+\end{remark}
+
+\begin{proof}[\bf Proof]
+($\ra$). It is obvious that if there exists $y$ such that $y^2 \equiv x \lmod{n}$, we have $y^2 = x+ nz$ for $z\in \Z$. Since $n_i \mid n$, we have $y^2 = x + n_i z_i$ with $z_i\in \Z$. Thus, $x$ is a QR $\bmod\, n_i$ for each $i$. 
+
+($\la$). If $x$ is a QR $\bmod\, n_i$ for each $i$, then we can find $y_i$ such that for each $i$
+\be
+y_i^2 \equiv x \lmod{n_i}.
+\ee
+
+Then by Chinese remainder theorem (Theorem \ref{thm:chinese_remainder_number_theory}), we can find $y\in \Z/n\Z$ such that for each $i$
+\be
+y \equiv y_i \lmod{n_i} \ \ra\ \ y^2 \equiv y_i^2 \equiv x \lmod{n_i}\ \ra\ n_i\mid \bb{y^2 -x}. 
+\ee
+
+Since $n_i$ are pairwise coprime, we have that $n\mid \bb{y^2 -x}$ which implies that $y^2 \equiv x\lmod{n}$. Therefore, $x$ is a QR $\bmod\, n$. 
+\end{proof}
+
+\begin{theorem}[Hensel's lemma\index{Hensel's lemma}]\label{thm:hensel_lemma_number_theory}
+For each odd prime $p$, $x$ is a QR $\bmod \, p$ if and only if $x$ is a QR $\bmod\, p^n$ for all $n\geq 1$. 
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Obviously, if $x$ is a QR $\bmod\, p^n$ for all $n\geq 1$ then $x$ is a QR $\bmod\, p$. 
+
+Conversely, if $x$ a QR $\bmod\, p$, then we prove by induction that $x$ is a QR $\bmod\, p^n$ for all $n\geq 1$. This is true for $n=1$. Suppose $x$ is a QR $\bmod\, p^{n-1}$ where $n\geq 2$, then exists $y,k$ such that
+\be
+y^2 =  x + p^{n-1}k
+\ee
+where $\gcd(y,p)=1$ because $\gcd(x,p)=1$. 
+
+We search for an element of the form $y + p^{n-1}b$ such that $\bb{y + p^{n-1}b}^2 \equiv x \lmod{p^n}$. Then we must have
+\be
+\bb{y + p^{n-1}b}^2 = x + p^{n-1}(k+2by) + p^{2n-2}b^2 \equiv x \lmod{p^n}.
+\ee
+
+Since $2n-2\geq n$ so we need to pick $b$ such that 
+\be
+k + 2by \equiv 0 \lmod{p}
+\ee
+and so $b \equiv - 2^{-1}y^{-1}k \lmod{p}$. Such $b$ exists because $\gcd(2,p)=1$ and so $2^{-1}$ exists.
+\end{proof}
+
+\begin{theorem}\label{thm:qr_mod_power_of_2_iff_2}
+Let $x$ be an odd integer. Then 
+\ben
+\item [(i)] $x$ is a QR $\bmod\, 2$ if and only if $x\equiv 1\lmod{2}$.
+\item [(ii)] $x$ is a QR $\bmod\, 2^2$ if and only if $x\equiv 1\lmod{4}$
+\item [(iii)] $x$ is a QR $\bmod\, 2^n$ for all $n\geq 3$ if and only if $x\equiv 1\lmod{8}$.
+\een
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Obviously,  if $x$ is odd then $x\equiv 1\equiv 1^2 \lmod{2}$ if and only if $x$ is QR $\bmod\, 2$. 
+\item [(ii)] If $x$ is a QR $\bmod\, 2^2$ then $x\equiv 1\lmod{4}$ because
+\be
+1^2 \equiv 3^2 \equiv 1 \lmod{4}.
+\ee 
+
+Conversely, let $x\equiv 1\lmod{4}$ and we can find $1$ such that $1^2 = 1\equiv x\lmod{4}$ which implies that $x$ is a QR $\bmod\, 2^2$.
+
+\item [(iii)] If $x$ is a QR $\bmod\, 2^n$ for all $n\geq 3$ then $x\equiv 1 \lmod{8}$ because
+\be
+1^2 \equiv 3^2 \equiv 5^2 \equiv 7^2 \equiv 1 \lmod{8}.
+\ee%By (i) and (ii), we know that $x$ is 
+
+Conversely, let $x\equiv 1 \lmod{8}$. We prove by induction that $x$ is a QR $\bmod\, 2^n$ for all $n\geq 3$. It is clearly true for $n=3$ as $x\equiv 1^2\lmod{8}$. Suppose $x$ is a QR $\bmod\,2^{n-1}$ where $n\geq 4$, then there exist integers $y,k$ such that
+\be
+y^2 = x+ 2^{n-1}k
+\ee
+where $y$ is odd thus $\gcd(y,2^n)=1$. We search an element of the form $y + 2^{n-2}b$ such that $\bb{y + 2^{n-2}b}^2 \equiv x \lmod{2^n}$. Then we must have 
+\be
+y^2 + 2^{n-1}by + 2^{2n-4}b^2 = x + 2^{n-1}(k+by) + 2^{2n-4}b^2 \equiv x\lmod{2^n}.
+\ee
+So it suffices to pick $b$ such that $k$ and $b$ have the same parity. %since $k+by$ is even.
+\een
+\end{proof}
+
+\begin{example}
+\ben
+\item [(i)] Let $n = 15= 3\cdot 5$ and $x = 2$. So we have that 2 is a QNR $\bmod\, 3$. Similarly, 2 is a QNR $\bmod\, 5$. Thus, 2 is a QNR $\bmod\, 15$ by Lemma \ref{lem:qr_product_iff_qr_coprime_factor}.
+
+\item [(ii)] Let $n = 100 = 2^2\cdot 5^2$ and $x = 9$. So we have that 9 is a QR $\bmod\, 2^2$ since $9\equiv 1\lmod{8}$ by Theorem \ref{thm:qr_mod_power_of_2_iff_2}. Similarly, 9 is a QR $\bmod\, 5^2$ since 9 is QR $\bmod \, 5$ by Hensel's lemma (Theorem \ref{thm:hensel_lemma_number_theory}). Thus, 9 is a QR $\bmod\, 100$ by Lemma \ref{lem:qr_product_iff_qr_coprime_factor}.
+
+\item [(iii)] Let $n = 180 = 2^2\cdot 3^2\cdot 5 $ and $x = 17$. So we have that 17 is a QR $\bmod\, 2^2$ since $17\equiv 1\lmod{8}$ by Theorem \ref{thm:qr_mod_power_of_2_iff_2}. Similarly, 17 is a QNR $\bmod\, 3^2$ since $17\equiv 2\lmod{3}$ by Hensel's lemma (Theorem \ref{thm:hensel_lemma_number_theory}). Thus, 17 is a QNR $\bmod\, 180$ by Lemma \ref{lem:qr_product_iff_qr_coprime_factor}.
+\een
+\end{example}
+
+
+\section{Problems}
+

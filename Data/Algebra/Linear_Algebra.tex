@@ -1,0 +1,717 @@
+\chapter{Linear Algebra}%\label{cha:linear_algebra}
+
+\section{Inner Product}
+
+\subsection{Algebra and subalgebra}
+
+\begin{definition}[algebra\index{algebra}]\label{def:algebra}
+An algebra over a field is a vector space $V$ equipped with a bilinear product, that is, $\forall u,v\in V$, $uv = u\cdot v \in V$ (with Definition \ref{def:vector_space}).\footnote{need checking, see linear operators}%wiki, algebra over a field}.
+\end{definition}
+
+\begin{definition}[subalgebra\index{subalgebra}]\label{def:subalgebra}
+A subalgebra of an algebra over a commutative ring or field is a vector subspace which is closed under the multiplication of vectors.%\footnote{need checking}.
+\end{definition}
+
+\begin{remark}
+The restriction of the algebra multiplication makes it an algebra over the same ring or field\footnote{checking needed for both algebra and subalgebra}.
+\end{remark}
+
+
+\subsection{Inner product}
+
+
+\begin{definition}[inner product\index{inner product}]\label{def:inner_product}%A symmetric bilinear map $(u, v) \to \inner{u}{v} : V \times V \to \R$ is an inner product\footnote{need checking} if $\inner{v}{v} \geq 0$, with equality only if $v = 0$.
+An inner product space is a vector space $V$ over the field $\F$ ($\R$ or $\C$) together with an inner product, i.e., with a map
+\be
+\langle \cdot, \cdot \rangle : V \times V \to \F
+\ee
+that satisfies the following three axioms for all vectors $x,y,z \in V$ and all scalars $\lm \in \F$:
+\ben
+\item [(i)] Conjugate symmetry:
+\be
+\langle x,y\rangle =\overline{\langle y,x\rangle}.
+\ee
+
+Note that when $\F = \R$, conjugate symmetry reduces to symmetry. That is,
+\be
+\langle x,y \rangle = \langle y,x \rangle
+\ee
+for $\F = \R$; while for $\F = \C$, $\langle x,y \rangle$ is equal to the complex conjugate of the number $\langle y,x \rangle$.
+
+\item [(ii)] Linearity in the first argument:
+\beast
+\langle \lm x,y\rangle & = & \lm \langle x,y\rangle,   \\
+\langle x+y,z\rangle & = & \langle x,z\rangle + \langle y,z\rangle.
+\eeast
+
+Together with conjugate symmetry, this implies conjugate linearity in the second argument (below).
+
+\item [(iii)] Positive-definiteness:
+\be
+\langle x,x\rangle \geq 0,\qquad     \langle x,x\rangle = 0 \Rightarrow x = 0.
+\ee
+\een
+\end{definition}
+
+
+
+\begin{example}[dot product on $\R^n$]
+The real space $\R^n$ with the dot product is an inner product space,% (see Definition \ref{def:inner_product}),%, an example of a Euclidean $n$-space.
+\be
+\inner{x}{y} = \bsa{\begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix},\begin{bmatrix} y_1 \\ \vdots \\ y_n \end{bmatrix} } := x^T y = \sum_{i=1}^n x_i y_i = x_1 y_1 + \cdots + x_n y_n, \qquad x,y\in \R^n
+\ee
+where $x^T$ is the transpose of $x$.
+\end{example}
+
+\begin{example}[dot product on $\C^n$]
+The complex space $\C^n$ with the dot product is an inner product space,% (see Definition \ref{def:inner_product}),%, an example of a Euclidean $n$-space.
+\be 
+\inner{x}{y} = \bsa{ \begin{bmatrix} x_1 \\ \vdots \\ x_n \end{bmatrix}, \begin{bmatrix} y_1 \\ \vdots \\ y_n \end{bmatrix} } := x^* y = \sum_{i=1}^n \ol{x_i} y_i = \ol{x_1} y_1 + \cdots +\ol{x_n} y_n, \qquad x,y\in \C^n
+\ee where $x^*$ is the adjoint of $x$.
+\end{example}
+
+\begin{example}
+Instead of the usual $\R^n$ vector space, we can consider $\sL^2(E)$ where $E\subseteq \R$, the set of all real square-integrable functions as a vector space. We can define the following inner product: for $f,g\in \sL^2(E)$,
+\be
+\inner{f}{g} = \int_0^1f(x)g(x)d x.
+\ee
+
+Note that that the integral is well-defined (see H\"older's inequality (Theorem \ref{thm:holder_inequality_measure})).
+\end{example}
+
+\begin{definition}[orthogonal vectors]
+For $x,y\in V$ over $\F$ with an inner product $\inner{\cdot}{\cdot}$, we call $x,y$ are orthogonal vectors as $x$ is orthogonal to $y$ if $\inner{x}{y} = 0$.
+\end{definition}
+
+\begin{theorem}[Pythagorean theorem\index{Pythagorean theorem!inner product}]\label{thm:pythagorean_inner_product}
+For orthogonal vectors $x,y\in V$ over $\F$ with an inner product $\inner{\cdot}{\cdot}$, a norm of vector can be defined by $\dabs{v} := \sqrt{\inner{v}{v}}$ for all $v\in V$. Then we have
+\be
+\dabs{x}^2 + \dabs{y}^2 = \dabs{x+y}^2.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+We have
+\be
+\dabs{x+y}^2 = \inner{x+y}{x+y} = \inner{x}{x} + \inner{y}{y} + \inner{x}{y} + \inner{y}{x} = \inner{x}{x} + \inner{y}{y} = \dabs{x}^2 + \dabs{y}^2
+\ee
+as required.
+\end{proof}
+
+
+
+
+
+\subsection{Cauchy-Schwarz inequality}
+
+\begin{theorem}[Cauchy-Schwarz inequality for inner product\index{Cauchy-Schwarz inequality!inner product}]\label{thm:cauchy_schwarz_inequality_inner_product}
+Let $x, y$ be arbitrary vectors in a vector space $V$ over $\F$ with an inner product $\inner{\cdot}{\cdot}$. %, where F is the field of real or complex numbers.
+If we define the vector norm $\dabs{v} = \sqrt{\inner{v}{v}}$ for all $v\in V$, we have that
+\be
+\abs{\inner{x}{y}} \leq \dabs{x} \dabs{y},\qquad \text{or}\qquad     \abs{\inner{x}{y}}^2 \leq \inner{x}{x} \cdot \inner{y}{y}.
+\ee
+
+Moreover, the two sides are equal if and only if $x$ and $y$ are linearly dependent (or, in a geometrical sense, they are parallel or one of the vectors' magnitude is zero).
+\end{theorem}
+
+\begin{remark}
+For any inner product, $\inner{\cdot}{\cdot}$, the map $x \mapsto \sqrt{\inner{x}{x}}$ is a vector norm since for all $x,y \in V$ and $\alpha \in \F$
+\be
+\dabs{\alpha x} = \sqrt{\inner{\alpha x}{\alpha x}} = \sqrt{\alpha\ol{\alpha} \inner{x}{x}} = |\alpha|\dabs{x},
+\ee
+
+and
+\beast
+\dabs{x+y}^2 & = & \inner{x+y,x+y} = \inner{x}{x} + \inner{y}{y} + \inner{x}{y} + \inner{y}{x} \\
+& \leq & \inner{x}{x} + \inner{y}{y} + 2\abs{\inner{x}{y}} \leq \inner{x}{x} + \inner{y}{y}  + 2\dabs{x} \dabs{y} \\
+& = & \bb{\dabs{x} + \dabs{y}}^2
+\eeast
+by the Cauchy-Schwarz inequality.%\footnote{details needed.}.
+\end{remark}%\footnote{need definition}
+
+
+\begin{proof}[\bf Proof]%Let $u, v$ be arbitrary vectors in a vector space V over F with an inner product, where F is the field of real or complex numbers.
+We prove the inequality \be \abs{\inner{x}{y} } \leq \dabs{x}\dabs{y}, \ee and the fact that equality holds only when $x$ and $y$ are linearly dependent (the fact that conversely one has equality if
+$x$ and $y$ are linearly dependent is immediate from the properties of the inner product).
+
+If $y = 0$ it is clear that we have equality, and in this case $x$ and $y$ are also linearly dependent (regardless of $x$). We henceforth assume that $y$ is nonzero. Let
+\be
+z := x - \frac {\inner{x}{y}} {\inner{y}{y}} y.
+\ee
+
+Then, by linearity of the inner product in its first argument, one has
+\be
+\inner{z}{y} = \inner{u -\frac {\inner{x}{y}} {\inner{y}{y} } y}{y} = \inner{x}{y} - \frac {\inner{x}{y}} {\inner{y}{y}} \inner{y}{y} = 0,
+\ee
+i.e., $z$ is a vector orthogonal to the vector $y$ (Indeed, $z$ is the projection of $x$ onto the plane orthogonal to $y$.) We can thus apply the Pythagorean theorem (Theorem
+\ref{thm:pythagorean_inner_product}) to
+\be
+x= \frac {\inner{x}{y}} {\inner{y}{y}} y + z,
+\ee
+which gives
+\be
+\dabs{x}^2 = \abs{\frac{\inner{x}{y}}{\inner{y}{y}}}^2 \dabs{y}^2 + \left\|z\right\|^2 = \frac{\abs{\inner{x}{y}}^2}{\dabs{y}^2} + \dabs{z}^2 \geq \frac{\abs{\inner{x}{y}}^2}{\dabs{y}^2},
+\ee
+and, after multiplication by $\dabs{y}^2$, the Cauchy-Schwarz inequality. Moreover, if the relation '$\geq$' in the above expression is actually an equality, then $\dabs{z}^2 = 0$ and hence $z = 0$; the definition of
+$z$ then establishes a relation of linear dependence between $x$ and $y$. This establishes the theorem.
+\end{proof}
+
+\begin{proof}[\bf Alternative Proof] %Let u, v be arbitrary vectors in a vector space V over F with an inner product, where F is the field of real or complex numbers.
+If $\inner{x}{y} = 0$, the theorem holds trivially.
+
+If not, then $x \neq 0, y \neq 0$. Choose $\lm = \frac{\abs{\inner{x}{y}}}{\inner{x}{y}}$. Then $\abs{\lm} = 1$, and
+\be
+0 \le \dabs{\frac{\lambda x}{\|x\|} - \frac{y}{\|y\|}}^2 = |\lm|^2 \frac{\|x\|^2}{\|x\|^2} - 2 \Re\bb{\inner{\frac{\lambda x}{\|x\|}}{\frac{y}{\|y\|} }} + \frac{\|y\|^2}{\|y\|^2} = 2 - 2 \frac{\Re\bb{\lambda \inner{x}{y}}}{\|x\|\|y\|}
+\ee
+It follows that
+\be
+\abs{\inner{x}{y}} = \Re\bb{\abs{\inner{x}{y}}} = \Re\bb{\lambda \langle x, y \rangle} \le \|x\|\|y\|
+\ee
+as required.
+\end{proof}
+
+\subsection{Gram-Schmidt orthonormalization}
+
+\begin{definition}[orthonormal set\index{orthonormal set}]\label{def:orthonormal_set}
+The vector $x_1,\dots,x_k\in \C^n$ form an orthogonal set if \be x^*_i x_j = 0 \qquad \forall 1\leq i\leq j\leq k \ee and the vectors are normalized, i.e., \be x_i^*x_i = 1,\qquad \forall
+i=1,\dots,k. \ee
+
+Then the set is called orthonormal.
+\end{definition}
+
+\begin{remark}
+Note that the orthonormal is with respect to the dot product (thus an inner product) of vectors.
+\end{remark}
+
+
+Gram-Schmidt orthonormalization is a method for orthonormalizing a set of vectors in an inner product space, most commonly the Euclidean space $\R^n$.
+
+The Gram-Schmidt orthonormalization takes a finite, linearly independent set $S = \bra{v_1, \dots, v_k}$ for $k \leq n$ and generates an orthogonal set $S' = \bra{u_1, \dots, u_k}$ that spans the
+same $k$-dimensional subspace of $\R^n$ as $S$.
+
+\begin{algorithm}[Gram-Schmidt orthonormalization\index{Gram-Schmidt orthonormalization}]\label{alg:gram_schmidt_orthonormalization}
+Let $\bra{x_1,\dots,x_n}$ be a set of $n$ linearly independent vector in a vector space over complex and let $\bra{z_1,\dots,z_n}$ be the orthonormal vectors to be determined. The $z_1$ may be
+calculated in turn as follows. Let $y_1 = x_1$ and choose
+\be
+z_1 = \frac{y_1}{\inner{y_1}{y_1}^{1/2}}
+\ee
+so that $z_1$ is normalized. Let $y_2 = x_2 - \inner{x_2}{z_1}z_1$, so that $y_2$ is orthogonal to $z_1$, and choose
+\be
+z_2 = \frac{y_2}{\inner{y_2}{y_2}^{1/2}}
+\ee
+so that $z_2$ is normalized and is orthogonal to $z_1$. % as
+%\be
+%\inner{z_2}{z_1} = \inner\frac{y_2}{\inner{y_2}{y_2}^{1/2}} {\frac{y_1}{\inner{y_1}{y_1}^{1/2}}}
+%\ee
+The process continues similarly. Assuming $z_1,\dots,z_{k-1}$ have been determined and $z_1,\dots,z_{k-1}$ are orthonormal, let
+\be
+y_k = x_k - \inner{x_k}{z_{k-1}}z_{k-1} - \inner{x_k}{z_{k-2}}z_{k-2} - \dots - \inner{x_k}{z_{1}}z_{1}.
+\ee
+so that $y_k$ is orthogonal to $z_1,\dots,z_{k-1}$. To see this, we check $i = 1,\dots,k-1$,
+\beast
+\inner{y_k}{z_i} & = & \inner{x_k}{z_i} - \inner{x_k}{z_{k-1}}\inner{z_{k-1}}{z_i} - \inner{x_k}{z_{k-2}}\inner{z_{k-2}}{z_i} - \dots - \inner{x_k}{z_{1}}\inner{z_{1}}{z_i} \\
+& = & \inner{x_k}{z_i} - \inner{x_k}{z_i}\inner{z_i}{z_i} = 0.
+\eeast
+
+Note that $z_1,\dots,z_{k-1},x_k$ are linearly independent since $z_1,\dots,z_{k-1}$ are linear combination of $x_1,\dots,x_{k-1}$. Thus, $y_k
+\neq 0$. Hence, the normalized $y_k$ is well-defined and let
+\be
+z_k = \frac{y_k}{\inner{y_k}{y_k}^{1/2}}.
+\ee
+
+Continue until the desired orthonormal vectors $z_1,\dots,z_n$ have been produced.
+
+Note that an infinite orthonormal set could be produced from a countably infinite linearly independent set in an infinite-dimensional vector space in this way.
+\end{algorithm}
+
+\begin{remark}
+At each step in the Gram-Schmidt process, the orthonormal vectors $z_1,\dots,z_k$ are linear combination of the original independent vectors $x_1,\dots,x_k$ only (and vice versa). If we denote $Z =
+\bb{z_1,z_2,\dots,z_n}$ and $X = \bb{x_1,x_2,\dots,x_n}$, matrices that have as columns the vectors $z_i$ and $x_i$, respectively, then $Z = XR$, where the matrix $R = \bb{r_{ij}}$ is nonsingular
+(with diagonal entries 1) and upper triangular; that is, $r_{ij} = 0$ whenever $i>j$.
+
+Finally, we note that the Gram-Schmidt process may be applied to any finite or countably (not necessarily linearly independent) sequence of vectors. If the set is not independent, it will produce a
+vector $y_k =0$ for the least value of $k$ for which $\bra{x_1,\dots,x_k}$ is a linearly dependent set. In this case, $x_k$ is a linear combination of $x_1,\dots,x_{k-1}$. Then we can substitute
+$x_k$ with $x_{k+1}$ and continue the Gram-Schmidt process.
+\end{remark}
+
+
+\subsection{Orthogonal complement}
+
+\begin{definition}[orthogonal complement\index{orthogonal complement!inner product}]\label{def:orthogonal_complement_inner_product}
+Let $V$ be vector space and $U\subseteq V$ be a non-empty subset of $V$. Then the orthogonal complement of $U$ is defined by
+\be
+U^\perp := \bra{x\in V: \inner{x}{y}=0\text{ for all }y\in U},
+\ee
+where $\inner{\cdot}{\cdot}$ is inner product.
+
+The orthogonal complement $U^\perp$ of $U$ is a subspace of $V$ even if $U$ is not.
+\end{definition}
+
+\begin{proposition}\label{pro:orthogonal_complement_iff_complement_plus_all_inner_product_zero}
+Let $U,W\leq V$ where $V$ has dimension $n$. Then the following two are equivalent.
+\ben
+\item [(i)] $U$ and $W$ are complement (see Definition \ref{def:complement_subspace}) and $\inner{u}{w} =0$ for all $u\in U$ and $w\in W$.
+\item [(ii)] $U = W^\perp$.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+(i) $\ra$ (ii). Since $\inner{u}{w} =0$ for all $u\in U$ and $w\in W$, we have that $U \subseteq W^\perp$ by Definition \ref{def:orthogonal_complement_inner_product}. If there exists $x\notin U$ such that $x\in W^\perp$, we can write it as $x = x_1 +x_2$ where $x_1\in U$ and $x_2\in W$ as $U$ and $W$ are complement. Thus, for all $y\in W$.
+\be
+0 = \inner{x}{w} = \inner{x_1}{y} + \inner{x_2}{y} = \inner{x_2}{y}
+\ee
+since $x_1\in U$ and $\inner{u}{w} =0$ for all $u\in U$ and $w\in W$. Letting $y = x_2$, we have
+\be
+\inner{x_2}{x_2} = 0 \ \ra\ x_2 = 0.
+\ee
+
+Thus, $x=x_1\in U$. Contradiction. Hence, $U = W^\perp$.
+
+(ii) $\ra$ (i). Since $U = W^\perp$,
+\be
+U = \bra{x\in V: \inner{x}{y}=0\text{ for all }y\in W} \ \ra\ \text{$\inner{u}{w} =0$ for all $u\in U$ and $w\in W$}.
+\ee
+
+If there exists $x\neq 0$ such that $x\in U$ and $x\in W$, then
+\be
+\inner{x}{x} = 0 \ \ra\ x = 0 \text{ contradiction} \ \ra\ U\cap W = \bra{0}.
+\ee
+
+Finally, we want to show that $U+W = V$ ($W^\perp + W = V$). Let $T = U+W$ and $\dim T = k$. If $k = n$, we have that $T = V$ by Proposition \ref{pro:dimension_subspace_property}. It $k<n$, we can choose an orthonormal basis $\bra{z_1,\dots,z_k}$ in $T$ (see Algorithm \ref{alg:gram_schmidt_orthonormalization}) and extend it to orthonormal basis $\bra{z_1,\dots,z_k,x_{k+1},\dots,x_n}$ in $V$. Thus, there exists an element $x$ in the basis of $V$ orthogonal to $T$. Since $T$ contains $W$, $x$ is orthogonal to $W$ and therefore $x\in W^\perp$. But $W^\perp \subseteq T$ and thus $x\in T$. Contradiction. Hence, $V = T = U+W$. Consequently, $U$ and $W$ are complement by Definition \ref{def:complement_subspace}.
+\end{proof}
+
+
+%Then from Proposition \ref{pro:orthogonal_complement_iff_complement_plus_all_inner_product_zero} we have
+
+\begin{proposition}\label{pro:orthogonal_complement_sum_and_twice_complement}
+Let $U\leq V$ be the subspace of $V$ with dimension $n$. Then
+\ben
+\item [(i)] $V = U\oplus U^\perp$.
+\item [(ii)] $\bb{U^\perp}^\perp = U$.
+\een
+\end{proposition}
+
+\begin{remark}
+Note that Proposition \ref{pro:orthogonal_complement_iff_complement_plus_all_inner_product_zero} and Proposition \ref{pro:orthogonal_complement_sum_and_twice_complement} only hold for finite dimensional case. In general, $U \subseteq (U^{\perp})^\perp$.\footnote{link needed in linear analysis}
+\end{remark}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Direct result from Proposition \ref{pro:orthogonal_complement_iff_complement_plus_all_inner_product_zero}.(i) and Lemma \ref{lem:direct_sum_vector_space}.
+
+\item [(ii)] Since $U^\perp$ and $U$ are complement and $\inner{x}{y} =0$ for all $x\in U$ and $y\in U^\perp$ by Proposition \ref{pro:orthogonal_complement_iff_complement_plus_all_inner_product_zero}.(i). Then we can change the order of $U$ and $U^\perp$, $U$ and $U^\perp$ are complement (see Definition \ref{def:complement_subspace}) and $\inner{y}{x} = \ol{\inner{x}{y}} =0$ for all $y\in U^\perp$ and $x\in U$. Therefore, we have that $\bb{U^\perp}^\perp = U$ by Proposition \ref{pro:orthogonal_complement_iff_complement_plus_all_inner_product_zero}.(ii).
+\een
+\end{proof}
+
+
+\section{Linear maps}%, matrices}
+
+\subsection{Basic definitions and properties}
+
+\begin{definition}[linear map\index{linear map!vector space}]\label{def:linear_map_vector_space}
+Let $V, W$ be vector spaces over $\F$. The map $\alpha : V \to W$ is a linear map (or homomorphism\index{homomorphism!linear map}) if
+\beast
+\alpha(v_1 + v_2) & = & \alpha(v_1) + \alpha(v_2)\\
+\alpha(\lm v) & = & \lm\alpha(v)
+\eeast
+for $v, v_1, v_2 \in V$, $\lm \in \F$.
+\end{definition}
+
+\begin{remark}
+In linear algebra, linear maps are sort of 'homomorphism'.
+\end{remark}
+
+\begin{example}
+\ben
+\item [(i)] The map $D : D(\R) \to F(\R) = \R^\R\footnote{need definition}$, $f \to \frac{df}{dt}$ is linear.
+\item [(ii)] The map $\int^x_0 : C[0, 1] \to F[0, 1]$, $f \mapsto \int^x_0 f(t) dt$ is linear.
+\item [(iii)] If $A$ is an $m \times n$ matrix, the map $\alpha : \F^n \to \F^m$, $x \mapsto Ax$ is linear.
+\een
+\end{example}
+
+\begin{lemma}
+Let $U, V,W$ be vector spaces.
+\ben
+\item [(i)] $\iota_v : V \to V$, $v \mapsto v$ is linear.
+\item [(ii)] If $U \stackrel{\beta}{\to} V \stackrel{\alpha}{\to} W$ with $\alpha, \beta$ linear, then so is $\alpha \circ \beta : U \to W$.
+\een
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+\footnote{need proof}
+\end{proof}
+
+\begin{lemma}\label{lem:basis_linear_map_existence_uniqueness}
+Let $V, W$ be vector spaces over $\F$, let $B$ be a basis for $V$. If $\alpha_0 : B \to W$ is any map, there is a unique linear map $\alpha : V \to W$ which extends $\alpha_0$, so $\alpha(v) = \alpha_0(v)$ for all $v \in B$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+For $v \in V$ with $v = \lm_1v_1 + \dots + \lm_nv_n$ where $v_i \in B$, $\lm_i \in \F$, we can define
+\be
+\alpha(v) := \sum \lm_i\alpha_0(v_i) = \sum \lm_i\alpha(v_i)
+\ee
+with  $\alpha(v) = \alpha_0(v)$ for all $v \in B$. %must have $\alpha(v) = \sum \lm_i\alpha_0(v_i)$.
+Thus $\alpha$ is linear.
+
+If $\forall v\in V$, we have two linear maps $\alpha_1,\alpha_2$ such that $\alpha_1(v) = \alpha_2(v) = \alpha(v)$. We have that
+\be
+\alpha_1(v) = \alpha_1 \bb{\sum^n_{i=1}\lm_iv_i} = \sum^n_{i=1} \lm_i\alpha_1(v_i) = \sum^n_{i=1} \lm_i\alpha_0(v_i)= \sum^n_{i=1} \lm_i\alpha_2(v_i) = \alpha_2\bb{\sum^n_{i=1} \lm_i v_i} = \alpha_2(v).
+\ee
+
+Thus, the linear map is unique.
+\end{proof}
+
+\begin{definition}[isomorphism\index{isomorphism!vector space}]\label{def:isomorphism_vector_space}
+If $V, W$ are vector spaces over $\F$, the map $\alpha : V \to W$ is an isomorphism if it is linear and bijective. Write $V \cong W$ if an isomorphism $V\to W$ exists. We say that $V$ and $W$ are isomorphic.
+\end{definition}
+
+\begin{definition}[endomorphism\index{endomorphism!vector space}]\label{def:endomorphism_vector_space}
+An endomorphism is a linear map with $V\to V$ ($V = W$).
+\end{definition}
+
+\begin{definition}[automorphism\index{automorphism!vector space}]\label{def:automorphism_vector_space}
+An automorphism is a bijective linear map with $V\to V$ ($V = W$).
+\end{definition}
+
+\begin{proposition}\label{pro:isomorphism_vector_space_property}
+$\cong$ is an equivalence relation on the set of vector spaces over $\F$.
+\ben
+\item [(i)] $\iota_V : V \to V$ is an isomorphism (of course, automorphism).
+\item [(ii)] If $\alpha : V \to W$ is an isomorphism, then $\alpha^{-1} : W \to V$ is an isomorphism.
+\item [(iii)] If $U \stackrel{\alpha}{\to} V \stackrel{\beta}{\to} W$ are isomorphisms then so is $\beta \circ \alpha : U \to W$.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+(i) and (iii) are obvious.
+
+For (ii), suppose $\alpha$ is an isomorphism so $\alpha^{-1} : W \to V$ exists and is a bijection.
+\beast
+\alpha^{-1}(w_1 + w_2) & = & \alpha^{-1}(\alpha(v_1) + \alpha(v_2)) = \alpha^{-1}(\alpha(v_1 + v_2)) = v_1 + v_2 = \alpha^{-1}(w_1) + \alpha^{-1}(w_2)\\
+\alpha^{-1}(\lm w) & = & \alpha^{-1}(\lm\alpha(v)) = \alpha^{-1}(\alpha(\lm v)) = \lm v = \lm\alpha^{-1}(w)
+\eeast
+
+So $\alpha^{-1}$ is linear.
+\end{proof}
+
+\begin{theorem}\label{thm:finite_dimension_isomorphism}
+If $V$ is a vector space over $\F$ of finite dimension $n$, then $V \cong \F^n$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Choose a basis $v_1, \dots, v_n$ by Lemma \ref{lem:finite_basis_linearly_independent_spanning_equivalent}. The map $\alpha : V \to \F^n$, $\sum^n_{i=1} \lm_iv_i \mapsto (\lm_1, \dots, \lm_n)^T$ is an isomorphism.
+\end{proof}
+
+\begin{theorem}\label{thm:isomorphim_same_dimension}
+The vector spaces $V, W$ over $\F$ are isomorphic if and only if they have the same dimension.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+($\la$). If $v_1, \dots, v_n$ and $w_1, \dots,w_n$ are bases for $V$ and $W$, respectively, then the map $\alpha : V \to W$, $\sum^n_{i=1} \lm_iv_i \mapsto \sum^n_{i=1} \lm_iw_i$ is an isomorphism ($V \cong \F^n \cong W$ by Theorem \ref{thm:finite_dimension_isomorphism}).
+
+($\ra$). The image of a basis of $V$ under an isomorphism is a basis of $W$, i.e., let $B$ be a basis of $V$, $\alpha : V \to W$ an isomorphism. Then $\alpha(B)$ is a basis of $W$.
+
+If $w \in W$, then $w = \alpha(v)$ for some $v \in V$; write $v = \sum^n_{i=1} \lm_iv_i$ with $v_1, \dots, v_n \in B$, $\lm_i \in \F$. Then $w = \alpha\bb{\sum \lm_iv_i} = \sum \lm_i\alpha(v_i)$. Then if $\lm_1\alpha(v_1)+\dots+\lm_n\alpha(v_n) = 0$ then $\alpha(\lm_1v_1+\dots+\lm_nv_n) = 0$ so $\lm_1v_1+\dots+\lm_nv_n = 0$ by definition of linear map (Definition \ref{def:linear_map_vector_space}). %as $\alpha$ is injective.
+Hence $\lm_i = 0$ for all $i$ as $B$ is a basis of $V$.%$B$ is independent.
+\end{proof}
+
+\begin{remark}
+These isomorphisms are not natural, they depend on the choice of bases.
+\end{remark}
+
+\begin{definition}[nullspace\index{nullspace}, nullity\index{nullity}, rank\index{rank!linear map}]\label{def:nullspace_nullity}
+Let $\alpha : V \to W$ be a linear map. We define the nullspace and image of $\alpha$,
+\be
+\ker(\alpha) = \bra{v \in V : \alpha(v) = 0} = N(\alpha),\qquad \im(\alpha) = \bra{w \in W : w = \alpha(v) \text{ for some }v \in V }.
+\ee
+
+Then $N(\alpha) \leq  V$, $\im(\alpha) \leq  W$.
+
+Note that $\alpha$ is injective if and only if $N(\alpha) = \bra{0}$ and surjective if and only if $\im(\alpha) = W$.
+
+Define $\nullity(\alpha) = \dim \bb{N(\alpha)}$, the nullity of $\alpha$, and $\rank(\alpha) = \dim \bb{\im(\alpha)}$, the rank of $\alpha$.
+\end{definition}
+
+\begin{theorem}[rank-nullity theorem]\label{thm:rank_nullity}
+Let $V , W$ be vector spaces over $\F$ with $\dim_\F V$ finite. Let $\alpha : V \to W$ be a linear map. Then $\dim V = \rank(\alpha) + \nullity(\alpha)$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $v_1, \dots, v_k$ be a basis for $N(\alpha)$, extend to $v_1, \dots, v_k, v_{k+1}, \dots, v_n$ a basis for $V$ by Lemma \ref{lem:linearly_independent_extend_basis}. We claim that $\alpha(v_{k+1}), \dots, \alpha(v_n)$ is a basis for $\im(\alpha)$.
+
+$\forall w \in \im(\alpha)$, say $w = \alpha(v)$ for some $v \in V$, then $v = \sum^n_{i=1} \lm_iv_i$ for some $\lm_i \in \F$ as $v_1, \dots, v_k, v_{k+1}, \dots, v_n$ a basis for $V$. So
+\be
+w = \alpha(v) = \sum^n_{i=1} \lm_i\alpha(v_i) = \sum^n_{k+1} \lm_i\alpha(v_i), \qquad (\alpha(v_{k+1}), \dots, \alpha(v_n)\text{ span }\im (\alpha))
+\ee
+since $\alpha(v_i) = 0$ for $i = 1, \dots, k$. Then
+\be
+\sum^n_{i=k+1} \lm_i\alpha(v_i) = 0 \ \ra \ \alpha\bb{\sum^n_{i=k+1} \lm_iv_i} = 0 \ \ra\ \sum^n_{i=k+1} \lm_iv_i \in N(\alpha),
+\ee
+so it can be written as $\sum^k_{i=1} \lm_iv_i$. But $v_1, \dots, v_n$ are linearly independent, so $\lm_i = 0$ for $i = 1, \dots, n$. Thus, $\alpha(v_{k+1}), \dots, \alpha(v_n)$ are linearly independent. Thus $\alpha(v_{k+1}), \dots, \alpha(v_n)$ is a basis for $\im(\alpha)$ by Definition \ref{def:basis_vector_space}.
+\end{proof}
+
+\begin{remark}
+The rank-nullity theorem is a linear version of the first isomorphism theorem (Theorem \ref{thm:isomorphism_1_group}).
+
+Let $V$ be a vector space over $\F$ and $N \leq V$. Then $V/N = \bra{v +N : v \in V}$ is a vector space over $\F$ with the operations defined as follows.
+\beast
+(v_1 + N) + (v_2 + N) & = & (v_1 + v_2) + N\\
+\lm(v + N) & = & (\lm v) + N
+\eeast
+
+Write $U = V/N$, $u = v + N$. Choose a basis $v_1, \dots, v_k, v_{k+1}, \dots, v_n$ for $V$ containing the basis $v_1, \dots, v_k$ for $N(\alpha)$. Then $u_{k+1}, \dots, u_n$ is a basis for $U$. Hence $\dim V/N = \dim V - \dim N$. Now let $\alpha : V \to W$ be linear for some vector space $W$ over $\F$. Then $V/N(\alpha) \cong \im(\alpha)$. The map $v + N(\alpha) \mapsto \alpha(v)$ is linear. Hence $\dim \im(\alpha) = \dim \bb{V/N(\alpha)} = \dim V - \dim N(\alpha)$.
+\end{remark}
+
+\begin{corollary}\label{cor:same_dimension_linear_map_equivalent}
+Let $V$ be a vector space of finite dimension over $\F$, let $\alpha : V \to V$ be a linear map. (More generally, consider $\alpha : V \to W$ with $\dim V = \dim W$.) The following are equivalent.
+\ben
+\item [(i)] $\alpha$ is an isomorphism.
+\item [(ii)] $\alpha$ is surjective.
+\item [(iii)] $\alpha$ is injective.
+\een
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+(i) $\ra$ (ii),(iii) are obivoius.
+
+(ii) $\ra$ (i). If $\alpha$ is surjective, we have $\im (\alpha) = W$. Then by rank-nullity theorem \ref{thm:rank_nullity}, we have
+\beast
+\dim V = \nullity(\alpha) + \rank(\alpha) = \dim \bb{\im(\alpha)} + \dim\bb{N(\alpha)} = \dim W + \dim\bb{N(\alpha)} \ \ra \ \dim \bb{N(\alpha)} = 0 \ \ra \ N(\alpha) = \bra{0}\quad (*)
+\eeast
+
+Thus, $\forall \alpha(v_1) = \alpha(v_2) \in W$ for some $v_1,v_2 \in V$, we have
+\be
+\alpha(v_1 - v_2) = 0 \ \ra \ v_1 - v_2 = 0 \ \ra \ v_1 = v_2
+\ee
+by ($*$). Thus, $\alpha$ is injective. So $\alpha$ is bijective and therefore isomorphism.
+
+(iii) $\ra$ (i). We use the same argument of rank-nullity theorem to prove that $\alpha$ is injective imples that $\alpha$ is also surjective.%\footnote{need proof by applying the rank-nullity theorem}
+\end{proof}
+
+\subsection{The vector space of linear maps}
+
+\begin{definition}[vector space of linear maps]\label{def:vector_space_linear_maps}
+Let $U, V$ be vector spaces over $\F$. $\sL(U, V ) = \bra{\alpha : U \to V | \alpha\text{ linear}}$ is a vector space over $\F$ with
+\beast
+(\alpha_1 + \alpha_2)(u) & = & \alpha_1(u) + \alpha_2(u)\\
+(\lm\alpha)(u) & = & \lm\alpha(u)
+\eeast
+for $u \in U$, for $\alpha, \alpha_1, \alpha_2 \in \sL(U, V)$, $\lm \in \F$.
+\end{definition}
+
+\begin{remark}
+To show this is a vector space over $\F$, consider the vector space of all functions $U \to V$ and show $\sL(U, V)$ is a subspace.
+\end{remark}
+
+\begin{proposition}\label{pro:finite_linear_maps_dimension}
+If $U, V$ are vector spaces over $\F$, then $\sL(U, V )$ is a vector space over $\F$. If both $U, V$ are finite dimensional, then so is $\sL(U, V)$ and $\dim \bb{\sL(U, V )} = \dim U \dim V$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+We know that $\sL(U, V )$ is a vector space over $\F$ by Definition \ref{def:vector_space_linear_maps}. It remains to check the dimension claim.
+
+Let $u_1, \dots, u_n$ be a basis for $U$, let $v_1, \dots, v_m$ be a basis for $V$. For $1 \leq  i \leq  m$, $1 \leq  j \leq  n$, define $\ve_{ij} : u_k \mapsto \delta_{jk}v_i$ for $1 \leq  k \leq  n$, and extend linearly ($\delta_{ij}$ is Kronecker delta, see Definition \ref{def:kronecker_delta}). Then $\ve_{ij} \in \sL(U, V)$, and there are $mn$ functions of this form. Now we want to show that they form a basis.
+
+If $\sum_{i,j} \lm_{ij}\ve_{ij} = 0$, then in particular for all $1 \leq  k \leq  n$,
+\be
+0 = \sum_{i,j} \lm_{ij}\ve_{ij}(u_k) = \sum_{i,j} \lm_{ij}\delta_{jk}v_i = \sum_i \lm_{ik}v_i.
+\ee
+
+Now the $v_i$ are linearly independent, so $\lm_{ik} = 0$ for all $1 \leq  i \leq  m$. This is true for all $1 \leq  k \leq  n$, so the $\ve_{ij}$ are linearly independent.
+
+Now $\forall \alpha \in\sL(U, V)$, say $\alpha(u_k) = \sum_i a_{ik} v_i$. Then
+\be%\ve_{ij}\bb{ \sum_{i,j} a_{ij}u_k} =
+\sum_{i,j} a_{ij}\bb{\ve_{ij}(u_k)} = \sum_{i,j} a_{ij}\delta_{jk}v_i= \sum_i a_{ik}v_i = \alpha(u_k)
+\ee
+for any $1 \leq  k \leq  n$, so the maps are equal on a basis of $U$, hence they are equal by Lemma \ref{lem:basis_linear_map_existence_uniqueness}. Thus, $\ve_{ij}$ span $\sL(U,V)$. Therefore, $\ve_{ij}$ is a basis by Definition \ref{def:basis_vector_space}.
+\end{proof}
+
+\subsection{Relation between linear maps and matrices}
+
+Now we can see the relation between linear maps and matrices.
+
+\begin{proposition}\label{pro:relation_linear_map_matrix}
+If $\alpha : U \to V$ is linear and $\dim U = n$, $\dim V = m$, then $\sL(U, V) \cong M_{m,n}(\F)$, i.e., $\sL(U, V)$ is isomorphic to $M_{m,n}(\F)$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Let $B = \bra{u_1, \dots, u_n}$ and $C = \bra{v_1, \dots, v_m}$ be bases for $U$ and $V$, respectively.
+
+We have that $\dim \bb{\sL(U,V)} = mn$ by Proposition \ref{pro:finite_linear_maps_dimension} and $\dim_\F M_{m,n}(\F) = mn$ by Proposition \ref{pro:matrix_dimension}.
+
+Then by Theorem \ref{thm:isomorphim_same_dimension}, $\theta : \sL(U, V) \to M_{m,n}(\F)$, $\alpha \mapsto [\alpha]_{B,C}$ is an isomorphism.
+\end{proof}
+
+\begin{definition}\label{def:linear_map_matrix}
+Let $U, V$ be finite dimensional vector spaces over $\F$, let $\alpha : U \to V$ be linear. Fix bases $B = \bra{u_1, \dots, u_n}$ and $C = \bra{v_1, \dots, v_m}$ for $U$ and $V$, respectively.
+
+Define $A = (a_{ij})$ by $\alpha(u_j) = \sum_i a_{ij}v_i$. For $u\in U$ with $u = \sum_i \lm_iu_i$ write $[u]_B = (\lm_1, \dots, \lm_n)^T$. Then
+\be
+A = \bb{[\alpha(u_1)]_C \dots [\alpha(u_n)]_C},
+\ee
+denoted $A = [\alpha]_{B,C}$.
+\end{definition}
+
+\begin{remark}
+We can see that $A$ is a matrix.
+\end{remark}
+
+\begin{lemma}\label{lem:matrix_basis}
+For all $u \in U$, $[\alpha(u)]_C = [\alpha]_{B,C} [u]_B$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+If $u \in U$, $u = \sum_j \lm_ju_j$ so $[u]_B = (\lm_1, \dots, \lm_n)^T$, then
+\be
+\alpha(u) = \sum_j \lm_j\alpha(u_j) = \sum_j \lm_j \sum_i a_{ij}v_i = \sum_i \sum_j a_{ij}\lm_jv_i = \sum_i (A \cdot [u]_B)_iv_i.
+\ee
+so $[\alpha(u)]_C = A \cdot [u]_B$.
+\end{proof}
+
+\begin{remark}
+Let $B = \bra{u_1, \dots, u_n}$, $C = \bra{v_1, \dots, v_m}$ be bases for $U, V$, respectively. Set $\ve = \ve_B : U \to \F^n$, $u \mapsto [u]_B$, $\phi = \phi_C : V \to \F^m$, $v \mapsto [v]_C$. We have the following commuting diagram.
+\be
+\ba{ccc}
+U & \!\!\!\!\!\!\stackrel{\alpha}{\longrightarrow} & \!\!\!\!\!\! V\\
+\ve_B\ \Big\da \ \quad\qquad & &  \Big\da \ \phi_C\\
+\F^n & \!\!\!\!\!\! \stackrel{A\cdot}{\longrightarrow} & \!\!\!\!\!\!\F^m
+\ea
+\ee
+\end{remark}
+
+\begin{remark}
+In fact, $A$ as defined above is the only matrix for which $[\alpha(u)]_C = A \cdot [u]_B$ for all $u \in U$. If also $A' \cdot [u]_B = [\alpha(u)]_C$ for all $u \in U$, then this is in particular true for $u_1, \dots, u_n$. But $[u_k]_B = e_k$ and $A' \cdot e_k$ is the kth column of $A'$. This is true for each $1 \leq  k \leq  n$, so it determines the matrix.
+\end{remark}
+
+\begin{lemma}[chain rule\index{chain rule!matrix}]\label{lem:chain_rule_matrix}
+Let $U \stackrel{\alpha}{\to} V \stackrel{\beta}{\to} W$ be linear and choose bases $B,C,D$ for $U, V,W$, respectively. Then
+\be
+[\beta \circ \alpha]_{B,D} = [\beta]_{C,D} \cdot [\alpha]_{B,C}.
+\ee
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Write $A = [\alpha]_{B,C}$, $B = [\beta]_{C,D}$. Then
+\be
+\beta \circ \alpha(u_k) = \beta \sum_j a_{jk}v_j = \sum_j a_{jk} \sum_i b_{ij}w_i = \sum_i\sum_j b_{ij}a_{jk}w_i = \sum_i (BA)_{ik}w_i
+\ee
+so $[\beta \circ \alpha]_{B,D} = BA$ by Definition \ref{def:linear_map_matrix}. (That is $B\cdot A = BA$)
+\end{proof}
+
+\subsection{Change of bases}
+
+\begin{definition}[change of bases]\label{def:change_of_bases_matrix}
+Let $U, V$ be vector spaces over $\F$ with $\dim U = n$, $\dim V = m$. Suppose $U$ has bases $B = \bra{u_1, \dots, u_n}$ and $B' = \bra{u'_1, \dots, u'_n}$. The matrix $P = (p_{ij})$ is the change of bases matrix from $B$ to $B'$ if $u'_j = \sum_i p_{ij}u_i$, so (as we can write $[B']_{B'} = I_n = [B]_{B}$)
+\beast
+P := \bb{[u'_1]_B, \dots,[u'_n]_B} & = & \bb{[\iota(u'_1)_B,\dots, [\iota(u'_n)_B]} = \bb{[\iota_U]_{B'B}[u_1']_{B'} ,\dots, [\iota_U]_{B'B}[u_n']_{B'}} \\
+& = & [\iota_U]_{B'B}\bb{[u_1']_{B'} ,\dots,[u_n']_{B'}} =  [\iota_U]_{B'B}
+\eeast
+by Lemma \ref{lem:matrix_basis} and the fact that $[u'_j]_{B'} = e_j$ for each $u'_j$.
+\end{definition}
+
+\begin{remark}\label{rem:chnage_of_bases_matrix}
+By Lemma \ref{lem:matrix_basis}, $[u]_B = P[u]_{B'}$ for all $u \in U$, i.e.,
+\be
+P[u]_{B'} = [\iota_U]_{B'B} [u]_{B'} = [\iota(u)]_{B} = [u]_B.
+\ee
+
+Also, we can define $P'$ to be the change of bases matrix from $B'$ to $B$ with $[u]_{B'} = P'[u]_{B}$ for all $u\in U$. Then we have for all $u\in U$,
+\be
+[u]_B = P[u]_{B'} = PP'[u]_{B}.
+\ee
+
+Then we can let $u$ be basis $B$ components $u_1,\dots,u_n$ and have
+\be
+I_n = PP' I_n = PP'.
+\ee
+
+Similarly, we can have $I_n = P'P I_n = P'P$. Therefore, $P$ is invertible, in fact, $P^{-1}$ is the change of bases matrix from $B'$ to $B$. %Similarly, we obtain the change of basis matrix $Q$ from $C$ to $C'$.
+\end{remark}
+
+
+\begin{lemma}\label{lem:change_of_matrix_basis}
+Let $U, V$ be vector spaces over $\F$ with $\dim U = n$, $\dim V = m$ and $\alpha : U \to V$ be linear. Suppose $U$ has bases $B = \bra{u_1, \dots, u_n}$ and $B' = \bra{u'_1, \dots, u'_n}$, $V$ has bases $C = \bra{v_1, \dots, v_m}$ and $C' = \bra{v'_1, \dots, v'_m}$.
+
+Let $A = [\alpha]_{B,C}$, $A' = [\alpha]_{B',C'}$. Suppose that $P$ is the change of bases matrix from $B$ to $B'$ and $Q$ is the change of bases matrix from $C$ to $C'$. Then $A' = Q^{-1}AP$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+First, we have that $P$ and $Q$ are invertible by Remark of Definition \ref{def:change_of_bases_matrix}.
+
+Then for all $u \in U$, by Lemma \ref{lem:matrix_basis} we have
+\be
+AP[u]_{B'} = A[u]_B = [\alpha(u)]_C = Q[\alpha(u)]_{C'} = QA'[u]_{B'},
+\ee
+so $A' = Q^{-1}AP$ by choosing $u = u_1',\dots,u_n'$. 
+\end{proof}
+
+\begin{lemma}\label{lem:linear_map_equivalent_to_identity}
+Let $U, V$ be vector spaces over $\F$ with $\dim U = n$, $\dim V = m$ and $\alpha : U \to V$ be linear. There exist bases $B$ of $U$ and $C$ of $V$ such that $[\alpha]_{B,C} = \bepm I_r & 0\\ 0 & 0\eepm$ for some $r$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Let $u_{r+1}, \dots, u_n$ be a basis for $N(\alpha)$, extend this to a basis $B = \bra{u_1, \dots, u_r, u_{r+1}, \dots, u_n}$ of $U$.
+
+Then by rank-nullity theorem (Theorem \ref{thm:rank_nullity}), we have $\dim (\im(\alpha)) = n-(n-r) = r$. Also, $\alpha(u_1),\alpha(u_2),\dots,\alpha(u_r)\in \im(\alpha)$ are linearly independent since
+\be
+0 = \lm_1\alpha(u_1) + \dots + \lm_r\alpha(u_r) = \alpha (\lm_1 u_1 + \dots + \lm_r u_r) \ \ra \ \lm_1 u_1 + \dots + \lm_r u_r = 0
+\ee
+since $u_1,\dots,u_r \notin N(\alpha)$. Therefore, $\lm_1 =\dots = \lm_r = 0$ since $u_1,\dots,u_n$ is basis of $U$.
+
+Then by Lemma \ref{lem:finite_basis_linearly_independent_spanning_equivalent}, we have that $\alpha(u_1),\alpha(u_2),\dots,\alpha(u_r)\in \im(\alpha)$ is a basis for $\im(\alpha)$.
+
+Then we can extend this to a basis $C = \bra{\alpha(u_1), \dots, \alpha(u_r), v_{r+1}, \dots, v_m}$ of $V$. Then for all $u\in U$, $u = \sum_i \lm_i u_i$, since $u_{r+1},\dots,u_n\in N(\alpha)$,
+\be
+[\alpha]_{B,C} = \bb{[\alpha(u_1)]_C,\dots, [\alpha(u_r)]_C,0,\dots,0} = \bepm I_r & 0\\ 0 & 0\eepm.
+\ee
+\end{proof}
+
+\begin{lemma}\label{lem:rank_linear_map_matrix}
+Suppose $U$ and $V$ are two finite vector spaces. Let $\alpha : U \to V$ be linear, let $B$ be a basis for $U$, and $C$ be a basis for $V$. Let $A = [\alpha]_{B,C}$. Then $\rank(\alpha) = \rank(A)$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Consider the map $\theta : \im(\alpha) \to \colsp(A)$, $\alpha(u) \mapsto [\alpha(u)]_C$.
+
+Let $C = \bra{v_1,\dots,v_m}$. Then $\forall v\in V$ we can find $\lm_i \in \F$ such that $v = \sum_i \lm_iv_i$. Clearly, for any $u\in U$, $\alpha_1,\alpha_2,\alpha\in \sL(U,V)$,
+\beast
+\theta(\alpha_1(u) + \alpha_2(u)) & = & \theta\bb{(\alpha_1+\alpha_2)(u)} = [(\alpha_1+\alpha_2)(u)]_C = [(\alpha_1(u)+\alpha_2(u)]_C \\
+& = & [\alpha_1(u)]_C + [\alpha_2(u)]_C = \theta(\alpha_1(u)) + \theta(\alpha_2(u)).
+\eeast
+since $V$ is vector space. Also, $\theta(\lm \alpha(u)) = \theta (\alpha(\lm u)) = [\alpha(\lm u)]_C = \lm [\alpha(u)]_C = \lm \theta(\alpha(u))$. Thus, $\theta$ is linear.
+
+If $[\alpha_1(u)]_C = [\alpha_2(u)]_C$, we have $\lm_i = \mu_i$
+\be
+\alpha_1(u) = \sum_i \lm_i v_i = \sum_i \mu_i v_i = \alpha_2(u) \ \ra \ \theta \text{ is injective.}
+\ee
+
+$\forall \in w = \bra{w_1,\dots,w_m} \in \colsp(A)$, we can find $\alpha(u) = \sum_i w_i v_i$ which is in $\im(\alpha)$. Thus, $\theta$ is surjective. So we have that $\theta$ is bijective. Then by Definition \ref{def:isomorphism_vector_space}, $\theta$ is an isomorphism. % as $\alpha(u)$ can be presented by the basis for $C$ uniquely.
+
+Then by Theorem \ref{thm:isomorphim_same_dimension}, $\im(\alpha)$ and $\colsp(A)$ have the same dimension. That is, $\rank(\alpha) = \rank(A)$.
+\end{proof}
+
+
+\section{Endomorphisms}
+
+\begin{definition}[determinant of linear endomorphism\index{determinant!linear endomorphism}]\label{def:determinant_linear_endomorphism}
+If $\alpha : V \to V$ is a linear endomorphism, define $\det \alpha = \det[\alpha]_B (=\det[\alpha]_{B,B})$ for any basis $B$ of $V$.
+\end{definition}
+
+\begin{theorem}
+$\det : \End(V) \to \F$ has the following properties.
+\ben
+\item [(i)] $\det \iota = 1$.
+\item [(ii)] $\det \alpha \circ \beta = \det \alpha \det \beta$.
+\item [(iii)] $\det \alpha \neq 0$ if and only if $\alpha$ is invertible\footnote{need definition}, and if $\alpha$ is invertible then $\det \alpha^{-1} = (\det \alpha)^{-1}$.
+\een
+\end{theorem}
+
+\begin{remark}
+Consider the group $GL(V)$ of automorphisms of $V$ and the group $GL_n(\F)$ of invertible $n \times n$ matrices over $\F$. Then $GL(V ) \cong GL_n(\F)$ and $\det : GL_n(\F) \to \F$ is a homomorphism.
+\end{remark}
+
+\begin{definition}[trace of linear endomorphism\index{trace!linear endomorphism}]\label{def:trace_linear_endomorphism}
+For $\alpha \in \End(V)$ (see endomorphism (Definition \ref{def:endomorphism_vector_space})) we can define trace of $\alpha$, $\tr(\alpha) = \tr[\alpha]_{B,B}$, where $B$ is any basis for $V$.
+\end{definition}
+
+%\qcutline

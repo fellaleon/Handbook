@@ -1,0 +1,597 @@
+\chapter{Order Statistic}
+
+\section{Basic Distribution Theory}
+
+\subsection{Order statistic}
+
+\begin{definition}[order statistic\index{order statistic}]\label{def:order_statistic}
+Suppose that $(X_1,\dots,X_n)$ are $n$ jointly distributed random variables. Suppose that $Y_1\leq Y_2\leq \dots \leq Y_n$ represent $X_1,\dots,X_n$ when the latter are arranged in ascending order. Then $(Y_1, \dots, Y_n)$ is called order statistic of $(X_1,\dots,X_n)$. %The smallest of the $X_i$'s is denoted by $X_{1,n}$, the second smallest is denoted by $X_{2,n},\dots$, finally, the largest is denoted by $X_{n,n}$.the corresponding order statistic are the $X_i$'s arranged in non-decreasing order. That is,Thus, $X_{1,n}\leq X_{2,n} \leq \dots \leq X_{n,n}$. %Let $X_1,\dots,X_n$ be continuous random variables
+
+If $X_i$'s is identically distributed with distribution function $F$, $(Y_1, \dots, Y_n)$ is called the order statistic of distribution function $F$.
+\end{definition}
+
+\begin{remark}
+In the definition of order statistic we did not require that the $X_i$'s be identically distributed, nor did we require that they be independent. Additionally, it was not assumed that the associated distributions be continuous, nor that densities need exist.
+\end{remark}
+
+\subsection{Inverse distribution function of order statistic}
+
+\begin{lemma}\label{lem:joint_inverse_distribution_function_order_statistic}
+Let $(X_{1},\dots, X_{n})$ be order statistic of $n$ i.i.d. random variables with distribution function $F$ and $(U_{1},\dots, U_{n})$ be order statistic of $n$ identically distributed uniform $\sU(0,1)$ random variables. Then for
+\be
+F^*(u) := \inf\bra{x:F(x)\geq u},
+\ee
+we have
+\be
+\bb{F^*(U_1),\dots, F^*(U_n)} \sim \bb{X_1,\dots,X_n}.
+\ee
+
+Furthermore, if $F$ is continuous,
+\be
+\bb{F(X_1),\dots,F(X_n)} \sim \bb{U_1,\dots,U_n}.
+\ee
+\end{lemma}
+
+\begin{proof}[\bf Proof]%This is from Theorem \ref{thm:inverse_probability_transformation} and Theorem \ref{thm:probability_integral_transform} since $F^*$ is order preserving.
+Let $V_i$ be i.i.d. uniformly distributed random variables $\sU(0,1)$ and $Y_i$ be i.i.d. random variables with distribution function $F$. Thus, we have $F^*(V_i) \sim Y_i$, $1\leq i\leq n$. Then since $V_i$ and $Y_i$ are i.i.d., we have
+\beast
+\pro\bb{F^*(V_1) \leq v_1,\dots, F^*(V_n) \leq v_n} & = & \pro\bb{F^*(V_1) \leq v_1}\dots \pro\bb{F^*(V_n) \leq v_n} \\
+& = &  \pro\bb{Y_1\leq v_1}\dots \pro\bb{Y_n \leq v_n} = \pro\bb{Y_1\leq v_1,\dots Y_n \leq v_n}
+\eeast
+which implies that
+\be
+\bb{F^*(V_{1}),\dots,F^*(V_{n})} \sim \bb{Y_1,\dots,Y_n},\qquad\qquad (\mu_{F^*(V)} = \mu_Y).
+\ee
+
+Then we rearrange $Y_1,\dots, Y_n$ by ascending order as $X_1,\dots,X_n$ and $F^*(V_{i})$ by ascending order as $\bb{F^*(U_i)}$. Consider reorder as a measurable function (mapping) $H$ with $X = H\circ Y$ and $F^*(U) = H\circ F^*(V)$. Then by Proposition \ref{pro:composition_of_inverse_images}, laws of order statistic are
+\beast
+\mu_X & = & \pro\circ X^{-1} = \pro\circ \bb{H\circ Y}^{-1} = \pro \circ Y^{-1} \circ H^{-1} = \mu_Y \circ H^{-1} = \mu_{F^*(V)}\circ H^{-1} \\
+& = & \pro\circ \bb{F^*(V)}^{-1} \circ H^{-1} = \pro\circ \bb{H\circ F^*(V)}^{-1} = \pro\circ \bb{F^*(U)}^{-1} = \mu_{F^*(U)}.
+\eeast
+which implies that
+\be
+\bb{F^*(U_1),F^*(U_{2}),\dots,F^*(U_n)} \sim \bb{X_1,\dots,X_n}
+\ee
+
+In particular,
+\beast
+\pro\bb{X_n \leq x} & = & \pro\bb{Y_1\leq x,\dots,Y_n\leq x} = \pro\bb{Y_1\leq x}\dots\pro\bb{Y_n\leq x} = \pro\bb{F^*(V_1)\leq x}\dots\pro\bb{F^*(V_n)\leq x} \\
+& = & \pro\bb{F^*(V_1)\leq x,\dots,F^*(V_n)\leq x} = \pro\bb{\max_i\bra{F^*(V_i)}\leq x}= \pro\bb{U_n\leq x}.
+\eeast
+
+%and have\footnote{Rigorous proof needed.
+%}%The random variable is consider as function.}% with $X_i = Y_{n_i}$
+
+
+Since $F^*$ is increasing (Proposition \ref{pro:inverse_distribution_properties}), we have
+\be
+U_{1} \leq U_{2} \leq \dots \leq U_{n}.
+\ee
+
+Thus, $U_i$ are the order statistic of uniform distribution $\sU(0,1)$.
+
+Similarly, we have the second conclusion by Theorem \ref{thm:probability_integral_transform}.
+\end{proof}
+
+\subsection{Distribution of an order statistic}
+
+\begin{theorem}
+Let $(X_1, \dots, X_n)$ be order statistic of $n$ i.i.d. random variables with continuous distribution function $F$ and $F$ has probability density function $f$ that has support $\sS = (a,b)$, where $-\infty\leq a<b\leq \infty$. Then %If $F$'s are continuous, the joint density function of $(X_{1,n},\dots,X_{n,n})$ is %$X_{1,n}\leq \dots \leq X_{n,n}$
+\be
+f_{X_{1},\dots,X_{n}} (x_1,\dots,x_n) = n!\prod^n_{i=1} f(x_i),\qquad a < x_1<x_2<\dots < x_n<b.
+\ee
+\end{theorem}
+
+\begin{remark}
+Note that we require identically independently distributed and continuity of distribution function $F$.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Given the realizations of the $n$ order statistic to be $x_1\leq x_2\leq \dots \leq x_n$, the original values are restrained to take on the values $x_i$, which by symmetry assigns equal probability for each of the $n!$ permutations $(1,2,\dots,n)$. Hence, we have the joint density function of all $n$ order statistic to be the required result.%\beast
+%\pro\bb{X_{1}\leq x_1,\dots,X_{n-1}\leq x_{n-1}, X_{n}\leq x_n} & = & \int^{x_n}_{x_{n-1}} \pro\bb{X_{1}\leq x_1,\dots,X_{n-1}\leq x_{n-1}} f(y_n) dy_n \\
+%& = & \int^{x_n}_{-\infty} \pro\bb{X_{1,n}\leq x_1,\dots,X_{n-1,n}\leq x_{n-1}} f(x)dx
+%\eeast%For single random variable $X_i$, we have
+\end{proof}
+
+\begin{theorem}\label{thm:pdf_cdf_order_statistic}
+Let $(X_{1},\dots, X_{n})$ be order statistic of $n$ i.i.d. random variables with continuous distribution function $F$ with support $\sS = (a,b)$. Then for single random variable $X_i$, we have
+\be
+f_{X_i}(x) =  \frac {n!}{(i-1)!(n-i)!} F(x)^{i-1} (1-F(x))^{n-i}f(x),\qquad a<x<b
+\ee
+and
+\be
+F_{X_i}(x) = \int^{F(x)}_0 \frac{n!}{(i-1)!(n-i)!} t^{i-1}(1-t)^{n-i} dt = I_{F(x)}\bb{i,n-i+1},\qquad a<x<b
+\ee
+which is the incomplete beta function.
+\end{theorem}
+
+\begin{proof}[\bf Proof]%Integrating the pdf of $X_i$, we have f
+For $a<x<b$, we have %Furthermore, we have
+\beast
+f_{X_i,X_{i+1},\dots, X_n}(x,x_{i+1},\dots, x_n) & = & n!\prod^{n}_{j=i} f(x_j) \int^{x}_a \int^{x_{i-1}}_a \dots \int^{x_2}_a \prod^{i-1}_{j=1} f(x_j) dx_1dx_2\dots dx_{i-1}\\
+& = &  \frac {n!}{(i-1)!} F(x)^{i-1} \prod^{n}_{j=i} f(x_j) .
+\eeast
+
+Then we integrate the density function again,
+\beast
+f_{X_i}(x) & = & \int^b_{x}  \int^b_{x_{i+1}} \dots \int^b_{x_{n-1}}   f_{X_i,X_{i+1},\dots, X_n}(x,x_{i+1},\dots, x_n)  dx_{n} \dots dx_{i+1} \\
+& = &   \frac {n!}{(i-1)!} F(x)^{i-1} f(x) \int^b_{x}  \int^b_{x_{i+1}} \dots \int^b_{x_{n-1}}   \prod^{n}_{j=i+1} f(x_j)  dx_{n} \dots dx_{i+1}  \\
+& = &  \frac {n!}{(i-1)!} F(x)^{i-1} f(x) \frac 1{(n-i)!} (1-F(x))^{n-i}.%\int^{b}_{a} f(x_n) \int^{x_n}_a f(x_{n-1}) \dots \int^{x_{i+1}}_a f(x_{}) dx_{n-1} dx_n
+\eeast %as required.
+
+Furthermore,
+\beast
+F_{X_i}(x) & = & \pro\bb{X_i\leq x} = \pro\bb{\text{at least $i$ of original random variables are at most $x$}} \\
+& = & \sum^n_{k=i} \pro\bb{\text{exactly $k$ of original random variables are at most $x$}} \\
+& = & \sum^n_{k=i} \binom{n}{k}\bb{F(x)}^k\bb{1-F(x)}^{n-k}.
+\eeast
+
+Thus, by Lemma \ref{lem:incomplete_beta_function_integral}, we can have the required result.
+\end{proof}
+
+
+\begin{corollary}\label{cor:order_stats_min_max_density_function_distribution_function}
+Let $(X_{1},\dots, X_{n})$ be order statistic of $n$ i.i.d. random variables with continuous distribution function $F$ with support $\sS = (a,b)$. Then the density functions of minimum and maximum are
+\beast
+f_{X_1}(x) & = & n\bb{1-F(x)}^{n-1}f(x),\qquad a<x<b,\\
+f_{X_n}(x) & = & n\bb{F(x)}^{n-1}f(x),\qquad a<x<b.
+\eeast
+
+Their cumulative distribution functions are
+\beast
+F_{X_1}(x) & = & 1 - \bb{1-F(x)}^n,\qquad a<x<b,\\
+F_{X_n}(x) & = & \bb{F(x)}^n,\qquad a<x<b.
+\eeast
+\end{corollary}
+
+
+\begin{example}
+In the case of standard uniform distribution with density function $f(u) = 1$ for $u\in [0,1]$, the joint density function of all $n$ order statistic is
+\be
+f_{X_1,\dots, X_n}(u_1,\dots, u_n) = n!,\qquad 0\leq u_1\leq u_2 \leq \dots \leq u_n\leq 1
+\ee
+and density function of $X_i$ is
+\be
+f_{X_i}(x) = \frac {n!}{(i-1)!(n-i)!} x^{i-1} (1-x)^{n-i}.
+\ee
+
+For $i=1,n$, then
+\be
+f_{X_n}(x) = n x^{n-1},\qquad f_{X_1}(x) = n(1-x)^{n-1}
+\ee
+which is consistent with Proposition \ref{pro:uniform_max_min}.
+\end{example}
+
+\begin{example}\label{exa:joint_density_order_statistic_exponential}
+For exponential distribution with density function $f(x) = \lm e^{-\lm x}$ for $x\in [0,\infty)$, the joint density function of all $n$ order statistic is
+\be
+f_{X_1,\dots, X_n}(x_1,\dots, x_n) = n! \lm^n \exp\bb{-\lm \sum^n_{i=1}x_i},\qquad 0\leq x_1\leq x_2\leq \dots \leq x_n <\infty
+\ee
+and density function of $X_i$ is
+\be
+f_{X_i}(x) = \frac{n!\lm }{(i-1)!(n-i)!} \exp\bb{-\lm (n-i+1) x} \bb{1-\exp\bb{-\lm x}}^{i-1}.
+\ee
+
+For $i =1$, we have
+\be
+f_{X_1}(x) = n\lm \exp\bb{-n\lm x}
+\ee
+which is $\sE(n\lm)$ and consistent with Proposition \ref{pro:exponential_minimum}. For $i=n$,
+\be
+f_{X_n}(x) = n\lm \exp\bb{-\lm x}\bb{1-\exp\bb{-\lm x}}^{n-1}.
+\ee
+\end{example}
+
+\subsection{Distribution of two order statistic}
+
+\begin{theorem}\label{thm:joint_density_function_order_statistic}
+Let $(X_{1},\dots, X_{n})$ be order statistic of $n$ i.i.d. random variables with continuous distribution function $F$ with support $\sS = (a,b)$.. Then for $X_i$ and $X_j$ with $1\leq i< j\leq n$ and $a<x_i<x_j<b$,
+\be
+f_{X_i,X_j}(x_i,x_j) = \frac{n!}{(i-1)!(j-i-1)!(n-j)!} \bb{F(x_i)}^{i-1} \bb{F(x_j) - F(x_i)}^{j-i-1} \bb{1-F(x_j)}^{n-j}f(x_i)f(x_j).
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+With the same argument in proof of Theorem \ref{thm:pdf_cdf_order_statistic}, we have
+\be
+f_{X_i,X_{i+1},\dots,X_{j-1},X_j}(x_i,\dots,x_j) = \frac{n!}{(i-1)!(n-j)!} \bb{F(x_i)}^{i-1}\bb{1-F(x_j)}^{n-j} \prod^j_{k=i} f(x_k).
+\ee
+
+Therefore,
+\beast
+f_{X_i,X_j}(x_i,x_j) & = & \frac{n!}{(i-1)!(n-j)!} \bb{F(x_i)}^{i-1}\bb{1-F(x_j)}^{n-j} \int^{x_j}_{x_i} \int^{x_{j-1}}_{x_i} \dots \int^{x_{i+2}}_{x_i} \prod^{j-1}_{k=i+1} f(x_k) dx_{i+1} \dots dx_{j-1} \\
+& = & \frac{n!}{(i-1)!(n-j)!} \bb{F(x_i)}^{i-1}\bb{1-F(x_j)}^{n-j} \int^{x_j}_{x_i} \dots \int^{x_{i+3}}_{x_i} \prod^{j-1}_{k=i+2} f(x_k) \bb{F(x_{i+2})- F(x_i)} dx_{i+2} \dots dx_{j-1} \\
+& = &  \frac{n!}{(i-1)!(j-i-1)!(n-j)!} \bb{F(x_i)}^{i-1}\bb{1-F(x_j)}^{n-j} \bb{F(x_{i+2})- F(x_i)}^{j-i-1}
+\eeast
+as required.
+\end{proof}
+
+\begin{example}\label{exa:joint_density_2_order_statistic_exponential}
+For exponential distribution $\sE(\lm)$, we have
+\be
+f_{X_i,X_j}(x_i,x_j) = \frac{\lm^2  n!}{(i-1)!(j-i-1)!(n-j)!} e^{-\lm x_i}\bb{1-e^{-\lm x_i}}^{i-1} \bb{e^{-\lm x_i} - e^{-\lm x_j}}^{j-i-1}e^{-(n-j+1)\lm x_j}.
+\ee
+\end{example}
+
+
+\begin{theorem}
+Let $(X_{1},\dots, X_{n})$ be order statistic of $n$ i.i.d. random variables with continuous distribution function $F$ with support $\sS = (a,b)$. Then for $X_i$ and $X_j$ with $1\leq i< j\leq n$ and $a<x_i<x_j<b$,
+\be
+F_{X_i,X_j}(x_i,x_j) = \int^{F(x_i)}_0  \int^{F(x_j)}_{t_i} \frac{n!}{(i-1)!(j-i-1)!(n-i)!} t_1^{i-1}\bb{t_2-t_1}^{j-i-1} (1-t_2)^{n-i} dt_2dt_1
+\ee
+which is the incomplete bivariate beta function.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+\beast
+& & F_{X_i,X_j}(x_i,x_j) = \pro\bb{X_i\leq x_i,X_j\leq x_j} \\
+& = & \pro\left(\text{at least $i$ of original random variables are at most $x_i$ and at least $j$ of original random variables are at most $x_j$}\right) \\
+& = & \sum^n_{k=j} \sum^k_{r=i} \pro\left(\text{exactly $r$ of original random variables are at most $x_i$ and }\right.\\
+& & \qquad \qquad \qquad \left. \text{exactly $k$ of original random variables are at most $x_j$}\right) \\
+& = & \sum^n_{k=j} \sum^k_{r=i} \frac{n!}{r!(k-r)!(n-k)!} \bb{F(x_i)}^r\bb{F(x_j) - F(x_i)}^{k-r}\bb{1-F(x_j)}^{n-k}.
+\eeast
+
+Then we get the result by integrating by parts\footnote{lemma needed.}.
+\end{proof}
+
+
+
+\section{Order Statistics of Specific Distribution}
+
+\subsection{Exponential distribution}
+
+First, we give the result proposed by Sukhatme (see \cite{Sukhatme_1937}).
+
+\begin{theorem}\label{thm:difference_order_statistic_exponential}
+Let $(X_{1},\dots, X_{n})$ be order statistic of $n$ i.i.d. standard exponential distributed random variables. Then the random variables $Z_1,\dots,Z_n$, where
+\be
+Z_i = (n-i+1)(X_i - X_{i-1}),\qquad i= 1,2,\dots,n,
+\ee
+with $X_{0}=0$, are all independent and also have standard exponential distributions.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+From Example \ref{exa:joint_density_order_statistic_exponential}, we have
+\be
+f_{X_1,\dots,X_n}(x_1,\dots,x_n) = n!\exp\bb{-\sum^n_{i=1}x_i},\qquad 0\leq x_1<x_2<\dots<x_n<\infty.
+\ee
+
+For the transformation
+\be
+Z_1 = nX_1,\quad Z_2 = (n-1)(X_2 - X_1),\quad\dots \quad Z_n = X_n - X_{n-1}
+\ee
+or the equivalent transformation
+\be
+X_1 = \frac{Z_1}{n},\quad X_2 = \frac{Z_1}{n} + \frac{Z_2}{n-1},\quad \dots, \quad X_n = \frac{Z_1}{n} + \frac{Z_2}{n-1} + \dots + Z_n.
+\ee
+
+Then the Jacobian of this transformation is
+\be
+\bevm
+1/n & 1/n & \dots & 1/n \\
+& 1/(n-1) & \dots & 1/(n-1) \\
+& & \ddots & \\
+& & & 1
+\eevm = 1/n!.
+\ee
+and that
+\be
+\sum^n_{i=1}x_i = \sum^n_{i=1} (n-i+1)(x_i - x_{i-1}) = \sum^n_{i=1} z_i.
+\ee
+
+Thus, we immediately obtain the joint density function of $Z_1,Z_2,\dots,Z_n$ to be
+\be
+f_{Z_1,\dots,Z_n}(z_1,\dots,z_n) = \exp\bb{-\sum^n_{i=1}z_i},\qquad 0\leq z_1<\dots<z_n<\infty.
+\ee
+
+For single $X_i$ and $X_{i-1}$, we have from Example \ref{exa:joint_density_2_order_statistic_exponential},
+\be
+f_{X_{i-1},X_i}(x_{i-1},x_i) = \frac{n!}{(i-2)!(n-i)!} e^{-x_{i-1}}\bb{1-e^{-x_{i-1}}}^{i-2} e^{-(n-i+1) x_i}.
+\ee
+and
+\be
+X_i = \frac{Z_i}{n-i+1} + X_{i-1},\quad X_{i-1} = X_{i-1}
+\ee
+with Jacobian matrix $1/(n-i+1)$. Then
+\beast
+f_{X_{i-1},Z_{i}}(x_{i-1},z_i) & = & \frac{n!}{(i-2)!(n-i)!(n-i+1)} e^{-x_{i-1}}\bb{1-e^{-x_{i-1}}}^{i-2} e^{-(n-i+1) x_{i-1}-z_i}\\
+& = & \frac{1}{B(n-i+2,i-1)} e^{-(n-i+2)x_{i-1}}\bb{1-e^{-x_{i-1}}}^{i-2} e^{-z_i}
+\eeast
+
+According to the substitution,
+\be
+\int^\infty_0 e^{-(n-i+2)x_{i-1}}\bb{1-e^{-x_{i-1}}}^{i-2} dx_{i-1} = \int^1_0 x^{n-i+1}(1-x)^{i-2} dx = B(n-i+2,i-1).
+\ee
+
+Therefore,
+\be
+f_{Z_{i}}(z_i) = e^{-z_i}, \qquad 0\leq z_i <\infty.
+\ee
+
+Then by Theorem \ref{thm:characteristic_function_independence} we have the required result.
+\end{proof}
+
+
+
+\subsection{Uniform distribution}
+
+\begin{theorem}\label{thm:order_statistic_uniform_two_ratio_beta}
+Let $(U_{1},\dots, U_{n})$ be order statistic of $n$ i.i.d. uniform $\sU(0,1)$ random variables. Then for $1\leq i<j\leq n$, the random variables $V_1 = U_i/U_j$ and $V_2 = U_j$ are independent, with $V_1$ and $V_2$ having $\betad(i,j-i)$ and $\betad(j,n-j+1)$ distributions, respectively.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+First we have Theorem \ref{thm:joint_density_function_order_statistic}, for $0< u_i<u_j<1$,
+\be
+f_{U_i,U_j}(u_i,u_j) = \frac{n!}{(i-1)!(j-i-1)!(n-j)!} u_i^{i-1} \bb{u_j - u_i}^{j-i-1} \bb{1-u_j}^{n-j}.
+\ee
+
+Now upon making the transformation
+\be
+V_1 =  U_i/U_j,\quad V_2 = U_j,\qquad U_i = V_1V_2,\quad U_j = V_2
+\ee
+and noting that the Jocobian of this transformation is $\bevm v_2 & 0 \\ v_1 & 1 \eevm = v_2$ where $0<v_1<\infty$ and $0<v_2<1$. Therefore,
+\beast
+f_{V_1,V_2}(v_1,v_2) & = & \frac{n!}{(i-1)!(j-i-1)!(n-j)!} v_1^{i-1}v_2^{i-1} \bb{v_2 - v_1v_2}^{j-i-1} \bb{1-v_2}^{n-j} v_2\\
+& = & \frac{n!}{(i-1)!(j-i-1)!(n-j)!} v_1^{i-1} \bb{1 - v_1}^{j-i-1}v_2^{j-1}  \bb{1-v_2}^{n-j} \\
+& = & \frac{(j-1)!}{(i-1)!(j-i-1)!} v_1^{i-1} \bb{1 - v_1}^{j-i-1} \frac{n!}{(j-1)!(n-j)!} v_2^{j-1}  \bb{1-v_2}^{n-j} \\
+& = & f_{V_1}(v_1) f_{V_2}(v_2).
+\eeast
+
+Then by Theorem \ref{thm:characteristic_function_independence}, $V_1$ and $V_2$ are beta distributed and independent.
+\end{proof}
+
+\begin{theorem}\label{thm:order_statistic_uniform_ratio_beta}
+Let $(U_{1},\dots, U_{n})$ be order statistic of $n$ i.i.d. uniform $\sU[0,1]$ random variables. Then for $1\leq i_1<\dots < i_k\leq n$, the random variables
+\be
+V_1 = \frac{U_{i_1}}{U_{i_2}},\quad  V_2 = \frac{U_{i_2}}{U_{i_3}},\quad \dots ,\quad V_{k-1} = \frac{U_{i_{k}}}{U_{i_k}},\quad V_k = U_{i_k}
+\ee
+are independent, having $\betad(i_1,i_2-i_1),\betad(i_2,i_3-i_2),\dots, \betad(i_{k-1},i_k-i_{k-1})$ distributions, respectively.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Similar argument with Theorem \ref{thm:order_statistic_uniform_two_ratio_beta}.
+\end{proof}
+
+
+\begin{theorem}\label{thm:order_statistic_uniform_ratio_uniform}
+Let $(U_{1},\dots, U_{n})$ be order statistic of $n$ i.i.d. uniform $\sU[0,1]$ random variables. Then the random variables
+\be
+V_1 = \frac{U_{1}}{U_{2}},\quad  V_2 = \bb{\frac{U_{2}}{U_{3}}}^2,\quad \dots ,\quad V_{n-1} = \bb{\frac{U_{n-1}}{U_{n}}}^{n-1},\quad V_n = U_n^n
+\ee
+are independent, having uniform distributions $\sU[0,1]$, respectively.
+\end{theorem}
+
+\begin{proof}[\bf Proof]%Similar argument with Theorem \ref{thm:order_statistic_uniform_two_ratio_beta}.
+Let $X_1\leq X_2\leq \dots\leq X_n$ denote the order statistic from the standard exponential distribution. Then upon making use of the facts that $X = -\log U$ has a standard exponential distribution and Lemma \ref{lem:joint_inverse_distribution_function_order_statistic} we have %and $-\log u$ is monotonically decreasing function in $u$, we immediately have
+\be
+X_i \sim -\log U_{n-i+1},\qquad 1\leq i\leq n.
+\ee
+
+Therefore,
+\be
+V_i = \bb{\frac{U_i}{U_{i+1}}}^i \sim \bb{\frac{\exp\bb{-X_{n-i+1}}}{\exp\bb{-X_{n-i}}}}^i = \exp\bb{-i(X_{n-i+1} - X_{n-i})} \sim \exp\bb{-Y_{n-i+1}}\qquad (*)
+\ee
+upon using Theorem \ref{thm:difference_order_statistic_exponential}, where $Y_i$'s are independent standard exponential random variables. The independence of the random variables $V_1,V_2,\dots, V_n$ then readily follows. The fact that these are $\sU[0,1]$ random variables follows from ($*$) when we use the result that $\exp\bb{-Y_i}$'s are uniformly distributed.
+\end{proof}
+
+\begin{theorem}\label{thm:order_statistic_uniform_difference_uniform}
+Let $(U_{1},\dots, U_{n})$ be order statistic of $n$ i.i.d. uniform $\sU[0,1]$ random variables. Then the random variables
+\be
+X_1 = U_1,\quad  X_2 = U_2 - U_1,\quad \dots ,\quad X_{n-1} = U_{n-1} - U_{n-2} ,\quad X_n = U_n - U_{n-1},\quad X_{n+1} = 1 - U_n
+\ee
+are independent, having common distribution function and %  $\sU[0,1]$, respectively.
+\be
+\pro\bb{X_i >x} = (1-x)^n,\qquad x\in (0,1).
+\ee
+\end{theorem}
+
+%\begin{proof}[\bf Proof]
+%\footnote{proof needed. see \cite{Feller_1970}.$P_{22}$.}
+%\end{proof}
+
+\begin{remark}
+All $n+1$ intervals have the same distribution becomes clear on considering the equivalent situation on the (oriented) circle of unit length. Here $n+1$ points $U_1,\dots,U_{n+1}$ chosen independently and at random partition the circle into $n+1$ intervals, and for reasons of symmetry these intervals must have the same distribution. Imagine now the circle cut at the point $U_{n+1}$ to obtain an interval in which $U_1,\dots, U_n$ are chosen independently and at random. The lengths of the $n+1$ intervals of the induced partition are the same, and they have a common distribution.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+First, for $X_1 = U_1$, we have
+\be
+\pro(X_1>x) = 1- \pro\bb{U_1\leq x} = (1-F(x))^n = (1-x)^n
+\ee
+by Corollary \ref{cor:order_stats_min_max_density_function_distribution_function}. Then let $i=k-1$ and $j=k$ for $k\leq n$, we have $x = u_k - u_{k-1}$. Then by Theorem \ref{thm:joint_density_function_order_statistic}
+\beast
+f(x) & = & \int^{1-x}_0 \frac{n!}{(k-2)!(k-(k-1)-1)!(n-k)!} u_{k-1}^{k-1-1} \bb{x+u_{k-1} - u_{k-1}}^{k-(k-1)-1} \bb{1-(x+u_{k-1})}^{n-k} du_{k-1} \\
+ & = & \int^{1-x}_0 \frac{n!}{(k-2)!(n-k)!} u_{k-1}^{k-2} \bb{1-(x+u_{k-1})}^{n-k} du_{k-1} \\
+ & = & \frac{n(1-x)^{n-1} }{B\bb{k-1,n-k+1}} \int^{1-x}_0  \bb{\frac{u_{k-1}}{1-x}}^{k-2} \bb{1- \frac{u_{k-1}}{1-x}}^{n-k} d\bb{\frac{u_{k-1}}{1-x}} = n(1-x)^{n-1}.
+\eeast
+
+Then
+\be
+\pro(X_k>x) = \int^1_x n(1-y)^{n-1} dy = \left.- (1-y)^n\right|^1_x = (1-x)^n.
+\ee
+
+For $X_{n+1} = 1-U_n$, by Corollary \ref{cor:order_stats_min_max_density_function_distribution_function} again,
+\be
+\pro(X_{n+1} > x) = \pro\bb{U_n < 1-x} = F^n_{U_n}(1-x) = (1-x)^n.
+\ee
+\end{proof}
+
+
+\section{Asymptotic Theory of Order Statistic}
+
+\subsection{Central and intermediate order statistic}
+
+\begin{theorem}[asymptotic distribution of central order statistic]\label{thm:asymptotic_distribution_central_order_statistic}
+Let $X_1,\dots,X_n$ be a order statistic of absolutely continuous distribution $F$ (thus its density function $f$ exists\footnote{theorem needed.}). In addition, its probability density function $f$ is positive and continuous at $F^*(p)$ for $0<p<1$ (equivalently, $F$ is strictly increasing at $F^*(p)$ since $F'=f$) where $F^*$ is the inverse distribution function of distribution function $F$.
+
+Then for $i = \floor{np}+1$,
+\be
+\sqrt{n}f\bb{F^*(p)} \frac{X_i - F^*(p)}{\sqrt{p(1-p)}} \stackrel{d}{\to} \sN(0,1),\qquad  \text{as }n\to \infty.
+\ee
+\end{theorem}
+
+\begin{remark}
+$F^{*}(p)$ is actually $F^{-1}(p)$ in this case.
+\end{remark}
+
+
+%\item $F^*(D_n) \to F^*(p)$ in probability
+
+%\beast
+%\pro\bb{\abs{F^*(D_n) - F^*(p)}>\ve} & \leq & \pro\bb{\abs{F^*(U_{i,n}) - F^*(p)}>\ve} \qquad \qquad \text{(since $F^*$ is increasing)} \\
+%& = & \pro\bb{\abs{X_{i,n} - F^*(p)}>\ve} = \pro\bb{\abs{\frac{U_{i,n} - p}{f(F^*(D_n))}}>\ve}
+%\eeast
+
+\begin{proof}[\bf Proof]
+We use the proof in \cite{Arnold_Balakrishnan_Nagaraja_2008}.$P_{223}$. First we show the conclusion holds when $F$ is a uniform distribution $\sU(0,1)$. Then we use the inverse probability integral transformation (Lemma \ref{lem:joint_inverse_distribution_function_order_statistic}), $X_i \sim F^*(U_i)$ to prove it for a general $F$ satisfying the condition stated in the theorem.
+
+To show that
+\be
+\sqrt{n}\bb{U_i -p} \stackrel{d}{\to}\sN\bb{0,p(1-p)},\qquad (*)
+\ee
+as $n$ and hence $i$ approaches infinity, first we recall that $U_i$ is a $\betad(i,n-i+1)$ random variable\footnote{example needed.} with density function
+\be
+f_{U_i}(x) = \frac{n!}{(i-1)!(n-i)!} x^{i-1}(1-x)^{n-i}.
+\ee
+
+Then it can be expressed as\footnote{Proposition needed. Sum of exp(1) is gamma and $U/(U+V)$ is beta distribution for independent gamma $U,V$.}
+\be
+U_i = \frac{A_n}{A_n + B_n},
+\ee
+with
+\be
+A_n = \sum^i_{r=1}W_r,\qquad B_n = \sum^{n+1}_{r=i+1} W_r,
+\ee
+where $W_r$'s are i.i.d. $\sE(1)$ random variables. Since $\E Z_r = 1$ and $\var Z_r =1$\footnote{proposition needed.}, by central limit theorem (Theorem \ref{thm:central_limit}) it follows that
+\be
+\frac{A_n - i}{\sqrt{i}} \stackrel{d}{\to} \sN(0,1),\qquad \frac{B_n - (n-i+1)}{\sqrt{n-i+1}} \stackrel{d}{\to} \sN(0,1)
+\ee
+
+Consequently, on recalling $i = \floor{np}+1$, we obtain
+\be
+\frac{A_n - i}{\sqrt{n}} \stackrel{d}{\to} A\sim \sN(0,p),\qquad \frac{B_n - (n-i+1)}{\sqrt{n}} \stackrel{d}{\to} B\sim \sN(0,1-p)
+\ee
+by Slutsky's theorem (Theorem \ref{thm:slutsky_convergence_in_distribution}).
+
+Since $A_n$ and $B_n$ are independent for all $n$, the limit random variable, we have
+\be
+\bb{\frac{A_n - i}{\sqrt{n}},\frac{B_n - (n-i+1)}{\sqrt{n}} }\stackrel{d}{\to }(A,B)
+\ee
+where $A$ and $B$ are independent by Corollary \ref{cor:independent_sequences_continuous_mapping_converges_in_distribution_independent_limits}. Then by continuous mapping theorem (Theorem \ref{thm:continuous_mapping_probability}) and Slutsky's theorem (Theorem \ref{thm:slutsky_convergence_in_distribution}),
+\beast
+C_n & := & \frac 1{\sqrt{n}}\bb{(1-p)(A_n-i) - p(B_n-(n-i+1))} \\
+& \stackrel{d}{\to} & (1-p)A - pB \sim \sN\bb{0,(1-p)^2p + p^2(1-p)} \sim \sN\bb{0,p(1-p)}.
+\eeast
+
+Therefore,
+\beast
+\sqrt{n}\bb{U_i- p} & = & \sqrt{n}\bb{\frac{A_n}{A_n + B_n} - p} =  \frac 1{\sqrt{n}}\frac{A_n - p(A_n+ B_n)}{(A_n + B_n)/n} \\
+& = & \frac 1{\sqrt{n}} \frac{(1-p)A_n - p B_n - (1-p)i + p(n-i+1) + i - np -p}{(A_n + B_n)/n} \\
+& = &  \frac{C_n + (i - np -p)/\sqrt{n}}{(A_n + B_n)/n}
+\eeast
+
+Since $\abs{i - np -p} = \abs{\floor{np}+1 - np - p} < 1$ so $(i - np -p)/\sqrt{n} \to 0$. Thus, the numerator on the right-hand side
+\be
+C_n + (i - np -p)/\sqrt{n} \stackrel{d}{\to} \sim \sN\bb{0,p(1-p)} + 0 = \sim \sN\bb{0,p(1-p)}.
+\ee
+by Slutsky's theorem (Theorem \ref{thm:slutsky_convergence_in_distribution}). Since the denominator
+\be
+\frac{A_n+ B_n}n = \frac 1n\sum^{n+1}_{r=1} W_r = \frac{n+1}{n} \frac{\sum^{n+1}_{r=1} W_r}{n+1} \stackrel{p}{\to} 1
+\ee
+by weak law of large number (Theorem \ref{thm:wlln_finite_variance}). Then by Slutsky's theorem (Theorem \ref{thm:slutsky_convergence_in_distribution}) again, we have ($*$).
+
+For arbitrary cdf $F$, note that $F^*(p)$ is actually $F^{-1}(p)$ since $f$ is continuous\footnote{more details needed.} at $F^*(p)$ so we can use Taylor series expansion for $X_i$, for random variable $D_n$ between $U_i$ and $p$,
+\beast
+X_i \sim F^*(U_i) & =& F^{-1}(p) + \bb{U_i-p} \bb{F^{-1}(D_n)}' = F^{-1}(p) + \bb{U_i-p}\bb{F'\bb{ F^{-1}(D_n)}^{-1}} \\
+& = & F^{-1}(p) + \bb{U_i-p}\bb{f\bb{ F^{-1}(D_n)}^{-1}}
+\eeast
+by inverse function theorem (Theorem \ref{thm:inverse_rule_real_function}). Then rearrange the formula by Slutsky's theorem (Theorem \ref{thm:slutsky_convergence_in_distribution}),
+\be
+\sqrt{n}\bb{X_i - F^{-1}(p)} \sim \sqrt{n}\bb{U_i-p}\bb{f\bb{ F^{-1}(D_n)}^{-1}}
+\ee
+
+
+% and Slutsky's theorem (Theorem \ref{thm:slutsky_convergence_in_distribution})
+ %by Theorem \ref{thm:sum_of_independent_sequences_converges_in_distribution_to_sum_of_limits}
+ %$A$ and $B$ are also independent\footnote{theorem needed.}. This means that
+
+
+Also, we have
+\beast
+\pro\bb{\abs{F^*(D_n) - F^*(p)}>\ve} & \leq & \pro\bb{\abs{F^*(U_{i}) - F^*(p)}>\ve} \qquad \qquad \text{(since $F^*$ is increasing)} \\
+& = & \pro\bb{F^*(p)+ \ve <F^*(U_{i}} + \pro\bb{F^*(p)- \ve > F^*(U_{i}} \\
+& \leq & \pro\bb{F\bb{F^*(p)+ \ve} \leq F(F^*(U_{i})} + \pro\bb{F\bb{F^*(p)- \ve} \geq F(F^*(U_{i})} \\
+& = & \pro\bb{F\bb{F^*(p)+ \ve} \leq U_{i}} + \pro\bb{F\bb{F^*(p)- \ve} \geq U_{i}}
+\eeast
+by Corollary \ref{cor:continuous_distribution_function_inverse_composition} since $F$ is continuous.
+
+Consider $\pro\bb{F\bb{F^*(p)+ \ve} \leq U_{i}}$, we know by assumption that $F$ is strictly increasing at $F^*(p)$, so we have that $F\bb{F^*(p)+ \ve} > p$. Therefore, for some $\delta_1>0$,
+\be
+\pro\bb{F\bb{F^*(p)+ \ve} \leq U_{i}} = \pro\bb{F\bb{F^*(p)}+\delta_1 < U_{i}} = \pro\bb{U_{i} > p+\delta_1}.
+\ee
+
+For $\pro\bb{F\bb{F^*(p)- \ve} \geq U_{i}}$, we have that $F\bb{F^*(p)- \ve} < p$ (otherwise $F\bb{F^*(p)- \ve} = p$ is a contradiction to $\F^*$) so there exists $\delta_2 >0$ such that $F\bb{F^*(p)- \ve} = p - \delta_2$.
+\be
+\pro\bb{F\bb{F^*(p)- \ve} \geq U_{i}} = \pro\bb{p -\delta_2 \geq U_{i}} = \pro\bb{U_i \leq p-\delta_2}.
+\ee
+
+Thus,
+\beast
+\pro\bb{\abs{F^*(D_n) - F^*(p)}>\ve} & \leq & \pro\bb{U_{i} > p+\delta_1} + \pro\bb{U_i \leq p-\delta_2}\\
+& = & 1 - \pro\bb{U_{i} \leq p+\delta_1} + \pro\bb{U_i \leq p-\delta_2}.
+\eeast
+
+By previous result, we define
+\be
+Y_n := \sqrt{n}\bb{U_i - p} \stackrel{d}{\to} \sN(0,p(1-p)) := Y,\qquad Z_n := \frac 1{n} \stackrel{d}{\to} 0 := Z.
+\ee
+
+Then by Slutsky's theorem (Theorem \ref{thm:slutsky_convergence_in_distribution}),
+\be
+U_i - p = Y_n Z_n \stackrel{d}{\to} YZ = 0 \ \ra\ U_i \stackrel{d}{\to }p
+\ee
+which implies
+\be
+F_{U_i}(u) = \pro\bb{U_i \leq u} \to \pro\bb{p\leq u}, \quad \forall u\in (0,1),u\neq p.
+\ee
+
+
+Therefore,
+\beast
+\pro\bb{\abs{F^*(D_n) - F^*(p)}>\ve} & \leq & 1 - \pro\bb{U_{i} \leq p+\delta_1} + \pro\bb{U_i \leq p-\delta_2} \\
+& \to & 1 - \pro\bb{p\leq p+\delta_1} + \pro\bb{p\leq p-\delta_2} = 1 - 1 + 0 = 0
+\eeast
+which implies $F^*(D_n) \to F^*(p)$ in probability. Thus, for $f$ continuous at $F^*(p)$, given $\ve>0$, there exists $\delta>0$,
+\be
+\pro\bb{\abs{F^*(D_n)-F^*(p)}<\delta} \leq \pro\bb{\abs{f(F^*(D_n))-f(F^*(p))}<\ve}
+\ee
+which implies that
+\be
+\pro\bb{\abs{f(F^*(D_n))-f(F^*(p))} \geq \ve} \leq \pro\bb{\abs{F^*(D_n)-F^*(p)} \geq \delta} \to 0
+\ee
+as $n\to \infty$, Thus,
+\be
+f(F^*(D_n)) \stackrel{p}{\to } f(F^*(p)).\qquad (\dag)
+\ee
+
+Thus, we get the required result with ($*$) and ($\dag$) by Slutsky's theorem (Theorem \ref{thm:slutsky_convergence_in_distribution}).
+\end{proof}
+
+
+
+\section{Problems}
+
+\subsection{Order statistics of specific distributions}
+
+\begin{problem}[see \cite{Feller_1970}.$P_{20}$]
+Suppose that at time 0 three  persons $A,B,C$ arrive at a post office and find two counters free. The three service times are independent random variables $Z_1,Z_2,Z_3$ with the same exponential distribution. The service time of $A$ and $B$ commence immediately, but that of $C$ starts at time $X_1$ when either $A$ or $B$ is discharged. That is, $X_1 = \min\bra{Z_1,Z_2}$.
+\ben
+\item [(i)] What's the probability that $C$ will not be the last to leave the post office?
+\item [(ii)] What is the distribution of the time $T=X_1+Z_3$ spent by $C$ at the post office?
+\item [(iii)] What is the distribution of the time of the last departure?
+\een
+\end{problem}
+
+\begin{solution}[\bf Proof]
+\footnote{solution needed.}
+\end{solution}

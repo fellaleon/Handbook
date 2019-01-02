@@ -1,0 +1,506 @@
+
+%%%%%%%% Number Theory %%%%%%%%%%
+
+@book{Hardy_Wright_2008,
+	title = {An Introduction to the Theory of Numbers, 6th e.d.},
+	publisher = {Oxford University Press},
+	author = {G. H. Hardy and E. M. Wright},
+	year = {2008},	
+},
+
+
+%%%%%%%% Sets %%%%%%%%%%%
+
+
+
+
+%%%%%%%% Algebra %%%%%%%%%%
+
+@book{Horn_Johnson_1990,
+	title = {Matrix Analysis},
+	publisher = {Cambridge University Press},
+	author = {Roger A. Horn and Charles R. Johnson},
+	year = {1990},
+},
+
+@book{Meyer_2000,
+	title = {Matrix Analysis},
+	publisher = {Cambridge University Press},
+	author = {Roger A. Horn and Charles R. Johnson},
+	year = {1990},
+},
+
+@book{Beardon_2005,
+	title = {Algebra and Geometry},
+	publisher = {Cambridge University Press},
+	author = {Alan F. Beardon},
+	year = {2005},
+},
+
+%%%%%%%% Analysis %%%%%%%%%%
+
+@book{Bellman_1961,
+	title = {A Brief Introduction to Theta Functions},
+	publisher = {Holt, Rinehart and Winston, New York},
+	author = {Richard Bellman},
+	year = {1961},
+},
+
+
+@book{Abramowitz_1972,
+	title = {Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables},
+	lccn = {0440},
+	publisher = {New York: Dover},
+	author = {Milton Abramowitz and Irene A. Stegun},
+	year = {1972},
+},
+
+@book{Yoshida_1980,
+	title = {Functional Analysis},
+	publisher = {Springer-Verlag},
+	author = {Kosaku Yoshida},
+	year = {1980},
+},
+
+
+@book{Tao_2006_1,
+	title = {Analysis I},
+	publisher = {Hindustan Book Agency},
+	author = {Terence Tao},
+	year = {2006},
+},
+
+@book{Tao_2006_2,
+	title = {Analysis II},
+	publisher = {Hindustan Book Agency},
+	author = {Terence Tao},
+	year = {2006},
+},
+
+%%%%%%%% Topology %%%%%%%%%%%
+
+
+@book{Kelley_1955,
+	title = {General Topology},
+	publisher = {Springer-Verlag, New York},
+	author = {John L. Kelley},
+	year = {1955},
+},
+
+%%%%%%%% Functional Analysis %%%%%%%%%%%
+
+@book{Rolewicz_1987,
+	title = {Functional Analysis and Control Theory: Linear Systems},
+	publisher = {Springer},
+	author = {S. Rolewicz},
+	year = {1987},
+},
+
+
+%%%%%%%% Measure %%%%%%%%%%%
+
+@book{Klenke_2008,
+	title = {Probability Theory: A Comprehensive Course, 1st Edition},
+	publisher = {Springer},
+	author = {Achim Klenke},
+	year = {2008},
+},
+
+
+%%%%%%%% probability %%%%%%%
+
+@article{Feller_1948,
+	title = {On the Kolmogorov-Smirnov Limit Theorems for Empirical Distributions},
+	volume = {19,2},
+	journal = {Ann. Math. Statist.},
+	author = {William Feller},
+	year = {1948},
+	pages = {151{\textendash}291}
+},
+
+@article{Feller_1951,
+	title = {The Asymptotic Distribution of the Range of Sums of Independent Random Variables},
+	volume = {22,3},
+	journal = {Ann. Math. Statist.},
+	author = {William Feller},
+	year = {1951},
+	pages = {427{\textendash}432}
+},
+
+
+
+@article{Ciesielski_1961,
+	title = {H\"older conditions for realizations of Gaussian processes},
+	volume = {99},
+	journal = {Transactions of the American Mathematical Society},
+	author = {Z. Ciesielski},
+	year = {1961},
+	pages = {403{\textendash}413}
+},
+
+@article{Aitkin_1964,
+	title = {Correlation in a singly truncated bivariate normal distribution},
+	volume = {29,3},
+	journal = {Psychometrika},
+	author = {M.A. Aitkin},
+	year = {1964},
+	pages = {263{\textendash}270}
+},
+
+
+
+@book{Meyer_1972,
+	title = {Martingales and Stochastic Integrals I, Lecture Notes in Mathematics},
+	publisher = {Springer-Verlag},
+	author = {Paul-Andr\'e Meyer},
+	year = {1972},
+},
+
+@book{Ito_McKean_1974,
+	title = {Diffusion Processes and Their Sample Paths},
+	publisher = {Springer},
+	author = {Kiyosi It\^o and Henry P. McKean},
+	year = {1974},
+},
+
+@article{Vasicek_1977,
+	title = {An equilibrium characterization of the term structure},
+	volume = {5},
+	journal = {Journal of Financial Economics},
+	author = {O.A. Vasicek},
+	year = {1977},
+	pages = {177{\textendash}188},
+},
+
+
+@article{Parkinson_1980,
+	title = {The Extreme Value Method for Estimating the Variance of the Rate of Return},
+	volume = {53,1},
+	journal = {The Journal of Business},
+	author = {Michael Parkinson},
+	year = {1980},
+	pages = {61{\textendash}65},
+    publisher = {The University of Chicago Press},
+},
+
+@book{Williams_1991,
+	title = {Probability with Martingales},
+	publisher = {Cambridge University Press},
+	author = {David Williams},
+	year = {1991},
+},
+
+
+@book{Rogers_1994,
+	title = {Diffusions, Markov Processes, and Martingales, 2nd Edition},
+	publisher = {Cambridge University Press},
+	author = {L.C.G. Rogers and David Williams},
+	year = {1994},
+},
+
+
+@book{Billingsley_1995,
+	title = {Probability and Measure, 3rd Edition},
+	publisher = {Wiley-Blackwell},
+	author = {Patrick Billingsley},
+	year = {1995},
+},
+
+@book{Grinstead_1997,
+	title = {Introduction to Probability},
+	publisher = {American Mathematical Society},
+	author = {Charles M. Grinstead and J. Laurie Snell},
+	year = {1997},
+},
+
+@book{Zauderer_2006,
+	title = {Partial Differential Equations of Applied Mathematics, 3rd Edition},
+	publisher = {Wiley},
+	author = {Erich Zauderer},
+	year = {2006},
+},
+
+
+@book{Chung_2000,
+	title = {A Course in Probability Theory, 3rd Edition},
+	publisher = {Academic Press},
+	author = {Kai Lai Chung},
+	year = {2000},
+},
+
+@book{Borodin_2002,
+	title = {Handbook of Brownian Motion - Facts and Formulae, 2nd Edition},
+	publisher = {Birkh\"auser},
+	author = {Andrei N. Borodin and Paavo Salminen},
+	year = {2002},
+},
+
+@book{Durrett_2004,
+	title = {Probability: Theory and Examples, 3rd},
+	publisher = {Brooks/Cole},
+	author = {Richard Durrett},
+	year = {2004},
+},
+
+@book{Bass_2011,
+	title = {Stochastic Processes (Cambridge Series in Statistical and Probabilistic Mathematics)},
+	publisher = {Cambridge Press},
+	author = {Richard F. Bass},
+	year = {2011},
+},
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%% Statistics %%%%%%%%%%%%%%%%%%%%%%%
+
+@article{Hansen_1994,
+	title = {Autoregressive Conditional Density Estimation},
+	volume = {35,3},
+	journal = {International Economic Review},
+	author = {Bruce E. Hansen},
+	year = {1994},
+	pages = {705-730}
+},
+
+
+@article{Fernandez_Steel_1998,
+	title = {On Bayesian Modeling of Fat Tails and Skewness},
+	volume = {93,441},
+	journal = {Journal of the American Statistical Association},
+	author = {Carmen Fernandez and Mark F. J. Steel},
+	year = {1998},
+	pages = {359-371}
+},
+
+@article{Branco_Day_2001,
+	title = {A General Class of Multivariate Skew-Elliptical Distributions},
+	volume = {79},
+	journal = {Journal of the American Statistical Association},
+	author = {Marcia D. Branco and Dipak K. Dey},
+	year = {2001},
+	pages = {99-113}
+},
+
+
+@article{Azzalini_Capitanio_2003,
+	title = {Distributions Generated by Perturbation of Symmetry with Emphasis on a Multivariate Skew $t$-Distribution},
+	volume = {65,2},
+	journal = {Journal of the Royal Statistical Society. Series B (Statistical Methodology)},
+	author = {Adelchi Azzalini and Antonella Capitanio},
+	year = {2003},
+	pages = {367-389}
+},
+
+
+@article{Jones_Faddy_2003,
+	title = {A Skew Extension of the t-Distribution, with Applications},
+	volume = {65,1},
+	journal = {Journal of the Royal Statistical Society. Series B (Statistical Methodology)},
+	author = {M. C. Jones and M. J. Faddy},
+	year = {2003},
+	pages = {159-174}
+},
+
+
+@article{Aas_Haff_2006,
+	title = {The Generalized Hyperbolic Skew Student's $t$-Distribution},
+	volume = {4,2},
+	journal = {Journal of Financial Econometrics},
+	author = {Kjersti Aas and Ingrid Hob$\ae$k Haff},
+	year = {2006},
+	pages = {275-309}
+},
+
+
+%%%%%%%%%%%%%%%%%% Financial Maths %%%%%%%%%%%%%%%%
+
+@article{Black_Scholes_1973,
+	title = {The pricing of options and corporate liabilities},
+	journal = {The Journal of Political Economy},
+	author = {Fischer Black and Myron Scholes},
+	year = {1973},
+    volume = {81,3},
+    pages = {637-654},
+},
+
+@article{Goldman_Sosin_Gatto_1979_1,
+	title = {On Contingent Claims that Insure Ex-post Optimal Stock Market Timing},
+	journal = {The Journal of Finance},
+	author = {M. Barry Goldman and Howard B. Sosin and Lawrence A. Shepp},
+	year = {1979},
+    volume = {24,2},
+    pages = {401-413},
+},
+
+@article{Goldman_Sosin_Gatto_1979_2,
+	title = {Path Dependent Option: "Buy at the Low, Sell at the High"},
+	journal = {The Journal of Finance},
+	author = {M. Barry Goldman and Howard B. Sosin and Mary Ann Gatto},
+	year = {1979},
+    volume = {24,5},
+    pages = {1111-1127},
+},
+
+@article{Boyle_Emanuel_1980,
+	title = {Discretely Adjusted Option Hedges},
+	journal = {Journal of Financial Economics},
+	author = {Phelim P. Boyle and David Emanuel},
+	year = {1980},
+    volume = {8},
+    pages = {259-282},
+},
+
+@article{Leland_1985,
+	title = {Option Pricing and Replication with Transactions Costs},
+	journal = {The Journal of Finance},
+	author = {Hayne E. Leland},
+	year = {1985},
+    volume = {XL,5},
+    pages = {1283-1301},
+},
+
+@article{Cox_Ingersoll_Ross_1985,
+	title = {A Theory of the Term Structure of Interest Rates},
+	journal = {Econometrica},
+	author = {John C. Cox and Jonathan E. Ingersoll and Stephen A. Ross},
+	year = {1985},
+    volume = {53,2},
+    pages = {385-408},
+},
+
+@article{Heston_1993,
+	title = {A Closed-form Solution for Options with Stochastic Volatility with Applications to Bond and Currency Options},
+	journal = {The Review of Financial Studies},
+	author = {Steven L. Heston},
+	year = {1993},
+    volume = {6,2},
+    pages = {327-343},
+},
+
+@article{Carr_Bowie_1994,
+	title = {Static Simplicity},
+	journal = {Risk},
+	author = {Peter Carr and Jonathan Bowie},
+	year = {1994},
+    volume = {7,8},
+    pages = {45-50},
+},
+
+@article{Carr_Madan_1998,
+	title = {Towards a Theory of Volatility Trading},
+	journal = {Volatility: New Estimation Techniques for Pricing Derivatives},
+	author = {Peter Carr and Dilip Madan},
+	year = {1998},
+},
+
+@article{Carr_Ellis_Gupta_1998,
+	title = {Static Hedging of Exotic Options},
+	journal = {The Journal of Finance},
+	author = {Peter Carr and Katrina Ellis and Vishal Gupta},
+	year = {1998},
+},
+
+@article{Demeterfi_1999_1,
+	title = {A Guide to Volatility and Variance Swaps},
+	journal = {The Journal of Derivatives},
+    author = {Kresimir Demeterfi and Emanuel Derman and Michael Kamal and Joseph. Zou},
+	year = {1999},
+},
+
+@article{Demeterfi_1999_2,
+	title = {More Than You Ever Wanted to Know about Volatiltiy Swaps},
+	journal = {Quantitative Strategies Research Notes, Goldman Sachs},
+	author = {Kresimir Demeterfi and Emanuel Derman and Michael Kamal and Joseph. Zou},
+	year = {1999},
+},
+
+@article{Douady_1999,
+	title = {Closed Form Formulas for Exotic Options and their Lifetime Distribution},
+	journal = {Quantitative Analysis in Financial Markets: Collected Papers of the New York University Mathematical Finance Seminar},
+	author = {R. Douady},
+	year = {1999},
+	pages = {177-202},
+},
+
+@book{Karatzas_Shreve_1998,
+	title = {Methods of mathematical finance},
+	publisher = {Springer},
+	author = {I. Karatzas and S.E. Shreve},
+	year = {1998},
+},
+
+
+@book{Steele_2001,
+	title = {Stochastic Calculus and Financial Applications},
+	publisher = {Springer},
+	author = {J.Michael Steele},
+	year = {2001},
+},
+
+
+@book{Zhou_2008,
+	title = {A Practical Guide To Quantitative Finance Interviews, 1st Edition},
+	publisher = {Lulu.com},
+	author = {Xinfeng Zhou},
+	year = {2008},
+},
+
+@book{Jeanblanc_Yor_Chesney_2009,
+	title = {Mathematical Methods for Financial Markets, 1st Edition},
+	publisher = {Springer Finance},
+	author = {Monique Jeanblanc and Marc Yor and Marc Chesney},
+	year = {2009},
+},
+
+@book{Sinclair_2013,
+	title = {Volatility Trading, 2nd Edition},
+	publisher = {Wiley},
+	author = {Euan Sinclair},
+	year = {2013},
+},
+
+%%%%%%%%%%%%%%%%%%% Topology %%%%%%%%%%%%%%%%%
+
+@book{Kelley_1955,
+	title = {General Topology},
+	publisher = {Princeton~N.~J, Van Nostrand},
+	author = {J.L Kelley},
+	year = {1955},
+},
+
+@book{Mansfield_1963,
+	title = {Introduction to Topology},
+	publisher = {Princeton~N.~J, Van Nostrand},
+	author = {M.J. Mansfield},
+	year = {1963},
+},
+
+@book{Mendeleson_1990,
+	title = {Introduction to Topology},
+	publisher = {Dover reprint, New York, Dover},
+	author = {B. Mendeleson},
+	year = {1990},
+},
+
+@book{Sutherland_1975,
+	title = {Introduction to Metric and Topological Spaces},
+	publisher = {Oxford, OUP},
+	author = {W.A. Sutherland},
+	year = {1975},
+},
+
+%%%%%%%%%%%%%%%%%%% Others %%%%%%%%%%%%%%%%%
+
+
+@article{Curtin_2006,
+	title = {The locker puzzle},
+	volume = {28},
+	number = {1},
+	journal = {The Mathematical Intelligencer},
+	author = {Eugene Curtin and Max Warshauer},
+	year = {2006},
+	pages = {28{\textendash}31}
+},

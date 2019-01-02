@@ -1,0 +1,13 @@
+\chapter{Vectors and Matrices}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\qcutline
+
+{\large \textcolor{red}{unsorted below}}
+
+\section{Vector Space}
+
+\begin{definition}[Vector Space]\label{def:vector_space}
+vector space\index{vector space}.
+\end{definition}

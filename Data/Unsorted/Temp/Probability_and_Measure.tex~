@@ -1,0 +1,2642 @@
+\chapter{Probability and Measure (draft)}
+
+Given a normed space X, a subspace E of X is
+
+1) Banach(=complete) if every Cauchy sequence in E converge to a point of E.
+
+2) Closed if every sequence in E that converge in X, converge to a point of E.
+
+If you want to make sure you understand the distinction and relation between the two, prove these two elementary observations: "If X is Banach and E is closed, then E is Banach" and this: "If E is Banach, then is it closed."
+
+1) Since X is Banach, a given Cauchy sequence in E (which must then also be in X) converges to a point in X and since E is closed, every sequence from E that converges in X has a limit in E - and so has our Cauchy sequence. Summary: any given Cauchy sequence in E has limit in E which is the definition of completness.
+
+2) Since E is Banach, every Cauchy seq. from E has limit in E. Also every convergent (with limit in X, generally) sequence in E must be Cauchy sequence -> these two together imply that every convergent sequence from E must have limit in E which is what I want to prove.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\subsection{Differentiation under the integral sign}
+
+Integration in one variable and differentiation in another can be interchanged subject to some regularity conditions.
+
+\begin{theorem}[Differentiation under the integral sign]
+
+Let $U \subseteq \R$ be open and suppose that $f : U \times E \to \R$ satisfies:
+\ben
+\item [(i)] $x \mapsto f(t, x)$ is integrable for all $t$,
+\item [(ii)] $t \mapsto f(t, x)$ is differentiable for all $x$,
+\item [(iii)] for some integrable function $g$, for all $x \in E$ and all $t \in U$,
+\be
+\abs{\fp{f}{t}(t, x)} \leq g(x).
+\ee
+\een
+Then the function $x \mapsto (\partial f/\partial t)(t, x)$ is integrable for all $t$. Moreover, the function $F : U \to \R$, defined by 
+\be
+F(t) = \int_E f(t, x)\mu(dx),
+\ee
+is differentiable and
+\be
+\frac{d}{dt} F(t) = \int_E \fp{f}{t} (t, x)\mu(dx).
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Take any sequence $h_n \to 0$ and set
+\be
+g_n(x) = \frac{f(t + h_n, x) - f(t, x)}{h_n} - \fp{f}{t} (t, x).
+\ee
+Then $g_n(x) \to 0$ for all $x \in E$ and, by the mean value theorem, $|g_n| \leq 2g$ for all $n$. In particular, for all $t$, the function $x\mapsto (\partial f/\partial t)(t, x)$ is the limit of measurable functions, hence measurable, and hence integrable, by (iii).Then, by dominated convergence,
+\be
+\frac{F(t + h_n) - F(t)}{h_n} - \int_E \fp{f}{t}(t, x)\mu(dx) = \int_E g_n(x)\mu(dx) \to 0.
+\ee
+\end{proof}
+
+\subsection{Product measure and Fubini's theorem}
+
+\begin{definition}
+Let $(E_1, \sE_1, \mu_1)$ and $(E_2, \sE_2, \mu_2)$ be finite measure spaces. The set 
+\be
+\sA = \{A_1 \times A_2 : A_1 \in \sE_1,A_2 \in \sE_2\}
+\ee
+is a $\pi$-system of subsets of $E = E_1 \times E_2$. Define the product $\sigma$-algebra 
+\be
+\sE_1 \otimes \sE_2 = \sigma(A).
+\ee
+
+Set $\sE = \sE_1 \otimes \sE_2$.
+\end{definition}
+
+\begin{lemma}\label{lem:e_2_measurable}
+Let $f : E \to \R$ be $\sE$-measurable. Then, for all $x_1 \in E_1$, the function $x_2 \mapsto f(x_1, x_2) : E_2 \to \R$ is $\sE_2$-measurable.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Denote by $\sV$ the set of bounded $\sE$-measurable functions for which the conclusion holds. Then $\sV$ is a vector space, containing the indicator function $\ind_A$ of every set $A \in \sA$. Moreover, if $f_n \in \sV$ for all $n$ and if $f$ is bounded with $0 \leq f_n \ua f$, then also $f \in \sV$. So, by the monotone class theorem, $\sV$ contains all bounded $\sE$-measurable functions. The rest is easy.
+\end{proof}
+
+\begin{lemma}\label{lem:e_1_measurable}
+For all bounded $\sE$-measurable functions $f$, the function
+\be
+x_1 \mapsto f_1(x_1) = \int_{E_2} f(x_1, x_2)\mu_2(dx_2) : E_1 \to \R
+\ee
+is bounded and $\sE_1$-measurable.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Apply the monotone class theorem, as in the preceding lemma. Note that finiteness of $\mu_1$ and $\mu_2$ is essential to the argument.
+\end{proof}
+
+\begin{theorem}[Product Measure\index{Product Measure}]
+There exists a unique measure $\mu = \mu_1 \otimes \mu_2$ on $\sE$ such that 
+\be
+\mu(A_1 \times A_2) = \mu_1(A_1)\mu_2(A_2)
+\ee
+for all $A_1 \in \sE_1$ and $A_2 \in \sE_2$.
+\end{theorem}
+\begin{proof}[\bf Proof]
+Uniqueness holds because $\sA$ is a $\pi$-system generating $\sE$. For existence, by the lemmas, we can define
+\be
+\mu(A) = \int_{E_1} \bb{\int_{E_2} \ind_A(x_1, x_2)\mu_2(dx_2)} \mu_1(dx_1)
+\ee
+and use monotone convergence to see that $\mu$ is countably additive.
+\end{proof}
+
+\begin{proposition}\label{pro:product_measure}
+Let $\wh{\sE} = \sE_2 \otimes \sE_1$ and $\wh{\mu} = \mu_2 \otimes \mu_1$. For a function $f$ on $E_1 \times E_2$, write $\wh{f}$ for the function on $E_2 \times E_1$ given by $\wh{f}(x_2, x_1) = f(x_1, x_2)$. Suppose that $f$ is $\sE$-measurable. Then $\wh{f}$ is $\wh{\sE}$-measurable, and if $f$ is also non-negative, then $\wh{\mu}(\wh{f}) = \mu(f)$.
+\end{proposition}
+
+\begin{theorem}[Fubini's theorem]
+\ben
+\item [(a)] Let $f$ be $\sE$-measurable and non-negative. Then 
+\be
+\mu(f) = \int_{E_1} \bb{\int_{E_2} f(x_1, x_2)\mu_2(dx_2)} \mu_1(dx_1).
+\ee
+\item [(b)] Let $f$ be $\mu$-integrable. Then
+\ben
+\item [(i)] $x_2 \mapsto f(x_1, x_2)$ is $\mu_2$-integrable for $\mu_1$-almost all $x_1$,
+\item [(ii)] $x_1 \mapsto \int_{E_2} f(x_1, x_2)\mu_2(dx_2)$ is $\mu_1$-integrable
+\een
+and the formula for $\mu(f)$ in (a) holds.
+\een
+\end{theorem}
+
+Note that the iterated integral in (a) is well defined, for all bounded or non-negative measurable functions $f$, by Lemmas \ref{lem:e_2_measurable} and \label{lem:e_1_measurable}. Note also that, in combination wih Proposition \ref{pro:product_measure}, Fubini's theorem allows us to interchange the order of integration in multiple integrals,whenever the integrand is non-negative or $\mu$-integrable. 
+
+\begin{proof}[\bf Proof]
+Denote by $\sV$ the set of all bounded $\sE$-measurable functions $f$ for which the formula holds. Then $\sV$ contains the indicator function of every $\sE$-measurable set so, by the monotone class theorem, $\sV$ contains all bounded $\sE$-measurable functions. Hence, for all $\sE$-measurable functions $f$, we have
+\be
+\mu(f_n) = \int_{E_1} \bb{\int_{E_2} f_n(x_1, x_2)\mu_2(dx_2) }\mu_1(dx_1) 
+\ee
+where $f_n = (-n) \lor f \land n$.
+
+For $f$ non-negative, we can pass to the limit as $n \to \infty$ by monotone convergence to extend the formula to $f$. That proves (a).
+
+If $f$ is $\mu$-integrable, then, by (a)
+\be
+\int_{E_1}\bb{\int_{E_2} |f(x_1, x_2)|\mu_2(dx_2)}\mu_1(dx_1) = \mu(|f|) < \infty.
+\ee
+
+Hence we obtain (i) and (ii). Then, by dominated convergence, we can pass to the limit as $n \to \infty$ in the formula for $\mu(f_n)$ to obtain the desired formula for $\mu(f)$.
+\end{proof}
+
+The existence of product measure and Fubini's theorem extend easily to $\sigma$-finite measure spaces. The operation of taking the product of two measure spaces is associative, by a $\pi$-system uniqueness argument. So we can, by induction, take the product of a finite number, without specifying the order. The measure obtained by taking the $n$-fold product of Lebesgue measure on $\R$ is called Lebesgue measure on $\R^n$. The corresponding integral is written \be
+\int_{\R^n} f(x)dx.
+\ee
+
+\section{Norms and inequalities}
+
+\subsection{$L^p$-norms}
+Let $(E, \sE, \mu)$ be a measure space. For $1 \leq p < \infty$, we denote by $L^p = L^p(E, \sE, \mu)$ the set of measurable functions $f$ with finite $L^p$-norm:
+\be
+\dabs{f}_p = \bb{\int_E |f|^pd\mu }^{1/p} < \infty.
+\ee
+
+We denote by $L^\infty = L^\infty(E, \sE, \mu)$ the set of measurable functions $f$ with finite $L^\infty$-norm:
+\be
+\dabs{f}_\infty = \inf\{\lm : |f| \leq \lm \text{ a.e.}\}.
+\ee
+
+Note that $\dabs{f}_p \leq \mu(E)^{1/p}\dabs{f}_\infty$ for all $1 \leq p < \infty$. For $1 \leq p \leq \infty$ and $f_n \in L^p$, we say that $f_n$ converges to $f$ in $L^p$ if $\dabs{f_n - f}_p \to 0$.
+
+\subsection{Chebyshev's inequality}
+Let $f$ be a non-negative measurable function and let $\lm \geq 0$. We use the notation $\{f \geq \lm\} for the set \{x \in E : f(x) \geq \lm\}$. Note that
+\be
+\lm\ind_{\{f\geq\lm\}} \leq f
+\ee
+so on integrating we obtain Chebyshev's inequality
+\be
+\lm\mu(f \geq \lm) \leq \mu(f).
+\ee
+
+Now let $g$ be any measurable function. We can deduce inequalities for $g$ by choosing some non-negative measurable function $\phi$ and applying Chebyshev's inequality to $f = \phi \circ g$. For example, if $g \in L^p$, $p < \infty$ and $\lm > 0$, then 
+\be
+\mu(|g| \geq \lm) = \mu(|g|^p \geq \lm^p) \leq \lm^{-p}\mu(|g|^p) < \infty.
+\ee
+So we obtain the tail estimate
+\be
+\mu(|g| \geq \lm) = O(\lm^{-p}),\quad\text{ as }\lm \to \infty.
+\ee
+
+\subsection{Jensen's inequality}
+
+Let $I \subseteq \R$ be an interval. A function $c : I \to \R$ is convex if, for all $x, y \in I$ and $t \in [0, 1]$,
+\be
+c(tx + (1 - t)y) \leq tc(x) + (1 - t)c(y).
+\ee
+
+\begin{lemma}
+Let $c : I \to \R$ be convex and let $m$ be a point in the interior of $I$. Then there exist $a, b \in \R$ such $c(x) \geq ax + b$ for all $x$, with equality at $x = m$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+By convexity, for $m, x, y \in I$ with $x < m < y$, we have
+\be
+\frac{c(m) - c(x)}{m - x} \leq \frac{c(y) - c(m)}{y - m}.
+\ee
+
+So, fixing an interior point $m$, there exists $a \in \R$ such that, for all $x < m$ and all $y > m$
+\be
+\frac{c(m) - c(x)}{m - x} \leq a \leq \frac{c(y) - c(m)}{y - m}.
+\ee
+Then $c(x) \geq a(x - m) + c(m)$, for all $x \in I$.
+\end{proof}
+
+\begin{theorem}[Jensen's Inequality\index{Jensen's Inequality}]
+Let $X$ be an integrable random variable with values in $I$ and let $c : I \to \R$ be convex. Then $\E(c(X))$ is well defined and
+\be
+\E(c(X)) \geq c(\E(X)).
+\ee
+\end{theorem}
+\begin{proof}[\bf Proof]
+The case where $X$ is almost surely constant is easy. We exclude it. Then $m = \E(X)$ must lie in the interior of $I$. Choose $a, b \in \R$ as in the lemma. Then $c(X) \geq aX + b$. In particular $\E(c(X)^-) \leq |a|\E(|X|) + |b| < \infty$, so $\E(c(X))$ is well defined. Moreover
+\be
+\E(c(X)) \geq a\E(X) + b = am + b = c(m) = c(\E(X)).
+\ee
+\end{proof}
+
+We deduce from Jensen's inequality the monotonicity of $L^p$-norms with respect to a probability measure. Let $1 \leq p < q < \infty$. Set $c(x) = |x|^{q/p}$, then $c$ is convex. So, for any $X \in L^p(\pro)$, 
+\be
+\dabs{X}_p = (\E|X|^p)^{1/p} = (c(\E|X|^p))^{1/q} \leq (\E c(|X|^p))^{1/q} = (\E|X|^q)^{1/q} = \dabs{X}_q.
+\ee
+In particular, $L^p(\pro) \supseteq L^q(\pro)$.
+
+\subsection{H\"older's inequality and Minkowski's inequality}
+
+\begin{definition}
+For $p, q \in [1,\infty]$, we say that $p$ and $q$ are conjugate indices\index{conjugate indices} if
+\be
+\frac 1p + \frac 1q = 1.
+\ee
+\end{definition}
+
+\begin{theorem}[H\"older's Inequality\index{H\"older's Inequality}]\label{thm:holder_inequality}
+Let $p, q \in (1,\infty)$ be conjugate indices. Then, for all measurable functions $f$ and $g$, we have
+\be
+\mu(|fg|) \leq \dabs{f}_p\dabs{g}_q.
+\ee
+\end{theorem}
+\begin{proof}[\bf Proof]
+The cases where $\abs{f}_p = 0$ or $\abs{f}_p = \infty$ are obvious. We exclude them. Then, by multiplying $f$ by an appropriate constant, we are reduced to the case where $\dabs{f}_p = 1$. So we can define a probability measure $\pro$ on $\sE$ by 
+\be
+\pro(A) = \int_A |f|^pd\mu.
+\ee
+
+For measurable functions $X \geq 0$,
+\be
+\E(X) = \mu(X|f|^p),\quad\quad \E(X) \leq \E(X^q)^{1/q}.
+\ee
+
+Note that $q(p - 1) = p$. Then
+\be
+\mu(|fg|) = \mu \bb{\frac{ |g|}{|f|^{p-1}} |f|^p} = \E \bb{\frac{ |g|}{|f|^{p-1}}} \leq \E \bb{ \frac{|g|^q}{|f|^{q(p-1)}}}^{1/q} = \mu(|g|^q)^{1/q} = \dabs{f}_p\dabs{g}_q.
+\ee
+\end{proof}
+
+\begin{theorem}[Minkowski's Inequality\index{Minkowski's Inequality}]\label{thm:minkowski_inequality}
+For $p \in [1,\infty)$ and measurable functions $f$ and $g$, we have
+\be
+\dabs{f + g}_p \leq \dabs{f}_p + \dabs{g}_p.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+The cases where $p = 1$ or where $\dabs{f}_p = \infty$ or $\dabs{g}_p = \infty$ are easy. We exclude them. Then, since $\abs{f + g}^p \leq 2p(|f|^p + |g|^p)$, we have
+\be
+\mu(|f + g|^p) \leq 2^p\{\mu(|f|^p) + \mu(|g|^p)\} < \infty.
+\ee
+
+The case where $\dabs{f + g}_p = 0$ is clear, so let us assume $\dabs{f + g}_p > 0$. Observe that
+\be
+\dabs{|f + g|^{p-1}}_q = \mu\bb{|f + g|^{(p-1)q}}^{1/q} = \mu\bb{|f + g|^p}^{1-1/p}.
+\ee
+
+So, by H\"older's inequality,
+\be
+\mu(|f + g|^p) \leq \mu\bb{|f||f + g|^{p-1}} + \mu\bb{|g||f + g|^{p-1}} \leq \bb{\dabs{f}_p + \dabs{g}_p}\dabs{|f + g|^{p-1}}_q.
+\ee
+The result follows on dividing both sides by $\dabs{|f + g|^{p-1}}_q$.
+\end{proof}
+
+\section{Completeness of $L^p$ and orthogonal projection}
+
+\subsection{$\sL^p$ as a Banach space}
+
+Let $V$ be a vector space. A map $v \mapsto \dabs{v}: V \to [0,\infty)$ is a norm if
+\ben
+\item [(i)] $\dabs{u + v} \leq \dabs{u} + \dabs{v}$ for all $u, v \in V$,
+\item [(ii)] $\dabs{\alpha v} = |\alpha|\dabs{v}$ for all $v \in V$ and $\alpha \in \R$,
+\item [(iii)] $\dabs{v} = 0$ implies $v = 0$.
+\een
+
+We note that, for any norm, if $\dabs{v_n - v} \to 0$ then $\dabs{v_n} \to \dabs{v}$.
+
+A symmetric bilinear map $(u, v) \to \inner{u}{v} : V \times V \to \R$ is an inner product if $\inner{v}{v} \geq 0$, with equality only if $v = 0$. For any inner product, $\inner{\cdot}{\cdot}$, the map $v \mapsto \sqrt{\inner{v}{v}}$ is a norm, by the Cauchy-Schwarz inequality.
+
+Minkowski's inequality shows that each $L^p$ space is a vector space and that the $L^p$-norms satisfy condition (i) above. Condition (ii) also holds. Condition (iii) fails, because $\dabs{f}_p = 0$ does not imply that $f = 0$, only that $f = 0$ a.e.. However, it is possible to make the $L^p$-norms into true norms by quotienting out by the subspace of measurable functions vanishing a.e.. This quotient will be denoted $L^p$. Note that, for $f \in L^2$, we have $\dabs{f}^2_2 = \inner{f}{f}$, where $\inner{\cdot}{\cdot}$ is the symmetric bilinear form on $L^2$ given by
+\be
+\inner{f}{g} = \int_E fg d\mu.
+\ee
+Thus $\sL^2$ is an inner product space. The notion of convergence in $L^p$ defined in previous section is the usual notion of convergence in a normed space.
+
+A normed vector space $V$ is complete\index{complete} if every Cauchy sequence in $V$ converges, that is to say, given any sequence $(v_n : n \in \N)$ in $V$ such that $\dabs{v_n - v_m} \to 0$ as $n,m \to \infty$, there exists $v \in V$ such that $\dabs{v_n-v} \to 0$ as $n \to \infty$. A complete normed vector space is called a Banach space. A complete inner product space is called a Hilbert space\index{Hilbert space}. Such spaces have many useful properties, which makes the following result important.
+
+\begin{theorem}[Completeness of $L^p$]
+Let $p \in [1,\infty]$. Let $(f_n : n \in \N)$ be a sequence in $L^p$ such that 
+\be
+\dabs{f_n - f_m}_p \to 0\quad\text{as }n,m \to \infty.
+\ee
+Then there exists $f \in L^p$ such that
+\be
+\dabs{f_n - f}_p \to 0 \quad\text{as }n \to \infty.
+\ee
+\end{theorem}
+\begin{proof}[\bf Proof]
+Some modifications of the following argument are necessary in the case $p = \infty$, which are left as an exercise. We assume from now on that $p < \infty$. Choose a subsequence $(n_k)$ such that 
+\be
+S = \sum^\infty_{k=1} \dabs{f_{n_{k+1}} - f_{n_k}}_p < \infty.
+\ee
+
+By Minkowski's inequality, for any $K \in \N$,
+\be
+\dabs{\sum^K_{k=1} \abs{f_{n_{k+1}} - f_{n_k}}}_p \leq S.
+\ee
+
+By monotone convergence this bound holds also for $K = \infty$, so 
+\be
+\sum^\infty_{k=1} \abs{f_{n_{k+1}} - f_{n_k}} | < \infty \quad \text{a.e.}.
+\ee
+
+Hence, by completeness of $\R$, $f_{n_k}$ converges a.e.. We define a measurable function $f$ by
+\be
+f(x) = \left\{\ba{ll}
+\lim f_{n_k} (x) \quad \quad & \text{if the limit exists}\\
+0 & \text{otherwise}
+\ea\right.
+\ee
+
+Given $\ve > 0$, we can find $N$ so that $n \geq N$ implies
+\be
+\mu(|f_n - f_m|^p) \leq \ve,\quad \text{for all }m \geq n,
+\ee
+in particular $\mu(|f_n - f_{n_k}|^p) \leq \ve$ for all sufficiently large $k$. Hence, by Fatou's lemma, for $n \geq N$,
+\be
+\mu(|f_n - f|^p) = \mu\bb{\liminf_k |f_n - f_{n_k}|^p} \leq \liminf_k \mu\bb{|f_n - f_{n_k}|^p} \leq \ve.
+\ee
+
+Hence $f \in L^p$ and, since $\ve > 0$ was arbitrary, $\dabs{f_n - f}_p \to 0$.
+\end{proof}
+
+\begin{corollary}
+We have
+\ben
+\item [(a)] $\sL^p$ is a Banach space, for all $1 \leq p \leq \infty$,
+\item [(b)] $\sL^2$ is a Hilbert space.
+\een
+\end{corollary}
+
+\subsection{$\sL^2$ as a Hilbert space}
+
+We shall apply some general Hilbert space arguments to $L^2$. First, we note Pythagoras' rule
+\be
+\dabs{f + g}_2^2 = \dabs{f}_2^2 + 2\inner{f}{g} + \dabs{g}^2_2 
+\ee
+and the parallelogram law
+\be
+\dabs{f + g}^2_2 + \dabs{f - g}^2_2 = 2\bb{\dabs{f}^2_2 + \dabs{g}^2_2}.
+\ee
+
+If $\inner{f}{g} = 0$, then we say that $f$ and $g$ are orthogonal. For any subset $V \subseteq L^2$, we define
+\be
+V^\perp = \{f \in L^2 : \inner{f}{v} = 0 \text{ for all }v \in V \}.
+\ee
+
+A subset $V \subseteq L^2$ is closed if, for every sequence $(f_n : n \in \N)$ in $V$, with $f_n \to f$ in $L^2$, we have $f = v$ a.e., for some $v \in V$.
+
+\begin{theorem}[Orthogonal Projection\index{Orthogonal Projection}]
+Let $V$ be a closed subspace of $L^2$. Then each $f \in L^2$ has a decomposition $f = v + u$, with $v \in V$ and $u \in V^\perp$. Moreover, $\dabs{f - v}_2 \leq \dabs{f - g}_2$ for all $g \in V$, with equality only if $g = v$ a.e..
+
+The function $v$ is called (a version of ) the orthogonal projection of $f$ on $V$.
+\end{theorem}
+\begin{proof}[\bf Proof]
+Choose a sequence $g_n \in V$ such that
+\be
+\dabs{f - g_n}_2 \to d(f, V) = \inf\{\dabs{f - g}_2 : g \in V \}.
+\ee
+
+By the parallelogram law,
+\be
+\dabs{2(f - (g_n + g_m)/2)}_2^2 + \dabs{g_n - g_m}_2^2 = 2\bb{\dabs{f - g_n}_2^2 + \dabs{f - g_m}_2^2}.
+\ee
+But $\dabs{2(f-(g_n+g_m)/2)}_2^2 \geq 4d(f, V)^2$, so we must have $\dabs{g_n-g_m}_2 \to 0$ as $n,m \to \infty$. By completeness, $\dabs{g_n - g}_2 \to 0$, for some $g \in L^2$. By closure, $g = v$ a.e., for some $v \in V$. Hence
+\be
+\dabs{f - v}_2 = \lim_n \dabs{f - g_n}_2 = d(f, V).
+\ee
+
+Now, for any $h \in V$ and $t \in \R$, we have
+\be
+d(f, V)^2 \leq \dabs{f - (v + th)}_2^2 = d(f, V )^2 - 2t\inner{f - v}{h} + t^2\dabs{h}_2^2.
+\ee
+So we must have $\inner{f - v}{h} = 0$. Hence $u = f - v \in V^\perp$, as required.
+\end{proof}
+
+\subsection{Variance, covariance and conditional expectation}
+
+In this section we look at some $L^2$ notions relevant to probability. For $X, Y \in L^2(\pro)$, with means $m_X = \E(X)$, $m_Y = \E(Y)$, we define variance, covariance and correlation by
+\beast
+\var(X) & = & \E[(X - m_X)^2],\\
+\cov(X, Y) & = & \E[(X - m_X)(Y - m_Y )],\\
+\corr(X, Y) & = & \cov(X, Y)/\sqrt{\var(X) \var(Y )}.
+\eeast
+
+Note that $\var(X) = 0$ if and only if $X = m_X$ a.s.. Note also that, if $X$ and $Y$ are independent, then $\cov(X, Y) = 0$. The converse is generally false. For a random variable $X = (X_1, \dots,X_n)$ in $\R^n$, we define its covariance matrix
+\be
+\var(X) = (\cov(X_i,X_j))^n_{i,j=1.}
+\ee
+
+\begin{proposition}
+Every covariance matrix is non-negative definite. 
+\end{proposition}
+
+Suppose now we are given a countable family of disjoint events $(G_i : i \in I)$, whose union is $\Omega$. Set $\sG = \sigma(G_i : i \in I)$. Let $X$ be an integrable random variable. The conditional expectation of $X$ given $\sG$ is given by
+\be
+Y = \sum_i \E(X|G_i)\ind_{G_i},
+\ee
+where we set $\E(X|G_i) = \E(X\ind_{G_i})/\pro(G_i)$ when $\pro(G_i) > 0$, and define $\E(X|G_i)$ in some arbitrary way when $\pro(G_i) = 0$. Set $V = L^2(\sG, \pro)$ and note that $Y \in V$. Then $V$ is a subspace of $L^2(\sF, \pro)$, and $V$ is complete and therefore closed.
+
+\begin{proposition}
+If $X \in L^2$, then $Y$ is a version of the orthogonal projection of $X$ on $V$.
+\end{proposition}
+
+\section{Convergence in $L^1(\pro)$}
+
+\subsection{Bounded convergence}
+
+We begin with a basic, but easy to use, condition for convergence in $L^1(\pro)$.
+
+\begin{theorem}[Bounded Convergence Theorem\index{Bounded Convergence Theorem}]
+Let $(X_n : n \in \N)$ be a sequence of random variables, with $X_n \to X$ in probability and $|X_n| \leq C$ for all $n$, for some constant $C < \infty$. Then $X_n \to X$ in $L^1$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+By Theorem \ref{thm:convergence_in_probability}, $X$ is the almost sure limit of a subsequence, so $|X| \leq C$ a.s.. For $\ve > 0$, there exists $N$ such that $n \geq N$ implies
+\be
+\pro(|X_n - X| > \ve/2) \leq \ve/(4C).
+\ee
+
+Then
+\be
+\E|X_n-X| = \E\bb{|X_n-X|\ind_{\{|X_n-X|>\ve/2\}}}+\E\bb{|X_n-X|\ind_{\{|X_n-X|\leq \ve/2\}}}  \leq 2C(\ve/4C)+\ve/2 = \ve.
+\ee
+\end{proof}
+
+\subsection{Uniform integrability}
+
+\begin{lemma}\label{lem:i_x}
+Let $X$ be an integrable random variable and set 
+\be
+I_X(\delta) = \sup\{\E(|X|\ind_A) : A \in \sF, \pro(A) \leq \delta\}.
+\ee
+Then $I_X(\delta) \da 0$ as $\delta \da 0$.
+\end{lemma}
+\begin{proof}[\bf Proof]
+Suppose not. Then, for some $\ve > 0$, there exist $A_n \in \sF$, with $\pro(A_n) \leq 2^{-n}$ and $\E(|X|\ind_{A_n}) \geq \ve$ for all $n$. By the first Borel-Cantelli Lemma, $\pro(A_n \text{ i.o.}) = 0$. But then, by dominated convergence,
+\be
+\ve \leq \E\bb{|X|\ind_{\bigcup_{m\geq n} A_m}} \to \E\bb{|X|\ind_{\{A_n\text{ i.o.}\}}} = 0
+\ee
+which is a contradiction.
+\end{proof}
+
+Let $\sX$ be a family of random variables. For $1 \leq p \leq \infty$, we say that $\sX$ is bounded in $L^p$ if $\sup_{X\in\sX} \dabs{X}_p < \infty$. Let us define
+\be
+I_{\sX}(\delta) = \sup\{\E(|X|\ind_A) : X \in \sX,A \in \sF, \pro(A) \leq \delta\}.
+\ee
+Obviously, $\sX$ is bounded in $L^1$ if and only if $I_\sX(1) < \infty$. We say that $X$ is uniformly integrable or UI if $\sX$ is bounded in $L^1$ and 
+\be
+I_\sX(\delta) \da 0,\quad \text{as }\delta \da 0.
+\ee
+Note that, by H\"older's inequality, for conjugate indices $p, q \in (1,\infty)$,
+\be
+\E(|X|\ind_A) \leq \dabs{X}_p(\pro(A))^{1/q}.
+\ee
+Hence, if $\sX$ is bounded in $L^p$, for some $p \in (1,\infty)$, then $\sX$ is UI. The sequence $X_n = n\ind_{(0,1/n)}$ is bounded in $L^1$ for Lebesgue measure on $(0, 1]$, but not uniformly integrable.
+
+Lemma \ref{lem:i_x} shows that any single integrable random variable is uniformly integrable. This extends easily to any finite collection of integrable random variables. Moreover, for any integrable random variable $Y$, the set
+\be
+\sX = \{X : X \text{ a random variable}, |X| \leq Y \}
+\ee
+is uniformly integrable, because $\E(|X|1_A) \leq \E(Y 1_A)$ for all $A$.
+
+The following result gives an alternative characterization of uniform integrability.
+
+\begin{lemma}
+Let $\sX$ be a family of random variables. Then $\sX$ is UI if and only if
+\be
+\sup\{\E(|X|\ind_{|X|\geq K}) : X \in \sX\} \to 0, \quad \text{as }K \to \infty.
+\ee
+\end{lemma}
+\begin{proof}[\bf Proof]
+Suppose $\sX$ is UI. Given $\ve > 0$, choose $\delta > 0$ so that $I_\sX(\delta) < \ve$, then choose $K < \infty$ so that $I_\sX(1) \leq K\delta$. Then, for $X \in \sX$ and $A = \{|X| \geq K\}$, we have $\pro(A) \leq \delta$ so $\E(|X|\ind_A) < \ve$. Hence, as $K \to \infty$,
+\be
+\sup\{\E(|X|1_{\{|X|\geq K\}}) : X \in \sX\} \to 0.
+\ee
+
+On the other hand, if this condition holds, then, since
+\be
+\E(|X|) \leq K + \E(|X|\ind_{\{|X|\geq K\}}),
+\ee
+we have $I_\sX(1) < \infty$. Given $\ve > 0$, choose $K < \infty$ so that $\E(|X|\ind_{\{|X|\geq K\}}) < \ve/2$ for all $X \in \sX$. Then choose $\delta > 0$ so that $K\delta < \ve/2$. For all $X \in \sX$ and $A \in \sF$ with $\pro(A) < \delta$, we have
+\be
+\E(|X|\ind_A) \leq \E(|X|\ind_{\{|X|\geq K\}}) + K\pro(A) < \ve.
+\ee
+Hence $\sX$ is UI.
+\end{proof}
+
+Here is the definitive result on $L^1$-convergence of random variables.
+
+\begin{theorem}
+Let $X$ be a random variable and let $(X_n : n \in \N)$ be a sequence of random variables. The following are equivalent:
+\ben
+\item [(a)] $X_n \in L^1$ for all $n$, $X \in L^1$ and $X_n \to X$ in $L^1$,
+\item [(b)] $\{X_n : n \in \N\}$ is UI and $X_n \to X$ in probability.
+\een
+\end{theorem}
+\begin{proof}[\bf Proof]
+Suppose (a) holds. By Chebyshev's inequality, for $\ve > 0$,
+\be
+\pro(|X_n - X| > \ve) \leq \ve^{-1}\E(|X_n - X|) \to 0
+\ee
+so $X_n \to X$ in probability. Moreover, given $\ve > 0$, there exists $N$ such that $\E(|X_n - X|) < \ve/2$ whenever $n \geq N$. Then we can find $\delta > 0$ so that $\pro(A) \leq \delta$ implies
+\be
+\E(|X|\ind_A) \leq \ve/2,\quad\quad \E(|X_n|\ind_A) \leq \ve,\quad n = 1, \dots ,N.
+\ee
+Then, for $n \geq N$ and $\pro(A) \leq \delta$,
+\be
+\E(|X_n|\ind_A) \leq \E(|X_n - X|) + \E(|X|\ind_A) \leq \ve.
+\ee
+Hence $\{Xn : n \in \N\}$ is UI. We have shown that (a) implies (b).
+
+Suppose, on the other hand, that (b) holds. Then there is a subsequence $(n_k)$ such that $X_{n_k} \to X$ a.s.. So, by Fatou's lemma, $\E(|X|) \leq \liminf_k \E(|X_{n_k}|) < \infty$. Now, given $\ve > 0$, there exists $K < \infty$ such that, for all $n$,
+\be
+\E(|X_n|\ind_{\{|X_n|\geq K\}}) < \ve/3,\quad\quad \E(|X|\ind_{\{|X|\geq K\}}) < \ve/3.
+\ee
+
+Consider the uniformly bounded sequence $X^K_n = (-K) \lor X_n \land K$ and set $X^K = (-K)\lor X \land K$. Then $X^K_n \to X^K$ in probability, so, by bounded convergence, there exists $N$ such that, for all $n \geq N$,
+\be
+\E|X^K_n - X^K| < \ve/3.
+\ee
+But then, for all $n \geq N$,
+\be
+\E|X_n - X| \leq \E(|X_n|\ind{\{|X_n|\geq K\}}) + \E|X^K_n - X^K| + \E(|X|\ind_{\{|X|\geq K\}}) < \ve.
+\ee
+Since $\ve > 0$ was arbitrary, we have shown that (b) implies (a).
+\end{proof}
+
+\section{Characteristic functions and weak convergence}
+
+\subsection{Definitions}
+For a finite Borel measure $\mu$ on $\R^n$, we define the Fourier transform
+\be
+\wh{\mu}(u) = \int_{\R^n} e^{i\inner{u}{x}} \mu(dx),\quad u \in \R^n.
+\ee
+Here, $\inner{\cdot}{\cdot}$ denotes the usual inner product on $\R^n$. Note that $\wh{\mu}$ is in general complexvalued, with $\ol{\wh{\mu}(u)} = \wh{\mu}(-u)$, and $\dabs{\wh{\mu}}_\infty = \wh{\mu}(0) = \mu(\R^n)$. Moreover, by bounded convergence, $\wh{\mu}$ is continuous on $\R^n$.
+
+For a random variable $X$ in $\R^n$, we define the characteristic function
+\be
+\phi_X(u) = \E(e^{i\inner{u}{X}}),\quad u \in \R^n.
+\ee
+
+Thus $\phi_X = \wh{\mu}_X$, where $\mu_X$ is the law of $X$.
+
+A random variable $X$ in $\R^n$ is standard Gaussian if 
+\be
+\pro(X \in A) = \int_A \frac 1{(2\pi)^{n/2}} e^{-|x|^2/2}dx,\quad A \in\sB.
+\ee
+
+Let us compute the characteristic function of a standard Gaussian random variable $X$ in $\R$. We have
+\be
+\phi_X(u) = \int_{\R} e^{iux}\frac 1{\sqrt{2\pi}} e^{-x^2/2}dx = e^{-u^2/2}I
+\ee
+where
+\be
+I = \int_\R \frac 1{\sqrt{2\pi}} e^{-(x-iu)^2/2}dx.
+\ee
+
+The integral $I$ can be evaluated by considering the integral of the analytic function $e^{-z^2/2}$ around the rectangular contour with corners $R$, $R - iu$, $-R - iu$, $-R$: by Cauchy's theorem, the integral round the contour vanishes, as do, in the limit $R \to \infty$, the contributions from the vertical sides of the rectangle. We deduce that
+\be
+I = \int_\R \frac 1{\sqrt{2\pi}}e^{-x^2/2}dx = 1.
+\ee
+Hence $\phi_X(u) = e^{-u^2/2}$.
+
+\subsection{Uniqueness and inversion}
+
+We now show that a finite Borel measure is determined uniquely by its Fourier transform and obtain, where possible, an inversion formula by which to compute the measure from its transform.
+
+Define, for $t > 0$ and $x, y \in \R^n$, the heat kernel
+\be
+p(t, x, y) = \frac 1{(2\pi t)^{n/2}} e^{-|y-x|^2/2t} = \prod^n_{k=1} \frac 1{\sqrt{2\pi t}} e^{-|y_k-x_k|^2/2t}.
+\ee
+(This is the fundamental solution for the heat equation $(\partial/\partial t - \delta)p = 0$ in $\R^n$, but we shall not pursue this property here.)
+
+\begin{lemma}
+Let $Z$ be a standard Gaussian random variable in $\R^n$. Let $x \in \R^n$ and $t \in (0,\infty)$. Then
+\ben
+\item [(a)] the random variable $x +\sqrt{t}Z$ has density function $p(t, x, \cdot)$ on $\R^n$,
+\item [(b)] for all $y \in \R^n$, we have
+\be
+p(t, x, y) = \frac 1{(2\pi)^n} \int_{\R^n} e^{i\inner{u}{x}} e^{-|u|^2t/2} e^{-i\inner{u}{y}}du.
+\ee
+\een
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+The component random variables $Y_k = x_k + \sqrt{t}Z_k$ are independent Gaussians with mean $x_k$ and variance $t$. So $Y_k$ has density
+\be
+\frac 1{\sqrt{2\pi t}} e^{-|y_k-x_k|^2/2t}
+\ee
+and we obtain the claimed density function for $Y$ as the product of the marginal densities.
+
+For $u \in \R$ and $t \in (0,\infty)$, we know that 
+\be
+\int_\R e^{iux}\frac 1{\sqrt{2\pi t}} e^{-|x|^2/2t}dx = \E(e^{iu \sqrt{t}Z_1}) = e^{u^2t/2}.
+\ee
+
+By relabelling the variables we obtain, for $x_k, y_k, u_k \in \R$ and $t \in (0,\infty)$,
+\be
+\int_\R e^{iu_k(x_k-y_k)} \frac{\sqrt{t}}{\sqrt{2\pi}} e^{-t|u_k|^2/2} du_k = e^{(x-y)^2/2t},
+\ee
+so
+\be
+\frac 1{\sqrt{2\pi t}} e^{-|y_k-x_k|^2/2t} = \frac 1{2\pi} \int_\R e^{iu_k x_k}e^{-u^2_kt/2} e^{-i\inner{u_k}{y_k}} du_k.
+\ee
+On taking the product over $k \in \{1, \dots, n\}$, we obtain the claimed formula for $p(t, x, y)$.
+\end{proof}
+
+\begin{theorem}
+Let $X$ be a random variable in $\R^n$. The law $\mu_X$ of $X$ is uniquely determined by its characteristic function $\phi_X$. Moreover, if $\phi_X$ is integrable, and we define
+\be
+f_X(x) = \frac 1{(2\pi)^n} \int_{\R^n} \phi_X(u)e^{-i\inner{u}{x}}du,
+\ee
+then $f_X$ is a continuous, bounded and non-negative function, which is a density function for $X$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $Z$ be a standard Gaussian random variable in $\R^n$, independent of $X$, and let $g$ be a continuous function on $\R^n$ of compact support. Then, for any $t \in (0,\infty)$, by Fubini's theorem,
+\be
+\E(g(X + \sqrt{t}Z)) = \int_{\R^n} \int_{\R^n} g(x + \sqrt{t}z)(2\pi)^{-n/2}e^{-|z|^2/2} dz\mu_X(dx).
+\ee
+By the lemma, we have 
+\beast
+\int_{\R^n} g(x + \sqrt{t}z)(2\pi)^{-n/2} e^{-|z|^2/2} dz & = & \E(g(x + \sqrt{t}Z)) = \int_{\R^n} g(y)p(t, x, y)dy \\
+& = & \int_{\R^n} g(y) \frac 1{(2\pi)^n} \int_{\R^n} e^{i\inner{u}{x}} e^{-|u|^2t/2} e^{-i\inner{u}{y}} dudy,
+\eeast
+so, by Fubini again,
+\be
+\E(g(X + \sqrt{t}Z)) = \int_{\R^n}\bb{\frac 1{(2\pi)^n} \int_{\R^n} \phi_X(u)e^{-|u|^2t/2}e^{-i\inner{u}{y}}du }g(y)dy.
+\ee
+
+By this formula, $\phi_X$ determines $\E(g(X+ \sqrt{t}Z))$. For any such function $g$, by bounded convergence, we have
+\be
+\E(g(X + \sqrt{t}Z)) \to \E(g(X))
+\ee
+as $t \da 0$, so $\phi_X$ determines $\E(g(X))$. Hence $\phi_X$ determines $\mu_X$.
+
+Suppose now that $\phi_X$ is integrable. Then
+\be
+|\phi_X(u)||g(y)| \in L^1(du \otimes dy).
+\ee
+So, by Fubini's theorem, $g\cdot f_X \in L^1$ and, by dominated convergence, as $t \da 0$,
+\beast
+& & \int_{\R^n} \bb{\frac 1{(2\pi)^n} \int_{\R^n} \phi_X(u)e^{-|u|^2t/2}e^{-i\inner{u}{y}}du} g(y)dy\\
+& \to & \int_{\R^n} \bb{\frac 1{(2\pi)^n} \int_{\R^n} \phi_X(u)e^{-i\inner{u}{y}}du} g(y)dy = \int_{\R^n} g(y)f_X(x)dy.
+\eeast
+
+Hence we obtain the identity
+\be
+\E(g(X)) = \int_{\R^n} g(x)f_X(x)dx.
+\ee
+
+Since $\ol{\phi_X(u)} = \phi_X(-u)$, we have $\ol{f}_X = f_X$, so $f_X$ is real-valued. Moreover, $f_X$ is continuous, by bounded convergence, and $\dabs{f_X}_\infty \leq (2\pi)^n\dabs{\phi_X}_1$. Since $f_X$ is continuous, if it took a negative value anywhere, it would do so on an open interval of positive length, $I$ say. There would exist a continuous function $g$, positive on $I$ and vanishing outside $I$. Then we would have $\E(g(X)) \geq 0$ and $\int_{R^n} g(x)f_X(x)dx < 0$, a contradiction. Hence, $f_X$ is non-negative. It is now straightforward to extend the identity to all bounded Borel functions $g$, by a monotone class argument. In particular $f_X$ is a density function for $X$. 
+\end{proof}
+
+\subsection{Characteristic functions and independence}
+
+\begin{theorem}\label{thm:characteristic_function}
+Let $X = (X_1, \dots,X_n)$ be a random variable in $\R^n$. Then the following are equivalent:
+\ben
+\item [(a)] $X_1, \dots,X_n$ are independent,
+\item [(b)] $\mu_X = \mu_{X_1} \otimes\dots \otimes \mu_{X_n}$,
+\item [(c)] $\E\bb{\prod_k f_k(X_k)} = \prod_k \E(f_k(X_k))$, for all bounded Borel functions $f_1,\dots, f_n$,
+\item [(d)] $\phi_X(u) = \prod_k \phi_{X_k}(u_k)$, for all $u = (u_1, \dots, u_n) \in \R^n$.
+\een
+\end{theorem}
+\begin{proof}[\bf Proof]
+If (a) holds, then
+\be
+\mu_X(A_1 \times \dots \times A_n) = \prod_k \mu_{X_k}(A_k)
+\ee
+for all Borel sets $A_1,\dots,A_n$, so (b) holds, since this formula characterizes the product measure.
+
+If (b) holds, then, for $f_1,\dots, f_n$ bounded Borel, by Fubini's theorem,
+\be
+\E\bb{\prod_k f_k(X_k)} = \int_{\R^n} \prod_k f_k(x_k)\mu_X(dx) = \prod_k \int_\R f_k(x_k)\mu_{X_k}(dx_k) = \prod_k \E(f_k(X_k)),
+\ee
+so (c) holds. Statement (d) is a special case of (c). Suppose, finally, that (d) holds and take independent random variables $\tilde{X}_1, \dots, \tilde{X}_n$ with $\mu_{\tilde{X}_k} = \mu_{X_k}$ for all $k$. We know that (a) implies (d), so
+\be
+\phi_{\tilde{X}}(u) = \prod_k \phi_{\tilde{X}_k} (u_k) = \prod_k \phi_{X_k}(u_k) = \phi_X(u)
+\ee
+so $\mu_{\tilde{X}} = \mu_X$ by uniqueness of characteristic functions. Hence (a) holds. 
+\end{proof}
+
+\subsection{Weak convergence}
+
+Let $F$ be a distribution function on $\R$ and let $(F_n : n \in \N)$ be a sequence of such distribution functions. We say that $F_n \to F$ as distribution
+functions if $F_{X_n}(x) \to F_X(x)$ at every point $x \in \R$ where $F_X$ is continuous.
+
+Let $\mu$ be a Borel probability measure on $\R$ and let $(\mu_n : n \in \N)$ be a sequence of such measures. We say that $\mu_n \to \mu$ weakly if $\mu_n(f) \to \mu(f)$ for all continuous bounded functions $f$ on $\R$.
+
+Let $X$ be a random variable and let $(X_n : n \in \N)$ be a sequence of random variables. We say that $X_n \to X$ in distribution if $F_{X_n} \to F_X$.
+
+\subsection{Equivalent modes of convergence}
+
+Suppose we are given a sequence of Borel probability measures $(\mu_n : n \in \N)$ on $\R$ and a further such measure $\mu$. Write $F_n$ and $F$ for the corresponding distribution functions, and write $\phi_n$ and $\phi$ for the corresponding Fourier transforms. On the probability space $([0, 1),\sB([0, 1)), dx)$, define random variables $X_n(\omega) = \inf\{x \in \R : \omega \leq F_n(x)\}$ and $X(\omega) = \inf\{x \in \R : \omega \leq F(x)\}$, as in
+Subsection \ref{subsec:random_variable}. Recall that $X_n \sim \mu_n$ and $X \sim \mu$.
+
+\begin{theorem}\label{thm:weak_convergence}
+The following are equivalent:
+\ben
+\item [(i)] $\mu_n \to \mu$ weakly,
+\item [(ii)] $F_n \to F$ as distribution functions,
+\item [(iii)] $\phi_{X_n}(u) \to \phi_X(u)$ for all $u \in \R$,
+\item [(iv)] $X_n \to X$ a.s..
+\een
+\end{theorem}
+
+We do not prove this result in full, but note how to see certain of the implications. First, (iii) is a special case of (i), and (iv) implies (i) by bounded convergence, using $\mu_n(f) = \E(f(X_n)) \to \E(f(X)) = \mu(f)$. A proof that (ii) implies (iv) follows, with some care, from the definition of $X_n$ and $X$. The fact that (iii) implies (ii) is a consequence of the following famous result, which we do not prove here.
+
+\begin{theorem}[L\'evy's continuity theorem for characteristic functions]
+Let $(X_n : n \in \N)$ be a sequence of random variables and suppose that $\phi_{X_n}(u)$ converges as $n \to \infty$, with limit $\phi(u)$ say, for all $u \in \R$. If $\phi$ is continuous in a neighbourhood of 0, then it is the characteristic function of some random variable $X$, and $X_n \to X$ in distribution.
+\end{theorem}
+
+\section{Gaussian random variables}
+
+\subsection{Gaussian random variables in $\R$}
+
+A random variable $X$ in $\R$ is Gaussian if, for some $\mu \in \R$ and some $\sigma^2 \in (0,\infty)$, $X$ has density function
+\be
+f_X(x) = \frac 1{\sqrt{2\pi}\sigma^2} e^{-(x-\mu)^2/2\sigma^2}.
+\ee
+
+We also admit as Gaussian any random variable $X$ with $X = \mu$ a.s., this degenerate case corresponding to taking $\sigma^2 = 0$. We write $X \sim \sN(\mu, \sigma^2)$.
+
+\begin{proposition}\label{pro:cf_gaussian}
+Suppose $X \sim \sN(\mu, \sigma^2)$ and $a, b \in \R$. Then (a) $\E(X) = \mu$, (b) $\var(X) = \sigma^2$, (c) $aX + b \sim \sN(a\mu + b, a^2\sigma^2)$, (d) $\phi_{X}(u) = e^{iu\mu-u^2\sigma^2/2}$.
+\end{proposition}
+
+\subsection{Gaussian random variables in $\R^n$}
+
+A random variable $X$ in $\R^n$ is Gaussian if $\inner{u}{X}$ is Gaussian, for all $u \in \R^n$. An example of such a random variable is provided by $X = (X_1, \dots,X_n)$, where $X_1, \dots,X_n$ are independent $\sN(0, 1)$ random variables. To see this, we note that
+\be
+\E e^{i\inner{u}{X}} = \E \prod_k e^{iu_kX_k} = e^{-|u|^2/2}
+\ee
+so $\inner{u}{X}$ is $\sN(0, |u|^2)$ for all $u \in \R^n$.
+
+\begin{theorem}
+Let $X$ be a Gaussian random variable in $\R^n$. Then
+\ben
+\item [(a)] $AX + b$ is a Gaussian random variable in $\R^m$, for all $m\times n$ matrices $A$ and all $b \in \R^m$,
+\item [(b)] $X \in L^2$ and its distribution is determined by its mean $\mu$ and its covariance matrix $V$,
+\item [(c)] $\phi_X(u) = e^{i\inner{u}{\mu}-\inner{u}{Vu}/2}$,
+\item [(d)] if $V$ is invertible, then $X$ has a density function on $\R^n$, given by 
+\be
+f_X(x) = (2\pi)^{-n/2}(\det V )^{-1/2} \exp\{-\inner{x - \mu}{V^{-1}(x - \mu)}/2\},
+\ee
+\item [(e)] suppose $X = (X_1,X_2)$, with $X_1$ in $\R^{n_1}$ and $X_2$ in $\R^{n_2}$, then
+\be
+\cov(X_1,X_2) = 0 \quad \text{implies}\quad X_1,\ X_2 \text{ independent}.
+\ee
+\een
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+For $u \in \R^n$, we have $\inner{u}{AX+b} = \inner{A^Tu}{X}+ \inner{u}{b}$ so $\inner{u}{AX+b}$ is Gaussian, by Proposition \ref{pro:cf_gaussian}. This proves (a).
+
+Each component $X_k$ is Gaussian, so $X \in L^2$. Set $\mu = \E(X)$ and $V = \var(X)$. For $u \in \R^n$ we have $\E(\inner{u}{X}) = \inner{u}{\mu}$ and 
+\be
+\var(\inner{u}{X}) = \cov(\inner{u}{X},\inner{u}{X}) = \inner{u}{V u}.
+\ee
+Since $\inner{u}{X}$ is Gaussian, by Proposition \ref{pro:cf_gaussian}, we must have 
+\be
+\inner{u}{X} \sim \sN\bb{\inner{u}{\mu}, \inner{u}{V u}}
+\ee
+and 
+\be
+\phi_X(u) = \E e^{i\inner{u}{X}} = e^{i\inner{u}{\mu}-\inner{u}{V u}/2}.
+\ee
+This is (c) and (b) follows by uniqueness of characteristic functions.
+
+Let $Y_1, \dots, Y_n$ be independent $\sN(0, 1)$ random variables. Then $Y = (Y_1,\dots, Y_n)$ has density
+\be
+f_Y (y) = (2\pi)^{-n/2} \exp\{-|y|^2/2\}.
+\ee
+
+Set $\tilde{X} = V^{1/2}Y +\mu$, then $\tilde{X}$ is Gaussian, with $\E(\tilde{X}) = \mu$ and $\var(\tilde{X} ) = V$, so $\tilde{X} \sim X$. If $V$ is invertible, then $\tilde{X}$ and hence $X$ has the density claimed in (d), by a linear change of variables in $\R^n$.
+
+Finally, if $X = (X_1,X_2)$ with $\cov(X_1,X_2) = 0$, then, for $u = (u_1, u_2)$, we have 
+\be
+\inner{u}{V u} = \inner{u_1}{V_{11}u_1} + \inner{u_2}{V_{22}u_2},
+\ee
+where $V_{11} = \var(X_1)$ and $V_{22} = \var(X_2)$. Then $\phi_X(u) = \phi_{X_1}(u_1)\phi_{X_2}(u_2)$ so $X_1$ and $X_2$ are independent by Theorem \ref{thm:characteristic_function}.
+\end{proof}
+
+\section{Ergodic theory}
+
+\subsection{Measure-preserving transformations}
+
+Let $(E, \sE, \mu)$ be a measure space. A measurable function $\theta : E \to E$ is called a measure-preserving transformation if 
+\be
+\mu(\theta^{-1}(A)) = \mu(A),\quad \text{for all }A \in \sE.
+\ee
+
+A set $A \in \sE$ is invariant if $\theta^{-1}(A) = A$. A measurable function $f$ is invariant if $f = f \circ \theta$. The class of all invariant sets forms a $\sigma$-algebra, which we denote by $\sE_\theta$. Then $f$ is invariant if and only if $f$ is $\sE_\theta$-measurable. We say that $\theta$ is ergodic if $\sE_\theta$ contains only sets of measure zero and their complements.
+
+Here are two simple examples of measure preserving transformations.
+\ben
+\item [(i)] Translation map on the torus. Take $E = [0, 1)^n$ with Lebesgue measure on its Borel $\sigma$-algebra, and consider addition modulo 1 in each coordinate. For $a \in E$ set
+\be
+\theta_a(x_1, \dots, x_n) = (x_1 + a_1, \dots, x_n + a_n).
+\ee
+
+\item [(ii)] Bakers' map. Take $E = [0, 1)$ with Lebesgue measure. Set
+\be
+\theta(x) = 2x - \floor{2x}.
+\ee
+\een
+
+\begin{proposition}
+If $f$ is integrable and $\theta$ is measure-preserving, then $f \circ \theta$ is integrable and 
+\be
+\int_E fd\mu = \int_E f \circ \theta d\mu.
+\ee
+\end{proposition}
+
+\begin{proposition}
+If $\theta$ is ergodic and $f$ is invariant, then $f = c$ a.e., for some constant $c$.
+\end{proposition}
+
+\subsection{Bernoulli shifts}
+Let $m$ be a probability measure on $\R$. In previous section, we constructed a probability space $(\Omega, \sF, \pro)$ on which there exists a sequence of independent random variables $(Y_n : n \in \N)$, all having distribution $m$. Consider now the infinite product space
+\be
+E = \R^\N = \{x = (x_n : n \in \N) : x_n \in \R \text{ for all }n\}
+\ee
+and the $\sigma$-algebra $\sE$ on $E$ generated by the coordinate maps $X_n(x) = x_n$
+\be
+\sE = \sigma(X_n : n \in \N).
+\ee
+
+Note that $\sE$ is also generated by the $\pi$-system
+\be
+\sA = \left\{ \prod^n_{n \in\N} A_n : A_n \in \sB \text{ for all }n,\ A_n = \R \text{ for sufficiently large }n\right\}.
+\ee
+
+Define $Y : \Omega \to E$ by $Y (\omega) = (Y_n(\omega) : n \in \N)$. Then $Y$ is measurable and the image measure $\mu = P \circ Y^{-1}$ satisfies, for $A = \prod_{n\in\N} A_n \in \sA$,
+\be
+\mu(A) = \prod_{n\in \N} m(A_n).
+\ee
+
+By uniqueness of extension, $\mu$ is the unique measure on $\sE$ having this property. Note that, under the probability measure $\mu$, the coordinate maps $(X_n : n \in \N)$ are themselves a sequence of independent random variables with law $m$. The probability space $(E, \sE, \mu)$ is called the canonical model for such sequences. Define the shift map $\theta : E \to E$ by
+\be
+\theta(x_1, x_2, \dots ) = (x_2, x_3, \dots ).
+\ee
+
+\begin{theorem}\label{thm:measure_preserving}
+The shift map is an ergodic measure-preserving transformation.
+\end{theorem}
+\begin{proof}[\bf Proof]
+The details of showing that $\theta$ is measurable and measure-preserving are left as an exercise. To see that $\theta$ is ergodic, we recall the definition of the tail $\sigma$-algebras 
+\be
+\sT_n = \sigma(X_m : m \geq n + 1), \quad\quad \sT = \bigcap_n \sT_n.
+\ee
+
+For $A =\prod_{n\in\N} A_n \in \sA$ we have
+\be
+\theta^{-n}(A) = \{X_{n+k} \in A_k \text{ for all }k\} \in \sT_n.
+\ee
+
+Since $\sT_n$ is a $\sigma$-algebra, it follows that $\theta^{-n}(A) \in \sT_n$ for all $A \in \sE$, so $\sE_\theta \subseteq \sT$. Hence $\theta$ is ergodic by Kolmogorov's zero-one law.
+\end{proof}
+
+\subsection{Birkhoff's and von Neumann's ergodic theorems}
+
+Throughout this section, $(E, \sE, \mu)$ will denote a measure space, on which is given a measure-preserving transformation $\theta$. Given an measurable function $f$, set $S_0 = 0$ and define, for $n \geq 1$,
+\be
+S_n = S_n(f) = f + f \circ \theta + \dots + f \circ \theta^{n-1}.
+\ee
+
+\begin{lemma}[Maximal Ergodic Lemma\index{Maximal Ergodic Lemma}]
+Let $f$ be an integrable function on $E$. Set $S^* = \sup_{n\geq 0} S_n(f)$. Then 
+\be
+\int_{\{S^*>0\}} fd\mu \geq 0.
+\ee
+\end{lemma}
+\begin{proof}[\bf Proof]
+Set $S^*_n = \max_{0\leq m \leq n}S_m$ and $A_n = \{S^*_n > 0\}$. Then, for $m = 1, \dots, n$,
+\be
+S_m = f + S_{m-1} \circ \theta \leq f + S^*_n \circ \theta.
+\ee
+On $A_n$, we have $S^*_n = \max_{1\leq m\leq n} S_m$, so
+\be
+S^*_n \leq f + S^*_n \circ \theta.
+\ee
+
+On $A^c_n$, we have
+\be
+S^*_n = 0 \leq S^*_n \circ \theta.
+\ee
+
+So, integrating and adding, we obtain 
+\be
+\int_E S^*_n d\mu \leq \int_{A_n} fd\mu + \int_E S^*_n \circ\theta d\mu.
+\ee
+
+But $S^*_n$ is integrable, so 
+\be
+\int_E S^*_n\circ \theta d\mu = \int_E S^*_n d\mu < \infty
+\ee
+which forces
+\be
+\int_{A_n} f d\mu \geq 0.
+\ee
+
+As $n \to \infty$, $A_n \ua \{S^* > 0\}$ so, by dominated convergence, with dominating function $|f|$,
+\be
+\int_{\{S^*>0\}} fd\mu = \lim_{n\to\infty} \int_{A_n} fd\mu \geq 0.
+\ee
+\end{proof}
+
+\begin{theorem}[Birkhoff's almost everywhere ergodic theorem]
+Assume that $(E, \sE, \mu)$ is $\sigma$-finite and that $f$ is an integrable function on $E$. Then there exists an invariant function $\ol{f}$, with $\mu(|\ol{f}|) \leq \mu(|f|)$, such that $S_n(f)/n \to \ol{f}$ a.e. as $n \to \infty$.
+\end{theorem}
+\begin{proof}[\bf Proof]
+The functions $liminf_n(S_n/n)$ and $\limsup_n(S_n/n)$ are invariant. Therefore, for $a < b$, so is the following set
+\be
+D = D(a, b) = \left\{\liminf_n (S_n/n) < a < b < \limsup_n (S_n/n)\right\}.
+\ee
+
+We shall show that $\mu(D) = 0$. First, by invariance, we can restrict everything to $D$ and thereby reduce to the case $D = E$. Note that either $b > 0$ or $a < 0$. We can interchange the two cases by replacing $f$ by $-f$. Let us assume then that $b > 0$.
+
+Let $B \in \sE$ with $\mu(B) < \infty$, then $g = f - b\ind_B$ is integrable and, for each $x \in D$, for some $n$,
+\be
+S_n(g)(x) \geq S_n(f)(x) - nb > 0.
+\ee
+
+Hence $S^*(g) > 0$ everywhere and, by the maximal ergodic lemma,
+\be
+0 \leq \int_D (f - b\ind_B)d\mu = \int_D fd\mu - b\mu(B).
+\ee
+
+Since $\mu$ is $\sigma$-finite, there is a sequence of sets $B_n \in \sE$, with $\mu(B_n) < \infty$ for all $n$ and $B_n \ua D$. Hence,
+\be
+b\mu(D) = \lim_{n\to\infty} b\mu(B_n) \leq \int_D fd\mu.
+\ee
+
+In particular, we see that $\mu(D) < \infty$. A similar argument applied to $-f$ and $-a$, this time with $B = D$, shows that
+\be
+(-a)\mu(D) \leq \int_D (-f)d\mu.
+\ee
+
+Hence
+\be
+b\mu(D) \leq \int_D fd\mu \leq a\mu(D).
+\ee
+
+Since $a < b$ and the integral is finite, this forces $\mu(D) = 0$. Set 
+\be
+\Delta = \left\{\liminf_n (S_n/n) < \limsup_n (S_n/n)\right\}
+\ee
+then $\Delta$ is invariant. Also, 
+\be
+\Delta = \bigcup_{a,b\in\Q,a<b} D(a, b),
+\ee
+so $\mu(\Delta) = 0$. On the complement of $\Delta$, $S_n/n$ converges in $[-\infty,\infty]$, so we can define an invariant function $\ol{f}$ by
+\be
+\ol{f} = \left\{\ba{ll}
+\lim_n(S_n/n) \quad\quad & \text{on } \Delta^c\\
+0 & \text{on }\Delta.
+\ea\right.
+\ee
+
+Finally, $\mu(|f \circ \theta^n|) = \mu(|f|)$, so $\mu(|S_n|) \leq n\mu(|f|)$ for all $n$. Hence, by Fatou's lemma,
+\be
+\mu(|\ol{f}|) = \mu\bb{\liminf_n |S_n/n|} \leq \liminf_n \mu(|S_n/n|) \leq \mu(|f|).
+\ee
+\end{proof}
+
+\begin{theorem}[von Neumann's $L^p$ ergodic theorem]
+Assume that $\mu(E) < \infty$. Let $p \in [1,\infty)$. Then, for all $f \in L^p(\mu)$, $S_n(f)/n \to \ol{f}$ in $L^p$.
+\end{theorem}
+\begin{proof}[\bf Proof]
+We have
+\be
+\dabs{f \circ \theta^n}_p = \bb{\int_E |f|^p \circ \theta^n d\mu}^{1/p} = \dabs{f}_p.
+\ee
+
+So, by Minkowski's inequality,
+\be
+\dabs{S_n(f)/n}_p \leq \dabs{f}_p.
+\ee
+
+Given $\ve > 0$, choose $K < \infty$ so that $\dabs{f - g}_p < \ve/3$, where $g = (-K) \lor f \land K$. By Birkhoff's theorem, $S_n(g)/n \to \ol{g}$ a.e.. We have $|S_n(g)/n| \leq K$ for all $n$ so, by bounded convergence, there exists $N$ such that, for $n \geq N$,
+\be
+\dabs{S_n(g)/n - \ol{g}}_p < \ve/3.
+\ee
+
+By Fatou's lemma,
+\be
+\dabs{\ol{f} - \ol{g}}_p^p = \int_E \liminf_n |S_n(f - g)/n|^p d\mu \leq \liminf_n \int_E |S_n(f - g)/n|^p d\mu \leq \dabs{f - g}^p_p.
+\ee
+
+Hence, for $n \geq N$,
+\be
+\dabs{S_n(f)/n - \ol{f}}_p \leq \dabs{S_n(f - g)/n}_p + \dabs{S_n(g)/n - \ol{g}}_p + \dabs{\ol{g} - \ol{f}}_p < \ve/3 + \ve/3 + \ve/3 = \ve.
+\ee
+\end{proof}
+
+\section{Sums of independent random variables}
+
+\subsection{Strong law of large numbers for finite fourth moment}
+
+The result we obtain in this section will be largely superseded in the next. We include it because its proof is much more elementary than that needed for the definitive version of the strong law which follows.
+
+\begin{theorem}
+Let $(X_n : n \in \N)$ be a sequence of independent random variables such that, for some constants $\mu \in \R$ and $M < \infty$,
+\be
+\E(X_n) = \mu, \quad \E(X^4_n) \leq M\quad \text{for all }n.
+\ee
+
+Set $S_n = X_1 + \dots + X_n$. Then 
+\be
+S_n/n \to \mu \text{ a.s., as }n \to \infty.
+\ee
+\end{theorem}
+\begin{proof}[\bf Proof]
+Consider $Y_n = X_n - \mu$. Then $Y^4_n \leq 2^4(X^4_n + \mu^4)$, so
+\be
+\E(Y^4_n ) \leq 16(M + \mu^4)
+\ee
+and it suffices to show that $(Y_1 + \dots +Y_n)/n \to 0$ a.s.. So we are reduced to the case where $\mu = 0$.
+
+Note that $X_n,X^2_n,X^3_n$ are all integrable since $X^4_n$ is. Since $\mu = 0$, by independence,
+\be
+\E(X_iX^3_j) = \E(X_iX_jX^2_k) = \E(X_iX_jX_kX_l) = 0
+\ee
+for distinct indices $i, j, k, l$. Hence
+\be
+\E(S^4_n ) = \E\bb{\sum_{1\leq i\leq n} X^4_k + 6\sum_{1\leq i<j\leq n} X^2_i X^2_j}.
+\ee
+
+Now for $i < j$, by independence and the Cauchy-Schwarz inequality
+\be
+\E(X^2_i X^2_j) = \E(X^2_i)\E(X^2_j) \leq \E(X^4_i)^{1/2}\E(X^4_j)^{1/2} \leq M.
+\ee
+
+So we get the bound
+\be
+\E(S^4_n) \leq nM + 3n(n - 1)M \leq 3n^2M.
+\ee
+
+Thus
+\be
+\E\bb{\sum_n (S_n/n)^4} \leq 3M \sum_n 1/n^2 < \infty
+\ee
+which implies 
+\be
+\sum_n (S_n/n)^4 < \infty \text{ a.s.}
+\ee
+and hence $S_n/n \to 0$ a.s..
+\end{proof}
+
+\subsection{Strong law of large numbers}
+
+\begin{theorem}\label{thm:mean_probability}
+Let $m$ be a probability measure on $\R$, with 
+\be
+\int_\R |x|m(dx) < \infty, \quad\quad \int_\R xm(dx) = \nu.
+\ee
+Let $(E, \sE, \mu)$ be the canonical model for a sequence of independent random variables with law $m$. Then
+\be
+\mu(\{x : (x_1 + \dots + x_n)/n \to \nu \text{ as }n \to \infty\}) = 1.
+\ee
+\end{theorem}
+\begin{proof}[\bf Proof]
+By Theorem \ref{thm:measure_preserving}, the shift map $\theta$ on $E$ is measure-preserving and ergodic. The coordinate function $f = X_1$ is integrable and 
+\be
+S_n(f) = f +f \circ \theta +\dots +f \circ \theta^{n-1} = X_1 + \dots +X_n.
+\ee
+
+So $(X_1 +\dots+X_n)/n \to \ol{f}$ a.e. and in $L^1$, for some invariant function $\ol{f}$, by Birkhoff's theorem. Since $\theta$ is ergodic, $\ol{f} = c$ a.e., for some constant $c$ and then $c = \mu(\ol{f}) = \lim_n \mu(S_n/n) = \nu$. 
+\end{proof}
+
+\begin{theorem}[Strong Law of Large Numbers\index{Strong Law of Large Numbers}]
+Let $(Y_n : n \in\N)$ be a sequence of independent, identically distributed, integrable random variables with mean $\nu$. Set $S_n = Y_1 + \dots + Y_n$. Then
+\be
+S_n/n \to \nu\quad \text{a.s., as }n \to \infty.
+\ee
+\end{theorem}
+\begin{proof}[\bf Proof]
+In the notation of Theorem \ref{thm:mean_probability}, take $m$ to be the law of the random variables $Y_n$. Then $\mu = P \circ Y^{-1}$, where $Y : \Omega \to E$ is given by $Y (\omega) = (Y_n(\omega) : n \in \N)$. Hence 
+\be
+\pro(S_n/n \to \nu\text{ as }n \to \infty) = \mu(\{x : (x_1 + \dots + x_n)/n \to \nu\text{ as }n \to \infty\}) = 1.
+\ee
+\end{proof}
+
+\subsection{Central limit theorem}
+
+\begin{theorem}[Central Limit Theorem\index{Central Limit Theorem}]
+Let $(X_n : n \in \N)$ be a sequence of independent, identically distributed, random variables with mean 0 and variance 1. Set $S_n = X_1 + \dots + X_n$. Then, for all $a < b$, as $n \to \infty$,
+\be
+\pro\bb{\frac{S_n}{\sqrt{n}} \in [a, b]} \to \int^b_a \frac 1{\sqrt{2\pi}} e^{-y^2/2}dy.
+\ee
+\end{theorem}
+\begin{proof}[\bf Proof]
+Set $\phi(u) = \E(e^{iuX_1})$. Since $\E(X^2_1) < \infty$, we can differentiate $\E(e^{iuX_1})$ twice under the expectation, to show that
+\be
+\phi(0) = 1,\quad \phi'(0) = 0,\quad \phi''(0) = -1.
+\ee
+
+Hence, by Taylor's theorem, as $u \to 0$,
+\be
+\phi(u) = 1 - u^2/2 + o(u^2).
+\ee
+
+So, for the characteristic function $\phi_n$ of $S_n/\sqrt{n}$,
+\be
+\phi_n(u) = \E\bb{e^{iu(X_1+\dots+X_n)/\sqrt{n}}} = \bb{\E\bb{e^{i(u/\sqrt{n})X_1}}}^n = (1 - u^2/2n + o(u^2/n))^n.
+\ee
+
+The complex logarithm satisfies, as $z\to 0$, 
+\be
+\log(1 + z) = z + o(|z|)
+\ee
+so, for each $u \in \R$, as $n \to \infty$,
+\be
+\log \phi_n(u) = n \log\bb{1 - u^2/2n + o(u^2/n)} = -u^2/2 + o(1).
+\ee
+Hence $\phi_n(u) \to e^{-u^2/2}$ for all $u$. But $e^{-u^2/2}$ is the characteristic function of the $\sN(0, 1)$ distribution, so $S_n/\sqrt{n} \to \sN(0, 1)$ in distribution by Theorem \ref{thm:weak_convergence}, as required. 
+\end{proof}
+
+Here is an alternative argument, which does not rely on L\'evy's continuity theorem. Take a random variable $Y \sim \sN(0, 1)$, independent of the sequence $(X_n : n \in \N)$. Fix $a < b$ and $\delta > 0$ and consider the function $f$ which interpolates linearly the points $(-\infty, 0)$, $(a - \delta, 0)$, $(a, 1)$, $(b, 1)$, $(b + \delta, 0)$, $(\infty, 0)$. Note that $|f(x + y) - f(x)| \leq |y|/\delta$ for all $x$, $y$. So, given $\ve > 0$, for $t = (\pi/2)(\ve\delta/3)^2$ and any random variable $Z$,
+\be
+\abs{\E(f(Z + \sqrt{t}Y )) - \E(f(Z))} \leq \E(\sqrt{t}|Y|)/\delta = \ve/3.
+\ee
+
+Recall from the proof of the Fourier inversion formula that
+\be
+\E\bb{f\bb{\frac{S_n}{\sqrt{n}} + \sqrt{t}Y}} = \int_\R \bb{\frac 1{2\pi} \int_\R \phi_n(u)e^{-u^2t/2}e^{-iuy}du} f(y)dy.
+\ee
+
+Consider a second sequence of independent random variables $(\ol{X}_n : n \in \N)$, also independent of $Y$, and with $\ol{X}_n \sim \sN(0, 1)$ for all $n$. Note that $\ol{S}_n/\sqrt{n} \sim \sN(0, 1)$ for all $n$. So
+\be
+\E\bb{f\bb{ \frac{\ol{S}_n}{\sqrt{n}} + \sqrt{t}Y}} = \int_\R \bb{\frac 1{2\pi} \int_\R e^{-u^2/2}e^{-u^2t/2}e^{-iuy}du} f(y)dy.
+\ee
+
+Now $e^{-u^2t/2}f(y) \in L^1(du \otimes dy)$ and $\phi_n$ is bounded, with $\phi_n(u) \to e^{-u^2/2}$ for all $u$ as $n \to \infty$, so, by dominated convergence, for $n$ sufficiently large, 
+\be
+\abs{\E\bb{f\bb{ \frac{S_n}{\sqrt{n}} + \sqrt{t}Y}}  - \E\bb{f\bb{ \frac{\ol{S}_n}{\sqrt{n}} + \sqrt{t}Y}}} \leq \ve/3.
+\ee
+
+Hence, by taking $Z = S_n/\sqrt{n}$ and then $Z = \ol{S}_n/\sqrt{n}$, we obtain
+\be
+\abs{\E\bb{f\bb{S_n/\sqrt{n}}} - \E\bb{f\bb{\ol{S}_n/\sqrt{n}}}} \leq \ve.
+\ee
+
+But $\ol{S}_n/\sqrt{n} \sim Y$ for all $n$ and $\ve > 0$ is arbitrary, so we have shown that
+\be
+\E(f(S_n/\sqrt{n})) \to \E(f(Y)) \quad \text{as } n \to \infty.
+\ee
+
+The same argument applies to the function $g$, defined like $f$, but with $a$, $b$ replaced by $a + \delta$, $b - \delta$ respectively. Now $g \leq \ind_{[a,b]} \leq f$, so
+\be
+\E\bb{g\bb{\frac{S_n}{\sqrt{n}}}} \leq \pro\bb{\frac{S_n}{\sqrt{n}} \in [a,b]} \leq \E\bb{f\bb{\frac{S_n}{\sqrt{n}}}}.
+\ee
+
+On the other hand, as $\delta \da 0$,
+\be
+\E(g(Y)) \ua \int^b_a \frac 1{\sqrt{2\pi}} e^{-y^2/2}dy,\quad\quad \E(f(Y)) \da \int^b_a \frac 1{\sqrt{2\pi}} e^{-y^2/2} dy
+\ee
+so we must have, as $n \to \infty$,
+\be
+\pro\bb{\frac{S_n}{\sqrt{n}} \in [a, b]} \to \int^b_a \frac 1{\sqrt{2\pi}} e^{-y^2/2}dy.
+\ee
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+\section{Exercises}
+
+
+
+\begin{exercise}\label{ques:ind} Let $(\Omega,\sF,\pro)$ be a probability space and $A_n, n\in \N$, a sequence of events. Show that $A_n, n\in \N$, are independent if and only if the $\sigma$-algebras they generate 
+\be
+\sigma(A_n) = \{\emptyset, A_n, A_n^c, \Omega\}
+\ee
+are independent.
+\end{exercise}
+
+
+
+Solution. ($\la$) Recall the definition that $\sigma$-algebras $\sA_i\subseteq \sF$, $i\in I$ are independent if $A_i$, $i\in I$ are independent whenever $A_i\in \sA_i$ for all $i$.
+
+($\ra$) We prove the reversion by induction. First recall the uniqueness of extension theorem:
+
+\emph{Let $\mu_1,\mu_2$ be measures on $(E,\sE)$ with $\mu_1(E)=\mu_2(E)<\infty$. Suppose that $\mu_1=\mu_2$ on $\sA$, for some $\pi$-system $\sA$ generating $\sE$. Then $\mu_1=\mu_2$ on $\sE$.}
+
+Then we extend the theorem in Lecture Notes:
+
+\emph{Let $\sA_i,i\in I$ be $\pi$-systems contained in $\sF$ ($I$ is a countable set and $J\subseteq I$ is a finite set) and suppose that
+\be
+\pro\lob\bigcap_{i\in J}A_i\rob = \prod_{i\in J}\pro(A_i)
+\ee
+whenever $A_i\in \sA_i$. Then $\sigma(\sA_i),i\in I$ are independent.
+}
+
+We prove this by induction. First assume that for $\pi$-systems $\sA_i,i\leq k$ and $A_i \in \sA_i,i\leq k$
+\be
+\pro\lob\bigcap\limits_{i\leq k}A_i\rob = \prod_{i\leq k}\pro(A_i) \ \ra \ \sigma(\sA_i),i\leq k \text{ are independent.}
+\ee
+
+Thus, Fix $A_i\in \sA_{i},i\leq k$ and define for $A\in \sF$
+\be
+\mu(A) = \pro\lob\lob\bigcap\limits_{i\leq k}A_i \rob\bigcap A\rob,\quad \quad \nu(A) = \lob\prod_{i\leq k}\pro(A_i) \rob\pro(A)
+\ee
+
+Then $\mu$ and $nu$ are measures which agree on the $\pi$-system $\sA_{k+1}$, with $\mu(\Omega)=\nu(\Omega)=\pro\lob\bigcap\limits_{i\leq k}A_i\rob<\infty$. So by uniqueness of extension, for all $A_{k+1}\in \sigma(\sA_{k+1})$
+\be
+\pro\lob\bigcap\limits_{i\leq k+1}A_i\rob = \mu(A_{k+1}) = \nu(A_{k+1}) = \prod_{i\leq k+1}\pro(A_i) \ \ra \ \sigma(\sA_i),i\leq k+1 \text{ are independent.}
+\ee
+
+Then we take $\sA_n=\{\emptyset,A_n\}$. It is easy to check that $\sA_n$ is a $\pi$-system. Thus, the independence of $A_n$ implies the independence of $\sigma(A_n)$, the $\sigma$-algebras they generate.
+
+\begin{exercise} 
+Show that, for every Borel set $B\subseteq\R$ of finite Lebesgue measure and every $\ve>0$, there exists a finite union of disjoint intervals $A=(a_1,b_1]\cup\dots\cup(a_n,b_n]$ such that the Lebesgue measure of $A\triangle B (=(A^c\cap B)\cup(A\cap B^c))$ is less than $\ve$.
+\end{exercise} 
+
+
+Solution. First let $\mu$ be Lebesgue measure on $(\R,\sB)$ and let
+\be
+\sA_n = \left\{\lob (a_1,b_1]\cup \dots \cup (a_m,b_m]\rob \cap [-n,n]:\ a_1,\dots,a_m,b_1,\dots,b_m \in \R, m \text{ is finite} \right\}
+\ee
+Then it is obvious that $\sA_n$ is a $\pi$-system (also a ring) with $\sigma(\sA_n)=\sB([-n,n])$ (the Borel $\sigma$-algebra on $[-n,n]$). Let
+\be
+\sD_n = \left\{B\in \sB([-n,n]): \forall \ve>0,\ \exists A\in \sA_n,\ \mu(A\triangle B)<\ve \right\}.
+\ee
+It is clear that $\sA_n\subseteq\sD_n\subseteq \sB([-n,n])$. We shall show that $\sD_n$ is a $d$-system on $[-n,n]$. Then by Dynkin's lemma we will have that $\sB([-n,n]) \subseteq\sD_n $. Thus, $\sD_n = \sB([-n,n])$. Thus,
+
+\ben
+\item For $A=B=[-n,n]$, $\mu\lob A\triangle B \rob = \mu\lob (A^c\cap B)\cup(A\cap B^c) \rob = \mu\lob \emptyset \cup \emptyset \rob = 0<\ve$.
+\item Suppose $A_1,A_2\in \sD_n$ with $A_1\subseteq A_2$. We know that $\forall \ve$, $\exists A_1',A_2'\in \sA_n$
+\be
+\mu\lob A_1'\triangle A_1)\rob<\frac{\ve}2,\quad \mu\lob A_2'\triangle A_2)\rob<\frac{\ve}2 
+\ee
+then $A_2'\backslash A_1'\in \sA_n$ since $\sA_n$ is a ring. Thus, $\exists A = A_2'\backslash A_1'\in \sA_n$
+\beast
+A\triangle \lob A_2\backslash A_1\rob & = & \lob A_2'\backslash A_1' \rob \triangle \lob A_2\backslash A_1\rob \subseteq \lob A_2'\triangle A_1' \rob \triangle \lob A_2\triangle A_1\rob \\
+& = & \lob A_1'\triangle A_1 \rob \triangle \lob A_2'\triangle A_2\rob \quad \quad(\text{$\triangle$ is commutative and associative})\\
+& \subseteq & \lob A_1'\triangle A_1 \rob \cup \lob A_2'\triangle A_2\rob
+\eeast
+Thus, we have
+\be
+\mu \lob A\triangle \lob A_2\backslash A_1\rob\rob \leq \mu\lob \lob A_1'\triangle A_1 \rob \cup \lob A_2'\triangle A_2\rob \rob \leq \mu\lob A_1'\triangle A_1)\rob + \mu\lob A_2'\triangle A_2)\rob < \ve \ \ra \ A_2\backslash A_1 \in \sD_n.
+\ee
+
+Suppose $\{A_m:m\in \N\}$ is an increasing sequence in $\sD_n$ with $A_m\uparrow \bigcup\limits_nA_n = A$. Then $A\backslash A_m\downarrow \emptyset$. Since $\mu$ is finite on $[-n,n]$ and countably additive. From the previous question (4), we have
+\be
+\bigcap_n\lob A\backslash A_n\rob = A \left\backslash\lob \bigcup_nA_n\rob\right. = A\backslash A = \emptyset \ \ra \ \mu\lob A\backslash A_n \rob \to 0.
+\ee
+Thus, $\forall \ve$, $\exists N$ s.t. 
+\be
+A_N\in \sD_n,\quad \mu\lob A\backslash A_N \rob < \frac {\ve}2
+\ee
+Since $A_N\in\sD_n$, $\exists A_N'\in \sA_n$ s.t.
+\be
+\mu\lob A_N'\triangle A_N \rob < \frac {\ve}2.
+\ee
+
+Thus, we have
+\beast
+A\triangle A_N' & = & A\triangle A_N \triangle A_N\triangle A_N' = \lob A\triangle A_N \rob \triangle \lob A_N\triangle A_N'\rob = \lob A\backslash A_N \rob \triangle \lob A_N\triangle A_N'\rob \quad\quad (\text{since $A_N\subseteq A$})\\
+& \subseteq & \lob A\backslash A_N \rob \cup \lob A_N\triangle A_N'\rob
+\eeast
+
+Then, we have
+\be
+\mu \lob A\triangle A_N'\rob \leq \mu \lob A\backslash A_N \rob \cup \lob A_N\triangle A_N'\rob \leq \mu\lob A\backslash A_N \rob + \mu\lob A_N\triangle A_N' \rob < \ve \ \ra \ A=\bigcup_n A_n \in \sD_n
+\ee
+\een
+Thus, we say that $\sD_n$ is a $d$-system and $\sD_n=\sB([-n,n])$. Now, for any $B\in \sB$ with $\mu(B)<\infty$, set $B_n=B\cap[-n,n]$. Then $B_n\uparrow B$ and $B\backslash B_n\downarrow \emptyset$. So $\mu\lob B\backslash B_n\rob\to 0$. Then $\forall \ve$, $\exists N$ s.t. 
+\be
+\mu\lob B\backslash B_N\rob < \frac {\ve}2.
+\ee
+Also, we have $B_N\in \sD_N$, so $\exists A_N\in \sA_N$ s.t. 
+\be
+\mu\lob A_N\triangle B_N\rob < \frac {\ve}2.
+\ee
+Hence,
+\be
+A_N\triangle B = \lob A_N\triangle B_N\rob \triangle \lob B_N\triangle B\rob = \lob A_N\triangle B_N\rob \triangle \lob B\backslash B_N\rob\subseteq \lob A_N\triangle B_N\rob \cup \lob B\backslash B_N\rob
+\ee
+and
+\be
+\mu\lob A_N\triangle B \rob \leq \mu\lob \lob A_N\triangle B_N\rob \cup \lob B\backslash B_N \rob\rob \leq \mu \lob A_N\triangle B_N \rob + \mu\lob B\backslash B_N\rob <\ve.
+\ee
+
+
+
+\begin{exercise} 
+Let $X$ and $Y$ be two random variables on $(\Omega,\sF,\pro)$ and suppose that for all $x,y\in\R$
+\be
+\pro(X\leq x,Y\leq y) = \pro(X\leq x)\pro(Y\leq y).
+\ee
+Show that $X$ and $Y$ are independent.
+\end{exercise} 
+
+Solution. $X$ and $Y$ are independent means that $\sigma(X)$ and $\sigma(Y)$ are independent. We know from the previous question (\ref{ques:ind}) that if $\sA_1,\sA_2$ are $\pi$-systems for which 
+\be
+\pro(A_1\cap A_2) = \pro(A_1)\pro(A_2), \quad\quad \forall A_1 \in\sA_1, A_2\in\sA_2
+\ee
+then $\sigma(\sA_1)$ and $\sigma(\sA_2)$ are independent. Clearly, $\{\{\omega: X(\omega)\leq x\},\ x\in\R\}$ is a $\pi$-system. Thus, It suffices to show that
+\be
+\{\{\omega: X(\omega)\leq x\},\ x\in\R\}=\{X^{-1}(-\infty,x],\ x\in \R\} \text{ generates }\sigma(X) = \sigma(\{X^{-1}(B), B\in \sB\})
+\ee
+where $\sB$ is Borel $\sigma$-algebra on $\R$. It is equivalent to show that
+\be
+\sigma\lob\{X^{-1}(B), B\in \sB\}\rob \subseteq \sigma\lob \{X^{-1}(-\infty,x],\ x\in \R\} \rob
+\ee
+Then it suffices to show that
+\be
+\sA := \left\{B: X^{-1}(B) \in \sigma\lob \{X^{-1}(-\infty,x],\ x\in \R\} \rob,\ B\in \sB\right\} \supseteq \sB = \sigma\lob\{ (-\infty,x],\ x\in \R\} \rob
+\ee
+Then it is obvious that $\{(-\infty,x],\ x\in \R\} \subseteq \sA$. Thus, it is enough to show that $\sA$ is a $\sigma$-algebra.
+\ben
+\item $B=\emptyset\in \sB$, then $X^{-1}(B)=\emptyset \in \sigma\lob \left\{X^{-1}(-\infty,x],\ x\in \R\right\} \rob$. So $\emptyset\in\sA$.
+\item If $B\in \sA$, $X^{-1}(B) \in \sigma\lob \{X^{-1}(-\infty,x,\ x\in \R\} \rob$ and $B\in \sB$. Then
+\be
+B^c \in \sB,\quad X^{-1}(B^c) = \lob X^{-1}(B)\rob^c\in \sigma\lob \{X^{-1}(-\infty,x],\ x\in \R\} \rob \ \ra \ B^c\in \sA
+\ee
+\item If $B_n\in\sA \ \ra \ B_n\in \sB, \ \bigcup\limits_nB_n\in\sB$ and
+\be
+X^{-1}\lob\bigcup\limits_nB_n\rob = \bigcup\limits_n X^{-1}(B_n) \in \sigma\lob \{X^{-1}(-\infty,x],\ x\in \R\} \rob \ \ra \ \bigcup\limits_nB_n\in \sA.
+\ee
+\een
+Hence, $\sA$ is a $\sigma$-algebra.
+
+Let $X_1,X_2,\dots$ be random variables with
+\be
+X_n=\left\{\ba{ll}
+n^2 -1 \quad \quad & \text{with probability }1/n^2\\
+-1 \quad \quad & \text{with probability }1-1/n^2
+\ea\right.
+\ee
+
+\begin{exercise} 
+Show that
+\be
+\E\lob\frac{X_1 +\dots + X_n}n\rob = 0
+\ee
+
+but with probability one, as $n\to \infty$,
+\be
+\frac{X_1 +\dots + X_n}n \to -1.
+\ee
+\end{exercise} 
+
+
+Solution. 
+\be
+\E X_n = (n^2-1)\frac 1{n^2} + (-1)\lob 1-\frac 1{n^2}\rob = 0 \ \ra \ \E\lob\frac{X_1 +\dots + X_n}n\rob = 0
+\ee
+
+Then we consider the event
+\be
+\left\{\frac{X_1 +\dots + X_n}n \nrightarrow -1\right\} = \left\{X_n=n^2-1 \ \ \text{i.o.}\right\}
+\ee
+
+However,
+\be
+\sum_n \pro(X_n = n^2-1)= \sum_n \frac 1{n^2} <\infty
+\ee
+with First Borel-Cantelli lemma, we have
+\be
+\pro\lob X_n=n^2-1 \ \ \text{i.o.}\rob = 0.
+\ee
+
+
+For $s>1$ define the zeta function by 
+\be
+\zeta(s)=\sum^\infty_{n=1}n^{-s}.
+\ee
+
+Let $X$ and $Y$ be independent random variables with 
+\be
+\pro(X=n)=\pro(Y=n)=n^{-s}/\zeta(s).
+\ee
+
+\begin{exercise} 
+Show that the events $\{p\text{ divides }X\}, \ p\text{ prime}$ are independent and deduce Euler's formula
+\be
+\frac 1{\zeta(s)}= \prod_p \lob 1-\frac 1{p^s}\rob.
+\ee
+
+Prove also that 
+\be
+\pro(X \text{ is square-free})=1/\zeta(2s) \quad \quad \text{ and } \quad \quad \pro(\text{h.c.f.($X,Y$)}=n) = n^{-2s}/\zeta(2s).
+\ee
+\end{exercise} 
+
+
+Solution. Let $A_n$ be the event $\left\{n \text{ divides }X\right\}$ then
+\be
+\pro(A_n)=\pro\lob\bigcup_m \{X=mn\}\rob = \sum_m \pro(X=mn) = \sum_m (mn)^{-s}/\zeta(s) = n^{-s}.
+\ee
+Let $p_1,\dots,p_k$ be distinct primes
+\be
+\prod^k_{j=1}p_j = n \ \Leftrightarrow \ p_j \text{ divides $n$ for all }j\leq k.
+\ee
+thus,
+\be
+\pro\lob \bigcap^k_{j=1} A_{p_j}\rob = \pro\lob A_{(p_1\dots p_k)}\rob = \lob p_1\dots p_k\rob^{-s} = \prod^k_{j=1}\pro(A_{p_j}).
+\ee
+Thus, the events $\lob A_{p}, p \text{ is prime}\rob$ are independent. Hence the events $\lob A^c_{p}, p \text{ is prime}\rob$ are also independent (from question \ref{ques:ind}). Then
+\be
+\prod_p \lob 1-\frac 1{p^s}\rob = \prod_p \lob A_p^c\rob = \pro\lob \bigcap_p A_p^c\rob = \pro\lob \lob \bigcup_p A_p\rob^c\rob = \pro(X\text{ has no prime factors}) = \pro(X=1) = \frac 1{\zeta(s)}.
+\ee
+
+The same argument show that the events $\lob A^c_{p^2}, p \text{ is prime}\rob$ are independent 
+\be
+\pro(X \text{ is square-free}) = \prod_p \lob 1-\frac 1{p^{2s}}\rob = \frac 1{\zeta(2s)}.
+\ee
+
+Next, we have the event
+\be
+\{H=n\} = A_n^X\cap A_n^Y \cap \lob \bigcup_p A_{pn}^X\cap A_{pn}^Y\rob^c
+\ee
+
+$\lob\bigcup\limits_p A_{pn}^X\cap A_{pn}^Y\rob$ means that there exists a prime $p$ s.t. $X$ and $Y$ have a bigger common factor $pn$. Thus,
+\be
+\pro(H=n) = \pro\lob A_n^X\cap A_n^Y \cap \lob \bigcup_p A_{pn}^X\cap A_{pn}^Y\rob^c\rob = \pro\lob A_n^X\cap A_n^Y \cap \lob \bigcap_p \lob A_{pn}^X\cap A_{pn}^Y\rob^c\rob\rob
+\ee
+
+Also, we check the event $(A_{pn}|A_n)$ (note that $\pro(A_{kn}|A_n) = k^{-s}$)
+\be
+\pro\lob \bigcap^k_{j=1}\lob A_{p_jn}|A_n\rob\rob = \pro\lob \left.\bigcap^k_{j=1}A_{p_jn}\right|A_n\rob = \pro\lob \left.A_{(p_1\dots p_jn)}\right|A_n\rob = \lob p_1\dots p_k\rob^{-s} = \prod^k_{j=1}\pro(A_{p_jn}|A_n).
+\ee
+
+Thus, we say that $\lob(A_{pn}|A_n), p \text{ is prime}\rob$ are independent. The similar argument can be shown for $\lob A_{pn}^X\cap A_{pn}^Y |A_n^X\cap A_n^Y\rob$. Then
+\beast
+\pro(H=n) & = & \pro\lob A_n^X\cap A_n^Y \cap \lob \bigcap_p \lob A_{pn}^X\cap A_{pn}^Y\rob^c\rob\rob = \pro\lob \left.\bigcap_p \lob A_{pn}^X\cap A_{pn}^Y\rob^c \right|A_n^X\cap A_n^Y \rob \pro\lob A_n^X\cap A_n^Y\rob\\
+& = & \pro\lob A_n^X\cap A_n^Y\rob \prod_p \pro \lob \lob\left. A_{pn}^X\cap A_{pn}^Y\rob^c \right|A_n^X\cap A_n^Y \rob = \pro\lob A_n^X\cap A_n^Y\rob \prod_p \lob 1 -\pro \lob \lob\left. A_{pn}^X\cap A_{pn}^Y\rob \right|A_n^X\cap A_n^Y \rob\rob \\
+& = & \pro\lob A_n^X\rob \pro\lob A_n^Y\rob \prod_p \lob 1 - \pro \lob \left. A_{pn}^X\right|A_n^X\rob \pro\lob \left. A_{pn}^Y \right| A_n^Y \rob\rob = n^{-2s}\prod_p \lob 1 -p^{-2s}\rob = n^{-2s}/\zeta(2s).
+\eeast
+
+\begin{exercise} 
+Let $X_1,X_2,\dots$ be independent random variables with distribution uniform on $[0,1]$. Let $A_n$ be the event that a record occurs at time $n$, that is,
+\be
+X_n > X_m \quad \text{for all }m<n.
+\ee
+Find the probability of $A_n$ and show that $A_1,A_2,\dots$ are independent. Deduce that, with probability one, infinitely many records occur.
+\end{exercise} 
+
+
+Solution. $\pro(A_n)$ means the probability that the maximum of $n$ appears at $n$, then $\pro(A_n) = 1/n$. Also 
+\be
+A_1\cap A_2 \cap \dots \cap A_n \ \ra \ X_1<X_2<\dots< X_n
+\ee
+which is a increasing order. Then we have $\pro(A_1\cap A_2 \cap A_n) = 1/n!$. Thus, it is obvious that 
+\be
+\pro(A_1\cap A_2 \cap A_n) = \prod_n \pro(A_n) \ \ra \ A_1,A_2,\dots \text{ are independent.}
+\ee
+With Second Borel-Cantelli lemma, we have $\sum_n \pro(A_n)=\sum_n \frac 1n=\infty$, then
+\be
+\pro(A_n \ i.o.) = 1.
+\ee
+
+
+\begin{exercise} 
+Let $X_1,X_2,\dots$ be independent $\sN(0,1)$ random variables. Prove that 
+\be
+\lim \sup_n(X_n/\sqrt{2\log n})=1 \quad \quad \text{a.s.}
+\ee
+\end{exercise} 
+
+
+Solution. Let 
+\be
+A=\left\{\omega:\lim\sup_n\left\{X_n(\omega)\left/\sqrt{2\log n }\right. \geq 1 \right\}  \right\},\quad B=\left\{\omega:\lim\sup_n\left\{X_n(\omega)\left/\sqrt{2\log n }\right. > 1 \right\}  \right\}
+\ee
+
+We want to show that $P(A)=1$ and $P(B)=0$. First, consider the event $\left\{ X_n(\omega)\left/\sqrt{2\log n }\right. \geq \alpha \right\}$
+\beast
+\sum_n\pro\lob X_n(\omega)\left/\sqrt{2\log n }\right. \geq \alpha \rob & = & \sum_n \int^\infty_{-\infty}\frac1{\sqrt{2\pi}}e^{-\frac 12 x^2}{\bf 1}_{\left\{x\geq \alpha \sqrt{2\log n}\right\}}dx \\
+& = & \int^\infty_{-\infty}\frac1{\sqrt{2\pi}}e^{-\frac 12 x^2}\sum_n {\bf 1}_{\left\{ n \geq \exp\left\{\frac 12 \frac {x^2}{\alpha^2}\right\}\right\}}dx \quad\quad (\text{by Fubini's theorem})\\
+& = & \int^\infty_{-\infty}\frac1{\sqrt{2\pi}}e^{-\frac 12 x^2}\left\lfloor e^{\frac 12 x^2/\alpha^2} \right\rfloor dx < \infty \ \Leftrightarrow\ \alpha >1.
+\eeast
+
+Thus, let $\alpha = 1$, $\sum_n\pro\lob X_n(\omega)\left/\sqrt{2\log n }\right. \geq \alpha \rob = \infty$, with Second Borel-Cantelli lemma, we have 
+\be
+P(A)=1.
+\ee
+
+Also, we have $\alpha =1+1/m,\ m\in \N$, $\sum_n\pro\lob X_n(\omega)\left/\sqrt{2\log n }\right. \geq \alpha \rob < \infty$. Then by First Borel-Cantelli lemma,
+\be
+\pro\lob \left\{\omega: X_n(\omega)\left/\sqrt{2\log n }\right. \geq 1+1/m \right\} \text{ i.o.}\rob = 0
+\ee
+and since $B = \bigcup_{m\in \N}\lob \left\{\omega: X_n(\omega)\left/\sqrt{2\log n }\right. \geq 1+1/m \right\} \ \text{i.o.}\rob $, we have
+\be
+\pro(B) \leq \sum_n \pro\lob \left\{\omega: X_n(\omega)\left/\sqrt{2\log n }\right. \geq 1+1/m \right\} \text{ i.o.}\rob = 0 \ \ra \ \pro(B)=0.
+\ee
+
+\begin{exercise} 
+Let $C_n$ denote the $n$th approximation to the Cantor set $C$: thus $C_0=[0,1]$, $C_1=\left[1,\frac 13\right]\cup\left[\frac 23, 1\right]$, $C_2=\left[1,\frac 19\right]\cup\left[\frac 29, \frac 13\right]\cup\left[\frac 23,\frac 79\right]\cup\left[\frac 89, 1\right]$, etc. and $C_n\downarrow C$ as $n\to \infty$. Denote by $F_n$ the distribution function of a random variable uniformly distributed on $C_n$. Show 
+\ben
+\item $C$ is uncountable and has Lebesgue measure 0,
+\item $F(x)=\lim_{n\to \infty}F_n(x)$ exists for all $x\in [0,1]$,
+\item $F$ is continuous, $F(0)=0$ and $F(1)=1$,
+\item for almost all $x\in[0,1]$, $F$ is differentiable at $x$ with $F'=0$.
+\een
+\end{exercise} 
+
+
+Solution. Hint: express $F_{n+1}$ recursively in terms of $F_n$ and use this relation to obtain a uniform estimate on $F_{n+1}-F_n$.
+
+Note that $F_n$ is given recursively by 
+\be
+F_{n+1}(x) =\left\{\ba{ll}
+\frac 12 F_n(3x) & 0\leq x\leq \frac 13\\
+\frac 12 & \frac 13 \leq x \leq \frac 23\\
+\frac 12 + \frac 12 F_n(3x-2) \quad\quad & \frac 23 \leq x \leq 1
+\ea \right.
+\ee
+so
+\be
+|F_{n+1}(x)-F_n(x)| \leq \frac 12 \|F_n-F_{n-1}\|_\infty \leq 2^{-n}.
+\ee
+
+Hence $F_n$ converges uniformly with continuous limit $F$. If $x\notin C$ then $x\notin C_n$ for some $n$ and $F=F_n=$constant in a neightbourhood of $x$, so $F$ is differentiable at $x$ with $F'(x)=0$. The Lebesgue measure of $C$ is zero.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{exercise} 
+Let $\mu$ and $\nu$ be finite Lebesgue measures. Let $f: \R\to \R$ be a continuous bounded function on $\R$. Show that $f$ is Lebesgue integrable with respect to $\mu$ and $\nu$. Show further that if $\mu(f)=\nu(f)$ for all such $f$, then $\mu=\nu$.
+\end{exercise} 
+
+\scutline
+
+Solution. The function $f$ is measurable as it is continuous, and $\mu(f)\leq \|f\|_\infty\mu(\R)<\infty$, so $f$ is moreover integrable. 
+
+Suppose that $\mu(f)=\nu(f)$ for all continuous bounded functions $f$. For any interval $A$, we can find continuous bounded functions $f_n$ with $0\leq f_n\uparrow \ind_A$ as $n\in \infty$. By monotone convergence theorem, we deduce that $\mu(A)=\nu(A)$. Hence $\mu=\nu$ by uniqueness of extension.
+
+\vspace{2mm}
+
+
+\begin{exercise} 
+Let $X$ be a non-negative integer-valued random variable. Show that
+\be
+\E(X) = \sum^\infty_{n=1}\pro(X\geq n).
+\ee
+
+Deduce that, if $\E(X)=\infty$ and $X_1,X_2,\dots$ is a sequence of independent random variables with the same distribution as $X$, then
+\be
+\lim \sup (X_n/n)\geq 1 \quad \text{a.s.}
+\ee
+and indeed
+\be
+\lim \sup (X_n/n)=\infty \quad \text{a.s.}
+\ee
+
+Now suppose that $Y_1,Y_2,\dots$ is any sequence of independent identically distributed random variables with $\E|Y_1|=\infty$. Show that
+\be
+\lim \sup (|Y_n|/n) = \infty \quad \text{a.s.}
+\ee
+and indeed
+\be
+\lim \sup (|Y_1+\dots+Y_n|/n) = \infty \quad \text{a.s.}
+\ee
+\end{exercise} 
+
+Solution. We have 
+\be
+\sum^\infty_{n=1}\pro(X\geq n) = \sum^\infty_{n=1} \sum^\infty_{k=n}\pro(X=k)= \sum^\infty_{k=1} \sum^k_{n=1}\pro(X=k)= \sum^\infty_{k=1} k\pro(X=k)=\E(X).
+\ee
+
+Hence, let $A_n=\{X_n\geq n\}$. By the second Borel-Cantelli lemma, we have $\E(X) = \sum^\infty_{n=1}\pro(A_n)=\infty$, then
+\be
+\pro(A_n \text{ i.o.})=\pro(X_n\geq n \text{ i.o.})=1 \ \ra \ \lim \sup (X_n/n)\geq 1 \quad \text{a.s.}
+\ee
+
+If $\E(X)=\infty$, $\E(X/k)=\infty$, with the same argument we have
+\be
+\lim \sup (X_n/(kn))\geq 1 \quad \text{a.s.} \ \ra \ \lim \sup (X_n/n)\geq k \quad \text{a.s.} \ \ra \ \lim \sup (X_n/n)=\infty \quad \text{a.s.}
+\ee
+
+Now let $X_n = |Y_n|$. We have
+\be
+\lim \sup (|Y_n|/n)=\infty \quad \text{a.s.}
+\ee
+
+Also, we know that
+\be
+|Y_n|\leq |Y_1+\dots+Y_n| + |Y_1+\dots+Y_{n-1}| \ \ra \ \lim\sup(|Y_1+\dots+Y_n|/n) \geq \frac 12\lim \sup (|Y_n|/n) = \infty \quad \text{a.s.}
+\ee
+
+\begin{exercise} 
+For $\alpha\in(0,\infty)$ and $p\in [1,\infty)$ and for 
+\be
+f_\alpha(x) = 1/x^\alpha, \quad x>0,
+\ee
+show carefully that
+\beast
+f_\alpha \in \sL^p((0,1],dx) & \Leftrightarrow & \alpha p <1,\\
+f_\alpha \in \sL^p([1,\infty),dx) & \Leftrightarrow & \alpha p >1.
+\eeast
+\end{exercise} 
+
+Solution. Firstly, we have
+\[
+ \int_a ^b x^{-\alpha p} dx = \frac{b^{1-\alpha p} - a^{1 - \alpha p}}{1 - \alpha p}
+\]
+over intervals $[a,b]$ for $0<a<b<\infty$ by the Fundamental theorem of calculus.
+
+Now note that
+\begin{gather*}
+ f_{\alpha} \ind[\tfrac{1}{n},1] \uparrow f_{\alpha} \ind[0,1] \\
+ f_{\alpha} \ind[1,n] \uparrow f_{\alpha} \ind[1,\infty)
+\end{gather*}
+and then monotone convergence in passing to the limits $a\downarrow 0$ with $b=1$ and $b\uparrow \infty$ with $a=1$.
+
+\begin{exercise} 
+Show that the function 
+\be
+f(x) = \frac {\sin x}x
+\ee
+is not Lebesgue integrable over $[1,\infty)$ but that the following limit does exist:
+\be
+\lim_{N\to \infty} \int^N_1 \frac{\sin x}x dx.
+\ee
+\end{exercise} 
+
+Solution. \emph{Approach 1}. Set $a_n=\int^{(n+1)\pi}_{n\pi}\frac{\sin x}xdx$. Then $\text{sgn}(a_n)=(-1)^n$ and 
+\be
+|a_n|\geq \frac 1{(n+1)\pi}\left|\int^{(n+1)\pi}_{n\pi}\sin xdx\right| = \frac 1{(n+1)\pi},\quad  |a_n|\leq \int^{(n+1)\pi}_{n\pi}\frac1xdx \leq \frac1{n\pi}\int^{(n+1)\pi}_{n\pi}dx = \frac 1n
+\ee
+
+Thus,
+\be
+\lim_{N\to \infty} \int^N_1 \left|\frac{\sin x}x\right| dx = \int^\pi_1 \left|\frac{\sin x}x\right| dx + \sum^\infty_{n=1}|a_n| \geq \int^\pi_1 \left|\frac{\sin x}x\right| dx + \frac1{\pi} \sum^\infty_{n=2}\frac 1n = \infty.
+\ee
+
+Also, we can see that $\text{sgn}(a_n)=(-1)^n$ and $|a_n|$ is a decreasing sequence. Thus, with alternatiing series theorem, we have 
+\be
+\lim_{N\to \infty} \int^N_1 \frac{\sin x}x dx = \int^\pi_1 \frac{\sin x}x dx + \sum^\infty_{n=1}a_n \quad \text{converges.} 
+\ee
+
+\begin{flushleft}
+\emph{Approach 2}.
+\end{flushleft} 
+
+We need to show that the integral of $ \abs{\frac{\sin x}{x}}$ over $[1, \infty)$ is infinite. But by considering $n$ triangles with vertices $(j\pi,0)$, $\left(\frac{(2j+1)\pi}{2},\frac{2}{(2j+1)\pi}\right)$, $((j+1)\pi,0)$, $j=1,\ldots,n$ (draw a picture), we see that
+\[
+ \int_{x=1} ^{(n+1)\pi} \abs{\frac{\sin x}{x}} dx > \sum_{j=1} ^n \frac{1}{2j+1}
+\]
+Since the RHS tends to $\infty$ as $n \to \infty$, the LHS must also tend to $\infty$. Then by monotone convergence, we see that
+\[
+ \int_{x=1} ^{\infty} \abs{\frac{\sin x}{x}} dx = \infty.
+\]
+For the second part of the question, note that
+\[
+ \int_{j\pi} ^{(j+1)\pi} \frac{\sin x}{x} dx
+\]
+changes sign as $j$ is odd or even, and then use the alternating series test.
+
+\begin{exercise} 
+Show
+\ben
+\item $\int^\infty_0 \sin(e^x)/(1+nx^2)dx \to 0$ as $n\to\infty$,
+\item $\int^1_0 (n\cos x)/(1+n^2x^{\frac 32})dx\to 0$ as $n\to \infty$.
+\een
+\end{exercise} 
+
+Solution. \ben
+\item Let $f_n(x) = \sin(e^x)/(1+nx^2)\to 0$ and $g(x)=1/(1+x^2)$. It is easy to check that $g$ is measurable and integrable and $|f_n|\leq g$. Applying Dominated Convergence Theorem, we have
+\be
+\int^\infty_0 \sin(e^x)/(1+nx^2)dx \to \int^\infty_0 0 dx = 0 \text{ as }n\to\infty.
+\ee
+\item \emph{Approach 1}. Let $f_n(x) = (n\cos x)/(1+n^2x^{\frac 32})\to 0$ and $g(x)=x^{-3/4}$. It is easy to check that $g$ is measurable and integrable and 
+\be
+|f_n| \leq \frac n{1+n^2x^{\frac 32}} = \frac 1{\frac1n+nx^{\frac 32}} \leq \frac1{2\sqrt{\frac1n \ nx^{\frac 32}}} = \frac 12 x^{-\frac34}\leq g.
+\ee
+Applying Dominated Convergence Theorem, we have
+\be
+\int^1_0 (n\cos x)/(1+n^2x^{\frac 32})dx\to 0 \text{ as }n\to \infty.
+\ee
+
+\emph{Approach 2}. Clearly the integral is at most
+\[
+ \int_0 ^1 \frac{n}{1+ n^2 x^{\frac{3}{2}}} dx
+\]
+Now we can substitute $x \mapsto y/n$ to get
+\begin{align*}
+\int_0 ^n \frac{1}{1+n^{\frac{1}{2}} y^\frac{3}{2}} dy & \leq \int_0 ^1 \frac{1}{1+ (yn^\frac{1}{4})^2} dy + \int _1 ^n \frac{1}{1 + \sqrt{n} y} dy \\
+ & \leq \frac{\tan ^{-1}(1)}{n^\frac{1}{4}} + \frac{\log(n)}{\sqrt{n}} \to 0
+\end{align*}
+
+\een
+
+\begin{exercise} 
+Let $u$ and $v$ be differentiable functions on $[a,b]$ with continuous derivatives $u'$ and $v'$. Show that for $a<b$
+\be
+\int^b_a u(x)v'(x)dx = \{u(b)v(b)-u(a)v(a)\} - \int^b_a u'(x)v(x)dx.
+\ee
+\end{exercise} 
+
+Solution. This is just applying the FTC and using the product rule for differentiation.
+
+\begin{exercise} 
+Prove the following proposition. Let $(E,\sE,\mu)$ be a measure space and let $A\in \sE$. Then the set $\sE_A$ of measurable subsets of $A$ is a $\sigma$-algebra and the restriction $\mu_A$ of $\mu$ to $\sE_A$ is a measure. Moreover, for any non-negative measurable function $f$ on $E$, we have
+\be
+\mu(f\ind_A) = \mu_A(f|_A).
+\ee
+\end{exercise} 
+
+Solution. The facts that $\mathcal{E}_A$ is a $\sigma$-algebra and $\mu_A$ is a measure are easy checks. Now we show the result is true for an indicator function of a measurable set.
+
+For $B \in \mathcal{E}$ we have
+\[
+ \mu(\ind_B \ind_A) = \mu(\ind_{B \cap A}) = \mu(B \cap A)
+\]
+As $B \cap A \subset A$, we have
+\[
+ \mu(B \cap A) = \mu_A (B \cap A) = \mu_A (\ind_{B \cap A}) = \mu_A (\ind_B |_A).
+\]
+Check that by linearity, the result also holds for simple functions. Now, for measurable, non-negative $f$, set $f_n = 2^{-n} \floor{2^n f} \wedge n$. Then $f_n \ind_A \uparrow f \ind_A$ and $f_n |_A \uparrow f|_A$. By monotone convergence
+\[
+ \mu(f_n \ind_A) \uparrow \mu(f\ind_A) \quad \text{ and } \quad \mu_A (f_n |_A) \uparrow \mu_A (f|_A).
+\]
+Since $\mu(f_n \ind_A)=\mu_A (f_n |_A)$, the result follows.
+
+\begin{exercise} 
+Prove the following proposition. Let $(E,\sE)$ and $(G,\sG)$ be measure spaces and let $f:E\to G$ be a measurable function. Given a measure $\mu$ on $(E,\sE)$, define $\nu = \mu \circ f^{-1}$, the image measure on $(G,\sG)$. Then, for all non-negative measurable functions $g$ on $G$.
+\be
+\nu(g) = \mu(g\circ f).
+\ee
+\end{exercise} 
+
+Solution. Repeat the argument above i.e. show the result holds for an indicator of a measurable set, then use linearity to extend the result to simple functions, and finally use monotone convergence to pass to non-negative measurable functions. So the first part of this argument would go
+\[
+ \nu (\ind_A) = \nu(A) = \mu(f^{-1}(A)) = \mu(\ind_{f^{-1}(A)}) = \mu(\ind_A \circ f)
+\]
+
+\begin{exercise} 
+Prove the following proposition. Let $(E,\sE,\mu)$ be a measure space and let $f$ be a non-negative measurable function on $E$. Define $\nu(A)=\mu(f\ind_A)$, $A\in \sE$. Then $\nu$ is a measure on $E$ and, for all non-negative measurable function $g$ on $E$,
+\be
+\mu(g) = \mu(fg).
+\ee
+$f$ is called the density of $\nu$ with respect to $\mu$. If $f,g$ are two densities of $\nu$ with respect to $\mu$, then $f=g$, $\mu$-a.e., and $\nu$-a.e. as well.
+\end{exercise} 
+
+Solution. Again, use the same argument as above.
+
+\begin{exercise} 
+Prove the following proposition. Let $\phi:[a,b]\to \R$ be continuously differentiable and strictly increasing. Then, for all non-negative Borel functions $g$ on $[\phi(a),\phi(b)]$,
+\be
+\int^{\phi(b)}_{\phi(a)}g(y)dy = \int^b_a g(\phi(x))\phi'(x)dx.
+\ee
+\end{exercise} 
+
+Solution. 
+
+\begin{exercise} 
+The moment generating function $\phi$ of a real-valued random variable $X$ is defined by 
+\be
+\phi(\tau)=\E(e^{\tau X}),\quad \tau\in \R.
+\ee
+
+Show that the set $I=\{\tau:\phi(\tau)<\infty\}$ is an interval and find examples where $I$ is $\R$, $\{0\}$ and $(-\infty,1)$. Assume for simplicity that $X\geq 0$. Show that if $I$ contains a neighbourhood of 0 then $X$ has finite moments of all orders given by
+\be
+\E(X^n) = \left.\lob \frac d{d\tau}\rob^n\right|_{\tau=0}\phi(\tau).
+\ee
+Find a necessary and sufficient condition on the sequence of moments $m_n = \E(X^n)$ for $I$ to contain a neighbourhood of 0.
+\end{exercise} 
+
+Solution. Suppose $\phi(a)$ and $\phi(b)$ are both finite with $a<b$. Then for all $c \in (a,b)$,
+\[
+ \phi(c) \leq \mathbb{E}(\max(e^{aX},e^{bX})) < \phi(a) + \phi(b) < \infty
+\]
+For $I=\mathbb{R}$, take $X$ with $X(\omega)=1$ for all $\omega$. \newline
+For $I=\{0\}$, take $X$ with a Cauchy distribution (i.e. density $1/(\pi(1+x^2)$. \newline
+For $I=(-\infty,1)$, take $X \sim \mathrm{Exp}(1)$ (i.e. density $e^{-x}$ on $[0, \infty)$. (Check these)
+
+For all $\tau$, we have that
+\[
+ \sum_{n=0} ^N \frac{(\tau X)^n}{n!} \to e^{\tau X} \text{ pointwise as } N \to \infty
+\]
+Now take $r \in I$ with $r>0$. Then for all $\tau \in (-r,r)$, we have that
+\[
+ \sum_{n=0} ^N \frac{(\tau X)^n}{n!} \leq e^{rX}
+\]
+for all $N$. Hence by dominated convergence (with dominating function $e^{rX}$),
+\begin{equation} \label{eq:mgf}
+ \lim_{N \to \infty} \mathbb{E} \left( \sum_{n=0} ^N \frac{(\tau X)^n}{n!} \right) = \sum_{n=0} ^\infty \frac{\tau ^n \mathbb{E}(X^n)}{n!} = \mathbb{E}(e^{\tau X}) < \infty
+\end{equation}
+Thus $\mathbb{E}(X^n) < \infty$ for all $n$. Using standard results for power series, 
+\begin{equation} \label{eq:powerseries}
+  \sum_{n=0} ^\infty \frac{\tau ^n \mathbb{E}(X^n)}{n!}
+\end{equation}
+is infinitely differentiable for all $\tau$ within its radius of convergence, so in particular for all $\tau \in (-r,r)$. The $n^\mathrm{th}$ derivative at 0 is given by $\mathbb{E}(X^n)$. By the relationship in \eqref{eq:mgf}, this also equals $\left(\frac{d}{d\tau} \right)^n |_{\tau = 0} \phi(\tau)$.
+
+If $I$ contains a neighbourhood of 0, then \eqref{eq:powerseries} must have positive radius of convergence. Conversely, if \eqref{eq:powerseries} has positive radius of convergence $R$, say, then for $0<r<R$,
+\[
+ \mathbb{E}(e^{rX}) = \sum_{n=0} ^\infty \frac{r ^n \mathbb{E}(X^n)}{n!} <\infty
+\]
+by monotone convergence. Also, as $X \geq0$, $\phi(-r) \leq \phi(r) < \infty$. Thus $I$ contains a neighbourhood of 0. Using results from power series, \eqref{eq:powerseries} has positive radius of convergence if and only if
+\[
+ \limsup_{n \to \infty} \abs{\frac{m_n}{n!}}^\frac{1}{n} < \infty,
+\]
+for example.
+
+
+\begin{exercise} 
+Let $X_1,\dots,X_n$ be random variables with density functions $f_1,\dots,f_n$ respectively. Suppose that the $\R^n$-valued random variable $X=(X_1,\dots,X_n)$ also has a density function $f$. Show that $X_1,\dots,X_n$ are independent if and only if
+\be
+f(x_1,\dots,x_n) = f_1(x_1)\dots f_n(x_n) \quad \text{a.e.}
+\ee
+\end{exercise} 
+
+Solution. If $X_1, \ldots, X_n$ are independent, then by Fubini (note the integrand is finite), for Borel sets $B_1,\ldots,B_n$,
+\begin{align*}
+ & \int_{B_1 \times \cdots \times B_n} \big( f(x_1, \ldots,x_n) - f_1 (x_1) \ldots f_n(x_n) \big) dx_1 \ldots dx_n \\
+=& \int_{B_1 \times \cdots \times B_n} f(x_1, \ldots,x_n) dx_1 \ldots dx_n - \int_{B_1} f_1(x_1) dx_1 \cdots \int_{B_n} f_n(x_n) dx_n \\
+=& \mathbb{P}(X_1 \in B_1, \ldots X_n \in B_n) - \mathbb{P}(X_1 \in B_1) \ldots \mathbb{P}(X_n \in B_n)=0
+\end{align*}
+So the integral of $f(x_1, \ldots,x_n) - f_1 (x_1) \ldots f_n(x_n)$ is 0 on the $\pi$-system
+\[
+ \mathcal{A}:=\{B_1 \times \cdots B_n : B_i \in \mathcal{B}(\mathbb{R}),\,\, i=1,\ldots,n\}
+\]
+which generates $\mathcal{B}(\mathbb{R}^n)$. Also, $\mathbb{R}^n \in \mathcal{A}$, so by Proposition 3.1.4 from the printed notes,
+\begin{equation} \label{eq:pdfequal}
+  f(x_1, \ldots,x_n) = f_1 (x_1) \ldots f_n(x_n) \quad \mathrm{a.e.}
+\end{equation}
+Conversely, if \eqref{eq:pdfequal} holds, then for Borel sets $B_1,\ldots,B_n$ we have
+\[
+ \mathbb{P}(X_1 \in B_1,\ldots, X_n \in B_n)=\mathbb{P}(B_1 \in X_1)\ldots \mathbb{P}(B_n \in X_n).
+\]
+But since $\{X_i ^{-1}(B):B \in \mathcal{B}(\mathbb{R}) \} = \sigma(X_i)$, this implies that $X_1,\ldots, X_n$ are independent.
+
+\begin{exercise} 
+Let $(f_n:n\in\N)$ be a sequence of integrable functions and suppose that $f_n\to f$ a.e. for some integrable function $f$. Show that, if $\| f_n\|_1 \to \| f\|_1$, then $\| f_n - f\|_1 \to 0$.
+\end{exercise} 
+
+Solution. By Fatou's lemma, we have that
+\begin{equation} \label{eq:fatou}
+  \mu(\liminf_{n \to \infty} (\abs{f} + \abs{f_n} - \abs{f_n-f})) \leq \liminf_{n \to \infty} \mu(\abs{f}+\abs{f_n}-\abs{f_n-f})
+\end{equation}
+Now $\liminf_{n \to \infty} \abs{f_n} = \abs{f} \; \mathrm{a.e.}$, and $\liminf_{n \to \infty} \abs{f_n-f} = 0 \; \mathrm{a.e.}$, so
+\[
+ \mu(\liminf_{n \to \infty} \abs{f_n}) = \mu(\abs{f}) \quad \text{and} \quad  \mu(\liminf_{n \to \infty} \abs{f_n-f}) = 0.
+\]
+Thus, from \eqref{eq:fatou}, and using the fact that $\norm{f_n}_1 \to \norm{f}_1$, we get that
+\[
+ \limsup_{n \to \infty} \norm{f_n - f}_1 \leq 0
+\]
+But of course,
+\[
+ 0 \leq \liminf_{n \to \infty} \norm{f_n -f}_1 \leq \limsup_{n \to \infty} \norm{f_n -f}_1,
+\]
+whence $\norm{f_n-f}_1 \to 0$.
+
+\begin{exercise} 
+Let $\mu$ and $\nu$ be probability measures on $(E,\sE)$ and suppose that, for some measurable function $f:E\to [0,R]$,
+\be
+\nu(A) = \int_A fd\mu, \quad A\in\sE.
+\ee
+
+Let $(X_n:n\in \N)$ be a sequence of independent random variables in $E$ with law $\mu$ and let $(U_n:n\in \N)$ be a sequence of independent $U[0,1]$ random variables. Set
+\be
+T =\min\{n\in \N:RU_n \leq f(X_n)\},\quad Y=X_T.
+\ee
+
+Show that $Y$ has law $\nu$.
+\end{exercise} 
+
+Solution. To make this question work, we shall assume that $f(X_1)$ is positive with positive probability, to ensure that
+\[
+ \{n \in \mathbb{N}:RU_n \leq f(X_n)\} \neq \emptyset \quad \mathrm{a.s.}
+\]
+We may define $T$ as taking the value $\infty$ and $Y$ in an arbitrary way on the null set for which equality holds in the above. Then, for any $A \in \mathcal{E}$,
+\begin{align*}
+ \mathbb{P}(Y \in A) =& \mathbb{P}(X_T \in A) \\
+=& \sum_{n \in \mathbb{N}} \mathbb{P}(X_n \in A,T=n) \quad \text{countable additivity} \\
+=& \sum_{n \in \mathbb{N}} \mathbb{P}(X_n \in A, RU_n \leq f(X_n),T \geq n)
+\end{align*}
+since $\{RU_n \leq f(X_n)\}=\{T \leq n\}$. But
+\[
+ \{T \geq n\}=\bigcup_{m < n} \{RU_m > f(X_m)\}
+\]
+Thus the events $\{X_n \in A, RU_n \leq f(X_n)\}$ and $\{T \geq n\}$ are independent. Therefore, taking $\mathbb{E}(T)=C$, say, we have
+\begin{align*}
+ \mathbb{P}(Y \in A) =& C \, \mathbb{P}(X_1 \in A, RU_1 \leq f(X_1)) \\
+=& C \int_E \int_0 ^1 \ind \{(x',u'):x' \in A, Ru' \leq f(x')\}(x,u) \, du \, \mu (dx) \\
+=& \frac{C}{R} \int_E f\ind_A d\mu \\
+=& \frac{C}{R} \nu(A)
+\end{align*}
+In particular,
+\[
+ 1=\mathbb{P}(Y \in E) = \frac{C}{R}\nu(E)
+\]
+But $\nu$ is a probability measure so $\frac{C}{R}=1$, and $\mathbb{P}(Y \in A) = \nu(A)$ as required.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise} 
+Let $X$ be a random variable and let $1\leq p<q<\infty$. Show that
+\be
+\E(|X|^p) = \int^\infty_0 p\lm^{p-1}\pro(|X|\geq \lm)d\lm
+\ee
+and deduce 
+\be
+X \in\sL^q (\pro) \ \ra \ \pro(|X|\geq \lm) = O(\lm^{-q}) \ \ra \ X\in \sL^p(\pro).
+\ee
+\end{exercise} 
+
+Solution. \emph{Approach 1}. If $\E(|X|^p)<\infty$, then with Chebyshev's inequality, we have
+\be
+\pro(|X|\geq \lm) = \pro(|X|^p\geq \lm^p) \leq \frac {\E(|X|^p)}{\lm^p}=O(\lm^{-p}).
+\ee
+
+By Fubini's theorem, we have
+\be
+\E(|X|^p) = \E\lob \int^{|X|}_0 p\lm^{p-1} d\lm \rob =  \E\lob \int^\infty_0 p\lm^{p-1} {\bf 1}_{\{|X|\geq \lm\}}d\lm \rob = \int^\infty_0 p\lm^{p-1}\pro(|X|\geq \lm)d\lm
+\ee
+
+Hence,
+\be
+X \in\sL^q (\pro) \ \ra \  \E(|X|^q) < \infty \ \ra \  \pro(|X|\geq \lm) = O(\lm^{-q}) \ \ra \ \pro(|X|\geq \lm) \leq c\lm^{-q}
+\ee
+where $c$ is a constant. Thus,
+\be
+\E(|X|^p) = \int^\infty_0 p\lm^{p-1}\pro(|X|\geq \lm)d\lm \leq c\int^\infty_0 p\lm^{p-1-q}d\lm = \frac {pc}{q-p}<\infty \ \ra \ X\in \sL^p(\pro).
+\ee
+
+\emph{Approach 2}. We have
+\begin{align*}
+\int_0 ^\infty p \lambda^{p-1} \mathbb{P}(\abs{X} \geq \lambda) d\lambda =& \int_0 ^\infty p\lambda^{p-1} \mathbb{E}(\ind _{\{\abs{X} \geq \lambda\}}) \,\, d\lambda \\
+=& \int_0 ^\infty p\lambda^{p-1} \int_\Omega \ind _{\{\omega':\abs{X(\omega')} \geq \lambda \}} (\omega) \,\, \mathbb{P}(d\omega) \, d\lambda \\
+=& \int_\Omega \int_0 ^\infty p\lambda^{p-1} \ind _{\{\omega':\abs{X(\omega')} \geq \lambda \}} (\omega) \,\, d\lambda \, \mathbb{P}(d\omega) \quad \text{(Fubini)} \\
+=& \int_\Omega \int_0 ^{\abs{X(\omega)}} p\lambda^{p-1} \,\, d\lambda \, \mathbb{P}(d\omega) \\
+=& \int_\Omega \abs{X(\omega)}^p \,\, \mathbb{P} (d\omega) = \mathbb{E}(\abs{X}^p)
+\end{align*}
+Now if $X \in L^q (\mathbb{P})$, $\mathbb{E}(\abs{X}^q)<\infty$ by definition. We want to be able to say that since
+\[
+ \int_0 ^\infty p\lambda^{q-1} \lambda^{-q} \,\, d\lambda = \infty
+\]
+we must have that $\mathbb{P}(\abs{X} \geq \lambda) = \mathcal{O}(\lambda^{-q})$. To make this argument rigorous, we first note that if $\mathbb{P}(\abs{X} \geq \lambda) \neq \mathcal{O}(\lambda^{-q})$, then  for each $n \in \mathbb{N}$, there exits $\lambda_n$ such that $\mathbb{P}(\abs{X} \geq \lambda_n) > n\lambda_n ^{-q}$. Since $\mathbb{P}(\abs{X} \geq \lambda)$ is non-increasing as a function of $\lambda$, this means that
+\[
+ \mathbb{P}(\abs{X} \geq \lambda)>\lambda^{-q} \quad \text{for} \quad \lambda \in [\lambda_n ^- , \lambda_n] \quad n=1,2,\ldots
+\]
+where $\lambda_n ^- := \frac{\lambda_n}{n^{1/q}}$. Thus, for all $n \in \mathbb{N}$, we have that
+\[
+ \mathbb{E}(\abs{X}^q) > q \int_{\lambda_n ^-} ^{\lambda_n} \lambda^{-1} \, d\lambda = \log(n)
+\]
+and so $\mathbb{E}(\abs{X}^q) = \infty$. Alternatively, we could have used Chebyshev’s inequality.
+
+Now if $\mathbb{P}(\abs{X} \geq \lambda) \leq C\lambda^{-q}$, some $C$, then
+\[
+ \mathbb{E}(\abs{X}^p) \leq C \int_0 ^\infty p\lambda^{p-1} \lambda^{-q} \,\, d\lambda < \infty.
+\]
+
+\begin{exercise} 
+Give a simple proof of Schwarz' inequality for measurable functions $f$ and $g$:
+\be
+\|fg\|_1\leq \|f\|_2\|g\|_2.
+\ee
+\end{exercise} 
+
+Solution. Assume $\|f\|_2,\|g\|_2 < \infty$ or inequality is obvious. Note that $|fg|\leq |f|^2+|g|^2$, so $\|fg\|_1<\infty$.
+
+Assume $f,g\geq 0$ or replace by $|f|$ and $|g|$. For all $t\in \R$
+\be
+0\leq \|f+tg\|_2^2 = t^2 \|g\|_2^2 + 2t \|fg\|_1 + \|f\|_2^2
+\ee
+By setting $t= - \frac{\|fg\|_1}{\|g\|_2^2}$, we obtain
+\be
+\|fg\|_1\leq \|f\|_2\|g\|_2.
+\ee
+
+\begin{exercise} 
+Show that for independent random variables $X$ and $Y$
+\be
+\|XY\|_1 = \|X\|_1\|Y\|_1
+\ee
+and that if both $X$ and $Y$ are integrable then
+\be
+\E(XY) = \E(X)\E(Y).
+\ee
+\end{exercise} 
+
+Solution. \emph{Approach 1}. Let $X$ and $Y$ be random variables. If $X={\bf 1}_A$ and $Y={\bf 1}_B$, then
+\be
+\E(XY) = \pro(A\cap B) = \pro(A)\pro(B) = \E(X)\E(Y).	
+\ee
+
+The identity extends to simple random variables by linearity, if $X=\sum\limits^m_{k=1} a_k {\bf 1}_{A_k}$ and $Y=\sum\limits^n_{j=1} b_j {\bf 1}_{B_j}$ ($A_k$ and $B_j$ are disjoint respectively),
+\be
+\E(XY) =  \sum\limits^m_{k=1}\sum\limits^n_{j=1} a_kb_j\pro \lob A_k\cap B_j \rob = \sum\limits^m_{k=1}\sum\limits^n_{j=1} a_kb_j \pro(A_k)\pro(B_j) = \E(X)\E(Y).
+\ee
+then it extends to non-negative random variables by monotone convergence theorem (by using the approximation $X_n=2^{-n}\left\lfloor 2^nX\right\rfloor$).
+
+For $X$, $Y$ integrable we have 
+\be
+\E(|XY|) = \E(|X|)\E(|Y|) < \infty \ \ra \ XY \text{ is integrable.}
+\ee
+Hence,
+\be
+\E(XY) = \E\lob (X^+-X^-)(Y^+-Y^-)\rob = \lob \E(X^+) - \E (X^-)\rob\lob \E(Y^+) - \E (Y^-)\rob = \E(X)\E(Y).
+\ee
+
+\emph{Approach 2}. This is a classic case of:
+\begin{enumerate}
+ \item Show that the result holds when $X$, $Y$ are indicator functions of measurable sets.
+ \item Extend this to allow $X$ and $Y$ to be simple functions (using linearity of expectation)
+ \item Use monotone convergence to establish the result for all $X,Y \geq 0$.
+ \item Finally use the decomposition $X=X^+ - X^-$, and the same for $Y$, to get the final result.
+\end{enumerate}
+Once you have completed step 3, make sure you note that $\mathbb{E}(\abs{XY})=\mathbb{E}(\abs{X})\mathbb{E}(\abs{Y})<\infty$ for integrable $X,Y$, so $XY$ is also integrable. This observation makes expanding out $\mathbb{E}((X^+ - X^-)(Y^+ - Y^-))$ in the obvious way a legal thing to do.
+
+\begin{exercise} 
+A \emph{stepfunction} $f:\R\to\R $ is any finite linear combination of indicator functions of finite intervals. Show that the set of stepfunctions $\sJ$ is dense in $\sL^p(\R)$ for all $p\in[1,\infty)$: that is, for all $f\in\sL^p(\R)$ and all $\ve>0$ there exists $g\in \sJ$ such that $\|f-g\|_p<\ve$.
+\end{exercise} 
+
+Solution. Let $f \in L^p(\mathbb{R})$ and assume first, for simplicity, that $f \geq 0$. Given $\epsilon>0$, there exists $N_1 \in \mathbb{R}$ such that
+\begin{equation} \label{eq:bd1}
+ \norm{f-f\ind_{[-N_1,N_1]}}_p < \frac{\epsilon}{3}
+\end{equation}
+To see this, note that $\abs{f}^p \geq \abs{f-f\ind_{[-n,n]}}^p \to 0$ as $n \to \infty$, and use dominated convergence.
+
+Now, set $f_n = 2^{-n} \floor{2^n f \ind_{[-N_1,N_1]}} \wedge n$, so $f_n$ simple and $\abs{f_n - f\ind_{[-N_1,N_1]}}^p \to 0$. Again, by dominated convergence, there exists $N_2 \in \mathbb{N}$ with
+\begin{equation} \label{eq:bd2}
+ \norm{f\ind_{[-N_1,N_1]} - f_{N_2}}_p < \frac{\epsilon}{3}
+\end{equation}
+
+Suppose
+\[
+ f_{N_2} = \sum_{k=1} ^m a_k \ind _{A_k},
+\]
+for Borel sets $A_k$ containted in $[-N,N]$, and positive reals $a_k$, $k=1,\ldots,m$. By the result on question 1.7, for each $A_k$ one can find a finite collection of finite, disjoint intervals $B_{1,k},\ldots,B_{l_k, k}$, say, such that
+\[
+ \mu\left(A_k \triangle \bigcup_{j=1} ^{l_k} B_{j,k} \right) = \norm{\ind_{A_k} - \ind_{\bigcup_{j=1} ^{l_k} B_{j,k}}}_p < \frac{\epsilon}{3m \max_k a_k}
+\]
+Set
+\[
+ g= \sum_{k=1} ^m \left( a_k \sum_{j=1} ^{l_k} \ind_{B_{j,k}} \right)
+\]
+so $g$ is a stepfunction. Then
+\begin{equation} \label{eq:bd3}
+ \norm{f_{N_2} - g} < \frac{\epsilon}{3}
+\end{equation}
+Combining \eqref{eq:bd1}, \eqref{eq:bd2} and \eqref{eq:bd3}, and using Minkowski's inequality (i.e. the triangle inequality), we have that
+\[
+ \norm{f-g}_p < \epsilon.
+\]
+
+Finally for general $f \in L_p(\mathbb{R})$ and $\epsilon >0$, we set $f = f^+ - f^-$. From the above, we can find stepfunctions $g_1, g_2$ such that $\norm{f^+ - g_1}_p, \norm{f^- - g_2} < \frac{\epsilon}{2}$. But then
+\[
+  \norm{f-(g_1 - g_2)}_p \leq \norm{f^+ - g_1}_p + \norm{f^- - g_2}_p < \epsilon
+\]
+and $g_1 - g_2$ is of course a stepfunction.
+
+\begin{exercise} 
+Let $(X_n:n\in\N)$ be an identically distributed sequence in $\sL^2(\pro)$. Show that, for $\ve>0$,
+\ben
+\item [(i)] $n\pro(|X_1|>\ve\sqrt{n})\to 0$ as $n\to\infty$,
+\item [(ii)] $n^{-\frac 12} \max\limits_{k\leq n}|X_k|\to 0$ in probability. 
+\een
+\end{exercise} 
+
+Solution. \ben
+\item [(i)]
+\begin{align*}
+n \, \mathbb{P}(\abs{X}>\epsilon \sqrt{n}) &= n \, \mathbb{P}\left( \frac{X_1 ^2}{\epsilon^2} > n \right) \\
+& = \mathbb{E}\left( n \, \ind \left\{\tfrac{X_1 ^2}{\epsilon^2} > n \right\} \right) \\
+& \leq \frac{1}{\epsilon^2}\mathbb{E} (X_1 ^2) < \infty      
+\end{align*}
+Now $n \, \ind \left\{\tfrac{X_1 ^2}{\epsilon^2} > n \right\} \to 0$ as $n \to \infty$, so by dominated convergence, $n \, \mathbb{P}(\abs{X}>\epsilon \sqrt{n}) \to 0$.
+\item [(ii)]
+\begin{align*}
+ \mathbb{P}\left( n^{-\frac{1}{2}} \max_{k \leq n} \abs{X_k} > \epsilon \right)  &= \mathbb{P} \left( \bigcup_{k \leq n} \{ \abs{X_k} > \epsilon \sqrt{n} \} \right) \\
+& \leq n \, \mathbb{P}(\abs{X}>\epsilon \sqrt{n}) \to 0
+\end{align*}
+where we have used subadditivity and the fact that the $X_n$ are i.i.d. in the final line.
+\een
+
+\begin{exercise} 
+Let $(E,\sE,\mu)$ be a measure space and let $V_1\leq V_2\leq \dots$ be an increasing sequence of closed subspaces of $\sL^2 = \sL^2(E,\sE,\mu)$ for $f\in\sL^2$, denote by $f_n$ the orthogonal projection of $f$ on $V_n$. Show that $f_n$ converges in $\sL^2$.
+\end{exercise} 
+
+Solution. Since $L^2$ is complete, we need only show that the $f_n$ are Cauchy. Denote $\norm{\cdot}_2$ simply by $\norm{\cdot}$. We have, for $m<n$,
+\begin{align*}
+  \norm{f_m - f_n}^2 &= \norm{(f - f_n) - (f - f_n)}^2 \\
+&= \norm{f-f_n}^2 - 2\langle f-f_n,f-f_m\rangle + \norm{f-f_m}^2
+\end{align*}
+By the definition of orthogonal projection, we have
+\begin{equation} \label{eq:ortho}
+ \norm{f - f_n}^2 + \norm{f_n}^2 = \norm{f}^2
+\end{equation}
+Using this, and also noting that $f - f_n \in V_n ^\perp \subset V_m ^\perp$, we get
+\begin{align} \label{eq:increase}
+  \norm{f_m - f_n}^2 &= 2\norm{f}^2 - \norm{f_m}^2 - \norm{f_n}^2 - 2\langle f-f_n,f-f_m\rangle \\
+&= 2\norm{f}^2 - \norm{f_m}^2 - \norm{f_n}^2 - 2(\norm{f}^2 - \norm{f_n}^2) \\ \label{eq:increase}
+&= \norm{f_n}^2 - \norm{f_m}^2
+\end{align}
+Thus $f_n$ is Cauchy if $\norm{f_n}^2$ is Cauchy. But \eqref{eq:increase} shows that the $\norm{f_n}^2$ are increasing, and \eqref{eq:ortho} shows they are bounded above by $\norm{f}^2$. Thus $\norm{f_n}$ converges and is therefore Cauchy.
+
+\begin{exercise} 
+Prove the following proposition. Every covariance matrix is non-negative definite.
+\end{exercise} 
+
+Solution. Show that
+\[
+ a^{T}\var(X)a = \var(a^T X) \geq 0
+\]
+for all $a \in \mathbb{R}^n$.
+
+\begin{exercise} 
+Prove the following proposition. If $X\in\sL^2$, then $Y$ is version of the orthogonal projection of $X$ on $V$.
+\end{exercise} 
+
+Solution. In the lecture notes, it says that $Y \in V$, where $V=L^2 (\mathcal{G}, \mathbb{P})$. However, I don't think it is obvious that $\mathbb{E}(Y^2) < \infty$ (and in fact this does not necessarily hold if $X \notin L^2$). So we shall show $Y \in V$ during the course of our proof that $Y$ is a version of the orthogonal projection of $X$ on $V$.
+
+First note that the orthogonal projection of $X$ on $V$ does exist (Theorem 5.2.1 in your lecture notes). So call one version of it $Y'$ say. Now we know that $Y'$ has to be $\mathcal{G}$-measurable, so it must be constant on each $G_i$. In other words, we can write
+\[
+ Y'=\sum_{i \in I} g_i \ind_{G_i}
+\]
+Furthermore, $Y'$ must satisfy
+\[
+ \langle X-Y', Z \rangle = \mathbb{E}((X-Y')Z) = 0
+\]
+for all $Z \in V$. In particular, taking $Z=\ind_{G_i}$, we see that
+\[
+ \mathbb{E}(X\ind_{G_i}) = \mathbb{E}(Y' \ind_{G_i}) = g_i \mathbb{P}(G_i).
+\]
+So for all $i$ such that $\mathbb{P}(G_i)>0$, we must have $g_i = \mathbb{E}(X\ind_{G_i}) \, / \, \mathbb{P}(G_i)$. Thus $Y=Y'$ a.s., whence $Y$ is a version of the orthogonal projection of $X$ on $V$ (and in particular, $Y \in V$).
+
+\begin{exercise} 
+Find a uniformly integrable sequence of random variables $(X_n:n\in\N)$ such that 
+\be
+X_n\to 0 \text{ a.s. \quad and \quad} \E\lob \sup_n |X_n|\rob = \infty.
+\ee
+\end{exercise} 
+
+Solution. 
+
+\begin{exercise} 
+Let $(X_n:n\in\N)$ be an identically distributed sequence in $\sL^2(\pro)$. Show that
+\be
+\E\left.\lob \max_{k\leq n}|X_k|\rob\right/\sqrt{n}\to 0 \text{ as }n\to \infty.
+\ee
+\end{exercise} 
+
+Solution. The sequence
+\[
+ \frac{\max_{k \leq n} \abs{X_k}}{\sqrt{n}}, \quad n \in \mathbb{N}
+\]
+is U.I. since it is bounded in $L^2$:
+\be
+\E\left(\frac{\max_{k \leq n} X_k ^2}{n} \right) \leq  \frac{1}{n} \mathbb{E} \left( \sum_{k=1} ^n X_k ^2 \right) =  \mathbb{E}(X_1 ^2) < \infty 
+\ee
+By previous question (5), $\max_{k \leq n} \abs{X_k} / \sqrt{n} \to 0$ in probability. So we get the result by Theorem
+
+Let $X$ be a random variable and let $(X_n:n\in \N)$ be a sequence of random variables. The following are equivalent:
+\ben
+\item $X_n \in L^1$ for all $n$, $X\in L^1$ and $X_n\to X$ in $L^1$,
+\item $\{X_n:n\in \N\}$ is UI and $X_n \to X$ in probability.
+\een
+
+\begin{exercise} 
+Show that the Fourier transform of a finite Borel measure is a bounded continuous function.
+\end{exercise} 
+
+Solution. Simply an application of bounded convergence theorem.
+
+\begin{exercise} 
+Let $\mu$ be a Borel measure on $R$ of finite total mass. Suppose the Fourier transform $\hat{\mu}$ is Lebesgue integrable. Show that $\mu$ has a continuous density function $f$ with respect to Lebesgue measure:
+\be
+\mu(A) = \int_A f(x)dx.
+\ee
+\end{exercise} 
+
+Solution. Recall that Theorem 7.2.2 from the printed notes says that if $X$ is a random variable, then if its characteristic function $\phi_X$ is integrable, if we define
+\[
+ f_X (x) = \frac{1}{2\pi} \int_\mathbb{R} \phi_X (u) e^{-iux} \, du,
+\]
+then $f_X$ is a continuous function which is a density for $X$ w.r.t. Lebesgue measure. With this in mind, define a new measure $\mu_0$ on the Borel $\sigma$-algebra by \footnote{Note, we may assume that $\mu(\mathbb{R})>0$ else the zero function is a continuos density for $\mu$ w.r.t. Lebesgue measure}
+\[
+ \mu_0 (A) = \frac{\mu(A)}{\mu(\mathbb{R})}
+\]
+Then $\mu_0$ is a probability measure on $(\mathbb{R},\mathcal{B}(\mathbb{R}))$, and so we can create a random variable $X$ with law $\mu_0$ simply by taking \footnote{Alternatively, one can use the construction given in section 2.3 of the printed notes}
+\begin{align*}
+ X: \; (\mathbb{R}, \mathcal{B}(\mathbb{R}), \mu_0) & \longrightarrow (\mathbb{R}, \mathcal{B}(\mathbb{R}), \mathrm{Leb}) \\
+\omega & \longmapsto \omega
+\end{align*}
+Then $\phi_X = \hat{\mu} / \mu(\mathbb{R})$, so $\phi_X$ is integrable. Appealing to the theorem above, we see that $f:=\mathbb{R} \, f_x$, we see that $f$ is a density for $\mu$ with the required properties.
+
+\begin{exercise} 
+Show that there do not exist independent identically distributed random variables $X$, $Y$ such that
+\be
+X-Y \sim U[-1,1].
+\ee
+\end{exercise} 
+
+Solution. Using the fact that $X$ and $Y$ are i.i.d., we have
+\[
+ \phi_{X-Y} = \phi_X \, \phi_{-Y} = \phi_X \, \overline{\phi_Y} = \phi_X \, \overline{\phi_X} = \abs{\phi_X}^2 \geq 0
+\]
+Now show that the characteristic function of $U[-1,1]$ is not non-negative everywhere.
+
+\begin{exercise} 
+The Cauchy distribution has density function
+\be
+f(x) = \frac 1{\pi(1+x^2)}, \quad x \in \R.
+\ee
+Show thtat the corresponding characteristic function is given by 
+\be
+\phi(u) = e^{-|u|}.
+\ee
+Show also that, if $X_1,\dots,X_n$ are independent Cauchy random variables, then $(X_1+\dots+X_n)/n$ is also Cauchy. Comment on this in the light of the strong law of large numbers and central limit theorem.
+\end{exercise} 
+
+Solution. Computing the characteristic function directly will require the use of the residue theorem from complex analysis. Alternatively, note that $\varphi$ is integrable, so we may compute the inverse Fourier transform. It is easy to show that this equals the given density.
+
+Neither the strong law of large numbers nor the central limit theorem apply here, as the mean of a Cauchy random variable is not well-defined.
+
+\begin{exercise} 
+For a finite Borel measure $\mu$ on the line show that, if $\int|x|^kd\mu(x)<\infty$, then the Fourier transform $\hat{\mu}$ of $\mu$ has a $k$th continuous derivative, which at 0 is given by 
+\be
+\hat{\mu}^{(k)}(0) = i^k\int x^k d\mu(x).
+\ee
+\end{exercise} 
+
+Solution. Note that if $\int \abs{x}^k \mu(dx) < \infty$ and $\mu$ finite, by H\"{o}lder's inequality, for all $n \leq k$,
+\[
+ \int_\mathbb{R} \abs{x}^n \mu(dx) \leq \left(\int_\mathbb{R} \abs{X}^k \mu(dx) \right)^\frac{n}{k} \, \mu(\mathbb{R})^{1-\frac{n}{k}} < \infty
+\]
+Thus
+\ben
+\item [$\bullet$] $u \mapsto e^{iux}$ is infintely differentiable for all $x$
+\item [$\bullet$] $x \mapsto e^{iux}$ is integrable for all $u$
+\item [$\bullet$] $\abs{\frac{\partial ^n}{\partial u^n} e^{iux}} \leq \abs{x}^n$, which is integrable for $n \leq k$.
+\een
+These properties allow for differention $k$ times under the integral. Bounded convergence shows that the $k^\mathrm{th}$ derivative is also continuous.
+
+\begin{exercise} 
+\ben
+\item Show that for any real numbers $a$, $b$ one has $\int^b_a e^{itx} dx \to 0$ as $|t|\to \infty$.
+\item Suppose that $\mu$ is a finite Borel measure on $\R$ which has a density $f$ with respect to Lebesgue measure. Show that its Fourier transform 
+\be
+\hat{\mu}(t) = \int^\infty_{-\infty} e^{itx} f(x)dx
+\ee
+tends to 0 as $|t|\to \infty$. This is the \emph{Riemann-Lebesgue Lemma}.
+\item Suppose that the density $f$ of $\mu$ has an integrable and continuous derivative $f'$. Show that 
+\be
+\hat{\mu}(t) = o(t^{-1}), \quad \text{i.e.},\quad t\hat{\mu}(t)\to 0 \text{ as }|t|\to\infty.
+\ee
+Extend to higher derivatives.
+\een
+\end{exercise} 
+
+Solution. \ben
+ \item[(ii)] Part (i) shows the result is true if $f$ is a stepfunction. Now given any $f \in L^1$, and $\epsilon > 0$, pick a stepfunction $g$ with $\norm{f-g}_1 < \frac{\epsilon}{2}$. Then pick $T \in \mathbb{R}$ such that for all $t: \abs{t} \geq T$,
+\[
+ \int_{-\infty} ^\infty e^{itx}g(x) \, dx < \frac{\epsilon}{2}.
+\]
+So, $\hat{\mu}(t) < \epsilon$.
+ \item[(iii)] Use integration by parts. For any $N$, we have
+\[
+ \int_{-N} ^N \frac{\partial}{\partial x} (e^{itx}f(x)) \, dx = it\, \int_{-N} ^N e^{itx} f(x) \, dx + \int_{-N} ^N e^{itx} f'(x) \, dx
+\]
+Applying FTC to the LHS (note the integrand is continuous), we see that the LHS tends to 0 as $N \to \infty$. Now $\abs{e^{itx} f'(x) \ind_{[-N,N]}(x)} \leq f'(x)$, and $f'$ is integrable (given). Therefore, by dominated convergence theorem,
+\beast
+ \lim_{N \to \infty} \int_{-N} ^N e^{itx} f'(x) \, dx =& \lim_{N \to \infty} \int_{-\infty} ^\infty e^{itx} f'(x) \ind_{[-N,N]}(x) \, dx \\
+ =& \int_{-\infty} ^\infty \lim_{N \to \infty} e^{itx} f'(x) \ind_{[-N,N]}(x) \, dx
+=& \int_{-\infty} ^\infty e^{itx} f'(x) \, dx
+\eeast
+Similarly,
+\[
+ it\lim_{N \to \infty} \int_{-N} ^N e^{itx} f(x) \, dx =it \int_{-\infty} ^\infty e^{itx} f(x) \, dx.
+\]
+Thus we have
+\[
+ \int_{-\infty} ^\infty e^{itx} f'(x) \, dx=-it \int_{-\infty} ^\infty e^{itx} f(x) \, dx
+\]
+Now $f' \in L^1$, so by the result in (ii), the LHS tends to 0 as $\abs{t} \to \infty$. But then, of course, we have $t\hat{\mu}(t) \to 0$ as $\abs{t} \to \infty$. The extension to higher derivatives is similar.
+
+\een
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{exercise} 
+Prove the following proposition. Suppose $X\sim \sN(\mu,\sigma^2)$ and $a,b\in \R$. Then
+\ben
+\item [(a)] $\E (X) =\mu$,
+\item [(b)] $\var(X) = \sigma^2$,
+\item [(c)] $aX+b \sim \sN(a\mu+b, a^2 \sigma^2)$,
+\item [(d)] $\phi_X(u) = e^{iu\mu - u^2\sigma^2/2}$.
+\een
+\end{exercise} 
+
+Solution. (a) and (b) can be done using integration by parts. For (c), note that
+\[
+ F_{aX + b} (x) = \pro(aX + b \leq x) = \pro\left(X \leq \frac{x - b}{a} \right) = F_X \left( \frac{x - b}{a} \right)
+\]
+so
+\[
+ f_{aX +b} (x) = \frac{d}{dx} F_{aX + b} (x) = \frac{1}{a} f_X \left( \frac{x - b}{a} \right) = \frac{1}{\sqrt{2 \pi (a\sigma)^2}} \exp \left(-\frac{x - (a + b\mu)}{2(a\sigma)^2} \right).
+\]
+Thus $aX + b \sim N(a\mu + b, a\sigma)$.
+
+For part (d), note that from (c), we have that if $Z \sim N(0,1)$, then $X$ and $\mu + \sigma Z$ have the same distribution. Thus
+\[
+ \E(e^{iuX})=e^{iu\mu} \E(e^{iu\sigma Z}) = e^{iu\mu} \phi_Z (u\sigma) = e^{iu\mu - u^2\sigma^2 / 2}.
+\]
+
+\begin{exercise} 
+Suppose that $X_1, \dots,X_n$ are jointly Gaussian random variables with 
+\be
+\E(X_i) = \mu_i, \cov (X_i,X_j) = \Sigma_{ij}
+\ee
+and that the matrix $\Sigma = (\Sigma_{ij})$ is invertible. Set $Y = \Sigma^{-\frac 12} (X - \mu)$. Show that $Y_1, \dots, Y_n$ are independent $\sN(0,1)$ random variables.
+
+Show that we can write $X_2$ in the form $X_2 = aX_1 + Z$ where $Z$ is independent of $X_1$ and determine the distribution of $Z$.
+\end{exercise} 
+
+Solution. $Y$ is multi-variate normal so we can simply find the mean and covariance to check that $Y_1,\ldots,Y_n$ are i.i.d. $N(0,1)$.
+
+Find $a$ such that $\cov(X_2-aX_1,X_1)=0$. Then, as $X_2-aX_1$ and $X_1$ are jointly Gaussian, they must be independent. Obviously we then take $Z=X_2-aX_1$.
+
+\begin{exercise} 
+Let $X_1, \dots,X_n$ be independent $\sN(0, 1)$ random variables. Show that
+\be
+\bb{\bar{X},\ \sum^n_{m=1} (X_m - X)^2},\quad \quad \bb{X_n/\sqrt{n},\ \sum^{n-1}_{m=1} X^2_m}
+\ee
+have the same distribution, where $\bar{X} = (X_1 + \dots + X_n)/n$.
+\end{exercise} 
+
+Solution. Let $A$ be an $n \times n$ orthogonal matrix with $\left( \frac{1}{\sqrt{n}}, \ldots, \frac{1}{\sqrt{n}} \right)^T$ as the $n^\mathrm{th}$ row. Then
+\[
+ A \left( \begin{array}{c}
+X_1 \\
+ \vdots \\
+X_n  
+\end{array} \right) = \left( \begin{array}{c} Y_1 \\
+\vdots \\
+Y_{n-1} \\
+\sqrt{n}\bar{X}
+\end{array} \right)
+\]
+ where $Y_1,\ldots, Y_{n-1}, \sqrt{n} \bar{X}$ are i.i.d. $N(0,1)$ (to see this check the mean and variance of the RHS). As $A$ is orthogonal,
+\[
+ \sum_{i=1}^n X_i ^2 = \sum_{i=1} ^{n-1} Y_i ^2 + n\bar{X}^2.
+\]
+Then
+\[
+ \sum_{i=1} ^n (X_i - \bar{X})^2 = \sum_{i=1} ^{n-1} Y_i ^2.
+\]
+Thus $\bar{X}$ and $\sum_{i=1} ^n (X_i - \bar{X})^2$ are independent. It is easy to check that the distribution of $\bar{X}$ is the same as that of $X_n / \sqrt{n}$. The result then follows.
+
+\begin{exercise} 
+Let $(E, \sE, \mu)$ be a measure space and $\tau : E \to E$ a measure-preserving transformation. Show that
+\be
+\sE_\tau := \{A \in \E : \tau^{-1}(A) = A\}
+\ee
+is a $\sigma$-algebra, and that a measurable function $f$ is $E_\tau$-measurable if and only if it is invariant, that is $f \circ \tau = f$. 
+\end{exercise} 
+
+Solution. Checking that $\mathcal{E}_\tau$ is a $\sigma$-algebra is straightforward. Now suppose that $f$ is invariant. Then, for all $B \in \mathcal{B}$, we have
+\[
+ f^{-1}(B) = (f \circ \tau )^{-1}(B) = \tau^{-1}(f^{-1}(B))
+\]
+Thus $f^{-1}(B) \in \mathcal{E}_\tau$.
+
+Conversely, suppose $f$ is $\mathcal{E}_\tau$ measurable. Then, for all $x \in \mathbb{R}$, we have
+\[
+ f^{-1}(\{x\}) = \tau^{-1}(f^{-1}(\{x\}))
+\]
+Check that this implies $f(y)=f\circ \tau (y)$ for all $y \in E$.
+
+\begin{exercise} 
+Prove the following proposition. If $f$ is integrable and $\theta$ is measure-preserving, then $f\circ \theta$ is integrable and
+\be
+\int_E fd\mu = \int_E f\circ \theta d\mu.
+\ee
+\end{exercise} 
+
+Solution. Prove this using the standard method of first showing it is true for the indicator function of a measurable set. Then extend this to simple functions\ldots and I don't need to tell you the rest.
+
+\begin{exercise} 
+Prove the following proposition. If $\theta$ is ergodic and $f$ is invariant, then $f=c$ a.e., for some constant $c$.
+\end{exercise} 
+
+Solution. We want to set
+\begin{equation} \label{eq:defs}
+ s= \sup \{ a: \mu(f<a)=0\}
+\end{equation}
+but we must check that the set over which we are taking the supremum being $\mathbb{R}$ or $\emptyset$ does not pose any problems.
+
+First suppose $\{ a: \mu(f<a)=0\}=\mathbb{R}$. Then
+\[
+ \mu(E) = \mu \left( \bigcup_{n \in \mathbb{N}} \{f<n\} \right) \leq \sum_{n \in \mathbb{N}} \mu(f < n) = 0
+\]
+So, trivially, we have that for any $c$, $\mu(f \neq c) \leq \mu(E) = 0$.
+
+Now assume $\{ a: \mu(f<a)=0\}=\emptyset$. This means that $\mu(f<a) > 0$ for all $a$. Since $f$ is $\mathcal{E}_\tau$ measurable, and $\mathcal{E}_\tau$ contains only null sets and their complements, we must have that $\mu( f \geq a) =0$ for all $a$. Then
+\[
+ \mu(E) = \mu \left( \bigcup_{n \in \mathbb{N}} \{f \geq -n\} \right) \leq \sum_{n \in \mathbb{N}} \mu(f \geq -n) = 0
+\]
+which contradicts $\mu(f > a) > 0$.
+
+Thus we can follow through with our initial idea and define $s$ as in \eqref{eq:defs}. Then, for all $n \in \mathbb{N}$ we have that $\mu(f<c-\frac{1}{n})=0$ and $\mu(f>c+\frac{1}{n})=0$. Thus
+\[
+ \mu(f \neq c) = \mu \left( \bigcup_{n \in \mathbb{N}} \{f< c - \tfrac{1}{n}) \cup \{f > c + \tfrac{1}{n}) \right) \leq \sum_{n \in \mathbb{N}} (\mu(f< c - \tfrac{1}{n}) + \mu(f> c + \tfrac{1}{n}))=0
+\]
+
+\begin{exercise} 
+For $E = [0, 1)$, $a \in E$ and $\mu(dx) = dx$, show that
+\be
+\tau (x) = x + a (\bmod 1)
+\ee
+is measure-preserving. Determine for which values of a the transformation $\tau$ is ergodic. 
+
+Let $f$ be an integrable function on $[0,1)$. Determine for each value of a the limit 
+\be
+\bar{f} = \lim_{n\to\infty} \frac 1n (f + f \circ \tau + \dots + f \circ \tau^{n-1}).
+\ee
+\end{exercise} 
+
+Solution. Again, show that $\tau$ is measure preserving by checking the property for intervals (or any $\pi$-system which generates $\mathcal{B}([0,1))$.
+
+First we show that $\tau$ is not ergodic when $a$ is rational. Indeed, suppose $a=p/q$, with $q \in \mathbb{Z}_+$. Then set
+\[
+ A:=\left[0, \tfrac{1}{2q} \right) \cup \left[ \tfrac{2}{2q}, \tfrac{3}{2q} \right) \cup \cdots \cup \left[ \tfrac{2q-2}{2q}, \tfrac{2q-1}{2q} \right)
+\]
+It is easy to see that $\mu(A)=\frac{1}{2}$, but $A$ is invariant. Also, as $\tau^q$ is the identity, we have
+\[
+ \frac{1}{n}(f+ f \circ \tau + \cdots  + f \circ \tau^{n-1}) = \frac{\floor{\tfrac{n}{q}}}{n} (f+ f \circ \tau + \cdots + f \circ \tau^{q-1}) + \frac{1}{n}(f + f \circ \tau + \cdots + f \circ \tau^{n - q\floor{\frac{n}{q}}-1})
+\]
+so
+\[
+ \bar{f}=\frac{1}{q}(f+ f \circ \tau + \cdots + f \circ \tau^{q-1}).
+\]
+
+The case where $a$ is irrational is more difficult. We claim that in this case, $\tau$ is ergodic. Suppose $B$ is an invariant set. First note that we may assume there exists an interval $L$ of the form $L=\left[\frac{i-1}{2^n},\frac{i}{2^n}\right)$, with $\mu(B \cap L) < \mu(B)\mu(L)$. Indeed, if not, it is easy to see that we must have $\mu(B \cap A) = \mu(B)\mu(A)$ for all $A \in \mathcal{A}$ (with $\mathcal{A}$ defined as in 9.4). We can then proceed using the same argument as in 9.4.
+
+There must also exist $U:=\left[\frac{j-1}{2^n},\frac{i}{2^n}\right)$ with $\mu(B \cap U) > \mu(B)\mu(U)>\mu(B \cap L)$, for otherwise we would have
+\[
+ \mu(B)=\sum_{k=1} ^{2^n} \mu \left( B \cap \left[\frac{k-1}{2^n},\frac{k}{2^n}\right) \right) < \sum_{k=1} ^{2^n} \frac{1}{2^n} \mu(B) = \mu(B)
+\]
+which is a contradiction. Think of $L$ as a lower than average density interval, and $U$ as a higher than average density interval.
+
+Now, if we can find a sequence $n_1,n_2, \ldots$ with $\liminf_k \tau^{-n_k}(B \cap L) = B \cap U$, we are done. To see this, note that then
+\[
+ \mu(B \cap U) = \mu(\liminf_k \tau^{-n_k}(B \cap L)) \leq \liminf_k \mu(\tau^{-n_k}(B \cap L)) =\mu(B \cap L)
+\]
+since $\tau$ is measure-preserving, and this is a contradiction. Luckily, we can ideed find such a sequence. First note that $\liminf_k \tau^{-n_k}(B \cap L) = B \cap \liminf_k \tau^{-n_k}(L)$, as $B$ is invariant. Let us assume $j>0$. The case when $j=0$ is not much more difficult (and in a sense can be excluded by the rotational symmetry of the problem). Now as the orbit $\{i, \tau^{-1}(i), \ldots \}$ is dense in $[0,1)$ (check this using the pigeon-hole principle), we can find a sequence $n_k$ such that $\tau^{-n_k}(i) \to j$ from below. Then $\liminf_k \tau^{-n_k}(L) = U$, and we are done. As in 9.3, we get that $\frac{1}{n}(f + f \circ \tau + \cdots + f \circ \tau^{n-1}) \to \int f$ a.e.
+
+
+\begin{exercise} 
+Show that
+\be
+\tau (x) = 2x (\bmod 1)
+\ee
+is another measure-preserving transformation of Lebesgue measure on $[0, 1)$, and that $\tau$ is ergodic. Find $\bar{f}$ for each integrable function $f$.
+\end{exercise} 
+
+Solution. \ben
+ \item [$\bullet$] \emph{First proof:} To show that $\tau$ is measure-preserving, you need only check that $\mu(\tau^{-1}([0,x))) = \mu([0,x))=x$ (which is easy). Indeed, $\mathcal{A}:=\{[0,x):x \in [0,1) \}$ is a $\pi$-system which generates $\mathcal{B}([0,1))$. Since $\mu = \mu \circ \tau^{-1}$ on $\mathcal{A}$, and $\mu(\tau^{-1}([0,1))) = \mu([0,1))=1<\infty$, by uniqueness of extension, we must have $\mu = \mu \circ \tau^{-1}$ on $\mathcal{B}([0,1))$. 
+
+Now to each $x \in [0,1)$, we may assign a unique binary representation $x=0.x_1 x_2 x_3 \ldots$, provided we do not allow an infinite string of 1's. Then we see that $\tau(x) = 0.x_2 x_3 \ldots $. Define random variables $X_n (x) = x_n$ (the probability triple is $([0,1),\mathcal{B}([0,1)),\mu)$). Then the $X_n$ are the Rademacher functions, and are i.i.d. $B(1,\frac{1}{2})$. Now
+\[
+ \tau^{-n}(\{X_1 = \varepsilon_1, \ldots, X_k = \varepsilon_k\}) = \{X_{n+1} = \varepsilon_1, \ldots X_{n+k} = \varepsilon_k \} \in \mathcal{T}_n
+\]
+where $\mathcal{T}_n= \sigma(X_j : j \geq n + 1)$. Since $\mathcal{B}([0,1)) = \sigma(X_n : n \in \mathbb{N})$ (check this), we have that $\tau^{-n}(B) \in \mathcal{T}_n$ for all $B \in \mathcal{B}([0,1))$. Now if $A \in \mathcal{E}_\tau$, then $\tau^{-n}(A) = A$ for all $n$. Thus
+\[
+ \mathcal{E}_\tau \subset \bigcap_n \mathcal{T}_n =: \mathcal{T}
+\]
+Since $\mathcal{T}$ is the tail $\sigma$-algebra, by Kolmogorov's 0-1 Law, $\mathcal{E}_\tau$ can contain only events of measure 1 or 0, so $\tau$ is ergodic.
+
+By Birkhoff's almost everywhere ergodic theorem, there exists an integrable, invariant function $\bar{f}$, such that almost everywhere,
+\[
+ \bar{f}= \lim_{n \to \infty} \frac{1}{n}(f + f \circ \tau + \cdots + f \circ \tau^{n-1})
+\]
+As $\tau$ is ergodic, $\bar{f}$ is constant almost everywhere, so $\bar{f}=\int \bar{f}$ almost everywhere. By von Neumann's $L^p$ ergodic theorem,
+\[
+ \norm{\bar{f} - \tfrac{1}{n}(f + f \circ \tau + \cdots + f \circ \tau^{n-1})}_1 \to 0
+\]
+so, in particular,
+\[
+ \int \tfrac{1}{n}(f + f \circ \tau + \cdots + f \circ \tau^{n-1}) \to \int \bar{f} 
+\]
+Since $\tau$ is measure-preserving, $\int f \circ \tau^k = \int f$ for all $k$. Thus the LHS is simply $\int f$. Therefore, putting everything together,
+\[
+ \lim_{n \to \infty} \frac{1}{n}(f + f \circ \tau + \cdots + f \circ \tau^{n-1}) = \int_0 ^1 f \quad \mathrm{a.e.}
+\]
+\item [$\bullet$] \emph{Second proof:} First observe that
+\[
+ \mu(\tau^{-n}(B) \cap [0,\tfrac{1}{2^n})) = \mu([0,\tfrac{1}{2^n}))\mu(\tau^{-n}(B))
+\]
+It is not hard to see that this extends to $\mu(\tau^{-n}(B) \cap A) = \mu(A)\mu(\tau^{-n}(B))$ whenever $A$ is in the $\pi$-system of dyadic intervals
+\[
+ \mathcal{A}:=\{[\tfrac{a}{2^n},\tfrac{b}{2^n}) \cap [0,1) : a,b,n \in \mathbb{Z}_+\}
+\]
+Then we see that, if $B$ is invariant, and $A \in \mathcal{A}$, we have that $\mu(B \cap A) = \mu(B)\mu(A)$. Thus the probability measure $\mu$ is independent on the $\pi$-systems $\mathcal{E}_\tau$ and $\mathcal{A}$. Theorem 1.11.1 from the printed notes then gives that $\mu$ is independent on $\sigma(\mathcal{E}_\tau) = \mathcal{E}_\tau$ and $\sigma(\mathcal{A}) = \mathcal{B}([0,1)) \supset \mathcal{E}_\tau$ (check this). So, in particular, for $B \in \mathcal{E}_\tau$, we have that $\mu(B) = \mu(B \cap B) = \mu(B)\mu(B) =0$ or 1.
+\een
+
+
+\begin{exercise} 
+Call a sequence of random variables $(X_n : n \in \N)$ on a probability space $(\Omega, \sF, \pro)$ \emph{stationary} if for each $n, k \in \N$ the random vectors $(X_1, \dots,X_n)$ and $(X_{k+1}, \dots,X_{k+n})$ have the same distribution: for $A_1, \dots,A_n \in \sB$,
+\be
+\pro(X_1 \in A_1, \dots,X_n \in A_n) = \pro(X_{k+1} \in A_1, \dots,X_{k+n} \in A_n).
+\ee
+Show that, if $(X_n : n \in \N)$ is a stationary sequence and $X_1 \in L^p$, for some $p \in [1,\infty)$, then
+\be
+\frac 1n \sigma^n_{i=1} X_i \to X\quad \text{a.s. and in } L^p,
+\ee
+for some random variable $X \in L^p$ and find $\E[X]$.
+\end{exercise} 
+
+Solution. Let $E=\R^\mathbb{N}$ with the $\sigma$-algebra $\Sigma$ generated by the coordinate functions (see the proof that the shift map is ergodic in your lecture notes). Define random variable $Y$ by
+\begin{align*}
+ Y: (\Omega, \mathcal{F}, \pro) & \longrightarrow (E, \Sigma) \\
+\omega & \longmapsto (X_1(\omega), X_2(\omega), \ldots )
+\end{align*}
+Let $\mu = \pro \circ Y^{-1}$. Define $\mathcal{A}$ as the $\pi$-system
+\[
+ \mathcal{A}= \left\{ \prod_{n \in \mathbb{N}} A_n: A_n \in \mathcal{B} \text{ for all } n, \, A_n \in \R \text{ for } n \text{ sufficiently large} \right\}
+\]
+Note that $\sigma(\mathcal{A})=\Sigma$ (see lecture notes). Now we claim that the shift map $\theta$, is measure-preserving. Indeed, for $A \in \mathcal{A}$ with $A=A_1 \times \cdots \times A_n \times \R \times \cdots$, we have
+\begin{align*}
+\pro \circ Y^{-1} \circ \theta^{-1}(A_1 \times \cdots \times A_n \times \R \times \cdots) &= \pro \circ Y^{-1}(\R \times A_1 \times \cdots \times A_n \times \R \times \cdots) \\
+&= \pro (X_2 \in A_1, \ldots, X_{n+1} \in A_n) \\
+&= \pro(X_1 \in A_1, \ldots, X_n \in A_n) \\
+&= \pro \circ Y^{-1}(A_1 \times \cdots \times A_n \times \R \times \cdots)
+\end{align*}
+So probability measures $\mu \circ \theta^{-1}$ and $\mu$ agree on $\mathcal{A}$, so they must agree on $\Sigma$. Now let $f:(E,\Sigma,\mu) \to (\R, \mathcal{B})$ be the first coordinate map. Then $f\circ Y=X_1$, and $\abs{f}^p \circ Y =\abs{X_1}^p$. Note that $\mu(\abs{f}^p)=\E(\abs{X_1}^p)<\infty$ as $X_1 \in L^p$ (see the proposition on image measures in your lecture notes). Then by Birkhoff's and von Neumann's ergodic theorems, we have that
+\[
+  \frac{1}{n}(f + f \circ \theta + \cdots + f \circ f^{n-1}) = S_n(f) / n\to \bar{f}
+\]
+almost everywhere and in $L^p$, for some $\bar{f} \in L^p$. Set $X=\bar{f} \circ Y$, so $X:(\Omega, \mathcal{F}, \pro) \to (\R, \mathcal{B})$. Then we have that,
+\begin{align*}
+ 1=\mu\left( S_n(f)/n \to \bar{f}\right) &= \pro \circ Y^{-1} \left(\{x \in E: \tfrac{1}{n}S_n(f)(x)\to \bar{f}(x)\}\right) \\
+&= \pro \left( \{ \omega: \tfrac{1}{n}S_n(f)(Y(\omega))\to \bar{f}(Y(\omega))\}\right) \\
+&= \pro \left( \frac{1}{n} \sum_{i=1} ^n X_i \to X \right)
+\end{align*}
+Also
+\begin{align*}
+ \E\left( \abs{\frac{1}{n} \sum_{i=1} ^n X_i - X}^p \right) &= \E(\abs{\bar{f}-S_n(f)/n}^p \circ Y) \\
+ &= \mu(\abs{\bar{f} - S_n(f)/n}^p) \to 0
+\end{align*}
+as required. Finally $\E(X) = \lim_{n \to \infty} \E \left( \frac{1}{n}\sum_{i=1} ^n X_i \right) = \E(X_1)$ (where we have used the fact that $\frac{1}{n}\sum_{i=1} ^n X_i \to X$ in $L^1$).
+
+
+\begin{exercise} 
+Let $f$ be a bounded continuous function on $(0,\infty)$, having Laplace transform
+\be
+\hat{f}(\lm) = \int^\infty_0 e^{-\lm x}f(x)dx,\quad \lm \in (0,\infty).
+\ee
+Let $(X_n : n \in \N)$ be a sequence of independent exponential random variables, of parameter $\lm$. Show that $\hat{f}$ has derivatives of all orders on $(0,\infty)$ and that, for all $n \in \N$, for some $C(\lm, n)\neq 0$ independent of $f$, we have 
+\be
+(d/d\lm)^{n-1} \hat{f}(\lm) = C(\lm, n)\E (f(S_n))
+\ee
+where $S_n = X_1 + \dots + X_n$. Deduce that if $\hat{f} \equiv 0$ then also $f \equiv 0$.
+\end{exercise} 
+
+Solution. Let $\epsilon > 0$
+\begin{itemize}
+ \item $\lambda \mapsto e^{-\lambda x} f(x)$ is infinitely differentiable on $(\epsilon, \infty)$ for all $x$
+ \item $x \mapsto \frac{\partial}{\partial \lambda^n}(e^{-\lambda x} f(x)) = (-x)^n e^{-\lambda x} f(x)$ is integrable (on $\R_+$) for all $\lambda \in (\epsilon, \infty)$, as $\abs{ (-x)^n e^{-\lambda x} f(x)} \leq x^n e^{-\epsilon x}$, and $x^n e^{-\epsilon x}$ is integrable.
+\end{itemize}
+These conditions allow for differentiation under the integral sign any number of times, for all $\lambda \in (\epsilon, \infty)$. But $\epsilon$ was arbitrary so the same is true for $\lambda \in (0, \infty)$. Thus
+\[
+ \frac{d}{d \lambda^{n-1}} \hat{f}(\lambda) = \int_0 ^\infty (-x)^{n-1} e^{-\lambda x} f(x) dx
+\]
+Now $S_n \sim \Gamma(n, \lambda)$ which has pdf $e^{-\lambda x} \lambda^n x^{n-1} / (n-1)!$. So
+\[
+ \frac{d}{d \lambda^{n-1}} \hat{f}(\lambda) = \frac{(n-1)!(-1)^n}{\lambda^{n-1}}\E (f(S_n))
+\]
+Moreover, since $S_n / n \sim \Gamma(n, n\lambda)$, we have 
+\[
+ \frac{d\hat{f}}{d \lambda^{n-1}} \bigg| _{n\lambda} = \int_0 ^\infty (-x)^{n-1} e^{-n\lambda x} f(x) dx=\frac{(n-1)!(-1)^n}{(n\lambda)^{n-1}}\E (f(S_n / n))
+\]
+Thus if $\hat{f} \equiv 0$ then $\E(f(S_n / n)) =0$ for all $n$. But by the strong law of large numbers,
+\[
+ 1=\pro(S_n / n \to 1 / \lambda) = \pro(f(S_n / n) \to f(1 / \lambda)),  
+\]
+where in the last step we have used the fact that $f$ is continuous. As $f$ is bounded, by bounded convergence we have
+\[
+ 0 = \lim_{n \to \infty} \E(f(S_n / n)) = \E \left( \lim_{n \to \infty} f(S_n / n) \right) = f(1 / \lambda)
+\]
+This is true for all $\lambda$, so $f \equiv 0$.
+
+\begin{exercise} 
+For each $n \in \N$, there is a unique probability measure $\mu_n$ on the unit sphere $S^{n-1} = \{x \in \R^n : |x| = 1\}$ such that $\mu_n(A) = \mu_n(UA)$ for all Borel sets $A$ and all orthogonal $n\times n$ matrices $U$. Fix $k \in \N$ and, for $n \geq k$, let $\gamma_n$ denote the probability
+measure on $\R^k$ which is the law of $\sqrt{n}(x^1, \dots, x^k)$ under $\mu_n$. Show 
+\ben
+\item [(i)] if $X \sim \sN(0, I_n)$ then $X/|X| \sim \mu_n$,
+\item [(ii)] if $(X_n : n \in \N)$ is a sequence of independent $\sN(0, 1)$ random variables and if $R_n = (X^2_1 + \dots + X^2_n)^{\frac 12}$ then $R_n/
+\sqrt{n}\to 1$ a.s.,
+\item [(iii)] for all bounded continuous functions $f$ on $\R^k$, $\gamma_n(f)\to\gamma(f)$, where $\gamma$ is the standard Gaussian distribution on $\R^k$.
+\een
+\end{exercise} 
+
+Solution. \ben
+\item [(i)] Since $U^{-1}X \sim N(0,I_n)$
+  \[
+\mu_{X/\abs{X}}(B)=\pro(X/\abs{X} \in B) = \pro(U^{-1}X /\abs{X} \in B) = \pro(X/\abs{X} \in UB) = \mu_{X/\abs{X}}(UB)   
+  \]
+\item [(ii)] A simple application of the SLLN and the fact that $\sqrt{\cdotp}$ is continuous.
+\item [(iii)] Let $g: x \mapsto \sqrt{n}(x_1, \ldots, x_k)$. Then
+\begin{align*}
+ \gamma_n(f) &= \mu_n (f \circ g) \\
+&= \mu_{X/\abs{X}} (f \circ g) \\
+&= \E(f \circ g(X/\abs{X})) \\
+&= \E \left(f\left(\frac{X_1}{\left(\frac{\abs{X}}{\sqrt{n}}\right)}, \ldots, \frac{X_k}{\left( \frac{\abs{X}}{\sqrt{n}}\right)} \right) \right).
+\end{align*}
+Now by bounded convergence, and then continuity of $f$ and (ii) above, we get
+\begin{align*}
+ \lim_{n \to \infty} \E \left(f\left(\frac{X_1}{\left(\frac{\abs{X}}{\sqrt{n}}\right)}, \ldots, \frac{X_k}{\left( \frac{\abs{X}}{\sqrt{n}}\right)} \right) \right) &= \E \left(\lim_{n \to \infty} f\left(\frac{X_1}{\left(\frac{\abs{X}}{\sqrt{n}}\right)}, \ldots, \frac{X_k}{\left( \frac{\abs{X}}{\sqrt{n}}\right)} \right) \right) \\
+&= \E(f(X_1), \ldots, f(X_k)) \\
+&= \gamma(f).
+\end{align*}
+
+\een

@@ -1,0 +1,78 @@
+\chapter{Brownian Motion (draft)}
+
+\section{Existence}
+
+
+should be put in Brownian motion
+
+3.4 Kolmogorov's continuity criterion
+Let Dn = fk2-n : 0 \leq k \leq 2ng be the set of dyadic rationals of level n and D = [n\lm 0Dn.
+Theorem 3.19. [Kolmogorov's continuity criterion] Let (Xt)t2D be a stochastic process
+with real values. Suppose there exists p > 0; " > 0 so that
+E[jXt - Xsjp] \leq cjt - sj1+"; for all s; t 2 D;
+for some constant c < 1. Then for every \alpha  2 (0; "=p), the process (Xt)t2D is \alpha -Holder
+continuous, i.e. there exists a random variable K\alpha  such that
+jXt - Xsj \leq K\alpha js - tj\alpha ; for all s; t 2 D:
+38
+Proof. By Markov's inequality and the assumption we have
+P
+-
+jXk2-n - X(k+1)2-nj \lm  2-n\alpha \Delta
+\leq c2n\alpha p2-n-n":
+By the union bound we have
+P
+\theta
+max
+0\leqk<2n
+jXk2-n - X(k+1)2-nj \lm  2-n\alpha 
+\iota
+\leq c2-n("-p\alpha ):
+By Borel-Cantelli, since \alpha  2 (0; "=p), we deduce
+max
+0\leqk<2n
+jXk2-n - X(k+1)2-nj \leq 2-n\alpha ; for all n su\circciently large:
+Therefore, there exists a random variable M such that
+sup
+n\lm 0
+max
+0\leqk<2n
+jXk2-n - X(k+1)2-nj
+2-n\alpha 
+\leq M < 1: (3.6)
+We will now show that there exists a random variable M0 < 1 a.s. so that for every s; t 2 D
+we have
+jXt - Xsj \leq M0jt - sj\alpha :
+Let s; t 2 D and let r be the unique integer such that
+2-(r+1) < t - s \leq 2-r:
+Then there exists k such that s < k2-(r+1) < t. Set \alpha  = k2-r+1, then 0 < t - \alpha  < 2-r. So
+we have that
+t - \alpha  =
+X
+k\lm r+1
+xj
+2j ;
+where xj 2 f0; 1g for all j (in fact this is a finite sum because t - \alpha  is dyadic). Similarly we
+can write
+\alpha  - s =
+X
+j\lm r+1
+yj
+2j ;
+where yj 2 f0; 1g for all j. Thus we see that we can write the interval [s; t) as a disjoint
+union of dyadic intervals of length 2-n for n \lm  r+1 and where at most 2 such intervals have
+the same length. Therefore,
+jXs - Xtj \leq
+X
+d;n
+jXd - Xd+2-nj;
+where d; d+2-n in the summation above are the endpoints of the intervals in the decomposition
+of [s; t). Hence using (3.6) we obtain that for all s; t 2 D
+jXs - Xtj \leq 2
+X
+n\lm r+1
+M2-n\alpha  = 2M
+2-(r+1)\alpha 
+1 - 2-\alpha  :
+Thus, if we set M0 = 2M=(1 - 2-\alpha ), then we get that for s; t 2 D
+jXs - Xtj \leq M02-(r+1)\alpha  \leq M0jt - sj\alpha :
+Therefore we get that (Xt)t2D is \alpha -Holder continuous a.s.

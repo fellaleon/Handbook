@@ -1,0 +1,2766 @@
+\chapter{Rings}
+
+\section{Rings and Polynomials}
+
+\subsection{Definitions and Examples}
+
+\begin{definition}[ring]\label{def:ring_group}
+A set $R$ with two operations, $+$ and $\cdot$, forms a ring\index{ring!group} if
+\ben
+\item [(i)] $(R, +)$ is an abelian group,
+\item [(ii)] multiplication is closed and associative and there is a multiplicative identity $1_R \in R$ such that
+\be
+\forall r \in R,\ 1_R \cdot r = r \cdot 1_R = r,
+\ee
+\item [(iii)] multiplication is distributive over addition, that is
+\be
+r_1\cdot (r_2 + r_3) = r_1\cdot r_2 + r_1\cdot r_3,\quad\quad (r_1 + r_2)\cdot r_3 = r_1\cdot r_3 + r_2\cdot r_3.
+\ee
+\een
+\end{definition}
+
+\begin{definition}[commutative ring\index{commutative!ring}]\label{def:commutative_ring}
+A rings $R$ is commutative if the multiplication is commutative, i.e.,
+\be
+r_1\cdot r_2 = r_2\cdot r_1,\ \forall r_1,r_2 \in R.
+\ee
+\end{definition}
+
+\begin{definition}[subring]
+A subset $S$ of $R$ is a subring\index{subring!group} if it is a ring under the restriction of the two operations. In particular, $1_R \in S$. The notation is $S \leq R$.
+\end{definition}
+
+\begin{definition}[field\index{field}]\label{def:field}
+A field $\F$ is a commutative ring with an identity element 1, $1 \neq  0$, in which every non-zero element is invertible, i.e., $\forall a\in \F\bs\bra{0}$, $\exists b\in \F$ s.t. $ab = 1$.
+%A field is a ring whose non-zero elements form a commutative group under multiplication. 
+
+Note that $\F_i$ denotes the field with $i$ elements.
+\end{definition}
+
+\begin{example}
+\ben
+\item [(i)] We have the four nested rings $\Z \leq \Q \leq \R \leq \C$. 
+\item [(ii)] The Gaussian integers $\Z[i] :=  \bra{a+bi:a,b\in \Z}\leq \C$, $i^2 = -1$ (see Definition \ref{def:gaussian_integer}).
+\item [(iii)] $\Q[\sqrt{2}] = \bra{a + b\sqrt{2} : a, b \in \Q} \leq \R$.
+\een
+\end{example}
+
+\begin{remark}
+All fields are rings, e.g. $\Z$ modulo $n$, the set $\{0,\dots , n-1\}$ with addition and multiplication modulo $n$.
+\end{remark}
+
+
+\begin{definition}[unit]
+A unit\index{unit!element of ring} of $R$ is an element with a multiplicative inverse in $R$, e.g. 2 is a unit in $\Q$, but not a unit in $\Z$.
+\end{definition}
+
+\begin{remark}%There are various conventions.%\ben%\item [(i)] Not everyone insists on a multiplicative identity $1_R$\footnote{need example}.\item [(ii)] 
+Some people confusingly talk about $1_R$ as the unit of $R$.%\een
+\end{remark}
+
+\begin{example}
+The zero ring $\{0\}$. In this case the multiplicative identity is the same as the additive one. But in all other rings $0 \neq 1$. 
+\be
+(0 + 0)\cdot r = 0\cdot r,\quad\quad (0 + 0)\cdot r = 0r + 0\cdot r
+\ee
+so $0r = 0$ for all $r \in R$. Hence 0 is not the multiplicative identity if $R$ has more than one element.
+\end{example}
+
+\begin{definition}[idompotent]\label{def:idompotent_ring}
+An element $r$ of a ring $R$ is idempotent if $r^2 = r$.
+\end{definition}
+
+\subsection{Polynomials}
+
+\begin{definition}[polynomial]
+Let $R$ be a ring. A polynomial\index{polynomial} $f$ over $R$ is of the form
+\be
+f(X) = a_nX^n + \dots + a_1X + a_0
+\ee
+with $a_i \in R$. The degree\index{degree!polynomial} of $f$ is the largest $n$ with $a_n \neq 0$. $f$ is monic\index{monic!polynomial} if $a_n = 1$, where $n$ is the degree of $f$. 
+\end{definition}
+
+\begin{definition}[polynomial ring\index{polynomial ring}]
+$R[X]$ is the (commutative) polynomial ring over $R$ with ring operations
+\be
+(f + g)(X) = \sum_i (a_i + b_i)X^i,\quad\quad (fg)(X) = \sum_i \bb{\sum^i_{j=0} a_jb_{i-j} } X^i
+\ee
+where $f(X) = \sum a_iX^i$, $g(X) = \sum b_iX^i$.
+\end{definition}
+
+\begin{remark}
+$R$ is a subring of $R[X]$ by identifying $R$ with the constant polynomials\index{constant polynomial} $f(X) = \sum a_iX^i$ with $a_i = 0$ for all $i \geq 1$.
+\end{remark}
+
+\begin{definition}[ring of formal power series\index{ring of formal power series}]
+$R[[X]]$ is the (commutative) ring of formal power series
+\be
+f(X) = a_0 + a_1X + a_2X^2 + \dots
+\ee
+with the same addition and multiplication as for $R[X]$ but note that there is no restriction demanding that all but finitely many coefficients be zero (could be infinitely many).
+\end{definition}
+
+\begin{definition}[Laurent polynomials\index{Laurent polynomials}]
+The (commutative) Laurent polynomials are
+\be
+f(X) = \sum_{i\in \Z} a_iX^i, \quad\quad (fg)(X) = \sum_i \bb{\sum_j a_jb_{i-j}} X^i
+\ee
+with the condition that all but finitely many $a_i$ are zero, e.g. $X^{-1} + X$.
+\end{definition}
+
+\begin{definition}[Laurent series\index{Laurent series}]
+Laurent series are 
+\be
+\sum_{i\in \Z} a_iX^i
+\ee
+with the condition that all but finitely many of the $a_i$ for $i \leq 0$ are zero. Addition and multiplication are defined in the same way as for Laurent polynomials.
+\end{definition}
+
+\begin{example}
+The ring of all $R$-valued functions on a set $A$, $f : A \to R$. The ring operations can be defined by pointwise addition and multiplication,
+\be
+(f + g)(a) = f(a) + g(a),\quad\quad (fg)(a) = f(a)g(a).
+\ee
+\end{example}
+
+\begin{example}
+The set of continuous functions $f : \R \to \R$ forms a subring of the (commutative) ring of all functions $\R \to \R$. The set of continuous functions $\R \to \R$ contains the subring of polynomial functions\index{polynomial functions}, $f : \R \to \R$, $a \mapsto f(a)$, where $f(X) \in \R[X]$.
+\end{example}
+
+\begin{remark}
+We can similarly consider Laurent polynomial functions, power series functions $\C \to \C$ and Laurent series functions $\C \to \C$.
+\end{remark}
+
+
+\section{Ring Homomorphism, Ideal, Quotient Ring and Isomorphism Theorems}
+
+\subsection{Ring Homomorphism}
+
+\begin{definition}[ring homomorphism]\label{def:ring_homomorphism_isomorphism}
+Let $R$ and $S$ be rings (not necessarily commutative). A map $\theta : R \to S$ is a ring homomorphism\index{homomorphism!rings} if
+\ben
+\item [(i)] $\theta(r_1 + r_2) = \theta(r_1) + \theta(r_2)$,
+\item [(ii)] $\theta(r_1r_2) = \theta(r_1)\theta(r_2)$,
+\item [(iii)] $\theta(1_R) = 1_S$.
+\een
+
+A bijective homomorphism is called an isomorphism\index{isomorphism!rings}. 
+\end{definition}
+
+\begin{definition}[kernel]\label{def:kernel_ring_homomorphism}
+The kernel\index{kernel!ring homomorphism} of $\theta$ is $\ker \theta = \{r \in R : \theta(r) = 0\}$.
+\end{definition}
+
+\begin{lemma}\label{lem:injective_kernel_ring}
+Let $\theta$ be a ring homomorphism. $\theta$ is injective if and only if $\ker \theta = \{0\}$.
+\end{lemma}
+
+\begin{proof}[\bf Proof.]
+$\theta$ is a homomorphism of the additive groups (Definition \ref{def:group_homomorphism}). Then we have the required result by Lemma \ref{lem:injective_kernel_group}.
+\end{proof}
+
+\subsection{Ideal}
+
+\begin{definition}[ideal\index{ideal}, left ideal\index{ideal!left ideal}, right ideal\index{ideal!right ideal}]\label{def:ideal_ring}
+A subset $I$ of $R$ is an ideal, written $I \lhd R$, if 
+\ben
+\item [(i)] $I$ is a subgroup of $R$ under addition,
+\item [(ii)] whenever $a \in I$ and $r \in R$ then $ar \in I$ and $ra\in I$.
+\een
+
+The second condition is called the strong closure property\index{strong closure property!ring}.
+
+A subset $I$ of $R$ is called a left ideal of $R$ if it is an additive subgroup of $R$ and absorbs multiplication on the left, i.e.,
+\ben
+\item [(i)] $(I,+)$ is a subgroup of $(R,+)$
+\item [(ii)] $\forall a \in I$, $\forall r \in R$, then $ra \in I$.
+\een%\footnote{need to check right-ideal and left-ideal}
+
+A subset $I$ of $R$ is called a right ideal of $R$ if it is an additive subgroup of $R$ and absorbs multiplication on the right, i.e.,
+\ben
+\item [(i)] $(I,+)$ is a subgroup of $(R,+)$
+\item [(ii)] $\forall a \in I$, $\forall r \in R$, then $ar \in I$.
+\een%\footnote{need to check right-ideal and left-ideal}
+\end{definition}
+
+\begin{remark}
+An ideal in general is not a subring. 
+\end{remark}
+
+\begin{lemma}\label{lem:1_belongs_to_ideal_implies_ideal_equals_ring}
+Let $I \lhd R$. Then $I = R$ if $1 \in I$.
+\end{lemma}
+
+\begin{remark}
+The only ideal which is a subring of $R$ is $R$ itself.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+If $1 \in I$ then $r = 1 r \in I$ for all $r \in R$ and so $I = R$ if $1 \in I$. 
+\end{proof}
+
+
+\begin{lemma}\label{lem:ring_field_only_ideal}
+A non-zero commutative ring $R$ is a field if and only if its only ideals are $\{0\}$ and $R$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Suppose that $R$ is a field and take an ideal $I \lhd R$. If $I \neq\{0\}$ then pick $0 \neq a \in I$. Then we can pick $a^{-1} \in R$ such that $1 = aa^{-1} \in I$. Hence $I = R$ by Lemma \ref{lem:1_belongs_to_ideal_implies_ideal_equals_ring}.
+
+Conversely, assume that $\{0\}$ and $R$ are the only ideals. Take $a \in R$ with $a \neq 0$. Then $\bsa{a} \neq \{0\}$ and so $\bsa{a} = R$. Hence $1 \in R = \bsa{a}$ (by Definition \ref{def:ring_group}.(iii)) and there exists $r\in R$ (as $\bsa{a} = aR$) such that $ar = 1$. Thus, $R$ is a field.
+\end{proof}
+
+
+\begin{lemma}\label{lem:kernel_ring_ideal}
+The kernel of a ring homomorphism $\theta : R \to S$ is an ideal.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+$\theta$ is a homomorphism of the additive groups $(R, +) \to (S, +)$ and so $\ker \theta$ is an additive subgroup of $R$ by first isomorphism theorem of groups (Theorem \ref{thm:isomorphism_1_group}).
+
+If $a \in \ker \theta$, then $\theta(a) = 0$ (by recalling Definition \ref{def:kernel_ring_homomorphism}). Consider $r\in R$,
+\be
+\theta(ar) = \theta(a)\theta(r) = 0\cdot\theta(r) = 0.
+\ee
+
+Thus $ar \in \ker \theta$, so we have the strong closure property.
+\end{proof}
+
+\begin{example}
+\ben
+\item [(i)] In a field $\F$, the only ideals are $\{0\}$ and $\F$. (Multiply any non-trivial element in the ideal by its inverse to see that 1 is in the ideal.)
+
+\item [(ii)] In $\Z$ the ideals are of the form
+\be
+n\Z = \{\dots,-2n,-n, 0, n, 2n,\dots \}.
+\ee
+
+\begin{proof}[\bf Proof]
+Certainly each set $n\Z$ is an ideal of $\Z$.
+
+Suppose $I$ is a non-zero ideal. We show that all the non-zero additive subgroups of $\Z$ are of the form $n\Z$. 
+
+Let $n$ be the least positive element of $I$ and use Euclidean algorithm\footnote{need quote}. If $b \in I$ then $b = nq + r$ with $0 \leq r < n$ and some $q$. Note that $r = b - nq \in I$. Minimality of $n$ implies that $r = 0$ and hence $b = nq$. Thus $I = n\Z$.
+\end{proof}
+\een
+\end{example}
+
+\begin{proposition}\label{pro:union_ascending_ideal_is_ideal}
+Let $R$ be a ring and $I_j \lhd R$ with $I_1 \subseteq I_2 \subseteq I_3 \subseteq \dots$. Then the union $I = \bigcup_j I_j$ is an ideal.
+\end{proposition}
+\begin{proof}[\bf Proof]
+$\forall a,b\in I$, if $a \in I_j$ and $b \in I_k$, $j \leq k$ then $a \in I_k$, $b \in I_k$ implies $a + b \in I_k \subseteq I$.
+
+$\forall a\in I, r\in R$, $a\in I_j$, $ar \in I_j \subseteq I$. Thus, $I \lhd R$.
+\end{proof}
+
+
+\begin{definition}[principal ideal\index{principal ideal}]\label{def:principal_ideal}
+Let $R$ be a ring and $a \in R$. Then the ideal generated by $a$ is $aR = \{ar : r \in R\}$. We often use the notation $\bsa{a}$ for $aR$.
+
+Note that this is the smallest ideal of $R$ containing $a$. Such an ideal is called a principal ideal.
+
+More generally, the ideal generated by $a_1,\dots, a_k$ is
+\be
+\bsa{a_1,\dots , a_k} = a_1R +\dots a_kR = \left\{\sum^k_{i=1} a_ir_i : r_i \in R\right\}.
+\ee
+
+Even more generally, the ideal generated by a subset $A$ of $R$ is
+\be
+\bsa{A} = \left\{ \sum_{a\in A} ar_a :\text{ only finitely many $r_a \in R$ are non-zero }\right\}.
+\ee
+\end{definition}
+
+
+\begin{example}
+Examples of principal ideals include $n\Z$ in $\Z$ and $\bsa{X}$ in $\C[X]$, where $\bsa{X}$ is the ideal of polynomials with zero constant term.
+\end{example}
+
+\subsection{Quotient ring}
+
+\begin{proposition}\label{pro:quotient_ring}
+Let $I \lhd R$ be an ideal. Then the quotient ring\index{quotient ring} $R/I$ has elements consisting of the cosets $r + I$ with the operations 
+\be
+(r_1 + I) + (r_2 + I) = (r_1 + r_2) + I, \quad\quad (r_1 + I)\cdot(r_2 + I) = r_1r_2 + I.
+\ee
+This defines a ring $R/I$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+From Theorem \ref{thm:quotient_group} we have already checked that $R/I$ forms a group under addition as defined. So we need to check that multiplication is well-defined, closed and associative. If
+\be
+r_1 + I = r'_1 + I,\quad \quad r_2 + I = r'_2 + I
+\ee
+then $r'_1 = r_1 + a_1$, $r'_2 = r_2 + a_2$ for some $a_1, a_2 \in I$, and therefore
+\be
+r'_1 r'_2 = (r_1 + a_1)(r_2 + a_2) = r_1r_2 + (a_1r_2 + r_1a_2 + a_1a_2)
+\ee
+where the second term is contained in $I$ by the strong multiplicative closure property of ideal. Thus $r'_1 r'_2 + I = r_1r_2 + I$ and therefore multiplication is well-defined.
+
+The multiplicative identity is $1 + I$ since $(1 + I)(r + I) = r + I$.
+
+Closure and associativity: $\forall r_1+I,r_2+I\in R/I, r_1,r_2 \in R$, by the closure of ring $R$,
+\be
+(r_1+I)(r_2 + I) = r_1r_2 + r_1 I + r_2 I + I = \underbrace{r_1r_2}_{\in R} + I \in R/I.
+\ee
+
+Thus, $R/I$ is closed. Also, by associativity of ring $R$
+\be
+(r_1+I)(r_2 + I) = r_1r_2 + r_1 I + r_2 I + I = r_1r_2 + I = r_2r_1 + I = (r_2 + I )(r_1 + I).
+\ee
+
+So, $\R/I$ is associative. $\forall r_1+I,r_2+I,r_3 + I\in R/I, r_1,r_2,r_3 \in R$, by distributivity of ring $R$,
+\beast
+(r_1+I)(r_2 + I + r_3 + I) & = & (r_1 + I)(r_2 + r_3 + I) = r_1(r_2 + r_3) + r_1I + r_2I + r_3I + I \\
+& = & r_1r_2 + r_1r_3 + r_1I + r_2I + r_3I + I = r_1r_2 + r_1I + r_2I + I + r_1r_3 + r_1 I + r_3I + I\\
+& = & (r_1 +I)(r_2 + I) + (r_1 +I)(r_3 + I).
+\eeast
+
+Hence, $R/I$ has distributivity. Therefore $R/I$ is a ring.
+\end{proof}
+
+
+\begin{example}
+\ben
+\item [(i)] $\Z/n\Z$ is a quotient ring. 
+
+$n\Z$ is an ideal of $\Z$. Elements $m + n\Z$ of $\Z/n\Z$ may be expressed as one of
+\be
+0 + n\Z, 1 + n\Z,\dots , (n - 1) + n\Z.
+\ee
+Addition and multiplication correspond to arithmetic modulo $n$. 
+
+\item [(ii)] Consider the (principal) ideal $I = (X)\lhd C[X]$. Elements $f(X)+I$ of the quotient ring $\C[X]/I$ may be expressed in the form $a + I$ where $a \in \C$ is the constant term of $f(X)$. Addition and multiplication correspond to that in $\C$,
+\be
+(a + I) + (b + I) = (a + b) + I,\quad\quad (a + I)(b + I) = ab + I.
+\ee
+Therefore, $\C[X]/I \cong \C$.
+\een
+\end{example}
+
+
+
+\begin{proposition}[Euclidean algorithm for polynomials\index{Euclidean algorithm!polynomials}]\label{pro:euclidean_algorithm_polynomial}
+Let $\F$ be a field and consider polynomials $f(X)$, $g(X) \in \F[X]$. Then we can write 
+\be
+f(X) = g(X)q(X) + r(X)
+\ee
+with $\deg r < \deg g$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Write
+\be
+f(X) = \sum^n_{i=0} a_iX^i,\quad\quad g(X) = \sum^m_{i=0} b_iX^i
+\ee
+with $\deg f(X) = n$ and $\deg g(X) = m$.
+
+If $n < m$ then set $q(X) = 0$ and $r(X) = f(X)$. Now assume $n \geq m$, and argue by induction on $n$. Set $f_1(X) = f(X) - a_nb^{-1}_m X^{n-m}g(X)$ so $\deg f_1(X) < \deg f(X)$. If $m = n$ then $\deg f_1(X) < m$ and we can apply our first case to $f_1(X)$,
+\be
+f(X) = a_nb^{-1}_m g(X) + f_1(X).
+\ee
+If $n > m$ then we have by induction
+\be
+f_1(X) = g(X)q_1(X) + r_1(X)
+\ee
+for suitable $q_1(X)$ and $r_1(X)$, so
+\be
+f(X) = g(X)(q_1(X) + a_nb^{-1}_m X^{n-m}) + r_1(X).
+\ee
+\end{proof}
+
+\begin{remark}
+We require $\F$ to be a field as we need $b^{-1}_m$.
+\end{remark}
+
+
+\begin{example}\label{exa:x_square_plus_1_isomorphic_c}
+Consider the ideal
+\be
+I = \bra{X^2 + 1} \lhd \R[X].
+\ee
+
+For any $f(X) \in \R[X]$, we can write $f(X) = (X^2 + 1)q(X) + r(X)$ with $\deg r(X) \leq 1$. Thus $f(X) + I = r(X) + I$. The elements of $\R[X]/I$ are of the form $a + bX + I$.
+
+Addition takes the form
+\be
+(a_1 + b_1X + I) + (a_2 + b_2X + I) = (a_1 + a_2) + (b_1 + b_2)X + I,
+\ee
+and similarly multiplication is given by ($XI = I$ since $I$ is ideal)
+\beast
+(a_1 + b_1X + I)(a_2 + b_2X + I) & = & a_1a_2 + (b_1a_2 + a_1b_2)X + b_1b_2X^2 + I\\
+& = & (a_1a_2 - b_1b_2) + (b_1a_2 + a_1b_2)X + I.
+\eeast
+
+This corresponds to addition and multiplication in $\C$. In fact, 
+\beast
+\R[X]/\bra{X^2 + 1} & \cong & \C,\\
+a + bX + I & \mapsto & a + bi.
+\eeast
+\end{example}
+
+\subsection{Isomorphism theorems}
+
+
+\begin{theorem}[first isomorphism theorem\index{isomorphism theorem!ring}]\label{thm:isomorphism_1_ring}
+Let $\theta : R \to S$ be a ring homomorphism. Then $\ker \theta \lhd R$, $\im \theta \leq S$ and $R/ \ker \theta \cong \im \theta $.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Lemma \ref{lem:kernel_ring_ideal} states that $\ker \theta$ is an ideal. 
+
+Now we show that $\im \theta$ is a subring of $S$,
+\ben
+\item [(i)] $\theta$ is a homomorphism of additive groups and so Lemma \ref{lem:image_subgroup} implies that $\im \theta$ is an additive subgroup of $S$.
+\item [(ii)] $\theta(r_1)\theta(r_2) = \theta(r_1r_2)\in \im \theta$, so we have closure under multiplication. Associativity is inherited from $S$. Moreover, $\theta(1_R) = 1_S$.
+\item [(iii)] $\forall s_1,s_2,s_3 \in S$ where $s_1 = \theta(r_1),s_2 = \theta(r_2),s_3 = \theta(r_3)$, $r_1,r_2,r_3\in R$, 
+\be
+s_1(s_2 + s_3) = \theta(r_1)\bb{\theta(r_2) + \theta(r_3)} = \theta(r_1)\theta(r_2+r_3) = \theta\bb{r_1(r_2 + r_3)}
+\ee
+
+Then by distributivity of ring $R$,
+\be
+\theta\bb{r_1(r_2 + r_3)} = \theta (r_1r_2 + r_1r_3) = \theta (r_1r_2) + \theta(r_1r_3) = \theta (r_1)\theta(r_2) + \theta (r_1)\theta(r_3) = s_1s_2 + s_1 s_3.
+\ee
+
+Thus, $s_1(s_2 + s_3) = s_1s_2 + s_1 s_3$ and therefore $\im \theta$ is a subring of $R$.
+\een
+
+Let $\Phi: R/I \to \im \theta$, $r + I \mapsto \theta(r)$ and note $I = \ker \theta$. We know that $\Phi$ is well-defined and bijective and an isomorphism of additive groups from first isomorphism theorem of group (Theorem \ref{thm:isomorphism_1_group}). It is left to check that $\Phi$ is a ring homomorphism.
+\beast
+\Phi(r_1 + I + r_2 + I) & = & \Phi(r_1 + r_2 + I) = \theta (r_1 +r_2) = \theta (r_1) + \theta(r_2) = \Phi(r_1 + I) + \Phi(r_2 + I)\\
+\Phi((r_1 + I)(r_2 + I)) & = & \Phi(r_1r_2 + I) = \theta(r_1r_2) = \theta(r_1)\theta(r_2) = \Phi(r_1 + I)\Phi(r_2 + I),\\
+\Phi(1_R + I) & = & \theta(1_R) = 1_S.
+\eeast
+Thus $\Phi$ is a ring homomorphism.
+\end{proof}
+
+
+\begin{example}
+The map
+\be
+\theta : \R[X] \to \C, \ \sum a_jX^j \mapsto \sum a_j i^j,\quad i^2 = -1
+\ee
+is a ring homomorphism with $\ker \theta = (X^2 + 1)$ (all the polynomials can be divided by $X^2 + 1$) and $\im \theta = \C$. (Comparing this with Example \ref{exa:x_square_plus_1_isomorphic_c})
+\end{example}
+
+
+\begin{theorem}[second isomorphism theorem\index{isomorphism theorem!ring}]\label{thm:isomorphism_2_ring} 
+Let $R$ be a subring of $S$ and $J \lhd S$ an ideal. Then $R \cap J\lhd S$ is an ideal, $(R + J)/J \leq S/J$ and $\{r + J : r \in R\} = (R + J)/J \leq S/J$ and $R/(R \cap J) \cong (R + J)/J$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $\theta$ be the map
+\be
+\theta : R \to S/J,\ r \mapsto  r + J.
+\ee
+
+Now $\forall r_1,r_2 \in R$, 
+\beast
+\theta(r_1 + r_2) & = & r_1 + r_2 + J = r_1 + J + r_2 + J = \theta(r_1) + \theta(r_2)\\
+\theta(r_1 r_2) & = & r_1 r_2 + J = r_1r_2 + r_1J + r_2J + J = (r_1+J)(r_2 + J) = \theta(r_1)\theta(r_2)\quad (\text{since $J$ is a ideal})\\
+\theta(1_R) & = & 1_R + J = 1_S + J.
+\eeast
+
+Thus, $\theta$ is a ring homomorphism. By first isomorphism theorem of ring (Theorem \ref{thm:isomorphism_1_ring}), we have that
+\beast
+\ker \theta & = & \{r \in R : r + J = J\} = R \cap J \lhd R,\\
+\im \theta & = & \{r + J : r \in R\} = (R + J)/J \leq S/J.
+\eeast
+such that $R/ \ker \theta \cong \im \theta$, that is, $R/(R \cap J) \cong (R + J)/J \leq S/J$.
+\end{proof}
+
+%\begin{proposition}\label{pro:remark_second_isomorphic_theorem_ring}
+\begin{remark}
+There is a correspondence between additive groups,
+\be
+\left\{\text{additive subgroups of $R$ containing ideal $I$}\right\} \ \longleftrightarrow \ \left\{\text{additive subgroups of $R/I$}\right\} 
+\ee
+as in Proposition \ref{pro:remark_second_isomorphism_theorem_group}. This correspondence induces\footnote{This needs to be checked.}
+\be
+\left\{\text{subrings of $R$ containing $I$}\right\} \ \longleftrightarrow \ \left\{\text{subrings of $R/I$}\right\},
+\ee
+\be
+\left\{\text{ideals of $R$ containing $I$}\right\} \ \longleftrightarrow \ \left\{\text{ideals of $R/I$}\right\}.
+\ee
+\end{remark}
+
+
+
+\begin{theorem}[third isomorphism theorem\index{isomorphism theorem!ring}]\label{thm:isomorphism_3_ring} 
+Let $I$ and $J$ be ideals of $R$, with $I \subset J$. Then $(R/I)/(J/I) \cong R/J$ where $J/I = \{r + I : r \in J\}$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $\theta$ be the map
+\be
+\theta : R/I \to R/J,\ r + I \mapsto r + J.
+\ee
+
+This is well-defined as in Theorem \ref{thm:isomorphism_3_group}. $\forall r_1+I,r_2+I \in R/I$ where $r_1,r_2 \in R$, since $I,J$ are ideals,
+\beast
+\theta(r_1 + I + r_2 + I) & = & \theta (r_1 + r_2 + I) = r_1 + r_2 + J = r_1 + J + r_2 + J = \theta(r_1) + \theta(r_2)\\
+\theta((r_1+I)(r_2+I)) & = & \theta(r_1r_2 + I) = r_1 r_2 + J = r_1r_2 + r_1J + r_2J + J = (r_1+J)(r_2 + J) = \theta(r_1+I)\theta(r_2+I)\\
+\theta(1_R+I) & = & 1_R + J.
+\eeast
+%One can check it is a ring homomorphism and $\theta(1_R + I) = 1_R + J$.
+
+The first isomorphism theorem of ring (Theorem \ref{thm:isomorphism_1_ring}) implies that $R/ \ker \theta \cong \im \theta \leq R/J$. Noting that
+\be
+\ker \theta = \{r + I : r \in J\} = J/I \lhd R/I,\quad\quad \im \theta = R/J,
+\ee
+
+That is, $(R/I)/(J/I) \cong R/J$.
+\end{proof}
+
+\begin{definition}\label{def:characteristic_ring}
+Given a ring $R$, there is a unique ring homomorphism
+\be
+\phi: \Z \to R,\ 1 \mapsto  1_R, \ m \mapsto  \underbrace{1 + \dots + 1}_{m \text{ times}} 
+\ee
+
+The first isomorphism theorem (Theorem \ref{thm:isomorphism_1_ring}) implies $\Z/ \ker \phi \cong \im \phi \leq R$. $\im \phi$ is the prime subring\index{prime subring}\footnote{need explanation} of $R$. $\ker \phi \lhd \Z$ is an ideal and so is of the form $n\Z$ for some $n$ and $\im \phi \cong \Z/n\Z$. 
+
+This $n$ is the characteristic\index{characteristic!ring} of $R$. 
+\end{definition}
+
+\begin{remark}
+If $R$ is one of $\Z$, $\Q$, $\R$, or $\C$ then the characteristic is 0. If $R = \Z/(p\Z)$ and $p$ is prime, then the chacteristic is $p$.
+\end{remark}
+
+\section{Integral Domain, Associativity, Irreducibility, Primeness and Field of Fractions}
+
+\subsection{Integral domain}
+
+\begin{definition}[zero divisor\index{zero divisor}]\label{def:zero_divisor_ring}
+A zero divisor a is non-zero and there exists $b \neq 0$ such that $ab = 0$.
+\end{definition}
+
+\begin{definition}[integral domain\index{integral domain}]\label{def:integral_domain_ring}
+A commutative ring is an integral domain if $ab = 0$ implies $a = 0$ or $b = 0$ for all $a, b \in R$. 
+\end{definition}
+
+\begin{remark}
+In an integral domain there are no zero divisors.
+\end{remark}
+
+\begin{example}
+$\Z$ is an integral domain. All fields are integral domains. Subrings of integral domains are integral domains, e.g. $\Z[i] \leq \C$.
+\end{example}
+
+
+\begin{lemma}\label{lem:integral_domain_injective}
+Let $R$ be an integral domain and $\phi$ be a map $\phi:\R\to \R$, $r \mapsto ar$ for $a\neq 0$. Then $\phi$ is injective.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+If $ar_1 = ar_2$ then $a(r_1 - r_2) = 0$ and so $r_1 - r_2 = 0$, i.e. $r_1 = r_2$. 
+
+Note that cancellation is valid in integral domains.
+\end{proof}
+
+\begin{lemma}
+Let $R$ be a finite integral domain. Then $R$ is a field.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Consider the map $\phi:R \to R$, $r \mapsto ar$, that is, multiplication by $a \neq 0$. Then this map is injective by Lemma \ref{lem:integral_domain_injective}. Since $r\mapsto ar$ is injective, the image is at least as big as the domain. Since $R$ is finite the map is also surjective. So the map is bijective. Therefore there exists $r \in R$ with $ar = 1$. Thus a has a multiplicative inverse. So $R$ is a field.
+\end{proof}
+
+
+\begin{lemma}
+If $R$ is an integral domain then $R[X]$ is an integral domain.
+\end{lemma}
+\begin{proof}[\bf Proof]
+If
+\be 
+f(X) = \sum a_iX^i,\quad\quad g(X) = \sum b_iX^i
+\ee
+with $\deg f = m$ and $\deg g = n$ then $f(X)g(X)$ has degree $m+n$ since $a_mb_n \neq 0$ as $R$ is an integral domain. Therefore,
+\be
+f(X) \neq 0,\ g(X) \neq 0 \ \ra\ f(X)g(X) \neq 0.%\qquad (\text{converse of the definition }).
+\ee
+Thus $R[X]$ is an integral domain.
+\end{proof}
+
+\begin{remark}
+By induction, $R[X_1,\dots ,X_n]$ polynomial ring in indeterminates $X_1,\dots ,X_n$ is an integral domain if $R$ is. This is because $R[X_1,X_2]$ may be regarded as $\bsa{R[X_1]}[X_2]$.
+\end{remark}
+
+\begin{proposition}
+Let $R$ be an integral domain. Then a polynomial in $R[X]$ of degree $d$ can have at most $d$ roots. 
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Since $R$ is an integral domain, we have that $R[X]$ is an integral domain (see lemma in notes). Let $f(X)\in R[X]$ with $\deg(f(X))=d$ and 
+\be
+f(X) = \sum^d_{i=0} a_i X^i,\quad a_d \neq 0 .
+\ee
+
+If $f(X)$ has no roots, we are done. Suppose $a$ is a root of $f(X)$ then 
+\be
+f(X) = (X-a)g(X) 
+\ee
+for some $g(X)$. Suppose that 
+\be
+g(X) = \sum^m_{i = 0} b_i X^i.
+\ee
+
+If $m \geq d$, we have the leading term of $f(X) = (X-a)g(X)$ is $b_m X^{m+1} = 0$ since $\deg(f(X)) = d$. Then we have that
+\be
+b_m X^{m+1} = 0 \ \ra \ b_m = 0.
+\ee
+since $R[X]$ is an integral domain.
+
+Thus, $m<d$ and thus consider the leading term $f(X)$ which is $b_{d-1}X^d = a_d X^d$, so $b_{d-1} = a_d \neq 0$ since $R[X]$ is integral domain. Thus, $g(X)$ has degree $d-1$. So apply this method inductively, we have that $f(X)$ has at most $d$ roots.
+\end{proof}
+
+\begin{example}
+Consider $f(X) = X^2 -1$ in $\Z/8\Z[X]$, we have roots $1,3,5,7$ (more than two roots) as we know that $\Z/8\Z$ is not an integral domain. %Give a quadratic polynomial in $(\Z/8\Z)[X]$ that has more than two roots.
+\end{example}
+
+
+\subsection{Associativity, irreducibility, primeness}
+
+%Throughout this section $R$ is assumed to be Let $R$ be an integral domain. 
+
+\begin{definition}[associativity, irreducibility, primeness]\label{def:associativity_irreducibility_primeness_integral_domain}
+Let $R$ be an integral domain. 
+
+An element $a \in R$ is a unit\index{unit!element of ring} if it has a multiplicative inverse. Equivalently, $\bsa{a} = aR = R$. 
+
+We say $a$ divides $b$, written $a \mid b$, if there is $c \in R$ such that $b = ac$. Equivalently, $\bsa{b} \subset \bsa{a}$, i.e., $bR \subset aR$. 
+
+Elements $a$ and $b$ are associates\index{associates!element of ring} in $R$ if $a = bc$ for some unit $c \in R$. Equivalently, $\bsa{a}= \bsa{b}$. 
+
+$r \in R$ is irreducible\index{irreducible!element of ring} in $R$ if it is non-zero, not a unit and whenever $r = ab$ with $a, b \in R$ then $a$ or $b$ is a unit. 
+
+$r \in R$ is prime\index{prime!element of ring} in $R$ if it is non-zero, not a unit and if $r \mid ab$ then $r \mid a$ or $r \mid b$.
+\end{definition}
+
+\begin{remark}
+These definitions do depend on the ring $R$.
+
+2 is prime and irreducible in $\Z$, but not in $\Q$. 
+
+$2X$ is irreducible in $\Q[X]$ but not in $\Z[X]$, as $2X = 2 \cdot X$ and 2, $X$ are not units in $\Z[X]$.
+\end{remark}
+
+
+
+\begin{lemma}\label{lem:prime_implies_irreducible_integral_domain}
+Let $R$ be an integral domain. If $r$ is prime in $R$ then $r$ is irreducible in $R$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Suppose that $r$ is prime in $R$ and $r=ab$ with $a,b\in R$. Then $r\neq 0$ and $r | ab$ and so $r | a$ or $r | b$ by Definition of primeness. Without loss of generality suppose $r | a$. So $a = qr$ for some $q \in R$. So $r = ab = qrb$. Cancellation in integral domains gives $1 = qb$, so $b$ is a unit.
+\end{proof}
+
+
+\begin{definition}[norm\index{norm!element of ring}]\label{def:norm_ring}
+A norm of element $z$ of ring over $\C$ is $N(z) = z\bar{z}$. $N$ is multiplicative, that is, $N(z_1z_2) = N(z_1)N(z_2)$. 
+\end{definition}
+
+
+
+\begin{example}\label{exa:z_sqrtroot_minus_5_prime_irreducible}
+Let $R$ be an integral domain. To show that the converse of Lemma \ref{lem:prime_implies_irreducible_integral_domain} does not hold in general, consider $R = \Z[\sqrt{-5}] \leq \C$. $R$ is an integral domain since it is a subring of a field. Define a norm,
+\be
+N(a + b\sqrt{-5}) = a^2 + 5b^2 \in \Z_{\geq 0}.
+\ee
+
+Suppose $z$ is a unit and so there exists $z_1\in R$ with $zz_1 = 1$ so $N(z)N(z_1) = N(zz_1) = N(1) = 1$ hence $N(z)$ is a unit in $Z$ and also $N(z) \geq 0$. So $N(z) = 1$ is the only possibility. Thus, the units of $R$ are precisely the elements of norm 1, namely $\pm 1$. %(Since for a unit $c \in R$, there exists $d\in R$ such that $cd =1$. So $N(cd) = 1$)
+There are no elements in $R$ of norm 2 or 3. (since we cannot solve $a^2 + 5b^2 = 2$ or 3.)
+
+Consider the identity $6 = 2 \cdot 3 = (1 + \sqrt{-5})(1 -\sqrt{-5})$ in $R$.
+
+To see that 2 is irreducible, express $2 = z_1z_2$ and consider norms, $4 = N(z_1)N(z_2)$. Since there are no elements of norm 2 one of the $N(z_j) = 1$ so $z_j$ is a unit.
+
+But 2 is not prime in $R$ since $2 | (1 + \sqrt{-5})(1 - \sqrt{-5})$ but 2 does not divide either $1 \pm \sqrt{-5}$. (Consider norms, $N(2) = 4$, $N(1 \pm 
+\sqrt{-5}) = 6$ and $4 \nmid 6$.)
+
+Similarly, 3, $1 +\sqrt{-5}$, $1 -\sqrt{-5}$ are irreducible.
+\end{example}
+
+
+
+\subsection{Field of fractions}
+
+\begin{theorem}[field of fractions\index{field of fractions}]\label{def:field_of_fractions}
+Let $R$ be an integral domain. Then there is a field $\F$ with the properties
+\ben
+\item [(i)] $R \leq \F$ is a subring,%\item [(ii)] $\F$ is a field,
+\item [(ii)] every element of $\F$ has the form $ab^{-1}$ where $a \in R$ and $b^{-1}$ is the multiplicative inverse in $\F$ of $b \in R$.
+\een
+The field $\F$ is called of field of fractions.
+\end{theorem}
+
+\begin{example}
+With the notation as above, $R = \Z$, $\F = \Q$.
+\end{example}
+
+
+
+\begin{proof}[\bf Proof]
+Consider pairs $(a, b)$ with $a \in R$, $b \in R$ and $b \neq 0$. Define an equivalence relation\footnote{need quote}
+\be
+(a, b) \sim (c, d) \ \lra \ ad = bc.
+\ee
+(For transitivity, note that 
+\be
+\ba{l}
+(a, b) \sim (c, d) \ \lra \ ad = bc\\
+(c, d) \sim (e, f) \ \lra\ cf = de 
+\ea \ \ra \ adf = bcf = bde
+\ee
+as cancellation is valid in $R$ (integral domain). So $af = be$ (since multiplication is commutative) and $(a, b) \sim (e, f)$.)
+
+Write $a/b$ for the equivalence class of $(a, b)$. We define addition by
+\be
+\frac ab + \frac cd = \frac{ad + bc}{bd}
+\ee
+and multiplication by
+\be
+\frac ab \cdot \frac cd = \frac{ac}{bd}.
+\ee
+
+One can easily check that these operations are well-defined\footnote{need to check}.
+
+If we let $\F = \{a/b : a \in R, b \in R, b \neq 0\}$ then $\F$ is a ring under these operations.
+
+$R$ may be identified with the subring of elements of the form $r/1$. The multiplicative identity is $1/1$. $a/b$ has multiplicative inverse $b/a$ if $a \neq 0$,
+\be
+\frac ab \frac ba = \frac {ab}{ab} = \frac 11.
+\ee
+
+Thus, $\F$ is a field. Every element $a/b$ is of the form $(a/1)(b/1)^{-1}$ since $(b/1)^{-1} = 1/b$.
+\end{proof}
+
+
+\section{Principal Ideal Domain, Maximal Ideal and Prime Ideal}
+
+\subsection{Principal ideal domain}
+
+\begin{definition}[principal ideal domain\index{principal ideal domain}]\label{def:principal_ideal_domain}
+A principal ideal domain (PID\index{PID!principal ideal domain}) is an integral domain in which all ideals are principal ideals, i.e. of the form $\bsa{a} = aR$ for some $a \in R$.
+\end{definition}
+
+%\begin{example}
+%$\Z$ is a principal ideal domain. We will see that any integral domain where Euclidean algorithm applies is a principal ideal domain.
+%\end{example}
+
+\begin{proposition}\label{pro:polynomial_pid_iff_field}
+Let $R$ be any commutative ring. Show that the ring $R[X]$ is a PID if and only if $R$ is a field.%$\F[X]$ for a field $\F$ is PID.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+($\la$). Suppose $R$ is a field and for any $I \lhd R[X]$, we take $f\in I$ with the least degree, then for any $g\in I$, by Euclidean algorithm for polynomials (Proposition \ref{pro:euclidean_algorithm_polynomial}), we can find $q(X)$ and $r(X)\in I$,
+\be
+g(X) = q(X)f(X) + r(X)
+\ee
+with $\deg r < \deg f$. Since $f$ has the least degree, we have $r = 0$ and for any $g(X)\in I$, $f(X)|g(X)$. Thus, $I = \bsa{f(X)}$. Thus, $R[X]$ is PID.
+
+($\ra$). Suppose $R[X]$ is a PID, for any $a\in R$, we construct $I = \bsa{a,X}$ for $a\neq 0 \in R$. Also, we can find $b\in R$ such that $I = \bsa{b}$ since $R[X]$ is PID. Thus, we can find $f(X) = a_0 + a_1 X + \dots \in R[X], a_0,a_1,\dots \in R$ such that
+\be
+bf = a+X \ \ra \ b(a_0 + a_1X + \dots ) = a+X \ \ra \ ba_1 = 1.
+\ee
+
+So $b$ is a unit. So $1\in b R[X] = \bsa{b} = \bsa{a,X}$. Thus, there exist $g(X),h(X) \in R[X]$, $g(X) = c_0 + c_1 X + \dots$, $c_0,c_1,\dots \in R$
+\be
+a g(X) + Xh(X) = 1 \ \ra \ a c_0 = 1.
+\ee
+
+Thus, $a$ is unit. Therefore, this can be done for any $a$, so $R$ is a field.
+\end{proof}
+
+\begin{proposition}\label{pro:pid_examples}
+$\Z$ and $\Z[i]$ are all PIDs.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{need details}
+\end{proof}
+
+\begin{example}
+$\Z[X]$ is not a PID. It is obvious that $\Z$ is not a field, then $\Z[X]$ is not a PID by Proposition \ref{pro:polynomial_pid_iff_field}.
+
+Now we want to prove it by checking the definition of PID. 
+
+Consider the ideal $I = \bsa{2,X} = \left\{a_iX^i : a_0 \text{ is even}\right\} \lhd \Z[X]$. Suppose that $I = \bsa{f(X)}$ for some $f(X) \in \Z[X]$.
+
+We have $f(X)\mid 2$ and $f(X)\mid X$ since $2,X \in I$. In particular $2 = f(X)g(X)$ for some $g(X) \in \Z[X]$. We deduce that $f(X)$ has to be a constant polynomial, that is, of degree 0, and must be $\pm 1$ or $\pm 2$. Also $X = f(X)h(X)$ for some $h(X) \in \Z[X]$. So $f(X)$ cannot be $\pm 2$. So $f(X) = \pm 1$. Hence $I = \bsa{f(X)} = \Z[X]$. 
+
+This is a contradiction, since $I \neq \Z[X]$ ($I$ has even coefficients).%, e.g. $1 \notin I$.
+\end{example}
+
+\begin{example}[minimal polynomials of matrices with entries in a field $\F$]
+Let $\triangle \in M_{n\times n}(\F)$. Consider $I = \{f(X) \in \F[X] : f(\triangle) = 0\}$.
+
+We can check that $I \lhd \F[X]$ is an ideal\footnote{need details}. But $\F[X]$ is a PID, so $I = \bsa{m(X)}$, and by multiplying $m(X)$ by a unit in $\F$ we may assume $m(X)$ is monic. This is the minimal polynomial\index{minimal polynomial} of $\triangle$. (See the course Linear Algebra (Chapter \ref{cha:linear_algebra}\footnote{check section number}) where Euclidean algorithm (Proposition \ref{pro:euclidean_algorithm_polynomial}) is explicitly used.)
+\end{example}
+
+
+\begin{lemma}\label{lem:pid_irreducible_prime}
+Let $R$ be a PID. If $p$ is an irreducible then it is prime. (This is the converse of Lemma \ref{lem:prime_implies_irreducible_integral_domain} for PIDs.)
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Let $p$ be an irreducible and suppose $p | ab$. Without loss of generality, suppose that $p \nmid a$. The ideal $(p, a)$ must be principle in a PID, $\bsa{p, a} = \bsa{d}$, say.
+
+Thus $p = q_1d$ and $a = q_2d$ for some $q_1,q_2 \in R$. $p$ is irreducible so either $q_1$ or $d$ is a unit. But if $q_1$ is a unit, then $d = q_1^{-1} p$ and $a = q_2d = q_2q^{-1}_1 p$, so $p | a$, a contradiction. Hence $d$ is a unit. Thus $\bsa{d} = dR = R$ since $d$ is unit and there exist $r, s \in R$ such that (since $\bsa{p, a} = \bsa{d}$),
+\be
+1 = rp + sa \ \ra \ b = rpb + sab.
+\ee
+
+Since $p \mid rpb$ and $p \mid ab$, $p | b$.
+\end{proof}
+
+\begin{remark}
+In fact, $d$ is a highest common factor of $p$ and $a$ (see Definition \ref{def:hcf_ring}). Highest common factors are unique up to units (see Proposition \ref{pro:hcf_ufd_unique_unit}).%\footnote{see Example Sheet 3 or in UFD part}
+\end{remark}
+
+
+\subsection{Maximal ideal and prime ideal}
+
+\begin{definition}[proper ideal\index{proper ideal}]\label{def:proper_ideal}
+A proper ideal is an ideal $I$ of a ring $R$ which is strictly smaller than the whole ring, i.e., $I\subset R$($I\neq R$).
+\end{definition}
+
+\begin{definition}[maximal ideal\index{maximal ideal}]
+An proper ideal $I$ in $R$ is maximal in $R$ whenever $I \subseteq J \lhd R$ then $I = J$ or $J = R$.
+\end{definition}
+
+\begin{example}
+In $\Z$, the maximal ideals are $p\Z$ where $p$ is a prime number.
+\end{example}
+
+
+\begin{definition}[prime ideal\index{prime ideal}]\label{def:prime_ideal}
+A proper ideal is a prime ideal in $R$ if whenever $ab \in I$ then $a \in I$ or $b \in I$.
+\end{definition}
+
+\begin{remark}
+This generalizes the following property of prime numbers: if $p$ is a prime number and if $p$ divides a product $ab$ of two integers, then $p$ divides $a$ or $p$ divides $b$. We can therefore say, a positive integer $n$ is a prime number if and only if the ideal $n\Z$ is a prime ideal in $\Z$. 
+\end{remark}
+
+\begin{example}
+In $\Z$, the prime ideals are $p\Z$ for prime number $p$ and $\bra{0}$.
+\end{example}
+
+\begin{lemma}\label{lem:field_maximal_ideal}
+Let $R$ be a commutative ring. For an ideal $I \lhd R$, the quotient ring $R/I$ is a field if and only if $I$ is maximal in $R$.
+\end{lemma}
+
+\begin{example}\label{exa:zpz_field}
+$\Z/p\Z$ is a field with $p$ elements where $p$ is a prime number. $\F_p \cong \Z/p\Z$.
+\end{example}
+
+\begin{proof}[\bf Proof]
+$R/I$ is a field if and only if $\bra{0} = I/I$ and $R/I$ are the only ideals in $R/I$ (by Lemma \ref{lem:ring_field_only_ideal} ). By the usual correspondence, this is equivalent to that the only ideals in $R$ containing $I$ are $I$ and $R$, which is the statement that $I$ is maximal in $R$.
+\end{proof}
+
+\begin{lemma}\label{lem:integral_domain_prime_ideal}
+Let $R$ be a commutative ring. For an ideal $I \lhd R$, the quotient ring $R/I$ is an integral domain if and only if $I$ is a prime ideal in $R$. 
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Note that zero in $R/I$ is $0 + I = I$.
+
+Suppose $R/I$ is an integral domain and $ab \in I$. Then $0 + I = I = ab+I = (a+I)(b+I)$ and so either $a + I = 0 + I = I$ or $b + I = 0 + I = I$. So $a \in I$ or $b \in I$. 
+
+Conversely, suppose $I$ is a prime deal and $(a + I)(b + I) = I$. Then $ab + I = I$ and so $ab \in I$. Primeness implies $a \in I$ or $b \in I$ and so $a + I = I = 0 + I$ or $b + I = 0 + I$.
+\end{proof}
+
+\begin{theorem}\label{thm:cr_maximal_ideal_implies_prime}
+Let $R$ be a commutative ring. For an ideal $I \lhd R$, if $I$ is a maximal ideal, then it is also a prime ideal.
+\end{theorem}
+
+\begin{remark}
+This can be seen directly by Lemma \ref{lem:integral_domain_prime_ideal} and Lemma \ref{lem:field_maximal_ideal} as we can see that a field is an integral domain.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Assume there exist $a,b$ such that $ab\in I$ but $a,b\in R\bs I$. Now let $J$ be the ideal generated by $I\cup \bra{a}$, i.e., 
+\be
+J = \bra{x+ar:x\in I,r\in R}.
+\ee
+
+Clearly, $I\subset J$ ($I \subsetneq J$) as we can take $r=1$. Thus, since $I$ is maximal, we have $J = R$. Therefore, $1\in J$ and hence there exist $x\in I$ and $r\in R$ such that
+\be
+1 = x+ar.
+\ee
+
+Then we have 
+\be
+b = b\cdot 1 = b(x+ar) = \underbrace{bx}_{\in I} + \underbrace{(ab)r}_{\in I} \in I.
+\ee
+
+Contradiction with the assumption that $b\in R\bs I$.
+\end{proof}
+
+\begin{theorem}\label{thm:pid_prime_ideal_implies_maximal}
+Let $R$ be a PID. For an ideal $I \lhd R$, if $I$ is a non-zero prime ideal, then it is a maximal ideal.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+If $I$ is non-zero prime, then we assume that $I\subseteq J\lhd R$. Since $R$ is a PID, we assume that $I = \bsa{a}$ and $J = \bsa{b}$. Thus, $a\in J$.
+
+Then we have $c\in R$ such that $a = bc$. Since $I$ is prime, we have that $a\in I \ \ra \ b\in I\text{ or }c\in I$.
+
+If $b\in I$, we have $I = \bsa{b} = J$. If $c\in I$, we have $d\in R$, such that $c = ad = bcd \ \ra \ 1 = bc$. Thus, $b$ is a unit and by Definition \ref{def:associativity_irreducibility_primeness_integral_domain}, $R = \bsa{b} = J$.
+
+Thus, either $I=J$ or $J=R$. Therefore, $I$ is a maximal ideal.
+\end{proof}
+
+\begin{theorem}\label{thm:pid_prime_ideal_equals_maximal}
+In PID, maximal ideal and non-zero prime ideal are equivalent.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Direct result by Theorem \ref{thm:cr_maximal_ideal_implies_prime} and Theorem \ref{thm:pid_prime_ideal_implies_maximal}.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{lemma}\label{lem:prime_ideal_prime_ring_element}
+Let $R$ be an integral domain. $\bsa{r}$ is a prime ideal of $R$ if and only if $r$ is prime or $r = 0$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+If $r \neq 0$ and $r \mid ab$ then $ab \in \bsa{r}$ and so if $\bsa{r}$ is a prime ideal then $a \in \bsa{r}$ or $b \in \bsa{r}$. Thus $r \mid a$ or $r \mid b$. Thus, $r$ is prime.
+
+If $r$ is unit, by Definition \ref{def:associativity_irreducibility_primeness_integral_domain}, $\bsa{r} = R$. Contradiction to Definition \ref{def:prime_ideal}.
+
+$\bsa{0}$ is a prime ideal in an integral domain. 
+
+Conversely, if $r$ is prime and $ab \in \bsa{r}$ then $r \mid ab$ and hence $r \mid a$ or $r \mid b$. Thus $a \in \bsa{r}$ or $b \in \bsa{r}$. Thus, $\bsa{r}$ is a prime ideal of $R$.
+\end{proof}
+
+
+\begin{lemma}
+The characteristic of an integral domain $R$ is 0 or a prime number $p$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Recall that we have a unique ring homomorphism $\phi: \Z \to R$ (Definition \ref{def:characteristic_ring}). The prime subring $\im \phi \cong \Z/n\Z$, where $n$ is the characteristic of $R$. 
+
+If $n$ properly factorises as $n = st$ then working modulo $n$ we have $st = 0 \lmod{n}$ and so we have zero divisors. Contradiction to the fact that $R$ is an integral domain (by Definition \ref{def:zero_divisor_ring} and Definition \ref{def:integral_domain_ring}).
+
+So if $R$ is an integral domain, its prime subring is an integral domain and so $n$ is prime or 0.
+\end{proof}
+
+
+
+\section{Euclidean Domain}%Factorisation in Integral Domains}%\label{sec:factorisation_integral}% -- units, primes, irreducibles
+
+%\subsection{Euclidean domain}
+
+\begin{definition}[Euclidean domain\index{Euclidean domain}]\label{def:euclidean_domain}
+An integral domain $R$ is a Euclidean domain (ED\index{ED!Euclidean domain}) if there is a function $\phi: R \bs\bra{0} \to \Z^+$ called Euclidean function\index{Euclidean function} such that 
+\ben
+\item [(i)] $\phi(ab) \geq \phi(a)$ for all $a, b \in R \bs \{0\}$,
+\item [(ii)] if $a, b \in R$ with $b \neq 0$ then there exist $q, r \in R$ with $a = qb + r$ with either $r = 0$ or $\phi(r) < \phi(b)$. 
+\een
+\end{definition}
+
+\begin{proposition}
+Let $\F$ be a field. Then $\F[X]$ is a Euclidean domain\footnote{This is given in proof of Proposition \ref{pro:polynomial_pid_iff_field}}. %(Subsection \ref{sec:factorisation_integral} gives Euclidean algorithm here.)
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Let Euclidean function be $\phi(f(X)) = \deg f$. To check Definition \ref{def:euclidean_domain},
+\ben
+\item [(i)] It is obvious.
+\item [(ii)] It is given by Euclidean algorithm (Proposition \ref{pro:euclidean_algorithm_polynomial}).
+\een
+
+Thus, $\F[X]$ is a ED.
+\end{proof}
+
+\begin{example}
+\ben
+\item [(i)] $\Z$ is a Euclidean domain with $\phi(n) = |n|$.
+\item [(ii)] $R = \Z[i] = \{a + bi : a, b \in \Z\} \leq \C$ is a Euclidean domain. As with $\Z[\sqrt{-5}]$ we can define a norm via $N(z) = z\bar{z}$ for $z \in R$. Thus $N(a + bi) = a^2 + b^2$. In this case the norm is a Euclidean function. $N$ is multiplicative and so property (i) holds, $N(z_1z_2) = N(z_1)N(z_2) \geq N(z_1)$, since $N(z_2) \geq 1$. 
+
+To verify property (ii) take $z_1, z_2 \in R$ with $z_2 \neq 0$. Consider $z_1/z_2 \in \C$. Then in the complex plane it is distance less than $\sqrt{\bb{\frac 12}^2 + \bb{\frac 12}^2} = \sqrt{2}/2$ from the nearest element of $R$.
+
+$z_1/z_2 = q + z_3$ with $q \in R$, $z_3 \in \C$ and $|z_3| < 1$. So $z_1 = qz_2 + z_2z_3$. Set $r = z_2z_3$. Thus $z_1 = qz_2 + r$,
+\be
+N(r) = |z_2z_3|^2 = |z_2|^2|z_3|^2 < |z_2|^2 = N(z_2).
+\ee
+
+\centertexdraw{
+    \drawdim in
+
+    \arrowheadtype t:F \arrowheadsize l:0.08 w:0.02
+
+    \def\bdot {\fcir f:0 r:0.04 }
+    
+    \linewd 0.01 \setgray 0
+    
+%\move (0 0.8)\larc r:0.2 sd:0 ed:135
+
+\htext (0.4 -0.2){$\Z[i]$}
+\htext (1.8 -0.2){$\Z[\sqrt{-2}]$}
+\htext (3.3 -0.2){$\Z[\sqrt{-3}]$}
+\htext (5 -0.2){$\Z[\omega]$, $\omega = (1+ \sqrt{-3})/2$}
+
+\move(0 0) \lvec(1 0) \lvec (1 1) \lvec (0 1) \lvec (0 0)
+\move(0.5 0) \lvec(0.5 1) 
+\move(0 0.5) \lvec(1 0.5)
+\move(0.5 0.5) \bdot
+
+\move (1.5 0) \lvec(2.5 0) \lvec (2.5 1.414)\lvec (1.5 1.414)\lvec (1.5 0)
+\move(2 0) \lvec(2 1.414) 
+\move(1.5 0.707) \lvec(2.5 0.707)
+\move(2 0.707) \bdot
+
+\move(3 0) \lvec(4 0) \lvec (4 1.732) \lvec (3 1.732) \lvec (3 0)
+\move(3.5 0) \lvec(3.5 1.732) 
+\move(3 0.866) \lvec(4 0.866)
+\move(3.5 0.866) \bdot
+
+\move(4.5 0) \lvec(6.5 0) \lvec (7.5 1.732) \lvec (5.5 1.732) \lvec (4.5 0)
+\move(5.5 0) \lvec(6.5 1.732) 
+\move(5 0.866) \lvec(7 0.866)
+\move(6 0.866) \bdot
+
+
+\lpatt (0.05 0.05)
+\move(0.25 0.25) \lvec(0.25 0.75)\lvec(0.75 0.75)\lvec(0.75 0.25) \lvec(0.25 0.25) \lvec(0.5 0.5)
+\move(1.75 0.3535) \lvec(1.75 1.0605)\lvec(2.25 1.0605)\lvec(2.25 0.3535) \lvec(1.75 0.3535) \lvec(2 0.707)
+\move(3.25 0.433) \lvec(3.25 1.299)\lvec(3.75 1.299)\lvec(3.75 0.433) \lvec(3.25 0.433) \lvec(3.5 0.866)
+\move(5.25 0.433) \lvec(5.75 1.299)\lvec(6.75 1.299)\lvec(6.25 0.433) \lvec(5.25 0.433) \lvec(6 0.866)
+
+}
+
+
+\item [(iv)] For $R = \Z[\sqrt{-2}]$, with similar arguments, property (i) holds, for any $z_1/z_2 \in \C$, the longest distance to its nearest point of lattice is $\sqrt{\bb{\frac {\sqrt{2}}2}^2 + \bb{\frac 12}^2} = \sqrt{3}/2 < 1$. Thus $\abs{z_3}<1$ also holds. Hence, $\Z[\sqrt{-2}]$ is a Euclidean domain.
+
+\item [(v)] For $R = \Z[\sqrt{-3}]$, with similar arguments, property (i) holds, for any $z_1/z_2 \in \C$, the longest distance to its nearest point of lattice is $\sqrt{\bb{\frac {\sqrt{3}}2}^2 + \bb{\frac 12}^2} = 1$. So $\abs{z_3}<1$ doesnt't hold. Hence, we cannot say that $\Z[\sqrt{-3}]$ is a Euclidean domain. Actually, we will see later that $\Z[\sqrt{-3}]$ is not a Euclidean domain since it is not UFD (see Example \ref{exa:sqrtroot_3_5_not_ufd}).
+
+\item [(vi)] Similarly, we will see later that $\Z[\sqrt{-5}]$ is not a Euclidean domain since it is not UFD (see Example \ref{exa:sqrtroot_3_5_not_ufd}).
+
+\item [(vii)] For $R = \Z[\omega]$, $\omega = (1+ \sqrt{-3})/2$. With similar arguments, property (i) holds, for any $z_1/z_2 \in \C$, the longest distance to its nearest point of lattice is $\sqrt{\bb{\frac {\sqrt{3}}4}^2 + \bb{\frac 12 + \frac 14}^2} = \sqrt{3}/2 < 1$. Thus $\abs{z_3}<1$ also holds. Hence, $\Z[\sqrt{-2}]$ is a Euclidean domain.
+\een
+\end{example}
+
+%\begin{remark}
+%Similar arguments apply for other subrings of $\C$ and one can sometimes show that the norm is a Euclidean function but one needs that any point in the complex plane is distance less than 1 from a lattice point of $R$. Note for $\Z[\sqrt{-5}]$ this is not true.
+%\end{remark}
+
+\begin{proposition}
+The subring $\Z[\sqrt{2}]$ of $\R$ is a Euclidean domain. Its units are $\pm(1\pm \sqrt{2})^n$ for $n \geq 0$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+For $a,b \in \Z$, we define a function 
+\be
+\phi:\Z[\sqrt{2}] \to \Z^+,\ a+b\sqrt{2} \mapsto \abs{\bb{a+b\sqrt{2}}\bb{a-b\sqrt{2}}} = \abs{a^2 - 2b^2}.
+\ee
+
+Then for $a+b\sqrt{2}, c+ d\sqrt{2} \in \Z[\sqrt{2}]$,
+\beast
+\phi\bb{\bb{a+b\sqrt{2}}\bb{c+d\sqrt{2}}} & = & \phi \bb{ac + 2bd + (ad + bc)\sqrt{2}} = \abs{(ac + 2bd)^2 - 2(ad + bc)^2} \\
+& = & \abs{a^2c^2 + 4b^2 d^2 + 4abcd - 2a^2d^2 - 2b^2c^2 - 4abcd} = \abs{(a^2 - 2b^2)(c^2 - 2d^2)} \\
+& = & \abs{a^2 - 2b^2}\abs{c^2 - 2d^2} = \phi(a+b\sqrt{2})\phi(c+d\sqrt{2}).
+\eeast
+
+Also, since $a,b\in \Z$
+\be
+\phi(a+ b\sqrt{2}) = \abs{a^2 - 2b^2} \geq 1 \text{ if }a+ b\sqrt{2}\neq 0.
+\ee
+
+So we have for $x,y \in \Z[\sqrt{2}]\bs\bra{0}$,
+\be
+\phi(xy) \geq \phi(x).
+\ee
+
+Now we need to prove that if $a,b\in \Z[\sqrt{2}]\bs \bra{0}$ with $b\neq 0$, $\exists q,r \in \Z[\sqrt{2}]$ s.t.
+\be
+a= bq + r,\quad \text{with either $r=0$ or }\phi(r) < \phi(b).
+\ee
+
+Given $a,b$, if $b\mid a$, i.e. $a = bx$ for some $x\in \Z[\sqrt{2}]$, we have that $r=0$. Otherwise, we can find some $s,t \in \R$ such that
+\be
+a /b = s + t\sqrt{2}.
+\ee
+
+Then we can find $x,y \in \Z$ such that $\abs{x-s} \leq \frac 12$ and $\abs{y -t }\leq \frac 12$. Let 
+\be
+q = x + y \sqrt{2} \ \ra\ a = b(x+ y\sqrt{2}) + \underbrace{b(s-x)}_{\in \Z} + \underbrace{b(t-y)}_{\in \Z}\sqrt{2}
+\ee
+with $r = b(s-x) + b(t-y) \sqrt{2} \in \Z[\sqrt{2}]$ and
+\be
+\phi (r) = \phi (b)\abs{ (s-x)^2 - 2 (t-y)^2} \leq \phi(b) \abs{(s-x)^2 + 2(t-y)^2} \leq \phi(b) \abs{\frac 14 + 2 \frac 14} = \frac 34 \phi(b) < \phi(b)
+\ee
+since $b\neq 0$. Thus, $\phi$ is an Euclidean function and $\Z[\sqrt{2}]$ is an Euclidean domain.
+
+If $x$ is a unit in $\Z[\sqrt{2}]$, then we have that $\exists y \in \Z[\sqrt{2}]$ such that $xy = 1$ and thus $\phi(x)\phi(y) = 1$. Since $\phi(x),\phi(y) \geq 1$, we have that $\phi(x) = 1$. 
+
+Since $\sqrt{2}-1 = 1/(1 + \sqrt{2})$, we can consider $1+\sqrt{2}$ only. Now we want to find all the units bigger than 1.
+
+First we prove that $1+\sqrt{2}$ is actually the smallest unit bigger than 1. 
+
+Let $a,b\in \N$. If the smallest unit bigger than 1 is of the form $a-b\sqrt{2} > 1$, then $a+b\sqrt{2} > 1$. However,
+\be
+1 = \phi(a-b\sqrt{2}) = \abs{\bb{a-b\sqrt{2}}\bb{a+b\sqrt{2}}} > \abs{1} = 1. \text{ (Contradiction.)}
+\ee
+
+Similarly, If the smallest unit bigger than 1 is of the form $-a+b\sqrt{2} > 1$, then $a+b\sqrt{2} > 1$. This will lead to the contradiction again.
+
+Thus, it has to be of the form  $a+b\sqrt{2}$. Thus, the smallest unit bigger than 1 is $1+\sqrt{2}$.
+
+Clearly, the power of $1+\sqrt{2}$ are units. If there exists any unit between $\bb{1+\sqrt{2}}^n$ and $\bb{1+\sqrt{2}}^{n+1}$ with integer $n$ (positive or negative), say $u$,
+\be
+\bb{1 + \sqrt{2}}^n < u < \bb{1+\sqrt{2}}^{n+1} \ \ra \ 1 < u \bb{1+\sqrt{2}}^{-n} < 1+\sqrt{2}.
+\ee
+
+Obviously, $u \bb{1+\sqrt{2}}^{-n}$ is a unit since $u^{-1}$ and $\bb{1+\sqrt{2}}^{n}$ are units. However, $1+\sqrt{2}$ is the smallest unit bigger than 1. This leads to contradiction. Thus, there is no other unit bigger than 1 besides $(1+\sqrt{2})^n$ with $n\in \N$.
+\end{proof}
+
+
+\begin{proposition}\label{pro:field_implies_ed}
+A field $\F$ is also an ED (Euclidean domain).
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Let $\phi(x) = 1$ for any non-zero element $x$. Clearly, this function satisfies (i) of Definition \ref{def:euclidean_domain}.
+
+Also for $a,b\in \F$, $1/b\in \F$ and there exists $q = a/b \in \F$ such that $a = qb$ which satisfies (ii) of Definition \ref{def:euclidean_domain}.
+\end{proof}
+
+\begin{proposition}\label{pro:ed_implies_pid}
+If an integral domain $R$ is an ED (Euclidean domain) then $R$ is a PID (principal ideal domain).
+\end{proposition}
+
+\begin{proof}[\bf Proof]%Let $R$ be an integral domain. 
+Let $R$ be an ED (therefore an integral domain) with Euclidean function $\phi: R \bs \{0\} \to \Z^+$. %_{\geq 0} = \{n \in \Z : n \geq 0\}$. 
+
+Let $I /R$ be an ideal and suppose that $I$ is non-zero. Pick $b \in I \{0\}$ with $\phi(b)$ minimal. Then $\forall a \in I$ and use Euclidean algorithm (Proposition \ref{pro:euclidean_algorithm_polynomial}): $a = bq + r$ with $r = 0$ or $\phi(r) < \phi(b)$.
+
+Note that $r = a - bq \in R$, and hence minimality of $\phi(b)$ implies $r = 0$. Thus $a = bq$, so $I = \bsa{b}$. Thus all ideals are prime ideals and therefore $R$ is a PID (by Definition \ref{def:principal_ideal_domain}).
+\end{proof}
+
+
+
+\section{Ascending Chain Condition and Hilbert's basis theorem} 
+
+\subsection{Ascending chain condition}
+
+\begin{definition}[ascending chain condition\index{Ascending chain condition!ring}]\label{def:ascending_chain_condition}
+Let $R$ be a (not necessarily commutative) ring.  We say that $R$ satisfies the ascending chain condition\footnote{need general definition, also need DCC} (ACC\index{ACC!ring}) if for $I_j \lhd R$ with $I_1 \subseteq I_2 \subseteq I_3 \subseteq \dots$, there exists some $n \in \N$ such that $I_n = I_{n+i}$ for all $i \geq 0$.
+\end{definition}
+
+\begin{definition}[Noetherian ring\index{Noetherian!ring}]\label{def:noetherian_ring}
+Rings satisfying the ACC are called Noetherian rings (Named after Emmy Noether). 
+\end{definition}
+
+
+\begin{lemma}\label{lem:pid_implies_acc}
+Let $R$ be a PID and $I_j \lhd R$ with $I_1 \subseteq I_2 \subseteq I_3 \subseteq \dots$. Then, $R$ satisfies ACC.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+By Proposition \ref{pro:union_ascending_ideal_is_ideal}, $I = \bigcup_j I_j \lhd R$. Since $R$ is a PID, $I = \bsa{a}$ for some $a \in I$. We must have $a \in I_n$ for some $n \in \N$. For all $i \geq 0$,
+\be
+\bsa{a} \subseteq I_n \subseteq I_{n+i} \subseteq \dots \subseteq I \subseteq \bsa{a},
+\ee
+so we have equality throughout and in particular $I_{n+i} = I_n$.
+\end{proof}
+
+%Recall that we showed that a PID satisfies the ascending chain condition (ACC) on ideals.
+
+\begin{lemma}\label{lem:noetherian_iff_ideal_finitely_generated}
+A ring $R$ is Noetherian if and only if all ideals in $R$ are finitely generated.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Suppose that all ideals are finitely generated and consider a chain
+\be
+I_1 \subseteq I_2 \subseteq \dots 
+\ee
+with $I_j \lhd R$. Then the union $\bigcup_j I_j \lhd R$ is an ideal too (by Proposition \ref{pro:union_ascending_ideal_is_ideal}). So by supposition $\bigcup_j I_j$ is finitely generated. There exists $N$ such that all these finitely many generators lie in $I_N$.
+
+If $m \geq N$ then $I_m \subseteq \bigcup_j I_j \subseteq I_N$. Also $I_N \subset I_m$ and so $I_m = I_N$.
+
+Conversely, assume the ACC and let $J \lhd R$. Take $a_1\in J$ with $a_1 \neq 0$. If $J \neq \bsa{a_1}$ (i.e. $\bsa{a_1} \subsetneq J$ since $a_1 r \in J$ for any $r\in R$ with the definition of ideal) pick $a_2 \in J \bs \bsa{a_1}$. If $J \neq \bsa{a_1, a_2}$ (i.e., $\bsa{a_1,a_2} \subsetneq J$ since $a_1 r_1 + a_2 r_2  \in J$ for any $r_1,r_2\in R$ with the definition of ideal) pick $a_3 \in J \bs \bsa{a_1, a_2}$ etc. We are producing a chain
+\be
+\bsa{a_1} \subsetneq \bsa{a_1, a_2} \subsetneq \bsa{a_1, a_2, a_3} \subsetneq \dots .
+\ee
+
+By the ACC this process stops, so $J = \bsa{a_1,\dots , a_N}$ for some $N$.
+\end{proof}
+
+\begin{remark}
+For a commutative ring to be Noetherian it suffices that every prime ideal of the ring is finitely generated. (The result is due to I. S. Cohen.)\footnote{need details}
+\end{remark}
+
+%\begin{definition}
+%A ring with these properties is called Noetherian\index{Noetherian}.
+%\end{definition}
+
+\subsection{Hilbert's basis theorem} 
+
+\begin{theorem}[Hilbert's basis theorem\index{Hilbert's basis theorem}]\label{thm:hilbert_basis_ring}
+If the commutative ring $R$ is Noetherian then $R[X]$ is Noetherian.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $J \lhd R[X]$ be an ideal. We aim to show that it is finitely generated. Consider
+\be
+I_j = \left\{ a_j \in R : \exists f(X) \in J, \ f(X) = \sum^j_{i=0} a_iX^i \in J\right\} \cup \{0\},
+\ee
+the set of leading coefficients of polynomials of degree $j$ in $J$.
+
+$I_j \lhd R$ is an ideal since if $\sum^j_{i=0} a_iX^i \in J$, $\sum^j_{i=0} b_iX^i \in J$ then 
+\be
+\sum^j_{i=0} (a_i + b_i)X^i \in J
+\ee
+and if $a \in R$ then $\sum^j_{i=0} aa_iX^i \in J$. $I_j \subseteq I_{j+1}$ since if $\sum^j_{i=0} a_iX^i \in J$ then $X \bb{\sum^j_{i=0} a_iX^i} \in J$.
+
+The ACC for $R$ implies that there exists $N$ with $I_m = I_N$ for all $m \geq N$ and $I_N$ is finitely generated by the leading coefficients of $f_1(X),\dots , f_k(X)$, say (by Definition \ref{def:ascending_chain_condition} and \ref{def:noetherian_ring}).
+
+Now take any $f(X) \in J$ of degree $m \geq N$. The leading coefficient of $f(X)$ lies in $I_m = I_N$ and so there exists $r_1,\dots,r_k \in R$ so that $r_1f_1(X) + \dots + r_kf_k(X)$ has the same leading coefficient. So 
+\be
+f(X) - (r_1f_1(X) + \dots + r_kf_k(X))X^{m-N} \in J
+\ee
+and is of degree less than $m$. Repeating this process yields $q_1(X),\dots , q_k(X) \in R[X]$ such that
+\be
+f(X) - (q_1(X)f_1(X) + \dots + q_k(X)f_k(X)) \in J
+\ee
+of degree less than $N$.
+
+Now consider polynomials in $J$ of degree less than $N$. For $j < N$ there is a finite set $S_j$ of polynomials in $J$ of degree $j$ whose leading coefficients generate $I_j$ ($I_j$ is finitely generated since $R$ is Noetherian by Lemma \ref{lem:noetherian_iff_ideal_finitely_generated}). Let $S = \bigcup_{j<N} S_j$, a finite set (union of finitely many finite sets).
+
+A similar argument to the one before shows that any polynomial in $J$ of degree less than $N$ is of the form $\sum g_i(X)h_i(X)$ for $g_i(X) \in S$, $h_i(X) \in R[X]$.
+
+Thus $J$ is generated by $S \cup \{f_1(X),\dots,f_k(X)\}$.
+\end{proof}
+
+\begin{corollary}
+If $\F$ is a field then $\F[X_1,\dots ,X_n]$ is Noetherian.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+$\F$ is field and thus it is PID. So $\F$ is Noetherian by Lemma \ref{lem:pid_implies_acc}. Hence $\F[X]$ is Noetherian by Hilbert's basis theorem (Theorem \ref{thm:hilbert_basis_ring}). Then apply Hilbert's basis theorem (Theorem \ref{thm:hilbert_basis_ring}) repeatedly, we have that $\F[X_1,\dots ,X_n]$ is Noetherian.
+\end{proof}
+
+\begin{corollary}
+$\Z[X_1,\dots ,X_n]$ is also Noetherian.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+$\Z$ is ED. Then $\Z$ is PID and thus $\Z$ is Noetherian by Lemma \ref{lem:pid_implies_acc}. Hence $\Z[X]$ is Noetherian by Hilbert's basis theorem (Theorem \ref{thm:hilbert_basis_ring}). Then apply Hilbert's basis theorem (Theorem \ref{thm:hilbert_basis_ring}) repeatedly, we have that $\Z[X_1,\dots ,X_n]$ is Noetherian.
+\end{proof}
+
+\begin{corollary}
+Any ring image of $\Z[X_1,\dots ,X_n]$ is Noetherian.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+Let $\theta : \Z[X_1,\dots ,X_n] \to S$ be a homomorphism. Then $\theta$ is surjective (since it is image of ring). If $I \lhd S$ is an ideal then
+\be
+J = \{f(X_1,\dots ,X_n) \in \Z[X_1,\dots ,X_n] : \theta(f(X_1,\dots ,X_n)) \in I\}
+\ee
+is finitely generated. Then $I$ is generated by the images under $\theta$ of a finite generating set of $J$.
+\end{proof}
+
+
+\section{Unique Factorisation Domain}
+
+\subsection{Unique factorisation domain}
+
+\begin{definition}[Unique factorisation domain\index{Unique factorisation domain}]\label{def:ufd_integral_domain}
+An integral domain is a unique factorisation domain (UFD\index{UFD!Unique factorisation domain}) if 
+\ben
+\item [(i)] every non-zero element that is not a unit may be expressed as a product of finitely many irreducibles,
+\item [(ii)] whenever $p_1 \dots p_m = q_1 \dots q_n$ for products of irreducibles then $m = n$ and we can reorder so that $p_i$ is an associate of $q_i$. (So factorisation is unique up to ordering and associates).
+\een
+\end{definition}
+
+
+\begin{example}\label{exa:sqrtroot_3_5_not_ufd}
+$\Z[\sqrt{-5}]$ is not a UFD. Note that
+\be
+6 = 2 \cdot 3 = (1 + \sqrt{-5})(1 - \sqrt{-5})
+\ee
+where 2, 3, $1 +\sqrt{-5}$ and $1 -\sqrt{-5}$ are irreducibles (see Example \ref{exa:z_sqrtroot_minus_5_prime_irreducible}). Units are $\pm 1$ in $\Z[\sqrt{-5}]$, so these irreducibles are not associates of each other.
+\end{example}
+
+%Our goal is the following proposition.
+
+%We need two lemmas about PIDs to prove Proposition \ref{pro:pid_implies_ufd}.
+
+
+\begin{proposition}\label{pro:pid_implies_ufd}
+If an integral domain $R$ is a PID then $R$ is a UFD.
+\end{proposition}
+
+
+%Proof of (\ref{pro:pid_implies_ufd}). 
+
+\begin{proof}[\bf Proof]
+\ben 
+\item [(i)] Let $a \in R$, non-zero and not a unit. Assume it cannot be factorised as a product of finitely many irreducibles. So in particular a itself is not irreducible (otherwise it is a product of finitely many irreducibles), hence $a = a_1b_1$ with $a_1$, $b_1$ non-zero and not units (by definition of irreducible element). We may assume that $a_1$ cannot be factorised as a product of finitely many irreducibles, so write $a_1 = a_2b_2$ and continue. (If both $a_1$, $b_1$ can be factorised into finitely many irreducibles, then so can $a$.)
+
+So we have that $\bsa{a_1} \subseteq \bsa{a_2} \subseteq \bsa{a_3} \subseteq \dots$ in PID. Thus, by Lemma \ref{lem:pid_implies_acc}, there exists $n\in \N$ such that for all $i\geq 0$, $\bsa{a_n} = \bsa{a_{n+i}}$. In particular, $\bsa{a_n} = \bsa{a_{n+1}}$, then $a_n$ and $a_{n+1}$ would be associates and $b_{n+1}$ a unit. Contradiction.
+
+%We obtain $\bsa{a_1} \subsetneq (a_2) \subsetneq (a3) \subsetneq \dots$ with inequality at each stage, for if $(a_i) = (a_{i+1})$ then $a_i$ and $a_{i+1}$ would be associates and $b_{i+1}$ a unit.
+
+\item [(ii)] Suppose we have $p_1 \dots p_m = q_1 \dots q_n$ with products of irreducibles. Then $p_1$ is prime by Lemma \ref{lem:pid_irreducible_prime} and $p_1 | q_1 \dots q_n$, so $p_1$ divides one of the $q_i$ (by Definition \ref{def:associativity_irreducibility_primeness_integral_domain}), $p_1 | q_1$, say, and so $q_1 = p_1u$. But $q_1$ is irreducible and $p_1$ is not a unit, hence $u$ is a unit (by Definition \ref{def:associativity_irreducibility_primeness_integral_domain}). This is to say $p_1$ and $q_1$ are associates. We have (cancellation in $R$)
+\be
+p_1 \dots p_m = up_1q_2 \dots q_n \ \ra \ p_1 \bb{p_2 \dots p_m - uq_2\dots q_n} = 0 \ \ra \ p_2 \dots p_m = uq_2\dots q_n
+\ee
+%\be
+%p_2 \dots p_m = (uq_2)q_3 \dots q_n.
+%\ee
+
+Note that $(uq_2)$ is irreducible. Continuing in this way gives the result.
+\een
+\end{proof}
+
+\begin{corollary}\label{cor:pid_implies_ufd}
+$\Z$, $\F[X]$ for a field $\F$ and $\Z[i]$ are all UFDs.
+\end{corollary}
+\begin{proof}[\bf Proof]
+Direct result from Proposition \ref{pro:pid_examples} and Proposition \ref{pro:pid_implies_ufd}.
+\end{proof}
+
+
+\begin{remark}
+The proof of (ii) depends just on Lemma \ref{lem:pid_irreducible_prime}, that irreducibles are prime, and (i) depends on the ACC.
+\end{remark}
+
+There are several properties which follow quickly from the definition of a UFD.
+
+\begin{proposition}\label{pro:irreducible_iff_prime_ufd}
+Let $R$ be a UFD. An element $p \in R$ is irreducible if and only if it is prime. 
+\end{proposition}	
+
+\begin{proof}[\bf Proof]
+We have already shown the 'only if' direction for integral domains in Lemma \ref{lem:prime_implies_irreducible_integral_domain}.
+
+Suppose $p$ is an irreducible and $p \mid ab$. We have $a,b$ are non-zero (otherwise $p$ is zero). If $a$ or $b$ is a unit, wlog, $a$ is, say. Then $cp = ab$ for some $c\in R$. Then $b = a^{-1}cp$ since $a$ is unit, so $p\mid b$. Thus, $p\mid a$ or $p\mid b$ and therefore $p$ is prime.
+
+If $a$ and $b$ are not units, we can express $a$ and $b$ as
+\be
+a = p_1 \dots p_m,\quad b = q_1 \dots q_n
+\ee
+with $p_i$, $q_i$ irreducible. Now write $ab = pc$ with $c = r_1 \dots r_s$ where $r_i$ is irreducible. Then
+\be
+(p_1 \dots p_m)(q_1 \dots q_n) = pr_1 \dots r_s
+\ee
+and uniqueness of factorisation (Definition \ref{def:ufd_integral_domain}.(ii)) implies that $p$ is an associate of either some $p_i$ or some $q_i$. Thus, $u_p p = p_i$ or $u_qp = q_i$ where $u_p,u_q$ are units. So
+\be
+a = p_1 \dots p_m = u_p p \cdot (\cdot) \quad \text{ or }\quad b = q_1 \dots q_n = u_q p \cdot (\cdot).
+\ee
+
+Hence $p \mid a$ or $p \mid b$ and therefore $p$ is prime.
+\end{proof}
+
+\subsection{Highest common factor}
+
+\begin{definition}[Highest common factor\index{highest common factor!rings}]\label{def:hcf_ring}
+$d$ is a highest common factor of $a_1,\dots , a_n$, written $\hcf(a_1,\dots , a_n)$, if $d | a_i$ for each $i$ and whenever $d'$ also divides each $a_i$ then $d' | d$.
+\end{definition}
+
+\begin{remark}
+Note that one often refers to the highest common factor, although certainly multiplying by a unit will give another highest common factor.
+\end{remark}
+
+\begin{proposition}\label{pro:hcf_ufd_unique_unit}
+Highest common factors exist in UFD and are unique up to multiplication by a unit.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+If $a_i$ is zero, $\hcf(a_1,\dots,a_n) = \hcf(a_1,\dots,a_{i-1},a_{i+1},\dots,a_n)$. Thus, we only consider the case that $a_i$ is unit or a product of irreducibles, each $a_i$ is of the form
+\be
+u_i \prod_j p^{n_{ij}}_j
+\ee
+where $p_j$ is irreducible and $p_j$ is not associate to $p_k$ whenever $j \neq k$. $u_i$ is a unit in $R$ and $n_{ij} \geq 0$.
+
+The claim is that $\prod_j p^{m_j}_j$ is a highest common factor of $a_1,\dots , a_n$ where $m_j = \min_i\{n_{ij}\}$. It is clear that this is a factor of each $a_i$ i.e., $d\mid a_i$, and if $d' \mid a_i$ for each $i$.
+
+If $a_i$ is a unit, we have $a_i = cd'$ for some $c\in R$, then $\bb{a_i^{-1}c}d' =1$ and therefore $d'$ is a unit. If $a_i$ is not a unit, then each irreducible dividing $d'$ is also an irreducible dividing $a_i$ and so must be one of the $p_j$ (by Proposition \ref{pro:irreducible_iff_prime_ufd}). Thus
+\be
+d' = u\prod_j p^{t_j}_j
+\ee
+where $u$ is a unit. But the $t_j$ can be at most $\min_i\{n_{ij}\}$ if $d' | a_i$ for each $i$. Thus 
+\be
+d = \prod_j p^{m_j}_j = p \cdot \prod_j p^{t_j}_j = p u^{-1} d' \ \ra \ d' \mid d
+\ee
+where $p\in R$.
+
+Suppose $d$ and $d'$ are highest common factors of $a$ and $b$, then $d\mid d'$ and $d' \mid d$. Thus, for $r_1,r_2 \in R$, we have
+\be
+d' = dr_1, \ d = d'r_2 \ \ra \ d' = d' r_1r_2 \ \ra \ r_1r_2 = 1
+\ee
+since $R$ is an integral domain. Thus, $r_1,r_2$ are units. So highest common factors are unique up to multiplication by a unit.
+\end{proof}
+
+\begin{definition}[Lowest common multiple]
+\footnote{need LCM}
+\end{definition}
+
+\begin{proposition}%\label{}
+Lowest common multiples exist in UFD.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{need to prove}
+\end{proof}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\section{Factorisations in polynomial rings, Gauss' lemma and Eisenstein's criterion}
+
+\section{Gauss' Lemma and Eisenstein's Criterion}
+
+%If $\F$ is a field then $\F[X]$ is a ED, PID and UFD. Every ideal $I \lhd \F[X]$ is principal, $I = (f(X))$ for some $f(X) \in \F[X]$. An element is irreducible if and only if it is prime. $\F[X]/I$ is a field, with elements of the form $r(X)+I$ with $r(X) = 0$ or $\deg r < \deg f$, if and only if $I$ is maximal if and only if $f(X)$ is irreducible in $\F[X]$.
+
+\subsection{Content and primitiveness}
+
+\begin{definition}[coprime\index{coprime!elements of ring}]\label{def:coprime_ring}
+Let $R$ be an integral domain and $a_1,\dots,a_n\in R$. Then we say $a_1,\dots,a_n$ are coprime if the highest common factor of $a_1,\dots,a_n$ is a unit.
+\end{definition}
+
+\begin{definition}[content\index{content!polynomial}, primitiveness\index{primitive!polynomial}]
+Assume that the ring $R$ is a UFD. Let $f(X)\in R[X]$ with $f(X) = a_0 + \dots + a_nX_n$ with $a_n \neq 0$, $\deg f = n$. The content $c(f(X))$ is the highest common factor of $a_0,\dots, a_n$. $f(X)$ is primitive if $c(f(X))$ is a unit, i.e. if the $a_i$ are coprime.%\footnote{need definition}. 
+\end{definition}
+
+
+\begin{lemma}\label{lem:primitive_product}
+Let the ring $R$ be a UFD. If $f(X)$ and $g(X)$ are primitive in $R[X]$ then so is $f(X)g(X)$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Let
+\be
+f(X) = a_0 + a_1X + \dots + a_mX^m,\quad g(X) = b_0 + b_1X + \dots + b_nX^n
+\ee
+be primitive. Suppose the product $f(X)g(X)$ is not primitive. So $c(f(X)g(X))$ is not a unit and there is a prime $p \in R$ dividing $c(f(X)g(X))$ (by Definition \ref{def:ufd_integral_domain}) but $p \nmid c(f(X))$ and $p \nmid c(g(X))$. (If $p\mid c(f(x)) =u$ where $u$ is a unit since $f(x)$ is primitive, then $pa = u$ for some $a\in R$. Then $u^{-1}a p = 1$, so $p$ is a unit. Contradiction.) % $f(x)$ and $g(x)$ are primitive, i.e).
+
+Let $k$ and $l$ be the first indice such that $p\nmid a_i$, $p\nmid b_j$ (otherwise, if $p\mid a_i$, $p \mid b_j$ for all $i,j$, we have $p\mid c(f(x)))$ and $p\mid c(g(x))$), 
+\be
+p \mid a_0,\ p \mid a_1,\ \dots ,\ p \mid a_{k-1},\ p \nmid a_k,\quad p \mid b_0,\ p \mid b_1,\ \dots ,\ p \mid b_{l-1},\ p \nmid b_l.
+\ee
+
+Thus, $p\nmid a_k b_l$ by the definition of primeness. The coefficient $c_{k+l}$ of $X^{k+l}$ in $f(X)g(X)$ is
+\be
+\dots + a_{k+1}b_{l-1} + a_kb_l + a_{k-1}b_{l+1} + \dots .
+\ee
+$p$ divides all of these terms apart from $a_kb_l$ which it does not divide. So $p \nmid c_{k+l}$, contradicting that $p | c(f(X)g(X))$. Thus $f(X)g(X)$ is primitive.
+\end{proof}
+
+
+Consider the polynomial ring $R[X]$ and let $\F$ be the field of fractions of $R$.
+
+\begin{corollary}\label{cor:content_associate}
+Let the ring $R$ be a UFD. For $f(X), g(X) \in R[X]$, the content $c(f(X)g(X))$ is an associate of $c(f(X))c(g(X))$. (Recall that highest common factors and hence contents are only
+defined up to associates.)
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+As $R$ is a UFD we may write
+\be
+f(X) = c(f(X))f_1(X),\quad\quad g(X) = c(g(X))g_1(X)
+\ee
+where $f_1(X), g_1(X)$ are primitive. Then $f_1(X)g_1(X)$ is primitive by Lemma \ref{lem:primitive_product}. Thus,
+\be
+f(X)g(X) = c(f(X))c(g(X))f_1(X)g_1(X)
+\ee
+
+So a highest common factor of the coefficients of $f(X)g(X)$ is $c(f(X))c(g(X))$, i.e.,
+\be
+c(f(X)g(X)) = c(f(X))c(g(X))c(f_1(X)g_1(X)) = c(f(X))c(g(X)) u.
+\ee
+
+where $u$ is a unit. That is, $c(f(X)g(X))$ is an associate of $c(f(X))c(g(X))$
+\end{proof}
+
+
+
+\begin{proposition}\label{pro:ufd_irreducible_or_primitive}
+Let the ring $R$ be a UFD. An irreducible $f(X)$ in $R[X]$ is either in $R$ (and irreducible in $R$) or it is primitive in $R[X]$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Assume that $f(X)$ is irreducible and write $f(X) = c(f(X))f_1(X)$ with $f_1(X)$ primitive. 
+
+If $f_1(X) \in R$, $c(f(X))\in R$ implies $f(X) \in R$.
+
+If $f_1(X) \notin R$ then, since a polynomial of degree at least 1 cannot be a unit, $c(f(X))$ must be a unit by Definition \ref{def:associativity_irreducibility_primeness_integral_domain}. Then $f(X)$ is primitive in $R[X]$.
+\end{proof}
+
+\subsection{Gauss' lemma}
+
+Gauss' lemma helps to determine when polynomials are irreducible in $\F[X]$.
+
+\begin{lemma}[Gauss' lemma\index{Gauss' lemma!polynomial}]\label{lem:gauss_polynomial_irreducible}
+Let $R$ be a UFD with $\F$ its field of fractions. Suppose $f(X) \in R[X]$ is primitive. Then $f(X)$ is irreducible in $R[X]$ if and only if $f(X)$ is irreducible in $\F[X]$.
+\end{lemma}
+
+\begin{remark}
+In particular, when $R = \Z$ then $f(X)$ is irreducible in $\Z[X]$ if and only if it is irreducible in $\Q[X]$.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+($\la$) Take $f(X)$ primitive in $R[X]$. Suppose $f(X)$ is not irreducible in $R[X]$, so it factorises in $R[X]$ as a product of non-units in $R[X]$. 
+
+Suppose $f(X) = ab$, $a,b\in R[X]$ and $a,b$ are non-units. If $a\in R$, then $a\mid f(X)$ and $a\mid a_i$ for all coefficients $a_i$ of $f(X)$. Thus, $a\mid a_i$ for all $a_i$. By the definition of highest common factor (Definition \ref{def:hcf_ring}), $a\mid c(f(X))$. Since $f(X)$ is primitive, $c(f(X))$ is a unit. Thus, there exists $b\in R$ such that $ab = u$ where $u$ is a unit. Therefore $1 = a bu^{-1}$ and $a$ is also a unit. Contradiction. Hence, neither of these non-units is in $R$, the factors have degrees greater than 0. 
+
+%Since $f(X)$ is primitive in $R[X]$, neither of these non-units is in $R$, the factors have degrees greater than 0. 
+
+%by Proposition \ref{pro:ufd_irreducible_or_primitive} $f(X)$ is not in $R$. 
+
+So these factors are non-units in $\F[X]$. So $f(X)$ factorises as a product of non-units in $\F[X]$ and therefore $f(X)$ is not irreducible in $\F[X]$. This means that if $f$ is irreducible in $\F[X]$, it must be irreducible in $R[X]$.
+
+($\ra$) Suppose that $f(X)$ is not irreducible with $f(X) = g(X)h(X)$ with $g(X), h(X) \in \F[X]$ non-units and hence not constant. Multiply by $a \in R$ and $b \in R$ repectively such that $ag(X), bh(X) \in R[X]$ (existence is guaranteed by Definition \ref{def:field_of_fractions}). Thus
+\be
+abf(X) = (ag(X))(bh(X)).
+\ee
+
+Write
+\be
+ag(X) = c(ag(X))g_1(X),\quad\quad bh(X) = c(bh(X))h_1(X)
+\ee
+where $g_1(X)$, $h_1(X)$ are primitive in $R[X]$. Note that $g_1(X)$, $h_1(X)$ are not constant and hence not units. Now Corollary \ref{cor:content_associate} implies that $ab$ is an associate of $c(ag(X))c(bh(X))$ by considering contents. So
+\be
+abf(X) = uc(ag(X))c(bh(X))u^{-1}g_1(X)h_1(X)
+\ee
+where $ab = uc(ag(X))c(bh(X))$ and $u$ a unit in $R$. Cancellation (We know that $ab\neq 0$. Otherwise $f(X) = 0$ and $f(X)$ does not have inverse so it is not primitive.) gives
+\be
+f(X) = (u^{-1}g_1(X))h_1(X)
+\ee
+If $u^{-1}g_1(X)$ is a unit then $g_1(X)$ is a unit. Contradiction. Thus $f(X)$ factorises as a product of non-units in $R[X]$.
+\end{proof}
+
+
+
+\begin{example}
+$X^3 + X + 1$ is irreducible in $\Z[X]$, and is primitive in $\Z[X]$ and so Gauss' lemma (Lemma \ref{lem:gauss_polynomial_irreducible}) implies $X^3 +X + 1$ is irreducible in $\Q[X]$.%, and so $\Q[X]/\bsa{X^3 +X + 1}$ is a field\footnote{this need $\bsa{X^3 +X + 1}$ is a maximal ideal}.
+
+Suppose $X^3 +X +1$ is reducible in $\Z[X]$, so $X^3 +X +1 = g(X)h(X)$ for $g(X), h(X) \in \Z[X]$ not units. Primitivity implies that $g(X)$ and $h(X)$ are not constant polynomials, so $\deg g, \deg h \geq 1$ (see the similar argument in proof of Gauss' lemma (Lemma \ref{lem:gauss_polynomial_irreducible})). So one of $g(X)$ and $h(X)$ is of degree 1, write
+\be
+g(X) = b_0 + b_1X, \quad\quad h(X) = c_0 + c_1X + c_2X^2.
+\ee
+Considering coefficients of $X^0$ and $X^3$,
+\be
+b_0c_0 = 1, \quad b_1c_2 = 1.
+\ee
+So $b_0 = \pm 1$, $b_1 = \pm 1$. This is a contradiction since $\pm 1$ is not a root of $X^3 + X + 1$.
+\end{example}
+
+
+
+\begin{proposition}
+Let $R$ be a UFD with $\F$ its field of fractions. If $f(X) \in R[X]$, not necessarily primitive, and $f(X) = g(X)h(X)$ with $g(X)$ primitive in $R[X], h(X) \in \F[X]$ then 
+\be
+f(X) = g(X)h_0(X)
+\ee
+with $h_0(X) \in R[X]$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+There exists $b \in R$ with $bh(X) \in R[X]$ (by Definition \ref{def:field_of_fractions}). Consider $bf(X) = g(X)(bh(X))$. Write $bh(X) = c(bh(X))h_1(X)$ with $h_1(X)$ primitive. Consider contents, 
+\be
+bc(h(X)) = c(g(X)(bh(X))) \ \ra \ b \mid c(g(X)bh(X)) \ \ra \ b\mid uc(g(X))c(bh(X)) 
+\ee
+by Corollary \ref{cor:content_associate}, where $u$ is a unit. Since $g(X)$ is primitive, we have $b \mid u'c(bh(X))$ where $u'$ is another unit. Thus, we have $b\mid c(bh(X))$ since $u'$ is a unit. Then, let $ab = u'c(bh(X))$ for some $a\in R$,
+\be
+abf(X) = g(X) c(bh(X)) ah_1(X) = u'c(bh(X)) u'^{-1} a g(X)h_1(X) = ab u'^{-1} a g(X)h_1(X) = ab  g(X) \bb{u'^{-1} ah_1(X) }.
+\ee
+
+If $ab = 0$, we have $a=0$ or $b=0$. If $a = 0$, $c(bh(X)) = 0$, $bf(X) = 0$, $b=0$ or $f(X) =0$. If $f(X) = 0$, we have $h(X) = 0$ since $g(X) \neq 0$ ($g(X)$ is primitive). If $b=0$, $bh(X) = 0$ and this is contradiction to Definition \ref{def:field_of_fractions}.(ii).
+
+
+If $ab \neq 0$, we can do the cancellation and have $f(X) = g(X)\bb{u'^{-1} ah_1(X) } = g(X)h_0(X)$ for some $h_0(X) \in R[X]$.
+\end{proof}
+
+Thus, we can have the following proposition.
+
+\begin{proposition}
+Let $R$ be a UFD with $\F$ its field of fractions and $g(X)$ be primitive in $R[X]$,
+\be
+I = g(X)\F[X] \lhd \F[X],\qquad J = g(X)R[X] \lhd R[X] \quad \ra \quad I \cap R[X] = J.
+\ee
+\end{proposition}
+
+
+\begin{theorem}\label{thm:r_udf_rx_udf}
+If $R$ is a UFD then $R[X]$ is a UFD.
+\end{theorem}
+
+
+\begin{proof}[\bf Proof]
+The first step is to show that we need only look at primitives.
+
+Let $f(X) \in R[X]$ be non-zero and a non-unit. Write $f(X) = c(f(X))f_1(X)$ with $f_1(X)$ primitive. 
+
+Observe that since R is a UFD, $c(f(X))$ is expressible as a product of irreducibles in $R$ in an essentially unique way. These irreducibles are irreducible in $R[X]$. $p_i \in R$
+\be
+c(f(X)) = p_1 \dots p_m.\quad (*)
+\ee
+
+If $f(X)$ factorises as a product of irreducibles in $R[X]$, then we can collect together the irreducibles in $R$ and the primitive irreducibles. $q_j(X)\in R[X]$ are primitive irreducibles,
+\be
+f(X) = c(f(X))f_1(X) = p_1 \dots p_m \cdot q_1(X) \dots q_n(X).
+\ee
+
+The product of these primitive irreducibles $q_1(X) \dots q_n(X)$ is primitive by Lemma \ref{lem:primitive_product} and so the content of $f(X)$ is an associate of the product of the irreducibles in $R$. That is, by Corollary \ref{cor:content_associate} and primitiveness,
+\be
+c(f(X)) = c\bb{p_1 \dots p_m \cdot q_1(X) \dots q_n(X)} = u p_1 \dots p_m \cdot c(q_1(X)) \dots c(q_n(X)) = u' p_1 \dots p_m\quad (\dag)
+\ee
+where $u$, $u'$ are units in $R$. The essentially unique factorisation of $c(f(X))$ means that $(*)$ and $(\dag)$ are essentially the same. Then
+\be
+f(X) = c(f(X))f_1(X) = u' p_1 \dots p_m u'^{-1}\cdot q_1(X) \dots q_n(X).
+\ee
+
+Cancellation implies that the product of the primitives is an associate of $f_1(X)$,
+\be
+f_1(X) = u'^{-1}\cdot q_1(X) \dots q_n(X).
+\ee
+
+Thus we may assume that $f(X)$ is primitive. That is, $c(f(X))$ can be waived since they are in $R$.
+
+We know that $\F[X]$ is a UFD. So we can factorise $f(X)$ in $\F[X]$,
+\be
+f(X) = p_1(X) \dots p_k(X),
+\ee
+where $p_i(X)$ is irreducible in $\F[X]$.
+
+There exists $a_i \in R$ with $a_ip_i(X) \in R[X]$ (by Definition \ref{def:field_of_fractions}). We have
+\be
+a_ip_i(X) = c_iq_i(X)
+\ee
+with $c_i = c(a_ip_i(X))$, $q_i(X)$ primitive in $R[X]$. $q_i(X)$ is also irreducible in $\F[X]$ since $\F[X]$ is a UFD. Thus, by Gauss' lemma (Lemma \ref{lem:gauss_polynomial_irreducible}), $q_i(X)$ is also irreducible in $R[X]$. So
+\be
+a_1 \dots a_kf(X) = c_1 \dots c_kq_1(X) \dots q_k(X).
+\ee
+
+Considering contents and using the assumption that $f(X)$ is primitive, we have
+\be
+a_1 \dots a_k = uc_1 \dots c_k
+\ee
+for some unit $u \in R$ since $q_i(X)$ is primitive by Lemma \ref{lem:primitive_product}, i.e. $q_1(X) \dots q_k(X)$ is primitive.
+\be
+a_1 \dots a_k f(X) = (uc_1 \dots c_k)(u^{-1}q_1(X))q_2(X) \dots q_k(X).
+\ee
+
+Cancellation gives
+\be
+f(X) = (u^{-1}q_1(X))q_2(X) \dots q_k(X),
+\ee
+a product of irreducibles in $R[X]$. This shows the existence part. For the uniqueness of the factorisation assume that
+\be
+f(X) = q_1(X) \dots q_k(X) = r_1(X) \dots r_l(X)
+\ee
+with $q_i(X)$, $r_i(X)$ irreducible in $R[X]$. We are assuming that $f(X)$ is primitive and so each $r_i(X)$ must be primitive (by Corollary \ref{cor:content_associate}).
+
+By Gauss' lemma (Lemma \ref{lem:gauss_polynomial_irreducible}), $r_i(X)$ is irreducible in $\F[X]$. Uniqueness of factorisation in $\F[X]$ implies that $k = l$, and after reordering we have $q_i(X) = u_ir_i(X)$ with $u_i$ a unit in $\F[X]$ (since $\F[X]$ is a UFD), hence in $\F$.
+
+We can write $u_i = a_i/b_i$ for some $a_i, b_i \in R$ with $b_i \neq 0$. Then $b_iq_i(X) = a_ir_i(X)$. But $q_i(X)$ and $r_i(X)$ are primitive and hence $b_i$ and $a_i$ must be associates being the content of $b_iq_i(X) = a_ir_i(X)$. Cancelling gives that $q_i(X)$ and $r_i(X)$ are associates in $R[X]$. Thus factorisation is essentially unique in $R[X]$.
+\end{proof}
+
+\begin{corollary}
+Let $R$ be a UFD. Then $R[X_1,\dots ,X_n]$ is a UFD.
+\end{corollary}
+\begin{proof}[\bf Proof]
+We assume that $R$ is a UFD and repeated application of Theorem \ref{thm:r_udf_rx_udf} gives that 
+\be
+R[X_1],\quad R[X_1,X_2] = (R[X_1])[X_2],\quad R[X_1,X_2,X_3] = \bb{(R[X_1])[X_2]}[X_3]\dots.
+\ee
+Thus, $R[X_1,\dots ,X_n]$ is a UFD.
+\end{proof}
+
+\subsection{Eisenstein's criterion}
+
+\begin{proposition}[Eisenstein's criterion\index{Eisenstein's criterion}]\label{pro:eisenstein_criterion}
+Let $R$ be a UFD and let 
+\be
+f(X) = a_0+a_1X+ \dots + a_nX^n \in R[X],\ a_n \neq 0,
+\ee
+be primitive. Assume that for some irreducible $p$ we have $ p \nmid a_n$, $p \mid a_i$ for $0 \leq i < n$ and $p^2 \nmid a_0$. Then $f(X)$ is irreducible in $R[X]$, and hence in $\F[X]$ by Gauss' lemma (Lemma \ref{lem:gauss_polynomial_irreducible}).
+\end{proposition}
+
+
+\begin{proof}[\bf Proof]
+Suppose that $f(X) = g(X)h(X)$ with
+\be
+g(X) = r_kX^k + \dots + r_0,\quad \quad h(X) = s_lX^l + \dots + s_0
+\ee
+where $r_k, s_l \neq 0$. Note that $k + l = n$. Since $p \mid a_0 = r_0s_0$ and $p^2 \nmid a_0$ we know $p\mid r_0$ or $p\mid s_0$ since $p$ is prime. However, $p\mid r_0$ and $p\mid s_0$ gives that $p^2\mid r_0s_0 = a_0$. Contradiction to the assumption. Thus we may assume that $p | r_0$ and $p \nmid s_0$. $p \nmid a_n = r_ks_l$ implies $p \nmid r_k$, $p \nmid s_l$.
+
+Set $j$ to be such that $p | r_0,\dots , p | r_{j-1}, p \nmid r_j$ (This index $j$ exists since $p\nmid r_k$). Consider the term
+\be
+a_j = r_0s_j + \dots + r_js_0.
+\ee
+
+We have $p \mid r_0s_j, \dots, p\mid r_{j-1}s_1$. If $p\mid r_j s_0$, we have $p\mid r_j$ or $p\mid s_0$ since $p$ is a prime. Contradiction. Thus, $p \nmid a_j$. Thus $j = n$, and hence $k = n$, $l = 0$. As $f(X)$ is primitive, 
+\be
+u = c(f(X)) = u' c(g(X)) c(h(X)) = u's_0 c(g(X)) %\ \ra \ s_0 
+\ee
+where $u,u'$ are units. Thus, $h(X)= s_0$ must be a unit. Thus $f(X)$ cannot be factorised as a product of non-units.
+\end{proof}
+
+\begin{example}
+Consider $R = \Z$ and let $f(X) = X^n - p \in \Z[X]$, where $p$ is prime. 
+
+By Eisenstein's criterion, $f(X)$ is irreducible in $\Z[X]$ and hence in $\Q[X]$ (by Gauss' lemma (Lemma \ref{lem:gauss_polynomial_irreducible}) since $\Q$ is field of fractions of $\Z$). So $f(X)$ does not have any roots in $\Q$, as a root would yield a linear factor of $f(X)$ in $\Q[X]$. Thus $p$ has no nth roots in $\Q$.
+\end{example}
+
+\begin{example}
+Consider the cyclotomic polynomial
+\be
+f(X) = X^{p-1} + X^{p-2} + \dots + 1
+\ee
+where $p$ is prime. The claim is that this is irreducible in $\Z[X]$, and hence in $\Q[X]$. Note that $(X - 1)f(X) = X^p - 1$. We make the substitution $X = 1 + Y$ and get
+\be
+Y f(1 + Y ) = (1 + Y )^p - 1, \quad\quad f(1 + Y ) = Y^{p-1} + \binom{p}{1} Y^{p-2} + \dots + \binom{p}{p - 1} 
+\ee
+where $\binom{p}{i}$ are binomial coefficients. Eisenstein's criterion does now apply, we have $p |\binom{p}{i}$, $p^2 \nmid\binom{p}{p-1} = p$. We deduce that $f(1 + Y )$ is irreducible and hence $f(X)$ is irreducible in $\Z[X]$, and hence in $\Q[X]$.
+\end{example}
+
+
+\section{$\Z[\cdot]$}
+
+\subsection{Gaussian integers $\Z[i]$}
+
+\begin{definition}[Gaussian integer\index{Gaussian integer}]\label{def:gaussian_integer}
+Gaussian integers are the set $\Z[i]=\bra{a+ib :a,b\in \Z }$. The norm (see Definition \ref{def:norm_ring})
+\be
+N(a + ib) = a^2 + b^2 = (a + ib)(a - ib) = z\bar{z},
+\ee
+where $z = a + ib$, is multiplicative, that is,
+\be
+N(z_1z_2) = N(z_1)N(z_2).
+\ee
+
+The units have to be of norm 1, hence the only units are $\pm 1$, $\pm i$.
+
+\end{definition}
+
+%We consider the set of Gaussian integers\index{Gaussian integers} as introduced before,
+%\be
+%\Z[i] = \{a + ib : a, b \in \Z\}.
+%\ee
+
+
+\begin{example}
+Recall from an earlier example that $\Z[i]$ is a Euclidean domain and hence a PID and a UFD. Thus the irreducibles and primes are the same, by Lemma \ref{lem:prime_implies_irreducible_integral_domain} and Lemma \ref{lem:pid_irreducible_prime}. 
+\bit
+\item $2 = (1 + i)(1 - i)$ is not irreducible.
+\item 3 is irreducible since $N(3) = 9$. If it were to factorise as a product of two non-units then they would have norm 3. But there are no elements of norm 3.
+\item $5 = (1 + 2i)(1 - 2i)$ is not irreducible.
+\eit
+\end{example}
+
+\begin{lemma}\label{lem:square_modulo}
+A prime number $p$ in $\Z$ is irreducible (and prime) in $\Z[i]$ if and only if $p$ is not of the form $x^2 + y^2$ with $x, y \in \Z \bs \bra{0}$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+$(\ra)$. If $p = x^2 + y^2$ then $p = (x + iy)(x - iy)$ (where $x+iy,x-iy$ are not units) and so $p$ is not irreducible in $\Z[i]$. 
+
+$(\la)$. Consider $N(p) = p^2$, since $p$ is not irreducible, it factorises into two non-units, necessarily of norm $p$ ($p = z_1z_2$, $p^2 = N(p) = N(z_1)N(z_2)$, then $N(z_1) = N(z_2) = p$, since $N(z_1),N(z_2)\neq 1$), only if there is $x + iy$ with $N(x + iy) = p$. So $x^2 + y^2 = p$.
+\end{proof}
+
+
+\begin{proposition}\label{pro:irreducible_associate_prime_p}
+The irreducibles (and primes) in $\Z[i]$ are up to associates
+\ben
+\item [(i)] $p \in \Z$ prime with $p \equiv 3 \lmod{4}$,
+\item [(ii)] $z$ with $z\bar{z} = p$, for $p$ prime in $\Z$ with $p = 2$ or $p \equiv 1 \lmod{4}$.
+\een
+\end{proposition}
+
+
+\begin{proof}[\bf Proof]
+Let us first show that these are actually irreducibles (and primes).
+\ben
+\item [(i)] If $p \equiv 3 \lmod{4}$ then it is not of the form $x^2 + y^2$ since squares modulo 4 are 0 or 1 and so $x^2 + y^2 \equiv 0,\ 1 \text{ or }2 (\bmod 4)$. By Lemma \ref{lem:square_modulo}, $p$ is irreducible (and prime) in $\Z[i]$.
+
+\item [(ii)] \ben
+\item [(a)] If $p = 2 = (1 + i)(1 - i)$, % is of the correct form, 
+$1 \pm  i$ are irreducibles of norm 2.
+
+\item [(b)] If $p \equiv 1 \lmod{4}$, we consider the finite field of $p$ elements $\F_p \cong \Z/p\Z = \bra{0, 1,\dots , p - 1}$\footnote{see Example \ref{exa:zpz_field}}. Then by structure theorem for finite abelian groups (Theorem \ref{thm:structure_theorem_finite_abelian_group}), we have the multiplicative group
+\be
+\F_p^* := \F_p\bs \bra{0} \cong C_{d_1} \times C_{d_2} \times \dots \times C_{d_n}\quad \text{with }d_i\mid d_{i+1}
+\ee
+
+If $\F_p^*$ is isomorphic to $C_{d_1} \times C_{d_2} \times \dots \times C_{d_n}$ where $n \geq 2$, then there exists $n_a,n_b \in \bra{d_1,d_2,\dots,d_n}$ s.t. $n_a\mid n_b$. Then there is a cyclic subgroup $\bsa{a} \cong C_{n_a}$ and $\bsa{b} \cong C_{n_b}$ generated by $a$ and $b$ with order $n_a$ and $n_b$. Since $n_a \mid n_b$ we have $\bsa{b^{\frac{n_b}{n_a}}} \cong \bsa{a} \cong C_m$ for some $m >1$. Thus, there exists a subgroup $\bsa{b^{\frac{n_b}{n_a}}} \times \bsa{a} \cong C_m \times C_m$ by Lemma \ref{lem:direct_product_of_groups}.
+
+% (That is, $p-1 = 4k$ for some $k\in \Z$, if $k$ is an odd number, by structure theorem for finite abelian groups (Theorem \ref{thm:structure_theorem_finite_abelian_group}) and Lemma \ref{lem:coprime_cycle_cong}, we can have
+%\be
+%\F_p\bs\bra{0} \cong C_{2k} \times C_2 \cong \left\{ \ba{ll}
+%C_2 \times C_2 & k =1\\
+%C_{k} \times C_2 \times C_2 \quad\quad & k >1
+%\ea\right..
+%\ee
+
+%If not then the structure theorem for finite abelian groups (Theorem \ref{thm:structure_theorem_finite_abelian_group}) implies we can find a subgroup of form $C_m \times C_m$ for some $m > 1$.
+
+Thus there are at least $m^2$ elements satisfying $a^m = 1$. These are all roots of $X^m - 1$ in $\F_p[X]$ which is a UFD. $X^m - 1$ has a unique expression up to ordering and associates as a product of at most $m$ irreducibles in $\F_p[X]$.
+
+In particular, there are at most $m$ linear factors $X - a$ and so at most $m$ roots, contradicting that there are at least $m^2$ roots.
+
+Thus, the multiplicative group $\F_p^*$ is cyclic.
+
+In this case, $\F_p$ has a cyclic multiplicative group. A cyclic group $\bsa{g}$ of order $4n$ has a subgroup of order 4, namely $\bsa{ g^n }$, and a unique element of order 2, namely $g^{2n}$. $p - 1$ is the element of order 2 in $\F_p \bs\bra{0}$, the multiplicative group since
+\be
+(p-1)^2 = p^2 - 2p + 1 \equiv 1 \lmod{p}
+\ee
+
+An element of order 4 corresponds to $a \in \Z$ with $a^2$ is order 2. Thus, $a^2 \equiv -1 \lmod{p}$. Thus $p | a^2 + 1 = (a + i)(a - i)$. % where $a\pm i$ are irreducibles. 
+But $p \nmid a \pm  i$ (since $p$ is a prime number) and so $p$ is not an irreducible (and prime) in $\Z[i]$ (If $p$ is irreducible, it must divides either $a+ i$ or $a-i$ since it is an associate of the irreducible divides $a\pm i$).
+
+Thus $p$ must factorise, $p = z_1z_2$ with $z_i$ non-units in $\Z[i]$. We have $N(z_i) = p$. Writing $z_i = x \pm  iy$, we have $p = x^2 + y^2$ (Lemma \ref{lem:square_modulo}). We also have that $z_i$ are irreducible since if $z_i = y_1y_2$, $p = N(z_i) = N(y_1)N(y_2)$ which will give that one of $y_i$ is a unit ($N(y_i) = 1$).
+\een
+\een
+
+Now for any irreducible $\alpha \in\Z[i]$, $\bar{\alpha}$ is irreducible (since the complex conjugate of a unit is still a unit). Since $\alpha$ is a irreducible (not unit), we can take prime number $p$ such that $p \mid N(\alpha)$. We use that $N(\alpha) = \alpha\bar{\alpha}$, a product of irreducibles.
+
+If $p \equiv 3 \lmod{4}$ then $p$ is irreducible (and prime) in $\Z[i]$. So the fact that $\Z[i]$ is a UFD and $p \mid \alpha\bar{\alpha}$ implies that $p$ is an associate of either $\alpha$ or $\bar{\alpha}$. So $p$ is an associate of $\alpha$ (since the complex conjugate of a unit is still a unit).
+
+If $p = 2$, or $p \equiv 1 \lmod{4}$ then $p = z\bar{z} | \alpha\bar{\alpha}$. If there exists non-unit $b\in Z[i]$ such that $z\bar{z}b\bar{b} = \alpha \bar{\alpha}$ (since $z\bar{z}, \alpha\bar{\alpha} \in \Z^+$ ), then we $\alpha$ can be expressed by the product of two non-units. Contradiction. 
+
+Thus, we have $z\bar{z} = \alpha\bar{\alpha}$. Since $z$ and $\bar{z}$ are irreducibles and $\Z[i]$ is a UFD, we have that $z$ is an associate of $\alpha$ or $\bar{\alpha}$ and so $\alpha$ is an associate of $z$ or $\bar{z}$. %Thus our list is complete.
+\end{proof}
+
+
+\begin{corollary}
+Let $n = p^{n_1}_1 \dots p^{n_k}_k \in \Z$ be the prime factorisation of $n$, with $p_1,\dots , p_k$ distinct primes in $\Z$. Then $n$ is of the form $x^2 + y^2$ if and only if whenever $p_i \equiv 3 \lmod{4}$ then $n_i$ is even.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+($\ra$). Suppose $n = x^2 + y^2 = (x + iy)(x - iy) = z\bar{z}$ with $z = x + iy$. Thus $N(z) = n$. 
+
+Express $z$ as a product of irreducibles in $\Z[i]$, $z = \alpha_1 \dots \alpha_s$, say. But we know what the irreducibles are from Proposition \ref{pro:irreducible_associate_prime_p}. Either $N(\alpha_j) = p^2_j$ with $p_j \equiv 3 \lmod{4}$ or $N(\alpha_j) = p_j$ with $p_j = 2$ or $p_j \equiv 1 \lmod {4}$. Thus $n = N(z) = \prod N(\alpha_j)$ is of the required form.
+
+($\la$). Conversely, if $n = p^{n_1}_1 \dots p^{n_k}_k$ with $n_j$ even for $p_j \equiv 3 \lmod {4}$ then we can replace any $p_j = 2$ or $p_j \equiv 1 \lmod {4}$ by $p_j = \alpha_j \bar{\alpha}_j$ and any other primes $p_j = \alpha_j = \bar{\alpha}_j$ and so $p^2_j = \alpha_j \bar{\alpha}_j$ for some irreducible $\alpha_j$ (Proposition \ref{pro:irreducible_associate_prime_p}). Thus $n$ is of the form $z\bar{z}$ for some $z = x + iy$ and so $n = x^2 + y^2$.
+\end{proof}
+
+\begin{example}
+Let $n = 65 = 5 \times 13$ and note that $5 = (2 + i)(2 - i)$, $13 = (2 + 3i)(2 - 3i)$. The unique factorisation up to reordering and associates is
+$n = (2 + i)(2 - i)(2 + 3i)(2 - 3i)$.
+
+We use this to express $n$ as $x^2 + y^2 = z\bar{z}$ with $z = x + iy$
+\be
+n = [(2 + i)(2 + 3i)][(2 - i)(2 - 3i)] = (1 + 8i)(1 - 8i) = 1^2 + 8^2
+\ee
+or
+\be
+n = [(2 + i)(2 - 3i)][(2 - i)(2 + 3i)] = (7 - 4i)(7 + 4i) = 4^2 + 7^2.
+\ee
+\end{example}
+
+
+\subsection{$\Z[\alpha]$ with $\alpha$ an algebraic integer}
+
+\begin{definition}[algebraic integer\index{algebraic integer}]\label{def:algebraic_integer}
+A complex number $\alpha \in \C$ is an algebraic integer if there is a monic polynomial $f(X) \in \Z[X]$ with $f(\alpha) = 0$.
+\end{definition}
+
+\begin{example}
+The following are algebraic integers,%For example,
+\begin{center}
+\begin{tabular}{cc}
+$\alpha \in \C$ & \quad Minimal polynomial of $\alpha$ \quad\\
+\hline
+$i$ & $f(X) = X^2 + 1$\\ 
+$\sqrt{2}$ &  $f(X) = X^2 - 2$\\
+$\frac 12(1 +\sqrt{-3})$ & $f(X) = X^2 - X + 1$
+\end{tabular}
+\end{center}
+\end{example}
+
+\begin{definition}\label{def:algebraic_integer_ring}
+$\Z[\alpha]$ is the smallest subring of $\C$ containing $\Z$ and $\alpha$. Then,
+\be
+\Z[\alpha] \cong \Z[X]/I
+\ee
+where $I$ is the kernel of the map $\theta : \Z[X] \to \Z[\alpha]$, $f(X) \mapsto  f(\alpha)$ (by the first isomorphism theorem (Theorem \ref{thm:isomorphism_1_ring}) since $\theta$ is surjective by Definition \ref{def:algebraic_integer}).
+\end{definition}
+
+
+\begin{proposition}\label{pro:minimal_polynomial_of_algebraic_integer}
+For an algebraic integer $\alpha$, with the notation in Definition \ref{def:algebraic_integer_ring}, the kernel $I$ is a principal ideal generated by a monic irreducible polynomial $f_\alpha(X) \in \Z[X]$, called the minimal polynomial\index{minimal polynomial of algebraic integer} of $\alpha$.%, written.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+By Definition \ref{def:algebraic_integer}, $f(\alpha) = 0$ for some monic $f(X) \in \Z[X]$. So we can pick $f_\alpha(X)\in I$ of minimal degree $\geq 0$, and we may assume $f_\alpha(X)$ is primitive in $\Z[X]$. The claim is that this is the required polynomial.
+
+We wish to show that $I = \bsa{f_\alpha(X)}$.
+
+Let $h(X) \in I$. Then, as $\Q$ is a field, we can apply Euclidean algorithm for polynomials (Proposition \ref{pro:euclidean_algorithm_polynomial}) and find $q(X),r(X)\in \Q[X]$ such that% is a Euclidean domain, we can write
+\be
+h(X) = q(X)f_\alpha(X) + r(X)
+\ee
+with $r(X) = 0$ or $\deg r(X) < \deg f_\alpha(X)$. Clearing denominators, there exists $a \in \Z\bs\{0\}$ such that
+\be
+ah(X) = aq(X)f_\alpha(X) + ar(X)
+\ee
+with $aq(X) \in \Z[X]$ and $ar(X) \in \Z[X]$. But $ar(\alpha) = 0$ so $ar(X) \in I$. Minimality of degree of $f_\alpha(X)$ implies that $ar(X) = 0$ so $r(X) = 0$. So $ah(X) = aq(X)f_\alpha(X)$. Consider the contents of both sides, since $h(X)\in \Z[X]$
+\be
+a \mid c(ah(X)) = c(aq(X)f_\alpha(X)) = c(aq(X)) u \quad (u \text{ is a unit})
+\ee
+by the fact that $f_\alpha(X)$ is primitive (Corollary \ref{cor:content_associate}). So $a$ divides all the coefficients of $aq(X)$. So $q(X)\in \Z[X]$. Thus $h(X) \in \bsa{f_\alpha(X)} \lhd \Z[X]$.
+
+We also claim that $f_\alpha(X)$ is prime (and irreducible since $\Z[X]$ is a UFD).
+
+If $f_\alpha(X) = f_1(X)f_2(X)$ then $0 = f_1(\alpha)f_2(\alpha)$ and so $f_i(X) \in I = \bsa{f_\alpha(X)}$ for some $i$. $f_\alpha(X) | f_i(X)$ for some $i$. i.e. $f_\alpha (X) g(X) = f_i(X)$, $g(X) \in \Z[X]$. Thus, $f_\alpha (X)$ is prime.
+
+Finally, we show that $f_\alpha(X)$ is monic.
+
+As in the first line of proof, there are some monic $f(X)\in I = \bsa{f_\alpha(X)}$. Thus, $f_\alpha(X) g(X) = f(X)$ where $g(X) \in \Z[X]$. Checking the leading coefficient of polynomial, we have $a_\alpha a_g = 1$ ($f_\alpha (X) = a_\alpha X^n + \dots$, $g(X) = a_g X^m + \dots $) and then $a_\alpha = \pm 1,\pm i$. But these are all multiplication of 1 and a unit. Thus, $f_\alpha (X)$ is monic.
+\end{proof}
+
+\begin{remark}
+minimal polynomial of algebraic integer $f_\alpha(X)$ is unique\footnote{need proof}.
+\end{remark}
+
+\begin{definition}[rational integers]
+The elements of $\Z$ are called rational integers.
+\end{definition}
+
+\begin{lemma}
+If $\alpha$ is an algebraic integer and $\alpha \in \Q$ then $\alpha \in \Z$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+$f_\alpha(X)$ is irreducible in $\Z[X]$ and monic (thus primitive) (by Proposition \ref{pro:minimal_polynomial_of_algebraic_integer}). By Gauss' lemma, Lemma \ref{lem:gauss_polynomial_irreducible} ($\Z$ is a UFD and $\Q$ is the field of fractions of $\Z$), $f_\alpha(X)$ is irreducible in $\Q[X]$. 
+
+Since $\alpha$ is a root of $f_\alpha(X)$ in $\Q$, we have $f_\alpha(X) = X - \alpha$ by definition of minimal polynomial of algebraic integer. Also since $f_\alpha \in \Z[X]$, we have $\alpha \in \Z$.
+\end{proof}
+
+
+
+
+\begin{example}
+Let $p \in \Z$ be prime and consider $\Z[X]/\bsa{p, f_\alpha(X)}$ with $\F_p \cong \Z/p\Z$.
+\beast
+\Z[X]/\bsa{p, f_\alpha(X)} & \cong & \F_p[X]/\bsa{ \bar{f}_\alpha(X)} \quad (\text{the third isomorphism theorem, Theorem \ref{thm:isomorphism_3_ring}})\\
+& \cong & \F_p[\alpha] \quad (\text{the first isomorphism theorem, Theorem \ref{thm:isomorphism_1_ring}})\\
+& \cong & \Z[\alpha]/\bsa{p} \quad (\text{the third isomorphism theorem, Theorem \ref{thm:isomorphism_3_ring}})
+\eeast
+where $\bar{f}_\alpha(X)$ is the polynomial in $\F_p[X]$ obtained from $f_\alpha(X)$ by taking coefficients modulo $p$.
+
+For example, $\alpha = i$, $f_\alpha(X) = X^2 + 1$. Then
+\be
+\Z[X]/\bsa{p,X^2 +1} \cong \F_p[X]/\bsa{X^2 + 1} \cong \F_p[i] \cong  \Z[i]/\bsa{p} .
+\ee
+For $p = 2\text{ or }p \equiv 1 \lmod {4}$ this is not an integral domain, for $p \equiv 3 \lmod {4}$ it is an integral domain\footnote{need details},.
+\end{example}
+
+%\begin{remark}
+%There is quite a lot on algebraic integers in the Part II course Number Fields. For example, quadratic fields which are of the form $\Q(\sqrt{d}) = \{a + b\sqrt{d} : a, b \in \Q\} \leq \C$. In $\Q(\sqrt{d})$ the algebraic integers form a ring $R$. However, $(1 + \sqrt{-3})/2$ is an algebraic integer so $R$ is not necessarily $\Z(\sqrt{d})$.
+
+%$R$ is Euclidean if and only if $d$ is -11, -7, -3, -2, -1, 2, 3, 5, 6, 7, 11, 13, 17, 19, 21, 29, 33, 37, 41, 57 or 73 (21 possibilities). 
+
+%$R$ is a UFD for $d < 0$ if and only if $d$ is -1, -2, -3, -7, -11, -19, -43, -67, -163 (9 possibilities, cf. H.M. Stark \textit{An introduction to number theory}). For $d > 0$ there exist 38 possibilities with $2 \leq d < 100$ so that $R$ is a UFD. This question is still open.
+%\end{remark}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Problems}
+
+\begin{problem}
+Let $\omega = \frac 12 (1 + \sqrt{-3})$, let $R = \{a + b\omega : a, b \in \Z\}$, and let $F = \{a + b\omega : a, b \in \Q\}$. Show that $R$ is a subring of $\C$, and that $F$ is a subfield of $\C$. What are the units of $R$?
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+Let $a_1 + b_1\omega,a_2 + b_2\omega \in R$. Thus, $a_1 + b_1\omega + a_2 + b_2\omega \in R$ since $a_1 + a_2 \in \Z$ and $b_1 + b_2\in \Z$.
+
+The identity of addition is $0 = 0 + 0\omega \in R$, thus the inverse of $a+b\omega$ is $-a-b\omega \in R$.
+
+Also, $(a_1 + b_1\omega)(a_2 + b_2\omega) = a_1a_2 + (a_1b_2 + a_2b_1)\omega + b_1b_2 \omega^2 \in R$. We know that
+\be
+\omega^2 = \bb{\frac{1+\sqrt{-3}}2}^2 = \frac{1+(-3) + 2\sqrt{-3}}4 = \frac {-1+\sqrt{-3}}2 = \omega -1.
+\ee
+
+Thus, $(a_1 + b_1\omega)(a_2 + b_2\omega) = a_1a_2 - b_1b_2 + (a_1b_2 + a_2b_1 + b_1b_2)\omega \in R$.
+
+The multiplicative identity is $1 = 1 + 0\omega \in R$. Also, it can be check that the multiplication is distributive over addition.% $a_1 + b_1\omega,a_2 + b_2\omega, a_3 + b_3\omega \in R$,
+%\be
+%(a_1 + b_1\omega)\bb{a_2 + b_2\omega + a_3 + b_3\omega} = (a_2 + b_2\omega)\bb{a_2 + a_3+ (b_2 + b_3)\omega} = 
+%\ee
+
+Thus, $R$ is subring of $\C$. 
+
+For $F = \{a + b\omega : a, b \in \Q\}$, we only check the multiplication inverse, let $a+b\omega \in F$
+\be
+(a+b\omega) (c + d\omega ) = 1 \ \ra \ ac - bd + (ad +bc + bd)\omega = 1 \ \ra \ \left\{\ba{ll} ac - bd = 1\\ ad +bc + bd = 0 \ea\right.
+\ee
+
+Thus if $a = 0$, $b\neq 0$, $d = -\frac 1b$, $c = \frac 1b$, the inverse $a+b\omega = b\omega$ is $\frac 1b - \frac 1b \omega \in F$.
+
+IF $a\neq 0$, $c = \frac{1+bd}a$,
+\be
+ad + b  \frac{1+bd}a + bd = 0  \ \ra \ \bb{a+b + \frac {b^2}a }d = - \frac ba
+\ee
+
+If $b = 0$, $d = 0$, $c = \frac 1a$, the inverse $a+b\omega = a$ is $\frac 1c = \frac 1c + 0\omega \in F$.
+
+If $b\neq 0$, $d = \frac b{a^2 + ab + b^2}$, $c = \frac {a^2 + ab + 2b^2}{a(a^2 + ab + b^2)}$, so the inverse $a+b\omega $ is
+\be
+\frac {a^2 + ab + 2b^2}{a(a^2 + ab + b^2)} + \frac b{a^2 + ab + b^2}\omega \in F.
+\ee
+
+Thus, $F$ is subfield of $\C$.
+
+We can define 
+\be
+N\bb{a+b\omega} = N\bb{a+ \frac b2 + \frac{\sqrt{-3}}2b} = (a+\frac b2)^2 + \frac 34 b^2 = a^2 + b^2 + ab \geq 0.
+\ee
+
+Given $r_1 = a_1 + b_1\omega \in R$, if it is a unit, there must exist $r_2 \in R$ (its multiplication inverse) such that $r_1 r_2 = 1$. We have $N(r_1r_2) = N(r_1)N(r_2) = 1$. Since $N(r)$ is of form $a^2 + b^2 + ab \in \Z$, $N(r_1) = N(r_2) = 1$. Thus,
+\be
+1 = N(r_1) = a_1^2 + b_1^2 + a_1b_1 \ \ra \ a_1^2 + a_1 b_1 + b_1^2 -1 = 0 \ \ra \ b_1^2 - 4(b_1^2 -1) \geq 0 \ \ra \ b_1^2 \leq \frac 43.
+\ee
+
+If $b = 0$, $a = \pm 1$. If $b= -1$, $a = 0, 1$. If $b=1$, $a = 0,-1$. Thus the units are $\pm 1$, $\pm \omega$, $\pm \omega^2$ ($1-\omega$, $-1 + \omega$).
+
+\end{solution}
+
+\begin{problem} 
+Show that the ideal $\bsa{2, 1 + \sqrt{-7}}$ in $\Z[\sqrt{-7}]$ is not principal.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+If $\bsa{2, 1 + \sqrt{-7}}$ is principal, there must exists $a\in \Z[\sqrt{-7}]$ such that $\bsa{2, 1 + \sqrt{-7}}= \bsa{a}$ and $a\mid 2$ and $a\mid 1 + \sqrt{-7}$. That is, $2 = a b_1$ and $1+ \sqrt{-7} = ab_2$, $b_1,b_2 \in \Z[\sqrt{-7}]$. 
+
+Thus, the norm is of the form $c^2 + 7d^2$,
+\beast
+4 & = & N(2) = N(a)N(b_1) \ \ra \ N(a) = 1,4\\
+8 & = & N(1+\sqrt{-7}) = N(a)N(b_2)  \ \ra \ N(a) = 1,8
+\eeast
+
+Thus, $N(a) = 1$ and $a$ is unit. Hence $\bsa{a} = \Z[\sqrt{-7}]$. However, $1 \in \Z[\sqrt{-7}]$ and $1 \notin \bsa{2,1+\sqrt{-7}}$. Thus, $\bsa{2,1+\sqrt{-7}}$ is not principal.%But we know that $2$ and $1+\sqrt{-7}$ are irreducible in $\Z[\sqrt{-7}]$, so $a$ is a unit.
+\end{solution}
+
+
+\begin{problem}
+Give an element of $\Z[\sqrt{-17}]$ that is a product of two irreducibles and also a product of three irreducibles.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+$18 = (1+\sqrt{-17})(1-\sqrt{-17}) = 2 \cdot 3 \cdot 3$.
+
+Now we show that they are all irreducible. 
+
+Express 2 with $2= z_1z_2$, $z_1,z_2\in \Z[\sqrt{-17}]$. Thus $4 = N(z_1)N(z_2)$. Since the norm is the form of $a^2 + 17b^2$ and there is no element of norm 2. Thus, one of the $N(z_j) = 1$, so $z_j$ is a unit. Thus, $2$ is irreducible.
+
+Express 3 with $3= z_1z_2$, $z_1,z_2\in \Z[\sqrt{-17}]$. Thus $9 = N(z_1)N(z_2)$. Since the norm is the form of $a^2 + 17b^2$ and there is no element of norm 3. Thus, one of the $N(z_j) = 1$, so $z_j$ is a unit. Thus, $3$ is irreducible.
+
+Express $1 \pm \sqrt{-17}$ with $1 \pm \sqrt{-17} = z_1z_2$, $z_1,z_2\in \Z[\sqrt{-17}]$. Thus $18 = N(z_1)N(z_2)$. Since the norm is the form of $a^2 + 17b^2$ and there is no element of norm 2,3,6. Thus, one of the $N(z_j) = 1$ , so $z_j$ is a unit. Thus, $1 \pm \sqrt{-17}$ is irreducible.
+\end{solution}
+
+
+\begin{problem}\label{que:idempotent} 
+Recall Definition \ref{def:idompotent_ring},
+\ben
+\item [(i)] What are the idempotent elements of $\Z/6\Z$? Of $\Z/8\Z$? Of $\Z/24\Z$? Of $\Z/1000\Z$?
+\item [(ii)] Show that if $r$ is idempotent then so is $r' = 1 - r$, and $rr' = 0$. 
+\item [(iii)] Show also that the ideal $\bsa{r}$ is naturally a ring, and that $R$ is isomorphic to $\bsa{r} \times \bsa{r'}$.
+\een
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+\ben
+\item [(i)] 0,1,3; 0,1; 0,1,9,16; For $\Z/1000\Z$, we see that 
+\be
+r = \left\{ \ba{l}
+10x \\
+10x + 1\\
+10x + 5\\
+10x + 6
+\ea\right.
+\ee
+
+If $r = 10x$, for some $a$,
+\be
+100x^2 = 10 x + 1000a \ \ra \ 10x(10x -1) = 1000a \ \ra \ x = 100y \ \ra \ x = 0 \ \ra \ r = 0.
+\ee
+
+If $r = 10x + 1$, for some $a$,
+\be
+100x^2 + 20x + 1 = 10x + 1 + 1000a \ \ra \ 10x(10x + 1) = 1000a \ \ra \ x = 100y \ \ra \ x = 0 \ \ra \ r = 1.
+\ee
+
+If $r = 10x + 5$, for some $a$,
+\be
+100x^2 + 100x + 25 = 10x + 5 + 1000a \ \ra \ x(10x + 9) + 2 = 100a \ \ra \ x = 10y + 2.
+\ee
+
+Thus, $r = 100y + 25$, for some $a$,
+\be
+10000y^2 + 5000y + 625 = 100y + 25 + 1000a \ \ra \ y (100y + 49) + 6 = 10a \ \ra \ y = 10z + 6 \ \ra \ r = 625.
+\ee
+
+If $r = 10x + 6$, for some $a$,
+\be
+100x^2 + 120x + 36 = 10x + 6 + 1000a \ \ra \ x(10x + 11) + 3 = 100a \ \ra \ x = 10y + 7.
+\ee
+
+Thus, $r = 100y + 76$, for some $a$,
+\be
+10000y^2 + 15200y + 5776 = 100y + 76 + 1000a \ \ra \ y (100y + 151) + 57 = 10a \ \ra \ y = 10z + 3 \ \ra \ r = 376.
+\ee
+
+Thus, the idempotents are 0,1,376,625.
+
+\item [(ii)] $r^2 = r$, $r'^2 = (1-r)^2 = r^2 - 2r + 1 = r - 2r + 1 = 1-r = r'$ and $rr' = r(1-r) = r - r^2 = 0$.
+\item [(iii)] Clearly, $\bsa{r}$ is group under addition. For the multiplication, $\forall rg_1,rg_2 \in \bsa{r}$ for some $g_1,g_2 \in R$, 
+\be
+rg_1 rg_2 = r^2 g_1g_2 = rg_1g_2 \in \bsa{r}.
+\ee
+
+Now we need to show that $1\in \bsa{r}$. Claim $r$ is the identity in $\bsa{r}$. It is easy to check that $\forall rg \in \bsa{r}$ for some $g\in R$
+\be
+r (rg) = r^2 g = rg.
+\ee
+
+Thus, $\bsa{r}$ is a ring.
+
+Now let $\phi : R\to \bsa{r}\times \bsa{r'}$ by $\phi(g) = \bb{rg,r'g} = \bb{rg,(1-r)g}$. Then for any $g_1,g_2\in R$,
+\be
+\phi(g_1 + g_2) = (r(g_1+g_2), (1-r)(g_1 + g_2)) = \bb{rg_1,(1-r)g_1} + \bb{rg_2,(1-r)g_2} = \phi(g_1) + \phi(g_2),
+\ee
+\be
+\phi(g_1g_2) = \bb{rg_1g_2,(1-r)g_1g_2} = \bb{r^2 g_1g_2, (1-r)^2 g_1g_2} = (rg_1,(1-r)g_1)(rg_2,(1-r)g_2) = \phi(g_1)\phi(g_2).
+\ee
+
+So $\phi$ is a homomorphism. Then
+\be
+\ker\phi = \bra{g\in R: rg = 0, (1-r)g = 0} \subseteq \bra{g\in R: rg + (1-r)g = 0} = \bra{0} \ \ra \ \ker\phi = \bra{0}.
+\ee
+
+If $\phi(g_1) = \phi(g_2)$, 
+\be
+rg_1 = rg_2,\ (1-r)g_1 = (1-r)g_2 \ \ra \ g_1 = g_2 \ \ra \ \phi \text{ is injective.}
+\ee
+
+To show $\phi$ is surjective, $\forall a = rg_1 \in \bsa{r}, b = (1-r)g_2 \in \bsa{r'}$, we need to find $g\in R$ s.t. $\phi(g) = (a,b)$. So 
+\be
+rg = rg_1,\ (1-r)g = (1-r)g_2 \ \ra \ g = rg_1 + (1-r)g_2.
+\ee
+by the fact $r\cdot r' = 0$. So $\phi$ is surjective (i.e., $\im \phi  = \bsa{r}\times \bsa{r'}$) and then $\phi$ is bijective. (We can also use first isomorphism theorem to show that
+\be
+R/\ker\phi \cong \im \phi \ \ra \ R = R/\ker\phi  \cong \bsa{r}\times \bsa{r'}.
+\ee
+
+Thus, $\phi$ is bijective.)
+\een
+
+\end{solution}
+
+\begin{problem}
+\ben
+\item [(i)] Show that the set $P(S)$ of all subsets of a given set $S$ is a ring with respect to the operations of symmetric difference and intersection (the power-set ring). Note that in this ring $A^2 = A$ for all elements $A$. Describe the principal ideals in this ring. %Describe the ideal $(A,B)$ generated by elements $A,B$. 
+Show that the ideal $(A,B)$ generated by elements $A$,$B$ is in fact principal. Are there any non-principal ideals?
+
+\item [(ii)] The ring $R$ is Boolean if every element of $R$ is idempotent. Prove that every finite Boolean ring is isomorphic to a power-set ring $P(S)$ for some set $S$. Give an example to show that this need not remain true for infinite Boolean rings.
+\een
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+\ben
+\item [(i)] Let $A + B = A\triangle B$ and $AB = A\cap B$. We use indicator function, for symmetric difference (addition), 
+\be
+\ind_{A\triangle B} = \ind_A + \ind_B\lmod{2}.
+\ee
+
+Clearly, for $A,B \in P(S)$, $A\triangle B \in P(S)$, $A\triangle B = B \triangle A$, the identity is $\emptyset$ and the inverse of $A$ is $A^c = S\bs A$.
+
+For intersection (multiplication), $A\cap B = B\cap A$ and $A\cap B \in P(S)$. The identity of multiplication is $S$, since $S\cap A = A$.
+
+For distributivity, $\forall A,B,C \in S$, 
+\beast
+\ind_{A\cap (B\triangle C)} & = &  \ind_A \ind_{B\triangle C} = \ind_A \bb{\ind_B + \ind_C \lmod{2}} \\
+& = & \ind_A \ind_B \lmod{2} + \ind_A \ind_C \lmod{2} = \ind_{A\cap B} + \ind_{A\cap C} \lmod{2} = \ind_{(A\cap B) \triangle (A\cap C)}.
+\eeast
+
+%\beast
+%A \cap (B\triangle C) & = & A \cap ((B\cup C) \bs (B \cap C)) = A \cap \bb{(B\cup C) \cap (B \cap C)^c} \\
+%& = & (A\cap (B\cup C) ) \cap (A \cap (B \cap C)^c)
+%\eeast
+
+Thus, $P(S)$ is a ring. So $A^2 = A\cap A = A$ for all elements $A$. Thus, $\forall A\in P(S)$, the principal ideal is 
+\be
+I = \bsa{A} = \bra{A\cap B:B\in P(S)} = \text{set of all subsets of $A$.}
+\ee
+
+Also, the ideal $\bsa{A,B}$ is
+\beast
+\bra{(A\cap C) \triangle (B\cap D): C,D\in P(S)} & = & \bra{(A\cap C) \triangle (B\cap D): C\subseteq A,D\subseteq B}\\
+& = & \bra{C \triangle D: C\subseteq A,D\subseteq B}\\
+& = &  \text{set of all subsets of $A\cup B$} = \bsa{A\cup B}.
+\eeast
+
+Thus, the ideal $\bsa{A,B}$ is also principal. So all the ideals are principal.
+
+\item [(ii)] Let $(R,\oplus,\otimes)$ be Boolean ring with $r\otimes r = r$ for any $r\in R$. Then $r\oplus r \in R$ by definition of ring. Thus
+\be
+(r\oplus r) \otimes (r\oplus r) = r\oplus r \ \ra \ r^2 \oplus r^2 \oplus r^2 \oplus r^2 = r \oplus r \ \ra \ r\oplus r\oplus r\oplus r = r\oplus r \ \ra \ r\oplus r = 0
+\ee
+since $(R,\oplus)$ is a group. A similar proof shows that every Boolean ring is commutative: for any $x,y \in R$
+\be
+x \oplus y = (x \oplus y)^2 = x^2 \oplus xy \oplus yx \oplus y^2 = x \oplus xy \oplus yx \oplus y
+\ee
+and this yields $xy \oplus yx = 0$, which means $x\otimes y = y\otimes x$ (using the property above).
+
+The property $x \oplus x = 0$ shows that $R$ has characteristic 2. Thus, $\abs{R}$ (cardinality of $R$) must be $2^n$ for some $n$. 
+%any Boolean ring is an associative algebra over the field $\F_2$ with two elements 
+
+Claim $R \cong \underbrace{\F_2 \times \dots \times \F_2}_{n}$. 
+
+If $n=1$. Clearly, $R= \bra{0,1} \cong \F_2$. Suppose it is true for $n-1$. By Problem \ref{que:idempotent}, we have $R \cong \bsa{r}\times \bsa{r'}$. $\bsa{r}, \bsa{r'}$ are both Boolean ring with order $<2^n$ since for any $rg \in \bsa{r}$ with $g\in R$,
+\be
+(rg)^2 = r^2 g^2 = r g,
+\ee
+and similar for $r'$. Then by induction, we have $R\cong \F_2 \times \dots \times \F_2$. 
+
+Let $P(S)$ be a power set of $n$ elements, so $\abs{P(S)} = 2^n$. Let $S = \bra{a_1,a_2,\dots,a_n}$ and 
+\be
+\phi: \F_2 \times \dots \times \F_2 \to P(S),\quad \phi(0,\dots, 0,\underbrace{1}_{i},0,\dots,0) = A_i = \bra{a_i}.
+\ee
+
+$\phi$ can be extended to a homomorphism (inverse of indicator function) with $\ve \in \bra{0,1}^n$
+\be
+\phi(\ve_A + \ve_B) = A \triangle B = \phi(\ve_A) \triangle \phi(\ve_B), \quad \phi(\ve_A \ve_B) = A\cap B = \phi(\ve_A) \cap \phi(\ve_B).
+\ee
+
+Thus, $\ker\phi = \bra{0}^n$ by first isomorphism theorem, we have 
+\be
+\F_2 \times \dots \times \F_2 = \F_2 \times \dots \times \F_2 / \bra{0}^n \cong \im \phi \leq P(S).
+\ee
+
+But $\abs{\F_2^n}\abs{\F_2\times \dots \times \F_2} = \abs{P(S)} = 2^n$, $\phi$ is surjective and thus $\im \phi = P(S)$, so 
+\be
+\F_2^n \cong P(S) \ \ra \ R \cong P(S).
+\ee
+
+If $S$ is infinite, $P(S)$ is not countable, so there is no bijective $\phi: R\to P(S)$.
+\een
+
+\end{solution}
+
+
+\begin{problem}
+Find all ways of writing the following integers as sums of two squares: 221, $209\times 221$, $121\times 221$, $5\times 221$.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+\ben
+\item [(i)] $221 = 13 \times 17 = (3+2i)(3-2i)(4+i)(4-i)$ which is a product of irreducibles. We use this to express $n$ as $x^2 + y^2 = z\bar{z}$ with $z = x + iy$.
+\beast
+221 & = &  (10 + 11i)(10-11i) = 10^2 + 11^2,\\
+& = & (14 + 5i)(14 - 5i) = 14^2 + 5^2.
+\eeast
+
+These are the only ways since we approach it with product of irreducibles.
+
+\item [(ii)] $209\times 221 = 11\times 13 \times 17 \times 19$ with $11 \equiv 3 \lmod{4}$ and $19 \equiv 3 \lmod{4}$. Since the power of 11 and 19 are odd, $209\times 221$ is not of the form $x^2 + y^2$ with $x,y \in \Z$ by the corollary in notes.
+
+\item [(iii)] $121\times 221 = 11^2 \times 13 \times 17 = 11^2 (3+2i)(3-2i)(4+i)(4-i)$ with $11 \equiv 3 \lmod{4}$. Since the power of 11 is even (2), it is of the form $x^2 + y^2$ with $x,y \in \Z$ by the corollary in notes. That is,
+\beast
+121 \times 221 & = &  (110 + 121i)(110-121i) = 110^2 + 121^2,\\
+& = & (154 + 55i)(154 - 55i) = 154^2 + 55^2.
+\eeast
+
+\item [(iv)] $5\times 221 = 5 \times 13 \times 17 = (2+i)(2-i)(3+2i)(3-2i)(4+i)(4-i)$. 
+\beast
+5 \times 221 & = &  (9 + 32i)(9-32i) = 9^2 + 32^2,\\
+& = & (31 + 12i)(31 - 12i) = 31^2 + 12^2,\\
+& = & (23 + 24i)(23 - 24i) = 23^2 + 24^2,\\
+& = & (33 + 4i)(33 -4i) = 33^2 + 4^2. 
+\eeast
+
+These are the only ways since we approach it with product of irreducibles.
+\een
+\end{solution}
+
+
+
+\begin{problem}
+By working in $\Z[\sqrt{-2}]$, show that the only integer solutions to $x^2 + 2 = y^3$ are $x = \pm 5$, $y = 3$.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+First, the only two units in $\Z[\sqrt{-2}]$ is $\pm 1$. We have 
+\be
+y^3 \equiv 0,1,3\lmod{4},\quad x^2 + 2 \equiv 2,3 \lmod{4} \ \ra \ x^2 + 2 \equiv 3 \lmod{4} \ \ra \ x^2 \equiv 1 \lmod{4} \ \ra \ x = 2z + 1.
+\ee
+
+We know that $x^2 + 2 = (x+\sqrt{-2})(x- \sqrt{-2})$. Now we want to show that the hcf of $x+\sqrt{-2}$ and $x- \sqrt{-2})$ is 1.
+
+Then for $x = 0, \pm 1,\pm 2$, there is no solution for $y$, thus we can see that $x \geq 3$ and $N(x+\sqrt{-2}) = x^2 + 2 \geq 11$. Since $\Z[\sqrt{-2}]$ is a ED, we can use Euclidean algorithm to find the hcf,
+\be
+x+ \sqrt{-2} = x - \sqrt{-2} + 2\sqrt{-2}\quad\quad N(x+\sqrt{-2}) = x^2 + 2 > 8 = N(2\sqrt{-2})
+\ee
+
+Rewrite $x = 4z \pm 1$, we have
+\beast
+4z \pm 1- \sqrt{-2} & = & 2\sqrt{-2} \cdot (-1 - z\sqrt{-2}) + (\pm 1 + \sqrt{-2})\quad\quad N(2\sqrt{-2}) = 8 > 5 = N(\pm 1 +\sqrt{-2})\\
+2\sqrt{-2} & = & (1 \pm \sqrt{-2})(\pm 1+\sqrt{-2}) \pm 1\quad\quad N(\pm 1+\sqrt{-2}) = 5 >1 = N(\pm 1)
+\eeast
+
+Thus, we can say the hcf of $x+\sqrt{-2}$ and $x- \sqrt{-2})$ is $\pm 1$. Write $y^3 = \prod^n_{i=1} p_i^3$ where $p_i$ are distinct prime (irreducible). Then
+\be
+(x+\sqrt{-2})(x- \sqrt{-2}) = y^3  \ \ra \ x+\sqrt{-2} = u \prod_{i\in A} p_i^3 \quad \text{for some }A\subseteq \bra{1,\dots,n}, \ u \in \bra{1,-1} \ (\text{unit})
+\ee
+
+Thus, $x+\sqrt{-2} = p^3$, for some $p \in \Z[\sqrt{-2}]$. Thus, let $p = a+ b\sqrt{-2}$, we have
+\be
+x + \sqrt{-2} = a^3 - 6ab^2 + (3a^2 b - 2b^3)\sqrt{-2} \ \ra \ b(3a^2 - 2b^2) = 1 \ \ra \ b = \pm.
+\ee
+Thus, if $b=1$, $a=\pm 1$. If $b= -1$, there is no solutio for $a$. Thus, 
+\be
+x = a(a^2 - 6b^2) = (\pm 1)(1 - 6) = \pm 5, y^3 = x^2 + 2 = 27 \ \ra \ y = 3.
+\ee
+
+Thus, $x=\pm 5$, $y = 3$ is the only solution.
+\end{solution}
+
+
+
+\begin{problem}
+Let $\F$ be a field, and let $R = \F[X, Y]$ be the polynomial ring in two variables.
+\ben
+\item [(i)] Let $I$ be the principal ideal generated by the element $X - Y$ in $R$. Show that $R/I \cong \F[X]$.
+\item [(ii)] What can you say about $R/I$ when $I$ is the principal ideal generated by $X^2 + Y$?
+\item [(iii)] What can you say about $R/I$ when $I$ is the principal ideal generated by $X^2 - Y^2$?
+\een
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+\ben
+\item [(i)] Let $\phi : R \to \F[X]$ by $\phi(X) =X$, $\phi(Y) =X$ (which maps $Y$ to $X$) and extend it homomorphically. So 
+\be
+\ker\phi = \bra{f(X,Y) : f(X,X) = 0}.
+\ee
+
+Clearly, $I = \bsa{X-Y} \in \ker\phi$ when we set $Y=X$. Since $\F[X,Y] = (\F[Y])[X]$ ($\F$ is a field and thus a UFD), then $\forall f(X,Y) \in \ker\phi$, by Euclidean algorithm (Proposition \ref{pro:euclidean_algorithm_polynomial}), we can find $q(X,Y),r(X,Y)\in R = \F[X,Y]$,
+\be
+f(X,Y) = (X-Y)q(X,Y) + r(X,Y)
+\ee
+with $\deg(r(X,Y)) < \deg(X-Y)$ for $X$. So $r(X,Y)$ is constant in $X$ and $r(X,Y) = r(Y)$. Thus,
+\be
+f(X,Y) = (X-Y)q(X,Y) + r(Y) \ \ra \ 0 = f(X,X) = r(Y).
+\ee
+So
+\be
+f(X,Y) = (X-Y)q(X,Y) \ \ra \ f(X,Y) \in \bsa{X-Y} = I \ \ra \ \ker \phi \subseteq I.
+\ee
+
+Hence, $I = \ker \phi$. For any $g(X) \in \F[X]$, we can find $h(X,Y)\in \F[X,Y]$ such that $g(X) = h(X,X)$. Thus, $\phi$ is surjective, $\im\phi = \F[X]$. Then by the first isomorphism theorem,
+\be
+R/\ker\phi \cong \im \phi \ \ra \ R/I \cong \F[X].
+\ee
+
+\item [(ii)] Let $\phi :R \to \F[X]$ by $\phi(X) =X$, $\phi(Y) = -X^2$ and extend it homomorphically. So 
+\be
+\ker\phi = \bra{f(X,Y) : f(X,-X^2) = 0}.
+\ee
+
+Clearly, $I = \bsa{X^2 + Y} \in \ker\phi$ when we set $Y=-X^2$. Since $\F[X,Y] = (\F[X])[Y]$ ($\F$ is a field and thus a UFD), then $\forall f(X,Y) \in \ker\phi$, by Euclidean algorithm, we can find $q(X,Y),r(X,Y)\in R = \F[X,Y]$,
+\be
+f(X,Y) = (Y+X^2)q(X,Y) + r(X,Y)
+\ee
+with $\deg(r(X,Y)) < \deg(Y+X^2)$ for $Y$. So $r(X,Y)$ is constant in $Y$ and $r(X,Y) = r(X)$. Thus,
+\be
+f(X,Y) = (Y+X^2)q(X,Y) + r(X) \ \ra \ 0 = f(X,X) = r(X).
+\ee
+So
+\be
+f(X,Y) = (Y+X^2)q(X,Y) \ \ra \ f(X,Y) \in \bsa{X^2 + Y} = I \ \ra \ \ker \phi \subseteq I.
+\ee
+
+Hence, $I = \ker \phi$. For any $g(X) \in \F[X]$, we can find $h(X,Y)\in \F[X,Y]$ such that $g(X) = h(X,-X^2)$. Thus, $\phi$ is surjective, $\im\phi = \F[X]$. Then by the first isomorphism theorem,
+\be
+R/\ker\phi \cong \im \phi \ \ra \ R/I \cong \F[X].
+\ee
+
+%Note that $\F[X,Y] = (\F[X])[Y]$.
+\item [(iii)] Let $\phi:R\to \F[X]\times \F[Y]$ by $\phi(X) = (X,Y)$ and $\phi(Y) = (-X,Y)$ and extend it homomorphically. So 
+\be
+\ker\phi = \bra{f(X,Y) : \phi(f(X,Y) = (0,0)}.
+\ee
+
+In the first coordinate, we replace $Y$ with $-X$, so we need $X+Y$ as a factor. Similarly, for the second coordinate, we need $X-Y$. Thus, we can have 
+\be
+\ker \phi = \bsa{X^2 - Y^2} = I.
+\ee
+
+However, the map is not surjective since $f(X)\in \F[X]$ and $g(Y)\in \F[Y]$ must have the same order (by having the same coefficients). Thus,
+\be
+\im \phi = \bra{(f(X),g(Y)): \deg(f(X)) = \deg(g(Y)), f(X) \in \F[X],g(Y)\in \F[Y]}.
+\ee
+
+By the first isomorphism theorem, $R/I \cong \im\phi \leq \F[X]\times \F[Y]$.
+\een
+\end{solution}
+
+
+\begin{problem}
+Determine whether or not the following rings are fields, EDs, PIDs, UFDs, integral domains: 
+\be
+\text{(i)}\ \Z[X],\quad \text{(ii)}\ \Z[X]/\bsa{X^2 + 1},\quad \text{(iii)}\ (\Z/2\Z)[X]/\bsa{X^2 + 1},\nonumber
+\ee
+\be
+\text{(iv)}\ \Z[X]/\bsa{2,X^2 + X + 1},\quad \text{(v)}\ \Z[X]/\bsa{3,X^2 + 1},\quad \text{(vi)}\ \Z[X]/\bsa{3,X^3 - X + 1}.
+\ee
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+Here we use the following properties:
+\ben
+\item $R[X]$ is a PID iff $R$ is a field.
+\item If $R$ is a UFD, then $R[X]$ is also a UFD.
+\item Field $\ra$ ED $\ra$ PID $\ra$ UFD $\ra$ ID.
+\een
+
+\ben
+\item [(i)] $\Z[X]$. The fact that $\Z$ is not a field implies that $\Z[X]$ is not PID. Since $\Z$ is ED, it is UFD. Then $\Z[X]$ is UFD.
+
+\item [(ii)] $\Z[X]/\bsa{X^2 + 1}$. Let $f(X) \in \Z[X]$ and $I = \bsa{X^2 + 1}$. By Euclidean algorithm for polynomials, we have
+\be
+f(X) = g(X)(X^2 +1 ) + r(X),\quad g(X),r(X)\in \Z[X], \ \deg(r(X)) < 2.
+\ee
+
+Then
+\be
+f(X) + I = a X + b + g(X)(X^2+ 1) + I = a X + b + I.
+\ee
+
+Thus,
+\beast
+a_1 X + b_1 + I + a_2X + b_2  +I & = & (a_1 + a_2)X + (b_1 + b_2) + I,\\
+(a_1 X + b_1 + I)(a_2X + b_2  +I) & = & a_1a_2 X^2 + (a_2b_1 + a_1b_2)X + b_1b_2 + I\\
+& = & (a_2b_1 + a_1b_2)X + (b_1b_2 - a_1a_2) + I.
+\eeast
+
+Thus, we have (or by the third isomorphism theorem)
+\be
+\Z[X]/\bsa{X^2 + 1} \cong \Z[i]
+\ee
+by $b + aX \ \lra \ b + ai$. We already know that $\Z[i]$ is a ED and thus a PID. So $\Z[X]/\bsa{X^2 + 1}$ is a ED and PID, etc. However, we have that $2\in \Z[X]/\bsa{X^2 + 1}$ which doesn't have inverse. Thus, we can say that $\Z[X]/\bsa{X^2 + 1}$ is not a field.
+
+\item [(iii)] $(\Z/2\Z)[X]/\bsa{X^2 + 1}$. With the similar argument as above (or by the third isomorphism theorem), we have 
+\be
+(\Z/2\Z)[X]/\bsa{X^2 + 1} = \F_2[X]/\bsa{X^2 + 1} \cong \F_2[i] = \bra{0,1,i,1+i}.
+\ee
+
+We see that $\F_2[i]$ is not an integral domain since $(1+i)^2 \mod{2} = 0$. 
+
+It is obvious that $1$ is a unit. Also,
+\be
+1 \cdot (1+i) = 1+i \neq i, \quad 1 \cdot i = i, \quad (1+i)i = 1 + i \neq i.
+\ee
+
+Thus, if $i = ab$, $a,b\in \F_2[i]$, we have $a=1$ or $b=1$ and thus $i$ is irreducible. Since $1+i = i(1+i)$, $1+i$ is not irreducible. However, $1+i \neq i^n$ for any $n\in \Z$. So $\F_2[i]$ is not a UFD.
+
+Thus, $(\Z/2\Z)[X]/\bsa{X^2 + 1}$ is not field, ED, PID, UFD, integral domain. (In this case, $b_0$ is not related to $b_1$).
+
+\item [(iv)] Let $f(X) \in \Z[X]$ and $I = \bsa{2,X^2 + X+ 1}$. By Euclidean algorithm for polynomials, we have
+\be
+f(X) = g(X)(X^2 + X + 1 ) + r(X),\quad g(X),r(X)\in \Z[X], \ \deg(r(X)) < 2.
+\ee
+
+Then
+\be
+f(X) + I = a X + b + I,\quad a,b \in \bra{0,1}.
+\ee
+
+Thus,
+\be
+\Z[X]/\bsa{2,X^2 + X+ 1} = \bra{I,1+I,X+I,X+1+I}.
+\ee
+
+Then, $I(1+I) = I$, $(1+I)(1+I) = 1 + I$, $(X+I)(1+I) = X + I$, $(X+1+I)(1+I) = X+1+I$. $1+I$ is the multiplicative identity. $I$ is the additional identity.
+\beast
+(X+I)(X+I) & = & X^2 + 2XI + I = (X^2 + X + 1) + X+1 + I = X+1 +I,\\
+(X+1+I)(X+1+I) & = & X^2 + 2X + 1 + I = (X^2 + X + 1) + X + I = X+I,\\
+(X+I)(X+1+I) & = & X^2 + X + I = X^2 + X + 1 + 1 + I = 1+I.
+\eeast
+
+Thus, $X+I$ and $X+1+I$ are multiplicative inverse to each other. Hence, $\Z[X]/\bsa{2,X^2 + X+ 1}$ is a field, ED, etc.
+
+Another way to see it is using $\Z[X]/\bsa{p, f_\alpha(X)} \cong  \F_p[\alpha]$ which is
+\be
+\Z[X]/\bsa{2, X^2 + X + 1} \cong \F_2[\omega], \quad \omega = \frac {-1\pm \sqrt{-3}}2.
+\ee
+
+In particular, take $\omega = \frac {-1 + \sqrt{-3}}2$
+\be
+\F_2[\omega] = \bra{0,1,\frac {-1 + \sqrt{-3}}2 , \frac {1 + \sqrt{-3}}2}
+\ee
+
+We have
+\beast
+\bb{\frac {-1 + \sqrt{-3}}2}^2 & = & \frac {-2 - 2\sqrt{-3}}4 = \frac {-1 - \sqrt{3}}2 = (-1) \frac {1 + \sqrt{3}}2 = 1 \cdot \frac {1 + \sqrt{3}}2 \lmod{2\omega}\\
+\bb{\frac {1 + \sqrt{-3}}2}^2 & = & \frac {-2 + 2\sqrt{-3}}4 = \frac {-1 + \sqrt{3}}2 \\
+\bb{\frac {-1 + \sqrt{-3}}2}\bb{\frac {1 + \sqrt{-3}}2} & = & \frac {-3 - 1}4 = -1 = 1 \lmod{2}
+\eeast
+
+Thus, $\frac {-1 + \sqrt{-3}}2$ and $\frac {1 + \sqrt{-3}}2$ are multiplicative inverse to each other.
+
+
+\item [(v)] $\Z[X]/\bsa{3,X^2+ 1}$. With similarly argument, we have
+\be
+\Z[X]/\bsa{3,X^2 + 1} \cong \F_3[i] = \bra{0,1,2,i,1+i,2+i,2i,1+2i,2+2i}.
+\ee
+
+Then we have
+\beast
+2 \cdot 2 & = & 4 \equiv 1\lmod{3}\quad \ra \quad \text{2 is the inverse of itself}\\
+i \cdot 2i & = & -2 \equiv 1 \lmod{3}\quad \ra \quad \text{$i$ is the inverse of $2i$}\\
+(1+i)(2+i) & = & 2-1 + 3i \equiv 1 \lmod{3} \quad \ra \quad \text{$1+i$ is the inverse of $2+i$}\\
+(1+2i)(2+2i) & = & 2 - 4 + 6i \equiv 1 \lmod{3} \quad \ra \quad \text{$1+2i$ is the inverse of $2+2i$}
+\eeast
+
+Thus, $\Z[X]/\bsa{3,X^2+ 1}$ is field, ED, etc.
+
+\item [(vi)] $\Z[X]/\bsa{3,X^3 - X + 1}$. Let $f(X) \in \Z[X]$ and $I = \bsa{3,X^3 - X+ 1}$. By Euclidean algorithm for polynomials, we have
+\be
+f(X) = g(X)(X^3 - X + 1 ) + r(X),\quad g(X),r(X)\in \Z[X], \ \deg(r(X)) < 3.
+\ee
+
+Then
+\be
+f(X) + I = a X^2 + bX + c + I,\quad a,b,c \in \bra{0,1,-1}.
+\ee
+
+Thus,
+\beast
+\Z[X]/\bsa{3,X^3 - X+ 1} & = & \left\{I,1+I,-1+I,X+I,X+1+I,X-1+I, -X+I,-X+1+I,-X-1+I,\right.\\
+& & \left. X^2 + I,X^2 + 1+I,X^2 -1 +I,X^2 + X+I,X^2 +X+1+I,\right.\\
+& & \left. X^2 +X -1 +I, X^2 - X+I, X^2 - X+1+I,X^2 - X -1+I,\right.\\
+& & \left. -X^2 + I,-X^2 + 1+I,-X^2 - 1+I, -X^2 + X+I,-X^2 +X+1+I,\right.\\
+& & \left. -X^2 +X-1+I, -X^2 -X+I, -X^2 - X+1+I,-X^2 - X -1 +I\right\}
+\eeast
+%\beast
+%\Z[X]/\bsa{3,X^3 - X+ 1} & = & \left\{I,1+I,2+I,X+I,X+1+I,X+2+I, 2X+I,2X+1+I,2X+2+I,\right.\\
+%& & \left. X^2 + I,X^2 + 1+I,X^2 + 2+I,X^2 + X+I,X^2 +X+1+I,\right.\\
+%& & \left. X^2 +X+2+I, X^2 + 2X+I, X^2 + 2X+1+I,X^2 + 2X+2+I,\right.\\
+%& & \left. 2X^2 + I,2X^2 + 1+I,2X^2 + 2+I,2X^2 + X+I,2X^2 +X+1+I,\right.\\
+%& & \left. 2X^2 +X+2+I, 2X^2 + 2X+I, 2X^2 + 2X+1+I,2X^2 + 2X+2+I\right\}
+%\eeast
+
+Then, $1+I$ is the multiplicative identity. $I$ is the additional identity.
+\beast
+(-1+I)(-1+I) & = & 1 + I,\\
+(-X+I)(X^2 - 1 + I) & = & -X^3 + X + I = -(X^3 - X + 1) + 1 + I = 1 +I,\\
+(-X-1+I)(X^2 -X + I) & = & -X^3 + X + I = -(X^3 - X + 1) + 1 + I = 1 +I,\\
+(-X+1+I)(X^2 + X + I) & = & -X^3 - X + I = -(X^3 - X + 1) + 1 + I = 1 +I,\\
+-(X^2+1+I)(X^2 - X + 1 + I) & = & -X^4 + X^3 - 2X^2 + X - 1 + I = X^3 - X - 1 + I = 1+I,\\
+-(X^2+I)(X^2 + X - 1 + I) & = & -X^4 - X^3 + X^2 + I = -X^3 + X - 1 + 1 + I = 1+I,\\
+-(X^2-X-1+I)(X^2 + X+ 1 + I) & = & -X^4 + X^2 + 2X + 1 + I = 1+I.
+\eeast
+
+Thus, $\pm(X+I)$ is the inverse of $\mp(X^2 - 1 + I)$, 
+
+$\pm(X+1+I)$ is the inverse of $\mp(X^2 -X + I)$
+
+$\pm(X-1+I)$ is the inverse of $\mp(X^2 + X + I)$
+
+$\pm(X^2+1+I)$ is the inverse of $\mp(X^2 - X + 1 + I)$
+
+$\pm(X^2+I)$ is the inverse of $\mp(X^2 + X - 1 + I)$
+
+$\pm(X^2-X-1+I)$ is the inverse of $\mp(X^2 + X+ 1 + I) $
+
+Hence $\Z[X]/\bsa{3,X^3 - X + 1}$ is a field, ED, etc.%Thus, $X+I$ and $X+1+I$ are multiplicative inverse to each other. Hence, $\Z[X]/\bsa{2,X^2 + X+ 1}$ is a field, ED, etc Again, we have %\be
+%\Z[X]/\bsa{3, X^3 - X + 1} \cong \F_3[\omega], \quad \omega = \frac {-1\pm \sqrt{-3}}2.
+%\ee
+\een
+\end{solution}
+
+\begin{problem}
+Determine which of the following polynomials are irreducible in $\Q[X]$:
+\be
+X^4 + 2X + 2,\quad X^4 + 18X^2 + 24, \quad X^3 - 9,\quad X^3 + X^2 + X + 1,\quad X^4 + 1,\quad X^4 + 4.
+\ee
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+%Since all the cases of $f(X)$ are primitive, it suffices to check if $f(X)$ is irreducible in $\Z[X]$.
+%Gauss' Lemma. We know that $\Z$ is a UFD and $\Q$ is its field of fractions. Suppose $f(X)\in \Z[X]$ is primitive. Then $f(X)$ is irreducible in $R[X]$ if and only if $f(X)$ is irreducible in $\Q[X]$. 
+%Eisenstein's criterion. Let $R$ be a UFD and let 
+%\be
+%f(X) = a_0+a_1X+ \dots + a_nX^n \in R[X],\ a_n \neq 0,
+%\ee
+%be primitive. Assume that for some irreducible $p$ we have $ p \nmid a_n$, $p | a_i$ for $0 \leq i < n$ and $p^2 \nmid a_0$. Then $f(X)$ is irreducible in $R[X]$, and hence in $\F[X]$ by Gauss' lemma.
+We apply Eisenstein's criterion (Proposition \ref{pro:eisenstein_criterion}):
+\ben
+\item [(i)] $X^4 + 2X + 2$. Take $p = 2$, then $p = 2 \nmid 1 = a_4$, $p = 2 \mid 2 = a_1$ and $p = 2\mid 2 = a_0$. Also $p^2 = 4 \mid 2 = a_0$. Thus, $f(X)$ is irreducible in $\Q[X]$.
+
+\item [(ii)] $X^4 + 18X^2 + 24$. Take $p = 3$, then $p = 3 \nmid 1 = a_4$, $p = 3 \mid 18 = a_1$ and $p = 3\mid 24 = a_0$. Also $p^2 = 9 \mid 24 = a_0$.  Thus, $f(X)$ is irreducible in $\Q[X]$. Thus, $f(X)$ is irreducible in $\Q[X]$.
+
+\item [(iii)] $X^3 - 9$. Suppose that $X^3 - 9 = (X^2 + aX + b)(X + c)$ and thus $bc = -9$. Therefore, $c = \pm 1,\pm 3,\pm 9$. However, $\pm 1,\pm 3,\pm 9$ are not roots of $X^3 - 9$. So $f(X)$ is irreducible in $\Z[X]$ and thus irreducible in $\Q[X]$.
+
+\item [(iv)] $X^3 + X^2 + X + 1 = (X^2 + 1)(X+1)$. So $X^3 + X^2 + X + 1$ is not irreducible in $\Z[X]$ and thus not irreducible in $\Q[X]$.
+
+\item [(v)] $X^4 + 1$. 
+
+Suppose that $X^4 +1 = (X^3 + aX^2 + bX + c)(X + d)$ and thus $cd = 1$. Therefore, $d = \pm 1$. However, $\pm 1$ are not roots of $X^4 +1$. 
+
+Suppose that $X^4 +1 = (X^2 + aX + b)(X^2 + cX + d) = X^4 + (a+c)X^3 + (b+d + ac)X^2 + (bc + ad)X + bd$ and thus $bd = 1$. Therefore, $b,d = \pm 1$ and
+\be
+a + c = 0, \ \pm 2 + ac = 0 \ \ra \ \pm 2 = a^2
+\ee
+which is contradiction. Thus, $X^4 + 1$ is irreducible in $\Z[X]$ and thus irreducible in $\Q[X]$.
+
+\item [(vi)] $X^4 + 4 = (X^2 - 2X + 2)(X^2 + 2X + 2)$. Thus, it is not irreducible in $\Z[X]$ and thus not irreducible in $\Q[X]$.
+\een
+\end{solution}
+
+
+\begin{problem}
+\ben
+\item [(i)] Consider the polynomial $f(X, Y) = X^3Y + X^2Y^2 + Y^3 - Y^2 - X - Y + 1$ in $\C[X, Y]$. Write it as an element of $\C[X][Y]$, that is collect together terms in powers of $Y$, and then use Eisenstein's criterion to show that $f$ is prime in $\C[X, Y]$.
+\item [(ii)] Let $F$ be any field. Show that the polynomial $f(X, Y) = X^2 + Y^2 - 1$ is irreducible in $F[X, Y]$, unless $F$ has characteristic 2. What happens in that case?
+\een
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+\ben
+\item [(i)] We have that $\C[X][Y]$ is UFD since $\C$ is UFD.
+\be
+f(X,Y) = Y^3 + (X^2-1)Y + (X^3 -X)Y - (X-1).
+\ee
+
+Thus, by Eisenstein's criterion
+\be
+(X-1)\mid (X^2 - 1), \quad (X-1)\mid (X^3 -X),\quad (X-1)\mid -(X-1),\quad (X-1)^2\nmid -(X-1),
+\ee
+then $f(X,Y)$ is irreducible (and hence prime since $\C[X,Y]$ is a UFD).
+
+\item [(ii)] We have $f(X, Y) = X^2 + Y^2 - 1 = Y^2 + (X-1)(X+1)$. Both of $X-1$ and $X+1$ are irreducible. 
+
+If $X+1$ and $X-1$ are not associate, we have $f(X,Y)$ is irreducible. In this case, $1 \neq -1$ which implies that $2 \neq 0$ i.e. $\chara \F \neq 2$.
+
+If $\chara \F=2$, we have 
+\be
+X^2 + Y^2 - 1 = X^2 + Y^2 + 2XY + 2X + 2Y + 2 - 1 = (X+Y+1)(X+Y+1)
+\ee
+which is not irreducible.
+\een
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{problem}
+%Show that the subring $\Z[\sqrt{2}]$ of $\R$ is a Euclidean domain. Show that the units are $\pm(1\pm \sqrt{2})^n$ for $n \geq 0$.
+%\end{problem}
+
+%\begin{solution}[\bf Solution.]
+%For $a,b \in \Z$, we define a function 
+%\be
+%\phi:\Z[\sqrt{2}] \to \Z^+,\ a+b\sqrt{2} \mapsto \abs{\bb{a+b\sqrt{2}}\bb{a-b\sqrt{2}}} = \abs{a^2 - 2b^2}.
+%\ee
+
+%Then for $a+b\sqrt{2}, c+ d\sqrt{2} \in \Z[\sqrt{2}]$,
+%\beast
+%\phi\bb{\bb{a+b\sqrt{2}}\bb{c+d\sqrt{2}}} & = & \phi \bb{ac + 2bd + (ad + bc)\sqrt{2}} = \abs{(ac + 2bd)^2 - 2(ad + bc)^2} \\
+%& = & \abs{a^2c^2 + 4b^2 d^2 + 4abcd - 2a^2d^2 - 2b^2c^2 - 4abcd} = \abs{(a^2 - 2b^2)(c^2 - 2d^2)} \\
+%& = & \abs{a^2 - 2b^2}\abs{c^2 - 2d^2} = \phi(a+b\sqrt{2})\phi(c+d\sqrt{2}).
+%\eeast
+
+%Also, since $a,b\in \Z$
+%\be
+%\phi(a+ b\sqrt{2}) = \abs{a^2 - 2b^2} \geq 1 \text{ if }a+ b\sqrt{2}\neq 0.
+%\ee
+
+%So we have for $x,y \in \Z[\sqrt{2}]\bs\bra{0}$,
+%\be
+%\phi(xy) \geq \phi(x).
+%\ee
+
+%Now we need to prove that if $a,b\in \Z[\sqrt{2}]\bs \bra{0}$ with $b\neq 0$, $\exists q,r \in \Z[\sqrt{2}]$ s.t.
+%\be
+%a= bq + r,\quad \text{with either $r=0$ or }\phi(r) < \phi(b).
+%\ee
+
+%Given $a,b$, if $b\mid a$, i.e. $a = bx$ for some $x\in \Z[\sqrt{2}]$, we have that $r=0$. Otherwise, we can find some $s,t \in \R$ such that
+%\be
+%a /b = s + t\sqrt{2}.
+%\ee
+
+%Then we can find $x,y \in \Z$ such that $\abs{x-s} \leq \frac 12$ and $\abs{y -t }\leq \frac 12$. Let 
+%\be
+%q = x + y \sqrt{2} \ \ra\ a = b(x+ y\sqrt{2}) + \underbrace{b(s-x)}_{\in \Z} + \underbrace{b(t-y)}_{\in \Z}\sqrt{2}
+%\ee
+%with $r = b(s-x) + b(t-y) \sqrt{2} \in \Z[\sqrt{2}]$ and
+%\be
+%\phi (r) = \phi (b)\abs{ (s-x)^2 - 2 (t-y)^2} \leq \phi(b) \abs{(s-x)^2 + 2(t-y)^2} \leq \phi(b) \abs{\frac 14 + 2 \frac 14} = \frac 34 \phi(b) < \phi(b)
+%\ee
+%since $b\neq 0$. Thus, $\phi$ is an Euclidean function and $\Z[\sqrt{2}]$ is an Euclidean domain.
+
+%If $x$ is a unit in $\Z[\sqrt{2}]$, then we have that $\exists y \in \Z[\sqrt{2}]$ such that $xy = 1$ and thus $\phi(x)\phi(y) = 1$. Since $\phi(x),\phi(y) \geq 1$, we have that $\phi(x) = 1$. 
+
+%Since $\sqrt{2}-1 = 1/(1 + \sqrt{2})$, we can consider $1+\sqrt{2}$ only. Now we want to find all the units bigger than 1.
+
+%First we prove that $1+\sqrt{2}$ is actually the smallest unit bigger than 1. 
+
+%Let $a,b\in \N$. If the smallest unit bigger than 1 is of the form $a-b\sqrt{2} > 1$, then $a+b\sqrt{2} > 1$. However,
+%\be
+%1 = \phi(a-b\sqrt{2}) = \abs{\bb{a-b\sqrt{2}}\bb{a+b\sqrt{2}}} > \abs{1} = 1. \text{ (Contradiction.)}
+%\ee
+
+%Similarly, If the smallest unit bigger than 1 is of the form $-a+b\sqrt{2} > 1$, then $a+b\sqrt{2} > 1$. This will lead to the contradiction again.
+
+%Thus, it has to be of the form  $a+b\sqrt{2}$. Thus, the smallest unit bigger than 1 is $1+\sqrt{2}$.
+
+%Clearly, the power of $1+\sqrt{2}$ are units. If there exists any unit between $\bb{1+\sqrt{2}}^n$ and $\bb{1+\sqrt{2}}^{n+1}$ with integer $n$ (positive or negative), say $u$,
+%\be
+%\bb{1 + \sqrt{2}}^n < u < \bb{1+\sqrt{2}}^{n+1} \ \ra \ 1 < u \bb{1+\sqrt{2}}^{-n} < 1+\sqrt{2}.
+%\ee
+
+%Obviously, $u \bb{1+\sqrt{2}}^{-n}$ is a unit since $u^{-1}$ and $\bb{1+\sqrt{2}}^{n}$ are units. However, $1+\sqrt{2}$ is the smallest unit bigger than 1. This leads to contradiction. Thus, there is no other unit bigger than 1 besides $(1+\sqrt{2})^n$ with $n\in \N$.
+%\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Summary}
+
+Recalling the previous results, we have that
+
+Commutative rings $\supset$ integral domains $\supset$ integrally closed domains\footnote{need details} $\supset$ unique factorization domains $\supset$ principal ideal domains $\supset$ Euclidean domains $\supset$ fields.
+
+\begin{center}
+\begin{tabular}{ccccccc}
+\hline
+ & \ \ F\ \ \  & ED & PID & UFD & ID & CR\\\hline %Euclidean domain & principal integral domain & unique factorisation domain & integral domain \\ \hline
+$\Z$ & $\times$ & $\surd$ & $\surd$ & $\surd$ & $\surd$ & $\surd$\\
+$\Z[i]$ & $\times$ & $\surd$ & $\surd$ & $\surd$ & $\surd$ & $\surd$\\ 
+$\Z[\sqrt{-2}]$ & $\times$ & $\surd$ & $\surd$ & $\surd$ & $\surd$ & $\surd$\\ 
+$\Z[\omega]$ & $\times$ & $\surd$ & $\surd$ & $\surd$ & $\surd$ & $\surd$\\ 
+$\Z[\sqrt{-3}]$ & $\times$ & $\times$ & $\times$ & $\times$ & $\surd$ & $\surd$ \\
+$\Z[\sqrt{-5}]$ & $\times$ & $\times$ & $\times$ & $\times$ & $\surd$ & $\surd$  \\  
+$\F_p = \Z/p\Z$ & $\surd $& $\surd$ & $\surd$ & $\surd$ & $\surd$ & $\surd$\\
+$\Z/6\Z$ & $\times$ & $\times$ & $\times$ & $\times$ & $\times$ & $\surd$ \\  
+$\Q$ & $\surd$ & $\surd$ & $\surd$ & $\surd$ & $\surd$ & $\surd$\\
+$\R$ & $\surd$ & $\surd$ & $\surd$ & $\surd$ & $\surd$ & $\surd$\\
+$\C$ & $\surd$ & $\surd$ & $\surd$ & $\surd$ & $\surd$ & $\surd$\\
+$\Z[X]$ & $\times$ & $\times$ & $\times$ & $\surd$ & $\surd$ & $\surd$\\ 
+$\Q[X]$ & $\times$ & $\surd$ & $\surd$ & $\surd$ & $\surd$ & $\surd$ \\ 
+$\F[X]$ & $\times$ & $\surd$ & $\surd$ & $\surd$ & $\surd$ & $\surd$ \\ 
+\hline 
+\end{tabular}
+\end{center}
+
+where $\omega = (1+\sqrt{-3})/2$, $\F$ is a field and $p$ is a prime number.
+
+$R$ is a field if and only if $R[X]$ is a PID.
+
+For commutative ring $R$, $R/I$ is a field if and only if $I$ is a maximal ideal, $R/I$ is an integral domain if and only if $I$ is a prime ideal.
+
+A maximal ideal is a prime ideal. In PID, maximal ideal and prime ideal are equivalent.
+

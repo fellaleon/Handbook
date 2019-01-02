@@ -1,0 +1,725 @@
+
+%\documentclass{memoir}
+\documentclass{book}
+
+%\usepackage{harvard}%`
+\usepackage{isotope}
+
+
+%\usepackage{graphicx}
+
+\usepackage[german,english]{babel}
+\usepackage[backref=page]{hyperref}
+\usepackage{bookmark}
+
+\usepackage{backrefx}   %cited on page...
+
+%\RequirePackage[colorlinks=false,hyperindex,plainpages=true,bookmarks]{hyperref}
+%\usepackage{natbib}
+
+
+\usepackage{epstopdf}
+
+
+\usepackage{texdraw}
+\usepackage{graphics}
+%\usepackage[backref=page]{hyperref}
+
+%\usepackage[language]{babel}
+\usepackage{inputenc}
+\usepackage{array,longtable,supertabular,afterpage}
+\usepackage{stmaryrd}
+%\usepackage{llncsdoc}
+\usepackage{bbm}
+\usepackage{url}
+\usepackage{mathrsfs}
+\usepackage{setspace}
+%\usepackage[bookmarks=true]{hyperref}
+\usepackage{cite}
+%\usepackage{graphicx}
+\usepackage{amsthm}
+\usepackage{amssymb}
+%\usepackage{amsbsy}
+\usepackage{amsmath}
+\usepackage{makeidx}
+
+\usepackage{amsxtra}
+\usepackage[toc]{appendix}
+%\usepackage{multind}
+
+%\usepackage{MnSymbol}
+
+\usepackage{graphicx}
+%\usepackage{epstopdf}% this could be mentioned earlier
+\usepackage{color}
+
+%\usepackage{psdot}
+\usepackage{pst-func}
+\usepackage{pst-eucl}
+\usepackage{pst-node}
+
+%\usepackage{pstricks}
+%\usepackage{pst-solides3d}
+
+\usepackage{slashbox}
+\usepackage{diagbox}
+
+%\usepackage{times}
+%\usepackage{fontenc}
+%\usepackage[geometry]{ifsym}
+%\usepackage{mathabx}
+
+\usepackage{extarrows}
+
+\usepackage{latexsym}
+\usepackage{arydshln}
+
+\usepackage{mathdots}
+%\usepackage{tikz}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\theoremstyle{plain}
+\theoremstyle{definition}
+\numberwithin{equation}{section}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{exercise}[theorem]{Exercise}
+\newtheorem{convention}[theorem]{Convention}
+\newtheorem{statement}[theorem]{Statement}
+\newtheorem{fact}[theorem]{Fact}
+\newtheorem{axiom}[theorem]{Axiom}
+\newtheorem{method}[theorem]{Method}
+\newtheorem{algorithm}[theorem]{Algorithm}
+\newtheorem{question}[theorem]{Q}
+\newtheorem{problem}[theorem]{Problem}
+\newtheorem{pretheorem}[theorem]{Pretheorem}
+\newtheorem{added}{Added}
+%\newtheorem{definition}[theorem]{Definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}[theorem]{Example}
+%\newtheorem{example}{Example}[section]
+
+\DeclareMathOperator{\Arcsin}{Arcsin}
+\DeclareMathOperator{\Arccos}{Arccos}
+\DeclareMathOperator{\Arctan}{Arctan}
+
+\DeclareMathOperator{\cosec}{cosec}
+
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arccosh}{arccosh}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\cosech}{cosech}
+
+
+\DeclareMathOperator{\jm}{\mathrm{D}}	% Jacobian matrix
+
+
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\Cl}{Cl}
+\DeclareMathOperator{\Int}{Int}
+%\DeclareMathOperator{\Span}{span}
+\DeclareMathOperator{\pd}{Poi}
+\DeclareMathOperator{\diam}{diam}
+\DeclareMathOperator{\ct}{ct}
+
+%\DeclareMathOperator{\ud}{\mathcal{U}}
+\DeclareMathOperator{\berd}{Ber}
+\DeclareMathOperator{\bd}{Bin}
+\DeclareMathOperator{\geo}{Geo}
+\DeclareMathOperator{\nbd}{NB}
+\DeclareMathOperator{\betad}{Beta}
+\DeclareMathOperator{\fred}{Fre}
+\DeclareMathOperator{\gumd}{Gum}
+\DeclareMathOperator{\weid}{Wei}
+\DeclareMathOperator{\logd}{\mathcal{L}}%logistic distribution
+\DeclareMathOperator{\sked}{Ske}
+\DeclareMathOperator{\levyd}{Levy}
+
+
+\DeclareMathOperator{\leg}{LEG}
+\DeclareMathOperator{\bes}{BES}
+\DeclareMathOperator{\besq}{BESQ}
+\DeclareMathOperator{\ai}{Ai}
+
+\DeclareMathOperator{\disc}{Disc}
+\DeclareMathOperator{\chara}{char}
+\DeclareMathOperator{\cir}{circ}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\rank}{r}
+\DeclareMathOperator{\nullity}{n}
+
+\DeclareMathOperator{\gp}{GP}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+%\DeclareMathOperator{\vec}{vec}
+
+%\DeclareMathOperator{\gl}{GL}
+%\DeclareMathOperator{\sl}{SL}
+%\DeclareMathOperator{\pgl}{PGL}
+%\DeclareMathOperator{\psl}{PSL}
+
+%\DeclareMathOperator{\bigtimes}{\mathsf{X}}
+%\DeclareMathAccent{\vec}{\mathord}{letters}{"7E}
+%\DeclareMathSymbol{\alphld}{\mathalpha}{AMSb}{"0C}
+%\DeclareMathSymbol{\bigtimes}{\mathop}{\mathsf{X}}
+%\DeclareMathSymbol{\bigtimes}{1}{mathx}{"91}
+%\newcommand{\Cross}{\mathbin{\tikz [x=1.4ex,y=1.4ex,line width=.2ex] \draw (0,0) -- (1,1) (0,1) -- (1,0);}}%
+%\newcommand{\bigtimes}{\operatorname{}
+
+%\DeclareMathSymbol{\bigtimes}{\mathalop{\mathsf{X}}}
+
+%\newcommand{\bigtimes}{\mathop{\mathsf{X}}}
+%\newcommand{\bigtimes}{\mathop{\mathbf{\bs\!\!\!/}}}
+
+
+\newcommand{\orderO}{O}
+\newcommand{\ordero}{o}
+
+\newcommand{\bigtimes}{\mathop{\diagup \,\,\!\!\!\!\!\!\!\diagdown}}
+
+%\newcommand{\Span}{\operatorname{span}}
+\newcommand{\linspan}{\operatorname{span}}
+\renewcommand{\vec}{\operatorname{vec}}
+\newcommand{\var}{\operatorname{Var}}
+\newcommand{\cov}{\operatorname{Cov}}
+\newcommand{\skewness}{\operatorname{Skew}}
+\newcommand{\kurt}{\operatorname{Kurt}}
+\newcommand{\ekurt}{\operatorname{eKurt}}
+\newcommand{\corr}{\operatorname{Corr}}
+\newcommand{\sinc}{\operatorname{sinc}}
+\newcommand{\sgn}{\operatorname{sgn}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Log}{\operatorname{Log}}
+\newcommand{\hathatf}{\Hat{\Hat{f}}}
+\newcommand{\hathatG}{\Hat{\Hat{G}}}
+
+\newcommand{\erf}{\operatorname{erf}}
+\newcommand{\erfc}{\operatorname{erfc}}
+
+\newcommand{\arrowD}{\underset{\mathcal D}{\rightarrow}}
+\newcommand{\arrowd}{\underset{{\mathcal D}'}{\rightarrow}}
+\newcommand{\arrowS}{\underset{\mathcal S}{\rightarrow}}
+\newcommand{\arrows}{\underset{{\mathcal S}'}{\rightarrow}}
+
+\newcommand{\csch}{\operatorname{csch}}
+\newcommand{\im}{\operatorname{Im}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\hcf}{\operatorname{hcf}}
+\newcommand{\sym}{\operatorname{Sym}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\aut}{\operatorname{Aut}}
+\newcommand{\ccl}{\operatorname{ccl}}
+\newcommand{\ann}{\operatorname{Ann}}
+\newcommand{\res}{\operatorname{Res}}
+\newcommand{\adj}{\operatorname{adj}}
+\newcommand{\esssup}{\operatorname{esssup}}
+\newcommand{\osc}{\operatorname{osc}}
+\newcommand{\lip}{\operatorname{Lip}}
+\newcommand{\spa}{\operatorname{sp}}
+\newcommand{\rowsp}{\operatorname{rowsp}}
+\newcommand{\colsp}{\operatorname{colsp}}
+%\newcommand{\colsp}{\operatorname{R}}
+\newcommand{\colrk}{\operatorname{colrank}}
+\newcommand{\rowrk}{\operatorname{rowrank}}
+\newcommand{\stab}{\operatorname{Stab}}
+\newcommand{\gal}{\operatorname{Gal}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\Arg}{\operatorname{Arg}}
+
+\newcommand{\VAR}{\mathbf{VaR}}
+\newcommand{\ES}{\mathbf{ES}}
+
+\newcommand{\leb}{Leb}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\sA}{{\cal A}}
+\newcommand{\sB}{{\cal B}}
+\newcommand{\sC}{{\cal C}}
+\newcommand{\sD}{{\cal D}}
+\newcommand{\sE}{{\cal E}}
+\newcommand{\sF}{{\cal F}}
+\newcommand{\sG}{{\cal G}}
+\newcommand{\sH}{{\cal H}}
+\newcommand{\sI}{{\cal I}}
+\newcommand{\sJ}{{\cal J}}
+\newcommand{\sK}{{\cal K}}
+\newcommand{\sL}{{\cal L}}
+\newcommand{\sM}{{\cal M}}
+\newcommand{\sN}{{\cal N}}
+\newcommand{\sO}{{\cal O}}
+%\newcommand{\so}{{\cal o}}
+\newcommand{\sP}{{\cal P}}
+\newcommand{\sQ}{{\cal Q}}
+\newcommand{\sR}{{\cal R}}
+\newcommand{\sS}{{\cal S}}
+\newcommand{\sT}{{\cal T}}
+\newcommand{\sU}{{\cal U}}
+\newcommand{\sV}{{\cal V}}
+\newcommand{\sW}{{\cal W}}
+\newcommand{\sX}{{\cal X}}
+\newcommand{\sY}{{\cal Y}}
+\newcommand{\sZ}{{\cal Z}}
+\newcommand{\Prev}{{\cal P}} % previsible/predictable
+\newcommand{\Prog}{{\cal G}} % progressive
+\newcommand{\Opt}{{\cal O}} % optional
+
+\newcommand{\lbp}{ \hbox{\rm lb}{\cal P} }
+\newcommand{\half}{  {\scriptstyle \frac{1}{2} } }
+\newcommand{\mn}{ {\pounds} }
+\newcommand{\s}{ \bar S}
+\newcommand{\tb}{\bar\theta}
+\newcommand{\mpi}{\dag}		% Moore-Penrose generalized inverse
+
+\newcommand{\C}{\mathbb C}
+\newcommand{\E}{\mathbb E}
+\newcommand{\F}{\mathbb F}
+\newcommand{\BH}{\mathbb H}
+\newcommand{\I}{\mathbb I}
+\newcommand{\N}{\mathbb N}
+\newcommand{\pro}{\mathbb P}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\R}{\mathbb R}
+\newcommand{\BS}{\mathbb S}
+\newcommand{\T}{\mathbb T}
+\newcommand{\W}{\mathbb W}
+\newcommand{\X}{\mathbb X}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\nl}{\vskip 0.05 in \noindent}
+\newcommand{\med}{\vskip 0.10 in \noindent}
+\newcommand{\lb}{\llbracket}
+\newcommand{\rb}{\rrbracket}
+\newcommand{\bs}{\backslash}
+\newcommand{\RC}{\overline{\mathbb R}}
+
+\newcommand{\bea}{\begin{eqnarray}}
+\newcommand{\eea}{\end{eqnarray}}
+ \newcommand{\beast}{ \begin{eqnarray*} }
+\newcommand{\eeast}{ \end{eqnarray*} }
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\ba}{\begin{array}}
+\newcommand{\ea}{\end{array}}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+\newcommand{\bed}{\begin{description}}
+\newcommand{\eed}{\end{description}}
+\newcommand{\bepm}{\begin{pmatrix}}
+\newcommand{\eepm}{\end{pmatrix}}
+\newcommand{\bebm}{\begin{bmatrix}}
+\newcommand{\eebm}{\end{bmatrix}}
+\newcommand{\bevm}{\begin{vmatrix}}
+\newcommand{\eevm}{\end{vmatrix}}
+
+\newcommand{\eoproof}{\hfill \makebox{\rule{0.8ex}{1.7ex}}\medskip}
+\newcommand{\wun}{ {\bf 1} }
+\newcommand{\tpi}{\tilde\pi}
+
+\newcommand{\lob}{\left(}
+\newcommand{\rob}{\right)}
+
+\newcommand{\ra}{\Rightarrow}
+\newcommand{\la}{\Leftarrow}
+\newcommand{\lra}{\Leftrightarrow}
+\newcommand{\llra}{\leftrightarrow}
+
+\newcommand{\ua}{\uparrow}
+\newcommand{\da}{\downarrow}
+
+\newcommand{\adjoint}{*}
+\newcommand{\mpgi}{\dag}
+
+\newcommand{\ve}{\varepsilon}
+\newcommand{\vp}{\varphi}
+\newcommand{\lm}{\lambda}
+\newcommand{\om}{\omega}
+\newcommand{\ketpsi}{\ket{\psi}}
+\newcommand{\ketphi}{\ket{\varphi}}
+\newcommand{\ketn}{\ket{n}}
+\newcommand{\braphi}{\brac{\varphi}}
+\newcommand{\brapsi}{\brac{\psi}}
+\newcommand{\bran}{\brac{n}}
+\newcommand{\hthe}{ \hat \theta}
+
+\newcommand{\tthe}{{\tilde{\theta}}}
+\newcommand{\tThe}{{\tilde{\Theta}}}
+\newcommand{\tchi}{{\tilde{\chi}}}
+\newcommand{\tpsi}{\widetilde{\psi}}
+
+\newcommand{\qcutline}{------------------------------------------------------------------------------------------------------------------}
+\newcommand{\scutline}{---------------------------------------------------------}
+
+\newcommand{\wh}{\widehat}
+\newcommand{\wt}{\widetilde}
+\newcommand{\abs}[1]{\left| #1\right|}
+\newcommand{\dabs}[1]{\left\| #1\right\|}
+\newcommand{\tabs}[1]{\left|\!\!\: \left|\!\!\:\left| #1\right|\!\!\:\right|\!\!\:\right|}
+%\newcommand{\tabs}[1]{\left|\left\| #1\right|\right\|}
+\newcommand{\bb}[1]{\lob #1\rob}
+\newcommand{\bsb}[1]{\left[#1\right]}
+\newcommand{\bra}[1]{\left\{#1\right\}}
+\newcommand{\brac}[1]{\left\langle #1 \right|}
+\newcommand{\ket}[1]{\left| #1 \right\rangle}
+\newcommand{\bsa}[1]{\left\langle #1\right\rangle}
+\newcommand{\supbef}[2]{{}^{#2}\! #1}
+
+\newcommand{\ud}[2]{\sU\left(#1,#2\right)}
+
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\ind}{\mathbbm{1}}
+\newcommand{\onevec}{\mathbf{1}}
+\newcommand{\interior}{\mathrm{int}\,}
+
+\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil #1 \right\rceil}
+
+%\newcommand{\floor}[1]{\lfloor #1 \rfloor}
+%\newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\inner}[2]{\left\langle #1 , #2\right\rangle}
+\newcommand{\bracket}[2]{\langle #1 | #2\rangle}
+%\newcommand{\aver}[1]{\langle #1\rangle}
+\newcommand{\cl}[1]{\overline{#1}}
+%\newcommand\encircle[1]{%
+%    \tikz[baseline=(X.base)]
+%        \node (X) [draw,shape=circle, inner sep=0]{\strut #1};}
+
+%\newcommand{\cadlag}{\operatorname{c$\grave{\text{a}}$dl$\grave{\text{a}}$g}}
+
+%\newcommand{\cadlag}{c$\grave{\text{a}}$dl$\grave{\text{a}}$g}
+%\newcommand{\ladcag}{l$\grave{\text{a}}$dc$\grave{\text{a}}$g}
+\newcommand{\cadlag}{c\`adl\`ag}
+\newcommand{\ladcag}{l\`adc\`ag}
+
+\newcommand{\levy}{L\'evy}
+\newcommand{\paul}{P.}
+
+\newcommand{\bA}{{\bf A}}
+\newcommand{\bB}{{\bf B}}
+\newcommand{\bE}{{\bf E}}
+\newcommand{\bF}{{\bf F}}
+\newcommand{\bJ}{{\bf J}}
+\newcommand{\bK}{{\bf K}}
+\newcommand{\bL}{{\bf L}}
+\newcommand{\bN}{{\bf N}}
+\newcommand{\bP}{{\bf P}}
+\newcommand{\bS}{{\bf S}}
+\newcommand{\bT}{{\bf T}}
+\newcommand{\bV}{{\bf V}}
+\newcommand{\bX}{{\bf X}}
+\newcommand{\bba}{{\bf a}}
+\newcommand{\bbb}{{\bf b}}
+\newcommand{\bbe}{{\bf e}}
+\newcommand{\bbf}{{\bf f}}
+\newcommand{\bbi}{{\bf i}}
+\newcommand{\bbj}{{\bf j}}
+\newcommand{\bbk}{{\bf k}}
+\newcommand{\bbl}{{\bf l}}
+\newcommand{\bbm}{{\bf m}}
+\newcommand{\bbn}{{\bf n}}
+\newcommand{\bbp}{{\bf p}}
+\newcommand{\bbr}{{\bf r}}
+\newcommand{\bbs}{{\bf s}}
+\newcommand{\bu}{{\bf u}}
+\newcommand{\bv}{{\bf v}}
+\newcommand{\bw}{{\bf w}}
+\newcommand{\bx}{{\bf x}}
+ \newcommand{\by}{{\bf y}}
+\newcommand{\bz}{{\bf z}}
+\newcommand{\vz}{{\bf 0}}
+
+\newcommand{\ol}{\overline}
+\newcommand{\ul}{\underline}
+\newcommand{\inter}{\mathring}
+\newcommand{\ot}{\otimes}
+\newcommand{\lmod}[1]{\ \! \bb{\bmod \ \! #1}}
+
+\newcommand{\p}{\partial}
+\newcommand{\fd}[2]{\frac{d #1}{d #2}}
+\newcommand{\fp}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\fpp}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\newcommand{\chf}[2]{{}_{#1}F_{#2}}
+
+%\newenvironment{remark}[1][Remark.]{\noindent\textbf{#1.} }{\ }
+%\newenvironment{note}[1][Note]{\noindent\textbf{#1.} }{\ }
+%\newenvironment{solution}[1][Solution]{\noindent\textbf{#1.} }{\ }
+%%\newenvironment{example}[1][Example]{\noindent\textbf{#1.} }{\ }
+
+
+\newenvironment{remark}[1][Remark.]{\begin{trivlist} \item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{note}[1][Note]{\begin{trivlist} \item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{solution}[1][Solution]{\begin{trivlist} \item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+
+%matrix block
+\newcommand{\adots}{\mathinner{\mkern2mu%
+\raisebox{0.1em}{.}\mkern2mu\raisebox{0.4em}{.}%
+\mkern2mu\raisebox{0.7em}{.}\mkern1mu}}
+
+
+
+%\renewcommand{\chaptername}{Chapter}
+\textwidth 190mm
+%\oddsidemargin  -10mm \evensidemargin -10mm
+\oddsidemargin  -10mm \evensidemargin -20mm
+\topskip -15mm \topmargin -30mm \textheight 255mm
+%\topskip -15mm \topmargin -40mm \textheight 265mm
+
+\setstretch{1.2}        % Initial baselinestretch
+\makeindex
+
+%\let\oldpartnumberline\partnumberline	%for part appendix
+%\def\global\@namedef#1#2{}\def\newlabel{\@testdef r}%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\includeonly{Data/Elementary/Notations}
+%\includeonly{Data/Elementary/Sets}
+%\includeonly{Data/Elementary/Numbers}
+%\includeonly{Data/Algebra/Groups}
+%\includeonly{Data/Algebra/Rings}
+%\includeonly{Data/Algebra/Linear_Algebra}	
+%\includeonly{Data/Algebra/Matrix}
+%\includeonly{Data/Algebra/Modules}
+%\includeonly{Data/Algebra/Galois_Theory}			
+%\includeonly{Data/Analysis/Real_Analysis}
+%\includeonly{Data/Analysis/Calculus}
+%\includeonly{Data/Analysis/Functions}
+%\includeonly{Data/Analysis/Fourier_Analysis}		%p
+%\includeonly{Data/Analysis/Metric_Space}
+%\includeonly{Data/Topology/Topological_Space}	
+%\includeonly{Data/Analysis/Measure_Theory}
+%\includeonly{Data/Analysis/Linear_Analysis}
+%\includeonly{Data/Dynamics/Differential_Equations}
+%\includeonly{Data/Dynamics/Partial_Differential_Equations}
+%\includeonly{Data/Probability/Probability}
+\includeonly{Data/Probability/Discrete_Stochastic_Processes}
+%\includeonly{Data/Probability/Continuous_Stochastic_Processes}
+%\includeonly{Data/Probability/Martingale_Theory}
+%\includeonly{Data/Probability/Markov_Chains}
+%\includeonly{Data/Probability/Brownian_Motion}
+%\includeonly{Data/Probability/Stochastic_Calculus}
+%\includeonly{Data/Statistics/Distributions}
+%\includeonly{Data/Statistics/Statistics}
+%\includeonly{Data/Statistics/Statistical_Tests}
+%\includeonly{Data/Financial_Mathematics/Options}
+%\includeonly{Data/Appendix/Questions}
+%\includeonly{Data/Appendix/Unsorted}
+
+
+\title{\LARGE \textbf{Mathematics Handbook}\\ }
+%\author{\Large Liang Zhang \\}
+\author{\Large Zexiang Chen \\ \Large Liang Zhang \\}
+%\author{\Large Zexiang Chen \\ \Large Guolong Li \\ \Large Liang Zhang \\}
+\begin{document}
+
+\pagestyle{plain}
+\graphicspath{{Figures/}}
+
+\maketitle
+\pagenumbering{roman}     % resets page counter to one
+\pagestyle{plain}
+
+\tableofcontents
+%\begin{singlespace}
+%\listoffigures
+%\listoftables
+%\end{singlespace}
+%\include{Data/Acknowledgement}
+%\include{Data/Abstract}
+
+\clearpage                   % otherwise tables will be numbered wrong
+%\pagestyle{myheadings}
+\pagenumbering{arabic}
+
+ %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Elementary}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%This part will give elementary notations and knowledge.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{Data/Elementary/Notations}
+\include{Data/Elementary/Sets}
+\include{Data/Elementary/Numbers}
+\include{Data/Elementary/Spaces}
+%\include{Data/Elementary/Vectors}
+%\include{Data/Temp/Logic_and_Set_Theory}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Algebra}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{Data/Algebra/Groups}						%done
+\include{Data/Algebra/Rings}							%done
+\include{Data/Algebra/Linear_Algebra}			%half-done
+\include{Data/Algebra/Matrix}						%p
+%\include{Data/Algebra/Modules}					%p
+%\include{Data/Temp/Linear_Algebra}			%Gaussian elimination
+\include{Data/Algebra/Galois_Theory}			%p
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Analysis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{Data/Analysis/Introduction}            					%p
+\include{Data/Analysis/Real_Analysis}							%p
+%\include{Data/Analysis/Fundamental_Analysis}			%p
+\include{Data/Analysis/Complex_Analysis}						%p
+%\include{Data/Temp/Numercial_Analysis}
+%\include{Data/Temp/Basic_Analysis}
+%\include{Data/Temp/Analysis_II}
+\include{Data/Analysis/Functions}
+\include{Data/Analysis/Calculus}                					%p
+\include{Data/Analysis/Matrix_Analysis} 						%p
+\include{Data/Analysis/Metric_Space}							%p
+\include{Data/Analysis/Topological_Space}					%p
+\include{Data/Analysis/Measure_Theory}						%done
+\include{Data/Analysis/Linear_Analysis}							%p
+\include{Data/Analysis/Fourier_Analysis}						%p
+%\include{Data/Temp/Linear_Analysis}
+%\include{Data/Temp/Functional_Analysis}
+%\include{Data/Analysis/Asymptotic_Analysis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Numerical Analysis}
+\include{Data/Numerical_Analysis/Numerical_Analysis}		%p
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\part{Topology}
+%\include{Data/Calculus/Vector_Calculus}
+%\include{Data/Calculus/Electromagnetism}
+%\include{Data/Calculus/Matrix_Calculus}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\part{Number Theory}
+\include{Data/Number_Theory/Elementary_Number_Theory}		%p
+\include{Data/Number_Theory/Analytic_Number_Theory}		%p
+
+\part{Dynamics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{Data/Dynamics/Ordinary_Differential_Equations}
+\include{Data/Dynamics/Partial_Differential_Equations}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Geometry}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{Data/Geometry/Euclidean_Geometry}
+\include{Data/Geometry/Differential_Geometry}
+%\include{Data/Temp/Geometry}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Discrete Mathematics}
+\include{Data/Discrete_Mathematics/Graph_Theory}
+\include{Data/Discrete_Mathematics/Combinatorics}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Probability}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\include{Data/Probability/Probability}			           %done
+\include{Data/Probability/Discrete_Stochastic_Processes}
+\include{Data/Probability/Continuous_Stochastic_Processes}
+\include{Data/Probability/Martingale_Theory}	
+\include{Data/Probability/Markov_Chains}
+\include{Data/Probability/Brownian_Motion}                  %done
+\include{Data/Probability/Markov_Processes}
+\include{Data/Probability/Levy_Process_and_Infinitely_Divisible_Distributions}
+\include{Data/Probability/Stochastic_Calculus}              %p
+\include{Data/Probability/Stochastic_Differential_Equations}
+\include{Data/Probability/Diffusions}                       %p
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Statistics}
+\include{Data/Statistics/Distributions}	                %p
+\include{Data/Statistics/Statistics}                    %p
+\include{Data/Statistics/Non_parametric_Estimation}
+\include{Data/Statistics/Statistical_Tests}             %p
+\include{Data/Statistics/Extreme_Value_Theory}
+\include{Data/Statistics/Order_Statistics}
+\include{Data/Statistics/Stable_Distribution}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Optimization}
+\include{Data/Optimization/Optimization}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\part{Financial Mathematics}
+\include{Data/Financial_Mathematics/Model}
+%\include{Data/Financial_Mathematics/Futures}
+\include{Data/Financial_Mathematics/Options}
+\include{Data/Financial_Mathematics/Volatility}
+%\include{Data/Financial_Mathematics/Asset_Allocation}
+\include{Data/Financial_Mathematics/Contracting_Theory}
+\include{Data/Financial_Mathematics/Risk}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\part{Numerical Analysis}
+%\include{Data/Numerical_Anlaysis/Numerical_Anlaysis}	%p
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\part{Graph Theory}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\part{Coding and Cryptography}
+%\include{Data/Temp/Coding_and_Cryptography/Coding_and_Cryptography}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\part{Coding and Cryptography}
+%\include{Data/Quantum_Mechanics/Quantum_Mechanics}
+
+%\part{Unsorted}
+%\include{Data/Unsorted}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\part{Calculation}
+%\include{Data/Calculation/Probability_and_Statistics}
+
+%\appendixpage
+
+%\addtocontents{toc}{\protect\renewcommand\protect\partnumberline\protect[1]{\protect\oldpartnumberline{}}}
+
+\part{Appendix}
+
+%\appendix
+%\include{Data/Appendix/Calculus}
+%\include{Data/Appendix/Differential_Equations}
+%\include{Data/Appendix/Questions}
+%\include{Data/Appendix/Unsorted}
+
+\bibliographystyle{plain}
+\bibliography{Data/ref}
+\addcontentsline{toc}{chapter}{Bibliography}
+%\part{Index}
+
+%\addcontentsline{toc}{chapter}{Index}
+%\printindex
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Index}
+\printindex
+
+%\bibliographystyle{plainnat}
+%\bibliography{refs}
+%
+%% =================================================================
+%
+%\printindex
+\end{document}

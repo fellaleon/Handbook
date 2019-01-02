@@ -1,0 +1,24 @@
+\chapter{Linear Analysis}
+
+\begin{theorem}[arithmetic-geometric mean inequality\index{arithmetic-geometric mean inequality}]\label{thm:arithmetic_geometric_mean_inequality}
+For positive real numbers $x_1, \dots, x_n$,
+\be
+\bb{\prod^n_{i=1} x_i}^{1/n} \leq \frac 1n \sum^n_{i=1} x_i.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+See Example \ref{exa:arithmetic_geometric_mean_inequality_probability_proof}.
+\end{proof}
+
+\begin{theorem}[Stone-Weierstrass theorem\index{Stone-Weierstrass theorem}]\label{thm:stone_Weierstrass_separates_points}
+Suppose $X$ is a compact Hausdorff space and $\sA$ is a subalgebra of $C(X)$ which contains a non-zero constant function. Then $A$ is dense in $C(X)$ if and only if it separates points, i.e., $\forall x\in X$, there exist elements $f,g\in \sA$ such that $f(x) \neq g(x)$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+see \cite{Rogers_1994}.II80
+\end{proof}
+
+
+\begin{corollary}[Weierstrass' approximation theorem\index{Weierstrass' approximation theorem}]\label{cor:weierstrass_approximation} Since the polynomials on $[a,b]$ form a subalgebra of $C[a,b]$, $\sA$, which contains the constants and separates points, $\sA$ is dense.
+\end{corollary}

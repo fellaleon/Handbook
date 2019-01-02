@@ -1,0 +1,143 @@
+\chapter{Differential Geometry}
+
+%\section{}
+
+
+%
+%\section{Curves}
+%
+%
+%
+%\subsection{Curves on topological space}
+%
+%\begin{definition}[curve]
+%A curve is defined through a continuous mapping $\gamma: I \to X$ from an interval $I$ of the real numbers into a topological space $X$.
+%\end{definition}
+%
+%\begin{remark}
+%Curves are continuous.
+%\end{remark}
+%
+%\subsection{Closed curve}
+%
+%\begin{definition}[simple closed curve]
+%A simple closed curve (also known as Jordan curve) is a closed curve $\gamma:[a,b]\to \R^n$ that does not cross itself and ends at the same point where it begins (that is, the initial and final values of $\gamma(t)$ are the same).
+%\end{definition}
+%
+%\subsection{Directed curves}
+%
+%\begin{definition}[positive and negative orientation]
+%A simple closed curve $C$ has positive orientation if the region $R$ enclosed by the curve stays to the left of $C$ as the curve is traversed. A curve has negative orientation if the region stays to the right of $C$.
+%\end{definition}
+%
+%
+%\subsection{Smooth curves}
+%
+%\begin{definition}[smooth curve]\label{def:smooth_curve_multiple_real}
+%A smooth curve $\gamma$ on complex plane, denoted by $z:\R\to \R^n$ is a curve with continuous derivative in the closed interval $t\in [a,b]$.% and non-zero in the open interval $t\in (a,b)$.
+%\end{definition}
+%
+%\begin{remark}
+%Some books assume $z'(t)\neq 0$ except at end points. If $z'(t)$ is allowed to be zero, the curve could trace out a path that contains a sharp cusp, despite $z$ being perfectly smooth. The trick is that $z$ has zero velocity at the sharp point so there is no abrupt change in direction. Often books show a few examples like this to explain why they impose such regularity condition.
+%\end{remark}
+%
+%
+%
+%\begin{definition}[piecewise smooth curve]\label{def:piecewise_smooth_curve_multiple_real}
+%A smooth curve $\gamma:\R\to \R^n$ is a curve consisting of a finite number of smooth curves joined end to end.
+%\end{definition}
+%
+%
+%\section{Connected Sets}
+%
+%\subsection{Connected sets}
+%
+%%item connected set, move connected set to differential geometry
+%
+%Recalling the definition of disconnectedness and partition in topology\footnote{definition and proposition needed.}, we have the following definition.
+%
+%\begin{definition}[connected set\index{connected set!multiple real space}]\label{def:connected_set_multiple_real_space}
+%A set $X\subseteq \R^n$ is called disconnected if it is the union of two disjoint non-empty open sets $X_1,X_2$ in $X$. Otherwise, $X$ is called connected.
+%\end{definition}
+%
+%\begin{remark}
+%Note that the open set is with respect to $X$. For instance, for $X = [0,1)\cup (1,2]$, $X_1 = [0,1)$ and $X_2 = (1,2]$ are both open.
+%\end{remark}
+%
+%\subsection{Pathwise connected sets}
+%
+%\begin{definition}[pathwise connected set]
+%A set $X\subseteq \R^n$ is said to be pathwise connected if any two points in $X$ can be joined by a (continuous) curve entirely contained in $X$.
+%\end{definition}
+%
+%\begin{definition}[smoothly pathwise connected set]
+%A set $X\subseteq \R^n$ is said to be smoothly pathwise connected if any two points in $X$ can be joined by a smooth curve entirely contained in $X$.
+%\end{definition}
+%
+%\begin{definition}[piecewise smoothly pathwise connected set]
+%A set $X\subseteq \R^n$ is said to be piecewise smoothly pathwise connected if any two points in $X$ can be joined by a piecewise smooth curve entirely contained in $X$.
+%\end{definition}
+%
+%Recalling the Proposition\footnote{proposition needed. Sutherland's book, p120}, we have
+%
+%\begin{proposition}
+%Let $X\subseteq \R^n$ be pathwise connected. Then $X$ is connected.
+%\end{proposition}
+%
+%Also, we have the following equivalent description when $X$ is open in $\R^n$ (see Princeton LN, complex analysis, p25).
+%
+%\begin{proposition}\label{pro:open_set_is_piecewise_smoothly_pathwise_connected_iff_connected_multiple_real}
+%An open set $X\subseteq \R^n$ is piecewise smoothly pathwise connected if and only if $X$ is connected.
+%\end{proposition}
+%
+%\begin{remark}
+%For an open $X$ in $\R^n$, it is obviously smoothly pathwise connectedness implies piecewise smoothly pathwise connectedness.
+%
+%Conversely, for piecewise smoothly pathwise connected set, we can have finitely many joint points of the smooth curves. Since $X$ is open, we can always find a small ball about these joint points such that the balls are within $X$. Thus, we can easily twist the joint point into a smooth curve in each of these balls such that the whole curve is smooth.
+%
+%Therefore, for an open $X$ in $\R^n$ we have
+%\beast
+%\text{$X$ is connected} & \lra & \\
+%\text{$X$ is pathwise connected} & \lra & \\
+%\text{$X$ is smoothly pathwise connected} & \lra & \\
+%\text{$X$ is piecewise smoothly pathwise connected} & . &
+%\eeast
+%
+%See p25, complex analysis of princeton LN for the details.
+%\end{remark}
+%
+%\begin{proof}[\bf Proof]
+%($\ra$). Suppose first that $X$ is open and piecewise smoothly pathwise connected, and that it can be written as $X_1\cup X_2$ where $X_1$ and $X_2$ are disjoint, non-empty open sets. Choose two points $w_1 \in X_1$ and $w_2 \in X_2$ and let $\gamma$ denote a curve in $X$ joining $w_1$ to $w_2$.
+%
+%Consider a Parameterization $z : [0, 1] \to X$ of this curve with $z(0) = w_1$ and $z(1) = w_2$, and let
+%\be
+%t^* = \sup_{0\leq t\leq 1} \bra{t : z(s) \in X_1 \text{ for all }0 \leq s \leq t}.
+%\ee
+%
+%Now consider the point $z(t^*)$.
+%
+%If $z(t^*)$ is in $X_1$, then because $X_1$ is open, there is an open ball $B$ containing $z(t^*)$. Since $z$ is continuous, it follows that $z^{-1}(B)$ is open as a subset of $[0,1]$ by Theorem \ref{thm:continuity_reserves_open_metric}. Thus (assuming $t^* < 1$) $z^{-1}(X_1)$ contains points to the right of $t^*$, which is impossible. If $t^* = 1$, then there is a sequence of points in $X_1$ that converges to $z(1) \in X_2$, contradicting the assumption that $X_2$ is open.
+%
+%If we assume instead that $z(t^*) \in X_2$, we recognize that $t \geq t^*$ if $z(t)\in X_2$. Thus, $t^*$ is the infimum of all values of $t$ such that $z(t) \in X_2$, and we can use the same argument as in the previous paragraph to conclude $z(t^*) \not\in X_2$. Since $z(t^*) \in X = X_1 \cup X_2$, this is a contradiction.
+%
+%
+%($\la$). Conversely, suppose that $X$ is open and connected. Fix a point $w \in X$ and let $X_1 \subseteq X$ denote the set of all points that can be joined to $w$ by a piecewise smooth curve contained in $X$. Also, let $X_2 \subseteq X$ denote the set of all points that cannot be joined to $w$ by a piecewise smooth curve in $X$.
+%
+%We want to show that both $X_1$ and $X_2$ are open and disjoint and their union is $X$. Clearly, $X_1 \cup X_2 = X$ and $X_1\cap X_2 = \emptyset$. The only thing that remains to be shown is that both $X_1$ and $X_2$ are open.
+%
+%Let $w_1 \in X_1$. Because $X_1$ is open, it contains an open ball $B$ centered at $w_1$. It is obvious that for any $w^* \in B$, then there exists a smooth path (curve) $z^*$ connecting $w_1$ and $w^*$. Let $z_1$ be a curve joining $w$ to $w_1$. Then consider the curve defined by
+%\be
+%z(t) = \begin{cases}
+%z_1(2t) & t \in [0, 1/2) \\
+%z^*(2t - 1) \quad\quad & t\in [1/2,1]
+%\end{cases}.
+%\ee
+%
+%Then $z$ is a continuous, piecewise smooth curve that connects $w$ to $w^*$. It follows that $B \subseteq X_1$ and that $X_1$ is open.
+%
+%Now, for any $w_2 \in X_2$, since $X$ is open, it contains an open ball $B$ centered at $w_2$ so there exists a smooth curve connecting $w_2$ and any point in $B$. For any $w^* \in B$, if there were a curve $z_2$ that connected $w$ to $w^*$, then we could, as in the previous paragraph, find a curve connecting $w$ to $w_2$ by concatenating the path from $w$ to $w^*$ and the path from $w^*$ to $w_2$. Thus $w_2 \in X_1$, which is a contradiction.
+%
+%Since $X$ is connected, either $X_1 = X$ or $X_2 = X$. But $X_1$ is not empty since $X$ is open. So $X = X_1$.% by the assumption.
+%\end{proof}
+%
+%

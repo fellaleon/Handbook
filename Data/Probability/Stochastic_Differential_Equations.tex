@@ -1,0 +1,30 @@
+\chapter{Stochastic Differential Equations}
+
+
+
+\section{Applications}
+
+\subsection{Feynman-Kac formula}
+
+\subsection{Vasicek Model}
+
+This model is first introduced in \cite{Vasicek_1977}
+
+\subsection{Reflecting Brownian motion}
+
+Suppose $X$ is a stochastic process satisfying SDE (see \cite{Graversen_Shiryaev_2000})
+\be
+dX_t = -\lm \sgn \bb{X_t} dt + dB_t
+\ee
+where $X_0 = x_0$. Also, from \cite{Karatzas_Shreve_1991}, we know the transition density of $X_t$ is 
+\be
+p_t(x|x_0) = \left\{\ba{ll} \frac 1{\sqrt{2\pi t}}\bb{e^{-\frac{(x-x_0 + \lm t)^2}{2t}} + \lm e^{-2\lm x}\int^{\infty}_{x_0+x} e^{-\frac{(u-\lm t)^2}{2t}} du} & x\geq 0 \\ 
+\frac 1{\sqrt{2\pi t}}\bb{e^{-2\lm x_0 + \frac{(x-x_0-\lm t)^2}{2t}} + \lm e^{2\lm x}\int^{\infty}_{x_0-x} e^{-\frac{(u-\lm t)^2}{2t}} du} \quad \quad & x< 0
+\ea\right.
+\ee
+
+
+\section{Problems}
+
+
+

@@ -1,0 +1,246 @@
+\chapter{Applied Probability}
+
+\section{Queueing Theory}
+
+The Centerville International Airport has two runways, one used exclusively for takeoffs and the other exclusively for landings. Airplanes arrive in the Centerville air space to request landing instructions according to a Poisson process at a mean rate of 10 per hour. The time required for an airplane to land after receiving clearance to do so has an exponential distribution with a mean of 3 minutes, and this process must be completed before giving clearance to do so to another airplane. 
+
+Airplanes awaiting clearance must circle the airport. The Federal Aviation Administration has a number of criteria regarding the safe level of congestion of airplanes waiting to land. These criteria depend on a number of factors regarding the airport involved, such as the number of runways available for landing. For Centerville, the criteria are 
+\ben
+\item[(i)] the average number of airplanes waiting to receive clearance to land should not exceed 1;
+\item[(ii)] 95 percent of the time, the actual number of airplanes waiting to receive clearance to land should not exceed 4;
+\item[(iii)] for 99 percent of the airplanes, the amount of time spent circling the airport before receiving clearance to land should not exceed 30 minutes (since exceeding this amount of time often would require rerouting the plane to another airport for an emergency landing before its fuel runs out).
+\een
+\ben
+\item Evaluate how well these criteria are currently being satisfied.
+\item A major airline is considering adding this airport as one of its hubs. This would increase the mean arrival rate to 15 airplanes per hour. Evaluate how well the above criteria would be satisfied if this happens.
+\item To attract additional business [including the major airline mentioned in part (b)], airport management is considering adding a second runway for landings. It is estimated that this eventually would increase the mean arrival rate to 25 airplanes per hour. Evaluate how well the above criteria
+would be satisfied if this happens.
+\een
+
+\scutline
+
+Solution. First we draw the rate diagram with only one server ($s=1$)
+
+\centertexdraw{
+    
+\drawdim in
+
+\def\node {\fcir f:1 r:0.15 \lcir r:0.15 }
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+\linewd 0.01 \setgray 0 
+
+\move (0.5 -0.2) \larc r:0.5 sd:30 ed:150
+\move (0.5 0.3) \avec(0.51 0.3) 
+\move (0.5 0.2) \larc r:0.5 sd:210 ed:330
+\move (0.5 -0.3) \avec(0.49 -0.3) 
+\move (1.5 -0.2) \larc r:0.5 sd:30 ed:150
+\move (1.5 0.3) \avec(1.51 0.3) 
+\move (1.5 0.2) \larc r:0.5 sd:210 ed:330
+\move (1.5 -0.3) \avec(1.49 -0.3) 
+\move (2.5 -0.2) \larc r:0.5 sd:30 ed:150
+\move (2.5 0.3) \avec(2.51 0.3) 
+\move (2.5 0.2) \larc r:0.5 sd:210 ed:330
+\move (2.5 -0.3) \avec(2.49 -0.3) 
+
+\move (0 0)\node 
+\move (1 0)\node 
+\move (2 0)\node 
+\htext(3 0){$\dots$}
+
+\htext (-0.05 -0.05){0}
+\htext (0.95 -0.05){1}
+\htext (1.95 -0.05){2}
+
+\htext (0.5 0.35){$\lm$}
+\htext (0.5 -0.42){$\mu$}
+\htext (1.5 0.35){$\lm$}
+\htext (1.5 -0.42){$\mu$}
+\htext (2.5 0.35){$\lm$}
+\htext (2.5 -0.42){$\mu$}
+
+\move (0 0.5)
+}
+
+For the stationary distribution $p_k$, let $\rho = \frac {\lm}{\mu}$
+\be
+p_k = \rho p_{k-1} = \dots = \rho^k p_0.
+\ee
+With $\sum\limits^{\infty}_{k=0} p_k = 1$, we have
+\be
+p_k = \rho^k p_0 = (1-\rho)\rho^k
+\ee
+
+Thus, 
+\be
+L = \sum^\infty_{k=0}kp_k = (1-\rho)\sum^\infty_{k=0}k\rho^k = (1-\rho)\rho\sum^\infty_{k=0}k\rho^{k-1} = (1-\rho)\rho\lob \sum^\infty_{k=0}\rho^k\rob' = (1-\rho)\rho\lob \frac 1{1-\rho}\rob' = \frac {\rho}{1-\rho}.
+\ee
+\be
+L_q= \sum^\infty_{k=0}kp_{k+s} = \sum^\infty_{k=0}kp_{k+1} = (1-\rho)\sum^\infty_{k=0}k\rho^{k+1} = (1-\rho)\rho^2\lob \sum^\infty_{k=0}\rho^k\rob' = (1-\rho)\rho^2\lob \frac 1{1-\rho}\rob' = \frac {\rho^2}{1-\rho}.
+\ee
+
+Also, we have the prabability that the actual number of airplanes waiting to receive clearance to land does not exceed 4 (at most 5 airplanes in the system) $P$
+\be
+P = p_0 + p_1 + p_2 + p_3 + p_4 + p_5 = 1 -\sum^\infty_{k=6}p_k = 1- (1-\rho) \frac {\rho^6}{1-\rho} = 1 - \rho^6
+\ee
+
+Now we calculate the probability that the amount of time spent circling the airport (waiting) before receiving clearance to land does not exceed 30 minites. Assume the system has $k$ airplanes when a new airplane arrives. Thus, this new airplane needs to wait time $T$ (which is the sum time for the previous $k$ airplanes to land one by one) to get the clearance. We know that the time required for an airplane to land after receiving clearance to do so has an exponential distribution with parameter $\mu$. Thus, we can say that the sum time for $k$ airplanes to land is a gamma distribution with parameter $k$ and $\mu$, i.e.
+\be
+X_i \sim \sE(\mu) \ \ra \ \sum^k_{i=1}X_i \sim \Gamma(k,\mu). 
+\ee
+
+Thus, the probability that this airplane waits less than $t$ is 
+\beast
+p^t & = & p_0 + \sum^\infty_{k=1}p_k \int^t_0 \frac{\mu^kx^{k-1}e^{-\mu x}}{\Gamma(k)}dx = p_0 + p_0\sum^\infty_{k=1}\rho^k \int^t_0 \frac{\mu^kx^{k-1}e^{-\mu x}}{\Gamma(k)}dx\\
+& = & p_0 + p_0 \rho\mu \int^t_0 \sum^\infty_{k=1}  \frac{(\rho\mu x)^{k-1}}{\Gamma(k)}e^{-\mu x}dx = p_0 + p_0 \rho\mu \int^t_0 \underbrace{\sum^\infty_{k=0}  \frac{(\rho\mu x)^k}{k!}}_{=e^{\rho\mu x}}e^{-\mu x}dx\quad \quad (\Gamma(k)=(k-1)!)\\
+& = & p_0 + p_0 \rho\mu \int^t_0 e^{-\mu x(1-\rho)}dx = p_0 + p_0 \frac{\rho}{1-\rho}\lob 1-e^{-\mu (1-\rho)t}\rob = p_0\lob 1 + \frac{\rho}{1-\rho}\lob 1-e^{-\mu (1-\rho)t}\rob\rob\\
+& = & 1 - \rho e^{-\mu (1-\rho)t} = 1 - \frac{\lm}{\mu} e^{-(\mu -\lm)t}.\quad \quad\quad (p_0 = 1-\rho)
+\eeast
+
+Thus we check (a) and (b).
+
+(a) $\lm = 10$, $\mu=20$, $t=0.5$, we have
+\be
+L_q = \frac{\rho^2}{1-\rho} = \frac{\frac{\lm^2}{\mu^2}}{1-\frac{\lm}{\mu}} = 0.5<1.
+\ee
+\be
+P = 1 - \rho^6 = 1 - \lob \frac 12\rob^6 = 0.984375 > 0.95.
+\ee
+\be
+p^t = 1 - \frac{\lm}{\mu} e^{-(\mu -\lm)t} =  1 - 0.5 e^{-10\cdot 0.5} = 1 - 0.5e^{-5} = 0.996631>0.99.
+\ee
+
+Thus, all the criteria are satisfied.
+
+(b) $\lm=15$, $\mu = 20$, $t=0.5$, we have
+\be
+L_q = \frac{\frac{\lm^2}{\mu^2}}{1-\frac{\lm}{\mu}} = \frac{\frac{9}{16}}{\frac 14} = 2.25>1.
+\ee
+\be
+P = 1 - \rho^6 = 1 - \lob \frac 34\rob^6 = 0.822021 < 0.95.
+\ee
+\be
+p^t = 1 - \frac{\lm}{\mu} e^{-(\mu -\lm)t} =  1 - 0.75 e^{-5\cdot 0.5} = 1 - 0.75e^{-2.5} = 0.938436 < 0.99.
+\ee
+
+Thus, none of the criteria is satisfied.
+
+Now we consider the third case which is $M/M/s$ model ($\rho = \frac{\lm}{s\mu}$)
+
+\centertexdraw{
+    
+\drawdim in
+
+\def\node {\fcir f:1 r:0.15 \lcir r:0.15 }
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+\linewd 0.01 \setgray 0 
+
+\move (0.5 -0.2) \larc r:0.5 sd:30 ed:150
+\move (0.5 0.3) \avec(0.51 0.3) 
+\move (0.5 0.2) \larc r:0.5 sd:210 ed:330
+\move (0.5 -0.3) \avec(0.49 -0.3) 
+\move (1.5 -0.2) \larc r:0.5 sd:30 ed:150
+\move (1.5 0.3) \avec(1.51 0.3) 
+\move (1.5 0.2) \larc r:0.5 sd:210 ed:330
+\move (1.5 -0.3) \avec(1.49 -0.3) 
+
+\move (2.5 -0.2) \larc r:0.5 sd:30 ed:150
+\move (2.5 0.3) \avec(2.51 0.3) 
+\move (2.5 0.2) \larc r:0.5 sd:210 ed:330
+\move (2.5 -0.3) \avec(2.49 -0.3) 
+
+
+\move (3.5 -0.2) \larc r:0.5 sd:30 ed:150
+\move (3.5 0.3) \avec(3.51 0.3) 
+\move (3.5 0.2) \larc r:0.5 sd:210 ed:330
+\move (3.5 -0.3) \avec(3.49 -0.3) 
+
+
+\move (4.5 -0.2) \larc r:0.5 sd:30 ed:150
+\move (4.5 0.3) \avec(4.51 0.3) 
+\move (4.5 0.2) \larc r:0.5 sd:210 ed:330
+\move (4.5 -0.3) \avec(4.49 -0.3) 
+
+\move (0 0)\node 
+\move (1 0)\node 
+\move (2 0)\node 
+\move (4 0)\node 
+\move (5 0)\node 
+\htext(3 0){$\dots$}
+\htext(5.5 0){$\dots$}
+
+\htext (-0.05 -0.05){0}
+\htext (0.95 -0.05){1}
+\htext (1.95 -0.05){2}
+\htext (3.95 -0.05){$s$}
+\htext (4.85 -0.05){$s+1$}
+
+\htext (0.5 0.35){$\lm$}
+\htext (0.5 -0.45){$\mu$}
+\htext (1.5 0.35){$\lm$}
+\htext (1.5 -0.45){$2\mu$}
+\htext (2.5 0.35){$\lm$}
+\htext (2.5 -0.45){$3\mu$}
+\htext (3.5 0.35){$\lm$}
+\htext (3.5 -0.45){$s\mu$}
+\htext (4.5 0.35){$\lm$}
+\htext (4.5 -0.45){$s\mu$}
+
+\move (0 0.5)
+}
+
+With balance condition we have
+\be
+p_k = \left\{\ba{ll}
+\frac{(s\rho)^k}{k!}p_0 & k\leq s\\
+\frac{(s\rho)^k}{s^{k-s}s!}p_0 & k\geq s
+\ea\right. \ \ra \ p_0 = 1\left/\lob \sum^{s-1}_{k=0}\frac{(s\rho)^k}{k!} + \frac {(s\rho)^s}{s!(1-\rho)}\rob\right.
+\ee
+
+Thus,
+\be
+L_q = \sum^\infty_{k=0} kp_{k+s} = p_0 \sum^\infty_{k=0}k\frac {(s\rho)^{k+s}}{s^ks!} = p_0 \frac {s^s\rho^s}{s!}\sum^\infty_{k=0}k\rho^k = \frac {s^s\rho^{s+1}}{s!(1-\rho)^2} p_0 
+\ee
+and
+\be
+P = p_0 + p_1 + p_2 + p_3 + p_4 + p_5 = 1 -\sum^\infty_{k=6}p_k.
+\ee
+
+If the current number of the airplanes is less than $s$, the new arrival airplane can get the clearance immediately. Otherwise, when the system has $k\geq s$ airplanes when a new airplane arrives, we know that the minimum time required for $s$ airplanes to land after receiving clearance to do so has an exponential distribution with parameter $s\mu$. Thus, we can say that the sum time for $k-s$ airplanes to land is a random variable with gamma distribution with parameter $k-s+1$ and $s\mu$. Thus,
+\beast
+q_k^t & = & \pro(\text{waiting time is less than $t$ when there are $k$ airplane in the system}) = \int^t_0 \frac {(s\mu)^{k-s+1}x^{k-s}e^{-s\mu x}}{\Gamma(k-s+1)}dx .
+\eeast
+
+Then, 
+\beast
+p^t & = & p_0 + p_1 + \dots + p_{s-1} + \sum^\infty_{k=s}p_k q^t_k \\
+& = & p_0 + p_1 + \dots + p_{s-1} + p_s \sum^\infty_{k=s}\rho^{k-s} \int^t_0 \frac {(s\mu)^{k-s+1}x^{k-s}e^{-s\mu x}}{\Gamma(k-s+1)}dx  \\
+& = & 1 - \sum^\infty_{k=s}p_k + s\mu p_s \int^t_0 \sum^\infty_{k=s} \frac {(s\rho\mu x)^{k-s}e^{-s\mu x}}{\Gamma(k-s+1)}dx \\
+& = & 1 - p_s\sum^\infty_{k=s}\rho^k + s\mu p_s \int^t_0 \sum^\infty_{k=0} \frac {(s\rho \mu x)^k}{k!} e^{-s\mu x} dx  \\
+& = & 1 - \frac{p_s}{1-\rho} + s\mu p_s \int^t_0 e^{-s\mu x(1-\rho)} dx  \\
+& = & 1 - \frac{p_s}{1-\rho} + \frac{ p_s }{1-\rho}\left[1- e^{-s\mu t(1-\rho)}\right]\\
+& = & 1 - \frac {p_s}{1-\rho} e^{-(s\mu-\lm)t} = 1 - \frac{(s\rho)^s}{s!(1-\rho)}p_0 e^{-(s\mu-\lm)t}  \\
+& = & 1 - \frac{1}{1+\sum^{s-1}_{k=0}\frac{(1-\rho)(s\rho)^{k-s}s!}{k!}} e^{-(s\mu-\lm)t}  .
+\eeast
+
+(c) So for $\lm = 25$, $\mu = 20$, $s=2$ and $t=0.5$, we have
+\be
+p_0 = 1\left/\lob 1 + \frac {\lm}{\mu}+ \frac {\lob\frac{\lm}{\mu}\rob^2}{2!\lob 1-\frac{\lm}{2\mu}\rob}\rob\right. = \frac {2\mu -\lm}{2\mu + \lm} = \frac 3{13} = 0.230769.
+\ee
+\be
+L_q = \frac {2^2\rho^{2+1}}{2!(1-\rho)^2} p_0 = \frac {2\lob\frac {\lm}{2\mu}\rob^3}{\lob 1-\frac{\lm}{2\mu}\rob^2} p_0 = \frac {2\lob\frac {5}{8}\rob^3}{\lob 1-\frac{5}{8}\rob^2} p_0 = \frac{125}{36}p_0 = \frac{125}{156} = 0.801282<1.
+\ee
+\be
+p_1 = \frac{(s\rho)^1}{1!}p_0 = \frac {\lm}{\mu}p_0 = \frac 54 p_0 = \frac {15}{52} = 0.288462,\quad \quad p_2 = \frac{(s\rho)^2}{2!}p_0 = \frac 12\lob\frac {\lm}{\mu}\rob^2 p_0 = \frac {25}{32} p_0 = \frac {75}{416} = 0.180288.
+\ee
+\be
+P = 1-\sum^\infty_{k=6}p_k = 1- \sum^\infty_{k=6}\frac{(s\rho)^k}{s^{k-s}s!}p_0 = 1- \frac{s^s}{s!}p_0 \sum^\infty_{k=6} \rho^k = 1- \frac{s^s}{s!}\frac{\rho^6}{1-\rho}p_0 = 0.926640 < 0.95.
+\ee
+\beast
+p^t & = &  1 - \frac{1}{1+2(1-\rho)(2\rho)^{-2}+ 2(1-\rho)(2\rho)^{-1}} e^{-(2\mu-\lm)t} \\
+& = & 1- \frac{2\rho^2}{1+\rho}e^{-(2\mu-\lm)t}  = 1 - \frac {25}{52}  e^{-7.5} = 0.999734 > 0.99.
+\eeast
+
+Thus, the first and third criteria are satisfied, but the second is not.
+
+
+

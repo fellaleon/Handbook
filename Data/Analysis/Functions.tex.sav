@@ -1,0 +1,392 @@
+\chapter{Functions}
+
+\section{Elementary function}
+
+\subsection{Kronecker delta}
+
+\begin{definition}[Kronecker delta\index{Kronecker delta}]\label{def:kronecker_delta}
+Kronecker delta\footnote{named after Leopold Kronecker}, is a function of two variables, usually integers. The function is 1 if the variables are equal, and 0 otherwise:
+\be
+\delta_{ij} = \left\{\begin{matrix} 0, & \mbox{if } i \ne j \\ 1, & \mbox{if } i=j \end{matrix}\right.
+\ee
+where Kronecker delta $\delta_{ij}$ is a piecewise function of variables $i$ and $j$. For example, $\delta_{12} = 0$, whereas $\delta_{33} = 1$.
+\end{definition}
+
+\section{Trigonometric functions}
+
+\begin{proposition}
+For $x,y\in \C$, we have sum \beast
+\sin \left(x+y\right) & = & \sin x \cos y + \cos x \sin y, \\
+\cos \left(x+y\right) & = & \cos x \cos y - \sin x \sin y \eeast and subtraction \beast
+\sin \left(x-y\right) & = & \sin x \cos y - \cos x \sin y,\\
+\cos \left(x-y\right) & = & \cos x \cos y + \sin x \sin y.\eeast
+\end{proposition}
+
+
+\section{Hyperbolic functions}
+
+\subsection{Definitions}
+
+\begin{definition}[hyperbolic functions]\label{hyperbolic_function}
+The hyperbolic functions are:
+
+Hyperbolic sine:
+\be
+\sinh x = \frac {e^x - e^{-x}} {2} = \frac {e^{2x} - 1} {2e^x}
+\ee
+
+Hyperbolic cosine:
+\be
+\cosh x = \frac {e^x + e^{-x}} {2} = \frac {e^{2x} + 1} {2e^x}
+\ee
+
+Hyperbolic tangent:
+\be
+\tanh x = \frac{\sinh x}{\cosh x} = \frac {e^x - e^{-x}} {e^x + e^{-x}} = \frac{e^{2x} - 1} {e^{2x} + 1}
+\ee
+
+Hyperbolic cotangent:
+\be
+\coth x = \frac{\cosh x}{\sinh x} = \frac {e^x + e^{-x}} {e^x - e^{-x}} = \frac{e^{2x} + 1} {e^{2x} - 1}
+\ee
+
+Hyperbolic secant:
+\be
+\operatorname{sech}\,x = \left(\cosh x\right)^{-1} = \frac {2} {e^x + e^{-x}} = \frac{2e^x} {e^{2x} + 1}
+\ee
+
+Hyperbolic cosecant:
+\be
+\operatorname{csch}\,x = \left(\sinh x\right)^{-1} = \frac {2} {e^x - e^{-x}} = \frac{2e^x} {e^{2x} - 1}
+\ee
+
+Hyperbolic functions can be introduced via imaginary circular angles:
+
+Hyperbolic sine: \be \sinh x = - i \sin \bb{ix} \ee
+
+Hyperbolic cosine: \be \cosh x = \cos \bb{ix} \! \ee
+
+Hyperbolic tangent: \be \tanh x = - i \tan \bb{ix} \! \ee
+
+Hyperbolic cotangent: \be \coth x = i \cot \bb{ix} \! \ee
+
+Hyperbolic secant: \be \operatorname{sech} x = \sec \bb{ix}  \ee
+
+Hyperbolic cosecant: \be \operatorname{csch}x = i \csc\bb{ix} \ee where $i$ is the imaginary unit defined by $i^2 = -1$. The complex forms in the definitions above derive from Euler's formula.
+\end{definition}
+
+\begin{proposition}\label{pro:hyperbolic_function_relation}
+Odd and even functions:
+\be
+\sinh(-x) = -\sinh (x),\quad  \cosh(-x) = \cosh (x)
+\ee
+
+Hence:
+\begin{align}
+\tanh(-x) &= -\tanh (x) \\ \coth(-x) &= -\coth (x) \\ \operatorname{sech}(-x) &= \operatorname{sech}(x) \\ \operatorname{csch}(-x) &= -\operatorname{csch}(x) \end{align}
+
+It can be seen that cosh x and sech x are even functions; the others are odd functions.
+\begin{align} \operatorname{arsech}(x) &= \operatorname{arcosh} \left(\frac{1}{x}\right) \\ \operatorname{arcsch}(x) &= \operatorname{arsinh} \left(\frac{1}{x}\right) \\ \operatorname{arcoth}(x) &= \operatorname{artanh} \left(\frac{1}{x}\right) \end{align}
+
+
+Hyperbolic sine and cosine satisfy the identity
+\be
+\cosh^2 (x) - \sinh^2 (x) = 1\,
+\ee
+which is similar to the Pythagorean trigonometric identity. One also has
+\begin{align} \operatorname{sech} ^{2}(x) &= 1 - \tanh^{2}(x) \\ \coth^{2}(x) &= 1 + \operatorname{csch}^{2}(x) \end{align}
+for the other functions.
+
+The hyperbolic tangent is the solution to the nonlinear boundary value problem\footnote{see wiki}:
+\be
+\frac{1}{2} f'' = f^3 - f ; \quad f(0) = f'(\infty) = 0
+\ee
+
+It can be shown that the area under the curve of $\cosh (x)$ is always equal to the arc length:
+\be
+\text{area} = \int_a^b{ \cosh{(x)} } \ dx = \int_a^b\sqrt{1 + \left(\frac{d}{dx} \cosh{(x)}\right)^2} \ dx = \text{arc length}
+\ee
+
+Sums of arguments:
+\begin{align} \cosh {(x + y)} &= \sinh{(x)} \cdot \sinh {(y)} + \cosh {(x)} \cdot \cosh {(y)} \\ \sinh {(x + y)} &= \cosh{(x)} \cdot \sinh {(y)} + \sinh {(x)} \cdot \cosh {(y)} \end{align}
+
+Sum and difference of cosh and sinh:
+\begin{align} \cosh{(x)} + \sinh{(x)} &= e^x \\ \cosh{(x)} - \sinh{(x)} &= e^{-x} \end{align}
+\end{proposition}
+
+\subsection{Taylor expansion of functions}
+
+\begin{proposition}\label{pro:hyperbolic_functions_taylor_expansion}
+For hyperbolic functions, we have\footnote{see \cite{Abramowitz_1972}.$P_{85}$} \be \sinh z = \sum^{\infty}_{n=0} \frac{z^{2n+1}}{(2n+1)!} = z + \frac{z^3}{3!} + \frac{z^5}{5!} + \frac{z^7}{7!} + \cdots\quad\abs{z} <\infty.
+\ee
+
+\be \cosh z = \sum^{\infty}_{n=0} \frac{z^{2n}}{(2n)!} = 1 + \frac{z^2}{2!} + \frac{z^4}{4!} + \frac{z^6}{6!} + \cdots\quad \abs{z} <\infty \ee
+
+\be \tanh z = \sum^{\infty}_{n=1} \frac{4^n (4^n-1)B_{2n}z^{2n-1}}{(2n)!}  = z-\frac{1}{3}z^3+\frac{2}{15}z^5-\frac{17}{315}z^7+\cdots \quad \abs{z} < \frac{\pi}{2} \ee
+
+\be \coth z = \sum^{\infty}_{n=0} \frac{4^n B_{2n} z^{2n-1}}{(2n)!}  = \frac 1z + \frac 13z - \frac{1}{45}z^3 + \frac{2}{945}z^5- \cdots \quad \abs{z} < \pi \ee
+
+\be \sech z = \sum^\infty_{n=0} \frac{E_{2n}z^{2n}}{(2n)!} = 1 - \frac 12 z^2 + \frac 5{24} z^4 - \frac {61}{720} z^6 +\cdots \quad \abs{z} < \frac{\pi}{2} \ee
+
+\be \csch z = -\sum^\infty_{n=0} \frac{2\bb{2^{2n-1}-1}B_{2n}z^{2n-1}}{(2n)!} = \frac 1z - \frac 16 z + \frac 7{360} z^3 - \frac {31}{15120} z^5 +\cdots \quad \abs{z} < \pi \ee where $B_n$ and $E_n$ are the $n$th Bernoulli
+and Euler numbers\footnote{definition needed}. Also\footnote{check needed},
+
+\be \mathrm{arcsinh} (z) = \sum^{\infty}_{n=0} \frac{(-1)^n (2n)!z^{2n+1}}{4^n (n!)^2 (2n+1)} \quad \abs{z} \leq 1 \ee
+
+\be \mathrm{arctanh} (z) = \sum^{\infty}_{n=0} \frac{z^{2n+1}}{2n+1} \quad\abs{z} \leq 1, z\not=\pm 1. \ee
+\end{proposition}
+
+
+\section{Binomial series}
+
+\begin{definition}[binomial series]\label{def:binomial_series}
+The binomial series is the Taylor series at $x = 0$ of the function $f$ given by $f(x) = (1 + x)^\alpha$, where $\alpha \in \C$ is an arbitrary complex number. Explicitly,
+\be
+(1 + x)^\alpha = \sum_{k=0}^{\infty} \; {\alpha \choose k}  x^k  = 1 + \alpha x + \frac{\alpha(\alpha-1)}{2!} x^2 + \cdots, \quad(*)
+\ee
+and the binomial series\index{binomial series} is the power series on the right hand side, expressed in terms of the (generalized) binomial coefficients
+\be
+{\alpha \choose k} := \frac{\alpha (\alpha-1) (\alpha-2) \cdots (\alpha-k+1)}{k!}.
+\ee
+\end{definition}
+
+%\begin{lemma}
+%If $\alpha$ is a non-negative integer $n$, then the $(n + 1)$th term and all later terms in the series are 0, since each contains a factor $(n - n)$; thus in this case the series is finite and gives the algebraic binomial formula.
+
+%The following variant holds for arbitrary complex $\beta$, but is especially useful for handling negative integer exponents in (*) in Definition \ref{def:binomial_series}:
+%\be
+%\frac{1}{(1-z)^{\beta+1}} = \sum_{k=0}^{\infty}{k+\beta \choose k}z^k.
+%\ee
+%\end{lemma}
+
+%To prove it, substitute x = −z in (1) and apply a binomial coefficient identity.
+%\begin{proof}[\bf Proof]
+%\footnote{need proof.}
+%\end{proof}
+
+\section{Gamma function}
+
+\begin{definition}[gamma function\index{gamma function}]\label{def:gamma_function}
+The gamma function (represented by the capital Greek letter $\Gamma$) is an extension of the factorial function, with its argument shifted down by 1, to real and complex numbers. That is, if $n$ is a positive integer, $\Gamma(n) = (n-1)!$.
+
+The gamma function is defined for all complex numbers except the non-positive integers. For complex numbers with a positive real part ($\Re z >0$), it is defined via an improper integral that converges:
+\be
+\Gamma(z) = \int_0^\infty e^{-t} t^{z-1} dt .
+\ee
+\end{definition}
+
+\begin{remark}
+This integral function is extended by analytic continuation to all complex numbers except the non-positive integers (where the function has simple poles), yielding the meromorphic function we call the gamma function.
+
+The gamma function is a component in various probability-distribution functions, and as such it is applicable in the fields of probability and statistics, as well as combinatorics.
+\end{remark}
+
+\begin{proposition}\label{pro:gamma_function_induction}
+For $z\in \C$ and $\Re z\in \Z^+$ and $n\in \Z^+$%\notin \Z^-\cup \bra{0}$,
+\be \Gamma(z+1)=z \Gamma(z),\qquad \Gamma(n) = n!.
+ \ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+
+\begin{proposition}
+For $z\in \C$ and $\Re z\in \Z^+$ \be \frac 1{\Gamma(z)} \approx z\quad \text{as }z\to 0.\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+\begin{proposition}
+For $z\in \C$ and $\Re z\in \Z^+$, \be \Gamma(z)\Gamma(1-z)= \frac{\pi}{\sin(\pi z)}.\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+
+\begin{proposition}\label{pro:gamma_half}
+\beast
+\Gamma\left(\frac{1}{2}\right) & = &\sqrt{\pi},\\
+\Gamma\left(\frac{1}{2}+n\right) & = & {(2n)! \over 4^n n!} \sqrt{\pi} = \frac{(2n-1)!!}{2^n}\, \sqrt{\pi} = \sqrt{\pi} \cdot \left[ {n-\frac{1}{2}\choose n} n! \right] \\
+\Gamma\left(\frac{1}{2}-n\right) & = & {(-4)^n n! \over (2n)!} \sqrt{\pi} = \frac{(-2)^n}{(2n-1)!!}\, \sqrt{\pi} = \sqrt{\pi} \left/ \left[ {-\frac{1}{2} \choose n} n! \right]\right.
+\eeast
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+\begin{proposition}
+For $z\in \C$ and $\Re z\in \Z^+$, \be \Gamma(2z) = \frac{2^{2z-1}}{\sqrt{\pi}}\Gamma(z)\Gamma\bb{z+\frac 12}.\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+\begin{proposition}
+For $z\in \C$ with $\Re z\in \Z^+$ and $a>0$, \be \Gamma(az+b) \approx \sqrt{2\pi} e^{-az} (az)^{az+b-1/2}\quad\text{as }z\to \infty.\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+
+\section{Beta function}
+
+\begin{definition}[beta function\index{beta function}]\label{def:beta_function}
+In mathematics, the beta function, also called the Euler integral of the first kind, is a special function defined by
+\be
+B(a,b) = \int_0^1 x^{a-1}(1-x)^{b-1} dx,\qquad \Re a, \Re b > 0.
+\ee
+%The beta function was studied by Euler and Legendre and was given its name by Jacques Binet; its symbol Β is a Greek capital β rather than the similar Latin capital B.
+\end{definition}
+
+\begin{remark}
+$B(a,b)$ is well-defined\footnote{proof needed}.
+\end{remark}
+
+\begin{proposition}\label{pro:beta_gamma_relation}
+\be
+B(a,b) = \frac{\Gamma(a)\Gamma(b)}{\Gamma(a+b)}
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+First, write the product of two factorials as
+\be
+\Gamma(a)\Gamma(b) = \int_0^\infty e^{-u} u^{a-1}du \int_0^\infty e^{-v} v^{b-1}dv =\int_0^\infty\int_0^\infty\ e^{-u-v} u^{a-1}v^{b-1}du dv.
+\ee
+
+Changing variables by putting $u=zt$, $v=z(1-t)$ shows that this is
+\be
+\int_{0}^\infty\int_{0}^1 e^{-z} (zt)^{a-1}(z(1-t))^{b-1}z dtdz =\int_{0}^\infty \ e^{-z}z^{a+b-1} \,dz\int_{0}^1t^{a-1}(1-t)^{b-1}dt.
+\ee
+Hence $\Gamma(a)\Gamma(b)=\Gamma(a+b)B(a,b)$.
+\end{proof}
+
+%\section{Bessel function}
+
+\begin{definition}[incomplete beta function\index{beta function!incomplete}]\label{def:incomplete_beta_function}
+The incomplete beta function, a generalization of the beta function, is defined as
+\be
+B_x(a,b) = \int_0^x t^{a-1}(1-t)^{b-1} dt,\qquad \Re a, \Re b > 0.
+\ee
+\end{definition}
+
+\begin{definition}[regularized incomplete beta function\index{regularized incomplete beta function}]\label{def:regularized_incomplete_beta_function}
+The regularized incomplete beta function (or regularized beta function for short) is defined in terms of the incomplete beta function and the complete beta function:
+\be
+I_x(a,b) = \frac{B_x(a,b)}{B(a,b)}.
+\ee
+\end{definition}
+
+\begin{remark}\footnote{need to check}
+Working out the integral (one can use integration by parts) for integer values of $a$ and $b$, one finds:
+\be
+I_x(a,b) = \sum_{j=a}^{a+b-1} \binom{a+b-1}{j} x^j (1-x)^{a+b-1-j}.
+\ee
+
+The regularized incomplete beta function is the cumulative distribution function of the Beta distribution, and is related to the cumulative distribution function of a random variable $X$ from a binomial distribution, where
+the "probability of success" is p and the sample size is $n$:
+\be
+F(k;n,p) = \pro(X \le k) = I_{1-p}(n-k, k+1) = 1 - I_p(k+1,n-k).
+\ee
+\end{remark}
+
+\begin{proposition}\label{pro:regularized_incomplete_beta_function}
+\ben
+\item [(i)] $I_0(a,b) = 0$,
+\item [(ii)] $I_1(a,b) = 1$,
+\item [(iii)] $I_x(a,b) = 1 - I_{1-x}(b,a)$,
+\item [(iv)] $I_x(a+1,b) = I_x(a,b)-\frac{x^a(1-x)^b}{a B(a,b)}$.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+(i), (ii) and (iii) are obvious. For (iv), we have $\Re a,\Re b>0$,%\footnote{need to check (iv)}
+\beast
+I_x(a+1,b) & = & \frac{B_x(a+1,b)}{B(a+1,b)} = \frac{\Gamma(a+b+1)}{\Gamma(a+1)\Gamma(b)}\int_0^x t^{a}(1-t)^{b-1} dt = - \frac{(a+b)\Gamma(a+b)}{ab\Gamma(a)\Gamma(b)}\int_0^x t^{a}d(1-t)^{b}\qquad \text{(Proposition \ref{pro:gamma_function_induction})}\\
+& = & \frac{(a+b)}{ab B(a,b)}\bb{\int_0^x (1-t)^{b} dt^a -x^{a}(1-x)^{b}} = \frac{(a+b)}{b B(a,b)}\int_0^x t^{a-1}(1-t)^{b} dt - \frac{a+b}{ab B(a,b)} x^{a}(1-x)^{b}\\
+& = & \frac{(a+b)}{b B(a,b)}\int_0^x t^{a-1}(1-t)^{b-1} dt - \frac{(a+b)}{b B(a,b)}\int_0^x t^{a}(1-t)^{b} dt - \frac{a+b}{ab B(a,b)} x^{a}(1-x)^{b}\\
+& = & \frac{(a+b)}{b} I_x (a,b) - \frac{a}{b }I_x(a+1,b) - \frac{a+b}{ab B(a,b)} x^{a}(1-x)^{b}
+\eeast
+
+Rebalancing the equation, we have the required result.
+\end{proof}
+
+\section{Error Function}
+
+\begin{definition}[error function\index{error function}]
+For $x\in \C$, the error function is defined by: \be \erf(x) = \frac{2}{\sqrt{\pi}} \int^x_0 e^{-t^2}dt .\ee
+
+Also, we can have that\footnote{proof needed.} \be \erf(x) =  \frac{2}{\sqrt{\pi}}  \sum^\infty_{k=0} \frac{(-1)^kx^{2k+1}}{k!(2k+1)}  =\frac{2}{\sqrt{\pi}} e^{-x^2} \sum^\infty_{k=0} \frac{2^k x^{2k+1}}{1\cdot 3\cdot
+5\cdots (2k+1)} .\ee
+
+Accordingly,
+
+\be \erfc(x) := 1 - \erf(x) = \frac{2}{\sqrt{\pi}} \int^\infty_x e^{-t^2}dt \ee is complementary error function\index{complementary error function}.
+\end{definition}
+
+\footnote{more error functions needed here.}
+
+\section{Hermite Polynomials}
+
+There are two different ways of standardizing the Hermite polynomials:
+
+    The "probabilists' Hermite polynomials" are given by
+
+        \mathit{He}_n(x)=(-1)^n e^{\frac{x^2}{2}}\frac{d^n}{dx^n}e^{-\frac{x^2}{2}}=\left (x-\frac{d}{dx} \right )^n \cdot 1 ,
+
+    while the "physicists' Hermite polynomials" are given by
+
+        H_n(x)=(-1)^n e^{x^2}\frac{d^n}{dx^n}e^{-x^2}=\left (2x-\frac{d}{dx} \right )^n \cdot 1 .
+
+These two definitions are not exactly identical; each one is a rescaling of the other,
+
+    H_n(x)=2^{\tfrac{n}{2}}{\mathit{He}}_n(\sqrt{2} \,x), \qquad \mathit{He}_n(x)=2^{-\tfrac{n}{2}}H_n\left(\frac x{\sqrt{2}} \right).
+
+These are Hermite polynomial sequences of different variances; see the material on variances below.
+
+The notation He and H is that used in the standard references Tom H. Koornwinder, Roderick S. C. Wong, and Roelof Koekoek et al. (2010) and Abramowitz & Stegun. The polynomials Hen are sometimes denoted by Hn, especially in
+probability theory, because
+
+    \frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}}
+
+is the probability density function for the normal distribution with expected value 0 and standard deviation 1. The first six (probabilists') Hermite polynomials Hen(x).
+
+The first eleven probabilists' Hermite polynomials are:
+
+    {\mathit{He}}_0(x)=1\,
+    {\mathit{He}}_1(x)=x\,
+    {\mathit{He}}_2(x)=x^2-1\,
+    {\mathit{He}}_3(x)=x^3-3x\,
+    {\mathit{He}}_4(x)=x^4-6x^2+3\,
+    {\mathit{He}}_5(x)=x^5-10x^3+15x\,
+    {\mathit{He}}_6(x)=x^6-15x^4+45x^2-15\,
+    {\mathit{He}}_7(x)=x^7-21x^5+105x^3-105x\,
+    {\mathit{He}}_8(x)=x^8-28x^6+210x^4-420x^2+105\,
+    {\mathit{He}}_9(x)=x^9-36x^7+378x^5-1260x^3+945x\,
+    {\mathit{He}}_{10}(x)=x^{10}-45x^8+630x^6-3150x^4+4725x^2-945\,
+
+The first six (physicists') Hermite polynomials Hn(x).
+
+and the first eleven physicists' Hermite polynomials are:
+
+    H_0(x)=1\,
+    H_1(x)=2x\,
+    H_2(x)=4x^2-2\,
+    H_3(x)=8x^3-12x\,
+    H_4(x)=16x^4-48x^2+12\,
+    H_5(x)=32x^5-160x^3+120x\,
+    H_6(x)=64x^6-480x^4+720x^2-120\,
+    H_7(x)=128x^7-1344x^5+3360x^3-1680x\,
+    H_8(x)=256x^8-3584x^6+13440x^4-13440x^2+1680\,
+    H_9(x)=512x^9-9216x^7+48384x^5-80640x^3+30240x\,
+    H_{10}(x)=1024x^{10}-23040x^8+161280x^6-403200x^4+302400x^2-30240\,

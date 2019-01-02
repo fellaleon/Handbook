@@ -1,0 +1,1046 @@
+\chapter{Multi-dimensional Real Analysis}
+
+\section{Convergent Sequence in $\R^n$}
+
+\subsection{Bolzano-Weierstrass theorem}
+
+\begin{theorem}[Bolzano-Weierstrass theorem]\label{thm:bolzano_weierstrass_multiple_real}
+Every bounded sequence in $\R^n$ has a convergent subsequence.
+\end{theorem}
+
+\begin{proof}[\bf Proof]%(We use subscripts to denote the terms of the sequence, because we’re going to use superscripts to denote the components of points in $\R^n$.)
+Let $(x_m) = (x_m^0)$ be a bounded sequence in $\R^n$. Then the sequence $(y_m^1)$ of first components of the terms of $(x_m^0)$ is a bounded real sequence, which has a convergent subsequence $(y_{m_k}^1)$, according to the Bolzano-Weierstrass theorem in $\R$ (Theorem \ref{thm:bolzano_weierstrass_r}).
+ 
+Let $(x_{m}^1)$ be $(x_{m_k}^0)$, the corresponding subsequence of $(x_m^0)$. Then the sequence $(y_m^2)$ of second components of $(x_m^1)$ is a bounded sequence of real numbers, so it too has a convergent subsequence, and we again have $(x_{m}^2)$, a corresponding subsequence of $(x_{m}^1)$ (and therefore of $(x_{m}^0)$), in which the sequences of first and second components both converge. 
+
+Continuing for $n$ iterations, we end up with a subsequence $(x_{m}^n)$ of $(x_{m}^0)$ in which the sequences of first to $n$th components all converge, and therefore the subsequence $(x_{m}^n)$ itself converges in $\R^n$.
+\end{proof}
+
+
+
+\section{Sets in $\R^n$}%\section{Sets of Mulit-dimensional Real Space}
+
+
+
+
+
+\subsection{Open and closed sets}
+
+\begin{proposition}
+Note that $\emptyset$ and $\R^n$ are both open and closed.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+\begin{theorem}\label{thm:open_set_multi_dimensional_real_n_can_be_countable_union_of_non_overlapping_closed_cubes}
+Every open set in $\R^n$ can be written as a countable union of non-overlapping closed cubes.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+\begin{theorem}
+Every open set in $\R^n$ can be written as a countable union of disjoint partly open cubes.
+\end{theorem}
+
+
+
+\subsection{Compact sets}
+
+\begin{definition}[cover\index{cover}]
+Let $E$ be set in space $X$. Then a cover of $E$ is a family $\sF$ of sets $A\subseteq X$ such that $E\subseteq\bigcup_{A\in \sF} A$.
+\end{definition}
+
+\begin{definition}[subcover\index{subcover}]
+A subcover $\sG$ of a cover $\sF$ is a cover with the property that $A \in \sF$ whenever $A \in \sG$.
+\end{definition}
+
+\begin{definition}[open cover]
+A cover $\sF$ is called an open cover if each set in $\sF$ is open.
+\end{definition}
+
+\begin{definition}[compact set]
+A set $E$ is compact if every open cover of $E$ has a finite subcover.
+\end{definition}
+
+\begin{definition}[compact support\index{compact support!real space}]
+A function has compact support in $\R^n$ if it vanishes outside some bounded set.
+\end{definition}
+
+%\begin{lemma}\label{lem:compact_disjoint_sets_real_n_imples_distance_positive}
+%Let $A,B$ be two non-empty compact and disjoint sets in $\R^n$. Then $d(A,B)>0$.
+%\end{lemma}
+
+%\begin{proof}[\bf Proof]
+%\footnote{proof needed.}
+%\end{proof}
+
+
+\begin{theorem}[Heine-Borel theorem]\label{thm:heine_borel_compact_real_n_closed_bounded}
+Let $A \subseteq \R^n$. Then the following are equivalent.
+\ben
+\item [(i)] $A$ is compact.
+\item [(ii)] Every sequence of points of $A$ has a subsequence that converges to a point of $A$.
+\item [(iii)] $A$ is closed and bounded.
+\een
+\end{theorem}
+
+%\begin{remark}
+%Note that the sets must be compact subset in $\R^n$ but not compact subset in a $E\subseteq \R^n$.
+%\end{remark}
+
+%\begin{theorem}
+%A set $A \subseteq \R^n$ is compact if and only if 
+%\end{theorem}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] $\ra$ (ii). Suppose $A$ is closed and bounded and consider any sequence $(a_n)$ in $A$. Since $A$ is bounded, we have that $(a_n)$ has a convergent subsequence by Bolzano-Weierstrass theorem (Theorem \ref{thm:bolzano_weierstrass_multiple_real}). Since $A$ is closed, we have that the limit of this sequence is in $A$.
+
+\item [(ii)] $\ra$ (iii). Suppose that every sequence in $A$ contains a convergent subsequence with limit in $A$. 
+
+Consider an open cover $\bra{U_i}_{i\in I}$ of $A$ such that $A \subseteq \bigcup_{i\in I} U_i$. For any $a\in X$, we want to show that there exists $\ve>0$ such that $B_\ve(a) \subseteq U_i$ for some $i\in I$.
+
+Suppose not, then for every $\ve>0$, in particular for $\ve = \frac 1n$ with $n\in \Z^+$, there is a point $a_n\in A$ such that for every $i\in I$ we have that $B_{\frac 1n}(a_n) \not\subseteq U_i$. Consider the sequence $(a_n)$, by the assumption there is a convergent subsequence $(a_{n_k})$ converging to $a^*$. Since $\bra{U_i}_{i \in I}$ is a cover we know that there is $i^* \in I$ such that $a^* \in U_{i^*}$. Since $U_{i^*}$ is open then there is $\delta >0$ such that $B_{\delta}(a^*) \subseteq U_{i^*}$. But since $(a_{n_k})\to a^*$ there is $N\in \N$ such that $\abs{a^* - a_{n_k}} < \delta/2$ whenever $n_k\geq N$.
+
+Then pick $n_k\geq N$ and $n_k > 2/\delta$. Then for any $b\in B_{\delta/2}(a_{n_k})$ we have
+\be
+\abs{a^* - b} = \abs{a^* - a_{n_k} + a_{n_k} - b} \leq \abs{a^* - a_{n_k}} + \abs{a_{n_k} - b} < \frac {\delta}2 + \frac{\delta}2 = \delta.
+\ee
+
+Therefore, $B_{1/n_k}(a_{n_k}) \subseteq B_{\delta/2} (a_{n_k}) \subseteq B_\delta(a^*) \subseteq U_{i^*}$ which contradicts the fact that $B_{1/n}(a_n) \not\subseteq U_i$ for every $i \in I$.
+
+
+Now for any $a\in A$ we can find $\ve= \ve(a)>0$ such that $B_a := B_\ve(a) \subseteq U_{i}$ for some $i\in I$. Obviously, $\bra{B_a}_{a\in A}$ is an open cover of $A$. Suppose we know how to extract a finite subcover $\bra{B_{a_1},\dots,B_{a_M}}$ of $A$, then since each $B_{a_k}$ is contained in some $U_{i_k}$ we can conclude that $\bra{U_{i_1},\dots,U_{i_M}}$ is also a finite subcover. So it is enough to show that $\bra{B_{a}}_{a\in A}$ has a finite subcover of $A$.
+
+For any $a_0\in A$. If $B_{a_0}$ covers $A$ we are done, otherwise there is $a_1\in A\bs B_{a_0}$. If $\bra{B_{a_0},B_{a_1}}$ covers $A$ we are done, otherwise there is $a_2\in A\bs\bb{B_{a_0}\cup B_{a_1}}$. If we continue this process we either obtain a finite subcover or a sequence $(a_k)_{k\in \N}$. Observe that for any $k\in \N$, there exists $\ve = \ve(a_k)>0$ such that $\abs{a_k - a_j}>\ve$ for any $j>k$. So the sequence $(a_k)$ cannot have a convergent subsequence which is a contraction to the assumption. Therefore, the process must end at some point and we should have a finite subcover of $A$.
+
+
+\item [(iii)] $\ra$ (i). Suppose $A$ is compact. Consider the collection
+\be
+\sC = \bra{B_n(0),n\in \N}.
+\ee
+
+Clearly $\sC$ is an open cover of $A$ (in fact of whole $\R^n$). Therefore, since $A$ is compact, there is a finite subcover
+\be
+\sC_f= \bra{B_{n_1}(0),\dots,B_{n_M}(0)}
+\ee
+of $A$. Without loss of generality, we may assume that $n_1<n_2 < \dots < n_M$ then clearly $A \subseteq B_{n_M}(0)$, i.e., $A$ is bounded.
+
+Now we want to prove that $A$ is closed we can prove instead that $\R^n\bs A$ is open. Given any $b\in \R^n\bs A$ and any $a\in A$ consider the disk
+\be
+B_a := B_{\frac 12 \abs{a-b}}(a)
+\ee
+and the collection $\sC := \bra{B_a : a\in A}$. Clearly, $\sC$ is an open cover of $A$ since every point $a$ in $A$ has a disk centered at it in $\sC$. Since $A$ is compact, there is a finite subcover $\sC_f = \bra{B_{a_1},\dots,B_{a_M}}$. Define
+\be
+\ve := \min_{1\leq i\leq M}\bra{\frac 12\abs{b-a_i}}.
+\ee
+
+Then we observe that since $\frac 12 \abs{b - a_i} \geq \ve$, $b$ is at least farther apart than $\ve$ from every point in $B_{a_i}$. Thus, for any $a\in B_{a_i}$ ($\abs{a-a_i} < \frac 12 \abs{b-a_i}$),
+\be
+\abs{b-a} = \abs{b-a_i + a_i - a} \geq \abs{b - a_i} - \abs{a -a_i} > \abs{b - a_i} - \frac 12 \abs{b-a_i} = \frac 12 \abs{b-a_i} \geq \ve.
+\ee
+
+Therefore, $B_{\ve}(b) \cap B_{a_i}= \emptyset$ and
+\be
+B_{\ve}(b) \subseteq \R^n \left\bs \bigcup_{i=1}^M B_{a_i}\right. \subseteq \R^n \bs A
+\ee
+which proves that $\R^n\bs A$ is open (since $b\in \R^n\bs A$), i.e., $A$ is closed.
+\een
+\end{proof}
+
+\begin{theorem}\label{thm:intersection_of_decreasing_non_empty_compact_sets_in_real_n_non_emptyset_compact}
+A sequence of decreasing non-empty compact subsets of $\R^n$ has a non-empty compact intersection.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Suppose that
+\be
+A_1 \supseteq A_2 \supseteq A_3 \supseteq \dots
+\ee
+is a countable family of non-empty, closed, bounded subsets of $\R^n$. Clearly, each of $A_n$ is bounded and closed since it is compact by Heine-Borel theorem (Theorem \ref{thm:heine_borel_compact_real_n_closed_bounded}). Then define
+\be
+A := \bigcap_n A_n.
+\ee
+
+The set $A$ is bounded since it is a subset of the bounded set $A_1$ and is closed, since it is the intersection of a family of closed sets\footnote{theorem needed.}. So the set $A$ is compact by Heine-Borel theorem (Theorem \ref{thm:heine_borel_compact_real_n_closed_bounded}). So it only remains to show that $\bigcap^\infty_{n=1}A_n \neq \emptyset$. %By Heine-Borel theorem, $A_n$ is compact for each $n\in \N$.
+For the sake of contradiction, suppose that $\bigcap^\infty_{n=1} A_n= \emptyset$. Then $\bigcup^\infty_{n=1}A_n^c = \R$ by De Morgon law (Theorem \ref{thm:basic_set_properties_general_case}). In particular,
+\be
+A_1 \subseteq \bigcup^\infty_{n=1} A_n^c.
+\ee
+
+Since $A_1$ is compact and the sets $(A_n^c)^\infty_{n=1}$ form an open cover of it, there must exist a finite subcover. That is, there exists some $m\in\N$ such that
+\be
+A_1 \subseteq \bigcup^m_{n=1} A_n^c = A_m^c,
+\ee
+where the second equality follows from the fact that
+\be
+A_1^c \subseteq A_2^c \subseteq A_3^c \subseteq \dots.
+\ee
+
+Now, $A_1\subseteq A_m^c$ means that if a point is in $A_1$, then it must not be in $A_m$, so that $A_1\cap A_m=\emptyset$. But $A_m \subseteq A_1$ (given that the sets are nested), so that $A_1\cap A_m = A_m = \emptyset$, which contradicts the assumption that $A_m$ is not empty. This contradiction reveals that the intersection $\bigcap^\infty_{n=1}A_n$ must not be empty.
+\end{proof}
+
+
+\begin{example}
+If the decreasing subsets are not compact, the conclusion might not hold. The following are the examples.
+\ben
+\item [(i)] Note that only closedness cannot guarantee the non-empty intersection. For instance, $A_n = [n,\infty)$ is closed in $\R$, but $\bigcap^\infty_{n=1}A_n = \emptyset$.
+
+\item [(ii)] $A_n$ should be compact (closed and bounded) in $\R^n$. A counter example is the set $X$, the `punctured line' $(-\infty,0)\cup(0,\infty)$, which is just the real numbers with 0 removed. The sets
+\be
+A_n=\bra{x \in \R:\abs{x}\leq 1/n,\ x\neq 0}
+\ee
+are closed and bounded in the punctured line (but not in $\R$), but their intersection is empty.
+\een
+\end{example}
+
+\subsection{$n$-dimensional rectangle and its volume}
+
+\begin{definition}[$n$-dimensional rectangle]
+An $n$-dimensional rectangle $I$ is a subset of $\R^n$ of the form
+\be
+I = \bra{x=(x_1,\dots, x_n): a_k \leq x_k \leq b_k, k=1,\dots,n},
+\ee
+where $a_k < b_k$, $k=1, \dots,n$.
+\end{definition}
+
+\begin{remark}
+An $n$-rectangle is compact (bounded and closed, see the proof of Theorem \ref{thm:heine_borel_compact_real_n_closed_bounded_metric_proof}) in $\R^n$ and we say it has edges parallel to the coordinate axes.
+
+If the edge lengths $b_k - a_k$ are all equal, $I$ will be called an $n$-dimensional cube with edges parallel to the coordinate axes.
+\end{remark}%We use just the word interval in $\R^n$, we generally mean closed interval.
+
+\begin{definition}[volume of rectangle]\label{def:volume_of_rectangle_in_real_n}
+Let $I = \bra{x = (x_1,\dots, x_n) : a_k \leq x_k \leq b_k, k=1,\dots, n}$ with $a_k < b_k$, $k=1, \dots,n$ be a rectangle in $\R^n$. Then the volume of $I$, $\vol(I)$, is
+\be
+\vol(I) = \prod^n_{k=1} (b_k - a_k).
+\ee
+
+In particular, $v(\emptyset) = 0$.
+\end{definition}
+
+\begin{remark}
+Indeed, $\vol$ is a set function on $\sA$ containing all rectangles of $\R^n$ and the empty set $\emptyset$.
+\end{remark}
+
+\begin{proposition}\label{pro:volume_of_rectangle_increasing}
+The volume of rectangles is increasing. That is, let $A,B$ be two rectangles in $\R^n$ with $A\subseteq B$, then
+\be
+\vol(A)\leq \vol(B).
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Let $A = [a_1,b_1]\times \dots \times [a_n,b_n]$ and $B = [c_1,d_1] \times \dots \times [c_n,d_n]$. Then for all $1\leq k\leq n$,
+\be
+c_k\leq a_k < b_k\leq d_k \ \ra\ b_k-a_k \leq d_k - c_k  \ \ra\ \vol(A) = \prod^n_{k=1} (b_k - a_k) \leq \prod^n_{k=1} (d_k - c_k) = \vol(B).
+\ee
+\end{proof}
+
+\begin{definition}[almost disjoint rectangles\index{almost disjoint rectangles}]\label{def:almost_disjoint_rectangles_real_n}
+Let $A_1,\dots,A_m$ be $m$ rectangles in $\R^n$. Then we say they are almost disjoint rectangles if for any $i\neq j$,
+\be
+\inter{A_i}\cap \inter{A_j} = \emptyset
+\ee
+where $\inter{I}$ is the interior of set $I$.
+\end{definition}
+
+\begin{lemma}\label{lem:subrectangles_volume_summation}
+Suppose that
+\be
+I = I_1\times I_2 \times \dots \times I_n
+\ee
+is a rectangle in $\R^n$ where each closed bounded interval $I_i\subseteq \R$ is an almost disjoint union of closed bounded intervals $\bra{I_{ij}\subseteq \R:j=1,\dots,N_i}$,
+\be
+I_i = \bigcup_{j=1}^{N_i} I_{ij}.
+\ee
+
+Define the rectangles $S_{j_1j_2\dots j_n} = I_{1,j_1} \times I_{2,j_2} \times \dots\times I_{n,j_n}$. Then
+\be
+\vol{I} = \sum^{N_1}_{j_1 = 1} \dots \sum^{N_n}_{j_n = 1} \vol\bb{S_{j_1j_2\dots j_n}}.
+\ee
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Denoting the length of an interval $I\subseteq \R$ by $\abs{I}$, using the fact that
+\be
+\abs{I_i} = \sum^{N_i}_{j=1}\abs{I_{ij}},
+\ee
+and expanding the resulting product, we get that
+\beast
+\vol\bb{I} & = & \prod^n_{i=1}\abs{I_i} = \prod^n_{i=1} \bb{\sum^{N_i}_{j_i=1}\abs{I_{i,j_i}}} = \sum^{N_1}_{j_1=1}\dots \sum^{N_n}_{j_n=1}\prod^n_{i=1} \abs{I_{i,j_i}} = \sum^{N_1}_{j_1=1}\dots \sum^{N_n}_{j_n=1}\vol\bb{S_{j_1j_2\dots j_n}}
+\eeast
+as required.
+\end{proof}
+
+
+\begin{theorem}\label{thm:volume_of_rectangle_additivity_subadditivity}
+If a rectangle $I$ is an almost disjoint finite union of rectangles $A_1,\dots, A_N$, $I = \bigcup_{k=1}^N A_k$. Then
+\be
+\vol(I) = \sum^N_{k=1}\vol(A_k).
+\ee
+
+If a rectangle $I$ is covered by rectangles $B_1,\dots,B_M$, $I \subseteq \bigcup_{k=1}^{M} B_k$ where $B_1,\dots,B_M$ need not be disjoint, then
+\be
+\vol(I) \leq \sum^M_{k=1}\vol(B_k).
+\ee
+
+If a rectangle $I$ contains rectangles $B_1,\dots,B_M$, $\bigcup_{k=1}^{M} B_k\subseteq I$ where $B_1,\dots,B_M$ are non-overlapping, then
+\be
+\sum^M_{k=1}\vol(B_k) \leq \vol(I).
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $I = [a_1,b_1]\times \dots \times [a_n,b_n]$ and $A_k = [a^k_1,b^k_1]\times \dots \times [a_n^k,b_n^k]$ for $k=1,\dots,N$. Then we can use these end points $a_i^k$, $b_i^k$ to form a finite set $\bra{c_{i,0},\dots,c_{i,N_i}}$ such that
+\be
+a_i = c_{i,0} \leq c_{i,1} \leq \dots \leq c_{i,N_i} = b_i.
+\ee
+
+Then we can have
+\be
+[a_i,b_i] = I_i = \bigcup_{j=1}^{N_i} I_{ij},\qquad I_{ij} = [c_{i,j-1},c_{ij}].
+\ee
+
+Therefore, we can define the rectangles
+\be
+S_{j_1j_2\dots j_n} = I_{1,j_1} \times I_{2,j_2} \times \dots\times I_{n,j_n},\qquad 1\leq j_1 \leq N_1,\dots, 1\leq j_n\leq N_n.
+\ee
+
+Obviously, each rectangle $A_k$ in the collection is an almost disjoint union of rectangles $S_{j_1j_2,\dots j_n}$ and their union contains all such products exactly once, so applying Lemma \ref{lem:subrectangles_volume_summation} to each $A_k$ and summing the results we see that
+\be
+\sum^N_{k=1}\vol(A_k) = \sum^{N_1}_{j_1=1}\dots \sum^{N_n}_{j_n=1}\vol\bb{S_{j_1j_2\dots j_n}}.
+\ee
+
+Similarly, $I$ is an almost disjoint union of all the rectangles $S_{j_1j_2\dots j_n}$, so Lemma \ref{lem:subrectangles_volume_summation} implies that
+\be
+\vol(I) = \sum^{N_1}_{j_1=1}\dots \sum^{N_n}_{j_n=1}\vol\bb{S_{j_1j_2\dots j_n}} \ \ra\ \vol(I) = \sum^N_{k=1}\vol(A_k).
+\ee
+
+If finite collection of rectangles $B_1,\dots, B_M$ covers $I$, then we define $C_k = I\cap B_k$ for $k=1,\dots,M$ and thus $I = \bigcup_{k=1}^M C_k$. Then we can use the end points of $C_k$ to form finite collection of almost disjoint sub-rectangles
+\be
+T_{j_1j_2\dots j_n} = I_{1,j_1} \times I_{2,j_2} \times \dots\times I_{n,j_n},\qquad 1\leq j_1 \leq N_1,\dots, 1\leq j_n\leq N_n.
+\ee
+such that
+\be
+\vol(I) = \sum^{N_1}_{j_1=1}\dots \sum^{N_n}_{j_n=1}\vol\bb{T_{j_1j_2\dots j_n}}.
+\ee
+
+Also, all of $C_k$ contains each $T_{j_1j_2\dots j_n}$ at least once, thus,
+\be
+\sum^{N_1}_{j_1=1}\dots \sum^{N_n}_{j_n=1}\vol\bb{T_{j_1j_2\dots j_n}} \leq \sum^M_{k=1} \vol(C_k).
+\ee
+
+Since $\vol(\cdot)$ is increasing (Proposition \ref{pro:volume_of_rectangle_increasing}), we have that
+\be
+\vol(I) \leq \sum^M_{k=1} \vol(C_k) \leq \sum^M_{k=1}\vol(B_k).
+\ee
+
+Similarly, if rectangle $I$ contains non-overlaping rectangles $B_1,\dots,B_M$, each $S_{j_1j_2\dots j_n}$ only contained in one and only one of $B_k$. Thus, we have the required result
+\be
+\sum^M_{k=1}\vol(B_k) \leq \vol(I).
+\ee
+\end{proof}
+
+
+\section{Multi-dimensional differentiability}
+
+\begin{definition}[Jacobian matrix\index{Jacobian matrix!real valued}]%vector function with vector variable}]
+Suppose $f:\R^n\to \R^m$ is a function which takes as input the vector $x\in \R^n$ and produces as output the vector $f(x) \in \R^m$. Then the Jacobian matrix of $f$, denoted by $Df$, is an $m\times n$ matrix,
+\be
+Df := \bepm
+\fp{f}{x_1},\dots,\fp{f}{x_n}
+\eepm = \bepm
+\fp{f_1}{x_1} & \dots & \fp{f_1}{x_n} \\
+\vdots & \ddots & \vdots \\
+\fp{f_m}{x_1} & \dots & \fp{f_m}{x_n}
+\eepm,
+\ee
+or, $J = Df$ with component-wise elements
+\be
+J_{ij} = \fp{f_i}{x_j}.
+\ee
+\end{definition}
+
+\begin{example}
+Consider the function $f:\R^2\to \R^2$ given by
+\be
+f(x,y) = \bepm x^2 y \\ 5x+ \sin y\eepm.
+\ee
+
+Then we have that $f_1(x,y) = x^2y$ and $f_2(x,y) = 5x + \sin y$ and the Jacobian matrix of $f$ is
+\be
+J_f(x,y) = \bepm \fp{f_1}{x} & \fp{f_1}{y} \\ \fp{f_2}{x} & \fp{f_2}{y}  \eepm = \bepm 2xy & x^2 \\ 5 & \cos y \eepm.
+\ee
+\end{example}
+
+\begin{definition}[differentiability of multi-dimensional real valued function]\label{def:differentiable_multi_dimensional_real_function}
+Let $f:R^n\to \R^m,x\mapsto f(x)$ be $m$-dimension real valued function with with $f(x) = \bb{f_1(x),\dots,f_m(x)}^T$. Then $f$ is differentiable at point $x_0\in \R^n$ if there exists a linear transformation (matrix) $J$ such
+\be
+\lim_{h\to 0}\frac{\dabs{f(x_0 + h) - f(x_0) - J\cdot h}}{\dabs{h}} = 0,\qquad h\in \R^n
+\ee
+where $\dabs{\cdot}$ are Euclidean norms\footnote{definition and properties needed.}. In this case, the linear transformation $J$ is unique and called the derivative of $f$ at $x_0$. Indeed, $J$ is the Jacobian matrix at $x_0$,
+\be
+J = \bepm
+\fp{f_1}{x_1} & \dots & \fp{f_1}{x_n} \\
+\vdots & \ddots & \vdots \\
+\fp{f_m}{x_1} & \dots & \fp{f_m}{x_n}
+\eepm.
+\ee
+\end{definition}
+
+Note that the existence of first-order partial derivatives cannot guarantee the differentiability of the multi-dimensional real-valued function. However, we can have the following theorem.%continuous partial derivatives implies differentiability
+
+\begin{theorem}[continuous partial derivatives implies differentiability]\label{thm:continuous_partial_derivatives_implies_real_differentiability}
+Let $f:E\subseteq R^n\to \R^m,x\mapsto f(x)$ be a given function defined on an open subset $E$ of $\R^n$. Suppose that all partial derivatives of $f$ exist in an open neighbourhood\footnote{definition needed. $\dabs{x-x_0}<r$ where $\dabs{\cdot}$ is the Euclidean norm.} of a point $x_0\in E$ and are continuous at point $x_0$. Then $f$ is differentiable at $x_0$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $x_0 = \bepm x_0^1,\dots,x_0^n \eepm^T$ and $h= \bepm h_1,\dots,h_n\eepm^T$ and given any $\ve >0$. Then we define
+\be
+g_i^j(x_0^j) := f_i\bb{x_0^1,\dots,x_0^j,x_0^{j+1}+h_{j+1},\dots,x_0^{n}+h_{n}}
+\ee
+for $j = 1,\dots,n$. Obviously, $g_i^j(x_0^j) = g_i^{j+1}(x_0^{j+1}+h_{j+1})$. Since the partial derivatives of each of $f_i$ are defined in an neighbourhood $N_r(x_0)$ of $x_0$, there exists $\delta_1 >0$ such that $\dabs{h}<\delta_1$ implies that $x_0 + h \in N_r(x_0)$. Therefore, each function $g_i(\cdot)$ is differentiable for any $x_j$ between $x_0^j$ and $x_0^j + h_j$ since its (partial) derivatives exist. Then by mean value theorem (Theorem \ref{thm:mean_value}) can find some $\wt{x}_j$ between $x_0^j$ and $x_0^j + h_j$ such that
+\be
+g_i^j(x_0^j + h_j) - g_i^j(x_0^j) = \bb{g_i^j}'(\wt{x}^j) h_j = \fp{f_i}{x_j}(y_j)\cdot h_j,
+\ee
+where $y_j = \bb{x_0^1,\dots, x_0^{j-1}, \wt{x}_j,\dots, x_0^{j+1}+h_j,\dots, x_0^n + h_n}^T$. Therefore,
+\beast
+f_i\bb{x_0^1+h_1,\dots, x_0^n+h_n} - f_i\bb{x_0^1,\dots, x_0^n} & = &  f_i\bb{x_0^1+h_1,\dots, x_0^n+h_n} - f_i\bb{x_0^1,x_0^2+h_2,\dots, x_0^n+h_n} \\
+& & \qquad + f_i\bb{x_0^1,x_0^2+h_2,\dots, x_0^n+h_n} - f_i\bb{x_0^1,\dots, x_0^n} \\
+& = & g_i^1(x_0^1 + h_1) - g_i^1(x_0^1) + f_i\bb{x_0^1,x_0^2+h_2,\dots, x_0^n+h_n} - f_i\bb{x_0^1,\dots, x_0^n} \\
+& = & \dots = \sum^n_{j=1} g_i^j(x_0^j + h_j) - g_i^j(x_0^j) =  \sum^n_{j=1} \bb{g_i^j}'(\wt{x}^j) h_j = \sum^n_{j=1} \fp{f_i}{x_j}(y_j)\cdot h_j
+\eeast
+
+Since the partial derivatives exist, we can see that the Jacobian matrix $J$ is well-defined and
+\be
+\bb{J \cdot h}_i = \bb{\bepm
+\fp{f_1}{x_1} & \dots & \fp{f_1}{x_n} \\
+\vdots & \ddots & \vdots \\
+\fp{f_m}{x_1} & \dots & \fp{f_m}{x_n}
+\eepm \cdot \bepm h_1 \\ \vdots \\ h_n\eepm }_i =  \fp{f_i}{x_1} h_1 +  \dots + \fp{f_i}{x_n}h_n = \sum^n_{j=1}\fp{f_i}{x_j}(x_0)h_j.
+\ee
+
+Combining the above results, we have that
+\be
+\frac{\dabs{f_i(x_0 + h) - f_i(x_0) - \bb{J\cdot h}_i}}{\dabs{h}} = \dabs{\sum^n_{j=1} \bb{\fp{f_i}{x_j}(y_j) - \fp{f_i}{x_j}(x_0)}\frac{h_j}{\dabs{h}} }
+\ee
+
+Since each partial derivative $\fp{f_i}{x_j}$ is continuous in an open neighbourhood of $x_0$, there exists $\delta_2>0$ such that $\dabs{y_j - x_0} \leq \dabs{h} <\delta_2$ implies that
+\be
+\dabs{\fp{f_i}{x_j}(y_j) - \fp{f_i}{x_j}(x_0)} < \frac{\ve}{mn},
+\ee
+for each $j=1,\dots,n$. Note that for each of the partial derivatives we might have a different $\delta$ that yields the inequality $\dabs{y_j - x_0} <\delta$. We take $\delta_2$ to be the smallest of these. Thus, if we take $\dabs{h}<\delta$ where $\delta = \min\bra{\delta_1,\delta_2}$ we can have
+\beast
+\frac{\dabs{f_i(x_0 + h) - f_i(x_0) - \bb{J\cdot h}_i}}{\dabs{h}} & \leq & \sum^n_{j=1} \dabs{ \bb{\fp{f_i}{x_j}(y_j) - \fp{f_i}{x_j}(x_0)} }\cdot \dabs{\frac{h_j}{\dabs{h}}} \\
+& < & \frac{\ve}{mn} + \dots + \frac{\ve}{mn} = \frac{\ve}{m}.
+\eeast
+
+Then we have that
+\be
+\frac{\dabs{f(x_0 + h) - f(x_0) - J\cdot h}}{\dabs{h}} \leq \sum^m_{i=1} \frac{\dabs{f_i(x_0 + h) - f_i(x_0) - \bb{J\cdot h}_i}}{\dabs{h}} < \ve
+\ee
+which implies that
+\be
+\lim_{h\to 0}\frac{\dabs{f(x_0 + h) - f(x_0) - J\cdot h}}{\dabs{h}} = 0
+\ee
+as required.
+\end{proof}
+
+However, a differentiable function might have discontinuous partial derivatives.
+
+\begin{example}[differentiable function with discontinuous partial derivatives]
+Let the function be
+\be
+f(x,y) = \left\{\ba{ll}
+(x^2+y^2)\sin \bb{\frac 1{\sqrt{x^2+y^2}}}\quad\quad & (x,y)\neq (0,0) \\
+0 & (x,y) = (0,0)
+\ea\right..
+\ee
+
+Since the argument of the sinusoid\footnote{definition needed} approaches infinity as one approaches the origin, it oscillates wildly near the origin. But the sinusoid is bounded between -1 and 1, and the oscillations of the sinusoid are tempered by the quadratic term $x^2+y^2$. The function is squeezed between two elliptic paraboloids $z = x^2 + y^2$ and $z = -x^2-y^2$ that go to zero very quickly as one approaches the origin. As both paraboloids have the same horizontal tangent plane at the origin $z =0$, we can say that $f(x,y)$ has the same tangent plane at the origin. Therefore, the function $f(x,y)$ is differentiable at the origin.
+
+If we take $y=0$, the function becomes
+\be
+f(x) = \left\{\ba{ll} x^2 \sin \frac{1}{\abs{x}} \quad\quad & x \neq 0\\ 0 & x=0 \ea\right.
+\ee
+
+By definition, we can have that $\fp{f}{x} = 0$ at $(0,0)$. Indeed,
+\be
+f'(0) = \lim_{x\to 0} \frac{f(x) - f(0)}{x-0} = \lim_{x\to 0} \frac{x^2\sin\frac 1{\abs{x}} - 0}{x} = \lim_{x\to 0} x\sin\frac 1{\abs{x}} = 0
+\ee
+as $\sin$ is bounded by -1 and 1. However, the partial derivatives oscillate wildly near the origin. For positive side,
+\be
+\fp{f}{x} = 2x\sin \frac 1x - \cos \frac 1x
+\ee
+
+For $x = \frac 1{2n\pi}$ and $n\in \Z$,
+\be
+\lim_{n\to \infty}\fp{f}{x} = \lim_{n\to \infty}\bb{\frac 2{2n\pi}\sin(2n\pi) - \cos(2n\pi)} = -1.
+\ee
+
+Similarly, for $x = \frac 1{(2n+1)\pi}$ and $n\in \Z$,
+\be
+\lim_{n\to \infty}\fp{f}{x} = \lim_{n\to \infty}\bb{\frac 2{(2n+1)\pi}\sin((2n+1)\pi) - \cos((2n+1)\pi)} = 1.
+\ee
+
+This creates a discontinuity of partial derivatives.
+\end{example}
+
+\section{Integral}
+
+\subsection{Differentiation under integral}
+
+
+\begin{proposition}[Leibniz's integral rule]\label{pro:differentiation_under_integral_of_real_function_of_two_real_variables}
+Let $f:[a,b]\times [c,d]\to \R$ be a continuous function and define function $g:[c,d]\to \C$ by
+\be
+g(t) = \int^b_a f(s,t)ds.
+\ee
+
+Then $g$ is continuous on $[c,d]$. Moreover, if $\fp{f}{t}$ exists and is a continuous function on $[a,b]\times [c,d]$ then $g$ is continuously differentiable and
+\be
+g'(t) = \int^b_a \fp{f}{t}(s,t)ds.\qquad (*)
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+For any $t_0\in [c,d]$, we want to show that given any $\ve>0$ there exists $\delta>0$ such that $\abs{g(t) - g(t_0)} < \ve$ whenever $\abs{t-t_0}< \delta$. It follows that $f(s,t)$ must be uniformly continuous on $[a,b]\times [c,d]$ by Theorem \ref{thm:continuous_on_compact_set_implies_uniformly_continuous_metric} as $f$ is continuous on a compact set $[a,b]\times [c,d]$. Then given any $\ve>0$, there exists $\delta>0$ (independent of $t_0$) such that for any $s,s'\in [a,b]$ and any $t,t'\in [c,d]$,
+\be
+\abs{f(s,t) - f(s',t')} < \frac{\ve}{b-a}\qquad \text{whenever }\ \abs{(s-s')^2+ (t-t')^2}^{1/2} = d((s,t),(s',t')) < \delta.
+\ee
+
+Let $s=s'$. we have that for $t\in [c,d]$
+\be
+\abs{f(s,t)-f(s,t_0)} < \frac{\ve}{b-a} \qquad \text{whenever }\ \abs{t-t_0 } < \delta.
+\ee
+
+Therefore,
+\beast
+\abs{g(t)-g(t_0)} & = & \abs{\int^b_a f(s,t)ds - \int^b_a f(s,t_0)ds} = \abs{\int^b_a \bb{f(s,t)-f(s,t_0)}dx} \\
+& \leq & \int^b_a \abs{f(s,t) - f(s,t_0)} ds < \frac{\ve}{b-a}(b-a) = \ve
+\eeast
+which implies that $g(t)$ is continuous on $[c,d]$.
+
+Note that if we prove that $g$ is differentiable with $g'$ given by ($*$) then it will follow from the first part that $g'$ is continuous since $\fp{f}{t}$ is continuous. Hence we need only verify ($*$).
+
+Fix a point $t_0\in [c,d]$ and given any $\ve>0$. It follows that $\fp{f}{t}$ must be uniformly continuous on $[a,b]\times [c,d]$ by Theorem \ref{thm:continuous_on_compact_set_implies_uniformly_continuous_metric} as $f$ is continuous on a compact set $[a,b]\times [c,d]$. Thus, there exists $\delta>0$ such that
+\be
+\abs{\fp{f}{t}(s',t') - \fp{f}{t}(s,t)} < \ve\qquad \text{whenever }\ (s-s')^2 +(t-t')^2 < \delta^2.
+\ee
+
+In particular,
+\be
+\abs{\fp{f}{t}(s,t) - \fp{f}{t}(s,t_0)} < \frac{\ve}{b-a}\qquad \text{whenever }\ \abs{t-t_0} < \delta, \ s\in [a,b].
+\ee
+
+This gives that for $\abs{t-t_0}< \delta$ and $s\in [a,b]$,
+\be
+\abs{\int^t_{t_0} \bb{\fp{f}{t}(s,\tau) - \fp{f}{t}(s,t_0)}d\tau} < \frac{\ve \abs{t-t_0}}{b-a}.
+\ee
+
+But for a fixed $s\in [a,b]$, $\phi(t) := f(s,t) - t\fp{f}{t}(s,t_0)$ is a primitive function of $\fp{f}{t}(s,t) - \fp{f}{t}(s,t_0)$ on $[c,d]$. Then by Corollary \ref{cor:primitive_funtion_equation}, for any $s\in [a,b]$ when $\abs{t-t_0} < \delta$
+\beast
+\abs{f(s,t) - f(s,t_0) - (t- t_0)\fp{f}{t}(s,t_0)} & = & \abs{f(s,t) - t\fp{f}{t}(s,t_0) - f(s,t_0) + t_0\fp{f}{t}(s,t_0)} = \abs{\phi(t) - \phi(t_0)} \\
+& = & \abs{\int^t_{t_0} \bb{\fp{f}{t}(s,\tau) - \fp{f}{t}(s,t_0)}d\tau} < \frac{\ve \abs{t-t_0}}{b-a}.
+\eeast
+
+Then we have
+\beast
+& & \abs{\frac{g(t)-g(t_0)}{t-t_0} - \int^b_a \fp{f}{t}(s,t_0) ds} \\
+& = & \abs{\frac{\int^b_a f(s,t)ds - \int^b_a f(s,t_0)ds}{t-t_0} - \int^b_a \fp{f}{t}(s,t_0) ds} = \frac 1{\abs{t-t_0}}\abs{\int^b_a \bb{f(s,t)-f(s,t_0) -(t-t_0) \fp{f}{t}(s,t_0)} ds} \\
+& \leq & \frac 1{\abs{t-t_0}}\int^b_a \abs{\bb{f(s,t)-f(s,t_0) -(t-t_0) \fp{f}{t}(s,t_0)}} ds < \frac 1{\abs{t-t_0}} \frac{\ve \abs{t-t_0}}{b-a} \int^b_a ds = \ve
+\eeast
+when $\abs{t-t_0} < \delta$.
+\end{proof}
+
+\section{Multiple integrals}
+
+
+
+\subsection{Green's theorem}
+
+
+\begin{theorem}[Green's theorem]\label{thm:green_multiple_integral}
+Let $C$ be a positive oriented, piecewise smooth, simple closed curve in a plane $\R^2$ and let $\sD$ be the connected set bounded by $C$. If $P$ and $Q$ are functions of $(x,y)$ defined on an open connected set containing $\sD$ and have continuous partial derivative on $\sD$, then
+\be
+\oint_C \bb{Pdx + Qdy} = \iint_{\sD} \bb{\fp{Q}{x} - \fp{P}{y}}dxdy,
+\ee
+where the path of integration along $C$ is anticlockwise.
+\end{theorem}
+
+\begin{remark}
+\ben
+\item [(i)] Green's theorem is a special case of the three-dimensional version of Stoke's theorem, which states that for a vector function $F$,
+\be
+\oint_C F(x,y)\cdot ds = \iint_R \bb{\nabla\times F}\cdot ndA,
+\ee
+where $n$ is the normal vector to the region $R$ and $\nabla \times F$ is the curl of $F$. When $F = (P,Q,0)$ and $R$ is a connected set in $xy$-plane, the setting of Green theorem, $n$ is the unit vector (0,0,1) and the third component of $\nabla \times F$ is $\fp{Q}{x} - \fp{P}{y}$, so the theorem becomes
+\be
+\oint_C (P,Q,0)\cdot (dx,dy,dz) = \iint_R\bb{\fp{Q}{x} - \fp{P}{y}}dA
+\ee
+and the left side is just $\oint_C (Pdx + Qdy)$ as desired.
+
+\item [(ii)] Note that the curve in green theorem is not regular.%need definition of piecewise smooth, simple closed curve.
+
+\item [(iii)] The continuous partial derivatives guarantee the existence of the integral on the right hand side.
+
+\item [(iv)] Green's theorem is used to show the equivalence of the integral and differentiable forms of the Maxwell equations in the study of electromagnetism. This may have been one of the original uses of the theorem when it was discovered.
+
+\een
+\end{remark}
+
+\begin{proof}[\bf Proof]
+First we prove the theorem for the simplified area $\sD$, a type I connected set where $C_1$ and $C_3$ are smooth curves connected by vertical lines (possibly of zero length) and they do not intersect except at end points. Also, the horizontal values of $C_1$ and $C_3$ are strictly monotonic with respect to $t\in [a,b]$.
+
+\begin{center}%\psset{yunit=2cm,xunit=2cm}  %%%%%%% this is wrong as t is theta
+\begin{pspicture}[algebraic](-0.5,-0.5)(7.5,5.5)
+\psaxes[ticks=none,labels=none]{->}(0,0)(-0.5,-0.5)(7.5,5.5)
+\pscustom[fillstyle=solid,fillcolor=blue!20]{%fillstyle=crosshatch
+\psplot{1}{7}{sin(x)+4}
+\psplot{7}{1}{(x-2)*(x-5)/5+1}}
+
+\psplot[linecolor=green,linewidth=2pt]{1}{7}{sin(x)+4}
+\psplot[linecolor=red,linewidth=2pt]{7}{1}{(x-2)*(x-5)/5+1}
+
+\psline[linecolor=cyan,linewidth=2pt](1,4.8415)(1,1.8)
+\psline[linecolor=orange,linewidth=2pt](7,4.6570)(7,3)
+%\psaxes[axesstyle=polar,xAxisLabel=some,subticks=2,tickcolor=red,tickwidth=1pt,subtickcolor=green]{->}(0,0)(-2.5,2.5)(2.5,2.5)%axesstyle=frame,dx=2,dy=2
+\rput[cb](4,2){\large $\sD$}%{\textcolor{blue}
+\rput[cb](5,0.5){\large \textcolor{red}{$C_1$}}%{\textcolor{blue}
+\rput[cb](5,3.5){\large \textcolor{green}{$C_3$}}%{\textcolor{blue}
+\rput[cb](7.5,4){\large \textcolor{orange}{$C_2$}}%{\textcolor{blue}
+\rput[cb](0.5,3){\large \textcolor{cyan}{$C_4$}}%{\textcolor{blue}
+\end{pspicture}
+\end{center}
+
+For $C_1$ and $C_3$, we say its curve can be described by $g_1(x)$ and $g_3(x)$. Thus, we have
+\be
+\sD = \bra{(x,y): x\in [a,b], y \in [g_1(x),g_3(x)]}.
+\ee
+
+Therefore,
+\be
+\int_{C_1} P(x,y)dx = \int^b_a P(x,g_1(x)) dx, \qquad \int_{C_3} P(x,y)dx = -\int^b_a P(x,g_3(x)) dx.
+\ee
+
+Also, it is obvious that
+\be
+\int_{C_2} P(x,y)dx = \int_{C_4} P(x,y)dx = 0.
+\ee
+
+Hence,
+\beast
+\oint_C P(x,y)dx & = & \int_{C_1} P(x,y)dx + \int_{C_2} P(x,y)dx + \int_{C_3} P(x,y)dx+ \int_{C_4} P(x,y)dx \\
+& = & \int^b_a \bb{P(x,g_1(x)) - P(x,g_3(x))} dx = \int^b_a \int^{g_1(x)}_{g_3(x)} \fp{P}{y}(x,y) dy dx = - \iint_{\sD} \fp{P}{y}(x,y) dy dx.
+\eeast
+
+%\begin{pspicture}
+%\psscalebox{-1,1}{hoho}
+%\end{pspicture}
+
+A similar proof exists for the other half of the theorem when $\sD$ is a type II connected set where $C_2$ and $C_4$ are smooth curves connected by horizontal lines (again, possibly of zero length) and vertical values of $C_2$ and $C_4$ are strictly monotonic with respect to $t\in [a,b]$.
+
+
+\begin{center}%\psset{yunit=2cm,xunit=2cm}  %%%%%%% this is wrong as t is theta
+\begin{pspicture}[algebraic](-0.5,-0.5)(7.5,5.5)
+\psaxes[ticks=none,labels=none]{->}(0,0)(-0.5,-0.5)(7.5,5.5)
+\pscustom[fillstyle=solid,fillcolor=blue!20]{%fillstyle=crosshatch
+\psplot{1}{2.5}{10*log(x)+1}
+\psplot{7}{5}{(x-5)^2+1}}
+
+\psplot[linecolor=cyan,linewidth=2pt]{1}{2.5}{10*log(x)+1}
+\psplot[linecolor=orange,linewidth=2pt]{7}{5}{(x-5)^2+1}
+
+\psline[linecolor=green,linewidth=2pt](2.5,5)(7,5)
+\psline[linecolor=red,linewidth=2pt](1,1)(5,1)
+%\psaxes[axesstyle=polar,xAxisLabel=some,subticks=2,tickcolor=red,tickwidth=1pt,subtickcolor=green]{->}(0,0)(-2.5,2.5)(2.5,2.5)%axesstyle=frame,dx=2,dy=2
+\rput[cb](4,3){\large $\sD$}%{\textcolor{blue}
+\rput[cb](4,0.5){\large \textcolor{red}{$C_1$}}%{\textcolor{blue}
+\rput[cb](5,5.5){\large \textcolor{green}{$C_3$}}%{\textcolor{blue}
+\rput[cb](7.5,4){\large \textcolor{orange}{$C_2$}}%{\textcolor{blue}
+\rput[cb](1,3){\large \textcolor{cyan}{$C_4$}}%{\textcolor{blue}
+\end{pspicture}
+\end{center}
+
+Similarly, we can have
+\be
+\oint_C Q(x,y)dy = \iint_{\sD} \fp{Q}{x}(x,y) dxdy.
+\ee
+
+Thus, if a connected set $\sD$ is of type I and type II at the same time, the green's theorem holds. Then general case can then be deduced from this special case by decomposing $\sD$ into sets of both type I and type II.
+
+First, since the piecewise smooth curve consists of finite number of smooth curves, we can find these joint points in $[a,b]$ and use its corresponding values of $x$ and $y$ to divide the whole set into finitely many subsets (rectangles), say $S_n = \bra{(x,y):x\in [a_n,b_n],y\in [c_n,d_n]}$. Also, since curve is smooth, we can find finite many subintervals in $[a,b]$ in which $x$ and $y$ are either strictly monotonic or constant by Corollary \ref{cor:continuously_differentiable_has_finitely_many_monotonic_constant_interval}.
+
+If the set shape is rectangle or right-angle triangle with curved hypotenuse then Green's theorem holds since both shapes are type I and type II. One extreme case is the following graphs.\footnote{Note that $C_2$ and $C_4$ could have zero length and $C_1$ and $C_3$ cannot intersect each other except on rectangle boundary.}
+
+\begin{center}%\psset{yunit=2cm,xunit=2cm}  %%%%%%% this is wrong as t is theta
+\begin{pspicture}[algebraic](-0.5,-0.5)(6,5.5)
+\psaxes[ticks=none,labels=none]{->}(0,0)(-0.5,-0.5)(6,5.5)
+\pscustom[fillstyle=solid,fillcolor=blue!20]{%fillstyle=crosshatch
+\psplot{1}{5}{5-sqrt(16-(x-5)^2)}
+\psplot{5}{3}{sqrt(4-(x-3)^2)+3}}
+
+\psplot[linecolor=red,linewidth=2pt]{1}{5}{5-sqrt(16-(x-5)^2)}
+\psplot[linecolor=green,linewidth=2pt]{5}{3}{sqrt(4-(x-3)^2)+3}
+
+\psline[linecolor=cyan,linewidth=2pt](1,5)(3,5)
+\psline[linecolor=orange,linewidth=2pt](5,3)(5,1)
+%\psaxes[axesstyle=polar,xAxisLabel=some,subticks=2,tickcolor=red,tickwidth=1pt,subtickcolor=green]{->}(0,0)(-2.5,2.5)(2.5,2.5)%axesstyle=frame,dx=2,dy=2
+%\rput[cb](3,3){\large $\sD$}%{\textcolor{blue}
+\rput[cb](3,1){\large \textcolor{red}{$C_1$}}%{\textcolor{blue}
+\rput[cb](4.5,5){\large \textcolor{green}{$C_3$}}%{\textcolor{blue}
+\rput[cb](5.4,2){\large \textcolor{orange}{$C_2$}}%{\textcolor{blue}
+\rput[cb](2.5,5.3){\large \textcolor{cyan}{$C_4$}}%{\textcolor{blue}
+
+\psline[linecolor=black,linestyle=dashed](5,3)(1.5,3)
+\psline[linecolor=black,linestyle=dashed](3,5)(3,1.5)
+
+\psline[linecolor=black,linestyle=dashed](1.5,3)(1.5,5)
+\psline[linecolor=black,linestyle=dashed](3,1.5)(5,1.5)
+
+%\rput[cb](5,5.3){$C_5$}%{\textcolor{blue}
+\end{pspicture}
+\begin{pspicture}[algebraic](-0.5,-0.5)(6,5.5)
+\psaxes[ticks=none,labels=none]{->}(0,0)(-0.5,-0.5)(6,5.5)
+\pscustom[fillstyle=solid,fillcolor=blue!20]{%fillstyle=crosshatch
+\psplot{1}{5}{5-sqrt(16-(x-5)^2)}
+\psplot{5}{1.5}{sqrt(12.25-(x-1.5)^2)+1.5}}
+
+\psplot[linecolor=red,linewidth=2pt]{1}{5}{5-sqrt(16-(x-5)^2)}
+\psplot[linecolor=green,linewidth=2pt]{5}{1.5}{sqrt(12.25-(x-1.5)^2)+1.5}
+
+\psline[linecolor=cyan,linewidth=2pt](1,5)(1.5,5)
+\psline[linecolor=orange,linewidth=2pt](5,1.5)(5,1)
+%\psaxes[axesstyle=polar,xAxisLabel=some,subticks=2,tickcolor=red,tickwidth=1pt,subtickcolor=green]{->}(0,0)(-2.5,2.5)(2.5,2.5)%axesstyle=frame,dx=2,dy=2
+%\rput[cb](3,3){\large $\sD$}%{\textcolor{blue}
+\rput[cb](3,1){\large \textcolor{red}{$C_1$}}%{\textcolor{blue}
+\rput[cb](4.5,5){\large \textcolor{green}{$C_3$}}%{\textcolor{blue}
+\rput[cb](5.4,1){\large \textcolor{orange}{$C_2$}}%{\textcolor{blue}
+\rput[cb](1.5,5.3){\large \textcolor{cyan}{$C_4$}}%{\textcolor{blue}
+
+\psline[linecolor=black,linestyle=dashed](5,1.5)(1.5,1.5)
+\psline[linecolor=black,linestyle=dashed](1.5,5)(1.5,1.5)
+
+%\psline[linecolor=black,linestyle=dashed](1.5,3)(1.5,5)
+%\psline[linecolor=black,linestyle=dashed](3,1.5)(5,1.5)
+
+%\rput[cb](5,5.3){$C_5$}%{\textcolor{blue}
+\end{pspicture}
+\end{center}
+
+It can be seen that the set $\sD$ can be divided into finite number subsets which are both type I and type II (as the dashed lines cancel each other). Thus, the Green's theorem holds for two-curve case. Similarly, since there can only be finitely many curves lying in this set by Corollary \ref{cor:continuously_differentiable_has_finitely_many_monotonic_constant_interval}, we can conclude that for any $S_n$, the Green theorem holds. Thus, the Green theorem holds for the whole set as the common rectangle edges cancel each other.%\footnote{proof needed. we need some theorem from extrusion of circle along rectifiable curve to finish general proof. see wiki, Green's theorem}
+\end{proof}
+
+
+\begin{example}
+Evaluate the integral
+\be
+\oint_C (y^2 dx + x^2 dy),
+\ee
+where $C$ is the boundary of the upper half of the unit disk, traversed anticlockwise. Green's theorem gives
+\be
+\oint_C (y^2 dx + x^2 dy) = \iint_{\sD} \bb{\fp{x^2}{x} - \fp{y^2}{y}}dx dy =  \iint_{\sD} \bb{2x-2y}dx dy,
+\ee
+where $\sD$ is the upper half disk. This integral can be computed easily as
+\beast
+\int^1_{-1} \int^{\sqrt{1-x^2}}_0 (2x- 2y) dy dx & = & \int^1_{-1} \left. (2xy - y^2)\right|^{\sqrt{1-x^2}}_0 dx = \int^1_{-1} \bb{2x\sqrt{1-x^2} - (1-x^2)} dx \\
+& = & 0 - \int^1_{-1} (1-x^2)dx = \left. \frac {x^3}3 - x \right|^1_{-1} = \frac 23 - 2 = -\frac 43.
+\eeast
+\end{example}
+
+\begin{example}
+Evaluate the line integral
+\be
+\oint_C \bb{x^4 dx + xydy}
+\ee
+where $C$ is the boundary of the triangle with vertices at (0,0), (1,0) and (0,1). By Green's theorem,
+\beast
+\oint_C \bb{x^4 dx + xydy} & = & \iint_R \bb{\fp{}{x}(xy) - \fp{}{y}x^4}dxdy = \iint_R y dx dy \\
+&= & \int^1_0 \int^{1-y}_0 y dx dy = \int^1_0 (y-y^2)dy = \frac 12 - \frac 13 = \frac 16.
+\eeast
+\end{example}
+
+\begin{example}
+Evaluate the integral
+\be
+\oint_C (y^2 dx + 5xy dy),
+\ee
+where $C$ is the connected set enclosed by the $x$-axis and two circles $x^2 + y^2 = 1$ and $x^2 + y^2 = 4$. By Green's theorem,
+\be
+\oint_C (y^2 dx + 5xy dy) = \iint_{\sD} \bb{\fp{}{x}5xy - \fp{}{y}y^2}dx dy =  3\iint_{\sD} y dx dy
+\ee
+
+Then, using the polar system, we have $x = r\cos \theta$ and $y = r\sin\theta$,
+\beast
+\oint_C (y^2 dx + 5xy dy) & = & 3\int^{\pi}_0 \int^2_1 r\sin\theta  rdr d\theta = 3  \int^2_1 r^2 dr \int^{\pi}_0 \sin\theta d\theta = \frac 33(8-1)(1-(-1)) = 14.
+\eeast
+\end{example}
+
+
+
+
+%\item contour case
+
+%\begin{theorem}[Green theorem, contour]
+%Let $C$ be a positive oriented contour in a plane and let $\sD$ be the connected set bounded by $C$. If $P$ and $Q$ are functions of $(x,y)$ defined on an open connected set containing $\sD$ and have continuous partial derivative on $\sD$, then
+%\be
+%\oint_C \bb{Pdx + Qdy} = \iint_{\sD} \bb{\fp{Q}{x} - \fp{P}{y}}dxdy,
+%\ee
+%where the path of integration along $C$ is anticlockwise.
+%\end{theorem}
+%
+%\begin{proof}[\bf Proof]
+%
+%\end{proof}
+
+\begin{example}
+Evaluate the integral
+\be
+\oint_{C} \bsb{(4x^2 + 3x + 5y)dx + (6x^2 + 5x + 3y)dy},
+\ee
+where $C$ is the path around the square with vertices (0,0), (2,0), (2,2) and (0,2).
+
+By Green theorem, we have
+\beast
+\oint_{C} \bsb{(4x^2 + 3x + 5y)dx + (6x^2 + 5x + 3y)dy} & = &  \iint_{\sD} (12x + 5 - 5) dx dy = 12\iint_{\sD} x dx dy \\
+& =& 12 \int^2_0 x dx \int^2_0 dy = 12 \cdot \frac 12(4-0) \cdot (2-0) = 48.
+\eeast
+\end{example}
+
+
+
+\begin{example}
+Evaluate the line integral
+\be
+\oint_C (3y - \exp(\sin x))dx + (7x + \sqrt[4]{y^4 + 1})dy
+\ee
+where $C$ is the boundary of the disk of radius 3 centered at the origin. By Green's theorem,
+\beast
+\oint_C (3y - \exp(\sin x))dx + (7x + \sqrt[4]{y^4 + 1})dy  & = & \iint_R\bb{\fp{}{x}(7x + \sqrt[4]{y^4 + 1}) - \fp{}{y}(3y - \exp(\sin x))}dx dy \\
+& = & \iint_R \bb{7-3} dxdy = 4\iint_R dxdy = 4\cdot 9\pi = 36\pi.
+\eeast
+\end{example}
+
+%\begin{example}
+%Evaluate the line integral
+%\be
+%\oint_C \bb{(y^2 - \arctan x )dx + (3x+\sin y)dy}
+%\ee
+%where $C$ is the boundary of the region enclosed by $y = x^2$ and $y = 4$. By Green's theorem,
+%\beast
+%\oint_C \bb{(y^2 - \arctan x )dx + (3x+\sin y)dy} & = & \iint_R \bb{\fp{}{x}(3x + \sin y) - \fp{}{y}(y^2 - \tan)}dxdy
+%\eeast
+%\end{example}
+
+
+\begin{proposition}
+Let $R$ be a plane connected set enclosed by a piecewise smooth, simple closed curve $C$. Then the area of $R$ equals any of the following integrals (where the path is traversed anticlockwise):
+\be
+\oint_C x dy ,\qquad -\oint_C ydx,\qquad \frac 12\oint_C (xdy - y dx).
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Direct result from Green's theorem.
+\end{proof}
+
+\begin{example}
+Consider an ellipse with semi-major axis of length $a$ and semi-minor axis of length $b$. Use the parametrization
+\be
+x = a \cos t,\quad y = b\sin t,\qquad t\in [0,2\pi],
+\ee
+we can have the area
+\be
+A = \oint_C xdy = \int^{2\pi}_0 a\cos t d(b\sin t) = ab \int^{2\pi}_0 \cos^2 t dt = \frac 14 ab \int^{2\pi}_0 \bb{1+\cos(2t)} d(2t) = \frac 14 ab \cdot 4\pi = \pi ab.
+\ee
+\end{example}
+
+\begin{example}
+A cardioid is a curve traced by a fixed point on the perimeter of a circle of radius $a$ which is rolling around another circle of radius $a$. It is parameterized by the equations
+\be
+x = a(2\cos t - \cos (2t)),\qquad y = a\bb{2\sin t - \sin(2t)},\qquad t\in [0,2\pi].
+\ee
+
+\begin{center}%\psset{yunit=2cm,xunit=2cm}  %%%%%%% this is wrong as t is theta
+\begin{pspicture}(-4,-3)(2,3)%(-2.5,-2.5)(2.5,2.5)
+  %\psgrid[griddots=10,gridlabels=0pt, subgriddiv=0, gridcolor=black!40]
+\psaxes[]{->}(0,0)(-4,-3)(2,3)%axesstyle=frame,dx=2,dy=2%labels=none,ticks=none
+%\psset{algebraic}%,linewidth=1.5pt,,%\begin{psgraph}{->}(0,0)(-0.5,-2.5)(3.5,2.5){4cm}{5cm}
+%\psset{plotpoints=500,algebraic}
+\psplotImp[algebraic,linecolor=blue,linewidth=1pt,stepFactor=0.2](-3,-3)(3,3){-(5-x^2-y^2)^2/8 + (5-x^2-y^2)/2 - x + 1}% 1 mul}
+%\psplot[polarplot=true]{0}{360}{1.5*(1+cos(x))}
+%\psaxes[axesstyle=polar,xAxisLabel=some,subticks=2,tickcolor=red,tickwidth=1pt,subtickcolor=green]{->}(0,0)(-2.5,2.5)(2.5,2.5)%axesstyle=frame,dx=2,dy=2
+\rput[cb](2.2,0.3){$a=1$}%{\textcolor{blue}
+\end{pspicture}
+\end{center}
+
+Then the area inside the cardioid is ($dy = a(2\cos t - 2\cos (2t))dt$)
+\beast
+\oint_C x dy & = & \int^{2\pi}_0 a^2 \bb{2\cos t - \cos(2t)}\bb{2\cos t - 2\cos(2t)}dt \\
+& = & a^2 \bb{\int^{2\pi}_0 4\cos^2 t dt + \int^{2\pi}_0 2\cos^2 (2t) dt - \int^{2\pi}_0 4\cos t\cos(2t) dt} \\
+& = & a^2 \bb{\int^{2\pi}_0 2(1+\cos(2t))dt + \int^{2\pi}_0 (1+\cos(4t)) dt - \int^{2\pi}_0 2\bb{\cos t + \cos(3t)} dt} \\
+& = & a^2\bb{4\pi + 2\pi} = 6\pi a^2.
+\eeast
+\end{example}
+
+\begin{example}
+Consider the curve defined by the parametric equations
+\be
+x = a\sin \theta, \quad y = a\sin^2\theta \cos\theta,\qquad \theta\in [0,2\pi].
+\ee
+
+\begin{center}\psset{yunit=3cm,xunit=3cm}  %%%%%%% this is wrong as t is theta
+\begin{pspicture}(-1.5,-0.6)(1.5,0.6)%(-2.5,-2.5)(2.5,2.5)
+  %\psgrid[griddots=10,gridlabels=0pt, subgriddiv=0, gridcolor=black!40]
+\psaxes[]{->}(0,0)(-1.5,-0.5)(1.5,0.5)%axesstyle=frame,dx=2,dy=2%labels=none,ticks=none
+%\psset{algebraic}%,linewidth=1.5pt,,%\begin{psgraph}{->}(0,0)(-0.5,-2.5)(3.5,2.5){4cm}{5cm}
+%\psset{plotpoints=500,algebraic}
+\psplotImp[algebraic,linecolor=blue,linewidth=1pt,stepFactor=0.2](-3.5,-3)(3.5,3){x^6 - x^4 + y^2}% 1 mul}
+%\psplot[polarplot=true]{0}{360}{1.5*(1+cos(x))}
+%\psaxes[axesstyle=polar,xAxisLabel=some,subticks=2,tickcolor=red,tickwidth=1pt,subtickcolor=green]{->}(0,0)(-2.5,2.5)(2.5,2.5)%axesstyle=frame,dx=2,dy=2
+\rput[cb](1.2,0.3){$a=1$}%{\textcolor{blue}
+\end{pspicture}
+\end{center}
+
+Then the right part area inside the curve is ($dx = a\cos\theta d\theta$ and we select the $C$ from $\theta = \pi$ to 0)
+\beast
+-\oint_C y dx & = & \int^{\pi}_0 a^2 \sin^2\theta\cos^2\theta d\theta = \frac 14a^2 \int^{\pi}_0  \sin^2(2\theta) d\theta = \frac 18 a^2 \int^{\pi}_0  \bb{1-\cos(4\theta)} d\theta = \frac 18 \pi a^2.
+\eeast
+
+Thus, the total area is $\frac 14 \pi a^2$.
+\end{example}
+
+
+\begin{example}
+Evaluate the line integral
+\be
+\oint_C y^2 dx + 3xy dy
+\ee
+where $C$ is the boundary of the shaded region show below.
+
+\begin{center}\psset{yunit=1.5cm,xunit=1.5cm}  
+\begin{pspicture}[algebraic](-2.5,-0.3)(2.5,2.3)
+\psaxes[Dx=1,Dy=1]{->}(0,0)(-2.5,-0.3)(2.5,2.3)%ticks=none,
+
+\pstGeonode[PointName=none,PointSymbol=none](0,0){O}(3;0){A}(3;180){B}(1.5;180){C}(1.5;0){D}(3;45){E}(1.5;45){F}
+
+\pscustom[fillstyle=solid,fillcolor=blue!20,linestyle=none]{
+%\psccurve[linewidth=1pt](0,1.2)(0.5,0.5)(1,0.1)(0.5,-0.3)(0.6,-0.9)(0,-1.2)(-0.6,-0.9)(-0.5,-0.3)(-1,0.1)(-0.5,0.5)
+\pstArcOAB[]{O}{A}{B}
+\pstLineAB{B}{C}
+\pstArcnOAB[]{O}{C}{D}
+\pstLineAB{D}{A}
+}
+
+\pstArcOAB[]{O}{A}{B}
+\pstArcnOAB[]{O}{C}{D}
+
+
+\pstLineAB[ArrowInside=->,arrowscale=1.5]{B}{C}
+\pstLineAB[ArrowInside=->,arrowscale=1.5]{D}{A}
+
+\psset{arrows=->,arrowscale=1.5}
+\pstArcOAB[]{O}{A}{E}
+\pstArcnOAB[]{O}{C}{F}
+
+\rput[cb](1.5,1.5){$C$}%{\textcolor{blue}
+\rput[cb](0,1.6){$R$}%{\textcolor{blue}
+%\rput[cb](0.05,0.1){$a$}%{\textcolor{blue}
+%\rput[cb](0.2,-0.5){$C_1$}%{\textcolor{blue}
+\end{pspicture}
+\end{center}
+
+Clearly, $R$ is the upper half of an annulus with inner radius 1 and outer radius 2. Thus,
+\beast
+\oint_C y^2 dx + 3xy dy & = & \iint_R \fp{}{x}(3xy) - \fp{}{y}(y^2) = \iint_R (3y- 2y)dx dy = \iint_R y dx dy \\
+& = & \int^{\pi}_{0} \int^2_1 (r\sin \theta) rdr d\theta = \int^2_1 r^2 dr \int^{\pi}_0 \sin\theta d\theta = \frac 13 \bb{2^3-1}\cdot(-1)\bb{-1-1} = 14/3.
+\eeast
+\end{example}
+
+For piecewise smooth, non-simply closed curve, Green's theorem still holds\footnote{details needed.}. %we can decompose the curve into
+
+\begin{example}
+Suppose $F(x,y) = \frac 1{x^2 + y^2}(-y,x)$. Evaluate the integral
+\be
+\oint_C F(x,y)\cdot dr
+\ee
+where $C$ is any piecewise smooth, simple closed curve that encloses the origin.
+
+If $C$ is a simple closed curve contain the origin then there is a circle of radius $a>0$ centered at the origin interior to $C$. Let $C_1$ be the positively oriented boundary of the circle.
+
+\begin{center}\psset{yunit=3cm,xunit=3cm}  %%%%%%% this is wrong as t is theta
+\begin{pspicture}[algebraic](-1.5,-1.2)(1.5,1.4)
+\psaxes[labels=none]{->}(0,0)(-1.5,-1.2)(1.5,1.4)%ticks=none,
+\pscustom[fillstyle=solid,fillcolor=blue!20,linestyle=none]{
+\psccurve[linewidth=1pt](0,1.2)(0.5,0.5)(1,0.1)(0.5,-0.3)(0.6,-0.9)(0,-1)(-0.6,-0.9)(-0.5,-0.3)(-1,0.1)(-0.5,0.5)
+\pscircle(0,0){1.2}}
+
+\psccurve[linewidth=1pt](0,1.2)(0.5,0.5)(1,0.1)(0.5,-0.3)(0.6,-0.9)(0,-1)(-0.6,-0.9)(-0.5,-0.3)(-1,0.1)(-0.5,0.5)
+\pscircle(0,0){1.2}
+
+%\psbezier[linewidth=1pt,arrowscale=1]{->}(0.6,-0.9)(0.5,-0.3)(1,0.1)(0.5,0.5)%(0,1.2)%%(0.6,-0.9)(0,-1.2)(-0.6,-0.9)(-0.5,-0.3)(-1,0.1)(-0.5,0.5)
+%\pscircle(0,0){1.2}
+
+\psset{arrows=->,arrowscale=1.5}
+\pstGeonode[PointName=none,PointSymbol=none](0,0){O}(1.2;40){A}(1.2;50){B}(2.12;43){C}(2.12;47){D}
+\pstArcOAB[]{O}{A}{B}
+\pstArcOAB[]{O}{C}{D}
+
+%%\psaxes[axesstyle=polar,xAxisLabel=some,subticks=2,tickcolor=red,tickwidth=1pt,subtickcolor=green]{->}(0,0)(-2.5,2.5)(2.5,2.5)%axesstyle=frame,dx=2,dy=2
+\rput[cb](0.6,0.6){$C$}%{\textcolor{blue}
+\rput[cb](-0.6,0.1){$R$}%{\textcolor{blue}
+\rput[cb](0.05,0.1){$a$}%{\textcolor{blue}
+\rput[cb](0.2,-0.5){$C_1$}%{\textcolor{blue}
+\end{pspicture}
+\end{center}
+
+Then we have
+\beast
+\oint_C F(x,y)\cdot dr - \oint_{C_1} F(x,y)\cdot dr & = & \oint_{\partial R} F(x,y)\cdot dr = \iint_R \bb{\fp{Q}{x} - \fp{P}{y}}dxdy \\
+& = & \iint_R \bb{\frac{x^2+y^2-2x^2}{(x^2+y^2)^2} - \frac{-x^2-y^2+2y^2}{(x^2+y^2)^2}}dx dy = \iint_R 0 dxdy = 0.
+\eeast
+
+Thus,
+\be
+\oint_C F(x,y)\cdot dr = \oint_{C_1} F(x,y)\cdot dr
+\ee
+\end{example}
+
+%\section{Function Sequences}
+
+%\begin{definition}[uniform convergence\index{uniform convergence!real-valued function}]\label{def:uniform convergence_real}
+%Suppose $X$ is a set and $f_n : X \to \R$ is a real-valued function for every natural number $n$. We say that the sequence $(f_n)_{n\in \N}$ is uniformly convergent with limit $f : X \to \R$ if for every $\ve > 0$, there exists a natural number $N$ such that for all $x\in X$ and all $n \geq N$ we have $|f_n(x) - f(x)| < \ve$\footnote{can be extended to metric space}.
+%\end{definition}
+
+%\begin{remark}
+%Consider the sequence $a_n = \sup_{x\in X} \abs{f_n(x) - f(x)}$. Clearly $f_n$ converges to $f$ uniformly if and only if $a_n$ tends to 0.
+%\end{remark}
+
+%\begin{definition}[locally uniform convergence\index{locally uniform convergence!real-valued function}]\label{def:locally_uniform convergence_real}]
+%Suppose $X$ is a set and $f_n : X \to \R$ is a real-valued function for every natural number $n$. We say that the sequence $(f_n)_{n\in \N}$ is uniformly convergent with limit $f : X \to \R$ if for every $x\in X$, there exists $r>0$ such that $f_n$ converges uniformly on $(x-r,x+r) \cap X$\footnote{can be extended to metric space}.
+%\end{definition}
+
+%\begin{definition}[local uniform convergence\index{local uniform convergence}]\label{def:local_uniform_convergence}
+%WA sequence of functions $f_n$
+%\end{definition}
+
+%\begin{remark}
+%Locally uniform convergence is actually special case uniform convergence on compacts\footnote{need defintion}.
+%\end{remark}
+
+%\begin{example}\footnote{could be placed at absolute uniform-convergence series}
+%Let $a_n(x)= \frac{\sin\bb{n\pi x}}{n^2}$ and thus $a_n'(x) = \frac {\pi\cos\bb{n\pi x}}{n}$. Then
+%\be
+%\abs{\sum_n a_n(x)} \leq \sum_n \frac 1{n^2} \ \ra \ \sum_n a_n(x) \text{ converges.}
+%\ee
+
+%However, at $x=0$,
+%\be
+%\abs{\sum_n a_n'(x)} = \sum_n \frac 1{n} \ \ra \ \sum_n a_n'(x) \text{ diverges.}
+%\ee
+%\end{example}

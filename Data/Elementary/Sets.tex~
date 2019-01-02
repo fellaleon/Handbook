@@ -1,0 +1,273 @@
+\chapter{Sets}
+
+\section{Fundamentals}
+
+%\subsection{Sets and elements}
+
+\begin{definition}[set\index{set}, element\index{element!set}]\label{def:set}
+A set $A$ is any unordered collection of objects.
+
+If $x$ is an object, we say that $x$ is an element of $A$ or $x\in A$ if $x$ lies in the collection; otherwise we say that $x\notin A$.
+\end{definition}
+
+\begin{axiom}[sets are objects]
+If $A$ is a set, then $A$ is also an object. In particular, given two sets $A$ and $B$, it is meaningful to ask whether $A$ is also an element of $B$.
+\end{axiom}
+
+\begin{definition}[equality of sets\index{equality!sets}]\label{def:equality_set}
+Two sets $A$ and $B$ are equal, $A=B$ iff every element of $A$ is an element of $B$ and vice versa. To put it another way, $A=B$ if and only if every element $x$ of $A$ belongs also to $B$, and every element $y$ of $B$ belongs also to $A$.
+\end{definition}
+
+\begin{example}
+For instance, $\bra{a,b,c,d,e}$ and $\bra{c,d,b,a,e}$ are the same set.
+
+The $\bra{c,c,a,e,b,d,b}$ is also equal to $\bra{a,b,c,d,e}$; the repetition of $b$ and $c$ is irrelevant as it does not further change the status of $b$ and $c$ being elements of the set.
+\end{example}
+
+\begin{axiom}[empty set\index{empty set}]\label{axm:empty_set}
+There exists a set $\emptyset$, known as the empty set, which contains no elments, i.e., for every object $x$ we have $x\notin \emptyset$.
+\end{axiom}
+
+\begin{remark}
+Note that there can only be one empty set; if there were two sets $\emptyset$ and $\emptyset'$ which were both empty, then by Definition \ref{def:equality_set} they would be equal to each other.
+\end{remark}
+
+\begin{lemma}[single choice]\label{lem:single_choice}
+Let $A$ be a non-empty set. Then there exists an object $x$ such that $x\in A$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+We prove by contradiction. Suppose there does not exist any object $x\in A$. Then for all objects $x$, we have $x\notin A$. Also, by Axiom \ref{axm:empty_set} we have $x\notin \emptyset$. Thus, $x\in A \lra x\in \emptyset$ (both statements are equally false), and so $A = \emptyset$ by Definition \ref{def:equality_set}. Contradiction.
+\end{proof}
+
+\begin{axiom}[singleton sets\index{singleton set} and pair sets\index{pair set}]
+If $a$ is an object, then there exists a set $\bra{a}$ whose only element is $a$, i.e., for every object $y$, we have $y\in \bra{a}$ if and only if $y=a$; we refer to $\bra{a}$ as the singleton set whose element is $a$.
+
+Furthermore, if $a$ and $b$ are objects, then there exists a set $\bra{a,b}$ whose only elements are $a$ and $b$; i.e., for every object $y$, we have $y \in \bra{a,b}$ if and only if $y=a$ or $y=b$; we refer to this set as the pair set formed by $a$ and $b$.
+\end{axiom}
+
+\begin{definition}[subset\index{subset}]\label{def:subset}
+Let $A,B$ be sets. Then $A$ is a subset of $B$, denoted $A\subseteq B$, iff every element of $A$ is also an element of $B$, i.e., for any object $x$, $x\in A\ \ra \ x\in B$.
+
+We say that $A$ is a proper subset of $B$, denoted $A\subset B$, if $A\subseteq B$ and $A\neq B$.
+\end{definition}
+
+\begin{remark}
+Given any set $A$, we always have $A\subseteq A$ and $\emptyset \subseteq A$.
+\end{remark}
+
+\begin{example}
+$\bra{a,b,d}\subset \bra{a,b,c,d,e}$.
+\end{example}
+
+\begin{proposition}[sets are partially ordered by set inclusion]
+Let $A,B,C$ be sets. If $A\subseteq B$ and $B\subseteq C$ then $A\subseteq C$. If $A\subseteq B$ and $B\subseteq A$, then $A=B$. Finally, if $A\subset B$ and $B\subset C$ then $A\subset C$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{need proof}
+\end{proof}
+
+\begin{axiom}[axiom of specification]\label{axm:specification}
+Let $A$ be a set, and for each $x\in A$, let $P(x)$ be a property pertaining to $x$ (i.e., $P(x)$ is either a true statement or a false one). Then there exists a set called $\bra{x\in A:P(x)\text{ is true}}$, whose elements are precisely the elements $x$ in $A$ for which $P(x)$ is true. In other words, for any object $y$,
+\be
+y \in \bra{x\in A:P(x)\text{ is true}} \ \ra \ y\in A \text{ and } P(y) \text{ is true.}
+\ee
+\end{axiom}
+
+\begin{axiom}[axiom of replacement]\label{axm:replacement}
+Let $A$ be a set. For any object $x\in A$, and any object $y$, suppose we have a statement $P(x,y)$ pertaining to $x$ and $y$, such that for each $x\in A$ there is at most one $y$ for which $P(x,y)$ is true. Then there exists a set $\bra{y:P(x,y)}$ is true for some $x\in A$, such that for any object $z$,
+\be
+z\in \bra{y:P(x,y)\text{ is true for some }x\in A} \ \lra \ P(x,z) \text{ is true for some }x\in A.
+\ee
+\end{axiom}
+
+\section{Set Operations}
+
+\begin{axiom}[pairwise union\index{union!pairwise}]\label{axm:union_pairwise}
+Given any two sets $A,B$, there exists a set $A\cup B$, called the union $A\cup B$ of $A$ and $B$, whose elements consists of all the elements which belong to $A$ or $B$ or both. In other words, for any object $x$,
+\be
+x\in A\cup B \ \ra \ x\in A \text{ or }x\in B.
+\ee
+
+Note that $A\cup B = B\cup A$ as the set is unordered.
+\end{axiom}
+
+\begin{example}
+$\bra{a,b}\cup \bra{b,c} = \bra{a,b,c}$.
+\end{example}
+
+\begin{remark}
+If $A,B,A'$ are sets, and $A$ is equal to $A'$, then $A\cup B$ is equal to $A'\cup B$.\footnote{need proof.}
+\end{remark}
+
+\begin{lemma}
+If $a$ and $b$ are objects, then $\bra{a,b} = \bra{a}\cup \bra{b}$. If $A,B,C$ are sets, then the union operation is commutative (i.e., $A\cup B = B\cup A$) and associative (i.e., $(A\cup B)\cup C = A \cup (B\cup C)$). 
+
+Also, we have $A\cup A = A \cup \emptyset = \emptyset \cup A = A$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+\footnote{need proof}
+\end{proof}
+
+\begin{definition}[intersection\index{intersection!pairwise}]\label{def:intersection_pairwise}
+The intersection $A\cap B$ of two sets $A,B$ is defined to be the set
+\be
+A\cap B = \bra{x\in A: x\in B}.
+\ee
+
+In other words, $A\cap B$ consists of all the elements which belong to both $A$ and $B$. Thus, for all object $x$,
+\be
+x\in A\cap B \ \lra \ x\in A \text{ and }x\in B.
+\ee
+
+Note that $A\cap B = B\cap A$ as the set is unordered.
+\end{definition}
+
+\begin{example}
+$\bra{a,b,d}\cap\bra{b,c,d} = \bra{b,d}$, $\bra{a,b}\cap \bra{c,d} = \emptyset$.
+\end{example}
+
+\begin{definition}[difference set]\label{def:difference_set}
+Given two sets $A$ and $B$, we define the set $A-B$ or $A\bs B$ to be the set $A$ with any elements of $B$ removed:
+\be
+A\bs B:= \bra{x\in A:x\notin B}.
+\ee
+
+Note that in many cases $B$ will be a subset of $A$, but not necessarily.
+\end{definition}
+
+\begin{proposition}[sets form a boolean algebra]
+Let $A,B,C$ be sets, and let $X$ be a set containing $A,B,C$ as subsets.
+\ben
+\item [(i)] (minimal element) $A\cup \emptyset = A$ and $A\cap \emptyset = \emptyset$.
+\item [(ii)] (maximal element) $A\cup X = X$ and $A\cap X = A$.
+\item [(iii)] (identity) $A\cap A = A$ and $A\cup A = A$.
+\item [(iv)] (commutativity) $A\cup B = B\cup A$ and $A\cap B = B\cap A$.
+\item [(v)] (associativity) $(A\cup B)\cup C = A\cup (B\cup C)$ and $(A\cap B)\cap C = A\cap (B\cap C)$.
+\item [(vi)] (distributivity) $A\cap (B\cup C) = (A\cap B)\cup (A\cap C)$ and $A\cup (B\cap C) = (A\cup B)\cap (A\cup C)$.
+\item [(vii)] (partition) $A\cup (X\bs A) = X$ and $A\cap (X\bs A) = \emptyset$.
+\item [(viii)] (De Morgan laws\index{De Morgan laws}) $X\bs(A\cup B) = (X\bs A)\cap (X\bs B)$ and $X\bs(A\cap B) = (X\bs A)\cup (X\bs B)$.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{need proof}
+\end{proof}
+
+\begin{remark}
+The above laws are collectively known as the laws of Boolean algebra, after the mathematician Geoge Boole (1815-1864), and are also applicable to a number of other objects other than sets; it plays a particularly impartant role in logic.
+\end{remark}
+
+
+%%%%%%%%%%%%%
+
+\begin{definition}[symmetric difference\index{symmetric difference}]\label{def:symmetric_difference}
+Given two sets $A,B$, the symmetric difference is written by $A \triangle B = (A\bs B)\cup (B\bs A)$. 
+\end{definition}
+
+
+\section{Images and Inverse Images}
+
+\begin{definition}[images of set\index{image!set}]\label{def:image_set}
+If $f:X\to Y$ is function from $X$ to $Y$ (see Definition \ref{def:function}), and $S$ is subset in $X$, we define $f(S)$ to be the set
+\be
+f(S) := \bra{f(x):x\in S};
+\ee
+this set is a subset of $Y$, and is sometimes called the image of $S$ under the map $f$. We sometimes call $f(S)$ the forward image of $S$ to distinguish it from the concept of the inverse image $f^{-1}(S)$ of $S$, which is defined below.
+\end{definition}
+
+\begin{definition}[inverse image\index{inverse image!set}]\label{def:inverse_image_set}
+If $U$ is a subset of $Y$, we define the set $f^{-1}(U)$ to be the set
+\be
+f^{-1}(U) := \bra{x\in X:f(x)\in U}.
+\ee
+
+In other words, $f^{-1}(U)$ consists of all the elements of $X$ which map into $U$:
+\be
+f(x) \in U \ \lra\ x\in f^{-1}(U).
+\ee
+
+We call $f^{-1}(U)$ the inverse image of $U$.
+\end{definition}
+
+\begin{proposition}
+Let $A,B$ be two subsets of a set $X$, and let $f:X\to Y$ be a function. Then
+\be
+f(A\cap B) \subseteq f(A) \cap f(B),\quad f(A)\bs f(B) \subseteq f(A\bs B),\quad f(A\cup B) = f(A) \cup f(B).
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{need proof}
+\end{proof}
+
+\begin{proposition}
+Let $f:X\to Y$ be a function from one set $X$ to another set $Y$, and let $A,B$ be subsets of $Y$. Then
+\be
+f^{-1}(A\cup B) = f^{-1}(A)\cup f^{-1}(B),\quad f^{-1}(A\cap B) = f^{-1}(A)\cap f^{-1}(B),\quad f^{-1}(A\bs B) = f^{-1}(A)\bs f^{-1}(B).
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{need proof}
+\end{proof}
+
+
+\section{Cartesian Product}
+
+\begin{definition}[ordered pair\index{ordered pair}]
+If $x$ and $y$ are any objects (possibly equal), we define the ordered pair $(x,y)$ to be a new object, consisting of $x$ as its first component and $y$ as its second component.
+\end{definition}
+
+\begin{definition}[equality of ordered pair\index{equality!ordered pair}]
+Two ordered pairs $(x,y)$ and $(x',y')$ are considered equal if and only if their components match, i.e.,
+\be
+(x,y) = (x',y') \ \lra \ x=x',y = y'.
+\ee
+\end{definition}
+
+\section{Cardinality of Sets}
+
+\section{Infinite Sets}
+
+
+
+\begin{proposition}[inverse image preserves set operation\footnote{need $\alpha \in I$ (infinity) argument}]\label{pro:inverse_image_preserves_set_operation}
+For any function $f : X \to Y$, the inverse image preserves set operations, for subsets $A_i,A\subseteq B$ of $Y$
+\be
+f^{-1} \bb{\bigcup_i A_i} = \bigcup_i f^{-1}(A_i),\quad\quad f^{-1}(B \bs A) = f^{-1}(B) \left\bs f^{-1}(A)\right..
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+First, 
+\beast
+x \in f^{-1}\bb{\bigcup_i A_i} \ \lra\  f(x) \in \bigcup_i A_i & \lra & f(x) \in A_i \text{ for some }i \\
+& \lra & x\in f^{-1}\bb{A_i}\text{ for some }i \ \lra \ x \in \bigcup_i f^{-1}\bb{A_i}.
+\eeast
+
+\beast
+x \in f^{-1}(B \bs A) \ \lra\  f(x) \in B \bs A & \lra & f(x) \in B,\ f(x)\in A^c \\
+& \lra & x\in f^{-1}\bb{B},\ x\in f^{-1}\bb{A^c} \\
+& \lra & x\in f^{-1}\bb{B},\ x\in \bb{f^{-1}\bb{A}}^c \ \lra \ x \in f^{-1}(B) \left\bs f^{-1}(A)\right..
+\eeast
+\end{proof}
+
+\section{Other Definitions}
+
+\begin{definition}[supremum, infimum\index{infimum}]\label{def:infimum}
+\end{definition}
+
+\begin{definition}
+The support\index{support} of a function is the set of points where the function is not zero, or the closure of that set.\footnote{should be put in topology}
+\end{definition}
+
+\begin{definition}\label{def:compact_support}
+Functions with compact support\index{compact support} in $X$ are those with support that is a compact subset of $X$.
+\end{definition}
+
+\begin{remark}
+If $X$ is the real line, they are functions of bounded support and therefore vanish at infinity (and negative infinity).
+\end{remark}

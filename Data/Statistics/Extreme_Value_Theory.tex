@@ -1,0 +1,540 @@
+\chapter{Extreme Value Theory}
+
+\section{Limit Distributions and Domains of Attraction}
+
+\subsection{Motivation}
+
+The asymptotic theory of sample extremes has been developed in parallel with the central limit theory\footnote{citation needed.}, and in fact the two theories bear some resemblance.
+
+Let $X_1, X_2, \dots, X_n$ be independent and identically distributed random variables. The central limit theory is concerned with the limit behavior of the partial sums $X_1 + X_2 +\dots+ X_n$ as $n \to \infty$, whereas the theory of sample extremes is concerned with the limit behavior of the sample extremes $\max\bra{X_1, X_2,\dots, X_n}$ or $\min\bra{X_1,X_2,\dots,X_n}$ as $n\to \infty$.
+
+One may think of the two theories as concerned with failure. A tire of a car can fail in two ways. Every day of driving will wear out the tire a little, and after a long time the accumulated decay will result in failure (i.e., the partial sums exceed some threshold). But also when driving one may hit a pothole or one may accidentally hit the sidewalk. Such incidents have either no effect or the tire will be punctured. In the latter case it is just one big observation that causes failure, which means that partial maxima exceed some threshold.\footnote{Introduction from Extreme Value Theory, An Introduction, Laurens de Haan and Ana Ferreira, Springer, 2006}.
+
+\begin{lemma}
+Let $F$ be a distribution function of i.i.d. random variables $X_1,X_2,\dots,X_n$ and $x^*$ its right endpoint, i.e., $x^* := \sup\bra{x:F(x)<1}$, which may be infinite. Then $\max\bra{X_1,X_2,\dots, X_n} \stackrel{p}{\to} x^*$ as $n\to \infty$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Since $X_1,X_2\dots,X_n$ are i.i.d., Then
+\beast
+\pro\bb{\max\bra{X_1,X_2,\dots, X_n} \leq x} & = & \pro\bb{X_1\leq x,X_2\leq x,\dots, X_n\leq x} \\
+& = & \pro\bb{X_1\leq x}\pro\bb{X_2\leq x} \dots \pro\bb{X_n\leq x} = F^n(x).
+\eeast
+
+Then for $x<x^*$, we have $F(x)<1$ otherwise, the supremum is smaller than $x^*$. Thus $F^n(x) \to 0$ as $n\to \infty$. Also, for $x>x^*$, we have that $F(x) = 1$, otherwise $x^*$ won't be the supremum of $F(x)<1$. Then $F^n(x) \to 1$ as $n\to \infty$. For $x=x^*$ and $\forall \ve >0$, we can find a series of $x_1>x_2>\dots>x^*$ such that $F(x_n)\to F(x^*)$ since $F$ is distribution thus right-continuous. Then $\abs{F^n(x^*)-1} = \abs{F^n(x^*) - F^n(x_n)+F^n(x_n)-1} \leq \abs{F^n(x^*) - F^n(x_n)} + \abs{F^n(x_n)-1} < \ve/2 + \ve/2 = \ve$. Thus, $F^n(x^*) \to 1$ as $n\to \infty$.
+
+Therefore, $\forall \ve >0$,
+\beast
+\pro\bb{\abs{\max\bb{X_1,X_2,\dots,X_n}-x^*}>\ve} & = & \pro\bb{\max\bb{X_1,X_2,\dots,X_n} > x^*+\ve} +  \pro\bb{\max\bb{X_1,X_2,\dots,X_n} < x^*-\ve}\\
+& = & 1 - \pro\bb{\max\bb{X_1,X_2,\dots,X_n} \leq x^*+\ve} + \pro\bb{\max\bb{X_1,X_2,\dots,X_n} < x^*-\ve} \\
+& \leq & 1 - F^n(x^*+\ve) + F^n(x^*-\ve) \to 1 - 1 + 0 = 0.
+\eeast
+which is the definition of the convergence in probability.
+\end{proof}
+
+\subsection{Extreme value distribution}
+
+Extreme value theory was first proposed by Fisher and Tippett \cite{Fisher_Tippett_1928} and Gnedenko \cite{Gnedenko_1943}. The key result is given by the following theorem.
+
+\begin{definition}[extreme value distribution\index{extreme value distribution}]\label{def:extreme_value_distribution}
+Let $F$ be a distribution function of i.i.d. random variables $X_1,X_2,\dots,X_n$. In order to obtain a non-degenerate limit distribution of $\max\bra{X_1,X_2,\dots, X_n}$, a normalization is necessary. So we can assume that there exists a sequence of constants $a_n>0$ and $b_n$ real such that
+\be
+\frac{\max\bra{X_1,X_2,\dots,X_n}-b_n}{a_n}
+\ee
+has a non-degenerate limit distribution as $n\to \infty$, i.e.,
+\be
+\lim_{n\to \infty} F^n(a_n x + b_n) = G(x)\qquad (*)
+\ee
+for every continuous point $x$ of $G$, and $G$ a non-degenerate distribution function, which is called the extreme value distribution.
+\end{definition}
+
+We shall find all distribution function $G$ that can occur as an extreme value distribution.
+
+\begin{lemma}\label{lem:extreme_value_distribution_equivalent_forms}
+Let $F$ be a distribution function of i.i.d. random variables $X_1,X_2,\dots,X_n$ and $G$ be their non-degenerate extreme value distribution with respect to the sequence $(a_n,b_n)$ where $a_n>0$, $b_n\in\R$ . Then for $0<G(x)<1$, we have the statement
+\be
+\lim_{n\to \infty} F^n(a_n x + b_n) = G(x)\qquad (*)
+\ee
+for every continuous point $x$ of $G$. Then ($*$) is equivalent to 
+\be
+\lim_{n\to \infty} \frac{U(nu)-b_n}{a_n} = G^{\to}\bb{e^{-1/u}} := D(u)\qquad (\dag)
+\ee
+for each continuous point $u>0$ of $D$ where $U$ is the left-continuous inverse of $1/(1-F)$. Note that $U(t)$ is defined for $t>1$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+By taking logarithm left and right of ($*$), we have that ($*$) is equivalent to
+\be
+\lim_{n\to\infty} n\log F(a_n x + b_n) = \log G(x)
+\ee
+for each continuous point $x$ for which $0<G(x)<1$. Clearly it follows that $F(a_n x + b_n) \to 1$ for each such $x$. Hence,
+\be
+\lim_{n\to \infty}\frac{-\log F(a_n x + b_n)}{1-F(a_n x + b_n)} = 1,
+\ee
+and in fact ($*$) is equivalent to
+\be
+\lim_{n\to \infty} n\bb{1-F(a_n x + b_n)} = -\log G(x) \ \lra \ \lim_{n\to \infty} \frac 1{n\bb{1-F(a_n x + b_n)}} = -\frac 1{\log G(x)}.
+\ee
+
+We can write $U(t) := \inf\bra{y\in \R: \frac 1{1-F(y)} \geq t} $. Then for fixed $n$,
+\be
+U(t) = \inf\bra{a_ny+b_n\in \R: \frac 1{1-F(a_n y + b_n)} \geq t} = a_n\inf\bra{y\in \R: \frac 1{1-F(a_n y + b_n)} \geq t} +b_n
+\ee
+
+For each $u>0$, we can have for large enough $n$,
+\beast
+U(nu) & = & a_n\inf\bra{y\in \R: \frac 1{1-F(a_n y + b_n)} \geq nu} +b_n \\
+\ \lra\ \frac{U(nu)-b_n}{a_n} & = & \inf\bra{y\in \R: \frac 1{n\bb{1-F(a_n y + b_n)}} \geq u}
+\eeast
+
+Also, by letting $H(x) = -\frac 1{\log G(x)}$ and $u>0$
+\beast
+H^{\to}(u) & = & \inf\bra{y\in \R: H(y)\geq u} =  \inf\bra{y\in \R: -\frac 1{\log G(y)}  \geq u} \\
+& = & \inf\bra{y\in \R: \log G(y) \geq -1/u} =  \inf\bra{y\in \R: G(y) \geq e^{-1/u}} = G^{\to}\bb{e^{-1/u}} := D(u).
+\eeast
+
+By Theorem \ref{thm:convergence_increasing_function_and_its_left_inverse_function_imply_each_other}, we have for each continuous positive point $u$ of $D$, ($*$) is equivalent to ($\dag$) which is
+\be
+\lim_{n\to\infty} \frac{U(nu)-b_n}{a_n} = G^{\to}\bb{e^{-1/u}} = D(u).
+\ee
+\end{proof}
+
+\begin{lemma}\label{lem:extreme_value_distribution_integer_to_real}
+Let $a_n>0$ and $b_n$ be real sequences of constants and $G$ is a non-degenerate distribution function. The following statements are equivalent:
+\ben
+\item [(i)] $\lim_{n\to\infty} F^n(a_n x + b_n) = G(x)$ for each continuous point $x$ of $G$ with $0<G(x)<1$.
+\item [(ii)] For $a(t):= a_{\floor{t}}$ and $b(t) := b_{\floor{t}}$ and each continuous point $u>0$ of $D(u)= G^{\to}\bb{e^{-1/u}}$,
+\be
+\lim_{t\to\infty} \frac{U(tu)-b(t)}{a(t)} = D(u).
+\ee
+\een
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+(i) $\ra$ (ii). Let $u>0$ be a continuous point of $D$. Then by Lemma \ref{lem:extreme_value_distribution_equivalent_forms}, we have
+\be
+\lim_{n\to\infty} \frac{U(nu)-b_n}{a_n} = D(u).
+\ee
+
+For $t\geq 1$, since $U$ is non-decreasing function we have
+\be
+\frac{U(\floor{t}u)-b_{\floor{t}}}{a_{\floor{t}}} \leq \frac{U(tu)-b_{\floor{t}}}{a_{\floor{t}}} \leq \frac{U\bb{\floor{t}u\bb{1+1/\floor{t}}}-b_{\floor{t}}}{a_{\floor{t}}}.
+\ee
+
+The right-hand side is eventually less than $D(u')$ for any continuous point $u'>u$ with $D(u')> D(u)$. Since $D$ is continuous at $u$, we obtain
+\be
+\lim_{t\to\infty}\frac{U(tu)-b_{\floor{t}}}{a_{\floor{t}}} = D(u),
+\ee
+as required.
+
+(ii) $\ra$ (i). According to (ii), we can have $\lim_{n\to\infty} \frac{U(nu)-b_n}{a_n} = G^{\to}\bb{e^{-1/u}} = D(u)$ which implies (i) by Lemma \ref{lem:extreme_value_distribution_equivalent_forms}.
+\end{proof}
+
+
+\begin{theorem}[Fisher-Tippett-Gnedendo theorem, 1928, 1943]\label{thm:extreme_value_theorem}
+The class of extreme value distribution is $G_{\xi}(ax+b)$ with $a>0$, $b\in \R$, where
+\be
+G_{\xi}(x) = \exp\bb{-\bb{1+\xi x}^{-1/\xi}},\qquad 1+ \xi x >0,
+\ee
+with $\xi$ real and where for $\xi =0$ the right-hand side is interpreted as $\exp\bb{-e^{-x}}$. Note that the scaled version of $x$ is $1+ \xi(ax+b)> 0$ and we can have $G(x) = G_\xi(x)$ by letting $a_n' = a_n/a$ and $b_n' = b_n- \frac{a_n b}{a}$.
+
+The parameter $\xi$ is called the extreme value index.
+\end{theorem}
+
+%\begin{remark}
+%Fisher and Tippet
+%\end{remark}
+
+\begin{proof}[\bf Proof]
+According to Lemma \ref{lem:extreme_value_distribution_integer_to_real}, we have for each continuous point $u>0$ of $D$,
+\be
+\lim_{t\to\infty}\frac{U(tu)-b(t)}{a(t)} = D(u).
+\ee
+
+Suppose that $u_0$ is a continuous point of $D$. Then for continuous points $u>0$,
+\be
+\lim_{t\to\infty}\frac{U(tu) - U(tu_0)}{a(t)} = D(u) - D(u_0) := E(u).\qquad (*)
+\ee
+
+For any point $v>0$ and write\footnote{Note that $U$ might not be continuous at $v$.}
+\be
+\frac{U(tuv) - U(tu_0)}{a(t)} = \frac{U(tuv) - U(tv)}{a(tv)} \frac{a(tv)}{a(t)} + \frac{U(tv) - U(tu_0)}{a(t)}
+\ee
+
+We claim that
+\be
+\lim_{t\to\infty} \frac{U(tv) - U(tu_0)}{a(t)},\quad\lim_{t\to\infty} \frac{a(tv)}{a(t)}  \qquad \text{exist.}
+\ee
+
+Suppose not. Then there are $A_1,A_2,B_1,B_2$ with $A_1\neq A_2$ or $B_1\neq B_2$, where $B_i$ are limit points\footnote{definition needed.} of $\frac{U(tv) - U(tu_0)}{a(t)}$ and $A_i$ are limit points of $\frac{a(tv)}{a(t)}$, $i=1,2$, as $t\to \infty$. Then we can have
+\be
+E(uv) = E(u) A_i + B_i,\qquad (\dag)
+\ee
+$i=1,2$, for all $u$ continuous points of $E$ ($uv$ is also a continuous point of $E$). For an arbitrary $u$ take a sequence of continuous points $u_n$ with $u_n \ua u$ as the set of continuous points is dense ($E$ is non-decreasing.). Then
+\be
+E(u_n v) \to E(uv),\quad E(u_n) \to E(u)
+\ee
+since $E$ is left-continuous ($D$ is left-continuous). Therefore ($\dag$) holds for all positive $u$ and $v$. Then subtracting the expressions for $i=1,2$ from each other one obtains
+\be
+E(u)(A_1-A_2) = B_2-B_1
+\ee
+for all continuous points $u>0$. Since $E$ cannot be constant ($G$ is non-degenerate) we must have $A_1=A_2$ and hence also $B_1=B_2$. Thus, we define
+\be
+A(v) := \lim_{t\to\infty}\frac{a(tv)}{a(t)}
+\ee
+exists for any $v>0$. Also, for any $v>0$,
+\be
+\lim_{t\to\infty}\frac{U(tv) - U(tu_0)}{a(t)} = E(v).
+\ee
+
+Then for $u,v>0$,
+\be
+E(uv) = E(u)A(v) + E(v) = E(v)A(u) + E(u).
+\ee
+
+Since $E(u_0) = 0$, we have that for any $v>0$
+\be
+E(u_0 v) = E(u_0)A(v) + E(v) = E(v)
+\ee
+
+Therefore, $E(1) = E(u_0\cdot 1) = E(u_0) = 0$. Hence for $s:=\log u$, $t:=\log v$ ($u,v\neq 1$), and $H(x):= E(e^x)$, we have
+\beast
+E(uv) & = & E(u)A(v) + E(v) \\
+E\bb{e^{s+t}} & = & E\bb{e^s} A(e^t) + E\bb{e^t}\\
+H(t+s) & = & H(s) A(e^t) + H(t),    \qquad (**)
+\eeast
+which we can write as (since $H(0) = 0$)
+\be
+\frac{H(t+s)-H(t)}{s} = \frac{H(s)-H(0)}{s} A(e^t).\qquad (\dag\dag)
+\ee
+
+There is certainly one $t$ at which $H$ is differentiable (since $H$ is monotone and finite on a open set (bounded by some limit $E(u)$)) by Theorem \ref{thm:monotone_increasing_function_differentiable_almost_everywhere}. Hence by ($\dag\dag$) $H$ is differentiable at 0 and then it is differentiable everywhere with
+\be
+H'(t) = H'(0)A(e^t).
+\ee
+
+Then write $Q(t):=H(t)/H'(0)$. Note that $H'(0)$ cannot be zero as $H$ cannot be constant since $G$ is non-degenerate. Then $Q(0) =0$, $Q'(0) = 1$. Then by ($**$),
+\be
+Q(t+s) -Q(t) = Q(s)A(e^t) = Q(s) \frac{H'(t)}{H'(0)} = Q(s)Q'(t).
+\ee
+
+Subtracting the same expression with $t$ and $s$ interchanged we get
+\be
+Q(t)\frac{Q'(s)-1}{s} = \frac{Q(s)}{s}\bb{Q'(t)-1}.
+\ee
+
+Since $\lim_{s\to 0}Q(s)/s = \lim_{s\to 0}(H(s)-H(0))/H'(0)s$ exists, we let $s\to 0$ and get
+\beast
+\lim_{s\to 0}Q(t)\frac{Q'(s)-1}{s} & = & \frac{Q(s)}{s}\bb{Q'(t)-1}\\
+\lim_{s\to 0}Q(t)\frac{Q'(s)-Q'(0)}{s} & = & \frac{Q(s)-Q(0)}{s}\bb{Q'(t)-1} \\
+Q(t)Q''(0) & = & Q'(0)\bb{Q'(t)-1} = \bb{Q'(t)-1}.
+\eeast
+
+It follows that $Q$ is twice differentiable and by differentiation,
+\be
+Q''(0)Q'(t) = Q''(t).
+\ee
+
+Hence,
+\be
+\bb{\log Q'}'(t) = Q''(0) := \xi \in \R,
+\ee
+for all $t$. It follows that (note that $Q'(0)=1$)
+\be
+Q'(t) = e^{\xi t}
+\ee
+and since $Q(0)=0$
+\be
+Q(t) = \int^t_0 e^{\xi s}ds.
+\ee
+
+For $\xi =0$, we have for $u>0$
+\be
+Q(t) = t \ \ra\ H(t) = H'(0) t \ \ra\ E(u) = H'(0) \log u \ \ra\ D(u) = D(u_0) + H'(0) \log u
+\ee
+
+For $\xi\neq 0$, we have for $u>0$,
+\beast
+Q(t) = \frac{e^{\xi t}-1}{\xi} & \ra & H(t) = H'(0) \frac{e^{\xi t}-1}{\xi} \ \ra\ E(u) = H'(0) \frac{\log\bb{e^{u}}^\xi-1}{\xi} \\
+& \ra& D(u) = D(u_0) + H'(0) \frac{u^\xi-1}{\xi}
+\eeast
+
+Therefore for $\xi\neq 0$,
+\beast
+D^{\to}(x) & = & \inf\bra{u>0:D(u_0) + H'(0) \frac{u^\xi-1}{\xi}\geq x} = \inf\bra{u>0:  \frac{u^\xi-1}{\xi}\geq \frac{x-D(u_0)}{H'(0)}}\\
+& = & \inf\bra{u>0:  u^\xi \geq 1 + \xi\frac{x-D(u_0)}{H'(0)}} = \inf\bra{u>0:  u \geq \bb{1 + \xi\frac{x-D(u_0)}{H'(0)}}^{1/\xi}} \\
+& = & \bb{1 + \xi\frac{x-D(u_0)}{H'(0)}}^{1/\xi},
+\eeast
+with $1 + \xi\frac{x-D(u_0)}{H'(0)} > 0$. If $\xi=0$, we have
+\beast
+D^{\to}(x) & = & \inf\bra{u>0:D(u_0) + H'(0) \log u \geq x} = \inf\bra{u>0:  \log u \geq \frac{x-D(u_0)}{H'(0)}}\\
+& = & \inf\bra{u>0:  u \geq \exp\bb{\frac{x-D(u_0)}{H'(0)}}} = \exp\bb{\frac{x-D(u_0)}{H'(0)}}.
+\eeast
+
+%\qquad \text{Theorem \refthm:switching_formula_right_continuous_function}, $G$ is right-continuous} \\
+
+Since $D(u) = G^{\to}\bb{e^{-1/u}}$, we have for $x\in \R$, by switching formula (Theorem \ref{thm:switching_formula_distribution_function}),
+\beast
+D^{\to}(x) & = & \inf\bra{u>0: D(u) \geq x } = \inf\bra{u>0: G^{\to}\bb{e^{-1/u}} \geq x } \\
+&  = &\inf\bra{u>0: G^{\to}\bb{e^{-1/u}} > x } \cup \bra{u>0: G^{\to}\bb{e^{-1/u}} = x }\\
+& = & \inf\bra{u>0: G(x) < e^{-1/u}} \cup \bra{u>0: G(x) \leq e^{-1/u},\forall \ve,\delta>0, G(x-\ve) < e^{-1/u} ,  G(x+\delta)\geq e^{-1/u}} \\
+& = & \inf\bra{u>0: \log G(x) < -1/u} \cup \bra{u>0: \forall \ve,\delta>0,\log G(x) \leq -1/u, \log G(x-\ve) < -1/u , \log G(x+\delta) \geq -1/u} \\
+& = & \inf\bra{u>0: u > - \frac 1{\log G(x)}} \cup \bra{u>0: \forall \ve,\delta>0,u \geq - \frac 1{\log G(x)} , - \frac 1{\log G(x+\delta)} \geq u > - \frac 1{\log G(x-\ve)}  } \\
+& = & \inf\bra{u>0: u \geq - \frac 1{\log G(x)}}\cap \bra{u>0:  \forall \ve>0, u \geq - \frac 1{\log G(x-\ve)}}  \\
+& = & \inf\bra{u>0: u \geq - \frac 1{\log G(x)}} = - \frac 1{\log G(x)}.
+\eeast
+
+Therefore, for $\xi \neq 0$,
+\be
+G(x) = \exp\bb{-\bb{1 + \xi\frac{x-D(u_0)}{H'(0)}}^{-1/\xi}}.
+\ee
+
+For $\xi=0$,
+\be
+G(x) = \exp\bb{-\exp\bb{-\frac{x-D(u_0)}{H'(0)}}}.
+\ee
+as required.
+\end{proof}
+
+%The parametrization of the above theorem is due to von Mises (1936) and Jenkinson (1955)
+
+\subsection{Parametrization of extreme value distribution}
+
+The parametrization of the above theorem is due to von Mises (1936) and Jenkinson (1955). This theorem is an important result in many ways. It shows that the limit distribution functions form a simple explicit one-parameter family apart from the scale and location parameters.
+
+The extreme value distribution contains distributions with quite different features:
+\ben
+\item [(i)] For $\xi >0$, clearly $G_{\xi}(x)<1$ for all $x$, i.e., the right endpoint of the distribution is infinity. Moreover, as $x\to\infty$, $1-G_{\xi}(x)\sim \xi^{-1/\xi} x^{-1/\xi}$, i.e., the distribution has a rather heavy right tail; for example, the moments of order greater than or equal to $1/\xi$ do not exist.
+\item [(ii)] For $\xi =0$, the right endpoint of the distribution equals infinity. The distribution, however, is rather light-tailed: $1-G_0(x) \sim e^{-x}$ as $x\to \infty$, and all moments exist.
+\item [(iii)] For $\xi<0$, the right endpoint of the distribution is $-1/\xi$ so it has a short tail, verifying $1-G_{\xi}(-1/\xi -x)\sim (-\xi x)^{-1/\xi}$ as $x\da 0$.
+\een
+
+%An alternative parametrization is as follows:
+%\ben
+%\item [(i)] For $\xi >0$, use $G_{\xi}((x-1)/\xi)$ and get with $\alpha = 1/\xi > 0$,
+%\be
+%G_{\xi}((x-1)/\xi) = \left\{\ba{ll}
+%0 & x\leq 0, \\
+%\exp\bb{-x^{-\alpha}}\quad\quad & x>0.
+%\ea\right.
+%\ee
+
+%This class is often called the Fr\'echet class of distributions.
+
+%\item [(ii)] The distribution function with $\xi =0$,
+%\be
+%G_0(x) = \exp\bb{-e^{-x}},
+%\ee
+%for all real $x$, is called the double exponential or Gumbel distribution.
+
+%\item [(iii)] For $\xi <0$ use $G_{\xi}\bb{-(1+x)/\xi}$and get with $\alpha = -1/\xi >0$,
+%\be
+%G_{\xi}\bb{-(1+x)/\xi} = \left\{\ba{ll}
+%\exp\bb{-(-x)^{\alpha}}\quad\quad  & x< 0, \\
+%1 & x\geq 0.
+%\ea\right.
+%\ee
+
+%The class is sometimes called the reverse Weibull class of distributions.
+%\een
+
+%\subsection{First extreme value theory - limit distribution of maximum value}
+
+In summary, we have the following theorem.
+
+\begin{theorem}\label{thm:limit_distribution_types}
+According to Theorem \ref{thm:extreme_value_theorem}, there are totally three types of limit distributions:
+\ben
+\item [(i)] Fr\'echet distribution: 
+\be
+G_1(x) = \exp\bb{-\bb{1+\xi \frac{x-\mu}{\sigma}}^{-1/\xi}} ,\quad x\in \left(\mu -\frac{\sigma}{\xi},\infty\right)\qquad \xi > 0.%G_1(x) = \exp\bb{-x^{-1/\xi}} ,\quad x\in \left(0,\infty\right)\qquad \xi > 0.
+\ee
+
+\item [(ii)] reverse-Weibull distribution: 
+\be
+G_2(x) = \exp\bb{-\bb{1+\xi \frac{x-\mu}{\sigma}}^{-1/\xi}} ,\quad x\in \left(-\infty,\mu-\frac{\sigma}{\xi}\right)\qquad \xi < 0.%G_2(x) = \exp\bb{-(-x)^{-1/\xi}} ,\quad x\in \left(-\infty,0\right)\qquad \xi < 0.
+\ee
+
+\item [(iii)] Gumbel distribution: 
+\be
+G_3(x) = \exp\bb{-\exp\bb{-\frac{x-\mu}{\sigma}}}, \qquad x\in (-\infty,\infty)\qquad \xi = 0.%G_3(x) = \exp\bb{-\exp\bb{-x}}, \qquad x\in (-\infty,\infty)\qquad \xi = 0.
+\ee
+\een
+\end{theorem}
+
+
+\section{Domains of attraction of GEV}
+
+
+Mathematically speaking, different types of distribution function $F$ will fall into different classes of $G$. If ($*$) in Definition \ref{def:extreme_value_distribution} holds for $F$ and limit distribution $G_1$, then we say that $F$ is in the domain of attraction of $H_1$, denoted by $F\in \sD(G_1)$. %By Theorem \ref{thm:first_extreme_value}, we have that $\sD(G_i) = \sD(H_i)$ for $i=1,2,3$.
+
+\begin{definition}[domain of attraction]
+\footnote{definition needed.}
+\end{definition}
+
+Now we give the necessary and sufficient condition for distribution $F$ to be in the domains of $G$ (see \cite{Arnold_Balakrishnan_Nagaraja_2008}).
+
+\begin{theorem}[sufficient and necessary condition of the domain of attraction of $G$]\label{thm:iff_domain_of_attraction}
+Let $F$ be a distribution function. Then
+\ben
+\item [(i)] $F\in \sD(G_1)$ iff $x^*:= \sup\bra{x:F(x)<1}$ is infinite (i.e., $F^{-1}(1) = \infty$) and there exists a constant $\xi >0$ such that
+\be
+\lim_{t\to \infty} \frac{1-F(xt)}{1-F(t)} = x^{-1/\xi} \quad (=-\log\bb{G_1})
+\ee
+for all $x>0$.
+
+\item [(ii)] $F\in \sD(G_2)$ iff $F^{-1}$ is finite and there exists a constant $\xi >0$ such that for all $x>0$
+\be
+\lim_{t\to 0^+} \frac{1-F\bb{F^{-1}(1)-xt}}{1-F\bb{F^{-1}(1)-t}} = x^{1/\xi} \quad (=-\log\bb{G_2}).
+\ee
+
+\item [(iii)] $F\in \sD(G_3)$ iff $\E\bb{X|X>c}$ is finite for some $c<F^{-1}(1)$, and for all real $x$
+\be
+\lim_{t\to F^{-1}(1)} \frac{1-F\bb{t+x \E\bb{X-t|X>t}}}{1-F\bb{t}} = \exp(-x) \quad (=-\log\bb{G_3}).
+\ee
+\een
+\end{theorem}
+
+%For different domains of attraction, we have
+%
+%\ben
+%\item [$H_1$:] $a_n = F^{-1}(1-n^{-1})$, $b_n = 0$.
+%\item [$G_2$:] $a_n = F^{-1} - F^{-1}(1-n^{-1})$, $b_n = F^{-1}$.
+%\item [$G_3$:] $a_n = F^{-1}(1-(ne)^{-1}) - F^{-1}(1-n^{-1})$, $b_n = F^{-1}(1-n^{-1})$.
+%\een
+%
+
+
+%
+\begin{example}[limit distribution of maximia of standard Gaussian distribuiton]
+Let $F(x)$ be the distribution function of standard Gaussian random variable with probability density function $f(x) = \frac 1{\sqrt{2\pi}}\exp\bb{-x^2/2}$. It is obvious that $F^{-1}(1) = \infty$ and for all $x>0$%there exists a constant $\xi >0$ such that
+\be
+\lim_{t\to \infty} \frac{1-F(xt)}{1-F(t)} = \lim_{t\to\infty} \frac{xf(xt)}{f(t)} = \lim_{t\to\infty} \frac{x\exp\bb{-x^2t^2/2}}{\exp\bb{-t^2/2}} = \lim_{t\to\infty} x\exp\bb{-(x^2-1)t^2/2}.
+\ee
+
+Thus, $F\notin \sD(G_1)$. Also, we have that $\E\bb{X|X>c}$ is finite for some $c<F^{-1}(1)= \infty$ as
+\be
+\int^\infty_c x f(x)dx = \frac{1}{\sqrt{2\pi}}\exp(-c^2/2)< \infty.
+\ee
+
+Therefore,
+\be
+\E\bb{X-t|X>t} = \frac{\int^\infty_t x f(x)dx}{\int^\infty_t f(x)dx} -t = \frac{f(t)}{1-F(t)} -t % \frac{\frac{1}{\sqrt{2\pi}}\exp(-t^2/2)}{1-F(t)} -t >0
+\ee
+
+Since $1-F(t) \in \left[\bb{t^{-1}-t^{-3}}f(t),t^{-1}f(t)\right]$, we have $\frac{f(t)}{t(1-F(t))} \to 1$ as $t\to \infty$ and
+\be
+\E\bb{X-t|X>t} \in \left[0, \frac{t}{t^2-1}\right]
+\ee
+
+Thus, $\E\bb{X-t|X>t} \sim O(t^{-1})$. Then
+\beast
+\bb{\frac{f(t)}{1-F(t)} -t}' & = & \frac{f'(t)(1-F(t)) + f(t)^2}{(1-F(t))^2} -1 =  \frac{f(t)}{1-F(t)}\bb{\frac{f(t)}{1-F(t)} -t}-1 \\%= \frac{f(t)}{(1-F(t))^2} -\bb{\frac{\frac 12 tf(t)}{1-F(t)} -1}^2 >0 \ \ra\ \frac{f(t)}{1-F(t)} -t \to \infty
+& \leq & \frac{t^3}{t^2-1}\frac {t}{t^2 -1} - 1 = \frac{t^4}{(t^2-1)^2}-1 \to 0
+\eeast
+as $t\to\infty$. So $\E\bb{X-t|X>t}$ is a decreasing function of $t$.
+
+Then by L'H\^opital's rule (Theorem \ref{thm:lhopital_rule_general}),
+\beast
+& & \lim_{t\to F^{-1}(1)} \frac{1-F\bb{t+x \E\bb{X-t|X>t}}}{1-F\bb{t}} \\
+&=& \lim_{t\to \infty} \frac{1-F\bb{t+ x \cdot \E\bb{X-t|X>t}}}{1-F\bb{t}} = \lim_{t\to \infty} \frac{f\bb{t+ x \cdot \E\bb{X-t|X>t}}}{f\bb{t}} \\
+& = &  \lim_{t\to \infty} \exp\bb{\frac 12 \bb{t^2 - \bb{t+ x \E\bb{X-t|X>t} }^2}} = \lim_{t\to \infty} \exp\bb{-xt\bb{\frac{f(t)}{1-F(t)} -t} - \frac 12 x^2 O(t^{-2})} \\
+& = & \exp\bb{-x \lim_{t\to \infty}  \bb{\frac{tf(t) - t^2(1-F(t))}{(1-F(t))}} } = \exp\bb{x \lim_{t\to \infty}  \bb{\frac{f(t) - t^2 f(t) - 2t(1-F(t)) +t^2f(t)}{f(t)}} } \\
+& = & \exp\bb{x \lim_{t\to \infty}  \bb{\frac{f(t) - 2t(1-F(t)) }{f(t)}} } = \exp(-x).
+\eeast
+
+So we showed that $F\in \sD(G_3)$.
+%& = & \lim_{t\to \infty} \frac{\bb{1+x \bb{\bb{\frac{f(t)}{1-F(t)}}'-1} }f\bb{t+x \bb{\frac{f(t)}{1-F(t)} -t}}}{f\bb{t}} \\
+%& = & \lim_{t\to \infty} \bb{1+x \bb{\bb{\frac{\frac{1}{\sqrt{2\pi}}\exp(-t^2/2)}{1-F(t)}}'-1} }\exp\bb{-\bb{t+x \bb{\frac{\frac{1}{\sqrt{2\pi}}\exp(-t^2/2)}{1-F(t)} -t}}^2/2+t^2/2}
+\end{example}
+
+\begin{example}[counter example of GEV]
+Let $F(x) = 1-\frac{1}{\log x}$ for $x\in [e,\infty)$.
+
+Since $F^{-1}(1) = \infty$, $F\notin \sD(G_2)$. Also, since
+\be
+\lim_{t\to \infty} \frac{1-F(xt)}{1-F(t)} = \lim_{t\to \infty} \frac{\log(t)}{\log(xt)} = 1  \ \ra\ F\notin \sD(G_1).
+\ee
+
+Finally, $f(x) = F'(x) = \frac{1}{x\log^2x}$
+\be
+\E\bb{X|X>c} = \frac{\int^\infty_c x dF}{\int^\infty_c dF}= \frac{\int^\infty_c \bb{\log x}^{-2} dx}{1-F(c)} = \infty \ \ra\ F\notin \sD(G_3).
+\ee
+
+This example means that GEV does not necessarily exist for all the distributions.
+\end{example}
+
+%\subsection{Application in financial market}
+%
+%Then we can check if
+%\be
+%P\&L > \frac{\mu_G-b_N}{a_N}
+%\ee
+%where $N$ is the sample size. If so, we can simple say the backtesting fails. Please note that this is a just necessary condition but not sufficient condition for backtesting.
+
+
+
+\section{Second Extreme Value Theory - Peak Over Threshold}
+
+Basically, POT method is more effective than MV method and it considers the distribution of exceedances over a certain threshold. We are interested in estimating the distribution function $F_u$ of values of $x$ above a certain threshold $u$.
+
+%\subsection{Conditional excess distribution}
+
+For distribution $F$ of random variable $X$, we define the conditional excess distribution function $F_u$ by
+\be
+F_u(y) = \pro\bb{X-u\leq y|X>u},\quad 0\leq y\leq x_F-u
+\ee
+where $u$ is a given threshold, $y = x-u$ are the excesses and $x_F\leq \infty$ is the right endpoint of $F$. The conditional excess distribution function can be written by
+\be
+F_u(y) = \frac{F(u+y)-F(u)}{1-F(u)} = \frac{F(x)-F(u)}{1-F(u)}.
+\ee
+
+
+The realizations of the random variable $X$ lie mainly between 0 and $u$ and therefore the estimation of $F$ in this interval generally poses no problems. The estimation of the portion $F_u$ however might be difficult as there are in general very little observations in this area.
+
+At this point EVT (peak over threshold (POT)) can be very helpful as a powerful result about conditional excess distribution function can be stated in the following theorem (see \cite{Balkema_De_Haan_1974} and \cite{Pickands_1975}).
+
+\begin{theorem}[second extreme value theorem]\label{thm:second_extreme_value}
+Let $F$ be a distribution function of random variable $X$ such that $F(x)<1$ (i.e., $F^{-1}(1) = \infty$) for all real $x$. Suppose for some threshold $u$ there exist $a(u)$ and $b(u)$ such that $F_u(a(u)y+b(u))$ weakly converges to a non-degenerate distribution function $G(y)$ as $u \to \infty$. Then $G(x)$ has the two forms
+\be
+G(y) = \Gamma_{\xi}(y) = 1-\bb{1+\frac{\xi y}{\sigma}}^{-1/\xi},\qquad  y\geq 0, \xi > 0 ,
+\ee
+\be
+G(y) = \Pi(y) = 1 - \exp\bb{-\frac{y}{\sigma}}, \qquad y\geq 0, \xi =0.
+\ee
+
+$G$ is called generalized Pareto distribution (GPD)\footnote{We only consider certain part of cases, though $\xi$ can be negative.}. $\xi$ is called shape parameter or tail index and $\sigma$ is the scaling parameter. Furthermore,
+\be
+G(x) = \left\{ \ba{ll}
+1 - \bb{1+\xi \frac{x-u}{\sigma}}^{-1/\xi}\quad\quad & \xi > 0 \\
+1 - \exp\bb{-\frac{x-u}{\sigma}} &  \xi =0
+\ea\right..
+\ee
+%with
+%\be
+%\E X = u + \frac{\sigma}{1-\xi}
+%\ee
+%for $\xi <1$.
+\end{theorem}
+
+The tail index $\xi$ gives an indication of the heaviness of the tail, the larger $\xi$, the heavier the tail. In general, one cannot fix an upper bound for financial losses, so the distributions with $\xi >0$ are suited to model financial return distributions.
+
+%with mean $\frac{\sigma}{1-\xi}$ for $\xi<1$.
+
+\subsection{Domains of attraction of GPD}
+
+Similar to first extreme value theorem, we need to specify the domain of the attraction for the corresponding distribution. Therefore, we give the following theorem (see \cite{Balkema_De_Haan_1974}).
+
+\begin{theorem}[domain of attraction of GPD]\label{thm:second_domain_of_attraction}
+Using the notation in Theorem \ref{thm:limit_distribution_types} and Theorem \ref{thm:second_extreme_value}, we have
+\ben
+\item [(i)] $\sD(\Gamma_{\xi}) = \sD(G_1)$, $\xi >0$.
+\item [(ii)] $\sD(\Pi) = \sD(G_3) \cap \sD_0$ where $\sD_0$ is the set of all distribution functions $F$ such that $F(x)<1$ for all $x$ (i.e., $F^{-1}(1) = \infty$).
+\een
+\end{theorem}
+
+Therefore, we can see that first and second extreme value theorem apply the same domain of attraction for financial modelling purpose.
+
+
+
+

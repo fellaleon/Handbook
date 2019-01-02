@@ -1,0 +1,99 @@
+This is BibTeX, Version 0.99d (TeX Live 2017)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Handbook.aux
+A level-1 auxiliary file: Data/Elementary/Notations.aux
+A level-1 auxiliary file: Data/Elementary/Sets.aux
+A level-1 auxiliary file: Data/Elementary/Numbers.aux
+A level-1 auxiliary file: Data/Algebra/Groups.aux
+A level-1 auxiliary file: Data/Algebra/Rings.aux
+A level-1 auxiliary file: Data/Algebra/Linear_Algebra.aux
+A level-1 auxiliary file: Data/Algebra/Matrix.aux
+A level-1 auxiliary file: Data/Algebra/Galois_Theory.aux
+A level-1 auxiliary file: Data/Analysis/Introduction.aux
+A level-1 auxiliary file: Data/Analysis/Elementary_Real_Analysis.aux
+A level-1 auxiliary file: Data/Analysis/Analysis_in_Euclidean_Space.aux
+A level-1 auxiliary file: Data/Analysis/Complex_Analysis.aux
+A level-1 auxiliary file: Data/Analysis/Functions.aux
+A level-1 auxiliary file: Data/Analysis/Calculus.aux
+A level-1 auxiliary file: Data/Analysis/Matrix_Analysis.aux
+A level-1 auxiliary file: Data/Analysis/Metric_Space.aux
+A level-1 auxiliary file: Data/Analysis/Topological_Space.aux
+A level-1 auxiliary file: Data/Analysis/Measure_Theory.aux
+A level-1 auxiliary file: Data/Analysis/Linear_Analysis.aux
+A level-1 auxiliary file: Data/Analysis/Fourier_Analysis.aux
+A level-1 auxiliary file: Data/Numerical_Analysis/Numerical_Analysis.aux
+A level-1 auxiliary file: Data/Number_Theory/Elementary_Number_Theory.aux
+A level-1 auxiliary file: Data/Number_Theory/Analytic_Number_Theory.aux
+A level-1 auxiliary file: Data/Dynamics/Ordinary_Differential_Equations.aux
+A level-1 auxiliary file: Data/Dynamics/Partial_Differential_Equations.aux
+A level-1 auxiliary file: Data/Geometry/Euclidean_Geometry.aux
+A level-1 auxiliary file: Data/Geometry/Differential_Geometry.aux
+A level-1 auxiliary file: Data/Discrete_Mathematics/Graph_Theory.aux
+A level-1 auxiliary file: Data/Discrete_Mathematics/Combinatorics.aux
+A level-1 auxiliary file: Data/Probability/Probability.aux
+A level-1 auxiliary file: Data/Probability/Discrete_Stochastic_Processes.aux
+A level-1 auxiliary file: Data/Probability/Continuous_Stochastic_Processes.aux
+A level-1 auxiliary file: Data/Probability/Martingale_Theory.aux
+A level-1 auxiliary file: Data/Probability/Markov_Chains.aux
+A level-1 auxiliary file: Data/Probability/Brownian_Motion.aux
+A level-1 auxiliary file: Data/Probability/Markov_Processes.aux
+A level-1 auxiliary file: Data/Probability/Levy_Process_and_Infinitely_Divisible_Distributions.aux
+A level-1 auxiliary file: Data/Probability/Stochastic_Calculus.aux
+A level-1 auxiliary file: Data/Probability/Stochastic_Differential_Equations.aux
+A level-1 auxiliary file: Data/Probability/Diffusions.aux
+A level-1 auxiliary file: Data/Statistics/Distributions.aux
+A level-1 auxiliary file: Data/Statistics/Statistics.aux
+A level-1 auxiliary file: Data/Statistics/Non_parametric_Estimation.aux
+A level-1 auxiliary file: Data/Statistics/Statistical_Tests.aux
+A level-1 auxiliary file: Data/Statistics/Extreme_Value_Theory.aux
+A level-1 auxiliary file: Data/Statistics/Order_Statistics.aux
+A level-1 auxiliary file: Data/Statistics/Stable_Distribution.aux
+A level-1 auxiliary file: Data/Optimization/Optimization.aux
+A level-1 auxiliary file: Data/Financial_Mathematics/Model.aux
+A level-1 auxiliary file: Data/Financial_Mathematics/Options.aux
+A level-1 auxiliary file: Data/Financial_Mathematics/Volatility.aux
+A level-1 auxiliary file: Data/Financial_Mathematics/Contracting_Theory.aux
+A level-1 auxiliary file: Data/Financial_Mathematics/Risk.aux
+The style file: plain.bst
+Database file #1: Data/ref.bib
+You've used 90 entries,
+            2118 wiz_defined-function locations,
+            1098 strings with 18255 characters,
+and the built_in function-call counts, 25395 in all, are:
+= -- 2423
+> -- 942
+< -- 1
++ -- 403
+- -- 288
+* -- 1502
+:= -- 4315
+add.period$ -- 270
+call.type$ -- 90
+change.case$ -- 366
+chr.to.int$ -- 0
+cite$ -- 90
+duplicate$ -- 1043
+empty$ -- 2283
+format.name$ -- 288
+if$ -- 5335
+int.to.chr$ -- 0
+int.to.str$ -- 90
+missing$ -- 138
+newline$ -- 453
+num.names$ -- 180
+pop$ -- 530
+preamble$ -- 1
+purify$ -- 324
+quote$ -- 0
+skip$ -- 625
+stack$ -- 0
+substring$ -- 1793
+swap$ -- 99
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 264
+warning$ -- 0
+while$ -- 225
+width$ -- 92
+write$ -- 941

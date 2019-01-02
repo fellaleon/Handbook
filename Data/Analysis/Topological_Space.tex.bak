@@ -1,0 +1,91 @@
+\chapter{Topological Space}
+
+%\subsection{Topology}
+\section{Topology}
+
+\subsection{Topology and topological space}
+
+\begin{definition}[topology\index{topology}, topological space\index{topological space}]
+A topological space $T= (X,\sT)$ consists of a non-empty set $X$ together with a fixed family $\sT$ of subsets of $X$ satisfying
+\ben
+\item [(i)] $X,\emptyset \in \sT$,
+\item [(ii)] the intersection of finitely many sets in $\sT$ is in $\sT$,
+\item [(iii)] the union of any collection of sets in $\sT$ is in $\sT$.
+\een
+
+The family $\sT$ is called a topology for $X$.
+\end{definition}
+
+\begin{remark}
+Note that the collection can be uncountable in (iii).
+\end{remark}
+
+\begin{proposition}
+If $(X,d)$ is a metric space, then the collection of open sets forms a topology and we call the collection of open sets the topology induced by the metric\index{topology induced by metric}.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Direct results from Theorem \ref{thm:open_set_metric}.
+\end{proof}
+
+Thus, we define the open set and closed set in topological space.
+
+\begin{definition}[open\index{open set!topological space} and closed\index{closed set!topological space} sets in topological space]
+Let $T=(X,\sT)$ be a topological space. The set $A \in \sT$ is called the open set of $T$ and the set $A^c = X\bs A\in \sT$ is called the closed set of $T$.
+\end{definition}
+
+\begin{remark}
+Note that $A\subseteq X$.
+\end{remark}
+
+\subsection{Continuity in topological space}
+
+The idea of downward compatibility suggests `turning Theorem \ref{thm:metric continuous open} in a definition'.
+
+\begin{definition}[continuity in topological space\index{continuous!topological space}]\label{def:continuous_topological_space}
+Let $(X,\sT_X)$ and $(Y,\sT_Y)$ be topological spaces. A function $f:X\to Y$ is said to be continuous if and only if $f^{-1}(U)$ is open in $X$ whenever $U$ is open in $Y$.
+\end{definition}
+
+\begin{remark}
+Theorem \ref{thm:metric continuous open} tells us that if $(X,d_X)$ and $(Y, d_Y)$ are metric spaces the notion of a continuous function $f:X \to Y$ is the same whether we consider the metrics or
+the topologies derived from them.
+\end{remark}
+
+
+
+\section{Spaces}
+
+
+\begin{definition}[second-countable space\index{second-countable space}]\label{def:second_countable_space}
+A second-countable space, also called a completely separable space, is a topological space satisfying the second axiom of countability\footnote{need details}.
+
+A space is said to be second-countable if its topology has a countable base. More explicitly, this means that a topological space $X$ is second countable if there exists some countable collection $\sU = \bra{U_i}_{i=1}^\infty$ of open subsets of $X$ such that any open subset of $X$ can be written as a union of elements of some subfamily of $\sU$.
+\end{definition}
+
+\begin{remark}
+Like other countability axioms, the property of being second-countable restricts the number of open sets that a space can have.
+\end{remark}
+
+\section{Function Sequence}
+
+\begin{definition}[convergence on compact set\index{convergence!compact_set}]\label{def:convergence_on_compact}
+Let $(X, \sT)$ be a topological space and $(Y,d_Y)$ be a metric space. A sequence of functions
+\be
+f_{n} : X \to Y,\quad n \in \N,
+\ee
+is said to converge on compact set (or converge compactly) as $n \to \infty$ to some function $f : X \to Y$ if, for every compact set $K \subseteq X$, $\forall x\in K$,
+\be
+\lim_{n\to\infty} d_Y\bb{f_{n}(x), f(x)} = 0.
+\ee
+\end{definition}
+
+\begin{definition}[uniform convergence on compacts\index{uniform convergence on compacts}]\label{def:uniform_convergence_on_compacts}
+Let $(X, \sT)$ be a topological space and $(Y,d_Y)$ be a metric space. A sequence of functions
+\be
+f_{n} : X \to Y, n \in \N,
+\ee
+is said to converge uniformly on compacts (or converge uniformly compactly) as $n \to \infty$ to some function $f : X \to Y$ if, for every compact set $K \subseteq X$,
+\be
+\lim_{n \to \infty} \sup_{x \in K} d_{Y} \left( f_{n} (x), f(x) \right) = 0.
+\ee
+\end{definition}%converges uniformly on K as n \to \infty. This means that for all compact K \subseteq X,

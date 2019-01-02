@@ -1,0 +1,2882 @@
+\chapter{Martingale Theory}
+
+Martingale concepts and methodology have provided a far-reaching apparatus vital to the analysis of all kinds of functionals of stochastic processes. In particular, martingale constructions serve decisively in the investigation of stochastic models of diffusion type.\cite{Karlin_Taylor_1975}
+
+\section{Discrete-time Martingales}
+
+\subsection{Definitions}
+
+\begin{definition}\label{def:martingale_super_sub_discrete}
+Let $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ be a filtered probability space. Let $X = (X_n)_{n\geq 0}$ be an adpated real-valued integrable process (see Definition \ref{def:adapted_process_discrete} and Definition \ref{def:integrable_stochastic_process_discrete}). Then
+\ben
+\item [(i)] $X$ is a martingale\index{martingale!discrete} with respect to $((\sF_n)_{n\geq 0},\pro)$ if $\E\bb{X_n | \sF_m} = X_m$ a.s. for all $n \geq m$.
+\item [(ii)] $X$ is a supermartingale\index{supermartingale!discrete} with respect to $((\sF_n)_{n\geq 0},\pro)$ if $\E\bb{X_n | \sF_m}\leq X_m$ a.s. for all $n\geq m$.
+\item [(iii)] $X$ is a submartingale\index{submartingale!discrete} with respect to $((\sF_n)_{n\geq 0},\pro)$ if $\E\bb{X_n | \sF_m} \geq X_m$ a.s. for all $n\geq m$.
+\een
+
+In particular, if $X$ is a
+\ben
+\item [(i)] martingale, then $\E\bb{X_n} = \E\bb{X_m}$ for all $m,n\geq 0$.
+\item [(ii)] supermartingale, then $\E\bb{X_n} \leq \E\bb{X_m}$ for all $n\geq m$.
+\item [(iii)] submartingale, then $\E\bb{X_n} \geq \E\bb{X_m}$ for all $n\geq m$.
+\een
+\end{definition}
+
+\begin{remark}
+If a process is both supermartingale and submartingale, then it is a martingale.
+\end{remark}
+
+
+
+%\begin{definition}\label{def:martingale_super_sub_discrete}
+%Let $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ be a filtered probability space. Let $X = (X_n)_{n\geq 0}$ be an adpated real-valued integrable process (see Definition \ref{def:integrable_stochastic_process}). Then $X$ is a
+%\ben
+%\item [(i)] martingale\index{martingale} with respect to $((\sF_t)_{t\in I},\pro)$ if $\E\bb{X_t | \sF_s} = X_s$ a.s. for all $s \leq t \in I$;
+%\item [(ii)] super-martingale\index{super-martingale} with respect to $((\sF_t)_{t\in I},\pro)$ if $\E\bb{X_t | \sF_s}\leq X_s$ a.s. for all $s \leq t \in I$;
+%\item [(iii)] sub-martingale\index{sub-martingale} with respect to $((\sF_t)_{t\in I},\pro)$ if $\E\bb{X_t | \sF_s} \geq X_s$ a.s. for all $s \leq t \in I$.
+%\een
+
+%In particular, if $X$ is a
+%\ben
+%\item [(i)] martingale, then $\E\bb{X_t} = \E\bb{X_s}$ for all $s, t\in I$;
+%\item [(ii)] super-martingale, then $\E\bb{X_t} \leq \E\bb{X_s}$ for all $s \leq t \in I$;
+%\item [(iii)] sub-martingale, then $\E\bb{X_t} \geq \E\bb{X_s}$ for all $s \leq t \in I$.
+%\een
+%\end{definition}
+
+
+
+\begin{example}
+Let $I = \Z^+$ and $X_1, X_2, \dots$ be i.i.d. integrable random variables. Take $\sF_0 = \{\emptyset,\Omega\}$ and $\sF_n = \sigma(X_m,m \leq n)$. Let $S_n = X_1 +\dots + X_n$. Then $S$ is a martingale if and only if $\E X_1 = 0$, since for all $n$, $S_n$ is $\sF_n$-measurable,
+\be
+\E\bb{S_{n+1}|\sF_n} = S_n +\E\bb{X_{n+1}} = S_n +\E X_1.
+\ee
+
+Similarily, it is a supermartingale if $\E X_1 \leq 0$ or a submartingale if $\E X_1 \geq 0$.
+\end{example}
+
+\begin{example}
+Let $(\xi_i)_{i\geq 1}$ be a sequence of i.i.d. random variables with $\E(\xi_1) = 1$. Then the product $X_n = \prod^n_{i=1} \xi_i$ is a martingale.
+\end{example}
+
+
+
+
+%Recall Definition \ref{def:martingale_super_sub_discrete}, we have
+%\begin{definition}
+%An adapted integrable process $(X_n)_{n \geq 0}$ is a $(\sF_n)_{n\geq 0}$-martingale\index{martingale!discrete} if
+%\be
+%\E\bb{X_{n+1}|\sF_n} = X_n \quad \text{a.s. for all }n.
+%\ee
+%Similarly, we have a super- or sub-martingale when this relation holds with '$\leq$' or '$\geq$' respectively.
+%\end{definition}
+
+\subsection{Previsible process and construction of a martingale}
+
+\begin{definition}[previsible process, discrete-time]\label{def:previsible_process_discrete}
+We say that $C = (C_n)_{n \geq 1}$ is previsible\index{previsible process!discrete-time} if $C_n$ is $\sF_{n-1}$-measurable for all $n \geq 1$.
+\end{definition}
+
+
+\begin{definition}[discrete stochastic integral]\label{def:discrete stochastic integral}
+Let $(C_n)_{n \geq 1}$ and $(X_n)_{n \geq 0}$ be processes taking values in $\R$. If $(X_n)_{n\geq 0}$ is adapted and $(C_n)_{n\geq 1}$ is previsible, define
+\be
+(C \cdot X)_n := \sum^n_{k=1}C_k(X_k - X_{k-1})
+\ee
+for $n \geq 1$, and $(C \cdot X)_0 = 0$. Then $C \cdot X$ is called a discrete stochastic integral\index{stochastic integral!discrete}.
+\end{definition}
+
+
+\begin{remark}
+We can interpret this new process as follows: if $X_n$ is a certain amount of money at time $n$ and if $C_n$ is the bet of a player at time $n$ then $(C\cdot X)_n$ is the total winning of the player at time $n$.
+\end{remark}
+
+\begin{proposition}\label{pro:stochastic_integral_discrete_martingale}
+Let $(X_n)_{n \geq 0}$ be a martingale and let $(C_n)_{n \geq 1}$ be a bounded, previsible process. Then the process $((C\cdot X)_n)_{n \geq 0}$ is a martingale.
+\end{proposition}
+
+\begin{remark}
+\ben
+\item [(i)] The boundedness condition on $C$ may be replaced by the condition $C_n \in \sL^2(\Omega,\sF,\pro)$, $\forall n$, provided we also insist that $X_n \in \sL^2(\Omega,\sF,\pro)$, $\forall n$. Williams\cite{Williams_1991}.$P_{97}$\footnote{need details}
+\item [(ii)] Discrete stochastic integral is also called `martingale transform\index{martingale transform}'.
+\een
+\end{remark}
+
+
+\begin{proof}[\bf Proof]
+$C \cdot X$ is adapted since $\sum^n_{k=1} C_k(X_k - X_{k-1})$ is $\sF_n$-measurable for every $n$. Therefore it is integrable since the $C_k$'s are uniformly bounded and the $X_k$'s are integrable.
+\be
+\E\bb{(C \cdot X)_{n+1}| \sF_n} = \E\bb{(C \cdot X)_n + C_{n+1}(X_{n+1} - X_n) |\sF_n} = (C \cdot X)_n + C_{n+1} \E\bb{X_{n+1} - X_n | \sF_n} = (C \cdot X)_n\quad \text{a.s.}
+\ee
+by the martingale property.
+\end{proof}
+
+\begin{proposition}\label{pro:stochastic_integral_discrete_supermartingale_submartingale}
+Let $(X_n)_{n \geq 0}$ be a supermartingale (submartingale) and let $(C_n)_{n \geq 1}$ be a bounded, previsible, nonnegative process. Then the process $((C\cdot X)_n, n \geq 0)$ is a supermartingale (submartingale).
+\end{proposition}
+
+\begin{remark}
+\ben
+\item [(i)] The boundedness condition on $C$ may be replaced by the condition $C_n \in \sL^2(\Omega,\sF,\pro)$, $\forall n$, provided we also insist that $X_n \in \sL^2(\Omega,\sF,\pro)$, $\forall n$. Williams\cite{Williams_1991}.$P_{97}$\footnote{need details}
+\item [(ii)] The above result shows that there is no way to make money out of supermartingales.
+\een
+\end{remark}
+
+
+\begin{proof}[\bf Proof]
+$C \cdot X$ is adapted since $\sum^n_{k=1} C_k(X_k - X_{k-1})$ is $\sF_n$-measurable for every $n$. Therefore it is integrable since the $C_k$'s are uniformly bounded and the $X_k$'s are integrable.
+\be
+\E[(C \cdot X)_{n+1}| \sF_n] = \E[(C \cdot X)_n + C_{n+1}(X_{n+1} - X_n) |\sF_n] = (C \cdot X)_n + C_{n+1} \E[X_{n+1} - X_n | \sF_n] \ba{ll}\leq \\ \geq \ea(C \cdot X)_n\quad \text{a.s.}
+\ee
+by the supermartingale (submartingale) property.
+\end{proof}
+
+\begin{lemma}\label{lem:product_martingale_minus_cross_difference_is_martingale_discrete}
+Let $(M_n)_{n\geq 0}$ and $(N_n)_{n\geq 0}$ be two martingales in $\sL^2(\Omega,\sF,\pro)$. For $\Delta M_k = M_k - M_{k-1}$, $\Delta N_k = N_k - N_{k-1}$, we define
+\be
+[M,N]_n := \sum^n_{k=1}\Delta M_k\Delta N_k,\qquad [M_n] := \sum^n_{k=1}\bb{\Delta M_k}^2.
+\ee
+
+Then $M_nN_n - M_0N_0 - [M,N]_n$ is a martingale. In particular, $M_n^2 - M_0^2 - [M]_n$ is also a martingale.
+\end{lemma}
+
+\begin{remark}
+This is the discrete case of Proposition \ref{pro:local_martingale_covariance_property}.(iii).
+\end{remark}
+
+\begin{proof}[\bf Proof]
+First, we have
+\be
+M_nN_n - M_0N_0 = \sum^n_{k=1} M_{k-1}\bb{N_k - N_{k-1}} + \sum^n_{k=1} N_{k-1}\bb{M_k - M_{k-1}} + \sum^n_{k=1} \Delta M_k \Delta N_k.
+\ee
+
+From Proposition \ref{pro:stochastic_integral_discrete_martingale}\footnote{different version in Williams\cite{Williams_1991}.$P_{97}$}, we can have that \be \sum^n_{k=1} M_{k-1}\bb{N_k - N_{k-1}}\quad \text{and}\quad
+\sum^n_{k=1} N_{k-1}\bb{M_k - M_{k-1}}\quad \text{martingales.} \ee
+
+Thus, it is obvious that $M_nN_n - M_0N_0 - [M,N]_n$ is a martingale.
+\end{proof}
+
+\subsection{Optional stopping theorem for bounded stopping time}
+
+
+\begin{theorem}[stopped martingale theorem, discrete-time\index{stopped martingale theorem!discrete}]\label{thm:stopped_martingale_discrete}
+Let $T$ be a stopping time and let $(X_n)_{n \geq 0}$ be a martingale (resp. supermartingale, submartingale). Then $X^T$ is also a martingale (resp. supermartingale, submartingale).
+\end{theorem}
+\begin{proof}[\bf Proof]
+Let $C_n = \ind_{\{n\leq T \}}$ for $n \geq 0$. Then $(C_n, n \geq 1)$ is previsible since $\{n \leq T\} = \{T \leq n - 1\}^c \in \sF_{n-1}$. It is also bounded, integrable, and non-negative, so by the previous proposition $C \cdot X$ is a martingale (resp. supermartingale, submartingale).
+\be
+(C \cdot X)_n = \sum^n_{k=1} \ind_{\{k\leq T\}}(X_k - X_{k-1}) = \sum^{n\land T}_{k=1} (X_k - X_{k-1}) = X_{n\land T} - X_0 = X^T_n - X_0,
+\ee
+so $X^T$ is a martingale (resp. supermartingale, submartingale).
+\end{proof}
+
+
+
+\begin{theorem}[optional stopping theorem, discrete\index{optional stopping theorem!discrete, bounded}]\label{thm:optional_stopping_bounded_discrete}
+Let $(X_n, n \geq 0)$ be a martingale.
+\ben
+\item [(i)] If $S$ and $T$ be bounded stopping times such that $S \leq T \leq K$, where $K$ is a fixed constant. Then $\E\bb{X_T | \sF_S} = X_S$ a.s. In particular, $\E X_T = \E X_S$.
+\item [(ii)] If there exists an integrable random variable $Y$ such that $\abs{X_n}\leq Y$ for all $n$, and $T$ is a stopping time which is finite a.s., then $\E X_T = \E X_0$.
+\item [(iii)] If $X$ has bounded increments, i.e., $\exists M>0: \forall n\geq 0$, $\abs{X_{n+1} - X_n}\leq M$ a.s., and $T$ is a stopping time with $\E T < \infty$, then $\E X_T = \E X_0$. \een
+\end{theorem}
+
+\begin{remark}
+Note that optional stopping theorem (Theorem \ref{thm:optional_stopping_bounded_discrete}) is true\footnote{need details} if $X$ is a supermartingale or submartingale with the respective inequalities in the statements.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)]
+Let $A \in \sF_S\subseteq \sF_T$, and consider $C_n = \ind_A\ind_{\{S<n\leq T\}}$. $C$ is previsible since
+\be
+C_n = \ind_A\ind_{\{S\leq n-1 \}} \ind_{\{n\leq T\}} = \underbrace{\ind_{A\cap \{S\leq n-1\}}}_{\in \sF_{n-1}} \underbrace{\ind_{\{n\leq T\}}}_{= \ind_{\bra{T\leq n-1}}\in \sF_{n-1}}
+\ee
+is $\sF_{n-1}$-measurable. Then $((C \cdot X)_n, n \geq 0)$ is a martingale, and we have
+\be
+(C \cdot X)_K = \sum^T_{k=S+1} \ind_A(X_k - X_{k-1}) = \ind_A(X_T - X_S).
+\ee
+
+Since $(C \cdot X)$ is a martingale, $\E\bb{(C \cdot X)_K} = \E\bb{(C \cdot X)_0} = 0$. This says that $\E\bb{\ind_AX_T } = \E\bb{\ind_AX_S}$ for all $A \in \sF_S$, which is the definition of $\E\bb{X_T | \sF_S} = \E X_S$ a.s. Then take the expectation again, we have $\E X_T = \E X_S$.
+
+\item [(ii)] we have $\E(X_{T\land n}) = \E (X_n^T) = \E (X_0)$ by stopped martingale theorem (Theorem \ref{thm:stopped_martingale_discrete}). With $T<\infty$ a.s., we have $X_{T\land n} \to X_T$ a.s. as $n\to \infty$. Thus, by dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}),
+\be
+\E(X_0) = \E(X_{T\land n}) \to \E(X_T).
+\ee
+
+\item [(iii)] First $\E(T) < \infty \ \ra \ \pro(T<\infty) = 1$ by Markov's inequality (Theorem \ref{thm:markov_inequality_probability}). Thus, $X^T_n = X_{T\land n}\to X_T$ a.s. as $n \to \infty$. We have $X_n^T = X_0 + \sum_{m=0}^{T \land n-1}(X_{m+1}-X_m)$ and then
+\be
+\abs{X_n^T} \leq \abs{X_0} + \sum_{m=0}^{T \land n-1} \abs{X_{m+1}-X_m} := M.
+\ee
+
+Thus, we have
+\be
+\E \bb{M} = \E \abs{X_0} + \E\bb{\sum_{m=0}^{T \land n-1}\abs{X_{m+1}-X_m}} \leq \E \abs{X_0} + M \cdot\mathbb{E}(T-1)<\infty.
+\ee
+
+Then we apply dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}), $\E(X_0) = \E(X_{T\land n}) \to \E(X_T)$.
+\een
+\end{proof}
+
+\begin{remark} We can summarize with the following table
+
+\vspace{2mm}
+
+\begin{tabular}{ccc}
+\hline
+& $T$ & $X$\\
+\hline(i) & bounded & $\times$ \\
+(iii) & $\E T < \infty$ & bounded increments\\
+(ii) & $\pro(T< \infty) =1$ & bounded by an integrable r.v.\\
+\hline
+\end{tabular}
+\end{remark}
+
+\begin{example}[simple symmetric random walk with single boundary]\label{exa:random_walk_simple_symmetric_single_boundary}
+This is not true in general (for unbounded stopping times). Consider i.i.d. random variables $X_1, \dots, X_n$ such that \be \pro(X_n = 1) = \frac 12 = \pro(X_n = -1), \ee and let $S_n = X_1+ \dots +X_n$, which we have seen
+to be a martingale. Let $T = \inf\bra{n \geq 1 : S_n = 1}$, which is a stopping time. It holds that $\pro(T < \infty) = 1$ and $\E T = \infty$, but $\E S_T = 1 > 0 = \E S_0$. This means that we can not apply optional
+stopping theorem (Theorem \ref{thm:optional_stopping_bounded_discrete}) in this case.
+
+To see this, we need to show that $\bra{T\leq n}\in\sF_n=\sigma(S_1,\dots,S_n)$ \beast \bra{T\leq n} = \bra{\omega:\exists \text{ some }i=1,\dots,n \text{ such that }S_i(\omega)=0} = \bigcup_{i=1,\dots,n}\bra{S_i=0} \in
+\sF_n \quad\text{since } \bra{S_i =0}\in \sF_n. \eeast
+
+To prove the stopping time $T$ can possibly take the value $\infty$, we check if $\E T$ is $\infty$. Thus, we consider the probability distribution of the first hitting time of level 0 given that the random walk starts at
+1. The probability generating function is \be \phi(z) = \E \bb{z^T|S_0=1} = \sum^\infty_{k=0}\pro\bb{T=k|S_0=1}z^k. \ee
+
+With this generating function, we can work out the generating functions for diverse starting point. If the random walk starts at $k>0$, it is given by $\phi(z)^k$ because the probability generating function of a sum of
+independent random variables is simply the product of the probability generating functions. Thus, we have \be \phi(z) = \frac{1}{2}\E \bb{z^{T+1}|S_0=0}+\frac{1}{2}\E \bb{z^{T+1}|S_0=2} = \frac{z}{2}\E
+\bb{z^T|S_0=0}+\frac{z}{2}\E \bb{z^T|S_0=2} \ee since the random walk will moved from 1 to either 0 or 2. For starting point 0, $T$ is 0. Also, we have $\E \bb{z^T|S_0=2}=\phi(z)^2$. Thus, \be \phi(z) =
+\frac{1}{2}z+\frac{1}{2}z\phi(z)^2 \ \ra \ \phi(z)=\frac{1-\sqrt{1-z^2}}{z}. \ee
+
+The issue now boils down to finding the coefficients in the Taylor expansion of $\phi(z)$. To get these coefficients by successive differentiation is terribly boring, but we can get them all rather easily if we recall
+Newton's generalization of the binomial theorem\footnote{theorem needed.}. This result tells us that for any exponent $\alpha\in\R$, we have \be (1+y)^\alpha= \sum^\infty_{k=0}\binom{\alpha}{k}y^k \ee where the binomial
+coefficient is defined to be 1 for $k=0$ and is defined by $\binom{\alpha}{k}=\frac{\alpha(\alpha-1)\dots(\alpha-k+1)}{k!}$ for $k>0$. Thus, we apply Newton's formula, we quickly find the Taylor expansion for $\phi$, \be
+\phi(z) = \frac{1-\sqrt{1-z^2}}{z} =\sum^\infty_{k=1}\binom{1/2}{k}(-1)^{k+1}z^{2k-1}. \ee
+
+We can identify the corresponding coefficients to find\footnote{Note that we 0 can only be achieved by odd steps from 1, so the probabilities of being even steps are 0.} Recalling Definition \ref{def:binomial_series}, we
+have \be \pro(T=2k-1|S_0=1) = \binom{1/2}{k}(-1)^{k+1} = \frac{\frac 12 \cdot \bb{-\frac 12} \cdot \bb{-\frac 32} \cdots\bb{\frac{3-k}2}}{k!}(-1)^{k+1} = \frac{1}{2k-1}\binom{2k}{k}2^{-2k}.\ee
+
+Using Stirling's formula $n! \sim n^ne^{-n}\sqrt{2\pi n}$ we can check \be \pro(T=2k-1|S_0=1) \sim \frac{1}{2k-1}\frac{2^{2k}k^{2k}e^{-2k}\sqrt{2\pi 2k}}{k^{2k}e^{-2k}2\pi k}2^{-2k}=\frac{1}{(2k-1)\sqrt{\pi k}} \to 0 \quad
+\text{as $k\to \infty$} \ee which somehow proves the statement that $\pro\bb{T<\infty} = 1$. For expected stopping time \be \E \bb{T|S_0=1} \sim \sum^\infty_{k=1}\frac{2k-1}{(2k-1)\sqrt{\pi k}} =
+\sum^\infty_{k=1}\frac{1}{\sqrt{\pi k}} = \infty. \ee
+\end{example}
+
+
+
+\begin{theorem}
+Let $(X_n)_{n \geq 0}$ be a supermartingale and $S$ and $T$ be bounded stopping times such that $S \leq T \leq K$, where $K$ is a fixed constant. Then $\E\bb{X_T | \sF_S} \leq X_S$ a.s. In particular, $\E X_T \leq \E X_S$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+With similar argument to Theorem \ref{thm:optional_stopping_bounded_discrete}, we use definition of supermartingale and Proposition \ref{pro:stochastic_integral_discrete_supermartingale_submartingale} and get
+\be
+\E\bb{(C \cdot X)_K} \leq \E\bb{(C \cdot X)_0} = 0 \quad\ra\quad \E\bb{\ind_A(X_T - X_S)}\leq 0\quad \ra\quad \E\bb{\ind_A X_T}\leq  \E\bb{\ind_A X_S} \text{ for all }A \in \sF_S. \quad (*)
+\ee
+
+We know that $X_T$ is integrable thus by Theorem \ref{thm:conditional_expectation_existence_uniqueness}, there exists $\sF_S$-measurable random variable $Y = \E(X_T|\sF_S)$ such that $\E\bb{\ind_A X_T} = \E\bb{\ind_A Y}$ for all $A\in \sF_S$.
+
+If $\pro\bb{Y > X_S} >0$, there exist some $n$ such that $A= \bra{Y>X_S+\frac 1n} \in \sF_S$ and $\pro(A)>0$, we have $\ind_A Y \geq \ind_A X_S + \frac 1n\ind_A$,
+\be
+\E\bb{\ind_A X_T} = \E\bb{\ind_A Y} \geq \E\bb{\ind_A X_S} + \frac 1n \pro(A)
+\ee
+which is contradiction to $(*)$. Hence, $Y \leq X_S$ a.s., that is $\E\bb{X_T | \sF_S} \leq \E X_S$ a.s.. Then we can take the expectation to get the require result.
+\end{proof}
+
+\begin{proposition}
+Suppose that $X$ is a non-negative supermartingale. Then for any stopping time $T$ which is finite a.s. we have $\E X_T \leq \E X_0$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+With $T<\infty$ a.s., we have $X_{T\land n} \to X_T$ a.s. as $n\to \infty$. That is
+\be
+\liminf_n X_{T\land n} = \lim_{n\to \infty} X_{T\land n} = X_T\text{ a.s.}.
+\ee
+
+Since $X_n$ is a supermartingale, we have $\E\bb{X_{T\land n}} \leq \E X_0)$. Therefore, by Fatou's lemma (Lemma \ref{lem:fatou_probability}) as $X$ is non-negative,
+\be
+\E X_T = \E\bb{\lim_{n\to \infty} X_{T\land n}} = \E\bb{\liminf_n X_{T\land n}} \leq \liminf_n \E\bb{X_{T\land n}} \leq \liminf_n \E X_0 = \E X_0,
+\ee
+as required.
+\end{proof}
+
+\begin{remark}
+Accordingly, we can not have $\E X_T \geq \E X_0$ for a non-negative submartingale by inverse Fatou's lemma (Lemma \ref{lem:fatou_probability}) as we can not get a non-negative integrable $Y$ such that $X_n<Y$ for all $n$.
+\end{remark}
+
+\begin{example}[simple symmetric random walk with double boundaries]\label{exa:random_walk_simple_symmetric_double_boundaries}%[gambler's ruin]
+Let $(X_n)_{n\geq 1}$ be an i.i.d. sequence of random variables taking values $\pm 1$ with probabilities $\pro(X_1 = +1) = \pro(X_1 = -1) = 1/2$. Define $S_n = \sum^n_{i=1} X_i$, for $n \geq 1$, and $S_0 = 0$. This is
+called the simple symmetric random walk in $\Z$.
+
+For $c \in \Z$ we write \be T_c = \inf\bra{n \geq 0 : S_n = c}, \ee i.e. $T_c$ is the first hitting time of the state $c$, and hence is a stopping time (by Example \ref{exa:stopping_time_discrete}.(ii)). Let $a, b > 0$. We
+will calculate the probability that the random walk hits $-a$ before $b$, i.e. $\pro(T_{-a} < T_b)$.
+
+As mentioned earlier in this section $S$ is a martingale. Also, $\abs{S_{n+1} - S_n} \leq 1$ for all $n$. We now write $T = T_{-a} \land T_b$. We will first show that $\E T < \infty$.%\footnote{we can also use probability generating function}.
+
+It is easy to see that $T$ is bounded from above by the first time that there are $a+b$ consecutive +1's. The probability that the first $X_1,\dots, X_{a+b}$ are all equal to +1 is $2^{-(a+b)}$. If the first block of $a +
+b$ variables $X$ fail to be all +1's, then we look at the next block of $a + b$, i.e. $X_{a+b+1}, \dots, X_{2(a+b)}$. The probability that this block consists only of +1's is again $2^{-(a+b)}$ and this event is independent
+of the previous one. Hence $T$ can be bounded from above by a geometric random variable of success probability $2^{-(a+b)}$ times $a + b$. Therefore we get
+
+\beast
+\E T & \leq & (a+b)2^{-(a+b)} + 2(a+b) 2^{-(a+b)}\bb{1-2^{-(a+b)}} + 3(a+b)2^{-(a+b)}\bb{1-2^{-(a+b)}}^2 + \dots \\
+& = & (a+b)2^{-(a+b)} \sum^\infty_{n=1} n \bb{1-2^{-(a+b)}}^{n-1} = (a+b)2^{-(a+b)} \bb{\sum^\infty_{n=1} \rho^{n}}' \quad (\rho := 1-2^{-(a+b)})\\
+& = & (a+b)2^{-(a+b)} \bb{\frac{\rho}{1-\rho}}' = (a+b)2^{-(a+b)} \frac 1{(1-\rho)^2} = (a+b)2^{-(a+b)}  2^{2(a+b)} = (a + b)2^{a+b}.
+\eeast
+
+We thus have a martingale with bounded increments and a stopping time with finite expectation. Hence, from the optional stopping theorem (Theorem \ref{thm:optional_stopping_bounded_discrete}.(iii)), we deduce that
+\be
+\E
+S_T = \E S_0 = 0.
+\ee
+
+We also have \be \E S_T = -a\pro\bb{T_{-a} < T_b} + b\pro\bb{T_b < T_{-a}},\quad \pro\bb{T_{-a} < T_b} + \pro\bb{T_b < T_{-a}} = 1, \ee and hence we deduce that \be \pro\bb{T_{-a} < T_b} = \frac b{a + b}. \ee
+
+To get the exact value of $\E T$,\footnote{This can be calculated by different approach in Markov chains. link needed.} we first construct a martingale with $n$ item. So it is natural to check $M_n := S_n^2-n$. Here we skip
+integrability and adaptedness, by Proposition \ref{pro:conditional_expectation_tower_independence},
+\beast
+\E \bb{M_{n+1}|\sF_n} & = & \E\bb{S_{n+1}^2-n-1|\sF_n} = \E \bb{(S_n+X_{n+1})^2-n-1|\sF_n} \\
+& = & \E \bb{S_n^2+2S_nX_{n+1}+X_{n+1}^2-n-1|\sF_n} \stackrel{\text{a.s.}}{=} S_n^2-n+\E \bb{2S_nX_{n+1}+X_{n+1}^2-1|\sF_n} \\
+& \stackrel{\text{a.s.}}{=} & S_n^2-n+2S_n\E X_{n+1}+ \E X_{n+1}^2 -1 = S_n^2-n+2S_n\cdot 0+1 -1 = S_n^2-n = M_n
+\eeast
+as we wished. However, we cannot apply optional stopping theorem for this martingale since it is not
+bounded (because of the $n$ item). So we try to approach it with another way. It is trivial that $S_{n\land T}^2-n\land T$ is also a martingale (as a stopped martingale is still a a martingale). Thus, using martingale
+property we have \be \E \bb{S_{n\land T}^2-n\land T}=\E \bb{S_{0\land T}^2-0\land T}=0  \ \ra \ \E \bb{n\land\tau} = \E \bb{S_{n\land\tau}^2} .\ee
+
+For LHS, by monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability}), we have $\E \bb{n\land T} \to \E T$.
+
+For RHS, by dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}) we get $\E S_{n\land T}^2 \to \E S_T^2$ since $S^2_{n\land T}$ is bounded by $\max\bra{a^2,b^2}$. Thus, \be \E T = \E
+\bb{S_T^2}=(-a)^2 \pro\bb{T_{-a} < T_b} +b^2 \pro\bb{T_b < T_{-a}} = \frac{a^2 b}{a+b} + \frac{ab^2}{a+b} = ab. \ee
+
+If we replace $b$ with $\infty$, we can also have $\E [\tau]=\infty$ which is exactly the previous case for one-side boundary in Example \ref{exa:random_walk_simple_symmetric_single_boundary}.%\footnote{add link to the example.}
+
+For similar result, see also Theorem \ref{thm:brownian_motion_double_bounded} as a symmetric simple random walk can be embedded in a Brownian motion\footnote{Theorem needed here.}.
+\end{example}
+
+\begin{example}[simple asymmetric random walk with double boundaries]\label{exa:random_walk_simple_asymmetric_double_boundaries}
+Let $(X_n)_{n\geq 1}$ be an i.i.d. sequence of random variables taking values $\pm 1$ with probabilities $\pro(X_1 = +1) = p$ and $\pro(X_1 = -1) = 1-p = q$ with $p\neq q$. Define $S_n = \sum^n_{i=1} X_i$, for $n \geq 1$,
+and $S_0 = 0$. This is called the simple asymmetric random walk in $\Z$.
+
+Similar to symmetric case, for $c \in \Z$ we write \be T_c = \inf\bra{n \geq 0 : S_n = c}, \ee i.e. $T_c$ is the first hitting time of the state $c$, and hence is a stopping time. Let $a, b > 0$. Since we know the
+probability that the random walk hits $-a$ before $b$, i.e. $\pro(T_{-a} < T_b)$ in Example \ref{exa:randam_walk_simple}, we want to calculate the expected hitting time $T = T_{-a} \land T_b$.
+
+By constructing a martingale $M_n := S_n - (p-q)n$, we can use optional stopping theorem (as we've already seen that $\E T < \infty$. To see $M$ is a martingale, we skip the adaptedness and
+integrability, for any $m\leq n$ \beast \E\bb{M_n|\sF_m} & = & \E\bb{S_n - (p-q)n} = \E\bb{S_m - (p-q)m + \sum^n_{k = m+1}X_k - (p-q)(n-m)|\sF_m} \\
+& \stackrel{\text{a.s.}}{=} & S_m - (p-q)m + \E\bb{ \sum^n_{k = m+1}X_k} - (p-q)(n-m) = M_m. \eeast
+
+Thus, applying optional stopping theorem, we have \be 0 = M_0 = \E M_n = \E \bb{S_T - (p-q)T} \ee which implies \beast (p-q)\E T & = & \E S_T = -a \frac{(q/p)^a - (q/p)^{a+b}}{1 - (q/p)^{a+b}} + b \frac{1 - (q/p)^a }{1 -
+(q/p)^{a+b}} \\
+\E T & = & \frac{b \bb{1 - (q/p)^a} - a \bb{(q/p)^a - (q/p)^{a+b}}  }{(p-q)\bb{1 - (q/p)^{a+b}}}.  \eeast
+\end{example}
+
+\subsection{Martingale Convergence Theorem}
+
+Usually when we want to prove convergence of a sequence, we have an idea of what the limit should be. In the case of the martingale convergence theorem though, we do not know the limit. And, indeed in most cases, we just know the existence of the limit. In order to show the convergence in the theorem, we will employ a beautiful trick due to Doob, which counts the number of upcrossings of every interval with rational endpoints.
+
+Let $x = (x_n)_n$ be a sequence of real numbers. Let $a < b$ be two real numbers. We define $T_0(x) = 0$ and inductively for $k \geq 0$
+\be
+S_{k+1}(x) = \inf\bra{n \geq T_k(x) : x_n \leq a},\qquad T_{k+1}(x) = \inf\bra{n \geq S_{k+1}(x) : x_n \geq b}
+\ee
+with the usual convention that $\inf \emptyset = \infty$.
+
+We also define $N_n(x,[a, b]) = \sup\bra{k \geq 0 : T_k(x) \leq n}$, i.e., the number of upcrossings of the interval $[a, b]$ by the sequence $x$ by time $n$. As $n \to \infty$ we have
+\be
+N_n(x,[a, b]) \ua N(x,[a, b]) = \sup\bra{k \geq 0 : T_k(x) \leq \infty},
+\ee
+i.e., the total number of upcrossings of the interval $[a, b]$. Observe that if $(X_n)_{n \geq 0}$ is an adapted process then $S_k(X)$ and $T_k(X)$ $(k \geq 1)$ are all stopping times.
+
+
+\begin{center}
+\psset{yunit=2.5cm,xunit=2.5cm}
+\begin{pspicture}(-0.2,-0.3)(5,1.8)
+\psaxes[labels=none,ticks=none]{->}(0,0)(-0.2,-0.3)(5,1.8)%Dy=0.25,dy=0.25
+\pstGeonode[PointSymbol=*,PointName=none,dotscale=1](0,0.6){A1}(0.2,0.9){A2}(0.4,0.4){A3} (0.6,0.9){A4}(0.8,1.2){A5}(1,0.6){A6}(1.2,1.2){A7}(1.4,1.6){A8}(1.6,0.9){A9}(1.8,0.2){A10} (2,0.9){A11}(2.2,1.4){A12}(2.4,1.6){A13}(2.6,1.4){A14}(2.8,1.2){A15}(3,0.9){A16}(3.2,0.6){A17} (3.4,0.9){A18}(3.6,0.6){A19}(3.8,0.3){A20}(4,0){A21}(4.2,-0.3){A22}(4.4,0.1){A23}(4.6,0.8){A24} (4.8,1.6){A25}
+
+\psline(0,0.6)(0.2,0.9)(0.4,0.4)(0.6,0.9)(0.8,1.2)(1,0.6)(1.2,1.2)(1.4,1.6)(1.6,0.9)(1.8,0.2)(2,0.9)
+(2.2,1.4)(2.4,1.6)(2.6,1.4)(2.8,1.2)(3,0.9)(3.2,0.6)(3.4,0.9)(3.6,0.6)(3.8,0.3)(4,0)
+(4.2,-0.3)(4.4,0.1)(4.6,0.8)(4.8,1.6)
+
+\rput[lb](0.4,-0.15){$S_1$}
+\rput[lb](1.4,-0.15){$T_1$}
+\rput[lb](1.8,-0.15){$S_2$}
+\rput[lb](2.4,-0.15){$T_2$}
+\rput[lb](3.8,-0.15){$S_3$}
+\rput[lb](4.8,-0.15){$T_3$}
+\rput[lb](-0.15,1.45){$b$}
+\rput[lb](-0.15,0.45){$a$}
+
+\psline[linestyle=dashed](0,1.5)(5,1.5)
+\psline[linestyle=dashed](0,0.5)(5,0.5)
+\psline[linestyle=dashed](0.4,0.4)(0.4,0)
+\psline[linestyle=dashed](1.4,1.6)(1.4,0)
+\psline[linestyle=dashed](1.8,0.2)(1.8,0)
+\psline[linestyle=dashed](2.4,1.6)(2.4,0)
+\psline[linestyle=dashed](3.8,0.3)(3.8,0)
+\psline[linestyle=dashed](4.8,1.6)(4.8,0)
+\end{pspicture}
+\end{center}
+
+%\begin{definition}
+%Let $(x_n)_{n \geq 0}$ be a real sequence and $a < b \in \R$. Recursively define
+%\ben
+%\item [(i)] $S_1(x) := \inf\{n \geq 0 : x_n < a\} \in \Z^+ \cup \{\infty\}$;
+%\item [(ii)] $T_k(x) := \inf\{n \geq S_k(x) : x_n > b\}$ for $k \geq 1$;
+%\item [(iii)] $S_{k+1}(x) := \inf\{n \geq T_k(x) : x_n < a\}$ for $k \geq 1$;
+%\item [(iv)] $N_n(x, [a, b]) := \sup\{k \geq 1 : T_k(x) \leq n\}$;
+%\item [(v)] $N(x, [a, b]) := \sup\{k \geq 1 : T_k(x) \leq \infty\}$.
+%\een
+%\end{definition}
+
+
+%Notice that $N(x, [a, b]) \ua N_n(x, [a, b])$. A little explanation is in order. $S_1$ is the first time that the sequence drops below $a$, and $T_1$ is the first time after $S_1$ that the sequence exceeds $b$. $T_1$ is the time of the first up-crossing. Similarly, $T_k$ is the time of the $k$th up-crossing, and $N_n$ is the number of up-crossings that have occurred before time $n$.
+
+\begin{lemma}\label{lem:up_crossing_finite}
+A real sequence $x = (x_n)_{n \geq 0}$ converges in $\ol{\R} = \R\cup \{\pm \infty\}$ if and only if $N(x, [a, b]) <\infty$ for every $a < b \in \Q$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Suppose that $x$ converges. Then if for some $a<b$ we had that $N(x,[a,b]) = \infty$, that would imply that
+\be
+\liminf_n x_n \leq a < b \leq \limsup_n x_n,\qquad (\text{by Definition \ref{def:limsup_liminf_real}})
+\ee
+which is a contradiction.
+
+Next suppose that $x$ does not converge. Then $\liminf_n x_n < \limsup_n x_n$ and so taking $a<b$ rationals between these two numbers gives that $N(x,[a,b]) = \infty$ (by Definition \ref{def:limsup_liminf_real}).
+\end{proof}
+
+\begin{lemma}[Doob's up-crossing inequality\index{up-crossing inequality}]\label{lem:up_crossing_inequality}
+Let $(X_n, n \geq 0)$ be a supermartingale. Then for all $a < b$ and all $n \geq 0$,
+\be
+(b - a)\E\bb{N_n(X, [a, b])} \leq \E\bb{(X_n - a)^-}.
+\ee
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+For this proof we write $S_k$, $T_k$, and $N_n$ for the random variables $S_k(X)$, $T_k(X)$, and $N_n(X, [a, b])$, respectively. Let $C_n = \sum_{k\geq 1} \ind_{\{S_k<n\leq T_k\}}$. Since $S_1 < T_1 < S_2 < T_2 < \dots$, $C_n$ takes values in $\{0, 1\}$. Note that the process $(C_n, n \geq 1)$ is previsible (we have already seen that $\ind_{\{S<n\leq T\}} = \ind_{\bra{S\leq n-1}}\ind_{\bra{T\leq n-1}^c} $ is previsible ($\sF_{n-1}$-measurable) when $S \leq T$ are stopping times). Therefore $((C \cdot X)_n)_{ n \geq 0}$ is a supermartingale. Now from the definition of $N_n(x,[a,b])$, we have $T_{N_n+1} \geq n+1$ and $S_{N_n +2} \geq n+2$, %from the definition of $N_n(x,[a,b])$, we have $T_{N_n} \geq n-1$,
+\beast
+(C \cdot X)_n & = & \sum^n_{m=1} C_m (X_m - X_{m-1}) = \sum^n_{m=1} \sum_{k\geq 1} \ind_{\{S_k< m \leq T_k\}} (X_m - X_{m-1}) \\
+& = & \sum^n_{m=1} \sum^{N_n}_{k=1} \ind_{\{S_k< m \leq T_k\}}(X_m - X_{m-1}) + \sum^n_{m=1} \ind_{\{S_{N_n + 1}< m \leq T_{N_n+1}\}}(X_m - X_{m-1}) \\
+& = & \sum^{N_n}_{k=1} \sum^{n}_{m=1} \ind_{\{S_k< m \leq T_k\}}(X_m - X_{m-1}) + \sum^n_{m=1} \ind_{\{S_{N_n + 1}< m \}}(X_m - X_{m-1})  \\
+& = & \sum^{N_n}_{k=1} (X_{T_k} - X_{S_k}) + \ind_{\bra{S_{N_n+1} < n }}(X_n - X_{S_{N_n+1}} ) = \sum^{N_n}_{k=1} (X_{T_k} - X_{S_k}) + \ind_{\bra{S_{N_n+1} \leq n }}(X_n - X_{S_{N_n+1}} )\\ %\sum^{N_n}_{k=1} \ind_{\{S_k< n \leq T_k\}}(X_n - X_{n-1}) \\
+& \geq & (b-a)N_n + \ind_{\bra{S_{N_n+1} \leq n }}(X_n - a)
+\eeast
+%& = & \sum^{n-1}_{m=1} \sum^{N_n}_{k=1} \ind_{\{S_k< m \leq T_k\}}(X_m - X_{m-1}) + \sum^{N_n}_{k=1} \ind_{\{S_k< n \leq T_k\}}(X_n - X_{n-1})\\
+%& = & X_{n-1} - X_0 + \sum^{N_n}_{k=1} \ind_{\{S_k< n \leq T_k\}}(X_n - X_{n-1})
+%\eeast
+
+%Thus, we have two cases, either $S_{N_n +1} \geq n+1$ or $S_{N_n + 1}\leq n$,
+%\be
+%\sum^{n}_{m=1} \ind_{\{S_k< m \leq T_k\}}(X_m - X_{m-1}) =
+%\ee
+%\beast
+%& = & \sum^{N_n}_{k=1} \sum^{ }_{m=1} \ind_{\{S_k< m \leq T_k\}}(X_m - X_{m-1}) \\
+%& = & \ind_{\bra{S_{N_n+1} \leq n }}(X_n - X_{S_{N_n+1}} )+ \sum^{N_n}_{k=1} (X_{T_k} - X_{S_k}) \geq \ind_{\{S_{N_n+1} \leq n\}}(X_n - a)+(b - a)N_n
+%\eeast
+
+Now either $X_n \geq a$, in which case $\ind_{\{S_{N_n+1}\leq n\}}(X_n - a) \geq 0$, or $X_n < a$, in which case $S_{N_n+1} \leq n$, so $\ind_{\{S_{N_n+1} \leq n\}}(X_n - a) = (X_n - a)\ind_{\{X_n<a\}} = -(X_n - a)^-$. Hence %Since $X_n > a$ implies $S_{N_n+1} \leq n$, we have $\ind_{}$
+\be
+(C \cdot X)_n \geq (b - a)N_n -(X_n - a)^-,
+\ee
+but by Proposition \ref{pro:stochastic_integral_discrete_supermartingale_submartingale}, $0 = \E\bb{(C \cdot X)_0} \geq \E\bb{(C \cdot X)_n} \geq (b - a)\E\bb{N_n}-\E\bb{(X_n - a)^-}$.
+\end{proof}
+
+\begin{proof}[\bf Alternative proof in Steele\cite{Steele_2001}.$P_{25}$]
+\footnote{need details}
+\end{proof}
+
+
+\begin{theorem}[martingale convergence theorem, discrete-time]\label{thm:martingale_convergence_discrete}
+Let $(X_n)_{n \geq 0}$ be a supermartingale such that $\sup_n \E\abs{X_n} <\infty$, i.e., $X$ is bounded in $\sL^1(\Omega,\sF_\infty,\pro)$ (Definition \ref{def:bounded_in_slp_probability}). Then $X_n \to X_\infty$ a.s. as
+$n\to \infty$ for some $X_\infty\in \sL^1(\Omega,\sF_\infty,\pro)$, i.e., $X_\infty$ can be a finite limit a.s..
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $a < b \in \Q$. By the up-crossing inequality (Lemma \ref{lem:up_crossing_inequality})
+\be
+\E\bb{N_n(X, [a, b])} \leq (b-a)^{-1}\E\bb{(X_n - a)^-} \leq (b-a)^{-1}\bb{ \E\abs{X_n}+ a} <\infty
+\ee
+%for some constant $M$,
+for all $n$. By the monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability}) since $N_n(X,[a,b])\ua N(X,[a,b])$ as $n\to \infty$, we get \be \E\bb{N_n(X, [a, b])} \ua \E\bb{N(X, [a, b])} \leq
+(b-a)^{-1} \bb{\sup_n \E\abs{X_n}+ a} <\infty, \ee by the assumption on $X$ being bounded in $\sL^1(\Omega,\sF_\infty,\pro)$. Therefore, we get that $N(X,[a,b]) < \infty$ a.s. for every $a < b \in \Q$. Hence, \beast
+\pro\bb{\bigcap_{a<b\in \Q}\bra{N(X,[a,b])< \infty}} & = & 1- \pro\bb{\bigcup_{a<b\in \Q}\bra{N(X,[a,b])= \infty}} \\
+& \geq & 1 - \sum_{a<b\in \Q}\pro\bb{\bra{N(X,[a,b])= \infty}} =  1- 0 = 1.
+\eeast
+
+Write $\Omega_0 = \bigcap_{a<b\in \Q}\bra{N(X,[a,b])< \infty}$, we have $\pro(\omega_0)  =1$ and by Lemma \ref{lem:up_crossing_finite} on $\Omega_0$ we have that $X$ converges to a possible infinite limit $X_\infty$. So we
+can define
+
+%\be X_\infty(\omega) := \left\{\ba{ll}
+%\lim_{n\to\infty} X_n \quad\quad & \text{on }\Omega_0\\
+%0 & \text{on }\Omega\bs \Omega_0
+%\ea\right.
+%\ee
+
+\be X_\infty := \lim_{n\to\infty} X_n \quad \text{exists a.s. in }[-\infty,\infty]. \ee
+
+%Then $X_\infty$ is $\sF_\infty$-measurable (since $X_\infty = \lim_{n\to \infty}X_n \ind_{\Omega_0}$, $X_n$ is $\sF_\infty$-measurable for all $n$ and $\Omega_0 \in \sF_\infty$\footnote{need details}) and
+
+Then by Fatou's lemma (Lemma \ref{lem:fatou_function}) and the assumption on $X$ being bounded in $\sL^1(\Omega,\sF_\infty,\pro)$ we get \be \E\abs{X_\infty} = \E \bb{\liminf_n \abs{X}} \leq \liminf_n \E\abs{X_n} \leq
+\sup_n \E\abs{X_n} < \infty. \ee
+
+Thus, $X_\infty$ is finite a.s.. So we can express $X_\infty(\omega) := \limsup_n X_n(\omega)$ for all $\omega\in \Omega$ and $X_t$ converges to $X_\infty$ a.s.
+
+By Theorem \ref{thm:measurable_function_property_infinity}, $X_\infty$ is $\sF_{\infty}$-measurable. Hence, $X_\infty$ is integrable, i.e., $X\in \sL^1(\Omega,\sF_\infty,\pro)$. %Hence, by Lemma \ref{lem:up_crossing_finite}, $(X_n, n \geq 0)$ converges in $\bar{\R}$.
+%It remains to show that $X_\infty = \lim_{n\to \infty} X_n$ is finite a.s. But $\E[\abs{X_n}] \leq M < \infty$, so by Fatou's Lemma
+%\be
+%\E[\abs{X_\infty}] \leq \liminf_{n\to \infty} \E[\abs{X_n}] \leq M <\infty
+%\ee
+%Thus $X_\infty$ is integrable and hence finite a.s.
+\end{proof}
+
+\begin{corollary}
+If $X = (X_n)_{n \geq 0}$ is a non-negative supermartingale then $X_n$ converges a.s. to a finite limit $X_\infty$ as $n\to \infty$.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+$\E\abs{X_n} = \E\bb{X_n} = \E\bb{X_0} <\infty$ for all $n$, so $(X_n)_{n \geq 0}$ is bounded in $\sL^1(\Omega,\sF,\pro)$.
+\end{proof}
+
+
+\begin{corollary}
+Let $(X_n)_{n \geq 0}$ be a non-negative supermartingale and let $T$ be a stopping time. Then $\E\bb{X_T} \leq \E\bb{X_0}$ (where $X_T = X_\infty$ on the event $\{T = \infty\}$).
+\end{corollary}
+
+\begin{remark}
+We can't turn the '$\leq$' into an '=' even if $X$ is a martingale. %See the example following proposition \ref{thm:optional_stopping_bounded_discrete}
+\end{remark}
+
+\begin{proof}[\bf Proof]
+$T \land n \ua T$ and $\E[X_{T\land n}] \leq \E[X_0]$ since $T \land n$ is bounded (by $n$) by optional stopping theorem (Theorem \ref{thm:optional_stopping_bounded_discrete}). Apply Fatou's lemma (Lemma \ref{lem:fatou_function}) and monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability}) to get
+\be
+E\bb{X_0} \geq \liminf_{n\to \infty} \E\bb{X_{T\land n}} \geq \E\bb{\liminf_{n\to \infty} X_{T\land n}} \ua  \E\bb{X_T}.
+\ee
+\end{proof}
+
+
+\subsection{Doob's inequalities and Kolmogorov's inequality}
+
+\begin{theorem}[Doob's maximal inequality\index{Doob's maximal inequality!discrete}, discrete-time]\label{thm:doob_maximal_inequality_discrete}
+Let $(X_n)_{n \geq 0}$ be a non-negative submartingale, and define $X_n^* = \max_{0\leq k\leq n} X_k$. Then we have %Then for $\lm > 0$,
+\be
+\lm \pro\bb{X_n^* \geq \lm} \leq \E\bb{X_n\ind_{\bra{X_n^* \geq \lm}}} \leq \E X_n.
+\ee
+\end{theorem}
+
+\begin{remark}
+If $(X_n)_{n\geq 0}$ is a martingale, then $(\abs{X_n})_{n\geq 0}$ is a non-negative submartingale. Thus, we have
+\be
+\lm \pro\bb{\max \abs{X_n} \geq \lm} \leq \E\bb{\abs{X_n}\ind_{\bra{\max\abs{X_n} \geq \lm}}} \leq \E\abs{X_n}.
+\ee
+\end{remark}
+
+
+\begin{proof}[\bf Proof]
+Let $T = \inf\bra{n \geq 0 :X_n \geq \lm}$. Then $T\land n$ is a bounded stopping time. Hence by the optional stopping theorem (Theorem \ref{thm:optional_stopping_bounded_discrete}), we have (by submartingale property)
+
+%. Notice that $\{T \leq n\} = \{ \tilde{X}_n > a\}$, and the stopped process $X^T = (X_{T\land n}, n \geq 0)$ is a submartingale. Thus
+%\be
+%\E[X_{T\land n}] = \E[X_T\ind_{\{T\leq n\}}]+\E[X_n\ind_{\{T>n\}}].
+%\ee
+
+%Moreover, since $T \land n$ is bounded (by $n$) the OST implies that $\E[X_{T\land n}] \leq \E[X_n]$. Thus
+%\be
+%\E[X_n] \geq \E[X_T\ind_{\{T\leq n\}}]+\E[X_n\ind_{\{T>n\}}].
+%\ee
+
+%Rearranging, $\E[X_n\ind_{\{T\leq n\}}] \geq a \pro(T \leq n)$. But $\{T \leq n\} = \{\tilde{X}_n > a\}$, so we are done.
+
+\be
+\E(X_n) \geq \E(X_{T\land n}) = \E\bb{X_T \ind_{\bra{T\leq n}}} + \E\bb{X_n \ind_{\bra{T>n}}} \geq \lm \pro(T\leq n) + \E\bb{X_n\ind_{\bra{T>n}}}.
+\ee
+
+It is clear that $\bra{T\leq n} = \bra{X_n^* \geq \lm}$. Hence we get
+\be
+\lm \pro(X_n^* \geq \lm) \leq \E \bb{X_n \ind_{\bra{T\leq n}}} = \E \bb{X_n \ind_{\bra{X_n^*\geq \lm}}} \leq \E(X_n).
+\ee
+\end{proof}
+
+\begin{remark}
+Compare this theorem with Markov inequality (Theorem \ref{thm:markov_inequality_probability}). The above conclusion is stronger as it is based on the fact that $X$ is martingale.
+\end{remark}
+
+\begin{theorem}[Doob's $\sL^p$-inequality\index{Doob's $\sL^p$-inequality!discrete}, discrete-time]\label{thm:doob_lp_inequality_discrete}
+Let $p \in (1,\infty]$ and $(X_n)_{n \geq 0}$ be a martingale or a non-negative submartingale. Define $X_n^* = \max_{0\leq k \leq n} \abs{X_k}$. Then% (recalling $\dabs{X}_p = (\E[\abs{X}^p])^{\frac 1p})$
+\be
+\dabs{X_n^*}_p \leq \frac p{p -1} \dabs{X_n}_p.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+For $p = \infty$, it is obvious. Then we only assume $p \in (1,\infty)$.
+
+If $X$ is a martingale, then by Jensen's inequality (Theorem \ref{thm:jensen_inequality_expectation}, $f(x) = \abs{x}$ is convex)
+\be
+\E(\abs{X_n}) \geq \abs{\E(X_n)} = \abs{\E X_0}.
+\ee
+
+Thus, $\abs{X}$ is a non-negative submartingale. So it suffices to consider the case where $X$ is a non-negative submartingale.
+
+%For any random variable
+%\be
+%\E[Y^p] = p \int^\infty_0 x^{p-1} \pro(Y > x)d x.
+%\ee
+%$(\abs{X_n}, n \geq 0)$ is a sub-martingale by the conditional Jensen inequality, so by Doob's Maximal Inequality,\
+%\be
+%\pro(X_n^* > x) \leq \frac 1x \E[\abs{X_n}\ind_{\{X_n^*>x\}}].
+%\ee
+
+%Combining these and H\"older's inequality, where $\frac 1p + \frac 1q = 1$,
+%\beast
+%\E[(X_n^*)^p] & = & p \int^\infty_0 x^{p-1} \pro[X_n^* > x]d x \leq \frac p{p -1} \int^\infty_0 (p -1)x^{p-2} \E[\abs{X_n}\ind_{\{X_n^*>x\}}]d x\\
+%& \leq & \frac{p}{p -1} \E\bsb{\abs{X_n} \int^\infty_0 (p -1)x^{p-2}\ind_{\{x<X_n^*\}}d x} = \frac p{p -1} \E[\abs{X_n}(X_n^*)^{p-1}] \leq \frac p{p -1} \E%[\abs{X_n}^p]^{\frac 1p} \E[(X_n^*)^{(p-1)q}]^{\frac 1q}.
+%\eeast
+%But $p +q = pq$, so $\dabs{X_n^*}_p \leq \frac p{p-1} \dabs{X_n}_p$.
+
+Fix $k<\infty$ and $q = \frac{p}{p-1}$we have
+\beast
+\dabs{X_n^* \land k}_p^p & = & \E\bb{(X_n^*\land k)^p} = \E\bb{\int^{X_n^* \land k}_0 px^{p-1}dx} = \E \bb{\int^k_0 p x^{p-1}\ind_{\bra{X_n^* \geq x}}dx} \\
+& = & \int^k_0 p x^{p-1}\pro(X_n^* \geq x)dx\qquad (\text{Fubini theorem (Theorem \ref{thm:fubini})})\\
+& \leq &  p \int^k_0 x^{p-2} \E\bb{X_n \ind_{\bra{X_n^* \geq x}}}d x \qquad (\text{Doob's maximal inequality (Theorem \ref{thm:doob_maximal_inequality_discrete})})\\
+& \leq & \frac p{p -1} \E\bb{\abs{X_n} \int^k_0 (p -1)x^{p-2} \ind_{\bra{X_n^*\geq x}}d x}\qquad (\text{Fubini theorem (Theorem \ref{thm:fubini})})\\
+& = & \frac p{p -1} \E\bb{\abs{X_n} \int^{X_n^* \land k}_0 (p -1)x^{p-2} d x} = \frac p{p -1} \E\bb{\abs{X_n}(X_n^*\land k)^{p-1}} \\
+& \leq & \frac p{p -1} \E\bb{\abs{X_n}^p}^{1/p} \E\bb{(X_n^*\land k)^{(p-1)q}}^{1/q}\qquad (\text{H\"older's inequality (Theorem \ref{thm:holder_inequality_expectation})})\\
+& = & \frac p{p -1} \dabs{X_n}_p \dabs{X_n^*\land k}_p^{p-1}.
+\eeast
+
+Then we have
+\be
+\dabs{X_n^*\land k}_p \leq \frac p{p -1} \dabs{X_n}_p.
+\ee
+
+Letting $k\to \infty$ and using monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability}) completes the proof.
+\end{proof}
+
+\begin{theorem}[Kolmogorov's inequality\index{Kolmogorov's inequality!discrete time martingale}]\label{thm:kolmogorov_inequality_discrete_time_martingale}
+Let $(\Omega,\sF,(\sF_n)_{n\geq 0},\pro)$ be a filtered probability space based on which $(X_n)_{n\geq 0}$ is a submartingale. Then for any constant $\lm >0$,
+\be
+\pro\bb{\max_{0\leq k\leq n} X_k \geq \lm} \leq \frac{\E X_n^+}{\lm}.
+\ee
+\end{theorem}
+
+\begin{remark}
+\ben
+\item [(i)] Notice the analogy with Markov's inequality. Of course, the conclusion is much stronger than Markov's inequality, as the probabilistic bound applies to an uncountable number of random variables.
+\item [(ii)] Note that Doob's maximal inequality is a special case of Kolmogorov's inequality.
+\een
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Let $B=\bra{\max_{1\leq k\leq n} X_k \geq \lm}$ and split $B$ into disjoint parts $B_k$, defined by
+\be
+B_k=\bra{X_m < \lm \text{ for all }m<k, \text{ but }X_k \geq \lm}.
+\ee
+
+Then
+\beast
+\pro\bb{B} & = & \sum_{k=1}^n \E\bb{\ind_{B_k}} \leq \sum_{k=1}^n \E\bb{\frac 1{\lm} X_k \ind_{B_k}} \leq \frac 1{\lm} \sum_{k=1}^n \E\bb{\E\bb{X_n|\sF_k}\ind_{B_k}}\qquad \text{ $X⁢$ is a submartingale}\\
+& = & \frac 1{\lm} \sum_{k=1}^n\E\bb{\E\bb{X_n \ind_{B_k}|\sF_k}}\qquad \text{ $B_k$ is $\sF_k$-measurable}\\
+& = & \frac 1{\lm} \sum_{k=1}^n\E\bb{X_n \ind_{B_k}} = \frac 1{\lm} \E\bb{X_n \ind_B}  \leq \frac 1{\lm}\E\bb{X_n^+ \ind_B} \leq \frac 1{\lm}\E\bb{X_n^+},
+\eeast
+as required.
+\end{proof}
+
+\begin{corollary}\label{cor:kolmogorov_inequality_discrete_time_martingale}
+Let $(\Omega,\sF,(\sF_n)_{n\geq 0},\pro)$ be a filtered probability space. $(X_n)_{n\geq 0}$ is a square-integrable martingale whose unconditional mean is $m = \E X_0$. Then for any constant $\lm >0$,
+\be
+\pro\bb{\max_{0\leq k\leq n}\abs{X_k -m} \geq \lm} \leq \frac{\var\bb{X_n}}{\lm^2}.
+\ee
+\end{corollary}
+
+\begin{remark}
+Notice the analogy with Chebyshev inequality (Theorem \ref{thm:chebyshev_inequality_probability}). Of course, the conclusion is much stronger than Chebyshev inequality.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Apply Kolmogorov's inequality (Theorem \ref{thm:kolmogorov_inequality_discrete_time_martingale}) to $(X⁢_n -m)^2$, which is a submartingale by Jensen's inequality.
+\end{proof}
+
+
+
+\subsection{Convergence in $\sL^p$ for $p \in (1,\infty)$}
+
+We have seen that $X_n \to  X_\infty$ a.s. if $X$ is bounded in $\sL^1(\Omega,\sF,\pro)$. When can we upgrade this to convergence in $\sL^p(\Omega,\sF,\pro)$?
+
+\begin{definition}\label{def:closed_in_lp_discrete}
+When $X_n = \E\bb{Z | \sF_n}$ a.s. for all $n \geq 0$ for some random variable $Z\in \sL^1(\Omega,\sF,\pro)$ then $(X_n)_{n \geq 0}$ is a martingale (by Proposition \ref{pro:conditional_expectation_tower_independence} (tower property)), and if $Z \in \sL^p(\Omega ,\sF,\pro)$ then we say that $X$ is closed in $\sL^p$\index{closed in $\sL^p$}.
+\end{definition}
+
+
+\begin{theorem}[[$\sL^p$ martingale convergence theorem\index{lp-martingale-convergence@$\sL^p$ martingale convergence theorem!discrete}]\label{thm:martingale_bounded_lp_as_lp_closed_discrete}
+Let $(X_n)_{n \geq 0}$ be a martingale and $p \in (1,\infty]$. Then the following statements are equivalent:
+\ben
+\item [(i)] $X = (X_n)_{n\geq 0}$ is bounded in $\sL^p(\Omega,\sF,\pro)$, i.e., $\sup_n \dabs{X_n}_p <\infty$ (Definition \ref{def:bounded_in_slp_probability}).
+\item [(ii)] $X_n \to  X_\infty$ a.s. and in $\sL^p$.
+\item [(iii)] $X = (X_n)_{n\geq 0}$ is closed in $\sL^p(\Omega,\sF,\pro)$, i.e., there exists a random variable $Z\in \sL^p(\Omega ,\sF,\pro)$ such that
+\be
+X_n = \E\bb{Z | \sF_n}\ \text{ a.s. for all }n.
+\ee
+
+Note that if $X_\infty$ is known, we can set $Z = X_\infty$.
+\een
+\end{theorem}
+
+
+\begin{proof}[\bf Proof]
+(i) $\ra$ (ii). $X_n\in \sL^p(\Omega ,\sF,\pro)$ for all $n$ since $X$ is bounded in $\sL^p$. Consider the convex function $f(x) = \abs{x}^p$. By Jensen inequality (Theorem \ref{thm:jensen_inequality_expectation}) we have
+\be
+f(\E(X_n)) \leq \E(f(X_n)) \ \ra \ \bb{\E\abs{X_n}}^p \leq \E\bb{\abs{X_n}^p} \ \ra \ \dabs{X_n}_1 \leq \dabs{X_n}_p
+\ee
+for $p \in (1,\infty)$. For $p = \infty$, we have the same result by Definition \ref{def:essential_sup} and Theorem \ref{thm:non_negative_measurable_property}. Thus, bounded in $\sL^p$ implies bounded in $\sL^1$, so by the martingale convergence theorem (Theorem \ref{thm:martingale_convergence_discrete}), $X_n$ converges a.s. to a random variable $X_\infty\in \sL^1(\Omega,\sF_\infty, \pro)$. Then if $p \in (1,\infty)$, $\abs{X_n} \to \abs{X_\infty}$ a.s. and $\abs{X_n}^p \to \abs{X_\infty}^p$ a.s.. So $\abs{X_\infty}^p = \lim_{n\to \infty} \abs{X_n}^p$ a.s.. Then
+\beast
+\E\bb{\abs{X_\infty}^p} & = & \E \bb{\liminf_n \abs{X_n}^p} \qquad(\text{Theorem \ref{thm:non_negative_measurable_property}})\\
+& \leq & \liminf_n\E \bb{ \abs{X_n}^p} \qquad  (\text{Fatou's lemma (Lemma \ref{lem:fatou_function})}) \\
+& \leq & \sup_{n\geq 0} \dabs{X_n}_p^p < \infty.
+\eeast
+
+If $p = \infty$, $\dabs{X_\infty}_p = \inf\bra{\lm : \abs{X_\infty}\leq \lm\text{ a.s.}} < \infty$ since $X_\infty\in\sL^1(\Omega,\sF_\infty, \pro)$ is integrable. Thus, $X_\infty\in\sL^p(\Omega,\sF, \pro)$.
+
+By Doob's $\sL^p$-inequality (Theorem \ref{thm:doob_lp_inequality_discrete}),
+\be
+\dabs{X_n^*}_p \leq \frac p{p -1} \dabs{X_n}_p \leq  \frac p{p -1} \sup_{n\geq 0} \dabs{X_n}_p.
+\ee
+
+Recalling that $X_n^* = \sup_{0\leq k\leq n}\abs{X_k}$, we have $X_n^* \ua X_\infty^*$. Then by monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability}),
+\be
+\dabs{X_\infty^*}_p \leq \frac p{p -1} \sup_{n\geq 0} \dabs{X_n}_p < \infty.\qquad (\text{also holds for $p=\infty$})
+\ee
+
+Thus, we have $X_\infty^* \in \sL^p(\Omega,\sF, \pro)$. Thus,
+\be
+\abs{X_n - X_\infty} \leq \abs{X_n} + \abs{X_\infty} \leq 2X^*_\infty \in \sL^p(\Omega,\sF, \pro)
+\ee
+%so $X_n^* \ua X_\infty^* = \sup_{m\geq1} \abs{X_m}$. By the MCT, $\dabs{X_\infty^*}_p < \infty$, so $\abs{X_n} \leq X_\infty^*$ for all $n$, which implies that $\abs{X_\infty} \leq X_\infty^*$, so $X_\infty \in L^p$. Moreover, $\abs{X_n - X_\infty}^p \leq (2X_\infty)^p \in L^1$, so by the DCT, $\E[\abs{X_n - X_\infty}^p]\to 0$ as $n\to \infty$, or equivalently $X_n \to  X_\infty$ in $L^p$.
+
+If $p \in (1,\infty)$, we have $\abs{X_n - X_\infty}^p \leq 2^p \bb{X^*_\infty}^p \in \sL^1(\Omega,\sF, \pro)$. Also, $\abs{X_n - X_\infty}^p \to 0$ a.s.. Then by dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}),
+\be
+\E \bb{\abs{X_n - X_\infty}^p} \to 0 \ \ra \ X_n \stackrel{\sL^p}{\to} X_\infty.
+\ee
+
+If $p = \infty$, we have %by Minkowski theorem (Theorem \ref{thm:minkowski_inequality})
+\be
+\dabs{X_n - X_\infty}_\infty = \inf\bra{\lm:\abs{X_n - X_\infty}\leq \lm, \text{a.s.}} \to 0 \text{ as }n \to \infty.
+\ee
+since $X_n \to X_\infty$ a.s. Thus, $X_n \stackrel{\sL^p}{\to} X_\infty$ for $p\in (1,\infty]$.
+
+(ii) $\ra$ (iii). We set $Z = X_\infty$. Clearly, $Z\in \sL^p(\Omega ,\sF,\pro)$. We will now show that $X_n = \E\bb{Z|\sF_n}$ a.s..
+
+If $m \geq n$, then by martingale property we can have the following. If $p \in (1,\infty)$ and
+\be
+\dabs{X_n - \E(X_\infty|\sF_n)}_p = \dabs{\E\bb{X_m - X_\infty|\sF_n}}_p \leq \dabs{X_m - X_\infty}_p \to 0 \text{ as }m\to \infty
+\ee
+by conditional Jensen's inequality (Theorem \ref{thm:jensen_inequality_conditional_expectation}) and Proposition \ref{pro:conditional_expectation_tower_independence} (tower property). Thus, $X_n = \E(X_\infty|\sF_n)$ a.s. by Theorem \ref{thm:lebesgue_integrable_function_property}.
+
+If $p = \infty$,
+\beast
+\dabs{X_n - \E(X_\infty|\sF_n)}_\infty & = & \inf\bb{\lm:\abs{X_n - \E(X_\infty|\sF_n)}\leq \lm \text{ a.s.}} = \inf\bb{\lm:\abs{\E (X_m - X_\infty|\sF_n)}\leq \lm \text{ a.s.}}\\
+ & \leq & \inf\bb{\lm:\E (\abs{X_m - X_\infty}|\sF_n)\leq \lm \text{ a.s.}}\quad (\text{conditional Jensen's inequality (Theorem \ref{thm:jensen_inequality_conditional_expectation})})\\
+ & \to & 0 \ \text{as } m \to \infty.
+\eeast
+
+Thus, $\dabs{X_n - \E(X_\infty|\sF_n)}_\infty = 0$ and thus $X_n = \E(X_\infty|\sF_n)$ a.s.
+
+%Suppose $X_n \to  X_\infty$ in $L^p$. Since $X_n = \E[X_{n+k} |\sF_n]\to \E[X_\infty|\sF_n]$ as $k \to \infty$, because $\E[\cdot |\sG]$ is continuous, $X_n = \E[X_\infty|\sF_n]$, so take $Z = X_\infty$.
+
+(iii) $\ra$ (i): Suppose $X_n = \E\bb{Z |\sF_n}$ a.s. for some $Z \in \sL^p(\Omega,\sF,\pro)$. If $p \in (1,\infty)$, by conditional Jensen inequality (Theorem \ref{thm:jensen_inequality_conditional_expectation}),
+\be
+\abs{X_n}^p = \bb{\E\bb{\abs{Z}|\sF_n}}^p\leq \E\bb{\abs{Z}^p|\sF_n}\  \ra \ \E\bb{\abs{X_n}^p} \leq \E\bb{\abs{Z}^p} \ \ra \ \sup_{n\geq 0} \E\bb{\abs{X_n}^p} \leq \E\bb{\abs{Z}^p} <\infty.
+\ee
+
+If $p = \infty$, by conditional Jensen inequality (Theorem \ref{thm:jensen_inequality_conditional_expectation}) again, since $\lm_Z := \dabs{Z}_\infty = \inf\bra{\lm : \abs{Z}\leq \lm \text{ a.s.}} < \infty$
+\be
+\dabs{X_n}_\infty = \inf\bra{\lm: \abs{\E\bb{Z|\sF_n}}\leq \lm \text{ a.s.}} \leq \inf\bra{\lm: \E\bb{\abs{Z}|\sF_n}\leq \lm, \text{ a.s.}}
+\ee
+
+Note that we can have that $\E\bb{\abs{Z}|\sF_n} \leq \lm_Z$, thus,
+\be
+\dabs{X_n}_\infty \leq \lm_Z = \dabs{Z}_\infty < \infty.
+\ee
+
+Thus, in both cases, $X_n$ is bounded in $\sL^p(\Omega,\sF,\pro)$.
+\end{proof}
+
+
+
+%Suppose that we have that $X_n = \E[Z |\sF_n]$. Then $\E[Z |\sF_\infty] = X_\infty$, where
+%\be
+%F_\infty = \bigvee_{n\geq 0} \sF_n = \sigma\bb{\bigcup_{n\geq 0} \sF_n}.
+%\ee
+
+%Indeed, let $A \in \bigcup_{n\geq 0} \sF_n$, say $A \in \sF_m$. Then $\E[Z\ind_A] = \E[X_m\ind_A] = \E[X_n\ind_A]$ for any $n \geq m$. Therefore as $n\to \infty$, by $L^p$ convergence, $\E[Z\ind_A] = \E[X_\infty \ind_A]$. To conclude that this is true for every $A \in \bigvee_{n\geq 0} \sF_n$, note that $\bigcup_{n\geq0}\sF_n$ is a $\pi$-system that spans $\sF_\infty$ and apply the monotone class theorem. Finally, note that $X_\infty = \limsup_{n\to \infty} X_n$ is an $\sF_\infty$-measurable r.v. In particular, if $\sF = \sF_\infty$ then $X_\infty$ is the only possible $Z$ for which $X_n = \E[Z|\sF_n]$ for all $n$.
+
+%Yet otherwise said,
+%\be
+%L^p(\Omega,\sF_\infty,\pro)\ \to\ \{L^p\text{-bounded martingales}\} : Z \to (\E[Z | \sF_n], n \geq 0)
+%\ee
+%is a bijection.
+
+\begin{corollary}\label{cor:martingale_lp_closed_discrete}
+Let $Z \in \sL^p(\Omega,\sF,\pro)$ and $X_n = \E\bb{Z|\sF_n}$ a martingale closed in $\sL^p(\Omega,\sF,\pro)$. Then we have
+\be
+X_n \to X_\infty \text{ as }n \to \infty \text{ a.s. and in }\sL^p(\Omega,\sF,\pro)\quad \text{with}\quad X_\infty = \E\bb{Z|\sF_\infty} \text{ a.s.}
+\ee
+
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+By Theorem \ref{thm:martingale_bounded_lp_as_lp_closed_discrete} we have that $X_n \to X_\infty$ as $n \to \infty$ a.s. and in $\sL^p$. It only remains to show that $X_\infty = \E\bb{Z|\sF_\infty}$ a.s. Clearly $X_\infty$ is $\sF_\infty$-measurable.
+
+Let $A \in \bigcup_{n\geq 0}\sF_n$. Then $A \in \sF_N$ for some $N$ and by dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability})
+\be
+\E[Z\ind_A] = \E\bb{\E\bb{Z|\sF_N}\ind_{A}} = \E\bb{X_N\ind_A} \to \E\bb{X_\infty \ind_A} \text{ as }N \to \infty.
+\ee
+
+So this shows that for all $A \in \bigcup_{n\geq 0}\sF_n$ we have
+\be
+\E\bb{X_\infty \ind_A} = \E\bb{\E\bb{Z|\sF_\infty}\ind_A}.
+\ee
+
+But $\bigcup_{n\geq 0}\sF_n$ is a $\pi$-system generating $\sF_\infty$, and hence we get the equality for all $A \in \sF_\infty$ by Theorem \ref{thm:conditional_expectation_existence_uniqueness}.
+\end{proof}
+
+\begin{remark}
+In particular, if $\sF = \sF_\infty$ then $X_\infty$ is the only possible $Z$ ($X_\infty = \E\bb{Z|\sF_\infty} = \E\bb{Z|\sF} = Z$ a.s. since $Z$ is $\sF$-measurable) for which $X_n = \E\bb{Z|\sF_n}$ for all $n$. Yet otherwise said,
+\be
+\sL^p(\Omega,\sF_\infty,\pro)\ \to\ \bra{\sL^p\text{-bounded martingales}} : Z \to (\E\bb{Z | \sF_n})_{n \geq 0} \ \text{ is a bijection.}
+\ee
+\end{remark}
+
+
+\subsection{UI martingale and convergence in $\sL^1$}
+
+%\begin{definition}
+%A sequence $(X_n, n \geq 0)$ is uniformly integrable (or u.i.) if $\sup_{n\geq 0} \E[\abs{X_n}\ind_{\abs{X_n}>a}]\to 0$ as $a \to \infty$.
+%\end{definition}
+
+%\begin{lemma}\label{lem:almost_surely_l1}
+%\ben
+%\item [(i)] If $X_n \to  X_\infty$ a.s. then $X_n \to  X_\infty$ in $L^1$ if and only if $(X_n)$ is u.i.
+%\item [(ii)] If $(\sF_n, n \geq 0)$ is a filtration and $Z \in L^1$ then $(\E[Z |\sF_n], n \geq 0)$ is u.i.
+%\een
+%\end{lemma}
+%\begin{proof}[\bf Proof]
+%Exercise (see example sheet).
+%\end{proof}
+
+Recall Definition \ref{def:uniformly_integrable_probability},
+
+\begin{definition}[UI martingale\index{UI martingale}]\label{def:uniformly_integrable_martingale}
+A martingale $(X_n)_{n\geq 0}$ is called a UI martingale if it is a martingale and the collection of random variables $(X_n)_{n\geq 0}$ is a UI familty, i.e.,
+\be
+\sup_{n\geq 0} \E\bb{|X_n|\ind_{\bra{\abs{X_n}>K}}} \to 0 \ \text{ as } \ K \to \infty.
+\ee
+\end{definition}
+
+\begin{theorem}[UI martingale convergence theorem\index{UI martingale convergence theorem!discrete}, discrete-time]\label{thm:martingale_ui_as_l1_closed_discrete}
+Let $(X_n)_{ n \geq 0}$ be a martingale. The following are equivalent:
+\ben
+\item [(i)] $(X_n)_{n\geq 0}$ is uniformly integrable.
+\item [(ii)] $X_n \to  X_\infty$ a.s. and in $\sL^1(\Omega,\sF,\pro)$.
+\item [(iii)] $(X_n)_{n\geq 0}$ is closed in $\sL^1(\Omega,\sF,\pro)$, i.e., there exists a random variable $Z\in \sL^1(\Omega ,\sF,\pro)$ such that
+\be
+X_n = \E\bb{Z | \sF_n}\ \text{ a.s. for all }n.
+\ee
+
+Note that if $X_\infty$ is known, we can set $Z = X_\infty$.
+\een
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+(i) $\ra$ (ii). Since $X$ is UI, it follows that it is bounded in $\sL^1(\Omega,\sF,\pro)$ (Definition \ref{def:uniformly_integrable_probability}), so $X_n \to  X_\infty$ a.s. by the martingale convergence theorem (Theorem \ref{thm:martingale_convergence_discrete}). Then Theorem \ref{thm:ui_prob_iff_sl1} implies that $X_n \to  X_\infty$ in $\sL^1(\Omega,\sF,\pro)$ since $X$ is UI.
+
+(ii) $\ra$ (iii). We set $Z = X_\infty$. Clearly, $Z\in \sL^1(\Omega ,\sF,\pro)$. We will now show that $X_n = \E\bb{Z|\sF_n}$ a.s..
+
+If $m \geq n$, then by martingale property we can have the following.
+\be
+\E\abs{X_n - \E(X_\infty|\sF_n)} = \E\abs{\E\bb{X_m - X_\infty|\sF_n}} \leq \E\abs{X_m - X_\infty} \to 0 \text{ as }m\to \infty
+\ee
+by conditional Jensen's inequality (Theorem \ref{thm:jensen_inequality_conditional_expectation}) and Proposition \ref{pro:conditional_expectation_tower_independence}.(i) (tower property). Thus, $X_n = \E(X_\infty|\sF_n)$ a.s. by Theorem \ref{thm:lebesgue_integrable_function_property}.
+
+
+%As the proof of Theorem \ref{thm:martingale_bounded_lp_as_lp_closed_discrete}, we have $X_n = \E\bb{X_{n+k}|\sF_n}$, and let $k \to \infty$.
+
+(iii) $\ra$ (i). Theorem \ref{thm:ui_conditional_expectation_implies_ui} implies that $(\E[Z|\sF_n])_{ n \geq 0}$ is UI for any $Z \in \sL^1(\Omega,\sF,\pro)$.%Theorem \ref{thm:ui_prob_iff_sl1}
+\end{proof}
+
+\begin{remark}
+As before (Corollary \ref{cor:martingale_lp_closed_discrete}), $Z = X_\infty$ is the only $\sF_\infty$-measurable r.v. for which $X_n = \E\bb{Z | \sF_n}$ for all $n$. Similarly,
+\be
+\sL^1(\Omega,\sF_\infty,\pro)\ \to \ \{\text{UI martingales}\}: Z \to \bb{\E\bb{Z |\sF_n}}_{n \geq 0}\ \text{ is a bijection.}
+\ee
+\end{remark}
+
+\begin{proposition}
+If $X$ is a UI supermartingale (resp. submartingale), then $X_n$ converges a.s. and in $\sL^1(\Omega,\sF,\pro)$ to a limit $X_\infty$, so that $\E\bb{X_\infty|\sF_n} \leq X_n$ (resp. $\geq$) for every $n$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{need proof}
+\end{proof}
+
+\begin{example}
+Let $(X_n)_{n\geq 0}$ be i.i.d. random variables with $\pro(X_1 = 0) = \pro(X_1 = 2) = 1/2$. Then $Y_n = X_1 \dots X_n$ is a martingale bounded in $\sL^1(\Omega,\sF,\pro)$ and it converges to 0 as $n \to \infty$ a.s. But $\E\bb{Y_n} = 1$ for all $n$, and hence it does not converge in $\sL^1(\Omega,\sF,\pro)$.
+\end{example}
+
+If $X$ is a UI martingale and $T$ is a stopping time, which could also take the value $\infty$, then we can unambiguously define
+\be
+X_T = \sum^\infty_{n=0} X_n\ind_{\bra{T = n}} + X_\infty \ind_{\bra{T = \infty}}.
+\ee
+
+Recall Theorem \ref{thm:optional_stopping_bounded_discrete}: $\E[X_T |\sF_S] = X_S$ when $S \leq T$ are bounded stopping times. It turns out that we may eliminate the boundedness of the stopping times when the martingale is UI.
+
+\begin{theorem}[optional stopping theoerem, UI martingale\index{optional stopping theoerem!UI martingale, discrete}, discrete-time]\label{thm:optional_stopping_ui_discrete}
+Let $(X_n)_{n \geq 0}$ be a uniformly integrable martingale and let $S$ and $T$ be stopping times with $S \leq T$. Then $\E\bb{X_T |\sF_S} = X_S$, where we take $X_T = X_T\ind_{\bra{T<\infty}} + X_\infty \ind_{\bra{T=\infty}}$. In particular, in this case $\E\bb{X_T} = \E\bb{X_0}$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+We will first show that $\E\bb{X_\infty|\sF_T} = X_T$ a.s. for any stopping time $T$.
+
+We will now check that $X_T \in \sL^1(\Omega,\sF,\pro)$. Since $(X_n)_{n\geq 0}$ is UI, there exists $X_\infty$ such that $X_n = \E \bb{X_\infty|\sF_n}$ by Theorem \ref{thm:martingale_ui_as_l1_closed_discrete}. Thus,
+\be
+\abs{X_n} = \abs{\E \bb{X_\infty|\sF_n}} \leq \E \bb{\abs{X_\infty}|\sF_n},
+\ee
+by conditional Jensen's inequality (Theorem \ref{thm:jensen_inequality_conditional_expectation}). We have%$X_T$ is integrable since
+\be
+X_T = X_\infty \ind_{\bra{T=\infty}} + \sum_{n\geq 0} X_n\ind_{\bra{T=n}} = X_\infty \ind_{\bra{T=\infty}} + \sum_{n\geq 0} \E\bb{X_\infty|\sF_n}\ind_{\bra{T=n}}
+\ee
+by uniform integrability. Therefore
+\be
+\abs{X_T} \leq \abs{X_\infty}\ind_{\bra{T=\infty}} + \sum_{n\geq0} \E\bb{\abs{X_\infty}\ind_{\bra{T=n}}|\sF_n}\ \ra\ \E\abs{X_T} \leq \sum_{n\in \Z^+ \cup \bra{\infty}} \E\bb{\abs{X_\infty}\ind_{\bra{T=n}}} = \E\abs{X_\infty} < \infty.
+\ee
+
+Thus, $X_T$ is integrable ($X_T\in  \sL^1(\Omega,\sF,\pro)$). Let $A\in \sF_T$. Then since $X_n = \E \bb{X_\infty|\sF_n}$
+\beast
+\E\bb{X_T\ind_A} & = &  \sum_{n\in \Z^+ \cup \bra{\infty}} \E\bb{X_n \ind_{\bra{T=n}}\ind_A} = \sum_{n\in \Z^+ \cup \bra{\infty}} \E\bb{\E \bb{X_\infty|\sF_n} \ind_{\bra{T=n}}\ind_A} \\
+& = & \sum_{n\in \Z^+ \cup \bra{\infty}}\E\bb{X_\infty \ind_{\bra{T=n}}\ind_A}  = \E\bb{X_\infty\ind_A}.
+\eeast
+
+Also, clearly $X_T$ is $\sF_T$-measurable, and hence
+\be
+\E\bb{X_\infty|\sF_T} = X_T\text{ a.s.}
+\ee
+
+%Suppose that $T =\infty$. Let $A \in \sF_S$. Then
+%\beast
+%\E[X_\infty\ind_A] & = & \sum^\infty_{n=0} \E[X_\infty \ind_A \ind_{S=n}] = \E[X_\infty\ind_A\ind_{S=\infty}]+ \sum_{n\geq0} \E[\E[X_\infty| \sF_n]\ind_A\ind_{S=n}]= \sum^\infty_{n=0} \E[X_S\ind_A\ind_{S=n}] = \E[X_S\ind_A]
+%\eeast
+
+%Thus $\E[X_\infty|\sF_S] = X_S$. For general $T$, $E[X_T |\sF_S] = \E[\E[X_\infty | \sF_T ] | \sF_S] = X_S$.
+
+Now using the tower property of conditional expectation (Proposition \ref{pro:conditional_expectation_tower_independence}.(i)), we get for stopping times $S\leq T$, since $\sF_S \subseteq \sF_T$,
+\be
+\E\bb{X_T|\sF_S} = \E\bb{\E\bb{X_\infty|\sF_T}|\sF_S} = \E\bb{X_\infty|\sF_S} = X_S \text{ a.s.}
+\ee
+
+The first equality is by Theorem \ref{thm:lebesgue_integrable_function_property}.
+\end{proof}
+
+%\subsection{Optional stopping, part II}
+
+
+
+%\begin{exercise}
+%Let $(S_n)_{n\geq0}$ be a simple random walk, $S_n = X_1 + \dots + X_n$, where $\pro(X_i = \pm 1) = \frac 12$. Let $T_x = \inf\{n \geq 0 | S_n = x\}$, and $T = T_a \land T_{-b}$ for $a, b \in N$. Compute $\pro(T_a < T_{-b}) = \pro(S_T = a)$.
+%\end{exercise}
+%\begin{solution}
+%By the u.i. OST (though how do we show that ($S_n$) is u.i.?) we have
+%\be
+%a\ind_{T_a<T_{-b}} - b(1-\ind_{T_a<T_{-b}}) = \E[S_T ] = \E[S_0] = 0.
+%\ee
+%Whence $\pro(T_a < T_{-b}) = \frac b{a+b}$.
+%\end{solution}
+
+
+\subsection{Backward martingales}
+
+\begin{definition}[backward martingale, discrete\index{backward martingale!discrete}]\label{def:backward_martingale_discrete}
+Let $\dots \subseteq \sF_{-2} \subseteq \sF_{-1} \subseteq \sF_0$ be a sequence of sub-$\sigma$-algebras indexed by $\Z^- = \bra{\dots,-2,-1,0}$. Given such
+a filtration, a process $(X_n)_{n \leq 0}$ is called a backwards martingale, if it is adapted to the filtration, $X_0 \in \sL^1(\Omega,\sF,\pro)$ and for all $n \leq -1$ we have
+\be
+\E\bb{X_{n+1}|\sF_n} = X_n\text{ a.s.}
+\ee
+\end{definition}
+
+\begin{remark}
+By the tower property of conditional expectation (Proposition \ref{pro:conditional_expectation_tower_independence}.(i)) we get that for all $n \leq 0$
+\be
+\E\bb{X_0|\sF_n} = \E \bb{\E\bb{X_n|\sF_0}|\sF_n} = X_n \text{ a.s.}.
+\ee
+
+Since $X_0 \in \sL^1(\Omega,\sF,\pro)$, by Theorem \ref{thm:ui_conditional_expectation_implies_ui} we get that $X$ is uniformly integrable (then by Theorem \ref{thm:martingale_ui_as_l1_closed_discrete}, $X$ is closed in $\sL^1(\Omega,\sF,\pro)$). This is a nice property that backwards martingales have: they are automatically UI.
+\end{remark}
+
+
+%For this section we let $I = \Z^- = \{\dots,-2,-1, 0\}$ and let $(F_n, n \leq 0)$ be a filtration.
+
+%\begin{definition}
+%A backward martingale is a martingale $(X_n, n \leq 0)$ with respect to the filtration $(\sF_n, n \leq 0)$. Note that for all $n \leq 0$, $\E[X_0|\sF_n] = X_n$, so a backwards martingale is always closed.
+%\end{definition}
+
+
+%\begin{theorem}
+%Let $(X_n, n \leq 0)$ be a backwards martingale. Then $X_n$ converges a.s. and in $L^1$ to a limit $X_{-\infty}$ as $n\to -\infty$ and $X_{-\infty} = \E[X_0 | \sF_{-\infty}]$, where $\sF_{-\infty} = \bigcap_{n\leq0}\sF_n$.
+%\end{theorem}
+
+\begin{theorem}[backwards martingale convergence theorem, discrete\index{backwards martingale convergence theorem!discrete}]\label{thm:backwards_martingale_as_lp_closed_discrete}
+Let $X$ be a backwards martingale, with $X_0 \in \sL^p(\Omega,\sF,\pro)$ for some $p \in [1,\infty)$. Then $X_n$ converges a.s. and in $\sL^p(\Omega,\sF,\pro)$ as $n \to -\infty$ to the random variable $X_{-\infty} = \E\bb{X_0|\sF_{-\infty}}$, where $\sF_{-\infty} = \bigcap_{n\leq 0}\sF_n$ is a $\sigma$-algebra (see measure theorey (Chapter \ref{cha:measure_theorey})).
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+We will first adapt Doob's up-crossing inequality (Lemma \ref{lem:up_crossing_inequality}), in this setting. Let $a < b$ be real numbers and $N_{-n}(X,[a, b])$ be the number of up-crossings of the interval $[a, b]$ by $X$ between times $-n$ and 0.% as defined at the beginning of Section 2.4.
+
+If we write $\sG_k = \sF_{-n+k}$, for $0 \leq k \leq n$, then $\sG_k$ is an increasing filtration and the process $(Y_k = X_{-n+k})_{0 \leq k \leq n}$ is an $\sG_\infty$-martingale. Then $N_{-n}(X,[a, b]) = N_{n}(Y,[a, b])$ is the number of up-crossings of the interval $[a,b]$ by $Y_k$ between times 0 and $n$. Thus applying Doob's up-crossing inequality (Lemma \ref{lem:up_crossing_inequality}) to $Y_k$ we get that
+\be
+(b - a)\E\bb{N_{-n}(X,[a, b])} = (b - a)\E\bb{N_{n}(Y,[a, b])} \leq \E\bb{(Y_n - a)^-} = \E\bb{(X_0 - a)^-}.
+\ee
+
+% = X_{-n+k} = X_{-n+k}
+
+Letting $n \to \infty$ we have that $N_{-n}(X,[a, b])$ increases to the total number of up-crossings of $X$ from $a$ to $b$ and thus
+\be
+(b - a)\E\bb{N_{-n}(X,[a, b])} \ua (b - a)\E\bb{N(X,[a, b])} \leq \E\abs{X_0} + a < \infty
+\ee
+since $X_0 \in \sL^1(\Omega,\sF,\pro)$. Therefore, forall $a<b\in \Q$, $N(X,[a,b]) < \infty$ a.s. so by the similar argument in proof of martingale convergence theorem (Theorem \ref{thm:martingale_convergence_discrete}))
+\be
+X_m \to X_{-\infty} \text{ a.s. as }m \to -\infty.%Y_m \to Y_{\infty} \ \text{ a.s. as }m \to \infty %
+\ee
+for some random variable $X_{-\infty}$, which is $\sF_{-\infty}$-measurable, since the $\sigma$-algebras $\sF_n$ are decreasing ($X_{-\infty}$ is $\sF_n$-measurable for all $n$).
+
+By conditional Jensen's inequality (Theorem \ref{thm:jensen_inequality_conditional_expectation}),
+\be
+\abs{\E\bb{X_0|\sF_n}}^p \leq \E \bb{\abs{X_0}^p|\sF_n} \text{ a.s..} %\E\bb{X_0|\sF_n}
+\ee
+
+It follows that by Theorem \ref{thm:lebesgue_integrable_function_property} and the tower property of conditional expectation (Proposition \ref{pro:conditional_expectation_tower_independence}.(i))
+\be
+\E\bb{\abs{X_n}^p} = \E \bb{\abs{\E\bb{X_0|\sF_n}}^p} \leq \E\bb{\E \bb{\abs{X_0}^p|\sF_n} } = \E\bb{ \abs{X_0}^p} < \infty
+\ee
+since $X_0 \in \sL^p(\Omega,\sF,\pro)$. Thus, $X_n \in \sL^p(\Omega,\sF,\pro)$, for all $n \leq 0$. Also, by Fatou's lemma (Lemma \ref{lem:fatou_function}), we get that
+\be
+\E\abs{X_{-\infty}}^p = \E \bb{\liminf_n \abs{X_n}^p} \leq \liminf_n \E \bb{\abs{X_n}^p} < \infty.
+\ee
+
+So $X_{-\infty} \in \sL^p(\Omega,\sF,\pro)$. Now by conditional Jensen's inequality (Theorem \ref{thm:jensen_inequality_conditional_expectation}) we obtain (since $X_{-\infty}$ is $\sF_n$-measurable for all $n$)
+\be
+\abs{X_n - X_{-\infty}}^p = \abs{\E\bb{X_0|\sF_n} - X_{-\infty}}^p = \abs{\E\bb{X_0- X_{-\infty}|\sF_n}}^p \leq \E\bb{\abs{X_0- X_{-\infty}}^p|\sF_n}
+\ee
+
+Since $(Z_n)_{n\leq 0} = (\E\bb{\abs{X_0- X_{-\infty}}^p|\sF_n})_{n\leq 0}$ is a family of random variables, it is UI by Theorem \ref{thm:ui_conditional_expectation_implies_ui}. Then by Theorem \ref{thm:ui_equivalent_finite_measure}
+\be
+\sup_{n\leq 0} \E\bb{\abs{X_n - X_{-\infty}}^p\ind_{\bra{\abs{X_n - X_{-\infty}}^p > K}}} \leq \sup_{n\leq 0} \E\bb{\abs{Z_n}\ind_{\bra{\abs{Z_n}>K}}} \to 0 \text{ as }K\to \infty.
+\ee
+
+Thus, $(\E\bb{\abs{X_0- X_{-\infty}}^p|\sF_n})_{n\leq 0}$ is UI and $\abs{X_0- X_{-\infty}}^p \to 0$ a.s.. Then by Theorem \ref{thm:ui_prob_iff_sl1} and Theorem \ref{thm:martingale_ui_as_l1_closed_discrete} (Or we can use Theorem \ref{thm:slp_iff_probability_ui} directly), we have $X_n \to X$ in $\sL^p(\Omega,\sF,\pro)$ as $n \to -\infty$.
+
+Now $\forall A \in \sF_{-\infty}$. Since $A \in \sF_n$, for all $n \leq 0$, we have by the martingale property that and the tower property of conditional expectation (Proposition \ref{pro:conditional_expectation_tower_independence}.(i))
+\be
+\E\bb{X_n\ind_A} = \E\bb{\E\bb{X_0|\sF_n}\ind_A} = \E\bb{\E\bb{X_0\ind_A|\sF_n}} = \E\bb{X_0\ind_A}
+\ee
+
+Letting $n \to -\infty$ in the above equality and using the $\sL^1(\Omega,\sF,\pro)$ convergence of $X_n$ to $X_{-\infty}$,
+\be
+\E\bb{X_0\ind_A} = \E\bb{X_n\ind_A} \to \E\bb{X_{-\infty}\ind_A}.
+\ee
+
+Thus, $X_{-\infty} = \E\bb{X_0|\sF_{-\infty}}$ a.s..
+\end{proof}
+
+%\begin{proof}[\bf Proof]
+%Let $a < b$, and let $N_n(x, [a, b])$ be the number of upcrossings of $X$ between times $-n$ and 0 from $a$ to $b$. Consider ($X_{-n+k}, 0 \leq k \leq n$), a martingale with respect to the filtration ($\sF_{-n+k}, 0 \leq k \leq n$). Doob's Up-crossing Lemma gives that
+%\be
+%(b - a)\E[N_n(X, [a, b])] \leq \E[(X_0 - a)^-].
+%\ee
+
+%Letting $n\to \infty$, we obtain
+%\be
+%(b - a)\E[N(X, [a, b])] \leq \E[\abs{X_0}]+ a <\infty.
+%\ee
+%Therefore, for all $a < b \in \Q$, $N(X, [a, b]) <\infty$ a.s., so $X_n \to  X_{-\infty} \in \bar{\R} = \R\cup \{\pm \infty\}$ a.s. as $n\to -\infty$. Again by Fatou's Lemma, $X_{-\infty}\in \R$ a.s. Since $X_n = \E[X_0|\sF_n]$ for all $n$, the family $(X_n, n \leq 0)$ is u.i. by Theorem \ref{thm:ui_prob_iff_sl1}. Therefore $X_n \to  X_{-\infty}$ in $L^1$. Finally, let $A \in \sF_{-\infty}$. Then
+%\be
+%\E[\ind_AX_0] = \E[\ind_A\E[X_0 | \sF_n]] = \E[\ind_A X_n]\to \E[\ind_AX_{-\infty}]
+%\ee
+%as $n \to  -\infty$ since $X_n \to  X_{-\infty}$ in $L^1$. Therefore $X_{-\infty} = \E[X_0|\sF_{-\infty}]$ since it is $\sF_{-\infty}$-measurable.
+%\end{proof}
+
+
+
+\begin{remark}
+Sometimes backwards martingales are defined as a forwards process $(Y_n, n \geq 0)$ with respect to a backwards filtration $\sG_0 \supseteq \sG_1 \supseteq \sG_2 \supseteq \dots$ such that $Y_n$ is adapted and in $\sL^1(\Omega,\sF,\pro)$, and $\E\bb{Y_n | \sG_{n+1}} = Y_{n+1}$. This is equivalent to our definition by taking $Y_n = X_{-n}$ and $\sG_n = \sF_{-n}$ for all $n \geq 0$.
+\end{remark}
+
+
+\section{Applications of Discrete Time Martingales}
+
+
+\subsection{Strong law of large numbers}
+
+Now we give the alternative proof of the strong law of large numbers (Comparing with Theorem \ref{thm:slln}).
+
+
+%We begin with a classical result of Kolmogorov.
+
+%\begin{theorem}[Kolmogorov's 0-1 law]
+%Let $X_0, X_1, X_2, \dots$ be independent r.v.'s. Define
+%\be
+%\sG_n = \sigma(X_n, X_{n+1}, \dots) \quad \text{and}\quad \sG_\infty = \bigcap_{n\geq0} \sG_n.
+%\ee
+
+%Then $\pro(A) \in \{0, 1\}$ for all $A \in \sG_\infty$. $\sG_\infty$ is the tail $\sigma$-algebra of $(X_0, X_1, X_2, \dots)$.
+%\end{theorem}
+
+%\begin{proof}[\bf Proof]
+%Let $\sF_n = \sigma(X_0,\dots, X_n)$ and $A \in \sG_\infty$. By definition, $\sG_\infty$ is independent of $\sF_n$ since $\sG_\infty \subseteq \sG_{n+1}$ and the $X_i$'s are independent. Thus $\E[\ind_A |\sF_n] = \pro(A)$. On the other hand, ($\E[\ind_A |\sF_n]$, $n \geq 0$) is a martingale with respect to the filtration $(\sF_n, n \geq 0)$. Thus $\E[\ind_A |\sF_n]\to \E[\ind_A |\sF_\infty]$ a.s. as $n\to \infty$, where $\sF_\infty = \bigvee_{n\geq0} \sF_n$.
+
+%But $\sF_\infty \supseteq \sG_\infty$ since $\sF_\infty = \sigma(X_0, X_1, \dots) \supseteq \sG_n$ for all $n$. Therefore $\ind_A = \E[\ind_A |\sF_\infty] = \pro(A)$ a.s.
+%\end{proof}
+
+\begin{theorem}[strong law of large numbers\index{strong law of large numbers!martingale approach}]\label{thm:slln_martingale}
+Let $X_1, X_2, \dots$ be i.i.d. random variables in $\sL^1\bb{\Omega,\sF,\pro}$ with $\mu = \E\bb{X_1}$. Let $S_n = X_1 + \dots + X_n$, for $n\geq 1$ and $S_0 = 0$. Then $S_n/n \to \mu$ a.s. and in $\sL^1\bb{\Omega,\sF,\pro}$ as $n\to \infty$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]%Let $\sF_n = \sigma(S_1, \dots, S_n) = \sF^S_n$, and
+Let
+\be
+\sG_n = \sigma(S_n, S_{n+1}, \dots) = \sigma(S_n, X_{n+1}, X_{n+2}, \dots ).
+\ee
+
+Let $(\sF_n)_{n\leq -1} = (\sG_{-n})_{n\leq -1}$. Thus, $\sF_{-\infty} \subseteq \dots \subseteq \sF_{-1}$ We will now show that $(M_n)_{n\leq -1} = \bb{\frac{S_{-n}}{-n}}_{n \leq -1}$ is a backwards martingale with respect to $(\sF_n)_{n\leq -1}$. We have for $m \leq -1$ ($M_n$ is integrable so $\E\bb{M_{m+1}|\sF_m}$ is well-defined),
+\be
+\E\bb{M_{m+1}|\sF_m} = \E \bb{\left.\frac{S_{-m-1}}{-m-1}\right|\sG_{-m}}.
+\ee
+
+Setting $n=-m$, since $X_n$ is independent of $X_{n+1},X_{n+2},\dots$, we obtain (by Proposition \ref{pro:conditional_expectation_basic_property}.(ii))
+\be
+\E\bb{\left. \frac{S_{n-1}}{n-1}\right|\sG_n} = \E\bb{\left. \frac{S_n - X_n}{n-1}\right|\sG_n} = \frac {S_n}{n-1} - \E\bb{\left. \frac{X_n}{n-1}\right|\sG_n} \text{ a.s.}
+\ee
+
+By symmetry, notice that $\E\bb{X_k|\sG_n} = \E\bb{X_1|\sG_n}$ for all $k\in \bra{1,2,\dots,n}$. Indeed, for any $A\in \sB(\R)$ we have that $\E\bb{X_k\ind_{\bra{S_n\in A}}}$ does not depend on $k$. Clearly,
+\be
+\E\bb{X_1|\sG_n} + \dots + \E\bb{X_n|\sG_n} = \E\bb{S_n|\sG_n} = S_n \text{ a.s.} \ \ra \ \E\bb{X_n|\sG_n} = S_n/n \text{ a.s.}
+\ee
+
+
+Finally putting everything together we get
+\be
+\E\bb{M_{-n+1}|\sF_{-n}} =  \E\bb{\left. \frac{S_{n-1}}{n-1}\right|\sG_n} = \frac {S_n}{n-1} - \frac{S_n}{n(n-1)} = \frac{S_n}{n} = M_{-n} \text{ a.s.}
+\ee
+
+Also $M_{-1} = X_1$ is integrable, so $M$ is a backwards martingale. Then by backwards martingale convergence theorem (Theorem \ref{thm:backwards_martingale_as_lp_closed_discrete}, $X_1\in \sL^1(\Omega,\sF,\pro)$), $M_{-n} = \frac{S_n}{n}$ converges a.s. and in $\sL^1(\Omega,\sF,\pro)$ to a random variable, $M_{-\infty}\in \sL^1(\Omega,\sF,\pro)$. Obviously, martingale property and dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}) give that %$\lim \E\bb{M_{-n}} = \E\bb{M_{-\infty}}$. By
+\be
+\mu = \E\bb{X_1} = \E\bb{\frac {X_1}1} = \E\bb{M_{-1}} = \E \bb{M_{-n}} \to \E\bb{M_{-\infty}}, \quad (*)
+\ee
+
+
+
+
+%\be
+%\E\bsb{\frac{S_n}n |\sG_{n+1} } = \E\bsb{\left.\frac{S_{n+1} - X_{n+1}}{n} \right| \sG_{n+1}} = \frac{S_{n+1}}n - \frac 1n \E[X_{n+1} | \sG_{n+1}].
+%\ee
+
+%But
+%\be
+%\E[X_{n+1}|\sG_{n+1}] = \E[X_{n+1} | S_{n+1}, X_{n+2}, X_{n+3}, \dots] = \E[X_{n+1}| S_{n+1}]
+%\ee
+%by a property of conditional expectation, since the r.v.'s $X_{n+2}, X_{n+3}, \dots$ are independent of $X_{n+1}$ and $S_{n+1}$. Note that $\E[X_{n+1}| S_{n+1}] = \E[X_k |\sF_{n+1}]$ for all $k \in \{0, 1, \dots, n + 1\}$ since $\E[X_{n+1} f (S_{n+1})] = \E[X_k f (S_{n+1})]$ since $S_{n+1}$ is a symmetric function of $X_1, \dots, X_{n+1}$. Therefore
+%\be
+%\E[\E[X_{n+1} | S_{n+1}] f (S_{n+1})] = \E[\E[X_k | S_{n+1}] f (S_{n+1})]
+%\ee
+%so
+%\be
+%\E[X_{n+1}| S_{n+1}] = \frac{\sum^{n+1}_{k=1} \E[X_k | S_{n+1}]}{n+1} = \frac{\E[\sum^{n+1}_{k=1} X_k | S_{n+1}]}{n+1} = \frac{S_{n+1}}{n+1}.
+%\ee
+
+%Finally,
+%\be
+%\E\bsb{\frac{S_n}{n}| \sG_{n+1}} = \frac{S_{n+1}}n - \frac {S_{n+1}}{n(n+1)} = \frac{S_{n+1}}n (1- \frac 1{n+1}) = \frac{S_{n+1}}{n+1},
+%\ee
+%and the claim is proved.
+
+%Therefore $\frac {S_n}n$ converges to some finite limit $L$ a.s. and in $L^1$ as $n \to \infty$. We must finally check that $L = \E[X_1]$. We have $\E[L] = \E[\frac{S_n}n ] = \E[\frac{S_1}1 ] = \E[X_1]$. Note that $L$ is measurable with respect to the tail $\sigma$-algebra of $X_1, X_2, \dots$ (since $\lim_{n\to \infty} \frac{S_n}n = \lim_{n\to \infty} \frac{S_n-S_k}n$ for all $k$, so $L$ is $\sigma(X_k, X_{k+1}, \dots)$-measurable for all $k$.)
+
+%By Kolmogorov's 0-1 law, $\pro(L = a) \in \{0, 1\}$ for all $a$, implying that $L$ is constant a.s. Therefore $L = \E[X_1]$.
+
+Obviously, for all $k$,
+\be
+M_{-\infty} = \lim \frac{S_n}{n} = \lim \frac{S_n - S_k}{n} = \lim \frac{X_{k+1} + \dots X_n}{n}.
+\ee
+
+Thus, $M_{-\infty}$ is $\sT_k = \sigma(X_{k+1},\dots)$-measurable, for all $k$, hence it is $\sT_\infty = \bigcap_k \sT_k$-measurable. Then by Kolmogorov's 0-1 law (Theorem \ref{thm:kolmogorov_0_1}), we conclude that there exists a constant $c\in \R$ such that $\pro(M_{-\infty} =c) =1$. But by ($*$)
+\be
+c = \E\bb{M_{-\infty}} = \mu.
+\ee
+
+Thus, $M_{-n} = S_n/n \to c = \mu$ a.s..
+\end{proof}
+
+
+
+\subsection{Kakutani's theorem for product martingales}
+
+\begin{definition}[product martingale\index{product martingale!discrete}]\label{def:product_martingale_discrete}
+A product martingale is a martingale of the form $X_n = \prod^n_{i=1} Y_i$, where the $Y_i$ are independent, non-negative random variables such that $\E\bb{Y_i} = 1$ for all $i = 1, \dots, n$.
+\end{definition}
+
+\begin{remark}
+A product martingale is indeed a martingale, since $\E\bb{X_n} = \prod^n_{i=1} \E\bb{Y_i} = 1$ by independence (Theorem \ref{thm:characteristic_function}), and
+\be
+\E\bb{X_{n+1}|\sF_n} = \E\bb{Y_{n+1}X_n | \sF_n} = X_n \E\bb{Y_{n+1}| \sF_n} = X_n \E\bb{Y_{n+1}} = X_n,
+\ee
+since $Y_{n+1}$ is independent of $\sF_n$, where $\sF_n := \sF^X_n = \sigma(X_1, \dots, X_n) = \sigma(Y_1, \dots, Y_n)$.
+
+Now $X_n \geq 0$, so $X_n \to  X_\infty \geq 0$ finite a.s. as $n\to \infty$ by martingale convergence theorem (Theorem \ref{thm:martingale_convergence_discrete}).
+\end{remark}
+%\footnote{need check that $X_\infty \geq 0$ a.s.}
+
+\begin{theorem}[Kakutani's product martingale theorem\index{Kakutani's product martingale theorem}]
+With the notation in Definition \ref{def:product_martingale_discrete}, $X_n \to X_\infty \geq 0$ finite a.s.. Let $a_n = \E\bb{\sqrt{Y_n}}$. The following are equivalent.
+\ben
+\item [(i)] $(X_n)_{n \geq 0}$ is a UI martingale.
+\item [(ii)] $\E\bb{X_\infty} = 1$.
+\item [(iii)] $\pro(X_\infty > 0) > 0$.
+\item [(iv)] $\prod_{n\geq 1} a_n > 0$.
+\een
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+(iii) $\ra$ (iv): Suppose that $\prod_{n\geq 0} a_n = 0$. Let $M_n = \prod^n_{i=1} \frac{\sqrt{Y_i}}{a_i}$, so that $M_n$ is also a (non-negative) product martingale ($M$ is bounded in $\sL^1(\Omega,\sF,\pro)$). By the martingale convergence theorem, $M_n \to  M_\infty \geq 0$ a.s. where $M_\infty$ is finite a.s.. We have $M_n = \frac 1{\prod^n_{i=1} a_i }\sqrt{X_n}$, so $X_n = M^2_n \prod^n_{i=1} a^2_i \to 0$ a.s. as $n \to \infty$ since $M_\infty$ is finite valued a.s. and $\prod_{n \geq0} a_n = 0$. Thus $X_\infty \equiv 0$ a.s. and the contrapositive is proved.
+
+(iv) $\ra$ (i): Assume that $\prod_{n\geq0} a_n > 0$. Then since $a_n \in [0,1]$,
+\be
+\E\bb{M^2_n} = \E\bb{\frac{X_n}{\prod^n_{i=1} a^2_i}} = \frac 1{\prod^n_{i=1} a^2_i} \leq \frac 1{\prod_{i\geq0} a^2_i} <\infty.
+\ee
+
+Therefore $M$ is bounded in $\sL^2(\Omega,\sF,\pro)$. Doob's inequality (Theorem \ref{thm:doob_lp_inequality_discrete}) gives that
+\be
+\E\bb{(M^*_n)^2} \leq \bb{\frac 2{2-1}}^2 \E\bb{M^2_n} \leq \frac 4{\prod_{i\geq 1} a^2_i} < \infty,
+\ee
+where $M^*_n = \sup_{1\leq i\leq n} M_i$. Also we have $\abs{X_n} = \abs{M_n}^2 \bb{\prod^n_{i=1}a_i}^2 \leq \abs{M_n}^2$ and $M_n$ is non-negative,
+\be
+\E \bb{\sup_{1\leq i\leq n}\abs{X_i}} \leq \E \bb{\sup_{1\leq i\leq n}\abs{M_n}^2} = \E \bb{\bb{\sup_{1\leq i\leq n}\abs{M_n}}^2} = \E\bb{(M^*_n)^2}  < \infty.
+\ee
+
+Then $\sup_{1\leq i\leq n}\abs{X_i} \ua \sup_{n\geq 0}\abs{X_n} := X^*$, by monotone convergence theomem (Theorem \ref{thm:monotone_convergence_probability}), $\E\bb{X^*} < \infty$.
+%Therefore $\sup_{n\geq 0} \E\bb{(M^*_n)^2} <\infty$. Then $M^*_\infty = \sup_{n\geq0} \frac 1{\prod^n_{i=1} a_i} \sqrt{X_n}$, which implies that
+%\be
+%(M^*_\infty)^2 = \sup_{n\geq0} \frac{X_n}{\prod^n_{i=1} a^2_i} \quad \ra \quad \sup_{n\geq0} X_n \leq (M^*_\infty)^2.
+%\ee
+%(M_\infty^*)^2$, so
+We see that $X_n$ is dominated by the integrable random variable $X^*$. Then  $(X_n)_{n \geq 0}$ is UI (Theorem \ref{pro:dominated_integrable_implies_ui}).
+
+(i) $\ra$ (ii): If $X$ is UI then $X_n \to  X_\infty$ (finite limit) a.s. and in $\sL^1(\Omega,\sF,\pro)$ as $n \to \infty$. We have
+\be
+1 = \E\bb{X_n}\to \E\bb{X_\infty}
+\ee
+by dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}).
+
+(ii) $\ra$ (iii): If $\pro(X_\infty >0) = 0$, $X_\infty = 0$ a.s.. Thus, $\E(X_\infty)= 0$ by Theorem \ref{thm:lebesgue_integrable_function_property}. Contradiction. %If $\E\bb{X_\infty} > 0$ then $\pro(X_\infty > 0) > 0$ since $X_\infty \geq 0$.
+\end{proof}
+
+\begin{remark}
+$\prod_n a_n = 0 \ \lra X_\infty = 0$ a.s..
+
+By the Cauchy-Schwartz inequality, $\bb{\E\sqrt{Y_n}}^2 \leq \E\bb{Y_n} = 1$, so $a_n \leq 1$ for all $n$. Recall that $\prod_{n\geq 1} a_n \in [0, 1]$, and $\prod_{n\geq 1} a_n > 0$ if and only if $\sum_{n\geq 1}(1 - a_n)
+< \infty$ (this is seen by taking logarithms since $\ln (1-z) = -z - \frac {z^2}2 - \frac{z^3}3 - \dots$).
+\end{remark}
+
+
+\begin{remark}
+In the case that every $Y_n$ is positive a.s. for every $n$, we are assured that $X_n > 0$ for all $n$ as well. Therefore $\{X_\infty = 0\}$ does not depend on the first few $Y_i$'s, so it is a tail event. By Kolmogorov's 0-1 law (Theorem \ref{thm:kolmogorov_0_1}), $\pro(X_\infty = 0) \in \{0, 1\}$. In this case, $\pro(X_\infty > 0) > 0$ if and only if $\pro(X_\infty > 0) = 1$.
+\end{remark}
+
+
+
+
+\subsection{Radon-Nikodym theorem}
+
+Recall Proposition \ref{pro:density_function_measure},
+
+\begin{definition}[Radon-Nikodym derivative]\label{def:radon_nikodym_derivative}
+Let $(\Omega,\sF, \pro)$ be a probability space. Let $\Q$ be a non-negative, finite measure on $(\Omega,\sF)$. If there exists some non-negative random variable $X$ such that $\Q = X \cdot \pro$, in the sense that $\Q(A) = \E^\pro\bb{X\ind_A}$ for all $A \in \sF$, then $X$ is called a density\index{density function!Radon-Nikodym derivative} or Radon-Nikodym derivative\index{Radon-Nikodym derivative} of $\Q$ with respect to $\pro$ (we can say $\Q$ admits a density $X$ with repect to $\pro$), and we write $X = \frac{d\Q}{d\pro}$.
+\end{definition}
+
+Now we would like to find conditions under which $\Q$ admits a density $X$ with repect to $\pro$.
+
+
+%Write $\pro_n = \pro|\sF_n$ and $\Q_n = \Q|\sF_n$.
+
+\begin{lemma}\label{lem:martingale_density_ui_discrete}
+Let $(\sF_n)_{n \geq 0}$ be a filtration on $(\Omega,\sF)$. %, with $\sF_\infty = \sF$\footnote{why we need $\sF_\infty = \sF$ here?}.
+Assume that $\Q|_{\sF_n} = X_n \cdot \pro|_{\sF_n}$ (equivalently, $\Q(A) = \E^\pro\bb{X_n \ind_A}$ for all $A\in \sF_n$) for some non-negative $\sF_n$-measurable random variable $X_n$, for every $n$. Then $(X_n)_{n \geq 0}$ is a $(\sF_n)_{n\geq 0}$-martingale.
+
+%\footnote{$\Q|_{\sF_n}$ is well-defined by the same setting with conditional expectation since we can scale $\Q$ by multiplication.}
+
+Moreover, $\Q$ admits a density $X$ with respect to $\pro$ if and only if the martingale $(X_n)_{n \geq 0}$, defined above, is UI. In this case $X = X_\infty$.
+\end{lemma}
+\begin{proof}[\bf Proof]%\beast
+%\E^\pro\bb{\E^{\pro}\bb{X_{n+1}|\sF_n}\ind_A} & = & \E^\pro\bb{\E^{\pro}\bb{X_{n+1}\ind_A|\sF_n}}  = \E^{\pro}\bb{X_{n+1}\ind_A} \\
+%& = & \Q(A) = \E^{\pro_n}\bb{X_{n+1}|\sF_n}
+%\eeast
+%\beast
+%\E^{\pro}\bb{X_{n+1}\ind_A|\sF_n} & = & \E^\pro\bb{\E^{\pro}\bb{X_{n+1}\ind_A|\sF_n}|\sF_{n+1}}  = \E^\pro\bb{\E^{\pro}\bb{1|\sF_n}X_{n+1}\ind_A|\sF_{n+1}}  \\
+%& = & \E^\pro\bb{X_{n+1}\ind_A|\sF_{n+1}} = \Q(A|\sF_{n+1}) \stackrel{\text{a.e.}}{=}  \Q(A|\sF_n) = \E^{\pro}\bb{X_n\ind_A|\sF_n}
+%\eeast
+%by the tower property of conditional expectation (Proposition \ref{pro:conditional_expectation_tower_independence}.(i)),
+
+Let $A \in \sF_n$. Then $\E^{\pro}\bb{X_{n+1}\ind_A} = \Q(A) = \E^{\pro}\bb{X_n\ind_A}$ since $A \in \sF_n\subseteq \sF_{n+1}$. Therefore $X_n = \E\bb{X_{n+1}|\sF_n}$ a.s.. by Theorem \ref{thm:conditional_expectation_existence_uniqueness}. Adaptedness and Integrability are easily obtained by the definition of $X$ ($\E(X_n) = \Q(\Omega) < \infty $) and $X_n$ ($X_n$ is $\sF_n$-measurable random variable).
+
+%By the martingale convergence theorem, $X_n \to  X_\infty \geq 0$ a.s. as $n \to \infty$. Is it true that $\Q = X_\infty \cdot \pro$?
+
+
+Assume that $(X_n)_{n \geq 0}$ is UI. Then $X_n \to  X_\infty$ a.s. and in $\sL^1(\Omega,\sF,\pro)$. Hence if $A \in \sF_m$ then for $n \geq m$, by martingale property,
+\be
+\Q(A) = \E^\pro\bb{X_m\ind_A} = \E^\pro\bb{X_n\ind_A} \to \E^\pro\bb{X_\infty \ind_A}
+\ee
+by $\sL^1(\Omega,\sF,\pro)$ convergence (Lemma \ref{lem:scheffe_probability}). Therefore, for all $A \in \bigcup_{n\geq0} \sF_n$ which is a $\pi$-system, $\E\bb{X_\infty \ind_A} = \Q(A)$, and uniqueness of extension (Theorem \ref{thm:uniqueness_of_extension_measure}) this also holds for every $A \in \sF_\infty = \sigma(\bigcup_{n\geq0} \sF_n)$, so $X_\infty$ is a density of $\Q$ with respect to $\pro$.
+
+Conversely, assume that $\Q = X \cdot \pro$ for some $X \geq 0$. Then for all $A \in \sF_n$,
+\be
+\Q(A) = \E^\pro\bb{X\ind_A} = \E^\pro\bb{\E^\pro\bb{X |\sF_n}\ind_A}
+\ee
+Thus $\Q|_{\sF_n} = \E^\pro\bb{X | \sF_n} \cdot \pro|_{\sF_n}$. By uniqueness of the density (Theorem \ref{thm:uniqueness_density_function}), $X_n := \frac{d\Q_n}{d\pro_n} = \E^\pro\bb{X |\sF_n}$ a.s.. Also, $X\in \sL^1(\Omega,\sF,\pro)$ since $\E^\pro(X) = \Q(\Omega) < \infty$. Hence, $(X_n)_{n \geq 0}$ is closed in $\sL^1(\Omega,\sF,\pro)$, it is UI (by Theorem \ref{thm:martingale_ui_as_l1_closed_discrete}).
+\end{proof}
+
+
+
+\begin{theorem}[Radon-Nikodym theorem\footnote{this should also hold for finite measure, need checking}\index{Radon-Nikodym theorem}]\label{thm:radon_nikodym_discrete}%Assume that $\sF$ is separable (Definition \ref{def:separable_sigma_algebra} i.e., there are countable many events $F_1,F_2,\dots$ such that $\sF = \sigma(F_1,F_2,\dots)$).
+Let $\Q$ be a non-negative finite measure on $(\Omega,\sF)$ and $\pro$ be a probability on $(\Omega,\sF)$. Then the following are equivalent:
+\ben
+\item [(i)] $\pro(A) = 0$ implies $\Q(A) = 0$ for all $A \in \sF$ (in this case $\Q$ is absolutely continuous\index{absolutely continuous!measure}\footnote{need definition} with respect to $\pro$, and write $\Q \ll \pro$).
+\item [(ii)] For all $\ve > 0$ there is $\delta > 0$ such that for all $A \in \sF$, $\pro(A) < \delta$ implies $\Q(A) < \ve$.
+\item [(iii)] There exists a non-negative random variable $X$ such that $\Q = X \cdot \pro$ (i.e. $\Q$ admits a density with respect to $\pro$), for all $A\in \sF$, $\Q(A) = \E^\pro\bb{X\ind_A}$.
+\een
+\end{theorem}
+
+\begin{remark}
+See Rogers-Williams\cite{Rogers_1994}.I.$P_{98}$ for another version\footnote{checking needed.}.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+(iii) $\ra$ (i): Trivial, since if $\Q(A) = \E^\pro\bb{X\ind_A}$ for some $X$ then $\pro(A) = 0$ implies $\ind_A = 0$ a.s. under $\pro$, so $\Q(A) = 0$.
+
+(i) $\ra$ (ii): Assume that (ii) does not hold. Then there is $\ve > 0$ such that for every $\delta > 0$ there is $B \in \sF$ such that $\pro(B) < \delta$ and $\Q(B) \geq \ve$. By taking $\delta = \frac 1{2^n}$, we can find $(B_n)_{n \geq 0}\in \sF$ such that $\pro(B_n) < \frac 1{2^n}$, but $\Q(B_n) \geq \ve > 0$. Therefore $\sum_n \pro(B_n) < \infty$, so by the first Borel-Cantelli Lemma (Lemma \ref{lem:borel_cantelli_1_measure}), $\pro(B_n \text{ i.o.}) = 0$. On the other hand, by Fatou's lemma (Lemma \ref{lem:fatou_set} since $\Q$ is finite),
+\be
+\Q(B_n \text{ i.o.}) = \Q\bb{\limsup B_n} \geq \limsup \Q(B_n) \geq \ve > 0.%\Q\bb{\bigcup_{k\geq n} B_k} \geq \Q(B_n) \geq \ve.
+\ee
+and thus (i) does not hold.
+%The lefthand side converges to $\Q(\limsup_n B_n)$ as $n\to \infty$, so
+%\be
+%\Q(B_n \text{ i.o.}) > 0
+%\ee
+
+%Consider $\Q_n = \Q|\sF_n$ and $\pro_n = \pro|\sF_n$, and let
+
+(ii) $\ra$ (iii): Let $\sF_n = \sigma(F_1, \dots, F_n)$. If we write $\sA_n = \bra{H_1\cap \dots \cap H_n:H_i = F_i \text{ or }F_i^c}$, then it is easy to see that $\sF_n = \sigma\bb{\sA_n}$. Note that the sets in $\sA_n$ are disjoint.
+
+%Then $F_n = \sigma(A^\ve, \ve\in \{0, 1\}^n)$, where $A^\ve = \bigcap^n_{i=1}F^{\ve_i}_i$, $F^0_i = F_i$, and $F^1_i = \Omega\bs F_i$. The $A^\ve$ partition $\Omega$ with disjoint sets and generate $\sF_n$.
+
+We now let $X_n:\Omega \to [0,\infty)$ be the random variable defined as follows
+\be
+X_n(\omega) = \sum_{A\in \sA_n} \frac{\Q(A)}{\pro(A)}\ind_A.
+\ee
+with the convention that $\frac 00 = 0$. Since the sets in $\sA_n$ are disjoint, we get that for all $A\in \sF_n$,
+\be
+\Q(A) = \bb{\frac{\Q(A)}{\pro(A)}} \pro(A) = \E^\pro\bb{\frac{\Q(A)}{\pro(A)} \ind_A} = \E^\pro\bb{\ind_A \sum_{B\in \sA_n} \frac{\Q(B)}{\pro(B)}\ind_B}
+\ee
+
+%Indeed, if $A= A^\ve$ for some $\ve \in \{0, 1\}^n$ then
+%\be
+%\Q_n(A) = \frac{\Q_n(A)}{\pro_n(A)} P_n(A) = \E^{\pro_n} \bb{\frac{\Q(A)}{\pro(A)} \ind_A} = \E^{\pro_n}\bb{\ind_A \sum_{\ve\in \{0,1\}^n} \frac{\Q(A^\ve)}{\pro(A^\ve)} \ind_{A^\ve}}.
+%\ee
+
+Therefore $\Q(A) = \E\bb{X_n\ind_A}$ for all $A\in \sF_n$ ($*$).% By linearity this holds for all $A \in \sF_n$.
+
+By Lemma \ref{lem:martingale_density_ui_discrete}, $(X_n)_{n\geq 0}$ is a non-negative martingale with respect to the filtered probability space $(\Omega,\sF,(\sF_n)_{n\geq 0},\pro)$. Now it suffices to show that $(X_n)_{n\geq 0}$ is UI by Lemma \ref{lem:martingale_density_ui_discrete}. We must check that
+\be
+\sup_{n\geq 0} \E^\pro\bb{X_n\ind_{\bra{X_n>\lm}}} \to 0\text{ as }\lm \to \infty.
+\ee
+
+But $\E^\pro\bb{X_n\ind_{\bra{X_n>\lm}}} = \Q(X_n > \lm)$ since ${\bra{X_n>\lm}}\in \sF_n$ by ($*$). By (ii), we have that for any $\ve>0$, $\exists \delta >0$ such that for all $A\in \sF$,
+\be
+\pro(A) \leq \delta \ \ra \ \Q(A) < \ve.
+\ee
+
+Now we set $\lm = \Q(\Omega)/\delta$, $A = \bra{X_n > \lm}\in \sF$. By Markov's inequality (Theorem \ref{thm:markov_inequality_probability})
+\be
+\pro(X_n > \lm) \leq \frac {\E\bb{X_n}}{\lm}  = \frac {\Q(\Omega)}{\lm} = \delta \ \ra \ \Q(X_n > \lm) = \E^\pro\bb{X_n\ind_{\bra{X_n>\lm}}} < \ve.
+\ee
+
+%Need to show for all $\ve > 0$ there is $\delta > 0$ such that $\sup_n \pro(X_n \geq \lm) \leq \delta$ (take $\lm > \frac{\Q(\Omega)}{\lm}$). By (ii), fixing $\ve > 0$, there is $\delta > 0$ such that  By choosing $\lm$ as above, $\pro(X_n > \lm) \leq \delta$ implies $\Q(X_n > \lm) \leq \ve$.
+
+Therefore for all $\ve > 0$ there is $\delta > 0$ such that $\sup_{n\geq 0} \E[X_n\ind_{X_n>\lm}] \leq \ve$. Hence $(X_n)_{n\geq 0}$ is UI, and $\Q = X_\infty \cdot \pro$.
+\end{proof}
+
+
+
+\section{Continuous-time Martingales}
+
+\subsection{Definitions}
+
+\begin{definition}\label{def:martingale_super_sub_continuous}
+Let $(\Omega,\sF, (\sF_t)_{t\geq 0},\pro)$ be a filtered probability space. Let $X = (X_t)_{t\geq 0}$ be an adpated real-valued integrable process (see Definition \ref{def:adapted_process_continuous} and Definition \ref{def:integrable_stochastic_process_continuous}). Then for $s,t\in \R^{++}$,
+\ben
+\item [(i)] $X$ is a martingale\index{martingale!continuous} with respect to $((\sF_t)_{t\geq 0},\pro)$ if $\E\bb{X_t | \sF_s} = X_s$ a.s. for all $t \geq s$.
+\item [(ii)] $X$ is a supermartingale\index{supermartingale!continuous} with respect to $((\sF_t)_{t\geq 0},\pro)$ if $\E\bb{X_t | \sF_s}\leq X_s$ a.s. for all $t\geq s$.
+\item [(iii)] $X$ is a submartingale\index{submartingale!continuous} with respect to $((\sF_t)_{t\geq 0},\pro)$ if $\E\bb{X_t | \sF_s} \geq X_s$ a.s. for all $t\geq s$.
+\een
+
+In particular, if $X$ is a
+\ben
+\item [(i)] martingale, then $\E\bb{X_t} = \E\bb{X_s}$ for all $t\geq s$.
+\item [(ii)] supermartingale, then $\E\bb{X_t} \leq \E\bb{X_s}$ for all $t\geq s$.
+\item [(iii)] submartingale, then $\E\bb{X_t} \geq \E\bb{X_s}$ for all $t\geq s$.
+\een
+\end{definition}
+
+\begin{remark}
+If a process is both supermartingale and submartingale, then it is a martingale.
+\end{remark}
+
+\begin{remark}
+The definition of $\E\bb{X|\sF}$ the conditional expectation for a complex random variable $X \in \sL^1(\Omega,\sF,\pro)$ is $\E\bb{\Re X|\sF} + i\E\bb{\Im X|\sF}$, and we say that an integrable process $(X_t)_{t \geq 0}$
+with values in $\C$, and adapted to a filtration ($\sF_t$), is a martingale if its real and imaginary parts are.
+\end{remark}
+
+\begin{proposition}\label{pro:martingale_abs_plus_minus_submartingale}
+If $X$ is a martingale, then $\abs{X}$, $X^+$ and $X^-$ are submartingales.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+We know that for all $s\leq t$, by Proposition \ref{pro:conditional_expectation_basic_property}.(iv),
+\be
+\abs{X_s} = \abs{\E \bb{X_t|\sF_s}} \leq \E\bb{\abs{X_t}|\sF_s} \text{ a.s.}\ \ra \ \abs{X} \text{ is a submartingale.}
+\ee
+
+Also, $X = X^+ - X^-$ and $\abs{X} = X^+ + X^-$, by Proposition \ref{pro:conditional_expectation_basic_property}.(iii),(iv)
+\beast
+X_s^+ & = & \frac 12 \bb{\abs{X_s} + X_s} \leq \frac 12 \bb{\E\bb{\abs{X_t}|\sF_s} + \E \bb{X_t|\sF_s}} = \E \bb{X_t^+|\sF_s} \text{ a.s.}.\\
+X_s^- & = & \frac 12 \bb{\abs{X_s} - X_s} \leq \frac 12 \bb{\E\bb{\abs{X_t}|\sF_s} - \E \bb{X_t|\sF_s}} = \E \bb{X_t^+|\sF_s} \text{ a.s.}.
+\eeast
+
+Thus, $X^+$ and $X^-$ are submartingales.
+\end{proof}
+
+\begin{remark}
+We can also prove this with Jensen's inequality as $\abs{X}$, $X^+$ and $X^-$ are convex.
+\end{remark}
+
+\begin{proposition}\label{pro:convex_implies_submartingale}
+If $X$ is a martingale and $f$ is a convex function with $f(X) \in \sL^1(\Omega,\sF,\pro)$ or $f > 0$, then $f\bb{X}$ is submartingale.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+By conditional Jensen's inequality (Theorem \ref{thm:jensen_inequality_conditional_expectation}), for $s\leq t$,
+\be
+f(\E(X_t|\sF_s)) \leq \E(f(X)|\sF_s)\ \text{ a.s.}
+\ee
+
+Also, $\E(X_t|\sF_s) = X_s$ a.s.. Thus, we have
+\be
+X_s \leq \E(f(X)|\sF_s)\ \text{ a.s.}
+\ee
+which implies that $X$ is submartingale.
+\end{proof}
+
+%\subsection{$\sL^2(\Omega,\sF,\pro)$ martingale}
+
+\begin{lemma}\label{lem:sl2_martingale_trick}
+Let $X$ be a martingale and such that for some given $s < t$, $\E(X^2_s ) < \infty$ and $\E(X^2_t ) < \infty$. Then
+\be
+\E\bb{\left.X^2_t -X^2_s \right|\sF_s} = \E\bb{\left.(X_t -X_s)^2\right|\sF_s}, \quad\text{a.s.}.
+\ee
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+By expanding the square $(X_t -X_s)^2$, the right-hand side is equal to
+\be
+\E\bb{\left(X_t -X_s)^2\right|\sF_s} \stackrel{\text{a.s.}}{=} \E\bb{\left.X^2_t \right|\sF_s} - 2X_s\E(X_t|\sF_s) + X^2_s \stackrel{\text{a.s.}}{=} \E\bb{\left.X^2_t \right|\sF_s} - 2X^2_s + X^2_s \stackrel{\text{a.s.}}{=} \E(X^2_t -X^2_s |\sF_s).
+\ee
+where we use $X_sX_t$ is integrable ($\E\abs{X_sX_t} \leq \sqrt{\E(X_s^2)\E(X_t^2)} < \infty$ by H\"older's inequality (Theorem \ref{thm:holder_inequality_expectation})) and Proposition \ref{pro:conditional_expectation_tower_independence} for the first and third equations. For the second equation, we simply use martingale definition.
+\end{proof}
+
+
+\begin{lemma}\label{lem:martingale_quadratic_sum_square_bounded}
+Let $M$ be a bounded martingale. Suppose that $n\in \N$ and $0 = t_0 < t_1 <\dots< t_n < \infty$. Then
+\be
+\E\bb{\bb{\sum^{n-1}_{k=0} (M_{t_{k+1}} -M_{t_k})^2}^2}\quad \text{is bounded.}
+\ee
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+First note that
+\be
+\E\bb{\bb{\sum^{n-1}_{k=0}(M_{t_{k+1}} -M_{t_k} )^2}^2} = \sum^{n-1}_{k=0} \E\bb{(M_{t_{k+1}} -M_{t_k} )^4} + 2\sum^{n-1}_{k=0} \E\bb{(M_{t_{k+1}} -M_{t_k})^2\sum^{n-1}_{j=k+1} (M_{t_{j+1}} -M_{t_j} )^2}.\quad\quad (*)\nonumber
+\ee
+
+For each fixed $k$ we have (by property of martingale and Lemma \ref{lem:sl2_martingale_trick}),
+\beast
+\E\bb{(M_{t_{k+1}} -M_{t_k} )^2\sum^{n-1}_{j=k+1} (M_{t_{j+1}} -M_{t_j} )^2} & = & \E\bb{(M_{t_{k+1}} -M_{t_k} )^2\E\bb{\left.\sum^{n-1}_{j=k+1} (M_{t_{j+1}} -M_{t_j} )^2\right|\sF_{t_{k+1}} }}\\
+& = & \E\bb{(M_{t_{k+1}} -M_{t_k} )^2\E\bb{\left.\sum^{n-1}_{j=k+1} (M^2_{t_{j+1}} -M^2_{t_j})\right|\sF_{t_{k+1}} }}\\
+& = & \E\bb{(M_{t_{k+1}} -M_{t_k} )^2\E\bb{\left. M^2_{t_n} -M^2_{t_{k+1}} \right|\sF_{t_{k+1}} }}\\
+& = & \E\bb{(M_{t_{k+1}} -M_{t_k} )^2\bb{M^2_{t_n} -M^2_{t_{k+1}} }}
+\eeast
+
+After inserting this in ($*$) we get the estimate
+\beast
+\E\bb{\sum^{n-1}_{k=0}(M_{t_{k+1}} -M_{t_k} )^2} & \leq & \E\bb{\sup_{0\leq j<n}\abs{M_{t_{j+1}} -M_{t_j}}^2 \sum^{n-1}_{k=0} (M_{t_{k+1}} -M_{t_k} )^2 + 2 \sup_{0\leq j<n}\abs{M_{t_l} -M_{t_j} }^2 \sum^{n-1}_{k=0} (M_{t_{k+1}} -M_{t_k} )^2}\\
+& = & \E\bb{\bb{\sup_{0\leq j<n}\abs{M_{t_{j+1}} -M_{t_j}}^2 + 2 \sup_{0\leq j<n}\abs{M_{t_l} -M_{t_j} }^2} \sum^{n-1}_{k=0} (M_{t_{k+1}} -M_{t_k} )^2}.
+\eeast
+
+Now, $M$ is uniformly bounded by $C$, say ($\sup_{0\leq k < n}\abs{M_{t_k}} \leq C$). So using the inequality $(x - y)^2 \leq 2(x^2 + y^2)$, we obtain
+\beast
+\E\bb{\bb{\sum^{n-1}_{k=0} (M_{t_{k+1}}-M_{t_k})^2}^2} & \leq & \E\bb{\bb{4C^2 + 2\cdot 4C^2} \sum^{n-1}_{k=0} (M_{t_{k+1}} -M_{t_k} )^2} = 12C^2\E\bb{\sum^{n-1}_{k=0}(M_{t_{k+1}}-M_{t_k})^2}\\
+& = & 12C^2\E\bb{(M_{t_n} -M_{t_0})^2} \leq 12C^2 \cdot 4C^2 = 48C^4.
+\eeast
+\end{proof}
+
+%In the following section we are going to show two theorems that guarantee the existence of a continuous or \cadlag\ version of a process.
+
+\subsection{Martingale regularization theorem}
+
+
+\begin{lemma}\label{lem:up_crossing_finite_rational}
+Let $f : \Q^+ \to \R$ be a function defined on the positive rational numbers. Suppose that for all $a < b$ and $a, b \in \Q$ and all bounded $I \subseteq \Q^+$ the function $f$ is bounded on $I$ and the number of upcrossings of the interval $[a, b]$ during the time intervals $I$ by $f$ is finite, i.e. $N(f,I,[a,b]) < \infty$, where $N(f,I,[a, b])$ is defined as
+\be
+\sup \bra{n \geq 0 : \exists 0 \leq s_1 < t_1 < \dots < s_n < t_n,\ s_i, t_i \in I,\ f(s_i) < a, f(t_i) > b,\ 1 \leq i \leq n}.
+\ee
+
+Then for every $t \in \R^{++}$ the right and left limits of $f$ exist and are finite, i.e.
+\be
+\lim_{s\da t} f(s),\ \lim_{s\ua t} f(s)\ \text{ exist and are finite.}
+\ee
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+First note that if $(s_n)$ is a sequence of rationals decreasing to $t$, then by the same argument in Lemma \ref{lem:up_crossing_finite} (with the assumption that $N(f,I,[a,b]) < \infty$), we get that the limit $\lim_n f(s_n)$ exists. Similarly if $t_n$ is a sequence increasing to $t$, then the limit $\lim_n f(t_n)$ exists. So far we showed that for any sequence converging to $t$ from above (or below) the limit exists. It remains to show that the limit is the same along any sequence decreasing to $t$.
+
+To see this, note that if $(s_n)_{n\geq 0}$ is a sequence decreasing to $t$ and $(t_n)_{n\geq 0}$ is another sequence decreasing to $t$ but $\lim_n f(s_n) \neq  \lim_n f(t_n)$. Then we can combine the two sequences and get a decreasing sequence $(a_n)_{n\geq 0}$ (by $a_n = s_n \land t_n$ for all $n$) converging to $t$ such that $\lim_n f(a_n)$ does not exist, which is a contradiction, since we already showed that for every decreasing sequence the limit exists.
+
+Finally the limits from above and below are finite, which follows by the assumption that $f$ is bounded on any bounded subset of $\Q^+$.
+\end{proof}
+
+\begin{theorem}[Martingale regularization theorem]\label{thm:martingale_regularization}
+Let $(X_t)_{t\geq 0}$ be a martingale with respect to the filtration $(\sF_t)_{t\geq 0}$. Then there exists a \cadlag\ process $\wt{X}$ which is a martingale with respect to $(\wt{\sF}_t)_{t\geq 0}$ (see Definition \ref{def:completion_filtered_probability_space}) and satisfies
+\be
+X_t = \E\bb{\wt{X}_t|\sF_t}\text{ a.s. for all }t \geq 0.
+\ee
+
+If the filtration $(\sF_t)_{t\geq 0}$ satisfies the usual conditions, then $\wt{X}$ is a \cadlag\ version of $X$.
+\end{theorem}
+
+\begin{remark}
+In the case when the filtration satisfies the usual conditions, a martingale admits a \cadlag\ version so there is `little to lose' to consider that martingale are \cadlag.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+$\forall t\in \R^{++}$, the goal is to define $\wt{X}$ as follows:
+\be
+\wt{X}_t = \lim_{s\da t, s\in \Q^+} X_s
+\ee
+on a set of measure 1 and 0 elsewhere.
+
+So first we need to check that the limit above exists a.s. and is finite. In order to do so, we are going to use Lemma \ref{lem:up_crossing_finite_rational}. Therefore we first show that $X$ is bounded on bounded subsets $I$ of $\Q^+$.
+
+Let $I$ be such a subset. Consider $J = \bra{j_1,\dots, j_n} \subseteq I$, where $j_1 < j_2 < \dots < j_n$. Then the process $(X_j)_{j\in J}$ is a discrete time martingale. By Doob's maximal inequality (Theorem \ref{thm:doob_maximal_inequality_discrete}) we obtain %Let $(X_n)_{n \geq 0}$ be a non-negative submartingale, and define $X_n^* = \sup_{0\leq k\leq n} X_k$. Then we have %Then for $\lm > 0$,
+\be
+\lm \pro\bb{\max_{j\in J} \abs{X_j} \geq \lm} \leq \E\abs{X_{j_n}} \leq \E\abs{X_K}.
+\ee
+where $K > \sup I$. The second inequality holds since $\abs{X}$ is a submartingale. So taking a monotone limit over $J$ finite subsets of I with union the set $I$ ($\ind_{\bra{\max_{j\in J}\abs{X_j}}} \ua \ind_{\bra{\sup_{t\in I}\abs{X_t}}}$), then by monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability}) we get that
+\be
+\lm \pro\bb{\sup_{t\in I} \abs{X_t} \geq \lm} = \lm \E\bb{\ind_{\bra{\sup_{t\in I} \abs{X_t} \geq \lm}}} = \lm \lim_{n\to \infty}  \E \bb{\ind_{\bra{\max_{j\in J} \abs{X_j} \geq \lm}}}= \lm \lim_{n\to \infty} \pro\bb{\max_{j\in J} \abs{X_j} \geq \lm} \leq \E\abs{X_K} < \infty.
+\ee
+since $X$ is a martingale with integrability. Therefore by letting $\lm  \to \infty$ this shows that
+\be
+\pro\bb{\sup_{t\in I} \abs{X_t} < \infty} = 1.
+\ee
+
+Let $a < b$ be rational numbers. Then we have
+\be
+N(X,I,[a, b]) =\sup_{\substack{J\subseteq I\\ J\text{ is finite}}}N(X,J,[a, b]).
+\ee
+
+Let $J = \bra{a_1,\dots, a_n}$ (in increasing order again) be a finite subset of $I$. Then $(X_{a_i})_{i\leq n}$ is a martingale and Doob's upcrossing lemma (Lemma \ref{lem:up_crossing_inequality})gives that
+\be
+(b - a)\E\bb{N(X,J,[a, b])} \leq \E\bb{\bb{X_{a_n} - a}^-} \leq \E\bb{\bb{X_K - a}^-}\quad \quad (*)
+\ee
+where the second inequality holds since $(X-a)^-$ is a submartingale (by Proposition \ref{pro:martingale_abs_plus_minus_submartingale}).
+
+Let $I_M = \Q^+ \cap [0,M]$. Then we consider the above inequality for $J\subseteq I_M$. By monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability}) again as $N(X,J,[a, b]) \ua N(X,I_M,[a, b])$, we will get that for all $M$,
+\be
+(b - a)\E\bb{N(X,I_M,[a, b])} = (b - a)\lim_{n\to \infty} \E\bb{N(X,J,[a, b])} \leq \E\bb{\bb{X_K - a}^-} \leq \E\abs{X_K -a} \leq \E\abs{X_K} + \E\abs{a} < \infty.
+\ee
+where $K = \sup I_M$. The last inequality is from the fact that $X$ is a martingale. Thus,
+\be
+\E\bb{N(X,I_M,[a, b])} < \infty \ \ra \ N(X,I_M,[a, b]) < \infty\text{ a.s.}
+\ee
+
+Thus if we now let
+\be
+\Omega_0 = \bigcap_{M\in \N} \bigcap_{\substack{a<b\\ a,b\in \Q}} \bra{N(X,I_M,[a,b]) < \infty} \cap \bra{\sup_{t\in I_M} \abs{X_t} < \infty},
+\ee
+then we obtain that $\pro(\Omega_0) = 1$. For $\omega \in \Omega_0$ by Lemma \ref{lem:up_crossing_finite_rational} the following limits exist and are finite in $\R$:
+\beast
+X_{t^+}(\omega) & = & \lim_{s\da t,s\in \Q} X_s(\omega),\quad  t \geq  0\\
+X_{t^-}(\omega) & = & \lim_{s\ua t,s\in \Q} X_s(\omega),\quad t > 0.
+\eeast
+
+Hence we can now define for $t \geq  0$,
+\be
+\wt{X}_t = \left\{ \ba{ll}
+X_{t^+},\quad\quad & \text{on }\Omega_0\\
+0& \text{otherwise}
+\ea\right.
+\ee
+
+Then clearly $\wt{X}_t$ is $(\wt{\sF}_t)_{t\geq 0}$ adapted, since $(\wt{\sF}_t)_{t\geq 0}$ contains also the events of 0 probability.
+
+Let $t_n$ be a sequence in $\Q$ such that $t_n \da t$ as $n \to \infty$. Then
+\be
+\wt{X}_t = \lim_{n\to \infty} X_{t_n} \quad \text{ a.s.}
+\ee
+
+%Notice that the process $(X_{t_n})_{n \geq 1}$ is a backward martingale ($Y_{-n}= X_{t_n}$ and $\E\abs{Y_0}< \infty \ \ra \ Y_0 \in \sL^1(\Omega,\sF,\pro)$), and hence it converges a.s. and in $\sL^1$ as $n \to \infty$ (by Theorem \ref{thm:backwards_martingale_as_lp_closed_discrete}).
+
+Therefore, by conditional dominated convergence theorem (Theorem \ref{thm:dominated_convergence_conditional_expectation}),%\beast \E \bb{\E\bb{X_{t_n}|\sF_t} - \E\bb{\wt{X}_t|\sF_t}} & = & \E \bb{X_t - \E\bb{\wt{X}_t|\sF_t}} \eeast
+\be
+\E\bb{X_{t_n} |\sF_t} \to \E\bb{\wt{X}_t|\sF_t} \quad \text{ a.s.}
+\ee
+
+But $\E\bb{X_{t_n}|\sF_t} = X_t$ since $X$ is a martingale. Therefore,
+\be
+X_t = \E\bb{\wt{X}_t|\sF_t} \quad \text{ a.s.}.
+\ee
+
+It remains to show the martingale property of $\wt{X}$.
+
+Let $s < t$ and $s_n$ a sequence in $\Q$ such that $s_n \da s$ and $s_0 < t$. Then by martingale property,
+\be
+\wt{X}_s \stackrel{\text{a.s.}}{=} \lim X_{s_n}  \stackrel{\text{a.s.}}{=}  \lim \E\bb{X_t|\sF_{s_n}}.
+\ee
+
+Now note that $(\E\bb{X_t|\sF_{s_n}})_{n\geq 0}$ is a backward martingale and hence it converges a.s. and in $\sL^1(\Omega,\sF,\pro)$ to $\E\bb{X_t|\sF_{s^+}}$ (by Theorem \ref{thm:backwards_martingale_as_lp_closed_discrete}). Therefore,
+\be
+\wt{X}_s = \E\bb{X_t|\sF_{s^+}}\quad \text{ a.s.}\quad\quad (\dag)
+\ee
+
+If s < t, then by the tower property and ($\dag$) we get that for any $r\geq t$,
+\be
+\E\bb{\wt{X}_t|\sF_{s^+}} = \E\bb{\E\bb{X_r|\sF_{t^+}}|\sF_{s^+}} \stackrel{\text{a.s.}}{=}  \E \bb{X_r| \sF_{s^+}} \stackrel{\text{a.s.}}{=}  \wt{X}_s.
+\ee
+
+Then by Proposition \ref{pro:conditional_expectation_tower_independence}.(vi), we get that
+\be
+\E\bb{\left.\wt{X}_t\right|\wt{\sF}_s} = \E\bb{\left.\wt{X}_t\right|\sigma(\sF_{s^+},\sN)} = \E\bb{\left.\wt{X}_t\right|\sF_{t^+}} \ \text{ a.s..}
+\ee
+
+Then with $(\dag)$, we have
+\be
+\E\bb{\left.\wt{X}_t\right|\wt{\sF}_s} = \wt{X}_s\ \text{ a.s.}
+\ee
+which shows that $\wt{X}$ is a martingale with respect to the filtration $\bb{\wt{\sF}_t}_{t\geq 0}$.
+
+The only thing that remains to prove is the \cadlag\ property.
+
+Suppose that for some $\omega \in \Omega_0$ we have that $\wt{X}$ is not right continuous. Then this means that there exists a sequence $(s_n)$ such that $s_n \da t$ as $n \to\infty$ and
+\be
+\abs{\wt{X}_{s_n}(\omega) - \wt{X}_t}(\omega) > \ve,
+\ee
+for some $\ve > 0$. By the definition of $\wt{X}$ for $\omega \in \Omega_0$, there exists a sequence of rational numbers $(s'_n)$ such that $X_{s'_n} \to \wt{X}_t$ and $s'_n > s_n$, $s'_n \da t$ as $n \to \infty$ and
+\be
+\abs{\wt{X}_{s_n}(\omega) - \wt{X}_{s'_n}(\omega)} \leq \frac {\ve}2 \ \ra \ \abs{X_{s'_n} - \wt{X}_t} > \frac {\ve}2,
+\ee
+which is a contradiction, since $X_{s'_n} \to \wt{X}_t$ as $n \to \infty$.
+
+To prove that $\wt{X}$ has left limits, we consider $N(\wt{X}(\omega),I_M,[a, b]) \leq N(X(\omega),I_{M+1},[a, b])$ for $\omega \in \Omega_0$,
+\be
+\E\bb{N(\wt{X}(\omega),I_M,[a, b])} \leq \E\bb{N(X,I_M,[a, b])} < \infty \ \ra \ N(\wt{X},I_M,[a, b]) < \infty\text{ a.s.}
+\ee
+
+Also, if $t\in \Q^+$, we have $\wt{X}_t(\omega) = \lim_{s\da t,s\in \Q^+}X_s(\omega) = X_t(\omega)$.
+\be
+\pro\bb{\sup_{t\in I} \abs{\wt{X}_t} < \infty} = \pro\bb{\sup_{t\in I} \abs{X_t} < \infty} = 1.
+\ee
+
+Thus, we can apply Lemma \ref{lem:up_crossing_finite_rational} to $\wt{X}$ and then we have $\forall t\in \R^{++}$, the left limit of $\wt{X}_t$, $\lim_{s\da t,s\in \Q^+}\wt{X}_s$ exists.%is left as an exercise (hint: use the finite up-crossing property of $X$ on rationals)\footnote{need details}.
+\end{proof}
+
+
+\begin{example}
+Let $\xi,\eta$ be independent random variables taking values $+1$ or $-1$ with equal probability. We now define
+\be
+X_t = \left\{\ba{ll}
+0 & t < 1\\
+\xi & t = 1\\
+\xi + \eta\quad\quad & t > 1.
+\ea\right.
+\ee
+
+We also define $\sF_t$ to be the natural filtration, i.e. $\sF_t = \sigma(X_s: s \leq t)$. Then clearly, $X$ is a martingale relative to the filtration $(\sF_t)_{t\geq 0}$, but it is not right continuous at 1. Also, it is easy to see that $\sF_1 = \sigma(\xi)$ but $\sF_{1^+} = \sigma(\xi, \eta)$. We now define
+\be
+\wt{X}_t = \left\{\ba{ll}
+0 & t < 1\\
+\xi + \eta\quad\quad & t \geq 1.
+\ea\right.
+\ee
+
+It is easy to check that $X_t = \E\bb{\wt{X}_t|\sF_t}$ a.s. for all $t$ and $\wt{X}$ is a martingale with respect to the filtration $(\sF_{t^+})_{t\geq 0}$. It is obvious that $\wt{X}$ is \cadlag. Note though that $\wt{X}$ is not a version of $X$, since $X_1 \neq  \wt{X}_1$.
+\end{example}
+
+From now on when we work with martingales in continuous time, we will always consider their cadlag version, provided that the filtration satisfies the usual conditions.
+
+\subsection{Doob's inequalities}
+
+Now we will give the continuous time analogues of Doob's inequalities.% and the convergence theorems for martingales.
+
+\begin{theorem}[Doob's maximal inequality\index{Doob's maximal inequality!continuous-time}]\label{thm:doob_maximal_inequality_continuous}
+Let $(\Omega,\sF,(\sF_t)_{t\geq 0}, \pro)$ be a filtration (not necessarily satisfying usual conditions) and $(X_t)_{t \geq  0}$ be a \cadlag\ non-negative submartingale and $X^*_t = \sup_{s\leq t} X_s$. Then, for all $\lm  \geq 0$ and $t \geq 0$,
+\be
+\lm \pro\bb{X^*_t \geq \lm} \leq \E X_t.
+\ee
+\end{theorem}
+
+\begin{remark}
+Note that if $X$ is a martingale, $\abs{X}$ is submartingale by Jensen's inequality (Theorem \ref{thm:jensen_inequality_expectation}). Thus, the above theorem is changed to
+\be
+\lm \pro\bb{\sup_{0\leq s\leq t}\abs{X_s} \geq \lm} \leq \E \abs{X_t}.
+\ee
+when $X$ is a martingale. Compare this theorem with Markov inequality (Theorem \ref{thm:markov_inequality_probability}). The above conclusion is stronger as it is based on the fact that $X$ is martingale.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+We observe that
+\be
+X^*_t = \sup_{s\leq t} \abs{X_s} = \sup_{s\in \bra{t} \cup \bb{[0,t] \cap \Q}} \abs{X_s}
+\ee
+by the \cadlag\ property (right continuity) as the supremum of irrationals can be approached by real sequence from right hand side. Therefore,
+\be
+X^*_t = \sup_{\substack{J\subseteq \bra{t}\cup \bb{[0,t]\cap\Q} \\ J\text{ is finite}}} \max_{s\in J} \abs{X_s}.
+\ee
+
+Apply discrete Doob's maximal inequality (Theorem \ref{thm:doob_maximal_inequality_discrete}) to $(X_s)_{s \in J} = (X_{t_i})_{1 \leq i \leq k}$, where $J = \bra{t_1, \dots, t_k}$. Hence
+\be
+\lm \pro\bb{\max_{s\in J}\abs{X_s} \geq \lm} \leq \E\abs{X_{t_k}} \leq \E\abs{X_t}.
+\ee
+whenever $\sup J \leq t$ because $\abs{X}$ is a sub-martingale. Then we can pass the inequality to the supremum over $J$ by monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability})
+\be
+\ind_{\bra{\max_{s\in J}\abs{X_s} \geq \lm}} \ua \ind_{\bra{X^*_t \geq \lm}} \ \ra \ \pro\bb{\max_{s\in J}\abs{X_s} \geq \lm} \ua \pro\bb{X^*_t \geq \lm}
+\ee
+which gives the required result.%\be %a \pro\bb{\max_{s\in J} \abs{X_s} \geq a} \leq \E[\abs{X_t}] \leq \E[\abs{X_t}] %\ee
+\end{proof}
+
+
+\begin{theorem}[Doob's $\sL^p$-inequality\index{Doob's $\sL^p$-inequality!continous}, continuous-time]\label{thm:doob_lp_inequality_continuous}
+Let $(\Omega,\sF,(\sF_t)_{t\geq 0}, \pro)$ be a filtration (not necessarily satisfying usual conditions) and $(X_t)_{t \geq 0}$ be a \cadlag\ non-negative submartingale. Setting $X^*_t = \sup_{s\leq t} \abs{X_s}$, then for all $p > 1$ and $t$ we have
+\be
+\dabs{X^*_t}_p \leq \frac p{p - 1} \dabs{X_t}_p.
+\ee
+\end{theorem}
+
+\begin{remark}
+If $X$ is a martingale, $\abs{X}$ is a non-negative martingale by Jensen's inequality (Theorem \ref{thm:jensen_inequality_expectation}). Thus, this theorem also holds for martingale.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+As we did in proof of Theorem \ref{thm:doob_maximal_inequality_continuous}, we can have finite subset $J$. Thus, by discrete Doob's $\sL^p$-inequality (Theorem \ref{thm:doob_lp_inequality_discrete}), we have
+\be
+\dabs{\max_{s\in J}\abs{X_s}}_p \leq \frac p{p - 1} \dabs{X_{t_k}}_p \leq \frac p{p-1}\dabs{X_t}_p.
+\ee
+
+The last inequality holds since $\dabs{X}$ is submartingale as $\E X_{t_k} \leq \E X_t$. %This is given by the fact that $\dabs{\cdot}_p$ is convex and Jensen's inequality (Theorem \ref{thm:jensen_inequality_expectation}).
+Therefore, by monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability})
+\be
+\bb{\max_{s\in J}\abs{X_s}}^p \ua \bb{X^*_t}^p \ \ra \ \E\abs{\max_{s\in J}\abs{X_s}}^p \ua \E\abs{X^*_t}^p \ \ra \ \dabs{\max_{s\in J}\abs{X_s}}_p = \bb{\E\abs{\max_{s\in J}\abs{X_s}}^p}^{1/p} \ua \bb{\E\abs{X^*_t}^p}^{1/p} = \dabs{X^*_t}_p\nonumber
+\ee
+
+Hence,
+\be
+\dabs{X^*_t}_p \leq \frac p{p-1}\dabs{X_t}_p.%= \dabs{\sup_{\substack{J\subseteq \bra{t}\cup \bb{[0,t]\cap\Q} \\ J\text{ is finite}}} \max_{s\in J} \abs{X_s}}_p \not\leq \sup_{\substack{J\subseteq \bra{t}\cup \bb{[0,t]\cap\Q} \\ J\text{ is finite}}} \dabs{\max_{s\in J} \abs{X_s}}_p
+\ee%as required.
+\end{proof}
+
+
+
+\begin{theorem}[Kolmogorov's inequality\index{Kolmogorov's inequality!continuous-time martingale}]\label{thm:kolmogorov_inequality_continuous_time_martingale}
+Let $(\Omega,\sF,(\sF_t)_{t\geq 0},\pro)$ be a filtered probability space based on which $X$ is a submartingale and and $X^*_t = \sup_{0\leq s\leq t} X_s$. Then for any constant $\lm >0$,
+\be
+\pro\bb{X_t^* \geq \lm} \leq \frac{\E X_t^+}{\lm}.
+\ee
+\end{theorem}
+
+\begin{remark}
+\ben
+\item [(i)] Notice the analogy with Markov's inequality. Of course, the conclusion is much stronger than Markov's inequality, as the probabilistic bound applies to an uncountable number of random variables.
+\item [(ii)] Note that Doob's maximal inequality is a special case of Kolmogorov's inequality.
+\een
+\end{remark}
+
+\begin{proof}[\bf Proof]
+As we did in proof of Theorem \ref{thm:doob_maximal_inequality_continuous}, we can have finite subset $J$. Thus, by the proof in discrete Kolmogorov's inequality (Theorem \ref{thm:kolmogorov_inequality_discrete_time_martingale}), we have
+\be
+\pro\bb{\max_{s\in J} X_s \geq \lm} \leq \frac{\E X_{t_k}\ind_B}{\lm},\qquad B = \bra{\max_{1\leq i\leq k} X_{t_i} \geq \lm}
+\ee
+and $B$ is $\sF_{t_k}$-measurable. Since $X$ is submartingale, we have
+\be
+\E\bb{X_t|\sF_t} \geq X_{t_k} \text{ a.s.} \ \ra \ \bb{\E\bb{X_t|\sF_t} - X_{t_k}}\ind_B \geq 0\text{ a.s.} \ \ra \ \E\bb{\bb{\E\bb{X_t|\sF_t} - X_{t_k}}\ind_B} \geq 0
+\ee
+which implies that $\E\bb{X_t\ind_B} \geq \E\bb{X_{t_k}\ind_B}$. Thus,
+\be
+\pro\bb{\max_{s\in J} X_s \geq \lm} \leq \frac{\E X_{t_k}\ind_B}{\lm} \leq \frac{\E X_{t}\ind_B}{\lm} \leq \frac{\E X_t^+\ind_B}{\lm} \leq \frac{\E X_t^+}{\lm}.
+\ee
+ %This is given by the fact that $\dabs{\cdot}_p$ is convex and Jensen's inequality (Theorem \ref{thm:jensen_inequality_expectation}).
+Therefore, by monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability})
+\be
+\ind_{\bra{\max_{s\in J} X_s}} \ua \ind_{\bra{X^*_t}} \ \ra \ \pro\bb{\max_{s\in J} X_s \geq \lm} \ua \pro\bb{X_t^* \geq \lm}.
+\ee
+
+Hence,
+\be
+\pro\bb{\sup_{s\in [0,t]} X_s \geq \lm} \leq \frac{\E X_t^+}{\lm}.%= \dabs{\sup_{\substack{J\subseteq \bra{t}\cup \bb{[0,t]\cap\Q} \\ J\text{ is finite}}} \max_{s\in J} \abs{X_s}}_p \not\leq \sup_{\substack{J\subseteq \bra{t}\cup \bb{[0,t]\cap\Q} \\ J\text{ is finite}}} \dabs{\max_{s\in J} \abs{X_s}}_p
+\ee%as required.
+\end{proof}
+
+\begin{corollary}\label{cor:kolmogorov_inequality_continuous_time_martingale}
+Let $(\Omega,\sF,(\sF_t)_{t\geq 0},\pro)$ be a filtered probability space. $(X_t)_{t\geq 0}$ is a square-integrable martingale whose unconditional mean is $m = \E X_0$. Then for any constant $\lm >0$,
+\be
+\pro\bb{\sup_{s\leq t}\abs{X_s -m} \geq \lm} \leq \frac{\var\bb{X_t}}{\lm^2}.
+\ee
+\end{corollary}
+
+\begin{remark}
+Notice the analogy with Chebyshev inequality (Theorem \ref{thm:chebyshev_inequality_probability}). Of course, the conclusion is much stronger than Chebyshev inequality.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Apply Kolmogorov's inequality (Theorem \ref{thm:kolmogorov_inequality_continuous_time_martingale}) to $(X⁢_n -m)^2$, which is a submartingale by Jensen's inequality.
+\end{proof}
+
+
+\subsection{Convergence theorems for martingales}
+
+\begin{theorem}[martingale convergence theorem\index{martingale convergence theorem!continuous}, continuous-time]\label{thm:martingale_convergence_continuous}
+Let $(\Omega,\sF,(\sF_t)_{t\geq 0}, \pro)$ be a filtration (not necessarily satisfying usual conditions) and $(X_t)_{t \geq  0}$ be a \cadlag\ martingale which is bounded in $\sL^1(\Omega,\sF,\pro)$ (Definition
+\ref{def:bounded_in_slp_probability}), that is, $\sup_{t\geq 0}\E\abs{X_t} <\infty$.
+
+Then $X_t \to X_\infty$ a.s. as $t \to \infty$, for some $X_\infty \in \sL^1(\Omega,\sF_\infty,\pro)$\footnote{some books give that $X_\infty$ is finite a.s., but this situation is included in the statement that $X_\infty
+\in \sL^1(\Omega,\sF_\infty,\pro)$}.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+If $N(X,I_M,[a, b])$ stands for the number of up-crossings of the interval $[a, b]$ as defined in martingale regularization theorem, then from ($*$) in the proof of the martingale regularization theorem, we get that
+\be
+(b - a)\E\bb{N(X,I_M,[a, b])} \leq \E\bb{\bb{X_{a_n} -a}^-} \leq \E\bb{\abs{X_K} + a} \leq a+ \sup_{t\geq 0} \E\abs{X_t} < \infty,
+\ee
+since $X$ is bounded in $\sL^1(\Omega,\sF,\pro)$. Hence, if we take the limit as $M \to \infty$ then we get that
+\be
+N(X,\Q^+,[a, b]) < \infty \ \text{ a.s.}
+\ee
+
+Therefore, the set
+\be
+\Omega_0 = \bigcap_{\substack{a<b\\ a,b\in \Q}} \bra{N(X,\Q^+,[a, b]) < \infty}
+\ee
+has probability 1.
+
+On $\Omega_0$ it is easy to see that $X_q$ converges for $\omega \in \Omega_0$ as $q \to \infty$ and $q \in \Q^+$. Indeed, as in the proof of Lemma \ref{lem:up_crossing_finite}, if $X_q$ did not converge, then $\limsup X_q < \liminf X_q$, so take $a<b$ rationals between these two numbers gives that $N(X,\Q^+,[a,b]) = \infty$ and this would contradict the finite number of up-crossings of the interval $[a, b]$ for all $a,b$.% where $\liminf < a < b < \limsup$.
+
+Thus $(X_q)_{q\in \Q^+}$ converges a.s. as $q \to \infty$, $q \in \Q^+$, to $X_\infty$. That is, $\forall \ve > 0$, there exists $q_0 \in \Q^+$ such that
+\be
+\abs{X_q - X_\infty} < \frac {\ve}2, \quad \forall q \geq q_0.
+\ee
+
+By \cadlag\ property of $X$ (right continuity), we get for any $t > q_0$, $t\in \R^{++}$, there exists a rational $q$ such that $q>t$ and
+\be
+\abs{X_t - X_q} < \frac {\ve}2.
+\ee
+
+Hence we conclude that for such $q\in \Q^+$,
+\be
+\abs{X_t - X_\infty} = \abs{(X_t - X_q) + (X_q - X_\infty)} \leq \abs{X_t - X_q} + \abs{X_q - X_\infty} < \frac {\ve}2 + \frac{\ve}2 = \ve.
+\ee
+\end{proof}
+
+\begin{theorem}[$\sL^p$ martingale convergence theorem\index{lp-martingale-convergence@$\sL^p$ martingale convergence theorem!continuous}, continuous-time]\label{thm:martingale_bounded_lp_as_lp_closed_continuous}
+Let $(\Omega,\sF,(\sF_t)_{t\geq 0}, \pro)$ be a filtration (not necessarily satisfying usual conditions) and $X$ be a \cadlag\ martingale and $p > 1$, then the following statements are equivalent:
+\ben
+\item [(i)] $X$ is bounded in $\sL^p(\Omega,\sF,\pro)$ i.e., $\sup_{t\geq 0} \dabs{X_t}_p < \infty$.
+\item [(ii)] $X$ converges a.s. and in $\sL^p(\Omega,\sF,\pro)$ to a random variable $X_\infty$.
+\item [(iii)] $X$ is closed in $\sL^p(\Omega,\sF,\pro)$, i.e., there exists a random variable $Z \in \sL^p(\Omega,\sF,\pro)$ such that for all $t$,
+\be
+X_t = \E\bb{Z|\sF_t}\quad \text{a.s.}
+\ee
+
+Note that if $X_\infty$ is known, we can set $Z = X_\infty$.
+    \een
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Use the similar argument in Theorem \ref{thm:martingale_bounded_lp_as_lp_closed_discrete}.
+\end{proof}
+
+\begin{corollary}\label{cor:doob_lp_inequality_continuous_infinity}
+Let $(\Omega,\sF,(\sF_t)_{t\geq 0}, \pro)$ be a filtration (not necessarily satisfying usual conditions) and $(X_t)_{t \geq 0}$ be a \cadlag\ martingale and bounded in $\sL^p(\Omega,\sF,\pro)$ (i.e., $X\in \sM^p$ (see
+Definition \ref{def:martingale_space_bounded_in_lp})) for $p>1$. For all $t$ we have \be \dabs{\sup_{t\geq 0}\abs{X_t}}_p \leq \frac p{p - 1} \dabs{X_\infty}_p. \ee
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+By Theorem \ref{thm:doob_lp_inequality_continuous},
+\be
+\dabs{\sup_{s\leq t} \abs{X_s}}_p \leq \frac p{p - 1} \dabs{X_t}_p.
+\ee
+
+Then by Minkowski inequality (Theorem \ref{thm:minkowski_inequality_expectation}) (Note that we need Theorem \ref{thm:martingale_bounded_lp_as_lp_closed_continuous} to guarantee that $X_\infty$ exists.),
+
+\be \dabs{\sup_{0\leq s \leq t}\abs{X_s}}_p \leq 2\dabs{X_t}_p \leq \frac p{p - 1}\bb{\dabs{X_\infty}_p + \dabs{X_t - X_\infty}_p } \to \frac p{p - 1}\dabs{X_\infty}_p. \ee
+
+Since $\sup_{s\leq t} \abs{X_s} \ua \sup_{t\geq 0} \abs{X_t}$, we have the required result by monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability}). %Since $\sup_{s\leq t} \abs{X_s} \ua \sup_{t\geq 0} \abs{X_t}$ and $\abs{X_t} \to \abs{X_\infty}$ a.s. as $t\to \infty$, by monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability}) and dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}), we have the required result.
+\end{proof}
+
+
+\begin{theorem}[UI martingale convergence theorem\index{UI martingale convergence theorem!continuous}, continuous-time]\label{thm:martingale_ui_as_l1_closed_continuous}
+Let $(\Omega,\sF,(\sF_t)_{t\geq 0}, \pro)$ be a filtration (not necessarily satisfying usual conditions) and $X$ be a \cadlag\ martingale. The following are equivalent:
+\ben
+\item [(i)] $X$ is uniformly integrable.
+\item [(ii)] $X$ converges a.s. and in $\sL^1(\Omega,\sF,\pro)$ to a random variable $X_\infty$.
+\item [(iii)] $X$ is closed in $\sL^1(\Omega,\sF,\pro)$, i.e., there exists a random variable $Z\in \sL^1(\Omega ,\sF,\pro)$ such that for all $t$,
+\be
+X_t = \E\bb{Z | \sF_t}\ \text{ a.s.}.
+\ee
+
+Note that if $X_\infty$ is known, we can set $Z = X_\infty$.
+\een
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Use the similar argument in Theorem \ref{thm:martingale_ui_as_l1_closed_discrete}.
+\end{proof}
+
+\subsection{Optional stopping theorems}
+
+\begin{theorem}[optional stopping theoerem, bouned stopping time\index{optional stopping theoerem!bounded stopping time, continuous}, continuous-time]\label{thm:optional_stopping_bounded_stopping_time_continuous}
+Let $(\Omega,\sF,(\sF_t)_{t\geq 0}, \pro)$ be a filtered probability space (not necessarily satisfying usual conditions) and $X$ be a \cadlag\ adapted integrable process. Then the following are equivalent:
+\ben
+\item [(i)] $X$ is a martingale with respect to $((\sF_t)_{t\geq 0},\pro)$.
+\item [(ii)] $X^T = \bb{X_{T\land t}}_{t\geq 0}$ is a (\cadlag) martingale with respect to $((\sF_t)_{t\geq 0},\pro)$ for all stopping times $T$.%\footnote{maybe for all stopping times}.
+\item [(iii)] For all bounded stopping times $S,T$, $\E(X_T|\sF_S) = X_{S\land T}$ a.s..
+\item [(iv)] $\E(X_T) = \E(X_0)$ for all bounded stopping times $T$.
+\een
+\end{theorem}
+
+\begin{remark}
+If $X$ is a submartingle (supmartingale), then $X^T$ is submartingle (supmartingale).
+
+Note that we can extend (iii) and (iv) to the case that $S,T$ are bounded stopping times a.s..
+\end{remark}
+
+\begin{proof}[\bf Proof]
+(i) $\ra$ (ii). From $X^T$ is adaped and integrable (by Proposition \ref{pro:cadlag_adapted_process_property}.(ii),(iii)).
+
+Let $T_n = 2^{-n}\ceil{2^n T}$ and define $Y_{2^n k} = X_k$ where $k\in \bra{i2^{-n},i\in \Z^+}$. Thus, $Y$ is a (discrete) martingale with respect to filtration $(\sG_m)_{m\geq 0}$ ($\sG_{2^n k} = \sF_k$) where $k\in \bra{i2^{-n},i\in \Z^+}$.
+\be
+\bra{2^n T_n \leq 2^n k} = \bra{T_n \leq k} = \bra{\ceil{2^n T} \leq 2^n k} = \bra{T \leq 2^{-n}\floor{2^n k}} \in \sF_k = \sG_{2^nk}
+\ee
+
+Thus, $2^n T_n$ is a stopping time of martingale $Y$. Then apply Theorem \ref{thm:stopped_martingale_discrete}, $Y^{2^nT_n}$ is a martingale. That is, for any $t\geq s$ and $t_n = 2^{-n}\ceil{2^n t}$, $s_n = 2^{-n}\ceil{2^n s}$, we have
+\be
+\E\bb{\left.X^{T_n}_{t_n}\right|\sF_{s_n}} = \E\bb{\left.Y^{2^nT_n}_{2^n t_n}\right|\sG_{2^n s_n}} \stackrel{\text{a.s.}}{=} Y^{2^nT_n}_{2^n s_n} = X^{T_n}_{s_n}.
+\ee
+
+%Also, for any $t\geq s$. we take $t_n = 2^{-n}\ceil{2^n t}$, $s_n = 2^{-n}\ceil{2^n s}$ and $2^nT_n$ is a stopping time with respect to $\sG$.
+%\be
+%\bra{2^nT_n \leq 2^nt} = \bra{\ceil{2^{-n}T} \leq t} = \bra{\ceil{2^{-n}T} \leq \floor{t}} = \bra{T \leq 2^n \floor{t}} \in \sG_{2^n\floor{t}} =
+%\ee%we have $(X^T_{t_n})_{n\geq 0}$ is a martingle (by Theorem \ref{thm:stopped_martingale_discrete}). Then
+
+Equivalently, this is
+\be
+E\bb{X_{T_n\land t_n}\ind_{A_n}} = \E\bb{X_{T_n\land s_n}\ind_{A_n}} \text{ for any }A_n\in \sF_{s_n}.
+\ee
+
+Since $X$ is \cadlag, we have $X_{T_n\land t_n} \to X_{T \land t}$ and $X_{T_n \land s_n} \to X_{T\land s}$ thus for any $A\in \sF_s \subseteq \sF_{s^+}$, we can find sequence $(A_n)$ with $A_n\in \sF_{s_n}$ such that
+\be
+X_{T_n \land t_n}\ind_{A_n} \to X_{T \land t}\ind_A,\quad X_{T_n \land s_n} \ind_{A_n} \to X_{T\land s} \ind_A .%\text{since filtration is right-continuous}).\quad \text{for any }
+\ee
+
+Since $X^T$ is integrable, we apply dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}),
+\be
+\left\{\ba{l}
+\E\bb{X_{T_n\land t_n}\ind_{A_n}} \to \E\bb{X_{T \land t}\ind_A} \\
+\E\bb{X_{s_n}\ind_{A_n}} \to \E\bb{X_{T\land s}\ind_A}
+\ea\right. \ \ra \ \E\bb{X_{T \land t}\ind_A} = \E\bb{X_{T \land s}\ind_A} \ \ra \ \E\bb{X_{T\land t}|\sF_s} = X_{T\land s}\ \text{ a.s..}
+\ee
+%\be
+%\E\bb{X^T_t|\sF_s} = \E \bb{X_t\ind_{\bra{T>t}} + X_T\ind_{\bra{T\leq t}}|\sF_s} %\E \bb{X_{T\land t}\ind_{\bra{T>s}} + X_{T\land t}\ind_{\bra{T\leq s}}|\sF_s} = \E \bb{X_{T\land t}|\sF_s} \underbrace{\ind_{\bra{T>s}}}_{\bra{T>s} \in \sF_s} \stackrel{\text{a.s.}}{=}   %\E \bb{X_t\ind_{\bra{T>t}} + X_T\ind_{\bra{T\leq t}}|\sF_s} = \E \bb{X_t + (X_T-X_t)\ind_{\bra{T\leq t}}|\sF_s}
+%\ee
+
+Thus, $X^T$ is a martingale. Also, by Proposition \ref{pro:cadlag_adapted_process_property}, $X^T$ is \cadlag.
+
+(ii) $\ra$ (iii). Wlog we let $S\leq T \leq K$. Then apply the similar trick as above and Theorem \ref{thm:optional_stopping_bounded_discrete},
+\be
+\E\bb{X_{T_n}|\sF_{S_n}} = X_{S_n}\ \text{ a.s.} \ \ra \ \E\bb{X_{T_n}\ind_{A_n}} = \E \bb{X_{S_n}\ind_{A_n}}\quad \text{for }A_n \in \sF_{S_n}.
+\ee
+
+Then since $X$ is \cadlag, $X_{T_n} \to X_T$ and $X_{S_n} \to X_S$. Since $X_T$, $X_S$ are integrable (since $T,S$ bounded), we apply dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}), for $A\in \sF_S$ (by the fact the filtration is right-continous again)
+\be
+\left\{\ba{l}
+\E\bb{X_{T_n}\ind_{A_n}} \to \E\bb{X_{T}\ind_A} \\
+\E\bb{X_{S_n}\ind_{A_n}} \to \E\bb{X_{S}\ind_A}
+\ea\right. \ \ra \ \E\bb{X_{T}\ind_A} = \E\bb{X_{S}\ind_A} \ \ra \ \E\bb{X_{T}|\sF_s} = X_{S}\ \text{ a.s..}
+\ee
+
+% and $T_n = 2^{-n}\ceil{2^n T}$. It is obvious that $T_n$ are bounded stopping times. Thus,
+
+(iii) $\ra$ (iv). Direct result from (iii) by letting $S=0$ and taking expectation on both sides.
+
+(iv) $\ra$ (i). Let $s < t$ and fix $u > t$. Let $A \in \sF_s$, and define a random time $T$ by saying $T = t$ if $A$ occurs, or $T = u$ otherwise. Similarly, define $S = s$ if $A$ occurs and $S = u$ otherwise. Note that both $S$ and $T$ are stopping times, and are bounded. Thus by (iv).
+\be
+\E(X_T ) = \E(X_0) = \E(X_S).\quad \quad (*)
+\ee
+
+On the other hand,
+\be
+\E(X_T) = \E(X_t\ind_A) + \E(X_u\ind_{A^c}),\quad \E(X_S) = \E(X_s\ind_A) + \E(X_u\ind_{A^c}).
+\ee
+
+Plugging this into ($*$) and cancelling the terms $\E(X_u\ind_{A^c})$, we find:
+\be
+\E(X_t\ind_A) = \E(X_s\ind_A)
+\ee
+for all $s < t$ and all $A \in \sF_s$. This means (by definition) that
+\be
+\E(X_t|\sF_s) = X_s,\quad\text{a.s.}
+\ee
+as required. Hence, since $X$ is adapted and integrable, $X$ is a martingale.
+\end{proof}
+
+Also, we have the following stronger version of optional stopping theorem.
+
+\begin{theorem}[optional stopping theoerem, UI martingale\index{optional stopping theoerem!UI martingale, continuous}, continuous-time]\label{thm:optional_stopping_ui_continuous}
+Let $(\Omega,\sF,(\sF_t)_{t\geq 0}, \pro)$ be a filtration (not necessarily satisfying usual conditions) and $X$ be a \cadlag\ UI martingale. Then for every stopping times $S \leq T$, we have
+\be
+\E\bb{X_T |\sF_S} = X_S\ \text{ a.s.}
+\ee
+where $X_T = X_T\ind_{\bra{T<\infty}} + X_\infty \ind_{\bra{T=\infty}}$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $A \in \sF_S$. We need to show that
+\be
+\E\bb{X_T\ind_A} = \E\bb{X_S\ind_A}.
+\ee
+by Definition of conditional expectation (Theorem \ref{thm:conditional_expectation_existence_uniqueness}).
+
+Let $T_n = 2^{-n}\ceil{2^nT}$ and $S_n = 2^{-n}\ceil{2^nS}$. Then $T_n \da T$ and $S_n \da S$ as $n \to \infty$ and by the right continuity of $X$ we get that
+\be
+X_{S_n} \to X_S,\quad X_{T_n} \to X_T \quad\text{as }n \to\infty.
+\ee
+
+Also, for all $t$,
+\be
+\bra{T_n \leq t} = \bra{\ceil{2^n T} \leq 2^n t} = \bra{\ceil{2^n T} \leq \floor{2^n t}} = \bra{2^n T \leq \floor{2^n t}} = \bra{T \leq 2^{-n}\floor{2^n t}} \in \sF_{2^{-n}\floor{2^n t}} \subseteq \sF_t
+\ee
+as $T$ is a stopping time. Thus, $T_n$ and $S_n$ are stopping times. From the proof of discrete time optional stopping theorem (Theorem \ref{thm:optional_stopping_ui_discrete}), we have that $X_{T_n} = \E\bb{X_\infty |\sF_{T_n}}$ a.s. since $T_n$ is a stopping time.
+
+Thus by UI martingale convergence theorem (Theorem \ref{thm:martingale_ui_as_l1_closed_continuous}) we see that $(X_{T_n})_{n\geq 0}$ is UI. Hence by UI martingale convergence theorem (Theorem \ref{thm:martingale_ui_as_l1_closed_continuous}) again, $(X_{T_n})_{n\geq 0}$ converges to $X_T$ as $n \to \infty$ also in $\sL^1(\Omega,\sF,\pro)$.
+
+By the discrete time optional stopping theorem for UI martingales (Theorem \ref{thm:optional_stopping_ui_discrete}) we have
+\be
+\E\bb{X_{T_n}|\sF_{S_n}} = X_{S_n}\ \text{ a.s.} \quad \quad (*)
+\ee
+since $S_n$ and $T_n$ are stopping times. Since $A \in \sF_S$ the definition of $S_n$ implies that $A \in \sF_{S_n}$. Hence from ($*$) we obtain that
+\be
+\E\bb{X_{T_n} \ind_A} = \E\bb{X_{S_n}\ind_A}
+\ee
+
+We have $X_{T_n}\ind_A$ is dominated by $X_{T_n} \in \sL^1(\Omega,\sF,\pro)$ by using the $\sL^1$ convergence of $X_{T_n}$ to $X_T$. Note that even $T_n = \infty$, this still holds since $X_\infty \in \sL^1(\Omega,\sF,\pro)$ by using $X$ is UI. Thus, we can apply dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}),
+\be
+X_{T_n}\ind_A \to X_T\ind_A \ \ra \ \E\bb{X_{T_n}\ind_A} \to \E\bb{X_T\ind_A}.
+\ee
+
+Similarly, for $X_{S_n}$ and $X_S$, we have $\E\bb{X_{S_n}\ind_A} \to \E\bb{X_S\ind_A}$ which implies that
+\be
+\E\bb{X_T\ind_A} = \E\bb{X_S\ind_A}.
+\ee
+\end{proof}
+
+
+\subsection{Convergence of martingale sequence}
+
+\begin{theorem}\label{thm:convergence_ucp_cadlag_martingale}
+Let $(\Omega,\sF,(\sF_t)_{t\geq 0},\pro)$ be filtered probability space satisfying usual conditions and $X^n$ be a sequence of \cadlag\ martingales, and $X$ be a process such that for any $t\in \R^{++}$, $X^n_t \xrightarrow{\sL^1} X_t$ as $n\to \infty$. Then $X$ is a martingale and has a \cadlag\ version which is the u.c.p. limit of $X^n$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]%Since $X^n$ is a martingale, then for any $t\geq 0$, $\E\abs{X^n_t} <\infty$. Then
+%\be
+%\E\abs{X_t} \leq \E\abs{X^n_t - X_t} + \E\abs{X^n_t}
+%\ee (so $\E X^n_t \to \E X_t$)
+$X^n_t \xrightarrow{\sL^1} X_t$ means that $X^n_t,X_t \in \sL^1(\Omega,\sF,\pro)$ and $\E\abs{X^n_t - X_t} \to 0$. So to prove $X$ is a martingale, we only need to show that for any $0\leq s\leq t < \infty$, $X_t$ is $\sF_t$-measurable and
+\be
+\E\bb{X_t|\sF_s} = X_s \text{ a.s.}.\qquad (*)
+\ee
+
+We show that $X_t$ is $\sF_t$-measurable later. To prove (*), we need to show that for any $A\in \sF_s$, $\E\bb{X_t\ind_A} = \E\bb{X_s\ind_A}$. Since $X^n$ are martingales, then we have that $\E\bb{X^n_t\ind_A} = \E\bb{X^n_s\ind_A}$. We have
+\be
+\abs{\E\bb{X^n_t\ind_A} - \E\bb{X_t\ind_A}} = \abs{\E\bb{(X^n_t - X_t)\ind_A}} \leq \E\bb{\abs{X^n_t - X_t}\ind_A} \leq \E\abs{X^n_t - X_t} \to 0 \ \ra \ \E\bb{X^n_t\ind_A} \to \E\bb{X_t\ind_A}.
+\ee
+
+Similarly, $\E\bb{X^n_s\ind_A} \to \E\bb{X_s\ind_A}$. Thus, $\E\bb{X_t\ind_A} = \E\bb{X_s\ind_A}$ and therefore we have ($*$).
+
+Furthermore, since for any $m,n$, $X^n-X^m$ is a martingale, then by Doob's maximal inequality (Theorem \ref{thm:doob_maximal_inequality_continuous})
+\be
+\pro\bb{\sup_{0\leq s\leq t}\abs{X^n_s - X^m_s} \geq \ve} \leq \frac 1{\ve} \E\abs{X^n_t - X^m_t} \leq \frac 1{\ve} \bb{\E\abs{X^n_t - X_t} + \E\abs{X^m_t - X_t}} \to 0
+\ee
+as $m,n\to \infty$ for all $t,\ve>0$. Thus, $X^n$ is a Cauchy sequence under ucp convergence. Since $X^n$ are a \cadlag\ adapted processes, thus there is a \cadlag\ adapted limit (process) $Y$, $X^n \xrightarrow{ucp} Y$ by Completeness of \cadlag\ adapted process space (Theorem \ref{thm:complete_cadlag_continuous_under_ucp_convergence}). Thus, we have for any $t\in \R^{++}$ and $\ve >0$
+\be
+\pro\bb{\abs{X^n_t - Y_t} > \ve} \leq \pro\bb{\sup_{0\leq s\leq t}\abs{X^n_s - Y_s} > \ve} \to 0\quad \text{as }n\to \infty \ \ra \ X^n_t \xrightarrow{p} Y_t.
+\ee
+
+Also, since $X^n_t \xrightarrow{\sL^1} X_t$, we have $X^n_t \xrightarrow{p} X_t$ by Proposition \ref{pro:convergence_slp_implies_probability}. By the almost surely uniqueness of the limit of convergence in probability (Proposition \ref{pro:uniqueness_limit_convergence_in_probability}), we have $X_t = Y_t$ a.s.. This means $Y$ is a \cadlag\ version of $X$.
+
+We know that $Y_t$ is $\sF_t$-measurable since $Y$ is adapted. Therefore, we can have that $X_t$ is $\sF_t$-measurable and thus $X$ is adapted since the filtered probability space satisfies usual conditions (as it contains null set). Thus, we can say $X$ is a martingale.
+%That is,
+%\be
+%\pro\bb{\abs{X^n_t - X_t} > \ve} \to 0\quad\text{as }n\to \infty.
+%\ee
+%\footnote{then so what?}
+%Thus, since $X^n$ and $Y$ are \cadlag,
+%\beast
+%\pro\bb{\abs{X_t - Y_t} > \ve} & \leq & \pro\bb{\abs{X^n_t - X_t} + \abs{X^n_t - Y_t} > \ve} \\
+%& = & \pro\bb{\bigcup_{q\in \Q^{++},q \leq \ve} \bra{\abs{X^n_t - Y_t} > q} \cap \bra{\abs{X^n_t -X_t} > \ve-q}}\\
+%& \leq & \sum_{q\in \Q^{++},q \leq \ve} \pro\bb{\abs{X^n_t - Y_t} > q} \to 0. %\leq \pro\bb{\abs{X^n_t - X_t} > \ve} + \pro\bb{\abs{X^n_t - Y_t} > \ve/2}
+%\eeast
+%Thus, $\pro\bb{\abs{X_t - Y_t} > \ve} = 0$
+\end{proof}
+
+\begin{corollary}\label{cor:convergence_ucp_continuous_martingale}
+Let $(\Omega,\sF,(\sF_t)_{t\geq 0},\pro)$ be filtered probability space satisfying usual conditions and $X^n$ be a sequence of continuous martingales such that $t\in \R^{++}$, $X^n_t \xrightarrow{\sL^1} X_t$ as $n\to \infty$ for all $t$ and some process $X$. Then, $X$ is a martingale and has a continuous version.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+Use similar argument in Theorem \ref{thm:convergence_ucp_cadlag_martingale} and apply Theorem \ref{thm:complete_cadlag_continuous_under_ucp_convergence}
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\section{Local Martingales}
+
+We write $\sM$ for the set of all \cadlag\ martingales. It is also the case that $\sM$ is stable under stopping (see Theorem \ref{thm:optional_stopping_bounded_stopping_time_continuous}). This observation leads us to define a slightly more general class of processes, called local martingales.
+
+\subsection{Definitions}
+
+\begin{definition}[local martingale\index{local martingale}]\label{def:local_martingale}
+An adapted process $X$ is a local martingale if there exists a sequence $(T_n)_{n\in \N}$ of stopping times with $T_n\ua \infty$ a.s. such that $(X^{T_n}_t)_{t\geq 0}$ is a martingale for all $n \in \N$ with respect to the filtration $(\sF_t)_{t\geq 0}$.
+
+We say that the sequence $(T_n)_{n\in \N}$ reduces $X$\index{reduction of local martingale}.
+\end{definition}
+
+
+\begin{proposition}\label{pro:local_martingale_cadlag_version}
+Let $X$ be a local martingale. If the filtration $(\sF_t)_{t\geq 0}$ satisfies the usual conditions, there exists a \cadlag\ version of $X$, $\wt{X}$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+If $X$ is a local martingale, there exists a sequence of stopping time $T_n\ua \infty$ a.s. such that $X^{T_n}$ is a martingale. Then by martingale regularization theorem (Theorem \ref{thm:martingale_regularization}), there exists a \cadlag\ verion of $\wt{X}^{T_n}$ which is also a martingale. Thus, we have for any $t$,
+\be
+\pro\bb{X_t^{T_n}(\omega) = \wt{X}_t^{T_n}(\omega)} = 1 \ \ra \ X_t^{T_n} = \wt{X}_t^{T_n} \text{ a.s.}
+\ee
+
+Thus, since $T_n \ua \infty$ a.s., we have
+\be
+\lim_{n\to \infty} X_t^{T_n} = \lim_{n\to \infty} \wt{X}_t^{T_n} \text{ a.s. } \ \ra \ X_t = \wt{X}_t \text{ a.s.}\quad \quad (*)
+\ee
+
+Since $\wt{X}^{T_n}$ is \cadlag, for any $t$
+\be
+\lim_{s\da t,s\in \Q^+} \wt{X}_s^{T_n} = \wt{X}_t^{T_n},\quad \quad \lim_{s\da t,s\in \Q^+} \wt{X}_s^{T_n}\ \text{exists \quad a.s.}
+\ee
+
+Also, since $T_n \ua \infty$ a.s., we can find a sufficently large $n$ such that $T_n > t$ a.s. with $\wt{X}_s^{T_n} = \wt{X}_s$ and $\wt{X}_t^{T_n} = \wt{X}_t$ a.s.. Then
+\be
+\lim_{s\da t,s\in \Q^+} \wt{X}_s = \wt{X}_t,\quad \quad \lim_{s\da t,s\in \Q^+} \wt{X}_s \ \text{exists \quad a.s.}\quad\quad (\dag)
+\ee
+
+%\be
+%\lim_{n\to \infty} \lim_{s\da t,s\in \Q^+} \wt{X}_s^{T_n} = \lim_{n\to \infty}\wt{X}_t^{T_n},\quad \quad \lim_{n\to \infty}\lim_{s\da t,s\in \Q^+} \wt{X}_s^{T_n}\ \text{exists \quad a.s.}
+%\ee
+
+Thus, from ($*$) and ($\dag$), $\wt{X}$ is a \cadlag\ version of $X$.
+\end{proof}
+
+
+\begin{proposition}\label{pro:stopped_local_martingale_implies_local_martingale}
+Let $X$ be a \cadlag\ local martingale and $T$ be a stopping time. Then $X^T$ is also a \cadlag\ local martingale.
+\end{proposition}
+
+\begin{remark}
+If $X$ is (sample) continuous, then $X^T$ is also (sample) continuous.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+By definition of local martingale, there exists a sequence of stopping times $T_n \ua \infty$ a.s. such that $X^{T_{n}}$ is a martingale. Since $X$ is \cadlag, for any $t$, we can find $s \da t, s \in \Q^+$ and thus $s \land T_n \da t \land T_n$ such that
+\be
+\lim_{s \da t}X_{s}^{T_n}  = \lim_{s \da t}X_{s \land T_n} = \lim_{s \land T_n \da t \land T_n}X_{s \land T_n} = X_{t \land T_n} =  X_{t}^{T_n} \ \ra \ X^{T_{n}} \text{ is \cadlag.}
+\ee
+
+Then by optional stopping theorem (Theorem \ref{thm:optional_stopping_bounded_stopping_time_continuous}), $X^{{T_n}\land T}$ is a \cadlag\ martingale. Thus, we have $X^{T}$ is a local martingale (by definition of local martingale).
+
+Since $X^{T_n\land T}$ is \cadlag, for any $t$
+\be
+\lim_{s\da t,s\in \Q^+} X_s^{T_n\land T} = X_t^{T_n\land T},\quad \quad \lim_{s\da t,s\in \Q^+} X_s^{T_n\land T}\ \text{exists \quad a.s.}
+\ee
+
+Also, since $T_n \ua \infty$ a.s., we can find a sufficently large $n$ such that $T_n > t$ a.s. with $X_s^{T_n\land T} = X_s^T$ and $X_t^{T_n\land T} = X_t^T$ a.s.. Then
+\be
+\lim_{s\da t,s\in \Q^+} X_s^T = X_t^T,\quad \quad \lim_{s\da t,s\in \Q^+} X_s^T \ \text{exists \quad a.s.}.
+\ee
+
+Thus, $X^T$ is \cadlag.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%
+
+\begin{proposition}\label{pro:martingale_is_local_martingale}
+Every \cadlag\ martingale is a \cadlag\ local martingale.
+\end{proposition}
+
+\begin{remark}
+By martingale regularization theorem (Theorem \ref{thm:martingale_regularization}), we only consider the \cadlag\ martingale $X$.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+By Theorem \ref{thm:optional_stopping_bounded_stopping_time_continuous}, for any $T$ we have $X^T$ is also a \cadlag\ martingale. Then we can find a sequence of stopping times $T_n \ua \infty$ a.s. for which $X^{T_n}$ is a \cadlag\ martingale. Thus, $X$ is a \cadlag\ local martingale.%\footnote{need proof.}%We know that if $X$ is a martingale, $X^T$ is also a martingale for any stopping time $T$ (T).
+\end{proof}
+
+\begin{remark}
+\ben
+\item [(i)] We write $\sM_{loc}$ for the set of all \cadlag\ local martingales. In particular $\sM\subseteq \sM_{loc}$ since any sequence $(T_n)_{n\in\N}$ of stopping times reduces $X$ by Theorem \ref{thm:optional_stopping_bounded_stopping_time_continuous}.(ii).
+\item [(ii)] The converse is not true.
+\een
+\end{remark}
+
+One may ask what happens in the case of discrete time. This issue is moot in the following sense:
+
+\begin{proposition}
+Let $(X_n)_{n\geq 0}$ be discrete integrable local martingale. It is also a martingale.
+\end{proposition}
+
+\begin{remark}
+This means that the martingale and local martingale are equivalent in discrete time frame. This conclusion is first given by Meyer\cite{Meyer_1972}.$P_{47}$, though there is small difference in proof.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Since $X$ is integrable, all the conditional expectation is well-defined. With Proposition \ref{pro:martingale_is_local_martingale}, we only need to prove that local martingale implies martingales and it suffices to that for any $n\geq m$
+\be
+\E\bb{\left.X_{n}\right.|\sF_m} = X_m \text{ a.s..}
+\ee
+
+For any set $A\in \sF_m$, it is suffices to prove that
+\be
+\E\bb{X_n \ind_A} = \E\bb{X_m\ind_A}.\quad\quad (*)
+\ee
+
+Since $X$ is a local martingale, we can find $T_k\ua \infty$ a.s. such that $X^{T_k}$ is a martingale for all $k$. That is
+\be
+\E\bb{\left.X_n^{T_k}\right|\sF_m} = X_m^{T_k}\text{ a.s..}
+\ee
+
+Thus, set $B = \bra{T_k > m}\cap A$ (as $B$ is $\sF_m$-measurable), we have $\E\bb{X_{m+1}^{T_k} \ind_B} = \E\bb{X_m^{T_k} \ind_B}$ and this implies that
+\be
+\E\bb{X_{m+1} \ind_A} = \E\bb{X_{m+1}^{T_k} \ind_{\bra{T_k > m}} \ind_A} = \E\bb{X_m^{T_k} \ind_{\bra{T_k > m}} \ind_A} = \E\bb{X_m \ind_A}.
+\ee
+
+Thus, we have ($*$) by induction. Note that we can not use this trick in continuous time frame as $T_k$ has uncountably many values.%\footnote{proof}
+\end{proof}
+
+
+\begin{proposition}\label{pro:function_of_local_martingales_is_still_local_martingale}
+If $M,N\in \sM_{c,loc}$, then $M+N,M-N\in \sM_{c,loc}$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Since $M,N\in \sM_{c,loc}$, there exist two sequences of stopping times $S_n$ and $S_n$ such that $S_n \ua \infty$ a.s., $S_n' \ua \infty$ a.s. and
+\be
+(M+N)^{S_n} \in \sM_c,\quad (M-N)^{S'_n} \in \sM_c.
+\ee
+
+Now define $T_n = S_n\land S_n'$, so we have $T_n$ is also a sequence of stopping times and $T_n \ua \infty$ a.s. such that
+\be
+(M+N)^{T_n} = \bb{(M+N)^{S_n}}^{S_n'} \in \sM_c,\quad (M-N)^{T_n} = \bb{(M-N)^{S'_n}}^{S_n} \in \sM_c.
+\ee
+since stopped martingale is still a martingale (Theorem \ref{thm:optional_stopping_bounded_stopping_time_continuous}). Thus, $M+N,M-N\in \sM_{c,loc}$.
+\end{proof}
+
+
+
+\subsection{The relationship between martingales and local martingales}
+
+We now give necessary and sufficient conditions for a local martingale to be a martingale.
+
+\begin{proposition}\label{pro:martingale_local_martingale_equivalent}
+Let $(\Omega,\sF,(\sF_t)_{t\geq 0}, \pro)$ be a filtration (not necessarily satisfying usual conditions) and $X$ be a \cadlag\ process. The following statements are equivalent:
+\ben
+\item [(i)] $X$ is a martingale.
+\item [(ii)] $X$ is a local martingale and for all $t \geq 0$ the set
+\be
+\sX_t = \bra{X_T : \forall T \text{ is a stopping time, }T \leq t} \ \text{ is UI}.
+\ee
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+By martingale regularization theorem (Theorem \ref{thm:martingale_regularization}) and Proposition \ref{pro:local_martingale_cadlag_version}, we only consider the \cadlag\ case.
+
+(i) $\ra$ (ii). By optional stopping theorem (Theorem \ref{thm:optional_stopping_bounded_stopping_time_continuous}.(iii)), if $T$ is a bounded stopping time with $T \leq t$, then $X_T =
+\E(X_t|\sF_T)$ a.s.. Thus by Corollary \ref{cor:single_integrable_conditional_expectation_implies_ui} $X_t$ is uniformly integrable since
+\be
+\sup_{T\leq t}\E\bb{\abs{X_T}\ind_{\abs{X_T}\geq K}} = \sup_{T\leq t}\E\bb{\abs{\E(X_t|\sF_T)}\ind_{\abs{\E(X_t|\sF_T)}\geq K}} \to 0 \quad\text{ as }K\to \infty.
+\ee
+
+(ii) $\ra$ (i). Suppose $(T_n)_{n\geq 0}$ reduces $X$. Let $T$ be any bounded stopping time, $T \leq t$, say. By optional stopping theorem (Theorem
+\ref{thm:optional_stopping_bounded_stopping_time_continuous}.(iv)) applied to the martingale $X^{T_n}$,
+\be
+\E(X_0) = \E(X^{T_n}_0) = \E(X^{T_n}_T) = \E(X_{T\land T_n}).
+\ee
+
+Since $\bra{X_{T\land T_n}:n \in \N}$ is uniformly integrable by assumption, $X_{T\land T_n} \in \sL^1(\Omega,\sF,\pro)$. Also, we have $X_{T\land T_n} \to X_T$ a.s. (as $T$ is bounded and $T_n\ua
+\infty$ a.s.). So we can apply dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}),
+\be
+\E(X_{T\land T_n}) \to \E(X_T)\quad \text{as }n \to \infty.
+\ee
+
+Therefore, $\E(X_T) = \E(X_0)$. Then by optional stopping theorem (Theorem \ref{thm:optional_stopping_bounded_stopping_time_continuous}) again, $X$ must be a martingale.
+\end{proof}
+
+An extremely useful consequence of the above is the following.
+
+\begin{corollary}\label{cor:local_martingale_bounded_martingale}
+Let $X$ be a \cadlag\ local martingale, and assume that $X$ is bounded. Then $X$ is a martingale.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+If $X$ is bounded by constant $M$, i.e. $\abs{X}\leq M$, we recall definition of UI (Theorem \ref{thm:ui_equivalent_probability})
+\be
+\sup_{T\leq t} \E\bb{\abs{X_T}\ind_{\bra{\abs{X_T} > K}}} \leq \sup_{T\leq t} M \E\bb{\ind_{\bra{\abs{X_T}\geq K}}} = M \sup_{T\leq t} \pro\bb{\abs{X_T}\geq K} \to 0 \ \text{ as }K\to \infty.
+\ee
+
+Thus, $\sX_t = \bra{X_T : T \text{ is a stopping time, }T \leq t}$ is UI. By Proposition \ref{pro:martingale_local_martingale_equivalent}, we have $X$ is a martingale.
+\end{proof}
+
+
+%\begin{corollary}\label{cor:local_martingale_ui_martingale}
+%Let $X$ be a \cadlag\ local martingale, and assume that $X$ is UI. Then $X$ is a martingale.
+%\end{corollary}
+%
+%\begin{proof}[\bf Proof]
+%If $X$ is UI, we recall definition of UI (Theorem \ref{thm:ui_equivalent_probability})
+%\be
+%\sup_{T\leq t} \E\bb{\abs{X_T}\ind_{\bra{\abs{X_T} > K}}} \leq \sup_{t\geq 0} \E\bb{\abs{X_t}\ind_{\bra{\abs{X_t} > K}}}  \to 0 \ \text{ as }K\to \infty.
+%\ee
+%
+%Thus, $\sX_t = \bra{X_T : T \text{ is a stopping time, }T \leq t}$ is UI. By Proposition \ref{pro:martingale_local_martingale_equivalent}, we have $X$ is a martingale.
+%\end{proof}
+%
+
+\begin{corollary}\label{cor:local_martingale_dominated_martingale}
+More generally, if $X$ is a \cadlag\ local martingale such that for all $t \geq 0$, $\abs{X_t} \leq Y$ for some $Y\in \sL^1(\Omega,\sF,\pro)$, then $X$ is a martingale.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+If $\abs{X}\leq Y$ for some $Y\in \sL^1(\Omega,\sF,\pro)$, we have $\sX_t = \bra{X_T : T \text{ is a stopping time, }T \leq t}$ is UI by Proposition \ref{pro:dominated_integrable_random_variable_implies_ui}.
+
+Then By Proposition \ref{pro:martingale_local_martingale_equivalent}, we have $X$ is a martingale. %recall definition of UI (Theorem \ref{thm:ui_equivalent_probability}) %\be \sup_{T\leq t} \E\bb{\abs{X_T}\ind_{\bra{\abs{X_T} > K}}} \leq \sup_{T\leq t} \E\bb{Y\ind_{\bra{Y > K}}}  = \E\bb{Y\ind_{\bra{Y > K}}} \to 0 \ \text{ as }K\to \infty \ee as we know that single integrable  Thus,
+\end{proof}
+
+\begin{theorem}\label{thm:local_martingale_martingale_sl1_convergence}
+Let $X$ be a \cadlag\ local martingale. If $(T_n)_{n\geq 0}$ reduce $X$ and $X^{T_n}_t \stackrel{\sL^1}{\to} X_t$ for any $t$, i.e., $X^{T_n}_t,X_t \in \sL^1(\Omega,\sF,\pro)$ and $\E\abs{X^{T_n}_t - X_t} \to 0$ as $n\to \infty$, then $X$ is a ture martingale.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Since $X^{T_n}_t,X_t \in \sL^1(\Omega,\sF,\pro)$, $\E\bb{X^{T_n}_t|\sF_s},\E\bb{X_t|\sF_s}$ is well-defined. Thus, we only need to show that for all $t\leq s$,
+\be
+\E\bb{X_t|\sF_s} = X_s\text{ a.s..}
+\ee
+
+Then since $X^{T_n}$ is a martingale,
+\beast
+0 & \leq & \E\abs{\E\bb{X_t|\sF_s} - X_s} = \E\abs{\E\bb{X_t|\sF_s} - X_s - \E\bb{\left.X_t^{T_n}\right|\sF_s} + X^{T_n}_s}\\
+& \leq & \E\abs{\E\bb{\left.X_t^{T_n} - X_t\right|\sF_s}} + \E\abs{X^{T_n}_s - X_s} \leq \E\bb{\E\bb{\abs{X_t^{T_n} - X_t}\sF_s}} + \E\abs{X^{T_n}_s - X_s} \\
+& = & \E\abs{X^{T_n}_t - X_t} + \E\abs{X^{T_n}_s - X_s} \to 0 \text{ as }n\to \infty
+\eeast
+by conditional Jensen's inequality (Theorem \ref{thm:jensen_inequality_conditional_expectation}), tower property (Proposition \ref{pro:conditional_expectation_tower_independence}.(i)) and $\sL^1(\Omega,\sF,\pro)$-convergence. Thus, by Theorem \ref{thm:non_negative_measurable_property},
+\be
+\E\abs{\E\bb{X_t|\sF_s} - X_s} = 0 \ \ra \ \E\bb{X_t|\sF_s} - X_s = 0 \text{ a.s.}
+\ee
+as required.
+\end{proof}
+
+\begin{corollary}\label{cor:local_martingale_expected_sup_stopped_martingale}
+Let $X$ be a \cadlag\ local martingale. If $(T_n)_{n\geq 0}$ reduces $X$ and
+\be
+\E\bb{ \sup_{n\geq 0}\abs{ X_t^{T_n} }} < \infty \quad \text{for every }t,
+\ee
+then $X$ is a true martingale.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+Since $X^{T_n}_t \to X_t$ a.s., and $\E\bb{ \sup\limits_{n\geq 0}\abs{ X_t^{T_n} }} < \infty$, we can find $Y\in \sL^1(\Omega,\sF,\pro)$ such that $\abs{X^{T_n}_t} \leq Y$. Then by dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}), $X_t$ is integrable as well. Also, $X^{T_n}_t - X_t \to 0$ a.s., then by dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}) again, we have
+\be
+\E\abs{X^{T_n}_t - X_t} \to 0.
+\ee
+
+Then we use Theorem \ref{thm:local_martingale_martingale_sl1_convergence}\footnote{Alternative, we can prove it by Theorem \ref{thm:dominated_convergence_conditional_expectation} without using Theorem \ref{thm:local_martingale_martingale_sl1_convergence}.}.
+\end{proof}
+
+We can have a stronger condition as followed.
+
+\begin{corollary}\label{cor:local_martingale_expected_sup_compact_martingale}
+Let $X$ be a \cadlag\ local martingale. If
+\be
+\E\bb{\sup_{s\in[0,t]} \abs{X_s}} < \infty\quad\text{ for every }t,
+\ee
+then $X$ is a martingale.
+\end{corollary}
+
+%\begin{remark}
+%We can have the same conclusion by assuming stronger condition
+%\be
+%
+%\ee
+%\end{remark}
+
+\begin{proof}[\bf Proof]
+We know that for stopping time sequence $T_n \ua \infty$ a.s. reduces $X$,
+\be
+\abs{X^{T_n}_t} = \abs{X^{T_n\land t}} \leq \sup_{s\in[0,t]} |X_s|  \ \ra\ \sup_{n\geq 0}\abs{ X_t^{T_n} } \leq \sup_{s\in[0,t]} |X_s| \ \ra\  \E\bb{\sup_{n\geq 0}\abs{ X_t^{T_n} }} \leq  \E\bb{\sup_{s\in[0,t]} |X_s|} < \infty
+\ee
+by Theorem \ref{thm:non_negative_measurable_property}.
+\end{proof}
+
+We can have the same conclusion by assuming stronger condition
+
+\begin{corollary}\label{cor:local_martingale_expected_sup_martingale}
+Let $X$ be a \cadlag\ local martingale. If
+\be
+\E\bb{\sup_{t\geq 0} |X_t|} < \infty.
+\ee
+
+Then $X$ is a UI martingale.
+\end{corollary}
+
+\begin{remark}
+Note that condition $\E\bb{\sup_{s\in[0,t]} \abs{X_s}} < \infty\quad\text{ for every }t$ is not enough to guarantee UI.
+\end{remark}
+
+
+\begin{proof}[\bf Proof]
+For every $t>0$, there exists $C$ such that % \abs{X_t} < \infty \text{ a.s.} \ \ra \
+\be
+\abs{X_t} \ind_{\abs{X_t} > K} \leq \sup_{t\geq 0} \abs{X_t} \ind_{\sup_{t\geq 0} \abs{X_t} > K} \leq C < \infty \quad \text{a.s.}%\leq %\to 0 \text{ a.s. as }K\to \infty.
+\ee
+
+Since $\sup_{t\geq 0} \abs{X_t} < \infty \text{ a.s.}$, by Theorem \ref{thm:non_negative_measurable_property} we have\footnote{The case $\sup_{s\in [0,t]} \abs{X_s}$ may not have the following
+supremum as $\sup_{s\in [0,t]} \abs{X_s} \leq C_t$ a.s. where $C_t$ depends on $t$ and it can goes to infinity as $t\to\infty$.}
+\be
+\sup_{t\geq 0}\E\bb{\abs{X_t} \ind_{\abs{X_t} > K}} \leq \E\bb{\sup_{t\geq 0} \abs{X_t} \ind_{\sup_{t\geq 0} \abs{X_t} > K}} \to 0 \quad  \text{as }K\to \infty.
+\ee
+%Therefore, for all $t$, by dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability})
+%\be
+%\E\bb{\abs{X_t} \ind_{\abs{X_t} > K}} \to 0
+%\ee       % $\sup_{t\geq 0}\E\bb{\abs{X_t} \ind_{\abs{X_t} > K}} \to 0$ as $K \to \infty$ and this implies that
+
+Thus,$X$ is UI. Combining Corollary \ref{cor:local_martingale_expected_sup_compact_martingale}, we know that $X$ is indeed a martingale.%\footnote{why UI martingale?}%Also,
+%\be
+%\abs{X_t} \leq \sup_{s\in[0,t]} \abs{X_s}
+%\ee
+\end{proof}
+
+
+
+\begin{remark}
+The following to weaker conditions are not sufficient for a local martingale to be a martingale.
+\ben
+\item [(i)] $\sup_{s\in[0,t]} \E |X_s| < \infty$ for every $t$.
+
+We can see that the stronger version $\sup_{s\in[0,t]} \E |X_s| < \infty$ implies bounded in $\sL^1$. This is a necessary condition for UI.
+
+\item [(ii)] $\sup_{t\in[0,\infty)} \E \bb{e^{|X_t|}} < \infty$.
+\een
+\end{remark}
+
+\begin{example}
+\footnote{see wiki local martingale}
+\end{example}
+
+
+\begin{theorem}
+A non-negative \cadlag\ local martingale $X$ is a supermartingale.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Since $X$ is local martingale, there exists $T_n \ua \infty$ a.s. such that $X^{T_n}$ is a martingale. Thus, for any $t\geq s$,
+\be
+\E\bb{\left.X_t^{T_n}\right|\sF_s} = X^{T_n}_s \ \text{ a.s.}.\quad \quad (*)
+\ee
+
+We know that $\liminf_{n\to \infty} X^{T_n}_t = X_t$ a.s., $\liminf_{n\to \infty} X^{T_n}_s = X_s$ a.s.. Thus, for any $A\in \sF_s$, we have%\E \bb{\E\bb{\left.\liminf_{n\to \infty} X^{T_n}_t\right| \sF_s}\ind_A}
+\be
+\E \bb{\liminf_{n\to \infty} X^{T_n}_t \ind_A} = \E \bb{X_t \ind_A} \quad (\text{by Theorem \ref{thm:non_negative_measurable_property} as $\liminf_{n\to \infty} X^{T_n}_t \ind_A = X_t \ind_A$ a.s.})
+\ee
+
+Thus, by Theorem \ref{thm:conditional_expectation_existence_uniqueness},
+\be
+\E\bb{\left.\liminf_{n\to \infty} X^{T_n}_t\right| \sF_s} = \E\bb{X_t|\sF_s} \ \text{ a.s..}\quad\quad (**)
+\ee
+
+Also, by Fatou's lemma for conditional expectations (Theorem \ref{thm:fatou_conditional_expectation}, $X^{T_n}_t\geq 0$),
+\be
+\E\bb{\left.\liminf_{n\to \infty} X^{T_n}_t\right| \sF_s} \leq \liminf_{n\to \infty} \E\bb{\left.X^{T_n}_t \right|\sF_s}\ \text{ a.s.}\quad (\dag)
+\ee
+
+Then substituting ($*$) and ($**$) into the equation ($\dag$),
+\beast
+\E\bb{\left.\liminf_{n\to \infty} X^{T_n}_t\right| \sF_s} & \leq & \liminf_{n\to \infty} X^{T_n}_s\ \text{ a.s.}\\
+\E\bb{\left. X_t\right| \sF_s} & \leq & X_s\ \text{ a.s.}
+\eeast
+which implies that $X$ is a supermartingale (Definition \ref{def:martingale_super_sub_continuous}).
+\end{proof}
+
+\begin{remark}
+A martingale can be interpreted as the fortune of a player in a fair game. A local martingale which is not a true martingale, on the other hand, is the fortune of a player in a game which looks locally fair. unfortunately, this is only because there are going to be times of huge increases of $X$ followed by an eventual ruin. Overall, as the above proposition shows, the expected fortune decreases. A local martingale is thus something akin to a bubble in the market.
+\end{remark}
+
+\subsection{Local martingale properties}
+
+\begin{proposition}\label{pro:continuous_local_martingale_stopping_time}
+Let $X$ be a (sample) continuous local martingale $(X \in \sM_{c,loc})$ starting from 0. Set
+\be
+S_n = \inf\bra{t \geq 0:\abs{X_t} \geq n }.
+\ee
+
+Then $(S_n)_{n\geq 0}$ reduces $X$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Recall Proposition \ref{pro:debut_time_closed_set_stopping_time}. So $A_n = (-n, n)^c$ is a closed set. Thus, $S_n$ is a stopping time. (In particular,
+\be
+\bra{S_n \leq t} = \bra{\inf_{s\in \Q,s\leq t} d(X_s,A_n) = 0} = \bigcap_{k\in \N} \bra{\bigcup_{s\in \Q,s\leq t} \bra{d(X_s,A_n) < \frac 1k}} = \bigcap_{k\in \N} \bra{\bigcup_{s\in \Q,s\leq t} \underbrace{\bra{\abs{X_s} > n - \frac 1k}}_{\in \sF_s}} \in \sF_t ,
+\ee
+since there are countably many intersections and unions. So $S_n$ is a stopping time.)
+
+For each $\omega\in \Omega$, $X_{S_n(\omega)}(\omega) = n$ (see Proposition \ref{pro:debut_time_closed_set_stopping_time}). Then since $X$ is (sample) continuous, for any $\omega \in \Omega' = \bra{X(\omega)\text{ is continuous}}$ ($\pro(\Omega') = 1$), by the intermediate value theorem (Theorem \ref{thm:intermediate_value}), we have there exists $t\in [0,S_n(\omega)]$ such that $\abs{X_t(\omega)} = n-1$. This implies that $S_{n-1}(\omega)\leq t\leq S_n(\omega)$. Thus, $S_n(\omega)$ is non-decreasing.
+
+Also, If $\lim_{n\to \infty}S_n(\omega)$ is not infinite, then it must converge to finite $S(\omega)$. Thus, $S_n(\omega) \to S(\omega)$ and continuity of $X$ implies that $X_{S_n(\omega)}(\omega) \to X_{S(\omega)}(\omega)$, then $\forall \ve$, there exists $N \in \N$ such that $\forall n > m\geq N$, $\abs{X_{S_n(\omega)}(\omega) - X_{S_m(\omega)}(\omega)} < \ve$. However, we know that
+\be
+\abs{X_{S_n(\omega)}(\omega) - X_{S_m(\omega)}(\omega)} = \abs{\pm n \pm m} \geq 1 \quad (\text{contradiction.})
+\ee
+
+Thus, we have $\lim_{n\to \infty} S_n(\omega) = \infty$ and hence $S_n \ua\infty$ a.s..
+
+Let $(T_k)_{k\in \N}$ be a reducing sequence for $X$, i.e., $T_k \ua \infty$ a.s. and $X^{T_k} \in \sM$. By optional stopping theorem (Theorem \ref{thm:optional_stopping_bounded_stopping_time_continuous}.(ii)), $X^{S_n\land
+T_k} \in \sM$ and so $X^{S_n} \in \sM_{loc}$ for each $n \in \N$ (by definition of local martingales (Definition \ref{def:local_martingale})).
+
+But $X^{S_n}$ is bounded ($\abs{X^{S_n}_t} \leq n$ for all $t$) and so it is also a martingale (by Corollary \ref{cor:local_martingale_bounded_martingale}).
+\end{proof}
+
+%%%%%%%%%%%%%%
+
+
+\begin{theorem}\label{thm:local_martingale_indistinguishable_0}
+Suppose that the filtration $(\sF_t)_{t\geq 0}$ satisfies the usual conditions (which is necessary). Let $X$ be a sample-continuous local martingale (see Definition \ref{def:sample_continuous_process}) which is also of finite variation, and such that $X_0 = 0$ a.s. Then $X$ is indistinguishable from 0.
+\end{theorem}
+
+\begin{remark}
+It is essential to assume that $X$ is continuous in this theorem.
+
+This makes it clear that the theory of finite variation integrals we have developed is useless for integrating with respect to continuous martingales.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Let $V$ denote the total variation process of $X$. Then by Lemma \ref{lem:cadlag_sample_continuous_process_finite_variation_process}, $V$ is sample-continuous adapted and non-decreasing a.s. with $V_0 = 0$ (as the filtration $(\sF_t)_{t\geq 0}$ satisfies the usual conditions).
+
+Set $S_n = \inf\bra{t \geq 0 : V_t = n}$. Then $S_n$ is a stopping time for all $n \in \N$ (by the same argument in Proposition \ref{pro:continuous_local_martingale_stopping_time}) since $V$ is adapted. Also, $S_n \ua \infty$ as $n \to \infty$ a.s. (by the same argument in Proposition \ref{pro:continuous_local_martingale_stopping_time}) since $V_t$ is non-decreasing and finite for all $t \geq 0$ a.s..
+
+Since $X$ is sample-continuous (thus \cadlag) local martingale ($X\in \sM_{loc}$), $X^{S_n} \in \sM_{loc}$ by Proposition \ref{pro:stopped_local_martingale_implies_local_martingale}. Also, since $\abs{X_t} \leq V_t$ for any $t$ (by Lemma \ref{lem:total_variation_function}),
+\be
+\abs{X^{S_n}_t} \leq \abs{V^{S_n}_t} \leq n,
+\ee
+so by Corollary \ref{cor:local_martingale_bounded_martingale}, $X^{S_n} \in \sM$.
+
+Define $M := X^{S_n}$ with $\abs{M}\leq n$. By Proposition \ref{pro:cadlag_adapted_process_property}, we also have $M$ is sample-continuous. Thus, we have that $M$ is a bounded sample-continuous martingale.
+
+
+Fix $t > 0$ and set $t_k = kt/N$ for $0 \leq k \leq N$. By Lemma \ref{lem:sl2_martingale_trick},
+\be
+\E\bb{M^2_t} = \E\bb{\sum^{N-1}_{k=0} \bb{M^2_{t_{k+1}} -M^2_{t_k}}} = \E\bb{\sum^{N-1}_{k=0}\bb{M_{t_{k+1}} -M_{t_k}}^2} \leq  \E\bb{\underbrace{\sup_{k<N} \abs{M_{t_{k+1}} -M_{t_k}}}_{\leq 2 n} \underbrace{\sum_{0\leq k <N} \abs{M_{t_{k+1}} -M_{t_k}}}_{\leq \abs{V^{S_n}} \leq n}
+}.\nonumber
+\ee
+
+As $M$ is bounded and sample-continuous, we have $\pro\bb{M(\omega) \text{ is bounded and continuous in }t, \forall t} = 1$. We know that if a function is continuous on a closed bounded interval ($[0,t]$) of the real line, it is uniformly continuous on that interval. It is a special case of Heine-Cantor theorem\footnote{need link}. Then by proposition\footnote{need uniformly continuous iff sup to 0},
+\be
+\sup_{0\leq k <N} \abs{M_{t_{k+1}}(\omega) -M_{t_k}(\omega)} \to 0 \quad \text{a.s. \quad as }N \to \infty. \quad\quad (*)
+\ee
+
+%(If $\sup_{0\leq k <N} \abs{M_{t_{k+1}}(\omega) -M_{t_k}(\omega)}$ does not converge to 0, there exists $\delta$ such that we can find $k$ and
+%\be
+%\abs{M_{t_{k+1}}(\omega) -M_{t_k}(\omega)}> \delta
+%\ee
+%)
+
+Thus, by bounded convergence theorem (Theorem \ref{thm:bounded_convergence_probability}),
+\be
+\E\bb{\sup_{k<N}\abs{M_{t_{k+1}} -M_{t_k}} \sum^{N-1}_{k=0} \abs{M_{t_{k+1}} -M_{t_k}}} \to 0 \quad\quad \text{as }N \to \infty.
+\ee
+
+Hence, $\E(M^2_t) = 0$ for all $t \geq 0$. Therefore, $M_t = 0$ a.s. for all $t$. This means that $M$ is a version of 0. Furthermore, since $M$ is continuous, we have that $M$ is indistinguishable from 0 by Proposition \ref{pro:continuous_cadlag_version_indistinguishable}. That is, for $M^{(n)} := X^{S_n}$,
+\be
+\pro\bb{M^{(n)}(\omega) = 0,\forall t} = 1.
+\ee
+
+Thus, since $S_n \ua \infty$ a.s.,
+\beast
+\pro\bb{X_t(\omega) = 0,\forall t} & = & \pro\bb{\bigcap_{n\in \N} X_t^{S_n}(\omega) = 0,\forall t} = 1 - \pro\bb{\bigcup_{n\in \N} X_t^{S_n}(\omega) \neq 0,\exists t}\\
+& \geq & 1 - \sum_{n\in \N} \pro\bb{X_t^{S_n}(\omega) \neq 0,\exists t} = 1 - \sum_{n\in \N} \pro\bb{M^{(n)}(\omega) \neq 0,\exists t} \\
+& = & 1 -\bb{1 - \sum_{n\in \N}\bb{1- \pro\bb{M^{(n)}(\omega) = 0,\forall t} }}=  1- \sum_{n\in \N} 0 = 1- 0 = 1.
+\eeast
+
+Here we use the fact that sum of countably many 0 is still 0. Thus, $X$ is indistinguishable from 0.
+\end{proof}
+
+
+\subsection{Semimartingales}
+
+\begin{definition}[semimartingale\index{semimartingale}]\label{def:semimartingale}
+A semimartingale $X$ is a \cadlag\ adapted process having the decomposition \be X = X_0 + M + A, \quad M_0 = A_0 = 0 \text{ a.s.} \ee for a local martingale $M$ and a finite variation process $A$\footnote{It might be
+locally bounded variation process which is the general case of finite variation process, see \cite{Bass_2011}.$P_{54}$}.
+\end{definition}
+
+\begin{remark}
+Since local martingale is adapted (by Definition \ref{def:local_martingale}), then the finite variation process (see Lemma \ref{lem:cadlag_sample_continuous_process_finite_variation_process}) is also adapted.
+\end{remark}
+
+
+\section{Summary}
+
+\subsection{Martingale properties}
+
+bounded $\ \ra\ $ bounded in $\sL^p$ with $p\in (1,\infty]$ $\ \ra \ $ UI.
+
+
+\section{Problems}
+
+\subsection{Discrete-time martingales}
+
+%\begin{problem}[Polya's urn]
+%At time 1 an urn contains a white and a black ball. Take out a ball at random and replace it by two balls of the same color, this gives the new content of the urn at time 2. Keep iterating this procedure.
+%
+%Let $Y_n$ be the number of white balls in the urn at time $n$, and let $X_n = Y_n/(n + 1)$. Show that $X_n$ is a.s. convergent to a random variable $X_\infty$. Compute the mean of $X_\infty$ and the variance of $X_\infty$.
+%\end{problem}
+%
+%\begin{solution}[\bf Solution.]
+%First we want to show that $X_n$ is a martingale and then apply martingale convergence theorem (Theorem \ref{thm:martingale_convergence_discrete}) to prove it a.s. converges to a random variable $U$. We set
+%$\sF_n=\sigma(X_0,X_1,\dots,X_n)$. \beast \E \bb{\left.X_{n+1}\right|\mathcal{F}_n} & = & \E \bb{\left.\frac{Y_{n+1}}{n+2}\right|\mathcal{F}_n} = \frac{1}{n+2} \E \bb{\left.\left(Y_n+1\right)\frac{Y_n}{n+1}+Y_n\left(1-\frac{Y_n}{n+1}\right)\right|\mathcal{F}_n} \\
+%& = & \frac{1}{n+2} \E \bb{\left.\frac{n+2}{n+1}Y_n\right|\mathcal{F}_n} \stackrel{\text{a.s.}}{=} \frac{1}{n+1} Y_n = X_n . \eeast
+%
+%Also, we know that $\sup_{n\geq 0}|X_n|\leq 1 <\infty$. Thus, there exists a random variable $X_\infty$ such that $X_n\to X_\infty$ a.s. by martingale convergence theorem (Theorem \ref{thm:martingale_convergence_discrete}).
+%Actually, since $\bb{X_n}_{n\geq 0}$ is bounded (and thus $\sL^p$-bounded), $X_n\to X_\infty$ a.s. and in $\sL^p$ for any $p\geq 1$.
+%Using dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}) and martingale property, we have \be \E X_\infty= \lim_{n\to \infty}\E
+%X_n = \lim_{n\to \infty}\E X_0 = X_0 = 1/2. \ee
+%
+%Furthermore, we want to compute the variance of $U$. Intuitively, we should construct a martingale with quadratic item of $X$ and then employ martingale convergence theorem to get the limit. Naturally, we approach $X_n^2$
+%first. \beast \E \bb{\left.X_{n+1}^2\right|\sF_n} & = & \E \bb{\left.\frac{Y_{n+1}^2}{(n+2)^2}\right|\sF_n} = \frac{1}{(n+2)^2} \E \bb{\left.\left(Y_n+1\right)^2\frac{Y_n}{n+1}+Y_n^2\left(1-\frac{Y_n}{n+1}\right)\right|\mathcal{F}_n}\\
+%& = & \frac{1}{(n+2)^2} \E \bb{\left.\frac{(n+3)Y_n^2+Y_n}{n+1}\right|\mathcal{F}_n } \stackrel{\text{a.s.}}{=}  \frac{(n+1)(n+3)}{(n+2)^2} X_n^2 + \frac{1}{(n+2)^2}X_n .\eeast
+%
+%Rebalancing the equation \be \E \bb{\left.\frac{n+2}{n+3}X_{n+1}^2\right|\mathcal{F}_n} \stackrel{\text{a.s.}}{=}  \frac{n+1}{n+2} X_n^2 + \frac{1}{(n+2)(n+3)}X_n. \ee
+%
+%With respect to the previous result, we also have \be \E \bb{\left.\frac{1}{n+3}X_{n+1}\right|\mathcal{F}_n} \stackrel{\text{a.s.}}{=}  \frac{1}{n+3}X_n \ee
+%
+%The sum of these two equations gives us
+%\be
+%\E \bb{\left.\frac{n+2}{n+3}X_{n+1}^2+\frac{1}{n+3}X_{n+1}\right|\mathcal{F}_n} \stackrel{\text{a.s.}}{=}  \frac{n+1}{n+2} X_n^2 + \frac{1}{n+2}X_n
+%\ee
+%which is the fact that $\frac{n+1}{n+2}X_n^2+\frac{1}{n+2}X_n$ is a martingale. Since this martingale is bounded by 2, we apply martingale convergence theorem and conclude that it converges a.s. to $X_\infty^2$.
+%Again, by dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}) and martingale property, we have
+%\be
+%\E X_\infty^2 = \lim_{n\to\infty}\E \bb{\frac{n+2}{n+3}X_{n+1}^2+\frac{1}{n+3}X_{n+1}} = \frac{1+1}{1+2} \E X_0^2 + \frac{1}{1+2} \E X_0 =\frac{2}{3}\frac{1}{4} + \frac{1}{3}\frac{1}{2} = \frac{1}{3}.
+%\ee
+%
+%Consequently, $\var X_\infty= \E X_\infty^2 - \bb{\E X_\infty}^2 =1/12$.
+%\end{solution}
+
+\begin{problem}[P\'olya's urn\index{P\'olya's urn}]\label{exe:polya_urn}
+At time 0, an urn contains 1 black ball and 1 white ball. At each time $1, 2, 3, \dots$, a ball is chosen at random from the urn and is replaced together with a new ball of the same colour.
+Just after time $n$, there are therefore $n + 2$ balls in the urn, of which $B_n + 1$ are black, where $B_n$ is the number of black balls chosen by time $n$.
+
+Let $M_n = (B_n + 1)/(n + 2)$ the proportion of black balls in the urn just after time $n$. Prove that, relative to a natural filtration which you should specify, $M$ is a martingale.
+Show that it converges a.s. and in $\sL^p$ for all $p \geq 1$ to a $[0, 1]$-valued random variable $X_\infty$.
+
+Show that for every $k$, the process
+\be
+\frac{(B_n + 1)(B_n + 2) \dots (B_n + k)}{(n + 2)(n + 3) \dots (n + k + 1)},\quad n \geq  1
+\ee
+is a martingale. Deduce the value of $\E X^k_\infty$, and finally the law of $X_\infty$. Reobtain this result by showing directly that $\pro(B_n = k) = (n + 1)^{-1}$ for $0 \leq k \leq n$.
+
+Prove that for $0 < \theta < 1$, $(N_n(\theta))_{n\geq 0}$ is a martingale, where
+\be
+N_n(\theta) := \frac{(n + 1)!}{B_n!(n - B_n)!} \theta^{B_n}(1 - \theta)^{n-B_n}.
+\ee
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+Define $\sF_n := \sigma(B_0, \dots ,B_n)$ for all $n \geq 0$.
+
+Then the process $M = (M_n)_{n\geq 0} = ((B_n+1)/(n+2))_{n\geq 0}$ is a martingale with respect to this filtration. To see why, note that for all $n \geq 0$, $M_n$ is clearly $\sF_n$-measurable and
+such that $\abs{M_n} \leq 1$, and that $M_n$ is therefore integrable. For the martingale property,
+\beast
+\E\bb{M_{n+1}|\sF_n} = \E\bb{\left.\frac{B_{n+1}+1}{n+3}\right|\sF_n} & \stackrel{ \text{ a.s.}}{=} & M_n \frac{B_n+2}{n+3} +(1-M_n)\frac{B_n+1}{n+3}\\
+& = & \frac{(B_n+1)(B_n+2)+(n+1-B_n)(B_n+1)}{(n+2)(n+3)} \\
+& = & \frac{(n+3)(B_n+1)}{(n+2)(n+3)} = M_n \eeast and therefore $M$ is a martingale. As mentioned earlier, $M$ is bounded and hence is bounded in $\sL^p$ for all $p \geq 1$. Therefore, by the
+$\sL^p$ convergence theorem (Theorem \ref{thm:martingale_bounded_lp_as_lp_closed_discrete}), there exists a random variable $X_\infty$ such that, for all $p > 1$, $M_n \to X_\infty$ a.s. and in
+$\sL^p$. For the case where $p = 1$, note that on finite measure spaces convergence in $\sL^q$ implies convergence in $\sL^p$ if $1 \leq  p \leq  q < \infty$. Additionally, as the image of $M_n$ is
+contained in $[0,1]$, the image of $X_\infty$ is (a.s.) contained in $[0,1]$.
+
+
+Using dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}) and martingale property, we have \be \E X_\infty= \lim_{n\to \infty}\E M_n = \lim_{n\to \infty}\E M_0 = M_0
+= 1/2. \ee
+
+Furthermore, we want to compute the variance of $X_\infty$. Intuitively, we should construct a martingale with quadratic item of $M$ and then employ martingale convergence theorem to get the limit.
+Naturally, we approach $M_n^2$ first.
+\beast
+\E \bb{\left.M_{n+1}^2\right|\sF_n} & = & \E \bb{\left.\frac{\bb{B_{n+1}+1}^2}{(n+3)^2}\right|\sF_n} \stackrel{ \text{ a.s.}}{=} \frac{1}{(n+3)^2} \bb{M_n \bb{B_n+2}^2+ (1-M_n)(B_n+1)^2}\\
+& = & \frac{1}{(n+2)(n+3)^2} \bb{(B_n+1)(B_n+2)^2 + (n+1-B_n)(B_n + 1)^2} \\
+& = & \frac 1{(n+3)^2}M_n\bb{(n+4)(B_n+1) + 1} = \frac 1{(n+3)^2}M_n\bb{(n+2)(n+4)M_n + 1} .\eeast
+
+Rebalancing the equation \be \E \bb{\left.\frac{n+3}{n+4}M_{n+1}^2\right|\mathcal{F}_n} \stackrel{\text{a.s.}}{=}  \frac{n+2}{n+3} M_n^2 + \frac{1}{(n+3)(n+4)}M_n. \ee
+
+With respect to the previous result, we also have
+\be
+\E \bb{\left.\frac{1}{n+4}M_{n+1}\right|\mathcal{F}_n} \stackrel{\text{a.s.}}{=}  \frac{1}{n+4}M_n.
+\ee
+
+The sum of these two equations gives us
+\be
+\E \bb{\left.\frac{n+3}{n+4}M_{n+1}^2+\frac{1}{n+4}M_{n+1}\right|\mathcal{F}_n} \stackrel{\text{a.s.}}{=}  \frac{n+2}{n+3} M_n^2 + \frac{1}{n+3}M_n
+\ee
+which is the fact that $\frac{n+2}{n+3}M_n^2+\frac{1}{n+3}M_n$ is a martingale. Since this martingale is bounded by 2, we apply martingale convergence theorem and conclude that it converges a.s. to
+$X_\infty^2$. Again, by dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}) and martingale property, we have
+\be
+\E X_\infty^2 = \lim_{n\to\infty}\E \bb{\frac{n+2}{n+3}M_{n}^2+\frac{1}{n+3}M_n} = \frac 2{3} \E M_0^2 + \frac{1}{3} \E M_0 =\frac{2}{3}\frac{1}{4} + \frac{1}{3}\frac{1}{2} = \frac{1}{3}.
+\ee
+
+Consequently, $\var X_\infty= \E X_\infty^2 - \bb{\E X_\infty}^2 =1/12$.
+
+Define for all $k \geq 1$ and all $n \geq  0$ \be M^{(k)}_n := \prod^k_{i=1} \frac{B_n+i}{n+i+1} \ee
+
+We claim that this is a martingale. Again, it is clearly $\sF_n$-measurable and such that $\abs{M^{(k)}_n} \leq  1$, as each factor lies in $[0,1]$, and therefore it is integrable. To check the
+martingale property, let $n \geq  0$. \beast
+\E[M^{(k)}_n+1|\sF_n] & = & \E\bb{\left.\prod^k_{i=1} \frac{B_n+1+i}{n+i+2}\right|\sF_n} \stackrel{\text{a.s.}}{=}  M_n \prod^k_{i=1} \frac{B_n+i+1}{n+i+2} +(1-M_n) \prod^k_{ i=1}\frac{B_n+i}{n+i+2} \\
+& = & \frac{\prod^k_{i=2}(B_n+i)}{\prod^k_{i=1}(n+i+2)} \cdot \frac{(B_n+1)(B_n+k+1)+(n+1-B_n)(B_n+1)}{n+2}\\
+& = & \frac{\prod^k_{i=2}(B_n+i)}{\prod^k_{i=1}(n+i+2)} \cdot \frac{(n+k+2)(B_n+1)}{n+2} = \frac{\prod^k_{i=1}(B_n+i)}{\prod^k_{i=1} (n+i+1)} = M^{(k)}_n \eeast and so $(M^{(k)}_n)_{n\geq 0}$ is a
+martingale.
+
+Looking back at the definition of $M^{(k)}_n$, it's clear that it's `almost' equal to $M^k_n$, we will next quantify this and show that as $n\to \infty$, the difference disappears in a suitable
+manner. Each factor can be rewritten as follows: \be \frac{B_n+i}{n+i+1} = \frac{B_n+i}{n+2} \frac{n+2}{n+i+1} = \frac{B_n+1+i-1}{n+2} \frac{n+2}{n+i+1} = \bb{M_n+ \frac{i-1}{n+2}} \frac{n+2}{n+i+2}
+\ee
+
+From this, it is clear that each of the $k$ factors tends to $X_\infty$ a.s. as $n \to \infty$. By the continuous mapping theorem, it follows that $M^{(k)}_n \to X^k_\infty$ a.s. as $n \to \infty$.
+Now, as we mentioned earlier, $\abs{M^{(k)}_n} \leq 1$. By the same reasoning as earlier there exists a random variable $M_\infty$ such that for all $p \geq 1$, $M^{(k)}_n \to M_\infty$ almost
+surely and in $\sL^p$. Therefore $X^k_\infty = M_\infty$ a.s. and so, for all $p \geq 1$, $M^{(k)}_n \to X^k_\infty$ a.s. and in $\sL^p$. In particular, then, the convergence holds in $\sL^1$: so we
+see that
+\be
+\E X^k_\infty  = \lim_{n\to \infty}\E M^{(k)}_n = \lim_{n\to \infty}\E M^{(k)}_0  = \frac 1{k+1}
+\ee
+where the penultimate equality holds by the martingale property.
+
+The mgf of $X_\infty$ exists as $X_\infty \in [0,1]$ a.s. and it is given by
+\be
+M_{X_\infty}(t) := \E\bb{e^{tX_\infty}} = \E\bb{\sum^\infty_{n=0} \frac{(tX_\infty)^n}{n!}} = \sum^\infty_{n=0} \frac {t^n\E X^n_\infty}{n!} = \sum^\infty_{ n=0} \frac{t^n}{(n+1)!} = \frac{e^t -1}t
+\ee
+where we used Fubini's theorem (Theorem \ref{thm:fubini}) in the third equality together with the absolute convergence of the series in the third term.
+The mgf of a $\sU(0,1)$ random variable is precisely equal to $M_{X_\infty}$ so it follows that $X_\infty \sim  \sU(0,1)$ (which is consistent with the mean and variance by Propositions \ref{pro:mgf_uniform}, \ref{pro:moments_uniform}).
+
+We next claim that we can show that $B_n \sim  U\bra{0,1, \dots ,n}$ directly. (We will prove a result about the joint distribution as we will need it in the following exercise.) Define $\Delta_n :=
+B_n-B_{n-1}$ for all $n \geq 1$ and define $\ol{\Delta}_n := (\Delta_1, \dots ,\Delta_n)$. Note that $\Delta_n$ takes values in $\bra{0,1}$. We proceed by induction, we claim that for all $n \geq
+1$,
+\be
+\pro\bb{\ol{\Delta}_n = \bba_n} = \frac{K_n!(n-K_n)!}{(n+1)!}
+\ee
+where $\bba_n = (a_1, \dots ,a_n)\in \bra{0,1}^n$ and $K_n := \sum^n_{i=1} a_i$. Note that $\pro\bb{\Delta_1 = a_1} = 1/2$ if $a_1 \in \bra{0,1}$, which satisfies the claim. Suppose the claim holds for $n \leq  N$. Then
+\beast
+\pro\bb{\ol{\Delta}_{N+1} = \bba_{N+1}} & = & \pro\bb{\Delta_{N+1} = a_{N+1}|\ol{\Delta}_N = \bba_N} \frac{K_N!(N -K_N)!}{(N +1)!}\\
+& = & \frac{a_{N+1}(K_N +1)+(1-a_{N+1})(N +1-K_N)}{N +2} \frac{K_N!(N -K_N)!}{(N +1)!} \\
+& = & \frac{A_{N+1}K_N!(N -K_N)!}{(N +2)!}
+\eeast
+and note that \be \frac{K_{N+1}!(N +1-K_{N+1})!}{K_N!(N -K_N)!} = (a_{N+1}(K_N +1)+1-a_{N+1})(a_{N+1}+(1-a_{N+1})(N -K_N +1)) =: B_{N+1} \ee
+
+Next, observe that $B_{N+1}-A_{N+1} = (a_{N+1}-1)a_{N+1}K_{N+1}(N -K_{N+1}) = 0$ when $a_{N+1}\in \bra{0,1}$. It follows that
+\be
+\pro\bb{\ol{\Delta}_{N+1} = \bba_{N+1}} = \frac{B_{N+1}K_N!(N -K_N)!}{(N +2)!} = \frac{K_{N+1}!(N +1-K_{N+1})!}{(N +2)!}
+\ee
+as required, so induction completes the proof of the claim. From this we see that, if $K \in \bra{0,1, \dots ,n}$,
+\be
+\pro\bb{B_n = K} = \pro\bb{\sum^n_{i=1}\Delta_i = K} = \sum_{K_n=K} \pro\bb{\ol{\Delta}_n = a_n} = \binom{n}{K} \frac{K_n!(n-K_n)!}{(n+1)!} = \frac 1{n+1}
+\ee
+i.e. that $B_n \sim \sU\bra{0,1, \dots ,n}$.
+
+We next claim that we can rederive the distribution of $X_\infty$ from this.\footnote{We can also use the portmanteau lemma. details needed.} As $M_n \to X_\infty$ a.s., $M_n
+\to X_\infty$ in distribution a fortiori. If we can show that the cdf of $M_n$ converges everywhere to that of a $\sU(0,1)$ random variable then it will follow that $X_\infty \sim  \sU(0,1)$. First note
+that $M_n = (B_n+1)/(n+2)$, it follows that $M_n \sim  \sU\bra{1/(n+2), \dots , (n+1)/(n+2)}$ and so, if $F_n$ denotes the cdf of $M_n$, \be F_n(x) = \left\{ \ba{ll}
+0 & x < 0\\
+\frac{\floor{(n+2)x}}{n+1}\qquad 0 \leq  x \leq  1\\
+1 & x > 1 \ea\right. \ee
+
+Clearly, $F_n(x) \to 0$ if $x < 0$ and $F_n(x)\to 1$ if $x > 1$. Suppose that $0 \leq  x \leq  1$. Then \be F_n(x) = \frac{\floor{(n+2)x}}{n+1} \to x \ee as $n\to \infty$. If $F$ denotes the cdf of
+a $\sU(0,1)$ random variable then, for all $x \in\R$, $F_n(x) \to F(x)$. Therefore $X_\infty \sim \sU(0,1)$, as we had earlier.
+
+For the final part of this question, let $0 < q < 1$ and define, for all $n \geq  0$, \be N_n(\theta) := \frac{(n+1)!}{B_n!(n-B_n)!} \theta^{B_n}(1-\theta)^{n-B_n} \ee
+
+We claim that the process $N(\theta) :=(N_n(\theta))_{n\geq 0}$ is a martingale. Again, it is clearly $\sF_n$-measurable and integrable, so it suffices to check the martingale property. Let $n \geq
+0$. Then \beast
+\E\bb{N_{n+1}(\theta)|\sF_n} & = & \E\bb{\left.\frac{(n+2)!}{B_{n+1}!(n+1-B_{n+1})!} \theta^{B_{n+1}}(1-\theta)^{n+1-B_{n+1}} \right|\sF_n}\\
+& \stackrel{\text{a.s.}}{=}  & M_n \frac{(n+2)!}{(B_{n+1})!(n-B_n)!} \theta^{B_n+1}(1-\theta)^{n-B_n} + (1-M_n)\frac{(n+2)!}{B_n!(n+1-B_n)!} \theta^{B_n}(1-\theta)^{n+1-B_n} \\
+& = & \frac{(n+1)!}{B_n!(n-B_n)!} \theta^{B_n}(1-\theta)^{n-B_n} (\theta +1-\theta) = N_n(\theta)
+\eeast
+as required. Therefore $N(\theta)$ is a martingale.
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}[Bayes' urn\index{Bayes' urn}]
+A random number $\Theta$ is chosen uniformly between 0 and 1, and a coin with probability $\Theta$ of heads is minted. The coin is tossed repeatedly. Let $B_n$ be the number of heads in $n$ tosses.
+Prove that $(B_n)$ has exactly the same probabilistic structure as the $(B_n)$ sequence in previous Exercise. Prove that $N_n(\theta)$ is a conditional density function of $\Theta$ given $B_1,B_2,\dots,B_n$.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+By what is given in the question we know that, where the notation is as in the prior solution,
+\be
+\pro\bb{\ol{\Delta}_n = \bba_n|\Theta} = \Theta^{K_n}(1-\Theta)^{n-K_n}
+\ee
+for all $n \geq 1$ and $\bba_n \in \bra{0,1}^n$. Hence
+\be
+\pro\bb{\ol{\Delta}_n = \bba_n} = \E\bb{\pro\bb{\ol{\Delta}_n = \bba_n|\Theta}} = \E\bb{\Theta^{K_n}(1-\Theta)^{n-K_n}} = \int^1_0 x^{K_n}(1-x)^{n-K_n} dx
+\ee
+
+By the definition of the beta function, $B$, we have that
+\be
+\pro\bb{\ol{\Delta}_n = \bba_n} = B(K_n+1,n+1-K_n) = \frac{\Gamma(K_n+1)\Gamma(n+1-K_n)}{\Gamma(n+2)} = \frac{K_n!(n-K_n)!}{(n+1)!}
+\ee
+which exactly coincides with what we found in previous exercise. It follows that $(B_n)_{n\geq 0}$ has precisely the same probabilistic structure in both instances.
+
+We will next show that $(\ol{\Delta}_n,\Theta)$ has a joint density. Let $A \in \sB(\R)$ and $\bba_n \in \bra{0,1}^n$. Then
+\beast
+\pro\bb{\ol{\Delta}_n = \bba_n,\Theta\in A} & = & \E\bb{\ind_{\bba_n}(\ol{\Delta}_n)\ind_A(\Theta)} = \E\bb{\E\bb{\ind_{\bba_n}(\ol{\Delta}_n)\ind_A(\Theta)|\Theta}}\\
+& = & \E\bb{\ind_A(\Theta)\E\bb{\ind_{\bba_n}(\ol{\Delta}_n)|\Theta}} = \E\bb{\ind_A(\Theta)\Theta^{K_n}(1-\Theta)^{n-K_n }}\\
+& = & \int_A \theta^{K_n}(1-\theta)^{n-K_n} \ind_{[0,1]}(\theta)d\theta
+\eeast
+and so the density of $(\ol{\Delta}_n,\Theta)$ (with respect to $\mu_{\bra{0,1}^n} \otimes \sL$, where $\mu_E$ denotes the counting measure on $E$ and $\sL$ denotes Lebesgue measure) is given by
+\be
+f_{\ol{\Delta}_n,\Theta}(\bba_n,\theta) = \theta^{K_n}(1-\theta)^{n-K_n} \ind_{[0,1]}(\theta)
+\ee
+
+Therefore
+\beast
+f_{\Theta|\ol{\Delta}_n}(\theta|\ol{\Delta}_n) & = & \frac{f_{\ol{\Delta}_n,\Theta}(\ol{\Delta}_n,\theta)}{f_{\ol{\Delta}_n}(\ol{\Delta}_n)} \ind_{\bra{0,1}^n}(\ol{\Delta}_n) \\
+& = & \frac{(n+1)!}{B_n!(n-B_n)!} \theta^{B_n}(1-\theta)^{n-B_n} \ind_{[0,1]}(\theta)\ind_{\bra{0,1}^n}(\ol{\Delta}_n) = N_n(\theta)\ind_{[0,1]}(\theta)\ind_{\bra{0,1}^n}(\ol{\Delta}_n)
+\eeast
+as required.
+\end{solution}

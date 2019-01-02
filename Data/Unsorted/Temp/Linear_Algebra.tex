@@ -1,0 +1,348 @@
+\chapter{Linear Algebra}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Gaussian elimination}
+
+\subsection{Two hundred years of algebra}
+
+In this section we recapitulate two hundred or so years of mathematical thought. Let us start with a familiar type of brain teaser.
+
+\begin{example}
+Sally and Martin go to The Olde Tea Shoppe. Sally buys three cream buns and two bottles of pop for thirteen shillings, whilst Martin buys two cream buns and four bottles of pop for fourteen shillings. How much does a cream bun cost and how much does a bottle of pop cost? 
+\end{example}
+
+\begin{solution}[\bf Solution]
+If Sally had bought six cream buns and four bottles of pop, then she would have bought twice as much and it would have cost her twenty six shillings. Similarly, if Martin had bought six cream buns and twelve bottles of pop, then he would have bought three times as much and it would have cost him forty two shillings. In this new situation Sally and Martin would have bought the same number of cream buns but Martin would have bought eight more bottles of pop than Sally. Since Martin would have paid sixteen shillings more, it follows that eight bottles of pop cost sixteen shillings and one bottle costs two shillings.
+
+In our original problem, Sally bought three cream buns and two bottles of pop, which, we now know, must have cost her four shillings, for thirteen
+shillings. Thus her three cream buns cost nine shillings and each cream bun cost three shillings.
+\end{solution}
+
+As the reader well knows, the reasoning may be shortened by writing $x$ for the cost of one bun and $y$ for the cost of one bottle. The information given may then be summarised in two equations
+\beast
+3x + 2y & = & 13\\
+2x + 4y & = & 14.
+\eeast
+In the solution just given, we multiplied the first equation by 2 and the second by 3 to obtain
+\beast
+6x + 4y & = & 26\\
+6x + 12y & = & 42.
+\eeast
+Subtracting the first equation from the second yields
+\be
+8y = 16,
+\ee
+so $y = 2$ and substitution in either of the original equations gives $x = 3$.
+
+We can shorten the working still further. Starting, as before, with
+\beast
+3x + 2y & = & 13\\
+2x + 4y & = & 14,
+\eeast
+we retain the first equation and replace the second equation by the result of subtracting 2/3 times the first equation from the second to obtain
+\beast
+3x + 2y & = & 13\\
+\frac 83 y & = & \frac {16}3.
+\eeast
+
+The second equation yields $y = 2$ and substitution in the first equation gives $x = 3$.
+
+It is clear that we can now solve any number of problems involving Sally and Martin buying sheep and goats or yaks and xylophones. The general problem involves solving 
+\beast
+ax + by & = & \alpha\\
+cx + dy & = & \beta.
+\eeast
+Provided that $a \neq 0$, we retain the first equation and replace the second equation by the result of subtracting $c/a$ times the first equation from the
+second to obtain 
+\beast
+ax + by & = & \alpha \\
+\bb{d - \frac {cb}a} y & = & \beta - \frac{c\alpha}a.
+\eeast
+
+Provided that $d - (cb)/a \neq 0$, we can compute $y$ from the second equation and obtain $x$ by substituting the known value of $y$ in the first equation.
+
+If $d - (cb)/a = 0$, then our equations become 
+\beast
+ax + by & = & \alpha\\
+0 & = & \beta - \frac{c\alpha}a
+\eeast
+
+There are two possibilities. Either $\beta - (c\alpha)/a \neq 0$, our second equation is inconsistent and the initial problem is insoluble, or $\beta -(c\alpha)/a = 0$, in which case the second equation says that 0 = 0, and all we know is that $ax + by = \alpha$ so, whatever value of $y$ we choose, setting $x = (\alpha - by)/a$ will give us a possible solution.
+
+There is a second way of looking at this case. If $d - (cb)/a = 0$, then our original equations were
+\beast
+ax + by & = & \alpha\\
+cx + \frac{cb}a y & = & \beta
+\eeast
+that is to say
+\beast
+ax + by & = & \alpha \quad\quad(*)\\
+c(ax + by) & = & a\beta.\quad\quad (\dagger)
+\eeast
+so, unless $c\alpha = a\beta$, our equations are inconsistent and, if $c\alpha = a\beta$, equation ($\dagger$) gives no information which is not already in equation ($*$).
+So far, we have not dealt with the case $a = 0$. If $b \neq 0$, we can interchange the roles of $x$ and $y$. If $c \neq 0$, we can interchange the roles of equations ($*$) and ($\dagger$). If $d \neq 0$, we can interchange the roles of $x$ and $y$ and the roles of equations ($*$) and ($\dagger$). Thus we only have a problem if $a = b = c = d = 0$ and our equations take the simple form
+\beast
+0 & = & \alpha\\
+0 & = & \beta.
+\eeast
+
+These equations are inconsistent unless $\alpha = \beta = 0$. If $\alpha = \beta = 0$, the equations impose no constraints on $x$ and $y$ which can take any value we want.
+
+Now suppose that Sally, Betty and Martin buy cream buns, sausage rolls and bottles of pop. Our new problem requires us to find $x$, $y$ and $z$ when
+\beast
+ax + by + cz & = & \alpha\\
+dx + ey + fz & = & \beta\\
+gx + hy + kz & = & \gamma.
+\eeast
+It is clear that we are rapidly running out of alphabet. A little thought suggests that it may be better to try and find $x_1$, $x_2$, $x_3$ when 
+\beast
+a_{11}x_1 + a_{12}x_2 + a_{13}x_3 & = & y_1\\
+a_{21}x_1 + a_{22}x_2 + a_{23}x_3 & = & y_2\\
+a_{31}x_1 + a_{32}x_2 + a_{33}x_3 & = & y_3.
+\eeast
+
+Provided that $a_{11} \neq 0$, we can subtract $a_{21}/a_{11}$ times the first equation from the second and $a_{31}/a_{11}$ times the first equation from the third to obtain
+\beast
+a_{11}x_1 + a_{12}x_2 + a_{13}x_3 & = & y_1\\
+b_{22}x_2 + b_{23}x_3 & = & z_2\\
+b_{32}x_2 + b_{33}x_3 & = & z_3,
+\eeast
+where
+\be
+b_{22} = a_{22} - \frac{a_{21}a_{12}}{a_{11}} = \frac{a_{11}a_{22} - a_{21}a_{12}}{a_{11}}
+\ee
+and, similarly,
+\be
+b_{23} = \frac{a_{11}a_{23} - a_{21}a_{13}}{a_{11}}, \quad b_{32} = \frac{a_{11}a_{32} - a_{31}a_{12}}{a_{11}},\quad b_{33} = \frac{a_{11}a_{33} - a_{31}a_{13}}{a_{11}}
+\ee
+whilst
+\be
+z_2 = \frac{a_{11}y_2 - a_{21}y_1}{a_{11}},\quad\quad z_3 = \frac{a_{11}y_3 - a_{31}y_1}{a_{11}}.
+\ee
+If we can solve the smaller system of equations
+\beast
+b_{22}x_2 + b_{23}x_3 & = & z_2\\
+b_{32}x_2 + b_{33}x_3 & = & z_3,
+\eeast
+then, knowing $x_2$ and $x_3$, we can use the equation
+\be
+x_1 = \frac{y_1 - a_{12}x_2 - a_{13}x_3}{a_{11}}
+\ee
+to find $x_1$. In effect, we have reduced the problem of solving '3 linear equations in 3 unknowns' to the problem of solving '2 linear equations in 2 unknowns'. Since we know how to solve the smaller problem, we know how to solve the larger.
+
+\begin{exercise}
+Use the method just suggested to solve the system
+\beast
+x + y + z & = & 1\\
+x + 2y + 3z & = & 2\\
+x + 4y + 9z & = & 6.
+\eeast
+So far, we have assumed that $a_{11} \neq 0$. A little thought shows that, if $a_{ij} \neq 0$ for some $1 \leq i, j \leq 3$, then all we need to do is reorder our equations so that $i$th equation becomes the 1st equation and reorder our variables so that $x_j$ becomes our first variable. We can then reduce the problem to one involving fewer variables as before.
+
+If it is not true that $a_{ij} \neq 0$ for some $1 \leq i, j \leq 3$, then it must be true that $a_{ij} = 0$ for all $1 \leq i, j \leq 3$ and our equations take the peculiar form
+\beast
+0 & = & y_1\\
+0 & = & y_2\\
+0 & = & y_3.
+\eeast
+
+These equations are inconsistent unless $y_1 = y_2 = y_3 = 0$. If $y_1 = y_2 = y_3 = 0$ the equations impose no constraints on $x_1$, $x_2$ and $x_3$ which can take any value we want.
+
+We can now write down the general problem when $n$ people choose from a menu with $n$ items. Our problem is to find $x_1, x_2, \dots, x_n$ when
+\beast
+a_{11}x_1 + a_{12}x_2 + \dots + a_{1n}x_n & = & y_1\\
+a_{21}x_1 + a_{22}x_2 + \dots + a_{2n}x_n & = & y_2\\
+& \vdots &\\
+a_{n1}x_1 + a_{n2}x_2 + \dots + a_{nn}x_n & = & y_n
+\eeast
+
+We can condense our notation further by using the summation sign and writing our system of equations as 
+\be\label{equ:star_1}
+\sum^n_{j=1} a_{ij}x_j = y_i,\quad\quad 1 \leq i \leq n.
+\ee
+We say that we have '$n$ linear equations in $n$ unknowns' and talk about the '$n \times n$ problem'. Using the insight obtained by reducing the $3 \times 3$ problem to the $2 \times 2$ case, we see at once how to reduce the $n\times n$ problem to the $(n-1)\times(n-1)$ problem. (We suppose that $n \geq 2$.)
+
+{\bf STEP 1} If $a_{ij} = 0$ for all $i$ and $j$, then our equations have the form 
+\be
+0 = y_i,\quad\quad 1 \leq i \leq n.
+\ee
+
+Our equations are inconsistent unless $y_1 = y_2 = \dots = y_n = 0$. If $y_1 = y_2 = \dots = y_n = 0$ the equations impose no constraints on $x_1, x_2,\dots, x_n$ which can take any value we want.
+
+{\bf STEP 2} If the condition of STEP 1 does not hold, we can arrange,by reordering the equations and the unknowns, if necessary, that $a_{11} \neq 0$. We now subtract $a_{i1}/a_{11}$ times the first equation from the $i$th equation $2 \leq i \leq n$ to obtain
+\be\label{equ:star_2}
+\sum^n_{j=2} b_{ij}x_j = z_i,\quad\quad 2 \leq i \leq n 
+\ee
+where
+\be
+b_{ij} = \frac{a_{11}a_{ij} - a_{i1}a_{1j}}{a_{11}},\quad z_i = \frac{a_{11}y_i - a_{i1}y_1}{a_{11}}.
+\ee
+
+{\bf STEP 3} If the new set of equations \ref{equ:star_2} has no solution, then our old set \ref{equ:star_1} has no solution. If our new set of equations \ref{equ:star_2} has a solution $x_i = x'_i$ for $2 \leq i \leq n$, then our old set \ref{equ:star_1} has the solution
+\be
+x_1 = \frac 1{a_{11}} \bb{y_1 - \sum^n_{j=2} a_{1j}x'_j},\quad\quad x_i = x'_i,\quad 2 \leq i \leq n.
+\ee
+Note that this means that, if \ref{equ:star_2} has exactly one solution, then \ref{equ:star_1} has exactly one solution and, if \ref{equ:star_2} has infinitely many solutions, then \ref{equ:star_1} has infinitely many solutions. We have already remarked that, if \ref{equ:star_2} has no solutions, then \ref{equ:star_1} has no solutions.
+
+Once we have reduced the problem of solving our $n \times n$ system to that of solving a $(n - 1) \times (n - 1)$ system, we can repeat the process and reduce the problem of solving the new $(n - 1) \times (n - 1)$ system to that of solving an $(n - 2) \times (n - 2)$ system and so on. After $n - 1$ steps we will be faced with the problem of solving a $1 \times 1$ system, that is to say, solving a system of the form
+\be
+ax = b.
+\ee
+If $a \neq 0$, then this equation has exactly one solution. If $a = 0$ and $b \neq 0$, the equation has no solution. If $a = 0$ and $b = 0$, every value of $x$ is a solution and we have infinitely many solutions.
+\end{exercise}
+
+Putting the observations of the two previous paragraphs together, we get the following theorem.
+
+\begin{theorem}\label{thm:system_equation_1}
+The system of simultaneous linear equations 
+\be
+\sum^n_{j=1} a_{ij}x_j = y_i ,\quad\quad 1 \leq i \leq n
+\ee
+has 0, 1 or infinitely many solutions.
+\end{theorem}
+
+We shall see several different proofs of this result (for example Theorem \ref{thm:system_equation}) but the proof given here, although long, is instructive.
+
+\subsection{Computational matters}
+
+The method for solving 'simultaneous linear equations' is called Gaussian elimination. Those who rate mathematical ideas by difficulty may find the attribution unworthy, but those who rate mathematical ideas by utility are happy to honour Gauss in this way. 
+
+In the previous section we showed how to solve $n\times n$ systems of equations, but it is clear that the same idea can be used to solve systems of $m$ equations in $n$ unknowns.
+
+\begin{exercise}\label{exe:system_equation_1}
+If $m, n \geq 2$, show how to reduce the problem of solving the system of equations
+\be
+\sum^n_{j=1} a_{ij}x_j = y_i, \quad\quad 1 \leq i \leq m \quad\quad (*)
+\ee
+to the problem of solving a system of equations
+\be
+\sum^n_{j=2} b_{ij}x_j = z_i, \quad\quad 2 \leq i \leq m,\quad\quad (\dagger)
+\ee
+\end{exercise}
+
+\begin{exercise}\label{exe:system_equation_2}
+By using the ideas of Exercise \ref{exe:system_equation}, show that, if $m, n \geq 2$ and we are given a system of equations
+\be
+\sum^n_{j=1} a_{ij}x_j = y_i,\quad\quad 1 \leq i \leq m,\quad\quad (*)
+\ee
+then at least one of the following must be true.
+\ben
+\item [(a)] $(*)$ has no solution.
+\item [(b)] $(*)$ has infinitely many solutions.
+\item [(c)] There exists a system of equations
+\be
+\sum^n_{j=2} b_{ij}x_j = z_i,\quad\quad 2 \leq i \leq m \quad\quad (\dagger)
+\ee
+\een
+with the property that, if ($\dagger$) has exactly one solution, then $(*)$ has exactly one solution, if $(\dagger)$ has infinitely many solutions, then $(*)$ has infinitely many solutions, and if $(\dagger)$ has no solutions, then $(*)$ has no solutions.
+\end{exercise}
+
+If we repeat Exercise \ref{exe:system_equation_1} several times, one of two things will eventually occur. If $n \geq m$, we will arrive at a system of $n - m + 1$ equations in one unknown. If $m > n$, we will arrive at of 1 equation in $m - n + 1$ unknowns.
+
+\begin{exercise}\label{exe:system_equation_3}
+\ben
+\item [(i)] If $r \geq 1$, show that the system of equations
+\be
+a_ix = y_i,\quad\quad 1 \leq i \leq r
+\ee
+has exactly one solution, has no solution or has an infinity of solutions. Explain when each case arises.
+
+\item [(ii)] If $s \geq 2$, show that the equation 
+\be
+\sum^s_{j=1} a_jx_j = b
+\ee
+has no solution or has an infinity of solutions. Explain when each case arises.
+\een
+
+Combining the results of Exercises \ref{exe:system_equation_2} and \ref{exe:system_equation_3}, we obtain the following extension of Theorem \ref{thm:system_equation_1}.
+\end{exercise}
+
+\begin{theorem}
+The system of equations
+\be
+\sum^n_{j=1} a_{ij}x_j = y_i,\quad\quad 1 \leq i \leq m
+\ee
+has 0, 1 or infinitely many solutions. If $m > n$, then the system cannot have a unique solution (and so will have 0 or infinitely many solutions).
+\end{theorem}
+
+\begin{exercise}
+Consider the system of equations
+\beast
+x + y & = & 2\\
+ax + by & = & 4\\
+cx + dy & = & 8.
+\eeast
+
+\ben
+\item [(i)] Write down non-zero values of $a$, $b$, $c$ and $d$ such that the system has no solution.
+\item [(ii)] Write down non-zero values of $a$, $b$, $c$ and $d$ such that the system has exactly one solution.
+\item [(iii)] Write down non-zero values of $a$, $b$, $c$ and $d$ such that the system has infinitely many solutions.
+\een
+
+Give reasons in each case.
+\end{exercise}
+
+\begin{exercise}
+Consider the system of equations
+\beast
+x + y + z & = & 2\\
+x + y + az & = & 4.
+\eeast
+
+For which values of a does the system have no solutions? For which values of a does the system have infinitely many solutions? Give reasons.
+\end{exercise}
+
+How long does it take for a properly programmed computer to solve a system of $n$ linear equations in $n$ unknowns by Gaussian elimination? The exact time depends on the details of the program and the structure of the machine. However, we can get get a pretty good idea of the answer by counting up the number of elementary operations (that is to say, additions, subtractions, multiplications and divisions) involved.
+
+When we reduce the $n\times n$ case to the $(n-1)\times(n-1)$ case we subtract a multiple of the first row from $j$th row and this requires roughly $2n$ operations. Since we do this for $j = 2, 3, \dots, n-1$ we need roughly $(n-1)\times(2n) \approx 2n^2$ operations. Similarly, reducing the $(n-1)\times(n-1)$ case to the $(n-2)\times(n-2)$ case requires about $2(n-1)^2$ operations and so on. Thus the reduction from the $n \times n$ case to the $1 \times 1$ case requires about
+\be
+2\bb{n^2 + (n - 1)^2 + \dots + 2^2} 
+\ee
+operations.
+
+\begin{exercise}
+\ben
+\item [(i)] Show that
+\be
+\frac {n^3}4 \leq \sum^n_{r=1} r^2 \leq n^3.
+\ee
+\item [(ii)] (Not necessary for our argument.) By comparing
+\be
+\sum^n_{r=1} r^2\quad\text{ and }\quad \int^{n+1}_1 x^2dx,
+\ee
+or otherwise, show that
+\be
+\sum^n_{r=1} r^2 \approx \frac{n^3}3.
+\ee
+\een
+\end{exercise}
+
+Thus the number of operations required to reduce $n\times n$ case to the $1\times1$ case increases like $n^3$. Once we have reduced our system to the $1 \times 1$ case, the number of operations required to work backwards and solve the complete system is less than some multiple of $n^2$.
+
+\begin{exercise}
+Give a rough estimate of the number of operations required to solve the triangular system of equations
+\be
+\sum^n_{j=r} b_{jr}x_r = z_r,\quad\quad 1 \leq r \leq n.
+\ee
+[The roughness of the estimates is left to the taste of the reader.]
+\end{exercise}
+
+Thus the total number of operations required to solve our initial system by Gaussian elimination increases like $n^3$.
+
+The reader may have learnt another method of solving simultaneous equations using determinants called Cramer's rule. If not, she should omit the next two paragraph and wait for our discussion in section 4.5. Cramer's rule requires us to evaluate an $n \times n$ determinant (as well as lots of other determinants). If we evaluate this determinant by the 'top row rule' we need to evaluate $n$ minors, that is to say determinants size $(n - 1) \times (n - 1)$. Each of these new determinants requires the evaluation of $n - 1$ determinants of size $(n - 2) \times (n - 2)$. and so on. We will need roughly
+\be
+An \times (n - 1) \times (n - 2) \times \dots \times 1 = An!
+\ee
+operations where $A \geq 1$. Since $n!$ increases much faster than n3, Cramer's rule is obviously unsatisfactory for large $n$.
+
+The fact that Cramer's rule is unsatisfactory for large $n$ does not, of course, mean that it is unsatisfactory for small $n$. If we have to do hand
+calculations when $n = 2$ or $n = 3$, then Cramer's rule is no harder than Gaussian elimination. However, I strongly advise the reader to use Gaussian
+elimination in these cases as well, in order to acquire insight into what is actually going on.
+
+\begin{exercise}[For devotees of Cramer's rule only.]
+Write down a system of 4 linear equations in 4 unknowns and solve it (a) using Cramer's rule and (b) using Gaussian elimination.
+\end{exercise}
+
+I hope never to have to solve a system of 10 linear equations in 10 unknowns, but I think that I could solve such a system within a reasonable time using Gaussian elimination and a basic hand calculator. 

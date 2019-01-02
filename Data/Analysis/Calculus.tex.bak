@@ -1,0 +1,18 @@
+\chapter{Calculus}
+
+\section{Exponential Related Integrals}
+
+\begin{proposition}\label{pro:integral_exponential_cosine}
+For $a,b,y,z\in\R$, Then \be \int^y_z \exp\bb{ax}\cos(bx)dx = \left. \frac {1}{a^2 + b^2}\bb{b \exp\bb{ax}\sin(bx) + a \exp\bb{ax} \cos(bx)}\right|^y_z. \ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Let $I = \int^y_z \exp\bb{ax}\cos(bx)dx$. Then by integral by part, we have \beast I & = & \frac 1b \int^y_z \exp\bb{ax}d\sin(bx) = \frac 1b\bb{\left.\exp\bb{ax}\sin(bx) \right|^y_z - a\int^y_z \exp\bb{ax}\sin(bx) dx} \\
+& = & \frac 1b\bb{\left.\exp\bb{ax}\sin(bx) \right|^y_z + \frac ab \int^y_z \exp\bb{ax}d \cos(bx)} \\
+& = & \frac 1b\bb{\left.\exp\bb{ax}\sin(bx) \right|^y_z + \frac ab \bb{\left.\exp\bb{ax} \cos(bx)\right|^y_z - a\int^y_z \exp\bb{ax} \cos(bx)dx}}\\
+& = & \left.\frac 1b \exp\bb{ax}\sin(bx) + \frac a{b^2} \exp\bb{ax} \cos(bx)\right|^y_z - \frac {a^2}{b^2} I
+\eeast
+
+So we have \be \bb{\frac {a^2 + b^2}{b^2}} I =  \left.\frac 1b \exp\bb{ax}\sin(bx) + \frac a{b^2} \exp\bb{ax} \cos(bx)\right|^y_z\ee which implies \be I = \left. \frac {1}{a^2 + b^2}\bb{b \exp\bb{ax}\sin(bx) + a \exp\bb{ax}
+\cos(bx)}\right|^y_z \ee
+\end{proof}

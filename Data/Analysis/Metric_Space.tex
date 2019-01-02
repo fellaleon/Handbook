@@ -1,0 +1,1991 @@
+\chapter{Metric Space}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Basic Definitions and Concepts}
+
+\subsection{Metric and metric space}
+
+\begin{definition}[metric\index{metric}, metric space\index{metric space}]\label{def:metric_space}
+A metric on a set $X$ is a function (called the distance function or simply distance) $d : X \times X \to \R$ (where $\R$ is the set of real numbers). For all $x, y, z \in X$, this function is required to satisfy the following conditions:
+\ben
+\item [(i)] $d(x, y) \geq 0$. (non-negativity, or separation axiom)
+\item [(ii)] $d(x, y) = 0$ if and only if $x = y$. (identity of indiscernibles, or coincidence axiom)
+\item [(iii)] $d(x, y) = d(y, x)$. (symmetry)
+\item [(iv)] $d(x, z) \leq d(x, y) + d(y, z)$. (subadditivity / triangle inequality)
+\een
+
+Then $(X,d)$ is called metric space.
+\end{definition}
+
+\begin{remark}
+Note that (i) and (ii) together produce positive definiteness and (i) is implied by the others.
+\end{remark}
+
+\subsection{Other metrics}
+
+\begin{definition}[ultrametric\index{ultrametric}]\label{def:ultrametric}
+A metric is called an ultrametric if it satisfies the following stronger version of the triangle inequality where points can never fall `between' other points:
+\be
+d(x, z) \leq \max\bra{d(x, y), d(y, z)},\quad \forall x, y, z \in X.
+\ee
+\end{definition}
+
+\begin{definition}[intrinsic metric\index{intrinsic metric}]\label{def:intrinsic_metric}
+A metric $d$ on $X$ is called intrinsic if any two points $x,y \in X$ can be joined by a curve with length arbitrarily close to $d(x, y)$.
+\end{definition}
+
+\begin{definition}[translation invariant metric\index{translation invariant!metric}]\label{def:translation_invariant_metric}
+For sets on which an addition $+ : X \times X \to X$ is defined, $d$ is called a translation invariant metric if
+\be
+d(x, y) = d(x + a, y + a),\quad x,y \in X.
+\ee
+\end{definition}
+
+
+\begin{definition}[pseudometric\index{pseudometric}]\label{def:pseudometric}
+A pseudometric on $X$ is a function $d : X \times X \to \R$ which satisfies the axioms for a metric, except that instead of the second (identity of indiscernibles) only $d(x,x)=0$ for all $x$ is required. In other words, the axioms for a pseudometric are: for any $x,y,z \in X$,
+\ben
+\item [(i)] $d(x, y) \geq 0$.
+\item [(ii)] $d(x, x) = 0$ (but possibly $d(x,y)=0$ for some distinct values $x\neq y$).
+\item [(iii)] $d(x, y) = d(y, x)$.
+\item [(iv)] $d(x, z) \leq  d(x, y) + d(y, z)$.
+\een
+\end{definition}
+
+\begin{remark}
+This is the most common generalization of metrics. In some contexts, pseudometrics are referred to as semimetrics because of their relation to seminorms\footnote{need details}.
+\end{remark}
+
+\begin{definition}[quasimetric\index{quasimetric}]\label{def:quasimetric}
+A quasimetric is defined as a function that satisfies all axioms for a metric with the possible exception of symmetry:
+\ben
+\item [(i)] $d(x, y) \geq 0$. (positivity)
+\item [(ii)] $d(x, y) = 0$ if and only if $x = y$. (positive definiteness)
+\item [(iii)] $d(x, z) \leq d(x, y) + d(y, z)$ (triangle inequality)
+\een
+\end{definition}
+
+\begin{remark}
+Quasimetrics are common in real life. For example, given a set $X$ of mountain villages, the typical walking times between elements of $X$ form a quasimetric because travel up hill takes longer than travel down hill. Another example is a taxicab geometry topology having one-way streets, where a path from point $A$ to point $B$ comprises a different set of streets than a path from $B$ to $A$. Nevertheless, this notion is rarely used in mathematics, and its name is not entirely standardized (see Rolewicz\cite{Rolewicz_1987}).
+\end{remark}
+
+\begin{example}
+A quasimetric on the reals can be defined by setting
+\be
+d(x, y) = \left\{ \ba{ll}
+x - y\quad\quad & x \geq y,\\
+1 & \text{otherwise}
+\ea\right.
+\ee
+
+The 1 may be replaced by infinity or by $1+10(y-x)$.
+
+The topological space underlying this quasimetric space is the Sorgenfrey line. This space describes the process of filing down a metal stick: it is easy to reduce its size, but it is difficult or impossible to grow it.
+\end{example}
+
+\begin{example}
+If $d$ is a quasimetric on $X$, a metric $d'$ on $X$ can be formed by taking
+\be
+d'(x, y) = (d(x, y) + d(y, x))/2.
+\ee
+\end{example}
+
+\begin{definition}[semimetric\index{semimetric}]\label{def:semimetric}
+A semimetric on $X$ is a function $d : X \times X \to\R$ that satisfies the first three axioms, but not necessarily the triangle inequality:
+\ben
+\item [(i)] $d(x, y) \geq 0$.
+\item [(ii)] $d(x, y) = 0$ if and only if $x = y$.
+\item [(iii)] $d(x, y) = d(y, x)$.
+\een
+\end{definition}
+
+\begin{remark}
+Some mathematicians work with a weaker form of the triangle inequality, such as:
+\beast
+& & d(x, z) \leq \rho (d(x, y) + d(y, z)) \qquad (\text{$\rho$-relaxed triangle inequality})\\
+& & d(x, z) \leq \rho \max\bra{d(x, y), d(y, z)}\qquad (\text{$\rho$-inframetric inequality}).
+\eeast
+\end{remark}
+
+
+\begin{definition}[Euclidean metric space\index{Euclidean metric space}]\label{def:euclidean_metric_space}
+\footnote{definition}
+\end{definition}
+
+\begin{definition}[discrete metric space\index{discrete metric space}]\label{def:discrete_metric_space}
+\footnote{definition}
+\end{definition}
+
+
+
+
+
+\section{Sequence and Convergence in Metric Space}
+
+
+\subsection{Sequence in metric space}
+
+\begin{definition}[sequence\index{sequence!metric space}]\label{def:sequence_metric_space}
+Let $(X,d)$ a metric space. Then a map $f:\Z^+\to X$ is defined to a sequence $(x_n)$ in $X$ as $x_n = f(n)$.
+\end{definition}
+
+\subsection{Convergence in metric space}
+
+\begin{definition}[convergence\index{convergence!metric space}, limit\index{limit!metric space}]\label{def:limit_convergence_metric_space}
+Consider a sequence $\bb{x_{n}}$ in a metric space $(X,d)$. If for $x\in X$ and any $\ve > 0$, we can find an integer $N\geq 1$ (depending on $\ve$) such that
+\be
+d(x_{n},x)<\ve \quad \text{for all $n\geq N$},
+\ee
+then we say that $x_n$ converges to $x$, i.e., $x_{n} \to x$ as $n\to\infty$.
+
+In other words, $x_{n} \to x$ if for any $\ve>0$ there eixsts $N\geq 1$ such that $x_n\in B_\ve(x)$ whenever $n\geq N$.
+\end{definition}
+
+\begin{theorem}[uniqueness of limit]\label{thm:limit_unique_metric_space}
+Let $(X,d)$ be a metric space. If a sequence $\bb{x_{n}}$ has a limit then that limit is unique.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Suppose $x_{n}\to x$ and $x_{n}\to y$. Then, given any $\ve>0$, we can find $N_{1}$ and $N_{2}$ such that
+\be
+d(x_{n},x)<\ve/2\quad \text{for all $n\geq N_{1}$},\qquad d(x_{n},y)<\ve/2\quad \text{for all $n\geq N_{2}$}.
+\ee
+
+Taking $N=\max\bra{N_{1},N_{2}}$, we obtain
+\be
+d(x,y) \leq d(x_{N},x)+d(x_{N},y) < \ve/2+\ve/2=\ve.
+\ee
+
+Since $\ve$ was arbitrary, $d(x,y)=0$ and therefore $x=y$ by definition.
+\end{proof}
+
+\subsection{Cauchy sequence}
+
+\begin{definition}[Cauchy sequence\index{Cauchy sequence!metric space}]\label{def:cauchy_sequence_metric_space}
+A sequence $(x_n)$ in a metric space $(X,d)$ is called Cauchy sequence if for any $\ve>0$ there exists $N\in \Z^+$ such that 
+\be
+d\bb{x_m,x_n} <\ve,\qquad\text{whenever }m,n\geq N.
+\ee
+\end{definition}
+
+\begin{proposition}\label{pro:convergent_sequence_is_cauchy_sequence_metric}
+Any convergent sequence in a metric space is a Cauchy sequence. 
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Suppose that sequence $(x_n)$ converges to $x$ in metric space $(X,d)$. Then given $\ve>0$, there exists $N\in \Z^+$ such that 
+\be
+d\bb{x_n,x} <\ve/2,\quad \text{for all }n\geq N.
+\ee
+
+So for $m,n\geq N$ the triangle inequality gives
+\be
+d(x_m,x_n) \leq d\bb{x_m,x} + d\bb{x_n,x} < \ve/2 + \ve/2 = \ve
+\ee
+which implies that $(x_n)$ is a Cauchy sequence.
+\end{proof}
+
+
+\begin{theorem}\label{thm:cauchy_sequence_convergent_iff_convergent_subsequence}
+Cauchy sequence in metric space is convergent if and only if it has a convergent subsequence.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+($\ra$). Since sequence is convergent, any of its subsequences is convergent.
+
+($\la$). Let $(x_n)$ be a Cauchy sequence in metric space $(X,d)$. Then given any $\ve>0$ we can find $N_1\in \N$ such that for any $m,n\geq N_1$
+\be
+d(x_m,x_n) < \ve/2.
+\ee
+
+Also, since $(x_n)$ has convergent subsequence $(x_{n_k})$ with $\lim_{k\to \infty} x_{n_k} = x$. Then we can find $N_2$ such that for all $n_k \geq N_2$,
+\be
+d(x_{n_k},x) < \ve/2.
+\ee
+
+Then let $N = \max\bra{N_1,N_2}$. Then for all $m,n_{k}\geq N$,
+\be
+d(x_m,x) \leq d(x_m,x_{n_k}) + d(x_{n_k},x) < \ve/2 + \ve/2= \ve.
+\ee
+
+This implies that $(x_n)$ converges to $x$.
+\end{proof}
+
+\subsection{Uniform convergence in metric space}
+
+\begin{definition}[uniformly convergent sequence]
+Let $X$ be a set and $(Y,d_Y)$ be a metric space and suppose $f,f_n: X\to Y$ are functions from $X$ to $Y$ for $n\in \N$. Then the sequence $(f_n)$ converges uniformly to $f$ if given any $\ve>0$, there exists an integer $N$ (depending on $\ve$ along) such that $d_Y(f_n(x),f(x))$ for all $x\in X$, whenever $n\geq N$. In other words,
+\be
+\sup_{x\in X} d_Y(f_n(x),f(x)) \leq \ve
+\ee
+whenever $n\geq N$. It can be denoted by $f_n \stackrel{u}{\to}f$ or $\lim_{n\to \infty} f_n = f$ uniformly.
+\end{definition}
+
+
+
+
+
+\section{Open and Closed Sets in Metric Space}
+
+\subsection{Open ball and closed ball}
+
+\begin{definition}[open ball\index{open ball!metric space}]\label{def:open_ball_metric_space}
+Let $(X,d)$ be a metric space, $x_0\in X$ and $r>0$ a real number. The open ball in $X$ of radius $r$ centred on $x_0$ is the set
+\be
+B_r(x_0) = \bra{x\in X:d(x,x_0) < r}.
+\ee
+
+If we are considering more than one metric on $X$ then we write $B^d_r (x_0)$. We can also write $B_r(x_0) = B(r,x_0)$.
+\end{definition}
+
+
+\begin{definition}[closed ball\index{closed ball!metric space}]\label{def:closed_ball_metric_space}
+Let $(X,d)$ be a metric space, $x_0\in X$ and $r>0$ a real number. The closed ball in $X$ of radius $r$ centred on $x_0$ is the set
+\be
+\ol{B}_r(x_0) := \bra{x\in X:d(x,x_0) \leq r}.
+\ee
+
+If we are considering more than one metric on $X$ then we write $\ol{B}^d_r (x_0)$. We can also write $\ol{B}_r(x_0) = \ol{B}(r,x_0)$.
+\end{definition}
+
+\subsection{Open sets in metric space}
+
+\begin{definition}[open set\index{open set!metric space}]\label{def:open_set_metric_space}
+Let $(X,d)$ be a metric space. We say that a subset $A$ is open in $X$ if, whenever $a\in A$, we can find a $\delta>0$ (depending on $a$) such that
+\be
+x\in A\ \text{whenever}\ d(x,a)<\delta.
+\ee
+
+That is, for any $a\in A$, there exists $\delta >0$ such that $B_\delta(a) \subseteq A$.
+\end{definition}
+
+\begin{theorem}\label{thm:open_ball_properties}
+\ben
+\item [(i)] Let $(X,d)$ be a metric space. If $r>0$, then $B_r(x)=\bra{y:d(x,y)<r}$ is open.
+\item [(ii)] If we work in $\R^n$ with the Euclidean metric, then the one point set $\bra{x}$ is not open.
+\item [(iii)] If $(X,d)$ is a discrete metric space, then $\bra{x} = B_{1/2}(x)$ and all subsets of $X$ are open.
+\een
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] If $y\in B_r(x)$, then $\delta=r-d(x,y)>0$ and, whenever $d(z,y)<\delta$, the triangle inequality gives us
+\be
+d(x,z)\leq d(x,y)+d(y,z)<r
+\ee
+so $z\in B_r(x)$. Thus $B_r(x)$ is open.
+
+\item [(ii)] Choose $a \in \R^{n}$ with $\dabs{a}=1$. (We could take $a=(1,0,0,\dots,0)$.) For any $\delta>0$, then, setting $y=x+ a\delta/2$,
+we have $\dabs{x-y} < \delta$, yet $y \notin \bra{x}$. Thus $\bra{x}$ is not open.
+
+\item [(iii)] Recalling Definition \ref{def:discrete_metric_space}, we observe that $d(x,x)=0<1/2$ and $d(x,y)=1>1/2$ for $x\neq y$. Therefore, $\bra{x}$ is open.
+
+For any subset $E$, if $x\in E$ then $d(x,y)<1/2$ implies $y=x\in E$ so $E$ is open.
+\een
+\end{proof}
+
+\begin{example}\label{exa:countable intersection open_set_metric_space}
+Let us work in $\R^{n}$ with the usual metric. Then the open ball $B(x,1/j)$ is open (by Theorem \ref{thm:open ball properties}.(i)) but
+$\bigcap_{j=1}^{\infty} B(x,1/j)=\bra{x}$ is not.
+\end{example}
+%\begin{proof} See Example~\ref{E;Open ball open}.\end{proof}
+
+\begin{corollary}
+Let $(X,d)$ be a metric space. Given an open ball $B_r(x)$ and any point $y\in B_r(x)$, there exists $\ve >0$ such that $B_{\ve}(y) \subseteq B_r(x)$.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+This is direct result by Theorem \ref{thm:open_ball_properties}.(i) and Definition \ref{def:open_set_metric_space}.
+\end{proof}
+
+\begin{proposition}\label{pro:open_ball_triangle_inequality}
+Let $(X,d)$ be a metric space. If $y\in B_{\ve/2}(x)$ for any $\ve >0$ and $x,y\in X$, then $B_{\ve/2}(y) \subseteq B_{\ve}(x)$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+If $y \in B_{\ve/2}(x)$, then for any $z\in B_{\ve/2}(y)$, $d(y,z)< \ve/2$. Then
+\be
+d(x,z) \leq d(x,y) + d(y,z) < \ve/2 + \ve/2 = \ve \ \ra\ z\in B_\ve(x) \ \ra\ B_{\ve/2}(y) \subseteq B_\ve(x).
+\ee
+\end{proof}
+
+\subsection{Properties of open sets}
+
+\begin{theorem}\label{thm:open_set_metric}
+If $(X,d)$ is a metric space, then the following statements are true.
+\ben
+\item [(i)] The empty set $\emptyset$ and the space $X$ are open.
+\item [(ii)] If $U_i$ is open for all $i\in I$, then $\bigcup_{i \in I} U_i$ is open. (In other words, the union of open sets is open.)
+\item [(iii)] If $U_{j}$ is open for all $1\leq j\leq n$, then $\bigcap_{j=1}^{n} U_{j}$ is open.
+\een
+\end{theorem}
+
+\begin{remark}
+It is important to realise that we place no restriction on the size of $I$ in (ii). In particular, $I$ could be uncountable. However, conclusion (iii) cannot be extended.
+\end{remark}
+
+
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Since there are no points $a$ in $\emptyset$, the statement
+\be
+x\in \emptyset\quad \text{whenever}\ d(x,a)<1
+\ee
+holds for all $a\in \emptyset$. Since every point $x$ belongs to $X$, the statement
+\be
+x\in X\quad \text{whenever}\ d(x,a)<1
+\ee
+holds for all $a\in X$.
+
+\item [(ii)] If $a\in \bigcup_{i\in I} U_i$, then we can find a particular $i_1\in I$ with $a\in U_{i_1}$. Since $U_{i_{1}}$ is open, we can find a $\delta>0$ such that
+\be
+x\in U_{i_{1}}\quad \text{whenever}\ d(x,a)<\delta.
+\ee
+
+Since $U_{i_{1}}\subseteq \bigcup_{i\in I} U_i$,
+\be
+x\in \bigcup_{i\in I} U_i \quad \text{whenever}\ d(x,a)<\delta \ \ra \ \text{ $\bigcup_{i\in I} U_i$ is open. }
+\ee
+
+\item [(iii)] If $a\in \bigcap_{j=1}^{n} U_j$ then $a\in U_{j}$ for each $1\leq j\leq n$. Since $U_{j}$ is open, we can find a $\delta_{j}>0$ such that
+\be
+x\in U_{j}\quad \text{whenever}\ d(x,a)<\delta_{j}.
+\ee
+
+Setting $\delta=\min_{1\leq j\leq n}\delta_{j}$, we have $\delta>0$ and
+\be
+x \in U_{j}\quad \text{whenever}\ d(x,a)<\delta
+\ee
+for all $1\leq j\leq n$. Thus
+\be
+x\in \bigcap_{j=1}^{n} U_{j}\quad \text{whenever}\ d(x,e)<\delta \ \ra\ \text{ $\bigcap_{j=1}^{n} U_{j}$ is open. }
+\ee
+\een
+\end{proof}
+
+
+
+
+%\section{Closed Sets in Metric Space}
+
+
+\subsection{Closed sets in metric space}
+
+Besides open set, the second class of well behaved sets identified by Cantor were the closed sets. In order to define closed sets in metric spaces we need the notion of limit (see Definition \ref{def:limit_convergence_metric_space}). Fortunately, the classical definition generalises without difficulty. Now we generalize the notion of `closed interval' $[a,b]$ in $\R$. 
+
+\begin{definition}[closed set\index{closed set!metric space}]\label{def:closed_set_metric_space}
+Let $(X,d)$ be a metric space. A set $V\subseteq X$ is said to be closed if, whenever $x_{n}\in V$ and $x_{n}\to x$ as $n\to\infty$, it follows that $x\in V$.
+\end{definition}
+
+\begin{example}
+\ben
+\item [(i)] The following sets are all closed in $\R$:
+\be
+[a,b],\quad (-\infty,0],\quad \bra{0},\quad \bra{1,1/2,1/3,\dots,1/n,\dots}\cup\bra{0}.
+\ee
+
+\item [(ii)] The closed unit disc $\bra{(x_1,x_2)\in \R^2: x_1^2 + x_2^2 \leq 1}$ is closed in $\R^2$.
+
+\item [(iii)] The closed rectangle $\bra{(x_1,x_2)\in \R^2: a\leq x_1 \leq b, c\leq x_2 \leq d}$ is closed in $\R^2$.
+
+\item [(iv)] For discrete metric space $X$, any subset of $X$ is closed in $X$.\footnote{definition needed.}
+
+\item [(v)] In the space $C([0,1])$ of continuous real-valued functions on $[0,1]$ with the sup metric\footnote{definition needed.}, the subset $\bra{f\in C([0,1]): f(1) =0}$ is closed. If $f(1)\neq 0$ then the same is true for all $g\in C([0,1])$ which are close enough to $f$ in the sup metric, e.g., such that $d_\infty(g,f) < \abs{f(1)}/2$. Thus, the complement of $\bra{f\in C([0,1]): f(1) =0}$ is open and $\bra{f\in C([0,1]): f(1) =0}$ is closed by Theorem \ref{thm:closed_complements_open_metric_space}.
+\een
+\end{example}
+
+\begin{theorem}\label{thm:closed_ball_properties}%\ben\item [(i)]
+Let $(X,d)$ be a metric space. If $r>0$, then $\ol{B}_r(x)=\bra{y:d(x,y)\leq r}$ is closed.
+%\item [(ii)] If we work in $\R^n$ with the Euclidean metric, then the one point set $\bra{x}$ is not open.
+%\item [(iii)] If $(X,d)$ is a discrete metric space, then $\bra{x} = B_{1/2}(x)$ and all subsets of $X$ are open.
+%\een
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $A = \ol{B}_r(x)=\bra{y:d(x,y)\leq r}$. If $A$ is not closed, there must exists sequence $z_n\in A$ converges to $z\in X\bs A$ (such that $d(z_n,x)\leq r$) by definition of closed set. Then we have $d(z,x) > r$ so we can find $\delta >0$ such that $d(z,x)  = r + \delta$. Then
+\be
+d(z,x) \leq d(z_n,z) + d(z_n,x) \ \ra\ d(z_n,z) \geq d(z,x) - d(z_n,x) \geq r + \delta - r = \delta
+\ee
+which contradicts the convergence of $z_n$. Thus, $A$ is closed.
+\end{proof}
+
+
+\begin{theorem}\label{thm:closed_complements_open_metric_space}
+Let $(X,d)$ be a metric space. A set $V$ in $X$ is closed if and only if its complement is open.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+$(\ra)$. Suppose that $V$ is closed and $A=X\bs V$. If $A$ is not open, we can find an $a\in A$ such that
+\be
+B_\delta(a) \cap V \neq \emptyset\quad \text{for all }\delta>0\qquad \text{(as we can find $B_\delta(a)\subseteq A$ for some $\delta$ if $A$ is open)}.
+\ee
+
+In particular, we can find $x_{n}\in V$ such that $d(x_{n},a)<1/n$ for each $n\geq 1$. Thus, $x_{n}\to a$. Since $V$ is closed, we have $a\in V$ contradicting our initial assumption that $a\in A$. Thus $A$ is open.
+
+($\la$). Suppose $A$ is open and $V=X\bs A$. For any sequence $x_{n}\in V$ and $x_{n}\to x$. If $x\in A$, then, since $A$ is open we can find a $\delta>0$ such that $B_\delta(x)\subseteq A$.
+Thus $d(x_{n},x)\geq \delta$ for all $n$ which is absurd. Thus $x\in V$ and $V$ is closed.
+\end{proof}
+
+
+
+\subsection{Properties of closed sets}
+
+We can now deduce properties of closed sets from properties of open sets by complementation. In particular, we have the following complementary versions of Theorems \ref{thm:open_set_metric}.% and \ref{thm:continuity_reserves_open_metric}.
+
+\begin{theorem}\label{thm:closed_set_metric_space}
+If $(X,d)$ is a metric space, then the following statements are true.
+\ben
+\item [(i)] The empty set $\emptyset$ and the space $X$ are closed.
+\item [(ii)] If $V_i$ is closed for all $i\in I$, then $\bigcap_{i \in I} V_i$ is clsoed. (In other words, the intersection of closed sets is closed.)
+\item [(iii)] If $V_{j}$ is closed for all $1\leq j\leq n$, then $\bigcup_{j=1}^{n} V_{j}$ is closed.
+\een
+\end{theorem}
+
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Observe that $\emptyset = X \bs X$ and $X=X\bs \emptyset$, we have (i) by Theorem \ref{thm:closed complements open_metric_space} and Theorem \ref{thm:open_set_metric}.(i).
+
+\item [(ii)] Since $V_i$ is closed, $X\bs V_i$ is open for all $i \in I$. It follows that (by De Morgan laws, Theorem \ref{thm:basic_set_properties}.(viii))
+\be
+X\left\bs \bigcap_{i\in I} V_i \right. = \bigcup_{i\in I}\bb{X\bs V_i}
+\ee
+is open (by Theorem \ref{thm:open_set_metric}.(ii)) and so $\bigcap_{i\in I} V_i$ is closed.
+
+(iii) Since $V_{j}$ is closed, $X\bs V_{j}$ is open for all $1\leq j\leq n$. It follows that
+\be
+X\left\bs \bigcup_{j=1}^{n} V_{j}\right. = \bigcap_{j=1}^{n}(X\bs V_{j})
+\ee
+is open (by Theorem \ref{thm:open_set_metric}.(iii)) and so $\bigcup_{j=1}^{n} V_{j}$ is closed.
+\een
+\end{proof}
+
+
+\subsection{Closedness of finite sets}
+
+\begin{proposition}\label{pro:singleton_set_is_closed_metric}
+Let $(X,d)$ be a metric space. Then for each $x\in X$ the singleton set $\bra{x}$ is closed in $X$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Let $x\in X$ and consider the singleton set $\bra{x}$. By \ref{thm:closed_complements_open_metric_space}, it suffices to show that $X\bs\bra{x}$ is an open set.
+
+Let $y\in X\bs\bra{x}$. There there exists a distance $d(x,y)>0$ between the points $x,y$ with respect to the metric $d$. Let $r = d(x,y)/2$. Then the open ball centered at $y$ with radius $r$, $B_r(y)$ is fully contained in $X\bs \bra{x}$. Thus, $X\bs\bra{x}$ is open.
+\end{proof}
+
+
+\begin{proposition}
+Let $(X,d)$ be a metric space. If $Y\subseteq X$ is a finite set then $Y$ is closed in $X$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Let $Y\subseteq X$ be a finite set. Then $Y$ has $n$ elements for some $n\in \N$ and can be written as
+\be
+Y = \bra{x_1,x_2,\dots,x_n}.
+\ee
+
+Thus, $Y = \bigcup^n_{i=1}\bra{x_i}$ is finite union of closed sets $\bra{x_i}$ by Proposition \ref{pro:singleton_set_is_closed_metric} and it is hence closed by Theorem \ref{thm:closed_set_metric_space}.
+\end{proof}
+
+
+
+\subsection{Open and closed set in submetric space}
+
+\begin{theorem}\label{thm:open_closed_subset_in_submetric_space_open_closed}
+Let $(X,d)$ be a metric space and $Y\subseteq X$. Suppose $A\subseteq X$ is open (or closed). Then $A\cap Y$ is open (or closed) in $(Y,d)$.
+
+Conversely, if $B\subseteq Y$ is open (or closed) in $(Y,d)$, there is an open (or closed) set $A\subseteq X$ such that $B = A\cap Y$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+($\ra$). If $A$ is $\emptyset$, the conclusion is Obvious so we assume that $A$ is non-empty. Since $A$ is open, for any $a\in A\cap Y$, we can find $\ve$ such that $B_\ve(a)\subseteq A$ thus $B_\ve(a) \cap Y \subseteq A\cap Y$. Thus, $A\cap Y$ is open in $Y$.
+
+($\la$). Suppose $B\subseteq Y$ be open in $(Y,d)$. If $B= \emptyset$, we can let $A = B$ and we are done. So assume that $B$ is non-empty. Then for any $x\in B$, we have that there exists $r_x>0$ such that $B_{r_x}(x) \cap Y \subseteq B$. Since every open ball is open in $X$ we have that
+\be
+A : = \bigcup_{x\in B} B_{r_x}(x) \quad \text{is also open in $X$ by Theorem \ref{thm:open_set_metric}.}
+\ee
+
+Then since $B_{r_x}(x) \cap Y \subseteq B$, we have that
+\be
+A \cap Y =  Y \cap \bigcup_{x\in B} B_{r_x}(x) = \bigcup_{x\in B} \bra{B_{r_x}(x) \cap Y} \cap Y \subseteq B\cap Y = B.
+\ee
+
+On the other hand, for any $x\in B$,
+\be
+x\in B \ \ra\ x \in B_{r_x}(x) \cap Y \ \ra\ x\in \bigcup_{x\in B} \bra{B_{r_x}(x) \cap Y} = \bigcup_{x\in B} B_{r_x}(x) \cap Y = A\cap Y.
+\ee
+means that $B \subseteq A\cap Y$. Therefore, $B = A\cap Y$. %
+%
+%If $B_\ve(b) \cap X \subseteq B$, then $B$ is open in $X$ and thus we can pick $A = B$ such that $B = A\cap Y$. Otherwise, we can find a point $x\in B_\ve(b)$ such that $x\in X\bs Y$. Then we can define an open set $C = X\bs \bra{x} = Y \cup \bra{\bra{X\bs Y}\bs\bra{x}}$ as finite set is closed in $X$
+%%
+%Thus, $B$ is also open in $X$. Then
+%
+
+Similarly, we can consider open set $A^c$ for closed case.
+\end{proof}
+
+
+
+
+
+
+\section{Closure, Interior and Boundary}
+
+\subsection{Closure}
+
+We have already remarked that a general subset of a metric space $(X,d)$ is likely to be neither open nor closed in $X$. However, we can get from an arbitrary subset of $X$ to one that is closed in
+$X$ and also to one that is open in $X$, in rather natural ways. We shall explain first how to get from a general subset $A$ of $X$ to a related set, called the closure of $A$ in $X$, which is
+closed in $X$. Intuitively, to get from $A$ to its closure, written $\ol{A}$, we add in all points of $X$ which are `arbitrarily close to $A$'.
+
+\begin{definition}[closure\index{closure}]\label{def:closure_metric_space}
+Let $(X,d)$ be a metric space and $A$ be its subset. For $x\in X$, we say that $x$ is a point of closure of $A$ in $X$ if for any $\ve >0$ we have $B_\ve(x)\cap A\neq \emptyset$. The closure of $A$
+in $X$ is the set of all points of closure of $A$ in $X$.
+
+We denote the closure of $A$ in $X$ by $\ol{A}$.
+\end{definition}
+
+\begin{remark}
+The closure of an empty set is empty set by definition.
+\end{remark}
+
+
+
+\begin{example}
+\ben
+\item [(i)] The closure of each of the intervals $(0,1)$, $[0,1)$, $(0,1]$, $[0,1]$ in $\R$ is the interval $[0,1]$.
+\item [(ii)] The closure of $B_1((0,0))$ in $\R^2$ is $\bra{x\in \R^2:d_2(x,(0,0)) \leq 1}$.
+\item [(iii)] If $A$ is non-empty bounded subset of $\R$ then $\sup A$ and $\inf A$ are in $\ol{A}$.
+\een
+\end{example}
+
+
+
+\begin{proposition}\label{pro:closure_properties_metric_space}%used to closure_properties
+Let $A,B$ be subsets of a metric space $(X,d)$. Then
+\ben
+\item [(i)] $A\subseteq \ol{A}$.
+\item [(ii)] $A \subseteq B$ implies that $\ol{A}\subseteq \ol{B}$.
+\item [(iii)] $A$ is closed in $X$ if and only if $\ol{A} = A$.
+\item [(iv)] $\ol{\ol{A}} = \ol{A}$.
+\item [(v)] $\ol{A}$ is closed in $X$.
+\item [(vi)] $\ol{A}$ is the smallest closed subset of $X$ containing $A$ and is the intersection of all sets which are both closed in $X$ and contain $A$.%$\ol{A}$ is the smallest closed subset of $X$ containing $A$.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] If $x\in A$, then $x\in B_\ve(x)$ for any $\ve>0$. Thus, $x\in B_\ve(x) \cap A$ and therefore $x\in \ol{A}$. Hence, $A\subseteq \ol{A}$.
+
+\item [(ii)] Assume $A\subseteq B$ and there exists $x$ such that $x\in \ol{A}$ but $x\notin \ol{B}$. Then there exists $\ve>0$ such that
+\be
+B_\ve(x)\cap B = \emptyset\ \ra\ B_\ve(x)\cap A = \emptyset
+\ee
+which is contradiction with the assumption that $x\in \ol{A}$.
+
+\item [(iii)] Suppose first that $A$ is closed in $X$. We shall show that no point of its complement is in $\ol{A}$. By Theorem \ref{thm:closed_complements_open_metric_space}, $X\bs A$ ($A^c$) is open in $X$. So if $x\in X\bs A$ then exists $\ve>0$ such that $B_\ve(x) \subseteq X\bs A$ (by Definition \ref{def:open_set_metric_space}). Therefore $B_{\ve}(x)\cap A = \emptyset$. This shows that $x\notin \ol{A}$. Hence, $\ol{A}\subseteq A$ which implies $A=\ol{A}$ by (i).
+
+Conversely, if $\ol{A} = A$ we can show that $X\bs A$ is open in $X$, hence $A$ is closed in $X$ by Theorem \ref{thm:closed_complements_open_metric_space}. For any $x\in X\bs A = X\bs \ol{A}$, we have $x\notin \ol{A}$, so for some $\ve>0$ we have $B_\ve(x)\cap A = \emptyset$, so $B_\ve(x) \subseteq X\bs A$, and the latter is open (by Definition \ref{def:open_set_metric_space}) as required.
+
+\item [(iv)] First note that $\ol{A} \subseteq \ol{\ol{A}}$ by (i) and (ii). Now let $x\in \ol{\ol{A}}$. Then for any $\ve >0$, $B_{\ve/2}(x) \cap \ol{A} \neq \emptyset$. Thus, there is some $y\in B_{\ve/2}(x) \cap \ol{A}$. Then by Proposition \ref{pro:open_ball_triangle_inequality}, $B_{\ve/2}(y) \subseteq B_\ve(x)$. Also, $B_{\ve/2}(y) \cap A \neq \emptyset$ since $y\in \ol{A}$. Hence $B_{\ve}(x) \cap A \neq \emptyset$, so $x\in \ol{A}$. This shows that $\ol{\ol{A}} \subseteq \ol{A}$ which implies that $\ol{\ol{A}} = \ol{A}$.
+
+\item [(v)] Direct result followed by (iii) and (iv).
+
+\item [(vi)] Obviously, $A\subseteq \ol{A}$ from (i). Suppose $B$ is any closed subset of $X$ containing $A$ ($A\subseteq B$). We can have $\ol{A}\subseteq \ol{B}$ by (ii). But by (iii) we have $\ol{B} = B$ since $B$ is closed. Thus, $\ol{A}\subseteq B$ as required.
+
+Another way of expressing (vi) is to say that $\ol{A}$ is the intersection, call it $B$, of all sets which are both closed in $X$ and contain $A$. By Theorem \ref{thm:closed_set_metric_space}, $B$ is also closed in $X$ and $B$ contains $A$. Thus, $A\subseteq B$ implies $\ol{A} \subseteq B$. However, $\ol{A}$ is itself closed in $X$ by (v) and it contains $A$ by (i), so it is one of the sets we take the intersection of to form $B$, so $B\subseteq \ol{A}$. This implies that $B = \ol{A}$. 
+\een
+\end{proof}
+
+
+
+\begin{proposition}
+Let $(X,d)$ be a metric space, then
+\ben
+\item [(i)] Let $A_i$ be subsets of $(X,d)$ for all $1\leq i\leq n$, then
+\be
+\ol{\bigcup_{i=1}^n A_i} = \bigcup^n_{i=1}\ol{A_i}.
+\ee
+\item [(ii)] If $A_i$ be subsets of $(X,d)$ for all $i\in I$ ($I$ can be uncountable), then
+\be
+\ol{\bigcap_{i\in I} A_i} \subseteq \bigcap_{i\in I} \ol{A_i}.
+\ee
+\een
+\end{proposition}
+
+\begin{remark}
+For intersection case, the equality may fail even when there are only two sets involved.
+
+In $\R$ we may take $A_1 = (0,1)$, $A_2 = (1,2)$. Then $A_1\cap A_2 = \emptyset$ so $\ol{A_1\cap A_2} = \emptyset$, whereas $\ol{A_1} = [0,1]$ and $\ol{A_2} = [1,2]$ so $\ol{A_1} \cap \ol{A_2} = \bra{1}$.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Since for each $1\leq i\leq n$ we have $A_i \subseteq \ol{A_i}$ by Proposition \ref{pro:closure_properties_metric_space}.(i). Then it follows that
+\be
+\bigcup_{i=1}^n A_i \subseteq \bigcup_{i=1}^n \ol{A_i} \ \ra\ \ol{\bigcup_{i=1}^n A_i} \subseteq \bigcup_{i=1}^n \ol{A_i}
+\ee
+since $\bigcup_{i=1}^n \ol{A_i}$ is closed by Theorem \ref{thm:closed_set_metric_space}. For any $x\in \bigcup_{i=1}^n \ol{A_i}$, it must be contained in one of the $\ol{A_i}$, say $\ol{A_j}$. Then we have
+\be
+A_j \subseteq \bigcup_{i=1}^n A_i \ \ra\ \ol{A_j} \subseteq \ol{\bigcup_{i=1}^n A_i} \ \ra\ x \in  \ol{\bigcup_{i=1}^n A_i} \ \ra\ \bigcup_{i=1}^n \ol{A_i} \subseteq \ol{\bigcup_{i=1}^n A_i}
+\ee
+which implies that $\ol{\bigcup_{i=1}^n A_i} = \bigcup_{i=1}^n \ol{A_i}$.
+
+\item [(ii)] Since for each $i\in I$ we have $A_i \subseteq \ol{A_i}$ by Proposition \ref{pro:closure_properties_metric_space}.(i). Then it follows that
+\be
+\bigcap_{i\in I}A_i \subseteq \bigcap_{i\in I}\ol{A_i} \ \ra\ \ol{\bigcap_{i\in I}A_i} \subseteq \bigcap_{i\in I}\ol{A_i}
+\ee
+since $\bigcap_{i\in I}\ol{A_i}$ is closed by Theorem \ref{thm:closed_set_metric_space} and Proposition \ref{pro:closure_properties_metric_space}.(iii),(v).
+\een
+\end{proof}
+
+
+\begin{theorem}\label{thm:sequence_convergence_in_closure_metric_space}
+Suppose that $A$ is a subset of a metric space $(X,d)$ and $(x_n)$ is a sequence in $A$ converges to a point $x\in X$. Then $x\in \ol{A}$. 
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Since $(x_n)$ converges to $x$, then for any $\ve>0$ we have that $x_n \in B_\ve(x)$ for all sufficiently large $n$ and $x_n$ is a point of $A$. This gives that $B_\ve(x)\cap A \neq \emptyset$ and implies that $x\in \ol{A}$ by definition of closure.
+\end{proof}
+
+
+\begin{corollary}
+If $A$ is closed subset of a metric space $(X,d)$ and $(x_n)$ is a sequence of points in $A$ which converges to a point $x\in X$. Then $x\in A$. 
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+Direct result of Theorem \ref{thm:sequence_convergence_in_closure_metric_space} and Proposition \ref{pro:closure_properties_metric_space}.(iii).
+\end{proof}
+
+
+
+\subsection{Limit points}
+
+For analysis it is often useful to consider limit points as well as closure.
+
+\begin{definition}[limit point\index{limit point!metric space}]\label{def:limit_point_metric_space}%{def:limit_point}
+A point $x$ in a metric space $(X,d)$ is said to be a limit point of a subset $A\in X$ if given $\ve>0$ there is a point in $B_\ve(x)\cap A$ other than $x$ itself, i.e.,
+\be
+\bb{B_\ve(x)\bs\bra{x}}\cap A \neq \emptyset.
+\ee
+\end{definition}
+
+\begin{remark}
+Note that the difference from the definition of a point of closure: it is not enough for $x$ itself to be in $A$. Thus points in $A$ may or may not be limit points of $A$ although they are always points of closure of $A$.
+
+On the other hand it follows immediately from the definition that all limits points of $A$ in $X$ are in $\ol{A}$.
+\end{remark}
+
+\begin{example}
+\ben
+\item [(i)] Let $A=[0,1)\cup \bra{2}$. Then the limit points of $A$ in $\R$ are the points of $[0,1]$, while $\ol{A} = [0,1]\cup\bra{2}$.
+
+\item [(ii)] Let $A = \bra{1/n:n\in \N}\cup \bra{0}$. Then $A$ has only one limit point in $\R$, namely 0, while $\ol{A} = A$.
+\een
+\end{example}
+
+\begin{theorem}
+Let $(X,d)$ be a metric space and $A$ be any subset of $X$. Then $\ol{A}$ is the union of $A$ with all its limit points in $X$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $B$ be the union of $A$ with all its limit points in $X$. We have already noted that from the definitions all limit points of $A$ in $X$ are contained in $\ol{A}$. Also, we have $A\subseteq \ol{A}$ by Proposition \ref{pro:closure_properties_metric_space}.(i). Therefore, $B\subseteq \ol{A}$.
+
+Conversely suppose $x\in \ol{A}$. If $x\in A$ then $x\in B$ as required. Suppose $x\notin A$. Then since $x\in \ol{A}$, for any $\ve>0$ we know that $B_\ve(x)\cap A \neq \emptyset$. Since $x\notin A$, we have that $\bb{B_\ve(x)\bs{x}}\cap A \neq \emptyset$ so $x$ is a limit point of $A$ in $X$. Thus, $x\in B$. Hence, $\ol{A}\subseteq B$ and this implies that $B = \ol{A}$ as required.
+\end{proof}
+
+Thus, we have the following corollary.
+
+\begin{corollary}\label{cor:closed_set_iff_contains_all_limit_points_metric}
+A subset $A$ of metric space $(X,d)$ is closed in $X$ if and only if it contains all its limit points in $X$.
+\end{corollary}
+
+
+\subsection{Interior}
+
+The idea of interior is dual to the idea of closure. The closure of a subset $A$ adds in all points which are intuitively very close to $A$, whereas the interior of $A$ consists of all points which
+are `well inside' $A$.
+
+\begin{definition}[interior\index{interior}]\label{def:interior}
+The interior $\inter{A}$ of a subset $A$ in metric space $(X,d)$ is the set of points $a\in A$ such that $B_\ve(a)\subseteq A$ for some $\ve >0$.
+\end{definition}
+
+\begin{example}
+\ben
+\item [(i)] The interior of any of the interval $(a,b)$, $[a,b)$, $(a,b]$, $[a,b]$ in $\R$ is $(a,b)$.
+\item [(ii)] The interior of $\Q$ in $\R$ is $\emptyset$.
+\een
+\end{example}
+
+
+
+
+\begin{proposition}\label{pro:relation_between_closure_and_interior}
+Let $(X,d)$ be a metric space and $A$ is any subset of $X$. Then
+\be
+\inter{A} = X\left\bs\bb{ \ol{X\bs A} }\right.\qquad (\text{or } \ol{X\bs A} = X\left\bs \inter{A}\right.)% \ol{A^c} = \bb{\inter{A}}^c )
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Suppose that $A$ is any subset in $X$.
+
+For any $x\in \ol{A}$, if $x\in \inter{\bb{X\bs A}}$ then $x\in X\bs A$ and there exists $\ve>0$ such that $B_\ve(x) \subseteq X\bs A$. This implies that $B_\ve(x) \cap A = \emptyset$ and thus $x\notin \ol{A}$. Contradiction. Thus, $x\in X\left\bs\inter{\bb{X\bs A}}\right.$. This is actually
+\be
+\ol{A}\subseteq X\left\bs\inter{\bb{X\bs A}}\right. \ \ra\ \inter{\bb{X\bs A}} \subseteq X\left\bs\ol{A}\right..
+\ee
+
+For any $x\in X\left\bs\ol{A}\right.$, there exists $\ve>0$ such that $B_\ve(x)\cap A = \emptyset$. This implies that $B_\ve(x)\subseteq (X\bs A)$. Also, by Proposition \ref{pro:closure_properties_metric_space}.(i)
+\be
+A \subseteq \ol{A} \ \ra\ X\left\bs\ol{A}\right. \subseteq X\bs A \ \ra\ x \in X\bs A \ \ra\ x\in \inter{\bb{X\bs A}}.
+\ee
+
+This gives that $X\left\bs\ol{A}\right.\subseteq \inter{\bb{X\bs A}}$ and thus $X\left\bs\ol{A}\right.= \inter{\bb{X\bs A}}$.
+
+Then we can replace $A$ by $X\bs A$ and get $X\left\bs\bb{\ol{X\bs A}}\right.= \inter{A} \ \lra\ \ol{X\bs A}= X\left\bs\inter{A}\right.$ as required.
+\end{proof}
+
+
+
+\begin{proposition}\label{pro:interior_properties_metric_space}
+Let $A,B$ be subsets of a metric space $(X,d)$. Then
+\ben
+\item [(i)] $\inter{A}\subseteq A$.
+\item [(ii)] $A \subseteq B$ implies that $\inter{A}\subseteq \inter{B}$.
+\item [(iii)] $A$ is open in $X$ if and only if $\inter{A} = A$.
+\item [(iv)] $\inter{\inter{A}} = \inter{A}$.
+\item [(v)] $\inter{A}$ is open in $X$.
+\item [(vi)] $\inter{A}$ is the largest open subset of $X$ contained in $A$ and the union of all open sets contained in $A$.%$\inter{A}$ is the largest open subset of $X$ contained in $A$.
+\een
+\end{proposition}
+
+\begin{remark}
+Note that we can prove these properties by relating interior to closure (see Proposition \ref{pro:relation_between_closure_and_interior}, $\inter{A} = X\left\bs\bb{ \ol{X\bs A} }\right.$) and applying Proposition \ref{pro:closure_properties_metric_space} and Theorem \ref{thm:closed_complements_open_metric_space}.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] For any $x\in \inter{A}$, then by definition $x\in A$. Thus, $\inter{A}\subseteq A$. % and for any $\ve>0$, $B_\ve(x) \subset$
+\item [(ii)] If $A\subseteq B$ and $x\in \inter{A}$ then there exists $\ve>0$ with $B_\ve(x) \subseteq A\subseteq B$ which implies that $x\in \inter{B}$.
+\item [(iii)] If $A$ is open in $X$ then it follows from Definition \ref{def:open_set_metric_space} that for any $x\in A$, there exists $\ve>0$ such that $B_\ve(x)\subseteq A$. Therefore $x\in \inter{A}$ and thus $A\subseteq \inter{A}$. Since $\inter{A}\subseteq A$ by (i), we have $\inter{A} = A$.
+
+Conversely, if $\inter{A} = A$ then any $x\in A$ is in $\inter{A}$, there exists $\ve >0$ such that $B_\ve(x) \subseteq A$. This is the definition of open set. Thus, $A$ is open.
+
+\item [(iv)] From (i) and (ii), $\inter{\inter{A}} \subseteq \inter{A}$. Conversely, for any $x\in \inter{A}$. Then there exists $\ve>0$ such that $B_{\ve}(x)\subseteq A$. Then for any $y\in B_\ve(x)$ there exists $\delta>0$ such that $B_\delta(y) \subseteq B_{\ve}(x)\subseteq A$ by Corollary\footnote{corollary needed.}. Therefore $y\in \inter{A}$ and this implies that $B_{\ve}(x)\subseteq \inter{A}$. Hence, $x\in \inter{\inter{A}}$ and $\inter{A} \subseteq \inter{\inter{A}}$. Then $\inter{\inter{A}} = \inter{A}$ as required.
+
+\item [(v)] Direct result from (iii) and (iv).
+
+\item [(vi)] First $\inter{A}\subseteq A$ by (i). Suppose $B$ is any open subset of $X$ contained in $A$ ($B\subseteq A$) thus we can have $\inter{B}\subseteq \inter{A}$ by (ii). But $\inter{B}=B$ by (iii) since $B$ is open. Therefore, we have $B \subseteq \inter{A}$ which implies that $\inter{A}$ is the largest open subset of $X$ contained in $A$.
+
+Let $C$ be the union of all open sets contained in $A$. Then we have that $C$ is open and thus $C \subseteq \inter{A}$. Also, $C$ must contain open set $\inter{A}$. Thus, $\inter{A}$ is the union of all open set contained in $A$ and is the largest open set contained in $A$.
+\een
+\end{proof}
+
+\subsection{Boundary}
+
+\begin{definition}[boundary]
+The boundary (or frontier) $\partial A$ of a subset $A$ in metric space $(X,d)$ is the set $\ol{A}\left\bs \inter{A}\right.$.
+\end{definition}
+
+\begin{example}
+\ben
+\item [(i)] The boundary of $\Q$ in $\R$ is $\R$.
+\item [(iI)] In $\R$, the boundary of each interval $(a,b)$, $[a,b)$, $(a,b]$, $[a,b]$ is $\bra{a,b}$. The boundary of $[0,1]\cup \bra{2}$ is $\bra{0,1,2}$.
+\een
+\end{example}
+
+\begin{proposition}
+Given a subset $A$ of metric space $(X,d)$, a point $x\in X$ is in $\partial A$ if and only if for every $\ve >0$ both $A\cap B_\ve(x)$ and $(X\bs A)\cap B_\ve(x)$ are non-empty.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Suppose $x\in \partial A$ and this gives that $x\in \ol{A}$ and $x\notin\inter{A}$. Then for any $\ve>0$, $x\in \ol{A}$ implies that $A\cap B_\ve(x)\neq \emptyset$. Also, $x\notin \inter{A}$ so we have two cases: (i) $x\in A$ and $B_\ve(x) \nsubseteq A$ and (ii) $x\notin A$. But both cases show that $(X\bs A)\cap B_\ve(x)\neq \emptyset$.
+
+Conversely suppose that $A\cap B_\ve(x)$ and $(X\bs A)\cap B_\ve(x)$ are non-empty, for any choice of $\ve>0$. Then by definition we can have $x\in \ol{A}$ and $x\notin \inter{A}$ which implies that $x\in \partial A$. 
+\end{proof}
+
+
+\begin{proposition}
+Let $(X,d)$ be a metric space and $A$ be any subset in $X$. Then
+\ben
+\item [(i)] $\inter{A} = A\bs \partial A = \ol{A}\bs\partial A$.
+\item [(ii)] $A$ is closed if and only if $A$ contains $\partial A$.
+\item [(iii)] $\partial A = \ol{A}\cap \ol{X\bs A} = \partial (X\bs A)$.
+\item [(iv)] $\partial A$ is closed in $X$.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] First $A\bs \partial A \subseteq \ol{A}\bs \partial A = \inter{A}$ since $A\subseteq \ol{A}$. Also, since $\inter{A} \subseteq A$ by Proposition \ref{pro:interior_properties_metric_space}.(i), we have $\inter{A} = \inter{A}\bs \partial A \subseteq A\bs \partial A$. Therefore, $\inter{A} = A\bs \partial A$.
+    
+\item [(ii)] ($\ra$). If $A$ is closed then $A = \ol{A}$ by Proposition \ref{pro:closure_properties_metric_space}, so $\partial A \subseteq \ol{A} = A$.
+
+($\la$). If $A$ contains $\partial A$, we have that 
+\be
+\inter{A} \subseteq A \ \ra\ \ol{A} = \inter{A}\cup \partial A \subseteq A \cup \partial A = A
+\ee
+which implies that $A = \ol{A}$ and $A$ is closed.
+
+\item [(iii)] By Proposition \ref{pro:relation_between_closure_and_interior}, we have that 
+\be
+\inter{A} = X\left\bs \bb{\ol{X\bs A}}\right.
+\ee
+
+Then substituting this into the definition of boundary, we have
+\be
+\partial A = \ol{A} \left\bs \inter{A}\right. = \ol{A} \cap \bb{X \left\bs \inter{A}\right.} = \ol{A} \cap \ol{X\bs A}.
+\ee
+
+The second equality follows by symmetry.
+
+\item [(iv)] By (iii), $\partial A$ is the intersection of two closed sets so it is closed by Theorem \ref{thm:closed_set_metric_space}.
+\een
+\end{proof}
+
+
+\subsection{Dense sets}
+
+\begin{definition}[dense set\index{dense!metric space}]\label{def:dense_set_metric_space}
+A subset $A$ of a metric space $(X,d)$ is said to be dense in $(X,d)$ if $\ol{A} = X$.
+\end{definition}
+
+
+
+%\section{Cauchy Sequence in Metric Space}
+
+%\subsection{Limit points}
+
+%\subsection{Cauchy sequence in metric space}
+
+
+
+\section{Functions of set}
+
+\subsection{Diameter}
+
+\begin{definition}[diameter]
+Let $A$ be a subset of metric space $(X,d)$. Then its diameter by
+\be
+\diam\bb{A} := \sup_{z,w\in A}d(z,w).
+\ee
+\end{definition}
+
+
+\begin{remark}
+Clearly, for $A\subseteq B$, we have $\diam A \leq \diam B$.
+\end{remark}
+
+
+\begin{definition}[distance of point and set]
+Let $(X,d)$ be a metric space with $x\in X$ and $A\subseteq X$. Then the distance from point $x$ to set $A$ is defined by
+\be
+d(x,A) := \inf\bra{d(x,a): a\in A}.
+\ee
+\end{definition}
+
+
+\begin{definition}[distance of sets]
+Let $(X,d)$ be a metric space and $A,B$ be subsets of $X$. Then the distance from $A$ to $B$ is defined by
+\be
+d(A,B) := \inf\bra{d(a,b): a\in A,b\in B}.
+\ee
+\end{definition}
+
+\begin{example}
+\ben
+\item [(i)] If $B$ is singleton set $\bra{x}$ then $d(A,B) = d(A,\bra{x}) = d(x,A)$.
+\item [(ii)] If $A = \bra{x}$ and $B= \bra{y}$, then $d(A,B) = d(\bra{x},\bra{y}) = d(x,y)$.
+\item [(iii)] If $A\cap B \neq \emptyset$, then $d(A,B) = 0$. However, we can have $d(A,B) = 0$ with $A$ and $B$ disjoint.
+\item [(iv)] Let $A = \bra{(x,0):x\in \R}\subseteq \R^2$ and $B = \bra{(x,e^x):x\in \R} \subseteq \R^2$. Then $A$ and $B$ are both closed and disjoint and still $d(A,B) = 0$.
+\een
+\end{example}
+
+\begin{proposition}\label{pro:distance_of_point_set_inequality_metric}
+Let $(X,d)$ be a metric space with $A\subseteq X$. Then
+\be
+\abs{d(x,A) - d(y,A)} \leq d(x,y),\qquad \forall x,y\in X.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+For any $a\in A$, we have that $d(x,a) \leq d(x,y) + d(y,a)$. Hence,
+\beast
+d(x,A) & = & \inf\bra{d(x,a): a\in A} \leq \inf\bra{d(x,y)+ d(y,a): a\in A} \\
+& = & d(x,y)+ \inf\bra{ d(y,a): a\in A} = d(x,y)+ d(y,A)
+\eeast
+which gives that $d(x,A) - d(y,A) \leq d(x,y)$. Similarly, $d(y,A) - d(x,A) \leq d(x,y)$ so the desired inequality follows.
+\end{proof}
+
+\subsection{Properties of distance with respect to closure}
+
+\begin{proposition}\label{pro:diameter_set_closure_equal}
+Let $A$ be a subset in metric space $(X,d)$. Then $\diam A = \diam \ol{A}$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Clearly, $\diam A \leq \diam \ol{A}$. Then given $\ve>0$ and any $x,y\in \ol{A}\bs A$, we can always find $(x_n),(y_n)\in A$ such that there exists $N\in \N$,
+\be
+\lim_{n\to \infty} x_n = x,\qquad \lim_{n\to \infty} y_n = y.\qquad (d(x_n,x)<\ve/2,\quad d(y_n,y)<\ve/2\quad\text{ for all $n\geq N$})
+\ee
+
+Then for any $n\geq N$,
+\beast
+\diam \ol{A} & = & \sup_{z,w\in \ol{A}} d(z,w) \\
+& = & \sup\bra{\sup_{z,w\in A} d(z,w), \sup_{\substack{z\in A \\ x\in \ol{A}\bs A}}d(z,x), \sup_{x,y\in \ol{A}\bs A}d(x,y)} \\
+& \leq & \sup\bra{\sup_{z,w\in A} d(z,w), \sup_{\substack{z,x_n\in A \\ x\in \ol{A}\bs A}}\bra{d(z,x_n)+d(x_n,x)}, \sup_{\substack{x_n,y_n\in A \\ x,y\in \ol{A}\bs A}}\bra{d(x_n,x) + d(y_n,y) + d(x_n,y_n)}} \\
+& \leq & \sup\bra{\diam A, \sup_{z,x_n\in A}d(z,x_n) + \sup_{\substack{x_n\in A \\ x\in \ol{A}\bs A}}d(x_n,x), \sup_{\substack{x_n\in A \\ x\in \ol{A}\bs A}}d(x_n,x) + \sup_{\substack{y_n\in A \\ y\in \ol{A}\bs A}}d(y_n,y) + \sup_{x_n,y_n\in A}d(x_n,y_n)} \\
+& \leq & \sup\bra{\diam A, \diam A + \ve/2, \diam A+\ve} = \diam A+\ve.
+\eeast
+
+Since $\ve$ is arbitrarily small, we have $\diam A = \diam \ol{A}$.
+\end{proof}
+
+\begin{proposition}
+Let $(X,d)$ be a metric space with $A\subseteq X$. Then
+\ben
+\item [(i)] $d(x,A) = d(x,\ol{A})$.
+\item [(ii)] $d(x,A) = 0$ if and only if $x\in \ol{A}$.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Clearly, if $A\subseteq B$, then $d(x,B) \leq d(x,A)$. Thus, we have $d(x,\ol{A}) \leq d(x,A)$.
+
+On the other hand, given any $\ve>0$ there is a point $y\in \ol{A}$ such that
+\be
+d(x,\ol{A}) \geq d(x,y) - \ve/2\qquad (*)
+\ee
+by definition of $d(x,\ol{A})$. Also, there is a point $a\in A$ with $d(y,a) < \ve/2$ by definition of closure. But by triangle inequality,
+\be
+\abs{d(x,y) - d(x,a)} \leq d(y,a) < \ve/2 \ \ra\ d(x,y) > d(x,a) - \ve/2. \qquad (*)
+\ee
+
+Thus, combining ($*$) and ($\dag$) we have
+\be
+d(x,\ol{A}) > d(x,a) - \ve \geq d(x,A) - \ve.
+\ee
+
+Since $\ve$ is arbitrary we have $d(x,\ol{A}) \geq d(x,A)$ which implies that $d(x,\ol{A}) = d(x,A)$.
+
+\item [(ii)] If $x\in \ol{A}$ then $0 = d(x,\ol{A}) = d(x,A)$ by (i). Now for any $x\in X$ there is a minimizing sequence $(a_n)$ in $A$ such that
+\be
+d(x,A) = \lim_{n\to \infty} d(x,a_n).
+\ee
+
+Otherwise, for any sequence $(a_n)$ in $A$ and any $n\in \N$, there exists $\ve>0$ such that
+\be
+\abs{d(x,A) - d(x,a_n)} > \ve \ \ra\ d(x,a_n) - \ve > d(x,A) = \inf_{y\in A} d(x,y)
+\ee
+
+This contradicts the definition of distance. Thus, if $d(x,A) = 0$, we have that
+\be
+\lim_{n\to \infty} d(x,a_n) = d(x,A) = 0 \ \ra\ \lim_{n\to \infty} a_n = x \ \ra\ x\in \ol{A}
+\ee
+by Theorem \ref{thm:sequence_convergence_in_closure_metric_space}.
+\een
+\end{proof}
+
+
+
+
+
+
+\section{Connected Sets}
+
+\subsection{Connected sets}
+
+\begin{definition}[connected set\index{connected set!metric space}]\label{def:connected_set_metric}
+A metric space $(X,d)$ is connected if the only subsets of $X$ which are both open and closed in $X$ are $\emptyset$ and $X$. That is, there is no non-empty sets $A,B$ which are both open in $X$ such that $A\cap B = \emptyset$ and $A\cup B = X$.
+\end{definition}
+
+\begin{remark}
+Equivalently, with the similar argument in Definition \ref{def:connected_set_complex_space} $X$ is connected if we cannot find two non-empty disjoint open sets $X_1$ and $X_2$ such that $X = X_1\cup X_2$. 
+\end{remark}
+
+
+
+\subsection{Separation and equivalent definition of connected set}
+
+\begin{definition}[separated sets]
+Let $(X,d)$ be a metric space. Then two subsets $A,B\subseteq X$ are said to be separated in $X$ if
+\be
+A\cap \ol{B} = \ol{A} \cap B = \emptyset.
+\ee
+\end{definition}
+
+\begin{remark}
+If $A,B\subseteq X$ are separated, then $A$ and $B$ are disjoint because $A\cap B \subseteq A \cap \ol{B} = \emptyset$.
+\end{remark}
+
+\begin{example}
+The converse is not true in general. For instance, $A = [0,1]\subseteq \R$ and $B = (1,2)\subseteq \R$ are clearly disjoint, but not separated because $\bra{1}\in A\cap \ol{B}$. On the other hand $(0,1)$ and $(1,2)$ are separated.
+\end{example}
+
+However, we have the following theorem.
+
+\begin{theorem}\label{thm:subsets_both_open_closed_are_separated_iff_disjoint_metric}
+Let $(X,d)$ be a metric space. Suppose that two subsets $A,B\subseteq X$ are both open or both closed in $X$. Then $A$ and $B$ are separated if and only if they are disjoint.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+($\ra$). Obviously, $A$ and $B$ are disjoint because $A\cap B \subseteq A \cap \ol{B} = \emptyset$.
+
+($\la$). Suppose that $A$ and $B$ are disjoint open sets in $X$ and assume they are not separated. Then without loss of generality, we have $\ol{A} \cap B \neq \emptyset$ and choose $x\in \ol{A}\cap B$. Since $A$ and $B$ are disjoint and since $x\in B$, it must be the case that $x\not\in A$. This means that $x\in \ol{A}\bs A$, implying that $x$ is a limit point of $A$. Since $B$ is neighbourhood of $x$ (there is an open $B_\ve(x)\subseteq B$ since $B$ is open), it follows that by Definition \ref{def:limit_point_metric_space}
+\be
+A\cap B = B \cap \bra{A\bs\bra{x}} \neq \emptyset
+\ee
+contradicting the fact that $A$ and $B$ are disjoint. Thus, $A$ and $B$ must be separated.
+
+Now suppose that $A$ and $B$ are disjoint closed sets in $X$. In this case, the result is immediate because $\ol{A} = A$ and $\ol{B} = B$ by Proposition \ref{pro:closure_properties_metric_space}.(iii).
+\end{proof}
+
+Thus, we can have the alternative definition of connected set.
+
+\begin{definition}[connected set]\label{def:connected_set_no_separation_metric}
+Let $(X,d)$ be a metric space. Then $X$ is connected if there are no pair of non-empty separated sets $A,B\subseteq X$ such that $A\cup B = X$.
+\end{definition}
+
+\begin{remark}
+From Definition \ref{def:connected_set_metric}, suppose $A,B$ are non-empty open and closed subsets of $X$ with $A\cap B = \emptyset$ and $A\cup B = X$. Then by Theorem \ref{thm:subsets_both_open_closed_are_separated_iff_disjoint_metric}, $A,B$ are non-empty separated set.
+
+Conversely, if $A,B$ are non-empty separated set with $A\cup B = X$, then $A\cap \ol{B} = \emptyset$. Thus, $\ol{B} \subseteq B$ which implies that $B= \ol{B}$. So $B$ is closed by Proposition \ref{pro:closure_properties_metric_space}.(iii). Similarly, we have $A,B$ are both open and closed.
+\end{remark}
+
+
+
+
+\subsection{Basic properties of connected set}
+
+
+\begin{proposition}\label{pro:connected_subset_contained_in_separation}
+Let $(X,d)$ be a metric space and $Y$ be connected subset in $X$. If there exist two non-empty open and closed subsets $A$ and $B$ in $X$ such that $A\cap B =\emptyset$ and $A\cup B = X$, then either $Y\subseteq A$ or $Y\subseteq B$.
+\end{proposition}
+
+
+\begin{proof}
+Since $A$ and $B$ are both open and closed in $X$, $A\cap Y$ and $B\cap Y$ are both open and closed in $Y$ by Theorem \ref{thm:open_closed_subset_in_submetric_space_open_closed}. Obviously, if $A\cap Y = \emptyset$, then $Y\subseteq B$. Otherwise, if $A\cap Y \neq \emptyset$, then $A\cap Y \subseteq Y$ since $Y$ is connected. This implies that $Y\subseteq A$.
+\end{proof}
+
+
+\begin{proposition}\label{pro:set_contained_in_closure_of_connected_set_is_connected}
+Let $(X,d)$ be a metric space. If $C\subseteq X$ is connected and $C\subseteq D\subseteq \ol{C}$, then $D$ is connected.
+\end{proposition}
+
+\begin{remark}
+What is implied by this proposition is that the connectedness of $C$ is preserved even if you add some or all of the limit points of $C$.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Assume that there are two open and closed subsets $A$ and $B$ in $D$ such that $A\cap B = \emptyset$ and $A\cup B = D$. Since $C$ is connected, then we have $C\subseteq A$ or $C\subseteq B$ by Proposition \ref{pro:connected_subset_contained_in_separation}. Without loss of generality, we assume that $C\subseteq A$. Then
+\be
+A\cup B  = D \subseteq \ol{C} \subseteq \ol{A} \ \ra\ B\subseteq \ol{A} \ \ra\ B\subseteq \ol{A}\cap D.
+\ee
+
+Since $\ol{A}\cap D$ contains all limit points of $A$ in $D$, we have $A = \ol{A}\cap D$ as $A$ is closed in $D$ by Corollary \ref{cor:closed_set_iff_contains_all_limit_points_metric}. Therefore, $B \subseteq A$ which implies that $B = \emptyset$ thus $A = D$. This means that $D$ is connected.
+\end{proof}
+
+
+
+
+\begin{lemma}\label{lem:collection_of_conneted_subsets_is_connected}
+Let $(X,d)$ be a metric space. For any $x\in X$, let $\bra{D_i}_{i\in I}$ be a collection of connected subsets of $X$ such that $x\in D_i$ for each $i\in I$. Then
+\be
+D = \bigcup_{i\in I} D_i\quad \text{is connected.}
+\ee
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Let $A$ be a subset of the metric space $(D,d)$ which is both open and closed in $D$ and suppose that $A\neq \emptyset$. Then $A\cap D_i$ is open and closed in metric space $(D_i,d)$ for each $i$ by Theorem \ref{thm:open_closed_subset_in_submetric_space_open_closed}. Since $D_i$ is connected we get that $A\cap D_i = \emptyset$ or $A\cap D_i = D_i$ for each $i$. Since $A\neq \emptyset$, there is at least one $k$ such that $A\cap D_k \neq \emptyset$. Hence, $A\cap D_k = D_k$.
+
+In particular, $x\in D_k = A\cap D_k \subseteq A$ so that $x\in A\cap D_i$ for each $i$. Thus $A\cap D_i \neq \emptyset$ and therefore $A\cap D_i = D_i$ ($D_i \subseteq A$) for each $i$. So $D\subseteq A$ which implies that $A = D$. Therefore, $D$ is connected.
+\end{proof}
+
+
+\begin{lemma}
+Let $(X,d)$ be a metric space. Let $\bra{D_i}_{i\in I}$ be a collection of connected subsets of $X$ such that $D_i\cap D_j \neq \emptyset$ for each $i,j\in I$. Then
+\be
+D = \bigcup_{i\in I} D_i\quad \text{is connected.}
+\ee
+\end{lemma}
+
+\begin{remark}
+This Lemma is the generalization of Lemma \ref{lem:collection_of_conneted_subsets_is_connected}.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+
+
+
+
+\subsection{Component}
+
+\begin{definition}[component]
+Let $(X,d)$ be a metric space. Then a subset $A\subseteq X$ is called component of $X$ if it is a maximal connected subset of $X$. That is, $A$ is connected and there is no connected subset of $X$ that properly contains $A$.
+\end{definition}
+
+\begin{example}
+\ben
+\item [(i)] Let $X = \bra{z\in\C: \abs{z} \leq 1} \cup \bra{z\in \C:\abs{z-3}<1}$. Then both $\bra{z\in\C: \abs{z} \leq 1}$ and $\bra{z\in \C:\abs{z-3}<1}$ are components of $X$.
+
+\item [(ii)] Let $X = \bra{0,1,1/2,1/3,\dots}$. Then clearly every component of $X$ is a point and each point is a component. Note that while the components $\bra{\frac 1n}$ are all open in $X$, the component $\bra{0}$ is not.
+\een
+\end{example}
+
+
+\begin{theorem}
+Let $(X,d)$ be a metric space. Then
+\ben
+\item [(i)] Each $x\in X$ is contained in a component of $X$. In other words, $X$ is the union of its components.
+\item [(ii)] Distinct components of $X$ are disjoint.
+\een
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Let $\sD$ be the collection of all connected subsets of $X$ which contains the given point $x$. Note that $x\in \sD$ so that $\sD\neq \emptyset$. Also, by Lemma \ref{lem:collection_of_conneted_subsets_is_connected}, $C = \bigcup_{D\in \sD} D$ is connected and $x\in C$.
+
+If $D$ is connected and $C \subseteq D$, then we have that $x\in D$ so that $D\in \sD$ and $D\subseteq C$. Thus, $C = D$ which implies that $C$ is a maximal connected set.
+
+\item [(ii)] Suppose $C_1$ and $C_2$ are two distinct components such that $C_1\neq C_2$ and suppose that there is a point $x\in C_1\cap C_2$. By Lemma \ref{lem:collection_of_conneted_subsets_is_connected}, we have that $C_1\cup C_2$ is connected since $C_1,C_2$ are connected. Since both $C_1$ and $C_2$ are components, this gives $C_1 = C_1\cup C_2 = C_2$ which contradicts the assumption.
+\een
+\end{proof}
+
+
+\begin{proposition}
+Let $(X,d)$ be a metric space. If $C$ is component of $X$ then $C$ is closed in $X$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+By Proposition \ref{pro:set_contained_in_closure_of_connected_set_is_connected}, the closure $\ol{C}$ is also connected. But $C$ is a component then we must have that $C = \ol{C}$ which implies that $C$ is closed in $X$ by Proposition \ref{pro:closure_properties_metric_space}.(iii).
+\end{proof}
+
+
+
+
+%Let $x\in X$ be a point outside $C$. Then $B = C\cup \bra{x}$ is not connected (otherwise $C$ is not a component). Let $U,V$ be open and closed sets in $B$ such that $U\cap V = \emptyset$ and $U\cup V = B$. Then by Proposition \ref{pro:connected_subset_contained_in_separation}, $C \subseteq U$ or $C\subseteq V$
+
+%Theorem \ref{thm:open_closed_subset_in_submetric_space_open_closed}, $U\cap C$ and $V\cap C$ are open and closed in $C$. Since $C$ is connected, we have that $U\cap C = C$ ($C\sub$) or $V\cap C = C$.
+
+%Suppose $x\in U$.
+
+
+\begin{theorem}
+Let $A$ be an open set in $\C$. Then the component of $A$ are open and there are only a countable number of them.
+\end{theorem}
+
+\begin{proof}[\bf Proof]%\footnote{proof needed.}
+Let $C$ be a component of $A$ and let $x\in C$. Since $A$ is open there exists $\ve>0$ with $B_\ve(x) \subseteq A$. Then by Lemma \ref{lem:collection_of_conneted_subsets_is_connected}, $B_\ve(x) \cup C$ is connected so it must be $C$. That is, $B_\ve(x) \subseteq C$ which implies that $C$ is open in $\C$.
+
+Let $S = \bra{a+ib\in A:a,b\text{ rational}}$. Then $S$ is countable and each component of $A$ contains a point of $S$ since each component is open. Therefore, the number of components is countable.
+\end{proof}
+
+
+
+
+\section{Complete Sets}
+
+\subsection{Complete space}
+
+\begin{definition}[complete metric space]
+Let $(X,d)$ be a metric space. Then $(X,d)$ is complete if each Cauchy sequence in $X$ converges to a limit $x\in X$.
+\end{definition}
+
+\begin{remark}
+We have that $\C$ is complete (Theorem \ref{thm:complex_plane_is_complete}).
+\end{remark}
+
+
+\begin{theorem}\label{thm:metric_complete_iff_cauchy_sequence_has_convergent_subsequence}
+A metric space is complete if and only if every Cauchy sequence in it has a convergent subsequence.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Direct result from the definition of completeness and Theorem \ref{thm:cauchy_sequence_convergent_iff_convergent_subsequence}.
+\end{proof}
+
+
+\subsection{Cantor's theorem}
+
+
+\begin{theorem}[Cantor's theorem]\label{thm:cantor_theorem_metric}
+A metric space $(X,d)$ is complete if and only if for any sequence $(A_n)_{n\in \N}$ of non-empty closed sets in $X$ with $A_1 \supseteq A_2 \supseteq \dots $ and $\diam A_n \to 0$, $\bigcap^\infty_{n=1}A_n$ is non-empty (and consists of a single point in $X$).
+\end{theorem}
+
+\begin{remark}
+This is the variant of Cantor's intersection theorem\footnote{topological theorem needed. see wiki}
+\end{remark}
+
+
+
+\begin{proof}[\bf Proof]
+($\ra$). Suppose $(X,d)$ is complete and let $(A_n)$ be a sequence of closed sets with $A_1 \supseteq A_2 \supseteq \dots$ and $\diam A_n = 0$. For each $n$, let $x_n$ be an arbitrary point in $A_n$. Then for any $n,m\geq N$, $x_n,x_m\in A_N$ so that by definition
+\be
+d(x_n,x_m) \leq \diam A_N \to 0
+\ee
+by assumption. This shows that $(x_n)$ is a Cauchy sequence. Therefore, $(x_n)$ is convergent sequence since $X$ is complete. Thus, we have
+\be
+\lim_{n\to \infty} x_n = x.
+\ee
+
+Also, $x\in A_N$ for all $n\geq N$ since $A_N$ is closed and $A_n \subseteq A_N$. Thus, we have
+\be
+x\in \bigcap^\infty_{n=1} A_n := A.
+\ee
+
+So $A$ contains at least one point. If $y$ is also in $A$ then $x,y\in A_n$ for each $n$ and this gives that
+\be
+d(x,y) \leq \diam A_n \to 0.
+\ee
+
+Thus, we have $d(x,y)=0$ which implies that $x=y$.
+
+($\la$). Let $(x_n)$ be any Cauchy sequence in $X$ and define $A_n$ as the closure of
+\be
+\bra{x_n,x_{n+1},\dots }.
+\ee
+Thus, we have $A_1\supseteq A_2 \supseteq \dots$.
+
+Given any $\ve>0$, we can choose $N\in \N$ such that $d(x_n,x_m) < \ve$ for any $n,m\geq N$ since $(x_n)$ is Cauchy sequence. This give that $\diam\bra{x_n,x_{n+1},\dots } \leq \ve$. Thus, by Proposition \ref{pro:diameter_set_closure_equal},
+\be
+\diam A_n = \diam\ol{\bra{x_n,x_{n+1},\dots }} = \diam\bra{x_n,x_{n+1},\dots } \leq \ve \ \ra \ \diam A_n \to 0.
+\ee
+
+By assumption, there is only one point $x\in X$ with $\bra{x} = \bigcap^\infty_{n=1} A_n$. In particular, $x\in A_n$ for each $n\geq 1$, so
+\be
+d(x,x_n)\leq \diam A_n \to 0 \ \ra\ \lim_{n\to\infty} x_n = x
+\ee
+which implies that $(x_n)$ converges and thus $X$ is complete.
+\end{proof}
+
+\footnote{example needed for the case that $A = \bigcap^\infty_{n=1} A_n$ is either empty or consisting of more than one point.}
+
+
+
+\begin{proposition}\label{pro:complete_space_subset_complete_iff_closed_metric}
+Let $(X,d)$ be a complete metric space and let $Y\subseteq X$. Then $(Y,d)$ is compete metric space if and only $Y$ is closed in $X$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+($\ra$). Assume $(Y,d)$ to be complete. Let $y$ be a limit point of $Y$ then there is a sequence $(y_n)$ in $Y$ such that $\lim_{n\to \infty}$. Since $(y_n)$ is a convergent sequence then it is a Cauchy sequence in $Y$ by Proposition \ref{pro:convergent_sequence_is_cauchy_sequence_metric}. Then $(y_n)$ must converges to some point in $Y$ since $Y$ is complete. Thus, $y\in Y$ which implies that $Y$ is closed.
+
+($\la$). Let $(y_n)$ be a Cauchy sequence in $Y$. Then $(y_n)$ is also a Cauchy sequence in $X$. Thus, we can find $y\in X$ such that $\lim_{n\to \infty} y_n = y$ since $X$ is complete. However, since $Y$ is closed, it contains all of its limit points (Corollary \ref{cor:closed_set_iff_contains_all_limit_points_metric}) including $y$. Thus, $(y_n)$ converges to $y\in Y$ which implies that $Y$ is complete.
+\end{proof}
+
+
+
+
+\section{Compact Space}
+
+\subsection{Compact set}
+
+The concept of compactness is an extension of the benefits of finiteness to infinite sets. Most properties of compact sets are analogues of properties of finite sets which are quite trivial. For example, every sequence in a finite set has a convergent subsequence. This is quite trivial since there must be at least one point which is repeated an infinite number of times. However the same statement remains true if `finite' is replaced by `compact' (actually `sequentially compact').
+
+\begin{definition}[cover]
+Let $(X,d)$ be a metric space. An cover of the set $A\subseteq X$ is a family of sets $\bra{U_{\alpha}}_{\alpha\in\sA}$ (not necessarily countable) such that
+\be
+A \subseteq \bigcup_{\alpha\in \sA} U_{\alpha}.
+\ee
+\end{definition}
+
+\begin{definition}[open cover]
+Let $(X,d)$ be a metric space. An open cover of the set $A\subseteq X$ is a family of open sets $\bra{U_{\alpha}}_{\alpha\in\sA}$ (not necessarily countable) such that
+\be
+A \subseteq \bigcup_{\alpha\in \sA} U_{\alpha}.
+\ee
+\end{definition}
+
+
+\begin{definition}[compact set]
+Let $(X,d)$ be a metric space. A subset $A\subseteq X$ is compact if every open cover of $A$ has a finite subcover.
+\end{definition}
+
+\begin{remark}
+Clearly the empty set and all finite sets are compact.
+\end{remark}
+
+\subsection{Basic properties of compact set}
+
+\begin{proposition}\label{pro:closed_subset_is_compact_metric}
+Let $(X,d)$ be a metric space and $A$ be a compact subset of $X$. Then
+\ben
+\item [(i)] $A$ is closed.
+\item [(ii)] If $C$ is closed and $C\subseteq A$, then $C$ is compact.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Let $x\in \ol{A}$. Then by definition of closure, we have $B_\ve(x)\cap A \neq \emptyset$ for any $\ve>0$. Let $B_n := X \bs \ol{B}_{1/n}(x)$ and suppose that $x\notin A$. Then each $B_n$ is open since $\ol{B}_{1/n}(x)$ is closed by Theorem \ref{thm:closed_ball_properties} and Theorem \ref{thm:closed_complements_open_metric_space}. Also,
+    \be
+    \bigcap^\infty_{n=1} \ol{B}_{1/n}(x) = \bra{x} \ \ra\ A \subseteq X\bs \bra{x} = X \left\bs \bigcap^\infty_{n=1} \ol{B}_{1/n}(x)\right. = \bigcup^\infty_{n=1} X\left\bs \ol{B}_{1/n}(x) \right. = \bigcup^\infty_{n=1} B_n.
+    \ee
+    by De Morgan law\footnote{theorem needed.}. Since $A$ is compact there is an integer $m$ such that $A \subseteq \bigcup^m_{n=1}B_n$. But $B_1\subseteq B_2 \subseteq \dots$ so that $A \subseteq X\left\bs \ol{B}_{1/m}(x)\right.$. But this give that $B_{1/m}(x)\cap A = \emptyset$, a contradiction. Thus, $A = \ol{A}$.
+
+    \item [(ii)] Let $\sF = \bra{C_1,C_2,\dots}$ be an open cover of $C$. Then since $C$ is closed, $\sF\cup (X\bs C)$ is an open cover of $A$. Since $A$ is compact, we can find finite many subcover such that $A \subseteq C_1 \cup C_2 \cup \dots \cup C_m \cup (X\bs C)$. Clearly, $C \subseteq C_1 \cup C_2 \cup \dots \cup C_m$ and so $C$ is compact.
+\een
+\end{proof}
+
+
+
+
+
+
+
+
+
+\subsection{Finite intersection property}
+
+\begin{definition}[finite intersection property\index{finite intersection property!metric space}]\label{def:finite_intersection_property_metric}
+Let $(X,d)$ be a metric space and $\sF$ be a collection of subsets of $X$. Then we say that $\sF$ has finite intersection property (f.i.p.) if for any finitely many $U_1,U_2,\dots,U_n \subseteq \sF$, $U_1 \cap U_2 \cap \dots U_n \neq \emptyset$.
+\end{definition}
+
+\begin{theorem}\label{thm:compact_metric_space_iff_closed_subsets_with_fip_non_empty}
+Let $(X,d)$ be a metric space. Then a set $A\subseteq X$ is compact if and only if every collection $\sF = \bra{U_i}_{i\in I}$ of closed subsets (with respect to $X$) of $A$ with the finite intersection property (f.i.p. with respect to $\sF$) has $\bigcap_{i\in I} U_i \neq \emptyset$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+($\ra$). Suppose $A$ is compact and $\sF = \bra{U_i}_{i\in I}$ is a collection of closed subsets of $A$ having finite intersection property. Assume that $\bigcap_{i\in I} U_i = \emptyset$ and let $\sG :=  \bra{V_i:i\in I} = \bra{X\bs U_i:i\in I}$. Then by De Morgan law\footnote{theorem needed.}
+\be
+\bigcup_{i\in I} V_i = \bigcup_{i\in I} (X\bs U_i) = X\left\bs \bigcap_{i\in I}U_i \right. = X\bs \emptyset = X.
+\ee
+
+In particular, $\sG$ is an open cover of $A$. Since $A$ is compact there are finitely many $V_1,\dots, V_n \in \sF$ such that
+\be
+A \subseteq \bigcup^n_{k=1} V_k = \bigcup^n_{k=1} \bb{X\bs U_k} = X\left\bs \bigcap^n_{k=1} U_k \right. \ \ra \ \bigcap^n_{k=1} U_k \subseteq X\bs A.
+\ee
+
+Since each $U_k$ is a subset of $A$ it must be that $\bigcap^n_{k=1} U_k = \emptyset$ which contradicts the finite intersection property.
+
+($\la$). Let $\bra{V_i}_{i\in I}$ be any open cover of $A$. Then %$\bra{V_i\cap \ol{A}}_{i\in I}$ is open cover of $A$%\bigcap_{i\in I} (X\bs V_i) =
+\be
+A \subseteq \bigcup_{i\in I} V_i \ \ra\   X\left\bs \bigcup_{i\in I} V_i\right. \subseteq X\bs A
+\ee
+
+%Also, for $\bra{X\bs V_i}_{i\in I}$ is a collection of closed sets
+
+Suppose that $A \not\subseteq \bigcup_{i\in J}V_i$ for all finite $J\subseteq I$, then
+\be
+A \cap \bb{X\left\bs \bigcup_{i\in J}V_i \right.} = A \cap \bb{\bigcap_{i\in J} X\left\bs V_i \right.} \neq \emptyset.
+\ee
+
+Then we can find $x\in A \cap \bb{X\left\bs \bigcup_{i\in J}V_i \right.}$. Then $B = \bra{x}$ is a closed set in $A$ by Proposition \ref{pro:singleton_set_is_closed_metric}. Then we consider the collection $ \bra{U_i}_{i\in I} := \bra{B\cap \bb{X\bs V_i}}_{i\in I}$ which consists of closed subsets of $A$ with finite intersection property. Thus, we have
+\be
+\emptyset \neq \bigcap_{i\in I} U_i = \bigcap_{i\in I} \bb{B\cap \bb{X\bs V_i}} = B \cap \bigcap_{i\in I} \bb{X\bs V_i} = \underbrace{B}_{\subseteq A}\cap \underbrace{\bb{X\left\bs \bigcup_{i\in I} V_i\right.}}_{\subseteq X\bs A}
+\ee
+which is absurd. Thus, we have $A \subseteq \bigcup_{i\in J}V_i$ for some finite $J\subseteq I$ and this means that $A$ is compact.
+\end{proof}
+
+
+
+
+
+\begin{theorem}\label{thm:compact_metric_space_is_complete}
+Every compact metric space is complete.
+\end{theorem}
+
+\begin{remark}
+Indeed, complete space requires that every cauchy sequence has a convergent subsequence whereas compact space (equivalently, sequentially compact) requires every sequence with convergent subsequence. Thus, every compact space is complete.
+\end{remark}
+
+
+\begin{proof}[\bf Proof]
+Let $(X,d)$ be a metric space and $(A_n)$ be any descending sequence of non-empty closed sets in $X$ satisfying that $\diam A_n \to 0$ as $n\to \infty$. We can easily pick that finitely many $m_1<m_2<\dots < m_k$ such that
+\be
+A_{m_1} \cap A_{m_2} \cap \dots \cap A_{m_k} = A_{m_k} \neq \emptyset.
+\ee
+
+Thus $A_n$ satisfies finite intersection property. Since $X$ is compact, $\bigcap_{n=1}^\infty A_n \neq \emptyset$ by Theorem \ref{thm:compact_metric_space_iff_closed_subsets_with_fip_non_empty}. Then by Cantor's theorem (Theorem \ref{thm:cantor_theorem_metric}), $X$ is complete. %Since
+%\be
+%\diam \bigcap^\infty_{n=1}A_n \leq \diam A)n \to 0.
+%\ee
+\end{proof}
+
+\begin{corollary}\label{cor:infinite_subset_of_compact_set_has_limit_point}
+Let $(X,d)$ be a metric space. If $X$ is compact then every infinite subset $A\subseteq X$ has a limit point in $X$.
+\end{corollary}
+
+
+\begin{proof}[\bf Proof]
+Let $Y$ be an infinite subset of $X$ and suppose $Y$ has no limit point in $X$. Let $(x_1)$ be a sequence of distinct points in $Y$. Then $A_n = \bra{x_n,x_{n+1},\dots}$ also has no limit point in $X$. But if set $A$ has no limit point $X$ then it contains all its limit points and thus $A$ must be closed by Corollary \ref{cor:closed_set_iff_contains_all_limit_points_metric}. Thus, each $A_n$ is closed and $(A_n)$ has the finite intersection property. Then $\bigcup^\infty_{n=1}A_n \neq \emptyset$ by Theorem \ref{thm:compact_metric_space_iff_closed_subsets_with_fip_non_empty}. However, since the points $x_1,x_2,\dots$ are distinct, $\bigcup^\infty_{n=1}A_n = \emptyset$ which contradicts the deducted result. %\footnote{proof needed.}
+\end{proof}
+
+
+\subsection{Sequentially compact set}
+
+\begin{definition}[sequentially compact set]
+A metric space $(X,d)$ is sequentially compact if every sequence in $X$ has a convergent subsequence.
+\end{definition}
+
+\begin{remark}
+It will be shown that compact and sequentially compact metric spaces are the same.
+\end{remark}
+
+\begin{lemma}[Lebesgue's covering lemma]\label{lem:lebesgue_covering_metric}
+Let $(X,d)$ be a sequentially compact metric space and $\sG$ be an open cover of $X$ then there exists $\ve>0$ such that for any $x\in X$ there is a set $G\in \sG$ with $B_\ve(x) \subseteq G$.
+\end{lemma}
+
+\begin{remark}
+There are two common misinterpretations of Lebesgue's covering lemma. One implies that it says nothing and the other that it says too much.
+
+Since $\sG$ is an open covering of $X$ it follows that each $x\in X$ is contained in some $G\in \sG$. Thus there exists $\ve>0$ such that $B_\ve(x) \subseteq G$ since $G$ is open. The lemma, however, gives one $\ve>0$ such that for any $x$, $B_\ve(x)$ is contained in some member of $\sG$. The other misinterpretation is to believe that for the $\ve>0$ obtained in the lemma, $B_\ve(x)$ is contained in each $G$ in $\sG$ such that $x\in G$.
+\end{remark}
+
+
+
+\begin{proof}[\bf Proof]
+Suppose that $\sG$ is an open cover of $X$ and there is no such $\ve>0$ can be found. In particular, for every integer $n\geq 1$ there is a point $x_n\in X$ such that $B_{1/n}(x_n)$ is not contained in any set in $\sG$.
+
+Since $X$ is sequentially compact there is a point $x_0\in X$ and subsequence $(x_{n_k})$ such that $\lim_{k\to \infty}x_{n_k} = x_0$. Let $G_0\in \sG$ such that $x_0 \in G_0$ and we can choose $\ve>0$ such that $B_\ve(x_0)\subseteq G_0$ since $\sG$ is open cover.
+
+Now we can choose $N_1\in \N$ such that for all $n_k\geq N_1$,
+\be
+d(x_0,x_{n_k}) < \ve/2.
+\ee
+
+Also, we can choose $N_2 = \ceil{2/\ve}$ such that for all $n_k\geq N_2$ and any $y\in B_{1/n_k}(x_{n_k})$,
+\be
+d(x_{n_k},y) < 1/n_k \leq 1/N_2 \leq \ve/2.
+\ee
+
+Therefore, we choose $N = \max\bra{N_1,2/\ve}$ such that for any $n_k\geq N$
+\be
+d(x_0,y) \leq d(x_0,x_{n_{k}}) + d(x_{n_k},y) < \ve/2 + \ve/2 = \ve \ \ra\ y\in B_\ve(x_0) \subseteq G_0
+\ee
+which contradicts the choice of $x_{n}$.
+\end{proof}
+
+
+\subsection{Equivalence of compactness}
+
+\begin{definition}[$\ve$-net]
+Let $(X,d)$ be a metric space. Then a set $\bra{x_\alpha\in X:\alpha\in I}$ is $\ve$-net for $X$ if given any $\ve>0$,
+\be
+X = \bigcup_{\alpha \in I}B_\ve(x_\alpha).
+\ee
+\end{definition}
+
+\begin{definition}[total boundedness]
+Let $(X,d)$ be a metric space. Then it is totally bounded if it has a finite $\ve$-net for every $\ve>0$. That is, given any $\ve>0$, there are a finite number of points $x_1,x_2,\dots,x_n\in X$ such that
+\be
+X = \bigcup_{k=1}^n B_\ve(x_k).
+\ee
+\end{definition}
+
+
+\begin{theorem}\label{thm:equivalent_form_of_compactness}
+Let $(X,d)$ be a metric space. Then the following are equivalent statements.
+\ben
+\item [(i)] $X$ is compact.
+\item [(ii)] Every infinite set in $X$ has a limit point.
+\item [(iii)] $X$ is sequentially compact.
+\item [(iv)] $X$ is complete and totally bounded.
+\een
+\end{theorem}
+
+%infinite subset $A\subseteq X$ has a limit point
+
+\begin{proof}[\bf Proof]
+(i) $\ra$ (ii). Direct result of Corollary \ref{cor:infinite_subset_of_compact_set_has_limit_point}.% and suppose, without loss of generality, that the point $x_1,x_2,\dots,$ are all distinct
+
+(ii) $\ra$ (iii). Let $(x_n)$ be any sequence in $X$. By (ii), the set $\bra{x_1,x_2,\dots}$ has a limit point $x_0$. Thus, there is a point $x_{n_1} \in B_1(x_0)\bs\bra{x_0}$. Similarly, there is an integer $n_2 > n_1$ with $x_{n_2}\in B_{1/2}(x_0)\bs\bra{x_0}$. Continuing we get integers $n_1 < n_2 < \dots$ with $x_{n_k} \in B_{1/k}(x_0)\bs\bra{x_0}$. Thus, we have
+\be
+\lim_{k\to \infty} x_{n_k} = x_0
+\ee
+which implies that $X$ is sequentially compact.
+
+(iii) $\ra$ (iv). Let $(x_n)$ be a Cauchy sequence in $X$. Since $X$ is sequentially compact (every sequence has a convergent subsequence), $(x_n)$ has a convergent subsequence. Then $X$ is complete by Theorem \ref{thm:metric_complete_iff_cauchy_sequence_has_convergent_subsequence}.
+
+Now given any $\ve>0$ and any $x_1\in X$. If $X = B_\ve(x_1)$ then we are done. Otherwise we can choose $x_2\in X\bs B_\ve(x_1)$. Again, if $X = B_\ve(x_1) \cup B_\ve(x_2)$ we are done. If not, let $x_3 \in X \bs \bra{B_\ve(x_1) \cup B_\ve(x_2)}$. If this process never stops we can find a sequence $(x_n)$ such that
+\be
+x_{n+1} \in X\left\bs \bigcup^n_{k=1} B_\ve(x_k)\right.
+\ee
+
+But this implies that for $n\neq m$, $d(x_n,x_m) \geq \ve >0$. Thus $(x_n)$ can have no convergent subsequence, contradicting (iii).
+
+(iv) $\ra$ (iii). This part of the proof will sue a variation of the `pigeon hole principle'. This principle states that if you have more objects than you have receptacles then at least one receptacle must hold more than one object. Moreover, if you have an infinite number of points contained in a finite number of balls then one ball contains infinitely many points. So (iv) says that given any $\ve>0$ and any infinite set in $X$, there is a point $y\in X$ such that $B_\ve(y)$ contains infinitely many points of this set.
+
+Assume $(x_n)$ is any sequence in $X$. Without loss of generality, let $(x_n)$ be a sequence of distinct points\footnote{If point $a$ appears finitely many times we can skip it. Otherwise if $a$ appears infinitely many times, we can pick a subsequence with the same value $a$}. Then there is a point $y_1\in X$ and a subsequence $(x_n^1)$ of $(x_n)$ such that $(x_n^1) \subseteq B_1(y_1)$. Also, there is a point $y_2\in X$ and a subsequence $(x_n^2)$ of $(x_n)$ such that $(x_n^2) \subseteq B_{1/2}(y_2)$. Continuing, for each integer $k\geq 1$ there is a point $y_k\in X$ and a subsequence $(x_n^k)$ of $(x_n)$ such that $(x_n^k) \subseteq B_{1/k}(y_k)$.
+
+Let $A_k = \ol{\bra{x_n^k}}$. Then $\diam A_k \leq \diam B_{1/k}(y_k) \leq 2/k$ and $A_1 \supseteq A_2 \supseteq \dots$. Thus, by Cantor's theorem (Theorem \footnote{metric space version of complete iff}), we have $\bigcap^\infty_{k=1} A_k = \bra{x_0}$ where $x_0\in X$ since $X$ is complete. Then we have that $(x_k^k)$ is a subsequence of $(x_n)$ and
+\be
+d(x_0,x_k^k) \leq \diam A_k \leq 2/k \to 0\ \text{ as }k \to \infty
+\ee
+which implies that $(x_k^k)$ converges to $x_0$. Thus, any sequence in $X$ has a convergent subsequence which implies that $X$ is sequentially compact.
+
+(iii) $\ra$ (i). Let $\sG$ be any open cover of $X$. Then Lebesgue covering lemma (Lemma \ref{lem:lebesgue_covering_metric}) gives that there exists $\ve>0$ such that for any $x\in X$ there is a $G\in \sG$ with $B_\ve(x) \subseteq G$. Since (iii) implies (iv), there are points $x_1,x_2,\dots,x_n\in X$ such that
+\be
+X = \bigcup^n_{k=1}B_\ve(x_k,\ve).
+\ee
+
+Now for $1\leq k\leq n$ there is a set $G_k\in \sG$ with $B_\ve(x_k) \subseteq G_k$. Thus,
+\be
+X = \bigcup^n_{k=1}B_\ve(x_k,\ve) \subseteq \bigcup^n_{k=1}G_k \ \ra\ \bra{G_1,\dots,G_n}\text{ is a finite subcover of }\sG
+\ee
+which implies that $X$ is compact.
+\end{proof}
+
+
+
+Now we recall Heine-Borel theorem (Theorem \ref{thm:heine_borel_compact_real_n_closed_bounded}) and give the alternative proof.% of Heine-Borel theorem 
+
+\begin{theorem}[Heine-Borel theorem]\label{thm:heine_borel_compact_real_n_closed_bounded_metric_proof}
+Let $A \subseteq \R^n$. Then the following are equivalent.
+\ben
+\item [(i)] $A$ is compact.
+\item [(ii)] Every sequence of points of $A$ has a subsequence that converges to a point of $A$.
+\item [(iii)] $A$ is closed and bounded.
+\een
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+(i) and (ii) are equivalent since (ii) is actually sequentially compact by Theorem \ref{thm:equivalent_form_of_compactness}.
+
+(i) $\ra$ (iii). If $A$ is compact then $A$ $A$ must be closed by Proposition \ref{pro:closed_subset_is_compact_metric}.(i). Also, $A$ is totally bounded by Theorem \ref{thm:equivalent_form_of_compactness}. It is easy to show that a totally bounded set is also bounded.
+
+(iii) $\ra$ (i). Now suppose that $A$ is closed and bounded. Hence, there are real numbers $a_1,\dots,a_n$ and $b_1,\dots,b_n$ such that 
+\be
+A \subseteq K = [a_1,b_1] \times [a_2,b_2] \times \dots \times [a_n,b_n]. 
+\ee
+
+So it suffices to show that $K$ is compact so that we can have $A$ is compact by Proposition \ref{pro:closed_subset_is_compact_metric}.(ii) since $A$ is closed.
+
+Since $\R^n$ is complete and $K$ is closed it follows that $K$ is complete by Proposition \ref{pro:complete_space_subset_complete_iff_closed_metric}. Hence, by Theorem \ref{thm:equivalent_form_of_compactness} we need only show that $K$ is totally bounded.
+
+Given any $\ve>0$, Then let 
+\be
+m_i = \sqrt{n+1}\ceil{\frac{b_i- a_i}{\ve}} ,\qquad 1\leq i\leq n
+\ee
+such that each interval $[a_i,b_i]$ can be covered by $m_i$ closed intervals $[c_j^i,d_j^i]$ with equal length $\ve/\sqrt{n+1}$ for $j = 1,\dots ,m_i$. Thus, $K$ is contained in union of $m_1\times m_2\times \dots \times m_n$ almost disjoint rectangles (Definition \ref{def:almost_disjoint_rectangles_real_n}). That is,
+\be
+K \subseteq \bigcup_{k_1=1}^{m_1} \dots \bigcup_{k_n=1}^{m_n} [c^1_{k_1},d^1_{k_1}]\times [c^2_{k_2},d^2_{k_2}]\times \dots \times [c^n_{k_n},d^n_{k_n}].
+\ee
+
+Let $X$ be any of these rectangles and its diameter is actually
+\be
+\diam X = \sup_{x,y\in X}\abs{x-y} = \sqrt{\sum^n_{k=1} \bb{\frac{\ve}{\sqrt{n+1}}}^2} = \ve \sqrt{\frac{n}{n+1}}
+\ee
+
+Thus, for any $x\in X$, we can have that all the point in $X$ are contained in $B_\ve(x)$. Thus, we can have that for any $\ve>0$ there are $m_1\times m_2\times \dots \times m_n$ finite number of points such that
+\be
+K \subseteq \bigcup^{m_1\times\dots\times m_n}_{k=1} B_\ve(x_k)
+\ee
+which means $K$ is totally bounded.
+\end{proof}
+
+
+
+
+\section{Continuity in Metric Space}
+
+\subsection{Continuous functions}
+
+\begin{definition}[continuity in metric space\index{continuous!metric space}]\label{def:continuous_metric_space}
+Let $(X,d_X)$ and $(Y,d_Y)$ be metric spaces. A function $f:X\to Y$ is called continuous at $x\in X$ if given any $\ve>0$, we can find a $\delta (x,\ve)>0$ such that
+\be
+d_Y(f(x),f(x'))< \ve \quad \text{whenever }\ d_X(x,x')<\delta(x,\ve).
+\ee
+
+We say that $f$ is continuous if $f$ is continuous at every $x\in X$.
+\end{definition}
+
+\footnote{need convergence verison of continuity.}
+
+
+
+\begin{definition}[equivalent definition of continuity at point]
+Let $(X,d_X)$ and $(Y,d_Y)$ be metric spaces. A function $f:X\to Y$ is called continuous at $x\in X$ if and only if for any $\ve >0$, there exists $\delta >0$ such that
+\be
+f\bb{B^{d_X}_\delta(x)} \subseteq B^{d_Y}_\ve\bb{f(x)}.
+\ee
+\end{definition}
+
+\subsection{Properties of continuous functions}
+
+There is a remarkable connection between the notion of open sets and continuity.
+
+\begin{theorem}\label{thm:continuity_inverse_image_open_is_open_metric}%{thm:continuity_reserves_open_metric}%{thm:metric_continuous_open}
+Let $(X,d_X)$ and $(Y,d_Y)$ be metric spaces. A function $f:X \to Y$ is continuous if and only if $f^{-1}(U)$ is open in $X$ whenever $U$ is open in $Y$.
+\end{theorem}
+
+\begin{remark}
+Note that the theorem does not work `in the opposite direction'.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+($\ra$). Suppose first that $f$ is continuous and that $U$ is open in $Y$. For any $x\in f^{-1}(U)$, then we can find a $y\in U$ with $f(x)=y$. Since $U$ is open in $Y$, we can find an $\ve>0$ such that
+\be
+z\in U\quad \text{whenever }\ d_Y(y,z)< \ve.
+\ee
+
+Since $f$ is continuous, we can find a $\delta>0$ such that
+\be
+d_Y(y,f(w))=d_Y(f(x),f(w))<\ve \quad \text{whenever }\ d_X(x,w)<\delta.
+\ee
+
+Thus, we can find $\delta >0$ such that
+\be
+f(w)\in U\quad \text{whenever }\ d_X(x,w)<\delta \ \ra \ w\in f^{-1}(U)\quad \text{whenever }\ d(x,w)<\delta.
+\ee
+
+Thus, we have shown that $f^{-1}(U)$ is open (as $x\in f^{-1}(U)$).
+
+($\la$). Suppose that $f^{-1}(U)$ is open in $X$ whenever $U$ is open in $Y$. For any $x\in X$ and $\ve>0$. We know that the open ball
+\be
+B_\ve(f(x))=\bra{y\in Y: d_Y(f(x),y)<\ve} \quad \text{is open in $Y$ (by Theorem \ref{thm:open_ball_properties}.(i)).}
+\ee
+Thus
+$x\in f^{-1}\bb{B_\ve(f(x))}$ and $f^{-1}\bb{B_\ve(f(x))}$ is open by assumption. It follows that there is a $\delta>0$ such that
+\be
+w\in f^{-1}\bb{B_\ve(f(x))} \quad \text{whenever }\ d_X(x,w)<\delta \ \ra\  f(w) \in B_\ve(f(x)) \quad \text{whenever }\ d_X(x,w)<\delta.
+\ee
+
+So, in other words,
+\be
+d_Y(f(x),f(w))<\ve\quad \text{whenever }\ d_X(x,w)<\delta \ \ra \ \text{$f$ is continuous}
+\ee
+as required.
+\end{proof}
+
+
+
+\begin{corollary}[composition of continuous functions]
+Let $(X,d_X), (Y,d_Y), (Z,d_Z)$ be three metric spaces and two functions $f:X\to Y$ and $g:Y\to Z$ be continuous. Then $g\circ f$ (where $g\circ f(x) = g(f(x))$) is a continuous function from $X$ to $Z$.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+If $U$ is open in $Z$, then $g^{-1}(U)$ is open in $Y$ by Theorem \ref{thm:continuity_inverse_image_open_is_open_metric}. Then by Proposition \ref{pro:composition_of_inverse_images} and Theorem \ref{thm:continuity_inverse_image_open_is_open_metric},
+\be
+(g\circ f)^{-1}(U) = f^{-1}\bb{g^{-1}(U)}
+\ee
+is open in $X$. Thus, by Theorem \ref{thm:continuity_inverse_image_open_is_open_metric} again, we have that $g\circ f$ is continuous.
+\end{proof}
+
+
+
+
+Also, we have the another version of Theorem \ref{thm:continuity_inverse_image_open_is_open_metric}.%{thm:continuity_reserves_open_metric}.
+
+\begin{corollary}\label{cor:continuity_inverse_image_closed_is_closed}%{thm:metric_continuous_closed}
+Let $(X,d_X)$ and $(Y,d_Y)$ be metric spaces. A function $f:X\to Y$ is continuous if and only if $f^{-1}(V)$ is closed in $X$ whenever $V$ is closed in $Y$.
+\end{corollary}
+
+\begin{remark}
+We use the fact that $X = f^{-1}(Y)$.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+($\ra$). Suppose that $f$ is continuous. If $V$ is closed in $Y$, then $Y\bs V$ is open, so by Proposition \ref{pro:inverse_image_preserves_set_operation}
+\be
+X \left\bs f^{-1}(V) \right. = f^{-1}(Y) \left\bs f^{-1}(V) \right. = f^{-1}(Y\bs V)
+\ee
+is open by Theorem \ref{thm:continuity_inverse_image_open_is_open_metric}. Thus $f^{-1}(V)$ is closed.
+
+($\la$). Suppose $f^{-1}(V)$ in $X$ is closed whenever $V$ is closed in $Y$. For any open set $U \subseteq Y$, then $Y\bs U$ is closed (by Theorem \ref{thm:closed_complements_open_metric_space}). So by
+\be
+X\left\bs f^{-1}(U)\right. = f^{-1}(Y) \left\bs f^{-1}(U)\right. = f^{-1}(Y\bs U)
+\ee
+is closed by assumption.
+
+Thus $f^{-1}(U)$ is open by Theorem \ref{thm:closed_complements_open_metric_space}. We have shown that $f$ is continuous by Theorem \ref{thm:continuity_inverse_image_open_is_open_metric}.
+\end{proof}
+
+
+Now we can express continuity of a map in terms of closure.
+
+\begin{theorem}\label{thm:continuous_closure_relation}
+Let $(X,d_X)$ and $(Y,d_Y)$ be two metric spaces. Then a map $f:X\to Y$ of metric spaces is continuous if and only if
+\be
+f\bb{\ol{A}} \subseteq \ol{f(A)} \quad \text{for every }A\subseteq X.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+($\ra$). Suppose that $f:X\to Y$ is continuous. 
+
+Apporach 1. Let $y\in f\bb{\ol{A}}$ for some $A\subseteq X$. Then $y = f(x)$ for at least one $x\in \ol{A}$. Then by continuity of $f$ at $x$, for any $\ve>0$ there exists $\delta>0$ such that $f\bb{B_\delta(x)}\subseteq B_\ve(y)$. By definition of $\ol{A}$ there exists some $a\in A\cap B_\delta(x)$. Then 
+\be
+f(a) \in f\bb{B_\delta(x)} \subseteq B_\ve(y) \ \ra\ f(a) \in B_\ve(y)\cap f(A) \ \ra\ B_\ve(y)\cap f(A) \neq \emptyset \ \ra\ y \in\ol{f(A)} \ \ra\  f\bb{\ol{A}} \subseteq \ol{f(A)}.
+\ee
+%{lem:image_inverse_image_composition} 
+
+Apporach 2. By Lemma \ref{lem:image_inverse_image_composition} and Proposition \ref{pro:closure_properties_metric_space}.(i),(ii), we have that
+\be
+A \subseteq f^{-1}\bb{f(A)} \ \ra\ A \subseteq f^{-1}\bb{\ol{f(A)}} \ \ra\ \ol{A} \subseteq \ol{f^{-1}\bb{\ol{f(A)}}}.
+\ee
+
+But $f$ is continuous, we have $\ol{f^{-1}\bb{\ol{f(A)}}} = f^{-1}\bb{\ol{f(A)}}$ by Proposition \ref{pro:closure_properties_metric_space}.(v) and Corollary \ref{cor:continuity_inverse_image_closed_is_closed}. Therefore,
+\be
+\ol{A} \subseteq f^{-1}\bb{\ol{f(A)}} \ \ra\ f\bb{\ol{A}} \subseteq f\bb{f^{-1}\bb{\ol{f(A)}}} 
+\ee
+
+By Lemma \ref{lem:image_inverse_image_composition} again,
+\be
+ f\bb{f^{-1}\bb{\ol{f(A)}}} = \ol{f(A)}\cap f(X) \ \ra\  f\bb{f^{-1}\bb{\ol{f(A)}}} \subseteq \ol{f(A)} \ \ra\ f\bb{\ol{A}} \subseteq \ol{f(A)}
+\ee
+as required. %Theorem \ref{thm:metric_continuous_closed}.
+
+($\la$). Suppose that $f\bb{\ol{A}} \subseteq \ol{f(A)}$ for any subset $A$ of $X$. We shall prove that the inverse image of any closed subset $B$ of $Y$ is closed in $X$, so that $f$ is continuous by Corollary \ref{cor:continuity_inverse_image_closed_is_closed}. So suppose that $B$ is closed in $Y$. We have by Lemma \ref{lem:image_inverse_image_composition}, $f\bb{f^{-1}(B)} \subseteq B$ and then by the assumption and Proposition \ref{pro:closure_properties_metric_space}.(ii) we have
+\be
+f\bb{\ol{f^{-1}(B)}} \subseteq \ol{f\bb{f^{-1}(B)}} \subseteq \ol{B} = B
+\ee
+since $B$ is closed. By Lemma \ref{lem:image_inverse_image_composition} again,
+\be
+\ol{f^{-1}(B)} \subseteq f^{-1}\bb{f\bb{\ol{f^{-1}(B)} }} \subseteq f^{-1}(B).
+\ee
+
+However, we have $f^{-1}(B)\subseteq \ol{f^{-1}(B)}$ by Proposition \ref{pro:closure_properties_metric_space}.(i) and this implies that $f^{-1}(B)= \ol{f^{-1}(B)}$. By Proposition \ref{pro:closure_properties_metric_space}.(iii), $f^{-1}(B)$ is closed in $X$, which was what we want. 
+\end{proof}
+
+
+\subsection{Continuous function on compact or connected set}
+
+\begin{theorem}\label{thm:image_of_compact_or_connected_reserves_property}
+Let $(X,d_X)$ and $(Y,d_Y)$ be two metric spaces and $f: X\to Y$ be a continuous function. Then
+\ben
+\item [(i)] If $X$ is compact then $f(X)$ is a compact subset of $Y$.
+\item [(ii)] If $X$ is connected then $f(X)$ is a connected subset of $Y$.
+\een
+\end{theorem}
+
+\begin{proof}[\bf Proof]%Let $f(X) = A$. 
+\ben
+\item [(i)] Let $(y_n)$ be any sequence in $f(X)$. Then there is, for each $n\geq 1$, a point $x_n\in X$ with $y_n = f(x_n)$. Since $X$ is compact there is a point $x\in X$ and a subsequence $(x_{n_k})$ such that $\lim_{k\to\infty} x_{n_k} = x$. If $f(x) = y$, then by continuity of $f$ we have 
+    \be
+    \lim_{k\to\infty}y_{n_k} = \lim_{k\to \infty} f(x_{n_k}) = f(x) = y.
+    \ee
+    
+    Thus, $f(X)$ is compact by Theorem \ref{thm:equivalent_form_of_compactness}.
+    
+\item [(ii)] Suppose $A\subseteq f(X)$ is both open and closed in $f(X)$ and $A\neq \emptyset$. Since $f$ is continuous, we have $f^{-1}(A)$ is both open and continuous by Theorem \ref{thm:continuity_inverse_image_open_is_open_metric} and Corollary \ref{cor:continuity_inverse_image_closed_is_closed} and $f^{-1}(A) \neq \emptyset$. Thus, $f^{-1}(A) = X$ since $X$ is connected. Then by Lemma \ref{lem:image_inverse_image_composition}
+    \be
+    A = f(f^{-1}(A)) = f(X)
+    \ee
+    which implies that $f(X)$ is connected. 
+\een
+\end{proof}
+
+\begin{corollary}
+Let $(X,d)$ be a metric space. If $f:X\to \R$ is continuous and $X$ is connected then $f(X)$ is an interval.
+\end{corollary}
+
+\begin{remark}
+This is the general version of intermediate value theorem (Theorem \ref{thm:intermediate_value}).
+\end{remark}
+
+
+\begin{proof}[\bf Proof]
+Direct result of Theorem \ref{thm:image_of_compact_or_connected_reserves_property} and Theorem \ref{thm:real_subset_connected_iff_interval}.
+\end{proof}
+
+
+
+\begin{corollary}\label{cor:continuous_function_on_compact_set_reachs_sup_inf}
+Let $(X,d)$ be a metric space. If $f:X\to \R$ is continuous and $A\subseteq X$ is compact then there are points $y,z \in A$ with
+\be
+f(y) = \sup\bra{f(x):x\in A},\qquad g(z) = \inf\bra{g(x):x\in A}.
+\ee
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+Since $A$ is compact and $f$ is continuous, $f(A)$ is also compact by Theorem \ref{thm:image_of_compact_or_connected_reserves_property}. Thus, $f(A)$ must be closed and bounded in $\R$ by Heine-Borel theorem (Theorem \ref{thm:heine_borel_compact_real_n_closed_bounded}). 
+
+Let $a = \sup\bra{f(x):x\in A}$. If $a\not\in f(A)$, then there must exist $\ve>0$ such that $(a-\ve,a+\ve)\subseteq f(A)^c$ since $f(A)^c$ is open. This contradicts the assumption that $a$ is supremum of $f(A)$. Thus, we must have that $a\in f(A)$, as required. Similarly, we have the result for infimum case.
+\end{proof}
+
+\begin{corollary}
+Let $(X,d)$ be a metric space. If $A$ is a compact subset of $X$ and $x$ is any point in $X$, then there is a point $a \in A$ with $d(x,a) = d(x,A)$.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+Define $f:X\to \R$ by $f(y) = d(x,y)$. Then $f$ is continuous by definition of convergence in metric space. Then by Corollary \ref{cor:continuous_function_on_compact_set_reachs_sup_inf}, there is a point $a\in A$ such that $f(a) = \inf_{y\in A} f(y)$ since $A$ is compact. This is actually saying
+\be
+d(x,a)= f(a)= \inf_{y\in A} f(y) = \inf_{y\in A} d(x,y) = d(x,A).
+\ee
+\end{proof}
+
+
+
+
+
+
+\begin{theorem}\label{thm:compact_disjoint_sets_real_n_imples_distance_positive}
+Let $(X,d)$ be a metric space. If $A,B$ are disjoint subsets in $X$ with $A$ compact and $B$ closed, then $d(A,B)>0$.
+\end{theorem}
+
+
+\begin{proof}[\bf Proof]%\footnote{proof needed. see p28 of Conway's book.}
+Define $f:X\to \R$ by $f(x) = d(x,B)$. By definition of convergence, if $x_n \to x$ which means $d(x_n, x)\to 0$ then
+\be
+\abs{f(x_n) - f(x)} = \abs{d(x_n,B) - d(x,B)} \leq d\bb{x_n,x} \to 0
+\ee
+by Proposition \ref{pro:distance_of_point_set_inequality_metric}, Thus, $f$ is continuous.
+
+
+Since $A\cap B = \emptyset$ and $B$ is closed, for any $a\in A$ there exists $\ve>0$ such that $B_\ve(a)\subseteq X\bs B$. Thus, we have $d(a,y) \geq \ve$ for any $y\in B$ and therefore $f(a) \geq \ve >0$.
+
+But since $A$ is compact and $f$ is continuous, there is a point $a\in A$ such that $f(a) = \inf\bra{f(x):x\in A}$ by Corollary \ref{cor:continuous_function_on_compact_set_reachs_sup_inf}. Therefore,
+\be
+d(A,B) = \inf\bra{d(x,B):x\in A} = \inf\bra{f(x):x\in A} = f(a) > 0,
+\ee
+as required.
+\end{proof}
+
+
+\subsection{Uniform convergence theorem in metric space}
+
+\begin{theorem}
+Let $(X,d_X)$ and $(Y,d_Y)$ be two metric spaces. Suppose $f_n:X\to Y$ is continuous for each $n$ and that $f_n \stackrel{u}{\to} f$ ($\lim_{n\to \infty} f_n = f$ uniformly) for a function $f:X\to Y$ defined on $X$. Then $f$ is continuous on $X$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+For any $\ve>0$ and any $x_0\in X$, we have there exists $\delta >0$ such that $d_X(x,x_0)<\delta$ and
+\be
+d_Y(f_n(x),f_n(x_0)) < \frac{\ve}{3}
+\ee
+since $f_n$ is continuous at $x_0$. Also, there exists $N$ such that for all $x\in X$ and all $n\geq N$,
+\be
+d_Y(f_n(x),f(x)) < \frac{\ve}3
+\ee
+since $f_n$ uniformly converges to $f$ on $X$. In particular, we must have
+\be
+d_Y(f_n(x_0),f(x_0)) < \frac{\ve}3.
+\ee
+
+Therefore, for all $n\geq N$,
+\beast
+d_Y(f(x), f(x_0)) & \leq &  d_Y(f(x), f_n(x)) + d_Y(f_n(x), f_n(x_0)) + d_Y(f_n(x_0) , f(x_0)) \\
+& < & \frac{\ve}3 + \frac{\ve}3+ \frac{\ve}3 = \ve
+\eeast
+which implies that $f$ is continuous on $X$.
+\end{proof}
+
+
+
+
+\subsection{Uniformly continuous function in metric space}
+
+\begin{definition}[uniform continuity]\label{def:uniformly_continuous_function_metric}
+Let $(X,d_X)$ and $(Y,d_Y)$ be two metric spaces. Then a function $f:X\to Y$ is uniformly continuous if for any $\ve>0$ and any $x,y\in X$ there exists $\delta>0$ (depending only on $\ve$) such that $d_Y(f(x),f(y)) < \ve$ whenever $d_X(x,y) < \delta$.
+\end{definition}
+
+
+\begin{theorem}\label{thm:continuous_on_compact_set_implies_uniformly_continuous_metric}
+Let $(X,d_X)$ and $(Y,d_Y)$ be two metric spaces. If $f:X\to Y$ is continuous and $X$ is compact, then $f$ is uniformly continuous on $X$.
+\end{theorem}
+
+\begin{remark}
+This is the general version of Theorem \ref{thm:continuous_on_closed_interval_implies_uniformly_continuous}.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Given any $\ve>0$, we wish to find $\delta>0$ such that $d_X(x,y)<\delta$ implies that $d_Y(f(x),f(y))<\ve$. 
+
+Suppose there is no such $\delta$. In particular, each $\delta = 1/n$ will fail to work. Then there are sequences $(x_n)$ and $(y_n)$ such that the points $x_n,y_n\in X$ with $d_X(x_n,y_n)<\delta$ but $d_Y(f(x_n),f(y_n)) > \ve$ for every $n\geq 1$. 
+
+Since $X$ is compact (thus sequentially compact by Theorem \ref{thm:equivalent_form_of_compactness}), there is a subsequence $(x_{n_k})$ and a point $x\in X$ with $\lim_{k\to\infty} x_{n_k} = x$. Also,
+\be
+d_X(y_{n_k},x) \leq d_X(x_{n_k},y_{n_k}) + d_X(x_{n_k},x) < 1/n_k + d_X(x_{n_k},x) \to 0 \ \ra\  \lim_{k\to\infty} y_{n_k} = x.
+\ee
+
+Thus, by continuity of $f$ we have
+\be
+\lim_{k\to\infty} f(x_{n_k}) = \lim_{k\to\infty} f(y_{n_k}) = f(x)
+\ee
+which implies that 
+\be
+\ve \leq d_Y(f(x_{n_k}), f(y_{n_k})) \leq d_Y(f(x_{n_k}), f(x)) + d_Y(f(y_{n_k}), f(x)) \to 0.
+\ee
+
+This is a contradiction.
+\end{proof}
+
+
+
+\subsection{Lipschitz continuous functions}
+
+\begin{definition}[Lipschitz continuous\index{Lipschitz continuous!metric space}]\label{def:lipschitz_continuous}\footnote{need checking}
+Given two metric spaces $(X, d_X)$ and $(Y, d_Y)$, where $d_X$ denotes the metric on the set $X$ and $d_Y$ is the metric on set $Y$. A function $f: X \to Y$ is called Lipschitz continuous if there
+exists a real constant $K \geq 0$ such that, for all $x_1$ and $x_2$ in $X$,
+\be
+d_Y(f(x_1), f(x_2)) \le K d_X(x_1, x_2).
+\ee
+
+Any such $K$ is referred to as a Lipschitz constant\index{Lipschitz constant} for the function $f$. The smallest constant is sometimes called the (best) Lipschitz constant. The space of Lipschitz
+continuous functions with constant $K$ is $\lip_K(X,Y)$ and the space of Lipschitz continous functions on $X$ is $\lip(X,Y) = \bigcup\limits_{K>0}\lip_K(X,Y)$.
+\end{definition}
+
+\begin{remark}\footnote{need checking}
+Lipschitz continuity is a strong form of uniform continuity.
+\end{remark}
+
+\begin{lemma}\label{lem:zero_one_lipschitz}\footnote{need checking}
+Let $(X,d)$ be a metric space. For any closed set $A\subseteq X$ and any $\ve>0$, there is a Lipschitz continuous map $\rho_{A,\ve}:X\to [0,1]$ with
+\be
+\rho_{A,\ve}(x) = \left\{\ba{ll}
+1 \quad\quad & \text{if }x\in A,\\
+0 & \text{if }d(x,A) \geq \ve.
+\ea\right.
+\ee
+\end{lemma}
+
+\begin{proof}[\bf Proof]\footnote{need checking}
+Let $\varphi:\R \to [0,1]$, $t \mapsto (t\vee 0)\wedge 1$. For $x\in X$, define $\rho_{A,\ve} = 1 - \varphi(\ve^{-1}d(x,A))$.
+\end{proof}
+
+
+\section{Other Properties}
+
+\subsection{Equivalent metrics}
+
+\begin{definition}[topologically equivalent metrics\index{topologically equivalent metrics}]\label{def:topologically_equivalent_metric}
+Metrics $d_1,d_2$ on a set $X$ are called topologically equivalent if a subset $U$ of $X$ is $d_1$-open in $X$ iff it is $d_2$-open in $X$.%\footnote{see Metric and Topological Space}
+\end{definition}
+
+
+\begin{definition}[Lipschitz equivalent metrics\index{Lipschitz equivalent metrics}]\label{def:lipschitz_equivalent_metric}
+Two metrics $d_1,d_2$ on a set $X$ are called Lipschitz equivalent if there are positive constants $k,K$ such that for any $x,y \in X$,
+\be
+kd_2(x,y) \leq d_1(x,y) \leq Kd_2(x,y).
+\ee
+\end{definition}
+
+\begin{proposition}\footnote{need checking}
+Lipschitz equivalent metrics are topologically equivalent.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{need proof}
+\end{proof}
+
+\subsection{Isometry in metric space}
+
+\begin{definition}[isometry]\label{def:isometry_metric}
+Let $(X,d_X)$ and $(Y,d_Y)$ be metric spaces. Then a map $f:X\to Y$ is called an isometry (or distance preserving) if for any $a,b\in X$
+\be
+d_Y(f(a),f(b)) = d_X(a,b).
+\ee
+\end{definition}
+
+\begin{remark}
+An isometry is automatically injective. Otherwise two distinct points, $a$ and $b$, could be mapped to the same point thereby contradicting the coincidence axiom of the metric $d$.
+\end{remark}
+
+
+
+\section{Summary}
+
+closed vs complete in metric space
+
+close: whenever $x_n\in X$ and $x_n\to x$ as $n\to \infty$, it follows that $x\in X$.
+
+complete: $(x_n)$ is a Cauchy sequence in $X$, i.e., $d(x_n,x_m) \to 0$ for $n,m\to \infty$, then $(x_n)$ converges to $x\in X$.
+ 
+compact space $\subseteq$ complete space
+
+compact $\lra$ sequentially compact $\lra$ complete + totally bounded.

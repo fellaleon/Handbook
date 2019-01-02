@@ -1,0 +1,2258 @@
+\chapter{Euclidean Geometry}
+
+\section{Euclidean Spaces}
+
+\subsection{Vectors in $\R^n$ space}
+
+\subsection{Dot product in $\R^n$ space}
+
+
+
+\section{$\R^2$ space}
+
+%\section{Basic Law in $\R^2$}
+
+\subsection{Pythagorean theorem}
+
+\subsection{Law of sines}
+
+\begin{theorem}[law of sines\index{law of sines}]\label{thm:law_of_sines}
+Let $ABC$ be any triangle where $a$, $b$, and $c$ are the lengths of the sides of a triangle, and $A$, $B$, and $C$ are the opposite angles. Then
+\be
+ \frac{\sin A}{a} = \frac{\sin B}{b} = \frac{\sin C}{c}.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+The area $T$ of any triangle can be written as one half of its base times its height. Selecting one side of the triangle as the base, the height of the triangle relative to that base is computed as the length of another side times the sine of the angle between the chosen side and the base. 
+
+\begin{center}
+\psset{yunit=3cm,xunit=3cm}
+\begin{pspicture}(-0.3,-0.1)(2.3,1.6)
+\psset{algebraic,linewidth=1pt,linecolor=blue}
+\pstGeonode[PointSymbol=*,PointName=none,dotscale=1](0,0){C}(1.2,1.5){A}(2,0){B}%(1.6,0){D}%(1,0){C}(1,0.745){D}%(-2,0){C}(2,0){D}(2,1){AA}(-1,2){BB}(-2,1){CC}(1,0){DD}
+
+\psline(C)(A)
+\psline(B)(A)
+\psline(B)(C)
+%\pscustom[fillcolor=red!20](C)(A)(B)(C)
+
+\psset{PointSymbol=none,PointName=none,linecolor=red}
+\pstProjection{A}{B}{C}[I]
+\pstProjection{A}{C}{B}[J]
+\pstProjection{B}{C}{A}[K]
+
+\psline[linestyle=dashed](I)(C)
+\psline[linestyle=dashed](J)(B)
+\psline[linestyle=dashed](K)(A)
+
+\pstRightAngle[RightAngleSize=0.1,linecolor=red]{A}{I}{C}
+\pstRightAngle[RightAngleSize=0.1,linecolor=red]{A}{J}{B}
+\pstRightAngle[RightAngleSize=0.1,linecolor=red]{A}{K}{C}
+
+
+\rput[cb](-.1,-0.1){$C$}
+\rput[cb](1.2,1.6){$A$}
+\rput[cb](2,-0.1){$B$}
+
+\rput[cb](1,-0.1){$a$}
+\rput[cb](0.45,0.7){$b$}
+\rput[cb](1.8,0.7){$c$}
+\end{pspicture}
+\begin{pspicture}(-0.3,-0.1)(2.5,1.6)
+\psset{algebraic,linewidth=1pt,linecolor=blue}
+\pstGeonode[PointSymbol=*,PointName=none,dotscale=1](0,0.5){C}(2,1.5){A}(1.5,0.5){B}%(1.6,0){D}%(1,0){C}(1,0.745){D}%(-2,0){C}(2,0){D}(2,1){AA}(-1,2){BB}(-2,1){CC}(1,0){DD}
+
+\psline(C)(A)
+\psline(B)(A)
+\psline(B)(C)
+%\pscustom[fillcolor=red!20](C)(A)(B)(C)
+
+\psset{PointSymbol=none,PointName=none,linecolor=red}
+\pstProjection{A}{B}{C}[I]
+\pstProjection{A}{C}{B}[J]
+\pstProjection{B}{C}{A}[K]
+
+\psline[linestyle=dashed](I)(C)
+\psline[linestyle=dashed](J)(B)
+\psline[linestyle=dashed](K)(A)
+\psline[linestyle=dashed](I)(B)
+\psline[linestyle=dashed](K)(B)
+
+\pstRightAngle[RightAngleSize=0.1,linecolor=red]{A}{I}{C}
+\pstRightAngle[RightAngleSize=0.1,linecolor=red]{A}{J}{B}
+\pstRightAngle[RightAngleSize=0.1,linecolor=red]{A}{K}{C}
+
+
+\rput[cb](-.1,0.4){$C$}
+\rput[cb](2,1.6){$A$}
+\rput[cb](1.6,0.4){$B$}
+
+\rput[cb](1,0.4){$a$}
+\rput[cb](0.6,0.9){$b$}
+\rput[cb](1.8,0.9){$c$}
+\end{pspicture}
+\end{center}
+
+
+
+
+Thus, depending on the selection of the base the area of the triangle can be written as any of:
+\be
+T={\frac  {1}{2}}b\cdot (c\sin A)={\frac  {1}{2}}c\cdot (a\sin B)={\frac  {1}{2}}a\cdot (b\sin C).
+\ee
+Multiplying these by $2/abc$ gives
+\be
+\frac{2T}{abc} = \frac{\sin A}{a} = \frac{\sin B}{b} = \frac{\sin C}{c}.
+\ee
+\end{proof}
+
+
+%\subsection{Law of cosines}
+
+\subsection{Law of cosines}
+
+\begin{theorem}[law of cosines\index{law of cosines}]\label{thm:law_of_cosines}
+Consider a triangle with sides of length $a, b, c$, where $\theta$ is the measurement of the angle opposite the side of length $c$. Then
+\be
+c^2 = a^2 + b^2 - 2ab\cos \theta.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+This triangle can be placed on the Cartesian coordinate system by placing the following points
+\be
+A=(b\cos \theta , b\sin \theta ),\quad B=(a,0),\quad C=(0,0).
+\ee
+
+\begin{center}
+\psset{yunit=3cm,xunit=3cm}
+\begin{pspicture}(-0.5,-0.2)(2.5,1.5)
+  %\psgrid[griddots=10,gridlabels=0pt, subgriddiv=0, gridcolor=black!40]
+  \psaxes[labels=none,ticks=none]{->}(0,0)(-0.5,-0.2)(2.5,1.5)%axesstyle=frame,dx=2,dy=2
+  \psset{algebraic,linewidth=1pt,linecolor=blue}
+\pstGeonode[PointSymbol=*,PointName=none,dotscale=1](0,0){C}(1.6,1.2){A}(2,0){B}(1.6,0){D}
+%\pscustom[fillstyle=solid,fillcolor=blue!20,linestyle=none]{
+%\psline(C)(A)
+%\psline(A)(B)
+%\psline(B)(C)
+%}
+
+\psline(C)(A)
+\psline(B)(A)
+\psline(B)(C)
+%\pscustom[fillcolor=red!20](C)(A)(B)(C)
+
+\psline[linestyle=dashed](A)(D)
+\pstMarkAngle[MarkAngleRadius=0.5,LabelAngleOffset=-1,LabelSep=0.3]{B}{C}{A}{$\theta$}
+
+
+\rput[cb](-.1,-0.1){$C$}
+\rput[cb](1.6,1.3){$A$}
+\rput[cb](2,-0.1){$B$}
+\rput[cb](1,-0.1){$a$}
+\rput[cb](0.65,0.6){$b$}
+\rput[cb](1.9,0.6){$c$}
+
+\psset{PointSymbol=none,PointName=none,linecolor=red}
+\psline[linestyle=dashed](A)(D)
+\pstRightAngle[RightAngleSize=0.1,linecolor=red]{A}{D}{C}
+\end{pspicture}
+\end{center}
+
+
+By the distance formula (Pythagorean theorem), we have
+\be
+c=\sqrt {(a-b\cos \theta )^{2}+(0-b\sin \theta )^2}.
+\ee
+
+Now, we just work with that equation
+\beast
+c^{2} & =& (a-b\cos \theta )^{2}+(-b\sin \theta )^{2}=  a^{2}-2ab\cos \theta +b^{2}\cos ^{2}\theta +b^{2}\sin ^{2}\theta \\
+& = & a^{2}+b^{2}(\sin ^{2}\theta +\cos ^{2}\theta )-2ab\cos \theta = a^{2}+b^{2}-2ab\cos \theta.
+\eeast
+\end{proof}
+
+Then we can have the geometric definition of dot product.
+
+\begin{definition}[geometric definition of dot prodcut]
+Let $a$ and $b$ be two vectors in $\R^n$ with angle $\theta$ between $a$ and $b$. Then the dot product of $a$ and $b$ is
+\be
+a\cdot b = \dabs{a}\dabs{b} \cos \theta.
+\ee
+\end{definition}
+
+\begin{remark}
+Note that the angle $\theta$ exists since $\dabs{a}$, $\dabs{b}$, $\dabs{a-b}$ satisfy the triangle inequality. If $a$ and $b$ are scalar multiples of each other we can have that $\theta = 0$ or $\theta = \pi$.
+
+%with $\theta_1,\theta_2\in [0,2\pi]$. Without loss of generality, we can have that $\theta_2 \geq \theta_1$. Thus, $\theta_2 - \theta_1 \in [0,2\pi]$.
+
+If $a$ and $b$ are not scalar multiples of each other, then by the law of cosines (Theorem \ref{thm:law_of_cosines}) we have
+\be
+\dabs{a-b}^2 = \dabs{a}^2 + \dabs{b}^2 - 2\dabs{a}\dabs{b}\cos\theta.
+\ee
+
+Also, we have $\dabs{a-b}^2 = (a-b)\cdot (a-b) = a\cdot a + b\cdot b - 2 a\cdot b$ and thus
+\beast
+\dabs{a}\dabs{b}\cos \theta & = & \frac 12 \bb{\dabs{a}^2 + \dabs{b}^2 - \dabs{a-b}^2} = \frac 12 \bb{\dabs{a}^2 + \dabs{b}^2 - a\cdot a - b\cdot b + 2 a\cdot b} \\
+& = & \frac 12 \bb{\dabs{a}^2 + \dabs{b}^2 - \dabs{a}^2 - \dabs{b}^2 + 2 a\cdot b}  = a\cdot b.
+\eeast
+
+Otherwise, if $a$ and $b$ are scalar multiples of each other, we can assume that $a = kb$ where $k\in \R$.
+
+If $k>0$, then $\theta=0$ and thus $\cos \theta =1$. If $k<0$, $\theta=\pi$ thus $\cos\theta = -1$. Note that $k$ cannot be 0 because that we may assume that $a$ and $b$ are non-zero vector. Then
+\beast
+a\cdot b & = & a \cdot (ka) = k(a\cdot a) = k\dabs{a}^2 = \dabs{a}\bb{k\sqrt{\sum^n_{i=1}a_i^2}} = \dabs{a}\bb{\sgn(k)\sqrt{k^2\sum^n_{i=1}a_i^2}} \\
+& = & \dabs{a}\bb{\sgn(k)\sqrt{\sum^n_{i=1}(ka_i)^2}} = \sgn(k)\dabs{a}\sqrt{\sum^n_{i=1}(b_i)^2} = \sgn(k)\dabs{a}\dabs{b} = \dabs{a}\dabs{b}\cos\theta.
+\eeast
+\end{remark}
+
+\subsection{Angle between vectors}
+
+\begin{lemma}
+Let $v_1,v_2$ be two vectors with spherical coordinate $(r_1,\theta_1,\phi_1)$ and $(r_2,\theta_2,\phi_2)$. Then $\phi$, the angle between $v_1$ and $v_2$ satisfies
+\be
+\cos\bb{\theta_2-\theta_1} \sin\phi_1\sin\phi_2 + \cos\phi_1\cos\phi_2.
+\ee
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Then the projections to $x-y$ plane are $r_1\sin\phi_1$ and $r_2\sin\phi_2$ with angle $\theta_2-\theta_1$. Thus, the distance of two projects is
+\be
+p = \sqrt{r_1^2\sin^2\phi_1 + r_2^2\sin^2\phi_2 - 2\cos\theta r_1r_2\sin\phi_1\sin\phi_2}.
+\ee
+by law of cosines (Theorem \ref{thm:law_of_cosines}). The height difference of two vectors is $h = \abs{r_1\cos\phi_1 - r_2\cos\phi_2}$. Then the distance between these two vectors are
+\beast
+c & = & \sqrt{p^2 + h^2} \\
+& = & \sqrt{r_1^2\sin^2\phi_1 + r_2^2\sin^2\phi_2 - 2\cos\bb{\theta_2-\theta_1} r_1r_2\sin\phi_1\sin\phi_2 + \bb{r_1\cos\phi_1 - r_2\cos\phi_2}^2} \\
+& = & \sqrt{r_1^2\sin^2\phi_1 + r_2^2\sin^2\phi_2 - 2\cos\cos\bb{\theta_2-\theta_1} r_1r_2\sin\phi_1\sin\phi_2 + r_1^2\cos^2\phi_1 + r_2^2\cos^2\phi_2 - 2r_1r_2\cos\phi_1\cos\phi_2} \\
+& = & \sqrt{r_1^2 + r_2^2 - 2\cos\bb{\theta_2-\theta_1} r_1r_2\sin\phi_1\sin\phi_2 - 2r_1r_2\cos\phi_1\cos\phi_2}.
+\eeast
+
+Then the angle between the vectors $\phi$ has relation
+\be
+\cos\phi = \frac{r_1^2 + r_2^2 - c^2}{2r_1r_2} = \cos\bb{\theta_2-\theta_1} \sin\phi_1\sin\phi_2 + \cos\phi_1\cos\phi_2.
+\ee
+\end{proof}
+
+\subsection{Heron's formula}
+
+\section{Lengths of Segments}
+
+\begin{example}
+For the triangle $\triangle ABC$, $AC = BC$, $D$ is the middle point of $AC$. Furthermore, for the point $E$ on $BC$, $BD = BE$ and $\angle CDE=\angle ADB$. If $DE=2$ then $BE=?$
+
+\begin{center}
+\begin{pspicture}(-4.5,-.5)(4.5,5)%[showgrid](-3,-1.5)(3,4)
+%$\cos\theta = BI/BD = x^2/8/x = x/8 = 5.068/8 = 0.6335$, $\theta = 50.6912$
+%$CD = x^2/2(x-2) = 4.1859$
+\pstGeonode[PosAngle={-90,-90,-90,60}](0,0){D}(4.1859,0){A}(-4.1859,0){C}(5.068;50.6912){B}
+\pstGeonode[PointSymbol=none,PointName=none](0,1){DD}
+\pstOrtSym[PosAngle=120]{D}{DD}{B}[H]
+\psline(A)(C)(B)(A)
+\psline[linestyle=dashed](B)(H)(C)
+\pstLineAB{B}{D}
+\pstLineAB[linestyle=dashed]{H}{D}
+\pstInterLL[PosAngle=90]{B}{C}{D}{H}{E}
+\pstInterLL[PosAngle=90]{D}{DD}{B}{H}{I}
+\pstLineAB[linestyle=dashed]{I}{D}
+\pstInterLL[PosAngle=-30]{D}{DD}{B}{C}{G}
+\pstLineAB{E}{D}
+\pstProjection[PosAngle=-90]{A}{C}{E}[F]
+\pstLineAB[linestyle=dashed]{E}{F}
+\pstRightAngle[RightAngleSize=0.2]{B}{I}{D}
+\pstRightAngle[RightAngleSize=0.2]{A}{D}{I}
+\end{pspicture}
+\end{center}
+
+%\begin{center}%\psset{yunit=4cm,xunit=4}
+%\begin{pspicture}(-4,-4.5)(4,1)%\parbox{4.5cm}{
+%% BD = x = 5.068, y_B = sqrt(x(1+x)/2) = 3.921, x_B = sqrt(x(x-1)/2) = 3.211
+%% DE = 1, EC = DExBE/EH = 2x/(x-2) = 3.304, BC = x^2 /(x-2) = 8.372, DC = 4.186
+%% EJ = sqrt(2(1+x)/x) = 1.547, DJ = sqrt(2(x-1)/x) = 1.267
+%\psline[linewidth=0.5pt](-4.186,0)(4.186,0)             %AC
+%\psline[linewidth=0.5pt](-4.186,0)(-3.211,-3.921)       %AB
+%\psline[linewidth=0.5pt](4.186,0)(-3.211,-3.921)        %BC
+%\psline[linewidth=0.5pt](0,0)(-3.211,-3.921)            %BD
+%\psline[linewidth=0.5pt](1.267,-1.547)(0,0)             %DE
+%\psline[linewidth=0.5pt,linestyle=dashed](1.267,-1.547)(3.211,-3.921) %EH
+%\psline[linewidth=0.5pt,linestyle=dashed](4.186,0)(3.211,-3.921)
+%\psline[linewidth=0.5pt,linestyle=dashed](-3.211,-3.921)(3.211,-3.921)
+%\psline[linewidth=0.5pt,linestyle=dashed](0,0)(0,-3.921)
+%\psline[linewidth=0.5pt,linestyle=dashed](1.267,-1.547)(1.267,0)
+%%\psline[linewidth=0.5pt,linestyle=dashed](2,0)(1.6,0.8)
+%%%\psaxes[labels=none]{->}(0,0)(-3.5,-3)(3.5,3)%[xLabels={},yLabels{}]
+%%%
+%\rput[lb](-4.5,0){\textcolor{black}{$A$}}
+%\rput[lb](-3.6,-4){\textcolor{black}{$B$}}
+%\rput[lb](4.2,0){\textcolor{black}{$C$}}
+%\rput[lb](-0.1,0.1){\textcolor{black}{$D$}}
+%\rput[lb](1.1,-2){\textcolor{black}{$E$}}
+%\rput[lb](1.1,0.1){\textcolor{black}{$F$}}
+%\rput[lb](-.3,-2.2){\textcolor{black}{$G$}}
+%\rput[lb](3.3,-4){\textcolor{black}{$H$}}
+%\rput[lb](-0.1,-4.3){\textcolor{black}{$I$}}
+
+%%\rput[lb](0.6,0.05){\textcolor{black}{$\theta$}}
+%\savedata{\mydata}[{{1.267,-1.547},{1.267,0},{0,-2.219},{0,-3.921}}]
+%\dataplot[plotstyle=dots,showpoints,dotscale=1]{\mydata}
+%\end{pspicture}
+%\end{center}
+
+Let $BD = BE= DH = x$. Then we extend $DE$ to $H$ such that $BD = DH$. Thus, Let $I$ be the middle point of $BH$ such $DI\perp AC$ and $DI \perp BH$. Then $\triangle DCE \sim \triangle HBE$
+\be
+\frac{DE}{EH} = \frac{CE}{BE} \ \ra\ CE = \frac{DE \cdot BE}{EH} = \frac{2x}{x-2} \ \ra\ BC = BE + CE = x + \frac{2x}{x-2} = \frac{x^2}{x-2}.
+\ee
+
+Also, $DC = BC/2 = \frac{x^2}{2(x-2)}$. Since $DI$ bisects $\angle BDH$,
+\be
+\frac{BD}{DE} = \frac{BG}{GE} \ \ra\ \frac{x}{BG} = \frac{2}{x-BG} \ \ra\ BG = \frac{x^2}{x+2} \ \ra\ CG = BC - BG = \frac{x^2}{x-2} - \frac{x^2}{x+2} = \frac{4x^2}{x^2-4}.
+\ee
+
+Since $\triangle BGI \sim \triangle CGD$,
+\be
+\frac{BI}{BG} = \frac{CD}{CG} \ \ra\ BI = \frac{CD}{CG}BG = \frac{\frac{x^2}{2(x-2)}}{\frac{4x^2}{x^2-4}} \frac{x^2}{x+2} = \frac {x^2}8 \ \ra\ BH = \frac {x^2}4
+\ee
+
+Furthermore,
+\be
+GI = \sqrt{BG^2 - BI^2} = \sqrt{\frac{x^4}{(x+2)^2} - \frac{x^4}{64}} = \frac{x^2}{8(x+2)}\sqrt{64 - (x+2)^2}.
+\ee
+
+Since $\triangle CEF \sim \triangle BGI$% and $\triangle CEF \triangle $,
+\be
+\frac{EF}{GI} = \frac{CE}{BG} \ \ra\ EF = \frac{CE}{BG} GI = \frac{\frac{2x}{x-2}}{\frac{x^2}{x+2}} \frac{x^2}{8(x+2)}\sqrt{64 - (x+2)^2} = \frac{x}{4(x-2)}\sqrt{64 - (x+2)^2}.
+\ee
+\be
+\frac{CF}{BI} = \frac{CE}{BG} \ \ra\ CF = \frac{CE}{BG} BI = \frac{\frac{2x}{x-2}}{\frac{x^2}{x+2}} \frac {x^2}8  = \frac{x(x+2)}{4(x-2)}.
+\ee
+
+Therefore,
+\be
+DF = CD - CF = \frac{x^2}{2(x-2)} - \frac{x(x+2)}{4(x-2)} = \frac{2x^2 - x^2 - 2x}{4(x-2)} = \frac x4.
+\ee
+
+Then by Pythagorean theorem\footnote{theorem needed.},
+\be
+DE^2 = EF^2 + DF^2 \ \ra\ 4 = \frac{x^2}{16(x-2)^2}\bb{64 - (x+2)^2} + \frac{x^2}{16} \ \ra\ x^3 - 32x + 32 = 0.
+\ee
+
+%\begin{center}%\begin{pspicture}%(-4,-4.5)(4,2)
+%\psset{llx = -0.5cm, lly =-0.5cm,ury = 0.5cm}
+%\begin{psgraph}(0,-5)(5,5){6cm}{!}
+%\psplot[linecolor=red,linewidth=1pt]{-8}{5}{x x mul x mul 100 div}
+%\end{psgraph}%end{pspicture}
+%\end{center}
+
+\begin{center}%\pstScalePoints(1,0.001){}{}ylogBase=10%ylabelFactor=\cdot 100%,ylabelFactor=\cdot 100
+\begin{pspicture}(-7,-2.5)(7,2.5)
+\psaxes[Dx=1,Dy=100,dy=2]{->}(0,0)(-7,-2.5)(7,2.5)%[xlogBase=10]
+\psplot[linecolor=red]{-7}{6.5}{x x mul x mul 32 x mul sub 32 add 50 div}
+\end{pspicture}
+\end{center}
+
+Then the suitable solution of the equation is $x \approx 5.068$.
+\end{example}
+
+
+
+\section{Geometric Interpretation of Definitions in $\R^n$}
+
+%\subsection{Geometric definition of dot product}
+
+
+
+
+\section{Geometric Shadows}
+
+\begin{example}
+Let the rectangle be $4\times 2$ and it has two incircles with radius 1. Then the area of the shadow is given by the following argument.
+
+%\begin{center}%\psset{yunit=4cm,xunit=4}
+%\begin{pspicture}(-4,-2)(4,2)%\parbox{4.5cm}{
+%\psclip{
+%    \pscustom[linestyle= none]{
+%        \psplot{0}{4}{0.5 x mul} % 2/x
+%        \lineto(4,0)}
+%    \pscustom[linestyle= none]{
+%        \psplot{0}{4}{4 x sub x mul sqrt}
+%        \lineto(4,4)}}
+%\psframe*[linecolor=gray](-4,-3)(4,3)
+%\endpsclip
+%
+
+%\psplot[linewidth=0.5pt]{-4}{4}{0.5 x mul}
+%\psplot[linewidth=0.5pt]{-4}{0}{-4 x sub x mul sqrt}
+%\psplot[linewidth=0.5pt]{-4}{0}{-4 x sub x mul sqrt -1 mul}
+%\%psplot[linewidth=0.5pt]{-4}{2.828}{2.828 16 x x mul sub sqrt sub}
+%%\psplot[linewidth=0.5pt]{-2.828}{0}{x 2.828 add}
+%%\psplot[linewidth=0.5pt]{2.828}{0}{2.828 x sub}
+%%\psplot[linewidth=0.5pt]{-2.828}{0}{-2.828 x sub}
+%\psplot[linewidth=0.5pt]{0}{4}{4 x sub x mul sqrt}
+%\psplot[linewidth=0.5pt]{0}{4}{4 x sub x mul sqrt -1 mul}
+%%\psplot[linewidth=0.5pt]{0}{1.77}{x 0.6 mul}
+%\psline[linewidth=0.5pt](-4,2)(4,2)
+%\psline[linewidth=0.5pt](-4,-2)(4,-2)
+%\psline[linewidth=0.5pt](4,-2)(4,2)
+%\psline[linewidth=0.5pt](-4,-2)(-4,2)
+%\psline[linewidth=0.5pt](-4,0)(4,0)
+%\psline[linewidth=0.5pt,linestyle=dashed](2,0)(3.2,1.6)
+%\psline[linewidth=0.5pt,linestyle=dashed](2,0)(1.6,0.8)
+%%\psaxes[labels=none]{->}(0,0)(-3.5,-3)(3.5,3)%[xLabels={},yLabels{}]
+%%
+%\rput[lb](0.1,-0.3){\textcolor{black}{$A$}}
+%\rput[lb](3.1,1.7){\textcolor{black}{$B$}}
+%\rput[lb](4.1,-0.1){\textcolor{black}{$C$}}
+%\rput[lb](4.1,1.9){\textcolor{black}{$D$}}
+%\rput[lb](2,-.3){\textcolor{black}{$O$}}
+%\rput[lb](1.5,1){\textcolor{black}{$G$}}
+%\rput[lb](0.6,0.05){\textcolor{black}{$\theta$}}
+
+%\savedata{\mydata}[{{0, 0}, {2, 0},{1.6, 0.8},{3.2,1.6}}]
+%\dataplot[plotstyle=dots,showpoints,dotscale=1]{\mydata}
+%%\dataplot[plotstyle=curve,showpoints,dotscale=1]{\mydata}
+%\end{pspicture}
+%\end{center}
+
+\begin{center}
+\begin{pspicture}(-3,-2.5)(3,2.5)
+\psset{PointSymbol=none,PointName=none}
+\pstGeonode(-4,2){A1}(-4,-2){B1}(4,-2){C1}(-2,0){O1}(-4,0){E}
+\psset{PointSymbol=default,PointName=default,linewidth=0.5pt}
+\pstGeonode[PosAngle={-90,0,0}](2,0){O}(4,0){C}(4,2){D}
+\pstCircleOA{O}{C}
+\pspolygon(A1)(B1)(C1)(D)
+\pstLineAB{B1}{D}
+\pstInterLC[PosAngleA=-45,PosAngleB=85,PointNameSep=0.25]{B1}{D}{O}{C}{A}{B}
+\pstCircleOA{O1}{A}
+\pstLineAB{E}{C}
+\pstLineAB[linestyle=dashed]{O}{B}
+\pstOrtSym[PointSymbol=none,PointName=none]{A}{B}{O}[F]
+\pstInterLL[PosAngle=125]{A}{B}{O}{F}{G}
+\pstLineAB[linestyle=dashed]{O}{G}
+
+\pstRightAngle[RightAngleSize=0.15]{B}{G}{O}
+\pscustom[linestyle=solid,fillstyle=solid,fillcolor=blue!40,opacity=0.5]{
+\psarcAB(O)(C)(B)
+\psline(A)(D)(C)}
+\pstMarkAngle[MarkAngleRadius=0.4,LabelSep=0.8]{C}{A}{D}{$\theta$}
+\end{pspicture}
+\end{center}
+
+{\bf Approach 1.} The area $\wt{ABC}$ with arc $BC$ is 
+\beast
+\int^{\arctan \frac 12}_0 \int^{2\cos\theta}_0 rdr d\theta & = & 2\int^{\arctan \frac 12}_0 \cos^2\theta d\theta = \int^{\arctan \frac 12}_0 \bb{1 + \cos 2\theta} d\theta = \arctan \frac 12 + \left.\frac 12 \sin 2\theta \right|^{\arctan \frac 12}_0
+\eeast
+
+Then by universal formula of trigonometric function\footnote{theorem needed.} we have for $\theta = \arctan \frac 12$,
+\be
+\sin2\theta = \frac{2\tan\theta}{1+\tan^2\theta} = \frac{2\cdot \frac 12}{ 1+\frac 14} = \frac 45.
+\ee
+
+Therefore, the area of shadow is
+\be
+\frac 12 \cdot 1 \cdot 2 - S_{\wt{ABC}} = 1 - \bb{\arctan \frac 12 + \frac 25} = \frac 35 - \arctan \frac 12
+\ee
+
+{\bf Approach 2.} Let $G$ be the middle point of $AB$ then $\triangle AOB = 2\triangle AOG$. Since $\triangle AOG \sim \triangle ADC$,
+\be
+\frac{AD}{AO} = \frac{\sqrt{1+2^2}}{1} = \sqrt{5} \ \ra\ \frac{S_{\triangle AOG}}{S_{\triangle ADC}} = \bb{\frac{1}{\sqrt{5}}}^2 = \frac 15 \ \ra\  S_{\triangle AOB} = 2S_{\triangle AOG} = \frac 25 S_{\triangle ACD} = \frac 25.
+\ee
+
+Then the area of circular section $\wt{BOC}$ is 
+\be
+S_{\wt{BOC}} = \frac 12\cdot 2\theta \cdot r^2 = \frac 12 \cdot 2\theta \cdot 1^2 = \theta = \arctan \frac 12.
+\ee
+
+Then
+\be
+S_{\wt{BCD}} = S_{\triangle ACD} - S_{\triangle AOB} - S_{\wt{BOC}} = 1 - \frac 25 - \arctan \frac 12 = \frac 35 - \arctan \frac 12.
+\ee
+\end{example}
+
+
+\begin{example}
+Let $O$ be the incircle with radius 1 in the square. Then the area of the shadow is given by the following argument. 
+
+{\bf Approach 1.} Let $x = r\cos \theta$ and $y =r\sin\theta$ with $r = OA$. Then
+\be
+x^2 + \bb{y+\sqrt{2}}^2 = 4 \ \ra\ x^2 + y^2 + 2\sqrt{2} y = 2 \ \ra\ r^2 + 2\sqrt{2} r\sin\theta = 2.
+\ee
+
+Thus,
+\be
+r = \frac 12\bb{-2\sqrt{2}\sin\theta + \sqrt{8 \sin^2\theta+ 8}} = \sqrt{2\sin^2\theta + 2} - \sqrt{2}\sin\theta = \sqrt{2}\bb{\sqrt{\sin^2\theta + 1} - \sin\theta}.
+\ee
+
+%\begin{center}%\psset{yunit=4cm,xunit=4}
+%\begin{pspicture}(-4,-3)(4,3)%\parbox{4.5cm}{
+%\psclip{
+%   \pscustom[linestyle= none]{
+%        \psplot{-1.871}{1.871}{4 x x mul sub sqrt} % 2/x
+%        \lineto(0,0)}
+%    \pscustom[linestyle= none]{
+%        \psplot{-2}{2}{16 x x mul sub sqrt 2.828 sub}% 3 - x^2/3
+%        \lineto(0,4)}}
+%\psframe*[linecolor=gray](-3,-3)(3,3)
+%\endpsclip
+
+%\psclip{
+%\pscustom[linestyle= none]{
+%        \psplot{-1.871}{1.871}{0 4 x x mul sub sqrt sub} % 2/x
+%        \lineto(0,0)}
+%    \pscustom[linestyle= none]{
+%        \psplot{-2}{2}{2.828 16 x x mul sub sqrt sub}% 3 - x^2/3
+%        \lineto(0,-4)}}
+%\psframe*[linecolor=gray](-3,-3)(3,3)
+%\endpsclip
+
+        
+%\psplot[linewidth=0.5pt]{-2}{2}{4 x x mul sub sqrt}
+%\psplot[linewidth=0.5pt]{-2}{2}{0 4 x x mul sub sqrt sub}
+%\psplot[linewidth=0.5pt]{-2.828}{2.828}{16 x x mul sub sqrt 2.828 sub}
+%\psplot[linewidth=0.5pt]{-2.828}{2.828}{2.828 16 x x mul sub sqrt sub}
+%\psplot[linewidth=0.5pt]{-2.828}{0}{x 2.828 add}
+%\psplot[linewidth=0.5pt]{2.828}{0}{2.828 x sub}
+%\psplot[linewidth=0.5pt]{-2.828}{0}{-2.828 x sub}
+%\psplot[linewidth=0.5pt]{2.828}{0}{-2.828 x add}
+%\psplot[linewidth=0.5pt]{0}{1.77}{x 0.6 mul}
+%\psline[linewidth=0.5pt,linestyle=dashed](1.48,0)(1.48,0.89)
+
+%\psaxes[labels=none]{->}(0,0)(-3.5,-3)(3.5,3)%[xLabels={},yLabels{}]
+
+%\rput[lb](0.6,0.1){\textcolor{black}{$\theta$}}
+%\rput[lb](-0.3,-0.3){\textcolor{black}{$O$}}
+%\rput[lb](1.5,0.5){\textcolor{black}{$A$}}
+%\rput[lb](1.8,1.1){\textcolor{black}{$B$}}
+%\rput[lb](1.5,-0.3){\textcolor{black}{$C$}}
+
+%\savedata{\mydata}[{{0, 0}, {1.48, 0.89},{1.48, 0},{1.715,1.029}}]
+%\dataplot[plotstyle=dots,showpoints,dotscale=1]{\mydata}
+%\end{pspicture}
+%\end{center}
+
+If $r=1$, we have
+\beast
+\frac {\sqrt{2}}2 + \sin\theta = \sqrt{\sin^2\theta + 1}\ \ra\ 
+\frac 12 + \sqrt{2}\sin\theta = 1 \ \ra\ \sin\theta = \frac{\sqrt{2}}{4}. 
+\eeast
+
+Thus the shadow area is
+\beast
+4\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}} \int^1_{\sqrt{2}\bb{\sqrt{\sin^2\theta + 1} - \sin\theta}} rdr d\theta & = & 2\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}}  1 - 2\bb{2\sin^2\theta+1 -2\sin\theta\sqrt{\sin^2\theta + 1}}  d\theta \\
+& = & -2\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}}  d\theta - 2\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}}  (1-\cos2\theta)d2\theta + 8\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}}  \sin\theta\sqrt{\sin^2\theta + 1}  d\theta \\
+& = & -6\bb{\frac {\pi}2 - \arcsin \frac{\sqrt{2}}{4}}  - 4\frac{\sqrt{2}}{4}\frac{\sqrt{14}}{4} - 8\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}}\sqrt{2-\cos^2\theta}  d\cos\theta \\
+& = & -6\bb{\frac {\pi}2 - \arcsin \frac{\sqrt{2}}{4}}  - 4\frac{\sqrt{2}}{4}\frac{\sqrt{14}}{4} + 8\int^{\frac{\sqrt{14}}4}_0 \sqrt{2-x^2}  dx .
+\eeast
+
+Then the integral\footnote{detail or proposition is needed.} is given by 
+\beast
+& & -3\pi  + 6\arcsin \frac{\sqrt{2}}{4}  - \frac{\sqrt{7}}{2}+ 8\bb{\frac{\pi}2 - \arcsin \frac{3}{4}  +\frac{3\sqrt{7}}{16}} \\
+& = & \pi + \sqrt{7} + 6\arcsin\frac{\sqrt{2}}{4} - 8\arcsin\frac 34 = \frac {5\pi}2 + \sqrt{7} - 11\arcsin\frac 34 \approx 1.1711
+\eeast
+
+since $2\arcsin \frac{\sqrt{2}}4 = \frac {\pi}2 - \arcsin\frac 34$.
+
+\begin{figure}[t]
+\begin{center}
+\begin{pspicture}(-4,-3)(4,3)
+\pstGeonode[PosAngle=-135](0,0){O}
+\psset{PointSymbol=none,PointName=none,linewidth=0.5pt}
+\psaxes[labels=none]{->}(0,0)(-3.5,-3.5)(3.5,3.5)
+\pstGeonode(1.871,0.707){A1}(-1.871,0.707){B1}(0,-2.828){AB1}(1.871,-0.707){A2}(-1.871,-0.707){B2}(0,2.828){AB2}(-2.828,0){CC}(2.828,0){DD}(0,2){N}(1.414,1.414){NE}
+
+\pstCircleOA{O}{A1}
+\pstArcOAB{AB1}{DD}{CC}
+\pstArcOAB{AB2}{CC}{DD}
+\pspolygon(CC)(AB1)(DD)(AB2)
+
+%
+\pscustom[linestyle=solid,fillstyle=solid,fillcolor=blue!60,opacity=0.5]{
+\psarcAB(AB1)(A1)(B1)
+\psarcnAB(O)(B1)(A1)}
+
+\pscustom[linestyle=solid,fillstyle=solid,fillcolor=blue!60,opacity=0.5]{
+\psarcnAB(AB2)(A2)(B2)
+\psarcAB(O)(B2)(A2)}
+
+\psset{PointSymbol=*,PointName=default}
+
+\pstGeonode[PointSymbol=none,PointName=none](3;30){BB}
+\pstInterLL{O}{BB}{AB2}{DD}{B}
+\pstInterLC[PointSymbol=none,PointNameA=,PosAngleB=-60]{O}{B}{AB1}{CC}{F}{A}
+%PointName=none,PointSymbolA=none,,PointSymbolA=none
+\pstLineAB[linestyle=dashed]{O}{B}
+\pstOrtSym[PointSymbol=none,PointName=none]{O}{DD}{A}[C1]
+\pstInterLL[PosAngle=-90]{A}{C1}{O}{DD}{C}
+\pstLineAB[linestyle=dashed]{A}{C}
+\pstInterLL[linestyle=none,PointSymbol=*,PointName=none]{A}{C}{O}{A}{AA}
+
+\pstRightAngle[RightAngleSize=0.15]{A}{C}{O}
+
+\pstMarkAngle[MarkAngleRadius=0.3,LabelSep=0.6]{C}{O}{A}{$\theta$}
+
+\pstGeonode[PosAngle = {-135,-45,-45,120}](2;159.3){D}(0,1.172){E}(0,-2.828){F}(0,2){G}
+\pstLineAB[linestyle=dashed]{O}{D}
+%\pstLineAB[linestyle=dashed]{E}{D}
+\pstLineAB[linestyle=dashed]{F}{D}
+
+\pspolygon[fillstyle=solid,fillcolor=magenta!60,linestyle=dashed,opacity=0.5](O)(D)(F)
+%\pscustom[linestyle=solid,fillstyle=solid,fillcolor=green,opacity=0.3]{
+%\psarcAB(O)(NE)(N)
+%\psline(O)(AB2)(DD)}
+
+%\pscustom[linestyle=solid,fillstyle=solid,fillcolor=green,opacity=0.6]{
+%\psarcAB(F)(E)(D)%\psline(O)(D)
+%}
+%\pspolygon[linestyle=none,fillstyle=solid,fillcolor=green,opacity=0.5](O)(D)(E)
+
+\pscustom[linestyle=solid,fillstyle=solid,fillcolor=green!60,opacity=0.6]{
+\psarcAB(F)(E)(D)
+\psline(D)(O)(E)}
+
+
+\pstMarkAngle[MarkAngleRadius=0.3,LabelSep=0.6]{G}{O}{D}{$\beta$}
+\pstMarkAngle[MarkAngleRadius=0.3,LabelSep=0.6]{O}{F}{D}{$\alpha$}
+\end{pspicture}
+\end{center}
+\end{figure}
+
+{\bf Approach 2.}  The area of $\wt{DEG}$ is actually
+\be
+S_{\wt{DEG}} = S_{\wt{ODG}} - S_{\wt{ODE}} = S_{\wt{ODG}} - \bb{S_{\wt{FDE}} - S_{\triangle ODF}} = S_{\wt{ODG}} + S_{\triangle ODF} - S_{\wt{FDE}}.
+\ee
+
+For triangle $\triangle ODF$, $OD=1$, $OF =\sqrt{2}$ and $DF = 2$. Then by Heron's formula\footnote{theorem needed.}, we have that $s = \frac{OD+OF+DF}{2} = \frac{3+\sqrt{2}}{2}$ and the area of $\triangle ODF$ is
+\be
+S_{\triangle ODF } = \sqrt{s\bb{s-OD}\bb{s-OF}\bb{s-DF}} = \sqrt{\frac{3+\sqrt{2}}{2}\cdot\frac{1+\sqrt{2}}{2}\cdot \frac{3-\sqrt{2}}{2} \cdot \frac{-1+\sqrt{2}}{2}} = \frac{\sqrt{7}}{4}.
+\ee
+
+Also,
+\be
+S_{\triangle ODF} = \frac 12 OF\cdot DF\sin \alpha \ \ra\ \angle \alpha = \arcsin \bb{\frac{2S_{\triangle ODF}}{OF\cdot DF}} = \arcsin\frac{\frac{\sqrt{7}}2}{2\sqrt{2}} = \arcsin\frac{\sqrt{14}}{8}.
+\ee
+
+Thus,
+\be
+S_{\wt{FDE}} = \frac 12 DF^2 \angle \alpha = 2\arcsin\frac{\sqrt{14}}8.
+\ee
+
+Similarly,
+\be
+S_{\triangle ODF} = \frac 12 OF\cdot OD\sin \beta \ \ra\ \angle \beta = \arcsin \bb{\frac{2S_{\triangle ODF}}{OF\cdot OD}} = \arcsin\frac{\frac{\sqrt{7}}2}{\sqrt{2}} = \arcsin\frac{\sqrt{14}}4 = \frac{\pi}2 - \arcsin\frac{\sqrt{2}}4.
+\ee
+
+Thus,
+\be
+S_{\wt{ODG}} = \frac 12 OD^2 \angle \beta = \frac{\pi}4 - \frac 12 \arcsin\frac{\sqrt{2}}4.
+\ee
+
+Therefore,
+\beast
+S_{\wt{DEG}} & = & S_{\wt{ODG}} + S_{\triangle ODF} - S_{\wt{FDE}} \\
+& = & \frac{\pi}4 - \frac 12 \arcsin\frac{\sqrt{2}}4 + \frac{\sqrt{7}}{4}  - 2\arcsin\frac{\sqrt{14}}8 = \frac{\pi}4 + \frac 32 \arcsin\frac{\sqrt{2}}4 + \frac{\sqrt{7}}{4}  - 2\bb{\arcsin \frac{\sqrt{14}}8 +\arcsin\frac{\sqrt{2}}4}\\
+& = & \frac{\pi}4 + \frac 32 \arcsin\frac{\sqrt{2}}4 + \frac{\sqrt{7}}{4}  - 2\arcsin \bb{\frac{\sqrt{14}}8\frac{\sqrt{14}}4 +\frac{5\sqrt{2}}8\frac{\sqrt{2}}4} = \frac{\pi}4 + \frac 32 \arcsin\frac{\sqrt{2}}4 + \frac{\sqrt{7}}{4}  - 2\arcsin\frac 34.
+\eeast
+
+Then timing this result by 4 we have
+\be
+\pi + 6\arcsin\frac{\sqrt{2}}4 + \sqrt{7}  - 8\arcsin\frac 34
+\ee
+which is consistent with the result in Approach 1.
+\end{example}
+
+
+\section{Concyclic Points}
+
+
+\section{Similar Triangles}
+
+
+
+\begin{example}
+Assume $ABCD$ is a trapezoid with $AE = AD$ and $\angle AFB = \angle DFC$ where $E$ and $F$ are points on $BC$ and $AD$. Suppose $AE$ intersect $BF$ at $M$ and $DE$ intersects $CF$ at $N$. Then $FMEN$ is a parallelogram.
+
+\begin{center}
+\psset{yunit=2.5cm,xunit=2.5cm}
+\begin{pspicture}(-.3,-0.2)(2.3,1.7)
+\psset{algebraic,linewidth=0.5pt}%,linecolor=blue
+\pstGeonode[PointSymbol=*,PosAngle={-135,135,80,-50},dotscale=1](0,0){D}(0.3,1.5){A}(1.2,1.5){B}(2,0){C}%(-1.5,0.866){E}(1.5,0.866){F}%(3.464;60){G}
+
+\psline(A)(B)
+\psline(B)(C)
+\psline(D)(C)
+\psline(A)(D)
+\pstOrtSym[PointSymbol=none,PointName=none]{D}{A}{C}[C']
+
+\pstTranslation[PointSymbol=none,PointName=none]{D}{A}{C}[C'']
+\pstMediatorAB[PointSymbol=none,PointName=none,linestyle=none]{A}{D}{I}{I'}
+
+\pstInterLL[PosAngle=160]{C'}{B}{A}{D}{F}
+\pstInterLL[PosAngle=10]{I}{I'}{B}{C}{E}
+
+\psline(A)(E)
+\psline(E)(D)
+\psline(F)(B)
+\psline(F)(C)
+
+\pstInterLL[PosAngle=-90]{A}{E}{B}{F}{M}
+\pstInterLL[PosAngle=-90]{D}{E}{C}{F}{N}
+
+\pstMarkAngle[MarkAngleRadius=0.2,LabelAngleOffset=-1,LabelSep=0.3,linecolor=red]{B}{F}{A}{}
+\pstMarkAngle[MarkAngleRadius=0.2,LabelAngleOffset=-1,LabelSep=0.3,linecolor=red]{D}{F}{C}{}
+
+\pscustom[fillstyle=solid,fillcolor=red!40,linestyle=none,opacity=0.5]{
+\psline(F)(M)
+\psline(M)(E)
+\psline(E)(N)
+\psline(N)(F)
+}
+%\pstRightAngle[RightAngleSize=0.1]{A}{G}{E}
+\end{pspicture}%\begin{center}\psset{yunit=2.5cm,xunit=2.5cm}
+\begin{pspicture}(-1,-0.2)(2.3,3)
+\psset{algebraic,linewidth=0.5pt}%,linecolor=blue
+\pstGeonode[PointSymbol=*,PosAngle={-135,180,80,-50},dotscale=1](0,0){D}(0.3,1.5){A}(1.2,1.5){B}(2,0){C}%(-1.5,0.866){E}(1.5,0.866){F}%(3.464;60){G}
+
+\psline(A)(B)
+\psline(B)(C)
+\psline(D)(C)
+\psline(A)(D)
+\pstOrtSym[PointSymbol=none,PointName=none]{D}{A}{C}[C']
+
+\pstTranslation[PointSymbol=none,PointName=none]{D}{A}{C}[C'']
+\pstMediatorAB[PointSymbol=none,PointName=none,linestyle=none]{A}{D}{I}{I'}
+
+\pstInterLL[PosAngle=160]{C'}{B}{A}{D}{F}
+\pstInterLL[PosAngle=10]{I}{I'}{B}{C}{E}
+
+\psline(A)(E)
+\psline(E)(D)
+\psline(F)(B)
+\psline(F)(C)
+
+\pstInterLL[PosAngle=-90]{A}{E}{B}{F}{M}
+\pstInterLL[PosAngle=-90]{D}{E}{C}{F}{N}
+
+\pstMarkAngle[MarkAngleRadius=0.2,LabelAngleOffset=-1,LabelSep=0.3,linecolor=red]{B}{F}{A}{}
+\pstMarkAngle[MarkAngleRadius=0.2,LabelAngleOffset=-1,LabelSep=0.3,linecolor=red]{D}{F}{C}{}
+
+\pstInterLL[PosAngle=90]{D}{A}{C}{B}{G}
+
+\psline[linestyle=dashed](G)(B)
+\psline[linestyle=dashed](G)(A)
+
+\pstProjection{A}{D}{B,E}[I,H]
+\psline[linestyle=dashed,linecolor=red](I)(B)
+\psline[linestyle=dashed,linecolor=red](H)(E)
+
+\pstRightAngle[RightAngleSize=0.05,linecolor=red]{D}{H}{E}
+\pstRightAngle[RightAngleSize=0.05,linecolor=red]{G}{I}{B}
+
+\pstOrtSym{I}{B}{F}[J]
+\psline[linestyle=dashed](J)(B)
+
+\pscustom[fillstyle=solid,fillcolor=blue!40,linestyle=none,opacity=0.5]{
+\psline(A)(D)
+\psline(D)(E)
+\psline(E)(A)
+}
+
+\pscustom[fillstyle=solid,fillcolor=green!40,linestyle=none,opacity=0.5]{
+\psline(J)(F)
+\psline(F)(B)
+\psline(B)(J)
+}
+\end{pspicture}
+\end{center}
+
+Extend $DA$ and $CB$ and get their joint point $G$. Then take the orthogonal projection from $B$ and $E$ to $DG$ at $I$ and $H$. Thus, we can find a point $AG$ such that $IJ = IF$. Thus, $\triangle ADE$ and $\triangle JFB$ are isosceles triangles.
+
+
+
+Then since $\angle BJF = \angle JFB = \angle DFC$, we have $BJ \parallelsum CF$ thus
+\be
+\triangle GBJ  \sim \triangle GCF.
+\ee
+
+Also, since $AB\parallelsum DC$, we have $\triangle GBA \sim \triangle GDC$ thus
+\be
+\frac{GJ}{GF} = \frac{GB}{GC} = \frac{GA}{GD} := k > 0.
+\ee
+
+Then
+\beast
+2GI & = & GJ + GF = (k+1)GF\\
+2GH & = & GA + GD = (k+1)GD
+\eeast
+which implies that
+\be
+\frac{GI}{GH} = \frac{GF}{GD}
+\ee
+
+Furthermore, since $\triangle GIB \sim \triangle GHE$,
+\be
+\frac{GB}{GE} = \frac{GI}{GH} = \frac{GF}{GD} \ \ra\ FB \parallelsum DE \ \ra\ \angle AFB =\angle ADE
+\ee
+which implies that
+\be
+\angle DAE = \angle ADE = \angle AFB = \angle DFC \ \ra\ AE \parallelsum FC.
+\ee
+
+Thus, $FMEN$ is a parallelogram.
+\end{example}
+
+
+\begin{example}
+Let $\triangle ABC$ be a triangle with $AB= AC$. Then we can draw an internally tangent circle with center $O$ at the middle point of $BC$ and $E,F$ are its tangent points. Let $G$ be a point on the circle such that $AG\perp EG$ and $GK$ is the tangent line intersecting $AC$ at $K$. Then $BK$ and $EF$ intersect at $H$. We want to prove that $H$ divides $EF$ equally.
+
+\begin{center}
+\psset{yunit=1.6cm,xunit=1.6cm}
+\begin{pspicture}(-2.4,-2)(2.4,4)
+%\psgrid[griddots=10,gridlabels=0pt, subgriddiv=0, gridcolor=black!40]
+%  \psaxes[labels=none,ticks=none]{->}(0,0)(-0.5,-0.2)(2.5,1.5)%axesstyle=frame,dx=2,dy=2
+\psset{algebraic,linewidth=0.5pt}%,linecolor=blue
+\pstGeonode[PointSymbol=*,PosAngle={-90,90,180,0,180,0},dotscale=1](0,0){O}(0,3.464){A}(-2,0){B}(2,0){C}(-1.5,0.866){E}(1.5,0.866){F}%(3.464;60){G}
+
+\pstGeonode[PointSymbol=none,PointName=none,dotscale=1](0,1.732){R}
+
+
+%(1,0){C}(1,0.745){D}%(-2,0){C}(2,0){D}(2,1){AA}(-1,2){BB}(-2,1){CC}(1,0){DD}%PointName=none,
+  %\psplot[linecolor=green]{-3.1416}{3.1416}{2*sin(x/2)}
+  %\psplot[linecolor=blue,linewidth=1pt]{-1.05}{3.05}{x^3 - 3*x^2+1} %,linestyle=dashed
+%\pstArcOAB[]{O}{A}{B}
+%\pscurve[](0.75,1.3)(1.05,0.4)(1,0)%(1.5,0)%(0.5,-0.3)(0.6,-0.7)(0,-1)(-0.6,-0.7)(-0.5,-0.3)
+%\psline(C)(A)%linecolor=blue
+
+\pstCircleOA{O}{R}
+\psline(A)(B)
+\psline(A)(C)
+\psline(B)(C)
+
+\psline(E)(F)
+%\pstMiddleAB[PointSymbol=none,PointName=none]{O}{G}{G'}
+\pstMiddleAB[PointSymbol=*,PosAngle=130]{E}{F}{H}
+\pstInterLL[PointSymbol=*]{B}{H}{A}{C}{K}
+
+\psline(B)(K)
+\pstMiddleAB[PointSymbol=none,PointName=none]{O}{K}{K'}%[PointSymbol=none,PointName=none]
+\pstInterCC[PosAngleA=60,CodeFigColor=green]{O}{E}{K'}{O}{G}{N}%[PointSymbol=*]
+\pstInterLL[PointSymbol=*,PosAngle=150]{K}{G}{A}{B}{D}
+
+\psline(K)(D)
+\psline(A)(G)
+\psline(G)(E)
+
+\pstRightAngle[RightAngleSize=0.1]{A}{G}{E}
+\end{pspicture}
+\begin{pspicture}(-2.4,-2)(2.4,4)
+%\psgrid[griddots=10,gridlabels=0pt, subgriddiv=0, gridcolor=black!40]
+%  \psaxes[labels=none,ticks=none]{->}(0,0)(-0.5,-0.2)(2.5,1.5)%axesstyle=frame,dx=2,dy=2
+  \psset{algebraic,linewidth=0.5pt}%,linecolor=blue
+\pstGeonode[PointSymbol=*,PosAngle={-90,90,180,0,180,0},dotscale=1](0,0){O}(0,3.464){A}(-2,0){B}(2,0){C}(-1.5,0.866){E}(1.5,0.866){F}%(3.464;60){G}
+
+\pstGeonode[PointSymbol=none,PointName=none,dotscale=1](0,1.732){R}
+
+\pstCircleOA{O}{R}
+\psline(A)(B)
+\psline(A)(C)
+\psline(B)(C)
+
+\psline(E)(F)
+\pstMiddleAB[PointSymbol=*,PosAngle=130]{E}{F}{H}
+\pstInterLL[PointSymbol=*]{B}{H}{A}{C}{K}
+
+\psline(B)(K)
+\pstMiddleAB[PointSymbol=none,PointName=none]{O}{K}{K'}%[PointSymbol=none,PointName=none]
+\pstInterCC[PosAngleA=60,CodeFigColor=green]{O}{E}{K'}{O}{G}{N}%[PointSymbol=*]
+\pstInterLL[PointSymbol=*,PosAngle=150]{K}{G}{A}{B}{D}
+
+\psline(K)(D)
+\psline(A)(G)
+\psline(G)(E)
+
+
+
+\psline[linestyle=dashed](O)(E)
+\psline[linestyle=dashed](O)(F)
+\psline[linestyle=dashed](O)(A)
+
+\psline[linestyle=dashed](O)(K)
+\psline[linestyle=dashed](O)(D)
+\psline[linestyle=dashed](O)(G)
+
+\pstRightAngle[RightAngleSize=0.1]{A}{G}{E}
+\pstRightAngle[RightAngleSize=0.1]{A}{E}{O}
+\pstRightAngle[RightAngleSize=0.1]{A}{F}{O}
+\pstRightAngle[RightAngleSize=0.1]{A}{O}{B}
+
+%\pstInterLC{B}{C}{O}{E}{X}{Y}
+
+\pscustom[fillstyle=solid,fillcolor=blue!20,linestyle=none,opacity=0.5]{
+\psline(O)(K)
+\psline(K)(C)
+\psline(C)(O)
+}
+
+\pscustom[fillstyle=solid,fillcolor=blue!20,linestyle=none,opacity=0.5]{
+\psline(O)(B)
+\psline(B)(D)
+\psline(D)(O)
+}
+
+%\psline[linestyle=dashed](A)(D)
+%\pstMarkAngle[MarkAngleRadius=0.5,LabelAngleOffset=-1,LabelSep=0.3]{B}{C}{A}{$\theta$}
+%
+%\rput[cb](-.1,-0.1){$C$}
+
+\end{pspicture}
+\end{center}
+
+Clearly, $AD = DE= DG$, $BO = CO$ and
+\be
+AB \cdot BE = BO^2.\qquad (*)
+\ee
+
+
+Also, $\angle GEF= \angle KOF$ and $\angle FOC = \angle EOB = \angle OEF$. Therefore,
+\be
+\angle EDO = \angle GEO = \angle KOC \ \ra \ \triangle BOD \sim \triangle CKO \ \ra\ \frac{CO}{CK} = \frac{BD}{BO}
+\ee
+thus,
+\be
+\frac 1{CK} = \frac{BD}{BO^2}\qquad (\dag)
+\ee
+
+Then by $(*)$ and $(\dag)$
+\beast
+1 + \frac{CF}{AC} & = & 1 + \frac{BE}{AB}  = \frac{AB+ BE}{AB} = \frac{AE + 2BE}{AB} = \frac{BE(AE + 2BE)}{AB \cdot BE} \\
+& = & \frac{BE(AE + 2BE)}{BO^2} = \frac{2BE\cdot BD}{BO^2} = 2 \frac{BE}{CK} = 2\frac{CF}{CK} = 2\bb{1 - \frac{FK}{CK}}
+\eeast
+which implies that
+\be
+2\frac{FK}{CK} = \frac{AF}{AC}.
+\ee
+
+Furthermore, we have $\triangle KHF \sim \triangle KBC$ and $\triangle AEF \sim \triangle ABC$
+\be
+2 \frac{HF}{BC} = 2\frac{FK}{CK} = \frac{AF}{AC} = \frac{EF}{BC} \ \ra\ 2HF = EF
+\ee
+as required.
+\end{example}
+
+\section{Adventitious Angles}
+
+\subsection{Langley's adventitious angles}
+
+This problem is first proposed and named after Edward Mann Langley.
+
+\begin{proposition}\label{pro:langley_adventitious_angles}
+Consider isosceles triangle $\triangle ABC$ with $\angle ABC = \angle ACB = 80^\circ$. If $\angle DBC = 60^\circ$ and $\angle BCE = 50^\circ$, then $\angle BDE = 30^\circ$.
+\begin{center}
+\begin{pspicture}(-1,-0.5)(1,6)
+\psset{PointSymbol =none}
+\pstTriangle(5.6713;90){A}(1;180){B}(1;0){C}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
+\pstInterLL[PosAngle=30]{A}{C}{B}{D2}{D} 
+\pstLineAB{B}{D}
+
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
+\pstInterLL[PosAngle=120]{A}{B}{C}{E3}{E} 
+
+\pstLineAB{C}{E}
+\pstLineAB{D}{E}
+
+\pstMarkAngle[LabelSep=0.5,MarkAngleRadius=0.2]{E}{D}{B}{}
+
+\rput[lb](2,2){$\angle DBC = 60^\circ$}
+\rput[lb](2,1.5){$\angle BCE = 50^\circ$}
+\end{pspicture}
+\end{center}
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+We have two approaches.
+
+{\bf Approach I.} Let $F$ be a point on $AC$ such that $\angle FBC = 20^\circ$ such that $\triangle BEF$ is an equilateral triangle. Then $BC = BF =BE = EF$ and $\angle DFE = 180^\circ - \angle BFE - \angle BFC = 40^\circ$. Then since $\angle BDF = \angle DBF = 40^\circ$ we have $BF = DF$ and thus $EF = DF$. So $\angle  FDE = \angle FED = 70^\circ$ and $\angle BDE = \angle FDE - \angle FDB = 70^\circ - 40^\circ = 30^\circ $.
+
+\begin{figure}[t]
+\begin{center}
+\begin{pspicture}(-3,-1)(3,9)
+\psset{PointSymbol =none}
+\pstTriangle(8.507;90){A}(1.5;180){B}(1.5;0){C}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
+\pstInterLL[PosAngle=30]{A}{C}{B}{D2}{D} 
+\pstLineAB{B}{D}
+
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{D1}{D4}
+\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F} 
+\pstLineAB[linestyle=dashed]{B}{F}
+\pstLineAB[linestyle=dashed]{D}{F}
+
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
+\pstInterLL[PosAngle=120]{A}{B}{C}{E3}{E} 
+\pstLineAB{C}{E}
+\pstLineAB{E}{D}
+\pstLineAB[linestyle=dashed]{E}{F}
+\pstMarkAngle[LabelSep=1]{C}{B}{F}{$20^\circ$}
+\pstMarkAngle[LabelSep=0.7]{E}{C}{B}{$50^\circ$}
+
+\rput[lb](0,-1){I}
+\end{pspicture}
+\begin{pspicture}(-3,-1)(3,9)
+\psset{PointSymbol =none}
+\pstTriangle(8.507;90){A}(1.5;180){B}(1.5;0){C}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
+\pstInterLL[PosAngle=30]{A}{C}{B}{D2}{D} 
+\pstLineAB{B}{D}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
+\pstInterLL[PosAngle=120]{A}{B}{C}{E3}{E} 
+\pstInterLL[PosAngle=30]{B}{D}{C}{E2}{F} 
+
+\pstLineAB{E}{D}
+\pstLineAB{E}{C}
+
+\pstInterLL[PosAngle=120]{A}{B}{C}{F}{G}
+\pstLineAB[linestyle=dashed]{F}{G}
+\pstLineAB[linestyle=dashed]{D}{G}
+
+%\pstGeonode[PosAngle=30](2.598;90){F}
+\pstLineAB[linestyle=dashed]{B}{F}
+\pstLineAB[linestyle=dashed]{C}{F}
+\pstLineAB[linestyle=dashed]{D}{F}
+\pstLineAB[linestyle=dashed]{E}{F}
+\pstInterLL[PointSymbol=none, PointName=none]{B}{D}{E}{F}{G} 
+%\pstRightAngle[RightAngleSize=0.2]{D}{G}{F}
+\pstMarkAngle[LabelSep=0.7]{C}{B}{F}{$60^\circ$}
+\pstMarkAngle[LabelSep=0.7]{E}{C}{B}{$50^\circ$}
+\pstMarkAngle[LabelSep=0.7]{B}{F}{C}{$60^\circ$}
+\rput[lb](0,-1){II}
+\end{pspicture}
+￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
+\end{center}
+\end{figure}
+
+
+
+{\bf Approach II.} Let $\angle BCG = 60^\circ$. Thus $DG = DF$. Also,
+\be
+\angle EGF = 180^\circ - \angle DGF - \angle AGD = 180^\circ - 60^\circ - 80^\circ = 40^\circ.
+\ee
+
+Furthermore, $\angle BEC = 50^\circ$ implies that $BC = BE$ and therefore
+\be
+BE = BF \ \ra\ \angle BEF = \angle BFE = \frac 12\bb{180^\circ - \angle EBF} = 80^\circ.
+\ee
+
+Hence, $\angle EFG = \angle BEF - \angle EGF = 80^\circ - 40^\circ = 40^\circ$ and thus $EG = EF$. So
+\be
+\triangle DEF \cong \triangle DEG \ \ra\ \angle EDG = \angle EDF \ \ra\ \angle EDG = 30^\circ
+\ee
+since $\angle EDG + \angle EDF = \angle FDG =60^\circ$.
+\end{proof}
+
+\subsection{World's hardest easy geometric problem}
+
+\begin{lemma}\label{lem:world_hardest_easy_geometric_problem}
+Consider isosceles triangle $\triangle ABC$ with $\angle ABC = \angle ACB = 80^\circ$. If $\angle DBC = 70^\circ$, then $AD = BC$.
+\begin{center}
+\begin{pspicture}(-1,-0.25)(1,5.8)
+\psset{PointSymbol =none}
+\pstTriangle(5.6713;90){A}(1;180){B}(1;0){C}
+%\pstTriangle(2.8357;90){A}(0.5;180){B}(0.5;0){C}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D2}{B}{A}{D3}
+\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D} 
+\pstLineAB{B}{D}
+\rput[lb](2,2){$\angle DBC = 70^\circ$}
+\rput[lb](2,1.5){$\angle BDC = 30^\circ$}
+\rput[lb](2,1){$\angle DCB = 80^\circ$}
+\end{pspicture}
+\end{center}
+\end{lemma}
+
+
+%\psset{CodeFig, RightAngleSize=.25, CodeFigColor=red, CodeFigB=true, linestyle=dashed, dash=2mm 2mm}
+%\pstGeonode[PosAngle={-90,0}]{O}(5,0){A}
+%\pstGeonode[PosAngle={-90,180}]{O}(-5,0){B}
+%\pstGeonode[PosAngle={-90,90}]{O}(0,5){C}
+%\psset{PointSymbol =*}
+%\pstTriangle (1;0){C}(5.7588;90) {A}(1;180) {B}
+
+\begin{proof}[\bf Proof]
+We can have three approaches.
+
+{\bf Approach I.} Let $F$ be a point on $AC$ such that $\angle FBC = 20^\circ$ such that $\triangle BEF$ is an equilateral triangle. Then $BC = BF =BE = EF$. By law of sines\footnote{theorem needed.},
+\be
+\frac{\sin\angle BDC}{BC} = \frac{\sin\angle BCD}{BD}  \ \ra\ BD = 2 BC \sin 80^\circ .
+\ee
+
+Also, by law of cosines (Theorem \ref{thm:law_of_cosines}), we have that
+\be
+DE^2 = BE^2 + BD^2 - 2\cdot BE\cdot BD \cdot \cos 10^\circ = BC^2 + 4BC^2 \sin^2 80^\circ - 4BC^2  \sin 80^\circ \cos 10^\circ = BC^2 \ \ra\ DE = BC = EF.
+\ee
+
+Therefore, $\angle EDF = \angle DFE = 180^\circ - 80^\circ - 60^\circ = 40^\circ$ and thus $\angle AED = \angle EDC - \angle BAC = 40^\circ - 20^\circ = 20^\circ = \angle BAC$. This implies that $AD = DE$ and hence $AD = DE = BC$.
+
+{\bf Approach II.} We can find a point $F$ such that $\triangle BCF$ is an equilateral triangle such that $BC = BF = CF$. It is easy to see that $BE = BF = BC$ and since $BD$ divides $\angle EBF$ equally we have $BD\perp EF$ and $DE = DF$. By law of sines\footnote{theorem needed.},
+\be
+\frac{\sin\angle BDC}{BC} = \frac{\sin\angle DBC}{CD}  \ \ra\ CD = 2 BC \sin 70^\circ .
+\ee
+
+
+Also, by law of cosines (Theorem \ref{thm:law_of_cosines}), we have that
+\be
+DF^2 = CF^2 + CD^2 - 2\cdot CF\cdot CD \cdot \cos 20^\circ = BC^2 + 4BC^2 \sin^2 70^\circ - 4BC^2 \sin 70^\circ \cos 20^\circ = BC^2 
+\ee
+which impies that 
+\be
+BE = BC = CF = DF = DE.
+\ee
+
+Thus, $\angle AED = 2\angle ABD = 20^\circ = \angle BAC$ and therefore $AD = DE = BC$.
+
+\begin{figure}[t]
+\begin{center}
+\begin{pspicture}(-3,-1)(3,9)
+\psset{PointSymbol =none}
+\pstTriangle(8.507;90){A}(1.5;180){B}(1.5;0){C}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D2}{B}{A}{D3}
+%\pstGeonode[PointSymbol=none, PointName=none]{B}(5;70){DD1}
+\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D} 
+\pstLineAB{B}{D}
+
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{D1}{D4}
+\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F} 
+\pstLineAB[linestyle=dashed]{B}{F}
+%\pstLineAB[linestyle=dashed]{D}{F}
+
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
+\pstInterLL[PosAngle=120]{A}{B}{C}{E3}{E} 
+\pstLineAB[linestyle=dashed]{C}{E}
+\pstLineAB[linestyle=dashed]{E}{D}
+\pstLineAB[linestyle=dashed]{E}{F}
+\pstMarkAngle[LabelSep=1]{C}{B}{F}{$20^\circ$}
+\pstMarkAngle[LabelSep=0.7]{E}{C}{B}{$50^\circ$}
+
+\pstSegmentMark[linestyle=dashed]{B}{E}
+\pstSegmentMark[linestyle=dashed]{B}{F}
+\pstSegmentMark[linestyle=dashed]{E}{F}
+\pstSegmentMark[linestyle=dashed]{B}{C}
+\pstSegmentMark[linestyle=dashed]{E}{D}
+\pstSegmentMark[linestyle=dashed]{A}{D}
+
+\rput[lb](0,-1){I}
+\end{pspicture}
+\begin{pspicture}(-3,-1)(3,9)
+\psset{PointSymbol =none}
+\pstTriangle(8.507;90){A}(1.5;180){B}(1.5;0){C}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D2}{B}{A}{D3}
+%\pstGeonode[PointSymbol=none, PointName=none]{B}(5;70){DD1}
+\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D} 
+\pstLineAB{B}{D}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
+\pstInterLL[PosAngle=120]{A}{B}{C}{E3}{E} 
+\pstLineAB[linestyle=dashed]{E}{D}
+\pstLineAB[linestyle=dashed]{E}{C}
+
+\pstGeonode[PosAngle=30](2.598;90){F}
+\pstLineAB[linestyle=dashed]{B}{F}
+\pstLineAB[linestyle=dashed]{C}{F}
+\pstLineAB[linestyle=dashed]{D}{F}
+\pstLineAB[linestyle=dashed]{E}{F}
+\pstInterLL[PointSymbol=none, PointName=none]{B}{D}{E}{F}{G} 
+\pstRightAngle[RightAngleSize=0.2]{D}{G}{F}
+\pstMarkAngle[LabelSep=0.7]{C}{B}{F}{$60^\circ$}
+\pstMarkAngle[LabelSep=0.7]{E}{C}{B}{$50^\circ$}
+\pstMarkAngle[LabelSep=0.7]{B}{F}{C}{$60^\circ$}
+
+\pstSegmentMark[linestyle=dashed]{B}{C}
+\pstSegmentMark[linestyle=dashed]{B}{E}
+\pstSegmentMark[linestyle=dashed]{B}{F}
+\pstSegmentMark[linestyle=dashed]{C}{F}
+\pstSegmentMark[linestyle=dashed]{F}{D}
+\pstSegmentMark[linestyle=dashed]{E}{D}
+\pstSegmentMark[linestyle=dashed]{A}{D}
+
+\rput[lb](0,-1){II}
+\end{pspicture}
+\begin{pspicture}(-3,-1)(3,9)
+\psset{PointSymbol =none}
+\pstTriangle(8.507;90){A}(1.5;180){B}(1.5;0){C}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D2}{B}{A}{D3}
+%\pstGeonode[PointSymbol=none, PointName=none]{B}(5;70){DD1}
+\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D} 
+\pstLineAB{B}{D}
+
+\pstGeonode[PosAngle=30](2.598;90){E}
+\pstLineAB[linestyle=dashed]{A}{E}
+\pstLineAB[linestyle=dashed]{B}{E}
+\pstLineAB[linestyle=dashed]{C}{E}
+\pstMarkAngle[LabelSep=0.7]{C}{B}{E}{$60^\circ$}
+\pstMarkAngle[LabelSep=0.7]{B}{E}{C}{$60^\circ$}
+\pstMarkAngle[LabelSep=0.7]{E}{C}{B}{$60^\circ$}
+
+\pspolygon[fillstyle=solid,fillcolor=magenta,linestyle=dashed,opacity=0.3](A)(B)(D)
+\pspolygon[fillstyle=solid,fillcolor=green,linestyle=dashed,opacity=0.3](A)(C)(E)
+\rput[lb](0,-1){III}
+\end{pspicture}
+￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
+\end{center}
+\end{figure}
+
+
+
+{\bf Approach III.} Let $E$ be a point such that $\triangle BCE$ is an equilateral triangle with $BC = CE$. Also, $AB = AC$, $\angle BAD = \angle ACE = 20^\circ$ and $\angle ABD = \angle CAE = 10^\circ$. Thus, $\triangle ABD \cong \triangle ACE$ which implies that $AD = CE$ and therefore $AD = BC$.
+\end{proof}
+
+
+\begin{proposition}
+Consider isosceles triangle $\triangle ABC$ with $\angle ABC = \angle ACB = 80^\circ$. If $\angle DBC = 70^\circ$ and $\angle BCE = 60^\circ$, then $\angle BDE = 20^\circ$.
+\begin{center}
+\begin{pspicture}(-1,-0.5)(1,6)
+\psset{PointSymbol =none}
+\pstTriangle(5.6713;90){A}(1;180){B}(1;0){C}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D2}{B}{A}{D3}
+\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D} 
+\pstLineAB{B}{D}
+
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
+\pstInterLL[PosAngle=120]{A}{B}{C}{E2}{E} 
+
+\pstLineAB{C}{E}
+\pstLineAB{D}{E}
+
+\pstMarkAngle[LabelSep=0.5,MarkAngleRadius=0.2]{E}{D}{B}{}
+
+\rput[lb](2,2){$\angle DBC = 70^\circ$}
+\rput[lb](2,1.5){$\angle BCE = 60^\circ$}
+\end{pspicture}
+\end{center}
+\end{proposition}
+
+
+\begin{proof}[\bf Proof]
+We can have three approaches. 
+
+{\bf Approach I.} Let $\angle CBF = 50^\circ$ with $BC=CF$ and $AD = BC$ by Lemma \ref{lem:world_hardest_easy_geometric_problem}. Then 
+\be
+\angle DAE = \angle FCE = 20^\circ \ \ra\ \triangle ADE \cong \triangle CFE \ \ra\ \angle AED = \angle CEF = 30^\circ
+\ee
+by Proposition \ref{pro:langley_adventitious_angles}. Thus, 
+\be
+\angle BDE = \angle EDF - \angle BDC = \angle AED + \angle EAD - \angle BDC = 30^\circ + 20^\circ - 30^\circ = 20^\circ. 
+\ee
+
+{\bf Approach II.} Let $\angle CBF = 50^\circ$ with $BC=CF$. Then $\angle DBF = 20^\circ = \angle ECF$ and by Proposition \ref{pro:langley_adventitious_angles}
+\be
+\angle CEF = 30^\circ \ \ra\ \angle DFE = \angle CEF + \angle ECF = 30^\circ + 20^\circ = 50^\circ .
+\ee
+
+Thus,
+\be
+\ \ra\ \angle BFD = \angle CFE  \ \ra\ \triangle CEF \sim \triangle BDF \ \ra\ \frac{DF}{EF} = \frac{BF}{CF}
+\ee
+and the fact $\angle DFE = \angle BFC = 50^\circ$ implies that $\triangle DEF \sim \triangle BCF$, $\angle BDC = \angle CEF = 30^\circ$ and $\angle EDF = \angle CBF = 50^\circ$. Therefore,
+\be
+\angle EDF = \angle CBF = 50^\circ \ \ra\ \angle BDE = \angle EDF - \angle BDC = 50^\circ - 30^\circ = 20^\circ.
+\ee
+
+\begin{figure}[t]
+\begin{center}
+\begin{pspicture}(-3,-1)(3,9)
+\psset{PointSymbol =none}
+\pstTriangle(8.507;90){A}(1.5;180){B}(1.5;0){C}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D2}{B}{A}{D3}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{D2}{D4}
+
+%\pstGeonode[PointSymbol=none, PointName=none]{B}(5;70){DD1}
+\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D} 
+\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F} 
+\pstLineAB{B}{D}
+\pstLineAB[linestyle=dashed]{B}{F}
+
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{D1}{D4}
+%\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F} 
+%\pstLineAB[linestyle=dashed]{B}{F}
+%\pstLineAB[linestyle=dashed]{D}{F}
+
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
+\pstInterLL[PosAngle=120]{A}{B}{C}{E2}{E} 
+\pstLineAB{C}{E}
+\pstLineAB{E}{D}
+%\pstLineAB[linestyle=dashed]{E}{F}
+\pstMarkAngle[LabelSep=1]{C}{B}{F}{$50^\circ$}
+\pstMarkAngle[LabelSep=0.7]{E}{C}{B}{$60^\circ$}
+\pspolygon[fillstyle=solid,fillcolor=magenta,linestyle=dashed,opacity=0.3](A)(D)(E)
+\pspolygon[fillstyle=solid,fillcolor=green,linestyle=dashed,opacity=0.3](C)(E)(F)
+\rput[lb](0,-1){I}
+\end{pspicture}
+\begin{pspicture}(-3,-1)(3,9)
+\psset{PointSymbol =none}
+\pstTriangle(8.507;90){A}(1.5;180){B}(1.5;0){C}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D2}{B}{A}{D3}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{D2}{D4}
+
+%\pstGeonode[PointSymbol=none, PointName=none]{B}(5;70){DD1}
+\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D} 
+\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F} 
+\pstLineAB{B}{D}
+%\pstLineAB[linestyle=dashed]{B}{F}
+
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{D1}{D4}
+%\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F} 
+%\pstLineAB[linestyle=dashed]{B}{F}
+%\pstLineAB[linestyle=dashed]{D}{F}
+
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
+\pstInterLL[PosAngle=120]{A}{B}{C}{E2}{E} 
+\pstLineAB{C}{E}
+\pstLineAB{E}{D}
+%\pstLineAB[linestyle=dashed]{E}{F}
+\pstMarkAngle[LabelSep=1]{C}{B}{F}{$50^\circ$}
+\pstMarkAngle[LabelSep=0.7]{E}{C}{B}{$60^\circ$}
+\pstMarkAngle[LabelSep=1.5,MarkAngleRadius=0.8]{F}{B}{D}{$20^\circ$}
+\pstMarkAngle[LabelSep=0.7]{C}{E}{F}{$30^\circ$}
+\pstMarkAngle[LabelSep=0.7]{B}{F}{C}{$50^\circ$}
+
+\pspolygon[fillstyle=solid,fillcolor=magenta,linestyle=dashed,opacity=0.3](B)(D)(F)
+\pspolygon[fillstyle=solid,fillcolor=green,linestyle=dashed,opacity=0.3](C)(E)(F)
+\rput[lb](0,-1){II}
+\end{pspicture}
+\begin{pspicture}(-3,-1)(3,9)
+\psset{PointSymbol =none}
+\pstTriangle(8.507;90){A}(1.5;180){B}(1.5;0){C}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D2}{B}{A}{D3}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{D2}{D4}
+
+%\pstGeonode[PointSymbol=none, PointName=none]{B}(5;70){DD1}
+\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D} 
+\pstInterLL[PosAngle=-60]{A}{C}{B}{D4}{F} 
+\pstLineAB{B}{D}
+%\pstLineAB[linestyle=dashed]{B}{F}
+
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{D1}{D4}
+%\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F} 
+%\pstLineAB[linestyle=dashed]{B}{F}
+%\pstLineAB[linestyle=dashed]{D}{F}
+
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
+\pstInterLL[PosAngle=150]{A}{B}{C}{E2}{E} 
+\pstInterLL[PosAngle=220]{C}{E}{B}{D}{G} 
+
+\pstLineAB{C}{E}
+\pstLineAB{E}{D}
+
+%\pstLineAB[linestyle=dashed]{E}{F}%\pstLineAB[linestyle=dashed]{F}{G}
+\pstMarkAngle[LabelSep=1]{C}{B}{F}{$50^\circ$}
+\pstMarkAngle[LabelSep=0.7]{E}{C}{B}{$60^\circ$}
+\pstMarkAngle[LabelSep=1.4,MarkAngleRadius=0.8]{F}{B}{D}{$20^\circ$}
+\pstMarkAngle[LabelSep=0.8]{C}{E}{F}{$30^\circ$}
+\pstMarkAngle[LabelSep=1.4,MarkAngleRadius=0.8]{F}{C}{E}{$20^\circ$}
+\pstMarkAngle[LabelSep=1]{B}{D}{C}{$30^\circ$}
+
+\pstMediatorAB[PointSymbolA=none,linestyle=none,PointName=none]{F}{G}{X}{FG}
+\pstMediatorAB[PointSymbolA=none,linestyle=none,PointName=none]{D}{E}{Y}{DE}
+\pstMediatorAB[PointSymbolA=none,linestyle=none,PointName=none]{B}{C}{Z}{BC}
+
+
+\pstInterLL[PosAngle=120,PointName=none]{X}{FG}{Y}{DE}{O1} 
+\pstCircleOA[linestyle=dashed]{O1}{G}
+\pstInterLL[PosAngle=120,PointName=none]{X}{FG}{Z}{BC}{O2} 
+\pstCircleOA[linestyle=dashed]{O2}{G}
+
+\pspolygon[fillstyle=solid,fillcolor=magenta,linestyle=dashed,opacity=0.3](E)(F)(G)
+\pspolygon[fillstyle=solid,fillcolor=magenta,linestyle=dashed,opacity=0.3](D)(F)(G)
+\pspolygon[fillstyle=solid,fillcolor=green,linestyle=none,opacity=0.3](B)(F)(G)
+\pspolygon[fillstyle=solid,fillcolor=green,linestyle=none,opacity=0.3](C)(F)(G)
+
+\pstLineAB[linestyle=dashed]{B}{F}
+
+%\pstCircleABC[CodeFig,CodeFigColor=blue,linecolor=red,PointSymbol=none]{A}{B}{C}{O}
+
+%\pspolygon[fillstyle=solid,fillcolor=magenta,opacity=0.3](B)(D)(F)
+%\pspolygon[fillstyle=solid,fillcolor=green,opacity=0.3](C)(E)(F)
+\rput[lb](0,-1){III}
+\end{pspicture}
+￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
+\end{center}
+\end{figure}
+
+{\bf Approach III.} By Proposition \ref{pro:langley_adventitious_angles}, we have that $\angle GEF = 30^\circ = \angle GDF$ and thus $D,E,F,G$ are concyclic points\footnote{theorem needed.} which implies that $\angle EDG = \angle EFG$. Similarly, $\angle GBF = 20^\circ = \angle GCF$ and thus $B,C,F,G$ are concyclic points which implies that $\angle BFG = \angle BCG$. Then
+\beast
+\angle BDE & = & \angle EDG = \angle EFG = \angle EFB - \angle BFG = 180^\circ - \angle EBF - \angle BEF -  \angle BCG \\
+& = &  180^\circ - \angle EBF - \angle BEC - \angle CEF  -  \angle BCE = 180^\circ - 30^\circ - 40^\circ - 30^\circ - 60^\circ  = 20^\circ.
+\eeast
+\end{proof}
+
+\subsection{Curves}
+
+
+%\subsection{Cardioid}
+
+Cardioid
+ 
+\begin{center}%
+\psset{yunit=1cm,xunit=1cm}  %%%%%%% this is wrong as t is theta
+\begin{pspicture}(-5,-3.5)(2,3.5)%(-2.5,-2.5)(2.5,2.5)
+  %\psgrid[griddots=10,gridlabels=0pt, subgriddiv=0, gridcolor=black!40]
+\psaxes[]{->}(0,0)(-4.5,-3.5)(2,3.5)%axesstyle=frame,dx=2,dy=2%labels=none,ticks=none
+\psset{plotpoints=500}%algebraic}%,linewidth=1.5pt,,%\begin{psgraph}{->}(0,0)(-0.5,-2.5)(3.5,2.5){4cm}{5cm}
+%\psset{plotpoints=500,algebraic}
+\psplot[polarplot=true,linecolor=blue]{0}{360}{x cos 2 mul neg 2 add}% 1 mul}
+%\psplot[polarplot=true]{0}{360}{1.5*(1+cos(x))}
+%%\psaxes[axesstyle=polar,xAxisLabel=some,subticks=2,tickcolor=red,tickwidth=1pt,subtickcolor=green]{->}(0,0)(-2.5,2.5)(2.5,2.5)%axesstyle=frame,dx=2,dy=2
+\rput[cb](-2.2,1){\textcolor{blue}{$r = 2 - 2\cos\theta$}}%
+\end{pspicture}
+\end{center}
+
+
+
+\subsection{Implicit functions}
+
+\begin{center}%
+\psset{yunit=1.6cm,xunit=1.6cm}  %%%%%%% this is wrong as t is theta
+\begin{pspicture}(-3,-3)(3,3)%(-2.5,-2.5)(2.5,2.5)
+\psaxes[linewidth=0.25pt,xlabelPos=top,labelFontSize=\scriptscriptstyle,labelsep=2pt,ticksize=0.05]{->}(0,0)(-2,-1.75)(2,2)[x,0][y,90]
+\psplotImp[linecolor=red,linewidth=1pt,stepFactor=0.2,algebraic](-2.5,-1.75)(2.5,2.5){x^2 + (5*y/4 -sqrt(abs(x)))^2-2.5}
+\rput[cb](3.2,1){\textcolor{black}{$x^2 + \bb{\frac{5y}{4} - \sqrt{\abs{x}}}^2 - \frac 52 = 0$}}%
+\end{pspicture}
+\end{center}
+
+\section{$\R^3$ space}
+
+\subsection{Cross product in $\R^3$ space}
+
+\subsection{Triple scalar product in $\R^3$ space}
+
+\section{Ruler and Compass Constructions}%\section{Regular polygons}
+
+%Striking picture created by K. F. Gauss. he also prooved that it is possible to build the regular polygons which have $2^{2^p} + 1$ sides, the following one has 17 sides!
+
+Gauss proved that it is impossible to divide the circle into $p$ equal parts unless it is of form $p = 2^{2^n}+1$. However, this does not show that it is possible to divide a circle into $p = 17 = 2^{2^2}+1$ parts; it only shows that it is not impossible. 
+
+Klein takes this a step further by showing that it is in fact possible to perform such a construction. It turns out that the division of the circle into $p$ equal parts is equivalent to constructing a regular $p$-gon.
+
+In this section, we present Felix Klein's algebraic proof for this construction with additional explanations and commentary. Klein's method involves breaking down the roots of the cyclotomic equation of degree 16. He shows that these roots can be arranged in a particular way, so that they also represent roots of quadratic equations. Because the roots of quadratic equations are written in terms of addition, subtraction, multiplication, division, and square roots, we know that they are constructible. Thus,in showing that these roots are constructible, Klein shows that it is possible to construct a regular 17-gon (see \cite{Klein_1897}).
+
+First, we can construct a regular 5-sided polygon.
+
+\begin{example}[construction of 5-sided polygon]
+Recalling Example \ref{exa:sin_pi_divided_by_5}, we have that 
+\be
+\sin\frac{\pi}5=\sqrt{\frac{5-\sqrt{5}}{8}}=\frac 14\sqrt{10-2\sqrt{5}}.
+\ee 
+
+Then we can have that 
+\be
+\cos \frac{2\pi}5 = 1 - 2\sin^2\frac{\pi}5 = 1- \frac{10-2\sqrt{5}}{8} = \frac{\sqrt{5}-1}{4}.
+\ee
+ 
+
+\ben
+\item [(i)] {\bf Construct a circle with center $O$ and diameter $BA$. Construct the perpendicular bisector of $BA$, segment $OC$.}
+\item [(ii)] {\bf Construct $OD = OC/2$. Then construct segment $DA$.}
+\item [(iii)] {\bf Bisect angle $\angle ODA$ to construct angle $\angle ODE$.}
+
+Since $DE$ equally divides angle $\angle ODA$, we have 
+\be
+\frac{OE}{1-OE} = \frac{OE}{EA} =  \frac{OD}{DA} = \frac{\frac 12}{\frac{\sqrt{5}}2} \ \ra \ OE = \frac {\sqrt{5}-1}{4} = \cos \frac{2\pi}5.
+\ee
+
+Thus, the corresponding points $P_1$ and $P_4$ are the vertices of 5-sided polygon.
+
+The theoretical proof can be found in the proof of Theorem \ref{thm:algebraic_proof_of_17_sided_polygon}. 
+
+\begin{center}
+\begin{pspicture}(-5.5,-4.2)(5.5,4.7)
+\psset{CodeFig, RightAngleSize=.14, CodeFigColor=red, CodeFigB=true, linestyle=dashed, dash=2mm 2mm}
+\pstGeonode[PosAngle={-90,0}]{O}(4,0){A}
+\pstGeonode[PosAngle={-90,180}]{O}(-4,0){B}
+\pstGeonode[PosAngle={-90,90}]{O}(0,4){C}
+\pstCircleOA[linestyle=solid]{O}{A} %% circle drawing
+%\pstSymO[PointSymbol=none, PointName=none, CodeFig=false]{O}{A}[PP_0]
+\ncline[linestyle=solid]{B}{A}
+%\pstRotation[RotAngle=180, PosAngle=180]{O}{A}[B] %% rotation arrow
+%\pstRotation[RotAngle=90, PosAngle=90]{O}{A}[C]
+%\pstRightAngle[linestyle=solid]{C}{O}{PP_0} %% right angle
+\ncline[linestyle=solid]{O}{C}
+\pstHomO[HomCoef=.5,PosAngle=45]{O}{C}[D] %% 1/4 of OA
+\ncline{D}{A} %% \ncline is line between A and D.
+\pstBissectBAC[PointSymbol=none, PointName=none]{O}{D}{A}{PE} %% bissect angle
+%\pstInterLL[PosAngle=-90]{O}{A}{D}{PE1}{N} %% first two is the segment points to have intersection
+%\pstBissectBAC[PointSymbol=none, PointName=none]{O}{D}{PE1}{PE2}
+\pstInterLL[PosAngle=-45]{O}{A}{D}{PE}{E}
+%\pstHomO[HomCoef=.8, PointSymbol=none, PointName=none]{D}{E}[PD1]
+%\pstRotation[PosAngle=-90, RotAngle=-45, PointSymbol=none, PointName=none]{D}{PD1}[PF1] %% Rotate arrow
+%\pstInterLL[PosAngle=-135]{O}{B}{D}{PF1}{F}
+%\ncline{D}{F}
+%\pstMiddleAB[PointSymbol=none, PointName=none]{F}{A}{MFA1} %% middle point
+%\pstCircleOA{MFA1}{A} %% circle drawing
+%\pstInterLC[PosAngleA=-90,PosAngleB=135,PointNameB=G, PointNameA=]{O}{C}{MFA1}{A}{H_1}{G}%%[PointSymbolA=none, PointNameA=none] %% intersection of circles
+%\ncline{O}{H_1}
+
+%\pstCircleOA{E}{G} 
+%\pstInterLC[PosAngleA=-135,PosAngleB=-45]{O}{A}{E}{G}{H}{K}
+\pstRotation[RotAngle=90,PointSymbol=none, PointName=none, CodeFigColor=white]{E}{A}[PP]%
+\pstInterLC[PosAngleA=90,PosAngleB=-90, PointNameB=P_{4}]{PP}{E}{O}{A}{P_1}{P_4}
+\ncline{P_1}{P_4}
+%%\pstSegmentMark[SegmentSymbol=wedge]{H}{P_5}
+%%\pstSegmentMark[SegmentSymbol=wedge]{P_{12}}{H}
+%\pstRotation[RotAngle=90,PointSymbol=none, PointName=none, CodeFigColor=white]{K}{H}[PP_3] %% Rotation arrow
+%\pstInterLC[PosAngleA=90,PosAngleB=-90,PointNameB=P_{14}]{K}{PP_3}{O}{A}{P_3}{P_14}
+%%\pstSegmentMark[SegmentSymbol=cup]{K}{P_3}
+%%\pstSegmentMark[SegmentSymbol=cup]{P_{14}}{K}
+\pstRightAngle[linestyle=solid]{A}{E}{P_1}
+%\pstRightAngle[linestyle=solid]{A}{K}{P_3}
+
+%\ncline{P_5}{P_12}
+%\ncline{P_3}{P_14}
+
+%\ncline{O}{P_5}
+%\ncline{O}{P_4}
+%\ncline{O}{P_3}
+
+%\pstGeonode[PosAngle=-90, PointSymbol=none]{O}(-1.1,4.9){L}
+%\pstGeonode[PosAngle=-90, PointSymbol=none]{O}(1.9,4.6){M}
+
+
+%\pstBissectBAC[PosAngle=90, linestyle=none]{P_3}{O}{P_5}{P_4}
+\pstInterCC[PosAngleA=135, PointSymbolB=none, PointNameB=none]{O}{A}{P_1}{A}{P_2}{H_1}
+\pstInterCC[PosAngleA=-135, PointSymbolB=none, PointNameB=none]{O}{A}{P_2}{P_1}{P_3}{H_1}
+%\pstInterCC[PosAngleA=90, PointSymbolB=none, PointNameB=none]{O}{A}{P_5}{P_4}{P_6}{H_1}
+%\pstInterCC[PosAngleA=100, PointSymbolB=none, PointNameB=none]{O}{A}{P_6}{P_5}{P_7}{H_1}
+%\pstInterCC[PosAngleA=135, PointSymbolB=none, PointNameB=none]{O}{A}{P_7}{P_6}{P_8}{H_1}
+%\pstOrtSym[PosAngle={-45,-45,-90,-100,-135},PointName={P_{16},P_{15},P_{13},P_{11},P_{10},P_{9}}]{O}{A}{P_1,P_2,P_4,P_6,P_7,P_8}[P_16,P_15,P_13,P_11,P_10,P_9]
+\pspolygon[linecolor=blue, linestyle=solid, linewidth=2\pslinewidth](A)(P_1)(P_2)(P_3)(P_4)
+
+\ncline[linestyle=solid]{B}{A}
+\end{pspicture}
+￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
+\end{center}
+
+\een
+\end{example}
+
+
+\begin{theorem}[algebraic proof of 17-sided polygon]\label{thm:algebraic_proof_of_17_sided_polygon}
+The circle can be equally divided into 17 parts by construction. In other words, 17-sided polygon can be constructed.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+First we consider the roots of the cyclotomic equation
+\be
+\frac{x^{17}-1}{x-1} = x^{16} + x^{15} +\dots + x^2 + x+ 1 = 0.
+\ee
+
+The roots of this equation, denoted $\ve_k$ for $k=1,2,\dots,16$, can be put into polar form with $r=1$ and $\theta = 2k\pi /17$ for each $k$. The angle for $k$ of these equal arcs will be $k$ times the measure of one arc, or $2\pi/17$:
+\be
+\ve_k = \cos\frac{2k\pi}{17} + i\sin\frac{2k\pi}{17} ,\qquad k=1,2,\dots,16.
+\ee
+
+Note that using trigonometric identities, we get
+\be
+\ve_1^2 = \cos^2 \frac{2\pi}{17}  - \sin^2 \frac{2\pi}{17} + 2i\sin\frac{2\pi}{17} \cos\frac{2\pi}{17} = \cos\frac{4\pi}{17} + i\sin \frac{4\pi}{17} = \ve_2.
+\ee
+
+This property holds for all $k$, that is $\ve^k_1 = \ve_k$.
+
+Geometrically, the roots of this cyclotomic equation are actually points on the unit circle in the complex plane. More specifically, these points are the vertices of the regular 17-gon inscribed in this circle.
+
+Our next step is to arrange the roots of this equation in a set order. We will use a primitive root to aid us in this process. By definition, $a$ is a primitive root of 17 when the least solution of $a^s\equiv 1(\bmod 17)$ is $s=17-1=16$\footnote{definition needed.}. As mentioned previously, 3 is primitive root of 17, since $s=17-1=16$ is smallest value such that $3^s\equiv 1(\bmod 17)$:
+\beast
+& & 3^1\equiv 3(\bmod 17),\quad 3^2\equiv 9(\bmod 17),\quad 3^3\equiv 10(\bmod 17),\quad 3^4\equiv 13(\bmod 17),\\
+& & 3^5\equiv 5(\bmod 17),\quad 3^6\equiv 15(\bmod 17),\quad 3^7\equiv 11(\bmod 17),\quad 3^8\equiv 16(\bmod 17),\\
+& & 3^9\equiv 14(\bmod 17),\quad 3^{10}\equiv 8(\bmod 17),\quad 3^{11}\equiv 7(\bmod 17),\quad 3^{12}\equiv 4(\bmod 17),\\
+& & 3^{13}\equiv 12(\bmod 17),\quad 3^{14}\equiv 2(\bmod 17),\quad 3^{15}\equiv 6(\bmod 17),\quad 3^{16}\equiv 1(\bmod 17).
+\eeast
+
+We then arrange our roots, $\ve_k$, so that the indices are the above remainders in order. Our list is as follows:
+\be
+\ve_3,\ve_9,\ve_{10},\ve_{13},\ve_{5},\ve_{15},\ve_{11},\ve_{16},\ve_{14},\ve_8,\ve_{7},\ve_{4},\ve_{12},\ve_{2},\ve_{6},\ve_{1}.
+\ee
+
+Note that this is a cycle. Then we will decompose this cycle into sums, each of which is called a period. In our case of 16 roots, we will have periods containing 8, 4, 2 and 1 roots, as these are the divisors of 16. The list above gives all the periods containing 1 root. To address the cases for periods containing 8, 4 and 2 roots, we complete the following process.
+
+Begin by forming two periods of 8 roots, denoted by $x_1$ and $x_2$, where $x_1$ includes the roots in even positions in our list and $x_2$ includes the roots in odd positions:
+\beast
+x_1 &= & \ve_9+\ve_{13}+\ve_{15}+\ve_{16}+\ve_8+\ve_{4}+\ve_{2}+\ve_{1},\\
+x_2 & = & \ve_3+\ve_{10}+\ve_{5}+\ve_{11}+\ve_{14}+\ve_{7}+\ve_{12}+\ve_{6}.
+\eeast
+with $x_1 + x_2 = -1$. 
+
+We can further break down each of these $x$ periods into four periods with four terms each. Again, we will take the roots in `even' and `odd' positions within each $x$ and form the following sums:
+\beast
+y_1 = \ve_{13}+\ve_{16}+\ve_{4}+\ve_{1},&\quad & y_2 = \ve_9+\ve_{15}+\ve_8+\ve_{2},\\
+y_3 = \ve_{10}+\ve_{11}+\ve_{7}+\ve_{6},&\quad & y_4 = \ve_3+\ve_{5}+\ve_{14}+\ve_{12}.
+\eeast
+
+Again, operating in the same way on $y_1,y_2,y_3,y_4$, we get eight periods with 2 terms each:
+\beast
+& & z_1 = \ve_{16}+\ve_{1},\quad z_2 = \ve_{13}+ \ve_{4},\quad z_3 = \ve_{15}+\ve_{2},\quad z_4 = \ve_9+\ve_8,\\
+& & z_5 = \ve_{11}+\ve_{6},\quad z_6 = \ve_{10}+\ve_{7}, \quad z_7 = \ve_{5}+\ve_{12},\quad z_8 = \ve_3+\ve_{14}.
+\eeast
+
+Note that the remainders corresponding to the roots forming a period $z_i$ for $i=1,2,\dots,8$ always sum to equal 17. For example, $z_1=\ve_{16}+\ve_1$ with $16+1 = 17$. For each $z_i$, these roots can be written generally as $\ve_r$ and $\ve_{17-r}$. Using the polar form for $\ve_k$,
+\be
+\ve_r = \cos\frac{2r\pi}{17} + i\sin \frac{2r\pi}{17},\qquad \ve_{17-r} = \cos\frac{2r\pi}{17} - i\sin \frac{2r\pi}{17}.
+\ee
+
+Therefore, when we add these roots together, the imaginary parts cancel. We are left with a real number
+\be
+\ve_r + \ve_{17-r} = 2\cos \frac{2r\pi}{17}.
+\ee
+
+Then for each of the periods $z_i$, we now know that $z_i$ is a real number, and we can write
+\beast
+& & z_1 = 2\cos \frac{2\pi}{17},\quad z_2 = 2\cos \frac{8\pi}{17},\quad z_3 = 2\cos \frac{4\pi}{17},\quad z_4 = 2\cos \frac{16\pi}{17},\\
+& & z_5 = 2\cos \frac{12\pi}{17},\quad z_6 = 2\cos \frac{14\pi}{17}, \quad z_7 = 2\cos \frac{10\pi}{17},\quad z_8 = 2\cos \frac{6\pi}{17}.
+\eeast
+
+Additionally, 
+\beast
+y_1 = z_1+z_2,&\quad & y_2 = z_3+z_4,\\
+y_3 = z_5 + z_6,&\quad & y_4 = z_7+z_8.
+\eeast
+and
+\be
+x_1 =  z_1+z_2+ z_3+z_4,\quad x_2 = z_5 + z_6+ z_7+z_8.
+\ee
+
+Now we have established exactly what our periods are, we will determine the magnitude of each one (specifically, each $z_i$) relative to others. To do this, first consider a semicircle of radius 1. Divide this semicircle into 17 equal parts, and label the points of division $A_0,A_1,\dots,A_{17}$, where the segment between our starting point $A_0$ and $A_{17}$ is the diameter.\footnote{Note that this is not an actual construction, but rather a method used for determining magnitude.} Next, label the distances between $A_0$ and each $A_k$ as $S_1,S_2,\dots,S_{17}$, corresponding to $A_1,A_2,\dots,A_{17}$ respectively.
+
+
+
+Consider $\angle A_kA_{17}A_0$ which is equal to half the measure of the arc $A_kA_0$. This arc $A_kA_0$ has measure $2k\pi/34 = k\pi/17$, since the measure of this arc is $k$ times the measure of arc $A_0A_1$, and arc $A_0A_1$ measures $1/34$ of the circle. Thus, $\angle A_kA_{17}A_0 = k\pi/34$. Also notice that $\angle A_kA_0A_{17} = \pi/2 - \angle A_kA_{17}A_0 = (17-k)\pi/34$. Thus,
+\be
+S_k = 2\sin\angle A_kA_{17}A_0 = 2\cos\angle A_kA_{17}A_0 = 2\cos\frac{(17-k)\pi}{34}.
+\ee 
+
+
+\begin{center}
+\begin{pspicture}(-4.5,-4.2)(4.5,4.5)
+\psset{CodeFig, RightAngleSize=.14, CodeFigColor=red, CodeFigB=true, linestyle=solid}%dashed, dash=2mm 2mm}
+\pstGeonode[PosAngle={-90,0},PointName={O,A_{17}}]{O}(4,0){A_17}
+\pstCircleOA{O}{A_17}
+\pstSymO[PosAngle=180,CodeFigColor=white]{O}{A_17}[A_0]
+\ncline[linestyle=solid,CodeFigB=false]{A_0}{A_17}
+
+\pstRotation[RotAngle=90, PosAngle=90,CodeFigB=false,PointSymbol=none, PointName=none,CodeFigColor=white]{O}{A_17}[B]
+%\pstRightAngle[linestyle=solid]{B}{O}{A_0}
+%\ncline[linestyle=solid]{O}{B}
+
+\pstHomO[HomCoef=.25,PointSymbol=none, PointName=none]{O}{B}[J] 
+%\ncline{J}{P_1}
+\pstBissectBAC[PointSymbol=none, PointName=none,linecolor=white]{O}{J}{A_17}{PE1}
+\pstBissectBAC[PointSymbol=none, PointName=none,linecolor=white]{O}{J}{PE1}{PE2}
+
+\pstInterLL[PosAngle=-90,PointSymbol=none, PointName=none,CodeFigB=false]{O}{A_17}{J}{PE2}{E}
+
+\pstRotation[PosAngle=-90, RotAngle=-45, PointSymbol=none, PointName=none, CodeFigColor=white]{J}{E}[PF1]
+\pstInterLL[PosAngle=-90,PointSymbol=none, PointName=none]{O}{A_17}{J}{PF1}{F}
+\pstMiddleAB[PointSymbol=none, PointName=none,CodeFigColor=white]{F}{A_17}{MFP1} %\pstCircleOA{MFP1}{A_17}
+\pstInterLC[PointName=none, PointSymbol=none]{O}{B}{MFP1}{A_17}{H}{K} %\pstCircleOA{E}{K}
+\pstInterLC[PointName=none, PointSymbol=none]{O}{A_17}{E}{K}{N_6}{N_4}
+
+\pstRotation[RotAngle=90,PointSymbol=none, PointName=none,CodeFigColor=white]{N_6}{E}[PP_6]
+\pstInterLC[PosAngleA=90,PosAngleB=-90, PointNameA=A_7, PointNameB=,PointSymbol=none]{PP_6}{N_6}{O}{A_17}{A_7}{A_13}
+%%\pstSegmentMark[SegmentSymbol=wedge]{N_6}{P_6}
+%%\pstSegmentMark[SegmentSymbol=wedge]{P_13}{N_6}
+%
+\pstRotation[RotAngle=90,PointSymbol=none, PointName=,CodeFigColor=white]{N_4}{E}[PP_4]
+\pstInterLC[PosAngleA=90,PosAngleB=-90,PointNameA=A_{k}, PointNameB=,PointSymbol=none]{N_4}{PP_4}{O}{A_17}{A_k}{A_15}
+%%\pstSegmentMark[SegmentSymbol=cup]{N_4}{P_4}
+%%\pstSegmentMark[SegmentSymbol=cup]{P_15}{N_4}
+%%\pstRightAngle[linestyle=solid]{P_1}{N_6}{P_6}
+%%\pstRightAngle[linestyle=solid]{P_1}{N_4}{P_4}
+%
+\pstBissectBAC[PosAngle=90, linestyle=none]{A_k}{O}{A_7}{A_9}
+\pstBissectBAC[PosAngle=90, linestyle=none]{A_9}{O}{A_7}{A_8}
+\pstInterCC[PosAngleA=90, PointSymbolB=none, PointName=none,CodeFigB=false]{O}{A_17}{A_8}{A_7}{H_1}{H}
+\pstInterCC[PosAngleA=90, PointSymbolB=none, PointNameB=,CodeFigB=false]{O}{A_17}{A_7}{A_8}{A_6}{H}
+\pstInterCC[PosAngleA=90, PointSymbolB=none, PointNameB=,CodeFigB=false]{O}{A_17}{A_6}{A_7}{A_5}{H}
+\pstInterCC[PosAngleA=90, PointSymbolB=none, PointNameB=,CodeFigB=false]{O}{A_17}{A_5}{A_6}{A_4}{H}
+\pstInterCC[PosAngleA=100, PointSymbolB=none, PointNameB=,CodeFigB=false]{O}{A_17}{A_4}{A_5}{A_3}{H}
+\pstInterCC[PosAngleA=135, PointSymbolB=none, PointNameB=,CodeFigB=false]{O}{A_17}{A_3}{A_4}{A_2}{H}
+\pstInterCC[PosAngleA=135, PointSymbolB=none, PointNameB=,CodeFigB=false]{O}{A_17}{A_2}{A_3}{A_1}{H}
+\pstInterCC[PosAngleB=90, PointSymbol=none, PointNameB=,CodeFigB=false]{O}{A_17}{A_k}{A_9}{H}{A_13}
+
+\pstBissectBAC[PosAngle=90, PointSymbol=none,linestyle=none,PointName=]{A_13}{O}{A_k}{A_12}
+
+\pstInterCC[PosAngleA=90, PointSymbolA=none, PointNameA=,PointNameB=A_{14},CodeFigB=false]{O}{A_17}{A_13}{A_12}{H}{A_14}
+\pstInterCC[PosAngleA=90, PointSymbolA=none, PointNameA=,PointNameB=A_{15},CodeFigB=false]{O}{A_17}{A_14}{A_13}{H}{A_15}
+\pstInterCC[PosAngleA=90, PointSymbolA=none, PointNameA=,PointNameB=A_{16},CodeFigB=false]{O}{A_17}{A_15}{A_14}{H}{A_16}
+
+\pstMiddleAB[PosAngleA=90,PointSymbol=none,CodeFigColor=white]{A_0}{A_k}{S_k}
+\ncline{A_0}{A_k}
+\ncline{A_k}{A_17}
+\pstRightAngle[linestyle=solid]{A_0}{A_k}{A_17}
+\ncline[linestyle=dashed, dash=2mm 2mm]{O}{A_14}
+\pstInterLL[PosAngle=180]{O}{A_14}{A_k}{A_17}{B}
+\pstRightAngle[linestyle=solid]{O}{B}{A_17}
+
+\pstCircleOA{O}{A_17}
+\ncline{A_0}{A_17}
+
+%\pstInterCC[PosAngleB=90, PointSymbolA=none, PointNameA=, CodeFigB=false]{O}{P_1}{P_4}{P_5}{H}{P_3}
+
+%%\pstInterCC[PosAngleA=90, PointSymbolB=none, PointNameB=none]{O}{P_1}{P_6}{P_5}{P_7}{H}
+%%\pstInterCC[PosAngleA=100, PointSymbolB=none, PointNameB=none]{O}{P_1}{P_7}{P_6}{P_8}{H}
+%%\pstInterCC[PosAngleA=135, PointSymbolB=none, PointNameB=none]{O}{P_1}{P_8}{P_7}{P_9}{H}
+%%\pstOrtSym[PosAngle={-90,-90,-90,-100,-135},PointName={P_{17},P_{16},P_{14},P_{12},P_{11},P_{10}}]{O}{P_1}{P_2,P_3,P_5,P_7,P_8,P_9}[P_17,P_16,P_14,P_12,P_11,P_10]
+%%\pspolygon[linecolor=green, linestyle=solid, linewidth=2\pslinewidth](P_1)(P_2)(P_3)(P_4)(P_5)(P_6)(P_7)(P_8)(P_9)(P_10)(P_11)(P_12)(P_13)(P_14)(P_15)(P_16)(P_17)
+\end{pspicture}
+\end{center}
+
+If we rotate the real axis to $OB$, we can that $A_k$ and $A_17$ has the same real part which is equal to $S_k/2$\footnote{Note that $k$ is odd number to guarantee this.}. Since $z = 2\cos \frac{2h\pi}{17}$ for some $h$, we must have
+\be
+\frac{(17-k)\pi}{34} = \frac{2h\pi}{17} \ \ra\ k = 17 - 4h.
+\ee
+
+From here, we plug in the values of $1,2,\dots,8$ for $h$. This corresponds to the $h$ values in each $z$ period. That is, for $z_1$, $h=1$, for $z_2$, $h=4$, etc. To demonstrate, let $h=1$, $k = 17 - 4 = 13$. Thus,
+\be
+S_{13} = 2\cos\frac{(17-13)\pi}{34} = 2\cos \frac{2\pi}{17} = z_1.
+\ee
+
+So $z_1$ has relative magnitude $S_{13}$, which corresponds to the length from $A_0$ to $A_{13}$. Once this is completed for all $h=1,2,\dots,8$, we get corresponding values $k = 13,9,,5,1,-3,-7,-11,-15$. Therefore,
+\beast
+& & z_1 = S_{13},\quad z_2 = S_1,\quad z_3 = S_9,\quad z_4 = -S_{15},\\
+& & z_5 = -S_{7},\quad z_6 = -S_{11},\quad z_7 = -S_3,\quad z_8 = S_{5}.
+\eeast
+
+Since $S_k$ increase as $k$ increases: $z_4<z_6<z_5<z_7<z_2<z_8<z_3<z_1$.
+
+The relative magnitudes of each $z$ period can be used to determine the relative magnitude of each $y$ period. Consider the image below
+
+
+
+
+Using the triangle inequality, we know that for $k,p=1,2,\dots,16$
+\be
+S_{k+p} < S_k + S_p.
+\ee
+
+%Additionally, the vertex at $A_k$ can be shifted along the circle. This is accounted for algebraically by shifting magnitudes $S_k$ to $S_{k+r}$ and $S_p$ to $S_{p+17-r}$. In particular, for $r<p$ we can have that
+%\be
+%S_{k+p} < S_{k+r} + S_{p-r}\qquad (*)
+%\ee
+%which is easy to see. If $r>p$, $17-r< 17-p$. Thus, plug back into $(*)$,
+%\be
+%S_{17+k-p} < S_{17+k-r} + S_{r-p}\qquad
+%\ee
+
+%Then we
+%
+%if $k+p > 34-(k+r)$
+%%\be
+%%S_{k+p} < S_{k+r} + S_{r-p} = S_{k+r} + S_{17+p-r}
+%%\ee
+%This expands our inequality, and
+%\be
+%S_{k+p} < S_{k+r} + S_{p+17-r}.
+%\ee
+
+To determine the relative magnitude of $y_1,y_2,y_3,y_4$, we can take their differences. To demonstrate, consider 
+\be
+y_1 - y_2 = z_1+z_2 - z_3-z_4 = S_{13} + S_1 - S_9 + S_{15}.
+\ee
+
+Since $S_{15}>S_9$, we have that $y_1>y_2$. Similarly,
+\beast
+& & y_1 - y_3 = z_1+z_2 - z_5-z_6  = S_{13} + S_1 + S_7 + S_{11} > 0 ,\\
+& & y_1 - y_4 = z_1+z_2 - z_7-z_8  = S_{13} + S_1 + S_3 - S_{5} > 0, \\
+& & y_2 - y_3 = z_3+z_4 - z_5-z_6  = S_{9} - S_{15} + S_7 + S_{11} > S_{16} -S_{15} + S_{11} >0, \\
+& & y_2 - y_4 = z_3+z_4 - z_7-z_8  = S_{9} - S_{15} + S_3 - S_{5} < 0, \\
+& & y_3 - y_4 = z_5+z_6 - z_7-z_8  = -S_{7} - S_{11} + S_3 - S_{5} < 0. 
+\eeast
+
+Therefore, $y_3 < y_2 < y_4 < y_1$.
+
+\begin{center}
+\begin{pspicture}(-4.5,-4.2)(4.5,4.5)
+\psset{CodeFig, RightAngleSize=.14, CodeFigColor=red, CodeFigB=true, linestyle=solid}%dashed, dash=2mm 2mm}
+\pstGeonode[PosAngle={-90,0},PointName={O,A_{17}}]{O}(4,0){A_17}
+\pstCircleOA{O}{A_17}
+\pstSymO[PosAngle=180,CodeFigColor=white]{O}{A_17}[A_0]
+\ncline[linestyle=solid,CodeFigB=false]{A_0}{A_17}
+
+\pstRotation[RotAngle=90, PosAngle=90,CodeFigB=false,PointSymbol=none, PointName=none, CodeFigColor=white]{O}{A_17}[B]
+%\pstRightAngle[linestyle=solid]{B}{O}{A_0}
+%\ncline[linestyle=solid]{O}{B}
+
+\pstHomO[HomCoef=.25,PointSymbol=none, PointName=none]{O}{B}[J]
+%\ncline{J}{P_1}
+\pstBissectBAC[PointSymbol=none, PointName=none,linecolor=white]{O}{J}{A_17}{PE1}
+\pstBissectBAC[PointSymbol=none, PointName=none,linecolor=white]{O}{J}{PE1}{PE2}
+
+\pstInterLL[PosAngle=-90,PointSymbol=none, PointName=none,CodeFigB=false]{O}{A_17}{J}{PE2}{E}
+
+\pstRotation[PosAngle=-90, RotAngle=-45, PointSymbol=none, PointName=none,CodeFigB=false,CodeFigColor=white]{J}{E}[PF1]
+\pstInterLL[PosAngle=-90,PointSymbol=none, PointName=none]{O}{A_17}{J}{PF1}{F}
+\pstMiddleAB[PointSymbol=none, PointName=none,CodeFigColor=white]{F}{A_17}{MFP1}
+%\pstCircleOA{MFP1}{A_17}
+\pstInterLC[PointNameA=,PointSymbol=none, PointNameB=]{O}{B}{MFP1}{A_17}{H}{K}
+%\pstCircleOA{E}{K}
+\pstInterLC[PointNameA=,PointSymbol=none, PointNameB=]{O}{A_17}{E}{K}{N_6}{N_4}
+
+\pstRotation[RotAngle=90,PointSymbol=none, PointName=none,CodeFigColor=white]{N_6}{E}[PP_6]
+\pstInterLC[PosAngleA=90,PosAngleB=-90, PointName=none, PointNameB=,PointSymbol=none]{PP_6}{N_6}{O}{A_17}{A_7}{A_13}
+%%\pstSegmentMark[SegmentSymbol=wedge]{N_6}{P_6}
+%%\pstSegmentMark[SegmentSymbol=wedge]{P_13}{N_6}
+%
+\pstRotation[RotAngle=90,PointSymbol=none, PointName=none,CodeFigColor=white]{N_4}{E}[PP_4]
+\pstInterLC[PosAngleA=90,PosAngleB=-90,PointNameA=,PointSymbol=none, PointNameB=]{N_4}{PP_4}{O}{A_17}{A_k}{A_15}
+%%\pstSegmentMark[SegmentSymbol=cup]{N_4}{P_4}
+%%\pstSegmentMark[SegmentSymbol=cup]{P_15}{N_4}
+%%\pstRightAngle[linestyle=solid]{P_1}{N_6}{P_6}
+%%\pstRightAngle[linestyle=solid]{P_1}{N_4}{P_4}
+%
+\pstBissectBAC[PosAngle=90, linestyle=none,PointName=A_k]{A_k}{O}{A_7}{A_9}
+\pstBissectBAC[PosAngle=90, linestyle=none, PointSymbol=none, PointName=none]{A_9}{O}{A_7}{A_8}
+\pstInterCC[PosAngleA=90, PointSymbolB=none, PointNameB=,CodeFigB=false]{O}{A_17}{A_7}{A_8}{A_6}{H}
+\pstInterCC[PosAngleA=90, PointSymbolB=none, PointNameB=,CodeFigB=false]{O}{A_17}{A_6}{A_7}{A_5}{H}
+\pstInterCC[PosAngleA=90, PointSymbolB=none, PointNameB=,CodeFigB=false]{O}{A_17}{A_5}{A_6}{A_4}{H}
+\pstInterCC[PosAngleA=100, PointSymbolB=none, PointNameB=,CodeFigB=false]{O}{A_17}{A_4}{A_5}{A_3}{H}
+\pstInterCC[PosAngleA=135, PointSymbolB=none, PointNameB=,CodeFigB=false]{O}{A_17}{A_3}{A_4}{A_2}{H}
+\pstInterCC[PosAngleA=135, PointSymbolB=none, PointNameB=,CodeFigB=false]{O}{A_17}{A_2}{A_3}{A_1}{H}
+
+\pstInterCC[PosAngleB=60, PointSymbolA=none, PointNameA=,PointNameB= {\ A_{k+p}}, CodeFigB=false]{O}{A_17}{A_k}{A_9}{H}{A_13}
+\pstBissectBAC[PosAngle=90, PointSymbol=none,linestyle=none,PointName=]{A_13}{O}{A_k}{A_12}
+
+\pstInterCC[PosAngleA=90, PointSymbolA=none, PointNameA=,PointNameB=A_{14},CodeFigB=false]{O}{A_17}{A_13}{A_12}{H}{A_14}
+\pstInterCC[PosAngleA=90, PointSymbolA=none, PointNameA=,PointNameB=A_{15},CodeFigB=false]{O}{A_17}{A_14}{A_13}{H}{A_15}
+\pstInterCC[PosAngleA=90, PointSymbolA=none, PointNameA=,PointNameB=A_{16},CodeFigB=false]{O}{A_17}{A_15}{A_14}{H}{A_16}
+
+\pstMiddleAB[PosAngle=90,PointSymbol=none,PointName=S_{k},CodeFigColor=white]{A_0}{A_9}{S_k}
+\ncline{A_0}{A_9}
+\ncline{A_9}{A_17}
+\pstRightAngle[linestyle=solid]{A_0}{A_9}{A_17}
+
+\pstMiddleAB[PosAngle=90,PointSymbol=none, PointName=S_{k+p},CodeFigColor=white]{A_0}{A_13}{S_kp}
+\ncline{A_0}{A_13}
+\ncline{A_13}{A_17}
+\pstRightAngle[linestyle=solid]{A_0}{A_13}{A_17}
+
+\pstMiddleAB[PosAngle=-60,PointSymbol=none, PointName=S_{p},CodeFigColor=white]{A_9}{A_13}{S_p}
+\ncline{A_9}{A_13}
+
+\pstCircleOA{O}{A_17}
+\ncline{A_0}{A_17}
+
+%\pstInterCC[PosAngleB=-20, PointSymbolA=none, PointNameA=,PointNameB=A_{k+r},CodeFigB=false]{O}{A_17}{A_17}{A_15}{H}{A_kr}
+%\pstMiddleAB[PosAngle=-60,PointSymbol=none, PointName=S_{k+r}]{A_0}{A_kr}{S_kr}
+%\ncline{A_0}{A_kr}
+%
+%\pstMiddleAB[PosAngle=180,PointSymbol=none, PointName=S_{r-p}]{A_13}{A_kr}{S_pr}
+%\ncline{A_13}{A_kr}
+
+%\ncline[linestyle=dashed, dash=2mm 2mm]{O}{A_14}
+%\pstInterLL[PosAngle=180]{O}{A_14}{A_k}{A_17}{B}
+%\pstRightAngle[linestyle=solid]{O}{B}{A_17}
+
+%\pstInterCC[PosAngleB=90, PointSymbolA=none, PointNameA=, CodeFigB=false]{O}{P_1}{P_4}{P_5}{H}{P_3}
+
+%%\pstInterCC[PosAngleA=90, PointSymbolB=none, PointNameB=none]{O}{P_1}{P_6}{P_5}{P_7}{H}
+%%\pstInterCC[PosAngleA=100, PointSymbolB=none, PointNameB=none]{O}{P_1}{P_7}{P_6}{P_8}{H}
+%%\pstInterCC[PosAngleA=135, PointSymbolB=none, PointNameB=none]{O}{P_1}{P_8}{P_7}{P_9}{H}
+%%\pstOrtSym[PosAngle={-90,-90,-90,-100,-135},PointName={P_{17},P_{16},P_{14},P_{12},P_{11},P_{10}}]{O}{P_1}{P_2,P_3,P_5,P_7,P_8,P_9}[P_17,P_16,P_14,P_12,P_11,P_10]
+%%\pspolygon[linecolor=green, linestyle=solid, linewidth=2\pslinewidth](P_1)(P_2)(P_3)(P_4)(P_5)(P_6)(P_7)(P_8)(P_9)(P_10)(P_11)(P_12)(P_13)(P_14)(P_15)(P_16)(P_17)
+\end{pspicture}
+\end{center}
+
+Similarly,
+\beast
+x_1 - x_2 & = & z_1+z_2+ z_3+z_4-( z_5 + z_6+ z_7+z_8) = S_{13} + S_1 + S_9 - S_{15} + S_7 + S_{11} + S_3 - S_5\\
+& > & S_{16} - S_{15} + S_1 + S_9 +  S_7 + S_{11} - S_5 >0
+\eeast
+which implies $x_1>x_2$.
+
+Next, we will find quadratic equations for which each of our periods is a root. To begin, consider the period $z_1$ and $z_2$. First, we have that
+\be
+z_1 + z_2 = y_1.
+\ee
+
+Our next step is to determine $z_1z_2$:
+\be
+z_1z_2 = (\ve_{16}+\ve_1)(\ve_{13}+\ve_4) = \ve_{16+13} + \ve_{1+13} + \ve_{16+4} +\ve_{1+4} = \ve_{12} + \ve_{14} + \ve_{3} +\ve_5 = z_7 + z_8 = y_4.
+\ee
+
+Therefore, we may construct the quadratic equation with roots $z_1$ and $z_2$:
+\be
+z^2 - y_1 z + y_4 = 0 .
+\ee
+
+Since $z_1>z_2$, these roots may also be written as:
+
+\be
+z_1 = \frac{y_1 + \sqrt{y_1^2 - 4y_4}}{2},\qquad  z_2 = \frac{y_1 - \sqrt{y_1^2 - 4y_4}}{2}
+\ee
+
+We then determine $y_1$ and $y_4$. First, consider $y_1$ and $y_2$ which form the period $x_1$. That is,
+\be
+y_1 + y_2 = x_1.
+\ee
+
+Additionally, 
+\beast
+y_1y_2 & = & \bb{\ve_{13} +\ve_{16} + \ve_4 + \ve_1}\bb{\ve_{9} +\ve_{15} + \ve_8 + \ve_2} \\
+& = & \ve_{13+9} + \ve_{13+15} + \ve_{13 + 8} + \ve_{13+2} + \ve_{16+9} + \ve_{16+15} + \ve_{16 + 8} + \ve_{16+2} \\
+& & \qquad + \ve_{4+9} + \ve_{4+15} + \ve_{4 + 8} + \ve_{4+2} + \ve_{1+9} + \ve_{1+15} + \ve_{1 + 8} + \ve_{1+2} \\
+& = & \ve_{5} + \ve_{11} + \ve_{4} + \ve_{15} + \ve_{8} + \ve_{14} + \ve_{7} + \ve_{1} + \ve_{13} + \ve_{2} + \ve_{12} + \ve_{6} + \ve_{10} + \ve_{16} + \ve_{9} + \ve_{3} \\
+& = & \sum^{16}_{k=1}\ve_k = -1.
+\eeast
+
+Therefore,$y_1$ and $y_2$ are the roots of the equation:
+\be
+(y-y_1)(y-y_2) = y^2 - x_1y -1 = 0.
+\ee
+
+Since $y_1 >y_2$, we have
+\be
+y_1 = \frac{x_1 + \sqrt{x_1^2 + 4}}2,\qquad y_1 = \frac{x_1 - \sqrt{x_1^2 + 4}}2.
+\ee
+
+Similarly, for $y_3$ and $y_4$,
+\be
+y_3 + y_4 = x_2,\qquad y_3y_4 = -1.
+\ee
+
+Therefore, $y_3$ and $y_4$ are roots of the equation 
+\be
+y^2 - x_2 y - 1 = 0.
+\ee
+
+Since $y_4 >y_3$, we have
+\be
+y_3 = \frac{x_2 - \sqrt{x_2^2 + 4}}2,\qquad y_4 = \frac{x_2 + \sqrt{x_2^2 + 4}}2.
+\ee
+
+Then we want to determine $x_1$ and $x_2$. First,
+\be
+x_1 + x_2 = \sum^{16}_{k=1}\ve_k = -1.
+\ee
+
+Also,
+\beast
+x_1x_2 & = & \bb{\ve_{13} + \ve_{16} + \ve_4 +\ve_1 + \ve_9 +\ve_{15} +\ve_8 + \ve_2}\bb{\ve_{10} + \ve_{11} + \ve_7 +\ve_6 + \ve_3 +\ve_{5} +\ve_{14} + \ve_{12}} \\
+& = & 4 \sum^{16}_{k=1}\ve_k = -4.
+\eeast
+
+Therefore, $x_1$ and $x_2$ are the roots of the equation
+\be
+x^2 + x - 4 = 0.
+\ee
+
+Since $x_1>x_2$, we have
+\be
+x_1 = \frac {-1+\sqrt{17}}2,\qquad x_2 = \frac {-1-\sqrt{17}}2.
+\ee
+
+Then we work back through $y_1,y_2,y_3,y_4$ and find 
+\be
+y_{1,2} = \frac{\frac{-1+\sqrt{17}}2 \pm \sqrt{\bb{ \frac {-1+\sqrt{17}}2}^2 + 4}}{2} = \frac{-1+\sqrt{17}\pm \sqrt{34-2\sqrt{17}}}{4},
+\ee
+
+\be
+y_{3,4} = \frac{\frac{-1-\sqrt{17}}2 \mp \sqrt{\bb{ \frac {-1-\sqrt{17}}2}^2 + 4}}{2} = \frac{-1-\sqrt{17} \mp \sqrt{34+2\sqrt{17}}}{4}.
+\ee
+
+Then we have
+\beast
+z_1 & = & \frac 12\bb{\frac{-1+\sqrt{17} + \sqrt{34-2\sqrt{17}}}{4} + \sqrt{\bb{\frac{-1+\sqrt{17}+ \sqrt{34-2\sqrt{17}}}{4}}^2 + 1 + \sqrt{17} - \sqrt{34+2\sqrt{17}}}} \\
+& = & \frac 18\bb{-1+\sqrt{17} + \sqrt{34-2\sqrt{17}} + \sqrt{\bb{-1+\sqrt{17}+  \sqrt{34-2\sqrt{17}}}^2 + 16\bb{1 + \sqrt{17} - \sqrt{34+2\sqrt{17}}}}} \\
+& = & \frac 18\bb{-1+\sqrt{17} + \sqrt{34-2\sqrt{17}} + \sqrt{68 + 12\sqrt{17} - 16\sqrt{34+2\sqrt{17}} + 2 \bb{\sqrt{17}-1}\sqrt{34-2\sqrt{17}}}} .
+\eeast
+
+Note that since $z_1$ consists of only addition, subtraction, multiplication, division, and square roots, $z_1$ is a constructible number\footnote{theorem needed.}. Also, $z_1 = \ve_1 + \ve_{16}$, and dividing $z_1$ by 2 gives us the real portion of both $\ve_1$ and $\ve_{16}$. This is also a real number. We can now construct a perpendicular through this point, which intersects the circle at $\ve_1$ and $\ve_{16}$. 
+
+Note that for 5-sided polygon, we can have that $a=3$ and 
+\be
+3^1\equiv 3(\bmod 5),\quad 3^2\equiv 4(\bmod 5),\quad 3^3 \equiv 2(\bmod 5),\quad 3^4\equiv 1 (\bmod 5).
+\ee
+
+Thus, the corresponding roots $\ve_3,\ve_4,\ve_2,\ve_1$ (in order) of equation $x^4 + x^3 + x^2 + x + 1 = 0$ with
+\be
+x_1 = \ve_4 + \ve_1,\quad x_2 = \ve_3 + \ve_2.
+\ee
+
+Also, we knwo that $x_1+x_2 = -1$ and
+\be
+x_1 x_2 = (\ve_4+\ve_1)(\ve_3+\ve_2) = \ve_{4+3}+\ve_{4+2} + \ve_{1+3}+\ve_{1+2} = \ve_2 + \ve_1 + \ve_4 + \ve_3 = -1
+\ee
+which implies that $x_1,x_2$ are the roots of equation
+\be
+x^2 - (x_1+x_2)x + x_1x_2 = x^2 + x -1 = 0.
+\ee
+
+Thus, since $x_1>x_2$,
+\be
+x_{1,2} = \frac{\pm\sqrt{5}-1}{2}.
+\ee
+
+\end{proof}
+
+
+\begin{example}[17-sided polygon]
+
+Dozens of different constructions for the regular 17-gon have been given, some before Klein's algebraic proof, some after. Gauss and Klein both gave possible constructions, both of which were fairly complex. The following construction demonstrates a more modern (and much simpler) construction of the polygon.
+
+\ben
+\item [(i)] {\bf Construct a circle with center $O$ and diameter $BA$. Construct the perpendicular bisector of $BA$, segment $OC$.}
+\item [(ii)] {\bf Construct $OD = OC/4$. Then construct segment $DA$.}
+
+
+
+\item [(iii)] {\bf Bisect angle $\angle ODA$ twice to construct angle $\angle ODE$, where the measures of $\angle ODN$ and $\angle ODE$ are 1/2 and 1/4 that of angle $\angle ODA$.}
+
+Since $DN$ equally divides angle $\angle ODA$, we have 
+\be
+\frac{ON}{1-ON} = \frac{ON}{NA} =  \frac{OD}{DA} = \frac{\frac 14}{\frac{\sqrt{17}}4} \ \ra \ ON = \frac {\sqrt{17}-1}{16}.
+\ee
+
+Again, $DE$ equally divides angle $\angle ODN$, we have
+\be
+\frac{OE}{\frac {\sqrt{17}-1}{16} - OE} = \frac{OE}{EN} =  \frac{OD}{DN} = \frac{\frac 14}{\sqrt{\bb{\frac {\sqrt{17}-1}{16}}^2+\bb{\frac 14}^2}} = \frac{4}{\sqrt{34 - 2\sqrt{17}}}
+\ee
+which gives that
+\beast
+OE & = & \frac {\sqrt{17}-1}4\bb{\frac 1{\sqrt{34- 2\sqrt{17}}+4}} = \frac 14\bb{\frac {\bb{\sqrt{17}-1}\bb{\sqrt{34- 2\sqrt{17}}-4}} {34- 2\sqrt{17} - 16}} = \frac 14\bb{\frac {\bb{\sqrt{34- 2\sqrt{17}}-4}} {\sqrt{17}-1}} \\
+& = & \frac 1{64}\bb{\sqrt{4^2 + (\sqrt{17}-1)^2}-4}\bb{\sqrt{17}+1} = \frac 1{16}\bb{-\sqrt{17}-1 + \sqrt{\bb{\sqrt{17}+1}^2 + 4^2}} \\
+& = & \frac 1{16}\bb{-\sqrt{17}-1 + \sqrt{34 + 2\sqrt{17}}} = \frac {y_4}4
+\eeast
+where $y_4$ is defined in proof of Theorem \ref{thm:algebraic_proof_of_17_sided_polygon}.
+
+\begin{center}
+\begin{pspicture}(-5.5,-5.2)(5.5,5.7)
+\psset{CodeFig, RightAngleSize=.25, CodeFigColor=red, CodeFigB=true, linestyle=dashed, dash=2mm 2mm}
+\pstGeonode[PosAngle={-90,0}]{O}(5,0){A}
+\pstGeonode[PosAngle={-90,180}]{O}(-5,0){B}
+\pstGeonode[PosAngle={-90,90}]{O}(0,5){C}
+\pstCircleOA{O}{A} %% circle drawing
+%\pstSymO[PointSymbol=none, PointName=none, CodeFig=false]{O}{A}[PP_0]
+\ncline[linestyle=solid]{B}{A}
+%\pstRotation[RotAngle=180, PosAngle=180]{O}{A}[B] %% rotation arrow
+%\pstRotation[RotAngle=90, PosAngle=90]{O}{A}[C]
+%\pstRightAngle[linestyle=solid]{C}{O}{PP_0} %% right angle
+\ncline[linestyle=solid]{O}{C}
+\pstHomO[HomCoef=.25,PosAngle=45]{O}{C}[D] %% 1/4 of OA
+\ncline{D}{A} %% \ncline is line between A and D.
+\pstBissectBAC[PointSymbol=none, PointName=none]{O}{D}{A}{PE1} %% bissect angle
+\pstInterLL[PosAngle=-90]{O}{A}{D}{PE1}{N} %% first two is the segment points to have intersection
+\pstBissectBAC[PointSymbol=none, PointName=none]{O}{D}{PE1}{PE2}
+\pstInterLL[PosAngle=-90]{O}{A}{D}{PE2}{E}
+\pstHomO[HomCoef=.8, PointSymbol=none, PointName=none]{D}{E}[PD1]
+\pstRotation[PosAngle=-90, RotAngle=-45, PointSymbol=none, PointName=none]{D}{PD1}[PF1] %% Rotate arrow
+\pstInterLL[PosAngle=-135]{O}{B}{D}{PF1}{F}
+\ncline{D}{F}
+\pstMiddleAB[PointSymbol=none, PointName=none]{F}{A}{MFA1} %% middle point
+\pstCircleOA{MFA1}{A} %% circle drawing
+\pstInterLC[PosAngleA=-90,PosAngleB=135,PointNameB=G, PointNameA=]{O}{C}{MFA1}{A}{H_1}{G}%%[PointSymbolA=none, PointNameA=none] %% intersection of circles
+\ncline{O}{H_1}
+
+\pstCircleOA{E}{G} 
+\pstInterLC[PosAngleA=-135,PosAngleB=-45]{O}{A}{E}{G}{H}{K}
+\pstRotation[RotAngle=90,PointSymbol=none, PointName=none, CodeFigColor=white]{H}{K}[PP_5]
+\pstInterLC[PosAngleA=90,PosAngleB=-90, PointNameB=P_{12}]{PP_5}{H}{O}{A}{P_5}{P_12}
+%\pstSegmentMark[SegmentSymbol=wedge]{H}{P_5}
+%\pstSegmentMark[SegmentSymbol=wedge]{P_{12}}{H}
+\pstRotation[RotAngle=90,PointSymbol=none, PointName=none, CodeFigColor=white]{K}{H}[PP_3] %% Rotation arrow
+\pstInterLC[PosAngleA=90,PosAngleB=-90,PointNameB=P_{14}]{K}{PP_3}{O}{A}{P_3}{P_14}
+%\pstSegmentMark[SegmentSymbol=cup]{K}{P_3}
+%\pstSegmentMark[SegmentSymbol=cup]{P_{14}}{K}
+\pstRightAngle[linestyle=solid]{A}{H}{P_5}
+\pstRightAngle[linestyle=solid]{A}{K}{P_3}
+
+\ncline{P_5}{P_12}
+\ncline{P_3}{P_14}
+
+\ncline{O}{P_5}
+\ncline{O}{P_4}
+\ncline{O}{P_3}
+
+\pstGeonode[PosAngle=-90, PointSymbol=none]{O}(-1.1,4.9){L}
+\pstGeonode[PosAngle=-90, PointSymbol=none]{O}(1.9,4.6){M}
+
+
+\pstBissectBAC[PosAngle=90, linestyle=none]{P_3}{O}{P_5}{P_4}
+\pstInterCC[PosAngleB=90, PointSymbolA=none, PointNameA=none]{O}{A}{P_3}{P_4}{H_1}{P_2}
+\pstInterCC[PosAngleB=90, PointSymbolA=none, PointNameA=none]{O}{A}{P_2}{P_3}{H_1}{P_1}
+\pstInterCC[PosAngleA=90, PointSymbolB=none, PointNameB=none]{O}{A}{P_5}{P_4}{P_6}{H_1}
+\pstInterCC[PosAngleA=100, PointSymbolB=none, PointNameB=none]{O}{A}{P_6}{P_5}{P_7}{H_1}
+\pstInterCC[PosAngleA=135, PointSymbolB=none, PointNameB=none]{O}{A}{P_7}{P_6}{P_8}{H_1}
+\pstOrtSym[PosAngle={-45,-45,-90,-100,-135},PointName={P_{16},P_{15},P_{13},P_{11},P_{10},P_{9}}]{O}{A}{P_1,P_2,P_4,P_6,P_7,P_8}[P_16,P_15,P_13,P_11,P_10,P_9]
+\pspolygon[linecolor=blue, linestyle=solid, linewidth=2\pslinewidth](A)(P_1)(P_2)(P_3)(P_4)(P_5)(P_6)(P_7)(P_8)(P_9)(P_10)(P_11)(P_12)(P_13)(P_14)(P_15)(P_16)
+
+\ncline[linestyle=solid]{B}{A}
+\end{pspicture}
+￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
+\end{center}
+
+%\begin{center}
+%\begin{pspicture}(-5.5,-5.5)(5.5,6)
+% \psset{CodeFig, RightAngleSize=.14, CodeFigColor=red, CodeFigB=true, linestyle=dashed, dash=2mm 2mm}
+% \pstGeonode[PosAngle={-90,0}]{O}(5;0){P_1}
+% \pstCircleOA{O}{P_1}
+% \pstSymO[PointSymbol=none, PointName=none, CodeFig=false]{O}{P_1}[PP_1]
+% \ncline[linestyle=solid]{PP_1}{P_1}
+% \pstRotation[RotAngle=90, PosAngle=90]{O}{P_1}[B]
+% \pstRightAngle[linestyle=solid]{B}{O}{PP_1}\ncline[linestyle=solid]{O}{B}
+% \pstHomO[HomCoef=.25]{O}{B}[J] \ncline{J}{P_1}
+% \pstBissectBAC[PointSymbol=none, PointName=none]{O}{J}{P_1}{PE1}
+% \pstBissectBAC[PointSymbol=none, PointName=none]{O}{J}{PE1}{PE2}
+% \pstInterLL[PosAngle=-90]{O}{P_1}{J}{PE2}{E}
+% \pstRotation[PosAngle=-90, RotAngle=-45, PointSymbol=none, PointName=none]{J}{E}[PF1]
+% \pstInterLL[PosAngle=-90]{O}{P_1}{J}{PF1}{F}
+% \pstMiddleAB[PointSymbol=none, PointName=none]{F}{P_1}{MFP1} 
+% \pstCircleOA{MFP1}{P_1}
+% \pstInterLC{O}{B}{MFP1}{P_1}{H}{K}%[PointSymbolA=none, PointNameA=none]
+% \pstCircleOA{E}{K} 
+% \pstInterLC{O}{P_1}{E}{K}{N_6}{N_4}
+% \pstRotation[RotAngle=90,PointSymbol=none, PointName=none]{N_6}{E}[PP_6]
+% \pstInterLC[PosAngleA=90,PosAngleB=-90, PointNameB=P_{13}]{PP_6}{N_6}{O}{P_1}{P_6}{P_13}
+% \pstSegmentMark[SegmentSymbol=wedge]{N_6}{P_6}
+% \pstSegmentMark[SegmentSymbol=wedge]{P_13}{N_6}
+%\pstRotation[RotAngle=90,PointSymbol=none, PointName=none]{N_4}{E}[PP_4]
+% \pstInterLC[PosAngleA=90,PosAngleB=-90,PointNameB=P_{15}]{N_4}{PP_4}{O}{P_1}{P_4}{P_15}
+% \pstSegmentMark[SegmentSymbol=cup]{N_4}{P_4}
+% \pstSegmentMark[SegmentSymbol=cup]{P_15}{N_4}
+% \pstRightAngle[linestyle=solid]{P_1}{N_6}{P_6}
+% \pstRightAngle[linestyle=solid]{P_1}{N_4}{P_4}
+% \pstBissectBAC[PosAngle=90, linestyle=none]{P_4}{O}{P_6}{P_5}
+% \pstInterCC[PosAngleB=90, PointSymbolA=none, PointNameA=none]{O}{P_1}{P_4}{P_5}{H}{P_3}
+% \pstInterCC[PosAngleB=90, PointSymbolA=none, PointNameA=none]{O}{P_1}{P_3}{P_4}{H}{P_2}
+% \pstInterCC[PosAngleA=90, PointSymbolB=none, PointNameB=none]{O}{P_1}{P_6}{P_5}{P_7}{H}
+% \pstInterCC[PosAngleA=100, PointSymbolB=none, PointNameB=none]{O}{P_1}{P_7}{P_6}{P_8}{H}
+% \pstInterCC[PosAngleA=135, PointSymbolB=none, PointNameB=none]{O}{P_1}{P_8}{P_7}{P_9}{H}
+% \pstOrtSym[PosAngle={-90,-90,-90,-100,-135},PointName={P_{17},P_{16},P_{14},P_{12},P_{11},P_{10}}]
+% {O}{P_1}{P_2,P_3,P_5,P_7,P_8,P_9}[P_17,P_16,P_14,P_12,P_11,P_10]
+% \pspolygon[linecolor=blue, linestyle=solid, linewidth=2\pslinewidth]
+% (P_1)(P_2)(P_3)(P_4)(P_5)(P_6)(P_7)(P_8)(P_9)(P_10)(P_11)(P_12)(P_13)(P_14)(P_15)(P_16)(P_17)
+% \end{pspicture}
+￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
+%\end{center}
+
+
+\item [(iv)] {\bf Construct angle $\angle EDF=\pi/4$. Then construct a semicircle with diameter $AF$, intersecting $OC$ at $G$.}
+
+By proposition\footnote{proposition needed.}, we have that
+\be
+\frac 12 EF\cdot OD = \text{area of }EDF = \frac 12 \sin\angle EDF \cdot DE \cdot DF 
+\ee
+which implies that
+\beast
+OD (OE + OF) & = &  \frac {\sqrt{2}}2 \sqrt{OD^2 + OE^2}\sqrt{OD^2 + OF^2} \\
+OD^2 (OE + OF)^2 & = & \frac 12 \bb{OD^2 + OE^2}\bb{OD^2 + OF^2} \\
+\frac 1{16} (OE + OF)^2 & = & \frac 12 \bb{\frac 1{16} + OE^2}\bb{\frac 1{16} + OF^2} 
+\eeast
+
+Since $OE = y_4/4$, we have
+\be
+2(y_4/4 + OF)^2 = \bb{1+ y_4^2}\bb{\frac 1{16} + OF^2} 
+\ee
+which implies that
+\be
+\bb{1- y_4^2} OF^2 + y_4 OF - \frac 1{16}\bb{1- y_4^2} = 0
+\ee
+
+Then since $y_4 <1$
+\be
+OF = \frac{-y_4 + \sqrt{y_4^2 + \frac 14 \bb{1- y_4^2}^2}}{2(1- y_4^2)} = \frac 14\frac{1-y_4}{1+y_4}
+\ee
+
+In particular, 
+\beast
+\frac{1-y_4}{1+y_4} & = & \frac{\frac{5+\sqrt{17}-\sqrt{34+2\sqrt{17}}}4}{\frac{3-\sqrt{17}+\sqrt{34+2\sqrt{17}}}4} = \frac{5+\sqrt{17}-\sqrt{34+2\sqrt{17}}}{3-\sqrt{17}+\sqrt{34+2\sqrt{17}}} = \frac{\bb{5+\sqrt{17}-\sqrt{34+2\sqrt{17}}}\bb{3-\sqrt{17}-\sqrt{34+2\sqrt{17}}}}{\bb{3-\sqrt{17}}^2 - \bb{34+2\sqrt{17}}} \\
+& = & \frac{32 - 8\sqrt{34+2\sqrt{17}}}{-8 - 8\sqrt{17}} = \frac{-4 + \sqrt{34+2\sqrt{17}}}{1+\sqrt{17}} = \frac 1{16}\bb{-4\sqrt{17} + 4 + \bb{\sqrt{17}-1}\sqrt{\bb{\sqrt{17}+1}^2 + 4^2}} \\
+& = & \frac{1-\sqrt{17}+ \sqrt{34-2\sqrt{17}}}{4} = -y_2
+\eeast
+where $y_2$ is defined in proof of Theorem \ref{thm:algebraic_proof_of_17_sided_polygon}. Thus, $OF = -y_2/4$. Then we have 
+\be
+OF \cdot OA = OG^2 \ \ra\ OF = OG^2
+\ee
+since $\angle FGA = \pi/2$.
+
+\item [(v)] {\bf Construct a semicircle with center $E$ and radius $EG$, which intersects $AB$ at $H$ and $K$. }
+    
+We know that 
+\be
+EH = EK = EG = \sqrt{OE^2 + OG^2} = \sqrt{OE^2+ OF} = \sqrt{\bb{\frac {y_4}4} - \frac{y_2}4} = \frac{\sqrt{y_4^2 - 4y_2}}{4}.
+\ee
+
+Therefore, 
+\be
+OH = EH - OE = \frac{\sqrt{y_4^2 - 4y_2}}{4} - \frac {y_4}4 = -\frac {z_7}2\qquad (*)
+\ee
+and 
+\be
+OK = EK + OE = \frac{\sqrt{y_4^2 - 4y_2}}{4} + \frac {y_4}4 = \frac{z_8}2\qquad (\dag)
+\ee
+where $z_7$ and $z_8$ are defined in proof of Theorem \ref{thm:algebraic_proof_of_17_sided_polygon}. To see ($*$) and ($\dag$), we have the definition
+\be
+z_7 + z_8 = y_4
+\ee
+and 
+\beast
+z_7z_8 & = &  (\ve_5 + \ve_{12})(\ve_3+ \ve_{14}) =\ve_{5+3} + \ve_{5+14} + \ve_{12+3} + \ve_{12+14} \\
+& = & \ve_8 + \ve_2+ \ve_{15} + \ve_9 = z_3 + z_4 = y_2.
+\eeast
+
+Thus, $z_7$ and $z_8$ are the roots of equation
+\be
+z^2 - y_4 z + y_2\ \ra\ z_{7,8} = \frac{y_4 \pm \sqrt{y_4^2 - 4y_2} }{2}.
+\ee
+
+\item [(vi)] {\bf Construct $HL$ and $KM$, both perpendicular to $AB$. Measure of angle $\angle LOM = 4\pi/17$, so bisecting this angle gives us $2\pi/17$.} 
+
+Since $z_7 = \ve_5 + \ve_{12}$, $z_8 = \ve_3 + \ve_{14}$, $-OH$ and $OK$ are the real parts of $\ve_5$ and $\ve_3$.
+
+\een
+
+We have now divided the circle into 17 equal parts. Connecting these points of division gives us 17-sided regular polygon (see \cite{Bold_1969}).
+\end{example}
+
+
+\section{Other Problems}
+
+\subsection{Space division by planes}
+
+The maximal number of regions into which space can be divided by $n$ planes is\footnote{check needed. Yaglom, A.M. and Yaglom, I.M., Challenging Mathematical Problems with Elementary Solutions Vol. 1, New York, 1987, pp 102-106.}
+\be
+f(n) = \frac 16\bb{n^3 + 5n + 6}.
+\ee
+
+

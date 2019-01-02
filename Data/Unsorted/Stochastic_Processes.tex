@@ -1,0 +1,419 @@
+\section{Discrete-time Processes}
+
+\subsection{Stochastic processes and filtrations}
+
+Let $(\Omega,\sF,\pro)$ be a probability space and $(E,\sE)$ be a measurable space. (We will mostly consider $E =\R,\R^d,\C$). %Let $I \subseteq \R$ (i.e. $I = \Z$ or $I = [0,\infty)$) be the set of times on which we will define a process.
+
+\begin{definition}[stochastic process, discrete]
+A (discrete) stochastic process\index{stochastic process!discrete} in $E$, $X = (X_n)_{n\geq 0}$ is a sequence of random variables in $E$.
+\end{definition}
+
+\begin{remark}
+stochastic process is also called random process\index{random process!discrete}.
+\end{remark}
+
+\begin{definition}\label{def:integrable_stochastic_process_discrete}
+If $X_n$ is $\R$-valued, $X$ is integrable\index{integrable!stochastic process} if $X_n \in \sL^1(\Omega,\sF,\pro)$ for every $n\geq 0$, i.e. $\E\abs{X_n} <\infty$.
+\end{definition}
+
+\begin{definition}[filtration, discrete]\label{def:filtration_discrete}
+A filtration\index{filtration!discrete} is an increasing family of sub-$\sigma$-algebras of $\sF$, i.e., $\sF_{n}\subseteq \sF_{n+1}\subseteq \sF$, for all $n$. % indexed by $I$, $(\sF_t)_{t \in I}$, such that if $s \leq t$ then $\sF_s \subseteq \sF_t$.
+\end{definition}
+
+\begin{remark}
+We think of $\sF_n$ as `the information available at and before time $n$.'
+\end{remark}
+
+\begin{definition}\label{def:sigma_algebra_infinite_discrete}
+We define
+\be
+\sF_\infty = \bigvee_{n\geq 0} \sF_n = \sigma\bb{\bigcup_{n\geq 0} \sF_n}. %= \sigma (\sF_n:n\geq 0)
+\ee
+\end{definition}
+
+\begin{remark}
+Usually, we set $\sF_\infty\subseteq \sF$.%\footnote{We need to check that if $\sF_\infty\subseteq \sF$.}
+\end{remark}
+
+\begin{definition}[filtered probability space, discrete]
+If $(\sF_n)_{n\geq 0}$ is a filtration, we say that $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ is a filtered probability space\index{filtered probability space!discrete} (or f.p.s.).
+\end{definition}
+
+\begin{definition}[adapted process, discrete]\label{def:adapted_process_discrete}
+Let $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ be a filtered probability space. A stochastic process $X = (X_n)_{n\geq 0}$ is adapted to the filtration $(\sF_n)_{n \geq 0}$\index{adapted process} if $X_n$ is $\sF_n$-measurable for all $n\geq 0$. $(X_n)_{n\geq 0}$ is called adapted process (or non-anticipating process).
+\end{definition}
+
+\begin{remark}
+An adapted process is one that cannot `see into the future'.
+\end{remark}
+
+\begin{definition}[natural filtration, discrete]
+Let $(X_n)_{n\geq 0}$ be a stochastic process, and let $\sF^X_n = \sigma\bb{X_k, k \leq n}$. Then $\sF^X_n$ is the natural filtration\index{natural filtration!discrete} of $X$. It is the smallest filtration with respect to which $X$ is adapted.
+\end{definition}
+
+\subsection{Stopping times}
+
+\begin{definition}[Doob's stopping time, discrete]
+Let $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ be a filtered probability space. A stopping time\index{stopping time!discrete} with respect to the filtration $(\sF_n)_{n\geq 0}$ is a random variable $T:\Omega \to \Z^+\cup \bra{+\infty}$ such that $\bra{T \leq n} \in \sF_n$ for all $n$.
+\end{definition}
+%Let $T : \Omega \to I \cup \{+\infty\}$ be a random variable.
+
+\begin{proposition}\label{pro:stopping_time_equal}
+$T$ is a stopping time if $\bra{T=n} \in \sF_n$ for all $n$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Indeed, if $\bra{T \leq n}\in \sF_n$ for all $n$, $\bra{T=n} = \bra{T\leq n}\bs \bra{T\leq n-1} \in \sF_n$.
+
+Conversely, if $\bra{T = n} \in \sF_n$ for all $n$. $\bra{T\leq n} = \bigcup_{k\leq n} \bra{T=k} \in \sF_n$.%Note that constant random variables $T \equiv t$ for some $t \in I$ are stopping times.
+\end{proof}
+
+
+\begin{example}\label{exa:stopping_time_discrete}
+\ben
+\item [(i)] Constant times are trivial stopping times.
+\item [(ii)] Let $X = (X_n)_{n\geq 0}$ be an adapted process taking values in $\R$. Let $A \in \sB(\R)$. The first entrance time to $A$ is
+\be
+T_A = \inf\bra{n \geq 0 : X_n(\omega) \in A}
+\ee
+with the convention that $\inf(\emptyset) = \infty$, so that $T_A = \infty$, if $X$ never enters $A$. This is a stopping time, since
+\be
+\bra{T_A \leq n} = \bigcup_{k\leq n} \bra{X_k \in A} \in \sF_n.
+\ee
+
+\item [(iii)] The last exit time though, $L_A = \sup\bra{n \leq N: X_n\in A}$ for some $N\in \R$, is not a stopping time in general.
+\een
+\end{example}
+
+
+%\begin{example}.
+%Let $I = \Z^+$, $(X_n)_{n \geq 0}$ be a random process, and $\sF_n = \sF^X_n$. Let $A$ be a Borel subset of $\R$ and $T_A(\omega) = \inf \{n \geq 0 : X_n(\omega) \in A\}$ (with convention $\inf \bra{\emptyset} = \infty$). Then $T_A$ is a stopping time since
+%\be
+%\{T_A \leq n\} = \bigcup_{m\leq n} \{X_m \in A\}
+%\ee
+%and $\bra{X_m \in A}$ are $\sF_n$-measurable. $T_A$ is known as the first entrance time into $A$ and is an important example of a stopping time. However, $L_A(\omega ) = \sup\{N \geq n \geq 0: X_n(\omega) \in A\}$ is not a stopping time in general.
+%\end{example}
+
+
+\begin{proposition}\label{pro:stopping_time_property_discrete}
+Let $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ be a filtered probability space. Let $S$, $T$, and $(T_n)_{n \geq 0}$ all be stopping times. Then the following are stopping times
+\beast
+\text{(i)}\ S \land T,\quad\quad \text{(ii)}\ S\vee T,\quad\quad \text{(iii)}\ \inf_{n\geq 0} T_n,\quad\quad \text{(iv)}\ \sup_{n\geq 0} T_n, \quad\quad \text{(v)}\ \liminf_n T_n, \quad\quad\text{(vi)}\ \limsup_n T_n.
+\eeast
+\end{proposition}
+
+\begin{remark}
+$S-T$ is not. $S+T$?\footnote{need details}
+\end{remark}
+
+\begin{proof}[\bf Proof]
+\ben \item [(i)] $\bra{S\land T \leq n} = \underbrace{\bra{S\leq n}}_{\in \sF_n}\cup \underbrace{\bra{T\leq n}}_{\in \sF_n} \in \sF_n$ for all $n$.
+\item [(ii)] $\bra{S\vee T \leq n} = \underbrace{\bra{S\leq n}}_{\in \sF_n}\cap \underbrace{\bra{T\leq n}}_{\in \sF_n} \in \sF_n$ for all $n$.
+
+\een
+
+\cite{Klenke_2008}.$P_{193}$\footnote{need proof. Note that in discrete time everything follows straight from the definitions. But when one considers continuous time processes, then right continuity of the filtration is
+needed to ensure that the limits are indeed stopping times.}
+\end{proof}
+
+\begin{definition}\label{def:sigma_algebra_stopping_time_discrete}
+Let $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ be a filtered probability space. Let $T$ be stopping time with respect to $(\sF_n)_{n\geq 0}$, and
+\be
+\sF_T = \bra{A \in\sF : A\cap \{T \leq n\} \in \sF_n \text{ for all }n}.
+\ee
+
+This defines a $\sigma$-algebra $\sF_T$, called the $\sigma$-algebra of measurable events before $T$\index{sigma-algebra of measurable events before stopping time@$\sigma$-algebra of measurable events before stopping time!discrete}.
+\end{definition}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Since $\bra{\emptyset \cap \bra{T\leq n}} = \bra{\emptyset} \in \sF_n$, $\emptyset \in \sF_T$.
+\item [(ii)] If $A\in \sF_T$, $A \cap \bra{T\leq n} \in \sF_n$. Since $T$ is stopping time, $\bra{T\leq n}\in \sF_n$. Thus, since $\sF_n$ is $\sigma$-algebra
+\be
+A^c \cap \bra{T\leq n} = \bra{T\leq n} \bs \bb{A \cap \bra{T\leq n}} \in \sF_n.
+\ee
+\item [(iii)] For a sequence $A_m \in \sF_T$, we have $A_m \cap \bra{T\leq n}\in \sF_n$ for all $n$. Thus, since $\sF_n$ is $\sigma$-algebra
+\be
+\bb{\bigcup_m A_m} \cap \bra{T\leq n} = \bigcup_m \bb{A_m \cap \bra{T\leq n}} \in \sF_n  \ \ra \ \bigcup_m A_m \in \sF_T.
+\ee
+\een
+
+Thus, $\sF_T$ is a $\sigma$-algebra.
+\end{proof}
+
+\begin{remark}
+Intuitively $\sF_T$ is the information available at time $T$.
+
+It is easy to check that if $T = n$, then $T$ is a stopping time and $\sF_T = \sF_n$.
+\end{remark}
+
+\begin{definition}[stopped process]\label{def:stopped_process_discrete}
+For a process $X$, we set $X_T (\omega) = X_{T(\omega)}(\omega)$, whenever $T(\omega) < \infty$.
+
+We also define the stopped process\index{stopped process!discrete} $X^T$ by $X^T_n = X_{T\land n}$.
+\end{definition}
+
+
+\begin{proposition}\label{pro:sigma_algebra_stopping_time_increasing}
+Let $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ be a filtered probability space. If $S$ and $T$ are stopping times such that $S \leq T$ then $\sF_S \subseteq \sF_T$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Since $S$ and $T$ are stopping times, then $\bra{S \leq n}\in \sF_n$, $\bra{T \leq n}\in \sF_n$ with $\bra{T\leq n} \subseteq \bra{S\leq n}$ for all $n$. $\forall A \in \sF_S$, we have for all $n$, $A \cap \bra{S \leq n} \in \sF_n$. Then
+\be
+A \cap \bra{T \leq n} = A \cap \bb{\bra{S \leq n} \cap \bra{T \leq n}} = \underbrace{\bb{A \cap \bra{S \leq n}}}_{\in \sF_n} \cap \underbrace{\bra{T \leq n}}_{\in \sF_n} \in \sF_n.
+\ee
+
+Thus, $A\in \sF_T$.
+%\footnote{need proof}
+\end{proof}
+
+
+\begin{proposition}
+Let $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ be a filtered probability space. Let $S$ be stopping time and let $X = (X_n)_{n\geq 0}$ be an adapted process. ($X: \Omega \to E$)
+\ben
+\item [(i)] $X_T\ind_{\bra{T <\infty}}$ is an $\sF_T$-measurable random variable.
+\item [(ii)] $X^T$ is adapted.
+\item [(iii)] If $X$ is integrable, then $X^T$ is integrable.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] $\forall A \in \sE$. Then since $X$ is adapted ($\bra{X_n \in A} \in \sF_n$) and $\bra{T = m} = \bra{T \leq m} \bs \bigcup_{k\leq m} \bra{T \leq k} \in \sF_m$.
+\be
+\bra{X_T\ind_{\bra{T < \infty}} \in A} \cap \bra{T \leq n} = \bigcup^n_{m=1} \bra{X_m(\omega) \in A} \cap \bra{T(\omega)=m} \in \sF_n
+\ee
+
+\item [(ii)] For every $n$ we have that $X_{T\land n}$ is $\sF_{T\land n}$-measurable since $X$ is adapted. Hence, $X_{T\land n}$ is $\sF_n$-measurable since $T \land n \leq n$ by Proposition \ref{pro:stopping_time_property_discrete} and Proposition \ref{pro:sigma_algebra_stopping_time_increasing} (constant $n$ is also a stopping time).
+\item [(iii)] We have $X_n^T = X_n \ind_{\bra{T>n}} + \sum_{m\leq n}X_m \ind_{\bra{T=m}}$. Thus, since $X$ is integrable, for every $n$,
+\be
+\E\abs{X_n^T} = \E\abs{X_n^T} \leq \E\abs{X_n \ind_{\bra{T>n}}} + \sum_{m\leq n}\abs{X_m} \ind_{\bra{T=m}} \leq \E\abs{X_n} + \sum_{m\leq n}\abs{X_m} < \infty.
+\ee
+
+%\be
+%\E \abs{X_{T\land n}} =  \E\bb{\sum^{n-1}_{m=0} \abs{X_m} \ind_{\bra{T = m}} } + \E\bb{\sum^\infty_{m=n} \abs{X_n} \ind_{\bra{T = m}}} \leq \sum^n_{m=0} \E\abs{X_n} < \infty.
+%\ee
+
+\een
+\end{proof}
+
+\subsection{Branching process}
+
+As an example of conditional expectations and of generating functions we will consider a model of population growth and extinction known as the Bienaym\'e-Galton-Watson process (branching process).
+
+\begin{definition}[branching process\index{branching process}]\label{def:branching_process}
+Consider a sequence of random variables $X_0,X_1,\dots$, where $X_n$ represents the number of individuals in the $n$th generation. We will assume that the population is initiated by one individual, take $X_0 \equiv 1$, and
+when he dies he is replaced by $k$ individuals with probability $p_k$, $k = 0, 1, 2, \dots$. These individuals behave independently and identically to the parent individual, as do those in subsequent generations.
+
+The number in the $(n+1)$st generation, $X_{n+1}$, depends on the number in the $n$th generation and is given by
+\be X_{n+1} = \left\{\ba{ll}
+Y^n_1 + Y^n_2 + \dots + Y^n_{X_n} \quad\quad & X_n \geq 1,\\
+0 & X_n = 0. \ea\right.
+\ee
+
+Here $\{Y^n_j : n \geq 1, j \geq 1\}$ are independent, identically distributed random variables with $\pro(Y^n_j = k) = p_k$, for $k \geq 0$ and $Y^n_j$ represents the number of offspring of the $j$th individual in the
+$n$th generation, $j \leq X_n$.
+
+Additionally, we have two assumptions:
+
+\ben
+\item [(i)] $p_0 > 0$. It means that the population can die out (extinction) since in each generation there is positive probability that all individuals have no offspring.
+
+\item [(ii)] $p_0 + p_1 < 1$. It means that the population may grow, there is positive probability that the next generation has more individuals than the present one.
+\een
+\end{definition}
+
+\begin{definition}[probability generating function of $X_n$]\label{def:probability_generating_function_branching}
+Now let
+\be
+G(z) = \sum^\infty_{k=0} p_kz^k = \E \bb{z^{X_1}}\,\qquad G_n(z) = \E \bb{z^{X_n}},\qquad \text{for }n \geq 1,
+\ee
+so that $G_1 = G$.
+\end{definition}
+
+\begin{theorem}
+Let $(X_n)_{n\geq 0}$ be a branching process. For all $n \geq 1$, \be G_{n+1}(z) = G_n (G(z)) = G(\dots (G(z)) \dots) = G(G_n(z)) \ee.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Note that $Y^n_1, Y^n_2 , \dots$ are independent of $X_n$, so that by total law of probability (Proposition \ref{pro:conditional_expectation_elementary_event}),
+\beast G_{n+1}(z) & = & \E\bb{z^{X_{n+1}}} = \sum^\infty_{k=0} \E \bb{z^{X_{n+1}} |X_n = k} \pro (X_n = k) = \sum^\infty_{k=0} \E\bb{z^{Y^n_1 + \dots+Y^n_k}|X_n = k}\pro (X_n = k) \\
+& = & \sum^\infty_{k=0} \E\bb{z^{Y^n_1 + \dots+Y^n_k}}\pro (X_n = k) = \sum^\infty_{k=0} (G(z))^k p_k  =  \E\bb{(G(z))^{X_n}} = G_n (G(z)). \eeast
+
+Similary, we have $G_n (G(z)) = G (G_n(z))$.
+\end{proof}
+
+\begin{corollary}
+Let $(X_n)_{n\geq 0}$ be a branching process. For $m = \E X_1 = \sum^\infty_{k=1} k p_k$ and $\sigma^2 = \var X_1 = \sum^\infty_{k=0} (k - m)^2 p_k$, then for $n \geq 1$, we have
+
+\be \E X_n = m^n,\quad\quad \var X_n = \left\{\ba{ll}
+\frac{\sigma^2m^{n-1} (m^n - 1)}{m- 1} \quad\quad & m \neq 1,\\
+n\sigma^2 & m=1. \ea\right. \ee
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+Differentiating $G_n(z) = G_{n-1}(G(z))$ to obtain $G_n'(z) = G'_{n-1}(G(z))G'(z)$ and letting $z \ua 1$ (so $G(z) \ua 1$ accordingly), by Theorem \ref{thm:pgf_moment} it follows that
+
+\be \E (X_n) = m\E (X_{n-1}) = \dots = m^n\E (X_0) = m^n, \ee
+since $X_0 = 1$.
+
+Differentiating $G_n(z)$ a second time gives
+
+\be G''_n(z) = G''_{n-1} (G(z)) (G'(z))^2 + G'_{n-1} (G(z))G''(z), \ee
+
+and letting $z \ua 1$ again we have
+
+\be \E (X_n (X_n - 1)) = m^2 \E (X_{n-1} (X_{n-1} - 1)) + \bb{\sigma^2 + m^2 - m} \E (X_{n-1}). \ee
+
+We then have, using the fact that $\E X_n = m^n$, \beast
+\var (X_n) & = & \E (X_n(X_n - 1)) + \E (X_n) - (\E X_n)^2\\
+& = & m^2\E (X_{n-1}(X_{n-1} - 1)) + \bb{\sigma^2 + m^2 - m}\E (X_{n-1}) + m^n - m^{2n} \\
+& = & m^2\bb{\var (X_{n-1}) - \E (X_{n-1}) + (\E X_{n-1})^2} + \bb{\sigma^2 + m^2} m^{n-1} - m^{2n}\\
+& = & m^2\var (X_{n-1}) + \sigma^2 m^{n-1}. \eeast Iterating this, we see that \beast
+\var (X_n) & = & m^2\var (X_{n-1}) + \sigma^2 m^{n-1} = m^4\var (X_{n-2}) + \sigma^2 \bb{m^{n-1} + m^n} = \dots \\
+& = & m^{2n}\var (X_0) + \sigma^2 \bb{m^{n-1} + \dots + m^{2n-2}}\\
+& = & \sigma^2 \bb{m^{n-1} + \dots + m^{2n-2}},\quad\quad \text{since $\var (X_0) = 0$ because $X_0 = 1$}, \eeast and then the result may be obtained immediately.
+\end{proof}
+
+\begin{definition}[extinction of branching process]
+Let $(X_n)_{n\geq 0}$ be a branching process. If $X_n = 0$ for some $n$, then we say that the branching process get extincted.
+\end{definition}
+
+\begin{theorem}
+For branching process $(X_n)_{n\geq 0}$, its extinction probability $q$ is the smallest positive root of the equation $G(z) = z$. When $m$, the mean number of offspring per individual, satisfies $m \leq 1$ then $q = 1$,
+when $m
+> 1$ then $q < 1$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Notice that $X_n = 0$ implies that $X_{n+1} = 0$ so that if we let $A_n = \bra{X_n = 0}$, the event that the population is extinct at or before generation $n$, we have $A_n \subseteq A_{n+1}$ and $A = \bigcup^\infty_{n=1}
+A_n$ represents the event that extinction ever occurs. Notice that $\pro(A_n) = G_n(0)$ and by the continuity property of probabilities on increasing events (fundamental property of measure, Lemma
+\ref{lem:measure_increasing_sequence}) we see that the extinction probability is \be q = \pro(A) = \lim_{n\to\infty} \pro (A_n) = \lim_{n\to\infty} G_n(0) = \lim_{n\to\infty} \pro \bb{X_n = 0}. \ee
+
+The fact that the extinction probability $q$ is well defined follows from the above and since $G$ is continuous and $q = \lim_{n\to \infty}G_n(0)$ we have
+
+\be G\bb{\lim_{n\to\infty} G_n(0)} = \lim_{n\to\infty}G_{n+1}(0) \ee,
+
+so that $G(q) = q$, that is $q$ is a root of $G(z) = z$, note that 1 is always a root since $G(1) = \sum^\infty_{r=0} p_r = 1$.
+
+Let $\alpha > 0$ be any positive root of $G(z) = z$, so that because $G$ is increasing, $\alpha = G(\alpha) > G(0)$, and repeating $n$ times we have $\alpha > G_n(0)$, whence $\alpha \geq \lim_{n\to\infty} G_n(0) = q$, so
+that we must have $\alpha\geq q$, that is, $q$ is the smallest positive root of $G(z) = z$.
+
+Now let $H(z) = G(z)-z$ (which is continuous and differentiable on $(0,1)$), then
+
+\be H'' = \sum^\infty_{r=0} r(r-1)p_rz^{r-2} > 0,\qquad 0 < z < 1 \ee
+
+provided $p_0 + p_1 < 1$, so the derivative of $H$ is strictly increasing in the range $0 < z < 1$, hence $H$ can have at most one root different from 1 in $[0, 1]$ with the following two cases.% (Rolle's Theorem (Theorem \ref{thm:rolle_analysis})).
+
+%Note. The following two figures illustrate the two situations $m \leq 1$ and $m > 1$, the dotted lines illustrate the iteration $G_{n+1}(0) = G(G_n(0))$ tending to the smallest positive root, $q$.
+
+\centertexdraw{
+
+\drawdim in
+
+\def\bdot {\fcir f:0 r:0.02 }
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04 \linewd 0.01 \setgray 0
+
+\move (-0.2 0) \avec(2 0) \move (0 -0.2) \avec(0 1.8)
+
+\move (0 0) \lvec (1.8 1.8) \move (0 0.6) \clvec (0.9 1)(1.3 1.3)(1.6 1.6)
+
+\htext (-0.1 -0.15){0} \htext (1.6 -0.15){1} \htext (0.55 -0.2){$m\leq 1$, $q=1$} \htext (1.9 -0.15){$z$} \htext (-0.4 0.45){$G(0)$}
+
+\lpatt (0.05 0.05)
+
+\move (1.6 1.6) \lvec (1.6 0)
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lpatt (1 0)
+
+\move (2.8 0) \avec(5 0) \move (3 -0.2) \avec(3 1.8)
+
+\move (3 0) \lvec (4.8 1.8) \move (3 0.6) \clvec (4.2 0.9)(4.5 1.4)(4.6 1.6)
+
+\htext (2.9 -0.15){0} \htext (4.6 -0.15){1} \htext (3.55 -0.2){$m>1$, $q<1$} \htext (4.9 -0.15){$z$} \htext (2.6 0.45){$G(0)$}
+
+\lpatt (0.05 0.05) \move (4 1) \lvec (4 0) \move (4.6 1.6) \lvec (4.6 0)
+
+\move(0 2) }
+
+Firstly, suppose that $H$ has no root in $[0, 1)$ and $q=1$ in this case. Since $H(0) = p_0 > 0$ we must have $H(z) > 0$ for all $0 < z < 1$, so $H(1) - H(z) < H(1) = 0$ and so
+
+\be H'(1^-) = \lim_{z\ua 1} \frac{H(1) - H(z)}{1 - z} \leq 0 \ \ra \ G'(1^-) - 1 \leq 0\ \ra\  m = G'(1^-) \leq 1. \ee
+
+Next, suppose that $H$ has a unique root $r$ in $[0, 1)$ and $q<1$ in this case. Then $H'$ must have a root in $[r, 1)$ (by Rolle's Theorem, Theorem \ref{thm:rolle_analysis} as $H$ is continuous and differentiable), that is
+$H'(z) = G'(z)-1 = 0$ for some $z$, $r \leq z < 1$. The function $G'$ is strictly increasing (since $p_0 + p_1 < 1$) so that $m = G'(1^-) > G'(z) = 1$. Thus we see that $m \leq 1$, if and only if, $q = 1$.
+\end{proof}
+
+
+\subsection{Random walks}
+
+\begin{definition}[random walk\index{random walk!one-dimensional}]\label{def:random_walk_one_dimensional}
+Let $X_1,X_2,\dots$ be i.i.d. random variables and set
+
+\be S_n = S_0 + \sum^n_{k=1}X_k, \quad n \geq 1 \ee where $S_0$ is a constant then $\bb{S_n}_{n \geq 0}$ is known as a (one-dimensional) random walk.
+
+When each $X_i$ just takes the two values +1 and -1 with probabilities $p$ and $q = 1 - p$, respectively, it is a simple random walk\index{random walk!simple} and further when $p = q = \frac 12$ it is a simple symmetric
+random walk\index{random walk!simple symmetric} (see Example \ref{exa:random_walk_simple_symmetric_single_boundary}, \ref{exa:random_walk_simple_symmetric_double_boundaries}).
+\end{definition}
+
+In the following context, we will consider simple random walks.
+
+\begin{example}[gambler's ruin]\label{exa:randam_walk_simple}
+For the simple random walk, $\bb{S_n}_{n\geq 0}$ may represent the fortune of a gambler after $n$ plays of a game where on each play he either wins \pounds 1, with probability $p$, or loses \pounds 1 with probability $q =
+1-p$, his initial fortune is \pounds $S_0$ and a classical problem is to calculate the probability that his fortune achieves the level $a$, $a > S_0$ , before the time of ruin, that is the time that he goes bankrupt (his
+fortune hits the level 0). If $T_a$ denotes the first time that the random walk hits the level $a$ and $T_0$ the time the random walk first hits the level 0, we would wish to calculate $\pro (T_a < T_0)$, given that his
+fortune starts at $S_0 = r$, $0 < r < a$.
+
+\centertexdraw{
+
+\drawdim in
+
+\def\bdot {\fcir f:0 r:0.03 }
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04 \linewd 0.01 \setgray 0
+
+\move (-0.2 0) \avec(5 0) \move (0 -0.2) \avec(0 1.8)
+
+\move (0 0.6) \bdot \move (0.2 0.9) \bdot \move (0.4 0.6) \bdot \move (0.6 0.9) \bdot \move (0.8 1.2) \bdot \move (1 0.9) \bdot \move (1.2 1.2) \bdot \move (1.4 1.5) \bdot \move (1.6 1.2) \bdot \move (1.8 0.9) \bdot \move
+(2 1.2) \bdot \move (2.2 1.5) \bdot \move (2.4 1.2) \bdot \move (2.6 0.9) \bdot \move (2.8 1.2) \bdot \move (3 0.9) \bdot \move (3.2 0.6) \bdot \move (3.4 0.9) \bdot \move (3.6 0.6) \bdot \move (3.8 0.3) \bdot \move (4 0)
+\bdot \move (4.2 -0.3) \bdot \move (4.4 0) \bdot \move (4.6 0.3) \bdot \move (4.8 0.6) \bdot
+
+
+
+\htext (1.4 -0.15){$T_a$} \htext (3.8 -0.15){$T_0$} \htext (-0.15 1.45){$a$} \htext (-0.2 0.5){$S_0$} \htext (4.9 0.5){$S_n$} \htext (4.8 -0.15){$n$}
+
+\lpatt (0.05 0.05)
+
+\move (0 1.5) \lvec(5 1.5) \move (1.4 1.4) \lvec (1.4 0)
+
+\move (0 0.6) \lvec (0.2 0.9) \lvec (0.4 0.6) \lvec (0.6 0.9) \lvec (0.8 1.2) \lvec (1 0.9) \lvec (1.2 1.2) \lvec (1.4 1.5) \lvec (1.6 1.2) \lvec (1.8 0.9) \lvec (2 1.2) \lvec (2.2 1.5) \lvec (2.4 1.2) \lvec (2.6 0.9) \lvec
+(2.8 1.2) \lvec (3 0.9) \lvec (3.2 0.6) \lvec (3.4 0.9) \lvec (3.6 0.6) \lvec (3.8 0.3) \lvec (4 0) \lvec (4.2 -0.3) \lvec (4.4 0) \lvec (4.6 0.3) \lvec (4.8 0.6)
+
+\move (0 2)
+
+}
+
+The figure illustrates a path of the random walk-although, in the case of the game, it finishes at the instant $T_0$, the time of bankruptcy! Let $p_r = \pro (T_a < T_0)$ when $S_0 = r$, for $0 \leq r \leq a$, so that we
+have the boundary conditions $p_a = 1$ and $p_0 = 0$.
+
+A general rule in problems of this type in probability may be summed up as `condition on the first thing that happens', which here would be a shorthand for using the law of total probability (Theorem
+\ref{thm:law_total_probability}) to express the probability conditional on the outcome of the first play of the game, that is, whether $X_1 = 1$ or $X_1 = -1$, or equivalently, $S_1 = r+1$ or $S_1 = r-1$. Thus, for $0 < r <
+a$, \be p_r = \pro (T_a < T_0 | S_1 = r + 1) \pro(X_1 = 1) + \pro(T_a < T_0 | S_1 = r - 1) \pro (X_1 = -1) = p \cdot p_{r+1} + q \cdot p_{r-1}. \ee
+
+The auxiliary equation\footnote{details needed in ODE.} for this relation is $px^2 - x +q = 0$, and since $p+q = 1$, this may be factored as $(x - 1)(px - q) = 0$ to give roots $x = 1$ and $x = q/p$.
+
+Case $p \neq q$: the roots are distinct and the general solution is of the form $p_r = A+B (q/p)^r$ for some constants $A$ and $B$, the boundary conditions at $r = a$ and $r = 0$, fix $A$ and $B$ and we conclude that \be
+p_r = \pro (T_a < T_0) = \frac{1 - (q/p)^r}{1 - (q/p)^a},\quad 0 \leq r \leq a. \ee
+
+Case $p = q = \frac 12$: here $x = 1$ is a repeated root of the auxiliary equation so that the general solution of the recurrence relation is $p_r = A+Br$, which, after using the boundary conditions, leads to the solution
+$p_r = r/a$, $0 \leq r \leq a$.
+
+We do not know necessarily that at least one of $T_0$ and $T_a$ must be finite, but if we interchange $p$ and $q$ and replace $r$ by $a - r$, (or just calculate directly as above) we may obtain, for $S_0 = r$, $0 \leq r
+\leq a$, that \be \pro (T_0 < T_a) = \left\{\ba{ll}
+\frac{(q/p)^r - (q/p)^a}{1 - (q/p)^a} \quad \quad & p \neq q,\\
+1 - r/a & p = q = \frac 12. \ea\right. \ee
+
+It follows, in both cases, that $\pro(T_a < T_0) + \pro (T_0 < T_a) = 1$, so that at least one of the the two barriers, 0 or $a$, must be reached with certainty.
+\end{example}

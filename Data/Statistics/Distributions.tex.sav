@@ -1,0 +1,1768 @@
+
+\chapter{Distributions}
+
+\section{Distributions Related to Gaussian Distribution}
+
+\subsection{Gaussian distribution}
+
+Recall Definition \ref{def:gaussian_rv}, we see that the important points of the standard normal distribution function are
+\begin{center}
+\begin{tabular}{ccccc}
+$x$ & 1.28 & 1.64 & 1.96 & 2.33\\
+\hline
+$\Phi(x)$ & 0.90 & 0.95 & 0.975 & 0.99\\
+\end{tabular}
+\end{center}
+
+The third of these points leads to an important observation: for $X \sim \sN\bb{\mu,\sigma^2}$,
+
+\be
+\pro\bb{\mu-2\sigma \leq X \leq \mu + 2\sigma} = \pro\bb{\abs{\frac{X-\mu}{\sigma} }\leq 2} \geq \pro\bb{\abs{\frac{X-\mu}{\sigma} } \leq 1.96} = 0.95,
+\ee
+\centertexdraw{
+
+\drawdim in
+
+\def\bdot {\fcir f:0 r:0.02 }
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+\linewd 0.01 \setgray 0
+
+\move (-2.5 0) \avec(2.5 0)
+\move (0 0) \avec(0 1.5)
+
+\move (-2 0) \clvec (-1.8 0)(-1.5 0)(-1.2 0.2)
+\move (-1.2 0.2) \clvec (-0.9 0.4)(-0.5 1.2)(0 1.2)
+\move (2 0) \clvec (1.8 0)(1.5 0)(1.2 0.2)
+\move (1.2 0.2) \clvec (0.9 0.4)(0.5 1.2)(0 1.2)
+
+\htext (-1.5 -0.15){-1.96}
+\htext (1.2 -0.15){1.96}
+\htext (0.05 1.35){$\phi(x)$}
+\htext (1.55 0.2){Area = 0.025}
+\htext (2.5 -0.15){$x$}
+\htext (-2 1){standard normal p.d.f.}
+
+\move (-2 0) \clvec (-1.8 0)(-1.5 0)(-1.2 0.2) \lvec (-1.2 0) \lvec (-2 0)  \lfill f:0.8
+\move (2 0) \clvec (1.8 0)(1.5 0)(1.2 0.2) \lvec (1.2 0) \lvec (2 0)  \lfill f:0.8
+
+\move(0 1.6)
+}
+
+which is usually summed up in the statement ``more than 95\% of the normal distribution is within two standard deviations of the mean".
+
+
+
+\subsection{Chi-squared random variables}
+
+\begin{definition}[chi-squared random variable]\label{def:chi_squared_rv}
+If $Z_1, \dots, Z_k$ are independent, standard normal random variables, then the sum of their squares,
+\be
+X = \sum_{i=1}^k Z_i^2,
+\ee
+is called chi-squared distributed\index{chi squared-distributed random variable} with $k\in \N$ degrees of freedom. Its density function is
+\be
+f_X(x) = \frac{1}{\Gamma\left(k/2\right)} 2^{-k/2} x^{k/2-1} e^{-x/2},\qquad x\in [0,\infty)
+\ee
+
+We write $X \sim \chi_k^2$.
+\end{definition}
+
+\begin{proposition}\label{pro:pdf_chi_squared}
+Suppose that $X \sim \chi_k^2$. Then its density function is the form in Definition \ref{def:chi_squared_rv}.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+We start from the case $k=1$,
+\be
+\pro\bb{X\leq x} = \pro\bb{Z^2 \leq x} = \pro\bb{-\sqrt{x} \leq Z \leq \sqrt{x}} = \frac 1{\sqrt{2\pi}} \int^{\sqrt{x}}_{-\sqrt{x}} e^{-y^2/2}dy.
+\ee
+
+Then taking the differentiation, we have ($\Gamma(1/2) = \sqrt{\pi}$ from Proposition \ref{pro:gamma_half})
+\be
+f_X(x) = \frac 1{\sqrt{2\pi}}2\bb{\frac 12 x^{-1/2}e^{-x/2} } = \frac 1{\sqrt{2\pi}} x^{-1/2}e^{-x/2} = \frac 1{\Gamma(1/2)}2^{-1/2}x^{1/2-1}e^{-x/2}.
+\ee
+
+Now assume the formula is true for $k-1$ degree. With the convolution of density functions, we have
+\beast
+f_X^k(x) & = & \int^x_0 f^{k-1}_X(y)f_X^1(x-y)dy = \int^x_0 \frac{1}{\Gamma\left((k-1)/2\right)} 2^{-(k-1)/2} y^{(k-1)/2-1} e^{-y/2} \frac 1{\sqrt{2\pi}} (x-y)^{-1/2}e^{-(x-y)/2} dy\\
+& = &  2^{-k/2}  e^{-x/2}  \int^x_0 \frac 1{\Gamma(1/2)} \frac{1}{\Gamma\left((k-1)/2\right)}y^{(k-1)/2-1}  (x-y)^{-1/2} dy \\
+& = & \frac 1{\Gamma(k/2)}2^{-k/2} x^{k/2-1} e^{-x/2}  \int^1_0 \frac{1}{B(1/2, (k-1)/2)}z^{(k-1)/2-1}  (1-z)^{-1/2} dz = \frac 1{\Gamma(k/2)}2^{-k/2} x^{k/2-1} e^{-x/2}.
+\eeast
+by Beta distribution.
+\end{proof}
+
+\begin{proposition}\label{pro:mgf_chi_squared}
+Suppose $X \sim \chi_k^2$. Then for $\theta < \frac 12$ and $t\in \R$,
+\be
+M_X(\theta) = \bb{\frac 1{1 - 2\theta}}^{k/2},\quad\quad \phi_X(t) =  \bb{\frac 1{1 - 2it}}^{k/2}.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+From Definition \ref{def:mgf_probability},
+\beast
+M_X(\theta) & = & \E\bb{e^{\theta X}} = \int^\infty_0 e^{\theta x} \frac{1}{\Gamma\left(k/2\right)} 2^{-k/2} x^{k/2-1} e^{-x/2} dx \\
+& = & \bb{\frac{1/2}{1/2-\theta}}^{k/2} \int^\infty_0 \frac{1}{\Gamma\left(k/2\right)} 2^{-k/2} \bb{\frac{(1/2-\theta)}{1/2} x}^{k/2-1} e^{-\bb{\frac{(1/2-\theta)}{1/2}}x/2} d \frac{(1/2-\theta)}{1/2}x \\
+& = & \bb{\frac 1{1 - 2\theta}}^{k/2} \int^\infty_0 \frac{1}{\Gamma\left(k/2\right)} 2^{-k/2} y^{k/2-1} e^{-y/2} d y =  \bb{\frac 1{1 - 2\theta}}^{k/2}.
+\eeast
+
+Similarly for $\phi_X(t)$.
+\end{proof}
+
+\begin{proposition}\label{pro:moments_chi_squared}
+Suppose $X \sim \chi_k^2$. Then \beast \text{(i)}\ \E X = k,\quad \text{(ii)}\ \var X = 2k,\quad\text{(iii)}\ \skewness(X) = \sqrt{8/k},\quad\text{(iv)}\ \ekurt(X) = 12/k. \eeast
+\end{proposition}
+
+\begin{proof}[\bf Proof]%(i) and (ii) can be done using integration by parts. Or
+With Propositions \ref{pro:mgf_chi_squared}, \ref{pro:mgf_finite_moment},
+\beast
+\E X = \left.\frac {d M_X(\theta)}{d\theta}\right|_{\theta=0} = \left. k(1 -2\theta)^{-k/2-1}\right|_{\theta=0} = k,\qquad \E X^2 = \left.\frac {d^2 M_X(\theta)}{d\theta^2}\right|_{\theta=0} = \left. k(k+2)(1 -2\theta)^{-k/2-2} \right|_{\theta=0} = k^2 + 2k.
+\eeast
+
+Thus, $\var X = \E X^2 - \bb{\E X}^2 = k^2 + 2k - k^2 = 2k$. Also,
+\be
+\E X^3 = \left.\frac {d^3 M_X(\theta)}{d\theta^3}\right|_{\theta=0} = \left. k(k+2)(k+4)(1 -2\theta)^{-k/2-3}  \right|_{\theta=0} = k(k+2)(k+4).
+\ee
+
+Thus,
+\be
+\E\bb{X-\mu}^3 = \E X^3 - 3\mu\E X^2 + 3\mu^2 \E X - \mu^3 =  k(k+2)(k+4) - 3k (k^2 + 2k) + 2k^3 = 8k.
+\ee
+
+By Definition \ref{def:skewness}, $\skewness(X) = \frac{8k}{(2k)^{3/2}} = \sqrt{8/k}$. Furthermore,
+\be
+\E X^4 = \left.\frac {d^4 M_X(\theta)}{d\theta^4}\right|_{\theta=0} = \left. k(k+2)(k+4)(k+6)(1 -2\theta)^{-k/2-4} \right|_{\theta=0}  = k(k+2)(k+4)(k+6).
+\ee
+
+Thus,
+\beast
+\E\bb{X-\mu}^4 & = & \E X^4 - 4\mu\E X^3 + 6\mu^2 \E X^2 - 4\mu^3\E X + \mu^4 \\
+& = & k(k+2)(k+4)(k+6) - 4k k(k+2)(k+4) + 6k^3 (k+ 2) - 3k^4 = 12k^2 + 48k.
+\eeast
+
+By Definition \ref{def:kurtosis}, we have $\ekurt(X) = \frac{12k^2+48k}{4k^2} -3 = 12/k$.%For (v), we know that $\frac {d^n M_X(\theta)}{d\theta^n} = \lm^k k(k+1)\dots (n+k-1)/(\lm -\theta)^{n+k}$,be\E X^n = \left.\frac {d^n M_X(\theta)}{d\theta^n}\right|_{\theta=0} = \frac {k(k+1)\dots (n+k-1)}{\lm^n}.\ee
+\end{proof}
+
+We can extend to more general case.%\footnote{need general chi-squared distribution}
+
+\begin{definition}[non-central chi-squared random variable]\label{def:chi_squared_rv_non_central}
+Let $Z_i$ be $k$ independent, normally distributed random variables with means $\mu_i$ and variances $\sigma_i^2$. Then the random variable
+\be
+X = \sum_{i=1}^k \left(\frac{Z_i}{\sigma_i}\right)^2
+\ee
+is distributed according to the noncentral chi-squared distribution. It has two parameters: $k$ which specifies the number of degrees of freedom (i.e. the number of $Z_i$), and $\lm$ which is related to the mean of the random variables $Z_i$ by:
+\be
+\lm = \sum_{i=1}^k \left(\frac{\mu_i}{\sigma_i}\right)^2.
+\ee
+
+$\lm$ is called the noncentrality parameter. It density function is
+\be
+f_X(x) = \frac{1}{2}e^{-(x+\lm)/2}\left (\frac{x}{\lm} \right)^{k/4-1/2} I_{k/2-1}\bb{\sqrt{\lambda x}}
+\ee
+where $I_\nu(z)$ is modified Bessel function of the first kind. We write $X \sim \chi^2_k(\lm)$.
+\end{definition}
+
+\begin{remark}
+If $\lm \to 0$, from Proposition \ref{pro:modified_bessel_function_first_close_to_zero} (if $z\to 0$, $I_\nu(z) \sim \left.\bb{\frac 12z}^\nu\right/\Gamma(\nu+1)$) we have
+\be
+f_X(x) \sim \frac{1}{2}e^{-(x+\lm)/2}\left (\frac{x}{\lm} \right)^{k/4-1/2} \left.\bb{\frac 12\sqrt{\lm x}}^{k/2-1}\right/\Gamma(k/2) = \frac 1{\Gamma(k/2)}2^{-k/2}x^{k/2-1} e^{-x/2}
+\ee
+which is consistent with Definition \ref{def:chi_squared_rv}
+\end{remark}
+
+\begin{proposition}\label{pro:pdf_chi_squared_non_central}
+Suppose that $X \sim \chi_k^2(\lm)$. Then its density function is the form in Definition \ref{def:chi_squared_rv_non_central}.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+We start from the case $k=1$,
+\be
+\pro\bb{X\leq x} = \pro\bb{Z^2 \leq \sigma^2x} = \pro\bb{-\sigma\sqrt{x} \leq Z \leq \sigma\sqrt{x}} = \frac 1{\sqrt{2\pi}\sigma} \int^{\sigma\sqrt{x}}_{-\sigma\sqrt{x}} e^{-(y-\mu)^2/2\sigma^2}dy.
+\ee
+
+Then taking the differentiation, we have ($\Gamma\bb{\frac 12 +n} = \frac{(2n)!}{4^n n!}\sqrt{\pi}$ from Proposition \ref{pro:gamma_half})
+\beast
+f_X(x) & = & \frac {\sigma}{\sqrt{2\pi}\sigma}\bb{\frac 12 x^{-1/2}e^{-(\sigma\sqrt{x}-\mu)^2/2\sigma^2} + \frac 12 x^{-1/2}e^{-(\sigma\sqrt{x}+\mu)^2/2\sigma^2}} = \frac 12 e^{-(x+\lm)/2} x^{-1/2} \frac 1{\sqrt{2\pi}} \bb{e^{\frac{\mu}{\sigma}\sqrt{x}} + e^{-\frac{\mu}{\sigma}\sqrt{x}}} \\
+& = & \frac 12 e^{-(x+\lm)/2} x^{-1/2} \frac 1{\sqrt{2\pi}} \bb{2\sum^\infty_{n=0} \frac{(\sqrt{\lm x})^{2n}}{(2n)!}} = \frac 12 e^{-(x+\lm)/2} x^{-1/2} \bb{\sqrt{2}\sum^\infty_{n=0} \frac{(\lm x)^{n}}{(2n)!\sqrt{\pi}}} \\
+& = & \frac 12 e^{-(x+\lm)/2} x^{-1/2} \bb{\sqrt{2}\sum^\infty_{n=0} \frac{(\lm x)^{n}}{\Gamma\bb{\frac 12 + n}4^n n!}} = \frac 12 e^{-(x+\lm)/2} x^{-1/2} \sqrt{2} \bb{\frac 2{\sqrt{\lm x}}}^{-\frac 12} I_{-1/2}(\sqrt{\lm x}).
+\eeast
+by Proposition \ref{pro:modified_bessel_function_first_ascending_series} ($I_\nu(z) = \bb{\frac 12 z}^\nu \sum^\infty_{k=0} \frac{\bb{\frac 14z^2}^k}{k!\Gamma(\nu+k+1)}$). This result is consistent with Definition \ref{def:chi_squared_rv_non_central}.
+
+Now assume the formula is true for $k-1$ degree. With the convolution of density functions, we have $\lm = \sum^{k-1}_{i=0} \bb{\frac{\mu_i}{\sigma_i}}^2$ and $\lm' = \bb{\frac{\mu_k}{\sigma_k}}^2$, the density function $f_X^k(x)$ is
+\beast
+\int^x_0 f^{k-1}_X(y)f_X^1(x-y)dy & = &  \int^x_0 \frac{1}{2}e^{-(y+\lm)/2}\left (\frac{y}{\lm} \right)^{k/4-3/4} I_{k/2-3/2}\bb{\sqrt{\lambda y}} \frac{1}{2}e^{-(x-y+\lm')/2}\left (\frac{x-y}{\lm'} \right)^{-1/4} I_{-1/2}\bb{\sqrt{\lm' (x-y)}}  dy\\
+& = & \frac 12  e^{-(x + \lm + \lm')/2} \int^x_0 \frac{1}{2} \left (\frac y{\lm } \right)^{k/4-3/4} I_{k/2-3/2}\bb{\sqrt{\lm y}} \left (\frac {x-y}{\lm'} \right)^{-1/4} I_{-1/2}\bb{\sqrt{\lm' (x-y)}}  dy
+\eeast
+
+Thus,
+\beast
+I & := & \int^x_0 \frac{1}{2} \left (\frac y{\lm } \right)^{k/4-3/4}  \left (\frac {x-y}{\lm'} \right)^{-1/4} I_{k/2-3/2}\bb{\sqrt{\lm y}} I_{-1/2}\bb{\sqrt{\lm' (x-y)}}  dy \\
+& = & \int^x_0 \frac{1}{2} \left (\frac y{\lm } \right)^{k/4-3/4}  \left (\frac {x-y}{\lm'} \right)^{-1/4} \bb{\frac 12 \sqrt{\lm y}}^{k/2-3/2} \bb{\frac 12\sqrt{\lm' (x-y)}}^{-1/2} \sum^\infty_{n=0} \frac{\bb{\frac 14 \lm y}^n}{n!\Gamma((k-1)/2 + n)}  \sum^\infty_{m = 0}\frac{\bb{\frac 14 \lm' (x-y)}^m}{m!\Gamma(1/2 + m)}   dy \\
+& = & \int^x_0 \bb{\frac{1}{2}}^{k/2-1} y^{k/2-3/2}  (x-y)^{-1/2} \sum^\infty_{n=0} \frac{\bb{\frac 14 \lm y}^n}{n!\Gamma((k-1)/2 + n)}  \sum^\infty_{m = 0}\frac{\bb{\frac 14 \lm' (x-y)}^m}{m!\Gamma(1/2 + m)}   dy .
+\eeast
+
+%Again, by Proposition \ref{pro:gamma_half} ($\Gamma\bb{1/2 +n} = \frac{(2n)!}{4^n n!}\sqrt{\pi}$),
+%\beast
+%I & = & \int^x_0 \bb{\frac{1}{2}}^{k/2-1} \left (\frac {y^2}{x} \right)^{k/4-3/4}  \left (\frac {(x-y)^2}{x} \right)^{-1/4} \sum^\infty_{n=0} \frac{\bb{\frac 14 \lm y}^n}{n!\Gamma((k-1)/2 + n)}  \sum^\infty_{m = 0}\frac{\bb{\lm' (x-y)}^m}{(2m)!\sqrt{\pi}}   dy \\
+%& = & \int^x_0 \bb{\frac{1}{2}}^{k/2-1} \left (\frac {y^2}{x} \right)^{k/4-3/4}  \left (\frac {(x-y)^2}{x} \right)^{-1/4} \frac 1{2\sqrt{\pi}} \bb{e^{\sqrt{\lm' (x-y)}} + e^{-\sqrt{\lm' (x-y)}}} \sum^\infty_{n=0} \frac{\bb{\frac 14 \lm y}^n}{n!\Gamma((k-1)/2 + n)}    dy.
+%\eeast
+
+%\beast
+%& = & \\
+%& = & \frac 1{\Gamma(k/2)}2^{-k/2} x^{k/2-1} e^{-x/2}  \int^1_0 \frac{1}{B(1/2, (k-1)/2)}z^{(k-1)/2-1}  (1-z)^{-1/2} dz = \frac 1{\Gamma(k/2)}2^{-k/2} x^{k/2-1} e^{-x/2}.
+%\eeast
+%by Beta distribution.
+
+Then by Proposition \ref{pro:modified_bessel_function_first_ascending_series},
+\beast
+I & = & \sum^\infty_{n=0}  \sum^\infty_{m = 0}\bb{\frac{1}{2}}^{k/2-1} \frac{\bb{\frac 14 \lm }^n \bb{\frac 14 \lm' }^m}{n!m!}\int^x_0  \frac{\bb{y}^{n+k/2-3/2}(x-y)^{m-1/2}}{\Gamma((k-1)/2 + n)\Gamma(1/2 + m)} dy \\
+& = & \sum^\infty_{n=0}  \sum^\infty_{m = 0}\bb{\frac{1}{2}}^{k/2-1} \frac{\bb{\frac 14 \lm }^n \bb{\frac 14 \lm' }^m x^{k/2+n+m-1}}{n!m!\Gamma(k/2+n+m)} = \bb{\frac{1}{2}}^{k/2-1} \sum^\infty_{l=0} \frac{x^{k/2+l-1}}{\Gamma(k/2+l)} \sum^l_{n = 0} \frac{\bb{\frac 14 \lm }^n \bb{\frac 14 \lm' }^{l-n} }{n!(l-n)!} \\
+& = &  \bb{\frac{x}{2}}^{k/2-1} \sum^\infty_{l=0} \frac{\bb{\frac 14(\lm  + \lm')x}^l}{l!\Gamma(k/2+l)}  =   \bb{\frac{x}{2}}^{k/2-1}\bb{\frac 2{\sqrt{(\lm+\lm')x}}}^{k/2 -1 } I_{k/2-1}\bb{\sqrt{(\lm + \lm')x}}
+\eeast
+as required. Note that the density function can also be achieved by the product of moment generating function.
+\end{proof}
+
+\begin{proposition}\label{pro:mgf_chi_squared_non_central}
+Suppose $X \sim \chi_k^2(\lm)$. Then for $\theta < \frac 12$ and $t\in \R$,
+\be
+M_X(\theta) = \frac{\exp\left(\frac{ \lm \theta}{1-2\theta }\right)}{(1-2 \theta)^{k/2}} ,\quad\quad \phi_X(t) =  \frac{\exp\left(\frac{i \lm t}{1-2it }\right)}{(1-2 it)^{k/2}}.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+From Definition \ref{def:mgf_probability},
+\beast
+M_X(\theta) & = & \E\bb{e^{\theta X}} = \int^\infty_0 e^{\theta x} \frac{1}{2}e^{-(x+\lm)/2}\left (\frac{x}{\lm} \right)^{k/4-1/2} I_{k/2-1}\bb{\sqrt{\lambda x}} dx \\
+& = & \bb{\frac 1{1-2\theta}}^{k/4-1/2} \int^\infty_0 \frac{1}{2}e^{-(x(1-2\theta)+\lm)/2}\left (\frac{x(1-2\theta)}{\lm} \right)^{k/4-1/2} I_{k/2-1}\bb{\sqrt{\frac{\lambda}{(1-2\theta)} x(1-2\theta)}} dx \\
+& = & \bb{\frac 1{1-2\theta}}^{k/4+1/2} \int^\infty_0 \frac{1}{2}e^{-(x+\frac{\lm}{1-2\theta})/2}\left (\frac{x}{\lm} \right)^{k/4-1/2} I_{k/2-1}\bb{\sqrt{\frac{\lambda}{(1-2\theta)} x}} dx \\
+& = & \bb{\frac 1{1-2\theta}}^{k/2} \int^\infty_0 \frac{1}{2}e^{-(x+\frac{\lm}{1-2\theta})/2}e^{-\lm \bb{1-\frac 1{1-2\theta}}/2}\left (\frac{x(1-2\theta)}{\lm} \right)^{k/4-1/2} I_{k/2-1}\bb{\sqrt{\frac{\lambda}{(1-2\theta)} x}} dx \\
+& = & \frac{\exp\left(\frac{ \lm \theta}{1-2\theta }\right)}{(1-2 \theta)^{k/2}}.
+\eeast
+
+Similarly for $\phi_X(t)$.
+\end{proof}
+
+
+\begin{proposition}\label{pro:moments_chi_squared_non_central}
+Suppose $X \sim \chi_k^2(\lm)$. Then \beast \text{(i)}\ \E X = k + \lm,\quad \text{(ii)}\ \var X = 2(k + 2\lm),\quad\text{(iii)}\ \skewness(X) = \frac{2^{3/2}(k+3\lambda)}{(k+2\lambda)^{3/2}},\quad\text{(iv)}\ \ekurt(X) =
+\frac{12(k+4\lambda)}{(k+2\lambda)^2}. \eeast
+\end{proposition}
+
+\begin{proof}[\bf Proof]%(i) and (ii) can be done using integration by parts. Or
+With Propositions \ref{pro:mgf_chi_squared_non_central}, \ref{pro:mgf_finite_moment},
+\beast
+\E X & = & \left.\frac {d M_X(\theta)}{d\theta}\right|_{\theta=0} = \left. k(1 -2\theta)^{-k/2-1}\exp\bb{\frac{ \lm \theta}{1-2\theta }} + \lm (1 -2\theta)^{-k/2-2}\exp\bb{\frac{ \lm \theta}{1-2\theta }} \right|_{\theta=0} \\
+& = & \left.(1 -2\theta)^{-k/2-2}\exp\bb{\frac{ \lm \theta}{1-2\theta }} \bb{k(1-2\theta)+ \lm} \right|_{\theta=0} = k + \lm.
+\eeast
+
+\beast
+\E X^2 & = & \left.\frac {d^2 M_X(\theta)}{d\theta^2}\right|_{\theta=0} = \left. (1 -2\theta)^{-k/2-4}\exp\bb{\frac{ \lm \theta}{1-2\theta }} \bb{\bb{(k+4)(1-2\theta) + \lm}\bb{k(1-2\theta)+ \lm} -2k(1-2\theta)^2  }   \right|_{\theta=0} \\
+& = & \left. (1 -2\theta)^{-k/2-4}\exp\bb{\frac{ \lm \theta}{1-2\theta }} \bb{k(k+2)(1-2\theta)^2 + 2\lm (k+2)(1-2\theta)+ \lm^2  }   \right|_{\theta=0} = k(k + 2) + 2\lm(k+2) + \lm^2.
+\eeast
+
+Thus, $\var X = \E X^2 - \bb{\E X}^2 = k(k + 2) + 2\lm(k+2) + \lm^2 - \bb{k+\lm}^2 = 2(k+2\lm)$. Also,
+\beast
+& & \E X^3 = \left.\frac {d^3 M_X(\theta)}{d\theta^3}\right|_{\theta=0} \\
+& = & \left. (1 -2\theta)^{-k/2-6}\exp\bb{\frac{ \lm \theta}{1-2\theta }} \bb{(k+8)(1-2\theta) + \lm}\bb{k(k+2)(1-2\theta)^2 + 2\lm (k+2)(1-2\theta)+ \lm^2  } \right|_{\theta=0} \\
+&  & \qquad +\left. (1 -2\theta)^{-k/2-6}\exp\bb{\frac{ \lm \theta}{1-2\theta }} (1-2\theta)^2 \bb{-4k(k+2)(1-2\theta) - 4\lm(k+2)} \right|_{\theta=0} \\
+& = & \left. (1 -2\theta)^{-k/2-6}\exp\bb{\frac{ \lm \theta}{1-2\theta }} \bb{k(k+2)(k+4)(1-2\theta)^3 + 3\lm(k + 2)(k+4)(1-2\theta)^2 + 3\lm^2(k+4)(1-2\theta) + \lm^3} \right|_{\theta=0}\\
+& = & k(k+2)(k+4) + 3\lm(k+2)(k + 4) + 3\lm^2(k+4) + \lm^3.
+\eeast
+
+Thus,
+\beast
+& & \E\bb{X-\mu}^3 = \E X^3 - 3\mu\E X^2 + 3\mu^2 \E X - \mu^3 \\
+& = & k(k+2)(k+4) + 3\lm(k+2)(k + 4) + 3\lm^2(k+4) + \lm^3 - 3(k+\lm)\bb{k(k + 2) + 2\lm(k+2) + \lm^2} + 2(k+\lm)^3 \\
+& = & 8k + 24\lm.
+\eeast
+
+By Definition \ref{def:skewness}, $\skewness(X) = \frac{8k+24\lm}{2^{3/2}(k+2\lm)^{3/2}} = \frac{2^{3/2}(k+3\lm)}{(k+2\lm)^{3/2}}$. Furthermore,
+\beast
+& & \E X^4 = \left.\frac {d^4 M_X(\theta)}{d\theta^4}\right|_{\theta=0} \\
+& = & \left. \frac{(k+12)(1-2\theta)+\lm} {(1 -2\theta)^{k/2+8}}e^{\frac{ \lm \theta}{1-2\theta }}\bb{k(k+2)(k+4)(1-2\theta)^3 + 3\lm(k + 2)(k+4)(1-2\theta)^2 + 3\lm^2(k+4)(1-2\theta) + \lm^3} \right|_{\theta=0}\\
+& & \qquad + \left. \frac{(1 -2\theta)^2} {(1 -2\theta)^{k/2+8}}e^{\frac{ \lm \theta}{1-2\theta }}\bb{-6k(k+2)(k+4)(1-2\theta)^2 - 12\lm(k + 2)(k+4)(1-2\theta) - 6\lm^2(k+4)} \right|_{\theta=0}\\
+& = & \left.  e^{\frac{ \lm \theta}{1-2\theta }}\frac{(k+6)\bb{k(k+2)(k+4)(1-2\theta)^4 + 4\lm(k + 2)(k+4)(1-2\theta)^3 + 6\lm^2(k+4)(1-2\theta)^2 + 4\lm^3(1-2\theta)} + \lm^4}{(1 -2\theta)^{k/2+8}} \right|_{\theta=0}\\
+& = & (k+6)\bb{k(k+2)(k+4) + 4\lm(k + 2)(k+4) + 6\lm^2(k+4) + 4\lm^3} + \lm^4
+\eeast
+
+Thus,
+\beast
+& & \E\bb{X-\mu}^4 = \E X^4 - 4\mu\E X^3 + 6\mu^2 \E X^2 - 4\mu^3\E X + \mu^4 \\
+& = & (k+6)\bb{k(k+2)(k+4) + 4\lm(k + 2)(k+4) + 6\lm^2(k+4) + 4\lm^3} + \lm^4 - 3(k+\lm)^4\\
+& & \qquad - 4(k+\lm) \bb{k(k+2)(k+4) + 3\lm(k+2)(k + 4) + 3\lm^2(k+4) + \lm^3} + 6(k+\lm)^2\bb{k(k + 2) + 2\lm(k+2) + \lm^2}\\
+& = & 12k(k+4) + 48\lm(k+4) + 48\lm^2.
+\eeast
+
+By Definition \ref{def:kurtosis}, we have $\ekurt(X) = \frac{12k(k+4) + 48\lm(k+4) + 48\lm^2}{4(k+2\lm)^2} -3 = \frac{12(k+4\lambda)}{(k+2\lambda)^2}$.%For (v), we know that $\frac {d^n M_X(\theta)}{d\theta^n} = \lm^k k(k+1)\dots (n+k-1)/(\lm -\theta)^{n+k}$,be\E X^n = \left.\frac {d^n M_X(\theta)}{d\theta^n}\right|_{\theta=0} = \frac {k(k+1)\dots (n+k-1)}{\lm^n}.\ee
+\end{proof}
+
+\begin{theorem}
+Let $X_1,\dots,X_n$ be i.i.d. $\sN(\mu,\sigma^2)$ random variables. Let
+\be
+\ol{X} = \frac 1n \sum^n_{i=1} X_i,\qquad S_{XX} = \sum^n_{i=1} \bb{X_i - \ol{X}}^2.
+\ee
+
+Then $\ol{X}$ and $S_{XX}$ are independent and
+\be
+\ol{X} \sim \sN\bb{\mu, \frac 1n \sigma^2},\qquad S_{XX} \sim \sigma^2 \chi^2_{n-1}.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $X = \bb{X_1,\dots,X_n}^T$. Then $X\sim \sN\bb{\mu\ind_{n\times 1},\sigma^2 I_n}$.
+
+Let $A$ be any orthogonal $n\times n$ matrix whose entries in the first row are all equal to $1/\sqrt{n}$, and let $Y = AX$. Then $Y\sim \sN\bb{A\mu\ind_{n\times 1},\sigma^2 I}$. Let $A_i$ denote the $i$th row of $A$ where $i = 1,\dots,n$. Then $i$th row of $A\mu\ind_{n\times 1}$ is $A_i\mu\ind_{n\times 1} = \sqrt{n}\mu A_iA_1^T = \sqrt{n}\mu\delta_{1i}$ because $A$ is orthogonal. Thus, $A\mu = \bb{\sqrt{n}\mu,0,\dots,0}^T$.
+
+Hence, $Y_1 \sim \sN\bb{\sqrt{n}\mu,\sigma^2}$, but $\ol{X}= Y_1/\sqrt{n}$, so $\ol{X} \sim \sN\bb{\mu,\frac 1n \sigma^2}$. Also, for Euclidean norm $\dabs{\cdot}$,
+\be
+S_{XX} = \sum^n_{i=1}\bb{X_i - \ol{X}}^2 = \sum^n_{i=1} X_i^2 - n\ol{X}^2 = \dabs{X}^2 - n\ol{X}^2 \stackrel{\text{\footnote{proposition needed here}}}{=} \dabs{Y}^2 - Y_1^2 = \sum^n_{i=2} Y_i^2 \sim \sigma^2 \chi^2_{n-1}.
+\ee
+
+Finally, $\bra{Y_1,\dots,Y_n}$ are mutually independent, so $\ol{X}$ (which is $Y_1$) and $S_{XX}\bb{Y_2,\dots,Y_n}$ are independent by Proposition \ref{thm:random_variable_function_indenpence}.
+\end{proof}
+
+Combining Proposition \ref{pro:normal_chi_square_t}, we have the following corollary.
+
+\begin{corollary}
+Let $X_1,\dots,X_n$ be i.i.d. $\sN(\mu,\sigma^2)$ random variables. Then
+\be
+Y := \frac{\sqrt{n}}{\sigma}\bb{\ol{X}-\mu} \sim \sN(0,1),\qquad Z:= \frac{\sqrt{n}\bb{\ol{X}-\mu}}{\sqrt{S_{XX}/(n-1)}} = \frac{\frac{\sqrt{n}}{\sigma}\bb{\ol{X}-\mu}}{\frac 1{\sigma}\sqrt{S_{XX}/(n-1)}} \sim T(n-1).
+\ee
+\end{corollary}
+
+
+\subsection{Weibull random variables}
+
+\begin{definition}[Weibull random variable\index{Weibull random variable}]\label{def:weibull_rv}
+A random variable $X$ in $[0,\infty)$ is called Weibull-distributed if, for some $\lm,k >0$, its density function is
+\be
+f_X(x) = \frac{k}{\lambda}\left(\frac{x}{\lambda}\right)^{k-1}e^{-\bb{\frac x{\lm}}^{k}} .
+\ee
+
+We write $X \sim \sW(k,\lm)$.
+\end{definition}
+
+\begin{proposition}\label{pro:moments_weibull}
+Suppose $X \sim \sW(k,\lm)$. Then \beast \text{(i)}\ \E X = \lm\Gamma\bb{1+\frac 1k},\quad \text{(ii)}\ \var X = \lm^2\bb{\Gamma\bb{1+\frac 2k} - \bb{\Gamma\bb{1+\frac 1k}}^2}, \eeast \beast \text{(iii)}\ \skewness(X) =
+\frac{\Gamma\bb{1+\frac 3k} - 3 \Gamma\bb{1+\frac 2k}\Gamma\bb{1+\frac 1k}+ 2\bb{\Gamma\bb{1+\frac 1k}}^3}{\bb{\Gamma\bb{1+\frac 2k} - \bb{\Gamma\bb{1+\frac 1k}}^2}^{3/2}}, \eeast \beast \text{(iv)}\ \ekurt(X) =
+\frac{\Gamma\bb{1+\frac 4k} - 4 \Gamma\bb{1+\frac 3k}\Gamma\bb{1+\frac 1k} + 6\Gamma\bb{1+\frac 2k}\bb{\Gamma\bb{1+\frac 1k}}^2 - 3\bb{\Gamma\bb{1+\frac 1k}}^4}{\bb{\Gamma\bb{1+\frac 2k} - \bb{\Gamma\bb{1+\frac
+1k}}^2}^2}-3. \eeast
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+We have these properties by applying the definition of gamma distribution. For $r\in \R$, we can see that %$\E X^n = \lm^n \Gamma\bb{1+\frac nk}$.
+\be
+\E X^r = \int^\infty_0 x^r \frac{k}{\lambda}\left(\frac{x}{\lambda}\right)^{k-1}e^{-(x/\lambda)^{k}} dx = \lm^r \int^\infty_0 x^{r/k} e^{-x} dx = \lm^r \Gamma\bb{1+\frac rk}.
+\ee
+\ben
+\item [(i)] For the mean, $\E X = \lm \Gamma\bb{1+\frac 1k} :=\mu$.
+\item [(ii)] For the second moment, $\E X^2 = \lm^2 \Gamma\bb{1+\frac 2k}$. Therefore,
+\be
+\var X = \E X^2 - (\E X)^2 = \lm^2\bb{\Gamma\bb{1+\frac 2k} - \bb{\Gamma\bb{1+\frac 1k}}^2} := \sigma^2.
+\ee
+\item [(iii)] For the third moment, $\E X^3 = \lm^3 \Gamma\bb{1+\frac 3k}$. Therefore,
+\beast
+\skewness(X) = \frac{\E X^3 - 3\mu \E X^2 + 2\mu^3}{\bb{\var X}^{3/2}} = \frac{\Gamma\bb{1+\frac 3k} - 3 \Gamma\bb{1+\frac 2k}\Gamma\bb{1+\frac 1k}+ 2\bb{\Gamma\bb{1+\frac 1k}}^3}{\bb{\Gamma\bb{1+\frac 2k} - \bb{\Gamma\bb{1+\frac 1k}}^2}^{3/2}}.
+\eeast
+
+\item [(iv)] Similarly, $\E X^4 = \lm^4\Gamma\bb{1+\frac 4k}$. Then
+\beast
+\ekurt(X) & = & \frac{\E X^4 - 4\mu \E X^3 + 6\mu^2 \E X^2 - 3\mu^4}{\bb{\var X}^{2}} - 3\\
+& = & \frac{\Gamma\bb{1+\frac 4k} - 4 \Gamma\bb{1+\frac 3k}\Gamma\bb{1+\frac 1k} + 6\Gamma\bb{1+\frac 2k}\bb{\Gamma\bb{1+\frac 1k}}^2 - 3\bb{\Gamma\bb{1+\frac 1k}}^4}{\bb{\Gamma\bb{1+\frac 2k} - \bb{\Gamma\bb{1+\frac 1k}}^2}^2}-3.
+\eeast
+\een
+\end{proof}
+
+\begin{proposition}\label{pro:mgf_weibull}
+Suppose $X \sim \sW(k,\lm)$. Then for $\theta,t\in \R$,
+\be
+M_X(\theta) = \sum_{n=0}^\infty \frac{\theta^n\lambda^n}{n!}\Gamma\bb{1+\frac nk},\quad\quad \phi_X(t) =  \sum_{n=0}^\infty \frac{(it)^n\lambda^n}{n!}\Gamma\bb{1+\frac nk}.
+\ee
+\end{proposition}
+
+%\begin{remark}
+% by Proposition \ref{pro:mgf_finite_moment}.
+%\end{remark}
+
+\begin{proof}[\bf Proof]
+We can express that $e^{\theta X} = \sum^\infty_{n=0} \frac {x^n}{n!}$. Then by Fubini theorem (Theorem \ref{thm:fubini} as integrand is non-negative)
+\beast
+\E\bb{e^{\theta X}} & = & \int^\infty_0 e^{\theta x}\frac{k}{\lambda}\left(\frac{x}{\lambda}\right)^{k-1}e^{-(x/\lambda)^{k}}dx = \int^\infty_0 \frac{k}{\lambda}\left(\frac{x}{\lambda}\right)^{k-1}e^{-(x/\lambda)^{k}} \sum^\infty_{n=1}\frac{\theta^nx^n}{n!}dx \\
+& = & \sum^\infty_{n=1} \frac{\theta^n}{n!} \int^\infty_0 x^n \frac{k}{\lambda}\left(\frac{x}{\lambda}\right)^{k-1}e^{-(x/\lambda)^{k}} dx = \sum^\infty_{n=1} \frac{\theta^n\lm^n}{n!} \Gamma\bb{1+\frac nk}.
+\eeast%\footnote{proof needed. Might need $k\geq 1$.}
+
+Similarly, we can apply Fubini theorem again because
+\be
+\abs{\phi_X(t)} = \abs{\int^\infty_0 e^{itx} \frac{k}{\lambda}\left(\frac{x}{\lambda}\right)^{k-1}e^{-(x/\lambda)^{k}}dx} \leq \int^\infty_0 \abs{\frac{k}{\lambda}\left(\frac{x}{\lambda}\right)^{k-1}e^{-(x/\lambda)^{k}}}dx = 1.
+\ee
+
+So the integrand is integrable and therefore we have the required result.
+\end{proof}
+
+Similarly, we have translated Weibull random variable.
+
+\begin{definition}[translated Weibull random variable\index{weibull random variable!translated}]\label{def:weibull_translated_rv}
+A random variable $X$ in $[\mu,\infty)$ ($\mu \in\R$) is called translated Weibull-distributed if, for some $\lm,k >0$, its density function is
+\be
+f_X(x) = \frac{k}{\lambda}\left(\frac{x-\mu}{\lambda}\right)^{k-1}e^{-\bb{\frac{x-\mu}{\lm}}^{k}} .
+\ee
+We write $X \sim \sW(\mu,k,\lm)$.
+\end{definition}
+
+\section{Distributions Related to Gamma Distribution}
+
+
+\subsection{Generalized gamma distribution}
+
+\begin{definition}[generalized gamma random variable\index{generalized gamma random variable}]\label{def:generalized_gamma_rv}
+A random variable $X$ in $[0,\infty)$ is called generalized gamma-distributed if, for some $\lm,k,d >0$, its density function is
+\be
+f_X(x) = \frac{k}{\lm^d \Gamma\bb{\frac d k}} x^{d-1}e^{-\bb{\frac x{\lm}}^{k}} .
+\ee
+
+We write $X \sim G\Gamma(k,d,\lm)$.
+\end{definition}
+
+\begin{remark}
+When $d=k$, we have that $X\sim \sW(k,\lm)$. When $k=1$, we have that $X\sim \Gamma\bb{d,\lm}$.
+
+By the definition of Weibull distribution, the integral of density is
+\be
+\frac 1{\lm^{d-k}\Gamma\bb{\frac d k} } \int^\infty_0 \frac{k }{\lm^k } x^{d-k} x^{k-1}e^{-\bb{\frac x{\lm}}^{k}} dx = \frac 1{\lm^{d-k}\Gamma\bb{\frac d k} } \lm^{d-k} \Gamma\bb{1+\frac{d-k}{k}} = 1.
+\ee
+\end{remark}
+
+\begin{proposition}\label{pro:moments_generalized_gamma}
+Suppose $X \sim G\Gamma(k,d,\lm)$. \beast \text{(i)}\ \E X = \frac{\lm\Gamma\bb{\frac{1+d}{k}}}{\Gamma\bb{\frac{d}{k}}} ,\quad \text{(ii)}\ \var X = \frac{\lm^2 \bb{\Gamma\bb{\frac{2+d}{k}}\Gamma\bb{\frac{d}{k}} -
+\Gamma\bb{\frac{1+d}{k}}^2} }{\Gamma\bb{\frac{d}{k}}^2}, \eeast \beast \text{(iii)}\ \skewness(X) = \frac{\Gamma\bb{\frac{3+d}{k}}\bb{\Gamma\bb{\frac{d}{k}}}^2- 3
+\Gamma\bb{\frac{2+d}{k}}\Gamma\bb{\frac{1+d}{k}}\Gamma\bb{\frac{d}{k}} + 2\bb{\Gamma\bb{\frac{1+d}{k}}}^3 }{\bb{\Gamma\bb{\frac{2+d}{k}}\Gamma\bb{\frac{d}{k}} - \Gamma\bb{\frac{1+d}{k}}^2 }^{3/2}}, \eeast \beast
+\text{(iv)}\ \ekurt(X) = \frac{\Gamma\bb{\frac{4+d}{k}}\bb{\Gamma\bb{\frac{d}{k}}}^3- 4 \Gamma\bb{\frac{3+d}{k}}\Gamma\bb{\frac{1+d}{k}}\bb{\Gamma\bb{\frac{d}{k}}}^2 + 6
+\Gamma\bb{\frac{2+d}{k}}\bb{\Gamma\bb{\frac{1+d}{k}}}^2\Gamma\bb{\frac{d}{k}} - 3\bb{\Gamma\bb{\frac{1+d}{k}}}^4 }{\bb{\Gamma\bb{\frac{2+d}{k}}\Gamma\bb{\frac{d}{k}} - \Gamma\bb{\frac{1+d}{k}}^2 }^{2}}-3. \eeast
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+For $r\in\R$,
+\be
+\E X^r = \frac 1{\lm^{d-k}\Gamma\bb{\frac d k} } \int^\infty_0 \frac{k }{\lm^k } x^{r+d-k} x^{k-1}e^{-\bb{\frac x{\lm}}^{k}} dx = \frac 1{\lm^{d-k}\Gamma\bb{\frac d k} } \lm^{r+d-k} \Gamma\bb{1+\frac{r+d-k}{k}} =  \frac{\lm^r\Gamma\bb{\frac{r+d}{k}}}{\Gamma\bb{\frac{d}{k}}}.
+\ee
+
+Thus,
+\be
+\E X  = \frac{\lm\Gamma\bb{\frac{1+d}{k}}}{\Gamma\bb{\frac{d}{k}}},
+\ee
+and
+\be
+\var X = \E X^2 - (\E X)^2 = \frac{\lm^2\Gamma\bb{\frac{2+d}{k}}}{\Gamma\bb{\frac{d}{k}}} - \frac{\lm^2\Gamma\bb{\frac{1+d}{k}}^2}{\Gamma\bb{\frac{d}{k}}^2} = \frac{\lm^2 \bb{\Gamma\bb{\frac{2+d}{k}}\Gamma\bb{\frac{d}{k}} - \Gamma\bb{\frac{1+d}{k}}^2 }}{\Gamma\bb{\frac{d}{k}}^2}.
+\ee
+
+Furthermore, we have
+\beast
+\skewness(X) = \frac{\frac{\lm^3\Gamma\bb{\frac{3+d}{k}}}{\Gamma\bb{\frac{d}{k}}}- 3\frac{\lm^2\Gamma\bb{\frac{2+d}{k}}}{\Gamma\bb{\frac{d}{k}}}\frac{\lm\Gamma\bb{\frac{1+d}{k}}}{\Gamma\bb{\frac{d}{k}}}+ 2\bb{\frac{\lm\Gamma\bb{\frac{1+d}{k}}}{\Gamma\bb{\frac{d}{k}}}}^3 }{\bb{\var X}^{3/2}} = \frac{\Gamma\bb{\frac{3+d}{k}}\bb{\Gamma\bb{\frac{d}{k}}}^2- 3 \Gamma\bb{\frac{2+d}{k}}\Gamma\bb{\frac{1+d}{k}}\Gamma\bb{\frac{d}{k}} + 2\bb{\Gamma\bb{\frac{1+d}{k}}}^3 }{\bb{\Gamma\bb{\frac{2+d}{k}}\Gamma\bb{\frac{d}{k}} - \Gamma\bb{\frac{1+d}{k}}^2 }^{3/2}}.
+\eeast
+
+Similarly, we have \beast \ekurt(X) =  \frac{\Gamma\bb{\frac{4+d}{k}}\bb{\Gamma\bb{\frac{d}{k}}}^3- 4 \Gamma\bb{\frac{3+d}{k}}\Gamma\bb{\frac{1+d}{k}}\bb{\Gamma\bb{\frac{d}{k}}}^2 + 6
+\Gamma\bb{\frac{2+d}{k}}\bb{\Gamma\bb{\frac{1+d}{k}}}^2\Gamma\bb{\frac{d}{k}} - 3\bb{\Gamma\bb{\frac{1+d}{k}}}^4 }{\bb{\Gamma\bb{\frac{2+d}{k}}\Gamma\bb{\frac{d}{k}} - \Gamma\bb{\frac{1+d}{k}}^2 }^{2}} -3. \eeast
+\end{proof}
+
+With the same argument with Proposition \ref{pro:mgf_weibull}, we have
+
+\begin{proposition}\label{pro:mgf_generalized_gamma}
+Suppose $X \sim G\Gamma(k,d,\lm)$. Then for $\theta,t\in \R$,
+\be
+M_X(\theta) = \frac 1{\Gamma\bb{\frac dk}}\sum_{n=0}^\infty \frac{\theta^n\lambda^n}{n!}\Gamma\bb{\frac {n+d}k},\quad\quad \phi_X(t) = \frac 1{\Gamma\bb{\frac dk}} \sum_{n=0}^\infty \frac{(it)^n\lambda^n}{n!}\Gamma\bb{\frac {n+d}k}.
+\ee
+\end{proposition}
+
+
+\subsection{Inverse gamma distribution}\label{subsec:inverse_gamma}
+
+\begin{definition}[inverse gamma random variable\index{inverse gamma random variable}]\label{def:inverse_gamma_rv}
+A random variable $X$ in $(0,\infty)$ is called inverse gamma-distributed if, for some $\lm,k >0$, its density function is
+\be
+f_X(x) = \frac{\lm^k}{\Gamma(k)} x^{-k - 1} \exp \bb{\frac{-\lm}{x}}.
+\ee
+
+We write $X \sim \Gamma^{-1}(k,\lm)$.
+\end{definition}
+
+\begin{remark}
+If $X \sim \Gamma(k,\lm)$, then $X^{-1} \sim \Gamma^{-1}(k,\lm)$.
+\end{remark}
+
+\begin{proposition}\label{pro:moments_inverse_gamma}
+Suppose $X \sim \Gamma^{-1}(k,\lm)$. Then
+\beast
+\text{(i)}\ \E X = \begin{cases}\frac {\lm}{k-1} & k > 1 \\ \text{undefined} & \text{otherwise} \end{cases}, \qquad \text{(ii)}\ \var X = \begin{cases} \frac{\lm^2}{(k-1)^2(k-2)} & k > 2\\ %\infty & 1 < \nu \leq 2\\
+\text{undefined} & \text{otherwise} \end{cases},
+\eeast
+\beast
+\text{(iii)}\ \skewness(X) = \begin{cases}\frac{4\sqrt{k-2}}{k-3} & k > 3 \\ \text{undefined} & \text{otherwise} \end{cases}, \qquad  \text{(iv)}\ \ekurt(X) = \begin{cases} \frac{6(5k-11)}{(k-3)(k-4)} & k > 4\\ %\infty & 2 < \nu \leq 4\\
+\text{undefined} & \text{otherwise} \end{cases}.
+\eeast
+\end{proposition}
+
+
+\begin{proof}[\bf Proof]%(i) and (ii) can be done using integration by parts. Or%With Propositions \ref{pro:mgf_t}, \ref{pro:mgf_finite_moment},
+For $k>1$,
+\be
+\E X = \int^\infty_{-\infty} \frac{\lm\lm^{k-1}}{\Gamma(k)} x^{-(k-1) - 1} \exp \bb{\frac{-\lm}{x}} dx = \frac{\lm\Gamma(k-1)}{\Gamma(k)} = \frac{\lm}{k-1}.
+\ee
+
+For $k>2$, we have%when $\nu-1 > 0$ since the integral is well-defined by Definition \ref{def:beta_function}.
+\be
+\E X^2 = \frac{\lm^2\lm^{k-2}}{\Gamma(k)} x^{-(k-2) - 1} \exp \bb{\frac{-\lm}{x}} dx = \frac{\lm^2\Gamma(k-2)}{\Gamma(k)} = \frac{\lm^2}{(k-1)(k-2)}.
+\ee
+
+Thus,
+\be
+\var X = \E X^2 - (\E X )^2 =  \frac{\lm^2}{(k-1)(k-2)} -\bb{ \frac{\lm}{(k-1)}}^2 =  \frac{\lm^2}{(k-1)^2(k-2)}.
+\ee
+
+\be
+\E X^3 = \frac{\lm^3\lm^{k-3}}{\Gamma(k)} x^{-(k-3) - 1} \exp \bb{\frac{-\lm}{x}} dx = \frac{\lm^3\Gamma(k-3)}{\Gamma(k)} = \frac{\lm^3}{(k-1)(k-2)(k-3)}.
+\ee
+
+Thus,
+\be
+\skewness(X) = \frac{\frac{\lm^3}{(k-1)(k-2)(k-3)} - 3 \frac{\lm^2}{(k-1)(k-2)}\frac{\lm}{k-1} + 2 \bb{\frac{\lm}{k-1}}^3}{\bb{\frac{\lm^2}{(k-1)^2(k-2)}}^{3/2}} = \frac{4\sqrt{k-2}}{k-3}.
+\ee
+
+Furthermore,
+\be
+\E X^4 = \frac{\lm^4\lm^{k-4}}{\Gamma(k)} x^{-(k-4) - 1} \exp \bb{\frac{-\lm}{x}} dx = \frac{\lm^4\Gamma(k-4)}{\Gamma(k)} = \frac{\lm^4}{(k-1)(k-2)(k-3)(k-4)}.
+\ee
+
+Thus, we have
+\beast
+\ekurt(X) & = & \frac{\frac{\lm^4}{(k-1)(k-2)(k-3)(k-4)} - 4 \frac{\lm^3}{(k-1)(k-2)(k-3)}\frac{\lm}{k-1} + 6\frac{\lm^2}{(k-1)(k-2)}\bb{\frac{\lm}{k-1}}^2 - 3 \bb{\frac{\lm}{k-1}}^4}{\bb{\frac{\lm^2}{(k-1)^2(k-2)}}^{2}} -3 \\
+& = & \frac{3(k+5)(k-2)}{(k-3)(k-4)} -3 = \frac{6(5k-11)}{(k-3)(k-4)}.
+\eeast
+\end{proof}
+
+%With the same argument with Proposition \ref{pro:mgf_weibull}, we have
+
+\begin{proposition}\label{pro:mgf_t_inverse_gamma}
+Suppose $X \sim \Gamma^{-1}(k,\lm)$. Then for $\theta,t\in \R$,
+\be
+M_X(\theta) = \frac{2\bb{-\lm \theta}^{k/2}}{\Gamma(k)}K_{k}\bb{\sqrt{-4\lm \theta}}\text{  does not exist as real valued function},\quad\quad \phi_X(t) = \frac{2\bb{-i\lm t}^{k/2}}{\Gamma(k)}K_{k}\bb{\sqrt{-4i\lm t}}.
+\ee
+where $K_\nu(x)$ is modified Bessel function of the second kind.
+\end{proposition}
+
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+
+
+\section{Beta random variables and related random variables}
+
+\subsection{Beta random variables}
+
+\begin{definition}[beta random variable\index{beta-distributed random variable}]\label{def:beta_rv}
+A random variable $X$ in $[0,1]$ is called beta-distributed if, for some $a,b >0$, its density function is
+\be
+f_X(x) = \frac{x^{a-1}(1-x)^{b-1}} {B(a,b)},
+\ee
+where $B(a,b)$ is Beta function (see Definition \ref{def:beta_function}). We write $X \sim \betaa(a, b)$.
+\end{definition}
+
+%\begin{proposition}\label{pro:mgf_beta}
+%Suppose $X \sim \betaa(a,b)$. Then for $\theta,t\in \R$,
+%\be
+%M_X(\theta) = ,\quad\quad \phi_X(t) = .
+%\ee
+%\end{proposition}
+
+%\begin{proof}[\bf Proof]
+%From Definition \ref{def:mgf_probability},
+%\be
+%M_X(\theta) = \E\bb{e^{\theta X}} = \int^\infty_0 e^{\theta x} \frac{1}{\Gamma(k)} \lm^k x^{k - 1} e^{-\lm x} dx = \frac{\lm^k}{(\lm - \theta)^k} \int^\infty_0 \frac{1}{\Gamma(k)} (\lm - \theta )^kx^{k-1} e^{-(\lm - \theta)x} dx = \bb{\frac{\lm}{\lm - \theta}}^k.
+%\ee
+%\end{proof}
+
+\begin{proposition}\label{pro:moments_beta}
+Suppose $X \sim \betaa(a,b)$. Then \beast \text{(i)}\ \E X = \frac a{a+b},\quad \text{(ii)}\ \var X = \frac{ab}{(a+b)^2(a+b+1)},\quad\text{(iii)}\ \skewness(X) = \frac{2(b-a)\sqrt{a+b+1}}{(a+b+2)\sqrt{ab}}, \eeast \beast
+\text{(iv)}\ \ekurt(X) = \frac{6\bb{(a-b)^2 (a+b + 1) - ab (a+b+ 2)}}{ab (a+b + 2) (a+b + 3)}. \eeast
+\end{proposition}
+
+\begin{proof}[\bf Proof]%\footnote{need proof.}
+For $r\in\R^+$, we have
+\be
+\E X^r = \int^1_0 \frac{x^{a+r-1}(1-x)^{b-1}} {B(a,b)} dx = \frac{B(a+r,b)}{B(a,b)} = \frac{\Gamma(a+r)\Gamma(a+b)}{\Gamma(a)\Gamma(a+r+b)}.
+\ee
+
+For the first moment, we have
+\be
+\E X = \frac{\Gamma(a+1)\Gamma(a+b)}{\Gamma(a)\Gamma(a+1+b)} = \frac{a\Gamma(a)\Gamma(a+b)}{(a+b)\Gamma(a)\Gamma(a+b)} = \frac{a}{a+b}.
+\ee
+
+For the variance, we have
+\beast
+\var X & = & \E X^2 - (\E X)^2 = \frac{\Gamma(a+2)\Gamma(a+b)}{\Gamma(a)\Gamma(a+b+2)} - \bb{\frac {a}{a+b}}^2 = \frac{a(a+1)\Gamma(a)\Gamma(a+b)}{(a+b)(a+b+1)\Gamma(a)\Gamma(a+b)} - \bb{\frac {a}{a+b}}^2 \\
+& = & \frac{a(a+1)(a+b)-a^2(a+b+1)}{(a+b)^2(a+b+1)} = \frac{ab}{(a+b)^2(a+b+1)}.
+\eeast
+
+Furthermore,
+\be
+\E X^3 = \frac{\Gamma(a+3)\Gamma(a+b)}{\Gamma(a)\Gamma(a+3+b)} = \frac{a(a+1)(a+2)}{(a+b)(a+b+1)(a+b+2)}.
+\ee
+
+Therefore,
+\beast
+\skewness(X) & = & \frac{\frac{a(a+1)(a+2)}{(a+b)(a+b+1)(a+b+2)} - 3\frac{a(a+1)}{(a+b)(a+b+1)}\frac{a}{a+b} + 2\bb{\frac a{a+b}}^3 }{\bb{\frac{ab}{(a+b)^2(a+b+1)}}^{3/2}}  \\
+& = & \frac{\frac{a(a+1)(a+2)(a+b)^2 - 3a^2(a+1)(a+b)(a+b+2) + 2a^3(a+b+1)(a+b+2)}{(a+b)^3(a+b+1)(a+b+2)} }{\bb{\frac{ab}{(a+b)^2(a+b+1)}}^{3/2}}\\
+& = & \frac{\frac{2ab(b-a)}{(a+b)^3(a+b+1)(a+b+2)} }{\bb{\frac{ab}{(a+b)^2(a+b+1)}}^{3/2}} = \frac{2(b-a)\sqrt{a+b+1}}{(a+b+2)\sqrt{ab}}.
+\eeast
+
+Also,
+\be
+\E X^4 = \frac{\Gamma(a+4)\Gamma(a+b)}{\Gamma(a)\Gamma(a+4+b)} = \frac{a(a+1)(a+2)(a+3)}{(a+b)(a+b+1)(a+b+2)(a+b+3)}.
+\ee
+
+Therefore,
+\beast
+\ekurt(X) & = & \frac{\frac{a(a+1)(a+2)(a+3)}{(a+b)(a+b+1)(a+b+2)(a+b+3)} - 4\frac{a(a+1)(a+2)}{(a+b)(a+b+1)(a+b+2)}\frac{a}{a+b} + 6\frac{a(a+1)}{(a+b)(a+b+1)}\bb{\frac{a}{a+b}}^2 - 3\bb{\frac a{a+b}}^4 }{\bb{\frac{ab}{(a+b)^2(a+b+1)}}^{2}} -3 \\
+& = & \frac{\frac{a(a+1)(a+2)(a+3)(a+b)^3 - 4a^2(a+1)(a+2)(a+b)^2(a+b+3) + 6a^3(a+1)(a+b)(a+b+2)(a+b+3) - 3a^4(a+b+1)(a+b+2)(a+b+3)}{(a+b)^4(a+b+1)(a+b+2)(a+b+3) }}{\bb{\frac{ab}{(a+b)^2(a+b+1)}}^{2}}-3\\
+& = & \frac{3(a+b+1)(2a^2 -2ab + 2b^2 + a^2b + ab^2)}{ab(a+b+2)(a+b+3)}-3 = \frac{6\bb{(a-b)^2 (a+b + 1) - ab (a+b+ 2)}}{ab (a+b + 2) (a+b + 3)}.
+\eeast
+
+%By Definition \ref{def:skewness}, $\skewness(X) = \frac{2k/\lm^3}{k^{3/2}/\lm^3} = \frac 2{\sqrt{k}}$. Furthermore,
+%\be
+%\E X^4 = \left.\frac {d^4 M_X(\theta)}{d\theta^4}\right|_{\theta=0} = \left. \frac{k(k+1)(k+2)(k+3)\lm^k}{(\lm -\theta)^{k+4}}  \right|_{\theta=0}  = \frac{k(k+1)(k+2)(k+3)}{\lm^4}.
+%\ee
+
+%Thus,
+%\beast
+%\E\bb{X-\mu}^4 & = & \E X^4 - 4\mu\E X^3 + 6\mu^2 \E X^2 - 4\mu^3\E X + \mu^4 \\
+%& = & \frac{k(k+1)(k+2)(k+3)}{\lm^4} - 4\frac{k}{\lm}\frac{k(k+1)(k+2)}{\lm^3} + 6\frac{k^2}{\lm^2}\frac{k(k+1)}{\lm^2}- 4\frac{k^3}{\lm^3}\frac{k}{\lm} + \frac{k^4}{\lm^4} = \frac{3k^2 + 6k}{\lm^4} .
+%\eeast
+
+%By Definition \ref{def:kurtosis}, we have $\kurt(X) = \frac{3k(k+2)/\lm^4}{k^2/\lm^4} -3 = \frac 6k$.
+
+%For (v), we know that $\frac {d^n M_X(\theta)}{d\theta^n} = \lm^k k(k+1)\dots (n+k-1)/(\lm -\theta)^{n+k}$,
+%\be
+%\E X^n = \left.\frac {d^n M_X(\theta)}{d\theta^n}\right|_{\theta=0} = \frac {k(k+1)\dots (n+k-1)}{\lm^n}.
+%\ee
+\end{proof}
+
+\begin{proposition}\label{pro:mgf_beta}
+Suppose $X \sim \betaa(a,b)$. Then for $\theta,t\in \R$,
+\be
+M_X(\theta) =1  +\sum_{k=1}^{\infty} \bb{ \prod_{r=0}^{k-1} \frac{a+r}{a+b+r} } \frac{\theta^k}{k!},\quad\quad \phi_X(t) = \chf{1}{1}(a, a+b, it).
+\ee
+where $\chf{1}{1}(\cdot)$ is confluent hypergeometric function\footnote{definition needed}.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+\subsection{Beta prime distribution}
+
+\begin{definition}[beta prime random variable\index{beta prime distributed random variable}]\label{def:beta_prime_rv}
+A random variable $X\in [0,+\infty)$ is called beta prime distributed (inverted beta distribution or beta distribution of the second kind) if, for some positive integers $a,b >0$, its density function is
+\be
+f_X(x) = \frac{x^{a-1} (1+x)^{-a-b}}{B(a,b)},
+\ee
+where $B(a,b)$ is Beta function. We write $X \sim \betaa'(a, b)$.
+\end{definition}
+
+\begin{remark}
+If we make the substitution for $y = \frac{x}{1+x}$, the distribution becomes beta distribution $Y\sim \betaa(a,b)$.
+\end{remark}
+
+\begin{proposition}
+If $U \sim \Gamma(a,1), V\sim \Gamma(b,1)$, then $X = \frac{U}{V}\sim \betaa'(a,b)$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]%\footnote{need proof}
+\beast
+\pro\bb{\frac{U}{V} \leq x} & = & \pro\bb{U \leq Vx} = \frac{1}{\Gamma(a)\Gamma(b)}\int^\infty_0 \int^{vx}_{0} u^{a - 1} e^{-u} v^{b - 1} e^{-v} du dv.
+\eeast
+
+Taking the differentiation wrt $x$ under the integral sign, we have (by Theorem \ref{thm:differentiation_under_integral_sign})
+\beast
+f_X(x) & = & \frac{1}{\Gamma(a)\Gamma(b)} \int^\infty_0 v (vx)^{a - 1} e^{-vx} v^{b - 1} e^{-v} dv = x^{a - 1}\int^\infty_0 v^{a +b- 1} e^{-v(1+x)} dv \\
+& = & \frac{1}{\Gamma(a)\Gamma(b)} x^{a - 1} (1+x)^{-a-b} \int^\infty_0 t^{a+b-1} e^{-t} dt = x^{a - 1} (1+x)^{-a-b} \frac{\Gamma(a+b)}{\Gamma(a)\Gamma(b)} = \frac{x^{a-1} (1+x)^{-a-b}}{B(a,b)}
+\eeast
+which is the density function of beta prime distribution.
+\end{proof}
+
+\subsection{$F$-distribution}
+
+\begin{definition}[$F$ random variable\index{f-distributed random variable@F-distributed random variable}]\label{def:f_rv}
+A random variable $X \in [0,+\infty)$ is called $F$-distributed if, for some positive integers $a,b >0$ (degree of freedom), its density function is
+\be
+f_X(x) = \frac{1}{B\left(\frac{a}{2},\frac{b}{2}\right)} \left(\frac{a}{b}\right)^{\frac{a}{2}} x^{\frac{a}{2} - 1} \left(1+\frac{a}{b}\,x\right)^{-\frac{a+b}{2}},
+\ee
+where $B(a,b)$ is Beta function. We write $X \sim F(a, b)$.
+\end{definition}
+
+\begin{remark}
+Note that the cdf of $F$-distribution is $I_{\frac{a x}{ax +b}}\bb{\frac{a}2,\frac{b}2}$ where $I$ is regularized incomplete beta function (see \ref{def:regularized_incomplete_beta_function})\footnote{need to prove}.
+\end{remark}
+
+\begin{proposition}
+If $U \sim \chi^2_{a}, V \sim \chi^2_{b}$ are independent, then $X:=\frac{U / a}{V / b} \sim F(a, b)$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\beast
+\pro\bb{\frac{U/a}{V/b} \leq x} & = & \pro\bb{U \leq \frac{Vax}{b}} = \int^\infty_0 \int^{\frac{vax}{b}}_{0} \frac{1}{\Gamma\left(a/2\right)} 2^{-a/2} u^{a/2-1} e^{-u/2} \frac{1}{\Gamma\left(b/2\right)} 2^{-b/2} v^{b/2-1} e^{-v/2}  du dv
+\eeast
+
+Taking the differentiation wrt $x$ under the integral sign, we have (by Theorem \ref{thm:differentiation_under_integral_sign})
+\beast
+f_X(x) & = & \frac{1}{\Gamma\left(a/2\right)\Gamma\left(b/2\right)} 2^{-(a+b)/2} \int^\infty_0 \frac{va}{b} \bb{\frac{vax}{b}}^{a/2-1} v^{b/2-1} e^{-\bb{\frac{vax}{b}+1}v/2} dv \\
+& = & \frac{1}{\Gamma\left(a/2\right)\Gamma\left(b/2\right)} 2^{-(a+b)/2} \bb{\frac{a}{b}}^{a/2} x^{a/2-1} \int^\infty_0  v^{(a+b)/2-1} e^{-\bb{\frac{vax}{b}+1}v/2} dv \\
+& = & \frac{\Gamma\bb{(a+b)/2}}{\Gamma\left(a/2\right)\Gamma\left(b/2\right)}  \bb{\frac{a}{b}}^{\frac{a}{2}} x^{\frac{a}2-1}\left(1+\frac{a}{b}\,x\right)^{-\frac{a+b}{2}} = \frac{1}{B\left(\frac{a}{2},\frac{b}{2}\right)}  \bb{\frac{a}{b}}^{\frac{a}{2}} x^{\frac{a}2-1}\left(1+\frac{a}{b}\,x\right)^{-\frac{a+b}{2}}
+\eeast
+which is the density function of $F$-distribution.
+\end{proof}
+
+\begin{proposition}\label{pro:k_moments_f}
+Suppose $X \sim F(a,b)$. Then
+\be
+\E X^k = \bb{\frac{b}{a}}^k \frac{\Gamma\bb{\frac{a}{2}+k}\Gamma\bb{\frac{b}{2}-k}}{\Gamma\bb{\frac{a}{2}}\Gamma\bb{\frac{b}{2}}}.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Using the distribution of beta prime distribution, %for $b$
+\beast
+\E X^k & = & \int^\infty_0 \frac{1}{B\left(\frac{a}{2},\frac{b}{2}\right)} \left(\frac{a}{b}\right)^{\frac{a}{2}} x^{\frac{a}{2} +k-1 } \left(1+\frac{a}{b}\,x\right)^{-\frac{a+b}{2}} dx = \int^\infty_0 \frac{1}{B\left(\frac{a}{2},\frac{b}{2}\right)} \left(\frac{a}{b}\right)^{-k} x^{\frac{a}{2}+k-1} \left(1+x\right)^{-\frac{a+b}{2}} dx\\
+& = & \frac{1}{B\left(\frac{a}{2},\frac{b}{2}\right)} \left(\frac{a}{b}\right)^{-k} B\bb{\frac{a}{2}+k,\frac{b}{2}-k} = \bb{\frac{b}{a}}^k \frac{\Gamma\bb{\frac{a}{2}+k}\Gamma\bb{\frac{b}{2}-k}}{\Gamma\bb{\frac{a}{2}}\Gamma\bb{\frac{b}{2}}}
+\eeast
+as required.
+\end{proof}
+
+
+\begin{proposition}\label{pro:moments_f}
+Suppose $X \sim F(a,b)$. Then \beast \text{(i)}\ \E X = \begin{cases} \frac{b}{b - 2}  & b > 2 \\ \infty & \text{otherwise} \end{cases}, \qquad \text{(ii)}\ \var X = \begin{cases} \frac{2b^2(a+b-2)}{a (b-2)^2 (b-4)}  & b >
+4\\ \infty & 2 < b \leq 4\\ \text{undefined} & \text{otherwise} \end{cases}, \eeast \beast \text{(iii)}\ \skewness(X) = \begin{cases} \frac{(2 a + b - 2) \sqrt{8 (b-4)}}{(b-6) \sqrt{a (a + b -2)}} & b > 6 \\ \infty & 4 < b
+\leq 6\\ \text{undefined} & \text{otherwise} \end{cases}, \qquad  \text{(iv)}\ \ekurt(X) = \begin{cases} 12\frac{a(5b-22)(a+b-2)+(b-4)(b-2)^2}{a(b-6)(b-8)(a+b-2)} & b > 8 \\ \infty & 6 < b \leq 8\\ \text{undefined} &
+\text{otherwise} \end{cases}. \eeast
+\end{proposition}
+
+\begin{proof}[\bf Proof]%(i) and (ii) can be done using integration by parts. Or %With Propositions \ref{pro:mgf_t}, \ref{pro:mgf_finite_moment}, (1-1)\int^{1}_{0} \frac{1}{B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  x^{\frac{\nu-1}2-1} (1-x)^{1-1} dx = 0 \eeast
+From Proposition \ref{pro:k_moments_f}, we have that if $b > 2$, we have
+\be
+\E X = \frac{b}{a} \frac{\frac{a}{2}}{\frac{b}{2}-1} = \frac{b}{b - 2}.
+\ee
+
+Otherwise, the expectation is infinity. For $b > 4$,
+\be
+\E X^2 = \bb{\frac{b}{a}}^2 \frac{\frac{a}{2}\bb{\frac{a}{2}+1}}{\bb{\frac{b}{2}-2}\bb{\frac{b}{2}-1}} = \frac{b^2(a + 2)}{a(b - 2)(b - 4)}.
+\ee
+
+If $b \leq 4$, $\E X^2 = \infty$. Thus, if $b > 4$, we have
+\be
+\var X = \frac{b^2(a + 2)}{a(b - 2)(b - 4)} -  \frac{b^2}{(b - 2)^2} = \frac{2b^2(a+b-2)}{a (b-2)^2 (b-4)}.
+\ee
+
+If $2< b \leq 4$, we have $\var X = \infty$ and if $b\leq 2$ it is undefined. For $b > 6$,
+\be
+\E X^3 = \bb{\frac{b}{a}}^3 \frac{\frac{a}{2}\bb{\frac{a}{2}+1}\bb{\frac{a}{2}+2}}{\bb{\frac{b}{2}-3}\bb{\frac{b}{2}-2}\bb{\frac{b}{2}-1}} = \frac{b^3(a + 2)(a + 4)}{a^2(b - 2)(b - 4)(b - 6)}.
+\ee
+
+If $b \leq 6$, $\E X^2 = \infty$. Thus, if $b > 6$, we have
+\beast
+\skewness X & = & \left.\bb{\frac{b^3(a + 2)(a + 4)}{a^2(b - 2)(b - 4)(b - 6)} - 3 \frac{b}{b - 2}\frac{b^2(a + 2)}{a(b - 2)(b - 4)} + 2\bb{\frac{b}{b - 2}}^3}\right/\bb{\frac{2b^2(a+b-2)}{a (b-2)^2 (b-4)}}^{3/2}\\
+& = & \left.\bb{\frac{8(2a+b -2)(a+b -2)}{a^2(b - 4)(b - 6)}} \right/\bb{\frac{2(a+b-2)}{a (b-4)}}^{3/2} = \frac{(2 a + b - 2) \sqrt{8 (b-4)}}{(b-6) \sqrt{a (a + b -2)}}.
+\eeast
+
+If $4< b \leq 6$, we have $\skewness X = \infty$ and if $b\leq 4$ it is undefined (for $\infty/\infty$). For $b > 8$,
+\be
+\E X^4 = \bb{\frac{b}{a}}^4 \frac{\frac{a}{2}\bb{\frac{a}{2}+1}\bb{\frac{a}{2}+2}\bb{\frac{a}{2}+3}}{\bb{\frac{b}{2}-4}\bb{\frac{b}{2}-3}\bb{\frac{b}{2}-2}\bb{\frac{b}{2}-1}} = \frac{b^4(a + 2)(a + 4)(a + 6)}{a^3(b - 2)(b - 4)(b - 6)(b - 8)}.
+\ee
+
+If $b \leq 8$, $\E X^2 = \infty$. Thus, if $b > 8$, we have\footnote{need mathematica to prove}
+\beast
+\ekurt X & = & \left.\bb{\frac{b^4(a + 2)(a + 4)(a + 6)}{a^3(b - 2)(b - 4)(b - 6)(b - 8)}- \frac{4b^4(a + 2)(a + 4)}{a^2(b - 2)^2(b - 4)(b - 6)} + \frac{6b^4(a + 2)}{a(b - 2)^3(b - 4)}- \frac{3b^4}{(b - 2)^4}}\right/\\
+& & \qquad \bb{\frac{2b^2(a+b-2)}{a (b-2)^2 (b-4)}}^2- 3\\
+& = & 12\frac{a(5b-22)(a+b-2)+(b-4)(b-2)^2}{a(b-6)(b-8)(a+b-2)}.
+\eeast
+
+If $6< b \leq 8$, we have $\ekurt X = \infty$ and if $b\leq 6$ it is undefined.
+\end{proof}
+
+
+\section{Student-$t$ Distribution}
+
+\subsection{Standard Student-$t$ random variables}
+
+\begin{definition}[standard Student's $t$ random variable\index{Student's $t$ distributed random variable!standard}]\label{def:t_rv}
+A random variable $X \in (-\infty,\infty)$ is called standard Student's $t$-distributed if, for some $\nu >0$, its density function is
+\be
+f_X(x) = \frac{\Gamma(\frac{\nu+1}{2})} {\sqrt{\nu\pi}\,\Gamma(\frac{\nu}{2})} \left(1+\frac{x^2}{\nu} \right)^{-\frac{\nu+1}{2}} = \frac{1}{\sqrt{\nu}\, B \left (\frac{1}{2}, \frac{\nu}{2}\right )} \left(1+\frac{x^2}{\nu} \right)^{-\frac{\nu+1}{2}}
+\ee
+where $\nu$ is the degree of freedom and $\Gamma(x)$ is Gamma function. We write $X \sim T(\nu)$.
+\end{definition}
+
+\begin{remark}
+We need to guarantee the integral of the density function is 1. Take the substitution $x = \sqrt{\nu}\tan\theta$ with $\theta \in [-\pi/2,\pi/2]$.%For $\phi_X(t)$,
+\beast
+& & \int^{\pi/2}_{-\pi/2} \frac{1}{\sqrt{\nu}\, B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  \left(1+\frac{\nu \tan^2\theta}{\nu} \right)^{-\frac{\nu+1}{2}}  \sqrt{\nu} \sec^2 \theta d\theta\\
+& = & \int^{\pi/2}_{-\pi/2} \frac{1}{B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  \bb{\sec^2\theta}^{-\frac{\nu - 1}2} d\theta = 2\int^{\pi/2}_{0} \frac{1}{B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  \bb{\cos^2\theta}^{\frac{\nu - 1}2} \frac{-1}{2\cos \theta \sin \theta} d\cos^2 \theta\\
+& = & -\int^{\pi/2}_{0} \frac{1}{B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  \bb{\cos^2\theta}^{\frac {\nu}2 - 1} \bb{\sin^2\theta}^{\frac 12 - 1} d\cos^2 \theta = \int^1_0 \frac{1}{B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  x^{\frac {\nu}2 - 1} \bb{1-x}^{\frac 12 - 1} dx = 1
+\eeast
+by beta distribution.
+\end{remark}
+
+\begin{remark}
+The tail behaviour of $X\sim T(\nu)$ is
+\be
+f_X(x) \sim \text{const}\abs{x}^{-\nu -1}\quad\text{as }x\to \pm\infty.
+\ee
+\end{remark}
+
+\begin{proposition}\label{pro:mgf_cf_t}
+Suppose $X \sim T(\nu)$. Then for $\theta,t\in \R$,
+\be
+M_X(\theta) \text{ is undefined},\quad\quad \phi_X(t) = \frac{K_{\nu/2} \left(\sqrt{\nu}|t|)(\sqrt{\nu}|t| \right)^{\nu/2}}{\Gamma(\nu/2)2^{\nu/2-1}}.
+\ee
+where $K_\nu(x)$ is modified Bessel function of the second kind.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+By Proposition \ref{pro:modified_bessel_function_second_cos_integral},%Take the substitution $x = \sqrt{\nu}\tan\theta$, $\theta \in [-\pi/2,\pi/2]$.%For $\phi_X(t)$, we have $e^{itx} = \sum_{n=0}^{+\infty} \frac {(itx)^n} {n!}$ and thus
+\beast
+\phi_X(t) & = & \E\bb{e^{it X}} = \int^\infty_{-\infty} e^{itx} \frac{\Gamma(\frac{\nu+1}{2})} {\sqrt{\nu\pi}\,\Gamma(\frac{\nu}{2})} \left(1+\frac{x^2}{\nu} \right)^{-\frac{\nu+1}{2}} dx = 2\frac{\Gamma(\frac{\nu+1}{2})} {\sqrt{\nu\pi}\,\Gamma(\frac{\nu}{2})} \nu^{\frac{\nu+1}2} \int^\infty_0 \cos\bb{\abs{t}x} \left(\nu+ x^2 \right)^{-\frac{\nu+1}{2}} dx \\
+& = & 2^{1-\frac {\nu}2}\frac{\Gamma(\frac{\nu+1}{2})} {\sqrt{\pi}\,\Gamma(\frac{\nu}{2})} (2\nu)^{\frac{\nu}2} \int^\infty_0 \cos\bb{\abs{t}x} \left(\nu+ x^2 \right)^{-\frac{\nu+1}{2}} dx = \frac{K_{\nu/2} \left(\sqrt{\nu}|t|)(\sqrt{\nu}|t| \right)^{\nu/2}}{\Gamma(\nu/2)2^{\nu/2-1}} %\int^{\pi/2}_{-\pi/2} e^{it\sqrt{\nu}\tan \theta} \frac{1}{B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  \bb{\sec^2\theta}^{-\nu + 1} d\theta = \int^{\pi/2}_{-\pi/2} e^{it\sqrt{\nu}\tan \theta} \frac{1}{B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  \bb{\cos^2\theta}^{\nu - 1} \frac{-1}{2\cos \theta \sin \theta} d\cos \theta .
+\eeast
+as required.
+%Therefore,
+%\beast
+%\phi_X(t) = \int^\infty_0 \sum_{n=0}^{\infty} \frac{1}{\Gamma(k)} \lm^k x^{k - 1} e^{-\lm x} \frac {(itx)^n} {n!} dx = \sum_{n=0}^{\infty} \frac {(it)^n} {n!}  \int^\infty_0  \frac{1}{\Gamma(k)} \lm^k x^{n+k - 1} e^{-\lm x} dx
+%\eeast
+%by Fubini Theorem (Theorem \ref{thm:fubini}) since $\abs{\E\bb{e^{it X}}} \leq \E\abs{e^{itX}} = 1 < \infty$. Thus,
+%\be
+%\phi_X(t) = \sum_{n=0}^{\infty} \frac {(it)^n} {n!} \frac{\Gamma(n+k)}{\lm^n\Gamma(k)} \int^\infty_0  \frac{1}{\Gamma(n+k)} \lm^{n+k} x^{n+k -1} e^{-\lm x} dx  = \sum_{n=0}^{\infty} \frac {(it)^n} {\lm^n n!} \frac{\Gamma(n+k)}{\Gamma(k)} = \sum_{n=0}^{\infty}  \binom {n+k-1} {n} \bb{\frac{it}{\lm}}^n
+%\ee
+\end{proof}
+
+\begin{proposition}\label{pro:moments_t}
+Suppose $X \sim T(\nu)$. Then \beast \text{(i)}\ \E X = \begin{cases}0 & \nu > 1 \\ \text{undefined} & \text{otherwise} \end{cases}, \qquad \text{(ii)}\ \var X = \begin{cases} \frac{\nu}{\nu-2} & \nu > 2\\ \infty & 1 < \nu
+\leq 2\\ \text{undefined} & \text{otherwise} \end{cases}, \eeast \beast \text{(iii)}\ \skewness(X) = \begin{cases}0 & \nu > 3 \\ \text{undefined} & \text{otherwise} \end{cases}, \qquad  \text{(iv)}\ \ekurt(X) =
+\begin{cases} \frac{6}{\nu-4} & \nu > 4\\ \infty & 2 < \nu \leq 4\\ \text{undefined} & \text{otherwise} \end{cases}. \eeast
+\end{proposition}
+
+\begin{proof}[\bf Proof]%(i) and (ii) can be done using integration by parts. Or
+%With Propositions \ref{pro:mgf_t}, \ref{pro:mgf_finite_moment},
+\beast
+\E X & = & \int^\infty_{-\infty} x \frac{\Gamma(\frac{\nu+1}{2})} {\sqrt{\nu\pi}\,\Gamma(\frac{\nu}{2})} \left(1+\frac{x^2}{\nu} \right)^{-\frac{\nu+1}{2}} dx = \int^{\pi/2}_{-\pi/2} \frac{\sqrt{\nu} \tan \theta}{\sqrt{\nu}\, B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  \left(1+\frac{\nu \tan^2\theta}{\nu} \right)^{-\frac{\nu+1}{2}}  \sqrt{\nu} \sec^2 \theta d\theta\\
+& = & \int^{\pi/2}_{-\pi/2} \frac{\sqrt{\nu}}{B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  \bb{\sec^2\theta}^{-\frac{\nu - 1}2} \tan \theta d\theta = (1-1)\int^{\pi/2}_{0} \frac{1}{B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  \bb{\cos^2\theta}^{\frac{\nu - 1}2} \frac{-1}{2\cos^2 \theta } d\cos^2 \theta \\
+& = & (1-1)\int^{1}_{0} \frac{1}{B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  x^{\frac{\nu-1}2-1} (1-x)^{1-1} dx = 0
+\eeast
+when $\nu-1 > 0$ since the integral is well-defined by Definition \ref{def:beta_function}.
+
+\beast
+\E X^2 & = & \int^\infty_{-\infty} x^2 \frac{\Gamma(\frac{\nu+1}{2})} {\sqrt{\nu\pi}\,\Gamma(\frac{\nu}{2})} \left(1+\frac{x^2}{\nu} \right)^{-\frac{\nu+1}{2}} dx = \int^{\pi/2}_{-\pi/2} \frac{\nu \tan^2 \theta}{\sqrt{\nu}\, B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  \left(1+\frac{\nu \tan^2\theta}{\nu} \right)^{-\frac{\nu+1}{2}}  \sqrt{\nu} \sec^2 \theta d\theta\\
+& = & \int^{\pi/2}_{-\pi/2} \frac{\nu}{B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  \bb{\sec^2\theta}^{-\frac{\nu - 1}2} \tan^2 \theta d\theta = 2\nu\int^{\pi/2}_{0} \frac{1}{B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  \bb{\cos^2\theta}^{\frac{\nu - 1}2} \frac{-\sin \theta}{2\cos^3 \theta } d\cos^2 \theta \\
+& = & \nu\frac{B \left (\frac{3}{2}, \frac{\nu}{2} -1\right )} {B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  \int^{1}_{0} \frac{1}{B \left (\frac{3}{2}, \frac{\nu}{2} -1\right )}   x^{\frac{\nu}2-2} (1-x)^{\frac 32-1} dx .
+\eeast
+
+Thus, if $\nu > 2$, $B \left (\frac{3}{2}, \frac{\nu}{2} -1\right )$ is well-defined. Thus,
+\be
+\E X^2 = \frac{\nu B \left (\frac{3}{2}, \frac{\nu}{2} -1\right )} {B \left (\frac{1}{2}, \frac{\nu}{2}\right )} = \frac{\nu\Gamma\bb{\frac 32}\Gamma\bb{\frac{\nu}2 -1 }}{\Gamma\bb{\frac 12}\Gamma\bb{\frac{\nu}2}} = \frac{\nu \frac 12}{\frac{\nu}2 -1 } = \frac{\nu}{\nu - 2}.
+\ee
+
+Meanwhile, it is easy to see that if $\nu \leq 2$ the integral is infinity. Thus, we have the required result (since $\var X = \E X^2 - (\E X )^2$).
+
+\beast
+\E X^3 & = & \int^\infty_{-\infty} x^3 \frac{\Gamma(\frac{\nu+1}{2})} {\sqrt{\nu\pi}\,\Gamma(\frac{\nu}{2})} \left(1+\frac{x^2}{\nu} \right)^{-\frac{\nu+1}{2}} dx = (1-1)\int^{\pi/2}_{0} \frac{1}{B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  \bb{\cos^2\theta}^{\frac{\nu - 1}2} \frac{-\sin^2\theta }{2\cos^4 \theta } d\cos^2 \theta \\
+& = & (1-1)\int^{1}_{0} \frac{1}{B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  x^{\frac{\nu-1}2-2} (1-x)^{2-1} dx = 0
+\eeast
+when $\frac {\nu-1}2-1 > 0 \ \ra \ \nu > 3$ since the integral is well-defined by Definition \ref{def:beta_function}.
+
+By Definition \ref{def:skewness}, $\skewness(X) = 0$ for $\nu > 3$. Furthermore,
+\beast
+\E X^4 & = & \int^\infty_{-\infty} x^4 \frac{\Gamma(\frac{\nu+1}{2})} {\sqrt{\nu\pi}\,\Gamma(\frac{\nu}{2})} \left(1+\frac{x^2}{\nu} \right)^{-\frac{\nu+1}{2}} dx = 2\nu^2\int^{\pi/2}_{0} \frac{1}{B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  \bb{\cos^2\theta}^{\frac{\nu - 1}2} \frac{-\sin^3 \theta}{2\cos^5 \theta } d\cos^2 \theta \\
+& = & \nu^2\frac{B \left (\frac{5}{2}, \frac{\nu}{2} -2\right )} {B \left (\frac{1}{2}, \frac{\nu}{2}\right )}  \int^{1}_{0} \frac{1}{B \left (\frac{5}{2}, \frac{\nu}{2} -2\right )}   x^{\frac{\nu}2-3} (1-x)^{\frac 52-1} dx .
+\eeast
+
+Thus, if $\nu > 2$, $B \left (\frac{3}{2}, \frac{\nu}{2} -1\right )$ is well-defined. Thus,
+\be
+\E X^4 = \frac{\nu^2 B \left (\frac{5}{2}, \frac{\nu}{2} -2\right )} {B \left (\frac{1}{2}, \frac{\nu}{2}\right )} = \frac{\nu^2\Gamma\bb{\frac 52}\Gamma\bb{\frac{\nu}2 -2 }}{\Gamma\bb{\frac 12}\Gamma\bb{\frac{\nu}2}} = \frac{\nu^2 \frac 32\frac 12}{\bb{\frac{\nu}2 -1 }\bb{\frac{\nu}2 - 2}} = \frac{3\nu^2}{(\nu - 2)(\nu - 4)}.
+\ee
+
+In this case, by Definition \ref{def:kurtosis}, we have \be \ekurt(X) = \frac{\frac{3\nu^2}{(\nu - 2)(\nu - 4)}}{\frac{\nu^2}{(\nu - 2)^2} } -3 = \frac{3(\nu-2)}{(\nu - 4)} - 3 = \frac {6}{\nu - 4}. \ee
+
+Meanwhile, it is easy to see that if $\nu \leq 4$ the integral is infinity. Thus, we have the required result.
+%For (v), we know that $\frac {d^n M_X(\theta)}{d\theta^n} = \lm^k k(k+1)\dots (n+k-1)/(\lm -\theta)^{n+k}$,
+%\be
+%\E X^n = \left.\frac {d^n M_X(\theta)}{d\theta^n}\right|_{\theta=0} = \frac {k(k+1)\dots (n+k-1)}{\lm^n}.
+%\ee
+\end{proof}
+
+\begin{proposition}
+Let $X\sim T(\nu)$. The raw moments of $X$ are
+\be
+\E X^k=\begin{cases} 0 & k \text{ odd},\quad 0<k< \nu\\ \frac{1}{\sqrt{\pi}\Gamma\left(\frac{\nu}{2}\right)}\bb{\Gamma\left(\frac{k+1}{2}\right)\Gamma\left(\frac{\nu-k}{2}\right)\nu^{\frac{k}{2}}}  & k \text{ even}, \quad 0<k< \nu\\ \text{undefined} & k \text{ odd},\quad 0<\nu\leq k\\ \infty & k\text{ even},\quad 0<\nu\leq k \end{cases}
+\ee
+\end{proposition}
+
+\begin{proposition}\label{pro:normal_chi_square_t}
+Student's $t$-distribution with $\nu$ degrees of freedom can be defined as the distribution of the random variable $X$ with
+\be
+X=\frac{Z}{\sqrt{V/\nu}} = Z \sqrt{\frac{\nu}{V}} ,
+\ee
+where $Z$ is normally distributed with expected value 0 and variance 1, $V$ has a chi-squared distribution with $\nu$ degree of freedom; $Z$ and $V$ are independent.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+For standard normal $Z$ and standard chi-squared distributed $V$ with drgree of freedom $\nu$, we have
+\be
+f_Z(z) = \frac 1{\sqrt{2\pi}}e^{-z^2/2},\qquad f_V(u) = \frac{1}{\Gamma\left(\nu/2\right)} 2^{-\nu/2} u^{\nu/2-1} e^{-u/2}.
+\ee
+
+Then
+\beast
+\pro\bb{X \leq x} & = & \pro\bb{Z \sqrt{\frac{\nu}{V}} \leq x} = \int^\infty_0 \int^{x\sqrt{u}/\sqrt{\nu}}_{-\infty} \frac 1{\sqrt{2\pi}}e^{-z^2/2} \frac{1}{\Gamma\left(\nu/2\right)} 2^{-\nu/2} u^{\nu/2-1} e^{-u/2}dz du
+\eeast
+
+Taking the differentiation wrt $x$ under the integral sign, we have (by Theorem \ref{thm:differentiation_under_integral_sign})
+\beast
+f_X(x) & = & \int^\infty_0 \frac{\sqrt{u}}{\sqrt{\nu}} \frac 1{\sqrt{2\pi}}e^{-\frac{ux^2}{2\nu}} \frac{1}{\Gamma\left(\nu/2\right)} 2^{-\nu/2} u^{\nu/2-1} e^{-u/2} du = \frac 1{\sqrt{2\pi\nu}}  \int^\infty_0  \frac{1}{\Gamma\left(\nu/2\right)} 2^{-\nu/2} u^{\nu/2-1/2} e^{-u\bb{1+\frac{x^2}{\nu}}/2} du\\
+& = & \frac 1{\sqrt{\pi\nu}} \bb{1+\frac{x^2}{\nu}}^{-\frac{\nu + 1}2} \frac{\Gamma\left((\nu+1)/2\right)}{\Gamma\left(\nu/2\right)} \int^\infty_0  \frac{1}{\Gamma\left((\nu+1)/2\right)} 2^{-(\nu+1)/2} x^{(\nu+1)/2-1} e^{-x/2} dx \\
+& = & \frac {\Gamma\left((\nu+1)/2\right)}{\sqrt{\pi\nu}\Gamma\left(\nu/2\right)} \bb{1+\frac{x^2}{\nu}}^{-\frac{\nu + 1}2}
+\eeast
+which is the density function of $t$-distribution.
+\end{proof}
+
+\subsection{Non-central scaled $t$-distribution}
+
+\begin{definition}[non-central scaled $t$ random variable\index{Student's $t$ distributed random variable!non-central scaled}]\label{def:t_non_central_scaled_rv}
+A random variable $X \in (-\infty,\infty)$ is called non-central scaled Student's $t$-distributed if, for some $\nu >0$, $\sigma >0$ and $\mu\in \R$, its density function is
+\be
+f_X(x) = \frac{\Gamma(\frac{\nu+1}{2})} {\sqrt{\pi\nu\sigma^2}\,\Gamma(\frac{\nu}{2})} \left(1+\frac{(x-\mu)^2}{\nu\sigma^2} \right)^{-\frac{\nu+1}{2}} = \frac{1}{\sqrt{\nu\sigma^2} B \left (\frac{1}{2}, \frac{\nu}{2}\right )} \left(1+\frac{(x-\mu)^2}{\nu\sigma^2} \right)^{-\frac{\nu+1}{2}}
+\ee
+where $\nu$ is the degree of freedom and $\Gamma(x)$ is Gamma function. We write $X \sim T(\mu,\sigma^2,\nu)$.
+\end{definition}
+
+\begin{remark}
+In fact, $X =\mu + \sigma Y$ where $Y \sim T(\nu)$ ($Y$ is a standard Student's $t$ random variable).
+\end{remark}
+
+By the above remark and Proposition \ref{pro:mgf_cf_t} and Proposition \ref{pro:moments_t}
+
+\begin{proposition}\label{pro:mgf_cf_t_non_central_scaled}
+Suppose $X \sim T(\mu,\sigma^2,\nu)$. Then for $t\in \R$,
+\be
+M_X(\theta) \text{ is undefined},\quad\quad \phi_X(t) =  \frac{ e^{i\mu t} K_{\nu/2} \left(\sqrt{\nu}\sigma |t|)(\sqrt{\nu}\sigma |t| \right)^{\nu/2}}{\Gamma(\nu/2)2^{\nu/2-1}}.
+\ee
+where $K_\nu(x)$ is modified Bessel function of the second kind.
+\end{proposition}
+
+
+\begin{proposition}\label{pro:moments_t_non_central_scaled}
+Suppose $X \sim T(\mu,\sigma^2,\nu)$. Then \beast \text{(i)}\ \E X = \begin{cases}\mu & \nu > 1 \\ \text{undefined} & \text{otherwise} \end{cases}, \qquad \text{(ii)}\ \var X = \begin{cases}  \frac{\nu \sigma^2}{\nu-2} &
+\nu > 2\\ \infty & 1 < \nu \leq 2\\ \text{undefined} & \text{otherwise} \end{cases}, \eeast \beast \text{(iii)}\ \skewness(X) = \begin{cases}0 & \nu > 3 \\ \text{undefined} & \text{otherwise} \end{cases}, \qquad
+\text{(iv)}\ \ekurt(X) = \begin{cases} \frac{6}{\nu-4} & \nu > 4\\ \infty & 2 < \nu \leq 4\\ \text{undefined} & \text{otherwise} \end{cases}. \eeast
+\end{proposition}
+
+
+\subsection{Skewed $t$-disbribution}
+
+There are several definitions presented in the literature that can be regarded as competing skew Student's $t$-definitions. It is proposed by Hansen (see \cite{Hansen_1994}) and given $\nu$ and $\lm$, its density function is defined as
+\be
+f_X(x) = \left\{
+\ba{ll}
+bc\bb{1+\frac{1}{\nu-2}\bb{\frac{a+bx}{1-\lm}}^2}^{-(\nu+1)/2} \quad\quad & x< -a/b\\
+bc\bb{1+\frac{1}{\nu-2}\bb{\frac{a+bx}{1+\lm}}^2}^{-(\nu+1)/2} & x\geq -a/b
+\ea\right.
+\ee
+where $\nu\in(2,+\infty)$ is the degree of freedom and $\lm \in (-1,1)$ is the skewness parameter. $a,b,c$ are three constants given by
+\be
+a = 4\lm c\bb{\frac{\nu -2}{\nu-1}},\quad b^2 = 1+3\lm^2 - a^2,\quad c= \frac{\Gamma\bb{\frac{\nu+1}{2}}}{\sqrt{\pi(\nu-2)}\Gamma\bb{\frac{\nu}{2}}}.
+\ee
+
+When $\lm = 0$, we can get the Student's $t$-distribution. The tail behaviour is
+\be
+f_X(x) \sim \text{const} \abs{x}^{-\nu -1}\quad \text{as }x\to \pm \infty.
+\ee
+
+We can also skew the symmetric Student's $t$-distribution by continuously piecing together two differently scaled halves of the symmetric base distribution (see \cite{Fernandez_Steel_1998}). The density function is on the form
+\be
+f_X(x) = \frac{2\beta}{1+\beta^2}\bb{t_\nu(\beta x)\ind_{x<0} + t_\nu\bb{\frac{x}{\beta}}\ind_{x\geq 0}},
+\ee
+where $\beta >0$ and $t_\nu(\cdot)$ is the density of the standard Student's $t$-distribution with $\nu$ degrees of freedom.
+
+When $\beta = 1$, $f$ reduces to the standard Student's $t$-distribution with $\nu$ degree of freedom. The tail behaviour is that of the $t_{\nu}(\cdot)$ distribution, i.e.
+\be
+f_X(x) \sim \text{const} \abs{x}^{-\nu -1}\quad \text{as }x\to \pm \infty.
+\ee
+
+Furthermore, we can have an alternative skew $t$-distribution based on order statistics, introduced by Jones and Faddy (see \cite{Jones_Faddy_2003}). Its density is given by
+\be
+f_X(x) = \frac{1}{B(\alpha,\beta)2^{\alpha +\beta -1}(\alpha + \beta)^{1/2}}\bb{1+\frac{x}{\sqrt{\alpha +\beta + x^2}}}^{\alpha + 1/2} \bb{1-\frac{x}{\sqrt{\alpha +\beta + x^2}}}^{\beta + 1/2}
+\ee
+where $B(\cdot,\cdot)$ denotes the beta function, and $\alpha,\beta >0$. When $\alpha=\beta$, $f$ corresponds to the standard Student's $t$-distribution with $2\alpha$ degrees of freedom. When $\alpha <\beta$ or $\alpha >\beta$, $f$ is negatively or positive skewed respectively. In the tails, the density behaves as\footnote{check needed}
+\be
+f_X(x) \sim \left\{ \ba{ll} \text{const}\abs{x}^{-2\alpha -1} \quad\quad & x\to -\infty\\
+\text{const}\abs{x}^{-2\beta -1} \quad\quad & x\to +\infty
+\ea\right.
+\ee
+
+Another option is
+\be
+f_X(x) = 2t_\nu (x)T_\nu(\beta x)
+\ee
+where $t_\nu$ is the density of the standard Student's $t$-distribution with $\nu$ degrees of freedom and $T_{\nu+1}(\cdot)$ is the cumulative distribution function of the standard $t$-distribution with $\nu+1$ degrees of freedom\footnote{tail property needed}.
+
+Additionally, a skewed $t$-distribution proposed by Azzalini and Capitanio (see \cite{Azzalini_Capitanio_2003}) which coincides with the skew $t$-distribution of Branco and Dey (see \cite{Branco_Day_2001}), having a density function on the form
+\be
+f_X(x) = 2t_\nu(x)T_{\nu +1}\bb{\beta x\sqrt{\frac{\nu+1}{x^2 +\nu}}},
+\ee
+where $t_\nu$ is the density of the standard Student's $t$-distribution with $\nu$ degrees of freedom and $T_{\nu+1}(\cdot)$ is the cumulative distribution function of the standard $t$-distribution with $\nu+1$ degrees of freedom ($\nu >0$).
+
+When $\beta = 0$, it is reduced to the standard $t$-distribution with $\nu$ degrees of freedom. Its heaviest tail decays as\footnote{check needed}
+\be
+f_X(x) \sim \text{const}\abs{x}^{-\nu -1} \quad \text{when}\left\{\ba{l}
+\beta <0, x\to -\infty\\
+\beta >0, x\to +\infty
+\ea\right.
+\ee
+and the lightest as
+\be
+f_X(x) \sim \text{const}\abs{x}^{-2\nu -1} \quad \text{when}\left\{\ba{l}
+\beta <0, x\to +\infty\\
+\beta >0, x\to -\infty
+\ea\right.
+\ee
+
+Hence, all the above versions of the skewed $t$-distribution presented in this section have two tails behaving as polynomials. This means that they should fit heavy-tailed data well, but they may not handle substantial skewness. We will give generalized hyperbolic skewed Student's $t$-distribution in Section \ref{sec:generalized_hyperbolic_family}.
+
+\section{Inverse Gaussian Family}
+
+\subsection{Inverse Gaussian random variables}
+
+\begin{definition}[inverse Gaussian random variable]\label{def:inverse_gaussian_rv}
+A random variable $X$ in $(0,\infty)$ is called inverse Gaussian distributed\index{inverse Gaussian distributed random variable} if, for some $\mu >0$ and $\lm >0$, its density function is
+\be
+f_X(x) = \bb{\frac{\lambda}{2 \pi x^3}}^{1/2} \exp\bb{-\frac{\lambda (x-\mu)^2}{2 \mu^2 x}}
+\ee
+where $\mu$ is the mean and $\lm$ is the shape parameter. We write $X \sim IG(\mu,\lm)$.
+\end{definition}
+
+\begin{remark}
+As $\lm$ tends to infinity, the inverse Gaussian distribution becomes more like a normal (Gaussian) distribution. The inverse Gaussian distribution has several properties analogous to a Gaussian distribution. The name can be misleading: it is an ``inverse'' only in that, while the Gaussian describes a Brownian Motion's level at a fixed time, the inverse Gaussian describes the distribution of the time a Brownian Motion with positive drift takes to reach a fixed positive level.
+
+Its cumulant generating function (logarithm of the characteristic function) is the inverse of the cumulant generating function of a Gaussian random variable.
+\end{remark}
+
+First we need to guarantee that the integral of the density function is 1.
+\begin{proposition}
+\be
+I = \int^\infty_0  \bb{\frac{\lambda}{2 \pi x^3}}^{1/2} \exp\bb{-\frac{\lambda (x-\mu)^2}{2 \mu^2 x}} dx = 1.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+First, we have
+\be
+I = \int^\infty_0  \bb{\frac{\lambda}{2 \pi x^3}}^{1/2} \exp\bb{-\frac{\lambda \bb{\sqrt{\frac x{\mu}}- {\sqrt{\frac{\mu} x}}}^2}{2 \mu }} dx = \bb{\frac{\lambda}{2 \pi \mu}}^{1/2}  \int^\infty_0 x^{-3/2} \exp\bb{-\frac{\lambda \bb{\sqrt{x}- \frac 1{\sqrt{x}}}^2}{2 \mu }} dx
+\ee
+Taking the substitution $y = 1/x$, we have that
+\be
+I = \bb{\frac{\lambda}{2 \pi \mu}}^{1/2}  \int^0_\infty y^{3/2}  \exp\bb{-\frac{\lambda \bb{\sqrt{y}- \frac 1{\sqrt{y}}}^2}{2 \mu }}\bb{-\frac1{y^2}} dy = \bb{\frac{\lambda}{2 \pi \mu}}^{1/2}  \int^\infty_0 x^{-1/2}  \exp\bb{-\frac{\lambda \bb{\sqrt{x}- \frac 1{\sqrt{x}}}^2}{2 \mu }} dx.
+\ee
+
+Therefore,
+\beast
+I & = & \frac 12 \bb{\frac{\lambda}{2 \pi \mu}}^{1/2} \bb{\int^\infty_0 \bb{x^{-3/2} + x^{-1/2}} \exp\bb{-\frac{\lambda \bb{\sqrt{x}- \frac 1{\sqrt{x}}}^2}{2 \mu }} dx } \\
+& = & \bb{\frac{\lambda}{2 \pi \mu}}^{1/2} \bb{\int^\infty_0 \exp\bb{-\frac{\lambda \bb{\sqrt{x}- \frac 1{\sqrt{x}}}^2}{2 \mu }} d\bb{x^{1/2} - x^{-1/2}}  } = \bb{\frac{\lambda}{2 \pi \mu}}^{1/2} \int^\infty_{-\infty}\exp\bb{-\frac{\lambda x^2}{2 \mu }} dx\\
+& = & \frac 1{\sqrt{2\pi} }\int^\infty_{-\infty} e^{-x^2/2}dx = 1
+\eeast
+by normal distribution.
+\end{proof}
+
+\begin{proposition}\label{pro:mgf_inverse_gaussian}
+Suppose $X \sim IG(\mu,\lm)$. Then for $t\in \R$,
+\be
+M_X(\theta) = \exp\bb{\frac{\lambda}{\mu}\bb{1-\sqrt{1-\frac{2\mu^2\theta}{\lm}}}} ,\quad\quad \phi_X(t) = \exp\bb{\frac{\lambda}{\mu}\bb{1-\sqrt{1-\frac{2i\mu^2 t}{\lm}}}} .
+\ee%where $K_\nu(x)$ is modified Bessel function of the second kind.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\beast
+M_X(\theta)& = & \int^\infty_0 \exp\bb{\theta x}\bb{\frac{\lambda}{2 \pi x^3}}^{1/2} \exp\bb{-\frac{\lambda (x-\mu)^2}{2 \mu^2 x}} dx \\
+& = & \exp\bb{\frac{2\lambda\mu }{2\mu^2}\bb{1-\sqrt{1-\frac{2\mu^2\theta}{\lm}}}} \int^\infty_0 \bb{\frac{\lambda}{2 \pi x^3}}^{1/2}  \exp\bb{-\frac{\lambda \bb{x\sqrt{1-\frac{2\mu^2 \theta}{\lm}} - \mu}^2}{2 \mu^2 x}} dx\\
+& = & \exp\bb{\frac{\lm}{\mu}\bb{1-\sqrt{1-\frac{2\mu^2\theta}{\lm}}}}.
+\eeast
+
+Similarly for $\phi_X(t)$.
+\end{proof}
+
+\begin{proposition}\label{pro:moments_inverse_gaussian}
+Suppose $X \sim IG(\mu,\lm)$. Then \beast \text{(i)}\ \E X = \mu,\quad \text{(ii)}\ \var X = \frac{\mu^3}{\lm},\quad\text{(iii)}\ \skewness(X) = 3\bb{\frac{\mu}{\lm}}^{1/2},\quad\text{(iv)}\ \ekurt(X) = \frac{15\mu }{\lm}.
+\eeast
+\end{proposition}
+
+\begin{proof}[\bf Proof]%(i) and (ii) can be done using integration by parts. Or
+With Propositions \ref{pro:mgf_inverse_gaussian}, \ref{pro:mgf_finite_moment},
+\be
+\E X = \left.\frac {d M_X(\theta)}{d\theta}\right|_{\theta=0} = \left. \mu \bb{1-\frac{2\mu^2\theta}{\lm}}^{-1/2}\exp\bb{\frac{\lm}{\mu}\bb{1-\sqrt{1-\frac{2\mu^2\theta}{\lm}}}} \right|_{\theta=0} = \mu.
+\ee
+
+\beast
+\E X^2 = \left.\frac {d^2 M_X(\theta)}{d\theta^2}\right|_{\theta=0} = \left.\bb{\mu^2 \bb{1-\frac{2\mu^2\theta}{\lm}}^{-1} + \frac{\mu^3}{\lm} \bb{1-\frac{2\mu^2\theta}{\lm}}^{-3/2} }\exp\bb{\frac{\lm}{\mu}\bb{1-\sqrt{1-\frac{2\mu^2\theta}{\lm}}}}   \right|_{\theta=0} = \mu^2 + \frac{\mu^3}{\lm}.
+\eeast
+
+Thus, $\var X = \E X^2 - \bb{\E X}^2 = \mu^2 + \frac{\mu^3}{\lm} - \mu^2  = \frac{\mu^3}{\lm}$. Also,
+\beast
+\E X^3 = \left.\frac {d^3 M_X(\theta)}{d\theta^3}\right|_{\theta=0} & = & \left. \bb{\mu^3 \bb{1-\frac{2\mu^2\theta}{\lm}}^{-3/2} + \frac{\mu^4}{\lm} \bb{1-\frac{2\mu^2\theta}{\lm}}^{-2} }e^{\frac{\lm}{\mu}\bb{1-\sqrt{1-\frac{2\mu^2\theta}{\lm}}}}    \right|_{\theta=0} \\
+&  & \qquad + \left. \bb{\frac{2\mu^4}{\lm} \bb{1-\frac{2\mu^2\theta}{\lm}}^{-2} + \frac{3\mu^5}{\lm^2}  \bb{1-\frac{2\mu^2\theta}{\lm}}^{-5/2} }e^{\frac{\lm}{\mu}\bb{1-\sqrt{1-\frac{2\mu^2\theta}{\lm}}}}    \right|_{\theta=0} \\
+& = & \left. \bb{\mu^3 \bb{1-\frac{2\mu^2\theta}{\lm}}^{-3/2} + \frac{3\mu^4}{\lm} \bb{1-\frac{2\mu^2\theta}{\lm}}^{-2} + \frac{3\mu^5}{\lm^2}  \bb{1-\frac{2\mu^2\theta}{\lm}}^{-5/2} }e^{\frac{\lm}{\mu}\bb{1-\sqrt{1-\frac{2\mu^2\theta}{\lm}}}}    \right|_{\theta=0} \\
+& = & \mu^3 + \frac{3\mu^4}{\lm} + \frac{3\mu^5}{\lm^2}.
+\eeast
+
+Thus,
+\be
+\E\bb{X-\mu}^3 = \E X^3 - 3\mu\E X^2 + 3\mu^2 \E X - \mu^3  = \mu^3 + \frac{3\mu^4}{\lm} + \frac{3\mu^5}{\lm^2}  - 3\mu \bb{ \mu^2 + \frac{\mu^3}{\lm}} + 2\mu^3 =  \frac{3\mu^5}{\lm^2}.
+\ee
+
+By Definition \ref{def:skewness}, $\skewness(X) = \frac{3\mu^5/\lm^2}{\mu^{9/2}/\lm^{3/2}} = 3\bb{\frac{\mu}{\lm}}^{1/2}$. Furthermore,
+\beast
+\E X^4 = \left.\frac {d^4 M_X(\theta)}{d\theta^4}\right|_{\theta=0} & = & \left. \bb{\mu^4 \bb{1-\frac{2\mu^2\theta}{\lm}}^{-2} + \frac{3\mu^5}{\lm} \bb{1-\frac{2\mu^2\theta}{\lm}}^{-5/2}  + \frac{3\mu^6}{\lm^2}  \bb{1-\frac{2\mu^2\theta}{\lm}}^{-3} }e^{\frac{\lm}{\mu}\bb{1-\sqrt{1-\frac{2\mu^2\theta}{\lm}}}}     \right|_{\theta=0}\\
+& & + \left. \bb{\frac{3\mu^5}{\lm} \bb{1-\frac{2\mu^2\theta}{\lm}}^{-5/2} + \frac{12 \mu^6}{\lm^2} \bb{1-\frac{2\mu^2\theta}{\lm}}^{-3}  +  \frac{15\mu^7}{\lm^3}  \bb{1-\frac{2\mu^2\theta}{\lm}}^{-7/2} }e^{\frac{\lm}{\mu}\bb{1-\sqrt{1-\frac{2\mu^2\theta}{\lm}}}}   \right|_{\theta=0}\\
+& = & \mu^4 + \frac{6\mu^5}{\lm} + \frac{15\mu^6}{\lm^2} + \frac{15\mu^7}{\lm^3}.
+\eeast
+
+Thus,
+\beast
+\E\bb{X-\mu}^4 & = & \E X^4 - 4\mu\E X^3 + 6\mu^2 \E X^2 - 4\mu^3\E X + \mu^4 \\
+& = & \mu^4 + \frac{6\mu^5}{\lm} + \frac{15\mu^6}{\lm^2} + \frac{15\mu^7}{\lm^3} - 4\mu\bb{\mu^3 + \frac{3\mu^4}{\lm} + \frac{3\mu^5}{\lm^2}} + 6 \mu^2 \bb{\mu^2 + \frac{\mu^3}{\lm}} - 3\mu^4 = \frac{3\mu^6}{\lm^2} + \frac{15\mu^7}{\lm^3}.
+\eeast
+
+By Definition \ref{def:kurtosis}, we have \be \ekurt(X) = \frac{\frac{3\mu^6}{\lm^2} + \frac{15\mu^7}{\lm^3} }{\frac{\mu^6}{\lm^2}} -3 = \frac{15\mu }{\lm}.
+\ee%For (v), we know that $\frac {d^n M_X(\theta)}{d\theta^n} = \lm^k k(k+1)\dots (n+k-1)/(\lm -\theta)^{n+k}$,be\E X^n = \left.\frac {d^n M_X(\theta)}{d\theta^n}\right|_{\theta=0} = \frac {k(k+1)\dots (n+k-1)}{\lm^n}.
+\end{proof}
+
+\subsection{Generalized inverse Gaussian random variables}
+
+\begin{definition}[generalized inverse Gaussian random variable]\label{def:generalized_inverse_gaussian_rv}
+A random variable $X \in (0,\infty)$ is called generalized inverse Gaussian distributed\index{generalized inverse Gaussian distributed random variable} if, for some $a \geq 0,b \geq 0,p\in \R$ with conditions
+\be
+\left\{\ba{ll}
+a >0,b\geq 0\quad\quad & p > 0\\
+a >0,b> 0\quad\quad & p = 0\\
+a \geq 0,b > 0\quad\quad & p < 0
+\ea\right.\qquad (*)
+\ee
+its density function is
+\be
+f_X(x) = \frac{(a/b)^{p/2}}{2 K_p(\sqrt{ab})} x^{(p-1)} e^{-(ax + b/x)/2}
+\ee
+where $K_\nu(z)$ is a modified Bessel function of the second kind. We write $X \sim GIG(a,b,p)$.
+\end{definition}
+
+\begin{remark}
+\ben
+\item [(i)] The inverse Gaussian and gamma distributions are special cases of the generalized inverse Gaussian distribution for $p = -1/2$ and $b = 0$, respectively. Specifically, an inverse Gaussian distribution of the form
+\be
+f_X(x) = \bb{\frac{\lambda}{2 \pi x^3}}^{1/2} \exp\bb{-\frac{\lambda (x-\mu)^2}{2 \mu^2 x}}
+\ee
+is a GIG with $a = \lambda/\mu^2$, $b = \lambda$, and $p=-1/2$.
+
+A Gamma distribution of the form
+\be
+f_X(x) = \frac{1}{\Gamma(k)} \lm^{k} x^{k-1} e^{-\lm x}
+\ee
+is a GIG with $a = 2 \lm$, $b = 0$, and $p = k$.%Other special cases include the inverse-gamma distribution, for $a=0$, and the hyperbolic distribution, for $p=0$.
+
+\item [(ii)] The conditions ($*$) in the above definition are implied by Proposition \ref{pro:modified_bessel_function_second_close_to_zero}.
+\een
+\end{remark}
+
+First we need to guarantee that the integral of the density function is 1.
+
+\begin{proposition}\label{pro:gig_density_integral}
+\be
+I = \int^\infty_0  \frac{(a/b)^{p/2}}{2 K_p(\sqrt{ab})} x^{(p-1)} e^{-(ax + b/x)/2}dx = 1.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+First, we have
+\beast
+I & = & \int^\infty_0  \frac{(a/b)^{p/2}}{2 K_p(\sqrt{ab})} x^{(p-1)} e^{-(ax + b/x)/2}dx = \int^\infty_0 \frac{(a/b)^{p/2}}{2 K_p(\sqrt{ab})} x^{(p-1)} \exp\bb{-\frac{\sqrt{ab}}2\bb{\sqrt{\frac{a}b}x + \sqrt{\frac b{a}}\frac 1x}}  dx\\
+& = & \frac{1}{2 K_p(\sqrt{ab})} \int^\infty_0  t^{(p-1)} \exp\bb{-\frac{\sqrt{ab}}2\bb{t + \frac 1t}}  dt.
+\eeast
+Taking the substitution $t = e^x$, we have that
+\beast
+I & = & \frac{1}{2 K_p(\sqrt{ab})} \int^\infty_{-\infty}  e^{(p-1)x} \exp\bb{-\sqrt{ab} \cosh x}  de^x  = \frac{1}{2 K_p(\sqrt{ab})} \int^\infty_{-\infty}  e^{px} \exp\bb{-\sqrt{ab} \cosh x}  dx\\
+& = & \frac{1}{K_p(\sqrt{ab})} \int^\infty_0  \cosh \bb{px} \exp\bb{-\sqrt{ab} \cosh x}  dx = \frac{1}{K_p(\sqrt{ab})} K_p(\sqrt{ab}) = 1
+\eeast
+by Proposition \ref{pro:modified_bessel_function_second_cosh_integral}.
+\end{proof}
+
+\begin{proposition}\label{pro:mgf_generalized_inverse_gaussian}
+Suppose $X \sim GIG(a,b,p)$. Then for $t\in \R$,
+\be
+M_X(\theta) = \left(\frac{a}{a-2\theta}\right)^{\frac{p}{2}}\frac{K_p(\sqrt{b(a-2\theta})}{K_p(\sqrt{ab})} ,\quad\quad \phi_X(t) = \left(\frac{a}{a-2it}\right)^{\frac{p}{2}}\frac{K_p(\sqrt{b(a-2it})}{K_p(\sqrt{ab})} .
+\ee%where $K_\nu(x)$ is modified Bessel function of the second kind.
+\end{proposition}
+
+\begin{remark}
+If we let $a = \lambda/\mu^2$, $b = \lambda$, and $p=-1/2$, then by Proposition \ref{pro:modified_bessel_function_second_nu_special_value},
+\be
+M_X(\theta) = \left(\frac{a}{a-2\theta}\right)^{-1/4}\frac{\bb{b(a-2\theta)}^{-1/4} e^{-\sqrt{b(a-2\theta)}}}{\bb{ab}^{-1/4}e^{-\sqrt{ab}}} = e^{\sqrt{ab}\bb{1-\sqrt{1-\frac{2\theta}a}}} = \exp\bb{\frac{\lambda}{\mu}\bb{1-\sqrt{1-\frac{2\mu^2\theta}{\lm}}}}
+\ee
+which is pdf of inverse gaussian distribution.
+
+If we let $a = 2 \lm$, $b = 0$, and $p = k$, then by Proposition \ref{pro:modified_bessel_function_second_close_to_zero}, $z\to 0$, $K_\nu(z) \sim \frac 12 \Gamma(\nu) \bb{\frac 12z}^{-\nu}$
+\be
+M_X(\theta) = \left(\frac{a}{a-2\theta}\right)^{k/2}\frac{\frac 12 \Gamma(k) \bb{\frac 12\sqrt{b(a-2\theta} }^{-k} }{\frac 12 \Gamma(k) \bb{\frac 12\sqrt{ba} }^{-k} } =  \left(\frac{a}{a-2\theta}\right)^{k} = \left(\frac{\lm}{\lm -\theta}\right)^{k}
+\ee
+which is pdf of Gamma distribution.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+For moment generating function,
+\beast
+M_X(\theta)& = & \int^\infty_0 e^{\theta x} \frac{(a/b)^{p/2}}{2 K_p(\sqrt{ab})} x^{p-1} e^{-(ax + b/x)/2} dx \\
+& = & \int^\infty_0 \frac{(a/b)^{p/2}}{2 K_p(\sqrt{ab})} x^{(p-1)} \exp\bb{-\frac{\sqrt{(a-2\theta)b}}2\bb{\sqrt{\frac{a-2\theta}b}x + \sqrt{\frac b{a-2\theta}}\frac 1x}}  dx\\
+& = & \frac{1}{2 K_p(\sqrt{ab})}\bb{\frac{a}{a-2\theta}}^{p/2} \int^\infty_0  t^{(p-1)} \exp\bb{-\frac{\sqrt{(a-2\theta)b}}2\bb{t + \frac 1t}}  dt.
+\eeast
+
+Taking the substitution $t = e^x$, we have that
+\beast
+M_X(\theta) & = & \frac{1}{2 K_p(\sqrt{ab})}\bb{\frac{a}{a-2\theta}}^{p/2}  \int^\infty_{-\infty}  e^{(p-1)x} \exp\bb{-\sqrt{(a-2\theta)b}\cosh x}  dx\\
+& = & \frac{1}{K_p(\sqrt{ab})}\bb{\frac{a}{a-2\theta}}^{p/2}  \int^\infty_0  \cosh \bb{px} \exp\bb{-\sqrt{(a-2\theta)b}\cosh x}  dx = \left(\frac{a}{a-2\theta}\right)^{\frac{p}{2}}\frac{K_p(\sqrt{b(a-2\theta})}{K_p(\sqrt{ab})}
+\eeast
+by Proposition \ref{pro:modified_bessel_function_second_cosh_integral}. Similarly for $\phi_X(t)$.
+\end{proof}
+
+\begin{proposition}\label{pro:moments_generalized_inverse_gaussian}
+Suppose $X \sim GIG(a,b,p)$. Then
+\beast
+\text{(i)}\ \E X = \frac{\sqrt{b}\ K_{p+1}(\sqrt{a b}) }{ \sqrt{a}\ K_{p}(\sqrt{a b})} ,\qquad \text{(ii)}\ \var X = \left(\frac{b}{a}\right)\bb{\frac{K_{p+2}(\sqrt{ab})}{K_p(\sqrt{ab})}-\left(\frac{K_{p+1}(\sqrt{ab})}{K_p(\sqrt{ab})}\right)^2},\qquad \text{(iii)}\ \E X^n = \bb{\frac{b}{a}}^{n/2} \frac{K_{p+n}(\sqrt{ab})}{K_p(\sqrt{ab})}.
+\eeast
+\end{proposition}
+
+\begin{proof}[\bf Proof]%(i) and (ii) can be done using integration by parts. Or
+With Propositions \ref{pro:mgf_generalized_inverse_gaussian}, \ref{pro:mgf_finite_moment},
+\beast
+\E X^n = \int^\infty_0 \frac{(a/b)^{p/2}}{2 K_p(\sqrt{ab})} x^{p+n-1} e^{-(ax + b/x)/2} dx = \bb{\frac{b}{a}}^{n/2}\int^\infty_0 \frac{(a/b)^{p+n/2}}{2 K_p(\sqrt{ab})} x^{p+n-1} e^{-(ax + b/x)/2} dx = \bb{\frac{b}{a}}^{n/2} \frac{K_{p+n}(\sqrt{ab})}{K_p(\sqrt{ab})}.
+\eeast
+
+Therefore,
+\be
+\E X = \frac{\sqrt{b}\ K_{p+1}(\sqrt{a b}) }{ \sqrt{a}\ K_{p}(\sqrt{a b})} ,\qquad \var X = \left(\frac{b}{a}\right)\bb{\frac{K_{p+2}(\sqrt{ab})}{K_p(\sqrt{ab})}-\left(\frac{K_{p+1}(\sqrt{ab})}{K_p(\sqrt{ab})}\right)^2}.
+\ee
+%Then $\E X^3 = \bb{\frac{b}{a}}^{3/2} \frac{K_{p+3}(\sqrt{ab})}{K_p(\sqrt{ab})}$. Thus,
+%\beast
+%\E\bb{X-\E X}^3 & = & \bb{\frac{b}{a}}^{3/2} \frac{K_{p+3}(\sqrt{ab})}{K_p(\sqrt{ab})} - 3\bb{\bb{\frac{b}{a}}^{1/2} \frac{K_{p+1}(\sqrt{ab})}{K_p(\sqrt{ab})} }\bb{\frac{b}{a} \frac{K_{p+2}(\sqrt{ab})}{K_p(\sqrt{ab})} } + 2\bb{\bb{\frac{b}{a}}^{1/2} \frac{K_{p+1}(\sqrt{ab})}{K_p(\sqrt{ab})}}^3\\
+%& = & \bb{\frac{b}{a}}^{3/2}\bb{\frac{K_{p+3}(\sqrt{ab})}{K_p(\sqrt{ab})} - 3\frac{K_{p+2}(\sqrt{ab})}{K_p(\sqrt{ab})}\frac{K_{p+1}(\sqrt{ab})}{K_p(\sqrt{ab})} + 2\bb{\frac{K_{p+1}(\sqrt{ab})}{K_p(\sqrt{ab})}}^3}
+%\eeast
+%By Definition \ref{def:skewness},
+%\beast
+%& & \skewness(X) \\
+%& = &  \left.\bb{\frac{b}{a}}^{3/2}\bb{\frac{K_{p+3}(\sqrt{ab})}{K_p(\sqrt{ab})} - 3\frac{K_{p+2}(\sqrt{ab})}{K_p(\sqrt{ab})}\frac{K_{p+1}(\sqrt{ab})}{K_p(\sqrt{ab})} + 2\bb{\frac{K_{p+1}(\sqrt{ab})}{K_p(\sqrt{ab})}}^3}\right/ \bb{\left(\frac{b}{a}\right)\bb{\frac{K_{p+2}(\sqrt{ab})}{K_p(\sqrt{ab})}-\left(\frac{K_{p+1}(\sqrt{ab})}{K_p(\sqrt{ab})}\right)^2}}^{3/2}\\
+%& = & \left.\bb{K_{p+3}(\sqrt{ab}) - 3K_{p+2}(\sqrt{ab})K_{p+1}(\sqrt{ab}) + 2K_{p+1}(\sqrt{ab})^3}\right/\bb{}
+%\eeast
+%Furthermore,
+%\beast
+%\E X^4 = \left.\frac {d^4 M_X(\theta)}{d\theta^4}\right|_{\theta=0} & = & \left. \bb{\mu^4 \bb{1-\frac{2\mu^2\theta}{\lm}}^{-2} + \frac{3\mu^5}{\lm} \bb{1-\frac{2\mu^2\theta}{\lm}}^{-5/2}  + \frac{3\mu^6}{\lm^2}  \bb{1-\frac{2\mu^2\theta}{\lm}}^{-3} }e^{\frac{\lm}{\mu}\bb{1-\sqrt{1-\frac{2\mu^2\theta}{\lm}}}}     \right|_{\theta=0}\\
+%& & + \left. \bb{\frac{3\mu^5}{\lm} \bb{1-\frac{2\mu^2\theta}{\lm}}^{-5/2} + \frac{12 \mu^6}{\lm^2} \bb{1-\frac{2\mu^2\theta}{\lm}}^{-3}  +  \frac{15\mu^7}{\lm^3}  \bb{1-\frac{2\mu^2\theta}{\lm}}^{-7/2} }e^{\frac{\lm}{\mu}\bb{1-\sqrt{1-\frac{2\mu^2\theta}{\lm}}}}   \right|_{\theta=0}\\
+%& = & \mu^4 + \frac{6\mu^5}{\lm} + \frac{15\mu^6}{\lm^2} + \frac{15\mu^7}{\lm^3}.
+%\eeast
+%Thus,
+%\beast
+%\E\bb{X-\mu}^4 & = & \E X^4 - 4\mu\E X^3 + 6\mu^2 \E X^2 - 4\mu^3\E X + \mu^4 \\
+%& = & \mu^4 + \frac{6\mu^5}{\lm} + \frac{15\mu^6}{\lm^2} + \frac{15\mu^7}{\lm^3} - 4\mu\bb{\mu^3 + \frac{3\mu^4}{\lm} + \frac{3\mu^5}{\lm^2}} + 6 \mu^2 \bb{\mu^2 + \frac{\mu^3}{\lm}} - 3\mu^4 = \frac{3\mu^6}{\lm^2} + \frac{15\mu^7}{\lm^3}.
+%\eeast
+%By Definition \ref{def:kurtosis}, we have
+%\be
+%\kurt(X) = \frac{\frac{3\mu^6}{\lm^2} + \frac{15\mu^7}{\lm^3} }{\frac{\mu^6}{\lm^2}} -3 = \frac{15\mu }{\lm}.
+%\ee%For (v), we know that $\frac {d^n M_X(\theta)}{d\theta^n} = \lm^k k(k+1)\dots (n+k-1)/(\lm -\theta)^{n+k}$,be\E X^n = \left.\frac {d^n M_X(\theta)}{d\theta^n}\right|_{\theta=0} = \frac {k(k+1)\dots (n+k-1)}{\lm^n}.
+\end{proof}
+
+\section{Generalized Hyperbolic Family}\label{sec:generalized_hyperbolic_family}
+
+\subsection{Normal-inverse Gaussian random variables}
+
+\begin{definition}[normal-inverse Gaussian random variable]\label{def:normal_inverse_gaussian_rv}
+A random variable $X$ in $(-\infty,\infty)$ is called normal-inverse Gaussian distributed\index{normal-inverse Gaussian distributed random variable} if, for some $\mu,\alpha,\beta,\delta\in \R$ with $0 < \abs{\beta} \leq \alpha $, $\delta >0$ and $\gamma = \sqrt{\alpha^2 - \beta^2} \geq 0$ , its density function is
+\be
+f_X(x) = \frac{\alpha\delta K_1 \left(\alpha\sqrt{\delta^2 + (x - \mu)^2}\right)}{\pi \sqrt{\delta^2 + (x - \mu)^2}}  e^{\delta \gamma + \beta (x - \mu)}
+\ee
+where $K_\nu(z)$ is a modified Bessel function of the second kind. $\mu$ is location parameter, $\beta$ asymmetry parameter and $\delta$ is scale parameter. We write $X \sim NIG(\mu, \alpha,\beta, \delta)$.
+\end{definition}
+
+It can be shown that in the tails, the NIG distribution behaves as\footnote{see \cite{Aas_Haff_2006}}
+\be
+f_X(x) \sim \text{const} \abs{x}^{-3/2}\exp\bb{-\alpha\abs{x} + \beta x} \quad\text{as }x\to \pm \infty.
+\ee
+
+More specifically, the heaviest tail decays as
+\be
+f_X(x) \sim \text{const} \abs{x}^{-3/2}\exp\bb{-\alpha\abs{x} + \beta \abs{x}} \quad \text{if }\left\{\ba{l} \beta < 0, x\to -\infty\\ \beta >0, x\to+\infty \ea\right.
+\ee
+
+and the lightest as
+\be
+f_X(x) \sim \text{const} \abs{x}^{-3/2}\exp\bb{-\alpha\abs{x} - \beta \abs{x}} \quad \text{if }\left\{\ba{l} \beta < 0, x\to +\infty\\ \beta >0, x\to -\infty \ea\right.
+\ee
+
+Thus, the two tails behave differentaly, but they are both semi-heavy\footnote{need definition for semi-heavy tail}. One would therefore expect NIG to model skewness rather well, at least in cases where the tails are not too heavy.
+
+
+\subsection{Variance-gamma random variables}
+
+\begin{definition}[variance-gamma random variable]\label{def:variance_gamma_rv}
+A random variable $X$ in $(-\infty,\infty)$ is called variance-gamma distributed\index{variance-gamma distributed random variable} if, for some $\mu,\alpha,\beta,\lm\in \R$ with $\lm >0$ and $\gamma = \sqrt{\alpha^2 - \beta^2}>0$\footnote{see generalized hyperbolic distribution for details}, its density function is
+\be
+f_X(x) = \frac{\gamma^{2\lambda} | x - \mu|^{\lambda-1/2} K_{\lambda-1/2} \left(\alpha|x - \mu|\right)}{\sqrt{\pi} \Gamma (\lambda)(2 \alpha)^{\lambda-1/2}}  e^{\beta (x - \mu)}
+\ee
+where $K_\nu(z)$ is a modified Bessel function of the second kind. $\mu$ is location parameter, $\beta$ is asymmetry parameter. We write $X \sim VG(\mu, \alpha,\beta, \lm)$.
+\end{definition}
+
+\subsection{Hyperbolic random variables}
+
+\begin{definition}[hyperbolic random variable]\label{def:hyperbolic_rv}
+A random variable $X$ in $(-\infty,\infty)$ is called hyperbolic distributed\index{hyperbolic distributed random variable} if, for some $\mu,\alpha,\beta,\delta \in \R$ with $\delta \geq 0$ and $\gamma = \sqrt{\alpha^2 - \beta^2}>0$, its density function is
+\be
+f_X(x) = \frac{\gamma}{2\alpha\delta K_1(\delta \gamma)} \exp\bb{-\alpha\sqrt{\delta^2 + (x - \mu)^2}+ \beta (x - \mu)}
+\ee
+where $K_\nu(z)$ is a modified Bessel function of the second kind. $\mu$ is location parameter, $\beta$ asymmetry parameter and $\delta$ is scale parameter. We write $X \sim H(\mu, \alpha,\beta, \delta)$.
+\end{definition}
+
+\begin{proposition}
+\be
+\frac{\gamma}{2\alpha\delta K_1(\delta \gamma)}   \int^\infty_{-\infty}\exp\bb{-\alpha\sqrt{\delta^2 + (x - \mu)^2}+ \beta (x - \mu)}dx =1.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Taking the substitutions, we have (by Proposition \ref{pro:hyperbolic_function_relation})
+\beast
+I & = & \int^\infty_{-\infty}\exp\bb{-\alpha\sqrt{\delta^2 + (x - \mu)^2}+ \beta (x - \mu)}dx = \int^\infty_{-\infty}\exp\bb{-\alpha\sqrt{\delta^2 + x^2}+ \beta x}dx \\
+& = & \delta \int^\infty_{-\infty}\exp\bb{-\alpha \delta \cosh t + \beta \delta \sinh t}d\sinh t = \delta \int^\infty_{-\infty}\exp\bb{-\gamma \delta \cosh (t-a)}\cosh t dt\\
+& = & \delta \int^\infty_{-\infty}\exp\bb{-\gamma \delta \cosh t}\cosh (t+a) dt = 2\delta\cosh a  \int^\infty_0\exp\bb{-\gamma \delta \cosh t}\cosh t dt
+\eeast
+where $\cosh a = \frac{\alpha}{\gamma}$ and $\sinh a = \frac{\beta}{\gamma}$. Thus,
+\be
+I = 2 \delta \frac{\alpha}{\gamma} \int^\infty_0 \exp\bb{-\gamma \delta \cosh t}\cosh t d t = 2 \delta \frac{\alpha}{\gamma} K_1\bb{\gamma \delta }
+\ee
+by Proposition \ref{pro:modified_bessel_function_second_cosh_integral}. Thus, we have the required result.
+\end{proof}
+
+\begin{proposition}\label{pro:mgf_hyperbolic}
+Suppose $X \sim H(\mu,\alpha,\beta,\delta)$. Then for $\theta,t\in \R$,
+\be
+M_X(\theta) = \frac{e^{\mu \theta}\gamma K_1\bb{\delta \sqrt{\alpha^2 -(\beta + \theta)^2}}}{\sqrt{\alpha^2 -(\beta + \theta)^2}K_1 (\delta \gamma)} ,\quad\quad \phi_X(t) = \frac{e^{i\mu t}\gamma K_1\bb{\delta \sqrt{\alpha^2 -(\beta + it)^2}}}{\sqrt{\alpha^2 -(\beta + it)^2}K_1 (\delta \gamma)} .
+\ee
+where $K_\nu(z)$ is modified Bessel function of the second kind.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+We have
+\beast
+M_X(\theta) & = & \frac{\gamma}{2\alpha\delta K_1(\delta \gamma)} \int^\infty_{-\infty} \exp\bb{\theta x}\exp\bb{-\alpha\sqrt{\delta^2 + (x - \mu)^2}+ \beta (x - \mu)}dx \\
+& = & \frac{e^{\mu\theta}\gamma }{2\alpha\delta K_1(\delta \gamma)} \int^\infty_{-\infty} \exp\bb{-\alpha\sqrt{\delta^2 + (x - \mu)^2}+ (\beta +\theta) \bb{x - \mu}}dx \\
+& = & \frac{e^{\mu\theta}\gamma }{2\alpha K_1(\delta \gamma)} \int^\infty_{-\infty} \exp\bb{-\alpha \delta \cosh t+ (\beta +\theta) \delta \sinh t}\cosh t dt = \frac{e^{\mu\theta}\gamma }{2\alpha K_1(\delta \gamma)} \int^\infty_{-\infty} \exp\bb{-\delta \gamma'\cosh (t-b) }\cosh t dt \\
+& = & \frac{e^{\mu\theta}\gamma }{2\alpha K_1(\delta \gamma)} \int^\infty_{-\infty} \exp\bb{-\delta \gamma'\cosh t }\cosh (t+b) dt = \frac{e^{\mu\theta}\gamma }{\alpha K_1(\delta \gamma)} \int^\infty_0 \exp\bb{-\delta \gamma'\cosh t }\cosh t dt
+\eeast
+where $\gamma' = \sqrt{\alpha^2 - (\beta + \theta)^2}$, $\cosh b = \frac{\alpha}{\gamma'}$ and $\sinh b = \frac{\beta + \theta}{\gamma'}$.
+
+Thus, by Proposition \ref{pro:modified_bessel_function_second_cosh_integral}, we have
+\be
+M_X(\theta) = \frac{e^{\mu \theta}\gamma K_1\bb{\delta \sqrt{\alpha^2 -(\beta + \theta)^2}}}{\sqrt{\alpha^2 -(\beta + \theta)^2}K_1 (\delta \gamma)}.
+\ee
+
+Similarly, we have the characteristic function.
+\end{proof}
+
+\begin{proposition}\label{pro:moments_hyperbolic}
+Suppose $X \sim H(\mu,\alpha,\beta,\delta)$. Then
+\beast
+\text{(i)}\ \E X = \mu + \frac{\delta \beta K_{2}(\delta \gamma)}{\gamma K_1(\delta\gamma)} ,\qquad \text{(ii)}\ \var X = \frac{\delta K_{2}(\delta \gamma)}{\gamma K_1(\delta\gamma)} + \frac{\beta^2\delta^2}{\gamma^2}\left(\frac{K_{3}(\delta\gamma)}{K_{1}(\delta\gamma)} -\frac{K_{2}^2(\delta\gamma)}{K_{1}^2(\delta\gamma)} \right).%,\qquad \text{(iii)}\ \E X^n = \bb{\frac{b}{a}}^{n/2} \frac{K_{p+n}(\sqrt{ab})}{K_p(\sqrt{ab})}.
+\eeast
+\end{proposition}
+
+\begin{proof}[\bf Proof]%(i) and (ii) can be done using integration by parts. Or
+With Propositions \ref{pro:mgf_generalized_inverse_gaussian}, \ref{pro:mgf_finite_moment},
+\beast
+\E X & = & \frac{\gamma}{2\alpha\delta K_1(\delta \gamma)} \int^\infty_{-\infty} x \exp\bb{-\alpha\sqrt{\delta^2 + (x - \mu)^2}+ \beta (x - \mu)}dx = \mu + \frac{\gamma}{2\alpha\delta K_1(\delta \gamma)} \int^\infty_{-\infty} x \exp\bb{-\alpha\sqrt{\delta^2 + x^2}+ \beta x}dx \\
+& = & \mu + \frac{\gamma\delta }{2\alpha K_1(\delta \gamma)} \int^\infty_{-\infty} \sinh t \exp\bb{-\delta\gamma \cosh (t - a)}\cosh t dt  = \mu + \frac{\gamma\delta }{4\alpha K_1(\delta \gamma)} \int^\infty_{-\infty} \exp\bb{-\delta\gamma \cosh (t - a)}\sinh 2t dt \\
+& = & \mu + \frac{\gamma\delta }{4\alpha K_1(\delta \gamma)} \int^\infty_{-\infty} \exp\bb{-\delta\gamma \cosh t}\sinh 2(t+a) dt = \mu + \frac{\gamma\delta \sinh(2a)}{2\alpha K_1(\delta \gamma)} \int^\infty_0 \exp\bb{-\delta\gamma \cosh t}\cosh 2t dt.
+\eeast
+
+Therefore,
+\be
+\E X = \mu + \frac{\gamma\delta \sinh(2a)}{2\alpha K_1(\delta \gamma)}K_2(\delta \gamma) = \mu + \frac{\gamma\delta \sinh a\cosh a}{\alpha K_1(\delta \gamma)}K_2(\delta \gamma)= \mu + \frac{\gamma\delta  \frac{\beta}{\gamma}\frac{\alpha}{\gamma}K_2(\delta \gamma) }{\alpha K_1(\delta \gamma)} = \mu + \frac{\delta \beta K_{2}(\delta \gamma)}{\gamma K_1(\delta\gamma)}.
+\ee
+
+\beast
+\E X^2 & = & \frac{\gamma}{2\alpha\delta K_1(\delta \gamma)} \int^\infty_{-\infty} x^2 \exp\bb{-\alpha\sqrt{\delta^2 + (x - \mu)^2}+ \beta (x - \mu)}dx \\
+& = & \frac{\gamma}{2\alpha\delta K_1(\delta \gamma)} \int^\infty_{-\infty} (x-\mu)^2  \exp\bb{-\alpha\sqrt{\delta^2 + (x-\mu)^2}+ \beta (x-\mu)}dx + 2\mu\bb{\mu + \frac{\delta \beta K_{2}(\delta \gamma)}{\gamma K_1(\delta\gamma)}} - \mu^2 \\
+& = & \frac{\gamma}{2\alpha\delta K_1(\delta \gamma)} \int^\infty_{-\infty} x^2  \exp\bb{-\alpha\sqrt{\delta^2 + x^2}+ \beta x}dx + \mu\bb{\mu + 2\frac{\delta \beta K_{2}(\delta \gamma)}{\gamma K_1(\delta\gamma)}}  .
+\eeast
+
+Then make the substitution, (also $4\cosh^3 t = \cosh (3t) + 3\cosh t$)
+\beast
+& & \frac{\gamma\delta^3}{2\alpha\delta K_1(\delta \gamma)} \int^\infty_{-\infty} \bb{\cosh^3(t+a)-\cosh(t+a)}  \exp\bb{-\gamma \delta \cosh t}dt \\
+& = & \frac{\gamma\delta^2}{4\alpha K_1(\gamma)} \int^\infty_0 \bb{\cosh 3(t+a)-\cosh(t+a)}  \exp\bb{-\gamma \delta \cosh t}dt \\
+& = & \frac{\gamma\delta^2}{4\alpha K_1(\gamma)} \int^\infty_0 \bb{\cosh (3t)\cosh (3a) - \cosh t \cosh a}  \exp\bb{-\gamma \delta \cosh t}dt \\
+& = & \frac{\gamma\delta^2}{4\alpha K_1(\gamma)} \bb{K_3(\delta \gamma)\cosh (3a) - K_1(\delta \gamma)\cosh a} = \frac{\gamma\delta^2}{4\alpha K_1(\gamma)} \bb{K_3(\delta \gamma)\bb{4\cosh^3 a - 3\cosh a} - K_1(\delta \gamma)\cosh a}\\
+& = & \frac{\delta^2 \beta^2 K_3(\delta \gamma)}{\gamma^2 K_1(\delta \gamma)} + \frac{\delta^2}{4 K_1(\delta \gamma)}\bb{K_3(\delta \gamma) - K_1(\delta \gamma)}
+\eeast
+
+By Proposition \ref{pro:modified_bessel_function_second_difference}, $K_{3}(z) - K_{1}(z) = \frac {4}z K_2(z)$ ($e^{(\nu-1)\pi i}K_{\nu - 1}(z) - e^{(\nu+1)\pi i} K_{\nu+1}(z) = \frac {2\nu}z e^{\nu \pi i} K_\nu(z)$). Thus,
+\beast
+\E X^2 & = & \frac{\delta^2 \beta^2 K_3(\delta \gamma)}{\gamma^2 K_1(\delta \gamma)} + \frac{\delta^2}{4 K_1(\delta \gamma)}\bb{K_3(\delta \gamma) - K_1(\delta \gamma)} + \mu\bb{\mu + 2\frac{\delta \beta K_{2}(\delta \gamma)}{\gamma K_1(\delta\gamma)}} \\
+& = & \frac{\delta^2 \beta^2 K_3(\delta \gamma)}{\gamma^2 K_1(\delta \gamma)} + \frac{\delta K_2(\delta \gamma)}{\gamma K_1(\delta \gamma)} + \mu\bb{\mu + 2\frac{\delta \beta K_{2}(\delta \gamma)}{\gamma K_1(\delta\gamma)}}.
+\eeast
+
+Thus,
+\beast
+\var X & = & \frac{\delta^2 \beta^2 K_3(\delta \gamma)}{\gamma^2 K_1(\delta \gamma)} + \frac{\delta K_2(\delta \gamma)}{\gamma K_1(\delta \gamma)} + \mu\bb{\mu + 2\frac{\delta \beta K_{2}(\delta \gamma)}{\gamma K_1(\delta\gamma)}} - \bb{\mu + \frac{\delta \beta K_{2}(\delta \gamma)}{\gamma K_1(\delta\gamma)}}^2\\
+& = & \frac{\delta K_{2}(\delta \gamma)}{\gamma K_1(\delta\gamma)} + \frac{\beta^2\delta^2}{\gamma^2}\left(\frac{K_{3}(\delta\gamma)}{K_{1}(\delta\gamma)} -\frac{K_{2}^2(\delta\gamma)}{K_{1}^2(\delta\gamma)} \right).
+\eeast
+\end{proof}
+
+\subsection{Generalized hyperbolic skewed $t$ random variables}
+
+\begin{definition}[generalized hyperbolic skewed $t$ random variable]\label{def:generalized_hyperbolic_skewed_t_rv}
+A random variable $X \in(-\infty,\infty)$ is called generalized hyperbolic skewed $t$-distributed\index{generalized hyperbolic skewed $t$ distributed random variable} if, for some $\mu,\beta,\delta,\nu \in \R$ with $\nu>0,\delta > 0$, its density function is
+\be
+f_X(x) =
+\left\{\ba{ll}
+\frac{2^{\frac{1-\nu}2}\delta^\nu \abs{\beta}^{\frac{\nu +1}2}K_{\frac{\nu+1}2}\bb{\sqrt{\beta^2\bb{\delta^2 + (x-\mu)^2}}}\exp\bb{\beta(x-\mu)}}{\Gamma\bb{\frac{\nu}{2}}\sqrt{\pi}\bb{\sqrt{\delta^2 + (x-\mu)^2}}^{\frac{\nu+1}{2}}}\quad \quad & \beta \neq 0\\
+\frac{\Gamma\bb{\frac{\nu+1}{2}}}{\sqrt{\pi}\delta\Gamma\bb{\frac{\nu}{2}}}\bb{1+\frac{(x-\mu)^2}{\delta^2}}^{-(\nu+1)/2} & \beta = 0
+\ea
+\right.
+\ee
+where $K_\nu(z)$ is a modified Bessel function of the second kind. $\mu$ is location parameter, $\beta$ asymmetry parameter and $\delta$ is scale parameter. We write $X \sim ST(\mu, \beta, \delta,\nu)$ (see \cite{Aas_Haff_2006}).
+\end{definition}
+
+\begin{remark}
+\ben
+\item [(i)] Note that we have generalized hyperbolic skewed $t$-distribution by letting $\lm = -\nu/2$ and $\alpha \to \abs{\beta}$ (as $\alpha \geq \abs{\beta}$ and $\alpha$ can achieve $\abs{\beta}$) for Generalized hyperbolic distribution.
+\item [(ii)] Note that when $\beta = 0$, the density function can be recognised as the density function of a non-central scaled Student's $t$-distribution (see Definition \ref{def:t_non_central_scaled_rv}) with $\nu$ degrees of freedom.
+\een
+\end{remark}
+
+It follows that in the tails, the skewed $t$ density is given by (we can use Proposition \ref{pro:modified_bessel_function_second_asymptotic_expansions} here)
+\be
+f_X(x) \sim\text{const} \abs{x}^{-\nu/2-1}\exp\bb{-\abs{\beta} \abs{x} + \beta x}\quad \text{as }x\to \pm\infty.
+\ee
+
+Hence, the heaviest tail decays as
+\be
+f_X(x) \sim \text{const}\abs{x}^{\nu/2-1}\qquad \text{when }\left\{\ba{l}
+\beta <0, x\to -\infty\\
+\beta >0, x\to +\infty
+\ea\right.
+\ee
+and the lightest as
+\be
+f_X(x) \sim \text{const}\abs{x}^{-\nu/2-1}\exp\bb{-2\abs{\beta}\abs{x}}\qquad \text{when }\left\{\ba{l}
+\beta <0, x\to +\infty\\
+\beta >0, x\to -\infty
+\ea\right.
+\ee
+
+Thus, the generalized hyperbolic skewed $t$-distribution has one heavy and one semi-heavy tail.
+
+\begin{proposition}\label{pro:hyperbolic_skewed_t_density_integral}
+\be
+\frac{2^{\frac{1-\nu}2}\delta^\nu \abs{\beta}^{\frac{\nu +1}2}}{\Gamma\bb{\frac{\nu}{2}}}\int^{+\infty}_{-\infty} \frac{K_{\frac{\nu+1}2}\bb{\sqrt{\beta^2\bb{\delta^2 + (x-\mu)^2}}}\exp\bb{\beta(x-\mu)}}{\sqrt{\pi}\bb{\sqrt{\delta^2 + (x-\mu)^2}}^{\frac{\nu+1}{2}}} dx =1.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]%\footnote{check needed}
+With Proposition \ref{pro:gig_density_integral}, we know that
+\be
+K_{\frac{\nu+1}2}(\sqrt{\beta^2\bb{\delta^2 + (x-\mu)^2}}) = \frac 12\int^\infty_0  \bb{\sqrt{\delta^2 + (x-\mu)^2}/\abs{\beta}}^{\frac{\nu+1}2} z^{\frac{\nu-1}2} \exp\bb{-\frac 12\bb{\bb{\delta^2 + (x-\mu)^2}z + \beta^2/z}}dz
+\ee
+
+Thus, by Fubini theorem (Theorem \ref{thm:fubini}) the integral becomes
+\beast
+& & \frac{2^{\frac{-\nu-1}2}\delta^\nu }{\Gamma\bb{\frac{\nu}{2}}}\int^{+\infty}_{-\infty} \int^\infty_0  \frac{ z^{\frac{\nu-1}2}}{\sqrt{\pi}} \exp\bb{-\frac 12\bb{\bb{\delta^2 + (x-\mu)^2}z + \beta^2/z}} \exp\bb{\beta(x-\mu)} dz  dx\\
+& = & \frac{2^{\frac{-\nu}2}\delta^\nu }{\Gamma\bb{\frac{\nu}{2}}} \int^\infty_0 \frac 1{\sqrt{2\pi/z}}\int^{+\infty}_{-\infty} \exp\bb{-\frac{(x-\mu-\beta/z)^2}{2/z} } dx  z^{\frac{\nu}2-1} \exp\bb{-\frac 12 \delta^2 z}  dz  \\
+& = & \frac{(\delta^2/2)^{\frac{\nu}2}}{\Gamma\bb{\frac{\nu}{2}}} \int^\infty_0 z^{\frac{\nu}2-1} \exp\bb{-\frac 12 \delta^2 z}  dz = 1
+\eeast
+by using the integrals of Gaussian and gamma density functions.
+%By Proposition \ref{pro:modified_bessel_function_second_sinh_integral}, we have that
+%\be
+%K_{\frac{\nu+1}2}\bb{\sqrt{\beta^2\bb{\delta^2 + (x-\mu)^2}}} = \frac{\sqrt{\pi}\bb{\frac 12\abs{\beta} \sqrt{\delta^2 + (x-\mu)^2} }^{(\nu+1)/2}}{\Gamma\bb{\nu/2+1}} \int^\infty_0 e^{-\abs{\beta} \sqrt{\delta^2 + (x-\mu)^2} \cosh t}(\sinh t)^{\nu+1} dt.%\frac{2^{\frac{1-\nu}2}\delta^\nu \abs{\beta}^{\frac{\nu +1}2}}{\Gamma\bb{\frac{\nu}{2}}}\int^{+\infty}_{-\infty} \frac{K_{\frac{\nu+1}2}\bb{\sqrt{\beta^2\bb{\delta^2 + (x-\mu)^2}}}\exp\bb{\beta(x-\mu)}}{\sqrt{\pi}\bb{\sqrt{\delta^2 + (x-\mu)^2}}^{\frac{\nu+1}{2}}} dx =
+%\ee
+%Hence, the whole integral becomes
+%\be
+%\int^{+\infty}_{-\infty} \int^\infty_0 \frac{2^{-\nu}\delta^\nu \abs{\beta}^{\nu +1}}{\Gamma\bb{\nu/2}\Gamma\bb{\nu/2+1}} \exp\bb{-\abs{\beta} \sqrt{\delta^2 + (x-\mu)^2} \cosh t+\beta(x-\mu)} (\sinh t)^{\nu+1} dt dx
+%\ee
+\end{proof}
+
+\begin{proposition}\label{pro:moments_hyperbolic_skewed_t}
+Suppose $X \sim ST(\mu, \beta, \delta,\nu)$ with $\beta \neq 0$. Then
+\beast
+& &\text{(i)}\ \E X = \begin{cases}\mu + \frac{\beta \delta^2}{\nu -2}& \nu > 2 \\ \text{undefined} & \text{otherwise} \end{cases}, \qquad \text{(ii)}\ \var X = \begin{cases}  \frac{\delta^2}{\nu-2} + \frac{2\beta^2 \delta^4}{(\nu-2)^2(\nu -4)} & \nu > 4\\ \infty & 2 < \nu \leq 4\\ \text{undefined} & \text{otherwise} \end{cases},\\
+& & \text{(iii)}\ \skewness(X) = \begin{cases} \frac{2(\nu - 4)^{1/2}\beta\delta}{\bb{2\beta^2 \delta^2 + (\nu-2)(\nu-4)}^{3/2}}\bb{3(\nu-2) + \frac{8\beta^2\delta^2}{\nu-6}} & \nu > 6 \\ \text{undefined} & \text{otherwise} \end{cases}, \\
+& & \text{(iv)}\ \ekurt(X) = \begin{cases} \frac{6}{\bb{2\beta^2\delta^2 + (\nu-2)(\nu-4)}^2}\bb{(\nu-2)^2(\nu-4) + \frac{16\beta^2\delta^2(\nu-2)(\nu-4)}{\nu-6} + \frac{8\beta^4\delta^4(5\nu-22)}{(\nu-6)(\nu-8)}} & \nu >
+8\\ \infty & 6 < \nu \leq 8\\ \text{undefined} & \text{otherwise} \end{cases}. \eeast
+\end{proposition}
+
+\begin{remark}
+Note that this is a bit different from $\beta = 0$ case (non-central scaled $t$-distribution with $\nu>1$ for the expectation) as $\nu >2$ is needed for the expectation.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+We apply the same trick in the proof of Proposition \ref{pro:hyperbolic_skewed_t_density_integral}. Also, it will be feasible to apply Fubini Theorem (Theorem \ref{thm:fubini}) and Proposition \ref{pro:moments_gaussian} for moments of Gaussian random variables.
+\ben
+\item [(i)] We have for $\nu >2$,
+\beast
+\E X & = & \mu + \frac{2^{\frac{-\nu-1}2}\delta^\nu }{\Gamma\bb{\frac{\nu}{2}}}\int^{+\infty}_{-\infty} x \int^\infty_0  \frac{ z^{\frac{\nu-1}2}}{\sqrt{\pi}} \exp\bb{-\frac 12\bb{\bb{\delta^2 + x^2}z + \beta^2/z}} \exp\bb{\beta x} dz  dx\\
+& = & \mu + \frac{(\delta^2/2)^{\frac{\nu}2} }{\Gamma\bb{\frac{\nu}{2}}} \int^\infty_0 \frac 1{\sqrt{2\pi/z}}\int^{+\infty}_{-\infty} x \exp\bb{-\frac{(x-\beta/z)^2}{2/z} } dx  z^{\frac{\nu}2-1} \exp\bb{-\frac 12 \delta^2 z}  dz  \\
+& = & \mu + \frac{(\delta^2/2)^{\frac{\nu}2} \beta}{\Gamma\bb{\frac{\nu}{2}}} \int^\infty_0 z^{\frac{\nu}2-2} \exp\bb{-\frac 12 \delta^2 z}  dz = \mu + \frac{\beta\delta^2\Gamma\bb{\frac{\nu}2-1}}{2\Gamma\bb{\frac{\nu}{2}}}  = \mu + \frac{\beta \delta^2}{\nu -2}.
+\eeast
+
+\item [(ii)] For $2<\nu \leq 4$, $\E X^2$ is positive infinity as the integrand is non-negative. For $\nu>4$, we have
+\beast
+\E (X-\mu)^2 & = & \frac{2^{\frac{-\nu-1}2}\delta^\nu }{\Gamma\bb{\frac{\nu}{2}}}\int^{+\infty}_{-\infty} x^2 \int^\infty_0  \frac{ z^{\frac{\nu-1}2}}{\sqrt{\pi}} \exp\bb{-\frac 12\bb{\bb{\delta^2 + x^2}z + \beta^2/z}} \exp\bb{\beta x} dz  dx\\
+& = & \frac{(\delta^2/2)^{\frac{\nu}2} }{\Gamma\bb{\frac{\nu}{2}}} \int^\infty_0 \frac 1{\sqrt{2\pi/z}}\int^{+\infty}_{-\infty} x^2 \exp\bb{-\frac{(x-\beta/z)^2}{2/z} } dx  z^{\frac{\nu}2-1} \exp\bb{-\frac 12 \delta^2 z}  dz  \\
+& = & \frac{(\delta^2/2)^{\frac{\nu}2} }{\Gamma\bb{\frac{\nu}{2}}} \int^\infty_0 \bb{\frac{\beta^2+z}{z^2}} z^{\frac{\nu}2-1} \exp\bb{-\frac 12 \delta^2 z}  dz = \frac{(\delta^2/2)^{2} \beta^2\Gamma\bb{\frac{\nu}2-2}}{\Gamma\bb{\frac{\nu}{2}}} + \frac{\delta^2 \Gamma\bb{\frac{\nu}2-1}}{2\Gamma\bb{\frac{\nu}{2}}} \\
+& = & \frac{\beta^2 \delta^4}{(\nu -2)(\nu-4)} + \frac{\delta^2}{\nu-2}.
+\eeast
+
+Thus,
+\beast
+\var X & = & \E X^2 - (\E X)^2 = \E(X-\mu)^2 + 2\mu\E X - \mu^2 - (\E X)^2\\
+& = & \frac{\beta^2 \delta^4}{(\nu -2)(\nu-4)} + \frac{\delta^2}{\nu-2} + 2\mu \bb{\mu + \frac{\beta \delta^2}{\nu -2}} -\mu^2 - \bb{\mu + \frac{\beta \delta^2}{\nu -2}}^2 \\
+& = & \frac{\delta^2}{\nu-2} + \frac{2\beta^2 \delta^4}{(\nu-2)^2(\nu -4)}.
+\eeast
+
+\item [(iii)] For $\nu>6$, we have
+\beast
+\E (X-\mu)^3 & = & \frac{2^{\frac{-\nu-1}2}\delta^\nu }{\Gamma\bb{\frac{\nu}{2}}}\int^{+\infty}_{-\infty} x^3 \int^\infty_0  \frac{ z^{\frac{\nu-1}2}}{\sqrt{\pi}} \exp\bb{-\frac 12\bb{\bb{\delta^2 + x^2}z + \beta^2/z}} \exp\bb{\beta x} dz  dx\\
+& = & \frac{(\delta^2/2)^{\frac{\nu}2} }{\Gamma\bb{\frac{\nu}{2}}} \int^\infty_0 \frac 1{\sqrt{2\pi/z}}\int^{+\infty}_{-\infty} x^3 \exp\bb{-\frac{(x-\beta/z)^2}{2/z} } dx  z^{\frac{\nu}2-1} \exp\bb{-\frac 12 \delta^2 z}  dz  \\
+& = & \frac{(\delta^2/2)^{\frac{\nu}2} }{\Gamma\bb{\frac{\nu}{2}}} \int^\infty_0 \bb{\frac{\beta^3+ 3\beta z}{z^3}} z^{\frac{\nu}2-1} \exp\bb{-\frac 12 \delta^2 z}  dz = \frac{(\delta^2/2)^{3} \beta^3\Gamma\bb{\frac{\nu}2-3}}{\Gamma\bb{\frac{\nu}{2}}} + \frac{3\beta (\delta^2/2)^2 \Gamma\bb{\frac{\nu}2-2}}{\Gamma\bb{\frac{\nu}{2}}} \\
+& = & \frac{\beta^3 \delta^6}{(\nu -2)(\nu-4)(\nu-6)} + \frac{3\beta \delta^4}{(\nu-2)(\nu-4)}.
+\eeast
+
+Thus,
+\beast
+\E\bb{ X -\mu - \frac{\beta \delta^2}{\nu -2} }^3& = & \E (X-\mu)^3 - \frac{3\beta \delta^2}{\nu -2}\E (X-\mu)^2 + 2\bb{\frac{\beta \delta^2}{\nu -2}}^3\\
+& = & \frac{\beta^3 \delta^6}{(\nu -2)(\nu-4)(\nu-6)} + \frac{3\beta \delta^4}{(\nu-2)(\nu-4)} - \frac{3\beta \delta^2}{\nu -2}\bb{\frac{\beta^2 \delta^4}{(\nu -2)(\nu-4)} + \frac{\delta^2}{\nu-2}} + 2\bb{\frac{\beta \delta^2}{\nu -2}}^3\\
+& = & \frac{\beta \delta^4}{(\nu -2)}\bb{\frac{\beta^2 \delta^2}{(\nu-4)(\nu-6)} + \frac{3}{(\nu-4)} - 3\bb{\frac{\beta^2\delta^2 }{(\nu -2)(\nu-4)} + \frac{1}{\nu-2}} + \frac{2\beta^2 \delta^2}{(\nu -2)^2}}\\
+& = & \frac{2\beta \delta^4}{(\nu-2)^2(\nu-4)} \bb{\frac{8\beta^2\delta^2 }{(\nu -2)(\nu-6)} + 3}.
+\eeast
+
+Hence,
+\be
+\skewness(X) = \frac{\E\bb{ X -\mu - \frac{\beta \delta^2}{\nu -2} }}{(\var X)^{3/2}} = \frac{2(\nu - 4)^{1/2}\beta\delta}{\bb{2\beta^2 \delta^2 + (\nu-2)(\nu-4)}^{3/2}}\bb{3(\nu-2) + \frac{8\beta^2\delta^2}{\nu-6}}.
+\ee
+
+\item [(iv)] For $6 <\nu \leq 8$, $\E X^4$ is positive infinity as the integrand is non-negative. For $\nu>8$, we have
+\beast
+\E (X-\mu)^4 & = & \frac{2^{\frac{-\nu-1}2}\delta^\nu }{\Gamma\bb{\frac{\nu}{2}}}\int^{+\infty}_{-\infty} x^4 \int^\infty_0  \frac{ z^{\frac{\nu-1}2}}{\sqrt{\pi}} \exp\bb{-\frac 12\bb{\bb{\delta^2 + x^2}z + \beta^2/z}} \exp\bb{\beta x} dz  dx\\
+& = & \frac{(\delta^2/2)^{\frac{\nu}2} }{\Gamma\bb{\frac{\nu}{2}}} \int^\infty_0 \frac 1{\sqrt{2\pi/z}}\int^{+\infty}_{-\infty} x^4 \exp\bb{-\frac{(x-\beta/z)^2}{2/z} } dx  z^{\frac{\nu}2-1} \exp\bb{-\frac 12 \delta^2 z}  dz  \\
+& = & \frac{(\delta^2/2)^{\frac{\nu}2} }{\Gamma\bb{\frac{\nu}{2}}} \int^\infty_0 \bb{\frac{\beta^4+6\beta^2z + 3z^2}{z^4}} z^{\frac{\nu}2-1} \exp\bb{-\frac 12 \delta^2 z}  dz \\
+& = & \frac{(\delta^2/2)^{4} \beta^4\Gamma\bb{\frac{\nu}2-4}}{\Gamma\bb{\frac{\nu}{2}}} + \frac{6(\delta^2/2)^{3} \beta^2\Gamma\bb{\frac{\nu}2-3}}{\Gamma\bb{\frac{\nu}{2}}} + \frac{3(\delta^2/2)^2 \Gamma\bb{\frac{\nu}2-2}}{\Gamma\bb{\frac{\nu}{2}}} \\
+& = & \frac{\beta^4 \delta^8}{(\nu -2)(\nu-4)(\nu-6)(\nu-8)} + \frac{6\beta^2 \delta^6}{(\nu -2)(\nu-4)(\nu-6)} + \frac{3\delta^4}{(\nu -2)(\nu-4)}.
+\eeast
+
+Thus,
+\beast
+&&\E\bb{ X -\mu - \frac{\beta \delta^2}{\nu -2} }^4 - 3\bb{\var X}^2\\
+& = & \E (X-\mu)^4 - \frac{4\beta \delta^2}{\nu -2}\E (X-\mu)^3 + 6\bb{\frac{\beta \delta^2}{\nu -2}}^2\E (X-\mu)^2 - 3 \bb{\frac{\beta \delta^2}{\nu -2}}^4 - 3\bb{\frac{\delta^2}{\nu-2} + \frac{2\beta^2 \delta^4}{(\nu-2)^2(\nu -4)}}^2\\
+& = & \frac{\beta^4 \delta^8}{(\nu -2)(\nu-4)(\nu-6)(\nu-8)} + \frac{6\beta^2 \delta^6}{(\nu -2)(\nu-4)(\nu-6)} + \frac{3\delta^4}{(\nu -2)(\nu-4)} - 3\bb{\frac{\delta^2}{\nu-2} + \frac{2\beta^2 \delta^4}{(\nu-2)^2(\nu -4)}}^2\\
+& & \qquad - \frac{4\beta \delta^2}{\nu -2} \bb{\frac{\beta^3 \delta^6}{(\nu -2)(\nu-4)(\nu-6)} + \frac{3\beta \delta^4}{(\nu-2)(\nu-4)}} + 6\bb{\frac{\beta \delta^2}{\nu -2}}^2 \bb{\frac{\beta^2 \delta^4}{(\nu -2)(\nu-4)} + \frac{\delta^2}{\nu-2}} - 3 \bb{\frac{\beta \delta^2}{\nu -2}}^4 \\
+& = & \frac{6\delta^4}{(\nu-2)^2(\nu-4)} + \frac{96\beta^2\delta^6}{(\nu-2)^3(\nu-4)(\nu-6)} + \frac{240\nu - 1056}{(\nu-2)^4(\nu-4)^2(\nu-6)(\nu-8)}\\
+& = & \frac{6\delta^4}{(\nu-2)^4(\nu-4)^2}\bb{(\nu-2)^2(\nu-4) + \frac{16\beta^2\delta^2(\nu-2)(\nu-4)}{\nu-6} + \frac{8\beta^4\delta^4\bb{5\nu - 22}}{(\nu-6)(\nu-8)}}.
+\eeast
+
+Hence, we have \be \ekurt(X) = \frac{6}{\bb{2\beta^2\delta^2 + (\nu-2)(\nu-4)}^2}\bb{(\nu-2)^2(\nu-4) + \frac{16\beta^2\delta^2(\nu-2)(\nu-4)}{\nu-6} + \frac{8\beta^4\delta^4(5\nu-22)}{(\nu-6)(\nu-8)}}. \ee \een
+\end{proof}
+
+
+
+\subsection{Generalized hyperbolic random variables}
+
+\begin{definition}[generalized hyperbolic random variable]\label{def:generalized_hyperbolic_rv}
+A random variable $X \in(-\infty,\infty)$ is called generalized hyperbolic distributed\index{generalized hyperbolic distributed random variable} if, for some $\mu,\alpha,\beta,\delta,\lm \in \R$ and $\gamma = \sqrt{\alpha^2 - \beta^2}$ with conditions\footnote{see \cite{Aas_Haff_2006}}%see Prause 1999, The generalized hyperbolic models: estimation,financial derivatives and risk management. Phd Thesis, Mathematics Faculty, University of Freiburg}
+\be
+\left\{\ba{ll}
+\delta\geq 0, \abs{\beta}< \alpha \quad\quad & \lm >0\\
+\delta > 0, \abs{\beta} < \alpha & \lm =0\\
+\delta > 0, \abs{\beta} \leq \alpha & \lm <0
+\ea
+\right.,
+\ee
+its density function is
+\be
+f_X(x) = \frac{(\gamma/\delta)^\lambda e^{\beta (x - \mu)} }{\sqrt{2\pi}K_\lambda(\delta \gamma)}   \frac{K_{\lambda - 1/2}\left(\alpha \sqrt{\delta^2 + (x - \mu)^2}\right)}{\left(\sqrt{\delta^2 + (x - \mu)^2} / \alpha\right)^{1/2 - \lambda}}
+\ee
+where $K_\nu(z)$ is a modified Bessel function of the second kind. $\mu$ is location parameter, $\beta$ asymmetry parameter and $\delta$ is scale parameter. We write $X \sim GH(\mu, \alpha,\beta, \delta,\lm)$.
+\end{definition}
+
+\begin{remark}
+\ben
+\item [(i)] It can be shown (by using Proposition \ref{pro:modified_bessel_function_second_asymptotic_expansions}) that in the tails, the generalized hyperbolic distribution behaves as
+\be
+f_X(x) \sim \text{const} \abs{x}^{\lm -1}\exp\bb{-\alpha \abs{x} + \beta x}\qquad \text{as }x\to \pm\infty,
+\ee
+for all values of $\lm$. Hence, as long as $\abs{\beta} \neq \alpha$, the generalized hyperbolic distribution has two semi-heavy tails.
+\item [(ii)] This class is closed under linear operations\footnote{check needed}.
+\een
+\end{remark}
+
+\begin{proposition}\label{pro:gig_generalized_hyperbolic}
+Suppose that $Y\sim \sN(0,1)$ and $Z\sim GIG(\gamma^2,\delta^2,\lm)$ and for some $\mu \in\R$,
+\be
+X = \mu + \beta Z + \sqrt{Z}Y.
+\ee
+
+Then $X \sim GH(\mu, \alpha,\beta, \delta,\lm)$ where $\alpha = \sqrt{\beta^2+\gamma^2}$.
+\end{proposition}
+
+\begin{remark}
+\ben
+\item [(i)] This conclusion explains why the conditions ($*$) in Definition \ref{def:generalized_hyperbolic_rv} are consistent with the conditions in Definition \ref{def:generalized_inverse_gaussian_rv}.
+\item [(ii)] Clearly, we have $X|Z \sim \sN(\mu + \beta Z, Z)$.
+\een
+\end{remark}
+
+\begin{proof}[\bf Proof]
+First we have
+\beast
+\pro(X\leq x) & = & \pro\bb{\mu + \beta Z + \sqrt{Z}Y \leq x} = \pro\bb{Y \leq \frac{X-\mu -\beta Z}{\sqrt{Z}}} \\
+& = & \int^\infty_0 \int^{\frac{x-\mu-\beta z}{\sqrt{z}}}_{-\infty} \frac{1}{\sqrt{2\pi}}e^{-y^2/2}dy \bb{\frac{\gamma}{\delta}}^\lm \frac{z^{\lm-1}}{2K_{\lm}(\gamma\delta)}\exp\bb{-\frac 12\bb{\gamma^2z + \delta^2/z}}dz.
+\eeast%\footnote{check needed}
+
+By Theorem \ref{thm:differentiation_under_integral_sign}, we take the differentiation of $\pro(X\leq x)$ and get
+\beast
+f_X(x) & = & \int^\infty_0 \frac{1}{\sqrt{2\pi z}} e^{-\frac{(x-\mu-\beta z)^2}{2z}} \bb{\frac{\gamma}{\delta}}^\lm \frac{z^{\lm-1}}{2K_{\lm}(\gamma\delta)}\exp\bb{-\frac 12\bb{\gamma^2z + \delta^2/z}}dz \\
+& = & \frac{\bb{\gamma/\delta}^\lm  e^{\beta (x - \mu)} }{\sqrt{2\pi }K_{\lm}(\gamma\delta)} \int^\infty_0  \frac{z^{\lm-3/2}}{2}\exp\bb{-\frac 12\bb{(\beta^2+\gamma^2)z + \bb{(x-\mu)^2+\delta^2}/z}}dz \\
+& = & \frac{(\gamma/\delta)^\lm e^{\beta (x - \mu)} }{\sqrt{2\pi}K_\lambda(\delta \gamma)}   \frac{K_{\lambda - 1/2}\left(\alpha \sqrt{\delta^2 + (x - \mu)^2}\right)}{\left(\sqrt{\delta^2 + (x - \mu)^2} / \alpha\right)^{1/2 - \lambda}}
+\eeast
+by Proposition \ref{pro:gig_density_integral}.
+\end{proof}
+
+\begin{proposition}
+Let $X=\mu + \beta Z + \sqrt{Z}Y$ with $Y\sim \sN(0,1)$ and $Z \sim GIG(\gamma^2, \delta^2, \lm)$. We have that
+\be
+Z|X \sim GIG\bb{\alpha^2,(X-\mu)^2 + \delta^2,\lm -1/2}
+\ee
+where $\alpha = \sqrt{\beta^2 + \gamma^2}$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+First, we have
+\beast
+f_{X,Z}(x,z) = f_{X|Z}(x|z)f_Z(z) & = & \frac 1{\sqrt{2\pi z}}\exp\bb{-\frac{(x-\mu-\beta z)^2}{2z}} \bb{\frac{\gamma}{\delta}}^\lm \frac{z^{\lm-1}}{2K_{\lm}(\gamma\delta)}\exp\bb{-\frac 12\bb{\gamma^2z + \delta^2/z}}\\
+& = & \frac{\bb{\gamma /\delta}^\lm z^{\lm-3/2}e^{\beta(x-\mu)}}{2{\sqrt{2\pi } K_{\lm}(\gamma\delta)}} \exp\bb{-\frac 12\bb{\alpha^2z + ((x-\mu)^2+\delta^2)/z}} .
+\eeast
+
+Thus,
+\be
+f_{Z|X}(z|x) = \frac{f_{X,Z}(x,z)}{f_X(x)} = \frac{\bb{\alpha^2/\sqrt{\delta^2 + (x - \mu)^2}}^{\lm-1/2} z^{\lm-3/2}}{2 K_{\lambda - 1/2}\left(\alpha \sqrt{\delta^2 + (x - \mu)^2}\right)} \exp\bb{-\frac 12\bb{\alpha^2z + ((x-\mu)^2+\delta^2)/z}}
+\ee
+as required (see Definition \ref{def:generalized_inverse_gaussian_rv}).
+\end{proof}
+
+\begin{proposition}\label{pro:mgf_generalized_hyperbolic}
+Suppose $X \sim GH(\mu,\alpha,\beta,\delta,\lm)$. Then for $\theta,t\in \R$\footnote{$\abs{\alpha} > \abs{\beta+\theta}$? If mgf of GH exists, why not its special case skewed $t$-distribution?},
+\be
+M_X(\theta) = \frac{e^{\mu \theta}\gamma^\lambda}{(\sqrt{\alpha^2 -(\beta +\theta)^2})^\lambda} \frac{K_\lambda(\delta \sqrt{\alpha^2 -(\beta +\theta)^2})}{K_\lambda (\delta \gamma)} ,\quad\quad \phi_X(t) = \frac{e^{i\mu t}\gamma^\lambda}{(\sqrt{\alpha^2 -(\beta +it)^2})^\lambda} \frac{K_\lambda(\delta \sqrt{\alpha^2 -(\beta +it)^2})}{K_\lambda (\delta \gamma)}.
+\ee
+where $K_\nu(z)$ is modified Bessel function of the second kind.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{need proof. Might use Proposition \ref{pro:gig_density_integral}.}
+\end{proof}
+
+The following table gives the special cases of generalized hyperbolic distribution\footnote{note that we apply Proposition \ref{pro:modified_bessel_function_second_close_to_zero} for variance-gamma.}.
+
+%\footnote{need to add parameters}
+\begin{center}
+%\begin{table}
+\begin{tabular}{cccc}
+\hline
+distribution & pdf & cf & parameters for GH\\ \hline
+\\
+
+\vspace{4mm}
+
+%inverse Gaussian & IG & $\bb{\frac{\lambda}{2 \pi x^3}}^{1/2} \exp\bb{-\frac{\lambda (x-\mu)^2}{2 \mu^2 x}}$ &  &  & \\
+%\vspace{4mm}
+
+$NIG$ & $\frac{\alpha\delta K_1 \left(\alpha\sqrt{\delta^2 + (x - \mu)^2}\right)}{\pi \sqrt{\delta^2 + (x - \mu)^2}} \exp\bb{\delta \gamma + \beta (x - \mu)}$ &  $e^{i\mu t + \delta (\gamma - \sqrt{\alpha^2 -(\beta + it)^2})}$ & $GH(\mu, \alpha,\beta, \delta,-1/2)$ \\
+
+%\vspace{4mm}
+%general inverse Gaussian & GIG & $\frac{(a/b)^{p/2}}{2 K_p(\sqrt{ab})} x^{(p-1)} \exp\bb{-(ax + b/x)/2}$ & & & \\
+
+\vspace{4mm}
+
+$VG$ & $\frac{\gamma^{2\lambda} | x - \mu|^{\lambda-1/2} K_{\lambda-1/2} \left(\alpha|x - \mu|\right)}{\sqrt{\pi} \Gamma (\lambda)(2 \alpha)^{\lambda-1/2}}  \exp\bb{\beta (x - \mu)}$ & $e^{i\mu t} \left(\gamma/\sqrt{\alpha^2 -(\beta+it)^2}\right)^{2\lm}$  & $GH(\mu, \alpha,\beta,0,\lm)$ \\
+
+\vspace{4mm}
+
+$H$ & $\frac{\gamma}{2\alpha\delta K_1(\delta \gamma)} \exp\bb{-\alpha\sqrt{\delta^2 + (x - \mu)^2}+ \beta (x - \mu)}$ & $\frac{e^{i\mu t}\gamma K_1(\delta \sqrt{ \alpha^2 -(\beta +it)^2)}}{\sqrt{\alpha^2 -(\beta + it)^2}K_1 (\delta \gamma)}$   & $GH(\mu, \alpha,\beta, \delta,1)$\\
+
+\vspace{4mm}
+
+$ST(\beta \neq 0)$ & $\frac{2^{\frac{1-\nu}2}\delta^\nu \abs{\beta}^{\frac{\nu +1}2}K_{\frac{\nu+1}2}\bb{\sqrt{\beta^2\bb{\delta^2 + (x-\mu)^2}}}\exp\bb{\beta(x-\mu)}}{\Gamma\bb{\frac{\nu}{2}}\sqrt{\pi}\bb{\sqrt{\delta^2 + (x-\mu)^2}}^{\frac{\nu+1}{2}}}$ &  & $ST(\mu, \abs{\beta},\beta, \delta,-\nu/2)$\\
+
+$ST(\beta = 0)$ & $\frac{\Gamma\bb{\frac{\nu+1}{2}}}{\sqrt{\pi}\delta\Gamma\bb{\frac{\nu}{2}}}\bb{1+\frac{(x-\mu)^2}{\delta^2}}^{-(\nu+1)/2}$ & & $ST(\mu, 0, 0, \delta,-\nu/2)$\\
+
+\hline
+\end{tabular}
+%\caption{Special case of generalized hyperbolic distribution}
+%\end{table}
+\end{center}
+
+%\footnote{need to add parameters}
+
+For $Y\sim \sN(0,1)$ and $\mu,\beta\in \R$,
+\begin{center}
+%\begin{table}
+\begin{tabular}{cc}
+\hline
+$Z$ & $X = \mu+\beta Z +\sqrt{Z}Y$ \\ \hline
+
+inverse Gaussian distribution & normal inverse Gaussian ($NIG$)\\
+
+gamma distribution & variance gamma ($VG$) \\
+
+ & hyperbolic distribution ($H$)\\
+
+inverse gamma distribution & skewed $t$ distribution ($ST$)\\
+
+generalized inverse Gaussian $(GIG)$ & generalized hyperbolic ($GH$)\\
+
+\hline
+\end{tabular}
+%\caption{Special case of generalized hyperbolic distribution}
+%\end{table}
+\end{center}
+
+\section{Truncated Distributions}
+
+
+\section{Summary}
+
+\begin{center}
+\begin{tabular}{cccc}
+\hline
+distribution & expression & distribution & expression\\ \hline
+Bernoulli & $\berd$ & binomial & $\bd$ \\
+geometric & $\geo$ & negative binomial & $\nbd$ \\
+Poisson & $\pd$ & uniform & $\sU$ \\
+exponential & $\sE$ & normal & $\sN$ \\
+gamma & $\Gamma$ & beta & $\betaa$ \\
+chi-square & $\chi^2$ & student-t & $T$\\
+Weibull & $\sW$ & & \\
+ &  & generalized gamma & $GG$ \\
+inverse Gaussian & $IG$ & generalized inverse Gaussian & $GIG$ \\
+normal-inverse Gaussian & $NIG$ & variance-gamma & $VG$ \\
+hyperbolic & $H$ & generalized hyperbolic & $GH$ \\
+& & (generalized hyperbolic) skewed $t$ & $ST$ \\
+\hline
+\end{tabular}
+\end{center}

@@ -1,0 +1,3639 @@
+
+\chapter{Groups}
+
+\section{Groups}
+
+\subsection{Basic concepts}
+
+\begin{definition}[Group]\label{def:group}
+A set $G$ is a group\index{group} if there is a binary operation $*$ (one that combines two elements) $G \times G \to G$, satisfying
+\ben
+\item [(i)] If $g_1, g_2 \in G$ then $g_1 * g_2 \in G$ (closure axiom\index{closure!Groups}).
+\item [(ii)] For all $g_1, g_2, g_3 \in G$, $(g_1*g_2)*g_3 = g_1*(g_2*g_3)$ (associativity\index{associativity!Groups}).
+\item [(iii)] There exists an element $e \in G$ such that, for all $g \in G$, $e*g = g*e = g$ (existence of identity (or unit) element\index{identity element}).
+\item [(iv)] For all $g \in G$ there exists and element $g^{-1} \in G$ such that $g*g^{-1} = g^{-1}*g = e$ (existence of inverses\index{inverse!Groups}).
+\een
+\end{definition}
+
+\begin{remark}
+A group $G$ is a set equipped with an associative binary operation, an identity element for this operation, and which has inverses.
+\end{remark}
+
+\begin{remark}
+The set is a semigroup\index{semigroup} if it satisfies (i) and (ii).
+\end{remark}
+
+\begin{example}
+\ben
+\item [(i)] $(\Z,+)$, the integers under addition, where $e=0$ and $g^{-1} = -g$.
+\item [(ii)] $(\Q,+)$, $(\R,+)$ etc. are all groups as well.
+\item [(iii)] $(\Q\bs\bra{0},\times)$, the rationals under multiplication, where $e=1$ and $g^{-1} = 1/g$.
+\een
+\end{example}
+
+\begin{remark}
+$(\Z,-)$ is not a group because it is not associative, and $(\Z,\times) $ lacks inverses.
+\end{remark}
+
+\begin{definition}
+A group $G$ is said to be abelian\index{abelian} if $g_1*g_2=g_2*g_1$ for all $g_1,g_2\in G$.
+\end{definition}
+
+\begin{remark}\ben
+\item [(i)] Groups may or may not be abelian.
+\item [(ii)] $\bb{\bra{\pm 1},\times}$ is a group.
+\item [(iii)] Associativity means no brackets are needed, i.e. $g_1*g_2*g_3$ is unambiguous.
+\item [(iv)] We often omit the and write e.g. $g_1g_2 = g_1*g_2$.
+\een
+\end{remark}
+
+
+\begin{lemma}
+\ben
+\item [(i)] Let $(G,*)$ be a group. Then the identity element is unique, that is to say, if $g*e = g = e*g$ for all $g\in G$, and $ge' = g = e'g$
+for all $g\in G$, then $e=e'$.
+\item [(ii)] Inverses are also unique.
+\een
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] $e=e*e' = e'$ using the fact that is a right identity and is a left identity.
+\item [(ii)] Assume $g_1*g_2 = e = g_2'*g_1$. By Definition \ref{def:group} (ii), $g_2' = g_2'e = g_2'(g_1g_2) = (g_2'g_1)g_2 = eg_2 = g_2$.
+\een
+\end{proof}
+
+\begin{lemma}
+Let $(G,*)$ be a group and let $g,g_1,g_2\in G$. Then
+\be
+\text{(i) }(g_1g_2)^{-1} = g_2^{-1}g_1^{-1} (\text{not }g_1^{-1}g_2^{-1}); \qquad\qquad \text{ (ii) } \bb{g^{-1}}^{-1} = g.
+\ee
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] $(g_1g_2)(g_2^{-1}g_1^{-1}) = g_1eg_1^{-1} = g_1g_1^{-1} = e$ and similarly, $g_2^{-1}g_1^{-1} g_1g_2 = e$. Therefore $(g_1g_2)^{-1} = g_2^{-1}g_1^{-1}$.
+\item [(ii)] Let $f=g^{-1} \in G$, $fg = g^{-1}g = e= g g^{-1} = gf$, thus $g = f^{-1} = \bb{g^{-1}}^{-1}$.
+\een
+\end{proof}
+
+
+\begin{lemma}
+If $(G,*)$ is a group, for $g_1,g_2,h\in G$, $g_1 h = g_2 h \ \ra \ g_1=g_2$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+$g_1 h h^{-1} = g_2 h h^{-1} \ \ra \ g_1e = g_2e \ \ra \ g_1 = g_2$, and similarly in reverse.
+\end{proof}
+
+\begin{definition}[order\index{order!group}]\label{def:order_group}
+The order of the group $G$ is written $\abs{G}$ and defined to be the size of the set $G$.
+\end{definition}
+
+\subsection{Subgroup}
+
+\begin{definition}\label{def:subgroup}
+Let $(G,*)$ be a group. The subset $H\subseteq G$ (i.e. $x\in H \ \! \ra \! \ x\in G$) is subgroup\index{subgroup} if it is a group under the restriction of the operation,
+\ben
+\item [(i)] $h_1,h_2 \in H\ \ra\ h_1 * h_2 \in H$;
+\item [(ii)] $e_G \in H$;
+\item [(iii)] $h\in H\ \ra\ h^{-1}\in H$.
+\een
+Note that associativity is inherited. We write $H\leq G$ to indicate that $H$ is a subgroup.
+\end{definition}
+
+\begin{example}
+\be
+(\Z,+)\leq (\Q,+)\leq (\R,+),\quad\quad \bb{\bra{\pm 1},\times}\leq \bb{\Q-\bra{0},\times}.
+\ee
+\end{example}
+
+\begin{remark}
+If $G$ is finite and $H$ is non-empty, then condition (i) is sufficient.
+\end{remark}
+
+\begin{example}
+\ben
+\item [(i)] Additive groups, e.g. $(\Z, +)\leq (\Q,+) \leq (\R, +) \leq (\C, +)$.
+\item [(ii)] Multiple groups, e.g. $\bb{\bra{\pm 1},\times}\leq \bb{\Q-\bra{0},\times}$.
+\item [(iii)] Matrix groups, such as the general linear group $GL(\R^n)$, i.e. the group of invertible $n\times n$ matrices, or the special linear group $SL(\R^n)$, i.e. matrices with determinant 1.
+\item [(iv)] Permutation groups, i.e. the symmetric group $S_n$ of permutations on $\{1,\dots , n\}$ and the alternating group $A_n$ containing even permutations.
+\item [(v)] Cyclic groups of order $n$, i.e. $\{e, g,\dots , g^{n-1}\}$, and dihedral groups $D_{2n}$ of order $2n$, i.e. the symmetries of the regular $n$-gon.
+\item [(vi)] Abelian groups, e.g. groups of order 4 including the Viergruppe $V$.
+\item [(vii)] The quaternion group $\{\pm 1,\pm i,\pm j,\pm k\}$, $ij = k$, $ji = -k$ of order 8.
+\een
+\end{example}
+
+
+%\subsection{Subgroups}
+
+%Recall Definition \ref{def:subgroup}, we can have the single subgroup condition.
+
+\begin{lemma}\label{lem:subgroup}
+The subset $H$ of $G$ is a subgroup if $H$ is non-empty and $h_1,h_2\in H\ \ra\ h_1^{-1}h_2 \in H$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Let $a,b\in H$. Then letting $h_1=h_2=a$, we obtain $a^{-1}a = h_1^{-1}h_2 \in H$, and this is the identity, so $e\in H$. Next, letting $h_1=a$, $h_2=e$, we obtain $a^{-1} = a^{-1}e = h_1^{-1}h_2 \in H$. Finally, letting $h_1=a^{-1}$, $h_2=b$, we obtain $ab = (a^{-1})^{-1}b = h_1^{-1}h_2\in H$.
+
+Thus all three conditions are satisfied and $H$ is a subgroup.
+\end{proof}
+
+\begin{proposition}
+Let $H_1$ and $H_2$ be two subgroups of the group $G$. Then the intersection $H_1 \cap H_2$ is a subgroup of $G$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Obviously, $H_1\cap H_2$ is non-empty. If $h_1,h_2\in H_1\cap H_2$, then $h_1,h_2\in H_1$ and $h_1,h_2\in H_2$. Thus,
+\be
+h_1^{-1}h_2 \in H_1,\ h_1^{-1}h_2 \in H_2 \ \ra \ h_1^{-1}h_2 \in H.
+\ee
+
+Then $H_1\cap H_2$ is subgroup of $G$ by Lemma \ref{lem:subgroup}.
+\end{proof}
+
+\begin{proposition}
+Let $H_1$ and $H_2$ be two subgroups of the group $G$. Then if $L$ is a subgroup of $G$ contained in $H_1 \cup H_2$, then $L$ is contained either in $H_1$ or in $H_2$ (note: it may be contained in both).
+
+Particularly, the union $H_1 \cup H_2$ is a subgroup of $G$ if and only if one of the $H_i$ contains the other.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+If $L\bs H_1 \neq \emptyset, L\bs H_2\neq \emptyset$, then we can find $g_1 \in L\bs H_1$ and $g_2 \in L\bs H_2$ ($g_1\in H_2$ and $g_2\in H_1$). Thus, we can have $g_1g_2 \in L\subseteq H_1\cup H_2$ and $g_1g_2 \in H_1$ or $g_1g_2 \in H_2$. If $g_1g_2\in H_1$, then $g_1\in H_1$. Contradiction with the fact that $g_1 \in L\bs H_1$. Similarly, $g_1g_2\in H_2$ implies that $g_2\in H_2$. Thus, one of $L\bs H_1$ and $L\bs H_2$ has to be empty set. This means that $L$ is contained either in $H_1$ or in $H_2$.
+
+In particular, we can let $L = H_1\cup H_2$ and it has to be contained in $H_1$ or $H_2$. This will give the conclusion that one of the $H_i$ contains the other.%Wlog, we assume $H_1\subseteq H_2$, $H_1\cap H_2 = H_2$ is a subgroup. Conversely, if $H_1\cup H_2$ is a subgroup, then $e_G\in H_1\cup H_2$. Now $\forall h\in H_1\cap H_2$, we have %Suppose G is a group and H and K are subgroups of G. Then, the following are true:
+%H \cup K is a subgroup of G if and only if either H is contained in K or K is contained in H. (Note that if H is contained in K, H \cup K = K, and if K is contained in H, H \cup K = H).
+\end{proof}
+
+
+\begin{definition}
+If $g_1,\dots, g_k\in G$, the subgroup generated by the elements $g_1,\dots,g_k$ is the smallest subgroup of $G$ containing all the $g_j$s. It is denoted by $\bra{g_1,\dots,g_k}$ and is the intersection of all the subgroups of $G$ that contain all the $g_j$s.
+\end{definition}
+
+\begin{remark}
+If there is no proper subgroup of $G$ containing all the $g_j$s, then the subgroup generated by $g_1,\dots,g_k \in G$ is $G$ itself.
+\end{remark}
+
+\begin{theorem}
+$S_n$ is generated by each of
+\be
+\text{(i) } \bra{(j\ k)|j<k}, \quad \text{(ii) }\bra{(1\ k)|1<k\leq n},\quad\text{(iii) }\bra{(j\ j+1)|1\leq j<n},\quad \text{(iv) }\bra{(1\ 2), (1\ 2\ \dots\ n)}.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+\footnote{need proof}
+\end{proof}
+
+\begin{example}
+$S_3$ has order 6. Its subgroups are:
+\ben
+\item [(i)] $\bra{\iota}$, of order 1.
+\item [(ii)] $\bra{\iota,(1\ 2)}$, of order 2, and two others which are similar; $\bra{\iota,(1\ 3)}$ and $\bra{\iota,(2\ 3)}$.
+\item [(iii)] $\bra{\iota,(1\ 2\ 3), (1\ 3\ 2)}$, of order 3.
+\item [(iv)] $S_3$, of order 6.
+\een
+\end{example}
+
+
+
+
+\subsection{Class of groups}%The cyclic, symmetric and dihedral groups}
+
+\begin{definition}[cyclic group]\label{def:cyclic_group}
+A group is cyclic\index{cyclic group} if there exists $x\in G$ such that $g =x^n,\forall g\in G$. $x$ is called the generator\index{generator!Groups} of the group. Thus
+\be
+x^n = \left\{\ba{ll}
+\overbrace{x * x* \dots * x}^{n \text{ times}} & n>0\\
+e & n=0\\
+\underbrace{x^{-1} * x^{-1} * \dots * x^{-1}}_{n \text{ times}} & n<0
+\ea\right.
+\ee
+The cyclic group of order $n$ is denoted by $C_n = \bsa{x}$.
+\end{definition}
+
+\begin{remark}
+Clearly, cyclic group is abelian.
+\end{remark}
+
+\begin{example}
+\ben
+\item [(i)] $(\Z,+)$ is cyclic with generator 1.
+\item [(ii)] The group of rotations of a regular $n$-gon is cyclic (see Theorem \ref{thm:dihedral_symmetric_subgroup}).
+\een
+\end{example}
+
+\begin{definition}[permutation]\label{def:permutation}
+For $f:A\to B$, let $A=B=X$, i.e. we are mapping from a set to itself. Bijective functions $X\to X$ are called permutations\index{permutation} of $X$ (think shuffling).
+\end{definition}
+
+It is customary to use small Greek letters to denote permutations; $\iota$ represents the permutation which maps every element to itself (the 'identity').
+
+\begin{definition}[symmetric group]\label{def:symmetric_group}
+We define  $\sym(X)$ to be the set of all permutations. If $X$ is finite of size $\abs{X} = n$, often we take $X$ to be the set $\bra{1,2,\dots,n}$ and $S_n$ write for $\sym(X)$. For $\sigma\in S_n$, we write it and its inverse
+\be
+\sigma = \bepm
+1 & 2 & \dots & n\\
+\sigma(1) & \sigma(2) & \dots & \sigma(n)
+\eepm,\quad\quad
+\sigma^{-1} = \bepm
+\sigma(1) & \sigma(2) & \dots & \sigma(n)\\
+1 & 2 & \dots & n
+\eepm
+\ee
+\end{definition}
+
+\begin{theorem}
+$\sym(X)$ is a group under composition. (It is called the symmetric group\index{symmetric group} on $X$.)
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+We prove each of the axioms in turn;
+\ben
+\item [(i)] If $f,g\in \sym(X)$ then $f\circ g \in \sym(X)$; this follows from permutation (Definiton \ref{def:permutation}).
+\item [(ii)] If $f,g,h\in \sym(X)$, we want to show that for any $x\in X$, $(f\circ (g\circ h))(x) = ((f\circ g)\circ h)(x)$. However,
+\be
+(f\circ (g\circ h))(x) = f((g\circ h)(x)) = f(g(h(x))),\quad\quad ((f\circ g)\circ h)(x) = ((f\circ g)\circ h(x)) = f(g(h(x))).
+\ee
+so the two are identical.
+\item [(iii)] $\iota:X\to X$ does nothing, thus $f\circ \iota = f = \iota \circ f$.
+\item [(iv)] Define $f^{-1}:X\to X$ as follows, for $y\in X$ let $f^{-1}(y)$ be the unique pre-image of in $X$. Then $f^{-1}\in \sym(X)$ and $(f^{-1}\circ f)(x) = x = \iota(x)$ for $x\in X$. Also $(f\circ f^{-1}(x)) = x = \iota(x)$, so the result follows since $f$, $f^{-1} $are bijective.
+\een
+\end{proof}
+
+\begin{example}
+We can now write
+\be
+S_1 = \bra{\iota},\quad\quad S_2 = \bra{\bepm 1 & 2\\ 1 & 2 \eepm, \bepm 1 & 2\\ 2 & 1 \eepm}
+\ee
+
+\be
+S_3 = \bra{\bepm 1 & 2 & 3\\ 1 & 2 & 3 \eepm, \bepm 1 & 2 & 3\\ 1 & 3 & 2 \eepm, \bepm 1 & 2 & 3\\ 2 & 1 & 3 \eepm, \bepm 1 & 2 & 3\\ 2 & 3 & 1 \eepm, \bepm 1 & 2 & 3\\ 3 & 1 & 2 \eepm, \bepm 1 & 2 & 3\\ 3 & 2 & 1 \eepm}.
+\ee
+
+In $S_3$, if we let
+\be
+\sigma = \bepm 1 & 2 & 3\\ 1 & 3 & 2 \eepm,\quad\quad \tau = \bepm 1 & 2 & 3\\ 2 & 3 & 1 \eepm
+\ee
+then $\sigma^2 = \iota$, $\tau^3 = \iota$, $\tau^2 = \tau^{-1}$, and in particular note that
+\be
+\sigma \circ \tau = \bepm 1 & 2 & 3\\ 3 & 2 & 1 \eepm,\quad\quad \tau \circ \sigma = \bepm 1 & 2 & 3\\ 2 & 1 & 3 \eepm
+\ee
+so $\sigma \circ \tau \neq \tau \circ \sigma$, which means $S_3$ is not abelian (this is true of $S_n$ in general with $n\geq 3$).
+
+We can write $S_3 = \bra{\iota,\tau,\tau^2, \sigma, \sigma\tau,\sigma\tau^2}$ so $\abs{S_3} = 6$. In general, $\abs{S_n} = n!$.
+
+%We consider $\tau$ as a reflection and $\sigma$ as a rotation.
+\end{example}
+
+%\begin{remark}
+
+\begin{definition}(permutation group)
+A group $G$ is a permutation group\index{permutation group} of degree $n$ if $G \leq \sym (X)$ with $\abs{X} = n$.
+\end{definition}
+
+\begin{remark}
+$S_n, A_n,D_{2n} \leq \sym(X)$ where $X$ is the set of vertices of the regular $n$-gon (see Definition \ref{def:symmetric_group}, \ref{def:alternating_group}, \ref{def:dihedral_group_symmetries}).
+\end{remark}
+
+
+\begin{definition}[isomorphism group]
+\footnote{need more details}
+\end{definition}
+
+
+\begin{definition}[dihedral group]\label{def:dihedral_group_symmetries}
+Consider the group of symmetries of a regular $n$-gon, with $n$ vertices (for example, the $n$th roots of unity in $\C$). This is a subgroup of $S_n$, since
+\ben
+\item [(i)] the composition of symmetries is a symmetry
+\item [(ii)] the identity is a symmetry
+\item [(iii)] if $\alpha$ is a symmetry then $\alpha^{-1}$ is a symmetry
+\een
+
+This is called dihedral group\index{dihedral group} and denoted as $D_{2n}$ (for $n\geq 3$. In geometry the group is denoted $D_n$, while in algebra the same group is denoted by $D_{2n}$ to indicate the number of elements.).
+\end{definition}
+
+With the following theorem, we have $D_{2n}\leq S_n$; for example, $D_6 \leq S_3$ (as a matter of fact, $D_6 \cong S_3$, see Definition \ref{def:group_isomorphism}).
+
+\begin{theorem}\label{thm:dihedral_symmetric_subgroup}
+The group $D_{2n}$ of symmetries of a regular $n$-gon ($n\geq 3$) is a non-abelian subgroup of $S_n$, of order $2n$. It is generated by the elements $\tau$ and $\sigma$, of orders $n$ and respectively, representing a rotation $\tau$ and a reflection $\sigma$, subject to $\tau^n = \iota$, $\sigma^2 = \iota$, $\sigma \tau \sigma = \tau^{-1}$.
+\end{theorem}
+
+\begin{remark}
+The symmetries of a regular $n$-gon reserve the relative positions.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+First look at the $n$ rotations; these are the set $\bra{\iota,\tau,\tau^2,\dots,\tau^{n-1}}$ where
+\be
+\tau = \bepm 1 & 2 & \dots & n-1 & n\\ 2 & 3 & \dots & n & 1 \eepm
+\ee
+so that $\tau^n = \iota$. These form a subgroup of order $n$, which is a cyclic group $C_n$ of order $n$, since each element is a power of $\tau$ and $\tau^i\tau^j = \tau^{i+j(\!\bmod n)}$.
+
+Let $\sigma$ be a reflection through the real axis. There are reflections in the $n$ different axes of symmetry ($n/2$ axes cross edges and $n/2$ cross vertices if $n$ is even. $n$ axes cross vertices if $n$ is odd). Therefore $\abs{D_{2n}}\geq 2n$.
+
+We now need to show that any symmetry $g\in D_{2n}$ is either of the form $\tau^j$ for some $j$ or of the form $\sigma \tau^j$.
+
+Let $j = g(1)$. Then as $\tau^{j-1}(1) = j$ (rotating $j-1$ times, from 1 to $j$), we have $x = \bb{\tau^{j-1}}^{-1}g$ fixes 1 ($ \bb{\tau^{j-1}}^{-1}g (1) = 1$). Since only two vertices, 2 and $n$, are next to 1 (because the operation can not change the relative positions), either $x$ fixes 2 and $n$ as well (and therefore it fixes everything, by induction), so that $g=\tau^{j-1}$, or $x$ swaps 2 and $n$ and all the other vertices take a reflection in the axis crossing vertex 1.
+
+Thus the second case gives $\iota = \sigma^{-1} x = x\sigma^{-1}$, that is,
+\be
+\iota = \sigma^{-1}\bb{\tau^{j-1}}^{-1}g = \bb{\tau^{j-1}}^{-1}g\sigma^{-1} \ \ra \ g=\tau^{j-1}\sigma = \sigma\tau^{1-j}.
+\ee
+
+So any symmetry of our $n$-gon is either $\tau^j$ for some $j$, or $\sigma \tau^j$ for some $j$, so $\abs{D_{2n}}\leq 2n \ \ra\ \abs{D_{2n}} = 2n$.
+\end{proof}
+
+\begin{remark}
+Algebraically, we write $D_{2n} = \bra{t,s|t^n = \iota,s^2 = \iota, sts = t^{-1}} = \bra{t^j,st^j|0\leq j<n}$.
+\end{remark}
+
+\subsection{Cycles}
+
+\begin{definition}
+$\sigma \in S_n$ is a $k$-cycle\index{cycle} if the following hold:
+\be
+\sigma(a_i) = a_{i+1},\quad \sigma(a_k) = a_1,\quad \sigma(x) = x \ \text{ for all $x\in S_n$ not one of the $a_j$s.}
+\ee
+
+We denote it by $\sigma = (a_1\ a_2\ \dots\ a_k)$.
+\end{definition}
+
+\begin{example}
+For $S_5 = \bra{1,2,3,4,5}$, we can write
+\be
+\sigma = (1\ 2\ 3) = \bepm 1 & 2 & 3 & 4 & 5 \\ 2 & 3 & 1 & 4 & 5 \eepm
+\ee
+\end{example}
+
+\begin{remark}\ben
+\item [(i)] $(a_1\ a_2\ \dots\ a_k) = (a_2\ a_3\ \dots\ a_k\ a_1) = \dots$ so we can cycle cycles and these cycles are not unique.
+\item [(ii)] $(a_1\ a_2\ \dots\ a_k)^{-1} = (a_1\ a_k\ a_{k-1}\ \dots\ a_2) = (a_k\ a_{k-1}\ \dots\ a_1)$
+\item [(iii)] $\sigma^k = \iota$, but $\sigma^l \neq \iota$ if $0<l<k$, so $k$ is the order of the $k$-cycle $G = \bra{\iota,\sigma,\sigma^2,\dots, \sigma^{k-1}}$.
+\een
+\end{remark}
+
+\begin{definition}
+Two cycles $\sigma,\tau \in S_n$ with $\sigma = (a_1\ a_2\ \dots\ a_k)$ and $\tau = (b_1\ b_2\ \dots\ b_l)$ are disjoint\index{disjoint!cycle} if all the $a_j$s are different from all the $b_i$s, i.e. the sets are non-intersecting.
+\end{definition}
+
+\begin{lemma}
+If $\sigma$, $\tau$ are disjoint cycles as above, then $\sigma \tau = \tau \sigma$. E.g. $(1 \ 2)(3\ 4\ 5 )=(3\ 4 \ 5)(1\ 2)$.
+\end{lemma}
+
+\begin{remark}
+This is only true of disjoint cycles, e.g. $(2 \ 3)(1\ 2\ 3)=(1\ 3) \neq (1\ 2) = (1\ 2 \ 3)(2\ 3)$.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+If $x\in X$ is one of the $a_j$s, then $\tau \sigma (a_j) = \tau (a_j + 1) = a_j +1$ and $\sigma \tau(a_j) = \sigma(a_j) = a_j + 1$, and similarly if $x$ is one of the $b_i$s. If $x$ is in neither set then $\tau\sigma(x) = \tau(x) = x = \sigma\tau(x)$ by the definition. So $\tau \sigma(x) = \sigma\tau(x)$ for all $x\in X$. Thus $\tau\sigma = \sigma \tau$.
+\end{proof}
+
+\begin{theorem}[disjoint cycle decomposition]\label{thm:disjoint_cycle_decomposition}
+Any permutation of a finite set $X$ can be written as a product of disjoint cycles (in an essentially unique way). E.g.
+\be
+\bepm 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ 2 & 7 & 6 & 8 & 5 & 4 & 1 & 3 \eepm = (1\ 2\ 7)(3\ 6\ 4\ 8)(5)
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $\sigma \in S_n$. Start with any point $a_1$, and 'chase it' to get a sequence $a_1,\sigma(a_1), \sigma^2(a_1),\dots,X$ is finite, so we have to get $\sigma^l(a_1)$ being equal to one of the previous entries, say $\sigma^j(a_1)$. If $l$ is the smallest such that we get repetition and $\sigma^l(a_1) = \sigma^j(a_1)$, then $j=0$, so $\sigma^l(a_1) =a_1$.
+
+If not all points of $X$ are covered, choose $b_1$ to be a point in $X$ not yet reached. Chase it, to obtain $b_2 = \sigma(b_1)$, and in general, $b_k = \sigma^{k-1}(b_1)$ with $\sigma^k(b_1) = b_1$.
+
+Note that all the $b_j$s are different from all the $a_j$s, since $\sigma$ is injective. Continue until finished.
+\end{proof}
+
+\begin{remark}
+If $(a_1\ a_2\ \dots \ a_{k_1})(b_1\ b_2\ \dots \ b_{k_2}) \dots (z_1\ z_2\ \dots \ z_{k_r}) =\sigma$, then the order of $\pi$ is the least common multiple of $k_1,\dots,k_r$.
+\end{remark}
+
+\begin{definition}
+A transposition\index{transposition!groups} on $X$ is a 2-cycle on $X$.
+\end{definition}
+
+\begin{theorem}\label{thm:permutation_product_transposition}
+Any permutation of finite $X$ can be written as a product of transpositions.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $\sigma \in S_n$, and write it as a product of disjoint cycles (by Theorem \ref{thm:disjoint_cycle_decomposition}). Now note that the cycle
+\be
+(a_1\ a_2\ \dots \ a_{k}) = (a_1\ a_2)(a_2 \ a_3)\dots (a_{k-1}\ a_k),
+\ee
+so a $k$-cycle is a product of $k-1$ transpositions.
+\end{proof}
+
+\begin{example}
+(1\ 2\ 3\ 4\ 5) = (1\ 2)(2\ 3)(3\ 4)(4\ 5). Note that $\iota = (1\ 2)(1\ 2) = (1\ 2)(2\ 3)(2\ 3)(1\ 2)$ so there are many representations of each permutation. Note that for $\iota$ there must be an even number of factors; this is explained in Section \ref{subsec:sign_groups}.
+\end{example}
+
+\subsection{Homomorphisms and isomorphisms}
+
+\begin{definition}[homomorphism]\label{def:group_homomorphism}
+Let $(G_1,*_1)$ and $(G_2,*_2)$ be groups. The function $\theta:G_1\to G_2$ is a homomorphism\index{homomorphism!groups} if $\theta(a*_1 b) = \theta(a)*_2\theta(b)$ for any $a,b\in G_1$.
+\end{definition}
+
+\begin{definition}[isomorphism]\label{def:group_isomorphism}
+An isomorphism\index{isomorphism!groups} is a bijective homomorphism.
+
+We write $G_1 \cong G_2$ if there is an isomorphism $G_1 \to G_2$.
+\end{definition}
+
+\begin{definition}[endomorphism\index{endomorphism!groups}]\label{def:group_endomorphism}
+An endomorphism is a homomorphism with $G\to G$ ($G_1 = G_2$).
+\end{definition}
+
+\begin{definition}[automorphism]\label{def:group_automorphism}
+An automorphism\index{automorphism!groups} is a bijective homomorphism with $G\to G$ ($G_1 = G_2$).
+\end{definition}
+
+\begin{definition}\label{def:automorphism_group}
+The automorphism group\index{automorphism group} $\aut(G)$ of automorphisms $G\to G$ is a group under the composition of maps.
+\end{definition}
+
+\begin{remark}
+An automorphism is an isomorphism. The elements of automorphism group $\aut(G)$ are the maps $G\to G$.
+\end{remark}
+
+\begin{example}
+\ben
+\item [(i)] $C_n \cong \bra{x|x^n = e}$, i.e. the group generated by an $x$ with this property (see Definition \ref{def:cyclic_group}).
+\item [(ii)]
+\be
+\text{rotations of an $n$-gon}\cong \bb{\frac{\Z}{n\Z},+\bmod n} = \bb{\frac{\Z}{n\Z},\oplus_n}
+\ee
+where $\Z/n\Z = \bra{0,1,\dots,n-1}$, i.e. the group of rotations of a regular $n$-gon has an isomorphism to addition modulo $n$. The isomorphism can be taken to be $x^j \mapsto j$, which is a bijection, and then $\theta(x^j,x^k) = \theta(x^{j+k}) = j+k = \theta(x^j) + \theta(x^k)$ which satisfies the definition.
+\een
+\end{example}
+
+\begin{lemma}
+\ben
+\item [(i)] The composition of homomorphisms is a homomorphism, and the same with isomorphisms.
+\item [(ii)] If $\theta:G_1 \to G_2$ is an isomorphism, its inverse $\theta^{-1} : G_2 \to G_1$ is also one.
+\een
+Hence,
+\be
+G\cong G,\quad\quad G_1 \cong G_2 \ \ra \ G_2 \cong G_1,\quad\quad G_1\cong G_2 \cong G_3 \ \ra \ G_1 \cong G_3.
+\ee
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Let $\theta:G_1 \to G_2$ and $\varphi : G_2 \to G_3$. Then $\varphi\circ \theta$ is a homomorphism, since
+\be
+(\varphi \circ \theta)(a*_1 b) = \varphi(\theta (a*_1 b)) = \varphi(\theta(a)*_2\theta(b)) = \varphi(\theta(a))*_3 \varphi(\theta(b)) = (\varphi\circ \theta)(a)*_3 (\varphi\circ \theta)(b).
+\ee
+\item [(ii)] $\forall a,b\in G_2$, since $\theta$ is isomorphism (bijective), let $a = \theta(a')$, $b=\theta (b')$, $a',b'\in G_1$
+\be
+\theta^{-1}(a *_2 b) = \theta^{-1}\bb{\theta(a') *_2 \theta(b')} = \underbrace{\theta^{-1}\bb{\theta(a' *_1 b')}}_{\theta \text{ is an isomorphism}} = (\theta^{-1}\circ \theta)(a' *_1 b') = a' *_1 b' = \theta^{-1}(a) *_1 \theta^{-1}(b).
+\ee
+
+Thus, $\theta^{-1}$ is also an isomorphism.
+\een
+\end{proof}
+
+\begin{lemma}\label{lem:homomorphism_property}
+If $\theta:G\to H$ is a homomorphism then
+\ben
+\item [(i)] $\theta(e_G) = e_H$.
+\item [(ii)] $\theta(g^{-1}) = (\theta(g))^{-1}$.
+\een
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Let $g\in G$. Then $\theta(g) *_H e_H = \theta(g) = \theta(g*_G e_G) = \theta(g)*_H \theta(e_G)$ by the definition of a homomorphism. So, cancelling, $\theta(e_G) = e_H$.
+\item [(ii)] Let $g\in G$. Then $\theta(g)*_H\theta(g^{-1}) = \theta (g*_G g^{-1}) = \theta (e_G) = e_H$ by (i). Similarly, $\theta(g^{-1})*_H \theta(g)= \theta (g^{-1}*_G g) = \theta (e_G) = e_H$ by (i). Thus, $(\theta(g))^{-1} = \theta(g^{-1})$.
+\een
+\end{proof}
+
+
+\begin{definition}[image]
+The image\index{image!homomorphism} of a homomorphism $\theta:G\to H$ is $\im \theta = \theta(G) = \bra{\theta(g):g\in G}$.
+\end{definition}
+
+\begin{lemma}\label{lem:image_subgroup}
+For a homomorphism $\theta:G \to H$. The image $\theta(G)\leq H$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] $e_H = \theta(e_G)\in \theta(G)$ by Lemma \ref{lem:homomorphism_property} (i).
+\item [(ii)] If $h_1,h_2\in \theta(G)$, then there are $g_1,g_2\in G$ s.t. $\theta(g_1) = h_1$ and $\theta(g_2) = h_2$, thus with $g_1g_2\in G$,
+\be
+h_1 h_2 \in \theta(g_1)\theta(g_2) = \theta(g_1g_2) \in \theta(G).
+\ee
+
+\item [(iii)] If $h\in \theta(G)$, there is $g\in G$ s.t. $h = \theta(g)$. Then $h^{-1} = (\theta(g))^{-1} = \theta(g^{-1}) \in \theta(G)$ by Lemma \ref{lem:homomorphism_property} (ii).
+%$\theta(g_1^{-1}) = h_1$ and $\theta(g_2) = h_2$. Then $h_1h_2 = \varphi(g_1^{-1})\varphi(g_2) = \varphi(g_1^{-1}g_2) \in \varphi(G)$.
+\een
+\end{proof}
+
+\begin{remark}
+In fact, for any $K\leq G$ it follows that $\theta(K) \leq H$.
+\end{remark}
+
+%\subsubsection{Kernel}
+
+\begin{definition}[kernel]\label{def:kernel_group_homomorphism}
+The kernel\index{kernel!group homomorphism} of a homomorphism $\theta$ is $\ker\theta = \bra{g\in G:\theta(g) =e_H}$.
+\end{definition}
+
+\begin{example}
+\ben
+\item [(i)] $G=S_n$, $H=\bra{\pm 1,\times}$. Then $\sgn: G\to H$ is a surjective homomorphism (see Theorem \ref{thm:sgn_homomorphism}), with kernel the alternating group $A_n$ (since all even elements are mapped to the identity).
+\item [(ii)] Let $\C^* = (\C\bs\bra{0},\times)$ and $H=\bra{z\in \C^*:\abs{z}=1}$. Then $\theta:z\to z/\abs{z}$ is a homomorphism in which case the image is obviously the unit circle $H$ - in fact, $\theta$ does nothing to the unit circle. The kernel of $\theta$ is those elements which map to the identity 1, i.e. the positive half of the real line, i.e. $(\R>0,\times)$.
+\een
+\end{example}
+
+\begin{lemma}\label{lem:injective_kernel_group}
+A homomorphism $\theta:G\to H$ is injective iff $\ker\theta = \bra{e_G}$. ($\ker\theta$ is the 'obstruction to injectivity' of $\theta$.)
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+($\ra$). If $\theta$ is injective, assume $g\in \ker\theta$. Then $\theta(g) = e_H = \theta(e_G)$, so $g=e_G$ due to $\theta$ being injective. So the kernel is just the identity.
+
+($\la$). If $\ker \theta = \bra{e_G}$, let $g_1,g_2\in G$ with $\theta(g_1) = \theta(g_2)$. Since $\theta$ is a homomorphism,
+\be
+\theta(g_1^{-1}g_2) = \underbrace{\theta(g_1^{-1})\theta(g_2) = \bb{\theta(g_1)}^{-1}\theta(g_2)}_{\text{Lemma \ref{lem:homomorphism_property} (ii)}} = \bb{\theta(g_2)}^{-1}\theta(g_2) = e_H,
+\ee
+so $g_1^{-1} g_2 \in \ker \theta$. But $\ker\theta = \bra{e_G}$, so $g_1 = g_2$. Hence $\theta$ is injective.
+\end{proof}
+
+
+\subsection{Signs}\label{subsec:sign_groups}
+
+\begin{definition}[sign\index{sign!permutation}]\label{def:sign_permutation}
+The sign of a permutation $\sigma$ is $(-1)^k$ where $k$ is the number of factors in some expression of $\sigma$ as a product of transpositions.
+\end{definition}
+
+
+\begin{lemma}
+The function $\sgn:S_n \to \bra{\pm 1}$ taking $\sigma \to \sgn \sigma$ is well defined; that is, if $\sigma = \tau_1 \tau_2 \dots \tau_a = \tau_1'\tau_2' \dots \tau_b'$, two lots of transpositions, then $(-1)^a = (-1)^b$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Let $c(\sigma)$ be the number of cycles in a disjoint cycle decomposition of $\sigma$, including 1-cycles. E.g. $c(\iota) = n$.
+
+We claim that if $\tau$ is any transposition then $c(\sigma\tau) = c(\sigma)\pm 1 = c(\sigma)+1 (\bmod 2)$.
+
+Write $\tau = (k\ l)$. Then the $\sigma \tau$ cycles are the same as the $\sigma$ cycles, except for the one other involving $k$ and $l$. If $k,l$ are in two different cycles of $\sigma$, these two become one cycle of $\sigma \tau$; if they are in the same cycle, then the cycle splits into two cycles of $\sigma \tau$.
+
+Now assume that $\sigma = \iota \tau_1\tau_2 \dots \tau_a = \iota\tau_1' \tau_2' \dots \tau_b'\iota$. Since $c(\iota) =n$, using the above result gives $c(\sigma) = n+a(\bmod 2) = n+b$. So $a = b (\bmod 2) \ \ra \ (-1)^a = (-1)^b$.
+\end{proof}
+
+\begin{theorem}\label{thm:sgn_homomorphism}
+$\sgn:(S_n,\circ) \to \bb{\bra{\pm 1},\times}$ taking is a well-defined, non-trivial homomorphism.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Non-trivial due to the sign of any transposition being $-1$.
+
+If $\sgn \alpha = (-1)^k$ and $\sgn \beta = (-1)^l$, then write $\alpha = \tau_1\tau_2 \dots \tau_k$ and $\beta = \tau_1' \tau_2' \dots \tau_l'$ where all the $\tau$s are transpositions. Then $\alpha\beta = \tau_1\tau_2 \dots \tau_k \tau_1' \tau_2' \dots \tau_l'$, so $\sgn \alpha \beta = (-1)^{k+l} = (-1)^k(-1)^l = \sgn \alpha \sgn \beta$, satisfying the definition of a homomorphism. Thus, $\sgn$ is well-defined.
+\end{proof}
+
+\begin{definition}
+$\sigma \in S_n$ is an even permutation if its sign is $+1$, and an odd permutation if its sign is $-1$. Note that even $\circ$ even = even, odd $\circ$ odd = even, and the other compositions as expected.
+\end{definition}
+
+\begin{definition}[alternating group]\label{def:alternating_group}
+The even permutations in $S_n$ form a subgroup of $S_n$, called the alternating group\index{alternating group} and written $A_n$. E.g.
+\beast
+A_4 = \bra{\iota,(1\ 2)(3\ 4),(1\ 3)(2\ 4), (1\ 4)(2\ 3), (1\ 2\ 3), (1\ 3\ 2), (1\ 2\ 4), (1\ 4\ 2), (1\ 3\ 4), (1\ 4\ 3), (2\ 3\ 4), (2\ 4\ 3)}.
+\eeast
+\end{definition}
+
+\begin{theorem}
+Exactly half the permutations in $S_n$ are even and thus are in $A_n$, i.e. $\abs{A_n} = n!/2$.
+
+In fact, if $H\leq S_n$, and $H$ contains some odd permutation, then $\abs{A_n\cap H} = \abs{H}/2$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+\footnote{need proof}
+\end{proof}
+
+\begin{remark}
+Cycles of even length are odd permutations whereas cycles of odd length are even permutations (see Theorem \ref{thm:permutation_product_transposition}).
+\end{remark}
+
+\begin{corollary}
+$\sigma$ is an odd permutation iff the number of cycles of even length in its disjoint-cycle representation is odd.
+\end{corollary}
+
+\begin{definition}
+Given $\sigma \in S_n$, let $x_1,x_2,\dots,x_n$ be distinct integers. Then the sign of $\sigma$ is
+\be
+\ve(\sigma) = \prod_{1\leq i<j\leq n} \frac{x_{\sigma(j)}-x_{\sigma(i)}}{x_j -x_i}
+\ee
+\end{definition}
+
+\begin{example}
+Let $\sigma = (1\ 2\ 3)$ and $x_j = j$, then
+\be
+\ve(\sigma) = \frac{3-2}{2-1} \times \frac{1-2}{3-1} \times \frac{1-3}{3-2} = +1
+\ee
+\end{example}
+
+\begin{lemma}
+$\ve(\sigma) = \pm 1$, independent of the actual numbers $x_j$. In fact, $\ve(\sigma) = (-1)^{N(\sigma)}$, where $N(\sigma) = \abs{\bra{i<j|\sigma(i)>\sigma(j)}}$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+For each $r\neq s$, either $x_r - x_s$ or $x_s - x_r$ appears on the top of the fraction. If $i = \sigma^{-1}(r) < \sigma^{-1}(s) = j$, then $x_s - x_r$ appears; if vice versa, then $x_r - x_s$ appears.
+\end{proof}
+
+\begin{lemma}
+For any permutations $\sigma,\tau \in S_n$, we have $\ve(\sigma \tau) = \ve(\sigma)\ve(\tau)$.
+\end{lemma}
+\begin{proof}[\bf Proof]
+\be
+\ve(\sigma \tau) = \prod_{i<j} \frac{\sigma\tau(j) - \sigma\tau(i)}{j-i} = \prod_{i<j} \frac{\sigma(j) - \sigma(i)}{j-i} \prod_{i<j} \frac{\sigma\tau(j) - \sigma\tau(i)}{\sigma(j)-\sigma(i)} = \ve(\sigma)\ve(\tau)
+\ee
+since the product on the right, taking $x_i = \sigma(i)$, gives us $x_{\tau(i)} = \sigma(\tau(i))$.
+\end{proof}
+
+\begin{lemma}
+If is a transposition then $\ve(\tau) = -1$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Let $\tau = (1\ 2)$, $x_j =j$. Then
+\be
+\ve(\tau) = \frac{1-2}{2-1} \times \underbrace{\frac{3-2}{3-1} \times \ \dots\ \times\ \dots\ }_{\text{not affected by transposition}} = -1
+\ee
+
+If $\tau = (1\ l)$ then write it as $(2\ l)(1\ 2)(2\ l)$ and cancel the end terms. If $\tau = (k\ l) $it can be written in the form $(1\ k)(1\ l)(1\ k)$. Thus $\ve(k\ l) = \ve(1\ 2)$ and the lemma is proved.
+\end{proof}
+
+\begin{corollary}
+$\ve(\sigma) = \sgn\sigma$ for all $\sigma \in S_n$.
+\end{corollary}
+
+\section{Cosets and Lagrange's theorem}
+%\section{Subgroups, Cosets and Lagrange's theorem}
+
+\subsection{Cosets}
+
+\begin{definition}[left coset]
+Let $g\in G$. The left coset\index{left coset} of $H$ in $G$ is
+\be
+gH = \bra{gh : h \in H}.
+\ee
+\end{definition}
+
+
+\begin{example}
+$A_n \leq S_n$ has precisely two different cosets, $H$ and $\tau H$, with $\tau$ any odd permutation, such as $(1\ 2)$.
+\end{example}
+
+\begin{example}
+$G=S_3$ and $H = \bra{\iota,(1\ 2)}$. Now $\abs{H} =2$ and $\abs{G} = 6$, so we are expecting 3 left cosets.
+\be
+H = \bra{\iota,(1\ 2)},\quad\quad (1\ 2\ 3)H =\bra{(1\ 2\ 3),(1\ 3)},\quad\quad (1\ 3\ 2)H =\bra{(1\ 3\ 2),(2\ 3)}
+\ee
+\end{example}
+
+\begin{lemma}
+All the left cosets of $H$ in $G$ have size equal to $\abs{H}$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+If $gH$ is a coset, then consider the map $H\to gH$ taking $h\to gh$. Now if $gh_1 = gh_2$ then $h_1 = h_2$ so this map is injective. If $x \in gH$ then $x = gh$ for some $h\in H$, so $x$ is the image of $h$; therefore the map is surjective. Hence the map is a bijection, so $\abs{H} = \abs{gH}$.
+\end{proof}
+
+\begin{theorem}\label{thm:left_coset}
+Let $H\leq G$. Then $H = eH = h H$ for some $h\in H$, so there are many ways of writing a coset. In fact, $gH = H$ iff $g\in H$.
+
+Also, $aH = bH \lra a^{-1}b\in H$, and this is the defining characteristic of a coset.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+If $aH=bH$, then $be = ah$ for some $h\in H$, so $a^{-1}b\in H$.
+
+Conversely, if $a^{-1}b \in H$, for any $h\in bH$, $h = bg$ for some $g \in H$. Then $a^{-1}h = a^{-1}b g = \bb{a^{-1}b}g \in H$ and thus $h\in aH$ and $bH \subseteq aH$. Similarly, we have $aH \subseteq bH$. Hence, $aH = bH$.
+\end{proof}
+
+
+\begin{lemma}\label{lem:left_coset}
+The left cosets form a partition of $G$, which means:
+\ben
+\item [(i)] each $g\in G$ lies in some left coset.
+\item [(ii)] if $aH\cap bH$ is non-empty, then $aH = bH$ (i.e. any two cosets overlap totally or not at all).
+\een
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] $g=ge \in gH$.
+\item [(ii)] If $b\in aH$, then $b=ah_1$ for some $h_1\in H$. For any $h_2\in H$, we have $bh_2 = (ah_1)h_2\in aH$, since $h_1h_2 \in H$. Therefore $bH \subseteq aH$.
+
+%If $bh_1\in aH$ for some $h_1\in H$, then $bh_1=ah_2$ for some $h_2\in H$. That is, $b=ah_3$ for some $h_3 = h_2 h_1^{-1}\in H$. For any $h\in H$, we have $bh = (ah_3)h\in aH$, because $h_3h \in H$. Therefore $bH \subseteq aH$.
+
+However, also, $a= bh_1^{-1}\in bH$, so by the same reasoning, $aH \subseteq bH$. Therefore $aH = bH$.
+\een
+\end{proof}
+
+\begin{definition}[right coset]
+The right coset\index{right coset} $Hg$ of $H$ in $G$ is defined by $Hg = \bra{hg|h\in H}$.
+\end{definition}
+
+\begin{remark}
+The distinct left (or right) cosets of $H$ all have size $\abs{H}$, and form a partition of $G$. If $H\leq G$, precisely one of the cosets is a subgroup, because only one can contain the identity.
+\end{remark}
+
+\begin{corollary}
+The number of distinct left cosets of $H$ in $G$ is equal to the number of distinct right cosets of $H$ in $G$.
+\end{corollary}
+
+
+
+\begin{remark}
+A bijection between the left and right cosets of $H\leq G$:
+\be
+gH \to Hg: x \mapsto g^{-1}xg.
+\ee
+\end{remark}
+
+%\begin{problem}
+%Let $H$ be a subgroup of a group $G$. Show that if $aH = bH$ then $Ha^{-1} = Hb^{-1}$. Use this to show that there is a bijection between the set of left cosets and the set of right cosets of $H$.
+%\end{problem}
+
+\begin{proof}[\bf Proof]
+We have $x\in aH \ \lra \ x = ah$ for some $h\in H \ \lra\ x^{-1} = h^{-1}a^{-1}$ for some $h\in H\ \lra \ x^{-1} = h' a^{-1}$ for some $h'\in H \ \lra \ x^{-1} \in Ha^{-1}$.
+
+Thus if $aH = bH$, taking inverses gives $Ha^{-1} = Hb^{-1}$; moreover $x\mapsto x^{-1}$ sends left cosets to right cosets, and is a bijection, so it gives a bijection between the set of left cosets and the set of right cosets.
+\end{proof}
+
+%\begin{example}
+%$G=S_3$ and $H=\bra{\iota,(1\ 2)}$.
+%\be
+%H = \bra{\iota,(1\ 2)},\quad\quad H(1\ 2\ 3) =\bra{(1\ 2\ 3),(2\ 3)},\quad\quad H(1\ 3\ 2) =\bra{(1\ 3\ 2),(1\ 3)}
+%\ee
+%\end{example}
+
+
+
+\begin{definition}[Equivalence relation]
+Given a subgroup $H \leq G$, we can define an equivalence relation\index{equivalence relation!Groups} on $G$ by $g_1 \sim g_2$ if $g^{-1}_1 g_2 \in H$. Check this: $a,b,c \in G$,
+\ben
+\item [(i)] $a\sim a$, since $a^{-1}a = e\in H$.
+\item [(ii)] $a\sim b \ \ra\ b\sim a$, since $a^{-1}b\in H \ \ra \ (a^{-1}b)^{-1}\in H\ \ra\ b^{-1}a\in H$.
+\item [(iii)] $a\sim b, b\sim c \ \ra\ a\sim c$, since $a^{-1}b\in H$ and $b^{-1}c \in H$ imply $a^{-1}c = a^{-1}bb^{-1}c \in H$.% by Lemma \ref{lem:left_coset}.
+\een
+\end{definition}
+
+\begin{remark}
+Now if $[a] = \bra{b:a\sim b}$ is the equivalence class of $a$, then $[a] = aH$, the left coset, since $[a] = \bra{b:a^{-1}b\in H} = \bra{b:b\in aH}$. Therefore the left cosets form a partition of $G$.
+
+That is, an equivalence relation partitions $G$ into equivalence classes which are known as left (right) cosets.
+\end{remark}
+
+\subsection{Lagrange's theorem}
+
+\begin{theorem}[Lagrange's theorem]\label{thm:lagrange_group}
+If $H$ is a subgroup of the finite group $G$, then the order of $H$ divides the order of $G$. That is,
+\be
+\abs{G} = \abs{H}\bsb{G:H}
+\ee
+where $\bsb{G:H}$ is the number of left cosets of $H$ in $G$, called the index\index{index!Groups} of $H$ in $G$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+From Lemma \ref{lem:left_coset} (ii), if $c \in (aH \cap bH)$, then $aH = cH = bH$. Hence $G$ is covered by the distinct cosets of $H$, which are all of size $\abs{H}$. Therefore $\abs{H}|\abs{G}$.
+\end{proof}
+
+\begin{remark}
+$A_4$ has order 12 but no subgroup of order 6, so the converse is not true\footnote{see example sheet 1}. A later example will be to show that $A_5$ has no subgroup of index 2, 3 or 4\footnote{see example sheet 1}.
+\end{remark}
+
+\begin{definition}[order of element]
+The order of an element\index{order!group element} $g\in G$, written $o(g)$, is the least positive integer $n$ (if one exists) such that $g^n =e_G$. If no such integer exists, then we say that $g$ has infinite order.
+\end{definition}
+
+\begin{proposition}\label{pro:group_element_any_two_integers}
+Let $G$ be any group. Given $g \in G$, show by induction that $g^{m+n} = g^mg^n$ for all integers $m$ and $n$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Since $g^0 = e$, the result is clear if $m$ or $n$ is 0, so assume $m,n\neq 0$. If $m,n>0$, both sides are the product of $m+n$ terms equal to $g$, so are equal, likewise if $m,n<0$ both sides are the product of $m+n$ terms equal to $g^{-1}$. If $m>0>n$, write $k=-n$, then
+\be
+g^{m+n} = g^{m-k},\quad g^m g^n = g^m(g^{-1})^k = g^{m-1}g g^{-1}(g^{-1})^{k-1} =  g^{m-1}e(g^{-1})^{k-1} =  g^{m-1}(g^{-1})^{k-1}
+\ee
+
+Thus, if $m\geq k$, by induction on $k$, we obtain $g^mg^n = g^{m-k} = g^{m+n}$ as required, which if $k>m$, by induction on $m$ we obtain $g^mg^n = (g^{-1})^{k-m} = g^{m+n}$ as required. A similar argument treats the case $m<0<n$.
+\end{proof}
+
+\begin{proposition}\label{pro:element_order}
+Let $G$ be a finite group. Let $g \in G$. Then there is a positive integer $n$ such that $g^n$ equals $e$, the identity element. The least such positive $n$ is the order of $g$.
+
+There also exists a positive integer $n$ such that $g^n = e$ for all $g \in G$. The least such positive $n$ is the exponent\index{exponent!group} of $G$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Let $\abs{G} = m$. Given $g\in G$, then the $m+1$ elements $g,g^2,\dots, g^m,g^{m+1}$ cannot all distinct, so $\exists s,t$ with $1\leq s<t \leq m +1$ such that $g^s = g^t$. Thus, $g^{t-s} = g^{t-s} = g^{s}g^{-s} = e$ by Proposition \ref{pro:group_element_any_two_integers}. So $\exists$ a positive integer $n_g$ with $g^{n_g} = e$. Set $n = \prod_{g\in G}n_g$, then $\forall g\in G$, we sset that $n_g$ divides $n$, so $g^n = e$. Thus, such $n$ is exponent of group $G$.
+\end{proof}
+
+%\begin{proposition}[exponent]\label{pro:exponent_group}
+%\end{proposition}
+%\begin{proof}[\bf Proof]
+%\end{proof}
+
+
+\begin{lemma}\label{lem:order_element}
+If $o(g) = n$ then $g^m = e$ iff $n|m$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+$\ra$. If $g^m = e$, then write with $m = qn +r$, $q,r\in \Z$, $0\leq r<n$. Then $g^r = g^m((g^{-1})^n)^q =e$, but $r<n$ and $n$ is the smallest positive integer such that $g^n = e$. Therefore $r=0$, which means $n|m$.
+
+$\la$. If $m=qn$, then $g^m = (g^n)^q = e$.
+\end{proof}
+
+\begin{corollary}[Lagrange's corollary]\label{cor:lagrange_group_cor}
+If $G$ is a finite group, and $g\in G$, then $o(g)|\abs{G}$. Thus $g^{\abs{G}} =e$ for all $g\in G$.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+Consider the subgroup $\bsa{g} = \bra{e,g,g^2,\dots,g^{n-1}}$ where $n=o(g)$.
+
+So $o(g) = \abs{\bsa{g}}|\abs{G}$ by Lagrange's theorem (Theorem \ref{thm:lagrange_group}).
+\end{proof}
+
+\begin{corollary}\label{cor:prime_order_cyclic}
+If $G$ is a group of prime order $p$, then $G$ is cyclic. In fact, any element $g\in G\bs \bra{e}$ generates $G$.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+Take $g\in G\bs \bra{e}$. Then $\bsa{g} \leq G$ of an order dividing $p$, so $G=\bsa{g}$. Thus $G\cong C_p$.
+\end{proof}
+
+
+
+%\subsubsection{Equivalence relations and Lagrange's theorem}
+%\subsection{An application of Lagrange's theorem: Fermat's little theorem}
+
+
+\begin{definition}[$\bmod \, n$]
+Let $n\in \N$. Then $R_n = \bra{0,1,\dots, n-1}$ = a cyclic group under $+\bmod\,n$, denoted as $\oplus_n$.
+
+For $a\in \Z$, define $r_n(a)$ to be the remainder in $R_n$ (also known as the residue$\mod n$); that is, if $\exists q\in \Z$, $r\in R_n$ with $a=qn+r$, then $r_n(a)=r$.
+
+We see that there is a function $r_n:\Z\to R_n$ which takes $a\to r_n(a)$. This is a surjective function, and in fact, a homomorphism from $(\Z,+)\to (R_n,\oplus_n)$.
+\end{definition}
+
+\begin{definition}[numbers coprime to $n$]
+Let $n\in \N$. Define $R^*_n = \bra{a\in R_n|\hcf(a,n) =1}$\footnote{need definition of $\hcf$}. Define the operation $\otimes_n$ to be multiplication $\bmod n$, that is, $a\otimes_n b = r_n(ab)$.
+\end{definition}
+
+\begin{lemma}
+$R^*_n$ is an abelian group with operation $\otimes_n$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Closure. If $\hcf(a,n) =1 = \hcf(b,n)$, then $\hcf(ab,n)=1$, so $(a\otimes_n b)\in R^*_n$.
+\item [(ii)] Abelian. Multiplication in $\Z$ is abelian, so $a\otimes_n b = b\otimes_n a$.
+\item [(iii)] Identity is 1, since $a\otimes_n 1 = a,\forall a \in R^*_n$.
+\item [(iv)] Associativity. Multiplication in $\Z$ is associative.
+\item [(v)] Inverses. Given $a\in R^*_n$, $u,v\in \Z$ with $au+nv = 1$\footnote{see Numbers and Sets}. So $a\otimes_n u = 1\bmod n$. Then $r_n(u)$ is the inverse of $a$ under $\otimes_n$.
+\een
+\end{proof}
+
+\begin{definition}[Euler's totient function\index{Euler's totient function}]\label{def:euler_totient_function}
+The order of $R^*_n$ is $\phi(n)$, Euler's totient function\index{Euler's totient function}, defined by
+\be
+\phi(n) = \bra{\#a:\hcf(a,n)=1,1\leq a\leq n}
+\ee
+Note that $\phi(p) = p-1$ for prime $p$.
+\end{definition}
+
+%\subsubsection{The Fermat-Euler theorem}
+
+\begin{theorem}[Fermat-Euler theorem]\label{thm:fermat_euler}
+If $n\in\N$, $a\in \Z$ with $a$ coprime to $n$, then $a^{\phi(n)}\equiv 1\bmod n$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Since $\abs{R^*_n} = \phi(n)$, $r_n(a^{\phi(n)}) =1$ in $R^*_n$ by Theorem \ref{cor:lagrange_group_cor}. Hence $a^{\phi(n)} \equiv 1\bmod n$. \footnote{There is another proof in Numbers and Sets.}
+\end{proof}
+
+\begin{theorem}[Fermat's little theorem]\label{thm:fermat_little_group}
+If $p$ is a prime and $a\in \Z$ with $p\nmid a$, then $a^{p-1} \equiv 1\bmod p$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+This is just the special case of Theorem \ref{thm:fermat_euler} when $n$ is prime.
+\end{proof}
+
+
+\section{Small groups}
+
+\subsection{Cyclic groups}
+
+Recall Definition \ref{def:cyclic_group}. The group $G$ is cyclic if there exists $x\in G$ such that every element of $G$ is a power of $x$.
+
+\begin{lemma}
+Let $G$ be cyclic and generated by $x$. Then either
+\ben
+\item [(i)] $G$ is infinite, all the $x^j$s are distinct, and $G\cong (\Z,+)$; or
+\item [(ii)] $G$ is finite with order $n$ for some $n\in\N$, and $G=\bra{e,x,x^2,\dots,x^{n-1}}$ with $G\cong C_n\cong (R_n,\oplus_n) \cong (\Z/n\Z,\oplus_n)$.
+\een
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Assume $G$ is infinite. Note that if $x^k = x^l$ for some $k,l\in \Z$, then $x^{k-l} =e$. If $k>l$, we get $G =\bra{e,x,x^2,\dots,x^{k-l-1}}$, which is not infinite, and similarly if $k<l$. So if $G$ is infinite and $x^k = x^l$ then $k=l$, so all the $x^j$s are distinct.
+
+Also, the mapping $\theta: G\to (\Z,+)$ taking $x^j\to j$ is bijective, and $\theta(x^jx^k) = \theta(x^{j+k}) = j+k = \theta(x^j)\theta(x^k)$. Thus, it is an isomorphism and $G\cong (\Z,+)$.
+
+\item [(ii)] If $G$ is finite and $\abs{G}=n$, then $o(x) = n$, so $G=\bra{e,x,\dots,x^{n-1}}$. Also, consider the map $\theta:G\to (\Z/n\Z,\oplus_n)$ taking $x^j \to j$. If $x^{j_1} = x^{j_2}$, then $x^{j_1-j_2} =e$, so $n|(j_1-j_2)$ by Lemma \ref{lem:order_element}. Thus $[j_1] = [j_2]$ in $\Z/n\Z$, so the map is well-defined.
+
+If $[j_1] = [j_2]$, we have $n|(j_1-j_2)$, $x^{j_1-j_2} =e \ \ra \ x^{j_1} = x^{j_2}$ and thus $\theta$ is injective. Also, for any $j\in \Z/n\Z$, we can find $x^j\in G$ since $j\in \bra{0,1,\dots,n-1}$. Thus, $\theta$ is bijective.
+
+Furthermore, $\theta(x^jx^k) = \theta(x^{j+k}) = (j+k) \bmod n = (j \bmod n) \oplus_n (k \bmod n) = \theta(x^j)\theta(x^k)$. So $\theta$ is also a homomorphism and thus an isomorphism.
+\een
+\end{proof}
+
+%\subsubsection{Subgroups of cyclic groups}
+
+\begin{lemma}
+Any subgroup $H$ of a cyclic group $G=\bsa{x}$ is cyclic. In fact, if $H\neq \bra{e}$, then $H=\bsa{x^k}$ with $k$ the smallest positive integer such that $x^k \in H$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Let $G = \bsa{g}$ be a cyclic group, and $H$ be a subgroup of $G$. If $H = \bra{e}$, then $H=\bsa{e}$ is cyclic so we may assume $H \neq \bsa{e}$; take $h_1\in H\bs \bra{e}$, then $h_1 = g^n$ for some $n \in \Z$. Since $h_1^{-1} = g^{-n} \in H$, $\exists m\in \N$ with $g^m \in H$.
+
+Let $n\in \N$ be minimal with $g^n \in H$, and set $h = g^n$. Certainly $\bsa{h}\subseteq H$. Conversely, given $g^r\in H$ write $c = qn + r$ with $q,r\in \Z$ and $0\leq r < n-1$, then $g^r = g^{c -qn} = g^c \bb{g^n}^{-q} = g^c h^{-q} \in H$, so by the minimality of $n$ we must have $r=0$, whence $c = qn$ and $g^c = g^{qn} = h^q \in \bsa{h}$. Thus, $H\subseteq \bsa{h}$ which gives $\bsa{h} = H$, and thus $H$ is cyclic.\footnote{See example sheet 2, question 6. still need all the subgroups of the cyclic group $C_n$}
+\end{proof}
+
+\begin{remark}
+Let $a,b\in \Z$. By The above lemma, the subgroup of $\Z$ generated by $a,b$ is cyclic, say $\bsa{c}$ for some $c\in\Z$. Note that $c= \hcf(a,b)$. Then $c\in \inner{a}{b}$, so $c = a^u b^v$ in $\Z$ (since $\Z$ is abelian).
+\end{remark}
+
+\begin{remark}
+Multiplication here is actually addition since the operation in $\Z$ is $+$, so we can write $c = ua + vb$.
+\end{remark}
+
+
+
+\subsection{Direct (Cartesian) products of groups}
+
+\begin{definition}[direct product]\label{def:direct_product_group}
+Given groups $H$ and $K$, we can construct the direct product\index{direct product!group} $H\times K = \bra{h,k|h\in H,k\in K}$ with operation $(h_1,k_1)(h_2,k_2) = (h_1h_2,k_1k_2)$.
+\end{definition}
+
+\begin{lemma}\label{lem:direct_product_of_groups}
+If $H$ and $K$ are groups then $H\times K$ is a group.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Closed under the given operation, as $h_1h_2 \in H$ and $k_1k_2 \in K$.
+\item [(ii)] Associative since multiplication in $H$ and $K$ is associative.
+\item [(iii)] Identity $e = (e_H,e_K)$.
+\item [(iv)] Inverse of $(h,k) = (h^{-1},k^{-1})$.
+\een
+\end{proof}
+
+%\subsubsection{Examples and notes}
+
+\begin{example}[Klein 4-group]
+$C_2 \times C_2 = \bra{e,x}\times\bra{e,y} = \bra{(e,e),(x,e),(y,e),(x,y)}$ where all non-identity elements have order 2.
+
+Alternatively, $C_2\times C_2 \cong \Z/2\times \Z/2 = \bra{(0,0),(1,0),(0,1),(1,1)}$ under addition $\bmod 2$.
+
+Now $C_2\times C_3 \cong C_6$ since $C_2$ is generated by $x$ of order 2 and $C_3$ is generated by of order 3, so $o(x,y) = 6$. In general, $C_m\times C_n \cong C_{mn}$ iff $\hcf(m,n) =1$ (see Lemma \ref{lem:coprime_cycle_cong}).
+
+It follows that $\R^n$ for $n\in \N$ is a group under component-wise addition, since $\R^n = \underbrace{\R\times\dots \times \R}_{n\text{ times}}$.
+\end{example}
+
+\begin{remark}
+\ben
+\item [(i)] If $H,K$ are finite, then so is $H\times K$, and $\abs{H\times K} = \abs{H}\abs{K}$\footnote{need details}.
+\item [(ii)] $H,K$ are abelian iff $H\times K$ is abelian.
+\item [(iii)] $H\times K$ contains a subgroup $\bra{(h,e):h\in H}$ isomorphic to $H$ and a subgroup $\bra{(e,k):k\in K}$ isomorphic to $K$.
+\een
+\end{remark}
+
+%\subsubsection{Full product conditions}
+
+\begin{proposition}\label{pro:direct_product}
+Let $G$ be a group with subgroups $H,K$ such that
+\ben
+\item [(i)] each element in $G$ can be written as $hk$ with $h\in H$, $k\in K$.
+\item [(ii)] $H\cap K = \bra{e}$.
+\item [(iii)] $hk = kh$, $\forall h\in H,k\in K$.
+\een
+Then $G\cong H\times K$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+If $h_1k_1 = h_2k_2$ with $h_i \in H$, $k_i \in K$, then $h_2^{-1} h_1 = k_2 k_1^{-1} \in H\cap K = \bra{e}$, so expressions $hk$ for elements of $G$ are unique. Thus we can define $\theta:G\to H\times K$, taking $g=hk \to (h,k)$. This is well defined, by uniqueness of expressions $hk$.
+
+If $(h_1,k_1) = (h_2,k_2)$, $h_1 = h_2, k_1 = k_2 \ \ra \ h_1 k_1 = h_2k_2$, so $\theta$ is injective. Since $\forall h\in H,k\in K$, $h,k \in G$ ($H,K$ are subgroups), $hk \in G$. Thus, $\theta$ is surjective and therefore bijective. By condition (iii),
+\be
+\theta((h_1 k_1)(h_2 k_2))= \theta(h_1 h_2 k_1 k_2) = (h_1 h_2 ,k_1 k_2) = (h_1,k_1)(h_2,k_2) = \theta (h_1k_1)\theta(h_2k_2),
+\ee
+so the map $\theta$ is a homomorphism. Thus, $\theta$ is an isomorphism and $G\cong H\times K$.
+\end{proof}
+
+\subsection{Dihedral groups}
+
+\begin{proposition}[dihedral group]\label{pro:dihedral_group}
+Let $G$ be a group generated by two elements, $s$ of order $n$ and $t$ of order 2, with $tst = s^{-1}$. Algebraically, $G = \bsa{s,t|s^n=e,t^2 =e,tst=s^{-1}}$. Then $G$ is dihedral of order $2n$, that is, $G$ is isomorphic to the group of symmetries of a regular $n$-gon.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+$G=\bra{e,s,s^2,\dots,s^{n-1},t,ts,ts^2,\dots,ts^{n-1}}$ and these are precisely the elements of $G$. (Note Saxl's Theorem, the very useful fact that $s^jt = ts^{-j}$.)
+
+Now the group of symmetries of a regular $n$-gon contains $\sigma$, a rotation of order $n$, and $\tau$, a reflection satisfying $\tau^2 =\iota$ and $\tau \sigma \tau = \sigma^{-1}$ (see Definition \ref{def:dihedral_group_symmetries}). So the mapping $\theta:t^k s^j \to \tau^k \sigma^j$ is a well-defined bijective homomorphism, i.e. an isomorphism, since both groups satisfy the same conditions.
+\end{proof}
+
+\subsection{The groups of order $\leq 10$}
+
+Here is a table of them. For groups of prime order we use Corollary \ref{cor:prime_order_cyclic}. For other orders see the Table \ref{tab:small_groups}.
+%\begin{remark}
+There are 10 groups of order 16, and $\approx 50,000,000,000$ groups of order $2^{10}$.
+%\end{remark}
+
+
+%\subsubsection{Groups of order 4}
+
+\begin{lemma}\label{lem:group_order_4}
+A group $G$ of order 4 is abelian, and is isomorphic to $C_4$ or $C_2\times C_2$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Non-identity elements have order 2 or 4. If $G$ contains an element of order 4, then $G\cong C_4$ (of course, it is abelian). So assume all non-identity elements have order 2. Let $a\in G\bs \bra{e}$ and let $b\in G\bs \bsa{a}$. Then $G=\bra{e,a,b,ab}$. So $G\cong \bsa{a}\times \bsa{b} = C_2 \times C_2$ by Proposition \ref{pro:direct_product}. Also, $e = (ab)^2 = abab \ \ra \ ab = a^2 ba b^2 = eba e = ba$. Thus, $G$ is abelian.
+\end{proof}
+
+%\subsubsection{Groups of order 6}
+
+\begin{lemma}\label{lem:group_order_6}
+A group $G$ of order 6 is isomorphic to either $C_6$ or $D_6$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+If all the elements of $G$ have order 2, then take $a,b$ of order 2 and observe that $\abs{\inner{a}{b}}=4\nmid 6$. If all the elements have order 3, then consider $a,b\in G$ with $\bsa{a} \in G\bs \bra{e}, b\in G\bs \bsa{a}$. Thus $G\geq \bra{e,a,a^2,b,b^2,ab,ab^2,a^2b,a^2b^2}$ which is too big. Therefore $G$ contains an element $s$ of order 3 and an element $t$ of order 2, i.e., $s^3 = e$, $t^2 = e$.
+
+Thus $G=\bra{e,s,s^2,t,ts,ts^2}$. Now $st$ must be $ts$ or $ts^2$ (the other possibilities lead to contradictions).
+
+If $ts=st$, $(st)^2 = stst = sstt = s^2 t^2 = s^2$, $(st)^3 = s^2 st = t$, $(st)^4 = tst = tts = t^2 s = s$, $(st)^5 = s st = s^2 t$, $(st)^6 = s^2 tst = s^2 s t t = s^3 t^2 = e$, so $o(st) = 6$. Then $G\cong C_6$.
+
+If $st=ts^2$, $tst = t^2 s^{2} = e e s^{-1} =s^{-1}$, then $G$ is generated by $t,s$ of orders 2 and 3 with $tst = s^{-1}$, so $G\cong D_6$.
+\end{proof}
+
+
+%\subsubsection{The quaternion group $Q_8$}
+\begin{definition}[The quaternion group $Q_8$]
+The quaternion group $Q_8$ is defined as $\bra{a,b|a^4 = e,b^2 = a^2, bab^{-1} = a^{-1}}$. It has one element of order 2, $a^2$, and six elements of order 4, all the others.
+
+The customary notation for $Q_8$ is $\bra{\pm 1,\pm i,\pm j,\pm k}$ with the operation $ij = k$, $jk =i$, $ki = j$, $ji = -k$, $ik = -j$, $kj = -i$ and $i^2 = j^2 = k^2 = -1$.% as the vector cross-product.
+\end{definition}
+
+\begin{remark}
+We can see $a=i$, $b=j$.
+\end{remark}
+
+Another realisation is $2\times 2$ matrices over $\C$;
+\be
+\pm \bepm
+1 & 0 \\
+0 & 1
+\eepm,\quad\quad \pm \bepm
+i & 0 \\
+0 & -i
+\eepm,\quad\quad \pm \bepm
+0 & i \\
+i & 0
+\eepm,\quad\quad
+\pm \bepm
+0 & -1 \\
+1 & 0
+\eepm
+\ee
+corresponding to the $1,i,j,k$ from above.
+
+It follows that there is a 4-dimensional, non-commutative, associative algebra over $\R$. $\BH =\bra{\alpha 1 + \beta i + \gamma j + \delta k}$ where $\alpha,\beta,\gamma,\delta\in \R$.
+
+%\subsubsection{Groups of order 8}\label{lem:group_order_4}
+
+\begin{lemma}\label{lem:group_order_8}
+If $G$ is a group of order 8, then $G$ is isomorphic to exactly one of $C_8$, $C_4\times C_2$, $C_2\times C_2\times C_2$, $D_8$ and $Q_8$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+The orders of non-identity elements are 2,4 and 8 by Lagrange's corollary (Theorem \ref{cor:lagrange_group_cor}).
+\ben
+\item [(i)] If $G$ contains an order-8 element, then $G\cong C_8$. So assume none such.
+\item [(ii)] If all the elements of $G\bs\bra{e}$ have order 2, then $G$ is abelian since $ba = (ba)^{-1} = a^{-1}b^{-1} = ab$. Take $a\in G\bs\bra{e}$, $b\in G\bs\bsa{a}$. Then by Lemma \ref{lem:group_order_4}, $\bsa{a,b}$ is isomorphic to $C_2\times C_2$ and $\abs{\inner{a}{b}} = 4$. Let $c \in G\bs \bsa{a,b}$.
+
+We the elment $ca$ has order 2. Then $(ca)^2 = e \ \ra \ caca = e \ \ra \ c^2aca^2 = ca \ \ra \ ac = ca$. Similarly, we can have $cx = xc$, $\forall x \in \bra{e,a,b,ab} = \bsa{a,b}$ and thus $xy = yx$ $\forall x\in \bsa{a,b},y\in \bsa{c}$.
+
+Thus $G\cong \bsa{a,b}\times \bsa{c} \cong (C_2 \times C_2) \times C_2 = C_2 \times C_2 \times C_2$ by Proposition \ref{pro:direct_product}.
+\item [(iii)] So there is an element $a$ of order 4 in $G$ but none of order 8. Let $b\in G\bs\bsa{a}$ with order 2 or 4. Hence $G=\bra{e,a,a^2,a^3,b,ab,a^2b,a^3b}$ with no more elements. What are $b^2$ and $ba$?
+\ben
+\item If $b^2 \in \bra{b,ab,a^2b, a^3b}$, then $b\in \bra{e,a,a^2,a^3}= \bsa{a}$ which is a contradiction. Thus $b^2 \in \bsa{a}$. If $b^2$ is $a$ or $a^3$, then $o(b) = 8$ which cannot be. So $b^2 = e$ or $b^2 = a^2$.
+\item We know $ba \notin \bsa{a}$, thus $ba = a^j b$ for some $j\in \bra{1,2,3}$. So $bab^{-1} = a^j$. Note that $b^2 = e$ or $b^2 = a^2$, so $a = b^2 ab^{-2} = b(bab^{-1})b^{-1} = ba^jb^{-1} = bab^{-1}\dots b^{-1}ba b^{-1} = (bab^{-1})^j = (a^j)^j = a^{j^2}$. Therefore $a^{j^2-1} = e$, so 4 divides $j^2 -1$ (using Lemma \ref{lem:order_element}), so $j$ is odd. So $j\in \bra{1,3}$ and $bab^{-1} = a$ or $a^3$.
+\een
+\item [] Case 1. $bab^{-1} =a$. Then $ba = ab$ so $G$ is abelian.
+\ben
+\item If $b^2 = e$, by Proposition \ref{pro:direct_product}, $G\cong \bsa{a}\times \bsa{b}$  $\cong C_4\times C_2$.
+\item If $b^2 = a^2$, replace $b$ by $b' = ab^{-1}$. Then $b'^2 = (ab^{-1})^2 = a^2 b^{-2} = e$. So $G\cong \bsa{a}\times \bsa{b'} \cong C_4 \times C_2$ by Proposition \ref{pro:direct_product}.
+\een
+\item [] Case 2. $bab^{-1} = a^{-1}$
+\ben
+\item If $b^2 = e$, $bab = a^{-1}$, then $G = D_8$ by Proposition \ref{pro:dihedral_group}. $G$ then has two elements of order 4, $a$ and $a^{-1}$, and five elements of order 2, $a^2$, $ab$, $b$, $a^2b$ and $a^3b$.
+\item If $b^2 = a^2$, then $G\cong Q_8$.
+\een
+\een
+\end{proof}
+
+\begin{lemma}\label{lem:group_order_10}
+A group $G$ of order 10 is isomorphic to either $C_{10}$ or $D_{10}$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Let $G$ be a group of order 10. The possible orders of non-identity elements are 2,5,10. If there exists $g\in G$ of order 10 then $G = \bsa{g} \cong C_{10}$; so assume $G$ has no element of order 10.
+
+By first example sheet, $G$ has an element of order and if all non-identity elements of $G$ had order 2 then $G$ would be abelian - if wo, take $g_1,g_2\in G$ with $g_1\neq e$ and $g_2 \notin \bsa{g_1}$, then $\bsa{g_1,g_2} = \bra{e,g_1,g_2,g_1g_2}$, contrary to Lagrange's theorem. Thus $G$ contains $x$ of order 2 and $y$ of order 5; so we must have
+\be
+G = \bra{e,y,y^2,y^3,y^4,x,xy,xy^2,xy^3,xy^4}.
+\ee
+
+Consider $yx$ - it cannot be $y^i$ for some $i$, as this would give $x = y^{i-1}$, (contradiction) and it is not $x$, so it must be $xy^i$ for some $i = \bra{1,2,3,4}$, and hence $x^{-1}yx = y^i$. We have
+\be
+x^{-1}y^i x = \bb{x^{-1}yx}^i = \bb{y^i}^i = y^{i^2}
+\ee
+but $x^{-1}y^ix = xy^i x^{-1} = y$, so $y^{i^2} = y$. Then we cannot have $i\in \bra{2,3}$ since $y^4,y^9 \neq y$. If $i =1$ then $yx = xy$, i.e., $x$ and $y$ commute - but then $(xy)^k = x^ky^k $ for all $k$, $(xy)^2 = x^2 y^2 = y^2 \neq e$ and $(xy)^5 = x^5 y^5 = x \neq e$, so $xy$ does not have order 2 or 5, contradiction.
+
+So $i=4$, so $x^{-1}yx = y^4 = y^{-1}$ and thus $G \cong D_{10}$.
+
+Thus any group of order 10 is isomorphic to either $C_{10}$ or $D_{10}$.
+\end{proof}
+
+
+
+\section{Normal Subgroups, Quotient Groups and Isomorphism Theorem}
+
+\subsection{Normal Subgroups, Quotient Groups}
+
+\begin{example}
+The integers lie inside the real numbers, $(\Z, +) \leq (\R, +)$. We would like to add cosets,
+\be
+(\Z + r_1) + (\Z + r_2) = \Z + (r_1 + r_2).
+\ee
+\end{example}
+
+In general, we want to copy this procedure to define an operation on the cosets of a subgroup. If $K \leq G$ we want to define $g_1Kg_2K = g_1g_2K$. But this requires $Kg_2K = g_2K$, after multiplying on left by $g^{-1}_1$. In particular, we need $Kg_2 \subseteq g_2K$ for all $g_2 \in G$, and also $Kg^{-1}_2 \subseteq g^{-1}_2 K$ which implies $g_2K \subseteq Kg_2$. So to make the definition work we need that $gK = Kg$ for all $g \in G$.
+%\be
+%Kg_2K = g_2K \ \ra \ \forall h\in Kg_2 Kg_2 \subseteq g_2K \ \ra \
+%\ee
+
+\begin{definition}[normal subgroup]\label{def:normal_subgroup}
+A subgroup $K\leq G$ is normal\index{normal!subgroup} if each left coset of $K$ is equal to the corresponding right coset, i.e. $gK = Kg$, $\forall g\in G$. Therefore for any $g\in G,k\in K,\exists k' \in K$ with $gk = k'g$, i.e. $gkg^{-1} \in K, \forall g\in G,k\in K$ or equivalently, $gKg^{-1} = K$ for all $g \in G$. We write $K\lhd G$.
+\end{definition}
+
+\begin{example}
+\ben
+\item [(i)] If $G$ is abelian, then any subgroup $K$ is normal, because $gkg^{-1} = k\in K$ for any $g\in G,k\in K$.
+\item [(i)] In general, $\{e\}$ and $G$ are always normal.
+\item [(iii)] In the dihedral group $D_{2n}$, the subgroup of rotations is normal but $\{e, \tau\}$, for a reflection $\tau$, is not normal if $n \geq 3$.
+
+\een
+\end{example}
+
+\begin{proposition}\label{pro:an_sn_normal}
+$A_n \lhd S_n$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{need proof}
+\end{proof}
+
+\begin{lemma}\label{lem:normal_index_2}
+If $K\leq G$ of index 2, then $K\lhd G$.% (often used in chapter 3).
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+If $g\in G$, then either $g\in K$, in which case $gK=K = Kg$, or $g\in G\bs K$, in which case $gK =G\bs K = Kg$. Either way, $K\lhd G$.
+
+It follows from the definition that if any one member of a conjugacy class is an element of a normal subgroup, then the entire conjugacy class must be within that subgroup. Therefore any normal subgroup is a (disjoint) union of conjugacy classes.
+\end{proof}
+
+
+\begin{lemma}\label{lem:ker_normal}
+If $\theta: G\to H$ is a homomorphism, then $\ker \theta \lhd G$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+First note that $e_G \in \ker \theta$ by Theorem \ref{lem:homomorphism_property} (i). Next, if $g_1,g_2 \in \ker\theta$, then
+\be
+\theta(g_1^{-1}g_2) = \theta(g_1^{-1})\theta(g_2) = \bb{\theta(g_1)}^{-1}\theta(g_2)= e_H
+\ee
+by Theorem \ref{lem:homomorphism_property} (ii). then $g_1^{-1}g_2 \in \ker\theta $. Therefore $\ker \theta \leq G$ by Lemma \ref{lem:subgroup}.
+
+Now if $\forall g\in G, k\in \ker \theta$, then
+\be
+\theta(gkg^{-1}) = \theta(g)\theta(k)\theta(g^{-1}) = \theta(g)e_H\theta(g^{-1}) = \theta(g)e_H\bb{\theta(g)}^{-1}=  e_H
+\ee
+
+Thus, $gkg^{-1} \in \ker \theta$. Therefore the subgroup $\ker \theta$ is normal.
+\end{proof}
+
+%\begin{remark}
+%If $G$ acts on a set $X$, we have the homomorphism $\varphi:G\to \sym(X)$ taking $g\to \varphi_g$ where $\varphi_g:x\to g(x)$. The kernel of the action on $X$ is precisely $\ker \varphi$, hence it is a normal subgroup of $G$.
+%\end{remark}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%\subsubsection{Normal factors}
+
+\begin{lemma}
+If $G_1,G_2 \lhd G$ such that $G = \inner{G_1}{G_2}$ and $G_1\cap G_2 = \bra{e}$, then $G\cong G_1\times G_2$.
+\end{lemma}
+
+%\begin{remark}
+%This is the clarification of Proposition \ref{pro:direct_product}.
+%\end{remark}
+
+%Note. This was used when $G$ was the group of all symmetries of a cube, $G_1$ was $G^+ \lhd G$, and $G_2$ was the kernel of the action of $G$ on $D$, thus $G_2\lhd G$.
+
+\begin{proof}[\bf Proof]
+It is enough to show, by Proposition \ref{pro:direct_product}, that $g_1g_2 = g_2 g_1$ for any $g_1 \in G_1$, $g_2 \in G_2$.
+
+Since $g_1g_2g_1^{-1}\in G_2$ and $g_2g_1^{-1}g_2^{-1}\in G_1$ (definition of normal), we have $g_1g_2g_1^{-1}g_2^{-1} \in G_1\cap G_2 = \bra{e}$. So $g_1g_2 = g_2 g_1$.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{theorem}[quotient group]\label{thm:quotient_group}
+Let $K \lhd G$ and $g_1,g_2\in G$. Then the set of cosets of $K$ in $G$ form a group under the operation of coset multiplication, defined by $g_1Kg_2K = g_1g_2K$. This group ($(G:K) = \bra{gK:g\in G}$) is called the quotient group\index{quotient group} $G/K$.
+\end{theorem}
+
+\begin{remark}
+Normality of $K$ is necessary.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Let $g,g_1,g_2,g_3\in G$. First we must check this operation is well-defined on $(G:K)$; that is, $(g_1g_2)K$ is a valid coset of $K$ in $G$ (obvious), and if $g_1K = g_1'K$ and $g_2 K = g_2' K$ then $(g_1g_2)K = (g_1'g_2')K$ (less obvious, the proof is from \cite{Beardon_2005}) .
+
+Directly from the above expressions $g_i^{-1}g_i' \in K$ (for $i=1,2$) so call it $k_i$. Now
+\be
+(g_1g_2)K = (g_1'g_2')K \ \lra\ g_2^{-1}g_1^{-1}g_1'g_2' \in K
+\ee
+but $g_2^{-1}g_1^{-1}g_1'g_2' = g_2^{-1} k_1 g_2' = g_2^{-1}g_2' (g_2')^{-1}k_1 g_2' = k_2 (g_2')^{-1}k_1g_2' \in k_2 K$ due to the fact that $(g_2')^{-1}k_1g_2' \in K$. Finally, $k_2K = K$ so we are done.
+
+Next we check the remaining group axioms (as Closure is $g_1Kg_2K = g_1g_2K$).
+
+Associativity:
+\be
+(g_1Kg_2K)g_3K = (g_1g_2)K g_3 K = (g_1g_2)g_3 K = g_1(g_2g_3)K = g_1K(g_2Kg_3K) = g_1K(g_2g_3)K.
+\ee
+
+Identity element: $gKeK = gK$ and $eKgK = gK$ so the identity =$eK = K$.
+
+Inverses: $gKg^{-1}K = eK = K = g^{-1}KgK$, thus $(gK)^{-1} = g^{-1}K$.
+\end{proof}
+
+
+\begin{example}
+$G =D_8 = \bsa{a,b:a^4 = e = b^2,bab^{-1} =a^{-1}}$ and $K = \bsa{a^2}$. Then
+\be
+\frac{G}{K} = G/K =\bra{K,aK,bK,abK} \cong C_2 \times C_2 = \inner{aK}{bK}
+\ee
+Note that $\bsa{b}$ is not normal (as $aba^{-1} = ba^{-2}\notin \bsa{b}$), but $\bsa{a^2} $ and all subgroups of order 4 are normal.
+\end{example}
+
+\subsection{Isomorphism theorem}
+
+\begin{theorem}[first isomorphism theorem\index{isomorphism theorem!groups}]\label{thm:isomorphism_1_group}
+Let $\theta : G \to H$ be a homomorphism. Then $\ker \theta$ is a normal subgroup ($\ker \theta \lhd G$) and $G/ \ker \theta \cong \im \theta$.
+\end{theorem}
+\begin{remark}
+$G/ \ker \theta \cong \im \theta$ means that any homomorphic image of $G$ is isomorphic to a quotient.
+\end{remark}
+\begin{proof}[\bf Proof]
+For the first assertion see Lemma \ref{lem:ker_normal}.
+
+In general, the way to show that two groups are isomorphic is to construct an isomorphism between them. Therefore we define a map $\Phi: G/K \to \im \theta$, $gK \mapsto \theta(g)$ where $K = \ker \theta$ and will show that it is an isomorphism.
+
+First check that $\Phi$ is well-defined,
+\be
+g_1K = g_2K \ \ra \ g^{-1}_2 g_1 \in K \ \ra \ \theta(g^{-1}_2 g_1) = e \ \ra \ \theta(g_2)^{-1}\theta(g_1) = e \ \ra \ \theta(g_1) = \theta(g_2) \ \ra \ \Phi(g_1K) = \Phi(g_2K).
+\ee
+
+If $\theta(g_1) = \theta(g_2)$ then $\theta(g^{-1}_1 g_2) = e$ and so $g^{-1}_1 g_2 \in K$. Hence $g_1K = g_2K$ by Theorem \ref{thm:left_coset}. Thus, $\Phi$ is injective.
+
+Any element in $\im(\theta) = \theta(G)$ is $\theta(g)$ for some $g\in G$, so $\Phi(gK) = \theta(g)$. Hence, $\Phi$ is surjective.
+
+$\forall g_1,g_2\in G$,
+\be
+\Phi(g_1Kg_2K) = \Phi(g_1g_2K) = \theta(g_1g_2) = \theta(g_1)\theta(g_2) = \Phi(g_1K)\Phi(g_2K).
+\ee
+
+So $\Phi$ is a homomorphism. Thus, $\Phi$ is an isomorphism.
+\end{proof}
+
+\begin{example}
+Let $G=(\Z,+)$. Then $\bsa{n} = \bra{nk:k\in \Z}\lhd G$. Let $H=C_n = \bsa{x:x^n = 1}$. Define $\theta:G\to H$ taking $m \to x^m$. This is a surjective homomorphism with kernel $\bsa{n}$.
+
+Therefore by Theorem \ref{thm:isomorphism_1_group}, $\Z/\bsa{n} \cong C_n$ and $\Z/\bsa{n}$ is the group of integers $\bmod n$, sometines written $\Z/n\Z$.
+\end{example}
+
+\begin{example}
+Let $G = (\R,+)$ and $H = (\C\bs\bra{0},\times)$, with $\theta:G\to H$ taking $t\to e^{i t}$.
+
+First we check $\theta$ is a homomorphism: $\theta(t_1 + t_2) = e^{i(t_1+t_2)} = e^{it_1}e^{it_2} = \theta(t_1)\theta(t_2)$.
+
+Now $\im \theta = \theta(G) = \bra{z\in \C:\abs{z}=1}$. Then $K = \ker\theta = \bra{2n\pi:n\in \Z}:= \bsa{2\pi}\leq \R$, which is normal in $(\R,+)$ since
+\be
+\forall g\in G, k\in K \ \ra \ g\in \R, k = 2n\pi,n\in \Z \ \ra \ gkg^{-1} = g + 2n\pi + (- g ) = 2n\pi \in K.
+\ee
+Therefore Theorem \ref{thm:isomorphism_1_group} implies that $\R/\bsa{2\pi} \cong \im \theta = \bra{e^{it}:t\in \R} = \bra{z\in \C:\abs{z}=1}$.
+
+The map $\Phi$ is $\Phi(t+\bsa{2\pi}) = e^{it}$. Similarly, if $\theta:t\mapsto e^{2\pi it}$, the map $\Phi$ is $\Phi(t + \Z) = e^{2\pi it}$.
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{theorem}[second isomorphism theorem\index{isomorphism theorem!groups}]\label{thm:isomorphism_2_group}
+Let $H \leq G$ and $K \lhd G$. Then $HK \leq G$ and $H \cap K \lhd G$ where $HK = \{hk : h \in H, k \in K\}$ and $(HK)/K \cong H/(H \cap K)$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+First show that $HK$ is a subgroup. It suffices to show $(h_1k_1)(h_2k_2)^{-1} \in HK$ with $h_1,h_2\in H, k_1,k_2 \in K$ by Lemma \ref{lem:subgroup}.
+\be
+(h_1k_1)(h_2k_2)^{-1} = h_1 \underbrace{k_1k^{-1}_2}_{\in K} h_2^{-1}
+\ee
+
+But $Kh^{-1}_2 = h^{-1}_2 K$ since $K \lhd G$ and so $(k_1k_2^{-1})h_2^{-1} = h_2^{-1} k_3$ for some $k_3 \in K$. So $(h_1k_2)(h_2k_2)^{-1} = h_1h_2^{-1} k_3 \in HK$.
+
+Define
+\be
+\theta : H \to H/K,\ h \mapsto hK.
+\ee
+
+This is a group homomorphism (identity is $e_HK$) since
+\be
+\theta(h_1h_2) = h_1h_2 K = h_1Kh_2K = \theta(h_1)\theta(h_2).
+\ee
+
+So Theorem \ref{thm:isomorphism_1_group} implies that $\ker \theta \lhd G$ and $H/\ker \theta \cong \im \theta$. Now
+\be
+\ker \theta = \{h \in H : hK = eK = K\} = H \cap K.
+\ee
+
+Thus $H \cap K \lhd G$. Also,
+\be
+\im \theta = \{hK : h \in H\} = \bra{(hk)K : h \in H,k\in K} = \bra{gK:g\in HK} = (HK)/K\ \text{ (by Theorem \ref{thm:quotient_group})}
+\ee
+
+cosets of $K$ in $HK$. Thus $H/(H \cap K) \cong (HK)/K$, as required.
+\end{proof}
+
+
+\begin{proposition}\label{pro:remark_second_isomorphism_theorem_group}
+Let $K\lhd G$ and $L\leq G$ be a subgroup containing $K$. Then
+\be
+L/K \lhd G/K \ \lra\  L \lhd G.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+In fact, there is a bijection\footnote{need proof} between subgroups of $G/K$ and the subgroups of $G$ containing $K$. This is given by the maps
+\beast
+\text{\{subgroups of $G/K$\}} & & \text{\{subgroups of $G$ containing $K$\}}\\
+X\quad\quad & \ \longrightarrow \ & \quad \quad \{g \in G : gK \in X\}\\
+L/K \quad\quad & \ \longleftarrow \ & \quad\quad\quad L
+\eeast
+
+These maps are inverses of each other.
+
+Take a normal subgroup $K \lhd G$ and form the quotient group $G/K$, with elements the cosets $gK$ and multiplication defined by $g_1Kg_2K = g_1g_2K$. The correspondence
+\be
+\text{\{subgroups of $G/K$\}}\ \longleftrightarrow\ \text{\{subgroups of $G$ containing $K$\}}
+\ee
+restricts to
+\be
+\text{\{normal subgroups of $G/K$\}} \ \longleftrightarrow \ \text{\{normal subgroups of $G$ containing $K$\}}
+\ee
+For a subgroup $L/K \leq G/K$ ($L$ is a normal subgroup of $G$ containing $K$) we have that
+\be
+(gK)(L/K)(gK)^{-1} = (gLg^{-1})/K
+\ee
+so $K\leq L$, we have $(gLg^{-1})/K = L/K \ \ra \ gl_1g^{-1}K = l_2 K  \ \ra \ gl_1 g^{-1} \in L \ \ra \ gLg^{-1} = L$. It is obvious that $gLg^{-1} = L \ \ra \ (gLg^{-1})/K = L/K$. Thus,
+\be
+(gK)(L/K)(gK)^{-1} = L/K \ \lra\ gLg^{-1} = L,
+\ee
+that is, $L/K \lhd G/K \ \lra\  L \lhd G$.
+\end{proof}
+
+\begin{theorem}[third isomorphism theorem\index{isomorphism theorem!groups}]\label{thm:isomorphism_3_group}
+If $K$ and $L$ are normal subgroups of $G$ with $K \leq L \lhd G$ (i.e. $K\lhd L$) then $(G/K)/(L/K) \cong G/L$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Apply Theorem \ref{thm:isomorphism_1_group} to the well chosen map
+\be
+\theta : G/K \to G/L,\ gK \mapsto gL.
+\ee
+
+We need to check this is well-defined,
+\be
+g_1K = g_2K \ \ra \ g^{-1}_1 g_2 \in K \leq L \ \ra \ g_1 L = g_2L.
+\ee
+
+To check $\theta$ is a homomorphism,
+\be
+\theta(g_1Kg_2K) = \theta(g_1g_2K) = g_1g_2L = g_1Lg_2L = \theta(g_1K)\theta(g_2K).
+\ee
+
+Clearly, $\im \theta = G/L$. Also $\ker \theta = \{gK : gL = L\} = \bra{gK : g \in L} = L/K$ and so Theorem \ref{thm:isomorphism_1_group} implies
+\be
+(G/K)/(L/K) \cong G/L.
+\ee
+\end{proof}
+
+\subsection{Simple groups}
+
+\begin{definition}[Simplicity]
+$G$ is simple\index{simple!group} if the only normal subgroups in it are $\{e\}$ and $G$ itself.
+\end{definition}
+
+\begin{proposition}\label{pro:simple_abelian_cyclic}
+The only simple abelian groups are $C_p$ for $p$ prime.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+'Normal' for abelian groups is easy to understand as all subgroups are normal because of commutativity. Take a non-trivial element $g \neq e$ in a simple abelian group $G$.
+
+Then either $g$ is of infinite order and $G$ contains the normal subgroup $\{\dots, g^{-1}, e, g, g^2,\dots\}$.
+
+Simplicity implies that $G = \{\dots, g^{-1}, e, g, g^2,\dots \}$. But then there is also the normal subgroup $\{\dots, g^{-2}, e, g^2, g^4,\dots \}$, a contradiction.
+
+Or $g$ is of finite order and $G$ has the subgroup $\{e, g, g^2,\dots , g^{o(g)-1}\}$. Simplicity implies that $G = \{e, g, g^2,\dots , g^{o(g)-1}\}$. But if $o(g) = rs$, say, then we also have the subgroup $\{e, g^r, g^{2r},\dots , g^{r(s-1)}\}$. Now simplicity implies that there are no non-trivial factorisations of $o(g)$ so $G = \{e, g,\dots , g^{p-1}\}$ for some prime $p$.
+\end{proof}
+
+Thus, combining Corollary \ref{cor:prime_order_cyclic} and Proposition \ref{pro:simple_abelian_cyclic}, we have the following corollary,
+
+\begin{corollary}\label{cor:prime_cyclic_simple_abelian}
+A group of order $p$ where $p$ is a prime is cyclic one, $C_p$. Also, it's simple and abelian.
+\end{corollary}
+
+\begin{theorem}\label{thm:a_n_is_simple_n_geq_5}
+$A_n$ is simple for $n \geq 5$.
+\end{theorem}
+
+\begin{remark}
+We shall see shortly that the alternating group $A_5$ on $\{1,\dots , 5\}$ is simple (see Proposition \ref{pro:a5_is_simple}). %In fact, \textcolor{red}{$A_n$ is simple for $n \geq 5$}, but we don't need to know the proof.
+
+Note that $|A_3| = 3$, so $A_3$ is isomorphic to $C_3$ and simple. $|A_4| = 12$ and $A_4$ contains the normal subgroup $V = \{e, (12)(34), (13)(24), (14)(23)\} \lhd A_4$, so $A_4$ is not simple.
+
+There are finitely many families of finite simple groups, and 26 groups that do not fit into those general families, called the sporadic\index{sporadic group} ones.
+
+Note $|A_5| = 60$ and $|A_6| = 360$. There is another finite simple group of order 168, $GL_3(\Z \bmod 2)$, the group of invertible $3 \times 3$ matrices entries $\{0, 1\}$ modulo 2\footnote{This is left as an exercise.}.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed, see IB for the proof where $n>5$.}
+\end{proof}
+
+
+
+\begin{theorem}
+Let $G$ be a finite group. Then there are subgroups $H_1,\dots ,H_s$ such that
+\be
+G = H_1 \geq H_2 \geq \dots \geq H_s = \{e\}
+\ee
+with $H_{i+1} \lhd H_i$ and $H_i/H_{i+1}$ simple.
+\end{theorem}
+
+\begin{remark}
+Not all $H_i$ normal in $G$.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Let $H_2$ be normal in $G$ with $|H_2|$ of largest order not equal to $|G|$. Then the correspondence between normal subgroups of $G$ containing $H_2$ and the normal subgroups of $G/H_2$ implies that $G/H_2$ simple. Repeat this to find $H_3 \lhd H_2$ with $H_2/H_3$ simple.
+
+The process stops when we reach $H_s = \{e\}$.
+\end{proof}
+
+\begin{remark}
+The simple groups $H_i/H_{i+1}$ are essentially unique, although there may be lots of ways of picking the subgroups $H_i$, called composition factors\index{composition factor}.
+\end{remark}
+
+
+\begin{definition}\label{def:soluble_group}
+$G$ is soluble\index{soluble!group} if all composition factors can be chosen to be cyclic of prime order.
+\end{definition}
+
+\begin{remark}
+The terminology comes from Galois theory, see the relevant Part II course. You all know a formula for solving quadratic equations. You can do something similar involving roots for cubics and quartics, the process is called 'solution by radicals'. But you cannot necessarily do it for a quintic, e.g. $t^5 - 6t + 3 = 0$. This can be shown by defining a Galois group associated with the polynomial. If you can solve the polynomial by radicals then the Galois group is soluble.
+\end{remark}
+
+
+
+%\subsubsection{Simple building blocks (non-examinable)}
+
+%Any finite group can be broken up into simple quotients; if $H_1 \lhd H$ is maximal and normal, then $H/H_1$ is simple. Then take $H_2\lhd H_1$ maximal and normal, and so on.
+
+%Simple groups are the 'building blocks' of finite groups. However, putting together simple groups can be complicated! E.g. if $\abs{G} = 2^{10}$ then all simple factors must be $C_2$ - but there are many examples.
+
+%\subsubsection{Classification of finite simple groups (non-examinable)}
+
+\begin{example}[finte simple groups]
+\ben
+\item [(i)] $C_p$, for $p$ prime.
+
+\item [(ii)] $A_n$ for $n\geq 5$ (see Theorem \ref{thm:a_n_is_simple_n_geq_5}).
+
+\item [(iii)] \footnote{need check, add in matrix section}$PSL_n(q)$ where $q$ is a prime power and $n\geq 2$; also $PSO_n(q)$, $PSU_n(q)$ and $PS_{p_n}(q)$. These four are known as the `classical groups'
+\be
+GL_2(5) \lhd \frac{SL_2(5)}2
+\ee
+where $GL_2(5)$ is integer arithmetic$\bmod 5$ and $Z$ = centre = $\bra{\text{scalars in }SL_2(5)}= \bra{\pm I}$
+
+\item [(iv)] $PSL_2(5) \cong A_5$\footnote{see example sheet 4, question 13}.
+\een
+
+Then there are the exceptional groups; $G_2$ and 10 more families corresponding to Lie algebras, and the 26 sporadic groups, starting with $M_{11}$ (which was discovered in the 1860s and has elements) and working up to $M$, the 'Monster' group.
+\end{example}
+
+%\subsubsection{Normality of the kernel}
+
+
+
+%\subsubsection{Applications, extensions and corollaries}
+
+%\begin{theorem}
+%Let $K\lhd G$. Then $K$ is the kernel of the natural surjective homomorphism $\theta:G\to G/K$, which takes $g\to gK$.
+%\end{theorem}
+
+%\begin{proof}[\bf Proof]
+%Homomorphism; $\theta(g_1g_2) = g_1 g_2 K = g_1 K g_2 K = \theta(g_1)\theta(g_2)$. Surjective; just note that $gK = \theta(g)$. Now
+%\be
+%\ker \theta = \bra{g\in G:\theta(g)=e_K} = \bra{g\in G:gK =K} = K
+%\ee
+%as required.
+%\end{proof}
+
+%\begin{remark}
+%\ben
+%\item [(i)] Homomorphic images of $G$ are equivalent to quotients $G/K$ with $K\lhd G$.
+%\item [(ii)] There are more complicated isomorphism theorems to come in IB Groups, Rings and Modules. E.g. subgroups of $G$ containing $K$ $\longleftrightarrow$ subgroups of $G/K$.
+%\een
+%\end{remark}
+
+
+\section{Group actions}
+
+\subsection{Group actions}
+
+
+\begin{definition}\label{def:group_action}
+Let $G$ be a group and $X$ a non-empty set. We say that $G$ acts on $X$ if there is a mapping $\rho:G\times X \to X$, taking $(g,x) \to \rho(g,x) = g(x)$, such that
+\ben
+\item [(i)] if $g\in G$, $x\in X$ then $g(x)\in X$.
+\item [(ii)] $(g_1g_2)(x) = g_1(g_2(x)),\forall g_1,g_2 \in G,x\in X$.
+\item [(iii)] $e(x) =x, \forall x\in X$.
+\een
+
+$\rho$ is called group action\index{group action}.
+\end{definition}
+
+%\subsubsection{Actions and permutations}
+
+\begin{lemma}\label{lem:permutation_representation}
+Fixing $g\in G$, the map $\varphi_g : X\to X$, $x\mapsto g(x)$ is a permutation of $X$, so $\varphi_g\in \sym(X)$. Then the mapping $\vp:G\to \sym(X)$, $g\mapsto \vp_g$, with $\vp_g(x) = g(x)$, is a homomorphism called a permutation representation\index{permutation representation} of $G$.
+
+The image $\vp(G)$ is a subgroup of $\sym(X)$, denoted $G^X$. The kernel of $\vp$, $\ker\vp = \{g \in G : g (x) = x, \forall x \in X\}$, also denoted $G_{X}$, is a normal subgroup and $G/G_X \cong G^X$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+$\vp_g$ is certainly a mapping $X\to X$. For $x\in X$, $\varphi_{g^{-1}}\circ \varphi_g = \varphi_{g^{-1}}(g(x)) = g^{-1}(g(x)) = (g^{-1}g)(x)$ by condition (ii) $= e(x) = x$ by condition (iii), and similarly in reverse. Thus we have inverses, which means the map is bijective, so it is a permutation.
+
+Now consider the mapping $\varphi:G\to \sym(X)$, $g\mapsto \vp_g$. $\forall g_1,g_2\in G$, $\forall x\in X$,
+\be
+\vp(g_1g_2)(x) = \vp_{g_1g_2}(x) = (g_1g_2)(x) = g_1(g_2(x)) = \vp_{g_1}(\vp_{g_2}(x)) = \bb{\vp_{g_1} \vp_{g_2}}(x) = \bb{\vp(g_1) \vp(g_2)}(x).
+\ee
+
+Thus $\vp(g_1g_2) = \vp(g_1)\vp(g_2)$ and the map $\vp$ is a homomorphism.
+
+The rest is from Theorem \ref{thm:isomorphism_1_group}.
+\end{proof}
+
+\begin{remark}
+$G$-actions on $X$ $\lra$ homomorphisms from $G\to \sym(X)$.
+\end{remark}
+
+\begin{remark}
+It follows that $G$ has a normal subgroup ($G_X$) of index dividing $n!$, where $\abs{X} = n$ so that $\abs{\sym(X)} = n!$.
+\end{remark}
+
+%\begin{example}
+%Let $H\leq G$ of index $n$. Then $G$ has a normal subgroup $K$ of index dividing $n!$, because $G$ acts on the set $X$ of all left cosets of $H$ in $G$, where $\abs{X} = n$.
+%\end{example}
+
+\begin{example}
+\ben
+\item [(i)] $G =D_8 =$ the group of symmetries of a square. Then if $X$ is the set of vertices and $Y$ the set of edges, $G$ acts on both $X$ and $Y$. Both give an injective homomorphism into $S_4$.
+
+\item [(ii)] Let $G$ be the symmetry group of the cube, $|G| = 48$, and $X$ the set of diagonals, $\abs{X} = 4$. $G$ acts on $X$,
+\be
+G^X = S_4,\quad\quad G_X = \{e,\text{ symmetry sending each vertex to the opposite one}\}\footnote{need details}.
+\ee
+\een
+\end{example}
+
+
+\subsection{The orbit-stabiliser theorem}
+
+%\subsubsection{Orbits and transitivity}
+
+\begin{definition}
+$G$ acting on $X$ is transitive\index{transitive!group action} if for every pair $x_1,x_2\in X$ there is an element $g\in G$ with $g(x_1)=x_2$.
+\end{definition}
+
+\begin{definition}[orbit]
+Let $G$ act on $X$ and let $x\in X$. The orbit\index{orbit!group action} of $G$ on $X$ containing $x$ is $G(x) = \bra{g(x)|g\in G}$. This is a subset of $X$ on which $g$ acts transitively.
+\end{definition}
+
+\begin{lemma}
+Each $G$-orbit on $X$ is $G$-invariant, with $G$ transitive in its action on $G(x)$, for $x\in X$. The distinct $G$-orbits form a partition of $X$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+The orbit $G(x)$ is $G$-invariant, so that $g(G(x)) = G(x)$ for $g\in G$. So the action of $G$ on $X$ induces an action on $G(x)$, which is transitive. It follows that we can define an equivalence relation on $X$ given by [$x_1\sim x_2$ if $\exists g\in G:x_2 = g(x_1)$].
+\end{proof}
+
+\begin{example}
+The left regular action\footnote{see section Definition \ref{def:left_regular_action}, check needed.} is transitive on $X=G$, because if $x_1,x_2\in G$ then we can set $g=x_2x^{-1}_1$ to get $(x_2x_1^{-1})x_1 =x_2$.
+\end{example}
+
+%\subsubsection{Stabilisers}
+
+\begin{definition}[stabiliser]
+If $G$ acts on $X$, and $x\in X$, the stabiliser\index{stabiliser!group action} of $x$ in $G$ is $G_x=\bra{g\in G:g(x)=x}$.
+\end{definition}
+
+\begin{lemma}\label{lem:stabiliser_subgroup}
+$G_x$ is a subgroup of $G$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+$e\in G_x$, obviously. If $g_1,g_2\in G_x$ then so is $g_1^{-1}g_2$, because $(g_1^{-1}g_2)(x) = g_1^{-1}(g_2(x)) = g_1^{-1}(x) =x$.
+\end{proof}
+
+%\subsubsection{The orbit-stabiliser theorem}
+
+\begin{theorem}[Orbit-stabiliser theorem]\label{thm:orbit_stabiliser}
+Let a finite group $G$ act on $X$ and let $x\in X$. Then $G_x\leq G$, and $\abs{G} = \abs{G_x}\abs{G(x)}$; that is, $\abs{G:G_x}$, the number of left cosets of $G_x$ in $G$, is equal to $\abs{G(x)}$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Define $(G:G_x)$ to be the set of left cosets of $G_x$ in $G$. Then all that is needed is to prove that the mapping $G(x)\to (G:G_x)$ taking $g(x) \to gG_x$ is a well-defined bijection.
+
+This can be proved as follows. If $g_1(x) = g_2(x)$ then $g_2^{-1} g_1 (x) = x$, so $g_2^{-1}g_1 = G_x \ \lra \ g_2G_x = g_1 G_x$ (Theorem \ref{thm:left_coset}), so the map is well-defined.
+
+To prove injectivity, reverse the steps ($g_2G_x = g_1 G_x \ \ra \ g_2^{-1}g_1 = G_x$ by Theorem \ref{thm:left_coset}, then $g_1(x) = g_2(x)$). For surjectivity, note that any coset of $G_x$ is $gG_x$ for some $g\in G$, so $gG_x$ is the image of $g(x)$.
+\end{proof}
+
+%\subsubsection{Examples including the left coset action}
+
+\begin{example}[Examples including the left coset action]
+If $G$ is the group of all symmetries of a regular $n$-gon (see Theorem \ref{thm:dihedral_symmetric_subgroup}), then $\abs{G}\geq 2n$ because there are $n$ rotations and reflections. Let $X=\bra{\text{vertices of the $n$-gon}}$. $G$ acts on $X$ and is transitive (e.g. by rotations). Then considering the point 1, we get $\abs{G} = \abs{X}\abs{G_1} = n\abs{G_1} = n\times 2$ because the stabiliser of the point 1 contains just a reflection and the identity.
+\end{example}
+
+\begin{example}
+Let $G$ be a group, $H$ a subgroup of $G$ and $X=(G:H)$ the set of left cosets of $G_x$ in $G$.
+\end{example}
+
+%\begin{lemma}
+%$G$ acts on $X$ as follows; $g(xH)= (gx)H$ with $g,x\in G$ so that $xH \in X$. This is called the left coset action of $G$.
+%\end{lemma}
+
+%This action is transitive; $(x_2x_1^{-1})(x_1H) = x_2 H$ where $x_2x_1^{-1} = g\in G$.
+%The stabiliser of the element $H$ in $X$ is $H$ itself; $g(H) = gH$, so $g(H) = H$ iff $g\in H$.
+%By the orbit-stabiliser theorem, $\abs{G}/\abs{G_x} = \abs{G:H}$.
+% H = G_x?
+
+\begin{definition}[kernel]
+Let $G$ act on $X$. Then the kernel\index{kernel!group action} of the action is $\bigcap_{x\in X}G_x$, that is, the set consisting of all the elements of $G$ which act trivially on $X$.
+
+An action is faithful\index{faithful!group action} if its kernel is trivial $\bra{e_G}$.
+\end{definition}
+
+\begin{lemma}\label{lem:kernel_subgroup}
+The kernel $\bigcap_{x\in X}G_x$ is a subgroup of $G$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Since $G_x$ is subgroup of $G$ by Lemma \ref{lem:stabiliser_subgroup} (that is $\forall g_1,g_2\in G_x$, $g_1^{-1}g_2 \in G_x$), we have that the kernel is a subgroup of $G$ as well ($g_1,g_2\in \bigcap_{x\in X}G_x$, $g_1^{-1}g_2 \in \bigcap_{x\in X}G_x$).
+\end{proof}
+
+\begin{example}
+$G=S_4$ and $X$ = the set of all partitions of $\bra{1,2,3,4} $ into two parts of size 2 = $\bra{12|34,13|24,14|23}$. Then $G$ acts on $X$ in the way you would expect. The kernel is
+\be
+\bra{\iota,(1\ 2)(3\ 4), (1\ 3)(2\ 4), (1\ 4)(2\ 3)}.
+\ee
+\end{example}
+
+\begin{example}
+For a subgroup $H$ of $G$, let $X$ be the set of left cosets of $H$. Consider the action of $G$ on $X$ given by
+\be
+g * g_1H = gg_1H.
+\ee
+for all $g_1 \in G$. Then
+\be
+gg_1H = g_1H \ \lra\ g^{-1}_1gg_1H  = H \ \lra \ g^{-1}_1 gg_1 \in H \ \lra \ g \in g_1Hg^{-1}_1 .
+\ee
+
+Thus, the kernel is $\bigcap_{g_1\in G} g_1Hg^{-1}_1$. Let $H' = \bigcap_{g_1\in G}g_1Hg_1^{-1}$. We have that the kernel $H'$ is a subgroup of $G$ (Lemma \ref{lem:kernel_subgroup}) and $H'\subseteq H$,
+\be
+H' = \bigcap_{g_1\in G}g_1Hg_1^{-1} \supseteq \bigcap_{g_1\in G}g_1H'g_1^{-1}. %\bigcap_{g_1\in G,g_2\in G}g_2 g_1 H g^{-1}_1g_2^{-1} = \bigcap_{g_2\in G}g_2 \bb{\bigcap_{g_1\in G}g_1 H g^{-1}_1}g_2^{-1}
+\ee
+
+That is, $\forall h\in H',g\in G$, $\exists h'\in H'$ such that $ghg^{-1} = h' \ \lra\ gh = h'g$. By Definition \ref{def:normal_subgroup}, we have that $H'$ is normal subgroup.
+
+If $K \lhd G$, $K \leq H$ then $g_1Kg^{-1}_1 = K$ since $K$ is normal. But $g_1Kg^{-1}_1 \leq g_1Hg^{-1}_1$ so $g_1Kg^{-1}_1 = K \leq g_1Hg^{-1}_1$ for all $g_1\in G$. Thus, The kernel is the largest normal subgroup of $G$ contained in $H$.
+\end{example}
+
+
+\begin{theorem}
+Let $G$ be a finite group and $H$ a proper subgroup of $G$ of index $n$. Then there is a normal subgroup $K$ of $G$ contained in $H$ such that $G/K$ is isomorphic to a subgroup of $S_n$. In particular $|G : K|$ divides $n!$ and is at least $n$.
+
+Moreover, if $G$ is non-abelian simple then $G$ is isomorphic to a subgroup of $A_n$ and $n \geq 5$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $K$ be the kernel of the action of $G$ on $X$, where $X$ is the set of left cosets of $H$. Lemma \ref{lem:permutation_representation} implies that $G/K \cong G^X$, a subgroup of $S_n$. Lagrange's theorem \ref{thm:lagrange_group} implies subgroups of $S_n$ have order dividing $n!$. Since $K \leq H$ and $H$ is of index $n$ in $G$ we have that $|G/K| \geq n$.
+
+Now assume $G$ is non-abelian simple. Then $K = \{e\}$ (since $H$ is a proper subgroup containing $K$), and so $G \cong G^X$ subgroup of $S_n$. Thus, $G^X$ is non-abelian simple. But $A_n \lhd S_n$ (by Proposition \ref{pro:an_sn_normal}) and so by the second isomorphism theorem (Theorem \ref{thm:isomorphism_2_group}), $G^X \cap A_n \lhd S_n$. Since $G^X \cap A_n \subseteq G^X$, $G^X \cap A_n \lhd G^X$ ($G^X \cap A_n$ is normal subgroup in $S_n$). Simplicity implies that either
+\be
+G^X \cap A_n = \{e\} \quad \text{or}\quad G^X \cap A_n = G^X.
+\ee
+In the first case, the second isomorphism theorem (Theorem \ref{thm:isomorphism_2_group}) implies
+\be
+G^X = G^X/\bra{e} = G^X/(G^X \cap A_n) \cong (G^X A_n)/A_n \leq S_n/A_n
+\ee
+and hence $\abs{G^X} \leq 2$, which should be abelian, a contradiction. In the second case, $G^X \subseteq A_n$ and thus $G^X\leq A_n$.
+
+Finally, we have $n > 4$ since $A_4$ ($A_n,n<4$ are subgroups of $A_4$) has no non-abelian simple subgroups\footnote{need proof}.
+\end{proof}
+
+
+\begin{proposition}
+If $G$ is any group acting on a set $X$, with $x\in X$ and $g\in G$, then $G_{g(x)} = gG_x g^{-1} = \bra{ghg^{-1}:h\in G_x}$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+$G_{g(x)} = \bra{g'\in G: g'(g(x)) = g(x)}$. Let $g'' = g'g$. Then
+\be
+G_{g(x)} = \bra{g''g^{-1}: g''\in G, g''(x) = g(x)}.
+\ee
+
+Let $g''' =  g^{-1}g''$. Then $G_{g(x)} = \bra{gg'''g^{-1}: g''' \in G,g'''(x) = x} = gG_x g^{-1}$.
+\end{proof}
+
+\subsection{Groups of symmetries of regular solids}
+
+\footnote{need to check}
+
+\subsection{Burnside's Theorem}
+
+\footnote{need to check}
+
+%\subsubsection{Tetrahedron}
+
+%Let $G$ be the group of all symmetries of a tetrahedron and let $G^+$ be the group of rotations (rigid motions), which is a subgroup of $G$. Let $X=\bra{1,2,3,4}$ be the set of vertices. Then $G$ acts on $X$ transitively.
+
+%Now $G\leq \sym(X) =S_4$. If all vertices are fixed by a symmetry, it is $\iota$. By the orbit-stabiliser theorem, $\abs{G} = \abs{G(1)}\abs{G_1}$, but $\abs{G_1} = 6$ because $G_1 = S_3$, and $\abs{G(1)} = 4$ obviously. Thus $G=S_4$.
+
+%The same argument works for $G^+$, because $\abs{G^+} = 4\times \abs{G_1^+} = 4\times 3 = 12$ and in fact $G^+ \cong A_4$. In fact, $G^+$ contains all the 3-cycles, and thus also (1 2 3)(1 2 4) = (1 3)(2 4) and the other elements of cycle type $2^2$.
+
+%\subsubsection{Cube (or octahedron)}
+
+%Put vertices in the middle of a cube's faces and you get an octahedron, so the two are dual.
+
+%Let $G$ and $G^+$ be as before, and let $G^+$ act on the set $F$ of all faces, where $\abs{F} = 6$. Then $G^+$ is transitive on $F$ by rotations. So $\abs{G^+} = 6\times \abs{G_f^+} = 6\times 4 = 24$ for any face $f$ (stabilise one face and you also stabilise the opposite face; the others can rotate into four positions).
+
+%Now let $D$ be the set of all diagonals of the cube; $D= \bra{d_1,d_2,d_3,d_4}$= diagonals on $i$ and $i'$.
+
+%$G^+$ and $G$ act on $D$, so we have a homomorphism of $G$ and $G^+$ to the symmetric group $S_4$ on $D$.
+
+%The kernel of the action of $G$ on the set $D$ is the set of permutations which act trivially on all the diagonals.
+
+%\ben
+%\item Claim; it is the group $\bsa{g}$ of order 2 where $g =(1\ 1')(2\ 2')(3\ 3')(4\ 4')$. In fact, placing the vertices in $\R^3$ at points $(\pm 1,\pm 1,\pm 1)$, $g=-l$ because it sends $+$ to $-$ and vice versa.
+
+%\item Proof; if an element of the kernel on the set $D$ moves 1 to $1'$, then $1'\to 1$, $2\to 2'$ (as $2'$ is next to $1'$ and 2 isn't), and so on, by cube-waving. So $g$ is in the kernel. Also, if an element of the kernel of $G$ on $D$ stabilises 1, then it stabilises $1'$ and hence (by cube-waving) it stabilises everything else. Hence the kernel is $\bsa{g}$.
+%\een
+
+%What about $G^+$? Since $G^+\leq G$, and $g\notin G^+$ (it's not a rotation), the kernel of the action of $G^+$ on $D$ is trivial, so we have $G^+ = S_4$.
+
+%Finally, $G\cong G^+ \times \bsa{g} \cong S_4 \times C_2$. This is true because the three conditions in 3.5 are satisfied;
+%\ben
+%\item [(i)] $G^+$ has index 2 in $G$, so $G=G^+ \cup gG^+$, so anything in $G$ is a rotation or $g$ times a rotation.
+%\item [(ii)] $G^+ \cap \bsa{g} = \bra{e}$ is true.
+%\item [(iii)] every element of $G^+$ commutes with $g$; this is true by cube-waving.
+%\een
+
+%\begin{exercise}
+%Find all elements of $S_4$ explicity as rotations of a cube.
+%\end{exercise}
+
+%\subsubsection{Dodecahedron / icosahedron}
+
+%A dodecahedron is made of pentagons and has 12 faces, 30 edges and 20 vertices. Its dual is the icosahedron.
+
+%Let $G$ and $G^+$ be as before; they act transitively on the set $F$ of faces, where $\abs{F} = 12$. By the orbit-stabiliser theorem, $\abs{G^+} = \abs{F}\times\abs{G_f^+} = 12 \times 5 = 60$ where $f$ is any face.
+
+%There are five cubes embedded into our dodecahedron; each edge of a cube appears as a diagonal of a face of our dodecahedron. Let $C$ be the set of these 5 embedded cubes. Then $G^+$ acts on $C$ faithfully (the kernel is trivial). So we obtain an injective homomorphism into $\sym(C) = S_5$.
+
+%Hence $\varphi(G^+) =A_5$, and $G^+ \cong A_5$. Now $G$ also contains - $I$ (and note that $\pm I$ is the kernel of the action of $G$ on $C$). So $G\cong G^+ \times \bra{\pm I}\cong A_5 \times C_2$.
+
+
+
+\subsection{Conjugation}
+
+\begin{lemma}
+Let $G$ be a group, $X=G$ with
+\be
+g*x = g(x) = gxg^{-1}
+\ee
+for $g\in G$, $x\in G$. Then $gxg^{-1}$ is an element of $G$ (which is $X$). The action $\rho:G\times G \to G$ is called the conjugation action\index{conjugation action}.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+For $g_1,g_2\in G$,
+\be
+(g_1g_2)x(g_1g_2)^{-1} = g_1(g_2xg_2^{-1})g_1^{-1}  =g_1(g_2(x))
+\ee
+so it satisfies the condition (ii) in Definition \ref{def:group_action}.
+\end{proof}
+
+\begin{remark}
+In this case the permutation $\vp_g : x\mapsto gxg^{-1}$ as well as being bijective is a homomorphism $G\to G$. Thus they are automorphisms and we have $\vp_g \in \aut G$ (see Definition \ref{def:automorphism_group}).
+\end{remark}
+
+
+%\subsubsection{Conjugacy classes and centralisers}
+
+\begin{definition}
+The orbit of $x\in G$ is called its conjugacy class\index{conjugacy class!group}, written
+\be
+\ccl_G(x) = \bra{gxg^{-1}:g\in G}.
+\ee
+
+Note that $e$ is the only element in its conjugacy class, and others may be the only element in their classes as well. If two elements are in the same orbit, they are said to be conjugate.
+\end{definition}
+
+\begin{definition}
+The stabiliser of $x$ in $G$ is called its centraliser\index{centraliser}, written
+\be
+C_G(x) = \bra{g\in G:gxg^{-1} =x} = \bra{g\in G:gx =xg}.
+\ee
+
+This is the set of all elements which commute with $x$.
+\end{definition}
+
+\begin{remark}
+If $G$ is a finite group and $x\in G$, $C_G(x)$ is a subgroup of $G$ by Lemma \ref{lem:stabiliser_subgroup}. Also, $\abs{G:C_G(x)} =\abs{\ccl_G(x)}$ by the orbit-stabiliser theorem.
+\end{remark}
+
+
+%\subsubsection{The centre of a group}
+
+\begin{definition}[centre]\label{def:centre_group}
+The kernel of the conjugation action is called the centre\index{centre!group} of $G$, written $Z(G) = \bigcap_{x\in G}C_G(x)$. This is the intersection of all the centralisers, so consists of the elements which commute with everything, i.e.
+\be
+Z(G) = \bigcap_{x\in G}C_G(x) = \bra{g\in G:gxg^{-1} = x, \forall x\in G} = \bra{g\in G:gx = xg, \forall x\in G}.
+\ee
+\end{definition}
+
+\begin{proposition}
+$Z(G)$ is a subgroup of $G$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Direct result from Lemma \ref{lem:kernel_subgroup}.
+\end{proof}
+
+\begin{proposition}\label{pro:abelian_centre}
+A group $G$ is abelian if and only if $Z(G) = G$.
+\end{proposition}
+
+\begin{remark}
+This is obvious from Definition \ref{def:centre_group}
+\end{remark}
+
+\begin{lemma}\label{lem:cyclic_abelian}
+For any group $G$, if $G/Z(G)$ is cyclic then $G$ is abelian.
+\end{lemma}
+\begin{proof}[\bf Proof]
+Let $G/Z(G)$ be cyclic (Definition \ref{def:cyclic_group}). Suppose $gZ$ ($Z=Z(G)$) generates $G/Z(G)$ ($G/Z(G) = \bsa{gZ}$) and thus each coset in $Z$ is of the form $(gZ)^r = g^rZ$ (by definition of centre, Definition \ref{def:centre_group}) for some $r$. Thus any element $x \in G$ is of the form $g^rz$ for some $z \in Z$, $r \in \Z$.
+\be
+x_1x_2 = (g^{r_1}z_1)(g^{r_2}z_2) = g^{r_1}g^{r_2}z_1z_2 =  g^{r_1+r_2}z_2z_1 = g^{r_2}g^{r_1}z_2z_1 =  (g^{r_2}z_2)(g^{r_1}z_1) = x_2x_1
+\ee
+using that $z_1,z_2 \in Z$. Thus $G$ is abelian and so $G = Z(G)$.
+\end{proof}
+
+\begin{lemma}
+Let $G$ be a finite group. Then $1 = \sum \frac 1{|C_G(x)|}$, summing over distinct conjugacy classes.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+We count the elements of $G$. $|G| = \sum \abs{\ccl_G(x)}$, so
+\be
+|G| = \sum \frac{|G|}{|C_G(x)|}
+\ee
+since $\abs{\ccl_G(x)} = |G|/|C_G(x)|$. Now divide by $|G|$.
+\end{proof}
+
+
+\begin{example}
+The conjugacy classes of elements of $D_8$ and find its centre. (The centre of $D_8$ is $\bsa{a^2}$.\footnote{details needed})
+\end{example}
+
+\begin{example}
+The conjugacy classes of elements of $Q_8$ and find its centre. \footnote{details needed}
+\end{example}
+
+\begin{proposition}\label{pro:conjugate_element}
+\ben
+\item [(i)] $o(gxg^{-1}) = o(x)$, i.e. conjugate elements have the same order.
+\item [(ii)] $z\in Z(G)$ iff $\ccl_G(z)=\bra{z}$, i.e. $z$ is the only element in its conjugacy class, i.e. $G=C_G(z)$.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Assume $gxg^{-1}$ has order $m$ and $x$ has order $n$, $x^n = e \ \ra \ e = gx^n g^{-1} = \bb{gxg^{-1}}^n$, thus $m|n$ by Lemma \ref{lem:order_element}. Similarly, $e = \bb{gxg^{-1}}^m = gx^m g^{-1} \ \ra \ e = x^m \ \ra \ n|m$. Thus $m=n$.
+\item [(ii)] $z\in Z(G) \ \lra \ \forall x\in G, xz = zx \ \lra \ \forall x\in G, xzx^{-1} = z \ \lra \ccl_G(z) = \bra{xzx^{-1}:x\in G} = \bra{z:x\in G} = \bra{z}$.
+\een
+\end{proof}
+
+
+
+\begin{proposition}\label{pro:prime_center}
+If $G$ is a finite group of order $p^a$ for some prime $p$, then the centre of $G$ is not just the identity but contains at least $p-1$ other element.
+\end{proposition}
+\begin{proof}[\bf Proof]
+Consider the conjugation action of $G$ and its conjugacy class sizes, which must divide the order of $G$. Thus, we assume there are $b_0$ conjugacy classes with size 1, $b_1$ conjugacy classes with size $p$, $b_2$ conjugacy classes with size $p^2$, $\dots$, $b_{a-1}$ conjugacy classes with size $p^{a-1}$. Thus,
+\be
+\abs{G} = b_0 \times 1 + b_1 \times p + b_2 \times p^2 + \dots + b_{a-1} \times p^{a-1} = \sum^{a-1}_{n=0} b_np^n \ \ra \ p |b_0.
+\ee
+
+However, we know $e\in Z(G)$, thus $b_0 \neq 0$, so there are at least $p-1$ other element in the centre of $G$.
+\end{proof}
+
+\begin{definition}
+Consider the permutation $\pi \in S_n$, written in disjoint-cycle notation (including fixed points or 1-cycles). The cycle type\index{cycle type} of $\pi$ is $(n_1,n_2,\dots,n_k)$ where $n_1\geq n_2\geq \dots \geq n_k \geq 1$, and the cycles in have length $n_i$. It follows that $n=n_1+\dots + n_k$.
+\end{definition}
+
+\begin{example}
+$(1\ 2\ 3)(4\ 5)(6)\in S_6$. has cycle type $(3,2,1)$.
+
+$e\in S_6$ has cycle type $(1,1,1,1,1,1) = (1^6)$.
+\end{example}
+
+%\subsubsection{Cycle type and conjugacy classes in $S_n$}
+
+
+\begin{theorem}\label{thm:permutation_cycle_type}
+The permutations $\pi,\sigma \in S_n$ are conjugate in $S_n$ iff they have the same cycle type.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+If $\sigma = \bb{a_{11}a_{12}\dots a_{1n_1}}\bb{a_{21}a_{22}\dots a_{2n_2}}\dots \bb{a_{k1}a_{k2}\dots a_{kn_k}}$ and $\tau \in S_n$(any element), then
+\be
+\tau \sigma \tau^{-1}(\tau(a_{11})) = \tau \sigma(a_{11}) = \tau(a_{12}) \ \ra \ \tau \sigma \tau^{-1} = \bb{\tau(a_{11})\tau(a_{12})\dots \tau(a_{1n_1})}\bb{\tau(a_{21})\dots \tau(a_{2n_2})} \dots \bb{\tau(a_{k1})\dots \tau(a_{kn_k})}.
+\ee
+
+The same pattern works for all $a_{ij}$. Therefore if elements are conjugate in $S_n$ then they have the same cycle type.
+
+Conversely, if $\sigma$ is as before and $\pi$ has the same cycle type, say
+\be
+\pi = \bb{b_{11}b_{12}\dots b_{1n_1}}\bb{b_{21}\dots b_{2n_2}}\dots \bb{b_{k1}\dots b_{kn_k}},
+\ee
+then let $\tau$ be a permutation with $\tau :a_{ij} \to b_{ij}$. Then by the previous result $\tau \sigma \tau^{-1}(\tau(a_{11})) = \tau(a_{12}) $, we have $\pi = \tau \sigma \tau^{-1}$, so $\pi$, $\sigma$ are conjugate.
+\end{proof}
+
+\begin{corollary}
+The number of conjugacy classes in $S_n$ is $p(n)$, the number of partitions of $n$ into $n=n_1+\dots + n_k $ for some $k$ with $n_1\geq \dots n_k \geq 1$.
+\end{corollary}
+
+\begin{example}
+$(1\ k) = (2\ k)(1\ 2)(2\ k)^{-1}$ and $(k\ l) = (1\ l)(1\ k)(1\ l)$.
+
+In fact, all transpositions are conjugate as they have the same cycle type.
+\end{example}
+
+\begin{example}
+The conjugacy classes in $S_4$;
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{cccccc}
+\hline
+example member & cycle type & size & sign & centraliser & size of centraliser\\
+\hline
+$\iota$ & 1,1,1,1 & 1 & + & $S_4$ & 24\\
+(1 2)(3)(4) & 2,1,1 & 6 & - & $\bsa{(1\ 2),(3\ 4)}$ & 4\\
+(1 2 3)(4) & 3,1 & 8 & + & self-centralising & 3\\
+(1 2)(3 4) & 2,2 & 3 & + & $D_8$ & 8\\
+(1 2 3 4) & 4 & 6 & - & $\bsa{(1\ 2\ 3\ 4)}$ & 4\\
+\hline
+\end{tabular}
+\end{table}
+\end{example}
+
+%\subsubsection{Conjugacy classes in $A_n$}
+
+\begin{example}
+The conjugacy classes in $A_4$;
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{cccc}
+\hline
+example member & cycle type & size & centraliser\\
+\hline
+$\iota$ & $1^4$ & 1 & $A_4$\\
+(1 2)(3 4) & $2^2$ & 3 & $\bsa{(1\ 2)(3\ 4),(1\ 3)(2\ 4)}$\\
+(1 2 3)(4) & 3,1 & 4 & $\bsa{(1\ 2\ 3)}$\\
+(1 3 2)(4) & 3,1 & 4 & $\bsa{(1\ 2\ 3)}$\\
+\hline
+\end{tabular}
+\end{table}
+\end{example}
+
+%\subsection{Simple groups}
+
+%A group $G$ is simple if $\bra{e}$ and $G$ are the only normal subgroups. E.g. $C_p$ (for prime) and $A_5$.
+
+%\subsubsection{Simplicity of $A_5$}
+\begin{example}
+The conjugacy classes in $S_5$;
+
+\begin{table}[h!]
+\centering
+\begin{tabular}{ccccc}
+\hline
+cycle type & example member & size & centraliser & sign\\
+\hline
+$1^5$ & $\iota$ & 1 & $S_5$ & +\\
+2,$1^3$ & (1 2) & 10 & $\bsa{(1\ 2)}\times S_3$ & -\\
+$2^2$,$1$ & (1 2)(3 4) & 15 & $D_8$ & +\\
+3,$1^2$ & (1 2 3) & 20 & $\bsa{(1\ 2\ 3)}\times S_2$ & +\\
+3,2 & (1 2 3)(4 5) & 20 & $\bsa{(1\ 2\ 3)}\times \bsa{(4\ 5)}$ & -\\
+4,1 & (1 2 3 4) & 30 & $\bsa{(1\ 2\ 3\ 4)}$ & -\\
+5 & (1 2 3 4 5) & 24 & $\bsa{x}$ & +\\
+\hline
+\end{tabular}
+\end{table}
+
+%The normal subgroups of $S_5$ are $\bra{\iota}$, $A_5$, $S_5$ and no others, since any normal subgroup must be a union of conjugacy classes. The only other possibility would be, in $A_5$, to replace the conjugacy class by the conjugacy class 3,$1^2$; but if $x$ is of cycle type 3,2, then $x^3$ is of type 2,$1^3$ which would not be present.
+\end{example}
+
+\begin{example}\label{exa:a_5}
+The conjugacy classes in $A_5$;
+\begin{table}[h!]
+\centering
+\begin{tabular}{ccc}
+\hline
+cycle type & size & centraliser\\
+\hline
+$1^5$ & 1 & $A_5$\\
+$2^2,1$ & 15 & $V_4$(Klein 4-group)\\
+$3,1^2$ & 20 & $\bsa{x}$\\
+5 & 12 & $\bsa{x}$\\
+5 & 12 & $\bsa{x'}$\\
+\hline
+\end{tabular}
+\end{table}
+
+%Note; (1 2)(1 2 3 4 5)(1 2) = (2 1 3 4 5), so the two are conjugate in $S_5$ but not in $A_5$; all conjugating elements in $S_5$ are odd. Any element in $S_5$ conjugating (1 2 3 4 5) to (2 1 3 4 5) is in the coset (4 5)$C$ with $C=\bsa{(1\ 2\ 3\ 4\ 5)} = C_n(x)$ - so in $S_5\bs A_5$.
+
+%Therefore $A_5$ is simple, because its only normal subgroups are $\bra{\iota}$ and $A_5$.
+\end{example}
+
+
+\begin{example}
+Consider $S_5$ and $A_5$, take $x \in A_5$. $(1\ 2)(3\ 4)(5)$ commutes with $(1\ 2)$, $(1\ 2\ 3)(4)(5)$ commutes with $(4\ 5)$. But conjugacy classes of 5 cycles do not split into 2 conjugacy classes of size 12. Consider $(1\ 2\ 3\ 4\ 5)$ and its conjugates.
+\be
+g(1\ 2\ 3\ 4\ 5)g^{-1} = (g(1) \dots g(5))
+\ee
+\be
+C_{S_n}(1\ 2\ 3\ 4\ 5) = \{\iota, (1\ 2\ 3\ 4\ 5), (1\ 3\ 5\ 2\ 4), (1\ 4\ 2\ 5\ 3), (1\ 5\ 4\ 3\ 2)\}
+\ee
+$C_{S_n}(1\ 2\ 3\ 4\ 5)$ is of order 5, all elements are even.
+\end{example}
+
+\begin{lemma}\label{lem:normal_3_cycle}
+Let $H\neq \bra{\iota}$ be a normal subgroup of $A_5$. It must contain a 3-cycle.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Let $\sigma \in A_5$. When we write $\sigma$ in disjoint cycle notation it is either a 5-cycle, a 3-cycle or a product of two 2-cycles. (since the other possible cycle types are odd permutations.)
+
+Suppose $H$ contains a 5-cycle $\sigma = (abcde)$. Since $(ace) \in A_5$ and $H \lhd A_5$ we have:
+\be
+(ace)\sigma(ace)^{-1} = (ace)(abcde)(eca) =(ace)(abcde)(eca) =  (acbed) \in H
+\ee
+But $H$ is a subgroup so $(abcde)(acbed) = (adb) \in H$.
+
+Now suppose $H$ contains a product of two disjoint transpositions: $\sigma = (ab)(cd) \in H$. Then $(ae)(cd) \in A_5$ so
+\be
+(ae)(cd)\sigma (ae)(cd)^{-1} = (ae)(cd) (ab)(cd) (ae)(cd) = (be)(cd) \in H
+\ee
+since $H \lhd A_5$. Thus $(ab)(cd)(be)(cd) = (abe) \in H$.
+
+Thus $H \neq \{\iota\}$ implies $H$ contains a 3-cycle.
+\end{proof}
+
+
+\begin{proposition}\label{pro:a5_is_simple}
+$A_5$ is simple.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Consider a normal subgroup $K$ of $A_5$. Thus $gkg^{-1} \in K$ for all $k \in K$, $g \in A_5$. Thus $K$ must be a union of conjugacy classes in $A_5$ and contains $\bra{\iota}$. So the order of $K$ should be one of the following possibilities
+\be
+1, \underbrace{16}_{1+15}, \underbrace{21}_{1+20},\underbrace{25}_{1+24}, \underbrace{36}_{1+15 + 20}, \underbrace{40}_{1+ 15 + 24}, \underbrace{45}_{1+20 + 24}, \underbrace{60}_{1+15+20 + 24}.
+\ee
+
+But by Lagrange's Theorem \ref{thm:lagrange_group}, $|K|$ divides $60 = |A_5|$. There is no way of taking a union of the conjugacy classes we've worked out to give $|K|$ dividing 60, unless $K = \{e\}$ or $K = A_5$.
+\end{proof}
+
+\begin{proof}[\bf Alternative Proof]%Proof that $A_5$ is simple
+Suppose $\{\iota\} \neq H \lhd A_5$. We will prove that $H = A_5$. From Lemma \ref{lem:normal_3_cycle}, We know that $H$ contains a 3-cycle. Now pick a 3-cycle $(abc) \in H$. Consider the following two permutations:
+\be
+\tau = \bepm
+a & b & c & d & e\\
+x & y & z & s & t
+\eepm,\quad\quad
+\tau' = \bepm
+a & b & c & d & e\\
+x & y & z & t & s
+\eepm
+\ee
+
+Notice that $\tau (abc)\tau^{-1} = (xyz)$ and $\tau'(abc)\tau'^{-1} = (xyz)$. Exactly one of $\tau$ or $\tau'$ is in $A_5$ since they differ by a transposition $(st)$. Thus $(xyz) \in H$. But $(xyz)$ was arbitrary so $H$ contains all possible 3-cycles.
+
+Finally notice that in \ref{exa:a_5}:
+\be
+\iota = (abc)(abc)(abc),\quad (ab)(cd) = (dac)(abd),\quad (ab)(bc) = (abc),\quad(abcde) = (abc)(cde).
+\ee
+
+Thus any even permutation can be written as a product of 3-cycles. But all possible 3-cycles are in $H$ so $H$ must be all of $A_5$, and $A_5$ is simple. \footnote{need check: Remark: $A_4$ is not simple since $\{\iota, (12)(34), (13)(24), (14)(23)\}$ is a normal subgroup. Can you see why the proof above will not work for $A_4$?}
+\end{proof}
+
+
+%For general $n$, let $x\in A_n$. Then $\ccl_{A_n}(x) \subseteq \ccl_{S_n}(x)$, because $A_n\subseteq S_n$. Now $C_{S_n}(x)$ either consists of even permutations, in which case $C_{A_n}(x) = C_{S_n}(x)$, or it contains an odd permutation (i.e. precisely half of its elements are odd), in which case $C_{A_n}(x)$ has index in $C_{S_n}(x)$.
+
+%Now $\abs{\ccl_{S_n}(x)} = \abs{S_n:C_{S_n}(x)}$ so $\abs{\ccl_{A_n}(x)} = \abs{A_n:C_{A_n}(x)}$. Thus
+
+\begin{theorem}\label{thm:an_sn_size}
+Let $x\in A_n$. Then $\ccl_{A_n}(x) \leq \ccl_{S_n}(x)$, with equality iff the centraliser in $S_n$ of $x$ is half odd. Moreover, if inequality holds, then $\ccl_{S_n}(x)$ splits into two classes in $A_n$, both of the same size, $\abs{\ccl_{S_n}(x)}/2$.
+\end{theorem}
+
+
+%\begin{example}[Conjugacy classes of $S_n$ and $A_n$]
+%Recall from Algebra \& Geometry that two permutations are conjugate in $S_n$ precisely when they have the same cycle type when expressed in disjoint cycle form, e.g. $2^2\ 1$ denotes the cycle type of double transpositions in $S_5$, e.g. $(1\ 2)(3\ 4)(5)$.
+
+%In $S_5$, we have the following cycle types:
+
+%\begin{center}
+%\begin{tabular}{c|cccc|ccc}
+%\ cycle type\ & \ $1^5$\ & \ $2^2$ \ 1\ & \ 3\ $1^2$\ & \ 5\ & \ 2\ $1^3$\ & \ 3 \ 2 \ & \ 4\ 1\ \\\hline
+%\# elements & 1 & 15 & 20 & 24 & 10 & 20 & 30\\
+%\end{tabular}\\
+%\qquad\qquad\qquad\quad even permutations \qquad\quad odd permutations
+%\end{center}
+
+\begin{proof}[\bf Proof]
+For $x \in A_n$ we have that $\ccl_{A_n}(x) \subset \ccl_{S_n}(x)$. We also have
+\be
+|\ccl_{S_n}(x)| = |S_n : C_{S_n}(x)|,\quad\quad |\ccl_{A_n}(x)| = |A_n : C_{A_n}(x)|
+\ee
+by the orbit-stabiliser theorem (Theorem \ref{thm:orbit_stabiliser}). But $C_{A_n}(x) = A_n \cap C_{S_n}$, and thus this set has index 1 or 2 in $C_{S_n}(x)$. To see this, use the second isomorphism theorem (Theorem \ref{thm:isomorphism_2_group}),
+\be
+C_{S_n}(x)/(A_n \cap C_{S_n}(x)) \cong (A_nC_{S_n}(x))/A_n \leq S_n/A_n.
+\ee
+
+If all permutations that commute with $x$ are even, i.e. $C_{S_n}(x) = C_{A_n}(x)$,
+\be
+|\ccl_{S_n}(x)| = \frac{|S_n|}{|C_{S_n}(x)|} = \frac{2|A_n|}{C_{A_n}(x)} = 2|\ccl_{A_n}(x)|.
+\ee
+
+If there is an odd permutation commuting with $x$, i.e. $|C_{S_n}(x) : C_{A_n}(x)| = 2$,
+\be
+|\ccl_{S_n}(x)| = \frac{|S_n|}{|C_{S_n}(x)|} = \frac{|A_n|}{C_{A_n}(x)}= |\ccl_{A_n}(x)|.
+\ee
+\end{proof}
+%\end{example}
+
+
+\subsection{Cayley's theorem}
+
+
+%\subsection{Cayley's theorem}
+
+\begin{definition}[left regular action]\label{def:left_regular_action}
+Recall Definition \ref{def:group_action} and let $X=G$. Then the map $\rho:G\times X \to X$ (actually $\rho:G\times G \to G$) taking $(g,x)\to g(x) = gx$ is an action (because it satisfies all the axioms). This is called the left regular action\index{left regular action} of $G$.
+\end{definition}
+
+%Hence we get a homomorphism from $G\to \sym(X)$. If, for some $x\in X$, $g_1(x) = g_2(x)$, then $g_1x=g_2x$ so $g_1 = g_2$. So the homomorphism is injective.
+
+
+%\begin{theorem}[Cayley's theorem]
+%Any group $G$ is isomorphic to a subgroup of $\sym(X)$ for some non-empty set $X$. E.g. we can take $X$ to be the set of elements of $G$.
+%\end{theorem}
+
+%\begin{proof}[\bf Proof]
+%We have just found an injective homomorphism $\varphi:G\to \sym(G)$ arising from the left regular action. Hence $G$ is isomorphic to the subgroup $\varphi(G) = \bra{\varphi(g):g\in G}\leq \sym(G)$; we write this as $G\lesssim \sym(G)$.
+%\end{proof}
+
+%\begin{remark}
+%Let $\varphi: G\to H$ be a homomorphism. Then $\varphi(G) = \bra{\varphi(g):g\in G}\leq H$. This is because $e_H = \varphi(e_G)\in \varphi(G)$, and if $a,b\in \varphi(G)$, say $a=\varphi(g)$ and $b=\varphi(h)$ with $g,h\in G$, then we have $a^{-1}b = (\varphi(g))^{-1}\varphi(h) = \varphi(g^{-1}h) \in \varphi(G)$.
+%\end{remark}
+
+\begin{theorem}[Cayley Theorem\index{Cayley Theorem}]\label{thm:cayley}
+Any group $G$ is isomorphic to a subgroup of $\sym (G)$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Recall Lemma \ref{lem:permutation_representation} and let $X=G$, we have the map $\vp: G\to \sym (G)$ is a permutation representation and the image $\vp(G)$ is a subgroup of $\sym (G)$. Also, from Lemma \ref{lem:permutation_representation},
+\be
+G/G_G\cong G^G = \vp(G)
+\ee
+where $G_G$ is the kernel of $\vp$. Since we have left regular action,
+\be
+G_G = \bra{g \in G : g (x) = x, \forall x \in X} = \bra{g \in G : gx = x, \forall x \in X} = \bra{g \in G : g=e, \forall x \in X} = \bra{e}.
+\ee
+%The left regular action (see Definition \ref{def:left_regular_action}\footnote{should change}) of $G$ on $X = G$, given by
+%\be
+%g * g_1 = gg_1.
+%\ee
+%$\vp_g$ is left multiplication by $g$. The kernel is $\{e\}$, %so Lemma \ref{lem:permutation_representation} gives Cayley's Theorem \ref{thm:cayley}.
+
+Thus $G/G_G = G/\bra{e} = G$, so we have $G \cong G^G = \vp(G)$ i.e. the group $G$ is isomorphic to a subgroup of $\sym (G)$.
+\end{proof}
+
+
+\section{Finite $p$-groups and Finite Abelian Groups}
+
+\subsection{Finite $p$-groups}
+
+\begin{definition}[$p$-group]
+A finite group $G$ is a $p$-group\index{p-group@$p$-group} if $|G| = p^n$ for prime $p$.
+\end{definition}
+
+Now restating Proposition \ref{pro:prime_center}, we can have
+
+\begin{theorem}\label{thm:finite_p_group_centre}
+Let $G$ be a finite $p$-group. Then $Z(G) \neq \{e\}$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+We count the elements of $G$,
+\be
+|G| = \sum \abs{\ccl_G(x)}.
+\ee
+
+But the size of conjugacy classes divides $|G| = p^n$. So $\abs{\ccl_G(x)} = p^a$ for some $0 \leq a \leq n$.
+\beast
+|G| = (\text{no. of conjugacy classes of size 1}) \cdot 1  + (\text{no. of conjugacy classes of size $p$}) \cdot p  + \dots
+\eeast
+
+But $p$ divides $|G|$. So $p$ divides the number of conjugacy classes of size 1. But by Proposition \ref{pro:conjugate_element} $\{x\}$ is a conjugacy class if and only if
+\be
+\forall g \in G, \ gxg^{-1} = x \ \lra \ x \in Z(G)
+\ee
+
+So $p | |Z|$. Thus $Z(G) \neq \{e\}$.
+\end{proof}
+
+
+\begin{proposition}\label{pro:p2_abelian}
+If $|G| = p^2$ for $p$ prime then $G$ is abelian.
+\end{proposition}
+\begin{proof}[\bf Proof]
+Let $G$ be a group of order $p^2$. In the action of $G$ on itself by conjugation, one orbit is $\bra{e}$ as the possible stabilizer order are $1,p,p^2$ (by Lagrange's theorem (Theorem \ref{thm:lagrange_group})), the possible orbit sizes are $p^2,p,1$. So all orbits have size 1 or $p$, and as the sume of the orbit sizes is $\abs{G}= p^2$, there must be at least $p$ orbits of size 1 (by considering the sum module $p$).
+
+Now $\bra{z}$ is an orbit of size 1 $\lra \ \forall g\in G, gzg^{-1} =z \ \lra\ \forall g\in G,gz =zg$. Write
+\be
+Z(G) = \bra{z\in G:\forall g\in G,gz = zg},
+\ee
+so that $Z(G)\geq p$. If $\abs{Z(G)} < p^2$, take $g\in G\bs Z(G)$, then $\stab(g)$ contains $Z(G)$ since
+\be
+z\in Z(G)\ \ra \ zg = gz \ \ra \ zgz^{-1} = g
+\ee
+and also $g$ itself since $ggg^{-1} = g$, so $\stab(g) >p$ (as $g\notin Z(G)$ and $Z(G)\geq p$). As $\stab{g}$ is a subgroup of $G$ (Lemma \ref{lem:stabiliser_subgroup}) we must have $\stab(g) = G$, whence the orbit containing $g$ is of size 1, contrary to $g\in Z(G)$. Thus $\abs{Z(G)}=p^2$ and so $Z(G) =G$. That is, for all $g,h\in G$, we have $gh = hg$, i.e., $G$ is abelian.
+\end{proof}
+
+%By Lagrange's theorem $|Z(G)|$ is 1, $p$ or $p^2$. But by Theorem \ref{thm:finite_p_group_centre}, $|Z(G)| = p$ or $p^2$.
+
+%If $|Z(G)| = p$ then $|G/Z(G)| = p$ (by Lagrange Theorem, Theorem \ref{thm:lagrange_group}). So $G/Z(G)$ is cyclic by Corollary \ref{cor:prime_order_cyclic}. By Lemma \ref{lem:cyclic_abelian}, $G$ is abelian.
+
+%If $|Z(G)| = p^2$, $G = Z(G)$. Hence $G$ is abelian by Proposition \ref{pro:abelian_centre}.
+
+\begin{remark}
+The abelian groups of order $p^2$ are isomorphic to $C_{p^2}$ or $C_p \times C_p$.
+\end{remark}
+
+\begin{proposition}\label{pro:group_prime_cube}
+Suppose that $G$ is a non-abelian group of order $p^3$ where $p$ is prime.
+\ben
+\item [(i)] The order of the centre $Z(G)$ is $p$.
+\item [(ii)] If $g \notin Z(G)$ then the order of the centralizer $C(g)$ is $p^2$.
+\item [(iii)] There are $p$ conjugacy classes with size 1 and $p^2 -1$ conjugacy classes with size $p$.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] By Theorem 3.6.1., $Z(G)$ is non-trivial and $Z(G)\lhd G$. So $\abs{Z(G)} = p$, $p^2$ or $p^3$.
+
+If $\abs{Z(G)} = p^3 = G$, by Proposition 3.5.15, $G$ is abelian. Contradiction.
+
+If $\abs{Z(G)} = p^2$, $\abs{G/Z(G)}= p$ and thus $G/Z(G)$ is cyclic, then by Lemma 3.5.16., $G$ is abelian.
+
+Thus $\abs{Z(G)} = p$.
+\item [(ii)] Suppose $g\notin Z(G)$. $C_G(g) = \bra{x\in G: xgx^{-1} = g}$. Since $C_G(g) \leq G$, so $\abs{C_G(g)} = 1$, $p$, $p^2$ or $p^3$.
+
+$\abs{C_G(g)}$ is not 1 since $Z(G)\subseteq C_G(g)$.
+
+If $\abs{C_G(g)} = p$, $C_G(g) = Z(G)$, but $g\in C_G(g)$ but $g\notin Z(G)$. Contradiction.
+
+If $\abs{C_G(g)} = p^3$, $C_G(g) = G$, $\forall x\in G$, $xg = gx$, so $g\in Z(G)$. Contradiction.
+
+Thus, $\abs{C_G(g)} = p^2$.
+
+\item [(iii)] If $g\in Z(G)$, $\forall x\in G$, $xg = gx$, $C_G(g) = G$, so $\abs{\ccl(g)}=1$ and $\ccl{g} = \bra{g}$. Furthermore, there are $p$ conjugacy classes like this. (by (i)).
+
+If $g\notin Z(G)$, $\abs{\ccl(g)} = \abs{G}/\abs{C_G(g)} = p^3/p^2 = p$ by orbit-stablizer theorem. Thus, we there are $(p^3-p)/p = p^2 -1$ conjugacy classes with size $p$.
+
+Thus, totoally we have $p^2 +p -1$ conjugacy classes.
+\een
+\end{proof}
+
+
+%Recall the definitions of the direct product (Definition \ref{def:direct_product_group}).
+
+%\begin{definition}[External direct product]
+%Given two groups $G$ and $H$, $G\times H$ has a natural group structure $(g_1, h_1)(g_2, h_2) = (g_1g_2, h_1h_2)$. $G \times H$ has subgroups $G_1 = \{(g, e_H) : g \in G\} \cong G$ and $H_1 = \{(e_G, h) : h \in H\} \cong H$. Note that $G_1\cap H_1$ is the trivial subgroup of $G \times H$ and $G_1H_1 = G \times H$.
+%\end{definition}
+
+%\begin{definition}[Internal direct product]
+%Given a group $L$ and subgroups $G_1$, $H_1$ with $G_1H_1 = L$, $G_1 \cap H_1 = \{e\}$, all elements $g \in G_1$ commute with all elements $h \in H_1$. Note that $L \cong G_1 \times H_1$.
+%\end{definition}
+
+\begin{theorem}[Cauchy's theorem]\label{thm:cauchy_group}
+If $G$ is a finite group of order divisible by the prime $p$, then $G$ contains an element of order $p$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $X=\bra{(x_1,x_2,\dots,x_p)|x_1x_2\dots x_p = e}$ with all $x_i \in G$. Let the cyclic group $C_p = \bsa{g|g^p =e}$ act on the set $X$ such that $g^j:(x_1,x_2,\dots,x_p) \to (x_{1+j},x_{2+j},\dots, x_j)$, so that $g$ cycles the coordinates. (Note that we are working $\bmod p$.)
+
+This is an action of $C_p$; the image is in $X$ since if $x_1x_2\dots x_p = e$, then $x_{1+j}x_{2+j}\dots x_j = e$.
+
+Now look at the orbits of this action. For arbitrary $x_i$, its orbit is
+\be
+\bra{x_i,g(x_i),g^2(x_i),\dots, g^{p-1}(x_i)}.
+\ee
+
+If these elements are distinct, then this orbit has size $p$. Otherwise, if any of these elements are the same, we will have $g =e$, which gives that the orbit size 1. Thus, the orbits have sizes 1 or $p$.
+
+Any orbit of size 1 is $\bra{(x,x,\dots, x)|x^p =e}$, e.g. $(e,e,\dots,e)$. Finally, $\abs{X} = \abs{G}^{p-1}$, since the first $p-1$ coordinates can be chosen independently, but the last is forced; $x_p = (x_1x_2\dots x_{p-1})^{-1}$. Therefore $p|\abs{X}$. Since $X$ is partitioned into $C_p$-orbits of sizes 1 or $p$, there are at least $p$ of them of size 1.
+
+Thus, we can pick a orbit of size 1, $\bra{(x,x,\dots, x)|x^p =e}$ where $x\neq e$ and by Lemma \ref{lem:order_element} we have $o(x) = p$\footnote{another proof is on wiki}.
+\end{proof}
+
+%To generalize the above theorem, we have
+
+\begin{theorem}
+Let $G$ be a $p$-group of order $p^a$. Then there is a subgroup of order $p^b$ for any $0 \leq b \leq a$.
+\end{theorem}
+
+
+
+\begin{proof}[\bf Proof]
+By induction on $a$. The result is clearly true for $a = 1$. Suppose it is true for $a - 1$.
+
+%By Theorem \ref{thm:finite_p_group_centre} the centre is nontrivial, so we can pick an element $x \in Z(G)$, $x \neq e$.
+Since $Z(G)$ is a subgroup of $G$ (Lemma \ref{lem:kernel_subgroup}), we have $\abs{Z(G)}|p^a$ (Theorem \ref{thm:lagrange_group}) and thus $p |\abs{Z(G)}$. By Cauchy's theorem (Theorem \ref{thm:cauchy_group}), we have $x\in Z(G)$, an element of order $p$.
+
+%By taking a suitable power of it, we may assume that $x$ is of order $p$.
+Hence let $K = \{e, x,\dots , x^{p-1}\}$ be a subgroup of $G$, and it is normal in $G$ since $x$ is central.
+
+Consider the quotient $G/K$. Its order is $p^{a-1}$ and we can apply the inductive hypothesis to get a subgroup $L/K \leq G/K$ of order $p^{b-1}$. The correspondence between subgroups of $G/K$ and subgroups of $G$ containing $K$ gives a subgroup $L$ of $G$ containing $K$ of order $p^b$.
+\end{proof}
+
+
+\subsection{Finite Abelian Groups}
+
+\begin{theorem}[structure theorem for finite abelian groups\index{structure theorem for finite abelian groups}]\label{thm:structure_theorem_finite_abelian_group}
+Let $G$ be a finite abelian group. Then
+\be
+G \cong C_{d_1} \times C_{d_2} \times \dots \times C_{d_k}
+\ee
+with $1 \neq d_i\mid d_{i+1}$ and $d_1 \dots d_k = |G|$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+\footnote{Postponed until Ring \& Modules}
+\end{proof}
+
+%\begin{remark}[Remark on proof]
+%One can be less sophisticated. As the first step, consider an abelian $p$-group $G$ and the subgroup $\langle x\rangle$ generated by $x \in G$ of maximal order. If $\langle x\rangle = G$ we are done. Otherwise, if $\langle x\rangle \neq G$, the claim is that there exists a subgroup $H \leq G$ with $\langle x\rangle H = G$, $\langle x\rangle\cap H = \{e\}$, i.e. $G \cong = \langle x\rangle \times H$.
+%\end{remark}
+
+\begin{example}
+The abelian groups of order 8 are $C_2\times C_4$, $C_2\times C_2\times C_2$ and $C_8$. The abelian groups of order 16 are $C_2 \times C_8$, $C_2 \times C_2 \times C_4$, $C_2 \times C_2 \times C_2 \times C_2$, $C_4 \times C_4$,and $C_{16}$.
+\end{example}
+
+\begin{lemma}\label{lem:coprime_cycle_cong}
+If $m$ and $n$ are coprime then $C_m \times C_n \cong C_{mn}$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Take elements $g$ of order $m$ in $C_m$ and $h$ or order $n$ in $C_n$.
+
+Then $(g, h)$ is of order $mn$ in $C_m \times C_n$ since $(g, h)^r = (g^r, h^r)$ (by Definition \ref{def:direct_product_group}) and so the order of $(g, h)$ is the least common multiple of $m$ and $n$ which is $mn$ since $m$ and $n$ are coprime.
+
+But $|C_m \times C_n| = mn$ and so $(g, h)$ is a generator for the group.
+\end{proof}
+
+\begin{example}
+$C_2 \times C_3 \cong C_6$. Abelian groups of order $24 = 2^3 \times 3$ are $C_2 \times C_2 \times C_6$, $C_2 \times C_{12}$ and $C_{24}$.
+\end{example}
+
+\section{Sylow's Theorems and Applications to Groups of Small Orders}
+
+\subsection{Sylow's theorems}
+
+\begin{theorem}[Sylow's theorem\index{Sylow's theorem}]\label{thm:sylow}
+Let $G$ be a finite group of order $p^am$ where $p$ is prime and $p \nmid m$.
+\ben
+\item [(i)] There exists a subgroup $P$ of order $p^a$, called the Sylow $p$-subgroup\index{Sylow $p$-subgroup}.
+\item [(ii)] All Sylow $p$-subgroups are conjugate.
+\item [(iii)] The number $n_p$ of Sylow $p$-subgroups satisfies $n_p \equiv 1 (\bmod p)$ and divides $|G|$, and hence $n_p | m$.
+\een
+\end{theorem}
+
+\begin{proof}[\bf Proof of (i)]
+Consider the set $X$ of subsets of $G$ of size $p^a$ and let $\{g_1,\dots , g_{p^a}\} \in X$. $G$ acts on $X$ via left multiplication,
+\be
+g * \{g_1,\dots , g_{p^a}\} = \{gg_1,\dots , gg_{p^a}\}.
+\ee
+
+Consider an orbit $\Sigma \subseteq X$ ($\Sigma$ is a subset of $X$). Take $g \in G$. If $\{g_1,\dots , g_{p^a}\} \in X$ then
+\be
+gg^{-1}_1 * \{g_1,\dots , g_{p^a}\} = \{g, gg^{-1}_1g_2,\dots , gg^{-1}_1 g_{p^a}\} \in \Sigma.
+\ee
+
+So $g$ appears as an entry in one of the $p^a$-sets in orbit the $\Sigma$. Counting,
+\be
+|\Sigma | \geq \frac{|G|}{p^a} = \frac{p^am}{p^a} = m.
+\ee
+So we have two types of orbits $\Sigma$, (a) $|\Sigma| = m$, (b) $|\Sigma| > m$. By the orbit-stabiliser theorem (Theorem \ref{thm:orbit_stabiliser}), $|\Sigma|$ divides $|G| = p^am$. So for orbits $\Sigma$ of type (b), where $|\Sigma| > m$, we deduce that $p | |\Sigma|$.
+
+The next step is to show that $|X|$ is not divisible by $p$,
+\be
+|X| = \binom{p^am}{p^a} = \frac{p^am}{p^a} \frac{p^am - 1}{p^a - 1} \dots \frac{p^am - p^a + 1}1 .
+\ee
+
+Consider $(p^am - k)/(p^a - k)$ for $0 \leq k \leq p^a - 1$. If $k = 0$ then
+\be
+\frac{p^am - k}{p^a - k} = \frac{p^am}{p^a} = m.
+\ee
+
+If $k > 0$ then set $k = p^bq$, where $p \nmid q$, so that
+\be
+\frac{p^am - k}{p^a - k} = \frac{p^am - p^bq}{p^a - p^bq} = \frac{p^{a-b}m - q}{p^{a-b} - q}.
+\ee
+
+Note that $b < a$, so $p$ does not divide the numerator after this cancellation process. %, observing that $b < a \ \ra k < p^a$. So after the cancellation for the product, $p$ does not divide the numerator.
+Thus $p \nmid |X|$, as required.
+
+Now count the elements of $X$,
+\beast
+|X| = \text{sum of sizes of orbits} = \text{sum of sizes of orbits of type (a) + sum of sizes of orbits of type (b)}.
+\eeast
+
+But $p\nmid |\Omega|$ and $p$ divides the size of orbits of type (b), thus we do have orbits of type (a).
+
+Consider the orbit-stabiliser theorem (Theorem \ref{thm:orbit_stabiliser}) for an orbit $\sum$ of type (a),
+\be
+m = |\Sigma| = \frac{|G|}{|P|} = \frac{p^am}{|P|}
+\ee
+where $P$ is the stabiliser of an element $x$ chosen in $\Sigma$. So $|P| = p^a$ and thus there is a subgroup of order $p^a$.
+\end{proof}
+
+\begin{proof}[\bf Proof of (ii)]
+In fact, we will prove the following. If $P$ is a Sylow $p$-subgroup and $Q \leq G$ with $|Q| = p^b$ for $1 \leq b \leq a$, then there exists $g_1 \in G$ such that $Q \leq g_1Pg^{-1}_1$. In particular, if $Q$ is of order $p^a$ then $Q = g_1Pg^{-1}_1$.
+
+This time consider the action of $Q$ on the set $H$ of left cosets of $P$ via left multiplication,
+\be
+g * g_1P = gg_1P \ \lra \ g*h = gh,\quad h\in H = \bra{gP:g\in G}, g \in Q, g_1 \in G.
+\ee
+
+We consider the orbits of $Q$. By the orbit-stabiliser theorem (Theorem \ref{thm:orbit_stabiliser}), the size of an orbit divides $|Q|$, thus is either 1 or a power of $p$ ($\abs{Q(gP)} = p^k$, $0\leq k\leq a$).
+The number of cosets of $P$ is equal to the index of $P$ in $G$, (Lagrange theorem, Theorem \ref{thm:lagrange_group})
+\be
+\abs{H} = \frac{|G|}{|P|} = \frac{p^am}{p^a} = m.
+\ee
+In particular, $m$ is equal to the number of orbits of size 1 plus $p^k$ times the number of orbits of size $k$.
+\beast
+m & = & |H| = (\text{no. of orbits of size 1}) \cdot 1  + (\text{no. of conjugacy classes of size $p$}) \cdot p  + \dots\\
+& = & \sum^a_{k=0} (\text{no. of orbits of size $p^k$}) \cdot p^k.
+\eeast
+
+Counting cosets, we see that we must have an orbit of size 1 since $p \nmid m$. Suppose $\{g_1P\}$ is such an orbit. Thus $gg_1P = g_1P$ for all $g \in Q$ and hence $g^{-1}_1 gg_1P = P$. So $g^{-1}_1 gg_1 \in P$ and $g \in g_1Pg^{-1}_1$. Thus $Q \leq g_1Pg^{-1}_1$, as required.
+\end{proof}
+
+\begin{definition}[normaliser]\label{def:normaliser}
+$G$ acts on the set $X$ of Sylow $p$-subgroups via conjugation, $g* P = gPg^{-1}$, $P\in X$. The stabiliser, called the normaliser\index{normaliser!group action} of $P$, is $N_G(P) = \{g \in G : gPg^{-1} = P\}$.
+\end{definition}
+
+\begin{remark}
+Note that $P$ might not be Sylow $p$-subgroups in $G$. For instance, $P$ is Sylow $p$-subgroup in $H$ and $H\leq G$.
+\end{remark}
+
+
+\begin{lemma}\label{lem:unique_sylow_in_normaliser}
+If $n_p = 1$, then the unique Sylow $p$-subgroup $P$ is normal in $G$.
+
+Also, $P$ is the unique Sylow $p$-subgroup of $N_G(P)$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Take the unique Sylow $p$-subgroup $P$. Then $gPg^{-1}$ is also a Sylow $p$-subgroup. Thus $gPg^{-1} = P$ for all $g \in G$.
+
+By Definition \ref{def:normaliser}, $P\subseteq N_G(P)$ and $P$ is a subgroup of $G$, so $P \lhd N_G(P)$.
+
+$N_G(P)\leq G$ by Lemma \ref{lem:stabiliser_subgroup}, so $N_G(P)$ is of order of $p^an$, $p\nmid n$ as $P$ is the subgroup of $N_G(P)$. So applying Sylow's second theorem to $N_G(P)$, we see that $P$ is the Sylow $p$-subgroup and all Sylow $p$-subgroups of $N_G(P)$ are conjugate to $P$. But $P \lhd N_G(P)$ and so all its conjugates are $P$ itself. Thus $P$ is the unique Sylow $p$-subgroup of $N_G(P)$.
+\end{proof}
+
+
+\begin{proof}[\bf Proof of (iii)]
+By (ii), all Sylow $p$-subgroups are conjugate and there is exactly one orbit which contains all the Sylow $p$-subgroups. From (ii), we know all Sylow $p$-subgroups are in the orbit. Let $P = \bra{h_1,h_2,\dots, h_{p^a}}$. If $Q$ in the orbit is not Sylow $p$-subgroup then its order is less than $p^a$, that is for some $g\in G$, $1\leq i,j\leq p^a$, $i\neq j$, we have
+\be
+gh_ig^{-1} = gh_jg^{-1} \ \ra \ h_i = h_j \ \ra \ \abs{P} < p^a
+\ee
+
+So we know all the element in this orbit are Sylow $p$-subgroup. By the orbit-stabiliser theorem (Theorem \ref{thm:orbit_stabiliser}), the size of the orbit is $n_p$ (also known as the number of Sylow $p$-subgroups) and $n_p | |G|$.
+
+Consider the action of $P$ on the set $X$ of Sylow $p$-subgroups of $G$ via conjugation, $g* P_i = gP_ig^{-1}$, $g\in P$ where $X=\bra{P_1,P_2,\dots}$. By the orbit-stabiliser theorem (Theorem \ref{thm:orbit_stabiliser}), orbits of $P$ are of size 1 or of size divisible by $p$. We need to show that there is exactly one orbit of size 1.
+
+Visibly $\{P\} = \bra{e*P}$ ($e\in P$) is an orbit of size 1. Are there any others?
+
+Suppose $\{Q\}$ is an orbit of size 1. Thus $gQg^{-1} = Q$ for all $g \in G$ and of course for all $g \in P$ and so $P\subseteq N_G(Q)$ and thus $P \leq N_G(Q)$. From Lemma \ref{lem:unique_sylow_in_normaliser}, $Q$ is the unique Sylow $p$-subgroup of $N_G(Q)$, so $P =Q$, since both are Sylow subgroups of $N_G(Q)$. Thus $\{P\}$ is the only orbit of size 1. Counting Sylow $p$-subgroups in $G$,
+\be
+n_p = 1 + \text{ sum of sizes of other orbits (divisible by $p$)}.
+\ee
+But $p$ divides the size of every other orbit. Therefore, $n_p \equiv 1 (\bmod p)$ and $n_p \mid m$.
+\end{proof}
+
+\begin{corollary}\label{cor:np_ng}
+Let $n_p$ be number of $p$-subgroups and $N_G(P)$ be a normaliser of $P \in X$ where $X$ is the set of $p$-subgroups. Then
+\be
+\abs{G} = n_p \abs{N_G(P)}.
+\ee
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+This is the direct result from orbit-stabiliser theorem (Theorem \ref{thm:orbit_stabiliser}) and Sylow theorem (Theorem \ref{thm:sylow}.(ii)) since all $p$-subgroups are conjugate.
+\end{proof}
+
+
+\begin{corollary}\label{cor:non-abelian_simple}
+Let $G$ be a non-abelian simple group. Then $|G|$ divides $n_p!/2$, and $n_p \geq 5$ once we have shown that all non-abelian subgroups of $S_4$ are not simple.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+\footnote{need to check: $G$ is acting on the set $X$ of Sylow $p$-subgroups where $|X| = n_p$. If $G$ is non-abelian simple then by Theorem \ref{thm:lagrange_group} $G$ is isomorphic to a subgroup of $A_{n_p}$, and $n_p \geq 5$ subject to proviso.}
+\end{proof}
+
+
+
+
+
+\subsection{Applications to groups of small orders}
+
+\begin{example}
+Let $|G| = 1000 = 2^35^3$. Then $G$ is not simple.
+\end{example}
+
+\begin{proof}[\bf Proof]
+$n_5 \equiv 1 (\bmod\ \! 5)$ and $n_5 \mid 8$. So $n_5 = 1$ and so there exists a unique Sylow 5-subgroup which is normal (by Lemma \ref{lem:unique_sylow_in_normaliser}). Thus $G$ is not simple.
+\end{proof}
+
+\begin{example}
+Let $|G| = 300 = 2^2 \cdot 3 \cdot 5^2$. Then $G$ is not simple.
+\end{example}
+
+\begin{proof}[\bf Proof]
+$n_5 \equiv 1 (\bmod\ \!5)$ and $n_5 \mid 12$. Assume $G$ is simple and so $n_5 \neq 1$ (by Lemma \ref{lem:unique_sylow_in_normaliser}). Then $n_5 = 6$. But 300 does not divide $6!/2$ by Corollary \ref{cor:non-abelian_simple}. Contradiction! Thus $|G| = 300$ implies that $n_5 = 1$. ($G$ is not abelian simple since it is not of prime order.)
+\end{proof}
+
+\begin{example}
+Let $|G| = 132 = 2^2 \cdot 3 \cdot 11$. Then $G$ is not simple.
+\end{example}
+
+\begin{proof}[\bf Proof]
+$n_{11} \equiv 1 (\bmod\ \! 11)$ and $n_{11} | 12$. Assume $G$ is simple and so $n_{11} \neq 1$ (by Lemma \ref{lem:unique_sylow_in_normaliser}). Then $n_{11} = 12$. $n_3 \equiv 1 \lmod{3}$ and $n_3 | 44$. By simplicity, $n_3 \neq 1$ and $n_3 \neq 4$ by Corollary \ref{cor:non-abelian_simple} ($132\nmid 4!$), so $n_3 = 22$.
+
+But since $n_{11} = 12$ and $n_3 = 22$ there are $12\cdot(11-1)$ elements of order 11 and $22\cdot(3-1)$ elements of order 3. But this gives too many elements, a contradiction!
+\end{proof}
+
+\begin{remark}
+This is a typical argument. We use Sylow's theorem to estimate the number of subgroups and then count elements.
+\end{remark}
+
+\begin{lemma}
+Suppose $|G| = 2p$ for an odd prime $p$. Then $G \cong C_{2p}$ or $D_{2p}$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+$n_p \equiv 1 (\bmod\ \! p)$ and $n_p | 2$, so $n_p = 1$. Thus there is a normal subgroup $K$ of order $p$ by Lemma \ref{lem:unique_sylow_in_normaliser}. Since $K$ is of order $p$, the supgroup size is either 1 or $p$, so $K$ is simple. Since $K$ is simple and abelian, we have $K$ is $C_p$ by Proposition \ref{pro:simple_abelian_cyclic}. Sylow's theorem also implies there is a subgroup $H$ of order 2. Let $H = \{e, g\}$, $K = \{e, x,\dots , x^{p-1}\}$. %Note $H \cap K = \{e\}$ and $G$ is a semidirect product of $K$ by $H$. Observe that $|HK| = 2p$.
+
+Now consider the action of $H$ on $K$ by conjugation. In particular, consider conjugation by $g$ -- it permutes the elements of $K$. (In fact, conjugation by $g$ gives an automorphism of $K$.) This is uniquely determined by the image of $x$, that is, $gxg^{-1} = x^r$ for some $r$, $1\leq r \leq p$. Then also
+\be
+x = e x e =  g^2xg^{-2} = gx^rg^{-1} = (gxg^{-1})^r = x^{r^2}.
+\ee
+So $r^2 \equiv 1(\bmod\ \! p)$ by Lemma \ref{lem:order_element}. This gives two choices. Suppose $r \equiv 1 (\bmod p)$, then $g$ and $x$ commute so $gx$ is of order $2p$ (as $g \neq x^a$, $1\leq a \leq p-1$) and hence $G \cong C_{2p}$. Otherwise suppose $r \equiv -1 (\bmod\ \! p)$, then $gxg^{-1} = x^{-1} = x^{p-1}$ and $G \cong D_{2p}$ by Theorem \ref{thm:dihedral_symmetric_subgroup}. In the latter case, $x$ is a rotation and $g$ is a reflection.
+\end{proof}
+
+\begin{example}
+There is a problem on the examples sheet for the case $|G| = 15$.\footnote{need to check}
+\end{example}
+
+Recall the definition of a soluble group (Definition \ref{def:soluble_group}), a group for which the composition factors can be chosen to be abelian simple.
+
+\begin{theorem}[1904, Burnside]
+If $|G| = p^aq^b$, where $p$ and $q$ are primes, then $G$ is soluble.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed}
+\end{proof}
+
+\begin{theorem}[1937, Hall]
+$G$ is soluble if and only if whenever $|G|$ factorises as $|G| = mn$ with $m$ and $n$ coprime there is a subgroup of order $m$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed}
+\end{proof}
+
+\begin{theorem}[1963, Feit, Thompson, "Odd Order Theorem"\index{Odd Order Theorem}]
+If $|G|$ is odd then $G$ is soluble.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed}
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%
+
+\section{Summary}
+
+\subsection{List of small groups}
+
+\begin{table}[htpb]\label{tab:small_groups}%[h!]
+\centering
+\begin{tabular}{ccc}
+\hline
+order & groups (up to isomorphism) & number of these\\
+\hline
+1 & $\bra{e}$ & 1 \\
+2 & $C_2$ &  1\\
+3 & $C_3$ &  1\\
+4 & $C_4$, $C_2\times C_2$ (see Lemma \ref{lem:group_order_4}) & 2 \\
+5 & $C_5$ & 1 \\
+6 & $C_6$, $D_6$  (see Lemma \ref{lem:group_order_6}) & 2\\
+7 & $C_7$ &  1\\
+8 & \qquad $C_8$, $C_4\times C_2$, $C_2\times C_2\times C_2$, $D_8$, $Q_8$ (see Lemma \ref{lem:group_order_8})\qquad & 5 \\
+9 & $C_9$, $C_3\times C_3$ (method similar to Lemma \ref{lem:group_order_4}) & 2\\
+10 & $C_{10}$, $D_{10}$ (see Lemma \ref{lem:group_order_10}) & 2\\
+\hline
+\end{tabular}
+\caption{small groups}
+\end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Problems}
+
+\subsection{Groups, subgroups, orders and homomorphism}
+
+\begin{problem}
+Let $G$ be any group. Show that the identity $e$ is the unique solution of the equation $x^2 = x$.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+As $e^2 = e$, certainly $e$ is a solution. For uniqueness, %Conversely,
+\be
+g^2 = g \ \ra \ g^{-1}g^2 = g^{-1}g \ \ra \ g = e,
+\ee
+so $e$ is the unique solution.
+\end{solution}
+
+%\qcutline
+
+\begin{problem}
+Show that $S$, the set of functions on $\R$ of the form $f(x) = ax + b$, where $a$ and $b$ are real numbers and
+$a \neq 0$, forms a group under composition of functions. Is this group abelian?
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+Obviously, $e(x) = x$ is the identity. If $f_1(x) = a_1x+b_1,f_2(x) = a_2x +b_2, f_3(x) =a_3x+b_3 \in S$ with $a_1,a_2,a_3\neq 0$, then
+\be
+f_1\circ f_2(x) = a_1(a_2x + b_2) + b_1 = a_1a_2x + a_1b_2 + b_2 = (a_1a_2)x + (a_1b_2 + b_1) \in S.
+\ee
+
+Also, associativity is given by
+\beast
+(f_1 \circ f_2)\circ f_3(x) & = & (f_1 \circ f_2)(a_3x + b_3) = (a_1a_2)(a_3x + b_3) + (a_1b_2 + b_1) \\
+& = & a_1 a_2a_3 x + a_1a_2b3 + a_1b_2 + b_1 = a_1 (a_2a_3 x + a_2b3 + b_2) + b_1 \\
+& = & f_1(a_2a_3 x + a_2b3 + b_2) = f_1\circ \bb{a_2(a_3x + b_3) + b_2} = f_1 \circ (f_2 (a_3x + b_3)) = f_1\circ (f_2\circ f_3(x)).
+\eeast
+
+Let $g_1 = (x - b_1)/a_1$. Then
+\be
+f_1\circ (g_1(x)) = a_1\bb{\frac{x - b_1}{a_1}} + b_1 = x - b_1 + b_1 = x = e(x) \quad \text{and}\quad g_1\circ (f_1(x)) = \bb{a_1x + b_1 - b_1}/a_1 = x = e(x).
+\ee
+
+Thus, $S$ is a group under composition.
+
+However, $S$ is not abelian since
+\be
+f_1\circ f_2(x) = a_2(a_1 x + b_1) + b_2 = a_1 a_2 x + a_2b_1 + b_2 \neq a_1a_2 x + a_1 b_2 + b_1 = a_1(a_2x + b_2) + b_1 = f_1\circ f_2(x).
+\ee
+\end{solution}
+
+
+\begin{problem}
+Let $G = \{x \in \R : x \neq -1\}$, and let $x * y = x + y + xy$, where $xy$ denotes the usual product of two real numbers. Show that $(G, *)$ is a group. What is the inverse $2^{-1}$ of 2 in this group? Solve the equation
+$2 * x * 5 = 6$.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+$\forall x,y \in G$, then $x,y\neq 1$ so $x+1,y+1 \neq 0$. Thus, $(x+1)(y+1) \neq 0 \ \ra \ xy + x + y \neq -1$. Then $x*y \in G$, so $*$ is a binary operation on $G$. Given $x,y,z\in G$, we have
+\be
+(x*y)*z = (xy + x + y)*z = (xy + x + y)z + (xy + x + y) + z = x(yz + y + z) + (yz + y + z) + x = x*(y*z).
+\ee
+
+So $*$ is associative. For $x\in G$, we have
+\be
+x*0 = x0 + x+ 0 = x = 0x + 0 + x = 0 * x \ \ra \ \text{0 is an identity.}
+\ee
+
+Given $x\in G$, we have
+\be
+x*y = 0 \ \ra \ xy + x + y = 0 \ \ra \ y = -\frac{x}{x+1}, \quad y*x = \bb{-\frac x{x+1} }* x = -\frac{x^2}{x+1} - \frac{x}{x+1} + x = 0.
+\ee
+
+It follows that $-\frac x{x+1}$ is an inverse for $x$. Thus $(G,*)$ is a group. Then
+
+\be
+2^{-1} = -\frac {2}{2+1} = -\frac 23,\quad 5^{-1} = -\frac{5}{5+1} = -\frac 56,
+\ee
+
+Thus, $2 * x* 5 = 6 \ \ra \ 2^{-1}* 2 * x * 5 * 5^{-1} =  2^{-1}*  6 * 5^{-1}$
+\be
+x = \bb{-\frac 23} * 6 * \bb{-\frac 56} = (-4 - \frac 23 + 6)*\bb{-\frac 56} = \frac 43 *\bb{-\frac 56} = - \frac{10}9 + \frac 43 - \frac 56 = -\frac {11}{18}.
+\ee
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $G$ be a group in which every element other than the identity has order two. Show that $G$ is abelian.
+
+Show also that if $G$ is finite, the order of $G$ is a power of 2. (Consider a minimal generating set.)
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+Take $x,y\in G$, then $xy $ is either $e$ or an element of order two, so $(xy)^2 = e$, that is
+\be
+xyxy = e \ \ra \ yx = x^{-1}y^{-1}.
+\ee
+
+But $x^2 = e,y^2 = e \ \ra \ x = x^{-1},y = y^{-1}$, we have $yx = xy$. As this is true $\forall x,y\in G$, $G$ is abelian.
+
+If $G$ is finite, we can pick $g_1\in G$ such that $\bsa{e,g_1}$ is a subgroup of $G$ with order 2. Then for any $g_2\in G\bs \bsa{e,g_1}$, we have $\bsa{e,g_1,g_2}$ is a subgroup of $G$ with order 4. Repeating the process, we can choose $g_i$ such that $\bsa{e,g_1,\dots,g_i}$ is a subgroup of $G$ with order $2^i$. Since $G$ is finite, we can have that order of $G$ is a power of 2.
+\end{solution}
+
+\begin{problem}
+Show that the set $G$ of complex numbers of the form $\exp(i\pi t)$ with $t$ rational is a group under multiplication (with identity 1). Show that $G$ is infinite, but that every element $g$ of $G$ has finite order.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+For any $t\in \Q$, we can find $a,b\in \Z$ with $a\neq 0$. Thus, for any $t_1,t_2,t_3 \in \Q$, we have
+\be
+\exp \bb{i\pi t_1} \exp\bb{i\pi t_2} = \exp \bb{i\pi (t_1 + t_2)} = \exp\bb{i\pi \frac{a_1b_2 + a_2 b_1}{a_1a_2}} \in G.
+\ee
+
+Also, it is obvious that
+\be
+\bb{\exp \bb{i\pi t_1} \exp\bb{i\pi t_2} } \exp\bb{i\pi t_3} = \exp \bb{i\pi (t_1 + t_2+t_3)}  = \exp \bb{i\pi t_1} \bb{\exp \bb{i\pi t_2} \exp\bb{i\pi t_3} }.
+\ee
+
+Obviously, 1 ($t=0$) is the identity. Finally, let $t_1' = -t_1$, we have
+\be
+\exp \bb{i\pi t_1} \exp\bb{i\pi t_1'} = 1 = \exp \bb{i\pi t_1'} \exp\bb{i\pi t_1}.
+\ee
+
+Thus, $\exp \bb{i\pi t_1'}$ is the inverse of $\exp \bb{i\pi t_1}$. Hence, $G$ is a group under multiplication.
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}\label{que:multiplication_finite} Let $S$ be a finite non-empty set of non-zero complex numbers which is closed under multiplication. Show
+that $S$ is a subset of the set $\{z \in \C : \abs{z} = 1\}$. Show that $S$ is a group, and deduce that for some $n\in \N$, $S$ is the set of $n$th roots of unity; that is, $S = \{\exp(2k\pi i/n) : k = 0, \dots, n - 1\}$.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+Given $S$, by Proposition \ref{pro:element_order}, $\exists n\in \N$ such that $\forall g\in S$, we have $g^n = 1$. Take $g\in S$ and write $g = e^{i\theta}$, then $e^{in\theta } = 1$. So $n\theta = 2\pi k$ for some $k\in \Z$. Thus $g= e^{2\pi ki/n}$.
+
+Take $k>0$ minimal such that $e^{2\pi ki/n}\in S$, by taking powers we have
+\be
+\bra{e^{2\pi mki/n}:m\in \Z}\subseteq S
+\ee
+by definition of group. Now given $e^{2\pi li/n} \in S$, wirte $l = qk + r$ with $q\in \Z$ and $0\leq r<k$; then $S$ contains
+\be
+\underbrace{e^{2\pi li/n}}_{\in S} \underbrace{e^{2\pi (-q)ki/n}}_{\in S} = e^{2\pi ri/n}.
+\ee
+
+By minimality of $k$ we must have $r=0$ and $l = qk$. Thus, we have
+\be
+S \subseteq \bra{e^{2\pi mki/n}:m\in \Z} \ \ra \ S = \bra{e^{2\pi mki/n}:m\in \Z}.
+\ee
+
+Since $e^{2\pi ni/n} =1\in S$, we see that $n=qk$ for some $q$, and so
+\be
+S = \bra{e^{2\pi mi/q}:m\in \Z}\quad \text{i.e., $S$ is the group of $q$th roots of unity.}
+\ee
+\end{solution}
+
+\begin{problem}
+Write the following permutations as products of disjoint cycles and compute their order and sign:
+\ben
+\item [(a)] (12)(1234)(12);
+\item [(b)] (123)(45)(16789)(15).
+\een
+\end{problem}
+
+\begin{solution}[\bf Solution.]\ben
+\item [(a)] (12)(1234)(12) = (1342) - order = 4, sign = $(-1)^3$ = -1.
+\item [(b)] (123)(45)(16789)(15) = (145678923) - order = 9, sign = $(-1)^8 = 1$.
+\een
+
+\end{solution}
+
+\begin{problem}
+Let $C_n$ be the cyclic group with $n$ elements and $D_{2n}$ the group of symmetries of the regular $n$-gon. If $n$ is odd and $\theta: D_{2n} \to C_n$ is a homomorphism, show that $\theta(g) = e$ for all $g \in D_{2n}$. What can you say if $n$ is even?
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+If $n$ is odd, then only element if $C_n$ satisfying $x^2 = e$ is $e$ itself, because if $g$ is a generator of $C_n$ then $x=g^r$ for some $r$ and
+\be
+(g^r)^2 = e\ \lra \ g^{2r} = e \ \lra \ \underbrace{n|2r \ \lra \ n|r}_{\text{since $n$ is odd}} \ \lra \ e = g^r = x.
+\ee
+
+Now if $x\in D_{2n}$ is a reflection, then $x^2 = e$, thus $\theta(x^2) = \theta(e) = e$, so $\theta(x)^2 = e \ \ra \ \theta(x) = e$ by the previous result.
+
+If $a\in D_{2n}$ is a rotation, then for any reflection $x \in D_{2n}$, $ax$ is a reflection. Thus, $\theta(ax) = e$, i.e., $e = \theta(a)\theta(x) = e \theta(x) = \theta(x)$. So for all $g\in D_{2n}$, we have $\theta(g) = e$.
+
+
+If instead $n$ is even, let $g$ be a generator of $C_n$, then $\bb{g^{\frac n2}}^2 = g^n = e$. Write $z = g^{\frac n2}$, then $\bra{e,z}$ is a subgroup of $C_n$. By the argument above, if $x\in D_{2n}$ is a reflection then $\theta(x) \in \bra{e,z}$ and thus if $a\in D_{2n}$ is rotation then $\theta(a) \in \bra{e,z}$ as well.
+
+Thus if we let $a$ be a rotation clockwise by $\frac {2\pi}n$ and $b$ be any given reflection, then $a$ and $b$ generate $D_{2n}$ and so $\theta$ is determined by its effect on $a$ and $b$. Hence there exist 4 possible homomorphisms.
+\end{solution}
+
+
+\begin{problem}
+Show that if a group $G$ contains an element of order six, and an element of order ten, then $G$ has order at least 30.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+If $g,h\in G$ with $o(g) = 6$ and $o(h) = 10$ then $\bsa{g}$ and $\bsa{h}$ are subgroups of $G$ of order 6 and 10. So by Lagrange's theorem $6\mid \abs{G}$ and $10|\abs{G}$, and thus $30\mid \abs{G}$ so $\abs{G}\geq 30$.
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Normal groups and isomorphism theorems}
+
+\begin{problem}\label{que:basic_group_property}
+\ben
+\item [(i)] What are the orders of elements of the group $S_4$? How many elements are there of each order?
+\item [(ii)] How many subgroups of order 2 are there in $S_4$? Of order 3? How many cyclic subgroups are there of order 4?
+\item [(iii)] Find a non-cyclic subgroup $V$ of $S_4$ of order 4. How many of these are there?
+\item [(iv)] Find a subgroup $D$ of $S_4$ of order 8. How many of these are there?
+\een
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+\ben
+\item [(i)] For $S_4$,
+\begin{table}[h!]
+\centering
+\begin{tabular}{ccccc}
+\hline
+cycle type & example member & \ order\  & \  number \  \\
+\hline
+$1^4$ & $\iota$ & 1 & 1 \\
+$2^2$ & (1 2)(3 4) & 2 & 3\\
+3,$1$ & (1 2 3) & 3 & 8 \\
+2,$1^2$ & (1 2) & 2 & 6 \\
+4 & (1 2 3 4) & 4 & 6 \\
+\hline
+\end{tabular}
+\end{table}
+
+\item [(ii)] Subgroups of order 2: $\bra{\iota, (1\ 2)(3\ 4)}, \quad \bra{\iota, (1\ 3)(2\ 4)},\quad \bra{\iota, (1\ 4)(2\ 3)}$,
+\be
+\bra{\iota, (1\ 2)},\quad \bra{\iota, (1\ 3)},\quad \bra{\iota, (1\ 4)},\quad \bra{\iota, (2\ 3)},\quad \bra{\iota, (2\ 4)},\quad \bra{\iota, (3\ 4)}
+\ee
+
+Thus, totally 6 + 3 = 9.
+
+Subgroups of order 3:
+\be
+\bra{\iota, (1\ 2\ 3), (1\ 3\ 2)}, \quad \bra{\iota, (1\ 3\ 4), (1\ 4\ 3)},\quad \bra{\iota, (1\ 4\ 2), (1\ 2\ 4)},\quad \bra{\iota, (2\ 3\ 4), (2\ 4\ 3)}
+\ee
+
+Thus, totally 4.
+
+Subgroups of order 4:
+\be
+\bra{\iota, (1\ 2\ 3\ 4), (1\ 3)(2\ 4),  (1\ 4\ 3\ 2)},\quad \bra{\iota, (1\ 3\ 2\ 4), (1\ 2)(3\ 4),  (1\ 4\ 2\ 3)},\quad \bra{\iota, (1\ 2\ 4\ 3), (1\ 4)(2\ 3),  (1\ 3\ 4\ 2)}.
+\ee
+Thus, totally 3.
+
+\item [(iii)] $\bra{\iota, (1\ 2)(3\ 4),(1\ 3)(2\ 4),(1\ 4)(2\ 3)}$.
+\item [(iv)] Since $\abs{D} = 8$, $D$ does not contain elements of order 3 (Lagrange's corollary (Corollary \ref{cor:lagrange_group_cor})). Thus, $D$ has to contain elements of order 2 and 4. If all the non-identiy elements are of order 2, we have we must pick at least 4 element from type (1 2), but they are not disjoint. Thus this will generate some element of the form $(1 2 3)$, so there must be some element of order 4. The elements $a = (1\ 2\ 3\ 4)$, easliy we can find another two elements $(1 \ 3)(2\ 4) = a^2$ and $(1\ 4\ 3 \ 2) = a^3$. There cannot be any other element of order 4, otherwise there will be some element of order 3. For instance,
+\be
+(1\ 2 \ 3 \ 4)(1\ 4\ 2\ 3) = (2\ 4 \ 3).
+\ee
+
+Thus, we have the other four elements are of order 2. They cannot be of the form (1 2) since
+\be
+(1\ 2)\bb{(1 3)(2 4)} = (1 3 2 4)
+\ee
+which is an element of order 4. Thus, they have to be (1 3), so the subgroup is
+\be
+\bra{\iota, (1\ 2\ 3\ 4), (1\ 4\ 3\ 2), (1 \ 3)(2\ 4), (1\ 3), (2\ 4),(1\ 2)(3\ 4), (1\ 4)(2\ 3)}.
+\ee
+
+There are 3 of this type. So there are 3 subgroups.
+
+(Alternative way to approach might be discussing $C_8$, $C_4\times C_2$, $C_2 \times C_2 \times C_2$, $D_8$ and $Q_8$).
+\een
+\end{solution}
+
+%\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+\ben
+\item [(i)] Show that $A_4$ has no subgroups of index 2. Exhibit a subgroup of index 3.
+\item [(ii)] Show that $A_5$ has no subgroups of index 2, 3 or 4. Exhibit a subgroup of index 5.
+\item [(iii)] Show that $A_5$ is generated by (12)(34) and (135). (Multiply the two elements to show that the subgroup they generate has order 30 or 60.)
+\een
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+\ben
+\item [(i)] $\abs{A_4} = 4!/2 = 12$,
+\be
+A_4 = \bra{\iota,(1\ 2)(3\ 4),(1\ 3)(2\ 4),(1\ 4)(2\ 3),(1\ 2\ 3),(1\ 2\ 4),(1\ 3\ 4),(1\ 3\ 2),(1\ 4\ 2),(1\ 4\ 3),(2\ 3\ 4),(2\ 4\ 3)}
+\ee
+
+If $H$ is subgroup of index 2, we have $\abs{H} = 6$ by Lagrange's theorem (Theorem \ref{thm:lagrange_group}). Thus from Corollary \ref{cor:lagrange_group_cor}, it has an element of order 2, and an element of order 3. By Lemma \ref{lem:group_order_6} we know that $H\cong C_6$ or $D_6$. $C_6$ is impossible since there must be an element of order 6. Thus, we must have $D_6 = \bsa{a,b:a^3 = b^2 = e, aba = b^{-1}}$. Suppose $b= (1\ 2)(3\ 4)$, we have $(ab)^2 = e$, but such $a$ does not exist.
+
+A subgroup of index 3 will be of order 4, thus we can have
+\be
+\bra{\iota,(1\ 2)(3\ 4),(1\ 3)(2\ 4),(1\ 4)(2\ 3)}.
+\ee
+
+\item [(ii)] Let $H\leq A_5$ with order of $n$. Let $A_5$ act on the left cosets of $H$, say $\Omega = \bra{gH:g\in A_5}$.
+%We know $A_5$ is simple. Thus, if subgroup $H$ is of index 2, $H\lhd A_5$ (by lemma 3.4.3). Contradiction.
+%If $H$ is of index 3, $\abs{H} = 20$.
+
+Let $\vp: A_5 \to \sym(\Omega) = S_n, f \mapsto \vp_f$ where $\vp_f:\Omega \to \Omega$. Thus, $\ker \vp \lhd A_5$, but $A_5$ is simple, so $\ker \vp = \bra{e}$. Also, $A_5/\ker\vp \cong \im\vp \leq S_n$, so $\abs{A_5/\ker \vp}\mid \abs{S_n}$ by Lagrange Theorem (Theorem \ref{thm:lagrange_group}). Since $\ker \vp = \bra{e}$, we have
+\be
+\abs{A_5}\mid \abs{S_n} \ \ra\ n\neq 2,3,4.
+\ee
+
+Thus, we can find a subgroup $H = A_4$ of index 5.
+
+\item [(iii)] For the subgroup $H = \bsa{(1\ 2)(3\ 4),(1\ 3\ 5)}$, we have $H \leq A_5$, $\abs{H}\mid 60$. Since (1 2)(3 4) has order 2 and (1 3 5) has order 3, we have
+\be
+2\mid \abs{H},\ 3\mid \abs{H} \ \ra \ 6\mid\abs{H}.
+\ee
+
+Also, ((1 2)(3 4))(1 3 5) = (1 4 3 5 2) has order 5, so we have $5\mid \abs{H}$ and $30\mid \abs{H}$. If $\abs{H} =30$, it has index 2, thus $H$ is normal (by Lemma \ref{lem:normal_index_2}). But $H$ is not normal since $A_5$ is simple. Thus, $\abs{H} = 60$. So (12)(34) and (135) generate $A_5$.
+\een
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\qcutline
+
+\begin{problem}
+Calculate the size of the conjugacy class of (1 2 3) as an element of $S_4$, as an element of $S_5$ and as an element of $S_6$. Find in each case the centralizer. Hence calculate the size of the conjugacy class of (123) as an element of $A_4$, as an element of $A_5$ and as an element of $A_6$.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+By Theorem \ref{thm:permutation_cycle_type}, the permutations of $S_n$ are conjugate iff they have the same cycle-type. Thus,
+\beast
+\abs{\ccl_{S_4}(1\ 2\ 3)} & = & C^4_3 P^2_1 = 8,\\
+\abs{\ccl_{S_5}(1\ 2\ 3)} & = & C^5_3 P^2_1 = 20,\\
+\abs{\ccl_{S_6}(1\ 2\ 3)} & = & C^6_3 P^2_1 = 40.
+\eeast
+
+The centralizers are
+\be
+C_{S_4}((1\ 2 \ 3)) = \bsa{(1\ 2\ 3)}
+\ee
+since (1 2 3) is order 3 = 24/8,
+\be
+C_{S_4}((1\ 2 \ 3)) = \bsa{(1\ 2\ 3), (4\ 5)}
+\ee
+since (1 2 3) is of order 3 and (4 5) is of order 2, 3$\times $2 = 6 = 120/20,
+\be
+C_{S_4}((1\ 2 \ 3)) = \bsa{(1\ 2\ 3), (4\ 5\ 6),(4\ 5)}
+\ee
+since (1 2 3) and (4 5 6) are of order 3 and (4 5) is of order 3, 3$\times $3$\times $2 = 18 = 720/40.
+
+For alternative group $A_n$, we have all permutations in $S_4$ that commute with (1 2 3) are even (since the centralizer is generated by (1 2 3)), by Theorem \ref{thm:an_sn_size},
+\be
+\abs{\ccl_{A_4}(1\ 2\ 3)} = \abs{\ccl_{S_4}(1\ 2\ 3)}/2  = 4.
+\ee
+
+Also, there are odd permutation (4 5) commute with (1 2 3) for both $S_5$ and $S_6$, we have
+\beast
+\abs{\ccl_{A_5}(1\ 2\ 3)} & = & \abs{\ccl_{S_5}(1\ 2\ 3)} = 20,\\
+\abs{\ccl_{A_6}(1\ 2\ 3)} & = & \abs{\ccl_{S_6}(1\ 2\ 3)} = 40.
+\eeast
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\qcutline
+
+\begin{problem}\label{ques:group_direct_product}
+Suppose that $H,K \lhd G$ with $H \cap K = \bra{e}$. Consider the commutator $[h, k] = hkh^{-1}k^{-1}$ with $h \in H$ and $k \in K$, and prove that any element of $H$ commutes with any element of $K$. Hence show that $HK \cong H \times K$.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+Since $K,H\lhd G$, we have $\forall h\in H,k\in K$, $hkh^{-1} \in K$ and $kh^{-1}k^{-1}\in H$. Thus,
+\be
+hkh^{-1} k^{-1} \in K,\quad hkh^{-1} k^{-1} \in H \ \ra \ hkh^{-1} k^{-1}\in H\cap K = e \ \ra \ hk = kh.
+\ee
+
+Now define $\theta: HK \to H\times K, hk \mapsto (h,k)$. First we should prove $\theta$ is well-defined.
+
+If $h_1k_1 = h_2 k_2$, we have
+\be
+h_2^{-1} h_1 = k_2 k_1^{-1} \in H\cap K \ \ra \ h_2^{-1} h_1 = k_2 k_1^{-1} = e \ \ra \ h_1 = h_2,\ k_1 = k_2 \ \ra \ \theta(h_1k_1) = (h_1,k_1) = (h_2,k_2) = \theta(h_2k_2).
+\ee
+
+Now $\theta$ is a homomorphism:
+\be
+\theta((h_1k_1)(h_2k_2)) = \theta(h_1k_1 h_2k_2) = \theta(h_1h_2k_1k_2) = (h_1h_2,k_1k_2) = (h_1,k_1)(h_2,k_2) = \theta (h_1k_1)\theta(h_2k_2).
+\ee
+
+It is injective since
+\be
+(h_1,k_1) = (h_2,k_2) \ \ra \ h_1 = h_2,k_1=k_2 \ \ra \ h_1k_1 = h_2k_2.
+\ee
+
+It is surjective since for all $(h,k)\in HK$ there exists $hk \in HK$. Thus $\theta$ is isomorphism and $HK \cong H \times K$. (It might be easier if we consider $\theta: H\times K \to HK$).
+\end{solution}
+
+
+
+\begin{problem}
+Let $\theta : G \to H$ be a homomorphism between finite groups. Given $g \in G$, show that the order of $\theta(g)$ must divide the order of $g$. Describe all the homomorphisms from $C_n$ to $C_m$, in particular, what happens if $n$ and $m$ are coprime?
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+Let $r$ be the order of $g$. Then $\theta(g)^r = \theta(g^r) = \theta(e_G) = e_H$ by definition of homomorphism. So the order of $\theta(g)$ must divides $r$.
+
+Write
+\be
+C_n = \bra{e_G,g,\dots,g^{n-1}},\quad C_m = \bra{e_H,h,\dots,h^{m-1}}.
+\ee
+
+Given a homomorphism $\theta :C_n \to C_m$ write $\theta(g) = h^k$ with $0\leq k \leq m-1$, then we must have
+\be
+h^{kn} = \bb{h^k}^n = \bb{\theta(g)}^n = \theta (g^n) = \theta (e_G) = e_H \ \ra \ m|nk
+\ee
+by Lemma \ref{lem:order_element}. Let $c= \hcf(m,n)$, then $\left.\frac mc \right| \frac nc k$, so $\left.\frac mc \right| k$. Thus, $k = a\frac mc$ for some $0\leq a\leq c-1$ (since $k\leq m-1$), and then
+\be
+\theta(g^t) = h^{\frac{atm}{c}}.
+\ee
+
+In particular, if $m$ and $n$ are coprime then $c=1$, we must have $a = 0$, so the only homorphism $\theta:C_n\to C_m$ is the map $\theta$ satisfying $\theta(g^t) = e$ for all $t$.
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\qcutline
+
+\subsection{Group actions}
+
+\begin{problem}
+Suppose that the group $G$ acts on the set $X$. Let $x \in X$, let $y = g(x)$ for some $g \in G$. Show that the stabiliser $G_y$ equals the conjugate $g G_x g^{-1}$ of the stabiliser $G_x$.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+If $\forall h\in G_x$, then
+\be
+ghg^{-1} \cdot y = ghg^{-1} \cdot gx = ghx = gx = y \ \ra \ ghg^{-1}\in G_y \ \ra \ gG_x g^{-1}\subseteq G_y.
+\ee
+
+Simiarly, as $x = g^{-1}y$ we have $g^{-1}G_yg\subseteq G_x$, i.e. $G_y = gG_xg^{-1}$. Thus $gG_xg^{-1} = G_y$.
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%\qcutline
+
+\subsection{Sylow's theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\begin{problem}
+\ben
+\item [(i)] In Problem \ref{que:basic_group_property} we found the number of Sylow 2-subgroups and Sylow 3-subgroups of $S_4$. Check that your answer is consistent with Sylow's theorem (Theorem \ref{thm:sylow}). (Note that if you did not then quite complete proofs for subgroups of order 8, you can do so now.) Identify the normalizers of the Sylow 2-subgroups and Sylow 3-subgroups.
+\item [(ii)] For $p = 2, 3, 5$ find a Sylow $p$-subgroup of $A_5$ and find the normalizer of the subgroup.
+\een
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+\ben
+\item [(i)] $\abs{S_4} = 4! = 24 = 2^3 \cdot 3$.
+
+Let $p =3$. Thus, there exist 4 subgroups of order 3 ($4 \equiv 1 \lmod{p}$) by Lagrange theorem (Theorem \ref{thm:lagrange_group}),
+\be
+\bsa{(1\ 2 \ 3)},\ \bsa{(1\ 2 \ 4)},  \ \bsa{(1\ 3 \ 4)},  \ \bsa{(2\ 3 \ 4)},
+\ee
+
+We know that
+\be
+(3\ 4)\bra{\iota, (1\ 2\ 3), (1\ 3\ 2)} (3\ 4)^{-1} = \bra{\iota, (1\ 2 \ 4), (1\ 4\ 2)}.
+\ee
+
+Thus, the subgroups are conjugate. So the case $p = 3$ is consistent with Sylow's theorem (Theorem \ref{thm:sylow}). The normalizer is of order $\abs{G}/n_p = 24/4 = 6$, thus, for the subgroup $H = \bra{\iota, (1\ 2\ 3), (1\ 3\ 2)}$, the normalizer $N_H$ is
+\be
+\bra{\iota, (1\ 2\ 3), (1\ 3\ 2), (1\ 2), (2\ 3), (1\ 3)}
+\ee
+
+Let $p = 2$. There exist 3 subgroups of order 8 ($3\equiv 1 \lmod{p}$) by Lagrange theorem,
+\beast
+& & \bra{\iota,(1\ 2 \ 3 \ 4), (1 \ 3)(2\ 4), (1\ 4\ 3 \ 2), (1\ 3), (2\ 4), (1\ 4)(2\ 3), (1\ 2)(3\ 4)}\\
+& & \bra{\iota,(1\ 2 \ 4 \ 3), (1 \ 4)(2\ 3), (1\ 3\ 4 \ 2), (1\ 4), (2\ 3), (1\ 3)(2\ 4), (1\ 2)(3\ 4)}\\
+& & \bra{\iota,(4\ 2 \ 3 \ 1), (4 \ 3)(2\ 1), (4\ 1\ 3 \ 2), (4\ 3), (2\ 1), (1\ 4)(2\ 3), (4\ 2)(3\ 1)}
+\eeast
+
+We know that
+\beast
+& & (1\ 2)\bra{\iota,(1\ 2 \ 3 \ 4), (1 \ 3)(2\ 4), (1\ 4\ 3 \ 2), (1\ 3), (2\ 4), (1\ 4)(2\ 3), (1\ 2)(3\ 4)} (1\ 2)\\
+& = & \bra{\iota,(1\ 3\ 4 \ 2),  (1 \ 4)(2\ 3), (1\ 2 \ 4 \ 3),(2\ 3), (1\ 4), (1\ 3)(2\ 4), (1\ 2)(3\ 4)}
+\eeast
+
+Thus, the subgroups are conjugate. So the case $p = 2$ is consistent with Sylow's theorems. The normalizer is of order $\abs{G}/n_p = 24/3 = 8$, thus, for the subgroup $H = \bra{\iota,(1\ 2 \ 3 \ 4), (1 \ 3)(2\ 4), (1\ 4\ 3 \ 2), (1\ 3), (2\ 4), (1\ 4)(2\ 3), (1\ 2)(3\ 4)}$, the normalizer $N_H$ is $H$.
+
+\item [(ii)] $\abs{A_5} = 60 = 2^2 \cdot 3 \cdot 5$.
+
+Suppose $p=2$, $A_5$ has $n_p$ subgroups of order 4, with $n_p \equiv 1 \lmod{2}$ and $n_p \mid 15$. So $n_p = $3, 5 or 15. We know that the element can be the form of (1 2 3) since its order is 3 and $3\nmid 4$. Also the element can not be the form of (1 2) or (1 2 3 4) since they have odd transpositions. Thus it has to be of the form
+\be
+\bra{\iota, (1\ 2)(3\ 4), (1\ 3)(2\ 4),(1\ 4)(2\ 3)}
+\ee
+
+Totally, we have $n_p = 5$. Thus, the normalizer is of order 60/5 = 12. Thus, for $H = \bra{\iota, (1\ 2)(3\ 4), (1\ 3)(2\ 4),(1\ 4)(2\ 3)}$, we have
+\be
+N_{A_5}(H) = \bra{\iota, (1\ 2)(3\ 4), (1\ 3)(2\ 4),(1\ 4)(2\ 3), (1 \ 2 \ 3), (1 \ 3 \ 2), (1 \ 2 \ 4), (1 \ 4 \ 2), (1 \ 3 \ 4), (1 \ 4 \ 3), (2 \ 3 \ 4), (2 \ 4 \ 3)}
+\ee
+
+Suppose $p=3$, $A_5$ has $n_p$ subgroups of order 3, with $n_p \equiv 1 \lmod{3}$ and $n_p \mid 20$, So $n_p=$ 4 or 10. We know
+\be
+\bra{\iota, (1 \ 2 \ 3), (1\ 3\ 2)}
+\ee
+is one of them. Thus $n_p = C^5_2 = 10$. So the normalizer is of order 60/10 = 6. Thus, for $H= \bra{\iota, (1 \ 2 \ 3), (1\ 3\ 2)}$, we have
+\be
+N_{A_5}(H) = \bra{\iota, (1 \ 2 \ 3), (1\ 3\ 2), (1\ 2)(4\ 5), (1\ 3)(4\ 5), (2\ 3)(4\ 5)}.
+\ee
+
+Suppose $p = 5$, $A_5$ has $n_p$ subgroups of order 5, with $n_p \equiv 1 \lmod{5}$ and $n_p \mid 12$.
+
+% So $n_p= 6$. So the normalizer is of order 60/6 = 10 (either $C_{10}$ or $D_{10}$). Thus, for $H= \bra{\iota, (1 \ 2 \ 3\ 4\ 5),  (1 \ 3 \ 5\ 2\ 4) , (1 \ 4 \ 2\ 5\ 3),  (1 \ 5 \ 4\ 3\ 2)}$ so $N_{A_4}(H)$ has to be $D_{10}$. We have (the other element have to be of the form (1 2)(3 4), otherwise $(1\ 2\ 3)^2$ is not $e$ i.e., (1 2 3) is not reflection)
+
+But $H= \bra{\iota, (1 \ 2 \ 3\ 4\ 5),  (1 \ 3 \ 5\ 2\ 4) , (1 \ 4 \ 2\ 5\ 3),  (1 \ 5 \ 4\ 3\ 2)}$ is the only subgroup. Thus $\abs{N_{A_5}(H)} = 60/1 =60$. Hence, $N_{A_5}(H) = A_5$.
+%\be
+%N_{A_5}(H) = \bra{\iota, (1 \ 2 \ 3\ 4\ 5),  (1 \ 3 \ 5\ 2\ 4) , (1 \ 4 \ 2\ 5\ 3),  (1 \ 5 \ 4\ 3\ 2), (1\ 2)(3\ 4), (1 \ 4 \ 3\ 5\ 2), (1 \ 3 \ 2\ 4\ 5), (1 \ 5 \ 4\ 2\ 3), (1 \ 2 \ 5\ 3\ 4), }
+%\ee
+
+\een
+\end{solution}
+
+
+%\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Show that there is no simple group of order 441. Show that there is no simple group of order 351. How about orders 300 and 320?
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+$441 = 3^2 \cdot 7^2$. $n_7 \equiv 1 \lmod{7}$ and $n_7 \mid 9$. Thus, $n_7 = 1$. Since Sylow 7-subgroup is normal in $G$. Thus, $G$ is not simple.
+
+$351 = 3^3 \cdot 13$. $n_{13} = \equiv 1 \lmod{13}$ and $n_{13} \mid 27$. Thus, $n_{13} = 1$ or $27$. If $n_{13} =1$, $G$ is not simple as above. So we assume $n_{13} = 27$. $n_3 \equiv 1 \lmod{3}$ and $n_3 \mid 13$. If $n_3 =1$, $G$ is not simple as above. So we assume $n_3 = 13$. Thus there will be $13 *(27-1) + 9 *(13 -1) > 351$ elements. Contradiction. Thus, $G$ is no simple.
+
+$300 = 2^2 \cdot 3 \cdot 5^2$. $n_5 \equiv 1 \lmod{5}$ amd $n_5 \mid 12$. Thus $n_5 = 1$ or 6. So we assume $n_5 = 6$. If $G$ is abelian, all the subgroups are normal and thus $G$ is not simple. If $G$ is not abelian simple, it must have $300\mid n_5!/2$ (by Corollary \ref{cor:non-abelian_simple}), but $300 \nmid 360 = n_5!/2$. Thus
+$G$ is not simple.
+
+$320 = 2^6 \cdot 5$. $n_2\equiv 1 \lmod{2}$, $n_2 \mid 5$. So assume $n_2 = 5$. If $G$ is abelian, all the subgroups are normal and thus $G$ is not simple. If $G$ is not abelian simple, it must have $300\mid n_2!/2$ (by Corollary \ref{cor:non-abelian_simple}), but $300 \nmid 60 = n_2!/2$. Thus $G$ is not simple. %Also, $n_5 \equiv 1 \lmod{5}$ and $n_5 \mid 64$. So assume $n_5 = 16$.
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%\qcutline
+
+\begin{problem}\label{ques:simple_prime_product}
+Let $p$, $q$ and $r$ be primes (not neccessarily distinct). Show that no group of order $pq$ is simple. Show that no group of order $pq^2$ is simple. Show that no group of order $pqr$ is simple.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+If $p = q$, $G$ of order $p^2$ is abelian (Proposition \ref{pro:p2_abelian}), thus $G$ is not simple. If $p \neq q$, assume $p > q$, $n_p\equiv 1 \lmod{p}$ with $n_p\mid q$ and $n_q\equiv 1 \lmod{q}$ with $n_q\mid p$. So $n_p = 1$. Thus, $G$ is not simple.
+
+If $p = q$, $G$ is of order $p^3$. If $G$ is abelian, it is not simple. So assume $G$ is non-abelian, thus the center $Z(G)$ is of order $p$ by question \ref{pro:group_prime_cube} (i). Since center is normal and non-trivial, we have the contradiction. Thus, $G$ is not simple.
+
+If $p \neq q$, $n_p \equiv 1 \lmod{p}$ with $n_p \mid q^2$ and $n_q \equiv 1 \lmod{q}$ with $n_q \mid p$. If $n_p$ or $n_q$ = 1, we are done. So assume
+$n_q = p$ and $n_p = q$ or $q^2$.
+
+If $n_p = q$, we have $q \equiv 1 \lmod{p}$ and $p \equiv 1 \lmod{q}$. Contradiction.
+
+Suppose $n_p = q^2$. We have $p = 1+ rq$, thus $p >q$. Also, $q^2 = 1+ sp$, thus  %we have that there are $q^2(p-1) + p(q-1) = pq^2 + pq -  $
+\be
+p \mid (q+1) \text{ or } p \mid(q-1) \ \ra \ p \mid (q+1)
+\ee
+
+Thus the only possibility is $p = 3$, $q = 2$. Thus $\abs{G} = 12$, but for non-abelian group $G$, $12\nmid 1 = n_3!/2$. Thus, $G$ is not simple.
+
+For $pqr$, we only need to check the distinct prime numbers. Assume $p>q>r$, we have
+\be
+n_p \equiv 1 \lmod{p},\ n_p \mid qr,\quad n_q \equiv 1 \lmod{q},\ n_q \mid pr, n_r \equiv 1 \lmod{r},\ n_r \mid pq,
+\ee
+
+%If any of $n_p, n_q,n_r$ is 1, we are done. Thus,
+%\be
+%qr = 1 + mp,\quad pr = 1+ nq,\quad pq = 1 + lr
+%\ee
+
+Note that $p$-subgroups are cyclic, thus the same element can not appear in two different subgroups.
+
+If any of $n_p,n_q,n_r$ is 1, we are done. So we assume they are not 1.
+
+We know that $n_p \geq p + 1$, thus, we have $n_p>q,n_p > r$, so $n_p = qr$. Thus, we have $qr(p-1)$ elements of order $p$.
+
+Also, we have $n_q \geq q +1$, thus $n_q = p$ or $pr$.
+
+If $n_q = pr$, we have $pr(q-1)$ elements of order $q$. Thus, totally, at least
+\be
+qr(p-1) + pr(q-1) = pqr + (pqr - qr - pr) = pqr + ((p-1)(q-1) - 1) r  > pqr
+\ee
+elements. Contradiction.
+
+So we have $n_q = p$, will be $p(q-1)$ elements of order $q$. Furthermore, $n_r$ is at least $q$. Thus, there are at least $q(r-1)$ elements of order $r$.
+
+Thus, totally, there are at least
+\be
+qr(p-1) + p(q-1) + q(r-1) = pqr + pq -qr + qr -p - q = pqr + (p-1)(q-1) -1 > pqr
+\ee
+elements. Contradiction.
+
+Thus $pqr$ is not simple.
+\end{solution}
+
+%\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}\label{pro:30_normal_cyclic_15}
+\ben
+\item [(i)] Show that any group of order 15 is cyclic.
+\item [(ii)] Show that any group of order 30 has a normal cyclic subgroup of order 15.
+\een
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+\ben
+\item [(i)] $15 = 3\cdot 5$. Thus, $n_3 \equiv 1 \lmod{3}$ and $n_3\mid 5$ gives that $n_3 = 1$. Similarly, $n_5 = 1$. So $H$ and $K$ are normal if $\abs{H}=3$, $\abs{K} =5$. Since $H$ and $K$ are cyclic and $H,K\lhd G$, $H\cap K = e$, we have $G \cong H\times K$ by Problem \ref{ques:group_direct_product}. Then by Lemma \ref{lem:coprime_cycle_cong}, 3 and 5 are coprime. Thus $G \cong C_3 \times C_5 \cong C_{15}$.
+
+\item [(ii)] $30 = 2\cdot 3 \cdot 5$. Thus,
+\be
+n_2 \equiv 1 \lmod{2}, n_2\mid 15,\quad n_3 \equiv 1 \lmod{3}, n_3\mid 10,\quad n_5 \equiv 1 \lmod{5}, n_5\mid 6.
+\ee
+
+If $n_3,n_5 \neq 1$, we have $n_3 = 10$ and $n_5 = 6$ and therefore there are at least $10\cdot (3-1) + 6 \cdot (5-1) = 20 + 24 = 48$ elements. Thus, at least one of $n_3,n_5$ is 1.
+
+\ben
+\item [(a)] If $n_3 = 1$, we have a normal $H\lhd G$ with $\abs{H} = 3$. Thus $\abs{G/H} = 10$. Now consider $G/H$, $n_5\equiv 1 \lmod{5}$ with $n_5 \mid 2$, so $n_5 =1$. Then there is a normal $G'/H \lhd G/H$ with $\abs{G'/H} =5$. Thus, $\abs{G'} = \abs{G'/H}\abs{H} = 15$. Thus, $G'$ is cyclic subgroup by (i).
+
+Thus $\forall hk\in G', g\in G$ where $h\in H$, $k\in K$, we know that
+\be
+hg = gh,\ kg = gk \ \ra \ (hk)g = h(kg) = h(gk) = ghk = g(hk).
+\ee
+Thus $G'$ is normal.
+
+\item [(b)] If $n_5 = 1$. we have a normal $H\lhd G$ with $\abs{H} = 5$. Thus, $\abs{G/H} = 6$. Now consider $G/H$, $n_3\equiv 1 \lmod{3}$ with $n_3 \mid 2$, so $n_3 = 1$. Then there is a normal $G'/H \lhd G/H$ with $\abs{G'/H} =3$. Thus, $\abs{G'} = \abs{G'/H}\abs{H} = 15$. Thus, $G'$ is cyclic subgroup by (i). Similarly, $G'$ is normal.
+\een
+\een
+\end{solution}
+
+%\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $N$ and $H$ be groups, and suppose that there is a homomorphism $\phi$ from $H$ to $\aut(N)$. Show that we can define a group operation on $N \times H$ by
+\be
+(n_1, h_1)\cdot(n_2, h_2) = (n_1\cdot n_2^{\phi(h_1)}, h_1\cdot h_2),
+\ee
+where we write $n^{\phi(h)}$ for the image of $n$ under $\phi(h)$. Show that the resulting group $G$ has (copies of) $N$ and $H$ as subgroups, that $N$ is normal in $G$, that $G = NH$ and $N \cap H = 1$. (We say that $G$ is a semidirect product\index{semidirect product!groups} of $N$ by $H$.)
+
+Find an element of $\aut(C_7)$ of order 3 and construct a non-abelian group of order 21 as a semidirect product of $C_7$ by $C_3$.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+Note that the elements of $\aut(N)$ are the maps $N\to N$.
+
+The closure is obvious. Thus, for $(n_1,h_1),(n_2,h_2), (n_3,h_3) \in N\times H$, since $\phi$ is a homomorphism and $\phi(h)$ is an automorphism (map) $N\to N$,
+\beast
+\bb{(n_1,h_1)(n_2,h_2)}(n_3,h_3) & = & \bb{(n_1\cdot n_2^{\phi(h_1)}, h_1\cdot h_2)} (n_3,h_3) = \bb{n_1  n_2^{\phi(h_1)} n_3^{\phi(h_1h_2)}, h_1 h_2 h_3}\\
+\
+& = & \bb{n_1  n_2^{\phi(h_1)} n_3^{\phi(h_1)\phi(h_2)}, h_1 h_2 h_3}  = \bb{n_1  n_2^{\phi(h_1)} \bb{n_3^{\phi(h_2)}}^{\phi(h_1)}, h_1 h_2 h_3}\\
+& = & \bb{n_1  \bb{n_2 n_3^{\phi(h_2)}}^{\phi(h_1)}, h_1 h_2 h_3} \quad \phi(h_1) \text{ is homomorphism}   \\
+& = & \bb{n_1  \bb{n_2 n_3^{\phi(h_2)}}^{\phi(h_1)}, h_1 h_2 h_3} = (n_1,h_1)(n_2 n_3^{\phi(h_2)},h_2h_3) \\
+& = & (n_1,h_1)\bb{(n_2,h_2)(n_3,h_3)}.
+\eeast
+
+Thus associativity holds. For the identity, we try $(e_N,e_H)$, Thus, $\phi(e_H) = \iota$ where $\iota$ is the identity map, since $\phi$ is a homomorphism. Thus, $\forall n\in N,h\in H$,
+\be
+(e_N,e_H) (n, h)= \bb{e_N n^{\phi(e_H)}, e_H h} = \bb{e_N \iota(n), e_H h} = (e_N n, e_H h) = (n,h).
+\ee
+
+\be
+(n, h)(e_N,e_H) = \bb{n e_N^{\phi(n)}, he_H } = (n e_N, h e_H) = (n,h).
+\ee
+
+For the inverse, try $\bb{(n^{-1})^{\phi^{-1}(h)},h^{-1}}$,
+\beast
+(n,h)\bb{(n^{-1})^{\phi^{-1}(h)},h^{-1}} & = & \bb{n \bb{(n^{-1})^{\phi^{-1}(h)}}^{\phi(h)}, h h^{-1}} = \bb{n (n^{-1})^{\phi^{-1}(h)\phi(h)}, h h^{-1}}\\
+& = & \bb{n n^{-1}, h h^{-1}} = (e_N,e_H).
+\eeast
+
+\beast
+\bb{(n^{-1})^{\phi^{-1}(h)},h^{-1}} (n,h) & = & \bb{(n^{-1})^{\phi^{-1}(h)} n^{\phi(h^{-1})}, h^{-1}h} = \bb{(n^{-1})^{\phi^{-1}(h)} n^{\phi^{-1}(h)}, h^{-1}h}\\
+& = & \bb{(n^{-1} n)^{\phi^{-1}(h)}, h^{-1}h} = \bb{e_N^{\phi(h)^{-1}}, e_H} = \bb{e_N, e_H}
+\eeast
+since $\phi(h)^{-1}$ is homomorphism.
+
+We know that $N\cong N\times \bra{e_H} := N' \leq G$, $H\cong \bra{e_N} \times H := H' \leq G$. Thus, $N',H'$ are subgroups. $\forall x= (m,e_H) \in N',g = (n,h) \in G$, we have
+\beast
+gxg^{-1} & = & (n,h) (m,e_H)\bb{(n^{-1})^{\phi^{-1}(h)},h^{-1}} = \bb{n m^{\phi(h)}, he_H} \bb{(n^{-1})^{\phi^{-1}(h)},h^{-1}}\\
+& = & \bb{n m^{\phi(h)}, h} \bb{(n^{-1})^{\phi^{-1}(h)},h^{-1}} = \bb{n m^{\phi(h)} \bb{(n^{-1})^{\phi^{-1}(h)}}^{\phi(h)},hh^{-1}}\\
+& = & \bb{n m^{\phi^{-1}(h)}n^{-1},hh^{-1}} = \bb{n m^{\phi^{-1}(h)}n^{-1},e_H} \in N'.
+\eeast
+
+So $N'$ is normal in $G$.
+
+$\forall (n,h)\in G$, we have $(n,e_H)\in N'$ and $(e_N, h) \in H'$.
+\be
+(n,e_H)(e_N,h) = \bb{ne_N^{\phi(e_H)},e_Hh} = \bb{n e_N^{\iota},h} = (n,h) \in G\ \lra \ G = N'H'.
+\ee
+
+Clearly, $N'\cap H' = \bra{(e_N,e_H)}$.
+
+Now we have the map $f$ for $N = C_7$ containing $\bra{1,2,3,4,5,6,7}$,
+\be
+f(1) = 1,\ f(2) = 3,\ f(3) = 4,\ f(4) = 2,\ f(5) = 6,\ f(6) = 7,\ f(7) = 5 \ \ra \ f:(2\ 3\ 4)(5\ 6\ 7)
+\ee
+
+Thus, $f^2 = f\circ f = (2\ 4\ 3)(5\ 7\ 6)$, $f\circ f \circ f = f^3 = \iota$. So $f\in \aut(C_7)$ is of order 3.
+
+Let $g\in H = C_3$ ($C_3 = \bra{e,g,g^2}$) and
+\be
+\phi(e) = \iota,\ \phi(g) = f, \ \phi(g^2) = f^2.
+\ee
+
+Then $G = NH$ defined as above is semidirect product of $C_7$ by $C_3$ whose order is 21.
+
+Let $n\in C_7, h \in C_3$ and $\forall (n^{i_1},h^{j_1}),(n^{i_2},h^{j_2})\in G$ where $i_1,i_2 \in \bra{0,1,2,3,4,5,6}$, $j_1,j_2 \in \bra{0,1,2}$
+\beast
+(n^{i_1},h^{j_1})(n^{i_2},h^{j_2}) & = & \bb{n^{i_1}\bb{n^{i_2}}^{\phi(h^{j_1})}, h^{j_1}h^{j_2}} = \bb{n^{i_1}\bb{n^{\phi(h^{j_1})}}^{i_2}, h^{j_1}h^{j_2}}\\
+(n^{i_2},h^{j_2})(n^{i_1},h^{j_1}) & = & \bb{n^{i_2}\bb{n^{i_1}}^{\phi(h^{j_2})}, h^{j_2}h^{j_1}} = \bb{n^{i_2}\bb{n^{\phi(h^{j_2})}}^{i_1}, h^{j_2}h^{j_1}}
+\eeast
+
+If we set $i_1 =1$, $i_2 = 2$, $j_1=j_2 = 1$,
+\be
+n^{i_1}\bb{n^{\phi(h^{j_1})}}^{i_2} = n \bb{n^{\phi(h)}}^{2},\quad n^{i_2}\bb{n^{\phi(h^{j_2})}}^{i_1} = n^2 \bb{n^{\phi(h)}}
+\ee
+
+Let $C_7 = \bra{e,t,t^2,t^3,t^4,t^5,t^6}$ with indices from 1 to 7. Then if we have $\phi(h) = f$ and $n = t$,
+\be
+n \bb{n^{\phi(h)}}^{2} = t \bb{f(t)}^2 = t \bb{t^2}^2 = t^5,\quad n^2 \bb{n^{\phi(h)}} = t^2 \bb{f(t)} = t^4.
+\ee
+
+Thus, we have $(n^{i_1},h^{j_1})(n^{i_2},h^{j_2}) \neq (n^{i_2},h^{j_2})(n^{i_1},h^{j_1})$. Thus, $G$ is non-abelian.
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $p$ be a prime. How many elements of order $p$ are there in $S_p$, the symmetric group of order $p$? What are their centralizers? How many Sylow $p$-subgroups are there? What are the orders of their normalizers? If $q$ is a prime dividing $p - 1$, deduce that there exists a non-abelian group of order $pq$.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+Suppose $\tau \in S_p$ with $o(\tau) = p$. Clearly, $\bsa{\tau} \cong C_p$ since $p$ is a prime. Now consider the centraliser of $\tau$ in $S_p$, thus,
+\be
+C_{S_p}(\tau) = \bra{\sigma \in S_p: \sigma \tau \sigma^{-1} = \tau}
+\ee
+
+We know that $\tau = (a_1 a_2 \dots a_p)$ and $\sigma \tau \sigma^{-1} = (\sigma(a_1) \sigma(a_2)\dots \sigma(a_p))$ by the result in Theorem \ref{thm:permutation_cycle_type}. Thus, $C_{S_p}(\tau) \cong C_p$ and therefore $C_{S_p}(\tau) = \bsa{\tau}$. So $\abs{C_{S_p}(\tau)} = p$. By orbit-stabiliser theorem, we have $p!/p = (p-1)!$ elements in the conjugacy class of $\tau$.
+
+Then by Theorem \ref{thm:permutation_cycle_type}, the permutations in $S_n$ are conjugate in $S_n$ iff they have the same cycle type. Thus, all the elements in the conjugacy class are of order $p$. Hence, there are $(p-1)!$ elements of order $p$.
+
+We know that in each $p$-subgroup, there are $p-1$ elements of $p$. Then we have that there are $(p-1)!/(p-1) = (p-2)! = n_p$ $p$-subgroups.
+
+(Recall that $n_p \equiv 1 \lmod{p}$ by Sylow Theorem. It is true that $(p-2)! \equiv 1 \lmod{p}$ when $p$ is a prime.)
+
+Then we have (by Corollary \ref{cor:np_ng}) for $P\in X$ where $X$ is the set of $p$-subgroups,
+\be
+\abs{N_{S_p}(P)} = \frac{\abs{S_p}}{n_p} = \frac{p!}{(p-2)!} = p(p-1).
+\ee
+
+If $p =2$, there is no prime $q$ dividing $p-1$.
+
+If $p = 3$, then $q=2$ and $D_6$ is a non-abelian group of order $2\cdot 3$.
+
+If $p >3$, then by Sylow theorem there exist $(p-2)!$ Sylow $p$-subgroup of $S_p$. Let $P$ be a Sylow $p$-subgroup which is cyclic, generated by $h$ ($P = \bsa{h}$). Now consider the normaliser $N_{S_p}(P)$ of order $p(p-1) = npq$ since $q \mid (p-1)$. Then by Sylow theorem (Theorem \ref{thm:sylow})there exists a $q$-subgroup generated by $k\in N_{S_p}(P)$ i.e. $kP = Pk$. Since $q$ is prime, we have $q$-subgroup is cyclic. Let $Q = \bra{k}$.
+
+Then consider $G:=PQ = \bra{hk:h\in P,k\in Q}$. $\forall h_1k_1,h_2k_2 \in PQ$,
+\be
+(h_1k_1)(h_2k_2)^{-1} = h_1k_1 k_2^{-1}h_2^{-1} \underbrace{=}_{kP = Pk,\ h_3\in P} \underbrace{h_1 h_3}_{\in P} \underbrace{k_1k_2^{-1}}_{\in Q} \in G.
+\ee
+So by Lemma \ref{lem:subgroup}, $G\leq S_p$. Thus, $k \in N_{S_p}(P) \ \ra \ k \in N_G(P)$. Since $P \cap Q = \bra{e}$, we have $\abs{G} = \abs{P}\abs{Q} = pq$. Then apply Sylow theorem (Theorem \ref{thm:sylow}) (i),(iii) on $G$, there are $n_p$ $p$-subgroups in $G$ and
+\be
+n_p \equiv 1 \lmod{p},\quad n_p \mid q \ \ra \ n_p = 1.
+\ee
+
+Thus there are only one $p$-subgroup and thus $p-1=q$ elements in conjugacy class. Thus let the centraliser be $C_G(h)$ and we have $\abs{C_G(h)} = pq/q = p$ by orbit-stabiliser theorem. Thus $C_G(h) = \bsa{h}$.
+
+If $hk = kh$, then $k \in C_G(h)$. Contradiction. Thus, $G$ is non-abelian.
+
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\qcutline
+
+
+\begin{problem}
+Show that no non-abelian simple group has order less than 60.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+According to Problem \ref{ques:simple_prime_product}, we can remove all the cases that $p,pq,pq^2,pqr$ where $p,q,r$ are primes.
+
+So we remove the corresponding number and then we have 16, 24, 32, 36, 40, 48, 54 and 56 left.
+
+For $\abs{G} = 16,32$, $G$ is a finite 2-group. Then by Theorem 3.6.1., $Z(G)$ is non-trivial. $Z(G) \leq G$ by Proposition 3.5.15., so $Z(G) \lhd G$. Thus, $G$ is not simple.
+
+If $\abs{G} = 24 = 2^3 \cdot 3$. Then $n_3 \equiv 1 \lmod{3}$, $n_3\mid 8$, so $n_3 = 1,4$. Then $n_3 < 5$ and it is a contradiction to Corollary 3.7.4. Thus, $G$ is not non-abelian simple.
+
+If $\abs{G} = 36 = 2^2 \cdot 3^2$. Then $n_3 \equiv 1 \lmod{3}$, $n_3\mid 4$, so $n_3=1,4$. So the same argument gives that $G$ is not non-abelian simple.
+
+If $\abs{G} = 40 = 2^3 \cdot 5$. Then $n_5\equiv 1\lmod{5}$, $n_5 \mid 8$, $n_5 = 1$. So the unique $5$-subgroup is normal in $G$ by Lemma 3.7.2.. Then $G$ is not simple.
+
+If $\abs{G} = 48 = 2^4 \cdot 3$. Then $n_2 \equiv 1 \lmod{5}$, $n_2 \mid 3$, $n_2 = 1,3$. So the same argument with the case $\abs{G} = 24$ gives that $G$ is not non-abelian simple.
+
+If $\abs{G} = 54 = 2\cdot 3^3$. Then $n_3 \equiv 1\lmod{3}$ and $n_3 \mid 2$, $n_3 = 1$. So the unique $3$-subgroup is normal in $G$ by Lemma 3.7.2.. Then $G$ is not simple.
+
+If $\abs{G} = 56 = 2^3 \cdot 7$. Then $n_2\equiv 1\lmod{2}$, $n_2 \mid 7$, $n_2 = 1,7$. Similarly, $n_7 = 1,8$. If any of $n_2$ or $n_5$ is 1, $G$ is not simple. If $n_2 = 7$, $n_7 = 8$, we have $(8-1) + 8(7-1) = 55$ different elements in one of Sylow 2-subgroups and in all 8 Sylow 7-subgroups. But in the other 6 Sylow 2-subgroups there is at least one different element. Thus, the total number of non-identity elements is at least 56. But that's too many. Hence $n_2 = 1$ or $n_7 = 1$. So $G$ is not simple.
+\end{solution}
+
+%\qcutline
+
+\begin{problem}
+Let $G$ be a simple group of order 60. Show that $G$ is isomorphic to the alternating group $A_5$, as follows. Show that $G$ has six Sylow 5-subgroups. Deduce that $G$ is isomorphic to a subgroup (also denoted by $G$) of index 6 of the alternating group $A_6$. By considering the coset action of $A_6$ on the set of cosets of $G$ in $A_6$, show that there is an automorphism of $A_6$ which takes $G$ to $A_5$. %(The automorphism of $A_6$ which you have produced has some remarkable properties - it is not induced by conjugation by any element of $S_6$. Such an automorphism of $A_n$ only exists for $n = 6$.)
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+$\abs{G} = 60 = 2^2 \cdot 3 \cdot 5$. $n_5 \equiv 1\lmod{5}$, $n_5 \mid 12$, thus, $n_5 = 1,6$. If $n_5 = 1$, 5-subgroup is normal and thus $G$ is not simple. Hence $n_5 = 6$.
+
+Recall Lemma \ref{lem:permutation_representation}: Fixing $g\in G$, the map $\varphi_g : X\to X$, $x\mapsto g(x)$ is a permutation of $X = \bra{\text{Sylow 5-subgroup}}$ with $\abs{X} = 6$, so $\varphi_g\in \sym(X)=S_6$. Then the mapping $\vp:G\to \sym(X)$, $g\mapsto \vp_g$, with $\vp_g(x) = g(x)$, is a homomorphism called a permutation representation of $G$.
+
+The image $\vp(G)$ is a subgroup of $\sym(X) = S_6$, denoted $G^X$. The kernel of $\vp$, $\ker\vp = \{g \in G : g (x) = x, \forall x \in X\}$, also denoted $G_{X}$, is a normal subgroup and $G/G_X \cong G^X$.
+
+We know that $G_X$ is normal, if it is non-trivial, $G$ is not simple. Contradiction. Thus, we have $G_X$ is trivial and therefore we have $G = G/G_X \cong G^X \leq \sym(X) = S_6$.
+
+But $A_6 \lhd S_6$ and so by the second isomorphism theorem (Theorem \ref{thm:isomorphism_2_group}), $G^X \cap A_6 \lhd S_6$. Since $G^X \cap A_6 \subseteq G^X$, $G^X \cap A_6 \lhd G^X$ ($G^X \cap A_6$ is normal subgroup in $S_6$). Simplicity of $G^X$ implies that either
+\be
+G^X \cap A_6 = \{e\} \quad \text{or}\quad G^X \cap A_6 = G^X.
+\ee
+In the first case, the second isomorphism theorem implies
+\be
+G^X= G^X/\bra{e} = G^X/(G^X \cap A_6) \cong (G^X A_6)/A_6 \leq S_6/A_6
+\ee
+and hence $\abs{G^X} \leq 2$, which should be abelian, a contradiction. Thus, $G^X\subseteq A_6$ and $G\cong G^X\leq A_6$.
+
+We know that $G^X$ is of order 60, and $\abs{A_6} = 6!/2 = 360$. Thus, $G^X$ is a subgroup of $A_6$ with index 6.
+
+%Finally, we have $n > 4$ since $A_4$ has no non-abelian simple subgroups.
+
+%(Alternative approach. In lecture we showed that if $H$ is a simple non-abelian group, then $H$ is isomorphic to a subgroup of $A_{n_p}$ for any $p$. The only simple abelian groups are those of prime order, so $G$ is simple and abelian, so $G$ is isomorphic to $G\cong A_6$. $\abs{G} = 60$ and $\abs{A_6} = 360$, $\abs{A_6:G} = 6$.)
+
+Now we apply Lemma \ref{lem:permutation_representation} again. Considering the mapping $\phi_g:Y\to Y$, $y\mapsto g(y)$ where $g\in A_6$ and $y\in Y = \bra{hG^X:h\in A_6} = A_6/G^X$, $\abs{Y} = 6$. Then the mapping $\phi:A_6\to \sym(Y) = S_6$, $g\mapsto \phi_g$, with $\phi_g(y) = g(y)$, is a homomorphism called a permutation representation of $A_6$.
+
+Then by first isomorphism theorem (Theorem \ref{thm:isomorphism_1_group}), $A_6/\ker\phi = \im\phi$. Since $A_6$ is simple, $\ker\phi = \bra{e}$, thus
+\be
+A_6 = A_6/\bra{e} = A_6/\ker\phi\cong  \im\phi = \phi(A_6).
+\ee
+
+So $\phi:A_6 \to A_6$ is an automorphism. We know that $G^X \leq A_6$, so $\phi(G^X) \leq A_6$.
+
+Now we have $y\in \bra{G^X,g_1G^X,g_2G^X,g_3G^X,g_4G^X,g_5G^X}$ where $g_1,g_2,g_3,g_4,g_5\in A_6,\notin G^X$. Then for the element $g \in G^X$,
+\be
+\phi(g) = g(y) \in \bra{G^X,gg_1G^X,gg_2G^X,gg_3G^X,gg_4G^X,gg_5G^X}.
+\ee
+
+Thus $\phi(G^X)$ is the even permutation of 5 cosets of $G^X$, $g_1G^X,g_2G^X,g_3G^X,g_4G^X,g_5G^X$. Thus, $\phi(G^X)\subseteq A_5$ and $\phi(G^X)\leq A_5$. Then since $G^X$ is simple as $G \cong G^X$, we have $\ker \phi = \bra{e}$,
+\be
+G^X = G^X /\bra{e} = G^X / \ker\phi \cong \im \phi = \phi(G^X)
+\ee
+
+Thus, $\abs{\phi(G^X)} = \abs{G^X} = \abs{G} = 60 = 6!/2 = \abs{A_5}$. Since $\phi(G^X) \leq A_5$, we have $\phi(G^X) = A_5$. Thus,
+\be
+A_5 = \phi(G^X) \cong G^X \cong G.
+\ee
+\end{solution}
+
+%\qcutline
+
+\begin{problem}
+Let $G$ be a group of order 60 which has more than one Sylow 5-subgroup. Show that $G$ must be simple.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+$\abs{G} = 60 = 2^2 \cdot 3 \cdot 5$. By Sylow theorem, $n_5 \equiv 1\lmod{5}$, $n_p \mid 12$, thus $n_5 = 1,6$. Since $G$ has more than one Sylow 5-subgroup, we have $n_5 =6$. Since 5-subgroup is $C_5$, there are $6 \cdot(5-1) = 24$ distinct elements of order 5.
+
+If $H$ is normal subgroup of $G$, $H\lhd G$, it must have the size of 2,3,4,5,6,10,12,15,20,30.
+
+\ben
+\item [(a)] If $\abs{H} = 5,10,15,20$, it must have Sylow 5-subgroup. Also, $H$ is normal and it must have all Sylow 5-subgroup since all Sylow 5-subgroup are conjugate. However, $24 > 5,10,15,20$. Contradiction.
+
+\item [(b)] If $\abs{H} = 30$, we use the result in Problem \ref{pro:30_normal_cyclic_15}.(ii), $n_5 = 1$. Contradiction.
+
+\item [(c)] If $\abs{H} = 2,3,4,6$, $\abs{G/H} = 30,20,15,10$. $n_5 \equiv 1 \lmod{5}$, $n_5\mid 6,4,3,2$. From the above, we have $n_5 = 1$. Let $G'/H$ be a 5-subgroup of $G/H$. Since $n_5 = 1$, we have $G'/H\lhd G/H$ by Lemma \ref{lem:unique_sylow_in_normaliser}. Then $\abs{G'} = 5 \abs{H} = 10,15,20,30$, respectively. Then by Proposition \ref{pro:remark_second_isomorphism_theorem_group}, let $K\lhd G$ and $L\leq G$ be a subgroup containing $K$. Then
+\be
+L/K \lhd G/K \ \lra\  L \lhd G.
+\ee
+
+Thus we have
+\be
+G'/H\lhd G/H \ \ra \ G' \lhd G.
+\ee
+
+However, $\abs{G'} = 10,15,20,30$. Contradiction by result in (a) and (b).
+
+\item [(d)] Finally, if $\abs{H}  =12 = 2^2 \cdot 3$, we have
+\be
+n_2 \equiv 1 \lmod{2},\ n_2 \mid 3,\quad n_3 \equiv 1 \lmod{3},\ n_3 \mid 4 \ \ra \ n_2 = 1,3,\ n_3 = 1,4.
+\ee
+
+If $n_2 = 3$ and $n_3 = 4$, we have at least $(4-1) + 4(3-1) + 1$ (since elements of order 3 are distinct, $4-1$ elements in one group are distinct and there is an extra distinct element in other Sylow 2-subgroup) non-identity elements. Then one of $n_2$ or $n_3$ has to be 1.
+
+Let $N$ be unique Sylow 2/3-subgroup of $H$. Then $N\lhd H$ by Lemma \ref{lem:unique_sylow_in_normaliser}. Clearly, $N$ is also a Sylow 2/3-subgroup of $G$. Thus $H$ contains all Sylow 2/3-subgroup of $G$ since $H\lhd G$ and all Sylow 2/3-subgroup are conjugate. Thus, $N$ is the unique Sylow 2/3-subgroup of $G$. Again, by Lemma \ref{lem:unique_sylow_in_normaliser}, $N\lhd G$. But $\abs{N} = 3,4$ which is contradiction by (c).
+%Since $H\lhd G$,
+\een
+
+Thus, $G$ must be simple.
+\end{solution}

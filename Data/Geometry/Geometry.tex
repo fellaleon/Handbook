@@ -1,0 +1,266 @@
+\chapter{Euclidean Geometry}
+
+\section{Basic Law}
+
+\subsection{Law of cosine}
+
+
+
+\section{Lengths of Segments}
+
+\begin{example}
+For the triangle $\triangle ABC$, $AC = BC$, $D$ is the middle point of $AC$. Furthermore, for the point $E$ on $BC$, $BD = BE$ and $\angle CDE=\angle ADB$. If $DE=2$ then $BE=?$
+
+\begin{center}%\psset{yunit=4cm,xunit=4}
+\begin{pspicture}(-4,-4.5)(4,1)%\parbox{4.5cm}{
+% BD = x = 5.068, y_B = sqrt(x(1+x)/2) = 3.921, x_B = sqrt(x(x-1)/2) = 3.211
+% DE = 1, EC = DExBE/EH = 2x/(x-2) = 3.304, BC = x^2 /(x-2) = 8.372, DC = 4.186
+% EJ = sqrt(2(1+x)/x) = 1.547, DJ = sqrt(2(x-1)/x) = 1.267
+\psline[linewidth=0.5pt](-4.186,0)(4.186,0)             %AC
+\psline[linewidth=0.5pt](-4.186,0)(-3.211,-3.921)       %AB
+\psline[linewidth=0.5pt](4.186,0)(-3.211,-3.921)        %BC
+\psline[linewidth=0.5pt](0,0)(-3.211,-3.921)            %BD
+\psline[linewidth=0.5pt](1.267,-1.547)(0,0)             %DE
+\psline[linewidth=0.5pt,linestyle=dashed](1.267,-1.547)(3.211,-3.921) %EH
+\psline[linewidth=0.5pt,linestyle=dashed](4.186,0)(3.211,-3.921)
+\psline[linewidth=0.5pt,linestyle=dashed](-3.211,-3.921)(3.211,-3.921)
+\psline[linewidth=0.5pt,linestyle=dashed](0,0)(0,-3.921)
+\psline[linewidth=0.5pt,linestyle=dashed](1.267,-1.547)(1.267,0)
+%\psline[linewidth=0.5pt,linestyle=dashed](2,0)(1.6,0.8)
+%%\psaxes[labels=none]{->}(0,0)(-3.5,-3)(3.5,3)%[xLabels={},yLabels{}]
+%%
+\rput[lb](-4.5,0){\textcolor{black}{$A$}}
+\rput[lb](-3.6,-4){\textcolor{black}{$B$}}
+\rput[lb](4.2,0){\textcolor{black}{$C$}}
+\rput[lb](-0.1,0.1){\textcolor{black}{$D$}}
+\rput[lb](1.1,-2){\textcolor{black}{$E$}}
+\rput[lb](1.1,0.1){\textcolor{black}{$F$}}
+\rput[lb](-.3,-2.2){\textcolor{black}{$G$}}
+\rput[lb](3.3,-4){\textcolor{black}{$H$}}
+\rput[lb](-0.1,-4.3){\textcolor{black}{$I$}}
+
+%\rput[lb](0.6,0.05){\textcolor{black}{$\theta$}}
+\savedata{\mydata}[{{1.267,-1.547},{1.267,0},{0,-2.219},{0,-3.921}}]
+\dataplot[plotstyle=dots,showpoints,dotscale=1]{\mydata}
+\end{pspicture}
+\end{center}
+
+Let $BD = BE= DH = x$. Then we extend $DE$ to $H$ such that $BD = DH$. Thus, Let $I$ be the middle point of $BH$ such $DI\perp AC$ and $DI \perp BH$. Then $\triangle DCE \sim \triangle HBE$
+\be
+\frac{DE}{EH} = \frac{CE}{BE} \ \ra\ CE = \frac{DE \cdot BE}{EH} = \frac{2x}{x-2} \ \ra\ BC = BE + CE = x + \frac{2x}{x-2} = \frac{x^2}{x-2}.
+\ee
+
+Also, $DC = BC/2 = \frac{x^2}{2(x-2)}$. Since $DI$ bisects $\angle BDH$,
+\be
+\frac{BD}{DE} = \frac{BG}{GE} \ \ra\ \frac{x}{BG} = \frac{2}{x-BG} \ \ra\ BG = \frac{x^2}{x+2} \ \ra\ CG = BC - BG = \frac{x^2}{x-2} - \frac{x^2}{x+2} = \frac{4x^2}{x^2-4}.
+\ee
+
+Since $\triangle BGI \sim \triangle CGD$,
+\be
+\frac{BI}{BG} = \frac{CD}{CG} \ \ra\ BI = \frac{CD}{CG}BG = \frac{\frac{x^2}{2(x-2)}}{\frac{4x^2}{x^2-4}} \frac{x^2}{x+2} = \frac {x^2}8 \ \ra\ BH = \frac {x^2}4
+\ee
+
+Furthermore,
+\be
+GI = \sqrt{BG^2 - BI^2} = \sqrt{\frac{x^4}{(x+2)^2} - \frac{x^4}{64}} = \frac{x^2}{8(x+2)}\sqrt{64 - (x+2)^2}.
+\ee
+
+Since $\triangle CEF \sim \triangle BGI$% and $\triangle CEF \triangle $,
+\be
+\frac{EF}{GI} = \frac{CE}{BG} \ \ra\ EF = \frac{CE}{BG} GI = \frac{\frac{2x}{x-2}}{\frac{x^2}{x+2}} \frac{x^2}{8(x+2)}\sqrt{64 - (x+2)^2} = \frac{x}{4(x-2)}\sqrt{64 - (x+2)^2}.
+\ee
+\be
+\frac{CF}{BI} = \frac{CE}{BG} \ \ra\ CF = \frac{CE}{BG} BI = \frac{\frac{2x}{x-2}}{\frac{x^2}{x+2}} \frac {x^2}8  = \frac{x(x+2)}{4(x-2)}.
+\ee
+
+Therefore,
+\be
+DF = CD - CF = \frac{x^2}{2(x-2)} - \frac{x(x+2)}{4(x-2)} = \frac{2x^2 - x^2 - 2x}{4(x-2)} = \frac x4.
+\ee
+
+Then by Pythagorean theorem\footnote{theorem needed.},
+\be
+DE^2 = EF^2 + DF^2 \ \ra\ 4 = \frac{x^2}{16(x-2)^2}\bb{64 - (x+2)^2} + \frac{x^2}{16} \ \ra\ x^3 - 32x + 32 = 0.
+\ee
+
+%\begin{center}%\begin{pspicture}%(-4,-4.5)(4,2)
+%\psset{llx = -0.5cm, lly =-0.5cm,ury = 0.5cm}
+%\begin{psgraph}(0,-5)(5,5){6cm}{!}
+%\psplot[linecolor=red,linewidth=1pt]{-8}{5}{x x mul x mul 100 div}
+%\end{psgraph}%end{pspicture}
+%\end{center}
+
+\begin{center}%\pstScalePoints(1,0.001){}{}ylogBase=10%ylabelFactor=\cdot 100%,ylabelFactor=\cdot 100
+\begin{pspicture}(-7,-2.5)(7,2.5)
+\psaxes[Dx=1,Dy=100,dy=2]{->}(0,0)(-7,-2.5)(7,2.5)%[xlogBase=10]
+\psplot[linecolor=red]{-7}{6.5}{x x mul x mul 32 x mul sub 32 add 50 div}
+\end{pspicture}
+\end{center}
+
+Then the suitable solution of the equation is $x \approx 5.068$.
+\end{example}
+
+\section{Geometric Shadows}
+
+\begin{example}
+Let the rectangle be $4\times 2$ and it has two incircles with radius 1. Then the area of the shadow is given by the following argument.
+
+\begin{center}%\psset{yunit=4cm,xunit=4}
+\begin{pspicture}(-4,-2)(4,2)%\parbox{4.5cm}{
+\psclip{
+    \pscustom[linestyle= none]{
+        \psplot{0}{4}{0.5 x mul} % 2/x
+        \lineto(4,0)}
+    \pscustom[linestyle= none]{
+        \psplot{0}{4}{4 x sub x mul sqrt}
+        \lineto(4,4)}}
+\psframe*[linecolor=gray](-4,-3)(4,3)
+\endpsclip
+%
+
+\psplot[linewidth=0.5pt]{-4}{4}{0.5 x mul}
+\psplot[linewidth=0.5pt]{-4}{0}{-4 x sub x mul sqrt}
+\psplot[linewidth=0.5pt]{-4}{0}{-4 x sub x mul sqrt -1 mul}
+%\psplot[linewidth=0.5pt]{-4}{2.828}{2.828 16 x x mul sub sqrt sub}
+%\psplot[linewidth=0.5pt]{-2.828}{0}{x 2.828 add}
+%\psplot[linewidth=0.5pt]{2.828}{0}{2.828 x sub}
+%\psplot[linewidth=0.5pt]{-2.828}{0}{-2.828 x sub}
+\psplot[linewidth=0.5pt]{0}{4}{4 x sub x mul sqrt}
+\psplot[linewidth=0.5pt]{0}{4}{4 x sub x mul sqrt -1 mul}
+%\psplot[linewidth=0.5pt]{0}{1.77}{x 0.6 mul}
+\psline[linewidth=0.5pt](-4,2)(4,2)
+\psline[linewidth=0.5pt](-4,-2)(4,-2)
+\psline[linewidth=0.5pt](4,-2)(4,2)
+\psline[linewidth=0.5pt](-4,-2)(-4,2)
+\psline[linewidth=0.5pt](-4,0)(4,0)
+\psline[linewidth=0.5pt,linestyle=dashed](2,0)(3.2,1.6)
+\psline[linewidth=0.5pt,linestyle=dashed](2,0)(1.6,0.8)
+%\psaxes[labels=none]{->}(0,0)(-3.5,-3)(3.5,3)%[xLabels={},yLabels{}]
+%
+\rput[lb](0.1,-0.3){\textcolor{black}{$A$}}
+\rput[lb](3.1,1.7){\textcolor{black}{$B$}}
+\rput[lb](4.1,-0.1){\textcolor{black}{$C$}}
+\rput[lb](4.1,1.9){\textcolor{black}{$D$}}
+\rput[lb](2,-.3){\textcolor{black}{$O$}}
+\rput[lb](1.5,1){\textcolor{black}{$G$}}
+\rput[lb](0.6,0.05){\textcolor{black}{$\theta$}}
+
+\savedata{\mydata}[{{0, 0}, {2, 0},{1.6, 0.8},{3.2,1.6}}]
+\dataplot[plotstyle=dots,showpoints,dotscale=1]{\mydata}
+%\dataplot[plotstyle=curve,showpoints,dotscale=1]{\mydata}
+\end{pspicture}
+\end{center}
+
+{\bf Approach 1.} The area $\wt{ABC}$ with arc $BC$ is 
+\beast
+\int^{\arctan \frac 12}_0 \int^{2\cos\theta}_0 rdr d\theta & = & 2\int^{\arctan \frac 12}_0 \cos^2\theta d\theta = \int^{\arctan \frac 12}_0 \bb{1 + \cos 2\theta} d\theta = \arctan \frac 12 + \left.\frac 12 \sin 2\theta \right|^{\arctan \frac 12}_0
+\eeast
+
+Then by universal formula of trigonometric function\footnote{theorem needed.} we have for $\theta = \arctan \frac 12$,
+\be
+\sin2\theta = \frac{2\tan\theta}{1+\tan^2\theta} = \frac{2\cdot \frac 12}{ 1+\frac 14} = \frac 45.
+\ee
+
+Therefore, the area of shadow is
+\be
+\frac 12 \cdot 1 \cdot 2 - S_{\wt{ABC}} = 1 - \bb{\arctan \frac 12 + \frac 25} = \frac 35 - \arctan \frac 12
+\ee
+
+{\bf Approach 2.} Let $G$ be the middle point of $AB$ then $\triangle AOB = 2\triangle AOG$. Since $\triangle AOG \sim \triangle ADC$,
+\be
+\frac{AD}{AO} = \frac{\sqrt{1+2^2}}{1} = \sqrt{5} \ \ra\ \frac{S_{\triangle AOG}}{S_{\triangle ADC}} = \bb{\frac{1}{\sqrt{5}}}^2 = \frac 15 \ \ra\  S_{\triangle AOB} = 2S_{\triangle AOG} = \frac 25 S_{\triangle ACD} = \frac 25.
+\ee
+
+Then the area of circular section $\wt{BOC}$ is 
+\be
+S_{\wt{BOC}} = \frac 12\cdot 2\theta \cdot r^2 = \frac 12 \cdot 2\theta \cdot 1^2 = \theta = \arctan \frac 12.
+\ee
+
+Then
+\be
+S_{\wt{BCD}} = S_{\triangle ACD} - S_{\triangle AOB} - S_{\wt{BOC}} = 1 - \frac 25 - \arctan \frac 12 = \frac 35 - \arctan \frac 12.
+\ee
+\end{example}
+
+
+\begin{example}
+Let $O$ be the incircle with radius 1 in the square. Then the area of the shadow is given by the following argument. Let $x = r\cos \theta$ and $y =r\sin\theta$ with $r = OA$. Then
+\be
+x^2 + \bb{y+\sqrt{2}}^2 = 4 \ \ra\ x^2 + y^2 + 2\sqrt{2} y = 2 \ \ra\ r^2 + 2\sqrt{2} r\sin\theta = 2.
+\ee
+
+Thus,
+\be
+r = \frac 12\bb{-2\sqrt{2}\sin\theta + \sqrt{8 \sin^2\theta+ 8}} = \sqrt{2\sin^2\theta + 2} - \sqrt{2}\sin\theta = \sqrt{2}\bb{\sqrt{\sin^2\theta + 1} - \sin\theta}.
+\ee
+
+\begin{center}%\psset{yunit=4cm,xunit=4}
+\begin{pspicture}(-4,-3)(4,3)%\parbox{4.5cm}{
+\psclip{
+    \pscustom[linestyle= none]{
+        \psplot{-1.871}{1.871}{4 x x mul sub sqrt} % 2/x
+        \lineto(0,0)}
+    \pscustom[linestyle= none]{
+        \psplot{-2}{2}{16 x x mul sub sqrt 2.828 sub}% 3 - x^2/3
+        \lineto(0,4)}}
+\psframe*[linecolor=gray](-3,-3)(3,3)
+\endpsclip
+
+\psclip{
+\pscustom[linestyle= none]{
+        \psplot{-1.871}{1.871}{0 4 x x mul sub sqrt sub} % 2/x
+        \lineto(0,0)}
+    \pscustom[linestyle= none]{
+        \psplot{-2}{2}{2.828 16 x x mul sub sqrt sub}% 3 - x^2/3
+        \lineto(0,-4)}}
+\psframe*[linecolor=gray](-3,-3)(3,3)
+\endpsclip
+
+        
+\psplot[linewidth=0.5pt]{-2}{2}{4 x x mul sub sqrt}
+\psplot[linewidth=0.5pt]{-2}{2}{0 4 x x mul sub sqrt sub}
+\psplot[linewidth=0.5pt]{-2.828}{2.828}{16 x x mul sub sqrt 2.828 sub}
+\psplot[linewidth=0.5pt]{-2.828}{2.828}{2.828 16 x x mul sub sqrt sub}
+\psplot[linewidth=0.5pt]{-2.828}{0}{x 2.828 add}
+\psplot[linewidth=0.5pt]{2.828}{0}{2.828 x sub}
+\psplot[linewidth=0.5pt]{-2.828}{0}{-2.828 x sub}
+\psplot[linewidth=0.5pt]{2.828}{0}{-2.828 x add}
+\psplot[linewidth=0.5pt]{0}{1.77}{x 0.6 mul}
+\psline[linewidth=0.5pt,linestyle=dashed](1.48,0)(1.48,0.89)
+
+\psaxes[labels=none]{->}(0,0)(-3.5,-3)(3.5,3)%[xLabels={},yLabels{}]
+
+\rput[lb](0.6,0.1){\textcolor{black}{$\theta$}}
+\rput[lb](-0.3,-0.3){\textcolor{black}{$O$}}
+\rput[lb](1.5,0.5){\textcolor{black}{$A$}}
+\rput[lb](1.8,1.1){\textcolor{black}{$B$}}
+\rput[lb](1.5,-0.3){\textcolor{black}{$C$}}
+
+\savedata{\mydata}[{{0, 0}, {1.48, 0.89},{1.48, 0},{1.715,1.029}}]
+\dataplot[plotstyle=dots,showpoints,dotscale=1]{\mydata}
+\end{pspicture}
+\end{center}
+
+If $r=1$, we have
+\beast
+\frac {\sqrt{2}}2 + \sin\theta = \sqrt{\sin^2\theta + 1}\ \ra\ 
+\frac 12 + \sqrt{2}\sin\theta = 1 \ \ra\ \sin\theta = \frac{\sqrt{2}}{4}. 
+\eeast
+
+Thus the shadow area is
+\beast
+4\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}} \int^1_{\sqrt{2}\bb{\sqrt{\sin^2\theta + 1} - \sin\theta}} rdr d\theta & = & 2\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}}  1 - 2\bb{2\sin^2\theta+1 -2\sin\theta\sqrt{\sin^2\theta + 1}}  d\theta \\
+& = & -2\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}}  d\theta - 2\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}}  (1-\cos2\theta)d2\theta + 8\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}}  \sin\theta\sqrt{\sin^2\theta + 1}  d\theta \\
+& = & -6\bb{\frac {\pi}2 - \arcsin \frac{\sqrt{2}}{4}}  - 4\frac{\sqrt{2}}{4}\frac{\sqrt{14}}{4} - 8\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}}\sqrt{2-\cos^2\theta}  d\cos\theta \\
+& = & -6\bb{\frac {\pi}2 - \arcsin \frac{\sqrt{2}}{4}}  - 4\frac{\sqrt{2}}{4}\frac{\sqrt{14}}{4} + 8\int^{\frac{\sqrt{14}}4}_0 \sqrt{2-x^2}  dx .
+\eeast
+
+Then the integral\footnote{detail or proposition is needed.} is given by 
+\beast
+& & -3\pi  + 6\arcsin \frac{\sqrt{2}}{4}  - \frac{\sqrt{7}}{2}+ 8\bb{\frac{\pi}2 - \arcsin \frac{3}{4}  +\frac{3\sqrt{7}}{16}} \\
+& = & \pi + \sqrt{7} + 6\arcsin\frac{\sqrt{2}}{4} - 8\arcsin\frac 34 = \frac {5\pi}2 + \sqrt{7} - 11\arcsin\frac 34 \approx 1.1711
+\eeast
+
+since $2\arcsin \frac{\sqrt{2}}4 = \frac {\pi}2 - \arcsin\frac 34$.
+\end{example}
+

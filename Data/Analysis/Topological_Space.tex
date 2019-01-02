@@ -1,0 +1,199 @@
+\chapter{Topological Space}
+
+%\subsection{Topology}
+\section{Topology}
+
+\subsection{Topology and topological space}
+
+\begin{definition}[topology\index{topology}, topological space\index{topological space}]
+A topological space $T= (X,\sT)$ consists of a non-empty set $X$ together with a fixed family $\sT$ of subsets of $X$ satisfying
+\ben
+\item [(i)] $X,\emptyset \in \sT$,
+\item [(ii)] the intersection of finitely many sets in $\sT$ is in $\sT$,
+\item [(iii)] the union of any collection of sets in $\sT$ is in $\sT$.
+\een
+
+The family $\sT$ is called a topology for $X$.
+\end{definition}
+
+\begin{remark}
+Note that the collection can be uncountable in (iii).
+\end{remark}
+
+\begin{proposition}
+If $(X,d)$ is a metric space, then the collection of open sets forms a topology and we call the collection of open sets the topology induced by the metric\index{topology induced by metric}.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Direct results from Theorem \ref{thm:open_set_metric}.
+\end{proof}
+
+Thus, we define the open set and closed set in topological space.
+
+\begin{definition}[open\index{open set!topological space} and closed\index{closed set!topological space} sets in topological space]
+Let $T=(X,\sT)$ be a topological space. The set $A \in \sT$ is called the open set of $T$ and the set $A^c = X\bs A\in \sT$ is called the closed set of $T$.
+\end{definition}
+
+\begin{remark}
+Note that $A\subseteq X$.
+\end{remark}
+
+\begin{definition}[neighbourhood]\label{def:neighbourhood_topology}
+A neighbourhood of a point $x$ in a space $X$ is a subset $N$ of $X$ which contains an open subset of $X$ containing $x$. 
+\end{definition}
+
+
+
+
+\section{Compact Set}
+
+\begin{definition}[support\index{support}]
+The support of a function is the set of points where the function is not zero, or the closure of that set.\footnote{should be put in topology, also see wiki}
+\end{definition}
+
+\begin{definition}[compact support\index{compact support}]\label{def:compact_support}
+Functions with compact support in $X$ are those with support that is a compact subset of $X$\footnote{need to be moved to topology section}.
+\end{definition}
+
+\begin{remark}
+If $X$ is the real line, they are functions of bounded support and therefore vanish at infinity (and negative infinity).
+\end{remark}
+
+
+\begin{theorem}[Cantor's intersection theorem]\label{thm:cantor_intersection_topological_space}
+Let $X$ be a Hausdorff topological space. Then a decreasing nested sequence of non-empty compact subsets of $X$ has a non-empty intersection. In other words, supposing $(A_n)$ is a sequence of non-empty compact subsets of $X$ satisfying
+\be
+A_0 \supseteq A_1 \supseteq A_2 \supseteq \dots \supseteq A_n \supseteq A_{n+1} \supseteq \dots,
+\ee
+it follows that
+\be
+\bigcap_{n=1}^\infty A_n \neq \emptyset.
+\ee
+\end{theorem}
+
+\begin{remark}
+See Theorem \ref{thm:intersection_of_decreasing_non_empty_compact_sets_in_real_n_non_emptyset_compact} for special case.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+\section{Continuity in topological space}%{thm:metric continuous open}
+
+The idea of downward compatibility suggests `turning Theorem \ref{thm:continuity_reserves_open_metric} in a definition'.
+
+\begin{definition}[continuity in topological space\index{continuous!topological space}]\label{def:continuous_topological_space}
+Let $(X,\sT_X)$ and $(Y,\sT_Y)$ be topological spaces. A function $f:X\to Y$ is said to be continuous if and only if $f^{-1}(U)$ is open in $X$ whenever $U$ is open in $Y$.
+\end{definition}
+
+\begin{remark}
+Theorem \ref{thm:continuity_reserves_open_metric} tells us that if $(X,d_X)$ and $(Y, d_Y)$ are metric spaces the notion of a continuous function $f:X \to Y$ is the same whether we consider the metrics or the topologies derived from them.
+\end{remark}
+
+
+
+\begin{theorem}[continuity preserves compactness]
+Let $f$ be a continuous function from topology $(X,\sT)$ to topology $(Y,\sS)$. If the subset $A\subseteq X$ is compact, then $f(A)$ is also compact.
+
+In other words, the continuity preserves the compactness.
+\end{theorem}
+
+\begin{remark}
+Note that the set $A$ might not be bounded and closed as the case of complex plane.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Let $\bra{U_\alpha}$ be an open cover of $f(X)$ (also an open cover $f(A)$). It exists since $f(X) \subseteq Y$. Since $f$ is continuous, we know that each of the sets $f^{-1}(U_\alpha)$ is open. Since $A$ is compact, there are finitely many indices $\alpha_1,\dots,\alpha_n$ such that
+\be
+A \subseteq \bigcup_{k=1}^n f^{-1}(U_{\alpha_k}) = f^{-1}\bb{\bigcup_{k=1}^n U_{\alpha_k}}
+\ee
+by Proposition \footnote{inverse image preserves set operation, p14}.
+
+Since $f\bb{f^{-1}(B)} \subseteq B$ for every subset $B \subseteq Y$, the above implies that
+\be
+f(A) \subseteq f\bb{f^{-1}\bb{\bigcup_{k=1}^n U_{\alpha_k}}} \subseteq \bigcup_{k=1}^n U_{\alpha_k}
+\ee
+by Lemma \footnote{$f(f^{-1}(B)) = B\cap f(X)$ in p15}. Thus, we can have $f(A)$ is compact as it has finite subcover.
+\end{proof}
+
+
+
+\section{Spaces}
+
+\begin{definition}[separable space\index{separable space}]\label{def:separable_space}
+A topological space is called separable if it contains a countable, dense subset. That is, there exists a sequence $\bra{x_n}_{n=1}^\infty$ of elements of the space such that every non-empty open subset of the spade contains at least one element of the sequence.\index{check needed for the definition.}
+\end{definition}
+
+\begin{remark}
+Any topological space which is itself finite or countably infinite is separable, for the whole space is a countable dense subset of itself. An important example of an uncountable separable space is the real line, in which the rational numbers form a countable dense subset. Similarly the set of all vectors $\bb{r_{1},\ldots ,r_{n}}\in \R^n$ in which $r_{i}$ is rational for all $i$ is a countable dense subset of $\R^n$; so for every $n$ the $n$-dimensional Euclidean space is separable.
+
+A simple example of a space which is not separable is a discrete space of uncountable cardinality.\index{check needed for the whole remark.}
+\end{remark}
+
+
+\begin{definition}[second-countable space\index{second-countable space}]\label{def:second_countable_space}
+A second-countable space, also called a completely separable space, is a topological space satisfying the second axiom of countability\footnote{need details}.
+
+A space is said to be second-countable if its topology has a countable base. More explicitly, this means that a topological space $X$ is second countable if there exists some countable collection $\sU = \bra{U_i}_{i=1}^\infty$ of open subsets of $X$ such that any open subset of $X$ can be written as a union of elements of some subfamily of $\sU$.
+\end{definition}
+
+\begin{remark}
+Like other countability axioms, the property of being second-countable restricts the number of open sets that a space can have.
+\end{remark}
+
+\subsection{Baire space}
+
+\begin{definition}[Baire space]
+A Baire space is a topological space such that every intersection of a countable collection of open dense sets in the space is also dense.
+\end{definition}
+
+
+\begin{remark}
+The spaces are named in honor of Ren\'e-Louis Baire who introduced the concept.
+\end{remark}
+
+\begin{example}
+Complete metric spaces adn locally compact Hausdorff spaces are examples of Baire spaces according to Baire category theorem.\footnote{proof needed.}
+\end{example}
+
+\section{Function Sequence}
+
+\begin{definition}[convergence on compact set\index{convergence!compact set}]\label{def:convergence_on_compact}
+Let $(X, \sT)$ be a topological space and $(Y,d_Y)$ be a metric space. A sequence of functions
+\be
+f_{n} : X \to Y,\quad n \in \N,
+\ee
+is said to converge on compact set (or converge compactly) as $n \to \infty$ to some function $f : X \to Y$ if, for every compact set $K \subseteq X$, $\forall x\in K$,
+\be
+\lim_{n\to\infty} d_Y\bb{f_{n}(x), f(x)} = 0.
+\ee
+\end{definition}
+
+\begin{definition}[uniform convergence on compacts\index{uniform convergence on compacts}]\label{def:uniform_convergence_on_compacts}
+Let $(X, \sT)$ be a topological space and $(Y,d_Y)$ be a metric space. A sequence of functions
+\be
+f_{n} : X \to Y, n \in \N,
+\ee
+is said to converge uniformly on compacts (or converge uniformly compactly) as $n \to \infty$ to some function $f : X \to Y$ if, for every compact set $K \subseteq X$,
+\be
+\lim_{n \to \infty} \sup_{x \in K} d_{Y} \left( f_{n} (x), f(x) \right) = 0.
+\ee
+\end{definition}%converges uniformly on K as n \to \infty. This means that for all compact K \subseteq X,
+
+\section{Sets}
+
+\begin{theorem}\label{thm:non_decreasing_function_continuous_points_dense_set}
+Let $A$ be a subinterval of $\R$ ($A$ doesn't have to be a proper subinterval and the case $A=\R$ is allowed.). Let $f$ be a non-decreasing function from $A$ into $\R$. Define
+\be
+\sD_f := \bra{x\in A: f\text{ is discontinuous at }x},\qquad \sC_f := \bra{x\in A: f\text{ is continuous at }x}.
+\ee
+
+Then $\sD_f$ is countable and $\sC_f$ is dense in $A$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed. First show that for any closed bounded subinterval $B$ of $A$ and any number $\ve >0$, there are at most finitely many points $x\in B$ such that the jump $f(x^+) - f(x^-)$ of $f$ at $x$ exceeds $\ve$. Then use the conclusion $sD_f$ is countable to prove that $\sC_f$ is dense in $A$.}
+\end{proof}
+
+

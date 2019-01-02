@@ -1,0 +1,3161 @@
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\chapter{Probability}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Discrete Random Variables}
+
+\subsection{Introduction}
+
+When an experiment is conducted there may be a number of quantities associated with the outcome $\omega\in\Omega$­ that may be of interest. Suppose that the experiment is choosing a male student at random from the audience of the IA Probability lecture - there are many different measurements, or attributes, of the person chosen that may be of interest: his height, his weight, his IQ, the colour of his eyes, etc. Rather than think of each of these as the outcome of a separate experiment it is more useful to view them as functions of the outcome $\omega$. This leads to the following definition which is a central notion of probability.
+
+\begin{definition}
+A random variable $X$, taking values in a set $S$, is a function $X : \Omega \to S$.
+\end{definition}
+
+Typically, $S$ may be a subset of the real numbers, $\R$, as would be the case if the height of the student was of interest, or it could be a subset of $\R^k$, if more than one measurement is made on the subject as would be the case, with $k = 2$, if height and weight are measured, or, $S$ could be some arbitrary set such as $S = \{\text{Blue,Green,Brown}\}$, say, if it is the colour of the subject's eyes that are to be recorded. The most frequent situation that we will encounter is the case when $S \subseteq \R$, and $X$ is then said to be a real-valued random variable. Denote by $\Omega_­X$ the range of $X$, so that ­$\Omega_X = \{X(\omega) : \omega\in\Omega\}$. In this chapter we will assume that the sample space ­$\Omega$ is either a finite or a countable set, so that $\Omega_X$ is finite or countable.
+
+For $T \subseteq S$, we denote the event $\{\omega: X(\omega) \in T\}$ as $\{X \in T\}$, so that the dependence of $X$ on $\omega$ is suppressed in the notation. Suppose that we enumerate the points in ­$\Omega_X$ (equivalently the values taken on by $X$), so that $\Omega_X = \{x_j : j \in J\}$, then we write the event $\{\omega : X(\omega) = x_j\} = \{X = x_j\}$. If we let $p_j = \pro(X = x_j)$, $j \in J$, then $\{p_j : j \in J\}$ is a probability distribution on the space $­\Omega_X$, and is referred to as the probability distribution of the random variable $X$. Note that it is a probability distribution on the set $­X$, not on the underlying sample space $\Omega$.
+
+
+%We often write $X \sim \text{Bin}(n, p)$, for example, for the statement that $X$ is binomial distribution where the parameters are $n$ and $p$, or $X \sim \text{Poi}(\lm)$ for a Poisson random variable with parameter $\lm$.
+
+\begin{example}
+Suppose that a coin is tossed $n$ times and a 1 is recorded whenever a head occurs and a 0 is recorded for each tail. Then ­$\Omega = \{(i_1, i_2, \dots, i_n) : i_j = 1\text{ or }0\}$. If $p$ is the probability of a head and tosses are independent then the probability on ­$\Omega$ is specified by 
+\be
+\pro(i_1,i_2,\dots, i_n) = p^{i_1+\dots+i_n}(1 - p)^{n-i_1-\dots-i_n}.
+\ee
+Let $X$ denote the number of heads obtained, so that $X(i_1,\dots,i_n) = i_1 + \dots + i_n$, then $X$ is a binomial random variable since the distribution of $X$ is given by
+\be
+\pro(X = k) = \binom{n}{k} p^k(1 - p)^{n-k},\quad\quad  0 \leq k \leq n.
+\ee
+\end{example}
+
+For a function $g : S \to T$, mapping from the set $S$ to the set $T$, then if $X$ is a random variable taking values in $S$, $g(X)$ is the random variable taking values in $T$, with $g(X) : \Omega \to T$ specified by $g(X)(\omega) = g(X(\omega))$. For subsets $C \subseteq T$ we have
+\be
+\pro(g(X) \in C) = \pro\bb{X\in g^{-1}(C)}
+\ee
+and the distribution of $g(X)$ may be obtained from that of $X$ by observing that
+\be
+\pro(g(X) = y) = \pro\bb{X\in g^{-1}(y)} = \sum_{x\in g^{-1}(y)} \pro(X = x).
+\ee
+
+\subsection{Expectation, variance and covariance}
+
+%From now on, unless we indicate to the contrary, the random variables we will consider will take real values. For a non-negative random variable $X$, that is one for which $X(\omega) > 0$ for all $\omega \in\Omega$­, (usually just written as $X \geq 0$), we define the expectation (or expected value or mean value) of $X$ to be
+%\be
+%\E X = \sum_{\omega \in \Omega} X(\omega)\pro(\{\omega\}),
+%\ee
+%since all the terms in the sum are non-negative the sum is well defined (although it may take the value $+\infty$). Note that, since ­$\Omega = \bigcup_{x\in \Omega_­X}\{X = x\}$, we have a more useful form for the expectation given by
+%\be
+%\E X = \sum_{\omega \in \Omega} X(\omega)\pro(\{\omega\}) = \sum_{x\in \Omega_X} \sum_{\omega\in \{X=x\}} X(\omega)\pro(\{\omega\}) = \sum_{x\in \Omega_X} x\pro(X = x).
+%\ee
+%Thus the expectation is the average of the values taken on by the random variable, averaged with weights corresponding to the probabilities of the values.
+
+
+%For any random variable, $X$ with finite mean, the variance is defined to be
+%\be
+%\var (X) = \E (X - \E X)^2,
+%\ee
+
+
+\begin{example}
+Use of indicators Return to the situation, considered in Chapter 2, where $n$ students leave their $n$ coats outside the lecture room and when they leave they pick up their coats at random. Let $N$ be the number of students who get their own coat, then $N = \sum^n_{i=1} I_{A_i}$, where $A_i$ is the event that student $i$ obtains his own coat. It follows that
+\be
+\E N = \E\bb{\sum^n_{i=1} I_{A_i}} = \sum^n_{i=1} \E (I_{A_i}) = \sum^n_{i=1} \pro (A_i) = \sum^n_{i=1} \frac 1n = 1,
+\ee
+\be
+\E N^2 = \E\bb{\sum^n_{i=1} I_{A_i}}^2 = \E\bb{\sum^n_{i=1} (I_{A_i})^2 + \sum_i\sum_{j\neq i} I_{A_i}I_{A_j}},
+\ee
+since $I_{A_i}I_{A_j} = I_{A_i\cap A_j}$ we have $(I_{A_i})^2 = I_{A_i}$, and we see that
+\beast
+\E N^2 & = & \E\bb{\sum^n_{i=1} I_{A_i} + \sum_i\sum_{j\neq i} I_{A_i\cap A_j}} = \sum^n_{i=1} \pro(A_i) + \sum_i\sum_{j\neq i} \pro(A_i \cap A_j)\\
+& = & \sum^n_{i=1} \frac 1n + \sum_i\sum_{j\neq i} \frac 1{n(n -1)} = n \times \frac 1n + n(n - 1) \times \frac 1{n(n- 1)} = 1 + 1 = 2.
+\eeast
+
+That gives $\var (N) = \E N^2 - (\E N)^2 = 1$. The fact that the mean and the variance are both the same might suggest that the distribution of the random variable $N$ is close to being Poisson (with mean $\lm = 1$) as is indeed the case when $n$ is large. If we let $p_n = \pro(N = 0)$, the probability that when there are $n$ students none of them gets his own coat, then we have seen previously (using inclusion-exclusion) that
+\be
+p_n = 1 - \frac 1{1!} + \frac 1{2!} - \frac 1{3!} + \dots + (-1)^n \frac 1{n!} \to e^{-1},\quad\text{ as }n \to \infty,
+\ee
+take $p_0 = 1$. The probability that exactly $k$ students get their own coats is
+\be
+\pro(N = k) = \binom{n}{k} \frac 1{n!} ((n - k)!)p_{n-k} = \frac 1{k!}p_{n-k} \to \frac 1{k!} e^{-1},\quad \text{ as }n \to \infty,
+\ee
+showing that the distribution of $N$ is approximately Poisson. 
+\end{example}
+
+%\begin{theorem}[Cauchy-Schwarz inequality\index{Cauchy-Schwarz inequality}] For any random variables $X$ and $Y$,
+%\be
+%(\E (XY ))^2 \leq \E \bb{X^2}\E\bb{Y^2},
+%\ee
+%if $\E(Y^2) > 0$, equality occurs if and only if $X = aY$ for some constant $a \in \R$.
+%\end{theorem}
+
+%\begin{proof}[\bf Proof]
+%For any $a \in \R$, observe that $\E (X - aY)^2 \geq 0$, so that
+%\be
+%0 \leq \E (X^2 - 2aXY + a^2Y^2) = \E(X^2) - 2a\E (XY) + a^2\E(Y^2),
+%\ee
+%showing that the quadratic in $a$ on the right-hand side has at most one real root, whence the discriminant 
+%\be
+%4\bb{(\E (XY ))^2 - \E(X^2) \E(Y^2)} \leq 0,
+%\ee
+%giving the inequality. There is clearly equality if $X = aY$ for some $a \in \R$, whereas if $\E(Y^2) > 0$ and the discriminant is 0 then the quadratic is 0 for $a = \E (XY ) / \E(Y^2)$, and for that value of $a$, $\E (X - aY)^2 = 0$ and so $X = aY$. Of course, if $\E(Y^2)= 0$ then $Y = 0$ and equality occurs.
+%\end{proof}
+
+%For two random variable $X$ and $Y$, we define the covariance between $X$ and $Y$ as
+%\be
+%\cov (X, Y ) = \E ((X - \E X) (Y - \E Y )) .
+%\ee
+
+%\begin{definition}
+%The correlation coefficient\index{correlation coefficient} (or just the correlation) between random variables $X$ and $Y$ with $\var (X) > 0$ and $\var (Y ) > 0$ is
+%\be
+%\corr (X,Y ) = \frac{\cov (X, Y )}{\sqrt{\var (X)\var (Y )}}.
+%\ee
+%\end{definition}
+
+%Notice that by the Cauchy-Schwarz inequality
+%\be
+%\abs{\corr (X, Y)} \leq 1,\quad \quad\text{for all }X\text{ and }Y,
+%\ee
+%this follows by applying the inequality to the random variables $\bar{X} = X - \E X$ and $\bar{Y} = Y - \E Y$. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Distributions}
+
+
+\begin{example}[Poisson distribution\index{Poisson distribution}]
+This distribution is often used to model the number of occurrences of some event in a specified period of time, such as the number of accidents on a particular stretch of road, for example, or the number of customers who enter a particular shop. Here the probability space is $\Omega­ = \{0,1, 2,\dots\}$, the non-negative integers, and the probability of the point $k$ is
+\be
+p_k = \pro(k) = e^{-\lm} \frac{\lm^k}{k!},\quad k = 0,1,2,\dots
+\ee
+for some fixed $\lm> 0$. Check that
+\be
+\sum^\infty_{k=0} p_k = e^{-\lm}\sum^\infty_{k=0} \frac{\lm^k}{k!} = e^{-\lm} e^\lm = 1.
+\ee
+\end{example}
+
+Suppose that we consider customers entering a shop during an hour-long period, $(0,1]$. Think of dividing the period into $n$ segments, $((i - 1)/n, i/n]$, for $i = 1,\dots, n$, and suppose that 1 customer enters the shop in each segment with probability $p$, $0 < p < 1$. Then the probability that $k$ customers enter in the hour is the binomial probability
+\be
+\binom{n}{k} p^k (1- p)^{n-k} = \frac{n!}{k!(n - k)!} p^k (1 - p)^{n-k}.
+\ee
+
+Now suppose that $n \to \infty$ and $p \to 0$ in such a way that $np \to \lm$, then we have, for each fixed $k$,
+\be
+\lim_{n\to\infty} \bsb{\frac{n!}{k!(n - k)!} p^k (1 - p)^{n-k}} = \lim_{n\to \infty} \bsb{\bb{1-\frac{\lm}n}^{n-k} \frac{(np)^k}{k!} \frac{n!}{n^k(n- k)!}}
+= e^{-\lm} \frac{\lm^k}{k!},
+\ee
+because
+\be
+\lim_{n\to \infty} \bsb{\frac{n!}{n^k(n- k)!}} = \lim_{n\to \infty}\bsb{1\bb{1-\frac 1n} \dots \bb{1-\frac{k - 1}n}} = 1.
+\ee
+This has proved the following result.
+
+\begin{theorem}[Poisson approximation to the binomial]
+Suppose that $n \to \infty$ and $p \to 0$ so that $np \to \lm$, then
+\be
+\binom{n}{k} p^k (1 - p)^{n-k} \to e^{-\lm} \frac{\lm^k}{k!},\quad\quad k = 0, 1, 2,\dots
+\ee
+\end{theorem}
+
+
+\begin{example}[Hypergeometric distribution\index{Hypergeometric distribution}]
+Consider an urn with $n_1$ red balls and $n_2$ black balls of which $n$ are drawn without replacement, $n \leq n_1 + n_2$. The probability that there are exactly $k$ red balls drawn is
+\be
+p_k = \frac{\binom{n_1}{k} \binom{n_2}{n- k}}{\binom{n_1 + n_2}{n}},\quad\quad \text{ for }\max(0, n- n_2) \leq k \leq \min(n, n_1).
+\ee
+For example, the probability that there are exactly 5 hearts in a bridge hand is
+\be
+\frac{\binom{13}{5} \binom{39}{8}}{\binom{52}{13}}.
+\ee
+\end{example}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Conditional distributions}
+
+
+\begin{example}[Sum of a random number of random variables]
+Let $X_1,X_2, \dots$ be independent and identically distributed random variables with common probability generating function $p(z)$. Let $N$ be a non-negative integer valued random variable independent of the $\{X_i\}$ and having probability generating function $q(z)$. We consider the p.g.f. of the
+random variable $X_1 + \dots + X_N$, (here the sum is 0 if $N = 0$).
+\be
+r(z) = \E\bb{z^{X_1+\dots+X_N}} = \E \bb{\E\bb{z^{X_1+\dots +X_N}|N}} = \E \bb{\bb{\E z^{X_1}}^N} = \E\bb{(p(z))^N} = q(p(z)).
+\ee
+If at a first reading you find the second equality too cryptic, you might wish to spell out the argument as
+\beast
+\E \bb{z^{X_1+\dots+X_N}} & = & \sum^\infty_{n=0} \E \bb{z^{X_1+\dots+X_N}|N = n}\pro (N = n)\\
+& = & \sum^\infty_{n=0} \E\bb{z^{X_1+\dots+X_n}|N = n} \pro (N = n)\\
+& = & \sum^\infty_{n=0} \E\bb{z^{X_1+\dots+X_n}}\pro(N = n) = \sum^\infty_{n=0} (p(z))^n \pro (N = n) = q(p(z)).
+\eeast
+
+After some practice you should find the conditional expectation shorthand notation given first more helpful. It follows from the expression for $r(z)$ that $r'(z) = q'(p(z))p'(z)$, so that
+\be
+\E (X_1 + \dots + X_N) = q'(p(1-))p'(1-) = (\E N) (\E X_1) ,
+\ee
+since $p(1-) = 1$. Furthermore, since $r''(z) = q''(p(z) (p'(z))^2 + q'(p(z))p''(z)$, and the fact that $q''(1-) = \E (N)^2 - \E N$ and $p''(1-) = \E (X_1)^2 - \E X_1$, we may calculate that
+\be
+\var (X_1 + \dots + X_N) = r''(1-) + r'(1-) - (r'(1-))^2 = (\E N)\var (X_1) + (\E X_1)^2 \var (N).
+\ee
+Notice that the variance of $X_1+\dots+X_N$ is increased over what it would be if $N$ is constant, $N \equiv \E N = n$, say, by the amount $(\E X_1)^2 \var (N)$, if $\var (N) = 0$ and $N$ is constant we get the usual expression for the variance of a sum of $n$ i.i.d. random variables.
+\end{example}
+
+\subsection{Branching processes\index{Branching processes}}
+
+As an example of conditional expectations and of generating functions we will consider a model of population growth and extinction known as the Bienaym\'e-Galton-Watson process. Consider a sequence of random variables $X_0,X_1,\dots$, where $X_n$ represents the number of individuals in the nth generation. We will assume that the population is initiated by one individual, take $X_0 \equiv 1$, and when he dies he is replaced by $k$ individuals with probability $g_k$, $k = 0, 1, 2, \dots$. These individuals behave independently and identically to the parent individual, as do those in subsequent generations. The number in the $(n+1)$st generation, $X_{n+1}$, depends on the number in the $n$th generation and is given by
+\be
+X_{n+1} =\left\{\ba{ll}
+Y^n_1 + Y^n_2 + \dots + Y^n_{X_n} \quad\quad & X_n \geq 1,\\
+0 & X_n = 0.
+\ea\right.
+\ee
+Here $\{Y^n_j : n \geq 1, j \geq 1\}$ are independent, identically distributed random variables with $\pro(Y^n_j = k) = g_k$, for $k \geq 0$ and $Y^n_j$ represents the number of offspring of the $j$th individual in the nth generation, $j \leq X_n$.
+
+Assumptions (i) $g_0 > 0$, and (ii) $g_0 + g_1 < 1$.
+
+Assumption (i) means that the population can die out (extinction) since in each generation there is positive probability that all individuals have no offspring, assumption (ii) means that the population may grow, there is positive probability that the next generation has more individuals than the present one. Now let $G(z) = \sum^\infty_{k=0} g_kz^k = \E \bb{z^{X_1}}$ and set $G_n(z) = \E \bb{z^{X_n}}$, for $n \geq 1$, so that $G_1 = G$.
+
+\begin{theorem}
+For all $n \geq 1$, $G_{n+1}(z) = G_n (G(z)) = G(\dots (G(z)) \dots) = G(G_n(z))$.
+\end{theorem}
+\begin{proof}[\bf Proof]
+Note that $Y^n_1, Y^n_2 , \dots$ are independent of $X_n$, so that
+\beast
+G_{n+1}(z) & = & \E\bb{z^{X_n+1}} = \sum^\infty_{k=0} \E \bb{z^{X_{n+1}} |X_n = k} \pro (X_n = k)\\
+& = & \sum^\infty_{k=0} \E\bb{z^{Y^n_1 + \dots+Y^n_k}}\pro (X_n = k) = \sum^\infty_{k=0} (G(z))^k \pro (X_n = k)\\
+& = & \E\bb{(G(z))^{X_n}} = G_n (G(z)).
+\eeast
+\end{proof}
+
+\begin{corollary}
+For $m = \E (X_1) = \sum^\infty_{k=1} kg_k$ and $\sigma^2 = \var (X_1) = \sum^\infty_{k=0} (k - m)^2 g_k$, then for $n \geq 1$, we have
+\be
+\E (X_n) = m^n,\quad\quad \var (X_n) = \left\{\ba{ll}
+\frac{\sigma^2m^{n-1} (m^n - 1)}{m- 1} \quad\quad & m \neq 1,\\
+n\sigma^2 & m=1.
+\ea\right.
+\ee
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+Differentiating $G_n(z) = G_{n-1}(G(z))$ to obtain $G_n'(z) = G'_{n-1}(G(z))G'(z)$ and letting $z \ua 1$, it follows that 
+\be
+\E (X_n) = m\E (X_{n-1}) = \dots = m^n\E (X_0) = m^n,
+\ee
+since $X_0 = 1$. Differentiating $G_n(z)$ a second time gives
+\be
+G''_n(z) = G''_{n-1} (G(z)) (G'(z))^2 + G'_{n-1} (G(z))G''(z),
+\ee
+and letting $z \ua 1$ again we have
+\be
+\E (X_n (X_n - 1)) = m^2 \E (X_{n-1} (X_{n-1} - 1)) + \bb{\sigma^2 + m^2 - m} \E (X_{n-1}).
+\ee
+We then have, using the fact that $\E X_n = m^n$,
+\beast
+\var (X_n) & = & \E (X_n(X_n - 1)) + \E (X_n) - (\E X_n)^2\\
+& = & m^2\E (X_{n-1}(X_{n-1} - 1)) + \bb{\sigma^2 + m^2 - m}\E (X_{n-1}) + m^n - m^{2n} \\
+& = & m^2\bb{\var (X_{n-1}) - \E (X_{n-1}) + (\E X_{n-1})^2} + \bb{\sigma^2 + m^2} m^{n-1} - m^{2n}\\
+& = & m^2\var (X_{n-1}) + \sigma^2 m^{n-1}.
+\eeast
+Iterating this, we see that
+\beast
+\var (X_n) & = & m^2\var (X_{n-1}) + \sigma^2 m^{n-1} = m^4\var (X_{n-2}) + \sigma^2 \bb{m^{n-1} + m^n} = \dots \\
+& = & m^{2n}\var (X_0) + \sigma^2 \bb{m^{n-1} + \dots + m^{2n-2}}\\
+& = & \sigma^2 \bb{m^{n-1} + \dots + m^{2n-2}},\quad\quad \text{since $\var (X_0) = 0$ because $X_0 = 1$},
+\eeast
+and then the result may be obtained immediately.
+\end{proof}
+
+Probability of extinction Notice that $X_n = 0$ implies that $X_{n+1} = 0$ so that if we let $A_n = (X_n = 0)$, the event that the population is extinct at or before generation $n$, we have $A_n \subseteq A_{n+1}$ and $A = \bigcup^\infty_{n=1} A_n$ represents the event that extinction ever occurs. Notice
+that $\pro(A_n) = G_n(0)$ and by the continuity property of probabilities on increasing events we see that the extinction probability, $q$, say, is
+\be
+q = \pro(A) = \lim_{n\to\infty} \pro (A_n) = \lim_{n\to\infty} G_n(0) = \lim_{n\to\infty} \pro (X_n = 0).
+\ee
+
+\begin{theorem}
+The extinction probability $q$ is the smallest positive root of the equation $G(z) = z$. When $m$, the mean number of offspring per individual, satisfies $m \leq 1$ then $q = 1$, when $m > 1$ then $q < 1$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+The fact that the extinction probability $q$ is well defined follows from the above and since $G$ is continuous and $q = \lim_{n\to \infty}G_n(0)$ we have $G\bb{\lim_{n\to\infty} G_n(0)} = \lim_{n\to\infty}G_{n+1}(0)$, so that $G(q) = q$, that is $q$ is a root of $G(z) = z$, note that 1 is always a root since
+$G(1) = \sum^\infty_{r=0} g_r = 1$. Let $\alpha > 0$ be any positive root of $G(z) = z$, so that because $G$ is increasing, $\alpha = G(\alpha) > G(0)$, and repeating $n$ times we have $\alpha > G_n(0)$, whence $\alpha \geq \lim_{n\to\infty} G_n(0) = q$, so that we must have $\alpha\geq q$, that is, $q$ is the smallest positive root of $G(z) = z$.
+
+Now let $H(z) = G(z)-z$, then $H'' = \sum^\infty_{r=0} r(r-1)g_rz^{r-2} > 0$ for $0 < z < 1$ provided $g_0 + g_1 < 1$, so the derivative of $H$ is strictly increasing in the range $0 < z < 1$, hence $H$ can have at most one root different from 1 in $[0, 1]$ (Rolle's Theorem (Theorem \ref{thm:rolle_analysis})).
+
+Firstly, suppose that $H$ has no root in $[0, 1)$ then, since $H(0) = g_0 > 0$ we must have $H(z) > 0$ for all $0 < z < 1$, so $H(1) - H(z) < H(1) = 0$ and so
+\be
+H'(1-) = \lim_{z\ua 1} \frac{H(1) - H(z)}{1 - z} \leq 0,\quad\quad \text{whence } m = G'(1-) \leq 1.
+\ee
+Next, suppose that H has a unique root $r$ in $[0, 1)$, then $H'$ must have a root in $[r, 1)$, that is $H'(z) = G'(z)-1 = 0$ for some $z$, $r \leq z < 1$. The function $G'$ is strictly increasing (since $g_0 + g_1 < 1$) so that $m = G'(1-) > G'(z) = 1$. Thus we see that $m \leq 1$, if and only if, $q = 1$.
+\end{proof}
+
+
+Note. The following two figures illustrate the two situations $m \geq 1$ and $m > 1$, the dotted lines illustrate the iteration $G_{n+1}(0) = G(G_n(0))$ tending to the smallest positive root, $q$.
+
+\centertexdraw{
+    
+\drawdim in
+
+\def\bdot {\fcir f:0 r:0.02 }
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+\linewd 0.01 \setgray 0 
+
+\move (-0.2 0) \avec(2 0) 
+\move (0 -0.2) \avec(0 1.8) 
+
+\move (0 0) \lvec (1.8 1.8) 
+\move (0 0.6) \clvec (0.9 1)(1.3 1.3)(1.6 1.6) 
+
+\htext (-0.1 -0.15){0}
+\htext (1.6 -0.15){1}
+\htext (0.55 -0.15){$q$}
+\htext (1.9 -0.15){$z$}
+\htext (-0.4 0.45){$G(0)$}
+
+\lpatt (0.05 0.05)
+
+\move (1.6 1.6) \lvec (1.6 0)
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lpatt (1 0)
+
+\move (2.8 0) \avec(5 0) 
+\move (3 -0.2) \avec(3 1.8) 
+
+\move (3 0) \lvec (4.8 1.8) 
+\move (3 0.6) \clvec (4.2 0.9)(4.5 1.4)(4.6 1.6) 
+
+\htext (2.9 -0.15){0}
+\htext (4.6 -0.15){1}
+\htext (3.55 -0.15){$q$}
+\htext (4.9 -0.15){$z$}
+\htext (2.6 0.45){$G(0)$}
+
+\lpatt (0.05 0.05)
+\move (4 1) \lvec (4 0)
+\move (4.6 1.6) \lvec (4.6 0)
+
+\move(0 2)
+}
+
+
+\subsection{Random walks}
+
+\begin{definition}
+Let $X_1,X_2,\dots$ be i.i.d. random variables and set $S_k = S_0 + X_1 + \dots + X_k$ for $k \geq 1$ where $S_0$ is a constant then $\{S_k, k \geq 0\}$ is known as a (one-dimensional) random walk\index{random walk}. When each $X_i$ just takes the two values +1 and -1 with probabilities $p$ and $q = 1 - p$, respectively, it is a simple random walk and further when $p = q = \frac 12$ it is a simple, symmetric random walk\index{symmetric random walk}. We will consider simple random walks.
+\end{definition}
+
+Recurrence relations. The problems we will look at for the simple random walk often reduce to the solution of recurrence relations (or difference equations). We consider the general solution of such equations in the simplest situations which have constant coefficients.
+\ben
+\item [1.] First-order equations: The general first-order equation is $x_{n+1} = ax_n + b$, for $n \geq 0$, where $a$ and $b$ are constants, the case $b = 0$ gives the general first-order homogeneous equation $x_{n+1} = ax_n$, which trivially may be solved as $x_n = a^nx_0$, if $y_n$ is any solution of the inhomogeneous equation, then the general solution of the inhomogeneous equation is of the form $x_n = Ca^n + y_n$ for some constant $C$ (because $x_n-y_n$ must be a solution of the homogeneous equation). The constant is determined by a boundary condition.
+
+\item [2.] Second-order equations: $x_{n+1} = ax_n + bx_{n-1} + c$, for $n \geq 1$, where $a$, $b$ and $c$ are constants. First consider the homogeneous case where $c = 0$. Then write the relation in matrix form as follows:
+\be
+\bepm x_{n+1} \\ x_n \eepm = \bepm a & b\\ 1 & 0 \eepm \bepm x_n \\ x_{n-1} \eepm = A\bepm x_n\\ x_{n-1} \eepm,\quad\text{where }A = \bepm a & b\\ 1 & 0\eepm.
+\ee
+It follows that 
+\be
+\bepm x_{n+1} \\ x_n\eepm = A^n \bepm x_1\\ x_0\eepm,
+\ee
+find the eigenvalues of $A$, by solving
+\be
+\bevm a-\lm & b\\ 1 & \lm \eevm = 0, \quad \text{to give the equation }\lm^2 - a\lm - b = 0,
+\ee
+with roots $\lm_1$ and $\lm_2$, say. This equation is known as the auxiliary equation\index{auxiliary equation} of the recurrence relation, it corresponds to seeking a solution of the form $x_n = \lm^n$. If $\lm_1$ and $\lm_2$ are distinct then for some matrix $\Lambda$ we may write
+\be
+A = \Lambda^{-1} \bepm \lm_1 & 0\\ 0 & \lm_2 \eepm \Lambda\quad \text{and then}\quad A^n = \Lambda^{-1} \bepm \lm^n_1 & 0\\ 0 & \lm^n_2 \eepm \Lambda,
+\ee
+so that the general solution of the homogeneous equation may be seen to be of the form $x_n = C\lm^n_1 + D\lm^n_2$ for some constants $C$ and $D$. If the eigenvalues are not distinct, $\lm_1 = \lm_2 = \lm$, then
+\be
+A = \Lambda^{-1} \bepm \lm & 1 \\ 0 & \lm \eepm \quad \text{and then}\quad A^n = \Lambda^{-1} \bepm \lm^n & n\lm^{n-1} \\ 0 & \lm^n\eepm \Lambda,
+\ee
+and then the general solution of the homogeneous equation may be seen to be of the form $x_n = \lm^n(C + Dn)$ for some constants $C$ and $D$. As before, if $y_n$ is any particular solution of the inhomogeneous equation, the general solution is of the form $x_n + y_n$ where $x_n$ is the general solution of the homogeneous equation.
+\een
+
+\begin{example}[Gambler's ruin]
+For the simple random walk, $\{S_k\}$ may represent the fortune of a gambler after $k$ plays of a game where on each play he either wins \pounds 1, with
+probability $p$, or loses \pounds 1 with probability $q = 1-p$, his initial fortune is \pounds $S_0$ and a classical problem is to calculate the probability that his fortune achieves the level $a$, $a > S_0$ , before the time of ruin, that is the time that he goes bankrupt (his fortune hits the level 0). If $T_a$ denotes the first time that the random walk hits the level $a$ and $T_0$ the time the random walk first hits the level 0, we would wish to calculate $\pro (T_a < T_0)$, given that his fortune starts at $S_0 = r$, $0 < r < a$.
+
+\centertexdraw{
+    
+\drawdim in
+
+\def\bdot {\fcir f:0 r:0.03 }
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+\linewd 0.01 \setgray 0 
+
+\move (-0.2 0) \avec(5 0) 
+\move (0 -0.2) \avec(0 1.8) 
+
+\move (0 0.6) \bdot
+\move (0.2 0.9) \bdot
+\move (0.4 0.6) \bdot
+\move (0.6 0.9) \bdot
+\move (0.8 1.2) \bdot
+\move (1 0.9) \bdot
+\move (1.2 1.2) \bdot
+\move (1.4 1.5) \bdot
+\move (1.6 1.2) \bdot
+\move (1.8 0.9) \bdot
+\move (2 1.2) \bdot
+\move (2.2 1.5) \bdot
+\move (2.4 1.2) \bdot
+\move (2.6 0.9) \bdot
+\move (2.8 1.2) \bdot
+\move (3 0.9) \bdot
+\move (3.2 0.6) \bdot
+\move (3.4 0.9) \bdot
+\move (3.6 0.6) \bdot
+\move (3.8 0.3) \bdot
+\move (4 0) \bdot
+\move (4.2 -0.3) \bdot
+\move (4.4 0) \bdot
+\move (4.6 0.3) \bdot
+\move (4.8 0.6) \bdot
+
+
+
+\htext (1.4 -0.15){$T_a$}
+\htext (3.8 -0.15){$T_0$}
+\htext (-0.15 1.45){$a$}
+\htext (-0.2 0.5){$S_0$}
+\htext (4.9 0.5){$S_k$}
+\htext (4.8 -0.15){$k$}
+
+\lpatt (0.05 0.05)
+
+\move (0 1.5) \lvec(5 1.5)
+\move (1.4 1.4) \lvec (1.4 0)
+
+\move (0 0.6) \lvec (0.2 0.9) \lvec (0.4 0.6) \lvec (0.6 0.9) \lvec (0.8 1.2) \lvec (1 0.9) \lvec (1.2 1.2) \lvec (1.4 1.5) \lvec (1.6 1.2) \lvec (1.8 0.9) \lvec (2 1.2) \lvec (2.2 1.5) \lvec (2.4 1.2) \lvec (2.6 0.9) \lvec (2.8 1.2) \lvec (3 0.9) \lvec (3.2 0.6) \lvec (3.4 0.9) \lvec (3.6 0.6) \lvec (3.8 0.3) \lvec (4 0) \lvec (4.2 -0.3) \lvec (4.4 0) \lvec (4.6 0.3) \lvec (4.8 0.6) 
+
+\move (0 2)
+
+}
+
+
+The figure illustrates a path of the random walk-although, in the case of the game, it finishes at the instant $T_0$, the time of bankruptcy! Let $x_r = \pro (T_a < T_0)$ when $S_0 = r$, for $0 \leq r \leq a$, so that we have the boundary conditions $x_a = 1$ and $x_0 = 0$. A general rule in problems of this type in probability may be summed up as 'condition on the first thing that happens', which here would be a shorthand for using the Law of Total  Probability to express the probability conditional on the outcome of the first play of the game, that is, whether $X_1 = 1$ or $X_1 = -1$, or equivalently, $S_1 = r+1$ or $S_1 = r-1$. Thus, for $0 < r < a$,
+\be
+x_r = \pro (T_a < T_0 | S_1 = r + 1) \pro(X_1 = 1) + \pro(T_a < T_0 | S_1 = r - 1) \pro (X_1 = -1) = px_{r+1} + qx_{r-1}.
+\ee
+The auxiliary equation for this recurrence relation is $p\lm^2 - \lm +q = 0$, and since $p+q = 1$, this may be factored as $(\lm - 1)(p\lm - q) = 0$ to give roots $\lm = 1$ and $\lm = q=p$.
+
+Case $p \neq q$: the roots are distinct and the general solution is of the form $x_r = A+B (q/p)^r$ for some constants $A$ and $B$, the boundary conditions at $r = a$ and $r = 0$, fix $A$ and $B$ and we conclude that
+\be
+x_r = \pro (T_a < T_0) = \frac{1 - (q/p)^r}{1 - (q/p)^a},\quad\quad 0 \leq r \leq a.
+\ee
+
+Case $p = q = \frac 12$: here $\lm = 1$ is a repeated root of the auxiliary equation so that the general solution of the recurrence relation is $x_r = A+Br$, which, after using the boundary conditions, leads to the solution $x_r = r/a$, $0 \leq r \leq a$.
+
+We do not know necessarily that at least one of $T_0$ and $T_a$ must be finite, but if we interchange $p$ and $q$ and replace $r$ by $a - r$, (or just calculate directly as above) we may obtain, for $S_0 = r$, $0 \leq r \leq a$, that
+\be
+\pro (T_0 < T_a) = \left\{\ba{ll}
+\frac{(q/p)^r - (q/p)^a}{1 - (q/p)^a} \quad \quad & p \neq q,\\
+1 - r/a & p = q = \frac 12.
+\ea\right.
+\ee
+
+It follows, in both cases, that $\pro(T_a < T_0) + \pro (T_0 < T_a) = 1$, so that at least one of the the two barriers, 0 or $a$, must be reached with certainty.
+\end{example}
+
+\begin{example}
+Probability of ruin From the previous calculation we may derive an expression for $\pro (T_0 < \infty)$ given $S_0 = r > 0$, which is the probability that ruin ever happens. We see that the event that ruin occurs may be written as
+\be
+(T_0 < \infty) = \bigcup^\infty_{a=r+1} (T_0 < T_a),
+\ee
+the events in the union are expanding as $a$ increases, so by the continuity of the probability on expanding events, we have
+\be
+\pro(T_0 < \infty) = \lim_{a\to \infty} \pro (T_0 < T_a) = \left\{ \ba{ll}
+(q/p)^r \quad\quad & p > q,\\
+1 & p \leq q,
+\ea\right.
+\ee
+so that ruin is certain except in the case when the probability of winning a play is strictly larger than $\frac 12$.
+\end{example}
+
+\begin{example}
+Expected duration of the game Suppose that the gambler plays either until his fortune reaches $a$ or until he goes bankrupt, whichever is sooner. That is the number of plays is $\min (T_0, T_a) = T_0 \land T_a$. We will derive the expected length of the game, $\E (T_0 \land T_a)$, given that $S_0 = r$, $0 \leq r \leq a$, which we will denote by $m_r$. We do not know whether $m_r$ is finite. Consider blocks of jumps of the random walk of length $a$, that is
+\be
+\ba{cccc}
+X_1 & X_2 & \dots & X_a\\
+X_{a+1} & X_{a+2} & \dots & X_{2a}\\
+X_{2a+1} & X_{2a+2} & \dots & X_{3a}\\
+\vdots & \vdots & \dots & \vdots 
+\ea
+\ee
+and for $i \geq 1$ set $Y_i = 1$ if either $X_{(i-1)a+1} = X_{(i-1)a+2} = \dots = X_{ia} = 1$ or $X_{(i-1)a+1} = X_{(i-1)a+2} = \dots = X_{ia} = -1$, otherwise $Y_i = 0$. Thus $Y_i = 1$ if and only if the $i$th block of plays is a run of all wins or all losses, and $\pro(Y_i = 1) = 1 - P (Y_i = 0) = p^a + q^a = \theta$, say. If we let $Z$ be the first $i$ such that $Y_i = 1$, then $Z$ has a geometric distribution $\pro(Z = j) = (1-\theta)^{j-1}\theta$, $j \geq 1$, and so $\E (Z) = 1/\theta < \infty$. But it is clear that $T_0\land T_a \leq aZ$, hence we see that $\E (T_0\land T_a) \leq a\E (Z) < \infty$. To compute $m_r$, we again condition on the first thing to happen, that is whether the first play is a win or loss, to see that for $0 < r < a$, 
+\be
+m_r = p (1 + m_{r+1}) + q (1 + m_{r-1}) = 1 + pm_{r+1} + qm_{r-1}, \quad\quad \text{with }m_0 = m_a = 0,
+\ee
+here the 1 in the recurrence relation counts the initial play of the game. The solution of the homogeneous equation is again $m_r = A + B (q/p)^r$ when $p \neq q$ and $m_r = A + Br$ for the case $p = q = \frac 12$.
+
+Case $p \neq q$: look for a particular solution of the inhomogeneous equation with $m_r = cr$, then
+\be
+cr = 1 + pc(r + 1) + qc(r - 1), \quad \quad\text{so that }c = 1/(q -p),
+\ee
+so that the general solution is $m_r = r/(q-p)+A+B (q/p)^r$, and after using the boundary conditions we have
+\be
+m_r = \frac r{q - p} - \bb{\frac a{q - p}} \frac{1 - (q/p)^r}{1 - (q/p)^a}.
+\ee
+
+Case $p = q = \frac 12$: a particular solution of the inhomogeneous equation is $-r^2$, so the general solution is $m_r = A + Br - r^2$ and after using the boundary conditions we have $m_r = r(a - r)$. 
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\subsection{Joint distribution functions}
+
+
+
+Properties of the joint distribution function $F(x, y)$
+\ben
+\item [1.] $F(x, y)$ is non-decreasing in $y$ for each fixed $x$, and in $x$ for each fixed $y$.
+\item [2.] $F(x, y)$ is right continuous in $y$ for each fixed $x$, and in $x$ for each fixed $y$.
+\item [3.] $F(1,1) = \lim_{x\ua \infty}\lim_{y\ua \infty} F(x, y) = 1$, for each fixed $x$, $F(x,-\infty) = \lim_{y \da -\infty} F(x, y) = 0$ and for each fixed $y$, $F(-\infty, y) = \lim_{x\da -\infty} F(x, y) = 0$. Furthermore, $F(x,\infty) = \pro (X \leq x)$ and $F (\infty, y) = \pro (Y\leq y)$ are the marginal probability distributions of $X$ and $Y$, respectively.
+\item [4.] For all $x_1, x_2, y_1$ and $y_2$ with $x_1 < x_2$, $y_1 < y_2$,
+\be
+F(x_2, y_2) - F(x_1, y_2) - F(x_2, y_1) + F(x_1, y_1) \geq 0.
+\ee
+\begin{proof}[\bf Proof]
+The result follows from the observation that the expression that the left-hand side 
+\be
+\pro (X \leq x_2, Y \leq y_2) - \pro (X \leq x_1, Y \leq y_2) - \pro (X \leq x_2, Y \leq y_1) + \pro (X \leq x_1, Y \leq y_1)
+\ee
+equals $\pro (x_1 < X \leq x_2, y_1 < Y \leq y_2) \geq 0$. This is most easily seen by plotting in $\R^2$ the different regions in which $(X, Y)$ lies corresponding to the different probabilities.
+\end{proof}
+\een
+
+
+Properties of the joint probability density function $f(x, y)$
+\ben
+\item [1.] $f(x, y) \geq 0$, for all $x, y$.
+\item [2.] $\int^\infty_{-\infty}\int^\infty{-\infty}f(x, y)dxdy = 1$.
+\een
+For any random variable of the form $g(X, Y )$, for some function $g$, we compute the expectation as
+\be
+\E g(X, Y ) = \int^\infty_{-\infty}\int^\infty{-\infty}g(x,y)f(x, y)dxdy,
+\ee
+in particular, we may obtain the covariance in the continuous case with the same definition as in the discrete case
+\be
+\cov (X, Y ) = \E ((X - \E X) (Y - \E Y )) = \E (XY ) - (\E X) (\E Y ) ,
+\ee
+and it has the same properties as set out previously. Likewise for the correlation coefficient in the context of continuous random variables, it is defined in the same way as for discrete random variables,
+\be
+\corr (X, Y ) = \cov (X, Y )/\sqrt{\var (X)\var (Y )},
+\ee
+and it has the same properties as mentioned in the discrete case.
+
+
+
+
+
+The joint distribution function and density function extends to any number of random variables, in the obvious way. For random variables $X_1, \dots ,X_n$, the joint distribution
+function is
+\beast
+F (x_1,\dots , x_n) & = & \pro (X_1 \leq x_1,\dots ,X_n \leq x_n),\quad -\infty < x_i < \infty,\ 1 \leq i \leq n,\\
+& = & \int^{x_1}_{-\infty} \dots \int^{x_n}_{-\infty} f (u_1,\dots , u_n) du_1\dots du_n,
+\eeast
+where $f (u_1,\dots , u_n)$ is the joint probability density function. Note that
+\be
+f (x_1,\dots , x_n) = \frac{\partial^nF}{\partial x_1 \dots \partial x_n} .
+\ee
+The expectation of a function of $X_1,\dots ,X_n$ is computed as
+\be
+\E g (X_1,\dots ,X_n) = \int^\infty_{-\infty} \dots\int^\infty_{-\infty} g (x_1,\dots , x_n) f (x_1,\dots , x_n) dx_1\dots dx_n.
+\ee
+Independence for continuous random variables may be defined similarly to the discrete case. Random variables $X_1,\dots ,X_n$ are independent\index{independent} if 
+\be
+\pro(X_1 \in S_1,X_2 \in S_2,\dots ,X_n \in S_n) = \pro (X_1 \in S_1) \pro (X_2 \in S_2) \dots \pro (X_n \in S_n) ,
+\ee
+for all $S_i \subseteq \Omega_{X_i}$, $1 \leq i \leq n$, this is equivalent to each of the statements that the joint distribution function
+\be
+F (x_1, x_2,\dots , x_n) = F_{X_1} (x_1)F_{X_2} (x_2) \dots F_{X_n}(x_n), \quad \text{for all }x_i, 1 \leq i \leq n,
+\ee
+factors into the product of the marginal distribution functions, $F_{X_i}$, and the joint probability density function
+\be
+f (x_1, x_2,\dots , x_n) = f_{X_1} (x_1)f_{X_2} (x_2) \dots f_{X_n}(x_n),\quad\text{for all }x_i,\ 1 \leq i \leq n,
+\ee
+factors into the product of the marginal densities, $f_{X_i}$. It follows that if $X_1,\dots ,X_n$ are independent then, for functions $g_1,\dots , g_n$,
+\beast
+\E \bb{\prod^n_{i=1} g_i (X_i)} & = & \int^\infty_{-\infty} \dots \int^\infty_{-\infty} \bb{\prod^n_{i=1} g_i(x_i)} f (x_1, x_2,\dots , x_n) dx_1\dots dx_n\\
+& = & \int^\infty_{-\infty} \dots \int^\infty_{-\infty} \bb{\prod^n_{i=1} g_i(x_i)} f_{X_1}(x_1)f_{X_2}(x_2)\dots f_{X_n}(x_n) dx_1\dots dx_n\\
+& = & \prod^n_{i=1} \bb{\int^\infty_{-\infty} g_i(x_i)f_{X_i} (x_i)dx_i} = \prod^n_{i=1}\bb{\E (g_i (X_i))},
+\eeast
+that is, as in the discrete case, the expectation of the product is the product of the expectations. This shows, as in the discrete case, that if $X$ and $Y$ are independent then $\cov (X, Y ) = \E(XY ) - (\E X)(\E Y ) = 0$.
+
+Note that for independent random variables $X$, $Y$ the conditional density of $X$ given $Y = y$ is
+\be
+f_{X|Y} (x | y) = \frac{f(x, y)}{f_Y (y)} = \frac{f_X(x)f_Y (y)}{f_Y (y)} = f_X(x),
+\ee
+which is of course just the unconditioned density function of $X$.
+
+\begin{example}
+Suppose that $X$ and $Y$ are independent random variables each with the $U[0, 1]$ distribution and that we wish to calculate $\pro(X < Y)$. There are several ways that we might proceed. Firstly, the joint p.d.f. of $X$ and $Y$ is $f(x, y) = f_X(x)f_Y (y) = 1$ for $0 \leq x \leq 1$ and $0 \leq y \leq 1$. Then,
+\be
+\pro(X < Y ) = {\int\int}_{0\leq x<y\leq 1} f(x, y)dxdy = \int^1_0\int^1_x dy dx = \int^1_0 (1- x)dx = \bsb{x - x^2/2}^1_0 = \frac 12.
+\ee
+Alternatively we could write, using the Law of Total Probability,
+\be
+\pro(X < Y ) = \int^1_0 \pro(X < Y | Y = y) f_Y (y)dy = \int^1_0 \pro (X < y) dy = \int^1_0 ydy = \bsb{y^2/2}^1_0 = \frac 12 .
+\ee
+
+Or, finally in this case we can argue graphically, since the joint distribution of $X$ and $Y$ is uniform over the unit square,
+
+\centertexdraw{
+    
+\drawdim in
+
+\def\bdot {\fcir f:0 r:0.02 }
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+\linewd 0.01 \setgray 0 
+
+\move (-0.2 0) \avec(1.5 0) 
+\move (0 -0.2) \avec(0 1.5) 
+
+\move (0 0) \lvec (1.2 1.2)\lvec(0 1.2)\lvec(0 0) \lfill f:0.8
+\move (0 0) \lvec (1.2 0)\lvec (1.2 1.2)\lvec(0 1.2)\lvec(0 0) 
+
+\htext (1.2 -0.15){1}
+\htext (-0.1 1.1){1}
+\htext (0.05 1.3){$y$}
+\htext (1.5 -0.15){$x$}
+
+\move(0 1.5)
+}
+
+then $\pro(X < Y )$ is just the area of the shaded region, which is $\frac 12$. 
+\end{example}
+
+
+For independent random variables $X$ and $Y$, the density function of $X + Y$ may be expressed in terms of the densities of $X$ and $Y$ as
+\be\label{equ:sum_of_continuous_random}
+f_{X+Y} (z) = \int^\infty_{-\infty} f_X(z - y)f_Y (y)dy = \int^\infty_{-\infty} f_X(x)f_Y (z - x)dx, 
+\ee
+this is known as the convolution\index{convolution} of the two densities. It is derived from the corresponding statements involving distribution functions, when $F_{X+Y} (z) = \pro (X + Y \leq z)$, which are
+\bea
+F_{X+Y} (z) & = & \int^\infty_{-\infty} \pro(X + Y \leq z | Y = y) f_Y (y)dy = \int^\infty_{-\infty} F_X(z - y)f_Y (y)dy\nonumber\\
+& = & \int^\infty_{-\infty} \pro (X + Y \leq z | X = x) f_X(x)dx = \int^\infty_{-\infty} f_X(x)F_Y (z - x)dx.\label{equ:distribution_convolution}
+\eea
+
+Then (\ref{equ:sum_of_continuous_random}) is obtained by differentiating with respect to $z$ either of the two expressions in (\ref{equ:distribution_convolution}).
+
+
+
+\begin{example}[Order statistics of a random sample]
+Independent, identically random variables $X_1,\dots ,X_n$ each having the continuous distribution $F(x)$ are said to be a random sample from the distribution $F$. The values of these random variables arranged in increasing order are usually written as
+\be
+X_{(1)} \leq X_{(2)} \leq \dots \leq X_{(n-1)} \leq X_{(n)}.
+\ee
+The values $Y_i = X_{(i)}$ are said to be the order statistics\index{order statistics} of the sample. Thus, $Y_1 = \min_{1\leq i\leq n} X_i$ is the smallest of the random variables, $Y_2$ is the second smallest and so on with $Y_n = \max_{1\leq i\leq n} X_i$. As in the previous example, we may calculate the distribution of $Y_1$,
+\beast
+\pro (Y_1 \leq x) & = & \pro\bb{\min_{1\leq i\leq n} X_i \leq x} = 1-\pro\bb{\min_{1\leq i\leq n} X_i > x}\\
+& = & 1 - \pro (X_1 > x,\dots ,X_n > x) = 1 - \prod^n_{i=1} \pro(X_i > x) = 1 - (1 - F(x))^n.
+\eeast
+Then the p.d.f. of $Y_1$ is $n (1 - F(x))^{n-1} f(x)$, where $f(x) = F'(x)$ is the p.d.f. of the $\{X_i\}$. A similar calculation shows that for $Y_n$,
+\be
+\pro(Y_n \leq x) = \pro\bb{\max_{1\leq i\leq n} X_i \leq x} = (F(x))^n \quad \text{and its p.d.f. is }n (F(x))^{n-1} f(x).
+\ee
+We may also see that the joint p.d.f. of $Y_1,\dots , Y_n$ is given by
+\be
+g(y_1,\dots , y_n) = \left\{\ba{ll}
+n! f(y_1) \dots f(y_n)\quad\quad & y_1 < \dots < y_n,\\
+0 & \text{otherwise.}
+\ea\right.
+\ee
+To see this consider the joint probabilities that $Y_i \in (y_i, y_i + dy_i)$, $1 \leq i \leq n$, and see that there are $n$ choices from the $\{X_i\}$ for the smallest order statistic, $n- 1$ choices for the second smallest and so on to understand how the factor $n!$ in the expression for the joint density is obtained. 
+\end{example}
+
+
+\subsection{Transformations of random variables}
+
+We first consider the case of two random variables $X$, $Y$, with joint p.d.f. $f(x, y)$, and suppose that $U$ and $V$ are random variables which are functions of $X$ and $Y$ derived from a one-to-one transformation $(x, y) \mapsto (u, v)$, so that $U = a(X, Y)$, $V = b(X, Y)$, say, and moreover $X$ and $Y$ may be written as functions of $U$ and $V$ as $X = A(U, V)$ and $Y = B(U, V)$. In order to obtain the joint p.d.f. $g(u, v)$ of the pair $U$ and $V$, recall the definition of the Jacobian
+\be
+\fp{(x, y)}{(u, v)} = \bevm 
+\fp{x}{u} & \fp{x}{v}\\
+\fp{y}{u} & \fp{y}{v}
+\eevm
+= \fp{x}{u} \fp{y}{v} - \fp{x}{v}\fp{y}{u}.
+\ee
+of the transformation $(u, v) \mapsto (x, y)$. Then the joint p.d.f. $g(u, v)$ is given by
+\be\label{equ:Jacobian_gf}
+g(u, v) = f (x, y) \abs{\fp{(x, y)}{(u, v)}} . 
+\ee
+
+This follows from the fact that if a region $S$ in the $(x, y)$-plane maps into the region $T$ in the $(u, v)$-plane then we must have
+\be
+\pro((X, Y ) \in S) = {\int\int}_S f(x, y)dxdy = {\int\int}_T g(u, v)dudv = \pro ((U, V ) \in T).
+\ee
+The change-of-variable formula in multiple integration comes from the following idea. the element of area, which may be thought of as a rectangle in the the $(u, v)$-plane with sides of length $\triangle u$ and $\triangle v$, maps into a parallelogram in the $(x, y)$-plane bounded by vectors $r$ and $s$ (which we think of as being in $\R^3$) as illustrated,
+
+\centertexdraw{
+    
+\drawdim in
+
+\def\bdot {\fcir f:0 r:0.02 }
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+\linewd 0.01 \setgray 0 
+
+\move (0 0) \lvec(1 0) \lvec(1 0.5) \lvec(0 0.5) \lvec(0 0)\lfill f:0.8
+
+\move (3 0) \lvec(4 0.2) \lvec(4.6 0.6) \lvec(3.6 0.4)\lvec (3 0) \lfill f:0.8
+
+\move (3 0) \avec (3.5 0.1)
+\move (3 0) \avec (3.3 0.2)
+
+\htext (-0.2 -0.15){$(u,v)$}
+\htext (0.9 0.55){$(u+\triangle u, v+\triangle v)$}
+\htext (3.4 0.4){$s$}
+\htext (3.7 0){$r$}
+\htext (2.8 -0.15){$(x,y)$}
+
+\move(0 0.8)
+}
+
+where 
+\beast
+r & = & (x(u + \triangle u, v) - x(u, v), y(u + \triangle u, v) - y(u, v), 0)\\
+& \approx & \triangle u\bb{\fp{x}{u},\fp{y}{u}, 0} = \triangle u \bb{\fp{x}{u}i + \fp{y}{u} j},
+\eeast
+and similarly, $s \approx \triangle v\bb{\fp{x}{v} i + \fp{y}{v}j}$, here $i$, $j$ and $k$ are the standard basic unit vectors in $\R^3$. Then by the determinant rule, the cross product between $r$ and $s$ is
+\be
+r \times s = \triangle u \triangle v \bevm
+i & j & k\\
+\fp{x}{u} & \fp{y}{u} & 0\\
+\fp{x}{v} & \fp{y}{v} & 0
+\eevm
+= \triangle u \triangle v \fp{(x, y)}{(u, v)}k.
+\ee
+
+It follows that the area of the parallelogram is $\abs{r \times s} = \abs{\fp{(x, y)}{(u, v)}} triangle u \triangle v$, from which we see the relation (\ref{equ:Jacobian_gf}).
+
+\begin{example}
+Suppose that $X$ and $Y$ are independent, identically distributed random variables each with the $\sE(\lm)$ distribution. Let $U = X + Y$ and $V = X/(X +Y)$. The joint probability density function of $X$ and $Y$ is
+\be
+f_{X,Y} (x, y) = \lm^2e^{-\lm(x+y)},\quad\quad 0 < x < \infty, 0 < y < \infty.
+\ee
+Then we have $u = x+y$ and $v = x/(x+y)$, so solving for x and y in terms of $u$ and $v$ gives
+\be
+x = uv, y = u(1 - v),\quad\quad 0 < u < \infty, 0 < v < 1.
+\ee
+
+We calculate the Jacobian,
+\be
+J = \bevm
+\fp{x}{u} & \fp{x}{v} \\
+\fp{y}{u} & \fp{y}{v}
+\eevm
+= \bevm
+v & u\\
+1 - v & -u
+\eevm = -vu - u(1 - v) = -u.
+\ee
+
+The joint density of $U$ and $V$ is then
+\be
+g_{U,V} (u, v) = f_{X,Y} (uv, u(1 - v)) \abs{J} = \lm^2ue^{-\lm u},\quad\quad 0 < u < \infty, 0 < v < 1.
+\ee
+We see that this can be viewed as the product of the two probability densities, $g_U (u) = \lm^2ue^{-\lm u}$, which is the density of the $\Gamma(2,\lm)$ distribution, and $g_V (v) = 1$, which is the density of the $U(0, 1)$ distribution, we can conclude that $U$ and $V$ are independent with $g_U$ and $g_V$ as their marginal density functions.
+
+Whenever we calculate a joint probability density function in this way and we see that it splits into a product of functions of the variables separately in such a way that we may normalize the functions so that they become the marginal probability densities of the two random variables, then we may conclude that the random variables are independent.
+\end{example}
+
+
+\begin{example}
+Suppose that X and Y have joint p.d.f. given by
+
+\centertexdraw{
+    
+\drawdim in
+
+\def\bdot {\fcir f:0 r:0.02 }
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+\linewd 0.01 \setgray 0 
+
+\move (-0.2 0) \avec(1.5 0) 
+\move (0 -0.2) \avec(0 1.5) 
+
+\move (0 0) \lvec (1.2 0) \lvec (1.2 1.2)\lvec(0 1.2)\lvec(0 0) \lfill f:0.8
+\move (0 0) \lvec (1.2 0)\lvec (1.2 1.2)\lvec(0 1.2)\lvec(0 0) 
+
+\htext (1.2 -0.15){1}
+\htext (-0.1 1.1){1}
+\htext (0.05 1.3){$y$}
+\htext (1.5 -0.15){$x$}
+
+\htext (-3 0.5){$f(x,y)=\left\{\ba{ll} 4xy \quad\quad & 0< x<1,0<y<1,\\ 0 & \text{otherwise}\ea\right.$}
+
+\move(0 1.5)
+}
+
+and that $U = X/Y$ and $V = XY$. Then $x = \sqrt{uv}$ and $y =\sqrt{v/u}$, and the Jacobian is
+\be
+\bevm
+\fp{x}{u} & \fp{x}{v}\\
+\fp{y}{u} & \fp{y}{v}
+\eevm
+= \bevm
+\frac 12 \sqrt{\frac vu} & \frac 12 \sqrt{\frac uv}\\
+-\frac 12 \frac {\sqrt{v}}{u^{3/2}} & \frac 12 \frac 1{\sqrt{uv}}
+\eevm
+= \frac 1{4u} + \frac 1{4u} = \frac 1{2u}.
+\ee
+We see that the joint density of $U$ and $V$ (when it is non-zero) is then of the form $2v/u$, however, $U$ and $V$ are not independent since the region over which the density is positive does not allow the joint density to split into the product of the marginal densities. We have
+
+\centertexdraw{
+    
+\drawdim in
+
+\def\bdot {\fcir f:0 r:0.02 }
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+\linewd 0.01 \setgray 1 
+
+\move (0 0) \lvec(1.2 1.2) \clvec (1.5 1)(2 0.6)(3 0.5) \lvec (3 0)\lfill f:0.8
+
+\linewd 0.01 \setgray 0
+
+\move (-0.2 0) \avec(3.2 0) 
+\move (0 -0.2) \avec(0 1.5) 
+
+
+\move (0 0) \lvec(1.2 1.2) \clvec (1.5 1)(2 0.6)(3 0.5)
+
+\htext (1.2 -0.15){1}
+\htext (-0.1 1.1){1}
+\htext (0.05 1.3){$v$}
+\htext (3.2 -0.15){$u$}
+
+\htext (0.2 0.6){$u=v$}
+\htext (2.8 0.6){$uv=1$}
+
+\htext (-3 0.5){$g(x,y)=\left\{\ba{ll} \frac {2v}u \quad\quad & 0< uv<1,0<v/u<1,\\ 0 & \text{otherwise}\ea\right.$}
+
+\move(0 1.5)
+}
+
+which is concentrated on the region shown. We may calculate the marginal density of $U$,
+\be
+g_U (u) = \int^1_0 g(u, v)dv = \int^u_0 \frac{2v}u dv = \bsb{\frac{v^2}u}^u_0 = u,\quad\quad u\leq 1 
+g_U (u) = \int^1_0 g(u, v)dv = \int^{1/u}_0 \frac{2v}u dv = \bsb{\frac{v^2}u}^{1/u}_0 = \frac 1{u^3},\quad\quad u > 1.
+\ee
+Calculating the marginal density of $V$, for $0 < v < 1$, we obtain
+\be
+g_V (v) = \int^\infty_0 g(u, v)du = \int^{1/v}_v \frac{2v}u du = [2v \log u]^{1/v}_v = -4v \log v,
+\ee
+and we see that $g(u, v) \neq g_U (u)g_V (v)$. 
+\end{example}
+
+\begin{example}[Sums and Convolution]
+Suppose that $X$ and $Y$ have joint probability density function $f(x, y)$ and let $U = X + Y$ and $V = Y$, so that $X = U - V$ and $Y = V$. The Jacobian
+\be
+J = \bevm
+\fp{x}{u} & \fp{x}{v}\\
+\fp{y}{u} & \fp{y}{v}
+\eevm
+= 
+\bevm
+1 & -1\\
+0 & 1
+\eevm
+= 1,
+\ee
+so that the joint density of $U$ and $V$ is $g(u, v) = f(u - v, v)$. We may then derive the marginal density of $X + Y$ as
+\be
+f_{X+Y} (u) = \int^\infty_{-\infty}f(u - v, v)dv.
+\ee
+In the particular case that $X$ and $Y$ are independent we have $f(x, y) = f_X(x)f_Y (y)$ and we derive the formula for the convolution of two independent random variables
+\be
+f_{X+Y} (u) = \int^\infty_{-\infty} f_X(u - v)f_Y (v)dv,
+\ee
+that we had derived previously.
+\end{example}
+
+\begin{example}
+Suppose that $X$ and $Y$ are i.i.d. each with the $\sN(0, 1)$ distribution and let $D = X^2 + Y^2$ and $\Theta = \arctan(Y/X)$. The joint density function of $X$ and $Y$ is
+\be
+f(x, y) = \frac 1{\sqrt{2\pi}} e^{-x^2/2}  \frac 1{\sqrt{2\pi}} e^{-y^2/2} =  \frac 1{\sqrt{2\pi}} e^{-(x^2+y^2)/2}.
+\ee
+Then for $d = x^2 + y^2$ and $\theta = \arctan(y/x)$, consider the Jacobian
+\be
+J = \bevm
+\fp{d}{x} & \fp{d}{y}\\
+\fp{\theta}{x} & \fp{\theta}{y}
+\eevm
+= 
+\bevm
+2x & 2y\\
+-\frac y{x^2 + y^2} & \frac x{x^2 + y^2}
+\eevm 
+= 2,
+\ee
+so the Jacobian of the inverse transformation is $\frac 12$. It follows that the joint density of $D$ and $Theta$ is
+\be
+g(d, \theta) = \frac 1{4\pi} e^{-d/2},\quad\quad 0 \leq d < \infty, 0 \leq \theta \leq 2\pi,
+\ee
+which we may see can be expressed as the product of the marginal densities of $D$ and $\Theta$ as $g(d, \theta) = g_D(d)g_\Theta(\theta)$, where
+\be
+g_D(d) = \frac 12 e^{-d/2},\quad 0 \leq d < \infty, \quad\quad g_\Theta(\theta) = \frac 1{2\pi},\quad 0 \leq \theta 2\pi.
+\ee
+This means that $D \sim \sE\bb{\frac 12}$ and $\Theta \sim U[0, 2\pi]$ and they are independent random variables. This suggests a way of simulating $\sN(0, 1)$ random variables. Take $U_1$ and $U_2$ as independent $U[0, 1]$ random variables. Then $D = -2 \log(U_1)$ has the $\sE\bb{\frac 12}$ distribution, while $\Theta = 2\pi U_2$ has the $U[0, 2\pi]$ distribution and we see that
+\be
+X = \sqrt{D}\cos\Theta = \sqrt{-2 \log U_1} \cos (2\pi U_2),\quad\quad Y = \sqrt{D}\sin\Theta = \sqrt{-2 \log U_1} \sin (2\pi U_2) ,
+\ee
+are independent standard normals.
+\end{example}
+
+
+We may generalize these ideas to one-to-one transformations of $n$ random variables. Suppose that $X_1,\dots ,X_n$ are random variables with joint probability density function $f(x_1,\dots , x_n)$ and that the random variables $U_1,\dots ,U_n$ are given as functions $U_i = a_i(X_1,\dots ,X_n)$ which we can invert so that $X_i = A_i(U_1,\dots ,U_n)$. The Jacobian of the transformation is
+\be
+\fp{(x_1, x_2,\dots , x_n)}{(u_1, u_2,\dots , u_n)} =
+\bevm
+\fp{x_1}{u_1} & \fp{x_1}{u_2} & \dots & \fp{x_1}{u_n}\\
+\vdots & \vdots & \vdots & \vdots \\
+\fp{x_n}{u_1} & \fp{x_n}{u_2} & \dots & \fp{x_n}{u_n}
+\eevm
+\ee
+and the joint probability density function of $U_1,\dots ,U_n$ is obtained by setting
+\be
+g(u_1,\dots , u_n) = f(x_1,\dots , x_n)\abs{\fp{(x_1, x_2,\dots , x_n)}{(u_1, u_2,\dots , u_n)}}.
+\ee
+In particular, if the $\{X_i\}$ are just a linear transformation of the $\{U_j\}$, so that in vector notation
+\be
+X = \bepm
+X_1\\
+\vdots \\
+X_n
+\eepm = AU = A \bepm
+U_1\\
+\vdots \\
+U_n
+\eepm,
+\ee
+where $A$ is an $n \times n$ matrix, then the Jacobian of the transformation is $\det A$. We then have $g(u) = f(Au)\abs{\det A}$.
+
+\begin{example}
+Suppose that $X_1,\dots ,X_n$ are independent identically distributed random variables with $X_i \sim \sE(\lm)$, for each $i$, $1 \leq i \leq n$. Let $Y_1,\dots , Y_n$ be the order statistics of the $\{X_i\}$ so that $Y_1 = \min_i X_i$ is the smallest of the $\{X_i\}$, $Y_2$ is the second smallest, and so on, with $Y_n = \max_i X_i$. Think of $X_1,\dots ,X_n$ representing the lifetimes of $n$ components which are plugged in simultaneously at time 0, then $Y_1$ is the time of the first failure, $Y_2$ is the time of the second failure and so on. Set 
+\be
+Z_1 = Y_1,\quad Z_2 = Y_2 - Y_1,\quad\dots ,\quad Z_n = Y_n - Y_{n-1},
+\ee
+so that
+\be
+\bepm
+Z_1\\
+\vdots\\
+Z_n
+\eepm = A \bepm
+Y_1\\
+\vdots\\
+Y_n
+\eepm, \quad\quad\text{with }A = \bepm
+1 & 0 & 0 & \dots & 0 & 0\\
+-1 & 1 & 0 & \dots & 0 & 0\\
+0 & -1 & 1 & \dots & 0 & 0\\
+\vdots & \vdots & \vdots & \dots & \vdots & \vdots\\
+0 & 0 & 0 & \dots & -1 & 1
+\eepm,
+\ee
+note that $\det A = 1$ and that $y_j =\sum^j_{i=1}z_i$ for each $j$. Recall that the joint p.d.f. of the order statistics $Y_1,\dots , Y_n$ is 
+\be
+g(y_1,\dots , y_n) = n! f(y_1) \dots f(y_n) \quad \text{where }f(x) = \lm e^{-\lm x},
+\ee
+we then obtain the joint p.d.f. of $Z_1,\dots ,Z_n$ as 
+\be
+h(z_1,\dots , z_n) = n! \lm^ne^{-\lm(y_1+\dots+y_n)} = n! \lm^ne^{-\lm(nz_1+(n-1)z_2+\dots+2z_{n-1}+z_n)} = \prod^n_{i=1} \bb{\lm(n - i + 1)e^{-\lm (n-i+1)z_i}}.
+\ee
+As the joint p.d.f. factors into n individual probability densities we conclude that the random variables $Z_1,\dots ,Z_n$ are independent with $Z_i \sim \sE(\lm(n- i + 1))$.
+
+Note that this puts together formally two ideas that we have seen from our previous consideration of the exponential distribution. the time until the first failure is the minimum of $n$ i.i.d. exponential random variables, with parameter $\lm$, and so has the exponential distribution with parameter $n\lm$, by the lack of memory property of the exponential distribution, when the first failure of a component occurs, the time from then until the failure of the other components is exponential with the same parameter $\lm$, so the time until the second failure is the minimum of $n - 1$ i.i.d. exponentials and thus is exponential with parameter $(n - 1)\lm$, and so on. 
+\end{example}
+
+\subsection{Bivariate normal distribution}
+
+Recall that the random variable $X$ has the $\sN(\mu, \sigma^2)$-distribution if its probability density function is
+\be
+f_X(x) = \frac 1{\sqrt{2\pi}\sigma} e^{-(x-\mu)^2/(2\sigma^2)},\quad -\infty < x < \infty,
+\ee
+and that $\mu = \E(X)$ and $\sigma^2 = \var (X)$. We say that random variables $X$ and $Y$ have a bivariate normal distribution (or bivariate Gaussian distribution or joint normal distribution) if their joint probability density function has the form
+\be
+f_{X,Y} (x, y) = \frac 1{2\pi \sigma \tau \sqrt{1-\rho^2}} \exp\bb{- \frac 1{2(1- \rho^2)} \bb{\frac{(x -\mu)^2}{\sigma^2} - 2\rho \frac{(x -\mu)(y - \nu)}{\sigma \tau} + \frac{(y- \nu)^2}{\tau^2}}}
+\ee
+for $-\infty < x < \infty$ and $-\infty < y < \infty$ where the parameters satisfy $-\infty < \mu < \infty$, $-\infty < \nu < \infty$, $\sigma > 0$, $\tau> 0$ and $-1 < \rho < 1$. The first task is to check that this expression is indeed a joint density function in that it integrates to 1. By making the substitutions $u = (x - \mu)/\bb{\sigma\sqrt{1 - \rho^2}}$ and $v = (y - \nu)/(\tau\sqrt{1 -\rho^2})$, we have 
+\beast
+I & = & {\int\int}_{-\infty<x,y<\infty} f_{X,Y} (x, y)dxdy = {\int\int}_{-\infty<x,y<\infty} \frac{\sqrt{1 -\rho^2}}{2\pi} e^{-\frac 12 (u^2-2\rho uv+v^2)} dudv\\
+& = & {\int\int}_{-\infty<x,y<\infty} \frac{\sqrt{1 -\rho^2}}{2\pi} e^{-\frac 12 ((u-\rho v)^2+(1-\rho^2)v^2)}dudv.
+\eeast
+
+Now put $w = u - \rho v$ and $z = v \sqrt{1 - \rho^2}$, or $u = w + \rho z/\sqrt{1 - \rho^2}$ and $v = z/\sqrt{1 - \rho^2}$, and calculate the Jacobian of this transformation
+\be
+\fp{(u, v)}{(w, z)} =
+\bevm
+1 & \frac{ p}{\sqrt{1 - \rho^2}}\\
+0 & \frac 1{\sqrt{1 - \rho^2}}
+\eevm=
+\frac 1{\sqrt{1 - \rho^2}},
+\ee
+then we see that
+\be
+I = {\int\int}_{-\infty<w,z<\infty} \frac 1{2\pi} e^{-(w^2+z^2)/2}dwdz = \bb{\int^\infty_{-\infty}\frac 1{\sqrt{2\pi}} e^{-w^2/2}dw}^2 = 1.
+\ee
+
+Marginal distributions. To see the relationship with the ordinary (univariate) normal distribution and to determine the marginal distributions, consider the random variables
+\be
+U = X,\quad V = Y - \nu - \rho\tau (X -\mu)/\sigma.
+\ee
+Putting $X$ and $Y$ in terms of $U$ and $V$ gives
+\be
+X = U,\quad Y = V + \nu + \rho \tau(U - \mu)/\sigma.
+\ee
+
+The Jacobian of this transformation is
+\be
+J = \bevm
+\fp{x}{u} & \fp{x}{v}\\ 
+\fp{y}{u} & \fp{y}{v}
+\eevm
+=
+\bevm
+1 & 0\\ 
+\rho\tau/\sigma & 1
+\eevm
+= 1.
+\ee
+We may now calculate the joint density function of $U$ and $V$ , evaluated at $(u, v)$, as
+\be
+\bb{\frac 1{\sqrt{2\pi}\sigma} e^{-(u-\mu)^2/(2\sigma^2)}} \bb{\frac 1{\sqrt{2\pi} \tau \sqrt{1 -\rho^2}} e^{-v^2/(2\tau^2(1-\rho^2))}},
+\ee
+and we recognize these two expressions, the first in u is the density of the $\sN(\mu, \sigma^2)$ distribution, and the second in $v$ is the density of the $\sN(0, \tau^2(1 - \rho^2))$ distribution, and moreover, because the joint density factors into the product of these two densities, $U$ and $V$ are independent random variables. We conclude that the marginal distribution of $X$ is $\sN(\mu, \sigma^2)$ and, by the symmetry of the joint density of $X$ and $Y$, we can see that the marginal density of $Y$ is $\sN(\nu, \tau^2)$. To interpret the remaining parameter $\rho$, calculate
+\beast
+\cov (X, Y ) & = & \cov (U, V + \nu + \rho \tau(U -\mu)/\sigma)\\
+& = & \cov (U, V ) + \cov (U, \rho\tau(U -\mu)/\sigma),\quad\quad \text{ since $\nu$ is constant},\\
+& = & \cov (U, \rho\tau(U - \mu)/\sigma),\quad\quad \text{ since $U$ and $V$ are independent},\\
+& = & \rho \tau \var (U)/\sigma = \rho\sigma\tau = \rho \sqrt{\var (X)\var (Y )}.
+\eeast
+
+Thus the parameter $\rho = \corr (X, Y )$ is the correlation coefficient of the random variables $X$ and $Y$. We may see immediately that 
+\be
+f_{X,Y} (x, y) = \bb{\frac 1{\sqrt{2\pi}\sigma} e^{-(x-\mu)^2/(2\sigma^2)} }\bb{\frac 1{\sqrt{2\pi} \tau}e^{-(y-\nu)^2/(2\tau^2)}} = f_X(x)f_Y (y),
+\ee
+for all $x$ and $y$, if and only if $\rho = 0$, or equivalently if and only if $\cov (X, Y ) = 0$. Thus random variables which have a joint normal distribution are independent if and only if their covariance is zero. Recall that in general the covariance between random variables being zero does not imply independence of the random variables, we see here the important and useful property that the covariance being zero is sufficient to show independence for normally distributed variables.
+
+Conditional distributions. We may calculate the conditional density of one of the random variables $Y$, say, given the value of the other variable $X = x$, that is, the density $f_{Y|X}(y |x) = f_{X,Y} (x, y)/f_X(x)$, which equals
+\beast
+& & \left.\frac{\exp\bb{- \frac 1{2(1-\rho^2)}\bb{\frac{(x-\mu)^2}{\sigma^2} - 2\rho \frac{(x-\mu)(y-\nu)}{\sigma \tau} + \frac{(y-\nu )^2}{\tau^2}} }} {2\pi \sigma \tau \sqrt{1 - \rho^2}} \right/\frac{\exp \bb{-\frac{(x-\mu)^2}{2\sigma^2}}}{\sigma \sqrt{2\pi}} \\
+& = & \left.\exp \bb{-\frac 1{2(1 - \rho^2)}\bb{ \frac{\rho^2(x - \mu)^2}{\sigma^2} - 2\rho \frac{(x - \mu)(y - \nu )}{\sigma \tau} + \frac{(y - \nu )^2}{\tau^2}}}\right/ \tau\sqrt{2\pi (1 - \rho^2)}\\
+& = & \left.\exp\bb{-\frac 1{2\tau^2(1 - \rho^2)} (y - \nu  - \rho \tau(x - \mu)/\sigma )^2}\right/ \tau\sqrt{2\pi(1 - \rho^2)}.
+\eeast
+We recognize this last expression as being the density (in $y$) of the normal distribution with mean $\nu  + \rho \tau(x - \mu)/\sigma$ and variance $\tau^2(1 - \rho^2)$, so that, in shorthand notation,
+\be
+Y|X \sim \sN\bb{\nu  + \rho \tau(X - \mu)/\sigma , \tau^2(1 - \rho^2)}.
+\ee
+
+Notice that the conditional expectation of $Y$ given $X$, which is
+\be
+\E\bb{Y|X} = \nu  + \rho \tau(X - \mu)/\sigma ,
+\ee
+depends on $X$, but the variance of $Y$ conditional on $X$ is the constant $\tau^2(1-\rho^2)$, which is less than the unconditioned variance of $Y$, that is $\tau^2$.
+
+Linear transformations. A further property that you might wish to check is that if $X$ and $Y$ have a joint normal distribution and we define random variables $R$ and $S$ by
+\be
+\bepm
+R\\
+S
+\eepm = \bepm
+a & b\\
+c & d
+\eepm
+\bepm
+X\\
+Y
+\eepm
++\bepm
+\theta\\
+\phi
+\eepm,
+\ee
+where $a$, $b$, $c$, $d$, $\theta$ and $\phi$ are constants with $ad \neq bc$, then $R$ and $S$ have a joint normal distribution, so that normal distributions are preserved under linear transformations. You should check that the condition $ad \neq bc$ is needed to ensure that $\abs{corr (R, S)}\neq 1$, even if this condition does not hold, the random variables $R$ and $S$ will individually have normal distributions but their correlation coefficient will be 1 or -1.
+
+Multivariate normal distribution. We may generalize the above to define the joint normal distribution for $n$ random variables. Suppose that $Z_1,\dots ,Z_n$ are i.i.d. random variables each with the standard $\sN(0, 1)$ distribution. Suppose that $A$ is a $n\times n$ invertible matrix and (using vector notation) suppose that
+\be
+{\bf X} = \bepm
+X_1\\
+\vdots\\
+X_n
+\eepm = 
+\bepm
+\mu_1\\
+\vdots\\
+\mu_n
+\eepm
++ A\bepm
+Z_1\\
+\vdots\\
+Z_n
+\eepm = {\bf \mu} + A{\bf Z},
+\ee
+where $\mu_1,\dots , \mu_n$ are constants. Since each of the random variables $\{Z_j\}$ has mean zero, we see first that $\E X_i = \mu_i$, for each $i$. The joint probability density function of the components of ${\bf Z}$ at $\bz = (z_1,\dots , z_n)^T$ is
+\be
+f(\bz) = \prod^n_{i=1} \frac 1{\sqrt{2\pi}} e^{-z^2_i/2} = \bb{\frac 1{\sqrt{2\pi}}}^{n/2} e^{-\sum^n_{i=1} z^2_i/2} = \bb{\frac 1{\sqrt{2\pi}}}^{n/2} e^{-\bz^T \bz/2}.
+\ee
+
+Writing $\bz = A^{-1}(\bx-{\bf\mu})$, the Jacobian of the transformation is $\abs{\det A}^{-1}$, so that the joint density for ${\bf X}$ is
+\beast
+g(\bx) & = & \frac 1{\abs{\det A}} f\bb{A^{-1}(\bx - {\bf \mu})} = \frac 1{\abs{\det A}} \bb{\frac 1{\sqrt{2\pi}}}^{n/2} e^{-\frac 12 (A^{-1}(\bx-{\bf\mu}))^T(A^{-1}(\bx-{\bf\mu}))}\\
+& = & \frac 1{\abs{\det A}} \bb{\frac 1{\sqrt{2\pi}}}^{n/2}  e^{-\frac 12 (\bx-{\bf\mu})^T(A^{-1})^TA^{-1} (\bx-{\bf\mu})}\\
+& = & \frac 1{\sqrt{\abs{\det V}}} \bb{\frac 1{\sqrt{2\pi}}}^{n/2} e^{-\frac 12(\bx-{\bf\mu})^TV^{-1}(\bx-{\bf\mu})},\quad\quad \text{ where }V = AA^T.
+\eeast
+
+To interpret the matrix $V$ we see that for any pair $(i, j)$, $1 \leq i, j \leq n$,
+\be\label{equ:multivariate_normal_distribution}
+\cov (X_i,X_j) = \E ((X_i - \mu_i)(X_j - \mu_j)) = \E \bb{\bb{\sum_r A_{ir}Z_r}\bb{\sum_s A_{js}Z_s}} = \sum_r A_{ir}A_{jr} = \bb{AA^T}_{ij} = V_{ij},
+\ee
+so that the entries of the matrix V are the covariances between the components of the random vector ${\bf X}$. Any joint density of the form (\ref{equ:multivariate_normal_distribution}) is a multivariate normal distribution with mean ${\bf\mu}$ and covariance matrix $V$, usually written $\sN({\bf\mu}, V)$.
+
+Notice that $V$ is a symmetric matrix and it is positive definite in that $x^TVx > 0$ for all vectors $x \neq 0$, this follows because $x^TV x = \dabs{A^Tx}^2 > 0$, since $A$ is invertible.
+
+Furthermore, in the case when $n = 2$ and $X$ and $Y$ have the bivariate normal distribution described above we see that if, for any angle $\theta$, we take $A$ to be the matrix 
+\be
+A = \bepm
+\sigma  \cos\bb{\theta + \arccos \rho } & \sigma  \sin\bb{\theta+ \arccos \rho }\\
+\tau \cos \theta & \tau \sin \theta
+\eepm
+\ee
+we see that
+\be
+AA^T = \bepm
+\sigma^2  & \rho \sigma \tau\\
+\rho \sigma \tau & \tau^2
+\eepm
+= V,
+\ee
+and
+\be
+A^{-1} \bepm
+X - \mu\\
+Y - \nu 
+\eepm
+= \bepm
+Z_1\\
+Z_2
+\eepm,
+\ee
+where $Z_1$ and $Z_2$ are independent random variables each with the standard normal distribution, $\sN(0, 1)$.
+
+
+\subsection{Multivariate moment generating functions}
+
+For random variables $X_1,\dots ,X_n$ and real numbers $\theta_1,\dots , \theta_n$ set ${\bf \theta} = (\theta_1,\dots , \theta_n)^T$ and ${\bf X} = (X_1,\dots ,X_n)^T$, then we define
+\be
+m({\bf\theta}) = m(\theta_1,\dots , \theta_n) = \E\bb{e^{\theta_1X_1+\dots+\theta_nX_n}} ,
+\ee
+to be the joint moment generating function of the random variables. The moment generating function is only defined for those ${\bf\theta}$ for which $m({\bf \theta}) < \infty$. The properties of the multivariate generating function are similar to those we have seen previously for the moment generating function of a single random variable.
+
+Properties of $m({\bf \theta})$
+\ben
+\item [1.] Provided $m({\bf \theta})$ is finite for a non-trivial range of $\theta_i$ for each $i$, then $m({\bf \theta})$ determines the joint distribution of $X_1,\dots ,X_n$.
+\item [2.] We may determine moments of the $X_i$ from partial derivatives of $m$,
+\be
+\left.\frac{\partial^r m}{\partial \theta^r_i}\right|_{{\bf \theta}=0} = \E (X^r_i),\quad\quad  \left.\frac{\partial^{r+s} m}{\partial \theta^r_i \partial\theta^s_j} \right|_{{\bf \theta}=0} = \E\bb{X^r_i X^s_j}, \quad \quad r \geq 1,\ s \geq 1.
+\ee
+In particular, we may calculate covariances as
+\be
+\cov (X_i,X_j) = \E (X_iX_j) - (\E X_i) (\E X_j) = \bsb{\frac{\partial^2 m}{\partial\theta_i \partial \theta_j} - \bb{\fp{m}{\theta_i}}\bb{\fp{m}{\theta_j}}}_{\bf \theta = 0}.
+\ee
+\item [3.] The moment generating function factors
+\be
+m({\bf\theta}) = \prod^n_{i=1} \bb{\E\bb{e^{\theta_iX_i}}},
+\ee
+into the product of the moment generating functions of the individual random variables if and only if $X_1,\dots ,X_n$ are independent.
+\een
+For the particular case of random variables $X$ and $Y$ having the bivariate normal distribution considered in the previous section, then we may use the form for the moment generating function of the normal distribution
+\be
+\E\bb{e^{\theta X} } = e^{\theta\mu+\frac 12 \theta^2\sigma^2}, \quad X \sim \sN \bb{\mu, \sigma^2},
+\ee
+and the form of the conditional distribution of $Y$ given $X$ to calculate (here, to avoid subscripts take $\theta_1 = \theta$ and $\theta_2 = \phi$),
+\beast
+\E\bb{e^{\theta X+\phi Y}} & = & \E\bb{\E \bb{e^{\theta X+\phi Y} |X}} = \E\bb{e^{\theta X} \E\bb{e^{\phi Y}|X}}\\
+& = & \E\bb{e^{\theta X} e^{\phi\E (Y |X)+\frac 12 \phi^2\var (Y |X)}} = \E\bb{e^{\theta X+\phi(\nu +\rho \tau(X-\mu)/\sigma)+ \frac 12 \phi^2\tau^2(1-\rho^2)}}\\
+& = & e^{\phi(\nu -\mu\rho \tau/\sigma )+ \frac 12 \phi^2\tau^2(1-\rho^2)} \E \bb{e^{(\theta +\phi \rho \tau/\sigma )X}}\\
+& = & e^{\phi(\nu -\mu\rho \tau/\sigma )+ \frac 12 \phi^2\tau^2(1-\rho 2)} e^{(\theta+\phi\rho \tau/\sigma )\mu+ \frac 12 \sigma^2(\theta+\phi\rho\tau/\sigma)^2}\\
+& = & e^{\theta\mu+\phi\nu +\frac 12 (\theta^2\sigma^2+\phi^2\tau^2+2\theta \phi\rho \sigma \tau)}.
+\eeast
+We see that this factors into the product
+\be
+\bb{e^{\theta \mu+\frac 12 \theta^2\sigma^2}}\bb{e^{\phi\nu +\frac 12 \phi^2\tau^2}}
+\ee
+of the individual generating functions of $X$ and $Y$ for all $\theta$ and $\phi$ if and only if $\rho  = 0$, as we have seen previously, the random variables are independent in this case if and only if their covariance is zero.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+\section{exercise}
+
+\ben
+
+
+
+\item A tennis championship is organized for $2^n$ players as a knock-out tournament with $n$ rounds, the last round being the final. Two palyers are chosen at random. What are the probabilities that they meet 
+
+(i) in the first round?
+
+(ii) in the final?
+
+(iii) in any round of the tournament?
+
+
+
+Solution. The easiest way to think of this is to imagine that the tournament has taken place with $2^{n-1}$ matches in the first round, $2^{n-1}$ in the second round, down to 1 match in the final round. The sample space $\Omega$ consists of all unordered pairs of players so that it has $\binom{2^n}{2}$ points. Then, for example for (i), the number of points in the event 'they meet in the first round' is the number of matches in the first round so that the probability is $2^{n-1}/\binom{2^n}{2}$. For (ii) we get $1/\binom{2^n}{2}$ and for (iii) 
+\begin{equation}
+\frac{2^{n-1}+\dots+1}{\binom{2^n}{2}}=\frac{1}{2^{n-1}}
+\end{equation}
+
+
+\item How many sequence $(A_1,\dots,A_n)$ are there with the following properties:
+
+(i) each $A_i$ is a (possibly empty) subset of $\{1,2,\dots,n\}$;
+
+(ii) $A_i\cap A_j=\emptyset$ whenever $i\neq j$;
+
+(iii)  $A_1\cup\dots\cup A_n=\{1,2,\dots,n\}$;
+
+(iv) each $A_i$ has size at most 2?
+
+
+
+Solution. (i) There are $2^n$ subsets of $\{1,2,\dots,n\}$ (including $\emptyset$). So for the total number of sequences will be $\left(2^n\right)^n=2^{n^2}$.
+
+(ii) 
+\begin{eqnarray}
+N & = & \sum_{A_1}\ \sum_{A_2:|A_2|\leq n-|A_1|}\ \cdots\ \sum_{A_{n-1}:A_{n-1}|\leq n-|A_1|-\cdots-|A_{n-2}|}2^{n-|A_1|-\cdots-|A_{n-1}|} \nonumber\\
+& = & \sum_{A_1}\ \sum_{A_2:|A_2|\leq n-|A_1|}\ \cdots\ \sum_{k=0}^{n-|A_1|-\cdots-|A_{n-2}|} \binom{n-|A_1|-\cdots-|A_{n-2}|}{k}2^{n-|A_1|-\cdots-|A_{n-2}|-k} \nonumber\\
+& = & \sum_{A_1}\ \sum_{A_2:|A_2|\leq n-|A_1|}\ \cdots\ \sum_{A_{n-2}:A_{n-2}|\leq n-|A_1|-\cdots-|A_{n-3}|}3^{n-|A_1|-\cdots-|A_{n-2}|} \nonumber\\
+& = & \ \cdots \ = \sum^n_{k=0}\binom{n}{k}n^{n-k} = (n+1)^n
+\end{eqnarray}	
+
+(iii) The total number of $(A_1,\dots,A_n)$ s.t. $A_1\cup\dots\cup A_n=\{1,2,\dots,n\}$ will be equal to the total number of such sequences (as in (i)), so $2^{n^2}$, minus the number of sequences that do not $A_1\cup\dots\cup A_n=\{1,2,\dots,n\}$, so they satisfy $A_1\cup\dots\cup A_n\subset\{1,2,\dots,n\}$ (strictly). Thus, the number will be 
+\begin{equation}
+\sum^{n-1}_{k=0}\binom{n}{k}2^{k^2}
+\end{equation}
+Thus, the answer is $2^{n^2}-\sum^{n-1}_{k=0}\binom{n}{k}2^{k^2}$.
+
+(iv) For each $A_i$, there are $\binom{n}{0} + \binom{n}{1} + \binom{n}{2} = \frac{n^2+n+1}{2}$ ways of choosing it s.t. $|A_i|\leq 2$. So for the sequence, there will be $\left(\frac{n^2+n+1}{2}\right)^n$.
+
+Let us count how many such sequences there are if exactly $k$ of the sets have size 2. We then have $n-2k$ sets of size 1. The number of ways of assigning these cardinalities to the $A_i$ is given by the multinomial coefficient
+\begin{equation}
+\binom{n}{k,\ n-2k,\ k} = \frac{n!}{k!(n-2k)!k!}
+\end{equation}
+Once we know which sets have which cardinalities, we choose which elements to assign to each set. So there are 
+\begin{equation}
+\binom{n}{2} \binom{n-2}{2}\cdots\binom{n-2k+2}{2} (n-2k)! = \frac{n!}{2^k}
+\end{equation}
+ways of assigning the elements to the doubletons and singletons. So the desired number will be equal to 
+\begin{equation}
+\sum^{\left\lfloor\frac{n}{2}\right\rfloor}_{k=0}\binom{n}{k,\ n-2k,\ k} \frac{n!}{2^k}
+\end{equation}
+
+
+\item A sample of size $r$ is taken from a population of size $n$, sampling without replacement. Calculate the probability that $m$ given people will all be included in the sample (i) directly and (ii) by using the inclusion-exclusion formula. Hence show that
+\begin{eqnarray}
+\binom{n-m}{r-m} =\sum^m_{j=0}(-1)^j\binom{m}{j}\binom{n-j}{r}
+\end{eqnarray}	
+
+
+
+Solution. Let $A_i$ be the event that person $i$ of the $m$ given individuals, $1\leq i\leq m$, is in the sample. We have 
+\begin{equation}
+\mathbb{P}(A_1^c\cap\dots\cap A_j^c)=\binom{n-j}{r}/\binom{n}{r}
+\end{equation}
+so using inclusion exclusion, the required probability is 
+\beast
+\mathbb{P}(A_1\cap\dots\cap A_m) & = & 1 - \mathbb{P}(A_1^c\cup\dots\cup A_m^c) =  1 - \sum^{m}_{j=1}(-1)^{j-1}\binom{m}{j}\mathbb{P}(A_1^c\cap\dots\cap A_j^c) = \sum^{m}_{j=0}(-1)^j\left.\binom{m}{j}\binom{n-j}{r}\right/\binom{n}{r} 
+\eeast
+while calculating directly it is clearly $\left.\binom{n-m}{r-m}\right/\binom{n}{r}$.
+
+
+\item Show that
+\begin{eqnarray}
+\binom{2n}{n} =\sum^n_{r=0}\binom{n}{r}^2
+\end{eqnarray}	
+
+
+
+Solution. Suppose that an urn contains $n$ white balls and $n$ black balls; $n$ balls are drawn without replacement. Let $A_r$ be the event that there are exactly $r$ white balls in the sample, $0\leq r\leq n$, so that
+\begin{eqnarray}
+\mathbb{P}(A_r)=\left.\binom{n}{r}\binom{n}{n-r}\right/\binom{2n}{n} = \left.\binom{n}{r}^2\right/\binom{2n}{n}
+\end{eqnarray}	
+now use the Law of Tatal Probability to see that $\sum^{n}_{r=0}\mathbb{P}(A_r)=1$ gives the result.
+
+
+\item (i) Let $0<\alpha<1$ be a rational number. Use Stirling's formula to obtain an estimate for the binomial coefficient $\binom{n}{m}$ when $n$ is large and $m=\alpha n$ is an integer.
+
+(ii) Suppose that $m\leq n/3$. By considering ratios of successive binomial coefficients, prove that 
+\begin{equation}
+\binom{n}{0}+\binom{n}{1}+\cdots+\binom{n}{m-1}\leq\binom{n}{m}
+\end{equation}
+
+(iii) Suppose that $n=3m$. Prove that the ratio of the two sides of the above inequality tends to 1 as $n$ tends to infinity.
+ 
+
+
+Solution. (i) 
+\beast
+\binom{n}{\alpha n} = \frac{n!}{(\alpha n)!(n(1-\alpha))!}\sim \frac{n^{n+\frac{1}{2}}\sqrt{2\pi}e^{-n}}{(\alpha n)^{\alpha n+\frac{1}{2}}\sqrt{2\pi}e^{-\alpha n}(n(1-\alpha))^{n(1-\alpha)+\frac{1}{2}}\sqrt{2\pi}e^{-n(1-\alpha)}} = \frac{1}{\alpha^{\alpha n+\frac{1}{2}}(1-\alpha)^{n(1-\alpha)+\frac{1}{2}}\sqrt{2\pi}n^\frac{1}{2}}
+\eeast
+
+(ii) We observe that 
+\begin{equation}
+\frac{\binom{n}{k}}{\binom{n}{k+1}} =\frac{k+1}{n-k}\leq \frac{1}{2}
+\end{equation}
+for $k=0,1,\dots,m-1$ (since $m\leq \frac{n}{3}$), so
+\begin{equation}
+\binom{n}{0}+\binom{n}{1}+ \cdots + \binom{n}{m-1} \geq \frac{1}{2}\binom{n}{1} + \frac{1}{2}\binom{n}{2} + \cdots + \frac{1}{2}\binom{n}{m}
+\end{equation}
+Thus,
+\begin{equation}
+2\binom{n}{0}+\binom{n}{1}+ \cdots + \binom{n}{m-1} \geq \binom{n}{m} \ \Rightarrow \ \binom{n}{0}+\binom{n}{1}+ \cdots + \binom{n}{m-1} \geq \binom{n}{m} 
+\end{equation}
+
+(iii) We have 
+\begin{equation}
+\frac{\binom{n}{m-k}}{\binom{n}{m-(k-1)}} = \frac{m-k+1}{n-m+k} = \frac{m-k+1}{2m+k}\to \frac{1}{2} \text{ as }m\to \infty
+\end{equation}
+So $\frac{\binom{n}{m-k}}{\binom{n}{m}}\ \to\ \left(\frac{1}{2}\right)^k$ as $m\to \infty$. For any $k$, 
+\begin{equation}
+\frac{\binom{n}{m-k}}{\binom{n}{m}} + \cdots + \frac{\binom{n}{m-1}}{\binom{n}{m}} \ \to \ \sum^k_{i=1}\left(\frac{1}{2}\right)^i= 1-\frac{1}{2^k} \text{ as }m\to \infty
+\end{equation}
+Therefore, the ratio between the left-hand side and the right-hand side can be made as close as we want to $1-2^{-k}$. Since $k$ was arbitary and we already have an inequality in the other direction, the ratio tends to 1.
+
+
+\item An urn contains equal numbers of red balls and black balls. Suppose that a sample of $2n$ balls is chosen (with replacement) from the urn. Show that the probability that there are equal numbers of red balls and black balls in the sample is $(2n)!/[2^n(n)!]^2$. Use Stirling's formula to show that this probability is approximatedly $1/\sqrt{\pi n}$ when $n$ is large.
+
+
+
+Solution. The probability $p_n=\left.\binom{2n}{n}\right/2^{2n}$ and the approximation $p_n\sim 1/\sqrt{2\pi}=a_n$, say, using Stirling's formula $n!\sim e^{-n}n^{n+1/2}\sqrt{2\pi}$ are standard. In case anyone wishes to compare the exact value with the approximation for different values of $n$, the values are
+
+\begin{tabular}{cccccccc}
+\hline
+$n$ & 1 & 10 & 20 & 30 & 40 & 50 & 100 \\ \hline
+$p_n$ & 0.5 & 0.176 & 0.125 & 0.1026 & 0.0889 & 0.0796 & 0.0563 \\ \hline
+$a_n$ & 0.564 & 0.178 & 0.126 & 0.1030 & 0.0892 & 0.0798 & 0.0564 \\ \hline
+\ $p_n/a_n$ \ &\ 0.886\ &\  0.988\  &\  0.994\  &\  0.996\  &\  0.997\  &\  0.998\  &\  0.999\  \\ \hline
+\end{tabular}
+
+
+\item Two cards are taken at random from an ordinary pack of 52 cards. Find the probability that 
+
+(i) both cards are aces (event A)
+
+(ii) the pair of cards includes an ace (event B)
+
+(iii) the pair of cards includes the ace of hearts (event C).
+
+Show that $P(A|B)\neq P(A|C)$.
+
+
+
+Solution. We have 
+\begin{eqnarray}
+\mathbb{P}(A) & = & \left.\binom{4}{2}\right/\binom{52}{2}=1/221 \\
+\mathbb{P}(B) & = & 1-\mathbb{P}(B^c)=1-\left.\binom{48}{2}\right/\binom{52}{2}=33/221 \\
+\mathbb{P}(C) & = & 51 /\binom{52}{2}=1/26\\
+\mathbb{P}(A) & = & \left.\binom{4}{2}\right/\binom{52}{2}=1/221 \\
+\mathbb{P}(A|B) & = & \mathbb{P}(A)/\mathbb{P}(B)=1/33 \\
+\mathbb{P}(A|C) & = & \mathbb{P}(A\cap C)/\mathbb{P}(C)=1/17 
+\end{eqnarray}
+
+
+\item Examination candidates are graded into four classes known conventionally as I, II-1, II-2 and III, with probabilities 1/8, 2/8, 3/8 and 2/8 respectively. A candidate who misreads the rubric - a common event with probability 2/3 - generally does worse, his probabilities being 1/10, 2/10, 4/10, 3/10. What is the probability:
+
+(i) that a candidate who reads the rubric correctly is placed in the class II-1?
+
+(ii) that a candidate who is placed in the class II-1 has read the rubric correctly?
+
+
+
+Solution. For (i), with the obvious notation, by the Law of Total Probability
+\begin{equation}
+\frac{2}{8}=\mathbb{P}(II.1)=\mathbb{P}(II.1\cap R) + \mathbb{P}(II.1\cap R^c) = \mathbb{P}(II.1\cap R) + \frac{2}{3}\frac{2}{10}
+\end{equation}
+whence $\mathbb{P}(II.1\cap R)=\frac{7}{60}$ and $\mathbb{P}(II.1| R)=\frac{7}{60}/\frac{1}{3} =\frac{7}{20}$. 
+
+For (ii), Bayes' Theorem gives $\mathbb{P}(R|II.1)=\mathbb{P}(II.1| R)\mathbb{P}(R)/\mathbb{P}(II.1)=\frac{7}{15}$.
+
+
+\item Parliament contains a proportion $p$ of Conservative members, who are incapable of changing their minds about anything, and a proportion $1-p$ of Labour members who change their minds completely at random (with probability $r$) between successive votes on the same issue. A randomly chosen member is noticed to have voted twice in succession in the same way. What is the probability that he will vote in the same way next time?
+
+
+
+Solution. Let $V_k$ be the event that the member votes $k$ times in succession in the same way, $k=2,3$, and $C$, $L$ the events that the member is Conservative, Labour respectively. Then, since $V_3\subseteq V_2$, by the Law of Total Probability
+\begin{equation}
+\mathbb{P}(V_3|V_2)=\frac{\mathbb{P}(V_3)}{\mathbb{P}(V_2)}=\frac{\mathbb{P}(V_3|L)\mathbb{P}(L)+\mathbb{P}(V_3|C)\mathbb{P}(C)}{\mathbb{P}(V_2|L)\mathbb{P}(L)+\mathbb{P}(V_3|C)\mathbb{P}(C)}
+\end{equation}
+so that $\mathbb{P}(V_3|V_2)=\frac{(1-r)^2(1-p)+p}{(1-r)(1-p)+p}$.
+
+
+\item By looking at the proof of Stirling's formula given in lectures, obtain the more precise conclusion that there are constants $0<c<C$ such that
+\begin{equation}
+(1+c/n)\sqrt{2\pi}e^{-n}n^{n+1/2}\leq n!\leq (1+C/n)\sqrt{2\pi}e^{-n}n^{n+1/2}
+\end{equation}
+
+
+
+Solution. As in the lecture notes, $c_n=\log\left(\frac{n!e^n}{n^{n+\frac{1}{2}}}\right)$ and $c_n$ converges to $c= \log\sqrt{2\pi}$. In the lecture notes, it is proved that 
+\begin{equation}
+c_n-c_{n+1} \leq \frac{1}{12}\left(\frac{1}{n}-\frac{1}{n+1}\right) \ \Rightarrow \ c_n-c \leq \frac{1}{12n} \ \Rightarrow \ e^{c_n-c} \leq e^{\frac{1}{12n}} \ \Rightarrow \ \frac{n!e^n}{n^{n+\frac{1}{2}}\sqrt{2\pi}} \leq e^{\frac{1}{12n}} \leq 1+ \frac{C}{n}
+\end{equation}
+for a suitable constant $C$. (since $n\left(e^{\frac{1}{12n}}-1\right)\to \frac{1}{12}$ as $n\to \infty$.) Thus,  
+\begin{equation}
+n! \leq \left(1+ \frac{C}{n}\right) \sqrt{2\pi} e^{-n}n^{n+\frac{1}{2}}
+\end{equation}
+Also, we know $c_n-c_{n+1}=\left(n+\frac{1}{2}\right)\log\left(1+\frac{1}{n}\right)-1:=\Delta_n$. So, $c_n-c=\sum^\infty_{k=n}\Delta_k$. $\forall x>0$, we have
+\begin{equation}
+\log(1+x)\geq x-\frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4}\ \Rightarrow \ \Delta_n\geq \left(n+\frac{1}{2}\right)\left(\frac{1}{n}-\frac{1}{2n^2} + \frac{1}{3n^3} - \frac{1}{4n^4}\right)-1 = \frac{1}{12n^2} - \frac{1}{4n^3}\left(\frac{1}{3} + \frac{1}{2n}\right)
+\end{equation}
+Since $\frac{1}{3} + \frac{1}{2n}\leq \frac{n}{6},\ \forall n\geq 3$, we have
+\begin{equation}
+\Delta_n\geq \frac{1}{12n^2}-\frac{1}{24n^2} = \frac{1}{24n^2},\ \forall n\geq 3
+\end{equation}
+Thus
+\begin{equation}
+\sum^\infty_k\Delta_k\geq \frac{1}{24} \sum^\infty_k\frac{1}{k^2} \geq \frac{1}{24}\int^\infty_n \frac{1}{x^2}dx= \frac{1}{24n} \ \Rightarrow \ e^{c_n-c} \geq e^{\frac{1}{24n}} \ \Rightarrow \ \frac{n!e^n}{n^{n+\frac{1}{2}}\sqrt{2\pi}} \geq e^{\frac{1}{24n}} \geq 1 + \frac{1}{24n} \quad \forall n\geq 3
+\end{equation}
+By direct computation, this inequality also holds for $n=1,2$. Thus, we get the required result.
+
+
+\item Let $A_1,\dots,A_n$ be events, each of probability $p$. Suppose that $\cap_{i\in X}A_i$ has probability $p^{|X|}$ for every subset $X\subset\{1,2,\dots,n\}$. (In this case, the events are said to be independent.) Use the inclusion-exclusion formula to prove that $P(A_1^c\cup\dots\cup A_n^c)=(1-p)^n$. If $k$ is even, deduce from the Bonferroni inequalities that 
+\begin{equation}
+\sum^{k-1}_{j=0}(-1)^j\binom{n}{j}p^j\leq (1-p)^n\leq \sum^{k}_{j=0}(-1)^j\binom{n}{j}p^j
+\end{equation}
+If $p$ is small, roughly how large does $k$ have to be for the upper and lower bounds given above to be approximately equal? (You should think for yourself about how to make this question precise in a reasonable way.)
+
+
+
+Solution. We have 
+\beast
+\mathbb{P}\left(A_1^c \cap\dots\cap A_n^c\right) & = & 1- \mathbb{P}\left(A_1 \cup\dots\cup A_n\right) = 1-\left(\sum_{i}\mathbb{P}(A_i) - \sum_{i_1<i_2}\mathbb{P}\left(A_{i_1}\cap A_{i_2}\right) + \dots + (-1)^{n-1}\mathbb{P}\left(A_1 \cap\dots\cap A_n\right)\right)\nonumber\\
+& = & 1-\left(np - \binom{n}{2}p^2 + \dots + (-1)^{n-1}p^n\right) = 1+\sum^n_{k=1}\binom{n}{k}p^k(-1)^k = \sum^n_{k=0}\binom{n}{k}(-p)^k = (1-p)^n
+\eeast
+From Bonferroni inequalities, we get 
+\begin{equation}
+\sum^{k}_{j=1}(-1)^{j-1}\binom{n}{j}p^j\leq 1-(1-p)^n\leq \sum^{k-1}_{j=1}(-1)^{j-1}\binom{n}{j}p^j\ \Rightarrow\ \sum^{k-1}_{j=0}(-1)^j\binom{n}{j}p^j\leq (1-p)^n\leq \sum^{k}_{j=0}(-1)^j\binom{n}{j}p^j
+\end{equation}
+
+
+\item There are $n$ people gathered in a room. 
+
+(i) What is the probability that 2 (at least) have the same birthday? Calculate the probability for $n=22,23$.
+
+(ii) What is the probability that at least one has the same birthday as you? What value of $n$ makes this probability close to 1/2?
+
+
+
+Solution. (i) The total number of outcomes are $365^n$, The number of outcomes that no two are born on the same day is $365\times 364\times \cdots (365-n+1)$. Thus, the probability is $1-\frac{365\times 364\times \cdots (365-n+1)}{365^n}$, which is 0.48 for $n=22$, 0.51 for $n=23$.
+
+
+(ii) The probability is $p_n=1-\left(\frac{364}{365}\right)^n$. For $n=252, p_n=0.499105$ and for $n=253,p_n=0.500477$.
+
+
+\item Let $f_n$ be the number of ways of tossing a coin $n$ times such that successive heads never appear. Argue that 
+\begin{equation}
+f_n=f_{n-1}+f_{n-2}\quad n\geq 2, \ f_0=1,f_1=2.
+\end{equation}
+
+
+
+Solution. Let $A_n=\{x\in\{H,T\}^n,\text{ with no }HH\}$, $A_n^H=\{x\in A_n \text{ ending in }H\}$ and $A_n^T=\{x\in A_n \text{ ending in }T\}$. We have
+\begin{equation}
+f_n=|A_n| = |A_n^H| + |A_n^T|
+\end{equation}
+where $A_n^T=\{(y,T) \text{ with }y\in A_{n-1}\}$, $A_n^H = \{(y,H) \text{ with }y\in A_{n-1}^T\}=\{(z,T,H) \text{ with }z\in A_{n-2}\}$. Thus, $f_n=f_{n-1}+f_{n-2}$. Obviously, $f_0=1,f_1=2$.
+
+
+\item Suppose that $n$ balls are placed at random into $n$ boxes, find the probability that there is exactly one empty box. 
+
+
+
+Solution. The probablity is $n!\binom{n}{2}/n^n$; think of the balls being numbered then the denominator, $n^n$, is the number of ways of putting the balls into the boxes. Think of the numerator as being the product of: $n(n-1)$, the number of ways of choosing the empty box and the box with two balls, then $\binom{n}{2}$, the number of ways of choosing the two balls to go into the box with two balls and then $(n-2)!$ ways of putting the remaining $n-2$ balls into $n-2$ boxes, each having one ball.
+
+
+\item A fair coin is tossed until either the sequence HHH occurs, in which case A wins, or the sequence THH occurs, when B wins. Calculate the probability B wins.
+
+
+
+Solution. A wins if and only if the first three tosses are $HHH$, so the probablity is $7/8$, provided you show the game ends with probability 1, which you can see by looking at (non-overlapping) blocks of three tosses: either the first block is $HHH$ or you subsequently get a block $THH$ occuring.
+
+
+
+
+\item A total $n$ psychologists remembered to attend a meeting about absent-minderness. After the meeting, none could recognise his own coat, so they took coats at random. Furthermore, each was liable, with probability $p$ and independently of the others, to lose the coat on the way home. Assuming, optimistically, that all arrived home, show that the probability that none had his own coat with him is approximately $e^{-(1-p)}$.
+
+
+
+Solution. Let $A_i$ be the event '$i$ takes his own coat' and let $B_i$ be the event that '$i$ gets home with his own coat' then for distinct $i_1,i_2,\dots,i_j$,
+\begin{equation}
+\mathbb{P}(B_{i_1}\cap B_{i_2}\cap\dots\cap B_{i_j})=(1-p)^j\mathbb{P}(A_{i_1}\cap A_{i_2}\cap\dots\cap A_{i_j})
+\end{equation}
+and we have, using inclusion-exclusion,
+\begin{eqnarray}
+\mathbb{P}(B_1^c\cap B_2^c\cap\dots\cap B_n^c) & = & 1 - \mathbb{P}(B_1\cup B_2\cup\dots\cup B_n) = 1 - \sum^n_{j=1}(-1)^{j-1}\binom{n}{j}\mathbb{P}(B_1\cap B_2\cap\dots\cap B_j) \nonumber\\
+& = & 1 - \sum^n_{j=1}(-1)^{j-1}\binom{n}{j}(1-p)^j\mathbb{P}(A_1\cap A_2\cap\dots\cap A_j) \nonumber\\
+& = & 1 - \sum^n_{j=1}(-1)^{j-1}\binom{n}{j}(1-p)^j\frac{(n-j)!}{n!} = \sum^n_{j=0}\frac{[-(1-p)]^j}{j!}\approx e^{-(1-p)}
+\end{eqnarray}
+
+
+\item You throw $6n$ dice at random. Show that the probability that each number appears exactly $n$ times is 
+\begin{equation}
+\frac{(6n)!}{(n!)^6}\left(\frac{1}{6}\right)^{6n}
+\end{equation}
+Use Stirling's formula ($n!\sim n^{n+\frac{1}{2}}e^{-n}\sqrt{2\pi}$) to show that this probability is approximately $cn^{-5/2}$ for some constant $c$ to be determinded.
+
+
+
+Solution. For $k$-sided dice(where each of the k numbers is equally likely) if $kn$ are thrown, the probability that each number appears exactly $n$ times is 
+\begin{equation}
+\left.\binom{kn}{n\ n\ \dots\ n} \right/k^{kn}= \frac{(kn)!}{(n!)^k}\left(\frac{1}{k}\right)^{kn} \quad (\text{with multinomial coefficient})
+\end{equation}
+Apply Stirling and this probability $\sim c/n^{(k-1)/2}$ as $n\to\infty$, where the constant $c=\sqrt{k/(2\pi)^{k-1}}$; here we have $k=6$.
+
+
+\item A hand of thirteen cards is dealt from a well-shuffled pack of playing cards. What is the probability that it contains more kings than queens? How does the answer change if you are told that the hand contains at least one king? (It is fine to leave your answer as a complicated expression involving binomial coefficents.)
+
+
+
+Solution. Let $A=\{\text{more kings than queen}\}$, $B=\{\text{at least one king}\}$
+\begin{equation}
+\mathbb{P}(A)=\sum_{(i,j):i>j}\mathbb{P}(K=i,Q=j) = \sum_{(i,j):i>j, i,j=0,1,2,3,4}\frac{\binom{4}{i}\binom{4}{j}\binom{44}{13-(i+j)}}{\binom{52}{13}}
+\end{equation}
+We know that $A\cap B=A$, thus $\mathbb{P}(A|B)=\frac{\mathbb{P}(A\cap B)}{\mathbb{P}(B)} = \frac{\mathbb{P}(A)}{\mathbb{P}(B)}$. For $\mathbb{P}(B)$, we have 
+\begin{equation}
+\mathbb{P}(B)=1-\mathbb{P}(B^c) = 1- \frac{\binom{48}{13}}{\binom{52}{13}}
+\end{equation}
+
+
+\item A coin with probability $p$ of heads is tossed $n$ times. Let $E$ be the event 'a head is obtained on the first toss' and $F_k$ the event 'exactly $k$ heads are obtained'. For which pairs of integers $(n,k)$ are $E$ and $F_k$ indepedent?
+
+
+
+Solution. Note that $\mathbb{P}(E)=p$ and $\mathbb{P}(F_k)=\binom{n}{k}p^k(1-p)^{n-k}$ and for $k\geq 1$, 
+\begin{equation}
+\mathbb{P}(E\cap F_k)=p\binom{n-1}{k-1}p^{k-1}(1-p)^{n-k}
+\end{equation}
+and for $k=0,\ \mathbb{P}(E\cap F_k)=0$. Now equate $\mathbb{P}(E\cap F_k) = \mathbb{P}(E)\mathbb{P}(F_k)$ to see that we have independence if and only if $np=k$. You may wish to point out that $\mathbb{P}(E|F_k)=k/n$, for all values of the probability $p,\ 0<p\leq 1$. 
+
+
+\item The event $A$, $B$ and $C$ are independent. Show (i) that events $A^c$, $B$ and $C$ are independent, (ii) that events $A^c$, $B^c$ and $C$ are independent and (iii) that the events $A^c$, $B^c$ and $C^c$ are independent.
+
+
+
+Solution. Independence of $A$, $B$ and $C$ means that $A$ and $B$ are independent, $B$ and $C$ are independent, $A$ and $C$ are independent, plus $\mathbb{P}(A\cap B\cap C)= \mathbb{P}(A)\mathbb{P}(B)\mathbb{P}(C)$. For (i), it is easy to prove that $A^c$ and $B$ are independent and $A^c$ and $C$ are independent; also 
+\begin{eqnarray}
+\mathbb{P}(A^c\cap B\cap C) & = & \mathbb{P}(B\cap C) - \mathbb{P}(A\cap B\cap C) \nonumber\\
+ & = & \mathbb{P}(B)\mathbb{P}(C) - \mathbb{P}(A)\mathbb{P}(B)\mathbb{P}(C) = \mathbb{P}(B)\mathbb{P}(C)(1-\mathbb{P}(A)) \nonumber\\
+ & = & \mathbb{P}(A^c)\mathbb{P}(B)\mathbb{P}(C)
+\end{eqnarray}
+completing the argument. Then (ii) and (iii) follow from (i).
+
+
+\item Independent trials are performed, each with probability $p$ of success. Let $\pi_n$ be the probability that $n$ trials result in an even number of successes. Show that $\pi_n=\frac{1}{2}[1+(1-2p)^n]$.
+
+
+
+Solution. We have 
+\begin{eqnarray}
+\pi_n & = & \sum_{k=0}^{\left\lfloor\frac{n}{2}\right\rfloor}\binom{n}{2k}p^{2k}(1-p)^{n-2k} \nonumber\\
+& = & \sum_{k=0}^{n}\binom{n}{k}\frac{1}{2}\left(1+(-1)^k\right)p^{k}(1-p)^{n-k} = \frac{1}{2}\left[\sum_{k=0}^{n}\binom{n}{k}p^{k}(1-p)^{n-k} + \sum_{k=0}^{n}\binom{n}{k}(-p)^{k}(1-p)^{n-k}\right] \nonumber\\
+& = & \frac{1}{2}\left[(p+1-p)^n + (-p+1-p)^n\right] = \frac{1}{2}\left[1 + (1-2p)^n\right]
+\end{eqnarray}
+
+
+\item Two darts players $A$ and $B$ throw alternatively at a board and the first to score a bull wins the contest. The outcomes of different throws are independent and on each of throws $A$ has probability $p_A$ and $B$ has probability $p_B$ of scoring a bull. If $A$ has first throw, calculate the probability of $A$ winning the contest.
+
+
+
+Solution. Let $q$ be the probability that $A$ wins if $A$ throws first and let $r$ be the probability that $A$ wins if $B$ throws first. We have
+\begin{equation}
+\left\{\begin{array}{ccl}
+q & = & p_A+(1-p_A)r\\
+r & = & (1-p_B)q
+\end{array}\right.
+\end{equation}
+which give $q=p_A/[p_A+p_B-p_Ap_B]$, $r = (1-p_B)p_A/[p_A+p_B-p_Ap_B]$.
+
+
+\item The number of misprint on a page has a Poisson distribution with parameter $\lambda$, and the numbers on different pages are independent. What is the probability that the second misprint will occur on page $r$?
+
+
+Solution. The second misprint occurs on page $r$ either (i) if there is exactly one misprint on pages $1,\dots,r-1$ and at least 1 misprint on page $r$, or (ii) if there is no misprint on each of pages $1,\dots,r-1$ and at least two misprint on page $r$. The required probability is the sum of the probabilities of (i) and (ii). (i) is 
+\begin{equation}
+\binom{r-1}{1}\underbrace{e^{-\lambda}\lambda}_{\text{exactly one misprint}}\underbrace{\left(e^{-\lambda}\right)^{r-2}}_{\text{no misprint for the other }r-2} \underbrace{1-e^{-\lambda}}_{\text{at least one misprint}} = \lambda(r-1)e^{-\lambda(r-1)}\left(1-e^{-\lambda}\right)
+\end{equation}
+(ii) is 
+\begin{equation}
+\underbrace{\left(e^{-\lambda}\right)^{r-1}}_{\text{no misprint for }r-1} \underbrace{1-e^{-\lambda}-e^{-\lambda}\lambda}_{\text{at least two misprints}} = e^{-\lambda(r-1)}\left(1-e^{-\lambda}-\lambda e^{-\lambda}\right)
+\end{equation}
+
+
+\item $X_1,\dots,X_n$ are independent, identically distributed random variables with mean $\mu$ and variance $\sigma^2$. Find the mean of 
+\begin{equation}
+S^2=\sum^n_{i=1}(X_i-\bar{X})^2, \quad \text{where }\bar{X}=\frac{1}{n}\sum^n_{i=1}X_i
+\end{equation}
+
+
+
+Solution. Note that $\mathbb{P}(\bar{X})=\mu, \mathbf{var}(\bar{X})=\sigma^2/n$. so that
+\begin{eqnarray}
+n\sigma^2 & = & \sum^n_{i=1}\mathbb{E}\left[(X_i-\mu)^2\right] = \mathbb{E}\sum^n_{i=1}\left[(X_i-\mu)^2\right] = \mathbb{E}\left[\sum^n_{i=1}(X_i-\bar{X}+\bar{X}-\mu)^2\right]\nonumber\\
+& = & \mathbb{E}\left[\sum^n_{i=1}(X_i-\bar{X})^2 +2(\bar{X}-\mu)\sum^n_{i=1}(X_i-\bar{X}) + n(\bar{X}-\mu)^2\right]\nonumber\\
+& = & \mathbb{E}\left[\sum^n_{i=1}(X_i-\bar{X})^2 + n(\bar{X}-\mu)^2\right] = \mathbb{E}(S^2) + n\mathbf{var}(\bar{X})
+\end{eqnarray}
+which give $\mathbb{E}(S^2) = (n-1)\sigma^2$.
+
+
+\item In a sequence of $n$ independent trials the probability of a success at the $i$th trial is $p_i$. Show that mean and variance of the total number of the successes are $n\bar{p}$ and $n\bar{p}(1-\bar{p})-\sum_i(p_i-\bar{p})^2$ where $\bar{p}=\sum_ip_i/n$. Notice that for a given mean, the variance is greatest when all $p_i$ are equal.
+
+
+
+Solution. Let $X_i=1$ or $X_i=0$ according as there is success or failure in the $i$th trial. Then $\mathbb{E}X_i=p_i$ and $\mathbf{var}(X_i)=p_i(1-p_i)$. The total number of trials $T=\sum^n_{i=1}X_i$, then has 
+\begin{equation}
+\mathbb{E}T = \mathbb{E}\left(\sum^n_{i=1}X_i\right) = \sum^n_{i=1}\mathbb{E}\left(X_i\right) = \sum^n_{i=1}p_i=n\bar{p}
+\end{equation}
+and
+\begin{eqnarray}
+\mathbf{var}T & = & \mathbb{E}T\left(\sum^n_{i=1}X_i\right) =  \sum^n_{i=1}\mathbf{var}\left(X_i\right) =\sum^n_{i=1}p_i(1-p_i)\nonumber\\
+& = & n\bar{p}(1-\bar{p})-\sum^n_{i=1} p_i^2 -n\bar{p}^2 =   n\bar{p}(1-\bar{p})-\left(\sum^n_{i=1} p_i^2 - 2\bar{p}\sum^n_{i=1}p_i+  n\bar{p}^2\right) \nonumber\\
+& = & n\bar{p}(1-\bar{p})-\sum^n_{i=1} \left(p_i-\bar{p}\right)^2
+\end{eqnarray}
+It is immediate that, for given $\bar{p}$, the variance is maximised when all $p_i=\bar{p}$.
+
+
+
+\item Let $a_1,a_2,\dots,a_n$ be a ranking of the yearly rainfalls in Cambridge over the next $n$ years: assume $a_1,a_2,\dots,a_n$ is a random permutation of $1,2,\dots,n$. Year $k$ is called a record year if $a_i>a_k$ for all $i<k$ (thus the first year is always a record year). Let $Y_i=1$ if year $i$ is a record year and $0$ otherwise. Find the distribution of $Y_i$ and show that $Y_1,Y_2,\dots,Y_n$ are independent and calculate the mean and variance of the number of record years in the next $n$ years. Find the probability that the second record year occurs at year $i$. What is the expected number of years until the second record year occurs?
+
+
+
+Solution. Ranking the first $i$ yearly rainfalls is equivalent to get random permutation of $\{1,2,\dots,i\}$. Thus,
+\begin{equation}
+\mathbb{P}(Y_i=1) = \frac{1}{i}, \quad \mathbb{P}(Y_i=0) = 1-\frac{1}{i}
+\end{equation}
+Let $X_i$ be the rank of year $i$ among the first $i$ years and $\mathbb{P}(X_i=x_i)=\frac{1}{i},\ x_i\in\{1,2,\dots,i\}$. Thus,
+\begin{equation}
+\mathbb{P}(X_1=x_1,X_2=x_2,\dots,X_n=x_n) = \frac{1}{n!} 
+\end{equation}
+since any random permutation is equally likely. On the other hand, $\frac{1}{n!} = \prod_{i=1}^n\mathbb{P}(X_i=x_i)$. So $X_i$ are independent and $Y_i$ are independent as $Y_i=\mathbf{1}_{X_i=1}$. Thus,
+\begin{equation}
+\mathbb{E}\left[\sum^n_{i=1}Y_i\right]= \sum^n_{i=1}\mathbb{E}\left[Y_i\right] = \sum^n_{i=1}\frac{1}{i}
+\end{equation}
+\begin{equation}
+\mathbf{var}\left[\sum^n_{i=1}Y_i\right] = \sum^n_{i=1}\mathbf{var}\left[Y_i\right] = \sum^n_{i=1}\left[\mathbb{E}\left(Y_i^2\right)-\mathbb{E}\left(Y_i\right)^2\right] = \sum^n_{i=1}\frac{1}{i}\left(1-\frac{1}{i}\right)
+\end{equation}
+Furthermore, 
+\beast
+\mathbb{P}\left(\text{the second record year occurs at year $i$}\right) & = & \mathbb{P}\left(Y_1=1,Y_2=0,Y_3=0,\dots,Y_{i-1} = 0, Y_i = 1\right) \nonumber\\
+& = & \mathbb{P}(Y_1=1)\mathbb{P}(Y_2=0)\mathbb{P}(Y_3=0)\dots\mathbb{P}(Y_{i-1}=0)\mathbb{P}(Y_i = 1) \nonumber\\
+& = & 1\times\left(1-\frac{1}{2}\right)\times\left(1-\frac{1}{3}\right)\times\dots\times\left(1-\frac{1}{i-1}\right)\times\frac{1}{i} = \frac{1}{i(i-1)}.
+\eeast
+So the expected number of years until the 2nd record year occurs is 
+\begin{equation}
+\sum^\infty_{i=2}i\mathbb{P}_i = \sum^\infty_{i=2}\frac{1}{i-1} = \sum^\infty_{i=1}\frac{1}{i} = +\infty
+\end{equation}
+
+
+%\item Hugo's bowl of spaghetti contains $n$ strands. He selects two ends at random and joins them together. He does this until no ends are left. What is the expected number of spaghetti hoops in the bowl?
+
+%Solution. Let $A_i$ be the event that the $i$th join forms a hoop. Then the total number of hoops is $N=\sum^n_{i=1}I_{A_i}$. It follows that
+%\begin{equation}
+%\mathbb{E}N=\mathbb{E}\sum^n_{i=1}I_{A_i}=\sum^n_{i=1}\mathbb{E}(A_i) = \sum^n_{i=1}\mathbb{E}(A_i)=\sum^n_{i=1}\frac{1}{2(n-i)+1}=\sum^n_{i=1}\frac{1}{2i+1}
+%\end{equation}
+%gives the expected number.
+
+
+\item $(X_k)$ is a sequence of independent identically distributed positive random variables where $\mathbb{E}(X_k)=a$ and $\mathbb{E}(X_k^{-1})=b$ exist. Let $S_n=\sum^n_{k=1}X_k$. Show that $\mathbb{E}(S_m/S_n)=1+(m-n)a\mathbb{E}(S_n^{-1})$ if $m\geq n$.
+
+Solution. Since the random variables are identically distributed, when $1\leq i\leq n$ and $1\leq j\leq n$, then $\mathbb{E}(X_i/S_n)=\mathbb{E}(X_j/S_n)$. For $m\leq n$, $\mathbb{E}(S_m/S_n)=m\mathbb{E}(X_i/S_n)$; set $m=n$ to see that $1=\mathbb{E}(S_n/S_n)=n\mathbb{E}(X_1/S_n)$, showing that $\mathbb{E}(X_1/S_n)=1/n$, which gives the first case. Note that for $i>n$ the random variable $X_i$ and $S_n$ are independent, so we have for $m>n$
+\begin{equation}
+\mathbb{E}(S_m/S_n)=\mathbb{E}\left(1+\sum^m_{i=n+1}(X_i/S_n)\right) = 1+\sum^m_{i=n+1}\mathbb{E}(X_i)\mathbb{E}(S_n^{-1})
+\end{equation}
+which gives the second case. Note that $\mathbb{E}S_n^{-1}\leq \mathbb{E}(X_1^{-1})<\infty$, for $n\geq 1$.
+
+
+\item You are on a game show and given the choice of three doors. Behind one is a car; behind the others are goats. You pick door 1, and the host opens door 3, which has a goat. He then asks if you want to pick door 2. Should you switch? [Consider two cases. First, supposes the host does not know where the car is. Secondly, suppose the host does know where the car is, and makes sure the door he opens shows a goat.]
+
+Solution. Let $C \in \{1, 2, 3 \}$ be the number of the door hiding the Car, $S \in \{1, 2, 3 \}$ be the number of the door Selected by the player, and  $H \in \{1, 2, 3 \}$ be the number of the door opened by the Host. As the host's placement of the car is random, all values of $C$ are equally likely. The initial (unconditional) probability of $C$ is then $\mathbb{P}(C) = \tfrac 13$ for every value of $C$.
+
+Further, as the initial choice of the player is independent of the placement of the car, variables $C$ and $S$ are independent. Hence the conditional probability of $C$ given $S$ is
+\begin{equation}
+\mathbb{P}(C|S)= \mathbb{P}(C)
+\end{equation} 
+for every value of $C$ and $S$. The player can then use Bayes' rule to compute the probability of finding the car behind any door, after the initial selection and the host's opening of one. This is the conditional probability of $C$ given $H$ and $S$:
+\begin{equation}
+\mathbb{P}(C|H, S)= \frac{\mathbb{P}(H|C, S)\mathbb{P}(C|S)}{\mathbb{P}(H|S)} =\frac{\mathbb{P}(H|C, S)\mathbb{P}(C)}{\mathbb{P}(H|S)}
+\end{equation}
+where the denominator is computed as the marginal probability 
+\begin{equation}
+\mathbb{P}(H|S)= \sum_{C=1}^3 \mathbb{P}(H,C|S) = \sum_{C=1}^3 \mathbb{P}(H|C,S) \mathbb{P}(C|S)
+\end{equation}
+The host's behavior is reflected by the values of the conditional probability of $H$ given $C$ and $S$, if host dones not know where the car is, we have
+\begin{equation}
+\mathbb{P}(H | C, S) =\left\{
+\begin{array}{cl}
+0 & \quad\text { if $H = S$, (the host cannot open the door picked by the player)}\\
+1/2  & \quad\text { if $H \ne S$, (the host pick one from the other two doors)}
+\end{array}\right.
+\end{equation}
+Thus, if the player initially selects Door 1, and the host opens Door 3, the probability of winning by switching is
+\begin{equation}
+\mathbb{P}(C=2|H=3, S=1) = \frac{\frac 12 \times\frac 13}{\frac 12 \times \frac 13 + \frac 12 \times\frac 13 + 0 \times \frac 13}=\tfrac 12.
+\end{equation}
+which suggests that switching will not increase success probability. 
+
+If host does know where the car is, we have
+\begin{equation}
+\mathbb{P}(H | C, S) =\left\{
+\begin{array}{cl}
+0 & \quad\text { if $H = S$, (the host cannot open the door picked by the player)}\\
+0 & \quad\text { if $H = C$, (the host cannot open a door with a car behind it)}\\
+1/2  & \quad\text { if $S = C$, (the two doors with no car are equally likely to be opened)}\\
+1 & \quad\text { if $H \ne C$ and $S \ne C$, (there is only one door available to open)}
+\end{array}\right.
+\end{equation}
+Thus, if the player initially selects Door 1, and the host opens Door 3, the probability of winning by switching is
+\begin{equation}
+\mathbb{P}(C=2|H=3, S=1) = \frac{1\times\frac 13}{\frac 12 \times \frac 13 + 1\times\frac 13 + 0 \times \frac 13}=\tfrac 23.
+\end{equation}
+which suggests that it is better to switch. 
+
+
+\item The probability that a football team will score $n$ goals in a match is $p^n(1-p),\ n=0,1,2,\dots$, independently of the performance of the other team. What is the probability of a score-draw if teams with probability $p_1,p_2$ meet? If $p_1=p_2=p$, what value of $p$ gives the highest probability of a score-draw, and what is this probability?
+
+Solution. The probability of score draw is 
+\begin{equation}
+\sum^\infty_{n=1}\left[p_1^n(1-p_1)p_2^n(1-p_2)\right]=\frac{p_1p_2(1-p_1)(1-p_2)}{1-p_1p_2}.
+\end{equation}
+Set $p_1=p_2=p$ and maximize $p^2(1-p)/(1+p)$ to obtain the maximizing value of $p=(\sqrt{5}-1)/2=0.618$, the maximum value of the probability of a score draw is approximately $(5\sqrt{5}-11)/2=0.09$.
+
+
+\item Let $X$ be an integer-valued random variable with distribution
+\begin{equation}
+\mathbb{P}(X=n)=n^{-s}/\zeta(s)
+\end{equation}
+where $s>1$, and $\zeta(s)=\sum_{n\geq 1}n^{-s}$, the Riemann zeta function. Let $p_1<p_2<p_3<\cdots$ be the primes and let $A_k$ be the event '$X$ is divisible by $p_k$'. Find $\mathbb{P}(A_k)$ and show that the events $A_1,A_2,\cdots$ are independent. Deduce that 
+\begin{equation}
+\prod^\infty_{k=1}(1-p_k^{-s})=1/\zeta(s)
+\end{equation}
+
+
+
+Solution. We have $\mathbb{P}(A_k)=\sum_i\mathbb{P}(X=ip_k)=\sum_i(ip_k)^{-s}/\sum_in^{-s} = p_k^{-s}$; furthermore, for any choice of distinct $i_1,\dots,i_r$,
+\begin{equation}
+\mathbb{P}(A_{i_1}\cap\cdots\cap A_{i_r})=\sum_i\mathbb{P}\left(X=i\prod^r_{j=1}p_{i_j}\right) = \left(\prod^r_{j=1}p_{i_j}\right)=\prod^r_{j=1}\mathbb{P}(A_{i_j})
+\end{equation}
+and the independence follows. The last statement follows by observing that $\cap^\infty_{k=1}A_k^c=(X=1)$.
+
+
+
+
+\item A sample space $\Omega$ contains $2^n$ points, and $\mathbb{P}$ is some probability distribution on $\Omega$. Let $A_1,A_2,\dots,A_m$ be events, and suppose that no $A_i$ is equal to $\emptyset$ or $\Omega$. Prove that if the $A_i$ are independent then $m\leq n$. If $\mathbb{P}$ is the uniform distribution on $\Omega$, how many events is it possible to find such that each event has probability 1/2 and any two of those events are independent?
+
+
+
+Solution. (a) For each event $A_i,\ i=1,\dots,m$, let $f:\Omega\ \to \ \{0,1\}^m$ and
+\begin{equation}
+f_i(\omega)=\left\{
+\begin{array}{cl}
+1 & \quad \text{ if }\omega\in A_i\\
+0 & \quad \text{ otherwise }
+\end{array}\right.
+\end{equation}
+For any $y\in\{0,1\}^m$,
+\beast
+\mathbb{P}(x=y) & = & \mathbb{P}\left(\left(\cap_{i:y_i=1}A_i\right)\cap \left(\cap_{j:y_j=1}A_j^c\right)\right) = \prod_{i:y_i=1}\mathbb{P}(A_i)\prod_{j:y_j=0}(1-\mathbb{P}(A_i))\neq 0 \quad \text{ Since }0<\mathbb{P}(A_i)<1
+\eeast
+Thus, $\forall y\in\{0,1\}^m,\exists\omega\in\Omega$ s.t. $f(\omega)=y$ such that 
+\begin{equation}
+|\Omega|\geq |\{0,1\}^m|\ \Rightarrow\ 2^n\geq 2^m \ \Rightarrow\ m\leq n
+\end{equation}
+
+(b) Consider $n$ independent coin tossing. Let $S_1,\dots,S_{2^n-1}$ be the non-empty tossing sequence set $\{X^i_1,X^i_2,\dots,X^i_n\}$ for $S_i$ 
+\begin{equation}
+X^i_k=\left\{
+\begin{array}{cc}
+1 & \quad\text{Head}\\
+0 & \quad\text{Tail}
+\end{array}\right.
+\end{equation}
+and let $A_i=\{\sum^n_{k=1}X^i_k\text{ is even}\}$. Note that $S_0=\{0,0,\dots,0\}$ does not count because $\mathbb{P}(A_0)=1$. We want to claim that (i) $\mathbb{P}(A_i)=1/2$. (ii) For $i\neq j$, $\mathbb{P}(A_i\cap A_j)=1/4=1/2\cdot 1/2 = \mathbb{P}(A_i)\mathbb{P}(A_j)$. (i) is obvious, thus we discuss (ii) in 3 cases.
+
+\centertexdraw{
+\move (0 0) \lcir r:0.2 % circle
+\htext(-0.05 0){$S_i$}
+\move (0.5 0) \lcir r:0.2 % circle
+\htext(0.45 0){$S_j$}
+\htext(0.1 -0.5){case 1}
+
+\move (1.6 0) \lcir r:0.2 % circle
+\htext(1.25 0){$S_j$}
+\move (1.6 0) \lcir r:0.4 % circle
+\htext(1.55 0){$S_i$}
+\htext(1.5 -0.5){case 2}
+
+\move (3 0) \lcir r:0.4 % circle
+\htext(2.8 0){$S_i$}
+\move (3.4 0) \lcir r:0.4 % circle
+\htext(3.5 0){$S_j$}
+\htext(3.1 -0.5){case 3}
+
+}
+
+case 1: If $S_i\cap S_j=\emptyset$, then $A_i,A_j$ are independent.
+
+case 2: If $S_i\subset S_j$, then $S_i$ and $S_j\backslash S_i$ are independent and $\mathbb{P}(A_i\cap A_j) = \mathbb{P}(A_i)\mathbb{P}(A_{j-i}) =1/2\cdot 1/2=1/4 $ where $A_{j-i}=\{\sum^n_{k=1,S_w\in(S_j\backslash S_i)}X^w_k\text{ is even}\}$.
+
+case 3: If $S_i\cap S_j \neq \emptyset$, then $S_i\backslash S_j$ , $S_i\cap S_j$ and $S_j\backslash S_i$ are independent. If $\sum^n_{k=1,S_w\in(S_i\cap S_j) }X^w_k$ is odd, we have 
+\beast
+\mathbb{P}\left(A_i\cap A_j\left|\sum^n_{k=1,S_w\in(S_i\cap S_j) }X^w_k\text{ is odd}\right.\right) = \underbrace{1/2}_{\sum^n_{k=1,S_w\in(S_i\backslash S_j) }X^w_k\text{ is odd}}\cdot \underbrace{1/2}_{\sum^n_{k=1,S_w\in(S_i\cap S_j) }X^w_k\text{ is odd}}\cdot \underbrace{1/2}_{\sum^n_{k=1,S_w\in(S_j\backslash S_i) }X^w_k\text{ is odd}} = 1/8.
+\eeast
+Similarly, for $\sum^n_{k=1,S_w\in(S_i\cap S_j) }X^w_k$ is even, we have 1/8 as well. Thus 
+\begin{equation}
+\mathbb{P}\left(A_i\cap A_j\right) = 1/8+ 1/8 =1/4
+\end{equation}
+So we can find $2^n-1$ events.
+
+
+\item You are playing a match against an opponent in which at each point either you or your opponent serves. If you serve you win the point with probability $p_1$, but if your opponent serves you win the point with probability $p_2$. There are two possible conventions for serving:
+
+(i) serve alternate;
+
+(ii) the player serving continues to serve until she loses a point.
+
+You serve first and the first player to reach $n$ points wins the match. Show that your probability of winning the match does not depend on the serving convention adopted.
+
+[Hint: Under either convention you serve at most $n$ times and your opponent at most $n-1$ times.]
+
+
+
+Solution. Model the sample space as the results of your first $n$ serves and your opponent's first $n-1$ serves, so that
+\begin{equation}
+\Omega=\{i_1,\dots,i_n,j_1,\dots,j_{n-1}:i_k=0,1 \text{ and } j_k=0,1\}
+\end{equation}
+here $i_k$ is 1 or 0 according as you win or lose on your $k$th serve, and $j_k$ is 1 or 0, according as you win or lose on your opponent's $k$th serve. Then the probability distribution is given by 
+\begin{equation}
+\mathbb{P}((i_1,\dots,i_n,j_1,\dots,j_{n-1})) = p_1^{\sum_{k=1}^ni_k}(1-p_1)^{n-\sum_{k=1}^ni_k}p_2^{\sum_{k=1}^{n-1}j_k}(1-p_1)^{n-1-\sum_{k=1}^{n-1}j_k}
+\end{equation}
+Under either convention the event that you win is 
+\begin{equation}
+A = \left((i_1,\dots,i_n,j_1,\dots,j_{n-1}): \sum_{k=1}^ni_k + \sum_{k=1}^{n-1}j_k\geq n\right) 
+\end{equation}
+and it follows that the probability does not depend on the convention.
+
+
+\item Show that if a binary tree has $n$ leaves whoes depths are $d_1,d_2,\dots,d_n$ then $\sum^n_{i=1}2^{-d_i}\leq 1$. Hence show that $d_1+d_2+\cdots+d_n\geq n\log_2 n$. [Hint: convexity]
+
+Consider any algorithm for sorting $n$ keys, initially in a random order, by making pariwise comparison. Obtain a lower bound on the expected number of comparisons.
+
+
+Solution. Let $p_1,p_2,\dots,p_m$ be $m$ parents of $n$ leaves. For each parent (with depth $d$), it has two children (which have depth $d+1$) at most. Thus, we get 
+\begin{equation}
+\sum^2_{i=1}2^{-(d+1)}\leq 2^{-d}
+\end{equation}
+\vspace{2mm}
+Summing all the leaves gives
+\begin{equation}
+\sum^n_{i=1}2^{-d_i}\leq \sum^m_{j=1}2^{-p_j}\leq \dots\leq 2^{-d_0} = 1
+\end{equation}
+where $d_0$ is the depth of root node whose value is 0. Since $2^x$ is a convex function, we have
+\begin{equation}
+2^{-\frac{1}{n}\sum^n_{i=1}d_i} \leq \frac{1}{n}\left(2^{-d_1}+2^{-d_2}+\dots+2^{-d_n}\right) \leq \frac{1}{n}\ \Rightarrow \ d_1+d_2+\cdots+d_n\geq n\log_2 n
+\end{equation}
+
+Furthermore, we can consider all the keys as the leaves of a binary tree by comparisons. Thus, the number of comprisions for a particular key is equal to the depth of the corresponding leaf. So the expected number of comparisons is the expected depth which is given by 
+\begin{equation}
+\frac{1}{n}\sum^n_{i=1}d_i \geq \frac{1}{n}n\log_2 n = \log_2n
+\end{equation}
+where $\log_2n$ is the lower bound of the expected value.
+
+\vspace{2mm}
+
+
+
+\item Let $x_1,x_2,\dots,x_n$ be positive numbers. The geometric mean lies between the harmonic mean and the arithmetic mean:
+\begin{equation}
+\left(\frac{1}{n}\sum^n_{i=1}\frac{1}{x_i}\right)^{-1}\leq \left(\prod^n_{i=1}x_i\right)^{1/n}\leq \frac{1}{n}\sum^n_{i=1}x_i.
+\end{equation}
+The second inequality is the AM-GM inequality. Establish the first inequality.
+
+Solution. With AM-GM inequality, we have 
+\begin{equation}
+\left(\prod^n_{i=1}y_i\right)^{1/n}\leq \frac{1}{n}\sum^n_{i=1}y_i
+\end{equation}
+let $x_i=\frac{1}{y_i}$, we get
+\begin{equation}
+\left(\prod^n_{i=1}\frac{1}{x_i}\right)^{1/n}\leq \frac{1}{n}\sum^n_{i=1}\frac{1}{x_i} \ \Rightarrow \ \left(\frac{1}{n}\sum^n_{i=1}\frac{1}{x_i}\right)^{-1}\leq \left(\prod^n_{i=1}x_i\right)^{1/n}
+\end{equation}
+
+
+
+
+\item In a sequence of Bernoulli trials, $X$ is the number of trials up to and including the $a$th success. Show that
+\begin{equation}
+\mathbb{P}\left(X=r\right) = \binom{r-1}{a-1}p^aq^{r-a}, \quad r=a,a+1,\dots
+\end{equation}
+Verify that the probability generating function for this distribution is $G(t)=p^at^a(1-qt)^{-a}$. Show that $\mathbb{E}X=a/p$ and $\mathbf{var}X=aq/p^2$. Show how $X$ can be represented as the sum of $a$ independent random variables, all with the same distribution. Use this representation to derive again the mean and variance of $X$.
+ 
+
+
+Solution. For $r-1$ trials we will have $a-1$ successes and the probability is 
+\begin{equation}
+p_{r-1}\binom{r-1}{a-1}p^{a-1}q^{r-1-(a-1)} = \binom{r-1}{a-1}p^{a-1}q^{r-a}, \quad r=a,a+1,\dots
+\end{equation}
+For the $r$th trial, we have probability $p$ to get success, thus the probability is 
+\begin{equation}
+p\times p_{r-1} = \binom{r-1}{a-1}p^{a}q^{r-a}, \quad r=a,a+1,\dots
+\end{equation}
+
+So the probability generating function is 
+\begin{eqnarray}
+G(t) & = & \mathbb{E}\left(t^X\right) = \sum^\infty_{r=a}t^r\mathbb{P}(X=r) = \sum^\infty_{r=a}t^r\binom{r-1}{a-1}p^{a}q^{r-a} = (pt)^a \sum^\infty_{r=a}\binom{r-1}{a-1}(qt)^{r-a} = (pt)^a \sum^\infty_{k=0}\binom{k+a-1}{a-1}(qt)^k  \nonumber\\
+& = & \frac{(pt)^a}{(a-1)!} \sum^\infty_{k=0}(k+a-1)\cdots(k+1)(qt)^k = \frac{(pt)^a}{(a-1)!} \left(\text{$(a-1)$ order differentiation of }\sum^\infty_{k=0}(qt)^k\right) \nonumber\\
+& = & \frac{(pt)^a}{(a-1)!} \left(\text{$(a-1)$ order differentiation of }\frac{1}{1-qt}\right) = \frac{(pt)^a}{(a-1)!} \frac{(a-1)!}{(1-qt)^a} \nonumber\\
+& = & \left(\frac{pt}{1-qt}\right)^a \quad\text{ (negative binomial distribution)}
+\end{eqnarray}
+Then we have 
+\begin{equation}
+\mathbb{E}X = G'(1) = \left.\frac{p^aat^{a-1}(1-qt)^a + a(1-qt)^{a-1}qp^at^a}{(1-qt)^{2a}}\right|_{t=1} = \frac{ap^{2a} + ap^{2a-1}(1-p)}{p^{2a}} = \frac ap
+\end{equation}
+\begin{eqnarray}
+\var X = G''(1)+G'(1)-\left(G'(1)\right)^2 & = & \left.\frac{ap^a\left[(a-1)t^{a-2}(1-qt)^{a+1} + (a+1)q(1-qt)^a t^{a-1}\right]}{(1-qt)^{2a+2}}\right|_{t=1} + \frac ap- \frac{a^2}{p^2} \nonumber\\
+& = & \frac{a(a-1)p + a(a+1)q}{p^2}+ \frac ap- \frac{a^2}{p^2} = \frac{aq}{p^2}
+\end{eqnarray}
+
+We see that $X$ can be represented by the sum of i.i.d. $X_1+X_2+\cdots+X_a$ with the same geometric distribution $\mathbb{P}(X=r)=pq^{r-1}$. Thus its probability generating function is $\frac{pt}{1-qt}$, and $\mathbb{E}X_1=\frac 1p$, $\mathbf{var}X_1=\frac{q}{p^2}$. Hence, $\mathbb{E}\sum^a_{i=1}X_i=\frac{a}{p}$ and $\mathbf{var}\sum^a_{i=1}X_i=\frac{aq}{p^2}$.
+
+
+\item For a random variable $X$ with mean $\mu$ and variance $\sigma^2$ define the function $V(x)=\mathbb{E}\left[(X-x)^2\right]$. Express the random variable $V(X)$ in terms of $\mu$, $\sigma^2$ and $X$, and hence show that $\sigma^2=\frac{1}{2}\mathbb{E}V(X)$.
+
+
+
+Solution. We have
+\begin{equation}
+V(x) = \mathbb{E}\left(X^2-2xX+x^2\right) = \mathbb{E}X^2-2x\mathbb{E}X+x^2=\sigma^2+\mu^2-2x\mu+x^2.
+\end{equation}
+It follows that 
+\begin{equation}
+\mathbb{E}\left(V(X)\right) = \mathbb{E}\left(\sigma^2+\mu^2-2X\mu+X^2\right)=\sigma^2+\mu^2-2\mu\mathbb{E}X+\mathbb{E}X^2=\sigma^2
+\end{equation}
+which gives the result.
+
+
+\item Suppose that a random variable $Y$ has probability generating function
+\begin{equation}
+p(z)= \left[\frac{z(1-z^r)}{r(1-z)}\right]^n,\ 0\leq z<1,
+\end{equation}
+where $r\geq 1$ and $n\geq 1$ are fixed integers. Determine the mean and variance of $Y$. Show that $Y$ has the same distribution as the sum $X_1+X_2+\cdots+X_n$ of i.i.d. random variables $X_1,\dots,X_n$ and use this to give an alternative calculation of the mean and variance of $Y$. What is the variance of the sum of the numbers on 12 throws of a standard die?
+
+
+
+Solution. Note that $p(z)=\left[(z+\cdots+z^r)/r\right]^n$, so that
+\begin{equation}
+p'(z)= \frac{n}{r^n}\left[ z+ \cdots +z^r\right]^{n-1}\left[1+2z+\cdots+rz^{r-1}\right]
+\end{equation}
+\begin{equation}
+p''(z)= \frac{n(n-1)}{r^n}\left[ z+ \cdots +z^r\right]^{n-2}\left[1+2z+\cdots+rz^{r-1}\right]^2 + \frac{n}{r^n}\left[ z+ \cdots +z^r\right]^{n-1}\left[2\cdot1+3\cdot2z+\cdots+r(r-1)z^{r-2}\right]
+\end{equation}
+Thus,
+\begin{equation}
+\mathbb{E}Y=p'(1)= \frac{n}{r^n}r^{n-1}\left[1+2+\cdots+r\right]=\frac 12n(r+1)
+\end{equation}
+\begin{eqnarray}
+\mathbf{var}Y & = & p''(1)+p'(1)-p'(1)^2 \nonumber\\
+& = & \frac{n(n-1)}{r^n}r^{n-2}\left[1+2+\cdots+r\right]^2 + \frac{n}{r^n}r^{n-1}\left[2\cdot1+3\cdot2+\cdots+r(r-1)\right] + \frac 12n(r+1) - \frac 14n^2(r+1)^2\nonumber\\
+& = & \frac{n(n-1)}{4}(r+1)^2 + \frac{n}{3r}(r+1)r(r-1) + \frac 12n(r+1) - \frac 14n^2(r+1)^2 = \frac{1}{12}n(r^2-1)
+\end{eqnarray}
+
+Note that we can represent $Y$ as the sum of i.i.d. $\{X_i\}$ where $\mathbb{P}(X_1=j)=1/r,\ 1\leq j\leq r$; we may calculate that $\mathbb{E}X_1=(r+1)/2$ and $\mathbf{var}X_1=\frac{1}{12}(r^2-1)$, from which we may obtain the mean and variance of $Y$.
+
+For 12 throws of a standard die ($n=12,r=6$), the variance is $\frac{1}{12}12(6^2-1)=35$.
+
+
+\item Let $N$ be a non-negative integer-valued random variable with mean $\mu_1$ and variance $\sigma_1^2$, and let $X_1,X_2,\dots$ be indentically distributed random variables, each with mean $\mu_2$ and variance $\sigma_2^2$; furthermore, assume that $N,X_1,X_2,\dots$ are independent. Calculate the mean and variance of the random variable $S_N=X_1+X_2+\cdots+X_N$ (when $N=0$ interpret $S_N$ as 0).
+
+
+
+Solution. We have
+\begin{eqnarray}
+\mathbb{E}(X_1+\cdots+X_N) & = & \sum^\infty_{n=0}\mathbb{E}(X_1+\cdots+X_N|N=n)\mathbb{P}(N=n) = \sum^\infty_{n=0}\mathbb{E}(X_1+\cdots+X_n)\mathbb{P}(N=n) \nonumber\\
+& = & \sum^\infty_{n=0}(n\mu_2)\mathbb{P}(N=n) = \mu_2\mathbb{E}N = \mu_1\mu_2.
+\end{eqnarray}
+\begin{eqnarray}
+\mathbb{E}\left((X_1+\cdots+X_N)^2\right) = \sum^\infty_{n=0}\mathbb{E}\left((X_1+\cdots+X_N)^2|N=n\right)\mathbb{P}(N=n) = \sum^\infty_{n=0}\mathbb{E}\left((X_1+\cdots+X_n)^2\right)\mathbb{P}(N=n) 
+\end{eqnarray}
+\begin{eqnarray}
+\mathbb{E}\left((X_1+\cdots+X_n)^2\right) & = & \mathbb{E}\left(\sum^n_{i=1}X_i^2+\sum^n_{i=1}\sum_{j\ne i}X_iX_j\right) = \sum^n_{i=1}\mathbb{E}\left(X_i^2\right)+\sum^n_{i=1}\sum_{j\ne i}\mathbb{E}X_i\mathbb{E}X_j \nonumber\\ 
+& = & n\mathbb{E}\left( X_1^2\right) + n(n-1)\left(\mathbb{E}X_1\right)^2 = n\sigma_2^2+n^2\mu_2^2 
+\end{eqnarray}
+
+It follows that $\mathbb{E}\left((X_1+\cdots+X_N)^2\right) = \mu_1\sigma_2^2+\mu_2^2(\sigma_1^2+\mu_1^2)$, and from that we see that $\mathbf{var}(X_1+\cdots+X_N)= \mu_1\sigma_2^2+\mu_2^2\sigma_1^2$.
+
+
+\item At time 0, a blood culture starts with one red cell. At the end of one minute, the red cell dies and is replaced by one of following combinations with probabilities as indicated:
+
+2 red cell 1/4;\ \ \ \ 1 red, 1 white 2/3; \ \ \ \ 2 white 1/12.
+
+Each red cell lives for one minite and give birth to offspring in the same way as the parent cell. Each white cell lives for one minite and dies without reproducing. Assume the individual cells behave independently. 
+
+(a) At time $n+\frac 12$ minites after the culture began, what is the probability that no white cells have yet appeared?
+
+(b) What is the probability that the entire culture dies out eventually?
+
+
+
+Solution. (a) The probability is, for $n\geq 1$
+\begin{equation}
+\left(\frac 14\right)\left(\frac 14\right)^2\left(\frac 14\right)^4\cdots\left(\frac 14\right)^{2^{n-1}} = \left(\frac 14\right)^{2^n-1}
+\end{equation}
+and this last expression holds for $n=0$.
+
+(b) The probability generating function of the offspring distribution for the branching process of red cells is
+\begin{equation}
+F(z)=\frac 14z^2+\frac 23z+\frac{1}{12}
+\end{equation}
+and the extinction probability is the smallest non-negative root of $F(z)=z$; the roots are $1$ and $\frac 13$, thus we choose $\frac 13$.
+
+
+\item (a) A mature individual produces offspring according to the probability generating function $G(s)$. Suppose we start with a population of $k$ immatrues individuals, each of which grows to maturity with probability $p$ and then reproduces, independently of the other individuals. Find the probability generating function of the number of (immature) individuals at the next generation.
+
+(b) Find the probability generating function of the number of mature individuals at the next generation, given that there are $k$ mature individuals in the parent generation.
+
+(c) Show that the distributions in (a) and (b) have the same mean, but not necessarily the same variance.
+
+
+
+Solution. (a) Let $Y$ be the number of initial $k$ immature individuals who grow to maturity and reproduce; then $Y\sim\text{Bin}(k,p)$. Let $X_i$ be the number of offspring of individual $i$ who reproduces, $i=1,\dots,Y$, so that $F(z)=\mathbb{E}\left(z^{X_i}\right)$. Then the probability generating function of individuals in the next generation is
+\begin{equation}
+a(z) = \mathbb{E}\left(z^{X_1+\cdots+X_Y}\right) = \mathbb{E}\left(\mathbb{E}\left(\left.z^{X_1+\cdots+X_Y}\right|Y\right)\right) = \mathbb{E}\left(\mathbb{E}\left(z^{X_1}\right)\right)^Y = \mathbb{E}F(z)^Y = (pF(z)+1-p)^k
+\end{equation}
+recalling the pgf of the binomial distribution.
+
+(b) For each of the individuals $i$ who reproduce let $X_i$ be the number of offspring they have and let $M_i$ be the number of those who survive to maturity, $i=1,\dots,k$. Then conditional on $X_i$, $M_i$ has a Bin$(X_i,p)$ distribution, so that 
+\begin{equation}
+\mathbb{E}\left(\left.z^{X_i}\right|X_i\right) = (pz+1-p)^{X_i}
+\end{equation}
+which implies that $\mathbb{E}\left(z^{X_i}\right) = \mathbb{E}(pz+1-p)^{X_i}=F(pz+1-p)$. We then see that the required generating function is 
+\begin{equation}
+b(z) = \mathbb{E}\left(z^{M_1+\cdots+M_k}\right) = \left(F(pz+1-p)\right)^k
+\end{equation}
+
+(c) Let $\mu$ and $\sigma^2$ be the mean and variance of the offspring distribution corresponding to $F(z)$. We have
+\begin{equation}
+\left\{\begin{array}{ccl}
+a'(1) & = & kpF'(1)\left(pF(1)+1-p)\right)^{k-1} = kp\mu \\
+b'(1) & = & kpF'(p+1-p)\left(F(p+1-p)\right)^{k-1} = kp\mu \\
+\end{array}\right.
+\end{equation}
+However,
+\begin{equation}
+\left\{\begin{array}{ccl}
+a''(1)+a'(1)-a'(1)^2 & = & kp\left(F''(1)+(k-1)pF'(1)^2\right) +  kp\mu - k^2p^2\mu^2 \\
+	& = & kp\left(\sigma^2+\mu^2-\mu+(k-1)p\mu^2\right) +  kp\mu - k^2p^2\mu^2 = kp\left(1-p\right)\mu^2 +kp\sigma^2 \\
+b''(1)+b'(1)-b'(1)^2 & = & kp^2\left(F''(p+1-p)F(p+1-p)+ (k-1)F'(p+1-p)^2\right) +  kp\mu - k^2p^2\mu^2  \\
+& = & kp^2\left(\sigma^2+\mu^2-\mu+ (k-1)\mu^2\right) +  kp\mu - k^2p^2\mu^2 = kp\left(1-p\right)\mu +kp^2\sigma^2 .
+\end{array}\right.
+\end{equation}
+
+
+\item A slot machine operates so that at the first turn the probability for the player to win is $\frac 12$. Thereafter the probability for the player to win is $\frac 12$ if he lost at the last turn, but is $p(<\frac 12)$ if he won at the last turn. If $u_n$ is the probability that the player wins at the $n$th turn, show that, provided $n>1$, 
+\begin{equation}
+u_n+\left(\frac 12-p\right)u_{n-1}=\frac 12.
+\end{equation}
+Observe that this equation also holds for $n=1$, if $u_0$ is suitably defined. Solve the equation, showing that 
+\begin{equation}
+u_n=\frac{1+(-1)^{n-1}\left(\frac 12 -p\right)^n}{3-2p}
+\end{equation}
+
+
+
+Solution. By conditioning on the outcome of the $(n-1)$st turn, we have $u_n=\frac 12(1-u_{n-1}) + pu_{n-1}$, as required. A particular solution is obtained by letting $u_n=C$, and seeing that we must have $C=1/(3-2p)$. For general solution of the homogeneous equation we have $u_n=D(p-\frac 12)^n$; the boundary condition $u_0=0, u_1=\frac 12$ gives the constant $D=-1/(3-2p)$.
+
+
+\item A fair coin is tossed $n$ times. Let $u_n$ be the probability that the sequence of tosses never has 'head' followed by 'head'. Show that $u_n=\frac 12u_{n-1}+\frac 14u_{n-2}$. Find $u_n$, using the condition $u_0=u_1=1$. Check that the value for $u_2$ is correct.
+
+
+
+Solution. Solving the second-order recurrence relation, we have auxiliary equation, $x^2=\frac 12 x+\frac 14$ which has roots $(1\pm\sqrt{5})/4$. The general solution is $u_n=C((1+\sqrt{5})/4)^n+D((1-\sqrt{5})/4)^n$, with the values $C=(5+3\sqrt{5})/10$ and $D=(5-3\sqrt{5})/10$, determined from the boundary conditions $u_0=u_1=1$.
+
+
+\item A coin is repeatedly tossed, and at each toss comes up heads with probability $p$, the outcomes being independent. What's the expected number of tosses until the end of the first run of $k$ heads in a row?
+
+
+
+Solution. Let $\mathbb{E}_iT$ denote the expected number of tosses until we get $k$ consecutive $H$, given that now we have $i$ consecutive $H$ ($i\leq k$). Then 
+\begin{equation}
+\mathbb{E}_iT=1+ p\mathbb{E}_{i+1}T + (1-p)\mathbb{E}_0T \quad \forall i=0,1,\dots,k-1
+\end{equation}
+We also have $\mathbb{E}_kT=0$, then
+\begin{eqnarray}
+\mathbb{E}_0T & = & 1+ p\mathbb{E}_{1}T + (1-p)\mathbb{E}_0T \nonumber\\
+\Rightarrow \ \mathbb{E}_0T & = & \frac 1p + \mathbb{E}_{1}T = \frac 1p + 1 + p\mathbb{E}_2T + (1-p)\mathbb{E}_0T\nonumber\\
+\Rightarrow \ \mathbb{E}_0T & = & \frac{1}{p} + \frac{1}{p^2} + \mathbb{E}_2T =\ \cdots\ = \frac{1}{p} +\cdots+ \frac{1}{p^k} = \frac{1-p^k}{(1-p)p^k} 
+\end{eqnarray}
+
+
+\item Let $u_n$ be the number of walks of length $2n$ that start and end at the origin, move a distance 1 at each step, and remain non-negative at all times. (We interpret $u_0$ as 1.) By considering the last time that such a walk visits the origin \emph{before} time $n$, prove that
+\begin{equation}
+u_n=u_0u_{n-1}+u_1u_{n-2} + u_2u_{n-3} +\cdots + u_{n-1}u_0.
+\end{equation}
+
+Let $G(z)$ be the generating function $\sum^\infty_{n=0}u_nz^n$. Prove that this sum converges whenever $|z|<1/4$. By using the recurrence above, prove also that $zG(z)^2=G(z)-1$. Solve this quadratic to obtain a formula for $G(z)$ (explaining carefully your choice of sign). Calculate the first few terms of the binomial expansion of your answer and check that they give the right first few values of $u_n$.
+
+
+
+Solution. If the last time that the walk visited the origin before time $2n$ was after $2k$ steps, then between $2k$ and $2n$ it will not visit 0 again, so it is going to 1 and then starts from 1 and takes $2(n-k-1)$ steps to get back to 1. Thus, it can be considered as a $2k$ walk plus a $2(n-k-1)$ walk. So we have
+
+\begin{equation}
+u_n=\sum^{n-1}_{k=0}u_ku_{n-k-1} = u_0u_{n-1}+u_1u_{n-2} + u_2u_{n-3} +\cdots + u_{n-1}u_0
+\end{equation}
+
+$u_n$ is the number of walks of length $2n$ starting and ending at the origin that remain non-negative. Hence 
+
+\begin{equation}
+u_n\leq \{\text{number of walks starting and ending at 0 in $2n$ steps}\} = \binom{2n}{n}\sim\frac{4^n\sqrt{2}}{\sqrt{2\pi n}}\leq 4^n
+\end{equation}
+
+which implies that if $|z|<1/4$
+
+\begin{equation}
+\sum^\infty_{n=0}u_nz^n \leq \sum^\infty_{n=0}(4z)^n<\infty
+\end{equation}
+
+Hence the sum converges. Using the recurrence above, we have
+
+\begin{eqnarray}
+G(z)^2 = \left(\sum^\infty_{n=0}u_nz^n\right)\left(\sum^\infty_{n=0}u_nz^n\right) = \sum^\infty_{n=0}\sum^n_{k=0}u_ku_{n-k}z^n = \sum^\infty_{n=0}u_{n+1}z^n = z^{-1}\sum^\infty_{n=1}u_nz^n = z^{-1}(G(z)-1) 
+\end{eqnarray}
+which gives the required result. To solve the equation $zG(z)^2=G(z)-1$, we have roots $\frac{1\pm\sqrt{1-4z}}{2z}$. Since $|z|<1/4$, we choose $G(z)=\frac{1-\sqrt{1-4z}}{2z}$ ($\frac{1+\sqrt{1-4z}}{2z}<0$ when $z<0$). Thus, 
+
+\beast
+G(z)^2 & = & \frac{1-\sqrt{1-4z}}{2z} = \frac{1}{2z}\left[1- \sum^\infty_{k=0}\binom{\frac 12}{k}(-4z)^k\right]  = \frac{1}{2z}\sum^\infty_{k=1}\binom{\frac 12}{k}(-1)^{k+1}(4z)^k\nonumber\\
+& = & \frac{1}{2z}\sum^\infty_{k=1}\binom{2k}{k}\frac{4^{-k}}{2k-1}(4z)^k = \frac{1}{2}\sum^\infty_{k=1}\binom{2k}{k}\frac{1}{2k-1}z^{k-1} = \sum^\infty_{k=1}\binom{2k-2}{k-1}\frac{z^{k-1}}{k} = \sum^\infty_{k=0}\binom{2k}{k}\frac{z^{k}}{k+1} 
+\eeast
+
+Thus, we have $u_k = \frac{\binom{2k}{k}}{k+1} $ which gives $u_1 = 1,u_2 = 3,u_3=5\dots$
+
+
+\item Let $X$ be a random variable with density $f$ and let $g$ be an increasing function such that $g(x)\to\pm\infty$ as $x\to\pm\infty$. Find a formula for the density of the random variable $g(X)$. If this density is $h$, check that $\int^\infty_{-\infty}yh(y)dy=\int^\infty_{-\infty}g(x)f(x)dx$.
+
+
+
+Solution. Define the generalized inverse of $g$ to be $g^{-1}(\alpha)=\inf\{x:g(x)>\alpha\}$. If $g$ is strictly increasing, then $g^{-1}$ is continuous, but if not, then $g^{-1}$ is discontinuous. For this question, we assume $g^{-1}$ is differentiable. Then $F_{g(X)}(\alpha)=F_X(g^{-1}(\alpha))$,
+\begin{equation}
+f_{g(X)}(\alpha)=f_X(g^{-1}(\alpha))\cdot\frac{d}{d\alpha}g^{-1}(\alpha):=h(y)
+\end{equation}
+
+Then
+\begin{equation}
+\mathbb{E}_f[g(X)] = \int^\infty_{-\infty} g(x)f(x)dx = \int^\infty_{-\infty}yf_{g(X)}dy = \int^\infty_{-\infty}yh(y)dy
+\end{equation}
+
+
+\item Let $b_1,b_2,\dots,b_n$ be a rearrangement of the positive real numbers $a_1,a_2,\dots,a_n$. Prove that 
+\begin{equation}
+\sum^n_{i=1}\frac{a_i}{b_i}\geq n.
+\end{equation}
+
+
+
+Solution. Using AM-GM inequality, we have
+\begin{equation}
+\sum^n_{i=1}\frac{a_i}{b_i} \geq n\left(\prod^n_{i=1}\frac{a_i}{b_i}\right)^{1/n} = n\left(\frac{\prod^n_{i=1}a_i}{\prod^n_{i=1}b_i}\right)^{1/n}=n
+\end{equation}
+
+
+\item Let $F(z)=1-p(1-z)^\beta$, where $p$ and $\beta$ are constants and $0<p<1, 0<\beta<1$. Prove that $F(z),0\leq z\leq 1$, is a probability generating function and that its iterates are
+\begin{equation}
+F_n(z)=1-p^{1+\beta+\cdots+\beta^{n-1}}(1-z)^{\beta^n} \quad \text{for }n=1,2,\dots
+\end{equation} 
+Find the mean $m$ of the associated distribution and the extinction probability, $\eta=\lim_{n\to\infty}F_n(0)$, for a branching process with offspring distrition determined by $F$.
+
+
+
+Solution. By expanding $(1-z)^\beta$ in powers of $z$, we see that we may express
+\begin{equation}
+F(z)=1-p+p\sum^\infty_{r=1}(-1)^{r-1}\frac{\beta(\beta-1)\cdots(\beta-r+1)}{r!}z^r,\ 0\leq z < 1
+\end{equation} 
+and we can note that the coefficients of each $z^r$ are non-negative, furthermore we have $\lim_{z\uparrow 1}F(z)=1$, so that $F(z)$ is a probability generating function. The expression for $F_n$ follows easily by induction on $n$. 
+
+We have $F'(z)=p\beta(1-z)^{\beta-1}$, so that $m=F'(1-)=\infty$, while $\eta=\lim_{n\to\infty}=F_n(0)=1-p^{1/(1-\beta)}$.
+
+
+
+\item Let $(X_n)_{n\geq 0}$ be a branching process that $X_0=1$, $\mathbb{E}X_1=\mu$. If $Y_n=X_0+X_1+\cdots+X_n$, and $G_n(z)=\mathbb{E}\left(z^{Y_n}\right)$ for $0\leq z\leq 1$, prove that 
+\begin{equation}
+G_{n+1}(z)=zF\left(G_n(z)\right)
+\end{equation} 
+where $F(z)=\mathbb{E}z^{X_1}$. Deduce that, if $Y=\sum_{n\geq 0}X_n$, then $G(z)\equiv\mathbb{E}z^Y$ satisfies
+\begin{equation}
+G(z)=zF\left(G(z)\right), \ 0\leq z\leq 1,
+\end{equation} 
+where $z^\infty\equiv 0$. If $\mu<1$, prove that $\mathbb{E}Y=(1-\mu)^{-1}$.
+
+
+
+Solution. Conditional on $X_1$, we may represent
+\begin{equation}
+Y_{n+1} = 1+\bar{Y}_1 + \cdots + \bar{Y}_{X_1}
+\end{equation} 
+where $\bar{Y}_1,\cdots $ are i.i.d. random variables distributed as $Y_n$; here $\bar{Y}_i$ counts individual $i$ in generation 1 together with all of the individuals in generation $2,\dots,n+1$ descended from $i$. Then we have
+\begin{equation}
+G_{n+1}(z) = \mathbb{E}\left(z^{Y_{n+1}}\right) = \mathbb{E}\left(\mathbb{E}\left.\left(z^{Y_{n+1}}\right|X_1\right)\right) = \mathbb{E}\left(\mathbb{E}\left.\left(z^{1+ \bar{Y}_1 + \cdots + \bar{Y}_{X_1} }\right|X_1\right)\right) = z\mathbb{E}\left(G_n(z)^{X_1}\right) = zF(G_n(z)).
+\end{equation}
+
+Note that $Y_n\uparrow Y$, as $n\to \infty$, so that for $0\leq z <1$, $G_n(z)\downarrow G(z)$, and use continuity to get $G(z)=zF\left(G(z)\right)$. 
+
+For the final part, differentiating with respect to $z$,
+\begin{equation}
+G'(z) = F(G(z)) + zF'(G(z))G'(z)
+\end{equation} 
+and let $z\uparrow 1$, we have
+\begin{equation}
+\mathbb{E}Y = G'(1) = F(G(1)) + F'(G(1))G'(1) = 1+\mu G'(1) = 1+\mu\mathbb{E}Y \ \Rightarrow \ \mathbb{E}Y = (1-\mu)^{-1}.
+\end{equation} 
+
+
+\item A particle moves at each step two units in the positive direction, with probability $p$, or one unit in the negative direction, with probability $q=1-p$. If the starting position is $z>0$, find the probability $a_z$ that the particle will ever reach the origin. Deduce that if a fair coin is tossed repeatedly the probability that the number of heads ever exceeds twice the number of tail is $(\sqrt{5}-1)/2$.
+
+
+
+Solution. First we know $a_0=1,a_\infty=0$ and auxiliary equation
+\begin{equation}
+a_z = pa_{z+2} + qa_{z-1} \ \Rightarrow \ px^3-x+q =0 \ \Rightarrow \ x=1,\frac{-p\pm\sqrt{4p-3p^2}}{2p}
+\end{equation} 
+
+Thus, we have
+
+\begin{equation}
+a_z = \left\{\begin{array}{ll}
+A + Bz + C(-2)^z & \quad p=\frac 13 \\
+A + B\left(\frac{-1+\sqrt{4/p-3}}{2}\right)^z + C\left(\frac{-1-\sqrt{4/p-3}}{2}\right)^z & \quad p\ne\frac 13
+\end{array}\right.
+\end{equation} 
+
+For $p=\frac 13$, $a_z$ should be positive and bounded for large $z$, so we have $B=C=0$. With boundary condition we have $A=1$. 
+
+For $p\ne \frac 13$, we first get $C=0$ with the same argument with the first case. If $\frac{-1+\sqrt{4/p-3}}{2}>1$ which gives $p<\frac 13$, we get $B=0,A=1$. If $p>\frac 13$, we have $A=0,B=1$ and 
+\begin{equation}
+a_z = \left\{\begin{array}{ll}
+1 & \quad p\leq \frac 13 \\
+\left(\frac{-1+\sqrt{4/p-3}}{2}\right)^z & \quad p>\frac 13
+\end{array}\right.
+\end{equation}
+
+For the fair coin tossing, we set that the particle starts from origin and moves one unit in positive direction if it's a head, otherwise two units in negative direction. Thus, the probability that the number of head ever exceeds twice the number of tail becomes the probability for the particle to hit $+1$ ($a_1=1, a_{-\infty}=0$). The transition equation is given by 
+\begin{equation}
+a_z = \frac 12 a_{z+1} + \frac 12a_{z-2} \ \Rightarrow \ x^3-2x^2+1 =0 \ \Rightarrow \ x=1,\frac{1\pm\sqrt{5}}{2}
+\end{equation} 
+Thus, with the boundary condition, we have $a_z = \frac{2}{1+\sqrt{5}}\left(\frac{1+\sqrt{5}}{2}\right)^z\ \Rightarrow \ a_0 = \frac{2}{1+\sqrt{5}} = \frac{\sqrt{5}-1}{2} $.
+
+
+\item The radius of a circle is exponentially distributed with parameter $\lambda$. Determine the probability density function of the area of the circle.
+
+Solution. When $R\sim \mathcal{E}(\lambda)$, we have the probability density function of the area is, for $x\geq 0$,
+
+\begin{equation}
+F(x) = \mathbb{P}(\pi R^2\leq x) =\mathbb{P}(R\leq \sqrt{x/\pi}) = 1 - e^{-\lambda\sqrt{x/\pi}}.
+\end{equation}
+The probability density function is then $F'(x)=\frac{\lambda}{2\sqrt{x\pi}}e^{-\lambda\sqrt{x/\pi}}$.
+
+
+\item The random variables $X$ and $Y$ are independent and exponentially distributed with parameters $\lambda$ and $\mu$ respectively. Find the distribution of $\min\{X,Y\}$, and the probability that $X$ exceeds $Y$.
+
+Solution. We have 
+\begin{eqnarray}
+\mathbb{P}(\min(X,Y)\leq a) = 1 - \mathbb{P}(\min(X,Y)\geq a) = 1 - \mathbb{P}(X\geq a)\mathbb{P}(Y\geq a) = 1 - e^{-\lambda a}e^{-\mu a} = 1-e^{(\lambda+\mu)a}
+\end{eqnarray}
+Thus, $f_{\min(X,Y)(a) = (\lambda+\mu)e^{-(\lambda+\mu)a}}$, which is $\mathcal{E}(\lambda+\mu)$. For the probability that $X$ exceeds $Y$, we have
+\begin{eqnarray}
+\mathbb{P}(X>Y) & = & \int^\infty_0\int^x_0 \mu\lambda e^{-\mu y} e^{-\lambda x}dydx = \int^\infty_0 \lambda(1-e^{-\mu x})e^{-\lambda x} dx = \frac{\mu}{\lambda+\mu}.
+\end{eqnarray}
+
+
+
+
+\item (i) The random variable $X$ has a \emph{log-normal distribution} if $Y=\log X$ is normally distributed. If $Y\sim\mathcal{N}(\mu,\sigma^2)$, calculate the mean and variance of $X$. (The log-normal distribution is sometimes used to represent the size of small particles after a crushing process, or as a model for future commodity prices. Why?)
+
+(ii) Random variables $X_1$ and $X_2$ have a bivariate log-normal distribution if $Y_1=\log X_1$ and $Y_2=\log X_2$ have a bivariate normal distribution. Show that when $X_1$ and $X_2$ have a bivariate log-normal distribution then they are independent if and only if $\mathbf{cov}(X_1,X_2)=0$.
+
+
+
+Solution. (i) We have $X=e^Y$. Recall that the moment generating function $m(\theta)=\mathbb{E}(e^{\theta Y})=e^{\theta\mu+\theta^2\sigma^2/2}$, then
+\begin{equation}
+\mathbb{E}X = m(1) = e^{\mu + \sigma^2/2},\quad \mathbb{E}X^2 = m(2) = e^{2\mu + 2\sigma^2}, \quad \mathbf{var}X = e^{2\mu + \sigma^2}\left(e^{\sigma^2}-1\right)
+\end{equation}
+
+The size of small particles and future commodity prices move typically according to daily changes which are proportional to the price, so that on day $n+1$ the price is $S_{n+1}=S_nX_{n+1}$. If $X_n$ are independent and identically distributed then $\log S_n=\sum^n_{i=1}\log (X_i)$ will be the sum of i.i.d. random variables and so will approximately have a normal distribution by the Central Limit Theorem.
+
+(ii) Suppose that $Y_i\sim\mathcal{N}(\mu_i,\sigma_i^2),i=1,2$. Of course if $X_1$ and $X_2$ are independent then $\mathbf{var}(X_1,X_2)=0$ so suppose that $\mathbf{cov}(X_1,X_2)=0$ which means that $\mathbb{E}X_1X_2=\mathbb{E}X_1\mathbb{E}X_2$. Then
+\begin{equation}
+\mathbb{E}X_1X_2 = \mathbb{E}e^{Y_1+Y_2} = e^{\mathbb{E}(Y_1+Y_2) + \mathbf{var}(Y_1+Y_2)/2} = e^{\mu_1+\mu_2 +(\sigma_1^2 +\sigma_2^2)/2+\mathbf{cov}(Y_1,Y_2)} = \mathbb{E}X_1\mathbb{E}X_2 = e^{\mu_1+\sigma_1^2/2}e^{\mu_2 +\sigma_2^2/2}
+\end{equation}
+
+It follows that $\mathbf{cov}(Y_1,Y_2)=0$, so that, by the property of bivariate normals, $Y_1$ and $Y_2$ are independent and hence $X_1$ and $X_2$ are independent.
+
+
+\item $X$ and $Y$ are independent random variables, each distributed normally, as $\mathcal{N}(0,1)$. Show that, for any fixed $\theta$, the random variables
+
+\begin{equation}
+X\cos\theta+Y\sin\theta, \quad -X\sin\theta+Y\cos\theta
+\end{equation}
+
+are independent and find their distributions.
+
+
+
+Solution. For $U=X\cos\theta+Y\sin\theta$ and $V= -X\sin\theta+Y\cos\theta$, we have $X=U\cos\theta-V\sin\theta$ and $Y=U\sin\theta_V\cos\theta$. The Jocabian of the transformation is 1, and the joint density of $U$ and $V$ is
+
+\begin{equation}
+g(u,v)=\frac{1}{\sqrt{2\pi}}e^{-(u\cos\theta-v\sin\theta)^2/2} \frac{1}{\sqrt{2\pi}}e^{-(u\sin\theta+v\cos\theta)^2/2} = \frac{1}{2\pi}e^{-(u^2+v^2)/2} = \frac{1}{\sqrt{2\pi}}e^{-u^2/2} \frac{1}{\sqrt{2\pi}}e^{-v^2/2}
+\end{equation}
+
+this shows that the joint density factors into the product of marginal densities which are $\mathcal{N}(0,1)$, so that $U$ and $V$ have the same joint distribution as $X$ and $Y$.
+
+
+\item Let $X$ and $Y$ be independent normal random variables with mean 0 and variance 1. For each $\theta$ let $X_\theta$ be the random variable $X\cos\theta+Y\sin\theta$. What is the covariance of $X_\theta$ and $X_\phi$?
+
+
+
+Solution. We have
+\begin{eqnarray}
+\mathbf{cov}(X_\theta, X_\phi) & = & \mathbb{E}X_\theta X_\phi - \mathbb{E}X_\theta \mathbb{E}X_\phi \nonumber\\
+& = & \mathbb{E}(X\cos\theta+Y\sin\theta)(X\cos\phi+Y\sin\phi) - \mathbb{E}(X\cos\theta+Y\sin\theta)\mathbb{E}(X\cos\phi+Y\sin\phi) \nonumber\\
+& = & \cos\theta\cos\phi + \sin\theta\sin\phi =\cos(\theta-\phi)
+\end{eqnarray}
+
+
+\item Let $A=(a_{ij})^n_{i,j=1}$ be an $n\times n$ orthogonal matrix. (This means that $AA^T=I$.) Let $X_1,\dots,X_n$ be independent normal random variables with mean 0 and variance 1. For each $i$ let $Y_i=a_{i1}X_1 + \cdots + a_{in}X_n$. Prove that $Y_1,\dots, Y_n$ are independent normal random variables with mean 0 and variance 1.
+
+
+
+Solution. Let $X=(X_1,\dots,X_n)^T$ and $Y=(Y_1,\dots,Y_n)^T$, with $X\sim\mathcal{N}(\mathbf{0},I)$. It is sufficient to prove that $Y\sim\mathcal{N}(\mathbf{0},I)$. Since $Y=AX$, $Y\sim\mathcal{N}(A\mathbf{0},AIA^T)$ and $AA^T=I$, it is easy to get the result required.
+
+
+\item The random variables $X$ and $Y$ are independent with parameter $X\sim\Gamma(m,\lambda)$ and $Y\sim\Gamma(n,\lambda)$, and let $U=X+Y$ and $V=X/(X+Y)$. Find the joint probability density function of $U$ and $V$ and their marginal probability density function. Are $U$ and $V$ independent?
+
+
+
+Solution. Recall the form of probability density function for the Gamma distribution, so that
+
+\begin{equation}
+f_X(x)=e^{-\lambda x}\frac{\lambda^mx^{m-1}}{(m-1)!},\ x>0 \quad f_Y(y)=e^{-\lambda y}\frac{\lambda^ny^{n-1}}{(n-1)!},\ y>0.
+\end{equation}
+
+We have $u=x+y$ and $v=x/(x+y)$, so solving for $u$ and $v$ in terms of $x$ and $y$ gives 
+
+\begin{equation}
+x=uv,\ y=u(1-v),\ u>0,0<v<1.
+\end{equation}
+
+We calculate the Jocabian which gives $-u$. The joint density of $U$ and $V$ is then
+
+\begin{equation}
+uf_X(uv)f_Y(u(1-v)) = ue^{-\lambda uv}\frac{\lambda^m(uv)^{m-1}}{(m-1)!} e^{-\lambda u(1-v)}\frac{\lambda^n(u(1-v))^{n-1}}{(n-1)!} = e^{-\lambda u}\frac{\lambda^{m+n}u^{m+n-1}}{(m-1)!(n-1)!}v^{m-1}(1-v)^{n-1}
+\end{equation}
+
+where we see that this is a product of a function of $u$ with a function of $v$, which can write as 
+
+\begin{equation}
+\left[e^{-\lambda u}\frac{\lambda^{m+n}u^{m+n-1}}{(m+n-1)!}\right]\left[\frac{(m+n-1)!}{(m-1)!(n-1)!}v^{m-1}(1-v)^{n-1}\right] =h(u)k(v)
+\end{equation}
+
+By grouping the terms in this way, we see that $h(u)$ is p.d.f. of $\Gamma(m+n,\lambda)$ distribution; since it integrates to 1, we may conclude that 
+
+\begin{equation}
+k(v) = \frac{(m+n-1)!}{(m-1)!(n-1)!}v^{m-1}(1-v)^{n-1},\ 0<v<1
+\end{equation}
+
+is the marginal probability density of $V$. and moreover, the random variables $U$ and $V$ are independent; of course we had obtained the distribution of $U$ previously using moment generating functions. The distribution with density given $k$ is known as the Beta distribution with parameters $m$ and $n$ and is usually written $\text{Beta}(m,n)$.
+
+
+\item Suppose that $X$ and $Y$ are independent, identically distributed random variables each with the $U[0,1]$ distribution and let $U=X+Y$ and $V=X/Y$. Find the joint probability density function of $U$ and $V$ and their marginal density functions. Are $U$ and $V$ independent?
+
+
+
+Solution. Note that the joint probability density function of $X$ and $Y$ is 
+\begin{equation}
+f_{X,Y}(x,y) = 1,\quad 0<x\leq 1,0<y\leq 1.
+\end{equation}
+
+We have $u=x+y$ and $v=x/y$ so solving for $x$ and $y$ in terms of $u$ and $v$ gives 
+\begin{equation}
+x=uv/(1+v),\ y=u/(1+v). 
+\end{equation}
+
+The Jocobian is given by $-\frac{u}{(1+v)^2}$. Thus, the joint probability density function of $U$ and $V$ is 
+\begin{equation}
+g(u,v) = \frac{u}{(1+v)^2}
+\end{equation}
+
+This joint p.d.f factors into the product of a function of $u$ and a function of $v$. However if we look at the range of possible values for $u$ and $v$ we see that it corresponds to the region $\{(u,v):0<u\leq 1,v>0\}$ together with the region $\{(u,v):1\leq u \leq 2, u-1\leq v \leq 1/(u-1)\}$. Calculating the densities of $U$ and $V$ directly, we see that
+\begin{equation}
+g_U(u) = \left\{\begin{array}{ll}
+u & \quad 0<u\leq 1 \\
+2-u & \quad 1\leq u\leq 2
+\end{array}\right.\quad 
+g_V(v) = \left\{\begin{array}{ll}
+1/2 & \quad 0<v\leq 1 \\
+1/(2v^2) & \quad v\geq 1
+\end{array}\right.
+\end{equation}
+
+We conclude that $U$ and $V$ are not independent.
+
+
+\item A shot is fired at circular target. The vertical and horizontal coordinates of the point of impact (taking the centre of the target as orgin) are independent random variables, each distributed normally $\mathcal{N}(0,1)$. 
+
+(i) Show that the distance of the point of impact from the centre has p.d.f $re^{-r^2/2}$ for $r\geq 0$.
+
+(ii) Show that the mean of this distance is $\sqrt{\pi/2}$, that the median is $\sqrt{\ln 4}$, and that the mode is 1.
+
+
+
+Solution. (i) Suppose that the horizontal and vertical coordinates are $X$ and $Y$ and let the distance be $R=\sqrt{X^2+Y^2}$. Then, for $r\geq 0$
+\begin{equation}
+\mathbb{P}(R\leq a) = \mathbb{P}(X^2+Y^2\leq a^2) = \int\int_{x^2+y^2\leq a^2}\frac{1}{2\pi}e^{-(x^2+y^2)/2}dxdy = \int^a_0\int^{2\pi}_0\frac{1}{2\pi}e^{-r^2/2}d\theta r dr = \int^a_0 re^{-r^2/2}dr
+\end{equation}
+after transforming to polar coordinates, and this gives the required density.
+
+(ii) The mean of the distance is calculated by 
+\begin{equation}
+\int^\infty_0 r^2e^{-r^2/2}dr = re^{-r^2/2}|^0_\infty + \int^\infty_0 e^{-r^2/2}dr = 0+ \frac{\sqrt{2\pi}}{2} = \sqrt{\pi/2}
+\end{equation}
+Assume the median is $a$, we have that 
+\begin{equation}
+\int^a_0 re^{-r^2/2}dr = \frac 12 \ \Rightarrow\ e^{a^2/2} = 2 \ \Rightarrow \ a=\sqrt{\ln 4}
+\end{equation}
+\vspace{2mm}
+The mode is given by
+\begin{equation}
+\frac{d\left(re^{-r^2/2}\right)}{dr} = e^{-r^2/2} (1-r^2) = 0 \ \Rightarrow \ r=1.
+\end{equation}
+
+
+\item A radioactive source emits particles in a random direction (with all directions being equally likely). It is held at a distance $d$ from a vertical infinite plane photographic plate.
+
+(i) Show that, given the particle hits the plate, the horizontal coordinate of its point of impact (with the point nearest the source as origin) has p.d.f. $d/\pi(d^2+x^2)$. (This distribution is known as the Cauchy distribution).
+
+(ii) Can you compute the mean of this distribution?
+
+
+
+Solution. (i) Let $X$ be the horizontal coordinate, then $\Theta=\arctan(X/d)$ is uniformly distributed on $(-\pi/2,\pi/2)$. We have
+
+\centertexdraw{
+    \drawdim in
+
+    \arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+    
+    \linewd 0.01 \setgray 0
+    
+    \move (-1.2 0) \lvec(1.2 0)
+    \move (0 0) \lvec(0 -1) \lvec(1 0) 
+
+    \move (0.3 0.1) \avec(0 0.1)
+    \move (0.7 0.1) \avec(1 0.1)
+    \htext (0.45 0.07){$X$}
+
+    \move (-0.1 -0.3) \avec(-0.1 0)
+    \move (-0.1 -0.7) \avec(-0.1 -1)
+    \htext (-0.12 -0.55){$d$}
+
+    \move (0 -1)
+    \larc r:0.2 sd:45 ed:90
+    \htext (0.1 -0.7){$\Theta$}
+}
+
+$\mathbb{P}(X\leq x)=\mathbb{P}(\Theta\leq \arctan(x/d)) = \left(\arctan(x/d)+\pi/2\right)/\pi$, then differentiating with respect to $x$ gives the required density. 
+
+(ii) Observe that both $\mathbb{E}X_+=\infty$ and $\mathbb{E}X_-=\infty$ so that $\mathbb{E}X$ is not defined.
+
+
+\item Suppose that $X_1,X_2,\dots,X_{2n+1}$ are i.i.d. random variables forming a random sample from the $U[0,1]$ distribution. Suppose that the values are arranged in increasing order as 
+\begin{equation}
+X_{(1)}\leq X_{(2)}\leq\dots\leq X_{(2n+1)};
+\end{equation}
+these are known as the order statistics of the sample. Calculate expression for the distribution function and for the probability density function of the random variable $X_{(n+1)}$ (the sample median).
+
+
+
+Solution. For $0<x<1$, 
+\beast
+\mathbb{P}\left(X_{(n+1)}\leq x\right) = \mathbb{P}\left(\text{at least $n+1$ of }X_i\leq x\right) = \sum^{2n+1}_{r=n+1}\mathbb{P}\left(\text{exactly $r$ of }X_i\leq x\right) = \sum^{2n+1}_{r=n+1}\binom{2n+1}{r}x^r(1-x)^{2n+1-r}
+\eeast
+
+By considering the probability that $X_{(n+1)}$ lies in the interval $(x,x+\Delta x)$, for small $\Delta x$. it is easy to see that the pdf is 
+\begin{equation}
+f(x) = (2n+1)\binom{2n}{n}x^n(1-x)^n
+\end{equation}
+
+it requires a little work to see that the derivative of the distribution function above does indeed give this expression for the pdf. The gory details are:
+\begin{eqnarray}
+\frac{d}{dx}\mathbb{P}\left(X_{(n+1)}\leq x\right) & = & \sum^{2n+1}_{r=n+1}\binom{2n+1}{r}\left[rx^{r-1}(1-x)^{2n+1-r} - (2n+1-r)x^r(1-x)^{2n-r}\right]\nonumber\\
+& = & \sum^{2n+1}_{r=n+1}\frac{(2n+1)!}{(r-1)!(2n+1-r)!} x^{r-1}(1-x)^{2n+1-r} - \sum^{2n}_{r=n+1}\frac{(2n+1)!}{r!(2n-r)!} x^r(1-x)^{2n-r} \nonumber\\
+& = & (2n+1)\left[\sum^{2n}_{r=n}\binom{2n}{r} x^{r-1}(1-x)^{2n+1-r} - \sum^{2n}_{r=n+1}\binom{2n}{r} x^r(1-x)^{2n-r}\right] 
+\end{eqnarray}
+which reduces to the expression for the pdf.
+
+
+\item A random sample is taken in order to find the proportion of Labour voters in a population. Find a sample size such that the probability of a sampling error less than 0.04 will be 0.99 or greater.
+
+
+
+Solution. Let sample size be $n$, and assume that the proportion of Labour voters is $p$. Let $X_i=0,1$ and $S_n=\sum^n_{i=1}X_i$. We estimate $p$ by $\frac{S_n}{n}$. Then we have $X_i$ has mean $p$ and variance $pq$ where $q=1-p$. Using CLT, we have
+\begin{equation}
+\mathbb{P}\left(\left|\frac{S_n}{n}-p\right|\leq 0.04\right) = \mathbb{P}\left(\frac{ \left|S_n-np\right|}{\sqrt{npq}}\leq 0.04\sqrt{\frac{n}{pq}}\right)\geq \mathbb{P}\left(\frac{ \left|S_n-np\right|}{\sqrt{npq}}\leq 0.08\sqrt{n}\right)
+\end{equation}
+So we need to guarantee that $\mathbb{P}\left(\frac{ \left|S_n-np\right|}{\sqrt{npq}}\leq 0.08\sqrt{n}\right)\geq 0.99$, which implies
+\begin{equation}
+\Phi\left(0.08\sqrt{n}\right) \geq 0.995 \ \Rightarrow \ 0.08\sqrt{n} \geq 2.58 \ \Rightarrow \ n\geq 1040.
+\end{equation}
+
+
+\item The random variables $Y_1,Y_2,\dots,Y_n$ are independent, with $\mathbb{E}Y_i=\mu_i,\mathbf{var}Y_i=\sigma^2,1\leq i\leq n$. For constants $a_i,b_i,1\leq i\leq n$, show that
+\begin{equation}
+\mathbf{cov}\left(\sum_ia_iY_i,\sum_ib_iY_i\right)=\sigma^2\sum_ia_ib_i
+\end{equation}
+Prove that if $Y_1,Y_2,\dots,Y_n$ are independent normal random variables, then $\sum_ia_iY_i$ and $\sum_ib_iY_i$ are independent if and only if $\sum_ia_ib_i=0$.
+
+
+
+Solution. We have
+\begin{eqnarray}
+\mathbf{cov}\left(\sum_ia_iY_i,\sum_ib_iY_i\right) & = & \mathbb{E}\left(\sum_ia_iY_i\sum_jb_jY_j\right) - \mathbb{E}\left(\sum_ia_iY_i\right)\mathbb{E}\left(\sum_jb_jY_j\right) \nonumber\\
+& = & \mathbb{E}\left(\sum_ia_ib_iY_i^2\right) + \sum_{i\ne j}a_ib_j\mu_i\mu_j - \sum_ia_i\mu_i \sum_jb_j\mu_j \nonumber\\
+& = & \sum_ia_ib_i(\sigma_i^2+\mu_i^2) - \sum_ia_ib_i\mu_i^2 = \sum_ia_ib_i\sigma_i^2
+\end{eqnarray}
+
+Hence, it is easy to get $\sum_ia_ib_i=0$ when $Y_1,Y_2,\dots,Y_n$ are independent normal random variables. 
+
+
+\item {\bf Buffon's needle}. You wish to determine $\pi$ by repeatedly dropping a straight pin of length $r$ onto a floor marked with parallel lines spaced $d$ apart.
+
+(i) Calculate the probability that the needle intersects a line in the case $r>d$.
+
+(ii) For the case $r<d$, estimate how closely you could determine the value of $\pi$ by devoting 50 years to full-time needle dropping. What needle length, $r$, would you prefer?
+
+
+
+Solution. (i) Let $X$ be the distance from the southernmost tip of the needle to the nearest northerly line and $\Theta$ be the angle the needle makes with the lines. 
+
+\centertexdraw{
+    \drawdim in
+
+    \arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+    
+    \linewd 0.01 \setgray 0
+    
+    \move (0 0)
+    \clvec (0.8 2.65)(1.2 2.65)(2 0)
+    \lvec (0 0) 
+    \lfill f:0.8
+
+    \linewd 0.00 \setgray 1
+    \move (0 1.414) \lvec(2 1.414) \lvec(2 2) \lvec(0 2) \lvec(0 1.414)
+    \lfill f:1
+   
+    \move (0 1.414) \lvec(2 1.414) \lvec(2 0)
+    \move (0 2) \lvec(2 2)
+
+    \linewd 0.01 \setgray 0 
+
+    \move (-0.2 0) \avec(2.3 0)
+    \move (0 -0.2) \avec(0 2.3)
+    \move (0 0)
+    \clvec (0.8 2.65)(1.2 2.65)(2 0)
+
+    \move (0 1.414) \lvec(2 1.414) \lvec(2 0) 
+
+    \htext (2.3 0.1){$\theta$}
+    \htext (0.1 2.2){$x$}
+    \htext (-0.1 -0.15){$0$}
+    
+    \htext (-0.1 2){$r$}
+    \move (0 2) \lvec(2 2)
+    \htext (-0.1 1.4){$d$}
+    \htext (2 -0.15){$\pi$}
+
+    \move (0.5 1.414) \lvec(0.5 0)
+    \htext (0.4 -0.2){$\arcsin\left(\frac dr\right)$}
+    
+    \move (2.1 1) \avec(1.67 1)
+    \htext (2.2 0.95){$r\sin\theta$}
+
+    \move (-3 1.8) \lvec (-1 1.8)
+    \move (-3 1) \lvec (-1 1)
+    \move (-3 0.2) \lvec (-1 0.2)
+
+    \move (-2.5 1.8) \lvec (-2.5 1)
+    \htext (-2.45 1.4){$d$}
+ 
+    \lpatt(0.05 0.05)
+    \move (-2 0.5)  \lvec (-2 1)
+    \htext (-2.15 0.7){$X$}
+    
+    \move (-2 0.5) \lvec (-1 0.5)
+
+    \lpatt( )
+    \move (-2 0.5)
+    \larc r:0.2 sd:0 ed:45
+    \htext (-1.7 0.6){$\Theta$}
+    
+    
+    \linewd 0.04 \setgray 0 
+    \move (-2 0.5) \lvec (-1.2 1.3)
+    \htext (-1.5 1.2){$r$}
+}
+
+We know the pdf of $X$ and $\Theta$ is $(\pi d)^{-1}$. The probability is then $(\pi d)^{-1}$ times the area of the region shown, that is 
+\begin{equation}
+\frac{1}{\pi d}\left[2\int^{\arcsin(d/r)}_0r\sin\theta d\theta + d\left(\pi-2\arcsin\left(\frac dr\right)\right)\right]
+\end{equation}
+which is 
+\begin{equation}
+\frac{1}{\pi d}\left[2r\left(1 - \sqrt{1-\frac{d^2}{r^2}}\right) +  d\left(\pi-2\arcsin\left(\frac dr\right)\right)\right]
+\end{equation}
+
+(ii) For $r<d$, it is easy to get 
+\begin{equation}
+\mathbb{P}(X\leq r\sin\Theta) = \int^\pi_0\int^{r\sin\theta}_0\frac{1}{\pi d}dxd\theta = \frac{r}{\pi d}\int^\pi_0\sin\theta d\theta = \frac{2r}{\pi d}
+\end{equation}
+
+Note that if $X\sim\mathcal{N}(\mu,\sigma^2)$, where $\sigma^2$ is small, and $g: \mathbb{R}\to\mathbb{R}$ then
+\begin{equation}
+g(X) = g(\mu) + (X-\mu)g'(\mu) + \cdots \simeq \mathcal{N}\left(g(\mu),(g'(\mu))^2\sigma^2\right)
+\end{equation}
+where in this case we get $g(x) = \frac{2r}{x d}$. If $S_n=\sum^n_{i=1}X_i$ denotes the total number of times that the needle intersects a line in $n$ drops of the needle, where $X_i$ is the indicator of the event that a line is intersected on the $i$th drop, then $S_n\sim\text{Bin}(n,p)$ where $p = \frac{2r}{\pi d}$. If we drop the needle for 50 years, we will get $S_n/n\simeq \mathcal{N}(p,p(1-p)/n)$ by Central Limit Theorem. So we get $\mu = p, \sigma^2=p(1-p)/n$ and $g(p)= \pi$ and $g'(p) = -\pi^2d/(2r)$. Thus, we see that an estimate of $\pi$ is given by $\hat{\pi} = g(S_n/n)$, where  
+\begin{equation}
+\hat{\pi} \simeq \mathcal{N}\left(\pi, \frac{\pi^2}{2rn}(\pi d-2r)\right)
+\end{equation}
+Hence we would prefer the needle length minimize the variance $\frac{\pi^2}{2rn}(\pi d-2r)$, which is equivalent to minimize $\frac{(\pi d-2r)}{2r}$. Thus, we should maximize $r$ and get $r=d$.
+
+
+\item {\bf Bertrand's Paradox II} Suppose that a chord is drawn at random in a given circle. Determine the probability that the length of the chord will be greater than the length of the side of the equilateral triangle inscribed in that circle.
+
+
+
+Solution. The length of the side of the equilateral triangle inscribed in a circle of radius $r$ is $r\sqrt{3}$.
+
+\emph{Approach 1} Here $X\sim U(0,r)$ and the chord length is $C=2\sqrt{r^2-x^2}$ so that the probability is 
+\begin{equation}
+\mathbb{P}\left(2\sqrt{r^2-x^2} >r\sqrt{3}\right) = \mathbb{P}\left(r^2>4X^2\right) = \mathbb{P}\left(r/2>X\right) = \frac 12.
+\end{equation}
+
+\emph{Approach 2} Here $\Theta_i\sim U(0,2\pi)$, for $i=1,2$ and the chord length is $2r\sin\left(\frac{|\Theta_1-\Theta_2|}{2}\right)$. We see that 
+\begin{equation}
+\mathbb{P}\left(2r\sin\left(\frac{|\Theta_1-\Theta_2|}{2}\right) >r\sqrt{3}\right) = \mathbb{P}\left(\sin\left(\frac{|\Theta_1-\Theta_2|}{2}\right) >\frac{\sqrt{3}}{2}\right) = \mathbb{P}\left(\frac{4\pi}{3}>|\Theta_1-\Theta_2| > \frac{2\pi}{3}\right) 
+\end{equation}
+
+\centertexdraw{
+    \drawdim in
+
+    \arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+    
+    \linewd 0.01 \setgray 0
+    
+    \move (-0.2 0) \avec(1.8 0)
+    \move (0 -0.2) \avec(0 1.8)
+
+    \move (0 1.5) \lvec(1.5 1.5) \lvec(1.5 0)
+   
+    \move (0 1) 
+    \lvec(0.5 1.5) \lvec(1 1.5) \lvec(0 0.5) \lvec(0 1)
+    \lfill f:0.8
+
+    \move (1 0) 
+    \lvec(1.5 0.5) \lvec(1.5 1) \lvec(0.5 0) \lvec(1 0)
+    \lfill f:0.8
+   
+    \htext (1.7 0.1){$\Theta_1$}
+    \htext (0.1 1.7){$\Theta_2$}
+    
+    \htext (-0.2 0.4){$\frac{2\pi}{3}$}
+    \htext (-0.2 0.9){$\frac{4\pi}{3}$}
+    \htext (0.4 -0.2){$\frac{2\pi}{3}$}
+    \htext (0.9 -0.2){$\frac{4\pi}{3}$}
+
+    \htext (-0.2 1.5){$2\pi$}
+    \htext (1.5 -0.15){$2\pi$}
+
+}
+We may check that the shaded area as a proportion of $(2\pi)^2$ is $\frac 13$, which is the probability in the second case.
+
+
+
+\item Laplace proposed a refinement of Buffon's method of estimating $\pi$ by supposing that the surface on which the needle of length $r$ is thrown has two arrays of parallel lines at right angles so that they form a rectangular grid with sides of length $c$ and $d$, where $r<\min{c,d}$. Let $Z$ denote the number of lines that are intersected when the needle is thrown, so that $Z$ takes the value 0, 1 or 2. Show that
+\begin{equation}
+\mathbb{P}(Z=2)=\frac{r^2}{\pi cd}
+\end{equation}
+Hence derive the distribution of $Z$ and calculate $\mathbb{E}Z$ and $\mathbf{var}Z$.
+
+
+
+Solution. Let $X$ be the distance of the southernmost point of the needle to the closest northerly line and let $Y$ be the distance from that point to the closest easterly line. The angle $\Theta$ is the ganle the needle makes with the horizontal lines and is uniform on $(0,\pi]$ while $X$ and $Y$ are uniform on $(0,d]$ and $(0,c]$ respectively, and all three random variables are independent.
+\centertexdraw{
+    \drawdim in
+
+    \arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+    
+    \linewd 0.01 \setgray 0
+    
+    \move (-3 1.8) \lvec (-1 1.8)
+    \move (-3 1) \lvec (-1 1)
+    \move (-3 0.2) \lvec (-1 0.2)
+
+    \move (-2.5 1.9) \lvec (-2.5 0.1)
+    \move (-1.2 1.9) \lvec (-1.2 0.1)
+
+    \move (-2.6 1.5) \avec (-2.6 1.8)
+    \move (-2.6 1.35) \avec (-2.6 1)
+    \htext (-2.65 1.4){$d$}
+
+    \move (-1.9 1.7) \avec (-2.5 1.7)
+    \move (-1.75 1.7) \avec (-1.2 1.7)
+    \htext (-1.85 1.68){$c$}
+ 
+    \lpatt(0.05 0.05)
+    \move (-2 0.6)  \lvec (-2 1)
+    \htext (-2.15 0.7){$X$}
+    
+    \move (-2 0.6) \lvec (-1.2 0.6)
+    \htext (-1.6 0.45){$Y$}
+
+    \lpatt( )
+    \move (-2 0.6)
+    \larc r:0.2 sd:0 ed:45
+    \htext (-1.7 0.7){$\Theta$}
+    
+    
+    \linewd 0.04 \setgray 0 
+    \move (-2 0.6) \lvec (-1.5 1.1)
+    \htext (-1.5 1.2){$r$}
+}
+We then have
+
+\beast
+\mathbb{P}(Z=2) & = &  \mathbb{P}\left(\Theta\leq \frac \pi 2, X\leq r\sin\Theta, Y\leq r\cos\Theta \right) + \mathbb{P}\left(\Theta>\frac \pi 2, X\leq r\sin\Theta, c-Y\leq -r\cos\Theta \right) \\
+& = & \frac 1\pi \int^{\pi/2}_0 \frac{r^2}{cd}\sin\theta \cos\theta d\theta + \frac 1\pi \int^\pi_{\pi/2} \frac{r^2}{cd}\sin\theta (-\cos\theta) d\theta \nonumber= \frac{r^2}{2\pi cd} + \frac{r^2}{2\pi cd} = \frac{r^2}{\pi cd}.
+\eeast
+
+If we let $H=$ 1 or 0 according as an East-West line is hit or not, and $V=$ 1 or 0 according as a North-South line is hit or not, then $\mathbb{P}(Z=2)=\mathbb{P}(H=1,V=1)$, and 
+\begin{equation}
+\frac{2r}{\pi d} = \mathbb{P}(H=1) = \mathbb{P}(H=1,V=0) + \mathbb{P}(H=1,V=1) = \mathbb{P}(H=1,V=0) + \frac{r^2}{\pi cd}, 
+\end{equation}
+so that $\mathbb{P}(H=1,V=0) = \frac{r(2c-r)}{\pi cd}$, and similarly $\mathbb{P}(H=0,V=1) = \frac{r(2d-r)}{\pi cd}$, which gives 
+\begin{equation}
+\mathbb{P}(Z=1) = \mathbb{P}(H=1,V=0) + \mathbb{P}(H=0,V=1) = \frac{2r(c+d-r)}{\pi cd}.
+\end{equation}
+
+Now calculate that 
+\begin{equation}
+\mathbb{E}Z = \frac{2r(c+d)}{\pi cd},\quad \mathbf{var}Z = \frac{2r(c+d+r)}{\pi cd} - \frac{4r^2(c+d)^2}{\pi^2 c^2d^2}. 
+\end{equation}
+
+Suppose that the outcomes of $n$ throws are $Z_1,\dots,Z_n$ which are i.i.d. as $Z$, then
+\begin{equation}
+\frac{Z_1+\dots +Z_n}{n} \simeq \mathcal{N} \left(\frac{2r(c+d)}{\pi cd},\frac 1n\left(\frac{2r(c+d+r)}{\pi cd} - \frac{4r^2(c+d)^2}{\pi^2 c^2d^2}\right)\right)
+\end{equation}
+then if we let $h(x)=2r(c+d)/(cdx)$, and we have the estimate of $\pi$ is 
+\begin{equation}
+\hat{\hat{\pi}} = h\left(\frac{Z_1+\dots +Z_n}{n}\right) \simeq \mathcal{N} \left(\pi,\frac{\pi^2}{2nr(c+d)^2}\left(\pi cd(c+d+r) - 2r(c+d)^2\right)\right)
+\end{equation}
+Recall Buffon's method
+\begin{equation}
+\hat{\pi} \simeq \mathcal{N} \left(\pi,\frac{\pi^2}{2nr}\left(\pi d - 2r\right)\right)
+\end{equation}
+
+If Buffon throws $m$ times, the ratio of the variances of the estimates of $\pi$ is 
+\begin{equation}
+\frac{\text{Laplace}}{\text{Buffon}} = \frac mn \left(\frac{\pi cd(c+d+r) - 2r(c+d)^2}{(c+d)^2(\pi d - 2r)} \right) = \frac mn \left(\frac{3\pi -8}{4(\pi -2)} \right) = 0.312015\left(\frac mn\right),
+\end{equation}
+when $c=d=r$, and thus if Buffon throws 1000 times Laplace should throw 313 times to reach the same level of accuracy.
+
+
+\item (i) Simulate 100 random samples of size $n=2$ from a uniform distribution on $[0,1]$, record the sample mean for each such sample, and plot a histogram of the resulting sample means. What does it look like? What happens if you repeat the exercise with $n=10$?
+
+(ii) Repeat part (i), but replace the uniform distribution on $[0,1]$ with the Cauchy distribution
+\begin{equation}
+f(x)=\frac{1}{\pi(1+x^2)}\quad -\infty<x<\infty.
+\end{equation}
+
+Comment on any qualitative differences between these results and those obtained in part (i). [Hint: If $U\sim U[0,1]$, then $X=\tan\left(\pi\left(U-\frac 12\right)\right)$ has the density $f$ above.]
+
+
+
+Solution. (i) $n=2$ and $n=10$ have the same mean, but $n=10$ has smaller variance.
+
+(ii) The Cauchy distribution is much denser than uniform distribution.
+
+
+\item Suppose that $n$ items are being tested simultaneously and that the items have independent lifetime, each exponentially distributed with parameter $\lambda>0$. Determine the mean and the variance of the length of time until $r$ items have failed.
+
+
+
+Solution. Let $Y_1$ be the time until the first failure, $Y_2$ the time between the first failure and the second, and so on. Then by the lack of memory property of the exponential distribution the $\{Y_i\}$ are independent with $Y_i\sim\mathcal{E}((n-i+1)\lambda)$. The required time is then
+\begin{equation}
+Z = \sum^r_{i=1}Y_i \Rightarrow \mathbb{E}Z = \sum^r_{i=1}\mathbb{E}Y_i	=\frac 1\lambda \sum^r_{i=1} \frac{1}{n-i+1}
+\end{equation}
+and by independence, $\mathbf{var}Z = \sum^r_{i=1}\mathbf{var}Y_i = \frac 1{\lambda^2}\sum^r_{i=1} \frac{1}{(n-i+1)^2}$.
+
+
+\item Let $X$ be a real-valued random variable. Suppose that the moment generating function $m(\theta)=\mathbb{E}e^{\theta X}$ is finite for some $\theta>0$. Show that for all $n\geq 0$, $\lim_{x\to\infty}x^n\mathbb{P}(X\geq x)=0$.
+
+
+
+Solution. For $x\geq 0$, using Markov's inequality applied to the non-negative random variable $e^{\theta X}$, we have for $\theta>0$,
+\begin{equation}
+\mathbb{P}(X\geq x) = \mathbb{P}\left(e^{\theta X}\geq e^{\theta x}\right) \leq \mathbb{E}\left(e^{\theta X}\right)/e^{\theta x}
+\end{equation}
+from which we see that 
+\begin{equation}
+\lim_{x\to\infty}x^n\mathbb{P}(X\geq x) \leq \lim_{x\to\infty}\left(x^n/e^{\theta x}\right)\mathbb{E}\left(e^{\theta X}\right)\to 0,
+\end{equation}
+as required.
+
+
+
+
+
+\item Use the central limit theorem to calculate, for any positive real number $\lambda$,
+\begin{equation}
+\frac{\lambda^n}{(n-1)!}\int^{\lambda n}_0x^{n-1}e^{-\lambda x}dx \quad \text{as }n\to\infty.
+\end{equation} 
+
+
+
+Solution. Let $X_1,\dots,X_n$ be i.i.d. exponential random variables with parameter $\lambda$, then $X=\sum^n_{i=1}X_i\sim\Gamma(n,\lambda)$. Thus,
+\begin{eqnarray}
+\lim_{n\to\infty} \frac{\lambda^n}{(n-1)!}\int^{\lambda n}_0x^{n-1}e^{-\lambda x}dx & = & \lim_{n\to\infty} \mathbb{P}(X \leq \lambda n) = \lim_{n\to\infty} \mathbb{P}\left(\frac{X-n/\lambda}{\sqrt{n/\lambda^2}} \leq \frac{n\lambda-n/\lambda}{\sqrt{n/\lambda^2}} \right) \nonumber\\
+& = & \lim_{n\to\infty}\Phi\left(\frac{n\lambda-n/\lambda}{\sqrt{n/\lambda^2}}\right) = \lim_{n\to\infty}\Phi\left((\lambda^2-1)\sqrt{n}\right)\quad (\text{using CLT})
+\end{eqnarray} 
+
+Thus, we have 
+\begin{equation}
+\frac{\lambda^n}{(n-1)!}\int^{\lambda n}_0x^{n-1}e^{-\lambda x}dx =\left\{
+\begin{array}{ll}
+1 & \lambda>1\\
+1/2 \quad \quad & \lambda = 1 \\
+0 & \lambda <1
+\end{array}
+\right.
+\end{equation} 
+
+
+\item (i) $X$ and $Y$ are independent random variables, with continuous symmetic distribution, with p.d.f.s $f$ and $g$ respectively. Show that the p.d.f. of $Z=X/Y$ is 
+
+\begin{equation}
+h(z) = 2\int^\infty_0 xf(zx)g(x)dx.
+\end{equation} 
+
+(ii) $X$ and $Y$ are independent random variables distributed $\mathcal{N}(0,\sigma^2)$ and $\mathcal{N}(0,\tau^2)$. Show that $Z$ has p.d.f. $f(z)=d/\pi(d^2+z^2)$, where $d=\sigma/\tau$.
+
+
+
+Solution. (i) The symmetry implies that for all $x$, $f(x)=f(-x)$ and $g(x)=g(-x)$. We may either do this by conditioning on $Y$, as for example
+
+\begin{eqnarray}
+\mathbb{P}(X/Y\leq z) & = & \mathbb{P}(Y\geq 0, X\leq Yz) + \mathbb{P}(Y< 0, X\geq Yz) \nonumber\\
+ & = & \int^\infty_0 \mathbb{P}(Y\geq 0, X\leq Yz|Y=y)g(y)dy  +  \int_{-\infty}^0 \mathbb{P}(Y< 0, X\geq Yz|Y=y)g(y)dy \nonumber\\
+ & = & \int^\infty_0 \mathbb{P}(X\leq yz)g(y)dy  +  \int_{-\infty}^0 \mathbb{P}(X\geq yz)g(y)dy = 2\int^\infty_0 \mathbb{P}(X\leq yz)g(y)dy
+\end{eqnarray}
+
+Differentiating with respect to $z$ gives the required form for the density. The other way to think about it is first to obtain the joint density of $Z=X/Y$ and $W=Y$ from that of $X$ and $Y$. We have $X=WZ$ and $Y=W$ and the absolute value of the Jacobian of the transformation is $w$, so that the joint density of $Z$ and $W$ is 
+
+\begin{equation}
+k_{Z,W}(z,w) = f(wz)g(w)|w|
+\end{equation}
+
+the marginal density of $Z$ is then
+
+\begin{equation}
+h(z) = \int^\infty_{-\infty}f(wz)g(w)|w|dw = 2\int^\infty_0wf(wz)g(w)dw.
+\end{equation}
+
+(ii) For the calculation in the case of the normal densities, we have
+\beast
+h(z) & = & 2\int^\infty_0 y \frac{1}{\sqrt{2\pi}\sigma}e^{-y^2z^2/(2\sigma^2)} \frac{1}{\sqrt{2\pi}\tau}e^{-y^2/(2\tau^2)} dy = \frac{1}{\pi\sigma\tau}\int^\infty_0 y e^{-y^2\left(z^2\sigma^{-2}+\tau^{-2}\right)/2} dy  \\
+ & = & \frac{d}{\pi(d^2 + z^2)}\int^\infty_0 d\left(-e^{-y^2\left(z^2\sigma^{-2}+\tau^{-2}\right)/2}\right) = \frac{d}{\pi(d^2 + z^2)}\left[-e^{-y^2\left(z^2\sigma^{-2}+\tau^{-2}\right)/2}\right]^\infty_0 = \frac{d}{\pi(d^2 + z^2)}
+\eeast
+
+as required.
+
+
+\item $X_1,X_2,\dots,X_n$ are independent Cauchy random variables, each with p.d.f.
+\begin{equation}
+f(x) = \frac{d}{\pi(d^2+x^2)}, \quad x\in\mathbb{R}
+\end{equation}
+
+Show that $n^{-1}(X_1+X_2+\dots+X_n)$ has the same distribution as $X_1$.
+
+[Hint: Try first the case $d=1,n=2$, and use the identity
+\begin{equation}
+m\int^\infty_{-\infty}\left\{(1+y^2)\left[m^2+(x-y)^2\right]\right\}^{-1}dy=\pi(m+1)\left\{(m+1)^2+x^2\right\}^{-1}. \quad ]
+\end{equation}
+
+Does this contradict the weak law of large numbers or the central limit theorem?
+
+
+
+Solution. If $X_i$ is i.i.d. and  $f(x)=\frac{d}{\pi(d^2+x^2)}=\frac 1d\frac{1}{\pi(1+(x/d)^2)}$, we have
+\begin{eqnarray}
+f_{X_1+X_2}\left(y\right) & = & \int^\infty_{-\infty} f_{X_1}(x)f_{X_2}(y-x)dx = \frac{1}{d\pi^2}\int^\infty_{-\infty} \frac{1}{1+x^2}\frac{1}{1+(x-y/d)^2}dx \nonumber\\
+& = & \frac{1}{d\pi^2} \pi (1+1)\frac{1}{(1+1)^2+(y/d)^2} = \frac{2d}{\pi(2^2d^2+y^2)}
+\end{eqnarray}
+Iterated convolution, using the identity with $m=2,3,\dots,n-1$ shows that $X_1+\cdots+X_n$ has density 
+\begin{equation}
+\frac{nd}{\pi(n^2d^2+x^2)}
+\end{equation}
+which is Cauchy distribution. Thus, let $Y:=X_1+\cdots+X_n,Z:=\frac{X_1+\cdots+X_n}{n}$ and $\frac{dY}{dZ}=n$. So pdf of $Z$ is
+\begin{equation}
+f_Z(z) = f_Y(nz)\left|\frac{dY}{dZ}\right| = \frac{nd}{\pi(n^2d^2+n^2z^2)} n = \frac{d}{\pi(d^2+x^2)}
+\end{equation}
+So $Z$ has the same distribution as $X_1$. The mean of the r.v $X_1$ is undefined and this violates the hypothesis of the weak law of large numbers.
+\begin{equation}
+\mathbb{P}\left(\left|\frac{X_1+\cdots+X_n}{n}-\mu\right|<\epsilon\right)\to 1
+\end{equation}  
+
+
+
+\een
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%(by Lemma \ref{lem:convergence_in_probability_implies_weak_convergence} and Lemma \ref{lem:weak_convergence_implies_in_distribution}) 
+
+%
+%Note that
+%\be
+%\sup_{x \in \R^n} \abs{f(x) - f_t(x)} = \sup_{x \in \R^n} \abs{\frac 1{(2\pi)^n} \int_{\R^n} \phi_X(u)e^{-i\inner{u}{x}}\bb{1-e^{-|u|^2t/2}}du } \leq \frac 1{(2\pi)^n} \int_{\R^n} \abs{\phi_X(u)}\bb{1-e^{-|u|^2t/2}} du.
+%\ee
+
+%Dominited convergence theorem (Theorem \ref{thm:dominated_convergence_probability}) imples that the right-hand side here tends to 0 as $t \to 0$, since 
+%\be
+%\abs{\phi_X(u)}\bb{1-e^{-|u|^2t/2}} \to 0 \quad \text{for all }u\in \R^n, \quad \quad\text{and }\quad\quad\abs{\int_{\R^n} \abs{\phi_X(u)}\bb{1-e^{-|u|^2t/2}} du} \leq \int_{\R^n} \abs{\phi_X(u)} du < \infty.
+%\ee
+
+%This proves that $f_t(x)$ tends uniformly to $f(x)$ as $t\to 0$, in particular, since $f_t(x)$ is real and non-negative, so is $f(x)$. (Alternatively,
+
+%By this formula, $\phi_X$ determines $\E(g(X+ \sqrt{t}Z))$. For any such function $g$, by dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}), we have
+%\be
+%\E(g(X + \sqrt{t}Z)) \to \E(g(X))
+%\ee
+%as $t \da 0$, so $\phi_X$ determines $\E(g(X))$. Hence $\phi_X$ determines $\mu_X$.
+
+%Suppose now that $\phi_X$ is integrable. Then
+%\be
+%|\phi_X(u)||g(y)| \in L^1(du \otimes dy).
+%\ee
+%So, by Fubini's theorem, $g\cdot f_X \in L^1$ and, by dominated convergence, as $t \da 0$,
+%\beast
+%\int_{\R^n} \bb{\frac 1{(2\pi)^n} \int_{\R^n} \phi_X(u)e^{-|u|^2t/2}e^{-i\inner{u}{y}}du} g(y)dy \to \int_{\R^n} \bb{\frac 1{(2\pi)^n} \int_{\R^n} \phi_X(u)e^{-i\inner{u}{y}}du} g(y)dy = \int_{\R^n} g(y)f_X(x)dy. \quad\quad (by Lemma \ref{lem:heat_kernal_density})
+%\eeast
+
+%Hence we obtain the identity
+%\be
+%\E(g(X)) = \int_{\R^n} g(x)f_X(x)dx.
+%\ee
+
+% Moreover, $f_X$ is continuous, by bounded convergence, and $\dabs{f_X}_\infty \leq (2\pi)^n\dabs{\phi_X}_1$. It is now straightforward to extend the identity to all bounded Borel functions $g$, by a monotone class argument. In particular $f_X$ is a density function for $X$. 
+
+
+%%%%%%%%%%%%%%%%%%\abs{\E\bb{X|\sG}}\ind_{\bra{\abs{\E\bb{X|\sG}}>K}} \stackrel{\text{a.s.}}{=}\chapter{Combinatorics}%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Martingale Theory}
+
+\begin{problem}
+Let $B$ be a standard Brownian motion. Show that $B$ has infinite variation almost surely. (Hint. otherwise the quadratic variation would be zero.) Thus to construct an integral with respect to B one must create something genuinely new.
+\end{problem}
+
+\ben
+\item [(i)] $\sL^2$ martingale convergence
+\item [(ii)] It can be shown that if a sequence of probability measures $(\mu_{n})_{n = 1}^{\infty}$ is tight and all the finite-dimensional distributions of the $\mu_{n}$ converge weakly to the corresponding finite-dimensional distributions of some probability measure $\mu$, then $\mu_{n}$ converges weakly to $\mu$.
+\item [(iii)] finite dimensional distributions of measure.
+\een
+
+
+%\begin{definition}
+%For a finite subset $J$ of $I$, let $\mu_J$ be the law of the finite seqence $(X_j , j \in J)$. Elements of the family ($\mu_J , J \subseteq I$ finite) are called the finite marginal distributions of the process $X$.
+%\end{definition}
+
+%Note that if $X$ and $X'$ are two processes with the same finite marginal distributions then they define the same r.v. in $E^I$ (i.e. they have the same distribution). 
+
+%Indeed, the product $\sigma$-algebra on $E^I$ is generated by finite rectangles of the form $\{\pi^{-1}_{t_1} (A1)\cap \dots \cap \pi^{-1}_{t_k} (A_k)\}$, which is a $\pi$-system. Yet otherwise said, the probability of events $\mu_J (A_1\times\dots \times A_k) = \pro(X_{t_1} \in A_1, \dots, X_{t_k} \in A_k)$ suffice to determine the law of $X$.
+
+%\begin{example}
+%Consider $X_t = 0$ for all $t \in [0, 1]$ and $X'_t = \ind_{\{U\}}(t)$ for $t \in [0, 1]$, where $U$ is a uniform r.v. in $[0, 1]$. Then the finite marginal distribution of $X$ is $\mu_J = \delta_{(0,\dots,0)}$ for all $J \subseteq [0, 1]$ finite. But the finite marginal distribution of $X'$ is the same since the probability that $U \in \{t_1, \dots, t_k\}$ is zero.
+%\end{example}
+
+%\begin{definition}
+%Let $X$ and $X'$ be two processes. We say that $X'$ is a version of $X$ if $\pro(X_t = X'_t) = 1$ for every $t$.
+%\end{definition}
+
+%Warning: In general this condition is weaker than $\pro(X_t = X'_t\text{ for all }t) = 1$. If $X$, $X'$ are continuous and $X'$ is a version of $X$ then $X = X'$. (Indeed, $X_t = X'_t$ for all $t$ rational).
+
+%\subsection{Martingales in continuous-time}
+
+%Fortunately, we can assume that martingales in continuous time are \cadlag, due to the following theorem.
+
+%\begin{definition}
+%Let $(\sF_t , t \in I)$ be a filtration. If $(\sF_t)$ satisfies the two conditions below then it is said to satisfy the usual conditions.
+%\ben
+%\item [(i)] $\sF_t = \sF_{t^+} = \bigcap_{\ve>0} \sF_{t+\ve}$ for all $t \in I$; and
+%\item [(ii)] $N \in \sF_t$ for all $N \in \sF$ such that $\pro(N) = 0$, for all $t$.
+%\een
+%\end{definition}
+
+%\begin{theorem}
+%Let $(\sF_t , t \geq 0)$ satisfy the usual conditions, and let $(X_t , t \geq 0)$ be an adapted martingale. Then there exists a version of $X$ which is a \cadlag $(\sF_t)$-martingale.
+%\end{theorem}
+
+%From now on, the all martingales satisfy the usual conditions and thus we only consider \cadlag version.
+
+%\subsection{Convergence theorems for continuous-time}
+
+%From now on, all martingales $(X_t , t \geq 0)$ are assumed to be \cadlag, so $X_t = X_{t^+}$ and $X_{t^-}$ exists for all $t$.
+%\begin{theorem}[Martingale convergence theorem]
+%Assume that $(X_t , t \geq 0)$ is a \cadlag martingale which is bounded in $L^1$. Then $X_t \to  X_\infty$ a.s. as $n\to \infty$ for some finite $X_\infty$.
+%\end{theorem}
+%\begin{proof}[\bf Proof]
+%Let 
+%\beast
+%N(X, I, [a, b]) & = & \sup\{n  |\exists s_1 < t_1 < s_2 < t_2 < \dots < s_n < t_n\text{ all in }I, \text{ s.t. }X_{s_i} < a < b < X_{t_i}\ \forall i\} \\
+%& = & \sup_{J\subseteq I\text{ finite }} N(X, J, [a, b]).
+%\eeast
+
+%Since $X$ is right-continuous, $N(X,\R^+, [a, b]) = N(X,\Q^+, [a, b])$. Indeed, if $s_1 < t_1 < s_2 < t_2 < \dots < s_n < t_n \in \R^+$ such as in the definition of $N(X,\R^+, [a, b])$ then we can find $s_1 < s'_1 < t1 < t'_1 < \dots < s_n < s'_n < t_n < t'_n$ such that $s'_i, t'_i \in \Q^+$ and $X_{s'_i} < a < b < X_{t'_i}$, which implies '$\leq$' (the reverse inequality is trivial).
+
+%Let $J = \{t_1, \dots, t_k\} \subseteq \Q^+$. Then $(X_{t_i} , 1 \leq i \leq k)$ is martingale with respect to $(\sF_{t_i} , 1 \leq i \leq k)$. Therefore by Doob's Up-crossings Lemma 
+%\be
+%(b - a)\E[N(X, J, [a, b]] \leq \E[(X_{t_k} - a)^-] \leq \E[\abs{X_{t_k}}]+ a \leq M <\infty
+%\ee
+%for every $J$, by boundedness in $L^1$. Taking the supremum over $J$, 
+%\be
+%(b - a)\E[N(X,\Q^+, [a, b]] \leq M < \infty
+%\ee
+%so for every $a < b$ rational, $N(X,\R^+, [a, b]) < \infty$ a.s. Since $\Q$ is countable, a.s. $N(X,R+, [a, b]) < \infty$ for every $a < b$ rational. Thus $X_t \to  X_\infty \in \bar{\R}$. By the usual arugment with Fatou's Lemma, $X_\infty$ is finite a.s.
+%\end{proof}
+
+%\begin{theorem}[Doob's Inequalities]
+%Let $(X_t , t \geq 0)$ be a \cadlag martingale and $X^*_t := \sup_{0\leq s\leq t}\abs{X_s}$. For all $a \geq 0$,
+%\be
+%a \pro(X^*_t \geq a) \leq \E[\abs{X_t}]
+%\ee
+%and for $p > 1$,
+%\be
+%\dabs{X^*_t}_p \leq \frac p{p -1}\dabs{X_t}_p
+%\ee
+%for all $t$.
+%\end{theorem}
+
+
+%\begin{theorem}[$L^p$ convergence criteria]
+%\ben
+%\item [(i)] For $p > 1$, $X_t$ converges a.s. and in $L^p$ if and only if $X$ is bounded in $L^p$, and this if and only if $X_t = \E[Z |\sF_t]$ for some $Z \in L^p$ (which may be taken to be $X_\infty$).
+%\item [(ii)] For $p = 1$, $X_t$ converges a.s. and in $L^1$ if and only if $X$ is u.i., and this if and only if $X_t = \E[Z |\sF_t]$ for all $t$ for some $Z \in L^1$ (which may be taken to be $X_\infty$).
+%\een
+%\end{theorem}
+%\begin{proof}[\bf Proof]
+%As in the discrete case.
+%\end{proof}
+
+%\begin{theorem}[Optional stopping, \cadlag u.i.]
+%Let $(X_t)$ be a u.i. \cadlag martingale and $S \leq T$ be two stopping times. Then $\E[X_T|\sF_S] = X_S$.
+%\end{theorem}
+
+
+%\begin{proof}[\bf Proof]
+%Let $n \geq 1$ and let $T_n = 2^{-n}\ceil{2^nT}$. Then $T_n$ is a stopping time such that $T_n \da T$. Moreover $T_n$ takes its values in the set $D_n = \{k2^{-n}| k \in \Z^+\cup\{\infty\}\}$. We want to compute
+%\be
+%\E[X_\infty| \sF_{T_n}] = \sum_{d\in D_n} 1_{T_n=d} \E[X_\infty | \sF_{T_n}] = \sum_{d\in D_n} \ind_{T_n=d} \E[X_\infty| \sF_d]
+%\ee
+%(Indeed, we used that for $T$ a stopping time and $Z$ a r.v., $\E[Z | \sF_T ]\ind_{T=t} = \E[Z|\sF_t]\ind_{T=t}$. But if $A \in \sF_T$, $\E[\ind_A\ind_{T=t}Z] = \E[\ind_A\ind_{T=t} \E[Z |\sF_t]] = \E[\ind_A\ind_{T=t} \E[Z |\sF_T ]] = \E[\ind_A\E[\ind_{T=t} Z |\sF_T ]]$ since $\ind_{T=t} \in \sF_T \cap \sF_t$.) Finally, since $X_t \to X_\infty$ a.s. and in $L^1$ since $X$ is u.i.,
+%\be
+%\E[X_\infty | \sF_d] = \lim_{n\to \infty}\E[X_t|\sF_d]
+%\ee
+%implying that
+%\be
+%\E[X_\infty | \sF_{T_n}] = \sum_{d\in D_n} \ind_{T_n=d}X_d = X_{T_n} \to  X_T
+%\ee
+%as $n \to \infty$. Note that $(\E[X_\infty | \sF_{T_{-n}}], n \leq 0)$ is a backwards martingale with respect to $(\sF_{T_{-n}} , n \geq 0)$. As such, $\E[X_\infty | \sF_{T_{-n}}] \to \E[X_\infty | \bigcap_{n\geq1} \sF_{T_n}]$ a.s. as $n\to \infty$. Finally, $X_T = \E[X_\infty |\bigcap_{n\geq1} \sF_{T_n}]$, so condition on $\sF_T$ and use the tower property to prove $X_T = \E[X_\infty |\sF_T]$.
+
+%For general $S$, $T$, use $\E[X_T |\sF_S] = \E[\E[X_\infty | \sF_T ] | \sF_S] = \E[X_\infty | \sF_S] = X_S$.
+%\end{proof}
+
+%When martingales are \cadlag they behave much like discrete parameter martingales.
+
+\subsection{Likelihood ratio}
+
+A very general statement of a basic problem in applied statistics is as follows. Let $(\R^\N,\sB(\R)^{\times \N})$ be the measurable space of real sequences and
+\be
+X_n : \R^\N \to \R : \omega  = (\omega_i , i \geq 0) \to \omega_n
+\ee
+be the canonical projections. Let $( f_i , i \geq 0)$ and $(g_i , i \geq 0)$ be sequences of strictly positive p.d.f.'s. Let $\pro$ and $\Q$ be the probability distributions under which $X_i$ is a r.v. with distribution $f_i(x)d x$ and $g_i(x)d x$, respectively. Further suppose that the $X_i$ 's are independent under $\pro$ and $\Q$. When is $\Q \ll \pro$?
+
+\begin{definition}
+The likelihood ratio is
+\be
+L_n = \prod^n_{i=1} \frac{g_i(X_i)}{f_i(X_i)},
+\ee
+for $n \geq 0$ (taking $L_0 = 1$).
+\end{definition}
+
+Let $\sF_n = \sF^X_n = \sigma(X_1,\dots, X_n)$.
+
+\begin{proposition}
+$(L_n, n \geq 0)$ is a $(\sF_n)$-martingale in the probability space $(\R^\N,\sB(\R)^{times \N}, \pro)$, and $\Q|_{\sF_n} = L_n \cdot \pro|_{\sF_n}$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Let $A_1, \dots,A_n$ be measurable Borel sets in $\R$. Compute
+\beast
+\Q|_{\sF_n} (X_1 \in A_1,\dots, X_n \in A_n) & = & \int_{A_1\times\dots\times A_n} g_1(x_1)d x_1 \dots g_n(x_n)d x_n\\
+& = & \int_{A_1\times\dots\times A_n} \frac{g_1(x_1) \dots g_n(x_n) }{f_1(x_1) \dots f_n(x_n)}f_1(x_1) \dots f_n(x_n)d x_1 \dots d x_n\\
+& = & \E^{\pro|_{\sF_n}}(L_n\ind_{\{X_1\in A_1,\dots,X_n\in A_n\}})
+\eeast
+\end{proof}
+
+Thus $\Q = L_\infty \cdot \pro$ (or $L_\infty = \frac{d\Q}{d\pro}$) if and only if $(L_n, n \geq 0)$ is a u.i. martingale.
+
+But $(L_n, n \geq 0)$ is a product martingale (under $\pro$) with $Y_n = \frac{g_n(X_n)}{f_n(X_n)}$ for all $n$. These are independent under $\pro$ and have $\E[Y_n] = 1$ for all $n$, so $L$ is u.i. if and only if
+\be
+\prod_{n\geq1} \E^\pro \bsb{\sqrt{\frac{g_n(X_n)}{f_n(X_n)}}} > 0
+\ee
+by Kakutani's theorem. But
+\be
+\int_\R d x_n f_n(x_n) \sqrt{\frac{g_n(x_n)}{f_n(x_n)}} = \int_\R \sqrt{f_n g_n}.
+\ee
+
+Using the fact that $(\sqrt{f} -\sqrt{g})^2 = f +g-2\sqrt{f g}$, it is easy to check that $\prod_{n\geq1} \int\sqrt{f_n g_n} > 0$ if and only if $\sum_{n \geq 1} \int(\sqrt{f_n}-\sqrt{g_n})^2 <\infty$ (exercise).
+
+\begin{example}
+Assume that $f_n = f$ and $g_n = g$ for all $n$. Thus under $\pro$ and $\Q$, the $X_n$'s are i.i.d. r.v.'s, namely $f (x)d x$ and $g(x)d x$, respectively. Is it true that $\Q \ll \pro$? It is true if and only if $\sum_{n\geq1} \int \bb{\sqrt{f} -\sqrt{g}}^2 < \infty$, so $\Q \ll \pro$ if and only if $\int\bb{\sqrt{f} -\sqrt{g}}^2 = 0$, or equivalently when $f = g$ a.s.
+
+This has applications to statistical experiments. Suppose that $X_1, \dots, X_n$ are outcomes of an experiment, known to be i.i.d., either distributed according to $f (x)d x$ or $g(x)d x$. We will test hypotheses 
+\be
+H_0 : Law(X_1) = f (x)d x\quad\text{ against }\quad H_1 : Law(X_1) = g(x)d x.
+\ee
+
+The test is as following. If $L_n = \prod^n_{i=1} \frac{g_i (X_i )}{f_i (X_i )} < 1$ then $H_0$ is validated, otherwise reject $H_0$. This test is consistent because if $H_0$ holds we showed that $L_n \to 0$ a.s. as $n\to \infty$, while if $H_1$ holds then $L_n \to \infty$ a.s.
+\end{example}
+
+

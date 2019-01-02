@@ -1,0 +1,835 @@
+\chapter{Combinatorics}
+
+
+
+
+\section{Elementary Counting}
+
+\subsection{Basic theorem of counting}
+
+We start with several elementary methods that are used quite often.
+
+\begin{definition}[falling factorial\index{falling factorial}]
+Consider mappings from $\bra{1, 2, \dots , n}$ to $\bra{1, 2, \dots, k}$. Their total number is $k^n$. If the mappings are injections ($n\leq k$), then their number is the falling
+factorial
+\be
+(k)_n := k(k - 1) \dots (k - n + 1) = k!/(k - n)!.
+\ee
+\end{definition}
+
+We now consider a similar problem. The $n$ objects to be mapped are no longer distinguishable but the images are. We formulate this as follows. We have $n$ indistinguishable balls that are to be placed in $k$ boxes, marked $1, 2, \dots, k$. In how many different ways can this be done? We formulate this as the following theorem for this problem. %The solution is found by using the following trick.
+
+\begin{theorem}\label{thm:non_negative_solution_number_of_linear_equation}
+For $n\in \N$, the number of solutions of the equation
+\be
+x_1 + x_2 + \dots + x_k = n
+\ee
+in non-negative integers is $\binom{n+k-1}{k-1}$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Think of the balls as being colored blue and line them up in front of the boxes that they will go into. Then insert a red ball between two consecutive boxes. We end up with a line of $n+k-1$ balls, $k-1$ of them red, describing the situation. So the answer to the problem is $\binom{n+k-1}{k-1}$. %Therefore, we Interpret $x_i$ as the number of balls in box $i$.
+\end{proof}
+
+\begin{corollary}\label{cor:positive_solution_number_of_linear_equation}
+For $n\in \N$, the number of solutions of the equation
+\be
+x_1 + x_2 + \dots + x_k = n
+\ee
+in positive integers is $\binom{n-1}{k-1}$.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+Replace $x_i$ by $y_i := x_i - 1$. Then
+\be
+\sum^k_{i=1} y_i = n -k.
+\ee
+
+Therefore, we apply Theorem \ref{thm:non_negative_solution_number_of_linear_equation} to get the required result.
+\end{proof}
+
+\begin{example}%By analogy with the question we encountered in Example 10.6,
+We consider the problem of selecting $k$ of the integers $1, 2, \dots , n$ such that no two selected integers are consecutive.
+
+Let $x_1 < x_2 < \dots < x_k$ be such a sequence. Then
+\be
+x_1 \geq 1,\quad x_2 - x_1 \geq 2,\quad \dots ,\ x_k - x_{k-1} \geq 2.
+\ee
+
+Define
+\beast
+y_1 & := & x_1,\\
+y_i & := & x_i - x_{i-1} - 1,\quad 2 \leq i \leq k, \\
+y_{k+1} & := & n - x_k + 1.
+\eeast
+
+Then the $y_i$ are positive integers and
+\be
+\sum^{k+1}_{i=1} y_i = n - k + 2.
+\ee
+
+By the Corollary \ref{cor:positive_solution_number_of_linear_equation}, we see that there are $\binom{n-k+1}{k}$ solutions.
+\end{example}
+
+\begin{problem}
+On a circular array with $n$ positions, we wish to place the integers $1, 2, \dots, k$ in order, clockwise, such that consecutive integers with increasing order, including the pair $(k, 1)$, are not in adjacent positions on the array (e.g., if $i$th position is $m$, $(i+1)$th position cannot be $m+1$). Arrangements obtained by rotation are considered the same. In how many ways can this be done?
+\end{problem}
+
+If it has no increasing order, we have that the number is 0 for $n=k\leq 4$, 2 for $n=k=5$, 6 for $n=k=6$, 46 for $n=k=7$. The probability converges to $e^{-2}$ (see \footnote{book needed.}).
+
+\section{Catalan Number}
+
+\begin{definition}[Catalan number\index{Catalan number}]\label{def:catalan_number}
+
+\end{definition}
+
+\section{Young Tableaux}
+
+\subsection{Young tableaux}
+
+\begin{definition}[partition]
+For a natural number $n$, we say $\lm$ is a partition of $n$ and write $\lm\vdash n$, if $\lm$ is a sequence $\bb{\lm_1,\lm_2,\dots,\lm_k}$ of positive integers satisfying
+\be
+\sum^k_{i=1} \lm_i = n,\qquad \lm_1 \geq \lm_2\geq \dots \geq \lm_k.
+\ee
+\end{definition}
+
+\begin{definition}[Young diagram]
+The Young diagram of a partition is an array of boxes, or cells, in the plane, left-justified, with $\lm_i$ cells in the $i$th row from the bottom.
+
+We label these cells $(i,j)$, with $i$ denoting the row and $j$ the column.
+\end{definition}
+
+\begin{example}\label{exa:young_diagram_4432}
+For example, in the following Young diagram of $(4,4,3,2)$, the cell $(2,3)$ is marked.
+\begin{center}
+\psset{yunit=3cm,xunit=3cm}
+\begin{pspicture}(-0.2,-0.1)(1,0.9)
+\psline(0,0)(0.8,0)
+\psline(0,0.2)(0.8,0.2) %\lvec(1.5 1)
+\psline(0,0.4)(0.8,0.4)
+\psline(0,0.6)(0.6,0.6)
+\psline(0,0.8)(0.4,0.8)
+\psline(0,0)(0,0.8)
+\psline(0.2,0)(0.2,0.8)
+\psline(0.4,0)(0.4,0.8)
+\psline(0.6,0)(0.6,0.6)
+\psline(0.8,0)(0.8,0.4)
+\pstGeonode[PointSymbol=*,PointName=none,dotscale=1.5](0.5,0.3){A}
+\end{pspicture}
+\end{center}
+\end{example}
+
+
+
+%\centertexdraw{%
+%\drawdim in
+%%\def\bdot {\fcir f:0 r:0.03 }
+%\def\ebdot {\lcir r:0.02 }
+%\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+%\linewd 0.01 \setgray 0
+%%\move(0 0.9)
+%\move (0 0) \lvec(0.8 0)
+%\move (0 0.2 )\lvec(0.8 0.2) %\lvec(1.5 1)
+%\move (0 0.4 )\lvec(0.8 0.4)
+%\move (0 0.6 )\lvec(0.6 0.6)
+%\move (0 0.8 )\lvec(0.4 0.8)
+%%\move (0 0) \lvec(0 0.8)
+%\move (0.2 0) \lvec(0.2 0.8)
+%\move (0.4 0) \lvec(0.4 0.8)
+%\move (0.6 0) \lvec(0.6 0.6)
+%\move (0.8 0) \lvec(0.8 0.4)
+%\move(0.5 0.3) \bdot
+%%\htext (0.9 0.7){$F(x)$}
+%
+%}
+
+\begin{definition}[precedence of Young diagram]
+Given partitions $\lm \vdash n$, $\mu \vdash (n-1)$, we say that $\mu$ precedes $\lm$ (denoted by $\mu \to \lm$) if the Young diagram of $\mu$ is contained in the Young diagram of $\lm$.
+\end{definition}
+
+
+
+\begin{definition}[content]
+The content of a cell $c = (i,j)$ is defined to $j-i$, and is denoted by $\ct(c)$.
+\end{definition}
+
+\begin{remark}
+Content is a well-known statistic on the cells of a Young diagram, with many applications, i.e., hook-length formula.
+\end{remark}
+
+\begin{example}
+The diagram of partition (4,3,2,2) with the content of every cell labelled is
+\begin{center}
+\psset{yunit=3cm,xunit=3cm}
+\begin{pspicture}(-0.1,-0.1)(0.9,0.9)
+\psline(0,0)(0.8,0)
+\psline(0,0.2)(0.8,0.2) %\lvec(1.5 1)
+\psline(0,0.4)(0.6,0.4)
+\psline(0,0.6)(0.4,0.6)
+\psline(0,0.8)(0.4,0.8)
+\psline(0,0)(0,0.8)
+\psline(0.2,0)(0.2,0.8)
+\psline(0.4,0)(0.4,0.8)
+\psline(0.6,0)(0.6,0.4)
+\psline(0.8,0)(0.8,0.2)
+%\pstGeonode[PointSymbol=*,PointName=none,dotscale=1.5](0.5,0.3){A}
+\rput[lb](0.07,0.05){0}
+\rput[lb](0.27,0.05){1}
+\rput[lb](0.47,0.05){2}
+\rput[lb](0.67,0.05){3}
+\rput[lb](0.04,0.25){-1}
+\rput[lb](0.27,0.25){0}
+\rput[lb](0.47,0.25){1}
+\rput[lb](0.04,0.45){-2}
+\rput[lb](0.24,0.45){-1}
+\rput[lb](0.04,0.65){-3}
+\rput[lb](0.24,0.65){-2}
+\end{pspicture}
+\end{center}
+\end{example}
+
+
+\begin{definition}[outer corner, inner corner]\label{def:outer_inner_corner_young_tableaux}
+The outer corners\index{outer corner} of the Young diagram for partition $\lm$ are those cells which can be removed to give the diagram of a partition $\mu \to \lm$.
+
+For a fixed partition $\lm$ we label the outer corners from top to bottom as $X_i = (\alpha_i,\beta_i)$ for $1\leq i\leq m$. We then set $Y_i = (\alpha_{i+1},\beta_i)$ for $0\leq i\leq m$, where $\beta_0 = 0 = \alpha_{m+1}$; we call these cells the inner corners\index{inner corner} of the diagram. We also define the cell $X_0 = (\alpha_0, \beta_0) = (0,0)$.
+
+Furthermore, we can define the partition $\mu^{(i)}$ as the new partition by removing $X_i$ for $1\leq i\leq m$ from $\lm$.
+\end{definition}
+
+\begin{remark}
+Note that the cells $X_0 ,Y_0,Y_m$ are outside of the diagram of the partition. The following figure also gives the labelled corners of a diagram.
+\begin{center}
+\psset{yunit=2.5cm,xunit=2.5cm}
+\begin{pspicture}(0,-0.3)(5,2.7)
+%\rput(0,0){\pscirclebox[fillstyle=solid, fillcolor=red!50]{}}
+\rput(-0.05,2.45){\psframebox[fillstyle=solid, fillcolor=blue!50]{}}
+\rput(0.95,2.05){\psframebox[fillstyle=solid, fillcolor=blue!50]{}}
+\rput(1.95,1.65){\psframebox[fillstyle=solid, fillcolor=blue!50]{}}
+\rput(2.95,0.75){\psframebox[fillstyle=solid, fillcolor=blue!50]{}}
+\rput(3.95,0.35){\psframebox[fillstyle=solid, fillcolor=blue!50]{}}
+\rput(4.95,-0.05){\psframebox[fillstyle=solid, fillcolor=blue!50]{}}
+
+\rput(0.95,2.45){\psframebox[fillstyle=solid, fillcolor=red!50]{}}
+\rput(1.95,2.05){\psframebox[fillstyle=solid, fillcolor=red!50]{}}
+\rput(2.95,1.65){\psframebox[fillstyle=solid, fillcolor=red!50]{}}
+\rput(3.95,0.75){\psframebox[fillstyle=solid, fillcolor=red!50]{}}
+\rput(4.95,0.35){\psframebox[fillstyle=solid, fillcolor=red!50]{}}
+\rput(-0.05,-0.05){\psframebox[fillstyle=solid, fillcolor=red!50]{}}
+%\pspolygon[fillstyle=solid,fillcolor=blue!50](0,0)(0,1)(1,1)(1,0)
+%\pscircle*[linecolor=red!50](2,2){0.3}
+%\pscircle[linecolor=black](2,2){0.3}
+
+\psline(0,0)(0,2.5)(1,2.5)(1,2.1)(2,2.1)(2,1.7)(3,1.7)(3,0.8)(4,0.8)(4,0.4)(5,0.4)(5,0)(0,0)
+\rput[lb](-0.2,2.55){$Y_0=(\alpha_1,0)$}
+\rput[lb](1.05,2.45){$X_1=(\alpha_1,\beta_1)$}
+\rput[lb](0.8,1.8){$Y_1=(\alpha_2,\beta_1)$}
+\rput[lb](2.05,2.05){$X_2=(\alpha_2,\beta_2)$}
+\rput[lb](1.8,1.4){$Y_2=(\alpha_3,\beta_2)$}
+\rput[lb](3.05,1.65){$X_3=(\alpha_3,\beta_3)$}
+\rput[lb](2.8,0.5){$Y_3=(\alpha_4,\beta_3)$}
+\rput[lb](4.05,0.75){$X_4=(\alpha_4,\beta_4)$}
+\rput[lb](3.8,0.1){$Y_4=(\alpha_5,\beta_4)$}
+\rput[lb](5.05,0.35){$X_5=(\alpha_5,\beta_5)$}
+\rput[lb](4.8,-0.3){$Y_5=(0,\beta_5)$}
+\rput[lb](0.05,-0.2){$X_0=(0,0)$}
+\end{pspicture}
+\end{center}
+\end{remark}
+
+
+%\centertexdraw{
+%
+%\drawdim in
+%
+%\def\bdot {\fcir f:0 r:0.03 }
+%\def\ebdot {\lcir r:0.02 }
+%\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+%\linewd 0.01 \setgray 0
+%
+%\move(0 2.8)
+%\move (0 0) \lvec(0 2.5) \lvec(1 2.5) \lvec(1 2.1) \lvec(2 2.1) \lvec(2 1.7) \lvec(3 1.7) \lvec(3 0.8) \lvec(4 0.8) \lvec(4 0.4) \lvec(5 0.4) \lvec(5 0) \lvec(0 0)
+%\htext (-0.2 2.55){$Y_0=(\alpha_1,0)$}
+%\htext (1.05 2.45){$X_1=(\alpha_1,\beta_1)$}
+%\htext (0.8 1.8){$Y_1=(\alpha_2,\beta_1)$}
+%\htext (2.05 2.05){$X_2=(\alpha_2,\beta_2)$}
+%\htext (1.8 1.4){$Y_2=(\alpha_3,\beta_2)$}
+%\htext (3.05 1.65){$X_3=(\alpha_3,\beta_3)$}
+%\htext (2.8 0.5){$Y_3=(\alpha_4,\beta_3)$}
+%\htext (4.05 0.75){$X_4=(\alpha_4,\beta_4)$}
+%\htext (3.8 0.1){$Y_4=(\alpha_5,\beta_4)$}
+%\htext (5.05 0.35){$X_5=(\alpha_5,\beta_5)$}
+%\htext (4.8 -0.3){$Y_5=(0,\beta_5)$}
+%
+%\htext (0.05 -0.2){$X_0=(0,0)$}
+%
+%\move (0 2.5) \lvec(-0.1 2.5) \lvec(-0.1 2.4) \lvec(0 2.4) \lvec(0 2.5) \lfill f:0.8
+%\move (1 2.1) \lvec(1 2) \lvec(0.9 2) \lvec(0.9 2.1) \lvec(1 2.1) \lfill f:0.8
+%\move (2 1.7) \lvec(2 1.6) \lvec(1.9 1.6) \lvec(1.9 1.7) \lvec(2 1.7) \lfill f:0.8
+%\move (3 0.8) \lvec(3 0.7) \lvec(2.9 0.7) \lvec(2.9 0.8) \lvec(3 0.8) \lfill f:0.8
+%\move (4 0.4) \lvec(4 0.3) \lvec(3.9 0.3) \lvec(3.9 0.4) \lvec(4 0.4) \lfill f:0.8
+%\move (5 0) \lvec(5 -0.1) \lvec(4.9 -0.1) \lvec(4.9 0) \lvec(5 0) \lfill f:0.8
+%
+%\move (1 2.5) \lvec(1 2.4) \lvec(0.9 2.4) \lvec(0.9 2.5) \lvec(1 2.5) \lfill f:0.8
+%\move (2 2.1) \lvec(2 2) \lvec(1.9 2) \lvec(1.9 2.1) \lvec(2 2.1) \lfill f:0.8
+%\move (3 1.7) \lvec(3 1.6) \lvec(2.9 1.6) \lvec(2.9 1.7) \lvec(3 1.7) \lfill f:0.8
+%\move (4 0.8) \lvec(4 0.7) \lvec(3.9 0.7) \lvec(3.9 0.8) \lvec(4 0.8) \lfill f:0.8
+%\move (5 0.4) \lvec(5 0.3) \lvec(4.9 0.3) \lvec(4.9 0.4) \lvec(5 0.4) \lfill f:0.8
+%\move (0 0) \lvec(0 -0.1) \lvec(-0.1 -0.1) \lvec(-0.1 0) \lvec(0 0) \lfill f:0.8
+%}
+
+\begin{example}
+The outer corners of diagram of partition (4,3,2,2) are the shadow ones on the left. Its inner corners are the shadow ones on the right.
+\begin{center}
+\psset{yunit=3cm,xunit=3cm}
+\begin{pspicture}(-0.1,-0.3)(1.9,0.9)
+\psline(0,0)(0.8,0)
+\psline(0,0.2)(0.8,0.2) %\lvec(1.5 1)
+\psline(0,0.4)(0.6,0.4)
+\psline(0,0.6)(0.4,0.6)
+\psline(0,0.8)(0.4,0.8)
+\psline(0,0)(0,0.8)
+\psline(0.2,0)(0.2,0.8)
+\psline(0.4,0)(0.4,0.8)
+\psline(0.6,0)(0.6,0.4)
+\psline(0.8,0)(0.8,0.2)
+\pspolygon[fillstyle=solid,fillcolor=red!50](0.6,0)(0.8,0)(0.8,0.2)(0.6,0.2)
+\pspolygon[fillstyle=solid,fillcolor=red!50](0.4,0.2)(0.6,0.2)(0.6,0.4)(0.4,0.4)
+\pspolygon[fillstyle=solid,fillcolor=red!50](0.2,0.6)(0.4,0.6)(0.4,0.8)(0.2,0.8)
+\pspolygon[fillstyle=solid,fillcolor=red!50](0,0)(0,-0.2)(-0.2,-0.2)(-0.2,0)
+%\pstGeonode[PointSymbol=*,PointName=none,dotscale=1.5](0.5,0.3){A}
+\rput[lb](0.62,0.04){$X_3$}
+\rput[lb](0.42,0.24){$X_2$}
+\rput[lb](0.22,0.64){$X_1$}
+\rput[lb](-0.18,-0.16){$X_0$}
+\end{pspicture}
+\begin{pspicture}(-0.1,-0.3)(0.9,0.9)
+\psline(0,0)(0.8,0)
+\psline(0,0.2)(0.8,0.2) %\lvec(1.5 1)
+\psline(0,0.4)(0.6,0.4)
+\psline(0,0.6)(0.4,0.6)
+\psline(0,0.8)(0.4,0.8)
+\psline(0,0)(0,0.8)
+\psline(0.2,0)(0.2,0.8)
+\psline(0.4,0)(0.4,0.8)
+\psline(0.6,0)(0.6,0.4)
+\psline(0.8,0)(0.8,0.2)
+%\pstGeonode[PointSymbol=*,PointName=none,dotscale=1.5](0.5,0.3){A}
+\pspolygon[fillstyle=solid,fillcolor=blue!50](0.6,0)(0.4,0)(0.4,0.2)(0.6,0.2)
+\pspolygon[fillstyle=solid,fillcolor=blue!50](0.4,0.2)(0.2,0.2)(0.2,0.4)(0.4,0.4)
+\pspolygon[fillstyle=solid,fillcolor=blue!50](-0.2,0.6)(0,0.6)(0,0.8)(-0.2,0.8)
+\pspolygon[fillstyle=solid,fillcolor=blue!50](0.8,0)(0.8,-0.2)(0.6,-0.2)(0.6,0)
+\rput[lb](0.63,-0.17){$Y_3$}
+\rput[lb](0.43,0.03){$Y_2$}
+\rput[lb](0.23,0.23){$Y_1$}
+\rput[lb](-0.17,0.63){$Y_0$}
+\end{pspicture}
+\end{center}
+\end{example}
+
+%\centertexdraw{
+%
+%\drawdim in
+%
+%\def\bdot {\fcir f:0 r:0.03 }
+%\def\ebdot {\lcir r:0.02 }
+%\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+%\linewd 0.01 \setgray 0
+%
+%\move(0 0.9)
+%\move (0 0) \lvec(0.8 0)
+%\move (0 0.2 )\lvec(0.8 0.2) %\lvec(1.5 1)
+%\move (0 0.4 )\lvec(0.6 0.4)
+%\move (0 0.6 )\lvec(0.4 0.6)
+%\move (0 0.8 )\lvec(0.4 0.8)
+%
+%\move (0 0) \lvec(0 0.8)
+%\move (0.2 0) \lvec(0.2 0.8)
+%\move (0.4 0) \lvec(0.4 0.8)
+%\move (0.6 0) \lvec(0.6 0.4)
+%\move (0.8 0) \lvec(0.8 0.2)
+%%\move(0.5 0.3) \bdot%
+%%\htext (0.07 0.05){0}
+%%\htext (0.27 0.05){1}
+%%\htext (0.47 0.05){2}
+%\htext (0.61 0.03){$X_3$}
+%%\htext (0.04 0.25){-1}
+%%\htext (0.27 0.25){0}
+%\htext (0.41 0.23){$X_2$}
+%%\htext (0.04 0.45){-2}
+%%\htext (0.24 0.45){-1}
+%%\htext (0.04 0.65){-3}
+%\htext (0.21 0.63){$X_1$}
+%\htext (-0.19 -0.17){$X_0$}
+%
+%\move (0.6 0) \lvec(0.8 0) \lvec(0.8 0.2) \lvec(0.6 0.2) \lvec(0.6 0) \lfill f:0.8
+%\move (0.4 0.2) \lvec(0.6 0.2) \lvec(0.6 0.4) \lvec(0.4 0.4) \lvec(0.4 0.2) \lfill f:0.8
+%\move (0.2 0.6) \lvec(0.4 0.6) \lvec(0.4 0.8) \lvec(0.2 0.8) \lvec(0.2 0.6) \lfill f:0.8
+%\move (0 0) \lvec(0 -0.2) \lvec(-0.2 -0.2) \lvec(-0.2 0) \lvec(0 0) \lfill f:0.8
+%
+%\move (2 0) \lvec(2.8 0)
+%\move (2 0.2 )\lvec(2.8 0.2) %\lvec(1.5 1)
+%\move (2 0.4 )\lvec(2.6 0.4)
+%\move (2 0.6 )\lvec(2.4 0.6)
+%\move (2 0.8 )\lvec(2.4 0.8)
+%
+%\move (2 0) \lvec(2 0.8)
+%\move (2.2 0) \lvec(2.2 0.8)
+%\move (2.4 0) \lvec(2.4 0.8)
+%\move (2.6 0) \lvec(2.6 0.4)
+%\move (2.8 0) \lvec(2.8 0.2)
+%%\move(0.5 0.3) \bdot%
+%%\htext (0.07 0.05){0}
+%%\htext (0.27 0.05){1}
+%%\htext (0.47 0.05){2}
+%\htext (2.62 -0.17){$Y_3$}
+%%\htext (0.04 0.25){-1}
+%%\htext (0.27 0.25){0}
+%\htext (2.42 0.03){$Y_2$}
+%%\htext (0.04 0.45){-2}
+%%\htext (0.24 0.45){-1}
+%%\htext (0.04 0.65){-3}
+%\htext (2.22 0.23){$Y_1$}
+%\htext (1.82 0.63){$Y_0$}
+%
+%\move (2.4 0) \lvec(2.6 0) \lvec(2.6 0.2) \lvec(2.4 0.2) \lvec(2.4 0) \lfill f:0.8
+%\move (2.2 0.2) \lvec(2.4 0.2) \lvec(2.4 0.4) \lvec(2.2 0.4) \lvec(2.2 0.2) \lfill f:0.8
+%\move (2 0.6) \lvec(1.8 0.6) \lvec(1.8 0.8) \lvec(2 0.8) \lvec(2 0.6) \lfill f:0.8
+%\move (2.6 0) \lvec(2.8 0) \lvec(2.8 -0.2) \lvec(2.6 -0.2) \lvec(2.6 0) \lfill f:0.8
+%}
+
+\begin{proposition}\label{pro:content_outer_inner_corner_young_diagram}
+Let $\lm$ be a partition and $X_i,Y_i$ for $0\leq i\leq m$ be its outer corners and inner corners. Define $x_i = \ct(X_i)$ and $y_i = \ct(Y_i)$. Then we can have
+\be
+\sum^m_{i=0} x_i = \sum^m_{i=0} y_i.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+This is due to the fact that in every row or column of the diagram in which a labelled cell appears, we have exactly one cell labelled with an $X$ and exactly one labelled with a $Y$. Thus every row-coordinate and every column-coordinate will cancel in the sum $\sum^m_{i=0}(x_i-y_i)$. In more detail we have (by Definition \ref{def:outer_inner_corner_young_tableaux})
+\be
+\sum^m_{i=0}(x_i-y_i) = \sum^m_{i=0}\bb{(\beta_i-\alpha_i) - (\beta_i-\alpha_{i+1})} = -\alpha_0 + \alpha_{m+1} = 0.
+\ee
+\end{proof}
+
+
+\subsection{Hook length formula}
+
+
+
+\begin{definition}[hook length\index{hook length}]
+The hook length of a cell $c\in \lm$ is the number of cells weakly above (i.e., including $c$) and strictly to the right of $c$. We denote this by $h_{\lm}(c)$.
+\end{definition}
+
+\begin{remark}
+For example, in Example \ref{exa:young_diagram_4432}, $h_{\lm}((2,3)) = 3$.
+\end{remark}
+
+\begin{definition}\label{def:east_north_young_diagram_hook_length}
+Let $\lm$ be a partition and $c$ is one of Young diagram cells. Then $E(c)$ is the cell at the east end of the row containing $c$ and $N(c)$ is the cell at the north end of the column containing $c$. It is obvious that the hook length is
+\be
+h_{\lm}(c) = \ct\bb{E(c)} - \ct\bb{N(c)} + 1.\qquad (*)
+\ee
+\end{definition}
+
+\begin{remark}
+It is easy to see that $h_{\lm}(c) = 1$ if $c$ is outer corner. This is because $E(c) = N(c) = c$.
+\end{remark}
+
+\begin{definition}[standard tableaux\index{standard tableaux}]\label{def:standard_tableaux}
+A standard tableau of shape $\lm$ is labeling of the cells of the Young diagram of $\lm$ with the numbers 1 to $n$ so that the labels are strictly increasing from bottom to top along the columns and from left to right along rows. For example, there are 5 standard tableaux of shape (3,2):
+
+
+\begin{center}
+\psset{yunit=2.5cm,xunit=2.5cm}
+\begin{pspicture}(0,-0.2)(1,0.6)
+\psline(0,0)(0.6,0)
+\psline(0,0.2)(0.6,0.2) %\lvec(1.5 1)
+\psline(0,0.4)(0.4,0.4)
+\psline(0,0)(0,0.4)
+\psline(0.2,0)(0.2,0.4)
+\psline(0.4,0)(0.4,0.4)
+\psline(0.6,0)(0.6,0.2)
+\rput[lb](0.05,0.05){1}
+\rput[lb](0.25,0.05){2}
+\rput[lb](0.45,0.05){3}
+\rput[lb](0.05,0.25){4}
+\rput[lb](0.25,0.25){5}
+\end{pspicture}
+\begin{pspicture}(0,-0.2)(1,0.6)
+\psline(0,0)(0.6,0)
+\psline(0,0.2)(0.6,0.2) %\lvec(1.5 1)
+\psline(0,0.4)(0.4,0.4)
+\psline(0,0)(0,0.4)
+\psline(0.2,0)(0.2,0.4)
+\psline(0.4,0)(0.4,0.4)
+\psline(0.6,0)(0.6,0.2)
+\rput[lb](0.05,0.05){1}
+\rput[lb](0.25,0.05){2}
+\rput[lb](0.45,0.05){4}
+\rput[lb](0.05,0.25){3}
+\rput[lb](0.25,0.25){5}
+\end{pspicture}
+\begin{pspicture}(0,-0.2)(1,0.6)
+\psline(0,0)(0.6,0)
+\psline(0,0.2)(0.6,0.2) %\lvec(1.5 1)
+\psline(0,0.4)(0.4,0.4)
+\psline(0,0)(0,0.4)
+\psline(0.2,0)(0.2,0.4)
+\psline(0.4,0)(0.4,0.4)
+\psline(0.6,0)(0.6,0.2)
+\rput[lb](0.05,0.05){1}
+\rput[lb](0.25,0.05){2}
+\rput[lb](0.45,0.05){5}
+\rput[lb](0.05,0.25){3}
+\rput[lb](0.25,0.25){4}
+\end{pspicture}
+\begin{pspicture}(0,-0.2)(1,0.6)
+\psline(0,0)(0.6,0)
+\psline(0,0.2)(0.6,0.2) %\lvec(1.5 1)
+\psline(0,0.4)(0.4,0.4)
+\psline(0,0)(0,0.4)
+\psline(0.2,0)(0.2,0.4)
+\psline(0.4,0)(0.4,0.4)
+\psline(0.6,0)(0.6,0.2)
+\rput[lb](0.05,0.05){1}
+\rput[lb](0.25,0.05){3}
+\rput[lb](0.45,0.05){4}
+\rput[lb](0.05,0.25){2}
+\rput[lb](0.25,0.25){5}
+\end{pspicture}
+\begin{pspicture}(0,-0.2)(1,0.6)
+\psline(0,0)(0.6,0)
+\psline(0,0.2)(0.6,0.2) %\lvec(1.5 1)
+\psline(0,0.4)(0.4,0.4)
+\psline(0,0)(0,0.4)
+\psline(0.2,0)(0.2,0.4)
+\psline(0.4,0)(0.4,0.4)
+\psline(0.6,0)(0.6,0.2)
+\rput[lb](0.05,0.05){1}
+\rput[lb](0.25,0.05){3}
+\rput[lb](0.45,0.05){5}
+\rput[lb](0.05,0.25){2}
+\rput[lb](0.25,0.25){4}
+\end{pspicture}
+\end{center}
+
+We denote the number of standard tableaux of shape $\lm$ by $f_{\lm}$. This work was first proposed by Alfred Young (see \cite{Young_1901,Young_1902}).%This number has implications beyond combinatorics
+\end{definition}
+
+\begin{theorem}[hook length formula]
+For standard tableaux of shape $\lm$, $h_{\lm}(c)$ (or denoted by $h(c)$) is the hook length of cell $c$ and $f_{\lm}$ is the number of different standard tableaux of shape $
+\lm$. Then
+\be
+f_{\lm} = \frac{n!}{\prod_{c\in \lm} h_{\lm}(c)}.
+\ee
+\end{theorem}
+
+\begin{remark}
+This theorem was first proved by Frame, Robinson and Thrall (see \cite{Frame_Robinson_Thrall_1954}) and many different proof have been given (see \cite{Greene_Nijenhuis_Wilf_1979, Krattenthaler_1995, Novelli_Pak_Stoyanovskii_1997}). Here we use the proof proposed by Jason Bandlow (see \cite{Bandlow_2008}).
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Given a standard tableaux of shape $\lm$, it is immediate that removing the cell containing $n$ gives a standard tableaux of shape $\mu \to \lm$. It is not hard to see that all standard tableaux of a shape preceding $\lm$ can be obtained in such a manner. Thus we see that the number of standard tableaux satisfies the recursion
+\be
+f_{\lm} = \sum_{\mu \to \lm} f_{\mu}.
+\ee
+
+Our goal is to show the right side of the hook-length formula satisfies the same recursion. That is, we wish to show
+\be
+\frac{n!}{\prod_{s\in\lm } h_{\lm}(s)} = \sum_{\mu\to \lm}\frac{(n-1)!}{\prod_{s\in\mu} h_{\mu}(s)}
+\ee
+or, more simply,
+\be
+\sum_{\mu\to \lm} \frac{\prod_{s\in\lm } h_{\lm}(s)}{\prod_{s\in\mu} h_{\mu}(s)} = n.
+\ee
+
+The proof will proceed in the following three steps. We let $m$ be number of corners of $\lm$, and define certain numbers $x_i,y_i$ for $0\leq i\leq m$, depending on $\lm$. We then prove
+\beast
+\sum_{\mu\to \lm} \frac{\prod_{s\in\lm } h_{\lm}(s)}{\prod_{s\in\mu} h_{\mu}(s)}  & = & - \sum^m_{i=1} \frac{\prod^m_{j=0} (x_i-y_j)}{\prod^m_{j=1,j\neq i} (x_i-x_j)}\qquad \quad(*) \\
+& = & -\frac 12\sum^m_{i=0} \bb{x_i^2- y_i^2} \qquad\qquad\qquad (\dag)\\
+& = & n. \qquad \qquad\qquad \qquad \qquad\qquad \ \ (\ddag)
+\eeast
+
+Proof of ($*$). Now for fixed $i$ with $1\leq i\leq m$ we work on the quotient
+\be
+\frac{\prod_{c\in\lm } h_{\lm}(c)}{\prod_{c\in\mu^{(i)}} h_{\mu^{(i)}}(c)}.
+\ee
+
+We first note that every cell not in the row or column of $X_i$ for $1\leq i\leq m$ will have the same hook length whether considered as a cell in $\lm$ or a cell in $\mu^{(i)}$. Thus, the factors corresponding to these cells will all cancel in the quotient.
+
+In fact, there will be even more cancellation. A `generic' cell of $\lm$ in the row $X_i$ will have the same hook-length as the cell immediately to its left, considered as a cell of $\mu^{(i)}$. We can say most pairs of cells of the form
+\be
+\bb{\alpha_i ,b}\in \lm,\quad \bb{\alpha_i ,b-1}\in \mu^{(i)},\qquad b\neq \beta_j+1,\ 0\leq j< i
+\ee
+will have equal (and thus cancelling) hook-lengths. The cells for which this won't work will be those beneath outer corners of $\lm$. To be precise, we label the cells of $\lm$ in the row of $X_i$ which do not cancel as
+\be
+L_j = \bb{\alpha_i, \beta_j +1},\qquad 0\leq j< i.
+\ee
+
+We label the corresponding non-cancelling cells of $\mu^{(i)}$ in the row of $X_i$ as
+\be
+M_j = \bb{\alpha_i,\beta_j},\qquad 1\leq j<i.
+\ee
+
+Note that we do not need to worry about the cell $X_i$ itself, as it has a hook-length of 1 in $\lm$ and does not exist in $\mu^{(i)}$.
+
+The cells in the column of $X_i$ are similarly described. We label the non-cancelling cells in $\lm$ as
+\be
+L_j = \bb{\alpha_{j+1}+1,\beta_i},\qquad i\leq j\leq m
+\ee
+and the corresponding cells in $\mu^{(i)}$ as
+\be
+M_j = \bb{\alpha_j,\beta_i},\qquad i<j\leq m.
+\ee
+
+This cancellation is illustrated in the following figure.
+
+\centertexdraw{
+
+\drawdim in
+
+\def\bdot {\fcir f:0.8 r:0.05 }
+\def\ebdot {\fcir f:0.8 r:0.05}
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+\linewd 0.01 \setgray 0
+
+\move(0 2.8)
+\move (0 0) \lvec(0 2.5) \lvec(1 2.5) \lvec(1 2.1) \lvec(2 2.1) \lvec(2 1.7) \lvec(3 1.7) \lvec(3 0.8) \lvec(4 0.8) \lvec(4 0.4) \lvec(5 0.4) \lvec(5 0) \lvec(0 0)
+\htext (0.05 1.45){$L_0$}
+\htext (1.05 1.45){$L_1$}
+\htext (2.05 1.45){$L_2$}
+\htext (3.05 0.85){$L_3$}
+\htext (3.05 0.45){$L_4$}
+\htext (3.05 0.05){$L_5$}
+
+\htext (3.05 1.65){$X_3$}
+\htext (0.8 2.15){$Y_1$}
+
+\htext (0.8 1.75){$M_1$}
+\htext (1.8 1.75){$M_2$}
+\htext (2.7 0.65){$M_4$}
+\htext (2.7 0.25){$M_5$}
+
+%\htext (2.05 2.05){$X_2=(\alpha_2,\beta_2)$}
+%\htext (1.8 1.4){$Y_2=(\alpha_3,\beta_2)$}
+
+%\htext (2.8 0.5){$Y_3=(\alpha_4,\beta_3)$}
+%\htext (4.05 0.75){$X_4=(\alpha_4,\beta_4)$}
+%\htext (3.8 0.1){$Y_4=(\alpha_5,\beta_4)$}
+%\htext (5.05 0.35){$X_5=(\alpha_5,\beta_5)$}
+%\htext (4.8 -0.3){$Y_5=(0,\beta_5)$}
+%
+%\htext (0.05 -0.2){$X_0=(0,0)$}
+%
+\move (0 1.6) \lvec(0.1 1.6) \lvec(0.1 1.7) \lvec(0 1.7) \lvec(0 1.6) \lfill f:0.8
+\move (1 1.6) \lvec(1.1 1.6) \lvec(1.1 1.7) \lvec(1 1.7) \lvec(1 1.6) \lfill f:0.8
+\move (2 1.6) \lvec(2.1 1.6) \lvec(2.1 1.7) \lvec(2 1.7) \lvec(2 1.6) \lfill f:0.8
+\move (3 1.7) \lvec(3 1.6) \lvec(2.9 1.6) \lvec(2.9 1.7) \lvec(3 1.7) \lfill f:0.8
+
+\move(0.95 1.65)\lcir r:0.05 \fcir f:0.8 r:0.05
+\move(1.95 1.65)\lcir r:0.05 \fcir f:0.8 r:0.05
+
+%\move (4 0.4) \lvec(4 0.3) \lvec(3.9 0.3) \lvec(3.9 0.4) \lvec(4 0.4) \lfill f:0.8
+%\move (5 0) \lvec(5 -0.1) \lvec(4.9 -0.1) \lvec(4.9 0) \lvec(5 0) \lfill f:0.8
+%
+%\move (1 2.5) \lvec(1 2.4) \lvec(0.9 2.4) \lvec(0.9 2.5) \lvec(1 2.5) \lfill f:0.8
+\move (1 2.1) \lvec(1 2) \lvec(0.9 2) \lvec(0.9 2.1) \lvec(1 2.1) \lfill f:0.8
+
+%\move (4 0.8) \lvec(4 0.7) \lvec(3.9 0.7) \lvec(3.9 0.8) \lvec(4 0.8) \lfill f:0.8
+%\move (5 0.4) \lvec(5 0.3) \lvec(4.9 0.3) \lvec(4.9 0.4) \lvec(5 0.4) \lfill f:0.8
+%\move (0 0) \lvec(0 -0.1) \lvec(-0.1 -0.1) \lvec(-0.1 0) \lvec(0 0) \lfill f:0.8
+
+\move (3 0.8) \lvec(3 0.9) \lvec(2.9 0.9) \lvec(2.9 0.8) \lvec(3 0.8) \lfill f:0.8
+\move (3 0.4) \lvec(3 0.5) \lvec(2.9 0.5) \lvec(2.9 0.4) \lvec(3 0.4) \lfill f:0.8
+\move (3 0) \lvec(3 0.1) \lvec(2.9 0.1) \lvec(2.9 0) \lvec(3 0) \lfill f:0.8
+
+\move(2.95 0.75)\lcir r:0.05 \fcir f:0.8 r:0.05
+\move(2.95 0.35)\lcir r:0.05 \fcir f:0.8 r:0.05
+
+\lpatt (0.05 0.05)
+
+\move(2 1.7) \lvec(0 1.7)
+\move(2.9 1.6) \lvec(0 1.6)
+\move(1 2.1) \lvec(1 1.6)
+
+\move(2.9 1.6) \lvec(2.9 0)
+\move(3 0.7) \lvec(3 0)
+\move(2.9 0.4) \lvec(4 0.4)
+}
+
+Thus the left hand side of ($*$) reduces to
+\be
+\sum^m_{i=1} \frac{\prod^m_{j=0} h_{\lm}(L_j)}{\prod^m_{j=1,j\neq i} h_{\mu^{(i)}}(M_j)}.
+\ee
+
+We define $x_i,y_i$ for $1\leq i\leq m$ by
+\be
+x_i = \ct(X_i),\quad y_i = \ct(Y_i)
+\ee
+where $\ct(\cdot)$ is the content the cell. Then for $0<j< i$, we have that $L_j = N(L_j)$ and
+\be
+y_j = \ct(Y_j) = \beta_j - \alpha_i = (\beta_j + 1)- \alpha_i - 1 = \ct(L_j) -1 = \ct(N(L_j)) -1.
+\ee
+
+Thus, by using ($*$) in Definition \ref{def:east_north_young_diagram_hook_length}, we have
+\be
+h_{\lm}(L_j) = \ct(E(L_j)) - \ct(N(L_j)) + 1 = \ct(X_j) - \ct(N(L_j)) + 1 = x_j - y_j.
+\ee
+
+Similarly, for $1<j<i$,
+\beast
+h_{\mu^{(i)}}(M_j)& = & \ct(E(M_j))  - \ct(N(M_j)) +1 = \bb{\ct(E(M_j))+1 } - \ct(N(M_j)) \\
+&  = & \ct(X_i) - \ct(X_j) = x_i - x_j.
+\eeast
+
+An analogous computation for $i\leq j \leq m$ gives
+\be
+h_{\lm}(L_j) = \ct(E(L_j)) - \ct(N(L_j)) + 1 = \ct(E(L_j)) - \ct(X_i) + 1 = \ct(Y_j) - \ct(X_i) = y_j - x_i.
+\ee
+and for $i<j\leq m$,
+\be
+h_{\mu^{(i)}}(M_j) = \ct(E(M_j))  - \ct(N(M_j)) +1 =  x_j - x_i.
+\ee
+
+Therefore, we have
+\beast
+\sum_{\mu\to \lm} \frac{\prod_{s\in\lm } h_{\lm}(s)}{\prod_{s\in\mu} h_{\mu}(s)}  & = & \sum^m_{i=1} \frac{\prod^m_{j=0} h_{\lm}(L_j)}{\prod^m_{j=1,j\neq i} h_{\mu^{(i)}}(M_j)} \\
+ & = & \sum^m_{i=1} \frac{\prod^{i-1}_{j=0} (x_i - y_j)\prod^m_{j=i} -(x_i - y_j) }{\prod^{i-1}_{j=1} (x_i - x_j)\prod^m_{j=i+1} -(x_i - x_j)  } = - \sum^m_{i=1} \frac{\prod^m_{j=0} (x_i-y_j)}{\prod^m_{j=1,j\neq i} (x_i-x_j)}.
+\eeast
+
+Proof of ($\dag$). We wish to show
+\be
+- \sum^m_{i=1} \frac{\prod^m_{j=0} (x_i-y_j)}{\prod^m_{j=1,j\neq i} (x_i-x_j)} = -\frac 12 \sum^m_{i=0} \bb{x_i^2 - y_i^2}.
+\ee
+
+Then we can use Lagrange interpolation\footnote{details needed.} to find the left hand side of the above equation. We consider the polynomial of $t$
+\be
+P(t) = - \sum^m_{i=1} \frac{\prod^m_{j=0} (x_i-y_j)}{\prod^m_{j=1,j\neq i} (x_i-x_j)}\prod^m_{j=1,j\neq i}(t-x_j).
+\ee
+
+One quickly verifies that this polynomial has the following properties
+\ben
+\item [(i)] For $1\leq k \leq m$,
+\be
+P(x_k) = - \prod^m_{j=0} (x_k-y_j).
+\ee
+
+\item [(ii)] $P(t)$ has degree $m-1$, with leading coefficient
+\be
+- \sum^m_{i=1} \frac{\prod^m_{j=0} (x_i-y_j)}{\prod^m_{j=1,j\neq i} (x_i-x_j)}.
+\ee
+\een
+
+Since this quantity is the left hand side of the required result, we can complete the proof by evaluating the coefficient of $t^{m-1}$ in $P(t)$ in a different manner. Consider the polynomial
+\be
+Q(t) = \prod^m_{j=0} (t-y_j)
+\ee
+and note that $Q(t)$ satisfies
+\ben
+\item [(i)] For $1\leq k \leq m$,
+\be
+Q(x_k) = \prod^m_{j=0} (x_k - y_j).
+\ee
+
+\item [(ii)] The leading term of $Q(t)$ is $t^{m+1}$.
+\een
+
+Therefore, the polynomial $Q(t)+P(t)$ has leading term $t^{m+1}$ and has a zero at $t =x_k$ for $1\leq k\leq m$. Hence, for some $\alpha$,
+\beast
+Q(t) + P(t) & = & (t-\alpha) \prod^m_{k=1} (t-x_k) \\
+\ra \ P(t) & = & (t-\alpha) \prod^m_{k=1} (t-x_k)  - \prod^m_{j=0} (t-y_j) \\
+& = & \bb{-\alpha - \sum^m_{i=1}x_i + \sum^m_{i=0}y_i }t^m + \bb{\alpha\sum^m_{i=1}x_i + \sum_{1\leq i\leq j\leq m}x_ix_j - \sum_{0\leq i\leq j\leq m}y_iy_j }t^{m-1}+ \dots
+\eeast
+
+Since $P(t)$ has degree $m-1$, the coefficient of $t^m$ must be 0. Since $x_0 = 0$, we have
+\be
+\alpha = - \sum^m_{i=1}x_i + \sum^m_{i=0}y_i = 0
+\ee
+by Proposition \ref{pro:content_outer_inner_corner_young_diagram} as $x_0 = 0$. Then using again $x_0 =0$, the coefficient of $t^{m-1}$ in $P(t)$ can be written as
+\be
+\sum_{0\leq i\leq j\leq m}\bb{x_ix_j - y_iy_j}.
+\ee
+
+Finally, we have
+\be
+\sum_{0\leq i\leq j\leq m}\bb{x_ix_j - y_iy_j} = \frac 12\bb{\bb{\sum^m_{i=0}x_i}^2 -\bb{\sum^m_{i=0}y_i}^2 - \sum^m_{i=0}\bb{x_i^2 - y_i^2}} = - \frac 12 \sum^m_{i=0}\bb{x_i^2 - y_i^2}
+\ee
+where the second equality follows from another application of Proposition \ref{pro:content_outer_inner_corner_young_diagram}.
+
+Proof of ($\ddag$). Expanding the $x_i$ and $y_i$ in terms of the coordinates gives
+\beast
+- \frac 12 \sum^m_{i=0}\bb{x_i^2 - y_i^2} & = & - \frac 12 \sum^m_{i=0}\bb{\bb{\beta_i-\alpha_i}^2 - \bb{\beta_i - \alpha_{i+1}}^2} \\
+& = & \frac 12\bb{\alpha_{m+1}^2 - \alpha_0^2}  - \frac 12 \sum^m_{i=0}\bb{-2\alpha_i\beta_i + 2\alpha_{i+1}\beta_i} \\
+& = & \sum^m_{i=1} \beta_i\bb{\alpha_i - \alpha_{i+1}}.
+\eeast
+
+By considering the diagram of $\lm$ as the disjoint union of rectangles of width $\beta_i$ and the height $(\alpha_i - \alpha_{i+1})$, we see that this sum is equal to $n$.
+
+\centertexdraw{
+
+\drawdim in
+
+\def\bdot {\fcir f:0.8 r:0.05 }
+\def\ebdot {\fcir f:0.8 r:0.05}
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+\linewd 0.01 \setgray 0
+
+\move(0 2.7)
+\move (0 0) \lvec(0 2.5) \lvec(1 2.5) \lvec(1 2.1) \lvec(2 2.1) \lvec(2 1.7) \lvec(3 1.7) \lvec(3 0.8) \lvec(4 0.8) \lvec(4 0.4) \lvec(5 0.4) \lvec(5 0) \lvec(0 0)
+\htext (-0.2 2.45){$\alpha_1$}
+\htext (-0.2 2.05){$\alpha_2$}
+\htext (-0.2 1.65){$\alpha_3$}
+\htext (-0.2 0.75){$\alpha_4$}
+\htext (-0.2 0.35){$\alpha_5$}
+\htext (-0.2 -0.05){$\alpha_6$}
+
+\htext (0.95 -0.15){$\beta_1$}
+\htext (1.95 -0.15){$\beta_2$}
+\htext (2.95 -0.15){$\beta_3$}
+\htext (3.95 -0.15){$\beta_4$}
+\htext (4.95 -0.15){$\beta_5$}
+
+\lpatt (0.05 0.05)
+
+\move(0 2.1) \lvec(1 2.1)
+\move(0 1.7) \lvec(2 1.7)
+\move(0 0.8) \lvec(3 0.8)
+\move(0 0.4) \lvec(4 0.4)
+
+\move(1 2.1) \lvec(1 0)
+\move(2 1.7) \lvec(2 0)
+\move(3 0.8) \lvec(3 0)
+\move(4 0.4) \lvec(4 0)
+}
+\end{proof}%\end{proof}
+
+
+
+\begin{example}
+For $2\times 3$ tableaux (i.e., tableaux (3,3)), we have that
+\be
+f_{\lm} = \frac{n!}{h\bb{(1,1)}h\bb{(1,2)}h\bb{(1,3)}h\bb{(2,1)}h\bb{(2,2)}h\bb{(2,3)}} = \frac{6!}{4\cdot 3\cdot 2 \cdot 3\cdot 2\cdot 1} = 5
+\ee
+which can be easily verified by the example in Definition \ref{def:standard_tableaux}.
+\end{example}
+
+\begin{corollary}
+The number of standard rectangle table with $m$ rows and $n$ columns is
+\be
+\frac{(mn)!}{\prod^m_{i=1}\prod^n_{j=1} (i+j-1)}.
+\ee
+\end{corollary}
+
+\begin{remark}
+For $m=2$ and $n=3$, we can easily have the consistent result
+\be
+\frac{(2\times 3)!}{\bb{1\cdot 2 \cdot 3} \cdot \bb{2 \cdot 3 \cdot 4 }} = 5.
+\ee
+\end{remark}
+
+
+\section{The Shifted Tableaux}
+
+Also see the paper by Jason Bandlow\footnote{citation needed.}.

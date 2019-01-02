@@ -1,0 +1,2678 @@
+\chapter{Rings and Modules}
+
+\section{Rings}
+
+\subsection{Rings Problems}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}\label{que:nilpotent} 
+An element $r$ of a ring $R$ is nilpotent if $r^n = 0$ for some $n$.
+\ben
+\item [(i)] What are the nilpotent elements of $\Z/6\Z$? Of $\Z/8\Z$? Of $\Z/24\Z$? Of $\Z/1000\Z$?
+\item [(ii)] Show that if $r$ is nilpotent then $r$ is not a unit, but $1 + r$ and $1 - r$ are units.
+\item [(iii)] Show that the nilpotent elements form an ideal $N$ in $R$. What are the nilpotent elements in the quotient ring $R/N$?
+\een
+\end{problem}
+
+
+\begin{solution}
+\ben
+\item [(i)] 0; 0,2,4,6; 0,6,12,18.
+\item [(ii)] If $r$ is nilpotent then $r^n = 0$ for some $n$. Suppose $ra = 1$, then $r^n a^n = 1$ and thus $0 \cdot a^n =1$. Contradiction.
+
+However,
+\beast
+1 & = & 1+r^n = (1+r)(1-r+r^2 - r^3 + \dots + (-1)^{n-1}r^{n-1})\\
+1 & = & 1-r^n = (1-r)(1+r+r^2 + r^3 + \dots + r^{n-1})
+\eeast
+
+Thus, $1\pm r$ are units.
+
+\item [(iii)] Let $N = \bra{r:r^n = 0\text{ for some }n}$. $\forall a,b\in N$, then $a^m = 0$ and $b^n = 0$ for some $m,n$. Wlog, take $m\geq n$, so $a^m = b^m = 0$. Then for $a+b$
+\be
+(a+b)^{2m} = \sum^{2m}_{i=0} \binom{2m}{i}a^i b^{2m-i}.
+\ee
+
+Thus, for each $i$, either $a^i = 0$ or $b^{2m-i} = 0$. So $(a+b)^{2n} = 0 \ \ra \ a+b \in N$. Associativity is clear. Also $0^1 = 0$ so $0\in N$. If $a\in N \ \ra \ a^n = 0$ for some $n$. Then $(-a)^n = (-1)^n a^n = 0$ so $-a\in N$.
+
+For the strong closure property, $\forall a\in N,r\in R$, we have
+\be
+(ar)^n = a^n r^n = 0  \ \ra \ ar \in N
+\ee
+
+Thus, $N$ is an ideal in $R$.
+
+The quotient ring elements have the form $ar$, $a\in N,r\in R$. Thus, $(ar)^n = 0$ for some n. Thus, elements of $R/N$ are all the nilpotent elements.
+
+\een
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $r$ be an element of a ring $R$. Show that, in the polynomial ring $R[X]$, the polynomial $1+rX$ is a unit if and only if $r$ is nilpotent. Is it possible for the polynomial $1 + X$ to be a product of two non-units?
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+$\ra$. Assume $1+rX$ is a unit, then there exists $a_0 + a_1X + \dots + a_n X^n \in R[X]$ s.t. $(1+rX)(a_0 + a_1X + \dots + a_n X^n) = 1, \ a_n \neq 0$
+\be
+a_0 = 1,\ ra_n = 0,\ a_{k+1} = -ra_k, \ k=1,\dots,n-1 \ \ra \  a_n = r^n (-1)^n \ \ra \ r^{n+1}(-1)^n = 0 \ \ra \ r^{n+1} = 0.
+\ee
+
+Thus, $r$ is nilpotent.
+
+$\la$. If $r$ is nilpotent. Then $r^n = 0$ for some $n$ and for $(1-rX + (rX)^2 + \dots + (rX)^{n-1}(-1)^{n-1})$,
+\be
+1 = 1+ (rX)^n = (1+rX)(1-rX + (rX)^2 + \dots + (rX)^{n-1}(-1)^{n-1}).
+\ee
+
+Thus, $1+rX$ is a unit.
+
+Let $R = \Z/6\Z$. So $R[X]$ has coefficient $\bra{0,1,2,3,4,5}$ and 
+\be
+(1+3X)(1+4X) = 1 + 7X + 12 X^2 = 1+ X \text{ in $R[X]$}.
+\ee
+
+Since 3,4 are not nilpotent in $\Z/6\Z$ by Question \ref{que:nilpotent}, thus, by the previous result, $1+3X$ and $1+4X$ are not units.
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+\ben
+\item [(i)] Show that if $I$ and $J$ are ideals in the ring $R$, then so is $I \cap J$, and the quotient $R/(I \cap J)$ is isomorphic to a subring of the product $R/I \times R/J$.
+\item [(ii)] Show that if $p$ and $q$ are coprime integers, then $\Z/p\Z \times \Z /q\Z$ is isomorphic to $\Z/pq\Z$.
+\een
+\end{problem}
+
+\begin{solution}
+\ben
+\item [(i)] Clearly, $I\cap J$ is a subgroup under addition. For multiplication, if $a\in I\cap J$, $a\in I$ and $a\in J$, then, $\forall r\in R$, $ar\in I$ and $ar\in J$, so $ar \in I\cap J$, so $I\cap J\lhd R$.
+
+%Now we show that $R/(I \cap J)$ is well-defined.
+
+Consider $\phi:R \to R/I \times R/J$ by $phi(r) = (r+I,r+J)$. It is clearly well-defined and 
+\beast
+\phi(r_1 + r_2) & = & (r_1+r_2 + I, r_1 + r_2 + J) = (r_1 + I,r_1 + J) + (r_2+I,r_2 +J) = \phi(r_1) + \phi(r_2),\\
+\phi(r_1r_2) & = & (r_1r_2 + I, r_1 r_2 + J) = (r_1+I, r_1+J)(r_2+I,r_2 +J) = \phi(r_1)\phi(r_2),\\
+\phi(1) & = & (1+I,1+J).
+\eeast
+
+So $\phi$ is homomorphism and 
+\be
+\ker\phi = \bra{r\in R:r+I = I,r+J = J} = \bra{r\in R:r\in I,r\in J} = I \cap J.
+\ee
+
+Then by first isomorphism theorem, $R/(I\cap J) \cong \im(\phi) \leq R/I \times R/J$.
+
+\item [(ii)] Now $I \cap J$ is $p\Z\cap q\Z$. Since $p,q$ are coprime, $I \cap J = p\Z\cap q\Z = pq\Z$. %Also, the function $\phi$ defined above is injective since $\ker \phi = I\cap J = \bra{0}$ (see groups under addition (homomorphism is injective iff ker is identity)). Furthermore, 
+Also,
+\be
+\abs{\Z/p\Z \times \Z/q\Z} = pq = \abs{\Z/pq\Z} \ \ra \ \im(\phi) = \Z/p\Z \times \Z/q\Z .
+\ee
+%so $\phi$ is surjective. Thus, $\phi$ is bijective and 
+
+Thus, by first isomorphism theorem and previous result ($(R/(I\cap J) \cong \im(\phi) \leq R/I \times R/J)$), $\Z/p\Z \times \Z /q\Z$ is isomorphic to $\Z/pq\Z$.
+\een
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+\ben
+\item [(i)] A proper ideal $P$ of the ring $R$ is prime if $rs \in P \ \ra \ r \in P$ or $s \in P$, for all $r, s \in R$.
+Let $I$ be an ideal of the ring $R$ and $P_1, \dots, P_n$ be prime ideals of $R$. Show that if $I \subset \cup^n_{i=1} P_i$, then $I \subset P_i$ for some $i$.
+\item [(ii)] A proper ideal $M$ of the ring $R$ is maximal if no proper ideal strictly contains it (i.e. $M \subset I \subset R \ \ra \ I = M$ or $I = R$).
+
+Show that $(2,X)$ is maximal in $\Z[X]$ but that $(2,X^2 + 1)$ is not.
+\een
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $I_1 \subseteq I_2 \subseteq I_3 \subseteq \dots$ be ideals in a ring $R$. Show that the union $I = \cup^\infty_{n=1} I_n$ is also an ideal. If each $I_n$ is proper, explain why $I$ must be proper. If each $I_n$ is prime, show that $I$ must be prime.
+\end{problem}
+
+\begin{solution}[\bf Solution.] 
+\ben
+\item [(i)] Closure, associativity, identity and inverses under addition follow from the fact that $(I_n,+) \leq (R,+)$. Hence, $(I,+) \leq (R,+)$.
+
+For multiplication, we see that if $a \in I$, then $a\in I_n$ for some $n$, so $\forall r\in R$, $ar \in I_n \in I$. So $I$ is an ideal.
+
+\item [(ii)] If $I_n$ is proper ($I \neq R$), then $1\notin I_n$, otherwise, $\forall r\in R$, $1\cdot r = r \in I$ and thus $I = R$. Since each $I_n$ is proper, $1\notin I$, so $I$ is not proper. %If $I$ is not proper, $I =R$, then $1\in I$, there must exists $I_n$ s.t. $1 \in I$ for some $n$, thus $I_n$ is not proper. Thus, If each $I_n$ is proper, then $I$ must be proper. %$1\notin I_n$ for all $n$. Otherwise, $I_n =R$ for some $n$ and $I = R$
+
+\item [(iii)] If $I_n$ are prime for all $n$, then whenever $ab\in I_n$, either $a\in I_n$ or $b\in I_n$. Then whenever $ab\in I$, we have $ab\in I_n$ for some $I_n$, then $a\in I_n \subseteq I$ or $b\in I_n \subseteq I$. Thus, $I$ is prime. 
+\een
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $R$ be the ring $C[0,1]$ of continuous real-valued functions on [0,1], and let $I = \bra{f\in R:f(x) = 0,x\in [0,\frac 12]}$. Show that $I$ is an ideal. What is $R/I$?
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+Addition is clearly a group (use $f(x) +g(x) = (f+g)(x)$). Multiplication is closed, for $f\in I$, take $r(x) \in C[0,1]$, then $fr \in C[0,1]$ and $fr(x) = 0$ for $x\in [0,\frac 12]$, $fr \in I$. Thus, $I \lhd R$.
+
+Let $\theta:R \to C[0,\frac 12]$ by $\theta(f(x)) = f_{\frac 12} (x)$ where $f_{\frac 12}(x) = f(x)$ for $x\in [0,\frac 12]$. Clearly, $\ker\theta = I$ and $\theta$ is a projective map, so it is homomorphism. 
+
+Now check that $\im(\theta) = C[0,\frac 12]$. Given any $f_{\frac 12}(x) = C[0,\frac 12]$, we find $f(x)$ by 
+\be
+f(x) = \left\{ \ba{ll}
+f_{\frac 12}(x) \quad\quad & x\in [0,\frac 12]\\
+f_{\frac 12}(\frac 12) & x\in [\frac 12 ,1]
+\ea\right.
+\ee
+
+So $\im(\theta) = C[0,\frac 12]$. By using first isomorphism theorem, 
+\be
+R/I \cong \im(\theta) = C\bsb{0,\tfrac 12}.
+\ee
+\end{solution}
+
+\begin{problem}
+Let $R$ be an integral domain and $\F$ be its field of fractions. Suppose that $\phi : R \to K$ is an injective ring homomorphism from $R$ to a field $K$. Show that $\phi$ extends to an injective homomorphism $\Phi : F \to K$ from $F$ to $K$. What happens if we do not assume that $\phi$ is injective?
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+Let $\Phi:\F\to K$ by $\Phi(ab^{-1}) = \phi(a)\bb{\phi(b)}^{-1}$ for $a,b\in R, b^{-1}\in \F$.
+
+This function is well-defined because
+\ben
+\item [(i)] $K$ is a field, so $\phi(b) \in K$, its inverse $\phi(b)^{-1}$ exists.
+\item [(ii)] $\phi$ is injective, so for $b\neq 0$, $\phi(b) \neq 0$.
+\item [(iii)] Suppose that $ab^{-1} = cd^{-1}$, $ad = bc$, since $\phi$ is a homomorphism,
+\be
+\phi(ad) = \phi(bc) \ \ra \ \phi(a)\phi(d) = \phi(b)\phi(c) \ \ra \ \phi(a)\phi(b)^{-1} = \phi(c)\phi(d)^{-1}.
+\ee
+\een
+
+Then for $a_1,b_1,a_2,b_2\in R$ and $b_1^{-1},b_2^{-1} \in \F$. Thus,
+\beast
+\Phi\bb{a_1b_1^{-1}+a_2b_2^{-1}} = \Phi\bb{\frac{a_1b_2 + a_2b_1}{b_1b_2}} & = & \phi(a_1b_2 + a_2b_1)\phi(b_1b_2)^{-1} = \bb{\phi(a_1)\phi(b_2) + \phi(a_2)\phi(b_1)}\phi(b_1)^{-1}\phi(b_2)^{-1}\\
+& = & \phi(a_1)\phi(b_1)^{-1} + \phi(a_2)\phi(b_2)^{-1} = \Phi(a_1 b_1^{-1}) + \Phi(a_2 b_2^{-1}).
+\eeast
+
+\beast
+\Phi\bb{a_1b_1^{-1}a_2b_2^{-1}} & = & \phi(a_1a_2)\phi(b_1b_2)^{-1} = \phi(a_1)\phi(a_2)\phi(b_1)^{-1}\phi(b_2)^{-1} = \Phi(a_1b_1^{-1}) \Phi(a_2b_2^{-1}).
+\eeast
+
+\be
+\Phi(1) = \phi(1) = 1.
+\ee
+
+So $\Phi$ is a homomorphism. If $\Phi(a_1b_1^{-1}) = \Phi(a_2b_2^{-1})$, 
+\be
+\phi(a_1)\phi(b_1)^{-1} = \phi(a_2)\phi(b_2)^{-1} \ \ra \ \phi(a_1b_2) = \phi(a_2 b_1) \ \ra \ a_1b_2 = a_2b_1 \ \ra \ a_1b_1^{-1} = a_2b_2^{-1}.
+\ee
+since $\phi$ is injective. So $\Phi$ is also injective.
+
+If $\phi$ is not injective, there exists $a\neq b$ s.t. $\phi(a) = \phi(b)$ thus there exists $c \neq 0$ s.t. $\phi(c) = 0$. Thus, $\ker \Phi \neq \bra{0}$. Since $\F$ is a field, $\ker\Phi$ is either $\bra{0}$ or $\F$. So $\ker \Phi = \F$. So $K = \bra{0}$.
+
+(Or we can see that $\exists \phi(r) = 0$, $r\neq 0$ in $R$. So to define $\Phi(r^{-1})$, $\Phi(r^{-1}) = \phi(1)\phi(r)^{-1} = \phi(r)^{-1} = 0^{-1} = 0$.)
+\end{solution}
+
+%\begin{problem}
+%Let $R$ be any ring. Show that the ring $R[X]$ is a principal ideal domain if and only if $R$ is a field.
+%\end{problem}
+
+%\begin{solution}[\bf Solution.]
+%($\la$). Suppose $R$ is a field and for any $I \lhd R[X]$, we take $f\in I$ with the least degree, then for any $g\in I$, by Euclid's algorithm for polynomials (Proposition \ref{pro:euclid_algorithm_polynomial}), we can find $q(X)$ and $r(X)\in I$,
+%\be
+%g(X) = q(X)f(X) + r(X)
+%\ee
+%with $\deg r < \deg f$. Since $f$ has the least degree, we have $r = 0$ and for any $g(X)\in I$, $f(X)|g(X)$. Thus, $I = \bsa{f(X)}$. Thus, $R[X]$ is PID.
+
+%($\ra$). Suppose $R[X]$ is a PID, for any $a\in R$, we construct $I = \bsa{a,X}$ for $a\neq 0 \in R$. Also, we can find $b\in R$ such that $I = \bsa{b}$ since $R[X]$ is PID. Thus, we can find $f(X) = a_0 + a_1 X + \dots \in R[X], a_0,a_1,\dots \in R$ such that
+%\be
+%bf = a+X \ \ra \ b(a_0 + a_1X + \dots ) = a+X \ \ra \ ba_1 = 1.
+%\ee
+
+%So $b$ is a unit. So $1\in b R[X] = \bsa{b} = \bsa{a,X}$. Thus, there exist $g(X),h(X) \in R[X]$, $g(X) = c_0 + c_1 X + \dots$, $c_0,c_1,\dots \in R$
+%\be
+%a g(X) + Xh(X) = 1 \ \ra \ a c_0 = 1.
+%\ee
+
+%Thus, $a$ is unit. Therefore, this can be done for any $a$, so $R$ is a field.
+
+%(In fact, ED $\to$ PID, so there is another way to see that $R$ is field $\to$ $R[X]$ is PID)
+%\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\begin{problem}
+%Show that a finite integral domain is a field.
+%\end{problem}
+
+%\begin{solution}[\bf Solution.]
+%Consider the map $\phi:R \to R$, $r \mapsto ar$, that is, multiplication by $a \neq 0$. Then this map is injective (Let $R$ be an integral domain and $\phi$ be a map $\phi:\R\to \R$, $r \mapsto ar$ for $a\neq 0$. Then $\phi$ is injective). Since $R$ is finite the map is also surjective. So the map is bijective. Therefore there exists $r \in R$ with $ar = 1$. Thus a has a multiplicative inverse. So $R$ is a field.
+%\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+By writing out the addition and multiplication tables, construct a field of order 4. Can you construct a field of order 6?
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Is every abelian group the additive group of some ring?
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $P$ be a prime ideal of $R$. Prove that $P[X]$ is a prime ideal of $R[X]$. If $M$ is a maximal ideal of $R$, does it follow that $M[X]$ is a maximal ideal of $R[X]$?
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+A sequence $\{a_n\}$ of rational numbers is a Cauchy sequence if $\abs{a_n -a_m} \to 0$ as $m, n \to\infty$, and $\{a_n\}$ is a null sequence if $a_n \to 0$ as $n \to \infty$. Quoting any standard results from Analysis, show that the Cauchy sequences with componentwise addition and multiplication form a ring $C$, and that the null sequences form a maximal ideal $N$.
+
+Deduce that $C/N$ is a field, with a subfield which may be identified with $\Q$. Explain briefly why the equation $x^2 = 2$ has a solution in this field.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+For addition, if $\bra{a_n},\bra{b_n} \in C$ with Cauchy sequences $\bra{a_n},\bra{b_n}$,
+\be
+\abs{(a_n + b_n) - (a_m + b_m)} \leq \abs{a_n -a_m} + \abs{b_n - b_m} \to 0 \quad n,m\to \infty.
+\ee
+
+The sequence $\bra{c_n}$ with $c_n = 0$ for all $n$ is the identity and $\bra{-a_n}$ is the inverse of $\bra{a_n}$. So $C$ is a group under componentwise addition.
+
+For multiplication, the closure is shown by
+\be
+\abs{a_nb_n - a_mb_m} = \abs{a_n b_n - a_m b_n + a_m b_n - a_mb_m} \leq \abs{a_n-a_m}\abs{b_n} + \abs{a_m}\abs{b_n - b_m} \to 0,\quad n,m \to \infty.
+\ee
+
+Also, the multiplication identity is $\bra{d_n}$ with $d_n = 1$ for all $n$. Thus, $C$ is a ring.
+
+For the null sequence $\bra{a_n},\bra{b_n} \in N$, $a_n + b_n \to 0$, $\bra{c_n}$ with $c_n = 0$ for all $n$ is identity and $\bra{-a_n}$ is the inverse of $\bra{a_n}$. Thus, null sequence is subgroup of $C$. For any $\bra{c_n} \in C$, Cauchy sequence is convergent to some finite $c$ on $\R$. So
+\be
+c_n a_n \to 0 \cdot c = 0 \ \ra \ \bra{c_n a_n } \in N.
+\ee
+
+So $N\lhd C$. Now suppose that there exists Cauchy sequence with non-zero limit in some ideal $M$, i.e., $N\subsetneq M \lhd C$. $\forall a_n \in M\bs N$, we have that there exists $\ve >0$, $\forall K$, $\exists m > K$, $\abs{a_m} > \ve$. Also, since $\bra{a_n}$ is Cauchy, there exists $L$ s.t. $\forall n,m>L$, $\abs{a_n -a_m} < \ve/2$. Thus, 
+\be
+\abs{a_n} \geq \abs{a_m} - \abs{a_n-a_m} > \ve/2
+\ee
+$\forall n > L$. So only finite many terms of $a_n$ can be 0. Now $\forall \bra{b_n} \in C$ and let 
+\be
+c_n = \left\{\ba{ll}
+0 & a_n = 0\\
+b_n/a_n \quad\quad & a_n \neq 0
+\ea\right.\qquad\qquad d_n = \left\{\ba{ll}
+b_{n}\quad\quad  & a_{n} = 0 \\
+0 & a_{n} \neq 0
+\ea\right.
+\ee
+
+%For the zero subsequence $\bra{a_{n_k}}$, 
+
+Thus, $\bra{c_n} \in C$ and $\bra{d_n} \in N$. So by definition by ideal
+\be
+\bra{b_n} = \underbrace{\bra{c_n a_n}}_{\in M} + \underbrace{\bra{d_n} }_{\in N \subsetneq M} \in M.
+\ee
+
+Thus, $C \subseteq M$. So we see that $M = C$, i.e., $N$ is maximal ideal. Then $C/N$ is a field (since for ring $R$, the quotient ring $R/I$ is a field if and only if $I$ is maximal in $R$).
+
+Thus, there exists a subfield $\Q\leq C/N$ in which the equation $x^2 = 2$ has a solution since for $x_n \to \sqrt{2}$ ($\bra{x_n} \in C$, rational is dense.),
+\be
+(x_n + N)^2 = x_n^2 + 2x_n N + N^2 \subseteq x_n^2 + N
+\ee
+has limit 2.
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $\varpi$ be a set of prime numbers. Write $\Z_\varpi$ for the collection of all rationals $m/n$ (in lowest terms) such that the only prime factors of the denominator $n$ are in $\varpi$.
+\ben
+\item [(i)] Show that $\Z_\varpi$ is a subring of the field $\Q$ of rational numbers.
+\item [(ii)] Show that any subring $R$ of $\Q$ is of the form $\Z_\varpi$ for some set $\varpi$ of primes.
+\item [(iii)] Given (ii), what are the maximal subrings of $\Q$?
+\een
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+\ben
+\item [(i)] $\frac 01$ and $\frac 11$ can be chosen to be in $\Z_\varpi$. $\forall \frac {m_1}{n_1},\frac {m_2}{n_2} \in \Z_\varpi$,
+\be
+\frac {m_1}{n_1} + \frac {m_2}{n_2} = \frac {m_1n_2 + m_2n_1}{n_1n_2} \in \Z_\varpi,\quad \frac {m_1}{n_1} \frac {m_2}{n_2} = \frac {m_1m_2}{n_1n_2} \in \Z_\varpi
+\ee
+because the denominator can't have any prime factor other than those of $n_1$ and $n_2$. Thus, $\Z_\varpi$ is a subring, i.e., $\Z_\varpi \leq \Q$.
+
+\item [(ii)] Assume $\varpi$ consists of all the prime numbers of the elements' denominators in $R$. Then clearly, $R\subseteq \Z_\varpi$.
+
+
+Since $1\in R$, $\forall r\in \Z$ we have $r= 1+ 1+ \dots + 1 \in R$. Thus, $\forall \frac ab \in R, r\in \Z$, $\frac ab r \in R$.
+
+So for $b = p_1^{b_1}p_2^{b_2}\dots$ where $p_i$ are prime numbers ($p_i \in \varpi$), we can find $r\in \Z$ such that $b/r = p_i \in \varpi$. Since $a/b$ is reduced to the lowest from, $(a,b) = 1$ ($a,b$ are coprime). Then $\exists c,d \in \Z$ such that
+\be
+ac + bd = 1 \ \ra \ ac + p_i rd = 1 \ \ra \ (a,p_i) = 1 \ \ra \ \frac ab r = \frac a{p_i} \in R \ \ra \ \frac 1{p_i} \in R
+\ee
+by letting $a =1$. Thus, we have $\Z_\varpi \subseteq R$ and hence $\Z_\varpi = R$. 
+
+\item [(iii)] Since $\Z_\varpi \subseteq Z_{\varpi \cup \varpi'}$, the maximal subrings are $\Z_{\theta}$ where $\theta$ are whole prime number sets missing only one prime number.
+\een
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Does every ring have a maximal ideal?
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+
+\end{solution}
+
+
+
+\begin{problem}
+Exhibit an integral domain $R$ and a (non-zero, non-unit) element of $R$ that is not a product of irreducibles.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $n \geq 3$. By factorising $n$ or $n + 1$ (as appropriate), show that $\Z[\sqrt{-n}]$ is not a UFD.
+\end{problem}
+
+\begin{solution}[\bf Solution]
+\end{solution}
+
+
+\begin{problem}
+\label{ques:group_integral_domain} Show that if $R$ is an integral domain then a polynomial in $R[X]$ of degree $d$ can have at most $d$ roots. Give a quadratic polynomial in $(\Z/8\Z)[X]$ that has more than two roots.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+Since $R$ is an integral domain, we have that $R[X]$ is an integral domain (see lemma in notes). Let $f(X)\in R[X]$ with $\deg(f(X))=d$ and 
+\be
+f(X) = \sum^d_{i=0} a_i X^i,\quad a_d \neq 0 .
+\ee
+
+If $f(X)$ has no roots, we are done. Suppose $a$ is a root of $f(X)$ then 
+\be
+f(X) = (X-a)g(X) \text{ for some }g(X).
+\ee
+
+Suppose that 
+\be
+g(X) = \sum^m_{i = 0} b_i X^i.
+\ee
+
+If $m \geq d$, we have the leading term of $f(X) = (X-a)g(X)$ is $b_m X^{m+1} = 0$ since $\deg(f(X)) = d$. Then we have that
+\be
+b_m X^{m+1} = 0 \ \ra \ b_m = 0.
+\ee
+since $R[X]$ is an integral domain.
+
+Thus, $m<d$ and thus consider the leading term $f(X)$ which is $b_{d-1}X^d = a_d X^d$, so $b_{d-1} = a_d \neq 0$ since $R[X]$ is integral domain. Thus, $g(X)$ has degree $d-1$. So apply this method inductively, we have that $f(X)$ has at most $d$ roots.
+
+Consider $f(X) = X^2 -1$ in $\Z/8\Z[X]$, we have roots $1,3,5,7$ since $\Z/8\Z$ is not an integral domain.
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $R$ be an integral domain. The \emph{highest common factor} (hcf) of non-zero elements $a$ and $b$ in $R$ is an element $d$ in $R$ such that $d$ divides both $a$ and $b$, and if $c$ divides both $a$ and $b$ then $c$ divides $d$.
+\ben
+\item [(i)] Give two elements of $\Z[\sqrt{-5}]$ that do not have a hcf.
+\item [(ii)] Show that the hcf of $a$ and $b$, if it exists, is unique up to multiplication by a unit.
+\item [(iii)] Explain briefly why, if $R$ is a UFD, the hcf of two elements exists. Give an example to show that this is not always the case in an integral domain.
+\item [(iv)] Show that if $R$ is a PID, the hcf of elements $a$ and $b$ exists and can be written as $ra + sb$ for some $r, s \in R$. Give an example to show that this is not always the case in a UFD.
+\item [(v)] Explain briefly how, if $R$ is a Euclidean domain, the Euclidean algorithm can be used to find the hcf of any two non-zero elements. 
+\item [(vi)]Use the algorithm to find the hcf of $11 + 7i$ and $18 - i$ in $\Z[i]$.
+\een
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+\ben
+\item [(i)] Let $a = 6 = (1+ \sqrt{-5})(1- \sqrt{-5})$ and $b= 2 (1+ \sqrt{-5})$. Thus,
+\be
+N(a) = N((1+ \sqrt{-5}))N((1- \sqrt{-5})) = 6 \cdot 6 = 36,\quad N(b) = N(2)N((1+ \sqrt{-5})) = 4 \cdot 6 = 24.
+\ee
+
+If $d$ is a hcf of $a,b$. $d|a$ and $d|b$ which implies that
+\be
+N(d) \mid N(a),\ N(d)\mid N(b) \ \ra \ N(d) \mid 12.
+\ee
+
+Since $N(d)$ is of the form $a^2 + 5b^2$, there is no such $d$ satisfying $N(d) = 12$. Thus, the we have $N(d) = 6$. Then $d = 1+\sqrt{-5}$ and $d\mid a$ and $d \mid b$. However, $2\mid a$ and $2\mid b$, so if $d$ a hcf, we have $2\mid d$. But $2\nmid 1+\sqrt{-5}$ since $N(2) = 4\nmid 6 = N(d)$. Contradiction. 
+
+Thus, there is no hcf of $a,b$. (Therefore, we can see that $\Z[\sqrt{-5}]$ is not a UFD.)%The units in $\Z[\sqrt{-5}]$ are $\pm 1$. 
+
+\item [(ii)] Suppose $d$ and $d'$ are hcfs of $a$ and $b$ then $d\mid d'$ and $d' \mid d$. Thus, for $r_1,r_2 \in R$, we have
+\be
+d' = dr_1, \ d = d'r_2 \ \ra \ d' = d' r_1r_2 \ \ra \ r_1r_2 = 1
+\ee
+since $R$ is an integral domain. Thus, $r_1,r_2$ are units. So hcf is unique up to multiplication by a unit.
+
+
+\item [(iii)] If $a_i$ is zero, $\hcf(a_1,\dots,a_n) = \hcf(a_1,\dots,a_{i-1},a_{i+1},\dots,a_n)$. Thus, we only consider the case that $a_i$ is unit or a product of irreducibles, each $a_i$ is of the form
+\be
+u_i \prod_j p^{n_{ij}}_j
+\ee
+where $p_j$ is irreducible and $p_j$ is not associate to $p_k$ whenever $j \neq k$. $u_i$ is a unit in $R$ and $n_{ij} \geq 0$.
+
+The claim is that $\prod_j p^{m_j}_j$ is a highest common factor of $a_1,\dots , a_n$ where $m_j = \min_i\{n_{ij}\}$. It is clear that this is a factor of each $a_i$ i.e., $d\mid a_i$, and if $d' \mid a_i$ for each $i$.
+
+If $a_i$ is a unit, we have $a_i = cd'$ for some $c\in R$, then $\bb{a_i^{-1}c}d' =1$ and therefore $d'$ is a unit. If $a_i$ is not a unit, then each irreducible dividing $d'$ is also an irreducible dividing $a_i$ and so must be one of the $p_j$. Thus
+\be
+d' = u\prod_j p^{t_j}_j
+\ee
+where $u$ is a unit. But the $t_j$ can be at most $\min_i\{n_{ij}\}$ if $d' | a_i$ for each $i$. Thus 
+\be
+d = \prod_j p^{m_j}_j = p \cdot \prod_j p^{t_j}_j = p u^{-1} d' \ \ra \ d' \mid d
+\ee
+where $p\in R$.
+
+\item [(iv)] Since $R$ is a PID, it is a UFD. Thus the hcf exists. For $a,b \in R$, there exist $d\in R$ such that $\bsa{a,b} = \bsa{d}$ since $R$ is PID. Thus,
+\be
+a = rd,\ b = sd,\ r,s \in R \ \ra \ d\mid a,\ d\mid b.
+\ee
+
+Also, $d = \alpha a + \beta b$ for $\alpha,\beta \in R$. Thus, for any $c$ such that $c\mid a$ and $c \mid b$, we have
+\be
+a = pc,\ b = qc,\ p,q \in R \ \ra \ d = (\alpha p + \beta q)c \ \ra \ c\mid d.
+\ee
+
+Thus, $d$ is a hcf of $a,b$.
+
+If $R$ is a UFD but not PID, this is not true. For instance, $\Z[X]$ is a UFD but not a PID. The hcf of 2 and $X$ is 1. But there don't exist $\alpha,\beta\in \Z[X]$ such that
+\be
+1 = \alpha X + \beta \cdot 2.
+\ee
+
+\item [(v)] $R$ is a ED. Thus, there exists a function $\phi: R\bs \bra{0} \to \Z^+$ s.t. $\phi(ab) \geq \phi(a)$ for $a,b\in R\bs\bra{0}$ and if $a,b\in R$ with $b\neq 0$ then $\exists q,r\in R$ s.t. $a = bq + r$ and either $r=0$ or $\phi(r)< \phi(b)$.
+
+Then the procedure of finding $d$ is: Let $a_1 = a$, $b_1 = b$ (wlog assume $\phi(a)\geq \phi(b)$) then $a_1 = b_1 q_1 + r_1 $ for some $q_1,r_1 \in R$ with either $r_1 = 0$ or $\phi(r_1) < \phi(b_1)$. If $r_1 = 0$, it ends and $b_1$ is a hcf of $a,b$. If $\phi(r_1) >0$, we let $a_2 = b_1$, $b_2 = r_1$ and repeat the steps. If $r_i = 0$, the procedure ends and $b_i$ is a hcf of $a,b$, otherwise it keeps going.
+
+\item [(vi)] Let the norm $N$ be the Euclidean function. Thus, we know that $N(11 + 7i) = 170 < 325 = N(18-i)$. Thus,
+\beast
+18 - i & = & (11 + 7i) + 7 - 8i,\quad\quad N(7-8i) = 113< 170 = N(11+7i)\\
+(11 + 7i) & = & i(7 - 8i) + 3,\quad\quad N(3) = 9 < 113 = N(7-8i)\\
+7 - 8i & = & 3 (2 - 3i) + 1 + i,\quad\quad N(1+i) = 2 < 9 = N(3)\\
+3 & = & (1-i)(1+i) + 1,\quad\quad N(1) = 1 <2 = N(1+i)\\
+1+i & = & 1(1+i) + 0.
+\eeast
+
+Thus, hcf of $18 - i$ and $11 + 7i$ is 1.
+\een
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $F$ be a finite field. Show that the prime subfield $K$ (that is, the smallest subfield) of $F$ has $p$ elements for some prime number $p$. Show that $F$ is vector space over $K$ and deduce $F$ has $p^n$ elements for some $n$.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+Let $1$ be the multiplicative identity in $F$ and $n = \abs{F}$. Define the homomorphism
+\be
+\phi: \Z \to F,\ k \mapsto \underbrace{1+\dots + 1}_{k\lmod{n}}.
+\ee
+
+Since $F$ is finite and $\Z$ is infinite, the homomorphism is not injective. Thus, $\ker\phi \neq \bra{0}$. Thus, $\ker\phi \lhd \Z$ i.e. $\ker\phi = m\Z = \bsa{m}$ for some $m$ ($m\in \ker \phi$). Thus, if $m$ is a composite number in $\Z$, we have $m = ab$, for some $a,b\in \Z$ with $a,b\neq \pm 1$. But
+\be
+0 = \phi(m) = \phi(ab) = \phi(a)\phi(b) \ \ra \ \phi(a) = 0 \text{ or } \phi(b) = 0
+\ee
+since $F$ is a field (and therefore an integral domain). Then $\ker \phi = a\Z $ or $\ker\phi = b\Z$ which is a contradiction. Thus, $\ker\phi = p\Z$ for some prime number $p$. By the first isomorphism theorem, 
+\be
+\Z/p\Z = \Z/\ker\phi \cong \im\phi \leq F.
+\ee
+
+Thus, we can take the subring $K = \im \phi$. Since $K \cong \Z/pZ$, it is a field, thus a subfield of $F$.
+
+$(F,+)$ is an abelian group. $\forall a_1,a_2 \in K,r_1,r_2 \in F$,
+\beast
+(a_1+a_2)(r_1+r_2) & = & a_1r_1 + a_1r_2 + a_2 r_1 + a_2 r_2,\\
+(a_1a_2r_1) & = & a_1(a_2r_1),\\
+1\cdot r & = & r.
+\eeast
+
+Thus, $F$ is a vector space over $K$. Since $F$ is a finite vector space, so it has a basis $e_1,\dots,e_n$. Then every element of $F$ is of the form 
+\be
+\sum^n_{i=1} a_i e_i, \quad a_i \in K.
+\ee
+
+Thus, there is a bijection between element of $F$ and $\bra{(a_1,\dots,a_n)\in K^n}$. Hence $\abs{F} = p^n$.
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}\label{que:gl_n_sl_n} 
+Let $\F_q$ be a finite field of $q$ elements.
+\ben
+\item [(i)] Let $V$ be a vector space of dimension $n$ over $\F_q$. Show that $V$ has $q^n$ vectors. How many (ordered) bases does $V$ have? Find the order of the group $GL_n(\F_q)$ of all non-singular $n \times n$ matrices with entries in $\F_q$.
+\item [(ii)] Show that the determinant homomorphism from $GL_n(\F_q)$ to $\F_q\bs\bra{0}$ is surjective and hence find the order of the group $SL_n(\F_q)$ consisting of all matrices in $GL_n(\F_q)$ of determinant 1.
+\item [(iii)] Show that the multiplicative group of the non-zero elements of $\F_q$ is cyclic.
+
+[Hint, recall the structure theorem for finite abelian groups, and note question \ref{ques:group_integral_domain}.)
+\een
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+\ben
+\item [(i)] By the previous question, we know that $\abs{V} = q^n$. Then we use the following procedure to find bases. Pick $r_1 \in V$ arbitrarily ($r_1 \neq 0$) and there are $q^n - 1$ possibilities. Then define 
+\be
+U_1 = \bsa{r_1} = \bra{ar_1: a\in \F_q}.%,\quad \abs{U_1} = q.
+\ee
+
+If $a,b\in V$ and $ar_1 = br_1 \ \ra \ r_1 = a^{-1}b r_1 \ \ra \ 1 = a^{-1}b \ \ra \ a = b$ since $V$ is a vector space (if $\lm v = 0$ then either $\lm = 0$ or $v= 0$). Thus, $\abs{U_1} = q$.
+
+Then we pick $r_2 \in V\bs U_1$, there are $q^n - q$ possibilities. Then define
+\be
+U_2 = \bsa{r_1,r_2} = \bra{a_1 r_1 + a_2 r_2: a_1,a_2 \in \F_q} = \bra{\bsa{r_1}+ar_2 :a\in \F_q }.
+\ee
+
+Obviously, $\abs{U_2} = q^2$. Repeating the procedure, we can work out that for $m = 1,\dots, n$
+\be
+U_m = \bra{a_1r_1 + \dots + a_mr_m : a_1,\dots, a_m \in \F_q},\quad \abs{U_m} = q^m.
+\ee
+
+Thus, the number of ordered bases is 
+\be
+\prod^{n-1}_{i=0} \bb{q^n - q^i}.
+\ee
+
+Let $\bra{e_1,\dots,e_n}$ be the standard basis of $V$, where $e_i = \bepm 0 & \dots & 1 & \dots & 0 \eepm^T$ has the only 1 at the $i$th row. Thus, $\forall A \in GL_n(\F_q)$, we consider $\bra{Ae_1, \dots, Ae_n}$. If
+\be
+\sum_i a_i Ae_i = 0 \ \ra \ A \sum_i a_i e_i = 0 \ \ra \ \sum_i a_i e_i = 0 \ \ra \ a_i = 0, \forall i
+\ee
+since $A$ is invertible and $\bra{e_1,\dots,e_n}$ is a basis. Thus, for any $A\in GL_n(\F_q)$, $\bra{Ae_1, \dots, Ae_n}$ is a basis. 
+
+Conversely, if $\bra{e_1',\dots, e_n'}$ is a basis of $V$, then the transformation matrix $P$ between $\bra{e_1,\dots,e_n}$ and $\bra{e_1',\dots,e_n'}$ is invertible ($A \in GL_n(\F_q)$). (Here we have $E' = AE$. If $\det A = 0$, $\det E' = \det A\det E = 0$ which is a contradiction.)
+
+Thus, for any basis $\bra{e_1',\dots, e_n'}$ in $V$, we can find a $A\in GL_n(\F_q)$ such that 
+\be
+\bra{e_1',\dots, e_n'} = \bra{Ae_1,\dots, Ae_n}.
+\ee
+
+Therefore, there is a bijective between $GL_n(\F_q)$ and the set of (ordered) bases of $V$. Thus,
+\be
+\abs{GL_n(\F_q)} = \prod^{n-1}_{i=0} \bb{q^n - q^i}.
+\ee
+
+\item [(ii)] Now consider the determinant (group) homomorphism 
+\be
+\det:GL_n(\F_q) \to \F_q\bs\bra{0} = \F_q^\times,\ A \mapsto \det A.
+\ee
+
+For any $a \in \F_q^\times$, we can find $A \in GL_n$,
+\be
+\bepm
+a & & & \\
+& 1 & & \\
+& & \ddots & \\
+& & & 1
+\eepm \ \ra \ \det A = a \ \ra \ \det \text{ is surjective }(\im \theta = \F_q^\times).
+\ee
+
+To check $\det$ is a (group) homomorphism, $\forall A,B\in GL_n(\F_q)$
+\be
+\det(AB) = \det A \det B = \det A \cdot \det B
+\ee
+by the property of $\det$ function. Thus, we apply the first isomorphism theorem,
+\be
+GL_n(\F_q) /\ker\det \cong \im \det \ \ra \ GL_n(\F_q) / SL_n(\F_q) \cong \F_q^\times \ \ra \ \frac{\abs{GL_n(\F_q)}}{\abs{SL_n(\F_q)}} = q-1.
+\ee
+
+Thus, 
+\be
+\abs{SL_n(\F_q)} = \frac{\abs{GL_n(\F_q)}}{q-1} = \frac{\prod^{n-1}_{i=0} \bb{q^n - q^i}}{q-1} = q^{n-1}\prod^{n-2}_{i=0} \bb{q^n - q^i}.
+\ee
+
+
+\item [(iii)] By structure theorem for finite abelian groups, we have the multiplicative group
+\be
+\F_q^\times \cong C_{d_1} \times C_{d_2} \times \dots \times C_{d_n}\quad \text{with }d_{i+1}\mid d_i
+\ee
+
+If $\F_q^\times$ is isomorphic to $C_{d_1} \times C_{d_2} \times \dots \times C_{d_n}$ where $n \geq 2$, then there exists $n_a,n_b \in \bra{d_1,d_2,\dots,d_n}$ s.t. $n_a\mid n_b$. Then there is a cyclic subgroup $\bsa{a} \cong C_{n_a}$ and $\bsa{b} \cong C_{n_b}$ generated by $a$ and $b$ with order $n_a$ and $n_b$. Since $n_a \mid n_b$ we have $\bsa{b^{\frac{n_b}{n_a}}} \cong \bsa{a} \cong C_m$ for some $m >1$. Thus, there exists a subgroup $\bsa{b^{\frac{n_b}{n_a}}} \times \bsa{a} \cong C_m \times C_m$ since $H\times K$ is also a group if $H,K$ are groups.
+
+Thus there are at least $m^2$ elements satisfying $a^m = 1$. These are all roots of $X^m - 1$ in $\F_p[X]$ which is a UFD. $X^m - 1$ has a unique expression up to ordering and associates as a product of at most $m$ irreducibles in $\F_p[X]$.
+
+In particular, there are at most $m$ linear factors $X - a$ and so at most $m$ roots, contradicting that there are at least $m^2$ roots.
+
+Thus, the multiplicative group $\F_q^\times$ is cyclic.
+\een
+\end{solution}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Show that the set $SL_2(\Z)$ of integer $2\times 2$ matrices of determinant 1 is a group under multiplication. Show that there is a natural homomorphism from $SL_2(\Z)$ to $SL_2(\F_p)$, the group of determinant 1 matrices with entries in $\F_p =\Z/p\Z$. Identify the kernel.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+To check $SL_2(\Z)$ is a group under multiplication:
+\ben
+\item [(i)] associativity: clear from the matrix multiplication.
+\item [(ii)] closure: if $A,B\in SL_2(\Z)$, then $\det A = \det B = 1$. Thus, $\det AB = \det A\det B = 1$ and therefore $AB\in SL_2(\Z)$.
+\item [(iii)] identity: $\bepm 1 & 0 \\ 0 & 1 \eepm$.
+\item [(iv)] inverse: for $a,b,c,d \in \Z$, $\bepm a & b\\ c & d \eepm^{-1} = \bepm d & -b\\ -c & a \eepm$.
+\een
+
+Define a function 
+\be
+\phi: SL_2(\Z) \to SL_2(\F_p),\ A \to A \lmod{p}.%which take module of $p$ for the elements of $A$.
+\ee
+
+If $a,b\in \Z$, then 
+\be
+a \lmod{p} + b\lmod{p} \equiv a + b \lmod{p},\quad a \lmod{p} b\lmod{p} \equiv ab \lmod{p}.
+\ee
+
+Thus, $AB \lmod{p} \equiv A \lmod{p} B\lmod{p}$. Therefore, $\phi$ is a homomorphism. Since the identity in $SL_2(\F_q)$ is $\bepm 1 & 0 \\ 0 & 1 \eepm$, the kernel of $\phi$ is
+\beast
+\ker\phi & = & \bra{\bepm a & b \\ c & d \eepm \in SL_2(\Z): a\equiv d \equiv 1 \lmod{p}, b \equiv c \equiv 0 \lmod{p}}\\
+& = & \bra{\bepm a & b \\ c & d \eepm: a\equiv d \equiv 1 \lmod{p}, b \equiv c \equiv 0 \lmod{p}, ad - bc = 1}\\
+& = & \bra{I + p\bepm \alpha & \beta \\ \gamma & \delta \eepm: (1+p\alpha)(1+p\delta) - p^2 \beta \gamma = 1}\\
+& = & \bra{I + p\bepm \alpha & \beta \\ \gamma & \delta \eepm: \tr\bepm \alpha & \beta \\ \gamma & \delta \eepm = p \det \bepm \alpha & \beta \\ \gamma & \delta \eepm}.
+\eeast
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $V$ be a 2-dimensional vector space over the field $F = \F_q$ of $q$ elements, let $\Omega$ be the set of its 1-dimensional subspaces.
+\ben
+\item [(i)] Show that $\Omega$ has size $q + 1$ and $GL_2(\F_q)$ acts on it. Show that the kernel $Z$ of this action consists of scalar matrices and the group $PGL_2(\F_q) = GL_2(\F_q)/Z$ has order $q(q^2-1)$. Show that the group $PSL_2(\F_q)$ obtained similarly from $SL_2(\F_q)$ has order $q(q^2 - 1)/d$ with $d$ equal highest common factor of $q - 1$ and 2.
+\item [(ii)] Show that $\Omega$ can be identified with the set $\F_q \cup\{\infty\}$ in such a way that $GL_2(\F_q)$ acts on $\Omega$ as the
+group of M\"obius transformations $z \mapsto \frac{az+b}{cz+d}$. Show that in this action $PSL_2(\F_q)$ consists of those transformations with determinant a square in $\F_q$.
+\een
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+\ben
+\item [(i)] If $\bsa{v}$ is a line in $V$, then it is spanned by $\bepm 0\\ 1 \eepm$ and $\bepm a \\ 0 \eepm$ with $a\in \F_q$. So $\abs{\Omega} = q + 1$.
+
+Alternatively, every 1-d subspace has size $q$ (including 0) and $\abs{V} = q^2$. The subspaces intersect only in 0, so $V\bs \bra{0}$ is partitioned into subsets of size $q-1$ by the subspaces. But $\abs{V\bs \bra{0}} = q^2 - 1 = (q+1)(q-1)$. Hence there are $q+1$ 1-d subspaces.
+
+Now define
+\be
+\phi: GL_2 (\F_q) \times \Omega \to \Omega,\ (A,\bsa{v}) \mapsto \bsa{Av}.
+\ee
+
+This is an action since
+\ben
+\item [(a)] If $A \in GL_2 (\F_q)$, $\bsa{v} \in \Omega$, then $A\bsa{v} \in \Omega$.
+\item [(b)] $\forall A,B \in GL_2(\F_q), \bsa{v}\in \Omega$, we have
+\be
+(AB)\bsa{v} = \bsa{ABv} = A\bsa{Bv} = A \bb{B \bsa{v}}
+\ee
+\item [(c)] $\forall \bsa{v}\in \Omega$, $I \bsa{v} = \bsa{v}$.
+\een
+
+Now the kernel of the action $\phi$ is 
+\be
+\ker \phi = \bra{A \in GL_2(\F_q):A\bsa{v} = \bsa{v}, \forall \bsa{v}\in \Omega}
+\ee
+
+Clearly, For $\lm \neq 0$, we have
+\be
+\bepm \lm & 0 \\ 0 & \lm \eepm \subseteq \ker \phi.
+\ee
+
+Furthermore, we can see that for any $\bepm a & b \\ c & d \eepm \in \ker\phi$,
+\be
+\bepm
+a & b \\
+c & d
+\eepm \bsa{\bepm 1 \\ 0 \eepm} = \bsa{\bepm a \\ c \eepm}  \ \ra \ c = 0,\quad\quad 
+\bepm
+a & b \\
+c & d
+\eepm \bsa{\bepm 0 \\ 1 \eepm} = \bsa{\bepm b \\ d \eepm}  \ \ra \ b = 0.
+\ee
+
+Thus, 
+\be
+\bepm
+a & 0 \\
+0 & d
+\eepm \bsa{\bepm 1 \\ 1 \eepm} = \bsa{\bepm a \\ d \eepm}  \ \ra \ a = d.
+\ee
+
+Therefore, we have $\bra{\bepm \lm & 0 \\ 0 & \lm \eepm:\lm \neq 0,\lm \in \F_q} = \ker \phi =Z$. We know that $\abs{\bra{\bepm \lm & 0 \\ 0 & \lm \eepm:\lm \neq 0,\lm \in \F_q}} = q -1$. Then (by the result in question \ref{que:gl_n_sl_n}, $\abs{GL_n(\F_q)} = \prod^{n-1}_{i=0} \bb{q^n - q^i}$)
+\be
+PGL_2(\F_q) = GL_2(\F_q)/Z \ \ra \ \abs{PGL_2(\F_q)} = \frac{\abs{GL_2(\F_q)}}{\abs{Z}} =  \frac{(q^2 -1)(q^2 -q)}{q-1} = q(q^2-1)
+\ee
+by Lagrange theorem.
+
+Now consider $SL_2(\F_q)$. It is a subgroup of $GL_2(\F_q)$ and also an action $\vp$ on $\Omega$. Thus, 
+\be
+\ker \vp = \bra{\bepm \lm & 0 \\ 0 & \lm \eepm \in SL_2(\F_q):\lm \in \F_q^\times} = \bra{\pm I}
+\ee
+
+First we know that $\F_q^\times = \F_q\bs \bra{0}$ is a group with order $q-1$. If $-1$ is an element of $\F_q$, we have $(-1)^{q-1} = 1$ by the property of group. Thus, if $q$ is odd, this equation holds and thus $\abs{\ker\vp} = 2$. If $q$ is even, $(-1)^{q-1} = -1\neq 1$ which will gives that $\abs{\ker\vp} = 1$. Hence
+\be
+\ker\vp = \left\{\ba{ll}
+2 \quad \quad & q \text{ is odd}\\
+1 & q \text{ is even}
+\ea\right. = \hcf(q-1,2) := d.
+\ee
+
+Then by Lagrange theorem, we have (by result in question\ref{que:gl_n_sl_n}, $\abs{SL_n(\F_q)} = q^{n-1}\prod^{n-2}_{i=0} \bb{q^n - q^i}$)
+\be
+PSL_2(\F_q) = SL_2(\F_q)/Z \ \ra \ \abs{PSL_2(\F_q)} = \frac{\abs{SL_2(\F_q)}}{\ker\vp} =  \frac{q(q^2 -1)}{d} = q(q^2-1)/d.
+\ee
+
+\item [(ii)] Define funtion
+\be
+f:\Omega \to \F_p \cup \bra{\infty},\ \bsa{\bepm a\\ b \eepm} \mapsto \left\{ \ba{ll}
+a/b\quad\quad & b \neq 0\\
+\infty & b = 0
+\ea\right.
+\ee
+
+Now, if two matrices differ by a scalar multiple, then they induce the same transformation, so this map is constant on the cosets that make up $PGL_2(\F_q)$. Thus we actually have a surjective map $PGL_2(\F_q)$. (It's not too hard to show that this map is injective as well, and therefore an isomorphism).
+
+Thus, let $A = \bepm a & b \\ c & d \eepm \in GL_2(\F_q)$, then
+\be
+\bepm a & b \\ c & d \eepm \cdot z = f\bsa{\bepm a & b \\ c & d \eepm\bepm z \\ 1 \eepm} = f\bsa{\bepm az+b \\ cz + d \eepm} = \frac{az +b}{cz + d}
+\ee
+which is M\"obius transformation. 
+
+Let $M$ be the group of M\"obius transformations on induced by these matrices
+
+Now, we can restrict our original map to one from $SL_2(\F_q) \to M$. Let's denote the image of this map by $M$. So we can take it as being a surjective map $SL_2(\F_q) \to M'$. As before, we can ``quotient out" to make it a map $PSL_2(\F_q)\to M'$. Again, this is actually an isomorphism (which justifies referring to as $PSL_2(\F_k)\to M'$ in the first place).
+
+So, the question becomes: show that a matrix induces a transformation in $M'$ if and only if its determinant is a square. But by definition, a transformation is in $M'$ if and only if it is induced by some matrix of determinant one (with scalar multiples).
+\een
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Show that the groups $SL_2(\F_4)$ and $PSL_2(\F_5)$ defined above both have order 60. Use this and some questions from sheet 1 to show that they are both isomorphic to the alternating group $A_5$. Show that $SL_2(\F_5)$ and $PGL_2(\F_5)$ both have order 120, that $SL_2(\F_5)$ is not isomorphic to $S_5$, but $PGL_2(\F_5)$ is.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+From the previous questions, we have that
+\be
+\abs{SL_n(\F_q)} = q^{n-1}\prod^{n-2}_{i=0} \bb{q^n - q^i},\quad \abs{SL_2(\F_4)} = 4^{2-1}\bb{4^2 - 4^0} = 4 \cdot 15 = 60. 
+\ee
+
+\be
+\abs{PSL_2(\F_q)} = q(q^2-1)/d,\quad \abs{PSL_2(\F_5)} = 5(5^2-1)/2 = 5 \cdot 12 = 60. 
+\ee
+
+From Example sheet 1, we have
+\ben
+\item [(i)] Let $G$ be a group of order 60 which has more than one Sylow 5-subgroup. Then $G$ must be simple. 
+\item [(ii)] Let $G$ be a simple group of order 60. Then $G$ is isomorphic to the alternating group $A_5$.
+\een
+
+We know that $SL_2(\F_4) \leq S_5$ and $A_5 \cap SL_2(\F_4)$ has index 1 or 2 in $A_5$, so $SL_2(\F_4) \cong A_5$.
+
+Furthermore, we have two distinct matrices
+\be
+\bepm
+1 & 1 \\
+0 & 1 
+\eepm, \ \bepm
+1 & 0 \\
+1 & 1 
+\eepm \in PSL_2(\F_5)
+\ee
+with order 5 as
+\be
+\bepm
+1 & 1 \\
+0 & 1 
+\eepm^n = \bepm
+1 & n \\
+0 & 1 
+\eepm, \quad \bepm
+1 & 0 \\
+1 & 1 
+\eepm^n = \bepm
+1 & 0 \\
+n & 1 
+\eepm
+\ee
+
+Thus, we have at least two Sylow 5-subgroups:
+\be
+\bra{\bepm
+1 & 1 \\
+0 & 1 
+\eepm, \bepm
+1 & 2 \\
+0 & 1 
+\eepm, \bepm
+1 & 3 \\
+0 & 1 
+\eepm,\bepm
+1 & 4 \\
+0 & 1 
+\eepm,\bepm
+1 & 0 \\
+0 & 1 
+\eepm
+},\quad\quad \bra{\bepm
+1 & 0 \\
+1 & 1 
+\eepm, \bepm
+1 & 0 \\
+2 & 1 
+\eepm, \bepm
+1 & 0 \\
+3 & 1 
+\eepm,\bepm
+1 & 0 \\
+4 & 1 
+\eepm,\bepm
+1 & 0 \\
+0 & 1 
+\eepm
+}.
+\ee
+
+Thus, by (i) and then (ii), we have $PSL_2(\F_5)\cong A_5$.
+
+
+rom the previous questions, we have that
+\be
+\abs{SL_n(\F_q)} = q^{n-1}\prod^{n-2}_{i=0} \bb{q^n - q^i},\quad \abs{SL_2(\F_5)} = 5^{2-1}\bb{5^2 - 5^0} = 5 \cdot 24 = 120. 
+\ee
+
+\be
+\abs{PGL_2(\F_q)} = q(q^2-1),\quad \abs{PSL_2(\F_5)} = 5(5^2-1) = 5 \cdot 24 = 120. 
+\ee
+
+For $SL_2(\F_5)$ act on itself, we see that its centre (kernel) is $Z(SL_2(\F_5)) = \bra{\pm I}$. However, $Z(S_5) = \iota$. Thus, $SL_2(\F_5) \not\cong S_5$.
+
+We have that $PGL_2(\F_5) \leq S_6$ with index 6. Also, $S_6$ acts on $S_6/PGL_2(\F_5) = X$. We know that (by lemma) $\phi:S_6 \to S_{\abs{X}}$ is a homomorphisim.
+
+Thus, $PGL_2(\F_5)$ fixes an element of $X$, so $PGL_2(\F_5)$ is a stabiliser in $S_6$. Thus, $PGL_2(\F_5) \cong S_5$.
+\end{solution}
+
+\section{Modules}
+
+{\bf All rings in this course are commutative with a multiplicative identity.}
+
+\subsection{Introduction}
+
+\begin{definition}
+Let $R$ be a commutative ring (could be left or right, see wiki). A set $M$ is an $R$-module with operation $+$, with $(M, +)$ forming an abelian group, and also has a map 
+\be
+R \times M \to M,\ (r,m) \mapsto m
+\ee
+satisfying
+\beast
+(r_1 + r_2)m & = & r_1m + r_2m\\
+r(m_1 + m_2) & = & rm_1 + rm_2\\
+r_1(r_2m) & = & (r_1r_2)m\\
+1m & = & m
+\eeast
+for all $r_1, r_2, r \in R$ and $m_1,m_2,m \in M$.
+\end{definition}
+
+\begin{example}
+\ben
+\item [(i)] Let $R = \F$ be a field. Then all vector spaces over $\F$ are $\F$-modules.
+\item [(ii)] For any $R$, $R^n$ forms an $R$-module,
+\be
+r(r_1,\dots , r_n) = (rr_1,\dots , rr_n).
+\ee
+In particular, when $n = 1$, $R$ itself is an $R$-module.
+
+\item [(iii)] If $I \lhd R$ is an ideal then $I$ is an $R$-module and $R/I$ is an $R$-module.
+\item [(iv)] Let $R = \Z$. $\Z$-modules are precisely the abelian groups. Given an abelian group $A$ with operation written as $+$ then the module map is given by
+\beast
+na & = & \underbrace{a + \dots+ a}_{n \text{ times}} \quad\quad n\geq 1\\
+0a & = & 0\\
+(-n)a & = & -(an) \quad\quad n \geq 1
+\eeast
+
+\item [(v)] $R = \F[X]$, $\F$ a field. If $V$ is an $\F$-vector space and $\alpha: V \to V$ a linear map (vector space endomorphism) then $V$ may be regarded as a $\F[X]$-module via 
+\be
+f(X)\dots v = f(\alpha)(v)
+\ee
+for $v \in V$. Different maps $\alpha$ yield different $\F[X]$-modules.
+
+\item [(vi)] If $R \leq S$ are rings then $S$ can be regarded as an $R$-module via
+\be
+rs = (rs)
+\ee
+for $r \in R$, $s \in S$. For example, let $\Z \leq \Z[\alpha]$, $\alpha$ an algebraic integer. We can regard $\Z[\alpha]$ as a $\Z$-module.
+
+\item [(vii)] Let $R$ be the prime subring of a finite field $\F$. Here $R \cong \F_p$ for some prime $p$. (Question 8 on Example Sheet 3 shows that $\F$ has cardinality $p^n$ for some $n$.) We can view $\F$ as an $\F_p$-vector space.
+\een
+\end{example}
+
+\begin{remark}
+There exists exactly one field of cardinality $p^n$ for every prime $p$ and $n \geq 1$, up to isomorphism. For example, 
+
+\begin{center}
+\begin{tabular}{cc}
+Cardinality & Field \\
+\hline
+4 & \quad  $\F_2[X]/(X^2 + X + 1)$\quad \\
+8 & $\F_2[X]/(X^3 + X + 1)$
+\end{tabular}
+\end{center}
+
+noting that e.g. $X^2 + X + 1$ is irreducible modulo 2. See also Question 9 on Example Sheet 2.
+\end{remark}
+
+\begin{definition}
+A subset $N$ of an $R$-module $M$ is an $R$-submodule, written $N \leq M$, if it is an additive subgroup of $M$ and $rn \in N$ for all $r \in R$, $n \in N$.
+\end{definition}
+
+\begin{example}
+Ideals $I \lhd R$ are the $R$-submodules of the $R$-module $R$. In a $\F$-vector space the vector subspaces are the $\F$-submodules.
+\end{example}
+
+\begin{definition}
+If $N \leq M$ then the quotient module\index{quotient module} $M/N$ has elements $m + N$ with the operation + defined as for quotients of the additive groups,
+\be
+r(m + N) = rm + N
+\ee
+for $r \in R$, $m \in M$. Check that this turns $M/N$ into an $R$-module.
+\end{definition}
+
+\begin{definition}
+A map $\theta : M \to N$ is an $R$-module homomorphism if
+\beast
+\theta(m_1 + m_2) = \theta(m_1) + \theta(m_2),\\
+\theta(rm) & = & r\theta(m).
+\eeast
+\end{definition}
+
+\begin{example}
+If $R = \F$, $\F$ a field, then an $R$-module homomorphism is a linear map between $\F$-vector spaces.
+\end{example}
+
+\begin{theorem}[First isomorphism theorem]\label{thm:modulo_isomorphism_1}
+If $\theta : M \to N$ is an $R$-module homorphism then $\ker \theta$ is an $R$-submodule of $M$, the image of $\theta$ is a submodule of $N$ and with
+\beast
+\ker \theta & = & \{a \in M : \theta(m) = 0\},\\
+\im \theta & = & \{\theta(m) : m \in M\}
+\eeast
+we have that $M/\ker \theta \cong \im \theta$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Left to the reader. The isomorphism theorem for additive subgroups shows that $M/ \ker \theta \cong \im \theta$ for the additive groups. So we only need to check the multiplicative properties.
+\end{proof}
+
+As usual there is a 1-1 correspondence,
+\be
+\{\text{submodules of }M/N\} \longleftrightarrow \{\text{submodules of $M$ containing $N$}\}.
+\ee
+
+If $N \leq L \leq M$ are $R$-modules then
+\be
+M/L \cong (M/N)/(L/N).
+\ee
+Compare this with the third isomorphism theorem.
+
+\begin{example}
+In the special case of $R = \F$ a field and vector spaces, we have quotient spaces $V/W$ where $W \leq V$ and there are isomorphism theorems for linear maps ($\F$-module homomorphisms).
+\end{example}
+
+\begin{definition}
+Let $m \in M$ then the annihilator\index{annihilator} of $m$ is
+\be
+\ann(m) = \{r \in R : rm = 0\}.
+\ee
+
+The annihilator of $M$ is
+\be
+\ann(M) = \{r \in R : \forall m \in M,\ rm = 0\} = \bigcap_{m\in M} \ann(m).
+\ee
+
+These annihilators are ideals in $R$ since
+\be
+r_1m = 0, r_2m = 0 \ \ra \ 0 = r_1m + r_2m = (r_1 + r_2)m, \quad r_1m = 0 \ \ra \ (rr_1)m = 0.
+\ee
+\end{definition}
+
+\begin{lemma}
+If $M$ is an $R$-module and $m \in M$ then
+\be
+Rm \cong R/ \ann(m)
+\ee
+where $Rm = \{rm : r \in R\}$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Apply Theorem \ref{thm:modulo_isomorphism_1} to the $R$-module homomorphism $\theta : R \to M,\ r \mapsto rm$ with $\ker \theta = \ann(m)$ and $\im \theta = Rm$.
+\end{proof}
+
+Modules of the form $Rm$ are cyclic modules. More generally, if $m_1,\dots ,m_k \in M$ and
+\be
+M = Rm_1 + \dots + Rm_k = \{r_1m_1 + \dots + r_km_k : r_1,\dots,r_k \in R\}
+\ee
+then $M$ is generated by $m_1,\dots ,m_k$, and $M$ is finitely generated.
+
+\begin{example}
+If $R = \Z$ then $\Z[\alpha]$ is a $\Z$-module where $\alpha$ is an algebraic integer. In fact, it is a finitely generated $\Z$-module. (Exercise.)
+\end{example}
+
+\begin{lemma}
+Let $N \leq M$ be $R$-modules. If $M$ is finitely generated then $M/N$ is finitely generated.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Suppose $M = Rm_1 +\dots+Rm_k$ then $M/N$ is generated by $m_1 +N,\dots ,m_k +N$ since
+\be
+m + N = r_1m_1 + \dots + r_km_k + N = r_1(m_1 + N) + \dots + r_k(m_k + N).
+\ee
+for some $r_1,\dots,r_k \in R$.
+\end{proof}
+
+Warning. $N$ need not be finitely generated.
+
+\begin{example}
+The polynomial ring $\C[X_1,X_2,\dots]$ in countably infinitely many variables $X_1,X_2,\dots$. Consider the ideal $I$ of polynomials with zero constant term. This is not finitely generated since $I = \bigcup I_j$ where $I_j = (X_1,\dots ,X_j)$ and hence $I_1 \subsetneq I_2 \subsetneq I_3 \subsetneq \dots$.
+Thus $\C[X_1,X_2,\dots]$ is not Noetherian.
+
+If $R = \C[X_1,X_2,\dots]$ then the submodules are the ideals, and we have shown that there is a submodule which is not finitely generated inside the cyclic module $R$.
+\end{example}
+
+\subsection{Direct sums, free modules}
+
+\begin{definition}
+If $M_1,\dots ,M_k$ are $R$-modules then the direct sum\index{direct sum} $M_1 \oplus \dots\oplus M_k$ has elements $(m_1,\dots ,m_k)$ with $m_i \in M_i$, addition
+\be
+(m_1,\dots ,m_k) + (m'_1,\dots ,m'_k) = (m_1 + m'_1,\dots ,m_k + m'_k)
+\ee
+and scalar multiplication
+\be
+r(m_1,\dots ,m_k) = (rm_1,\dots , rm_k).
+\ee
+\end{definition}
+
+\begin{definition}
+Let $m_1,\dots ,m_k \in M$. Then the set $\{m_1,\dots ,m_k\}$ is independent if
+\be
+r_1m_1 + \dots + r_km_k = 0 \ \ra \ r_1 = \dots = r_k = 0.
+\ee
+\end{definition}
+
+\begin{definition}
+The subset $S \subset M$ generates $M$ freely if
+\ben
+\item [(i)] $S$ generates $M$,
+\item [(ii)] every map $\psi : S \to N$, where $N$ is an $R$-module, extends to an $R$-module homomorphism $\theta : M \to N$.
+\een
+\end{definition}
+
+\begin{remark}
+If such a $\theta$ exists then it is unique since if we have two such $\theta_1$ and $\theta_2$ then $S \subset \ker(\theta_1 - \theta_2)$ and so $M \leq \ker(\theta_1 - \theta_2)$ since $S$ generates $M$. Thus $\theta_1 = \theta_2$.
+\end{remark}
+
+\begin{definition}
+A module freely generated by some subset $S$ is free and $S$ is a basis\index{basis}.
+\end{definition}
+
+\begin{proposition}
+For $S = \{m_1,\dots ,m_k\} \subset M$ the following are equivalent:
+\ben
+\item [(i)] $S$ generates $M$ freely.
+\item [(ii)] $S$ generates $M$ and is an independent set.
+\item [(iii)] Every element of $M$ is uniquely expressible in the form $r_1m_1+\dots+r_km_k$ for some $r_i \in R$.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+[(i) $\ra$ (ii)] Suppose that $S$ generates $M$ freely. We need to show independence. Let $N = R^k$ and define
+\be
+\psi : S \to N,\ m_j \mapsto  (0,\dots , 1,\dots),
+\ee
+i.e. a 1 in the $j$th place. So there is an $R$-module homomorphism $\theta : M \to N$. Then
+\be
+\theta(r_1m_1 + \dots + r_km_k) = (r_1,\dots , r_k).
+\ee
+So if $r_1m_1 + \dots + r_km_k = 0$ then $r_1 = \dots = r_k = 0$.
+
+The two implications (ii) $\ra$ (iii) and (iii) $\ra$ (i) are left as an exercise.
+\end{proof}
+
+\begin{example}
+For $R = \Z$, $M = \Z$, the set $\{2, 3\}$ is a generating set, but contains no basis for $M$. For example, $\{2\}$ is independent, but is not a generating set.
+\end{example}
+
+\begin{proposition}\label{pro:r_k}
+Let $M$ be a $R$-module, generated by $\{m_1,\dots ,m_k\}$. Then there is a free module $R^k$ and a surjective homomorphism $\theta : R^k \to M$. Thus $M \cong R^k/ \ker \theta$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Define an $R$-module homomorphism
+\be
+\theta : R^k \to M,\ (r_1,\dots ,r_k) \mapsto  r_1m_1 + \dots + r_km_k.
+\ee
+\end{proof}
+
+The kernel in Proposition \ref{pro:r_k} is the relation module.
+
+\begin{definition}
+An $R$-module $M$ is finitely presented if there exists a finite generating set $S = \{m_1,\dots ,m_k\} \subset M$ and the relation module is also finitely generated, by $\{n_1,\dots , n_l\}$. We say that $M$ is generated by $S$ subject to relations $r_1m_1+\dots+r_km_k = 0$ for each $n_i = (r_{i_1},\dots,r_{i_k})$.
+\end{definition}
+
+\begin{proposition}
+Let $R$ be a non-zero ring, $M$ be an $R$-module freely generated by $\{u_1,\dots , u_m\}$ and $\{v_1,\dots , v_n\}$. Then $m = n$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+One can define determinants for square matrices with coefficients just as in Linear Algebra by
+\beast
+\det A & = & \sum_{\pi \in S_n} \sgn(\pi)A_{1,\pi(1)} \dots A_{n,\pi(n)},\\
+\det AB & = & \det A\det B,\\
+A \adj(A) & = & (\det A)I.
+\eeast
+
+Thus $A$ is invertible if and only if $\det A$ is a unit in $R$. Assume that $n \geq m$ with unique expressions
+\be
+v_j = \sum_i A_{ij}u_i,\quad\quad u_k = \sum_j B_{jk}v_j .
+\ee
+
+So
+\be
+u_k = \sum_j\sum_i B_{jk}A_{ij}u_i = \sum_i \sum_j A_{ij}B_jku_i = \sum_i (AB)_{ik}u_i.
+\ee
+
+As $\{u_1,\dots , u_m\}$ is independent we have $AB = I$. If $n > m$ then
+\be
+\bepm
+A & 0
+\eepm
+\bepm
+B\\
+0
+\eepm
+= I_m
+\ee
+so $\det \bepm A & 0 \eepm \neq 0$. Contradiction. So $m = n$.
+\end{proof}
+
+\subsection{Matrices over Euclidean domains, equivalence of matrices, Smith normal form}
+
+In this section we will assume that $R$ is a Euclidean domain with Euclidean function $\phi: R - \{0\} \to \Z_{\geq0}$.
+
+If $a, b \in R$ then there exists a $\hcf(a, b)$, defined up to associates, obtained by Euclid's algorithm (cf. the Part IA course Numbers and Sets, Example Sheet Question 2). Moreover, $\hcf(a, b) = ax + by$ for some $x, y \in R$.
+
+\begin{definition}
+The elementary row operations on a $m \times n$ matrix $A$ are:
+\ben
+\item [(ER1)] Add $c$ times $i$th row to $j$th row. (Achieved by multiplying $A$ on the left by $I +C$ where $C_{kl} = 0$ except for $C_{ij} = c$.)
+\item [(ER2)] Interchange rows $i$ and $j$, $i \neq j$. (Multiplying by $I + C$ where $C_{kl} = 0$, $C_{ii} = C_{jj} = -1$, $C_{ij} = C_{ji} = 1$.)
+\item [(ER3)] Multiplying row $i$ by a unit $c$. (Multiplying by $C$ diagonal, all diagonal entries 1 apart from $C_{ii} = c$.)
+\een
+
+All of these are achieved by multiplication on the left by suitable matrices. These operations are reversible as the corresponding matrices are invertible.
+We could similarly consider elementary column operations (EC1), (EC2), (EC3), which are achieved by multiplying on the right by suitable invertible matrices.
+\end{definition}
+
+\begin{definition}
+Two $m\times n$ matrices are equivalent if one can get from one to the other via a sequence of elementary operations.
+\end{definition}
+
+If $A,B$ are equivalent then there exists an invertible $m\times m$ matrix $Q$ and an invertible $n \times n$ matrix $P$ with $B = QAP^{-1}$. We can see this by doing the bookkeeping on the accumulation of row and column operations.
+
+\begin{theorem}[Smith normal form]\label{thm:smith_normal_form}
+Let $A$ be an $m\times n$ matrix over a Euclidean domain $R$. Then by a sequence of elementary operations, we can put it into the form
+\be
+\bepm
+d_1 & & & & & 0\\
+& \ddots & & & &\\
+& & d_r & & & \\
+& & & 0 & & \\
+& & & & \ddots &\\
+0 & & & & & 0
+\eepm
+\ee
+with $d_1,\dots ,d_r$ non-zero and $d_1 | d_2 | \dots | d_r$. These $d_k$, the invariant factors, are unique up to associates.
+
+In fact, the product $d_1 \dots d_k$ is a highest common factor of the $k \times k$ minors of $A$.
+
+Recall the following definition. A $k\times k$ minor of $A$ is the determinant of a $k\times k$ submatrix of $A$. In particular, $d_1$ is a highest common factor of the entries of $A$, $d_1d_2$ is a highest common factor of the $2 \times 2$ minors.
+\end{theorem}
+
+\begin{lemma}\label{lem:unchanged_under_elementary_operation}
+The ideal in $R$ generated by $k \times k$ minors of $A$ is unchanged under elementary operations.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Consider the $1 \times 1$ minors, i.e. the entries of $A$. Under an elementary operation, $A_{ij}$ either stays the same or is replaced by $A_{ij} + cA_{ik}$ or $A_{ij} + cA_{kj}$ or multiplied by a unit or replaced by some other entry $A_{kl}$, and so we deduce that the ideal generated by the entries of the new matrix is contained in the ideal generated by the entries of the old matrix. Now the other direction follows from the fact that the operations are revertible. We thus obtain equality.
+
+More generally, have a similar but messier argument.
+\end{proof}
+
+\begin{proof}[\bf Proof of Theorem \ref{thm:smith_normal_form}]
+If $A = 0$ there is nothing to do. Suppose $A \neq 0$ and we may assume after switching rows and columns that $A_{11} \neq 0$. The idea is to use sequences of elementary operations to reduce $\phi(A_{11})$. The process must stop since $\phi(A_{11}) \in \Z_{\geq 0}$.
+
+{\bf Case 1}. If A11 does not divide some entry $A_{1j}$ of the first row then use Euclid's algorithm, write $A_{1j} = qA_{11} + r$ with $r \neq 0$, so $\phi(r) < \phi(A_{11})$. Subtract $q$ times the first column from the $j$th column to give entry $r$ in the $(1\ j)$ position. Switch columns 1 and $j$ so that $r$ is now in the top left hand corner.
+
+{\bf Case 2}. If A11 does not divide some entry of the first column, use a similar process to get a new matrix with $r \neq 0$ and $phi(r) < \phi(A_{11})$ in the top left hand corner.
+
+Keep using these two cases until we cannot do so any longer, i.e. when $A_k$ divides all entries in first row and column. Then subtract suitable multiples of the first column from the others and substract suitable multiples of the first row from the others to get matrix of the form
+\be
+\bepm
+d & 0\\
+0 & C
+\eepm
+\ee
+with $d \neq 0$ for some $(m - 1) \times (n - 1)$ matrix $C$.
+
+{\bf Case 3}. If we have a matrix of the form
+\be
+\bepm
+d & 0\\
+0 & C
+\eepm
+\ee
+but $d$ does not divide some entry of $C$ then $d \nmid A_{ij}$, say. Use Euclid's algorithm so that $A_{ij} = qd + r$ with $r \neq 0$ and $\phi(r) < \phi(d)$. Add column 1 to column $j$. Subtract $q$ times row 1 from row $i$ so that we have replaced $A_{ij}$ by $r$. Switch columns $j$ and 1, rows $i$ and
+1, so $r$ appears in top left hand corner.
+
+We are now in a position to apply Case 1 and Case 2 again to reduce the $\phi$-value of the top left hand corner. Repeat the whole process (Cases 1, 2 and 3) until we can't anymore, i.e. when the matrix is of the form
+\be
+\bepm
+d & 0\\
+0 & C
+\eepm
+\ee
+with $d$ dividing all entries of $C$.
+
+Keep on going with elementary operations on $C$ etc. The result follows.
+\end{proof}
+
+Observe that for a matrix of the form
+\be
+\bepm
+d_1 & & & & & 0\\
+& \ddots & & & &\\
+& & d_r & & & \\
+& & & 0 & & \\
+& & & & \ddots &\\
+0 & & & & & 0
+\eepm
+\ee
+with $d_1 | d_2 | \dots | d_r$ and $d_k \neq 0$ for all $k$ the ideal generated by the $k \times k$ minors is $(d_1 \dots d_k)$, thus by Lemma \ref{lem:unchanged_under_elementary_operation} the ideal generated by the $k \times k$ minors of the original matrix is $(d_1 \dots d_k)$.
+
+\begin{example}
+We consider the following sequence of transformations,
+\be
+A = \bepm
+2 & -1\\
+1 & 2
+\eepm \ \ra \ 
+\bepm
+1 & -1\\
+3 & 2
+\eepm 
+\ \ra \ 
+\bepm
+1 & 0\\
+3 & 5
+\eepm
+\ \ra \ 
+\bepm
+1 & 0\\
+0 & 5
+\eepm.
+\ee
+
+\ben
+\item [(i)] Add column 2 to column 1. (Multiply on the right by $\bepm 1 & 0\\ 1 & 1 \eepm$.)
+\item [(ii)] Add column 1 to column 2. (Multiply on the right by $\bepm 1 & 1\\ 0 & 1 \eepm$.)
+\item [(iii)] Subtract $3\times$ row 1 from row 2. (Multiply on the left by $\bepm 1 & 0\\-3 & 1\eepm$.)
+\een
+
+Thus 
+\be
+\bepm
+1 & 0\\
+0 & 5
+\eepm
+=
+\bepm
+1 & 0\\
+-3 & 1
+\eepm
+A
+\bepm
+1 & 1\\
+1 & 2
+\eepm.
+\ee
+\end{example}
+
+\begin{lemma}\label{lem:finitely_generated}
+Let $M$ be a free $R$-module of rank $m$, i.e. there is a basis of cardinality $m$, and $R$ be an Euclidean domain and suppose that $N \leq M$ is a submodule. Then $N$ is finitely generated.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Pick a basis for $M$ and so $M \cong R^m$. Identify $M$ with $R^m$. Consider the ideal
+\be
+I = \{r \in R : (r_1, r_2,\dots , r_m) \in N\} \lhd R.
+\ee
+
+Since $R$ is an ED and hence a PID, $I$ is generated by $a\in R$, say. Fix an element $n \in N$ of form $(a, a_2,\dots , a_m)$. Then for any $(r_1, r_2,\dots , r_m) \in N$ we have $r_1 = ra$ for some $r \in R$. Then
+\beast
+(r_1, r_2,\dots , r_m) - rn & = & (r_1, r_2,\dots , r_m) - r(a, a_2,\dots , a_m) \in N\\
+& = & (0, r_2 - ra_2,\dots , r_m - ra_m).
+\eeast
+Consider $\{(0, s_2,\dots , s_m) \in N\} \leq \{(0, r_2,\dots , r_m) \in R^m\}$ and apply induction to see that the module on the LHS is of rank $m - 1$, generated by $n_2,\dots , n_m$, say. Then $n, n_2,\dots , n_m$ generate $N$.
+\end{proof}
+
+\begin{theorem}
+Let $R$ be a Euclidean domain, $N \leq R^m$. Then there is a basis $\{v_1,\dots , v_m\}$ of $R^m$ such that N is generated by $\{d_1v_1, d_2v_2,\dots , d_rv_r\}$ for some $1 \leq r \leq m$ and $d_1 | d_2 | \dots | d_r$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Use Lemma \ref{lem:finitely_generated} to see that $N$ is finitely generated by $x_1,\dots , x_n$, say. So write these as columns of a matrix $A$, an $m \times n$ matrix.
+
+By Theorem \ref{thm:smith_normal_form} on Smith normal forms, we know that we can put $A$ into the form
+\be
+\bepm
+d_1 & & & & & 0\\
+& \ddots & & & &\\
+& & d_r & & & \\
+& & & 0 & & \\
+& & & & \ddots &\\
+0 & & & & & 0
+\eepm,\quad\quad d_i \neq 0,\quad d_1 | d_2 | \dots | d_r
+\ee
+by elementary row and columns operations.
+
+Observe that performing an elementary row operation is associated with a change of basis of $R^m$, e.g. adding $c$ times row $j$ to row $i$ replaces the basis ${\bf e}_1,\dots , {\bf e}_m$ of $R^m$ by ${\bf e}_1,\dots , {\bf e}_i,\dots , {\bf e}_j - c{\bf e}_i,\dots , {\bf e}_m$ (replacing the $j$th element ${\bf e}_j$ by ${\bf e}_j - c{\bf e}_i$) since
+\be
+a_1\bbe_1 +\dots + a_m\bbe_m = a_1\bbe_1 + \dots + (a_i + ca_j)\bbe_i \dots + a_j(\bbe_j - c\bbe_i) + \dots + a_m\bbe_m
+\ee
+Thus the $i$th coefficient has been replaced by $a_i + ca_j$.
+
+Similary, column operations arise in connection with the change of the generating set of $N$. Thus the elementary operations arise when changing basis for Rm and generating set for $N$.
+
+At the end of the process the matrix is in Smith normal form and the basis $\{v_1,\dots , v_m\}$ of $R^m$ is such that $\{d_1v_1, d_2v_2,\dots , d_rv_r, 0,\dots , 0\}$ is a generating set for $N$, as required. We can throw away the 0s.
+\end{proof}
+
+\begin{corollary}
+A submodule $N$ of $R^m$ when $R$ is a ED is free of rank at most $m$.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+The set $\{d_1v_1,\dots , d_rv_r\}$ freely generates $N$ since $\{v_1,\dots , v_m\}$ are free generators of $R^m$.
+\end{proof}
+
+\begin{theorem}\label{thm:r_ed}
+Let $M$ be a finitely generated $R$-module, where $R$ is an ED. Then
+\be
+M \cong \frac{R}{(d_1)} \oplus \frac{R}{(d_2)} \oplus \dots \oplus \frac{R}{(d_r)} \oplus R \dots \oplus R
+\ee
+for some $d_k \neq 0$ with $d_1 | d_2 | \dots | d_r$.
+\end{theorem}
+
+\begin{remark}
+\ben
+\item [(i)] We may assume that all the $d_k$ are non-units, for if $d_k$ is a unit then $\frac{R}{(d_k)} \cong \{0\}$ which may be thrown away.
+\item [(ii)] A finitely generated $R$-module is a direct sum of cyclic $R$-modules. (Assuming that $R$ an ED.)
+\een
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Suppose the module $M$ is finitely generated by $\{m_1,\dots ,m_m\}$. Then $M \cong R^m/N$ by Proposition \ref{pro:r_k}. This is because there is a $R$-module homomorphism
+\be
+\theta : R^m \to M, \ (r_1,\dots , r_m) \mapsto  r_1m_1 + \dots + r_mm_m
+\ee
+and $\im \theta = M$ since $\{m_1,\dots ,m_m\}$ generates $M$ and $N = \ker \theta \leq R^m$. By the isomorphism theorem, $M \cong R^m/N$.
+
+There exists a basis $\{v_1,\dots , v_m\}$ of $R^m$ such that $\{d_1v_1,\dots , d_rv_r\}$ is a generating set for $N$. So
+\be
+R^m/N \cong R/(d_1) \oplus \dots \oplus R/(d_r) \oplus R \oplus \dots R,
+\ee
+as required.
+\end{proof}
+
+\begin{example}
+Take $R = \Z$. The theorem tells us about finitely generated $\Z$-modules, that is, finitely generated abelian groups. Consider an abelian group $A$, written additively, generated by $a, b, c$ subject to relations
+\beast
+2a + 3b + c & = & 0,\\
+a + 4b & = & 0,\\
+5a + 6b + 7c & = & 0.
+\eeast
+Then $A$ is a $\Z$-module and $A \cong \Z^3/N$, where $N$ is generated by $(2, 3, 1)$, $(1, 4, 0)$, $(5, 6, 7)$. Write these as columns of a matrix
+\be
+\bepm
+2 & 1 & 5\\
+3 & 4 & 6\\
+1 & 0 & 7
+\eepm
+\ee
+and put this into Smith normal form,
+\be
+\bepm
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 21
+\eepm
+\ee
+(Check.) So $A \cong \Z^3/N \cong \Z/(1\Z)\oplus \Z/(1\Z) \oplus \Z/(21\Z) \cong \Z/(21\Z)$, a cyclic abelian group of order 21.
+\end{example}
+
+\begin{theorem}[Structure theorem for finitely generated abelian groups]
+A finitely generated abelian group is isomorphic to
+\be
+C_{d_1} \times C_{d_2} \times \dots \times C_{d_r} \times C_\infty \times \dots \times C_\infty,
+\ee
+where $C_\infty$ is the infinite cyclic group.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Set $R = \Z$ in Theorem \ref{thm:r_ed} and write the group operation multiplicatively.
+\end{proof}
+
+\begin{remark}
+For a finite group there are no copies of $C_\infty$, see Theorem \ref{thm:structure_theorem_finite_abelian_group}.%{thm:finite_abelian_group}.
+\end{remark}
+
+\begin{proposition}[Primary decomposition]\label{pro:primary_decomposition}
+Let $R$ be a ED. Then
+\be
+R/(d) \cong R/(p^{n_1}_1) \oplus \dots \oplus R/(p^{n_s}_s),
+\ee
+where $d = p^{n_1}_1 \dots p^{n_s}_s$ is the factorisation into irreducibles (and primes).
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+(cf. (Lemma \ref{lem:coprime_cycle_cong}). Split off one summand $R/\bb{p^{n_j}_j}$ at a time using the following lemma.
+\end{proof}
+
+\begin{lemma}
+If $d = r_1r_2$ with $\hcf(r_1, r_2) = 1$ then $M = R/(d) \cong R/(r_1) \oplus R/(r_2)$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Let $m$ be a generator of $M$ with $\ann(m) = (d)$. If $\hcf(r_1, r_2) = 1$ then we can write $1 = xr_1 + yr_2$ for some $x, y \in R$ by Euclid's algorithm. Then
+\be
+m = 1\cdot m = x(r_1m) + y(r_2m).
+\ee
+We have $\ann(r_1m) = (r_2)$, $\ann(r_2m) = (r_1)$ using that we have good factorisation in $R$. Set
+\be
+M_1 \cong R/(r_2),\quad\quad M_2 \cong R/(r_1).
+\ee
+$M_1 \cap M_2 = \{0\}$ since if $sm \in M_1 \cap M_2$ then $s$ is a multiple of both $r_1$ and $r_2$, and hence of $r_1r_2$ since $\hcf(r_1, r_2) = 1$ and so $sm = 0$.
+
+Consider the $R$-module homomorphism
+\be
+M_1 \oplus M_2 \to M,(m_1,m_2) \mapsto  m_1 + m_2.
+\ee
+It is onto since $M = M_1 +M_2$, $M_1 \cap M_2 = \{0\}$. Hence $M \cong M_1 \oplus M_2$.
+\end{proof}
+
+\begin{theorem}
+Let $M$ be a finitely generated $R$-module, where $R$ is a Euclidean domain. Then
+\be
+M \cong N_1 \oplus N_2 \oplus \dots \oplus N_t
+\ee
+where each $N_j \cong R/(p^{n_j}_j)$ and $p_j$ is prime (and irreducible) and $n_j \geq 1$, or $N_j \cong R$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Use primary decomposition from Lemma \ref{thm:r_ed} to split the components in Proposition \ref{pro:primary_decomposition} as direct sums of modules of this form.
+
+Note that the $p_j$ are not necessarily distinct. The $p^{n_j}_j$ are the elementary divisors and they are unique up to ordering. (Proof omitted.)
+\end{proof}
+
+\subsection{Modules over $\F[X]$ for a field $\F$ -- normal forms for matrices}
+
+Let $\alpha: V \to V$ be a linear map and $V$ a finite dimensional vector space over a field $\F$. We regard $V$ as a $\F[X]$-module via
+\be
+g(X)\cdot v = g(\alpha)(v)
+\ee
+for $v \in V$, dependent on the choice of $\alpha$.
+
+\begin{example}
+Cyclic modules over $\F[X]$, e.g. $V = M \cong \F[X]/(f(X))$. Here $f(X)$ is a polynomial of least degree such that $f(\alpha) = 0$. We may assume that $f(X)$ is monic, it is the minimal polynomial for $\alpha$.
+\ben
+\item [(i)] $f(X) = X^r$. Take generator $m$ of the $\F[X]$-module $M$, $\ann(m) = (f(X))$. Then $m,Xm,X^2m,\dots ,X^{r-1}m$ is a vector space basis of $M = V$. Note that
+\be
+(m,Xm,\dots ,X^{r-1}m) = (m, \alpha(m),\dots , \alpha^{r-1}(m)).
+\ee
+$\alpha$ is represented by the matrix (with coefficients in $\F$)
+\be
+\bepm
+0 & 0 & & & 0\\
+1 & 0 & & & \\
+0 & 1 & \ddots & & \\
+& & \ddots  & 0 &\\
+0 & & & 1 & 0
+\eepm.
+\ee
+
+\item [(ii)] $f(X) = (X - \lm)^r$. Then $(\alpha - \lm)^r = 0$. Consider $\beta = \alpha - \geq\cdot \iota$ then the minimal polynomial of $\beta$ is $X^r$. So there exists a vector space basis of $M = V$ such that $\beta$ is represented by
+\be
+\bepm
+0 & 0 & & & 0\\
+1 & 0 & & & \\
+0 & 1 & \ddots & & \\
+& & \ddots  & 0 &\\
+0 & & & 1 & 0
+\eepm.
+\ee
+and so $\alpha$ is represented by
+\be
+\bepm
+\lm & 0 & & & 0\\
+1 & \lm & & & \\
+0 & 1 & \ddots & & \\
+& & \ddots  & \lm &\\
+0 & & & 1 & \lm
+\eepm.
+\ee
+
+\item [(iii)] For a general $f(X)$, for a generator $m$ with $\ann(m) = (f(X))$ as in (i), we can pick a vector space basis $m,Xm,\dots ,X^{r-1}m$ where
+\be
+f(X) = a_0 + a_1X + \dots + a^{r-1}X^{r-1} + X^r
+\ee
+and
+\be
+m,Xm,\dots ,X^{r-1}m = m, \alpha(m),\dots , \alpha^{r-1}(m).
+\ee
+$\alpha$ is represented with respect to this basis by
+\be
+\bepm
+0 & 0 & & & -a_0\\
+1 & 0 & & & -a_1\\
+0 & 1 & \ddots & & \vdots \\
+& & \ddots  & 0 &\\
+0 & & & 1 & -a_{r-1}
+\eepm.
+\ee
+
+This is called the companion matrix\index{companion matrix} of $f(X)$, written $C(f)$.
+\een
+\end{example}
+
+\begin{theorem}[Rational canonical form]
+Let $\alpha : V \to V$ be an endomorphism of a finite dimensional $\F$-vector space and $\F$ be a field. Then, regarding $V$ as an $\F[X]$-module $M$, $M \cong M_1 \oplus \dots \oplus M_s$ with each $M_j$ cyclic and $M_j \cong \F[X]/(f_j(X))$ where $f_1(X) | f_2(X) | \dots | f_s(X)$, and on choosing an vector space basis for each $M_j$ as in Example (iii), $\alpha$ is represented by a matrix (with coefficients in $\F$)
+\be
+\bepm
+C(f_1) & & & 0\\
+& C(f_2) & & \\
+& & \ddots & \\
+0 & & & C(f_s)
+\eepm.
+\ee
+\end{theorem}
+\begin{proof}[\bf Proof]
+Theorem \ref{thm:r_ed} splits $M$ as a direct sum of cyclic modules of the right form, and since $M$ is finite dimensional as a $\F$-vector space there are no components isomorphic to $\F[X]$. Now use Example (iii) to represent $\alpha$.
+\end{proof}
+
+\begin{remark}
+The name is due to the special case where $\F = \Q$.
+\end{remark}
+
+\begin{remark}
+\ben
+\item [(i)] The invariant factors $f_i(X)$ are unique up to associates. (This is not quite proved here).
+\item [(ii)] If $A$ is a square $n\times n$ matrix with coefficients in $\F$, then $A$ represents a linear map $\alpha: V \to V$. So the theorem says we can pick a new basis with respect to which $\alpha$ is represented in rational canonical form. Thus $A$ is conjugate to a matrix in rational canonical form.
+\item [(iii)] Minimal polynomials: The minimal polynomial of $\alpha$ is a generator of the annihilator $\ann(M)$, and this is equal to $f_s(X)$ after adjusting to make sure it is monic.
+\item [(iv)] The characteristic polynomial of $\alpha$ is the product of the characteristic polynomials of the $C(f_i)$, that is, the product $f_1(X) \dots f_s(X)$.
+\een
+\end{remark}
+
+Now we can use Proposition \ref{pro:primary_decomposition} on primary decomposition to split the $M_i$ as direct sums of cyclic modules with annihilators generated by powers of irreducibles.
+
+Assume that $\F = \C$, so that the irreducibles are linear.
+
+\begin{theorem}[Jordan normal form for $\C$]
+Let $\alpha: V \to V$ be an endomorphism of a finite dimensional $\C$-vector space and regard $V$ as a $\C[X]$-module $M$. Then
+\be
+M \cong M_1 \oplus \dots \oplus M_s
+\ee
+where $M_j \cong \C[X]/((X - \lm_j)^{a_j})$ for some $\lm_j \in \C$. Here, $\lm_1,\dots , \lm_s$ are not necessarily distinct.
+\end{theorem}
+
+Taking a $\C$-vector space basis for each $M_j$ as in Example (ii), $\alpha$ is represented by a matrix of the form
+\be
+\bepm
+\lm_1 & & & 0 & & & & 0 & 0\\
+1 & \ddots & & & & & & & \\
+& \ddots & \lm_1 & & & & & & \\
+0 & & 1 & \lm_1 & 0 & & & & \\
+& & & 0 & \lm_2 & & & & \\
+& & & & 1 & \ddots & & & \\
+& & & & & \ddots & \lm_2 & & \\
+& & & & 0 &  & 1 & \lm_2 & \\
+0 & & & & & & & 0 & \ddots
+\eepm.
+\ee
+
+\begin{remark}
+\ben
+\item [(i)] A submatrix of the form
+\be
+\bepm
+\lm & & & 0\\
+1 & \ddots & & \\
+& \ddots & \lm & \\
+0 & & 1 & \lm
+\eepm
+\ee
+is called a Jordan $\lm$-block.
+
+\item [(ii)] The Jordan blocks for $\alpha$ are unique up to reordering. (This is not proved here.)
+
+\item [(iii)] Minimal polynomials of $\alpha$: Observe that each $M_i$ is in rational canonical form, so the theorem yields a $\lm$-block for each $\lm$ with $X - \lm$ dividing $f_i(X)$. Since
+\be
+f_1(X) | f_2(X) | \dots | f_s(X),
+\ee
+the powers of $X - \lm$ increase as we pass from $f_1(X)$ to $f_s(X)$. Thus the size of $\lm$-blocks increases as we pass from $M_1$ to $M_s$, so the largest $\lm$-block arises from $M_s$.
+
+Recall that the minimal polynomial of $\alpha$ is
+\be
+f_s(X) = \prod_{\lm \text{ distinct}} (X - \lm)^{a_\lm}.
+\ee
+Then $a_\lm$ is the size of the largest $\lm$-block.
+
+\item [(iv)] The characteristic polynomial of $\alpha$ factorises into irreducibles as follows,
+\be
+f_1(X) \dots f_s(X) = \prod_{\lm \text{ distinct}} (X - \lm)^{b_\lm}
+\ee
+where $b_\lm$ is the sum of the sizes of $\lm$-blocks. Observe that the $\lm$ are the eigenvalues of $\alpha$.
+
+\item [(v)] The geometric multiplicity of $\lm$ is defined to be the dimension of the $\lm$-eigenspace and equal to the number of $\lm$-blocks.
+
+\item [(vi)] Given a square complex matrix $A$, it is conjugate to a matrix in Jordan normal form.
+\een
+\end{remark}
+
+\begin{example}[Solutions of linear difference equations and differential equations]
+Consider the space $V$ of complex sequences $(z_k) \in \C^\infty$ that are solutions of
+\be
+z_{i+k} + c_{k-1}z_{i+(k-1)} + \dots + c_0z_i = 0
+\ee
+for $i \geq 1$ with $c_0,\dots , c_{k-1} \in \C$.
+
+Note that $V$ is a finite dimensional $\C$-vector space. Let $\alpha: V \to V$ be the left-shift, 
+\be
+(z_1, z_2,\dots ) \mapsto  (z_2, z_3,\dots ).
+\ee
+The minimal polynomial of $\alpha$ is $X^k + c_{k-1} X^{k-1} + \dots + c_0 = f(X)$, the auxiliary polynomial. Factorise this is as
+\be
+f(X) = \prod_{\lm \text{ distinct}} (X - \lm)^{a_\lm}.
+\ee
+Write down the $\C$-vector space associated with the Jordan normal form, as sequences for each $\lm$, 
+\be
+\bb{\binom{k}{a} \lm^{k-a}}, \quad 0 \leq a \leq a_{\lm} - 1
+\ee
+e.g. for $a = 0$ we have the sequence $(\lm, \lm^2, \lm^3,\dots)$ and for $a = 1$ etc. 
+
+For differential equations, the linear map is differentiation.
+\end{example}
+
+\subsection{Problems}
+
+\begin{problem}
+How many abelian groups are there of order 6? Of order 60? Of order 6000?
+\end{problem}
+
+\begin{solution}[\bf Solution.] 
+\ben
+\item [(i)] $d= 6 = 2\times 3$. But $2\nmid 3$. Thus, the only abelian group of order $6$ is $C_6$.
+\item [(ii)] $d = 60 = 2^2 \times 3 \times 5$. 
+
+If $d_1 = 2$, $d_2$ has to be $2\time 3\times 5$ since $d_1 \mid d_2$. So it is $C_2 \times C_{30}$.
+
+If $d_1 = 1$, the only possible is $d_2 = 60$ which gives $C_{60}$. 
+
+If $d_1 = 3$ or $5$, then it leads to contradiction since we cannot find $d_2$ such that $d_1\mid d_2$.
+
+Thus, we only got two possibilities.
+
+\item [(iii)] $d= 6000 = 2^4 \times 3 \times 5^3$. First we can see that $d_1 \nmid 3$. 
+
+If $d_1 = 1$, we have $C_{6000}$.
+
+If $d_1 = 2$, we can have at most four cyclic groups.
+\ben
+\item [(a)] Only two. $C_2 \times C_{3000}$.
+\item [(b)] Three. If $d_2 \mid 5$, we have $C_2 \times C_{10} \times C_{300}$. If $d_2 \nmid 5$, we have $C_2 \times C_2 \times C_{1500}$.
+\item [(c)] Four. If $d_2 \mid 5$, we have $C_2 \times C_{10} \times C_{10} \times C_{30}$. Now we consider the case $d_2 \nmid 5$. If $d_3 \mid 5$, we $C_2\times C_2 \times C_{10} \times C_{150}$. If $d_3\nmid 5$, we have $C_2 \times C_2 \times C_2 \times C_{750}$.
+\een
+
+If $d_1 = 4$, we have two cyclic groups. $C_4 \times C_{1500}$.
+
+If $d_1 = 5$, we have two possibilities (at most three cyclic groups)
+\ben
+\item [(a)] Only two cyclic groups, $d_2 = 6000/5 = 1200$. This gives $C_5 \times C_{1200}$.
+\item [(b)] Three cyclic groups. This could be $C_5\times C_5 \times C_{240}$, $C_5 \times C_{10} \times C_{120}$, $C_5\times C_{20} \times C_{60}$.
+\een
+
+If $d_1 = 10$, we have at most three cyclic groups. $C_{10} \times C_{600}$, $C_{10}\times C_{10} \times C_{60}$.
+
+If $d_1 = 20$, we have at most two cyclic groups. $C_{20} \times C_{300}$.
+\een
+
+Hence, totally, we have 15 possibilities. 
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $M$ be a module over an integral domain $R$ (Actually, this only needs to be a commutative ring). An element $m \in M$ is a torsion element if $rm = 0$ for some non-zero $r \in R$. Show that the set $T$ of all torsion elements in $M$ is a submodule of $M$, and that the quotient $M/T$ is torsion-free – that is, contains no non-zero torsion elements.
+\end{problem}
+
+\begin{solution}[\bf Solution]
+To check $T$ is submodule of $M$, we need to show
+\ben
+\item [(i)] $(T,+)$ is an additive subgroup.
+
+Associativity is from the fact that $(M,+)$ is an abelian group.
+
+If $m_1,m_2\in T$, there exist $r_1,r_2 \in R$ such that 
+\be
+r_1m_1 = r_2m_2 = 0 \ \ra \ r_2r_1 m_1 = r_1 r_2 m_2 = 0 \ \ra \ (r_1r_2)(m_1 + m_2) = r_2r_1 m_1 + r_1r_2m_2 = 0 + 0 = 0.
+\ee
+
+Thus, $m_1 + m_2 \in T$.
+
+Clearly, the identity of $T$ is 0. 
+
+If $m \in T$, there exists $r\in R$ such that $rm = 0$. Then since $1m = m$ and $0m = 0$, we have $(-1)m = -m$,
+\be
+r(-m) = r(\underbrace{(-1)}_{\in R}\underbrace{m}_{\in M}) = (-1)rm = (-1)0 = -0 = 0 \ \ra \ -m \in T
+\ee
+
+\item [(ii)] $\forall r \in R, m\in T$, $rm \in T$. There exists $r' \in R$ such that $r'm = 0$. Then
+\be
+r'(rm) = r(r'm) = r 0 = r(m-m) = rm + r(-m) = rm - rm = 0 \ \ra \ rm \in T.
+\ee
+\een
+
+Hence, $T$ is a submodule.
+
+Now suppose $m + T$ is a torison element in $M/T$ with $m\in M$. Then there exists some $r\in R, t\in T$ such that $r(m + t) = 0$, we have
+\be
+0 = r(m+t) = rm + \underbrace{rt }_{\in T} \ \ra \ rm \in T.
+\ee
+
+Thus, there exists $r'\in R$ such that $0 = r'rm = (r'r)m$. Thus, $m \in T$ and $m + T = T = 0 + T$. Thus, the only torsion element is zero.
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+\label{que:fg_acc} We say that an $R$-module satisfies condition ($N$) on submodules if any submodule is finitely generated. Show that this condition is equivalent to condition ($ACC$): every increasing chain of submodules terminates.
+\end{problem}
+
+\begin{solution}[\bf Solution]
+($\ra$) Let $M$ be an $R$-module. Take $N_1,N_2,\dots$ to be submodules s.t. 
+\be
+N_1 \subseteq N_2 \subseteq \dots.
+\ee
+
+Then take $N = \bigcup^\infty_{i=1}N_i$. We claim that $N \leq M$. 
+
+$\forall n_1,n_2 \in N$, $\exists i_1,i_2$ s.t. $n_1 \in N_{i_1}, n_2 \in N_{i_2}$. Wlog assume $i_1\leq i_2$, then $N_{i_1} \subseteq N_{i_2}$, we have $n_1,n_2 \in N_{i_2}$, so $n_1 + n_2 \in N_{i_2}$ and $n_1+n_2 \in N$. Also, it is easy to see that $0\in N_{i_2} \subseteq N$ and $-n_1 \in N_{i_2} \subseteq N$. 
+
+Furthermore, $\forall r\in R, n\in N$, $n \in N_i$ for some $i$. So $rn \in N_i$ since $N_i$ is a submodule. Thus, $rn \in N$.
+
+Therefore, $N$ is a submodule of $M$.
+
+Now since $N$ is finitely generated, $\exists n_1,n_2,\dot,n_k \in N$ such that
+\be
+N = Rn_1 + Rn_2 + \dots + Rn_k.
+\ee
+
+Thus, $\exists i\in \N$ s.t. $n_1,n_2,\dots,n_k \in N_i$. Therefore, $N \subseteq N_i$. Since $N_i \subseteq N$, we have $N=N_i$, which satisfies ACC.
+
+($\la$) Suppose that there exists a submodule $N$ which is not finitely generated, say $n_1,n_2,\dots$ are the generators. Then we pick $m_1$ to be any of $n_i$, $M_1 = Rm_1$. Then we pick $m_2$ from $\bra{n_i}$ such that $m_2 \notin M_1$ and construct $M_2 = Rm_1 + Rm_2$. So we have $M_1 \subsetneq M_2$. Following this procedure, we can have infinite $M_i$ such that 
+\be
+M_1 \subsetneq M_2 \subsetneq \dots \subsetneq \dots
+\ee
+which does not satisfy ACC. Contradiction. Thus, all submodules are finitely generated.
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+\ben
+\item [(i)] Is the abelian group $\Q$ torsion-free? Is it free? Is it finitely generated?
+\item [(ii)] What are the torsion elements in the abelian group $\Q/\Z$? In $\R/\Z$? In $\R/\Q$?
+\item [(iii)] Prove that $\R$ is not finitely generated as a module over the ring $\Q$.
+\een
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+\ben
+\item [(i)] Consider 
+\be
+\Z\bs\bra{0} \times \Q \to \Q,\ (n,q) \mapsto nq
+\ee
+
+If $nq = 0$, then since $\Q$ is an integral domain, we have $q = 0$ with $n\neq 0$. Thus, $\Q$ is torsion-free.
+
+Supppose $S$ generates $\Q$ freely. If $\abs{S} = 1$, i.e. $\Q = \Z \frac ab$ with $a,b\in \Z, b\neq 0, \hcf(a,b) = 1$. We can find 
+\be
+\frac 1{b+1} \notin \Z\frac ab \ \ra \ \text{contradiction.}
+\ee
+
+If $\abs{S} = 2$, we can find non-zero distinct $\frac ab, \frac cd \in S \subseteq \Q$ with $a,b,c,d\in \Z,b,d \neq 0$. However, we can find non-zero $bc,ad \in \Z$,
+\be
+bc \frac ab - ad \frac cd = ac - ac = 0 \ \ra \ S \text{ is not independent} \ \ra \ \Q \text{ is not free. (Contradiction)}
+\ee
+
+Thus, $\Q$ is not free. 
+
+If $\Q$ is finitely generated, we have
+\be
+\Q = \Z\frac {a_1}{b_1} + \dots + \Z\frac {a_k}{b_k}.
+\ee
+
+Thus, we can choose prime number $p$ such that $p\nmid b_1,b_2, \dots, b_k$ (for instance $p$ is the smallest number bigger than $b_1b_1 \dots b_k$). As we know that $\frac 1p \in \Q$, $p$ can be expressed by ()
+\be
+\frac 1p = z_1 \frac {a_1}{b_1} + \dots + z_k\frac {a_k}{b_k} = \frac{*}{b_1 \dots b_k} 
+\ee
+where $z_1,\dots,z_k \in \Z$. Thus,
+\be
+p \mid b_1\dots, b_k \ \ra \ p \mid b_1 \text{ or } \dots \text{ or } p \mid b_k. \quad (\text{contradiction})
+\ee
+
+\item [(ii)] Say $\R$ is finitely generated as a module over the ring $\Q$. That is, $r_1,\dots, r_k \in \R$
+\be
+\R = \Q r_1 + \dots + \Q r_k
+\ee
+
+LHS is uncountable. But RHS is countable (sum of finite number of countable sets). Contradiction.
+\een
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $M$ be a module over a ring $R$, and let $N$ be a submodule of $M$.
+\ben
+\item [(i)] Show that if $M$ is finitely generated then so is $M/N$.
+\item [(ii)] Show that if $N$ and $M/N$ are finitely generated then so is $M$.
+\item [(iii)] Show that if $M/N$ is free, then $M \cong = N \oplus M/N$.
+\item [(iv)] Show that if $R$ is a PID and $M$ is a finitely-generated free module, then $N$ is free.
+\een
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Use elementary operations to bring the integer matrix $A = \bepm
+-4 & -6 & 7\\
+2 & 2 & 4\\
+6 & 6 & 15
+\eepm
+$ to Smith normal form $D$. Check your result using minors. Explain how to find invertible matrices $P$, $Q$ for which $D = QAP$.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+We have ($P$ for column operation, $Q$ for row operation)
+\be
+\underrightarrow{c_2 - c_1} \quad 
+\bepm
+-4 & -2 & 7\\
+2 & 0 & 4\\
+6 & 0 & 15
+\eepm \quad\quad  P:\quad  \bepm
+1 & -1 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\eepm \quad Q:\quad  \bepm
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\eepm 
+\ee
+
+\be
+\underrightarrow{c_1 - 2c_2} \quad 
+\bepm
+0 & -2 & 7\\
+2 & 0 & 4\\
+6 & 0 & 15
+\eepm \quad\quad  P:\quad  \bepm
+3 & -1 & 0\\
+-2 & 1 & 0\\
+0 & 0 & 1
+\eepm \quad Q:\quad  \bepm
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\eepm 
+\ee
+
+\be
+\underrightarrow{c_1 \lra c_3} \quad 
+\bepm
+7 & -2 & 0\\
+4 & 0 & 2\\
+15 & 0 & 6
+\eepm \quad\quad  P:\quad  \bepm
+0 & -1 & 3\\
+0 & 1 & -2\\
+1 & 0 & 0
+\eepm \quad Q:\quad  \bepm
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\eepm 
+\ee
+
+\be
+\underrightarrow{c_1 + 3c_2} \quad 
+\bepm
+1 & -2 & 0\\
+4 & 0 & 2\\
+15 & 0 & 6
+\eepm \quad\quad  P:\quad  \bepm
+-3 & -1 & 3\\
+3 & 1 & -2\\
+1 & 0 & 0
+\eepm \quad Q:\quad  \bepm
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\eepm 
+\ee
+
+\be
+\underrightarrow{c_2 + 2c_1} \quad 
+\bepm
+1 & 0 & 0\\
+4 & 8 & 2\\
+15 & 30 & 6
+\eepm \quad\quad  P:\quad  \bepm
+-3 & -7 & 3\\
+3 & 7 & -2\\
+1 & 2 & 0
+\eepm \quad Q:\quad  \bepm
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1
+\eepm 
+\ee
+
+\be
+\underrightarrow{r_2 - 4r_1} \quad 
+\bepm
+1 & 0 & 0\\
+0 & 8 & 2\\
+15 & 30 & 6
+\eepm \quad\quad  P:\quad  \bepm
+-3 & -7 & 3\\
+3 & 7 & -2\\
+1 & 2 & 0
+\eepm \quad Q:\quad  \bepm
+1 & 0 & 0\\
+-4 & 1 & 0\\
+0 & 0 & 1
+\eepm 
+\ee
+
+\be
+\underrightarrow{r_3 - 15r_1} \quad 
+\bepm
+1 & 0 & 0\\
+0 & 8 & 2\\
+0 & 30 & 6
+\eepm \quad\quad  P:\quad  \bepm
+-3 & -7 & 3\\
+3 & 7 & -2\\
+1 & 2 & 0
+\eepm \quad Q:\quad  \bepm
+1 & 0 & 0\\
+-4 & 1 & 0\\
+-15 & 0 & 1
+\eepm 
+\ee
+
+\be
+\underrightarrow{c_2 \lra c_3} \quad 
+\bepm
+1 & 0 & 0\\
+0 & 2 & 8\\
+0 & 6 & 30
+\eepm \quad\quad  P:\quad  \bepm
+-3 & 3 & -7\\
+3 & -2 & 7\\
+1 & 0 & 2
+\eepm \quad Q:\quad  \bepm
+1 & 0 & 0\\
+-4 & 1 & 0\\
+-15 & 0 & 1
+\eepm 
+\ee
+
+\be
+\underrightarrow{c_3 - 4c_2} \quad 
+\bepm
+1 & 0 & 0\\
+0 & 2 & 0\\
+0 & 6 & 6
+\eepm \quad\quad  P:\quad  \bepm
+-3 & 3 & -19\\
+3 & -2 & 15\\
+1 & 0 & 2
+\eepm \quad Q:\quad  \bepm
+1 & 0 & 0\\
+-4 & 1 & 0\\
+-15 & 0 & 1
+\eepm 
+\ee
+
+\be
+\underrightarrow{r_3 - 3r_2} \quad 
+D = \bepm
+1 & 0 & 0\\
+0 & 2 & 0\\
+0 & 0 & 6
+\eepm \quad\quad  P:\quad  \bepm
+-3 & 3 & -19\\
+3 & -2 & 15\\
+1 & 0 & 2
+\eepm \quad Q:\quad  \bepm
+1 & 0 & 0\\
+-4 & 1 & 0\\
+-3 & -3 & 1
+\eepm 
+\ee
+
+We see that 
+\be
+\hcf\bb{-4,-6,7,2 ,2, 4,6, 6, 15} = 1 \ \ra \ d_1 = 1.
+\ee
+
+\be
+\hcf \bb{\det\bepm -6 & 7 \\ 2 & 4 \eepm = -38, \det \bepm 2 & 4 \\ 6 & 15 \eepm = 6 } = 2 \ \ra \ d_2 = 2.
+\ee
+
+Thus,
+\be
+d_3 = \frac{\det A}{d_1d_2} = \frac{-4 \cdot 6 - 2 \cdot (-132) + 6 \cdot (-38)}{2} = \frac{-24 + 264 - 228}2 = \frac{12}2  = 6.
+\ee
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Work out the invariant factors of the matrices over $R[X]$:
+\be
+\bepm
+2X - 1 & X & X - 1 & 1\\
+X & 0 & 1 & 0\\
+0 & 1 & X & X\\
+1 & X^2 & 0 & 2X - 2
+\eepm
+\quad \text{and}\quad 
+\bepm
+X^2 + 2X & 0 & 0 & 0\\
+0 & X^2 + 3X + 2 & 0 & 0\\
+0 & 0 & X^3 + 2X^2 & 0\\
+0 & 0 & 0 & X^4 + X^3
+\eepm.
+\ee
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+We want to reduce it to 
+\be
+\bepm
+f_1(X) & 0 & 0 & 0\\
+0 & f_2(X) & 0 & 0\\
+0 & 0 & f_3(X) & 0\\
+0 & 0 & 0 & f_4(X)
+\eepm.
+\ee
+
+For the first matrix, we have that the hcf of all elements 1, so $d_1 =1$. Also we have
+\be
+\det\bepm
+0 & 1\\
+1 & X
+\eepm = -1 \quad (\text{a unit}) \ \ra \ d_2 = 1.
+\ee
+
+Furthermore,
+\be
+\det \bepm
+X & X-1 & 1\\
+0 & 1 & 0\\
+1 & X & X
+\eepm = X^2 - 1 = (X+1)(X-1),\quad \det \bepm
+X & 0 & 1\\
+0 & 1 & X \\
+1 & X^2 & 0 
+\eepm = -X^4 - 1 = -(X^4 + 1)\ \ra \ d_3 = 1.
+\ee
+
+Thus, 
+\beast
+d_4 = \det A & = & (2X-1)\bb{-\bb{2X-2 -X^3}} - X\bb{X^2(X^2 -X -X) + (2X-2)(X^2 -X+1)} - \bb{X(X) - 1}\\
+& = & 2X^4 - X^3 - 4X^2 + 2X + 4X -2 - X^5 + 2X^4 - X(2X^3 - 2X^2 - 2X^2 + 2X + 2X - 2) - X^2 + 1\\
+& = & 4X^4 - X^3 - 4X^2 + 6X -2 - X^5 - 2X^4 + 4X^3 - 4X^2 + 2X - X^2 + 1\\
+& = & -X^5 + 2X^4 + 3X^3 - 9X^2 + 8X -1.
+\eeast
+
+For the second matrix, 
+\be
+X^2 + 2X = X(X+2),\quad X^2 + 3X +2 = (X+1)(X+2),\quad X^3 + 2X^2 = X^2 (X+2),\quad X^4 + X^3 = X^3(X+1).
+\ee
+So hcf of each entry is 1, hcf of $2\times 2$ minors is $X(X+2)$, hcf of $3\times 3$ is $X^3(X+1)(X+2)^2$ and hcf of $4\times 4$ minors is $\det A = X^6(X+1)^2(X+2)^3$. Thus, we have
+\be
+\bepm
+1 & 0 & 0 & 0\\
+0 & \ X(X + 2) \ & 0 & 0\\
+0 & 0 & X^2(X+1)(X+2) & 0\\
+0 & 0 & 0 & X^3 (X+1)(X+2)
+\eepm.
+\ee
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $G$ be the abelian group with generators $a$, $b$, $c$, and relations $6a+10b = 0$, $6a+15c = 0$, $10b+15c = 0$. (That is, $G$ is the free abelian group on generators $a$, $b$, $c$ quotiented by the subgroup generated by the elements $6a + 10b$, $6a+ 15c$, $10b+ 15c$). Determine the structure of $G$ as a direct sum of cyclic groups.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+$(6,10,0)$, $(6,0,15)$, $(0,10,15)$ are generators for the relation module. Let
+\be
+N = \bepm
+6 & 6 & 0\\
+10 & 0 & 10\\
+0 & 15 & 15
+\eepm \ \ra \ \left\{\ba{l}
+1\times 1 \text{minor}: \ 6,10,15, \quad \hcf = 1\\
+2\times 2 \text{minor}: \ -60,60,150,-150, \quad \hcf = 30\\
+3\times 3 \text{minor}: \ -1800, \quad \hcf = -1800
+\ea\right.
+\ee
+
+Thus, $N$ in Smith normal form is 
+\be
+\bepm
+1 & 0 & 0\\
+0 & 30 & 0\\
+0 & 0 & -60
+\eepm 
+\ee
+
+Thus, 
+\be
+G \cong \Z/\Z \oplus \Z/30\Z \oplus \Z/(-60)\Z = \Z/30\Z \oplus \Z/60\Z.
+\ee
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Prove that a finitely-generated abelian group $G$ is finite if and only if $G/pG = 0$ for some prime $p$. 
+
+Give a non-trivial abelian group $G$ such that $G/pG = 0$ for all primes $p$, and prove that your example is not finitely generated.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+
+\end{solution}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $A$ be a complex matrix with characteristic polynomial $(X + 1)^6(X - 2)^3$ and minimal polynomial $(X + 1)^3(X - 2)^2$. Write down the possible Jordan normal forms for $A$.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+We have $f_1(X)\dots f_r(X) = (X+1)^6(X-2)^3$, $f_r(X) = (X+1)^3(X-2)^2$. Thus, there are three possibilities:
+\ben
+\item [(i)] $f_1(X) = (X+1)$, $f_2(X) = (X+1) f_3(X) = (X+1)(X-2)$ 
+\item [(ii)] $f_1(X) = (X+1)$, $f_2(X) = (X+1)^2(X-2)$ 
+\item [(iii)] $f_1(X) = (X+1)^3(X-2)$ 
+\een
+
+Thus, the corresponding rational canonical forms are
+\be
+\bepm 
+-1 & & & & & & & & \\
+& -1 & & & & & & & \\
+& & -1 & & & & & & \\
+& & & 2 & & & & & \\
+& & & & -1 & & & & \\
+& & & & 1 & -1 & & & \\
+& & & & & 1 & -1 & & \\
+& & & & & & & 2 & \\
+& & & & & & & 1 & 2
+\eepm,\ \bepm 
+-1 & & & & & & & & \\
+& -1 & & & & & & & \\
+& 1 & -1 & & & & & & \\
+& & & 2 & & & & & \\
+& & & & -1 & & & & \\
+& & & & 1 & -1 & & & \\
+& & & & & 1 & -1 & & \\
+& & & & & & & 2 & \\
+& & & & & & & 1 & 2
+\eepm,\ \bepm 
+-1 & & & & & & & & \\
+1 & -1 & & & & & & & \\
+& 1 & -1 & & & & & & \\
+& & & 2 & & & & & \\
+& & & & -1 & & & & \\
+& & & & 1 & -1 & & & \\
+& & & & & 1 & -1 & & \\
+& & & & & & & 2 & \\
+& & & & & & & 1 & 2
+\eepm.\nonumber
+\ee
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Find a $2 \times 2$ matrix over $\Z[X]$ that is not equivalent to a diagonal matrix.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+Let $A = \bepm 2 & 0 \\ X & 0 \eepm $. Suppose $A$ is equivalent to a diagonal matrix
+\be
+B = \bepm
+f(X) & 0\\
+0 & g(X)
+\eepm = PAQ
+\ee
+where $P,Q$ are invertible. As we known,
+\be
+f(X)g(X) = \det B = \det P\det A \det Q = 0.
+\ee
+
+Since $\Z[X]$ is an integral domain (actually a UFD), $f(X)=0$ or $g(X) = 0$. Wlog we say $g(X) = 0$. Thus, we have
+\be
+A = \bepm 2 & 0 \\ X & 0 \eepm,\quad B = \bepm f(X) & 0 \\ 0 & 0 \eepm.
+\ee
+
+In lectures we proved that 
+\be
+\bsa{2,X} = \bsa{1\times 1 \text{ minors of }A} = \bsa{1\times 1 \text{ minors of }B} = \bsa{f(X)} \quad (\text{ which is a principal ideal})
+\ee
+since $A$ and $B$ are equivalent. But $\bsa{2,X}$ is not principal ideal (see the proof in notes).
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $M$ be a finitely-generated module over a ring $R$, and let $f$ be an $R$-module homomorphism from $M$ to itself. Does $f$ injective imply $f$ surjective? Does $f$ surjective imply $f$ injective? 
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+
+\end{solution}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Write $f(n)$ for the number of distinct abelian groups of order $n$.
+\ben
+\item [(i)] Show that if $n = p^{a_1}_1 p^{a_2}_2 \dots p^{a_k}_k$ with the $p_i$ distinct primes and $a_i \in \N$ then $f(n) = f(p^{a_1}_1)\dots f(p^{a_k}_k)$.
+\item [(ii)] Show that $f(p^a)$ equals the number $p(a)$ of partitions of $a$, that is, $p(a)$ is the number of ways of writing $a$ as a sum of positive integers, where the order of summands is unimportant. (For example, $p(5) = 7$, since 5 = 4 + 1 = 3 + 2 = 3 + 1 + 1 = 2 + 2 + 1 = 2 + 1 + 1 + 1 = 1 + 1 + 1 + 1 + 1.)
+\een
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+Let $G_n$ be the abelian group of order $n$.
+
+\ben
+\item [(i)] Structure theorem for finite abelian groups $G_n$ is isomorphic to 
+\be
+C_{d_1} \times C_{d_2} \times \dots \times C_{d_m},\quad d_1\mid d_2 \mid \dots \mid d_m. %We know that $\hcf(m,n) = 1$, then $C_{mn} = C_m \times C_n$
+\ee
+
+Now we write $d_i = \prod^k_{j=1}p_j^{b_ij}$ since $d_i \mid n$ with
+\be
+\forall j, \ b_{1j} \leq b_{2j} \leq \dots \leq b_{mj},\quad \sum^m_{i=1}b_{ij} = a_j.
+\ee
+
+By primary decomposition,
+\be
+C_{d_i} = R/\bsa{d_i} \cong R\left/\bsa{p_1^{b_{i1}}}\right. \oplus R\left/\bsa{p_2^{b_{i2}}}\right. \oplus \dots \oplus R\left/\bsa{p_k^{b_{ik}}}\right..
+\ee
+
+Hence,
+\be
+G_n \cong C_{d_1} \times C_{d_2} \times \dots \times C_{d_m} \cong \bigotimes^m_{i = 1} \bigotimes^k_{j=1} C_{p_j^{b_{ij}}} \cong \bigotimes^k_{j=1} \bigotimes^m_{i = 1} C_{p_j^{b_{ij}}} \cong \bigotimes^k_{j=1} \bb{C_{p_j^{b_{1j}}} \times C_{p_j^{b_{2j}}} \times \dots \times C_{p_j^{b_{mj}}}} .
+\ee
+
+Since $G_{p_j^{a_j}} \cong C_{p_j^{b_{1j}}} \times C_{p_j^{b_{2j}}} \times \dots \times C_{p_j^{b_{mj}}}$ (structure theorem), we have
+\be
+G_n \cong \bigotimes^k_{j=1} G_{p_j^{a_j}} = G_{p_1^{a_1}} \times \dots \times G_{p_k^{a_k}}.
+\ee
+
+Then we have $f(n) = f\bb{p_1^{a_1}} \times \dots \times f\bb{p_k^{a_k}}$.
+%\be
+%\abs{G_n} = \abs{G_{p_1^{a_1}}} \times \dots \times \abs{G_{p_k^{a_k}}}
+%\ee
+%since $\abs{H\times K} = \abs{H}\abs{K}$
+
+
+\item [(ii)] Now $A = G_{p^a}$ where $p$ is a prime. Then we have
+\be
+G_{p^a} \cong C_{p^{a_1}} \times \dots \times C_{p^{a_k}},\quad a_1\mid \dots \mid a_k,\quad \sum^k_{i=1} a_i = a.
+\ee
+
+Thus, all the situations are included in the partitions of $a$ as $\sum^k_{i=1} a_i = a$. So $f(p^a) \leq p(a)$.
+
+Also, for any partition we sort it with increasing order $b_1 \leq \dots b_m$. Then $p^{b_1} \mid \dots p^{b_m}$ which corresponds one of the abelian groups. Thus, $p(a) \leq f(p^a)$. Hence $f(p^a) = p(a)$.
+
+Furthermore, to find $p(a)$, we define $g(a,n)$ which is the possibilities of putting $a$ elements into $n$ positions with increasing order. ($p(a) = g(a,a)$)
+
+Then we have
+\be
+g(a,n) = \sum^{a\land n}_{i=1}g(a-i,i),\quad g(1,n) = g(0,n) = g(a,1) = 1.
+\ee
+
+For instance, 
+\be
+p(3) = g(3,3) = g(2,1) + g(1,2) + g(0,3) = 3.
+\ee
+\beast
+p(4) = g(4,4) & = & g(3,1) + g(2,2) + g(1,3) + g(0,4)\\
+& = & 3 + g(2,2) = 3 + g(1,1) + g(0,2) = 3 + 2 = 5.
+\eeast
+\beast
+p(5) = g(5,5) & = & g(4,1) + g(3,2) + g(2,3) + g(1,4) + g(0,5)\\
+& = & 1 + g(3,2) + g(2,3) + 1 + 1 = 3 + g(3,2) + g(2,3)\\
+& = & 3 + g(2,1) + g(1,2) + g(1,1) + g(0,2) = 3 + 4 = 7.
+\eeast
+
+Thus, in previous question, the order 6000 abelian groups have 15 different forms as
+\be
+6000 = 2^4 \times 3 \times 5^3 \ \ra \ f(6000) = f(2^4)f(3)f(5^3) = p(4)p(1)p(3) = 5\cdot 1 \cdot 3 = 15.
+\ee
+
+%\be
+%p(a) = p(a-1) + p(a-2) + \dots + p(1) + 1 \ \ra \ p(a) - p(a-1) = p(a-1)
+%\ee
+
+\een
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+$A$ real $n\times n$ matrix $A$ satisfies the equation $A^2 +I = 0$. Show that $n$ is even and $A$ is similar to a block matrix $\bepm
+0 & -I\\
+I & 0 
+\eepm$ with each block an $m \times m$ matrix (where $n = 2m$).
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+First we have $A^2 = -I$ and $(\det A)^2 = \det A^2 = (-1)^n \geq 0$, thus $n$ is even.
+
+$X^2 + 1$ is irreducible over $\R$, so it is minimal polynomial of $A$. Rational canonical form:
+\be
+\bepm
+C(f_1(X)) & & \\
+& \ddots & \\
+& & C(f_r(X))
+\eepm,\quad f_1(X)\mid \dots \mid f_r(X).
+\ee
+
+Then $f_r(X)$ is minimal polynomial. Since $f_1(X) = a_0 + a_1X + \dots + a_{n-1}X^{n-1} + X^n$,
+\be
+C(f_1(X)) = \bepm
+0 & & & & & -a_0\\
+1 & 0 & & & & -a_1\\
+& \ddots & \ddots & & & \vdots\\
+& & & \ddots & 0 & \vdots\\
+& & & & 1 & -a_{n-1}
+\eepm
+\ee
+
+$f_1(X)\dots f_r(X)$ is the characteristic polynomial. So $f_i(X) = X^2 + 1$ for any $i$. Then Rational canonical form of $A$ is
+\be
+\bepm
+\bepm 0 & -1 \\ 1 & 0 \eepm & & \\
+& \ddots & \\
+& & \bepm 0 & -1 \\ 1 & 0 \eepm
+\eepm \quad \ra \quad \text{$A$ is similar to $\bepm 0 & -I \\ I & 0 \eepm$}.
+\ee
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Let $R$ be a Noetherian ring and $M$ be a finitely generated $R$-module. Show that all submodules of $M$ are finitely generated.
+\end{problem}
+
+\begin{solution}[\bf Solution]
+From Question \ref{que:fg_acc}, we know that it suffices to show $M$ is Noetherian (i.e., has ACC).
+
+Thus, the statement becomes that $R$ is Noetherian and $M$ is finitely generated, then $M$ is Noetherian.
+
+Since $M$ is finitely generated, we can write $M \cong R^k/N$ for some $k$ and $N$. 
+
+We know that $R$ is Noetherian, thus $R\oplus R /R \cong R$ by second isomorphism theorem. Thus, $R\oplus R$ is Noetherian. By induction, $R^k$ is Noetherian.
+
+Now we want to show that if $M \cong L/N$, then $L$ is Noetherian iff $M$ and $N$ are Noetherian.
+
+($\ra$). If $L$ is Noetherian, $N$ is submodule of $L$ so any chain in $N$ is a chain in $L$. So $N$ is Noetherian. 
+\be
+L_1/N \subseteq L_2/N \subseteq \dots, \quad L_1 \subseteq L_2 \subseteq \dots.
+\ee
+
+If the chain terminates $L_n = L_m,\forall m\geq n$, we have $L_n/N = L_m /N, \forall m \geq n$. Thus, $M$ is Noetherian.
+
+($\la$). For any $L_1 \subseteq L_2 \subseteq \dots $ chain in $L$. We have 
+\ben
+\item $L_1 \cap N \subseteq L_2 \cap N \subseteq$ is a chain in $N$, so it terminates. 
+\item $L_1 / N \subseteq L_2 / N \subseteq$ is a chain in $L/N \cong M$ which also terminates.
+\een
+
+Thus, $\exists r\in \N$ s.t. (take the bigger of two indices) 
+\be
+L_r \cap N = L_{r+i} \cap N,\quad L_r /N = L_{r+i}/N,\quad\forall i.
+\ee
+
+Now we show $L_r = L_{r+i}$, $\forall i$. Take $x\in L_{r+i}$, we have $x + N \in L_{r+i}/N = L_r/N$, so 
+\be
+x + N = y + N \text{ for some }y\in L_r \ \ra \ x-y \in N, x-y \in L_{r+i} \ (\text{as }y \in L_r \subseteq L_{r+i}).
+\ee
+
+Thus, 
+\be
+x-y \in L_{r+i} \cap N = L_r \cap N \ \ra \ x-y \in L_r \ \ra \ x\in L_r \ \ra \ L_{r+i} \subseteq L_r.
+\ee
+
+Thus, $M$ is Noetherian. 
+\end{solution}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+Show that a complex number $\alpha$ is an algebraic integer if and only if the additive group of the ring $\Z[\alpha]$ is finitely generated (i.e. $\Z[\alpha]$ is a finitely generated $\Z$-module). Furthermore if $\alpha$ and $\beta$ are algebraic integers show that the subring $\Z[\alpha, \beta]$ of $\C$ generated by $\alpha$ and $\beta$ also has a finitely generated additive group and deduce that $\alpha - \beta$ and $\alpha \beta$ are algebraic integers. Show that the algebraic integers form a subring of $\C$.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+Define the homomorphism 
+\be
+\phi: \Z[X]\to \Z[\alpha],\ p(X) \mapsto p(\alpha)
+\ee 
+between the additive groups $\Z[X],\Z[\alpha]$. $\ker \phi = \bra{p(X)m(X): p(X) \in \Z[X]}$ where $m(X)$ is the (monic) minimal polynomial of $\alpha$. By the first isomorphism theorem, $\Z[\alpha] \cong \Z[X]/ker\phi$. So 
+\beast
+\Z[\alpha] \text{ is a finitely generated $\Z$-module} & \lra & \ker \phi \neq \bra{0} \\
+& \lra & \alpha \text{ is a a root of some }p\in \Z[X] \\
+& \lra & \alpha \text{ is an algebraic integer.}
+\eeast
+
+Define the homomorphism 
+\be
+\vp : Z[X,Y] \to \Z[\alpha,\beta],\ p(X,Y) \mapsto p(\alpha,\beta),\quad \ker \vp = \bra{p(X,Y) \in \Z[X,Y]: p(\alpha,\beta) = 0}.
+\ee
+
+If $\alpha,\beta$ are algebraic integers, then $m_1(\alpha) = m_2(\beta) = 0$ for some $m_1,m_2\in \Z[X]\bs \bra{0}$. Hence if $m(X,Y) = m_1(X) + m_2(Y)$, then $m(\alpha,\beta) = 0$ and $\ker\vp \neq \bra{0}$. So $\Z[\alpha,\beta] \cong \frac{\Z[X,Y]}{\ker\vp}$ is finitely generated.
+
+Every ideal in $\Z$ is finitely generated (since $\Z$ is a PID. In fact, it is generated by its smalledst positive element). Hence (proved in lectures) $\Z$ satisfies ACC for ideals, i.e., $\Z$ is a Noetherian ring. 
+
+Since $\Z[\alpha,\beta]$ is a finitely generated $\Z$-module, by previous question, every submodule of $\Z[\alpha,\beta]$ is finitely generated. Furthermore, $\Z[\alpha -\beta]$ and $\Z[\alpha \beta]$ are submodules of $\Z[\alpha,\beta]$, so they are finitely generated. Then by the first part of the question, $\alpha -\beta$ and $\alpha \beta$ are algebraic integers.
+
+Let $A\subseteq \C$ be the set of algebraic integers. We check 
+
+{\bf addition.}
+\ben
+\item [] associativity and commutativity are clear.
+\item [] closure: $\alpha,\beta \in A$ implies that $\alpha + \beta \in A$ (as $\Z[\alpha + \beta] \leq \Z[\alpha,\beta]$)
+\item [] identity: 0
+\item [] inverse: $0,\beta \in A$, then $0-\beta = -\beta \in A$ 
+\een
+
+{\bf multiplication.}
+\ben
+\item [] associativity and commutativity are clear.
+\item [] closure: $\alpha,\beta \in A$ implies that $\alpha + \beta \in A$ (as $\Z[\alpha\beta] \leq \Z[\alpha,\beta]$)
+\item [] identity: 1
+\een
+
+{\bf distributive laws.} clear.
+
+So $A$ is subring of $\C$.
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{problem}
+What is the rational canonical form of a matrix?
+
+Show that the group $GL_2(\F_2)$ of non-singular $2 \times 2$ matrices over the field $\F_2$ of 2 elements has three conjugacy classes of elements.
+
+Show that the group $GL_3(\F_2)$ of non-singular $3\times 3$ matrices over the field $\F_2$ has six conjugacy classes of elements, corresponding to minimal polynomials $X+1$, $(X+1)^2$, $(X+1)^3$, $X^3+1$, $X^3+X^2+1$, $X^3+X+1$, one each of elements of orders 1, 2, 3 and 4, and two of elements of order 7.
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+Every square matrix over a field is conjugate to a matrix in rational canonical form
+\be
+\bepm
+C(f_(X)) & & 0\\
+& \ddots & \\
+0 & & C(f_k(X))
+\eepm \quad \text{where }\quad C(f(X)) = \bepm
+0 & 0 & \dots & 0 & -a_0\\
+1 & 0 & \dots & 0 & -a_1\\
+0 & 1 & \dots & 0 & -a_2\\
+\vdots & \vdots & \ddots & & \vdots \\
+0 & 0 & \dots & 1 & -a_{n-1}
+\eepm
+\ee
+for the characteristic polynomial $f(X) = X^n + a_{n-1}X^{n-1} + \dots + a_0$.
+
+Martices in $GL_2(\F_2)$ are conjugate to matrices of the form 
+\be
+\bepm -a_0 & 0 \\ 0 & - b_0 \eepm \quad \text{or }\quad \bepm 0 & -a_0 \\ 1 & - b_0 \eepm
+\ee
+(2 blocks of size 1 or one of size 2).
+
+The determinant must be 1, so every matrix in $GL_2(\F_2)$ is conjugate to one of 
+\be
+\bepm 1 & 0 \\ 0 & 1 \eepm,\quad \bepm 0 & 1 \\ 1 & 0 \eepm,\quad \bepm 0 & 1 \\ 1 & 1 \eepm.
+\ee
+
+These 3 matrices have orders 1,2,3, so they aren't conjugate. Hence there are 3 conjugacy classes in $GL_2(\F_2)$.
+
+In $GL_3(\F_2)$, the matrices in rational canocial form have 3 block of size 1 or one of size 2 and one of size 1 or one of size 3. So the possible form are
+\be
+\bepm -a_0 & 0 &  0 \\ 0 & - b_0 & 0 \\ 0 & 0 & -c_0  \eepm, \quad \bepm 0 & -a_0 & 0 \\ 1 & - a_1 & 0 \\ 0 & 0 & -b_0\eepm, \quad \bepm 0 & 0 & -a_0 \\ 1 & 0 & - a_1 \\ 0 & 1 & -a_2\eepm
+\ee
+
+The determinant is 1, so we have following matrices
+\be
+A = \bepm 1 & 0 &  0 \\ 0 & 1 & 0 \\ 0 & 0 & 1  \eepm, \  B= \bepm 0 & 1 &  0 \\ 1 & 0 & 0 \\ 0 & 0 & 1  \eepm, \  C = \bepm 0 & 1 &  0 \\ 1 & 1 & 0 \\ 0 & 0 & 1  \eepm,\  D =\bepm 0 & 0 & 1 \\ 1 & 0 & 0 \\ 0 & 1 & 0  \eepm,\  E = \bepm 0 & 0 & 1 \\ 1 & 0 & 0 \\ 0 & 1 & 1  \eepm,\  F= \bepm 0 & 0 & 1 \\ 1 & 0 & 1 \\ 0 & 1 & 0  \eepm,\  G =\bepm 0 & 0 & 1 \\ 1 & 0 & 1 \\ 0 & 1 & 1  \eepm.
+\ee
+
+But $C$ and $D$ are conjugate. we have $Q = \bepm 1 & 1 & 0 \\ 1 & 0 & 1 \\ 1 & 1 & 1  \eepm$ ($CQ = QD$), 
+\be
+\bepm 0 & 1 & 0 \\ 1 & 1 & 0 \\ 0 & 0 & 1  \eepm \bepm 1 & 1 & 0 \\ 1 & 0 & 1 \\ 1 & 1 & 1  \eepm =  \bepm 1 & 0 & 1 \\ 0 & 1 & 1 \\ 1 & 1 & 1  \eepm = \bepm 1 & 1 & 0 \\ 1 & 0 & 1 \\ 1 & 1 & 1  \eepm \bepm 0 & 0 & 1 \\ 1 & 0 & 0 \\ 0 & 1 & 0  \eepm
+\ee
+
+Thus, 
+\ben
+\item [] $A$ has order 1 and minimal polynomial is $X+1$.
+\item [] $B$ has order 2 and minimal polynomial is $(X+1)^2$.
+\item [] $D$ has order 3 and minimal polynomial is $X^3+1$.
+\item [] $E$ has order 7 and minimal polynomial is $X^3 + X^2 +1$.
+\item [] $F$ has order 4 and minimal polynomial is $(X+1)^3$.
+\item [] $G$ has order 7 and minimal polynomial is $X^3 + X +1$.
+\een
+
+None of these six matrices are conjugate, because any two of them have different minimal polynomials.
+\end{solution}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+

@@ -1,0 +1,215 @@
+
+%%%%%%%% Number Theory %%%%%%%%%%
+
+@book{Hardy_Wright_2008
+	title = {An Introduction to the Theory of Numbers, 6th e.d.},
+	publisher = {Oxford University Press},
+	author = {G. H. Hardy and E. M. Wright},
+	year = {2008},
+	%ISBN-10: 0198531710
+	%ISBN-13: 978-0198531715
+},
+
+
+
+%%%%%%%% Algebra %%%%%%%%%%
+
+@book{Beardon_2005,
+	title = {Algebra and Geometry},
+	publisher = {Cambridge University Press},
+	author = {Alan F. Beardon},
+	year = {2005},
+},
+
+%%%%%%%% Analysis %%%%%%%%%%
+
+@book{Abramowitz_1972,
+	title = {Handbook of Mathematical Functions with Formulas, Graphs, and Mathematical Tables},
+	lccn = {0440},
+	publisher = {New York: Dover},
+	author = {Milton Abramowitz and Irene A. Stegun},
+	year = {1972},
+},
+
+@book{Yoshida_1980,
+	title = {Functional Analysis},
+	publisher = {Springer-Verlag},
+	author = {Kosaku Yoshida},
+	year = {1980},
+},
+
+
+@book{Tao_2006_1,
+	title = {Analysis I},
+	publisher = {Hindustan Book Agency},
+	author = {Terence Tao},
+	year = {2006},
+},
+
+@book{Tao_2006_2,
+	title = {Analysis II},
+	publisher = {Hindustan Book Agency},
+	author = {Terence Tao},
+	year = {2006},
+},
+
+%%%%%%%% Functional Analysis %%%%%%%%%%%
+
+@book{Tao_2006_2,
+	title = {Analysis II},
+	publisher = {Hindustan Book Agency},
+	author = {Terence Tao},
+	year = {2006},
+},
+
+
+%%%%%%%% Measure %%%%%%%%%%%
+
+@book{Klenke_2008,
+	title = {Probability Theory: A Comprehensive Course, 1st Edition},
+	publisher = {Springer},
+	author = {Achim Klenke},
+	year = {2008},
+},
+
+
+%%%%%%%% probability %%%%%%%
+
+@article{Ciesielski_1961,
+	title = {H\"older conditions for realizations of Gaussian processes},
+	volume = {99},
+	journal = {Transactions of the American Mathematical Society},
+	author = {Z. Ciesielski},
+	year = {1961},
+	pages = {403{\textendash}413}
+},
+
+@book{Meyer_1972,
+	title = {Martingales and Stochastic Integrals I, Lecture Notes in Mathematics},
+	publisher = {Springer-Verlag},
+	author = {Paul-Andr\'e Meyer},
+	year = {1972},
+},
+
+
+
+@book{Williams_1991,
+	title = {Probability with Martingales},
+	publisher = {Cambridge University Press},
+	author = {David Williams},
+	year = {1991},
+},
+
+
+@book{Rogers_1994,
+	title = {Diffusions, Markov Processes, and Martingales, 2nd Edition},
+	publisher = {Cambridge University Press},
+	author = {L.C.G.Rogers and David Williams},
+	year = {1994},
+},
+
+
+@book{Billingsley_1995,
+	title = {Probability and Measure, 3rd Edition},
+	publisher = {Wiley-Blackwell},
+	author = {Patrick Billingsley},
+	year = {1995},
+},
+
+@book{Grinstead_1997,
+	title = {Introduction to Probability},
+	publisher = {American Mathematical Society},
+	author = {Charles M. Grinstead and J. Laurie Snell},
+	year = {1997},
+},
+
+
+@book{Chung_2000,
+	title = {A Course in Probability Theory, 3rd Edition},
+	publisher = {Academic Press},
+	author = {Kai Lai Chung},
+	year = {2000},
+},
+
+@book{Durrett_2004,
+	title = {Probability: Theory and Examples, 3rd},
+	publisher = {Brooks/Cole},
+	author = {Richard Durrett},
+	year = {2004},
+},
+
+
+%%%%%%%%%%%%%%%%%% Financial Maths %%%%%%%%%%%%%%%%
+
+@book{Steele_2001,
+	title = {Stochastic Calculus and Financial Applications},
+	publisher = {Springer},
+	author = {J.Michael Steele},
+	year = {2001},
+},
+
+
+@book{Zhou_2008,
+	title = {A Practical Guide To Quantitative Finance Interviews, 1 Edition},
+	publisher = {Lulu.com},
+	author = {Xinfeng Zhou},
+	year = {2008},
+},
+
+
+%%%%%%%%%%%%%%%%%% Brownian Motion %%%%%%%%%%%%%%%%
+
+@book{Borodin_2002,
+	title = {Handbook of Brownian Motion - Facts and Formulae, 2nd Edition},
+	publisher = {Birkh\"auser},
+	author = {Andrei N. Borodin and Paavo Salminen},
+	year = {2002},
+},
+
+
+
+%%%%%%%%%%%%%%%%%%% Topology %%%%%%%%%%%%%%%%%
+
+@book{Kelley_1955,
+	title = {General Topology},
+	publisher = {Princeton~N.~J, Van Nostrand},
+	author = {J.L Kelley},
+	year = {1955},
+},
+
+@book{Mansfield_1963,
+	title = {Introduction to Topology},
+	publisher = {Princeton~N.~J, Van Nostrand},
+	author = {M.J. Mansfield},
+	year = {1963},
+},
+
+@book{Mendeleson_1990,
+	title = {Introduction to Topology},
+	publisher = {Dover reprint, New York, Dover},
+	author = {B. Mendeleson},
+	year = {1990},
+},
+
+@book{Sutherland_1975,
+	title = {Introduction to Metric and Topological Spaces},
+	publisher = {Oxford, OUP},
+	author = {W.A. Sutherland},
+	year = {1975},
+},
+
+%%%%%%%%%%%%%%%%%%% Others %%%%%%%%%%%%%%%%%
+
+
+@article{Curtin_2006,
+	title = {The locker puzzle},
+	volume = {28},
+	number = {1},
+	journal = {The Mathematical Intelligencer},
+	author = {Eugene Curtin and Max Warshauer},
+	year = {2006},
+	pages = {28{\textendash}31}
+},
+
+
+

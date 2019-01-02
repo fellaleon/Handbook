@@ -1,0 +1,2089 @@
+\chapter{Ordinary Differential Equations}
+
+\section{Some literature reviews}
+
+There is a striking difference between ordinary differential equations and partial differential equations. A classical result of Peano states that the ordinary differential equation $dy/dx = f(x,y)$ has a solution under a single condition of the continuity of the function $f$. This result has also been extended to equations of higher order or to systems of equations. However, for partial differential equations, the situation is entirely different (see \cite{Yoshida_1980}.$P_{182}$).
+
+\begin{definition}[linear differential equation\index{linear differential equation}]\label{def:linear_differentia_ equation}
+The linear differential equations are differential equations having solutions which can be added together in particular linear combinations to form further solutions. 
+
+The solutions to (homogeneous) linear differential equations form a vector space (unlike non-linear differential equations).
+\end{definition}
+
+\section{Linear Systems of Ordinary Differential Equations}
+
+The application of Jordan canonical form for multi-dimension ODE (see \cite{Horn_Johnson_1990}.$P_{132}$).
+
+
+
+\section{Sturm-Liouville ODE}
+
+\subsection{Eigenvalue of function}
+
+Singular points have two kinds: regular points and irregular points.
+
+\begin{definition}[eigenvalue of function]
+Let $\sL$ be a linear second-order operator with form
+\be
+\sL(x) = p(x)\frac{d^2}{dx^2} + q(x)\frac{d}{dx} + r(x).
+\ee
+
+If for some constant $\lm$,
+\be
+\sL f(x) = \lm f(x),
+\ee
+then $\lm$ is called the eigenvalue of function $f$.
+\end{definition}
+
+\subsection{Self-adjoint ODE}
+
+
+\begin{definition}[self-adjoint operator of differential equation\index{self-adjoint operator!differential equation}]\label{def:self_adjoint_ode}
+Let $\sL$ be a linear second-order operator with form
+\be
+\sL(x) = p(x)\frac{d^2}{dx^2} + q(x)\frac{d}{dx} + r(x).
+\ee
+
+Then we call the operator self-adjoint if
+\be
+p'(x) = q(x).
+\ee
+
+We can rewrite the operator by
+\be
+\sL(x) = \frac{d}{dx}\bb{p(x)\frac{d}{dx}}  + r(x).
+\ee
+\end{definition}
+
+\begin{proposition}[self-adjoint operator of differential equation is self-adjoint operator]\label{pro:self_adjoint_differential_equation_self_adjoint_operator}
+Let $\sL$ be a self-adjoint operator on $[a,b]$. If $p(x)$ has singular points at the boundary, then $\sL$ is self-adjoint operator in Hilbert space. That is,
+\be
+\inner{f}{\sL g} = \inner{\sL f}{g}, \qquad \bb{\int^b_a f(x)\sL g(x)dx = \int^b_a g(x)\sL f(x)dx}
+\ee
+for suitable functions $f(x)$ and $g(x)$. Also, if $f$ and $g$ have different eigenvalues ($\lm_f\neq \lm_g$), $f$ and $g$ are orthogonal on $[a,b]$. That is,
+\be
+\inner{f}{g} = 0 \qquad \bb{\int^b_a f(x)g(x) dx =0}.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+By definition, we have
+\beast
+\inner{f}{\sL g} & = & \int^b_a f(x)\sL g(x)dx = \int^b_a \bb{f(x)\bb{p(x)g'(x)}' + f(x)r(x)g(x)}dx \\
+& = & \left.f(x)p(x) g'(x) \right|^b_a - \int^b_a \bb{p(x)g'(x)f'(x) - f(x)r(x)g(x)}dx \\
+& = & \left.p(x)\bb{f(x)g'(x) - g(x) f'(x)} \right|^b_a + \int^b_a \bb{g(x)\bb{p(x)f'(x)}' + g(x)r(x)f(x)}dx \\
+& = & \int^b_a g(x)\sL f(x)dx =  \inner{\sL f}{g}
+\eeast
+since $p(a) = p(b) = 0$. Also, let $\lm_f\neq \lm_g$ be two eigenvalues such that $\sL f(x) = \lm_f f(x)$ and $\sL g(x) = \lm_g g(x)$. Then
+\be
+0 = \int^b_a g(x)\sL f(x)dx - \int^b_a f(x)\sL g(x)dx = (\lm_f - \lm_g) \int^b_a f(x)g(x)dx  \ \ra\ \int^b_a f(x)g(x)dx = 0.
+\ee
+\end{proof}
+
+\begin{example}
+For Legendre polynomials (see Definition \ref{def:legendre_polynomials}) $P_1(x) = x$ and $P_2(x) = \frac 32x^2 - \frac 12$,
+\be
+\int^1_{-1} P_1(x)P_2(x) dx = \int^1_{-1} \bb{\frac 32x^3 - \frac 12 x}dx = 0
+\ee
+since the integrand is an odd function.
+\end{example}
+
+In general, the ODE might not be self-adjoint, we will take some method to make an ODE self-adjoint.
+
+
+
+
+\subsection{Power series method}
+
+
+\subsection{Frobenius method}
+
+
+
+\subsection{Rodrigues formulas}
+
+\begin{theorem}[Rodrigues formula\index{Rodrigues formula}]\label{thm:rodrigues_formula}
+Consider a second-order Sturm-Liouville ODE of the general form
+\be
+p(x) y'' + q(x) y' + \lm y = 0\qquad (*)
+\ee
+where $\lm$ is defined to be constant. $p(x)$ and $q(x)$ is restricted to the polynomial forms\footnote{The forms of $p$ and $q$ are sufficiently general to include most of the ODEs with classical sets of polynomials as solutions (e.g., Legendre, Hermite, Laguerre ODEs)}
+\be
+p(x) = \alpha x^2 + \beta x+ \gamma,\qquad q(x) = \mu x + \nu.
+\ee
+
+Define $w(x)$ as the weight factor which can convert the ODE into self-adjoint (see Definition \ref{def:self_adjoint_ode}) form (such that $(wp)' = wq$ or $w' = w\frac{q-p'}{p}$) so it can be written by 
+\be
+w(x) = p^{-1}(x) \exp\bb{\int^x \frac{q(t)}{p(t)}dt}.
+\ee
+
+Then
+\be
+y_n = \frac 1{w(x)}\bb{\frac{d}{dx}}^n\bsb{w(x)p^n(x)}.
+\ee
+is a solution of the ODE ($*$).% has a solution. %$y_n$ which is a polynomial of degree $n$, then we can write it as
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $x_n$ be a polynomial of degree $n$,
+\be
+x_n = \sum^n_{i=0} a_i x^i,\quad a_n \neq 0.
+\ee
+
+If $x_n$ is a solution of the ODE ($*$), the coefficient of $x^n$ for the ODE is
+\be
+n(n-1)\alpha a_n + n\mu a_n + \lm a_n = 0 \ \ra\ \lm_n = -n(n-1)\alpha - n\mu
+\ee
+where $\lm_n$ is the eigenvalue which corresponds to $x_n$. %For the weight factor $w(x)$, we have
+%\be
+%(wp)' = wq \ \ra\ wpy'' + wq y' + \lm w y = 0
+%\ee
+%
+%Then the introduction of $w$ enables the ODE to assume the form
+%\be
+%\frac{d}{dx}\bb{w(x)p(x)y'} + \lm w(x)y = 0.
+%\ee
+Using the definition of $w(x)$, we have
+\be
+p\bb{wp^n}' = p \bb{wp \cdot p^{n-1}}' = (n-1)p wp p^{n-2}p' + p^n (wp)' =wp^n(n-1)p' + q). %p w n p^{n-1}p' + w'p p^n =
+\ee
+
+Then we can differentiate this equation $n+1$ times and divide by $w$. Because $p$ is only quadratic in $x$and $q$ is linear in $x$, application of Leibniz rule (Proposition \ref{thm:leibniz_rule}) to the multiple differentiations leads to only three terms on the left-hand side and two on the right
+\beast
+& & \frac pw\bb{\frac{d}{dx}}^{n+2}\bb{wp^n} + \binom{n+1}{1} \frac {p'}{w} \bb{\frac{d}{dx}}^{n+1}\bb{wp^n} + \binom{n+1}{2}\frac{p''}{w}\bb{\frac{d}{dx}}^{n}\bb{wp^n}\\
+& = & \frac{(n-1)p' + q}{w}\bb{\frac{d}{dx}}^{n+1}\bb{wp^n} + \binom{n+1}{1}\frac{(n-1)p'' + q'}{w}\bb{\frac{d}{dx}}^{n}\bb{wp^n}
+\eeast
+
+Balancing the equation, we can have
+\be
+\frac{p}{w} \bb{\frac{d}{dx}}^{n+2}\bb{wp^n} + \frac{2p'-q}{w} \bb{\frac{d}{dx}}^{n+1}\bb{wp^n} - \bb{\frac{n^2-n-2}2 p'' +(n+1)q'}y_n = 0.\qquad (\dag)
+\ee
+
+We can see that
+\beast
+\frac pw\bb{\frac{d}{dx}}^{n+2}\bb{wp^{n}} & = & p\bb{\frac 1{w}\bb{\frac{d}{dx}}^{n}\bb{wp^{n}}}'' - 2p \frac{dw^{-1}}{dx} \bb{\frac{d}{dx}}^{n+1}\bb{wp^{n}} - p\frac{d^2w^{-1}}{dx^2} \bb{\frac{d}{dx}}^{n}\bb{wp^{n}} \\
+& = & py_n'' + \frac{2(q-p')}{w}\bb{\frac{d}{dx}}^{n+1}\bb{wp^{n}} - \bb{p''-q' + \frac{q(q-p')}{p}}y_n.
+\eeast
+
+Substitute this into the equation ($\dag$) and get
+\be
+py_n'' + \frac{q}{w}\bb{\frac{d}{dx}}^{n+1}\bb{wp^{n}} - \bb{\frac{n^2-n}2 p'' + nq' + \frac{q(q-p')}{p}}y_n = 0
+\ee
+
+Also, we have 
+\beast
+\frac{q}{w}\bb{\frac{d}{dx}}^{n+1}\bb{wp^{n}} & = & qy'_n - q\frac{dw^{-1}}{dx} \bb{\frac{d}{dx}}^{n}\bb{wp^{n}} = qy'_n + \frac{q(q-p')}{p}y_n
+\eeast
+
+Substitute this again and get
+\be
+py_n'' + qy'_n - \bb{\frac{n^2-n}2 p'' + nq'}y_n = 0 \ \ra\ \lm = - \bb{\frac{n^2-n}2 p'' + nq'} = - \bb{n(n-1)\alpha + n\mu} = \lm_n
+\ee
+which implies that $y_n$ is a solution of ODE ($*$) and a polynomial of order $n$.
+\end{proof}
+
+
+\subsection{Schlaefli integral}
+
+\begin{theorem}[Schlaefli integral\index{Schlaefli integral}]\label{thm:schlaefli_integral}
+Consider a second-order Sturm-Liouville ODE of the general form
+\be
+p(x) y'' + q(x) y' + \lm y = 0\qquad (*)
+\ee
+where $\lm$ is defined to be constant. $p(x)$ and $q(x)$ is restricted to the polynomial forms\footnote{The forms of $p$ and $q$ are sufficiently general to include most of the ODEs with classical sets of polynomials as solutions (e.g., Legendre, Hermite, Laguerre ODEs)}
+\be
+p(x) = \alpha x^2 + \beta x+ \gamma,\qquad q(x) = \mu x + \nu.
+\ee
+
+Define $w(x)$ as the weight factor which can convert the ODE into self-adjoint (see Definition \ref{def:self_adjoint_ode}) form (such that $(wp)' = wq$ or $w' = w\frac{q-p'}{p}$) so it can be written by 
+\be
+w(x) = p^{-1}(x) \exp\bb{\int^x \frac{q(t)}{p(t)}dt}.
+\ee
+
+Then
+\be
+y_n = \frac 1{w(x)} \frac{n!}{2\pi i}\oint_C\frac{w(z)p^n(z)}{(z-x)^{n+1}}dz.
+\ee
+where the contour $C$ encloses the point $x$ and must be such that $w(z)p^n(z)$ is analytic everywhere on and within $C$. (see mathematical methods of physicists, p554)
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+
+\subsection{Generating functions}
+
+
+\section{Bernoulli Polynomials}
+
+\subsection{Bernoulli numbers}
+
+
+\subsection{Bernoulli polynomials}
+
+
+\begin{definition}[Bernoulli numbers\index{Bernoulli numbers}]\label{def:bernoulli_numbers}
+For any $t,x\in \R$, we can define Bernoulli numbers $B_n(x)$ for $n\in N$ by
+\be
+\frac{te^{xt}}{e^t-1} = \sum^\infty_{n=0}B_n(x) \frac{t^n}{n!}.
+\ee
+\end{definition}
+
+
+\begin{remark}
+Bernoulli numbers crop up all over mathematics -- particularly in number theory and topology. %See wolfram.com for details.
+\end{remark}
+
+%In particular, the first and second Bernoulli numbers now follow by setting $n = 0$ (resulting in $B_1= -\frac 12$, ``first Bernoulli numbers'') respectively $n = 1$ (resulting in $B_1= \frac 12$, ``second Bernoulli numbers''). That is,
+%\beast
+%\frac{t}{e^t-1} & = & \sum^\infty_{m=0}B_m \frac{t^m}{m!}\qquad n=0 ,\\
+%\frac{t}{1-e^{-t}} & = & \sum^\infty_{m=0}B_m \frac{(-t)^m}{m!}\qquad n=1.
+%\eeast
+
+%The first Bernoulli numbers will be 
+%\be
+%B_0 =1, \ B_1 = -1/2, \ B_2 = 1/6,\ B_3 = B_5=B_{2r+1} = 0,\ B_{12} = -691/2370.
+%\ee
+
+%We can also introduce Bernoulli numbers by recursive definition
+%\beast
+%B_m(n) & = & n^m - \sum^{m-1}_{k=0} \binom{m}{k} \frac{B_k(n)}{m-k+1} \\
+%B_0(n) & = & 1.
+%\eeast
+%
+
+
+\begin{definition}[Bernoulli numbers of the first kind]\label{def:bernoulli_numbers_first_kind}
+Let $C$ be the counterclockwise contour enclosing the origin with radius less than $2\pi$ (to avoid the poles at $\pm 2\pi i$)\footnote{see Arfken,G. Bernoulli Numbers, Euler-Maclaurin Formula, 5.9 in Mathematical Methods for Physicists, 3rd ed. Orlando, FL, Academic Press, pp327-338, 1985, p413.}. For $n\in \N$, Bernoulli numbers of the first kind are defined by 
+\be
+B_n := B_n(0)
+\ee
+where $B_n(x)$ is the Bernoulli number defined in Definition \ref{def:bernoulli_numbers}. The first few Bernoulli numbers $B_n$ are
+\be
+B_0 = 1, \ B_1 = -\frac 12,\ B_2 = \frac 16,\  B_4 = -\frac 1{30},\ B_3 = B_5 = \dots = 0,\ B_{12} = -\frac{691}{2730},\dots
+\ee
+\end{definition}
+
+\begin{remark}
+Usually we refer to this first kind as Bernoulli numbers.
+\end{remark}
+
+\begin{proposition}
+The Bernoulli numbers (of the first kind) can be expressed in terms of
+\be
+B_n := \frac{n!}{2\pi i} \oint_C \frac{z}{e^z-1} \frac{dz}{z^{n+1}},\qquad n\in \N.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+\begin{proposition}\label{pro:zeta_function_first_bernoulli_number}
+The Bernoulli numbers (of the first kind) can be expressed in terms of the Riemann zeta function as
+%\be
+%\zeta(n) = \frac{(-1)^{\frac n2 -1}(2\pi)^n B_n}{2(n!)}.
+%\ee
+\be
+B_{2n} = (-1)^{n+1} \frac{2(2n)!}{(2\pi)^{2n}}\zeta(2n)
+\ee
+for $n\in\N$.
+\end{proposition}
+
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+\begin{definition}[Bernoulli numbers of the second kind]\label{def:bernoulli_numbers_second_kind}
+ For $n\in \N$, Bernoulli numbers of the second kind are defined by 
+\be
+b_n := B_n(1)
+\ee
+where $B_n(x)$ is the Bernoulli number defined in Definition \ref{def:bernoulli_numbers}. The first few Bernoulli numbers $b_n$ are
+\be
+b_0 = 1, \ b_1 = \frac 12,\ b_2 = \frac 16,\  b_4 = -\frac 1{30},\ b_3 = b_5 = \dots = 0,\ b_{12} = -\frac{691}{2730},\dots
+\ee
+
+That is, the only different term from Bernoulli numbers of the first kind is $b_1$.
+\end{definition}
+
+\begin{proposition}
+Let $b_n, n\in \N$ be the Bernoulli numbers of the second kind. Then for $m\in \Z^+$,
+\be
+\sum^{m-1}_{n=0}\binom{m}{n}b_n = m.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+%Bernoulli numbers feature prominently in the closed form expression of the sum of the $m$th powers of the first $n$ positive integers.
+
+%\begin{definition}[Bernoulli numbers\index{Bernoulli numbers}]\label{def:bernoulli_numbers}
+%For $m, n \geq 0$, we define 
+%\be 
+%S_m(n) = \sum_{k=1}^n k^m = 1^m + 2^m + \cdots + n^m.\qquad (*) 
+%\ee
+
+%This expression can always be rewritten as a polynomial in $n$ of degree $m + 1$. The coefficients of these polynomials are related to the Bernoulli numbers by Bernoulli's formula: \be S_m(n) ={1\over{m+1}}\sum_{k=0}^m {m+1\choose{k}} B_k n^{m+1-k}, \ee where the convention $B_1 = 1/2$ is used. $\binom{m+1}{k}$ denotes the binomial coefficient, $m+1$ choose $k$.
+%\end{definition}
+
+%\begin{remark}
+%For example, taking $m$ to be 1 gives the triangular numbers 0, 1, 3, 6, ... . \be 1 + 2 + \cdots + n = \frac{1}{2}\left(B_0 n^2+2B_1 n^1\right) = \frac{1}{2}\left(n^2+n\right). \ee
+
+%Taking $m$ to be 2 gives the square pyramidal numbers 0, 1, 5, 14, ... . \be 1^2 + 2^2 + \cdots + n^2 = \frac{1}{3}\left(B_0 n^3+3B_1 n^2+3B_2 n^1 \right) =\frac{1}{3}\left(n^3+\frac{3}{2}n^2+\frac{1}{2}n\right). \ee
+
+%Some authors use the convention $B_1 = -1/2$ and state Bernoulli's formula in this way: \be S_m(n) = {1\over{m+1}}\sum_{k=0}^m (-1)^k {m+1\choose{k}} B_k n^{m+1-k}. \ee
+
+%Bernoulli's formula is sometimes called Faulhaber's formula after Johann Faulhaber who also found remarkable ways to calculate sum of powers.
+%\end{remark}
+
+%\begin{definition}[alternative definition of Bernoulli numbers]
+%Alternatively, we can define Bernoulli numbers $B_k$ by
+%\be
+%\frac{x}{e^x -1} = \sum^\infty_{k=0} B_k \frac{x^k}{k!}
+%\ee
+%for any $x\in \R$. One has $B_0 = 1$, 
+%\end{definition}
+
+\section{Bessel Differential Equations}
+
+
+\subsection{Bessel function of first kind}
+
+Bessel functions, first defined by the mathematician Daniel Bernoulli and generalized by Friedrich Bessel, are the canonical solutions $y(x)$ of Bessel differential equation\index{Bessel differential equation}
+\be
+x^2 \frac{d^2 y}{dx^2} + x \frac{dy}{dx} + (x^2 - \nu^2)y = 0
+\ee
+
+
+
+
+\begin{definition}[Bessel function of first kind\index{Bessel function!first kind}]\label{def:bessel_function_first_kind}
+The Bessel funciton of first kind is defined by 
+\be
+J_{\nu}(z) = \sum^\infty_{k=0} \frac{(-1)^k}{k!\Gamma\bb{\nu+k+1}}\bb{\frac{z}2}^{2k+\nu} = \bb{\frac 12 z}^\nu \sum^\infty_{k=0} \frac{\bb{-\frac 14z^2}^k}{k!\Gamma(\nu+k+1)} 
+\ee
+where $\nu,z\in \C$.
+\end{definition}
+
+\begin{center}
+\psset{xunit=0.4,yunit=5}
+\begin{pspicture}(-13,-.75)(13,1.15)
+\rput(10,0.8){￼$J_n(x)=\frac{1}{\pi}\int_0^{\pi}\cos(x\sin t-nt)dt,\quad x\in \R$}
+\psaxes[Dy=0.2,Dx=2.5]{->}(0,0)(-22,-.7)(22,1.1) 
+\psset{linewidth=1pt}
+\psBessel[linecolor=red]{0}{-20}{20}%
+\psBessel[linecolor=blue]{1}{-20}{20}%
+\psBessel[linecolor=green]{2}{-20}{20}%  
+\psBessel[linecolor=cyan]{3}{-20}{20}%magenta
+\rput(-15,1){￼\textcolor{red}{$J_0(x)$}}
+\rput(-15,0.8){￼\textcolor{blue}{$J_1(x)$}}
+\rput(-15,0.6){￼\textcolor{green}{$J_2(x)$}}
+\rput(-15,0.4){￼\textcolor{cyan}{$J_3(x)$}}
+\end{pspicture}
+\end{center}
+
+\begin{proposition}
+For $x\in \R$ and $\nu\in \R$,
+\be
+J_{\nu}(z) = \frac 1{2\pi } \int^{2\pi}_0 \cos\bb{z\sin \theta - \nu \theta} d\theta.
+\ee
+
+For integer $n$,
+\be
+J_{n}(z) = \frac 1{2\pi } \int^{2\pi}_0 \cos\bb{z\sin \theta - n \theta} d\theta = \frac 1{\pi } \int^{\pi}_0 \cos\bb{z\sin \theta - n \theta} d\theta
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+see \cite{Arfken_Weber_Harris_2013}.$P_{647}$.
+\end{proof}
+
+
+
+\subsection{Modified Bessel functions}
+
+\begin{theorem}\label{thm:modified_bessel_function}
+The solutions of
+\be
+z^2 \frac{d^2w}{dz^2} + z \frac{dw}{dz} - (z^2 + \nu^2)w = 0
+\ee
+are $I_{\pm \nu}(z)$ and $K_\nu(z)$ where $I$ and $K$ are modified Bessel functions of two kinds with $\nu,z\in\C$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+\footnote{$I_{\nu}(z)$ and $K_{\nu}(z)$ are real and positive when $\nu>-1$ and $z>0$.}
+
+\begin{definition}[modified Bessel function of first kind\index{modified Bessel function!first kind}]\label{def:modified_bessel_function_first_kind}
+The modified Bessel funciton of first kind is defined by 
+\be
+I_{\nu}(z) = \sum^\infty_{k=0} \frac{1}{k!\Gamma\bb{\nu+k+1}}\bb{\frac{z}2}^{2k+\nu} = \bb{\frac 12 z}^\nu \sum^\infty_{k=0} \frac{\bb{\frac 14z^2}^k}{k!\Gamma(\nu+k+1)} = i^{-\nu} J_\nu(iz)
+\ee
+where $\nu,z\in \C$.
+\end{definition}
+
+% check needed!!!!
+%\begin{remark}
+%Obviously, we have that $I_{-\nu}(z) = I_\nu(z)$, $\nu = 1,2,\dots.$\footnote{proof needed.}
+
+%For $x\in [0,\infty)$, we have the following graph.
+\begin{center}
+\psset{xunit=1,yunit=0.5}
+\begin{pspicture}(0,-0.5)(5,15)
+\psaxes[Dy=2,Dx=1,ticksize=-5pt 0]{->}(0,0)(-2,-.5)(6,15)%
+\rput(-1.5,11){￼\textcolor{red}{$I_0(x)$}}
+\rput(-1.5,10){￼\textcolor{blue}{$I_1(x)$}}
+\rput(-1.5,9){￼\textcolor{green}{$I_2(x)$}}
+\rput(-1.5,8){￼\textcolor{cyan}{$I_3(x)$}}
+\psModBessel[yMaxValue=15,nue=0,linecolor=red]{0}{5}%
+\psModBessel[yMaxValue=15,nue=1,linecolor=blue]{0}{5}%
+\psModBessel[yMaxValue=15,nue=2,linecolor=green]{0}{5}%
+\psModBessel[yMaxValue=15,nue=3,linecolor=cyan]{0}{5} %\psModBessel[yMaxValue=15,nue=-0.5,linecolor=black]{0}{5}
+\end{pspicture}
+\end{center}
+%\end{remark}
+
+%\begin{remark}%By this proposition, 
+%Obviously, we have that $I_{-\nu}(z) = I_\nu(z),\qquad \nu = 1,2,\dots.$
+%\end{remark}
+
+\begin{definition}[modified Bessel function of second kind\index{modified Bessel function!second kind}]
+\footnote{definition needed.}
+\end{definition}
+
+%\begin{proposition}\label{pro:modified_bessel_function_first_ascending_series}
+%\be I_\nu(z) = \bb{\frac 12 z}^\nu \sum^\infty_{k=0} \frac{\bb{\frac 14z^2}^k}{k!\Gamma(\nu+k+1)} = i^{-\nu} J_\nu(iz). \ee
+%\end{proposition}
+
+%\begin{proof}[\bf Proof]
+%\footnote{proof needed.}
+%\end{proof}
+
+
+
+\begin{proposition}\label{pro:modified_bessel_function_first_second_relation}
+\be
+K_\nu(z) = \frac 12\pi \frac{I_{-\nu}(z) - I_\nu(z)}{\sin (\nu \pi)}.
+\ee
+\end{proposition}
+
+\begin{remark}
+By this proposition, we have that $K_{\nu}(z) = K_{-\nu}(z)$.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+\subsection{General case $\nu$}
+
+\begin{proposition}\label{pro:modified_bessel_function_first_close_to_zero}
+When $\nu$ is fixed and $z\to 0$,
+\be
+I_\nu(z) \sim \left.\bb{\frac 12z}^\nu\right/\Gamma(\nu+1),\qquad \nu \neq -1,-2,\dots.
+\ee
+\end{proposition}
+
+\begin{proposition}\label{pro:modified_bessel_function_first_difference}
+\be
+I_{\nu - 1}(z) - I_{\nu+1}(z) = \frac {2\nu}z I_\nu(z).
+\ee
+\end{proposition}
+
+
+\begin{proposition}\label{pro:modified_bessel_function_second_close_to_zero}
+When $\nu$ is fixed and $z\to 0$,
+\be
+K_0(z) \sim -\ln z,\qquad K_\nu(z) \sim \frac 12 \Gamma(\nu) \bb{\frac 12z}^{-\nu},\quad \Re\nu > 0.
+\ee
+\end{proposition}
+
+\begin{proposition}\label{pro:modified_bessel_function_second_sinh_integral}
+For $\Re \nu > - \frac 12,\ x>0,\ \abs{\arg z} < \frac 12\pi$,
+\beast
+K_\nu(z) = \frac{\sqrt{\pi}\bb{\frac 12 z}^\nu}{\Gamma(\nu + 1/2)} \int^\infty_0 e^{-z\cosh t}\sinh^{2\nu}t dt = \frac{\sqrt{\pi}\bb{\frac 12 z}^\nu}{\Gamma(\nu + 1/2)} \int^\infty_1 e^{-zt}(t^2-1)^{\nu - \frac 12}dt.
+\eeast
+\end{proposition}
+
+\begin{proposition}\label{pro:modified_bessel_function_second_cosh_integral}
+\be
+K_\nu(z) = \int^\infty_0 e^{-z\cosh t} \cosh(\nu t)dt, \qquad \abs{\arg z} < \frac 12\pi.
+\ee
+\end{proposition}
+
+
+\begin{proposition}\label{pro:modified_bessel_function_second_cos_integral}
+\be
+K_\nu(xz) = \frac{\Gamma(\nu + 1/2)(2z)^\nu}{\sqrt{\pi}x^\nu} \int^\infty_0 \frac{\cos(xt)dt}{(t^2 + z^2)^{\nu + \frac 12}}, \qquad \Re \nu > - \frac 12,\ x>0,\ \abs{\arg z} < \frac 12\pi.
+\ee
+\end{proposition}
+
+\begin{proposition}\label{pro:modified_bessel_function_second_difference}
+\be
+e^{(\nu-1)\pi i}K_{\nu - 1}(z) - e^{(\nu+1)\pi i} K_{\nu+1}(z) = \frac {2\nu}z e^{\nu \pi i} K_\nu(z).
+\ee
+\end{proposition}
+
+\begin{proposition}\label{pro:modified_bessel_function_first_asymptotic_expansions}
+When $\nu$ is fixed, $\abs{z}$ is large and $\mu = 4\nu^2$,
+\be
+I_\nu(z)\sim \frac{e^z}{\sqrt{2\pi z}}\bb{1-\frac{\mu-1}{8z} + \frac{(\mu-1)(\mu-9)}{2!(8z)^2} - \frac{(\mu-1)(\mu-9)(\mu-25)}{3!(8z)^3} +\cdots},\qquad \abs{\arg z} < \frac 12\pi.
+\ee
+\end{proposition}
+
+
+\begin{proposition}\label{pro:modified_bessel_function_second_asymptotic_expansions}
+When $\nu$ is fixed, $\abs{z}$ is large and $\mu = 4\nu^2$,
+\be
+K_\nu(z)\sim \sqrt{\frac{\pi}{2z}} e^{-z} \bb{1 + \frac{\mu-1}{8z} + \frac{(\mu-1)(\mu-9)}{2!(8z)^2} + \frac{(\mu-1)(\mu-9)(\mu-25)}{3!(8z)^3} +\cdots},\qquad \abs{\arg z} < \frac 32\pi.
+\ee
+\end{proposition}
+
+
+\subsection{Special case $\nu$}
+
+\begin{proposition}\label{pro:modified_bessel_function_first_nu_special_value}
+\beast
+& & \sqrt{\frac12 \pi /z}\, I_{1/2}(z) = \frac{\sinh z}z,\qquad \sqrt{\frac12 \pi /z}\, I_{3/2}(z) = -\frac{\sinh z}{z^2} + \frac{\cosh z}z,\qquad \sqrt{\frac12 \pi /z}\, I_{5/2}(z) = \bb{\frac 3{z^3} + \frac 1z}\sinh z - \frac 3{z^2}\cosh z,\\
+& & \sqrt{\frac12 \pi /z}\, I_{-1/2}(z) = \frac{\cosh z}z,\qquad \sqrt{\frac12 \pi /z}\, I_{-3/2}(z) = \frac{\sinh z}{z} - \frac{\cosh z}{z^2},\qquad \sqrt{\frac12 \pi /z}\, I_{-5/2}(z) = - \frac 3{z^2}\sinh z + \bb{\frac 3{z^3} + \frac 1z}\cosh z .
+\eeast
+\end{proposition}
+
+This is from \cite{Abramowitz_1972}.$P_{443}$.
+
+\begin{proposition}\label{pro:modified_bessel_function_second_nu_special_value}
+\be
+K_{1/2}(z) = K_{-1/2}(z) = \sqrt{\frac {\pi}{ 2z}}e^{-z},\qquad K_{3/2}(z) = K_{-3/2}(z) = \sqrt{\frac 12 \pi z}\bb{\frac 1z + \frac 1{z^2}}e^{-z},
+\ee
+\be
+K_{5/2}(z) = K_{-5/2}(z) = \sqrt{\frac 12 \pi z}\bb{\frac 1z -\frac 3{z^2} + \frac 3{z^3}}e^{-z}.
+\ee
+\end{proposition}
+
+\section{Legendre Differential Equation}
+
+
+\subsection{Legendre different equation}
+
+
+\begin{definition}[Legendre differential equation\index{Legendre differential equation}]\label{def:legendre_differential_equation}
+Legendre differential equation is of the form
+\be
+{d \over dx} \bb{ (1-x^2) {d \over dx} P_n(x) } + n(n+1)P_n(x) = 0\qquad (*).
+\ee
+
+Alternatively, we can write ($*$) as
+\be
+(1-x^2)P''(x)  - 2xP'(x) + n(n+1)P(x) = 0.
+\ee
+\end{definition}
+
+\begin{remark}    	
+They are named after Adrien-Marie Legendre. This ordinary differential equation is frequently encountered in physics and other technical fields. In particular, it occurs when solving Laplace's
+equation (and related partial differential equations) in spherical coordinates.
+
+The Legendre differential equation may be solved using the standard power series method. The equation has regular singular points at $x = \pm 1$ so, in general, a series solution about the origin will
+only converge for $|x| < 1$. When $n$ is an integer, the solution $P_n(x)$ that is regular at $x = 1$ is also regular at $x = -1$, and the series for this solution terminates (i.e. it is a polynomial).
+\end{remark}
+
+
+\subsection{Legendre polynomials}
+
+\begin{definition}[Legendre polynomials\index{Legendre polynomials}]\label{def:legendre_polynomials}
+The solutions to $(*)$ in Definition \ref{def:legendre_differential_equation} for $n = 0, 1, 2, ...$ (with the normalization $P_n(1) = 1$) form a polynomial sequence of orthogonal polynomials called the Legendre polynomials.
+
+Each Legendre polynomial $P_n(x)$ is an $n$th-degree polynomial. It may be expressed using Rodrigues' formula (Theorem \ref{thm:rodrigues_formula}) and a scalar $(-1)^n/(2^n n!)$,
+\be
+P_n(x) = {1 \over 2^n n!} {d^n \over dx^n } \bb{ (x^2 -1)^n }.
+\ee
+
+Then by Leibniz rule (Proposition \ref{thm:leibniz_rule}) we have
+\be
+P_n(x) = \sum_{k=0}^n (-1)^k \binom{n}{k}^2 \bb{ \frac{1+x}{2}}^{n-k} \bb{\frac{1-x}{2}}^k.
+\ee
+\end{definition}
+
+\begin{remark}
+That these polynomials satisfy the Legendre differential equation follows by differentiating $n +1$ times both sides of the identity
+\be
+(x^2-1)\frac{d}{dx}(x^2-1)^n = 2nx(x^2-1)^n
+\ee
+and employing the general Leibniz rule (Proposition \ref{thm:leibniz_rule}) for repeated differentiation.\footnote{Courant \& Hilbert 1953, II, 8, check needed.}%The $P_n$ can also be defined as the coefficients in a Taylor series expansion:\footnote{George B. Arfken, Hans J. Weber (2005), Mathematical Methods for Physicists, Elsevier Academic Press, p. 743, ISBN 0-12-059876-0}
+%\be
+%\frac{1}{\sqrt{1-2xt+t^2}} = \sum_{n=0}^\infty P_n(x) t^n.
+%\ee
+%In physics, this ordinary generating function is the basis for multipole expansions.
+\end{remark}
+
+We can derive the solutions of Legendre ODE by generating function.
+
+\begin{theorem}\label{thm:generating_function_legendre_polynomials}
+The generating function of Legendre polynomials $P_n(x)$ is
+\be
+g(x,t) = \frac 1{\sqrt{1-2xt + t^2}} = \sum^\infty_{n=0} P_n(x)t^n.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+The Legendre differential equation 
+\be
+(1-x^2)y'' - 2xy' + \lm y = 0
+\ee
+implies that
+\be
+p(x) = 1-x^2,\quad q(x) = - 2x,\quad w(x) = 1
+\ee
+since the equation is self-adjoint (see Definition \ref{def:self_adjoint_ode}). From the generating function formula based on the Schl\"afli integral (Theorem \ref{thm:schlaefli_integral}),
+\be
+y_n(x) = \frac 1{w(x)}\frac {n!}{2\pi i} \oint_C \frac{w(z)p^n(z)}{(z-x)^{n+1}}dz = \frac {n!}{2\pi i} \oint_C \frac{(1-z^2)^n}{(z-x)^{n+1}}dz 
+\ee
+where the contour $C$ encloses the point $x$, and must be such that $w(z)p^n(z)$ is analytic everywhere on and within $C$. We choose $c_n = (-1)^n/(2^nn!)$ and reach
+\be
+g(x,t) = \sum^\infty_{n=0} \bb{\frac{(-1)^nt^n}{2^nn!}} \frac{n!}{2\pi i}\oint_C\frac{(1-z^2)^n}{(z-x)^{n+1}}dz.
+\ee
+
+That is,
+\be
+P_n(x) = \frac {1}{2^{n+1}\pi i} \oint_C \frac{(z^2-1)^n}{(z-x)^{n+1}}dz.
+\ee
+
+Interchanging the summation and integration\footnote{theorem needed. This is legitimate since the summation is uniformly convergent (with respect to $z$) for all points at which it is used (i.e., everywhere on the contour $C$). It is convenient to analyze the convergence for small $t$ and $x$ and for a contour with $\abs{z}=1$. On the assumed contour and for small $x$, there will be a range of $\abs{t}\ll 1$ for which $\abs{\frac{(z^2-1)t}{2(z-x)}}<1$}, the factors dependent on $n$ form a geometric series, which we can sum
+\be
+\sum^\infty_{n=0} \bb{\frac{(z^2-1)t}{2(z-x)}}^n \frac 1{z-x} = \frac{1}{z-x -\frac 12 (z^2-1)t} = -\frac 2t\bb{z^2 - \frac{2z}{t} + \frac{2x-t}{t}}^{-1}.
+\ee
+
+Substituting this result into the formula for $g(x,t)$, we now have
+\be
+g(x,t) = -\frac 2t \frac{1}{2\pi i} \oint_C \bb{z^2 -\frac {2z}t + \frac{2x-t}{t}}^{-1} dz = -\frac 2t \frac 1{2\pi i} \oint_C \frac{dz}{(z-z_1)(z-z_2)}
+\ee
+where $z_1$ and $z_2$ are the roots of the quadratic form of the equation
+\be
+z_1 = \frac 1t - \frac{\sqrt{1-2xt + t^2}}{t},\quad z_2 = \frac 1t + \frac{\sqrt{1-2xt + t^2}}{t}.
+\ee
+
+Then it has two poles, at $z=z_1$ and $z=z_2$. For small $x$and $\abs{t}$, $z_2$ will be approximately $2/t$ and will be exterior to the contour, while $z_1$ will be close to the origin of $z$. Thus, only residue of the integrand at $z=z_1$ will contribute tot he contour integral, which will have the value
+\be
+g(x,t) = -\frac 2t \frac{1}{z_1-z_2} = \frac{1}{\sqrt{1-2xt+t^2}}
+\ee
+since
+\be
+z_1 - z_2 = -\frac 2t\sqrt{1-2xt+t^2}.
+\ee
+\end{proof}
+
+
+\begin{proposition}\label{pro:legendre_polynomials_value}
+For Legendre polynomials $P_n(x)$ we have for $n\in \N$,
+\ben
+\item [(i)] $P_n(1)=1$.
+\item [(ii)] $P_{n}(-x) = (-1)^nP_n(x)$.
+\item [(iii)] $P_{2n+1}(0) = 0$, $P_{2n}(0) = (-1)^n\frac{(2n-1)!!}{(2n)!!}$.
+\item [(iv)] The coefficient of $x^n$ of $P_n(x)$ is $\frac{(2n-1)!!}{n!}$.
+\item [(v)] $P_n(x)$ contains alternative powers of $x$. That is $x^n,x^{n-2},\dots, (x^1\text{ or }x^0)$.
+\een
+\end{proposition}
+
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] By Theorem \ref{thm:generating_function_legendre_polynomials}, we have for $\abs{t}<1$\footnote{should be $\abs{t}<\min\abs{z\pm \sqrt{z^2-1}}$ see Cauchy-Hadamard theorem (Theorem \ref{thm:cauchy_hadamard_radius_of_convergence}), but is $x\in [-1,1]$ implies $\min\abs{x\pm \sqrt{x^2-1}}=1$, more details needed. see table of integrals, series and products, 8th edition, p997}
+\be
+\frac 1{\sqrt{1-2xt + t^2}} = \sum^\infty_{n=0} P_n(x)t^n.
+\ee
+
+Let $x=1$ and then
+\be
+\sum^\infty_{n=0} P_n(x)t^n = \frac 1{\sqrt{1-2t + t^2}} = \frac 1{1-t} = \sum^\infty_{n=0}t^n \ \ra\ P_n(1) = 1.
+\ee
+
+\item [(ii)] We can replace $x$ and $t$ by $-x$ and $-t$ and get
+\be
+\sum^\infty_{n=0} P_n(x)t^n = \frac 1{\sqrt{1-2xt + t^2}} = g(x,t) = g(-x,-t) = \frac 1{\sqrt{1-2(-x)(-t) + (-t)^2}} = \sum^\infty_{n=0} P_n(-x)(-t)^n
+\ee
+which implies $P_n(-x) = (-1)^n P_n(x)$.
+
+\item [(iii)] From (ii) we have for $2n+1$, $P_{2n+1}(0) = (-1)^{2n+1}P_{2n+1}(0) = -P_{2n+1}(0)\ \ra\ P_{2n+1}(0) = 0$. By Theorem \ref{thm:generating_function_legendre_polynomials} and Binomial expansion\footnote{theorem needed.}
+    \be
+    \sum^\infty_{n=0} P_{2n}(0)t^{2n} = g(0,t) = \frac 1{\sqrt{1+t^2}} = (1+t^2)^{-1/2} = \sum^\infty_{n=0} \binom{-1/2}{n} t^{2n}.
+    \ee
+
+Therefore,
+\beast
+P_{2n}(0) = \binom{-1/2}{n} = \frac{(-1)\cdot (-3)\cdot \dots \cdot (-1 - (2n-2))}{n!2^n}=(-1)^n \frac{1\cdot 3\cdot \dots \cdot (2n-1)}{2^n n!} = (-1)^n \frac{(2n-1)!!}{(2n)!!}
+\eeast
+
+\item [(iv)] The leading terms of the Legendre ploynomial can be done by applying the binimial expansion\footnote{theorem needed.} to the generating function,
+\be
+\sum^\infty_{n=0} P_n(x) t^n = g(x,t) = \bb{1-2xt + t^2}^{-1/2} = \sum^\infty_{n=0} \binom{-1/2}{n}\bb{-2xt + t^2}^n
+\ee
+from which we see that the maximum power of $x$ that can multiply $t^n$ will be $x^n$ (the leading term of Legendre polynomial), and is obtained from the term $(-2xt)^n$ in the expansion of the final factor. Thus, the coefficient of $x^n$ in $P_n(x)$ is
+\be
+\binom{-1/2}{n} (-2)^n = 2^n  \frac{(2n-1)!!}{(2n)!!} = 2^n  \frac{(2n-1)!!}{2^n n!} = \frac{(2n-1)!!}{ n!}
+\ee
+
+\item [(v)] This is direct result from (ii) and (iv).
+\een
+\end{proof}
+
+
+\begin{proposition}[recurrence formulas]\label{pro:legendre_polynomials_recurrence_formulas}
+Let $P_n(x)$ be Legendre polynomials. Then
+\ben
+\item [(i)] (Bonnet's recursion formula\index{Bonnet's recursion formula}) $(2n+1) xP_n(x) = (n+1)P_{n+1}(x) + nP_{n-1}(x),\qquad n=1,2,3,\dots.$
+\item [(ii)] $P_{n+1}'(x) + P_{n-1}'(x) = 2xP_{n}'(x) + P_n(x)$,
+\item [(iii)] $P_{n+1}'(x) - P_{n-1}'(x) = (2n+1)P_n(x)$,
+\item [(iv)] $P_{n+1}'(x) = (n+1)P_n(x) + xP_{n}'(x)$,
+\item [(v)] $P_{n-1}'(x) = -n P_n(x) + xP_{n}'(x)$,
+\item [(vi)] $(1-x^2)P_n'(x) = nP_{n-1}(x) - nxP_n(x)$,
+\item [(vii)] $(1-x^2)P_n'(x) = (n+1)x P_{n}(x) - (n+1)P_{n+1}(x)$.
+\een
+\end{proposition}
+
+
+\begin{remark}
+We can use (i) to generate successive $P_n$ from the values $P_0$ and $P_1$ that we have previously identified. For example
+\beast
+3xP_1(x) & = & 2P_2(x) + P_0(x) \ \ra\ P_2(x) = \frac 12\bb{3xP_1(x)-P_0(x)} = \frac 32 x^2 - \frac 12,\\
+5xP_2(x) & = & 3P_3(x) + 2P_1(x) \ \ra\ P_3(x) = \frac 13\bb{5xP_2(x)-2P_1(x)} = \frac 13\bb{5x\bb{\frac 32 x^2 - \frac 12} - 2x} = \frac 52 x^3 - \frac 32 x,
+\eeast
+
+\beast
+7xP_3(x) = 4P_4(x) + 3P_2(x) \ \ra\ P_4(x) & = & \frac 14\bb{7xP_3(x)-3P_2(x)} \\
+& = & \frac 14\bb{7x\bb{\frac 52 x^3 - \frac 32x} - 3\bb{\frac 32 x^2 - \frac 12}} = \frac{35}8x^4 - \frac {15}4 x^2 + \frac 38.
+\eeast
+
+Continuing this process, we can build the list of Legendre polynomials.
+\beast
+P_0(x) & = & 1 \\
+P_1(x) & = & x \\
+P_2(x) & = & \frac 12(3x^2-1) \\
+P_3(x) & = & \frac 12(5x^3-3x) \\
+P_4(x) & = & \frac 18(35x^4-30x^2 + 3) \\
+P_5(x) & = & \frac 18(63x^5-70x^3 + 15x) \\
+P_6(x) & = & \frac 1{16}(231x^6-315x^4 + 105x^2 -5) \\
+P_7(x) & = & \frac 1{16}(429x^7-693x^5 + 315x^3 -35x) \\
+P_8(x) & = & \frac 1{128}(6435x^8-12012x^6+6930 x^4 -1260 x^2 +35) .
+\eeast
+
+Because we derived the generating function $g(x,t)$ from the Legendre ODE and then obtained the recurrence formulas using $g(x,t)$, that ODE automatically be consistent with these recurrence relations. It is nevertheless of interest to verify this consistency, because then can conclude that any set of functions satisfying the recurrence formulas will be a set of solutions the Legendre ODE.
+
+It can also be seen by Proposition \ref{pro:legendre_polynomials_value}.(i) and Proposition \ref{pro:legendre_polynomials_recurrence_formulas}.(iii)
+\be
+P_{n+1}'(1) - P_{n-1}'(1) = (2n+1)P_n(1) = 2n+1 \ \ra\ P_{n}'(1) = 1+\dots +n = \frac 12 n(n+1).
+\ee
+\end{remark}
+
+\begin{proof}[\bf Proof]%\footnote{proof needed}
+\ben
+\item [(i)] From the generating function equation we can generate recurrence formula by differentiating $g(x,t)$ with respect to $x$ or $t$. We start from
+\be
+\fp{g(x,t)}{t} = \frac{x-t}{(1-2xt + t^2)^{3/2}} = \sum^\infty_{n=0} nP_n(x) t^{n-1},
+\ee
+which we rearrange to
+\be
+(1-2xt+t^2)\sum^\infty_{n=0} nP_n(x) t^{n-1} + (t-x)\sum^\infty_{n=0} P_n(x)t^{n} = 0.
+\ee
+
+Then expand and get
+\be
+\sum^\infty_{n=0} nP_n(x) t^{n-1} - 2x \sum^\infty_{n=0} nP_n(x) t^n + \sum^\infty_{n=0} nP_n(x) t^{n+1} + \sum^\infty_{n=0} P_n(x) t^{n+1} - x\sum^\infty_{n=0} P_n(x) t^{n} = 0
+\ee
+
+Collecting the coefficients of $t^n$ from the various terms and setting the result to zero, we have
+\be
+(2n+1) xP_n(x) = (n+1)P_{n+1}(x) + n P_{n-1}(x),\qquad n=1,2,3,\dots.
+\ee
+
+\item [(ii)] We can also obtain a recurrence formula involving $P_n'(x)$ by differentiating $g(x,t)$ with respect to $x$. This gives
+\be
+\fp{g(x,t)}{x} = \frac t{\bb{1-2xt + t^2}^{3/2}} = \sum^\infty_{n=0} P_n'(x) t^n
+\ee
+or
+\be
+(1-2xt+t^2) \sum^\infty_{n=0} P_n'(x)t^n - \sum^\infty_{n=0} P_n(x)t^{n+1} = 0.
+\ee
+
+Then this equation implies that
+\be
+P_{n+1}'(x) + P_{n-1}'(x) = 2xP_{n}'(x) + P_n(x),\qquad n=1,2,3,\dots \qquad (*)
+\ee
+
+\item [(iii)] Taking differentiation of the result of (i) with respect to $x$, we have
+\be
+(2n+1)P_n(x) + (2n+1)xP_n'(x) = (n+1)P_{n+1}'(x) + nP_{n-1}'(x),\qquad n=1,2,3,\dots \qquad (\dag)
+\ee
+
+Then $(*)\times (2n+1) + (\dag)\times 2$ gives
+\be
+P_{n+1}'(x) - P_{n-1}'(x) = (2n+1)P_n(x).
+\ee
+
+\item [(iv)] and (v) are just linear combination of (ii) and (iii).
+\item [(vi)] Put $n-1$ instead of $n$ in (iv) and add it to (v)$\times x$
+\beast
+P_{n}'(x) & = & nP_{n-1}(x) -nxP_{n}(x) + x^2P_{n}'(x) \\
+(1- x^2)P_{n}'(x)& = & nP_{n-1}(x) -nxP_{n}(x)
+\eeast
+
+\item [(vii)] Put $n+1$ instead of $n$ in (v) and add it to (iv)$\times x$
+\beast
+P'_{n}(x) & = & x(n+1)P_n(x) + x^2P_{n}'(x) - (n+1)P_{n+1}(x)\\
+(1- x^2)P_{n}'(x) & = & (n+1)xP_n(x) - (n+1)P_{n+1}(x).
+\eeast
+\een
+\end{proof}
+
+\begin{proposition}[explicit representation of Legendre polynomials]\label{pro:legendre_polynomials_explicit_representation}
+Let $P_n(z)$ be Legendre polynomials for $z\in \C$. Then
+\be
+\text{(i)}\quad P_n(x) = \frac 1{2^n} \sum^n_{k=0} \binom{n}{k}^2 (x-1)^{n-k}(x+1)^k,
+\ee
+
+\be
+\text{(ii)}\quad P_n(x) = \sum^n_{k=0} \binom{n}{k}\binom{-n-1}{k}\bb{\frac{1-x}2}^k, 
+\ee
+
+\be
+\text{(iii)}\quad P_n(x) = 2^n \sum^n_{k=0}  x^k \binom{n}{k}\binom{\frac{n+k-1}2}{n},
+\ee
+
+\be
+\text{(iv)}\quad P_n(x) = \sum^{\floor{n/2}}_{k=0} (-1)^k \frac{(2n-2k)!}{2^nk!(n-k)!(n-2k)!}x^{n-2k}.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed. from definition and recurrence formula, see mathematical methods for physicists, p718}
+\ben
+\item [(i)]
+\item [(ii)]
+\item [(iii)]
+\item [(iv)] Since 
+\be
+\frac{d^n}{dz^n}(z^2-1)^n = \frac{d^n}{dz^n}\bb{\sum^n_{k=0}(-1)^k\binom{n}{k}z^{2n-2k}} = \sum^{\floor{n/2}}_{k=0} (-1)^k \frac{n!}{k!(n-k)!}\frac{(2n-2k)!}{(n-2k)!}z^{n-2k}
+\ee
+by Leibniz rule (Proposition \ref{thm:leibniz_rule}), we have
+\be
+P_n(z) = \frac 1{2^nn!}\frac{d^n}{dz^n}(z^2-1)^n = \sum^{\floor{n/2}}_{k=0} (-1)^k \frac{(2n-2k)!}{2^nk!(n-k)!(n-2k)!}x^{n-2k}.
+\ee
+\een
+\end{proof}
+
+
+\begin{proposition}
+For $n\in \Z^+$ and $z\in \C$, legendre polynomials can be expressed by
+\be
+P_n(z) = \frac 1{2\pi} \int^\pi_{-\pi}\bb{z+\bb{z^2-1}^{1/2}\cos\phi}^n d\phi = \frac 1{\pi} \int^\pi_0\bb{z+\bb{z^2-1}^{1/2}\cos\phi}^n d\phi .
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+For $z\in \C$ and $n\in \Z^+$,
+\be
+P_n(z) = \frac 1{2^{n+1}\pi i} \int_C \frac{(t^2-1)^n}{(t-z)^{n+1}}dt
+\ee
+where $C$ is any contour which encircles the point $z$ counter-clockwise. Take $C$ to be the circle center $z$ and radius $\abs{z^2-1}^{1/2}$, so that, on $C$,
+\be
+t = z + \bb{z^2-1}^{1/2}e^{i\phi}
+\ee
+where $\phi$ may be taken to increase from $-\pi$ to $\pi$. Then,
+\beast
+P_n(z) & = & \frac 1{2^{n+1}\pi i} \int^\pi_{-\pi} \bb{\frac{\bb{z -1+ \bb{z^2-1}^{1/2}e^{i\phi}}\bb{z +1+ \bb{z^2-1}^{1/2}e^{i\phi}}}{\bb{z^2-1}^{1/2}e^{i\phi}}}^n \frac 1{\bb{z^2-1}^{1/2}e^{i\phi}} i \bb{z^2-1}^{1/2}e^{i\phi}d\phi\\
+& = & \frac 1{2\pi } \int^\pi_{-\pi} \bb{\frac{\bb{z^2-1}\bb{1+e^{2i\phi}} + 2z \bb{z^2-1}^{1/2}e^{i\phi}}{2\bb{z^2-1}^{1/2}e^{i\phi}}}^n d\phi = \frac 1{2\pi } \int^\pi_{-\pi} \bb{\frac{\bb{z^2-1}^{1/2}\bb{e^{-i\phi}+e^{i\phi}} + 2z }{2}}^n d\phi\\
+& = & \frac 1{2\pi} \int^\pi_{-\pi}\bb{z+\bb{z^2-1}^{1/2}\cos\phi}^n d\phi = \frac 1{\pi} \int^\pi_0\bb{z+\bb{z^2-1}^{1/2}\cos\phi}^n d\phi
+\eeast
+since $\cos$ is even function.
+\end{proof}
+
+
+\subsection{Orthogonality of Legendre polynomials}
+
+An important property of the Legendre polynomials is that they are orthogonal with respect to the $L^2$ inner product on the interval $-1 \leq x \leq 1$.
+
+\begin{proposition}[orthogonality of legendre polynomials]\label{pro:orthogonality_of_legendre_polynomials}
+Let $P_n(x)$ be Legendre polynomials, the solution of Legendre differential equation
+\be
+(1-x^2)P_n''(x)  - 2xP_n'(x) + n(n+1)P_n(x) = 0.
+\ee
+
+Then
+\be
+\int^1_{-1} P_n(x)P_m(x)dx = \frac{2\delta_{nm}}{2n+1}.
+\ee
+
+If we switch to polar coordinate,
+\be
+\int^\pi_0 P_n(\cos\phi) P_m(\cos\phi) \sin\phi d\phi = \frac{2\delta_{nm}}{2n+1}.
+\ee
+\end{proposition}
+
+\begin{remark}
+Note that the orthogonality of eigenfunction is implied by self-adjoint property of operator of differential equation. If the differential equation is not self-adjoint, then a weighted factor $w$ is introduced and the orthogonality of the eigenfunction will get this $w$ involved.\footnote{example needed.}
+
+In fact, an alternative derivation of the Legendre polynomials is by carrying out the Gram-Schmidt process on
+the polynomials $\bra{1, x, x^2, \dots}$ with respect to this inner product. The reason for this orthogonality property is that the Legendre differential equation can be viewed as a Sturm-Liouville problem,
+where the Legendre polynomials are eigenfunctions of a Hermitian differential operator:
+\be
+{d \over dx} \bb{ (1-x^2) {d \over dx} P(x) } = -\lm P(x),
+\ee
+where the eigenvalue $\lm$ corresponds to $n(n + 1)$.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+First, we proof that for $n\neq m$
+\be
+\int^1_{-1} P_n(x)P_m(x)dx = 0.
+\ee
+
+Since $p(x) = 1-x^2$ has to two singular points at $\pm 1$ and eigenvalues of $P_n$ and $P_m$ are $n(n+1)$ and $m(m+1)$, we can have the required result by Proposition \ref{pro:self_adjoint_differential_equation_self_adjoint_operator}.
+
+For $\abs{t}<1$,
+\be
+\bb{1-2xt + t^2}^{-1} = \bb{\sum^\infty_{n=0} P_n(x)t^n}^2
+\ee
+
+According to orthogonality
+\be
+\int^1_{-1} \frac{dx}{1-2tx + t^2} = \sum^\infty_{n=0}t^{2n} \int^1_{-1} P_n^2(x) dx.
+\ee
+
+Making the substitution $y = 1-2tx + t^2$ with $dy = -2t dx$, we obtain
+\be
+\int^1_{-1} \frac{dx}{1-2tx + t^2} = \frac 1{2t} \int^{(1+t)^2}_{(1-t)^2} \frac {dy}y = \frac 1t \ln\bb{\frac {1+t}{1-t}}
+\ee
+
+Expanding the result in a power series
+\be
+\frac 1t \ln\bb{\frac{1+t}{1-t}} = 2\sum^\infty_{n=0} \frac{t^{2n}}{2n+1},
+\ee
+which implies that
+\be
+\int^1_{-1} P_n^2(x) dx = \frac{2}{2n+1}.
+\ee
+
+Therefore,
+\be
+\int^1_{-1} P_n(x)P_m(x)dx = \frac{2\delta_{nm}}{2n+1}.
+\ee
+\end{proof}
+
+\begin{example}
+For $n=1$ and $m=2$,
+\be
+\int^1_{-1} P_1(x)P_2(x)dx = \int^1_{-1} \bb{\frac 32 x^3 - \frac 12x }dx = 0,
+\ee
+and
+\be
+\int^1_{-1} P_1^2(x)dx = \int^{1}_{-1} x^2 dx = \frac 23,
+\ee
+\be
+\int^1_{-1} P_2^2(x)dx = \int^{1}_{-1} \bb{\frac 94 x^4 - \frac 32x^2 + \frac 14} dx = \frac 15\bb{\frac 92 - 5 + \frac 52} = \frac 25.
+\ee
+\end{example}
+
+
+
+
+%\begin{proposition}[orthogonality\index{orthogonality!Legendre polynomials}]\label{pro:orthogonality_legendre_polynomials}
+%Let $P_n(x)$ be Legendre polynomials on $[-1,1]$. Then
+%\be
+%\int_{-1}^{1} P_m(x) P_n(x)\,dx = {2 \over {2n + 1}} \delta_{mn}
+%\ee
+%where $\delta_{mn}$ denotes the Kronecker delta, equal to 1 if $m = n$ and to 0 otherwise.
+%\end{proposition}
+
+
+%From Bonnet's recursion formula one obtains by induction the explicit representation
+
+
+\subsection{Legendre function}
+
+
+\begin{proposition}
+$\abs{\Arg z}<\frac 12\pi$ ($\Re z >0$) and $\nu\in \R$,
+\be
+P_\nu(z) = \frac 1{2\pi} \int^\pi_{-\pi}\bb{z+\bb{z^2-1}^{1/2}\cos\phi}^\nu d\phi.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+
+
+\begin{corollary}\label{cor:legendre_function_n_minus_n_minus_one}
+For $\nu,z\in \C$ and Legendre polynomials $P_n(z)$,
+\be
+P_n(z) = P_{-n-1}(z).
+\ee
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed. need hypergeometric function in \cite{Whittaker_Watson_1963}}.
+\end{proof}
+
+
+
+\begin{proposition}
+$\abs{\Arg z}<\frac 12\pi$ ($\Re z >0$) and $n\in \Z^+$,
+\be
+P_{n}(z) = \frac 1{2\pi} \int^{\pi}_{-\pi} \frac{d\phi}{\bb{z + \bb{z^2-1}^{1/2}\cos\phi}^{n+1}}
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+We can make the Schl\"afli integral to get general case of $P_\nu(z)$. However, it is necessary in addition to verify that $t=1$ is inside the contour and $t=-1$ outside it, and it is also necessary that we should specify the branch of $\bb{z+ (z^2-1)\cos\phi}^n$, which is now a multi-valued function of $\phi$.
+
+The conditions that $t=1$ and $t=-1$ should be inside and outside $C$ respectively are that the distances of $z$ from these points should be less and greater than $\abs{z^2-1}^{1/2}$. These conditions are both satisfied if $\abs{z-1} < \abs{z+1}$, which gives $\Re z>0$ and so (given $\Arg z$ its principal value) we must have $\abs{\Arg z} < \frac 12 \pi$.\footnote{check needed.}
+
+Since $P_n(z) = P_{-n-1}(z)$, we have
+\be
+P_{n}(z) = \frac 1{2\pi} \int^{\pi}_{-\pi} \bb{z + \bb{z^2-1}^{1/2}\cos\phi}^{-n-1}d\phi
+\ee
+which is meaningful only if $\Re z>0$. %$z + \bb{z^2-1}^{1/2}\cos\phi\neq 0$. This implies
+%\be
+%\abs{\frac{z}{\bb{z^2-1}^{1/2}}} > 1
+%\ee
+Therefore,
+\be
+P_{n}(z) = \frac 1{2\pi} \int^{\pi}_{-\pi} \frac{d\phi}{\bb{z + \bb{z^2-1}^{1/2}\cos\phi}^{n+1}}
+\ee
+\end{proof}
+
+\subsection{Associated Legendre differential equation}
+
+Consider
+\be
+(1-x^2)y'' - 2xy' + \bb{\lm - \frac{m^2}{1-x^2}}y = 0 \qquad (*)
+\ee
+
+Assume the solution is $P$ and let $P = (1-x^2)^{m/2} \sP$. Then we have
+\be
+(1-x^2) \sP'' - 2x(m+1)\sP' + \bb{\lm - m(m+1)}\sP = 0.\qquad (**)
+\ee
+
+Also, we let
+\be
+\sP_n^m(x) = (-1)^m \frac{d^m}{dx^m}P_n(x)
+\ee
+where $P_n(x)$ is the Legendre polynomials satisfy
+\be
+(1-x^2)P_n'' - 2xP_n' + n(n+1)P_n = 0.\qquad (\dag)
+\ee
+
+Then we differentiate ($\dag$) and get
+\be
+(1-x^2) {\sP_n^m}'' (x) - 2x(m+1){\sP_n^m}'(x) + \bb{n(n+1)-m(m+1)}\sP_n^m(x) = 0.
+\ee
+
+Therefore, $\sP_n^m(x)$ is the solution of ($**$) and it is called associated Legendre polynomials\index{associated Legendre polynomials}.
+
+Furthermore, for $m\geq 0$
+\be
+P_n^m(x) = (-1)^m(1-x^2)^{m/2} \frac{d^m}{dx^m}P_n(x)
+\ee
+is the solution of ($*$) and is called associated Legendre function\index{associated Legendre function}.
+
+Therefore, for $\abs{m}\leq n$,
+\be
+P_n^{m}(x) = \frac{(-1)^m}{2^n n!} (1-x^2)^{m/2} \frac{d^{n+m}}{dx^{n+m}} (x^2-1)^n.
+\ee
+
+In other words, for $m\geq 0$,
+\be
+P_n^{-m}(x) = \frac{(-1)^m}{2^n n!} (1-x^2)^{-m/2} \frac{d^{n-m}}{dx^{n-m}} (x^2-1)^n.
+\ee
+
+
+
+
+\subsection{Associated Legendre polynomials}
+
+\begin{definition}[associated Legendre polynomials\index{associated Legendre polynomials}]\label{def:associated_Legendre_polynomials}
+$\sP^m_n(x)$ is solution of ODE
+\be
+(1-x^2) \sP'' - 2x(m+1)\sP' + \bb{n(n+1) - m(m+1)}\sP = 0.
+\ee
+
+Also, it can be expressed by
+\be
+\sP_n^m(x) = (-1)^m \frac{d^m}{dx^m}P_n(x).
+\ee
+
+$\sP^m_n(x)$ called associated Legendre polynomials.
+\end{definition}
+
+\begin{example}
+\beast
+\sP_1^1(x) & = & (-1)^1 \frac{d}{dx}P_1(x) = - \frac{1}{2^11!}\frac{d^2}{dx^2} (x^2-1) = -1,\\
+\sP_2^1(x) & = & (-1)^1 \frac{d}{dx}P_2(x) = - \frac{1}{2^22!}\frac{d^3}{dx^3} (x^2-1)^2 = -3x,\\
+\sP_2^2(x) & = & (-1)^2 \frac{d^2}{dx^2}P_2(x) = \frac{1}{2^22!}\frac{d^4}{dx^4} (x^2-1)^2 = 3,\\
+\sP_3^1(x) & = & (-1)^1 \frac{d}{dx}P_3(x) = -\frac{1}{2^33!}\frac{d^4}{dx^4} (x^2-1)^3 = -\frac 32 (5x^2-1),\\
+\sP_3^2(x) & = & (-1)^2 \frac{d^2}{dx^2}P_3(x) = \frac{1}{2^3 3!}\frac{d^5}{dx^5} (x^2-1)^3 = 15x,\\
+\sP_3^3(x) & = & (-1)^3 \frac{d^3}{dx^3}P_3(x) = -\frac{1}{2^3 3!}\frac{d^6}{dx^6} (x^2-1)^3 = -15,\\
+\sP_4^1(x) & = & (-1)^1 \frac{d}{dx}P_4(x) = -\frac{1}{2^44!}\frac{d^5}{dx^5} (x^2-1)^4 = -\frac {5x}2 (7x^2-3),\\
+\sP_4^2(x) & = & (-1)^2 \frac{d^2}{dx^2}P_4(x) = \frac{1}{2^44!}\frac{d^6}{dx^6} (x^2-1)^4 = \frac {15}2 (7x^2-1),\\
+\sP_4^3(x) & = & (-1)^3 \frac{d^3}{dx^3}P_4(x) = -\frac{1}{2^44!}\frac{d^7}{dx^7} (x^2-1)^4 = -\frac {105x}2,\\
+\sP_4^4(x) & = & (-1)^2 \frac{d^4}{dx^4}P_4(x) = \frac{1}{2^44!}\frac{d^8}{dx^8} (x^2-1)^4 = 105.
+\eeast
+\end{example}
+
+\begin{theorem}
+The generating function of associated Legendre polynomials $\sP^m_n(x)$ is
+\be
+g_m(x,t) = \frac{(-1)^m(2m-1)!	!}{(1-2xt +t^2)^{m+1/2}} = \sum^\infty_{k=0} \sP^m_{k+m}(x)t^k.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+By Theorem \ref{thm:generating_function_legendre_polynomials}, the generating function of $P_n(x)$ is
+\be
+\frac 1{(1-2xt+t^2)^{1/2}} = \sum^\infty_{n=0} P_n(x)t^n
+\ee
+for $\abs{t}<1$. Then by definition of associated Legendre polynomials, we differentiate both sides $m$ times and get
+\beast
+\bb{-\frac 12}\dots \bb{-\frac 12 -(m-1)}(-2t)^m\frac 1{(1-2xt+t^2)^{m+1/2}} & = & \sum^\infty_{n=0} \frac{d^m}{dx^m}P_n(x)t^n \\
+\frac {(-1)^m(2m-1)!!}{(1-2xt+t^2)^{m+1/2}} & = & \sum^\infty_{n=0}P_n^m(x)t^{n-m}.
+\eeast
+
+Then we have
+\be
+\sum^\infty_{k=0}P_{k+n}^m(x)t^k = \frac {(-1)^m(2m-1)!!}{(1-2xt+t^2)^{m+1/2}}.
+\ee
+\end{proof}
+
+
+%\subsection{Associated Legendre function}
+
+\subsection{Associated Legendre function}
+
+\begin{definition}[associated Legendre function\index{associated Legendre function}]\label{def:associated_legendre_function}
+$P^m_n(x)$ is solution of ODE
+\be
+(1-x^2)y'' - 2xy' + \bb{\lm - \frac{m^2}{1-x^2}}y = 0
+\ee
+for $\abs{m}\leq n$. Also, it can be expressed by
+\be
+P_n^m(x) = (-1)^m(1-x^2)^{m/2} \frac{d^m}{dx^m}P_n(x) = \frac{(-1)^m}{2^n n!} (1-x^2)^{m/2} \frac{d^{n+m}}{dx^{n+m}} (x^2-1)^n.
+\ee
+\end{definition}
+
+\begin{remark}
+Note that the associated Legendre function might not be polynomials.
+\end{remark}
+
+%\subsection{Associated Legendre function}
+
+%associated Legendre function of first kind
+%\be
+%P^m_n(x) = (-1)^m (1-x^2)^{m/2}\frac{d^m}{dx^m}P_n(x).
+%\ee
+
+\begin{example}\label{exa:associated_legendre_function_lower_order}
+\beast
+P_1^1(x) & = & -(1-x^2)^{1/2} = - \sin\phi \\
+P_2^1(x) & = & - 3x(1-x^2)^{1/2} = -3\cos\phi\sin\phi \\
+P_2^2(x) & = & 3(1-x^2) = 3\sin^2\phi \\
+P_3^1(x) & = & -\frac 32 (5x^2-1)(1-x^2)^{1/2} = -\frac 32(5\cos^2\phi-1)\sin\phi\\
+P_3^2(x) & = & 15x(1-x^2) = 15\cos\phi\sin^2\phi \\
+P_3^3(x) & = & -15(1-x^2)^{3/2} = -15\sin^3\phi \\
+P_4^1(x) & = & -\frac 52 (7x^3 -3x)(1-x^2)^{1/2} = -\frac 52(7\cos^3\phi-3\cos\phi)\sin\phi\\
+P_4^2(x) & = & \frac{15}2 (7x^2-1)(1-x^2) = \frac{15}2 \bb{7\cos^2\phi-1}\sin^2\phi \\
+P_4^3(x) & = & -105x(1-x^2)^{3/2} = -105\cos\phi\sin^3\phi \\
+P_4^4(x) & = & 105(1-x^2)^{2} = 105\sin^4\phi 
+\eeast
+\end{example}
+
+
+\begin{proposition}
+Let $P_n^m(x)$ be associated Legendre function. Then
+\be
+P_n^{-m}(x) = (-1)^m \frac{(n-m)!}{(n+m)!}P_n^m (x) .
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+First,
+\be
+\frac{d^{n+m}}{dx^{n+m}} (x^2-1)^n = \sum^{n+m}_{k=0}\binom{n+m}{k} \frac{d^{n+m-k}}{dx^{n+m-k}}\bb{ (x^2-1)^{n-m}} \frac{d^k}{dx^{k}} \bb{(x^2-1)^{m}}
+\ee
+
+By Leibniz rule (Proposition \ref{thm:leibniz_rule})
+\beast
+(-1)^m \frac{(n-m)!}{(n+m)!}P_n^m (x) & = & \frac {1}{2^nn!}\frac{(n-m)!}{(n+m)!} (1-x^2)^{m/2} \frac{d^{n+m}}{dx^{n+m}} (x^2-1)^n \\
+& = & \frac {1}{2^nn!} (1-x^2)^{m/2} \frac{(n-m)!}{(n+m)!} \sum^{n+m}_{k=0}\binom{n+m}{k} \frac{d^{n+m-k}}{dx^{n+m-k}}\bb{ (x+1)^{n}} \frac{d^k}{dx^{k}} \bb{(x-1)^{n}}\\
+& = & \frac {1}{2^nn!} (1-x^2)^{m/2} \frac{(n-m)!}{(n+m)!} \sum^{n}_{k=m}\frac{(n+m)!}{k!(n+m-k)!} \frac{d^{n+m-k}}{dx^{n+m-k}}\bb{ (x+1)^{n}} \frac{d^k}{dx^{k}} \bb{(x-1)^{n}}.
+\eeast
+
+Then we have
+\beast
+(-1)^m \frac{(n-m)!}{(n+m)!}P_n^m (x) & = & \frac {1}{2^nn!} (1-x^2)^{m/2} \frac{(n-m)!}{(n+m)!} \sum^{n}_{k=m}\frac{(n+m)!}{k!(n+m-k)!} \frac{n!}{(k-m)!}\bb{ (x+1)^{k-m}} \frac{n!}{(n-k)!} \bb{(x-1)^{n-k}}.
+\eeast
+
+%\beast
+%& & (-1)^m \frac{(n-m)!}{(n+m)!}P_n^m (x) \\
+%& = & \frac {(-1)^m}{2^nn!} (x^2-1)^{m/2} \frac{(n-m)!}{(n+m)!} \sum^{n-m}_{k=0}\frac{(n+m)!}{(m+k)!(n-k)!} \frac{d^{n-m-k}}{dx^{n-m-k}}\bb{\frac{d^{m}}{dx^{m}} (x+1)^{n}} \frac{d^{k}}{dx^{k}} \bb{\frac{d^{m}}{dx^{m}}(x-1)^{n}}.
+%\eeast
+%
+
+Let $k$ be $k-m$ in above equation
+\beast
+& & (-1)^m \frac{(n-m)!}{(n+m)!}P_n^m (x) \\
+& = & \frac {1}{2^nn!} (1-x^2)^{m/2} \frac{(n-m)!}{(n+m)!} \sum^{n-m}_{k=0}\frac{(n+m)!}{(m+k)!(n-k)!} \frac{n!}{k!} (x+1)^{k} \frac{n!}{(n-m-k)!} (x-1)^{n-m-k}\\
+& = & \frac {(-1)^m}{2^nn!} (1-x^2)^{-m/2} \sum^{n-m}_{k=0}\frac{(n-m)!}{k!(n-m-k)!} \frac{n!}{(m+k)!} (x+1)^{m+k} \frac{n!}{(n-k)!} (x-1)^{n-k}\\
+& = & \frac {(-1)^m}{2^nn!} (1-x^2)^{-m/2} \sum^{n-m}_{k=0}\frac{(n-m)!}{k!(n-m-k)!} \frac{d^{n-m-k}}{dx^{n-m-k}}(x+1)^{n} \frac{d^{k}}{dx^{k}}(x-1)^{n}\\
+& = & \frac {(-1)^m}{2^nn!} (1-x^2)^{-m/2} \frac{d^{n-m}}{dx^{n-m}}\bb{(x+1)^{n} (x-1)^{n}} = \frac {(-1)^m}{2^nn!} (1-x^2)^{-m/2} \frac{d^{n-m}}{dx^{n-m}}\bb{(x^2-1)^{n}} = P_n^{-m}(x)
+\eeast
+by Leibniz rule (Proposition \ref{thm:leibniz_rule}) again.
+\end{proof}
+
+\begin{example}
+For $n=1$ and $m= 1$,
+\beast
+P_{1}^{1}(x) & = & \frac{(-1)^1}{2^11!} (1-x^2)^{1/2} \frac{d^2}{dx^2}\bb{x^2-1}^1 =  -\frac 12 (1-x^2)^{1/2} 2 = -(1-x^2)^{1/2},\\
+P_{1}^{-1}(x) & = & \frac{(-1)^{-1}}{2^11!} (1-x^2)^{-1/2} \bb{x^2-1}^1 =  \frac 12 (1-x^2)^{1/2}.
+\eeast
+
+Thus,
+\be
+(-1)^m \frac{(n-m)!}{(n+m)!}P_n^m(x) = -\frac 12 \cdot \bb{-(1-x^2)^{1/2}} = \frac 12 (1-x^2)^{1/2}.
+\ee
+\end{example}
+
+%\begin{proposition}
+%Let $P_n(x)$ be Legendre polynomial of order $n\in\N$. Then for $n\geq m\geq 0$ the associated Legendre function can be expressed as
+%\be%P_n^m(x) & = & (-1)^m(1-x^2)^{m/2} \frac{d^m}{dx^m}P_n(x), \\
+%P_n^{-m}(x) = (-1)^m\frac{(n-m)!}{(n+m)!} P^m_n(x).
+%\ee
+%\end{proposition}
+
+%\begin{proof}[\bf Proof]
+%\footnote{proof needed.}
+%\end{proof}
+
+%\begin{theorem}
+%Let $P_n^m(x)$ be associated Legendre function. Then
+%\beast
+%P_n^m(x) & = & \frac{(-1)^m(n+1)(n+2)\dots(n+m)}{2^{n+1}\pi i} (1-x^2)^{m/2} \oint_C \frac{(z^2-1)^n}{(z-x)^{n+m+1}}dz \\
+%& = & \frac{(-1)^m(n+1)(n+2)\dots(n+m)}{2\pi} \int^{\pi}_{-\pi} \bb{x+\cos\phi\sqrt{1-x^2}}^n \cos(m\phi) d\phi.
+%\eeast
+%\end{theorem}
+
+%\begin{proof}[\bf Proof]
+%\footnote{proof needed.}
+%\end{proof}
+
+%\begin{proposition}
+%For $x>0$\footnote{This can be extended to $\abs{\arg z} < \frac 12\pi$},
+%\be
+%P^m_n(x) = \frac{(n+1)(n+2)\dots(n+m)}{\pi} \int^{\pi}_0 \frac{ \cos(m\phi) d\phi}{\bb{x+\cos\phi\sqrt{1-x^2}}^{n+1}}.
+%\ee
+%\end{proposition}
+
+\begin{proposition}\label{pro:associated_legendre_function_recurrence}
+Let $P_n^m(x)$ be associated Legendre function. Then
+\be
+\frac{d}{dx} P_n^m (x) = - (1-x^2)^{-1/2} P_n^{m+1}(x) - mx(1-x^2)^{-1} P_n^m(x).
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Then by definition of $P_n^m(x) = (1-x^2)^{m/2}\sP_n^m(x)$, we can have for $n\neq n'$
+\be
+\int^1_{-1} P_n^m(x)P_{n'}^m(x)  dx = 0.
+\ee
+
+By definition $P_n^m = (-1)^m(1-x^2)^{m/2} \frac{d^m}{dx^m}P_n(x)$ again,
+\beast
+\frac{d}{dx} P_n^m (x)& = & (-1)^m (1-x^2)^{m/2} \frac{d^{m+1}}{dx^{m+1}}P_n(x) + (-1)^m \frac{m}{2} (-2x) (1-x^2)^{(m-2)/2} \frac{d^m}{dx^m}P_n(x) \\
+&= & - (1-x^2)^{-1/2} P_n^{m+1}(x) - mx(1-x^2)^{-1} P_n^m(x).
+\eeast%Therefore,\beP_n^{m+1}(x) = -(1-x^2)^{1/2}\frac{d}{dx} P_n^m(x) - mx(1-x^2)^{-1/2} P_n^m(x).\ee
+\end{proof}
+
+\subsection{Orthogonality of associated Legendre polynomials and function}
+
+\begin{proposition}[orthogonality of associated Legendre polynomials and function]\label{pro:orthogonality_of_associated_legendre_function}
+For associated Legendre polynomials $\sP_n^m(x)$,
+\be
+\int^1_{-1} \sP^m_n(x) \sP^m_{n'}(x) (1-x^2)^m dx = \frac{2}{2n+1} \frac{(n+m)!}{(n-m)!}\delta_{nn'}.
+\ee
+
+Also, for associated Legendre functions $P_n^m(x)$
+\be
+\int^1_{-1} P^m_n(x) P^m_{n'}(x) dx = \frac{2}{2n+1} \frac{(n+m)!}{(n-m)!}\delta_{nn'}.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Since $\sP_n^m(x)$ is the solution of differential equation
+\be
+(1-x^2)\sP'' - 2x(m+1)\sP' + \bb{n(n+1) - m(m+1)}\sP = 0,
+\ee
+we have that $p(x) = (1-x^2)$ and $q(x) = 2x(m+1)$. Thus,
+\be
+w(x) = \frac 1{1-x^2} \exp\bb{(m+1)\int^x \frac{-2t}{1-t^2}dt} = \frac{\bb{1-x^2}^{m+1}}{1-x^2} = \bb{1-x^2}^{m}
+\ee
+such that $(wp)' = wq$. Thus, by Proposition \ref{pro:self_adjoint_differential_equation_self_adjoint_operator} for $n\neq n'$,
+\be
+0 = \int^1_{-1} \sP_n^m(x)\sP_{n'}^m(x) w(x)dx = \int^1_{-1} \sP_n^m(x)\sP_{n'}^m(x) \bb{1-x^2}^{m} dx
+\ee
+
+By Proposition \ref{pro:associated_legendre_function_recurrence},
+\be
+P_n^{m+1}(x) = -(1-x^2)^{1/2}\frac{d}{dx} P_n^m(x) - mx(1-x^2)^{-1/2} P_n^m(x).
+\ee
+
+Squaring and integrating, we get
+\beast
+\int^1_{-1}\bb{P_n^{m+1}(x)}^2 dx & = & \int^1_{-1} \bb{(1-x^2)\bb{\frac{d}{dx} P_n^m(x)}^2 + 2mx P_n^m(x)\frac{d}{dx} P_n^m(x) + \frac{m^2x^2}{1-x^2} \bb{P_n^m(x)}^2}dx \\
+& = & -\int^1_{-1} \bb{P_n^m(x)\frac{d}{dx}\bb{(1-x^2)\frac{d}{dx} P_n^m(x)} + m \bb{P_n^m(x)}^2  - \frac{m^2x^2}{1-x^2} \bb{P_n^m(x)}^2}dx
+\eeast
+with integral by parts. Since
+\be
+(1-x^2)\bb{P_n^m(x)}'' - 2x\bb{P_n^m(x)}' + \bb{n(n+1) - \frac{m^2}{1-x^2}}P_n^m(x) = 0,
+\ee
+we can reduce the equation to
+\beast
+\int^1_{-1}\bb{P_n^{m+1}(x)}^2 dx & = & \int^1_{-1} \bb{\bb{n(n+1) - \frac{m^2}{1-x^2}} - m  + \frac{m^2x^2}{1-x^2}} \bb{P_n^m(x)}^2 dx \\
+& = & \bb{n(n+1) - m(m+1)}  \int^1_{-1} \bb{P_n^m(x)}^2 dx \\
+& = & (n-m)(n+m+1)\int^1_{-1} \bb{P_n^m(x)}^2 dx
+\eeast
+
+For $m\geq 0$, we have
+\beast
+\int^1_{-1}\bb{P_n^{m+1}(x)}^2 dx & = & (n-m)(n+m+1)\int^1_{-1} \bb{P_n^m(x)}^2 dx = \dots = \frac{n!}{(n-m-1)!}\frac{(n+m+1)!}{n!}\int^1_{-1} P_n^2(x) dx \\
+& = & \frac{(n+m+1)!}{(n-m-1)!} \int^1_{-1} P_n^2(x) dx = \frac{(n+m+1)!}{(n-m-1)!}\frac{2}{2n+1}
+\eeast
+by the orthogonality of Legendre polynomials. Therefore, we have
+\be
+\int^1_{-1} P_n^{m}(x)P_{n'}^{m}(x) dx = \frac 2{2n+1}\frac{(n+m)!}{(n-m)!} \delta_{nn'}.
+\ee
+
+Similarly, by definition $P_n^m(x)$ again, we can have
+\be
+\int^1_{-1} \bb{\sP_n^m(x)}^2\bb{1-x^2}^{m} dx =  \frac{2}{2n+1} \frac{(n+m)!}{(n-m)!}.
+\ee
+\end{proof}
+
+We can also have orthogonality of the $P_n^m(x)$ with respect to the upper index when the lower index is held constant.
+
+\begin{proposition}%[orthogonality of associated Legendre function]\label{pro:orthogonality_of_associated_legendre_function_divides_1_minus_x_square}
+Let $P_n^m(x)$ be associated Legendre function. Then
+\be
+\int^1_{-1} \frac{P^m_n(x) P^{m'}_{n}(x)}{1-x^2} dx = \frac{(n+m)!}{m(n-m)!}\delta_{mm'}.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+\subsection{Addition theorem for associated Legendre function}
+
+\begin{proposition}
+For $z\in \C$, $n\in \Z^+$ and $m\in \Z$ with $\abs{m}\leq n$,
+\be
+P_n^m(z) = \frac{(-1)^{3m/2}(n+1)(n+2)\dots (n+m)}{2\pi}  \int^{\pi}_{-\pi }  \bb{z+\bb{z^2-1}^{1/2}\cos\phi}^n \cos\bb{m\phi} d\phi.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Since
+\be
+P_n^{m}(x) = \frac{(-1)^m}{2^n n!} (1-x^2)^{m/2} \frac{d^{n+m}}{dx^{n+m}} (x^2-1)^n
+\ee
+we have
+\beast
+P_n^m(z) & = & \frac{(-1)^m}{2^n n!} (1-z^2)^{m/2} \frac{(n+m)!}{2\pi i} \oint_C \frac{(t^2 -1)^n}{(t-z)^{n+m+1}}dt  \\
+& = & \frac{(-1)^m(n+1)(n+2)\dots (n+m)}{2^{n+1}\pi i} (1-z^2)^{m/2} \oint_C \frac{(t^2 -1)^n}{(t-z)^{n+m+1}}dt.
+\eeast
+
+Then let $t = z+\bb{z^2-1}^{1/2} e^{i\phi}$, $P_n^m(z)$ becomes
+\beast
+& & \frac{(-1)^{3m/2}(n+1)(n+2)\dots (n+m)}{2^{n+1}\pi i} (z^2-1)^{m/2} \int^{\pi}_{-\pi }  \frac {\bb{\bb{z+1+ \bb{z^2-1}^{1/2}e^{i\phi}}\bb{z-1 + \bb{z^2-1}^{1/2}e^{i\phi}}}^n}{\bb{\bb{z^2-1}^{1/2}e^{i\phi}}^{m+n+1}\bb{\bb{z^2-1}^{1/2}e^{i\phi}}^{-1}}  i d\phi \\
+& = & \frac{(-1)^{3m/2}(n+1)(n+2)\dots (n+m)}{2\pi}  \int^{\pi}_{-\pi }  \bb{z+\bb{z^2-1}^{1/2}\cos\phi}^n e^{-im\phi} d\phi\\
+& = & \frac{(-1)^{3m/2}(n+1)(n+2)\dots (n+m)}{2\pi}  \int^{\pi}_{-\pi }  \bb{z+\bb{z^2-1}^{1/2}\cos\phi}^n \cos\bb{m\phi} d\phi
+\eeast
+since $\cos$ is even function.
+\end{proof}
+
+\begin{example}
+If $n = 2$ and $m=1$, 
+\beast
+P_2^1(z) & = & \frac{-3i}{2\pi} \int^\pi_{-\pi} \bb{z + (z^2-1)^{1/2}\cos\phi}^2 \cos\phi d\phi = \frac{-3i}{2\pi} \int^\pi_{-\pi} \bb{z^2 + (z^2-1)\cos^2\phi + 2z\bb{z^2-1}^{1/2}\cos\phi} \cos\phi d\phi \\
+& = &\frac{-3i}{2\pi} \int^\pi_{-\pi} 2z\bb{z^2-1}^{1/2}\cos^2\phi d\phi = \frac{-3i\cdot 2z\bb{z^2-1}^{1/2}}{2\pi} \int^\pi_{-\pi} \frac {1+\cos(2\phi)}2 d\phi = -3iz\bb{z^2-1}^{1/2} = -3z\bb{1-z^2}^{1/2}
+\eeast 
+which consistent with Example \ref{exa:associated_legendre_function_lower_order}.
+\end{example}
+
+If $n$ is not positive integer, we can have the same formula\footnote{proof needed.}, that is, for $\abs{\Arg z}<\frac 12\pi$ ($\Re z >0$) and $\nu\in \R$ and $m\in \Z$ with $\abs{m}\leq n$,
+\be
+P_{\nu}^m(z) = \frac{(-1)^{3m/2}(\nu+1)(\nu+2)\dots (\nu+m)}{2\pi}  \int^{\pi}_{-\pi }  \bb{z+\bb{z^2-1}^{1/2}\cos\phi}^\nu \cos\bb{m\phi} d\phi
+\ee
+
+\begin{proposition}
+For $\abs{\Arg z}<\frac 12\pi$ and $n\in \Z^+$,
+\be
+P^m_{n}(z) = (-1)^{m/2} \frac{n(n-1)\dots(n-m+1)}{2\pi} \left.\int^\pi_{-\pi} \frac{\cos(m\phi) d\phi}{\bb{z+\bb{z^2-1}^{1/2}\cos\phi}^{n+1}}\right..
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+By Definition of associated Legendre function and Corollary \ref{cor:legendre_function_n_minus_n_minus_one}, for $\abs{\Arg z}<\frac 12\pi$ and $n\in \Z^+$
+\beast
+P^m_{n}(z) = P^m_{-n-1}(z) & = & \frac{(-1)^{3m/2}(-n)(-n+1)\dots (-n+m-1)}{2\pi}  \int^{\pi}_{-\pi }  \bb{z+\bb{z^2-1}^{1/2}\cos\phi}^n \cos\bb{m\phi} d\phi \\
+& = & (-1)^{m/2} \frac{n(n-1)\dots(n-m+1)}{2\pi} \left.\int^\pi_{-\pi} \frac{\cos(m\phi) d\phi}{\bb{z+\bb{z^2-1}^{1/2}\cos\phi}^{n+1}}\right..
+\eeast
+\end{proof}
+
+\begin{theorem}[addition theorem for Legendre polynomials \index{addition theorem!Legendre polynomials}]\label{thm:Legendre_polynomials_addition}
+Let $P_n(x)$ be Legendre polynomials and $P_n^m(x)$ be associated Legendre function. Then for $\theta\in[0,2\pi]$, $\phi\in [0,\pi]$, $n\in \Z^+$ and $m\in\Z$ with $\abs{m}\leq n$,
+\be
+P_n(\cos\vp) = P_n(\cos\phi)P_n(\cos\phi') + 2\sum^n_{m=1}\frac{(n-m)!}{(n+m)!}P_n^m(\cos\phi)P_n^m(\cos\phi')\cos\bb{m(\theta-\theta')}
+\ee
+where $\cos\vp = \cos\phi\cos\phi' + \sin\phi\sin\phi'\cos(\theta-\theta')$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+First let $x = \cos \phi$ and $x' = \cos\phi'$ with $\Re(x') > 0$ ($\abs{\arg z} < \frac 12\pi$) so that
+\be
+\abs{\frac{x+(x^2-1)^{1/2}\cos\theta}{x'+(x'^2-1)^{1/2}\cos\theta'}} < M
+\ee
+for some constant $M$. Also, define $\omega = \theta - \theta'$ and
+\be
+z = xx' -(x^2-1)^{1/2}(x'^2-1)^{1/2}\cos\omega.
+\ee
+
+If $\abs{t} < 1/M$, we have
+\be
+\sum^\infty_{n=0} \frac{\bb{x+(x^2-1)^{1/2}\cos\theta}^n}{\bb{x'+(x'^2-1)^{1/2}\cos\theta'}^{n+1}} t^n
+\ee
+converges uniformly with regard to $\theta'$. Thus\footnote{theorem needed.},
+\beast
+\sum^\infty_{n=0} t^n \int^\pi_{-\pi } \frac{\bb{x+(x^2-1)^{1/2}\cos\theta}^n}{\bb{x'+(x'^2-1)^{1/2}\cos\theta'}^{n+1}} d\theta' & = & \int^\pi_{-\pi } \sum^\infty_{n=0} t^n \frac{\bb{x+(x^2-1)^{1/2}\cos\theta}^n}{\bb{x'+(x'^2-1)^{1/2}\cos\theta'}^{n+1}} d\theta' \\
+& = & \int^\pi_{-\pi } \frac{d\theta'}{x'+(x'^2-1)^{1/2}\cos\theta' - t\bb{x+(x^2-1)^{1/2}\cos\theta}}
+\eeast
+
+By Proposition\footnote{trigonometric function proposition needed.},
+\be
+\int^\pi_{-\pi} \frac{d\theta}{A+B\cos\theta + C\sin\theta} = \frac{2\pi}{\bb{A^2-B^2-C^2}^{1/2}}
+\ee
+where the value of radical is taken which makes
+\be
+\abs{A - (A^2-B^2-C^2)^{1/2}} < \abs{(B^2+C^2)^{1/2}}.
+\ee
+
+Therefore,
+\beast
+& & \int^\pi_{-\pi } \frac{d\theta'}{x'+(x'^2-1)^{1/2}\cos\theta' - t\bb{x+(x^2-1)^{1/2}\cos\theta}} \\
+& = & \int^\pi_{-\pi } \frac{d\theta'}{x'+(x'^2-1)^{1/2}\cos\theta' - t\bb{x+(x^2-1)^{1/2}\cos\bb{\omega+\theta'}}} \\
+& = & \int^\pi_{-\pi } \frac{d\theta'}{\bb{x'-tx}+\bb{(x'^2-1)^{1/2}- t(x^2-1)^{1/2}\cos\omega}\cos\theta' + t(x^2-1)^{1/2}\sin\omega\sin\theta'} \\
+& = & \frac{2\pi}{\bb{\bb{x'-tx}^2 - \bb{(x'^2-1)^{1/2}- t(x^2-1)^{1/2}\cos\omega}^2 - \bb{t(x^2-1)^{1/2}\sin\omega}^2}^{1/2}} \\
+& = & \frac{2\pi}{\bb{1-2tz + t^2}^{1/2}}.
+\eeast
+
+Thus, expanding in powers of $t$ and equating coefficients, we have
+\be
+P_n(z) = \frac 1{2\pi} \int^\pi_{-\pi } \frac{\bb{x+(x^2-1)^{1/2}\cos(\omega+\theta')}^n}{\bb{x'+(x'^2-1)^{1/2}\cos\theta'}^{n+1}} d\theta'
+\ee
+
+Since $P_n(z)$ is a polynomial of degree $n$ in $\cos\omega$ so it can consequently be expressed in the form of
+\be
+\frac 12 a_0 + \sum^n_{k=1} a_k\cos(k\omega),
+\ee
+where $a_0,a_1,\dots,a_n$ are independent of $\omega$. To determine them, we use Fourier rule\footnote{theorem needed.} and get
+\beast
+a_k = \frac 1{\pi} \int^\pi_{-\pi} P_n(z)\cos(k\omega) d\omega & = & \frac 1{2\pi^2} \int^\pi_{-\pi} \int^\pi_{-\pi} \frac{\bb{x+(x^2-1)^{1/2}\cos(\omega+\theta')}^n\cos(k\omega)}{\bb{x'+(x'^2-1)^{1/2}\cos\theta'}^{n+1}} d\theta' d\omega\\
+& = & \frac 1{2\pi^2} \int^\pi_{-\pi} \bb{\int^\pi_{-\pi} \frac{\bb{x+(x^2-1)^{1/2}\cos(\theta)}^n\cos(k(\theta-\theta'))}{\bb{x'+(x'^2-1)^{1/2}\cos\theta'}^{n+1}} d\theta } d\theta'\\
+& = & \frac 1{2\pi^2} \int^\pi_{-\pi} \bb{\int^\pi_{-\pi} \frac{\bb{x+(x^2-1)^{1/2}\cos(\theta)}^n\cos(k\theta)}{\bb{x'+(x'^2-1)^{1/2}\cos\theta'}^{n+1}} d\theta } \cos(k\theta') d\theta'
+\eeast
+since $\int^\pi_{-\pi} \bb{x+(x^2-1)^{1/2}\cos(\theta)}^n\sin(k\theta)d\theta = 0$ as the integrand is an odd function. Therefore, by Proposition\footnote{propositions needed.}
+\beast
+a_m & = & \frac 1{\pi(-1)^{2m}(n+1)(n+2)\dots(n+m)} \int^\pi_{-\pi} \frac{P_n^m(x)\cos(m\theta')}{\bb{x'+(x'^2-1)^{1/2}\cos\theta'}^{n+1}}  d\theta' \\
+& = & \frac 2{(-1)^{2m}(n+1)(n+2)\dots(n+m)n(n-1)\dots (n-m+1)} P_n^m(x) P_n^m(x') \\
+& = & 2\frac {(n-m)!}{(n+m)!} P_n^m(x) P_n^m(x').
+\eeast
+
+Therefore,
+\be
+P_n(z) = P_n(x)P_n(x') + 2\sum^n_{m=1} \frac {(n-m)!}{(n+m)!} P_n^m(x) P_n^m(x')\cos(m\omega).
+\ee
+
+Since $x=\cos\phi$ and $x' = \cos\phi'$ and $\phi,\phi'\in [0,\pi]$,
+\be
+z = xx' - (x^2-1)^{1/2}\bb{x'^2-1}^{1/2}\cos\omega = \cos\phi\cos\phi' - i^2\sin\phi\sin\phi'\cos\omega = \cos\phi\cos\phi' + \sin\phi\sin\phi'\cos(\theta - \theta').
+\ee
+
+The above conclusion holds for $\Re(x')> 0$ (but $x$ can be any value). However, the conclusion holds for all values by the symmetry property. The case $\Re x=\Re x'=0$ can be done by the continuity of $P_n(\cdot)$ and $P_n^m(\cdot)$.%For $x' = \cos\phi' = 0$, $\omega$ is meaningless as it is actually the north pole of spherical coordinate so we let $\omega = \frac 12\pi $ have
+%\be
+%P_n(z) = P_n(xx' - (x^2-1)^{1/2}\bb{x'^2-1}^{1/2}\cos\omega) = P_n(0)
+%\ee
+\end{proof}
+
+\begin{theorem}[addition theorem for Legendre functions\index{addition theorem!Legendre functions}]\label{thm:legendre_functions_addition}
+For $\nu\in \R$ and $\abs{\Arg z} < \frac12\pi$,
+\be
+P_{\nu}(\cos\vp) = P_\nu(\cos\phi)P_\nu(\cos\phi') + 2\sum^\infty_{m=1} \frac{\Gamma(\nu-m+1)}{\Gamma(\nu+m+1)} P_\nu^m(\cos\phi)P_\nu^m(\cos\phi')\cos(m(\theta-\theta'))
+\ee
+where $\cos\vp = \cos\phi\cos\phi' + \sin\phi\sin\phi'\cos(\theta-\theta')$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+\section{Spherical harmonics}
+
+\subsection{Complex spherical harmonics}
+
+\begin{definition}[spherical harmonics\index{spherical harmonics}]\label{def:spherical_harmonics}
+For $\theta\in (-\infty,\infty)$, $\phi \in [0,\pi]$, the spherical harmonics is defined by
+\be
+Y_n^m(\theta,\phi) := \sqrt{\frac{2n+1}{4\pi}\frac{(n-m)!} {(n+m)!}}\cdot P_n^m(\cos\phi)e^{im\theta}
+\ee
+where $P_n^m(\cdot)$ is the associated Legendre function\footnote{definition needed.}.
+\end{definition}
+
+\begin{example}\label{exa:sperical_harmonics}
+Assume that $x, y, z$, and $r$ are related to $\theta$ and $\phi$, through the usual spherical-to-Cartesian coordinate transformation:
+\be
+x =r\sin \phi \cos \theta,\quad y =\sin \phi \sin \theta, \quad z = r\cos \phi.
+\ee
+
+Then for $n=0$\footnote{See more details on wiki (table of spherical harmonics)},
+\be
+Y_{0}^{0}(\theta ,\phi )={1 \over 2}{\sqrt {1 \over \pi }} 
+\ee
+
+For $n=1$,
+\beast
+Y_{1}^{-1}(\theta ,\phi ) & = & {1 \over 2}{\sqrt {3 \over 2\pi }}\cdot e^{-i\theta }\cdot \sin \phi = {1 \over 2}{\sqrt {3 \over 2\pi }}\cdot {(x-iy) \over r}\\
+Y_{1}^{0}(\theta ,\phi ) & = & {1 \over 2}{\sqrt {3 \over \pi }}\cdot \cos \phi = {1 \over 2}{\sqrt {3 \over \pi }}\cdot {z \over r}\\
+Y_{1}^{1}(\theta ,\phi ) & = & -{1 \over 2}{\sqrt {3 \over 2\pi }}\cdot e^{i\theta }\cdot \sin \phi =- {1 \over 2}{\sqrt {3 \over 2\pi }}\cdot {(x+iy) \over r}
+\eeast
+
+For $n=2$,
+\beast
+Y_{2}^{-2}(\theta ,\phi ) & = & {1 \over 4}{\sqrt {15 \over 2\pi }}\cdot e^{-2i\theta }\cdot \sin^{2}\phi  = {1 \over 4}{\sqrt {15 \over 2\pi }}\cdot {(x-iy)^{2} \over r^{2}}, \\
+Y_{2}^{-1}(\theta ,\phi ) & = & {1 \over 2}{\sqrt {15 \over 2\pi }}\cdot e^{-i\theta }\cdot \sin \phi \cdot \cos \phi = {1 \over 2}{\sqrt {15 \over 2\pi }}\cdot {(x-iy)z \over r^{2}},\\
+Y_{2}^{0}(\theta ,\phi ) & = & {1 \over 4}{\sqrt {5 \over \pi }}\cdot (3\cos ^{2}\phi -1) = {1 \over 4}{\sqrt {5 \over \pi }}\cdot {(2z^{2}-x^{2}-y^{2}) \over r^{2}},\\
+Y_{2}^{1}(\theta ,\phi ) & = & -{1 \over 2}{\sqrt {15 \over 2\pi }}\cdot e^{i\theta }\cdot \sin \phi \cdot \cos \phi = -{1 \over 2}{\sqrt {15 \over 2\pi }}\cdot {(x+iy)z \over r^{2}},\\
+Y_{2}^{2}(\theta ,\phi ) & = & {1 \over 4}{\sqrt {15 \over 2\pi }}\cdot e^{2i\theta }\cdot \sin ^{2}\phi = {1 \over 4}{\sqrt {15 \over 2\pi }}\cdot {(x+iy)^{2} \over r^{2}}.
+\eeast
+\end{example}
+
+\begin{proposition}
+$Y_n^m(\theta,\phi)$ ($\abs{m}\leq n$) is the solution of
+\be
+\bb{\frac{1}{\sin\phi}\fp{}{\phi}\bb{\sin\phi \fp{}{\phi}} + \frac{1}{\sin^2\phi}\fpp{}{\theta} + n(n+1)}Y = 0.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+By definition
+\be
+Y_n^m(\theta,\phi) = \sqrt{\frac{2n+1}{4\pi}\frac{(n-m)!}{(n+m)!}}\cdot P_n^m(\cos\phi) e^{im\theta} := NP_n^m(\cos\phi) e^{im\theta}. %\ \ra\ P_n^m(\cos\phi) =
+\ee
+
+Then
+\be
+\fp{}{\phi} Y_n^m(\theta,\phi) = -N \sin\phi \left.\fp{}{x}P_n^m(x)\right|_{x=\cos\phi}  e^{im\theta},\qquad \fp{}{\theta} Y_n^m(\theta,\phi) = im N P_n^m(\cos\phi)  e^{im\theta}
+\ee
+and
+\be
+\fpp{}{\phi} Y_n^m(\theta,\phi) = N  e^{im\theta}\left.\bb{\sin^2\phi \fpp{}{x}P_n^m(x) - \cos\phi\fp{}{x}P_n^m(x)}\right|_{x=\cos\phi}  ,\qquad \fpp{}{\theta} Y_n^m(\theta,\phi) = -m^2 N P_n^m(\cos\phi)  e^{im\theta}\nonumber
+\ee
+
+Then
+\beast
+& & \bb{\frac 1{\sin\phi}\fp{}{\phi}\bb{\sin\phi \fp{}{\phi}} + \frac 1{\sin^2\phi} \fpp{}{\theta} + n(n+1)} Y_n^m(\theta,\phi)\\
+& = & N  e^{im\theta}\left.\bb{(1-x^2) \fpp{}{x}P_n^m(x) - 2x\fp{}{x}P_n^m(x)+ \bb{n(n+1)- \frac{m^2}{1-x^2}}P_n^m(x)}\right|_{x=\cos\phi}
+\eeast
+
+We know that $P_n^m(x)$ is the solution of
+\be
+(1-x^2) y'' - 2x y' + \bb{n(n+1)- \frac{m^2}{1-x^2}}y = 0.
+\ee
+
+Thus,
+\be
+\bb{\frac 1{\sin\phi}\fp{}{\phi}\bb{\sin\phi \fp{}{\phi}} + \frac 1{\sin^2\phi} \fpp{}{\theta} + n(n+1)} Y_n^m(\theta,\phi) = 0.
+\ee
+\end{proof}
+
+
+\begin{proposition}\label{pro:spherical_harmonics_conjugate}
+Let $Y_n^m(\theta,\phi)$ be spherical harmonics. Then
+\be
+\ol{Y_n^m(\theta,\phi)} = (-1)^m Y_n^{-m}(\theta,\phi).
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+By definition we have
+\beast
+Y_n^{-\abs{m}}(\theta,\phi) & = & \sqrt{\frac{2n+1}{4\pi}\frac{(n+\abs{m})!} {(n-\abs{m})!}}\cdot P_n^{-\abs{m}}(\cos\phi)e^{-i\abs{m}\theta} = \sqrt{\frac{2n+1}{4\pi}\frac{(n+\abs{m})!} {(n-\abs{m})!}}\cdot (-1)^m\frac{(n-\abs{m})!}{(n+\abs{m})!} P^{\abs{m}}_n(\cos\phi) e^{-i\abs{m}\theta}\\
+& = & (-1)^m\sqrt{\frac{2n+1}{4\pi}\frac{(n-\abs{m})!}{(n+\abs{m})!}}\cdot P^{\abs{m}}_n(\cos\phi) e^{-i\abs{m}\theta} = (-1)^m Y_n^{\abs{m}}(\theta,\phi)e^{-2i\abs{m}\theta}
+\eeast
+
+It can be seen that $Y_n^{-\abs{m}}(\theta,\phi)e^{i\abs{m}\theta}$ is real. Thus,
+\be
+\ol{Y_n^{-\abs{m}}(\theta,\phi)e^{i\abs{m}\theta}} = Y_n^{-\abs{m}}(\theta,\phi)e^{i\abs{m}\theta} = (-1)^m Y_n^{\abs{m}}(\theta,\phi)e^{-i\abs{m}\theta} \ \ra\ \ol{Y_n^{-\abs{m}}(\theta,\phi)} = (-1)^m Y_n^{\abs{m}}(\theta,\phi)
+\ee
+which implies the required result for both positive and negative $m$.
+\end{proof}
+
+
+\begin{proposition}
+For spherical harmonics $Y_n^m(\theta,\phi)$,
+\be
+Y^m_n(\theta,0) = \sqrt{\frac{2n+1}{4\pi}}\delta_{m0},\qquad Y^m_n(\theta,\pi) = (-1)^n \sqrt{\frac{2n+1}{4\pi}}\delta_{m0}.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+By definition
+\be
+Y^m_n(\theta,\phi) = \sqrt{\frac{2n+1}{4\pi}\frac{(n-m)!}{(n+m)!}} \cdot P_n^m(\cos\phi) e^{im\theta} = \sqrt{\frac{2n+1}{4\pi}\frac{(n-m)!}{(n+m)!}} \cdot (-1)^m (1-\cos^2\phi)^{m/2} \frac{d^m}{dx^m}P_n(\cos\phi) e^{im\theta}
+\ee
+
+Thus, since $\cos 0 = 1$,
+\be
+Y^m_n(\theta,0) = \sqrt{\frac{2n+1}{4\pi}\frac{(n-m)!}{(n+m)!}} \cdot (-1)^m \delta_{m0} \frac{d^m}{dx^m}P_n(1) e^{im\theta} = \sqrt{\frac{2n+1}{4\pi}} P_n(1) \delta_{m0} = \sqrt{\frac{2n+1}{4\pi}} \delta_{m0}.
+\ee
+
+Similarly,
+\be
+Y^m_n(\theta,\pi) = \sqrt{\frac{2n+1}{4\pi}\frac{(n-m)!}{(n+m)!}} \cdot (-1)^m \delta_{m0} \frac{d^m}{dx^m}P_n(-1) e^{im\theta} = \sqrt{\frac{2n+1}{4\pi}} P_n(-1) \delta_{m0} = (-1)^n\sqrt{\frac{2n+1}{4\pi}} \delta_{m0}.
+\ee
+by Proposition \ref{pro:legendre_polynomials_value}.(ii).
+\end{proof}
+
+
+
+\subsection{Laplacian (real) spherical harmonics}
+
+\begin{definition}[Laplacian (real) spherical harmonics\index{Laplacian spherical harmonics}]\label{def:spherical_harmonics_laplacian}
+The Laplacian (real) spherical harmonics can be defined in terms of (complex) spherical harmonics by
+\beast
+Y_{n,m} & = & \left\{\ba{ll}
+\frac{i}{\sqrt{2}}\bb{Y_n^{m} - (-1)^m Y_n^{-m}} \quad \quad & m<0 \\
+Y_n^0 & m=0 \\
+\frac{1}{\sqrt{2}}\bb{Y_n^{-m} + (-1)^m Y_n^{m}} \quad \quad & m>0
+\ea\right. \quad = \quad
+\left\{\ba{ll}
+\frac{i}{\sqrt{2}}\bb{Y_n^{-\abs{m}} - (-1)^m Y_n^{\abs{m}}} \quad \quad & m<0 \\
+Y_n^0 & m=0 \\
+\frac{1}{\sqrt{2}}\bb{Y_n^{-\abs{m}} + (-1)^m Y_n^{\abs{m}}} \quad \quad & m>0 
+\ea\right.\\
+& = & \left\{\ba{ll}
+\sqrt{2}(-1)^m \Im\bb{Y_n^{\abs{m}}} \quad \quad & m<0 \\
+Y_n^0 & m=0 \\
+\sqrt{2}(-1)^m \Re\bb{Y_n^{\abs{m}}} \quad \quad & m>0
+\ea\right. \nonumber
+\eeast
+
+Note that $Y_{n,m}(\theta,\phi)$ are real for all $m,n$.
+\end{definition}
+
+\begin{remark}
+\beast
+Y_n^{-\abs{m}}(\theta,\phi) & = & \sqrt{\frac{2n+1}{4\pi}\frac{(n+\abs{m})!} {(n-\abs{m})!}}\cdot P_n^{-\abs{m}}(\cos\phi)e^{-i\abs{m}\theta} = \sqrt{\frac{2n+1}{4\pi}\frac{(n+\abs{m})!} {(n-\abs{m})!}}\cdot (-1)^m\frac{(n-\abs{m})!}{(n+\abs{m})!} P^{\abs{m}}_n(\cos\phi) e^{-i\abs{m}\theta}\\
+& = & (-1)^m\sqrt{\frac{2n+1}{4\pi}\frac{(n-\abs{m})!}{(n+\abs{m})!}}\cdot P^{\abs{m}}_n(\cos\phi) e^{-i\abs{m}\theta} = (-1)^m Y_n^{\abs{m}}(\theta,\phi)e^{-2i\abs{m}\theta}
+\eeast
+
+Thus,
+\beast
+Y_n^{-\abs{m}}(\theta,\phi) - (-1)^m Y_n^{\abs{m}}(\theta,\phi) & = &(-1)^m   Y_n^{\abs{m}}(\theta,\phi)\bb{1-e^{-2i\abs{m}\theta}} \\
+&= & (-1)^m\sqrt{\frac{2n+1}{4\pi}\frac{(n-\abs{m})!}{(n+\abs{m})!}}\cdot P^{\abs{m}}_n(\cos\phi)\bb{e^{i\abs{m}\theta}-e^{-i\abs{m}\theta}}
+\eeast
+only has imaginary part. Thus, $Y_{n,m}$ is real. Similarly, we have the same conclusion other cases.
+\end{remark}
+
+\begin{example}\label{exa:laplacian_real_sperical_harmonics}
+Assume that $x, y, z$, and $r$ are related to $\theta$ and $\phi$, through the usual spherical-to-Cartesian coordinate transformation:
+\be
+x =r\sin \phi \cos \theta,\quad y =\sin \phi \sin \theta, \quad z = r\cos \phi.
+\ee
+
+For $n=1$,
+\be
+Y_{0,0} = Y_{0}^{0} ={\frac {1}{2}}{\sqrt {\frac {1}{\pi }}}
+\ee
+
+For $n=1$
+\beast
+Y_{1,-1} & = & i{\sqrt {\frac {1}{2}}}\left(Y_{1}^{-1}+Y_{1}^{1}\right)={\sqrt {\frac {3}{4\pi }}}\cdot {\frac {y}{r}} = {\sqrt {\frac {3}{4\pi }}}\cdot \sin\phi\sin\theta,\\
+Y_{1,0} & = & Y_{1}^{0}={\sqrt {\frac {3}{4\pi }}}\cdot {\frac {z}{r}}= {\sqrt {\frac {3}{4\pi }}}\cdot \cos\phi, \\
+Y_{1,1} & = & {\sqrt {\frac {1}{2}}}\left(Y_{1}^{-1}-Y_{1}^{1}\right)={\sqrt {\frac {3}{4\pi }}}\cdot {\frac {x}{r}} = {\sqrt {\frac {3}{4\pi }}}\cdot \sin\phi\cos\theta.
+\eeast
+
+For $n=2$,
+\beast
+Y_{2,-2} & = & i{\sqrt {\frac {1}{2}}}\left(Y_{2}^{-2}-Y_{2}^{2}\right)={\frac {1}{2}}{\sqrt {\frac {15}{\pi }}}\cdot {\frac {xy}{r^{2}}} = {\frac {1}{4}}{\sqrt {\frac {15}{\pi }}}\cdot \sin^2\phi \sin(2\theta),\\
+Y_{2,-1} & = & i{\sqrt {\frac {1}{2}}}\left(Y_{2}^{-1}+Y_{2}^{1}\right)={\frac {1}{2}}{\sqrt {\frac {15}{\pi }}}\cdot {\frac {yz}{r^{2}}} = {\frac {1}{2}}{\sqrt {\frac {15}{\pi }}}\cdot \cos\phi\sin\phi \sin\theta \\
+Y_{2,0} & = & Y_{2}^{0}={\frac {1}{4}}{\sqrt {\frac {5}{\pi }}}\cdot {\frac {-x^{2}-y^{2}+2z^{2}}{r^{2}}} = {\frac {1}{4}}{\sqrt {\frac {5}{\pi }}}\cdot (2\cos^2\phi - \sin^2\phi)\\
+Y_{2,1} & = & {\sqrt {\frac {1}{2}}}\left(Y_{2}^{-1}-Y_{2}^{1}\right)={\frac {1}{2}}{\sqrt {\frac {15}{\pi }}}\cdot {\frac {zx}{r^{2}}} =  {\frac {1}{2}}{\sqrt {\frac {15}{\pi }}}\cdot \cos\phi\sin\phi \cos\theta \\
+Y_{2,2} & = & {\sqrt {\frac {1}{2}}}\left(Y_{2}^{-2}+Y_{2}^{2}\right)={\frac {1}{4}}{\sqrt {\frac {15}{\pi }}}\cdot {\frac {x^{2}-y^{2}}{r^{2}}} = {\frac {1}{4}}{\sqrt {\frac {15}{\pi }}}\cdot \sin^2\phi\cos(2\theta).
+\eeast
+\end{example}
+
+
+\subsection{Orthogonality of spherical harmonics}
+
+\begin{proposition}\label{pro:orthogonality_of_spherical_harmonics}
+\be
+\int^{2\pi}_0 \int^{\pi}_0 Y_n^m(\theta,\phi) \ol{Y_{n'}^{m'}(\theta,\phi)}\sin\phi d\phi d\theta = \delta_{nn'}\delta_{mm'}.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+By definition
+\be
+Y_n^m(\theta,\phi) = \sqrt{\frac{2n+1}{4\pi}\frac{(n-m)!}{(n+m)!}} P_n^m(\cos\phi) e^{im\theta},
+\ee
+we have
+\beast
+& & \int^{2\pi}_0 \int^{\pi}_0 Y_n^m(\theta,\phi) \ol{Y_{n'}^{m'}(\theta,\phi)}\sin\phi d\phi d\theta \\
+& = & \sqrt{\frac{2n+1}{4\pi}\frac{(n-m)!}{(n+m)!}} \sqrt{\frac{2n'+1}{4\pi}\frac{(n'-m')!}{(n'+m')!}} \int^{2\pi}_0 e^{i(m-m')\theta} d\theta \int^{\pi}_0 P_n^m(\cos\phi) P_{n'}^{m'}(\cos\phi)\sin\phi d\phi \\
+& = & \sqrt{\frac{2n+1}{4\pi}\frac{(n-m)!}{(n+m)!}} \sqrt{\frac{2n'+1}{4\pi}\frac{(n'-m')!}{(n'+m')!}} \cdot 2\pi \delta_{mm'}\cdot \frac{2}{2n+1} \frac{(n+m)!}{(n-m)!}\delta_{nn'} =  \delta_{mm'}\delta_{nn'}
+\eeast
+by Proposition \ref{pro:orthogonality_of_associated_legendre_function}.
+\end{proof}
+
+
+
+
+
+\subsection{Addition theorem for spherical harmonics}
+
+\begin{theorem}[spherical harmonic addition theorem\index{spherical harmonic addition theorem}]\label{thm:spherical_harmonic_addition}
+Let $r$ and $r'$ be two unit vectors in spherical coordinate with $(\theta,\phi)$ and $(\theta',\phi')$. Then 
+\beast
+P_n(r\cdot r') & = & \frac {4\pi}{2n+1} \sum^n_{m=-n} Y^m_n(\theta,\phi)\ol{Y^m_n(\theta',\phi')} =  \frac {4\pi}{2n+1} \sum^n_{m=-n} Y_{n,m}(\theta,\phi)Y_{n,m}(\theta',\phi')
+\eeast
+where $r\cdot r'$ is dot product of the two vectors and $P_n(\cdot)$ is Legendre polynomial of order $n$.
+\end{theorem}
+
+
+\begin{proof}[\bf Proof]
+By definition of spherical harmonics,
+\beast
+& & \frac {4\pi}{2n+1}\sum^n_{m=-n} Y_n^m(\theta,\phi)\ol{Y_n^m(\theta',\phi')} \\
+& = & \frac {4\pi}{2n+1} \frac {2n+1}{4\pi}\sum^n_{m=-n} \frac{(n-m)!}{(n+m)!} P_n^m(\theta,\phi)P_n^m(\theta',\phi')e^{im\theta}e^{-im\theta'} = \sum^n_{m=-n} \frac{(n-m)!}{(n+m)!} P_n^m(\theta,\phi)P_n^m(\theta',\phi')e^{im\theta}e^{-im\theta'} \\
+& = & P_n^m(\theta,\phi)P_n^m(\theta',\phi') + \sum^n_{m=1} \bb{\frac{(n-m)!}{(n+m)!} P_n^m(\theta,\phi)P_n^m(\theta',\phi')e^{im\theta}e^{-im\theta'}+ \frac{(n+m)!}{(n-m)!} P_n^{-m}(\theta,\phi)P_n^{-m}(\theta',\phi')e^{-im\theta}e^{im\theta'}}.
+\eeast
+
+Since $P^{-m}_n(x) = (-1)^m\frac{(n-m)!}{(n+m)!}P^m_n(x)$,
+\beast
+& & \frac {4\pi}{2n+1}\sum^n_{m=-n} Y_n^m(\theta,\phi)\ol{Y_n^m(\theta',\phi')} \\
+& = & P_n^m(\theta,\phi)P_n^m(\theta',\phi') + \sum^n_{m=1} \bb{\frac{(n-m)!}{(n+m)!} P_n^m(\theta,\phi)P_n^m(\theta',\phi')e^{im\theta}e^{-im\theta'}+ \frac{(n-m)!}{(n+m)!}P_n^{m}(\theta,\phi)P_n^{m}(\theta',\phi')e^{-im\theta}e^{im\theta'}} \\
+& = & P_n^m(\theta,\phi)P_n^m(\theta',\phi') + 2\sum^n_{m=1} \frac{(n-m)!}{(n+m)!} P_n^m(\theta,\phi)P_n^m(\theta',\phi')\cos\bb{m(\theta-\theta')}.
+\eeast
+Then we can apply Legendre polynomials addition theorem (Theorem \ref{thm:Legendre_polynomials_addition}).
+
+For the second equality, we have by Proposition \ref{pro:spherical_harmonics_conjugate}
+\beast
+\sum^n_{m=-n} Y_{n,m}(\theta,\phi)Y_{n,m}(\theta',\phi') & = & -\frac 12 \sum_{-n\leq m<0} \bb{Y_n^{m} - (-1)^m Y_n^{-m}}(\theta,\phi)\bb{Y_n^{m} - (-1)^m Y_n^{-m}}(\theta',\phi') + Y_n^0(\theta,\phi)Y_n^0(\theta',\phi')\\
+& & \qquad\qquad \frac 12 \sum_{0<m\leq n} \bb{(-1)^{-m} Y_n^{m} +  Y_n^{-m}}(\theta,\phi)\bb{(-1)^{-m} Y_n^{m} +  Y_n^{-m}}(\theta',\phi') \\
+& = & -\frac 12 \sum_{-n\leq m<0} \bb{Y_n^{m} - \ol{Y_n^m}}(\theta,\phi)\bb{Y_n^{m} - \ol{Y_n^m}}(\theta',\phi') + Y_n^0(\theta,\phi)Y_n^0(\theta',\phi')\\
+& & \qquad\qquad \frac 12 \sum_{0<m\leq n} \bb{\ol{Y_n^{-m}} +  Y_n^{-m}}(\theta,\phi)\bb{\ol{Y_n^{-m}} +  Y_n^{-m}}(\theta',\phi') \\
+& = & -\frac 12 \sum_{-n\leq m<0} \bb{Y_n^{m} - \ol{Y_n^m}}(\theta,\phi)\bb{Y_n^{m} - \ol{Y_n^m}}(\theta',\phi') + Y_n^0(\theta,\phi)Y_n^0(\theta',\phi')\\
+& & \qquad\qquad \frac 12 \sum_{-n\leq m <0} \bb{\ol{Y_n^{m}} +  Y_n^{m}}(\theta,\phi)\bb{\ol{Y_n^{m}} +  Y_n^{m}}(\theta',\phi').% \\%& = & \frac 12 \sum^n_{m=-n} Y^m_n(\theta,\phi)\ol{Y^m_n(\theta',\phi')} + \frac 12 \sum^n_{m=-n} \ol{Y^m_n(\theta,\phi)}Y^m_n(\theta',\phi')\\
+\eeast
+
+Then we can rearrange the formula and get
+\beast
+\sum^n_{m=-n} Y_{n,m}(\theta,\phi)Y_{n,m}(\theta',\phi') & = & \sum_{-n\leq m \leq 0} Y^m_n(\theta,\phi)\ol{Y^m_n(\theta',\phi')} + \sum_{-n\leq m < 0} \ol{Y^m_n(\theta,\phi)}(-1)^m(-1)^{-m}Y^m_n(\theta',\phi') \\
+& = & \sum_{-n\leq m \leq 0} Y^m_n(\theta,\phi)\ol{Y^m_n(\theta',\phi')} + \sum_{-n\leq m < 0} Y^{-m}_n(\theta,\phi)\ol{Y^{-m}_n(\theta',\phi')} \\
+& = & \sum^n_{m=-n} Y^m_n(\theta,\phi)\ol{Y^m_n(\theta',\phi')}
+\eeast
+as required.
+\end{proof}
+
+\begin{example}
+Let $n=2$, we have (by Example \ref{exa:sperical_harmonics})
+\beast
+& & \sum^n_{m=-n} Y^m_n(\theta,\phi)\ol{Y^m_n(\theta',\phi')} \\
+& = & \frac{15}{32\pi} e^{-2i\theta }e^{2i\theta' }\sin^{2}\phi  \sin^{2}\phi' +  \frac{15}{8\pi} e^{-i\theta }e^{i\theta' }\sin\phi\cos\phi \phi'\cos\phi' + \frac{15}{16\pi} (3\cos^2\phi-1) (3\cos^2\phi'-1) \\
+& & \qquad + \frac{15}{8\pi} e^{i\theta }e^{-i\theta' }\sin\phi\cos\phi  \sin\phi'\cos\phi' + \frac{15}{32\pi} e^{2i\theta }e^{-2i\theta' }\sin^{2}\phi  \sin^{2}\phi' \\
+& = & \frac{(2n+1)}{4\pi} \bb{\frac{3}{4}\cos\bb{2(\theta-\theta')}\sin^{2}\phi  \sin^{2}\phi' +  3\cos(\theta-\theta')\sin\phi\cos\phi  \sin\phi'\cos\phi' + \frac 14(3\cos^2\phi-1) (3\cos^2\phi'-1)} \\
+& = & \frac{(2n+1)}{4\pi} \bb{\frac{3}{4}\bb{2\cos^2\bb{\theta-\theta'}-1}\sin^{2}\phi  \sin^{2}\phi' +  3\cos(\theta-\theta')\sin\phi\cos\phi  \sin\phi'\cos\phi' + \frac 14(3\cos^2\phi-1) (3\cos^2\phi'-1)}\\
+& = & \frac{(2n+1)}{4\pi} \bb{\frac{3}{2}\bb{\cos\bb{\theta-\theta'}\sin\phi  \sin\phi' + \cos\phi  \cos\phi'}^2  + \frac 14(3\cos^2\phi-1) (3\cos^2\phi'-1) - \frac{3}{4}\sin^{2}\phi  \sin^{2}\phi' - \frac{3}{2}\cos^{2}\phi  \cos^{2}\phi'}\\
+& = & \frac{(2n+1)}{4\pi} \bb{\frac{3}{2}\bb{\cos\bb{\theta-\theta'}\sin\phi  \sin\phi' + \cos\phi  \cos\phi'}^2 - \frac 12} =  \frac{(2n+1)}{4\pi} P_2\bb{\cos\bb{\theta-\theta'}\sin\phi  \sin\phi' + \cos\phi  \cos\phi'}.
+\eeast
+
+Similarly, we have (by Example \ref{exa:laplacian_real_sperical_harmonics})
+\beast
+& &  \sum^n_{m=-n} Y_{n,m}(\theta,\phi)Y_{n,m}(\theta',\phi')\\
+& = & \frac{15}{16\pi} \sin^2\phi \sin(2\theta)\sin^2\phi' \sin(2\theta') + \frac{15}{4\pi}\cos\phi\sin\phi \sin\theta \cos\phi'\sin\phi' \sin\theta' + \frac{5}{16\pi}(2\cos^2\phi - \sin^2\phi)(2\cos^2\phi' - \sin^2\phi') \\
+& & \qquad + \frac{15}{4\pi} \cos\phi\sin\phi \cos\theta\cos\phi'\sin\phi' \cos\theta' + \frac{15}{16\pi}\sin^2\phi\cos(2\theta)\sin^2\phi'\cos(2\theta')\\
+& = & \frac{(2n+1)}{4\pi}\bb{\frac 34 \sin^2\phi \sin^2\phi' \cos(2(\theta-\theta')) + 3\cos\phi\sin\phi \cos\phi'\sin\phi'\cos(\theta-\theta') + \frac 14(2\cos^2\phi - \sin^2\phi)(2\cos^2\phi' - \sin^2\phi')}\\
+& = & \frac{(2n+1)}{4\pi}\bb{\frac 32 \bb{\cos\phi'\sin\phi'\cos(\theta-\theta')+\cos\phi\sin\phi }^2 + \frac 14(3\cos^2\phi-1) (3\cos^2\phi'-1) -\frac{3}{4}\sin^{2}\phi  \sin^{2}\phi' - \frac{3}{2}\cos^{2}\phi  \cos^{2}\phi'}\\
+& =& \frac{(2n+1)}{4\pi} P_2\bb{\cos\bb{\theta-\theta'}\sin\phi  \sin\phi' + \cos\phi  \cos\phi'}.
+\eeast
+\end{example}
+
+
+
+\section{Hermite Differential Equation}
+
+\subsection{Hermite differential equation}
+
+\begin{definition}[Hermite differential equation\index{Hermite differential equation}]\label{def:hermite_differential_equation}
+The Hermite ODE is 
+\be
+y'' - 2xy' + \lm y = 0,\qquad \text{or}\qquad y'' - xy' + \lm y = 0.
+\ee
+where $p=1$ and $q=-2x$ or $q=-x$.
+\end{definition}
+
+\begin{remark}
+The weighted factor can be given by
+\be
+w(x) = p^{-1} \exp\bb{\int^x \frac{q(t)}{p(t)}}dt = \exp\bb{\int^x (-2t)dt} = e^{-x^2}
+\ee
+or
+\be
+w(x) = p^{-1} \exp\bb{\int^x \frac{q(t)}{p(t)}}dt = \exp\bb{\int^x (-t)dt} = e^{-\frac{x^2}2}.
+\ee
+\end{remark}
+
+
+\subsection{Hermite polynomials}
+
+\begin{definition}[Hermite polynomials\index{Hermite polynomials}]\label{def:hermite_polynomials}
+There are two different ways of standardizing the Hermite polynomials:
+
+The ``physicists' Hermite polynomials'' are given by Rodrigues formula (Theorem \ref{thm:rodrigues_formula}) multiplied by factor $(-1)^n$
+\be
+H_n(x)=(-1)^n\frac 1{w(x)} \frac{d}{dx}^n\bb{w(x)p^n(x)} = (-1)^n e^{x^2}\frac{d^n}{dx^n}\bb{e^{-x^2}}=\left (2x-\frac{d}{dx} \right )^n \cdot 1 .
+\ee
+for $w(x) = e^{-x^2}$ and $p(x)=1$.
+
+The ``probabilists' Hermite polynomials'' are given by Rodrigues formula (Theorem \ref{thm:rodrigues_formula}) multiplied by factor $(-1)^n$
+\be
+He_n(x)=(-1)^n\frac 1{w(x)} \frac{d}{dx}^n\bb{w(x)p^n(x)} = (-1)^n e^{\frac{x^2}{2}}\frac{d^n}{dx^n}\bb{e^{-\frac{x^2}{2}}}=\left (x-\frac{d}{dx} \right )^n \cdot 1
+\ee
+for $w(x) = e^{-\frac{x^2}2}$ and $p(x)=1$.
+
+These two definitions are not exactly identical\footnote{The notation $He$ and $H$ is that used in the standard references Tom H. Koornwinder, Roderick S. C. Wong, and Roelof Koekoek et al. (2010) and Abramowitz \& Stegun
+\cite{Abramowitz_1972}.}; each one is a rescaling of the other,
+\be
+H_n(x)=2^{\tfrac{n}{2}}{\mathit{He}}_n(\sqrt{2} \,x), \qquad \mathit{He}_n(x)=2^{-\tfrac{n}{2}}H_n\left(\frac x{\sqrt{2}} \right).
+\ee
+
+%These are Hermite polynomial sequences of different variances; see the material on variances below.
+
+The polynomials $He_n$ are sometimes denoted by $H_n$, especially in probability theory, because $\frac{1}{\sqrt{2\pi}}e^{-\frac{x^2}{2}} $ is the probability density function for the normal distribution with expected value
+0 and standard deviation 1. %The first six (probabilists') Hermite polynomials $He_n(x)$.
+
+The first eleven physicists' Hermite polynomials are:
+\beast
+H_0(x) & = & 1, \\
+H_1(x) & = & 2x, \\
+H_2(x) & = & 4x^2-2 ,\\
+H_3(x) & = & 8x^3-12x,\\
+H_4(x) & = & 16x^4-48x^2+12, \\
+H_5(x) & = & 32x^5-160x^3+120x, \\
+H_6(x) & = & 64x^6-480x^4+720x^2-120 ,\\
+H_7(x) & = & 128x^7-1344x^5+3360x^3-1680x, \\
+H_8(x) & = & 256x^8-3584x^6+13440x^4-13440x^2+1680, \\
+H_9(x) & = & 512x^9-9216x^7+48384x^5-80640x^3+30240x, \\
+H_{10}(x) & = & 1024x^{10}-23040x^8+161280x^6-403200x^4+302400x^2-30240.
+\eeast
+
+The first eleven probabilists' Hermite polynomials are:
+\beast
+He_0(x) & = & 1, \\
+He_1(x) & = & x, \\
+He_2(x) & = & x^2-1,\\
+He_3(x) & = & x^3-3x , \\
+He_4(x) & = & x^4-6x^2+3, \\
+He_5(x) & = & x^5-10x^3+15x ,\\
+He_6(x) & = & x^6-15x^4+45x^2-15 ,\\
+He_7(x) & = & x^7-21x^5+105x^3-105x,\\
+He_8(x) & = & x^8-28x^6+210x^4-420x^2+105,\\
+He_9(x) & = & x^9-36x^7+378x^5-1260x^3+945x,\\
+He_{10}(x) & = & x^{10}-45x^8+630x^6-3150x^4+4725x^2-945.
+\eeast%The first six (physicists') Hermite polynomials Hn(x).
+\end{definition}
+
+\begin{proposition}
+The physicists' Hermite polynomials can be written explicitly as\footnote{check needed.}
+\be
+H_n(x) = n! \sum_{m = 0}^{\frac{n}{2}} \frac{(-1)^{\tfrac{n}{2} - m}}{(2m)! \left(\tfrac{n}{2} - m \right)!} (2x)^{2m}
+\ee
+for even value of $n$ and
+\be
+H_n(x) = n! \sum_{m = 0}^{\frac{n-1}{2}} \frac{(-1)^{\frac{n-1}{2} - m}}{(2m + 1)! \left (\frac{n-1}{2} - m \right )!} (2x)^{2m + 1}
+\ee
+for odd values of $n$.
+
+These two equations may be combined into one using the floor function,
+\be
+H_n(x) = n! \sum_{m=0}^{\floor{\frac{n}{2}}} \frac{(-1)^m}{m!(n - 2m)!} (2x)^{n - 2m}.
+\ee
+
+The probabilists' Hermite polynomials He have similar formulas, which may be obtained from these by replacing the power of $2x$ with the corresponding power of $\sqrt{2}x$, and multiplying the entire sum by $2^{-n/2}$.
+\be
+He_n(x) = n! \sum_{m=0}^{\floor{\frac{n}{2} }} \frac{(-1)^m}{m!(n - 2m)!} \frac{x^{n - 2m}}{2^m}.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+
+
+\begin{proposition}[orthogonality of Hermite polynomials]\label{pro:orthogonality_hermite_polynomials}
+$H_n(x)$ and $He_n(x)$ are $n$th-degree polynomials for $n = 0, 1, 2, 3, \dots$. These polynomials are orthogonal with respect to the weight function (measure)
+\be
+w(x) = e^{-\frac{x^2}{2}}  \quad (He) \qquad \text{or}\qquad  w(x) = e^{-x^2}    \quad  (H)
+\ee
+i.e., we have
+\be
+\int_{-\infty}^\infty H_m(x) H_n(x) w(x)  dx = 0,\quad \text{or }\quad \int_{-\infty}^\infty He_m(x) He_n(x) w(x)  dx = 0 \quad m \neq n.
+\ee
+
+Furthermore,
+\be
+\int_{-\infty}^\infty He_m(x) He_n(x) e^{-\frac{x^2}{2}} dx = \sqrt{2 \pi} n! \delta_{nm}   \quad \text{(probabilists')}
+\ee
+or
+\be
+\int_{-\infty}^\infty H_m(x) H_n(x) e^{-x^2}dx = \sqrt{ \pi} 2^n n! \delta_{nm}   \quad \text{(physicists')}.
+\ee
+
+The probabilist polynomials are thus orthogonal with respect to the standard normal probability density function.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+\begin{theorem}[completeness of space spanned by Hermite polynomials]
+The Hermite polynomials (probabilist or physicist) form an orthogonal basis of the Hilbert space of functions satisfying
+\be
+\int_{-\infty}^\infty |f(x)|^2 w(x)dx <\infty
+\ee
+in which the inner product is given by the integral including the weight function $w(x)$ defined in Proposition \ref{pro:orthogonality_hermite_polynomials},
+\be
+\inner{f}{g}=\int_{-\infty}^\infty f(x)\ol{g(x)} w(x) dx.
+\ee
+
+An orthogonal basis for $L^2(R, w(x) dx)$ is a complete orthogonal system. For an orthogonal system, completeness is equivalent to the fact that the 0 function is the only function $f \in L^2(R, w(x) dx)$ orthogonal to all
+functions in the system.
+\end{theorem}
+
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+\begin{proposition}[exponential generating function of Hermite polynomials]\label{pro:exponential_generating_function_hermite_polynomials}
+For all $x,t\in \C$, the Hermite polynomials are given by the exponential generating function
+\be
+\exp \bb{xt-\frac{t^2}{2}} = \sum_{n=0}^\infty He_n(x) \frac {t^n}{n!}   \qquad\text{(probabilists')},
+\ee
+
+\be
+\exp \bb{2xt-t^2} = \sum_{n=0}^\infty H_n(x) \frac {t^n}{n!}   \qquad\text{(physicists')}.
+\ee
+\end{proposition}
+
+\begin{remark}
+This can be obtained by writing the Taylor expansion at $x$ of the entire function $z \to \exp\bb{-z^2}$ (in physicist's case). One can also derive the (physicist's) generating function by using Cauchy's integral formula to
+write the Hermite polynomials as
+\be
+H_n(x)=(-1)^n e^{x^2}\frac{d^n}{dx^n}e^{-x^2}= (-1)^n e^{x^2}{n! \over 2\pi i} \oint_\gamma {e^{-z^2} \over (z-x)^{n+1}}\, dz.
+\ee
+\end{remark}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+\begin{proposition}\label{pro:polynomials_hermite_polynomials}
+For $n\geq 0$, we have \be x^n = \sum^{\floor{\frac n2}}_{k=0} \frac{n!}{(2k)!(n-2k)!} He_{n-2k}(x).\ee
+\end{proposition}
+
+\begin{remark}
+Obviously, $1 = He_0(x)$, $x = He_1(x)$, $x^2 = He_2(x) + He_0(x)$ and $x^3 = He_3(x) + 3He_1(x)$.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+First, we have $\exp\bb{tx} = \exp\bb{t^2/2} \exp\bb{tx - x^2/2}$. Then we take Taylor expansion of $\exp(tx)$ and $\exp\bb{t^2/2}$ and Hermite expansion of $\exp\bb{tx - t^2/2}$ by Proposition
+\ref{pro:exponential_generating_function_hermite_polynomials}. To match the term $t^n$, we have
+\be
+\frac {x^n}{n!} = \frac 1{n!} He_n(x) + \frac{1}{(n-2)!}\frac 1{2!}He_{n-2}(x) + \dots
+\ee
+which implies that
+\be
+x^n = He_n(x) + \frac{n!}{2!(n-2)!} He_{n-2}(x) + \dots = \sum^{\floor{\frac n2}}_{k=0} \frac{n!}{(2k)!(n-2k!)} He_{n-2k}(x) .
+\ee
+\end{proof}
+
+
+%\subsection{Mehler's formula}
+
+\begin{theorem}[Mehler's formula\index{Mehler's formula}]\label{thm:mehler_formula}
+Let\footnote{Mehler, F. G. (1866), ``Ueber die Entwicklung einer Function von beliebig vielen Variabeln nach Laplaceschen Functionen h \"oherer Ordnung'', Journal f\"ur Reine und Angewandte
+Mathematik (in German) (66): 161�C176, ISSN 0075-4102, JFM 066.1720cj (cf. p 174, (18) \& p 173, (13) ), Erd\'elyi, Arthur; Magnus, Wilhelm; Oberhettinger, Fritz; Tricomi, Francesco G. (1955), Higher
+transcendental functions. Vol. II, McGraw-Hill (scan: p.194 10.13 (22))}
+\be
+f(x,y) =\frac 1{\sqrt{1-\rho^2}}\exp\left(-\frac{\rho^2 (x^2+y^2)-2\rho xy}{(1-\rho^2)}\right).
+\ee
+and showed, then it can be expanded in terms of Hermite polynomials $H(\cdot)$ based on weight function $\exp\bb{-x^2}$ as
+\be
+f(x,y) = \sum_{n=0}^\infty \frac{(\rho/2)^n}{n!} H_n(x) H_n(y).
+\ee %\end{theorem} %}
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+
+\begin{remark}
+The result of Mehler can also be linked to probability. For this, the variables should be rescaled as $x \to x/\sqrt{2}, y \to y/\sqrt{2}$, so as to change from the ``physicist's'' Hermite polynomials $H(\cdot)$ (with
+weight function $\exp\bb{-x^2}$) to ``probabilist's'' Hermite polynomials $He(\cdot)$ (with weight function $\exp\bb{-x^2/2}$). Then, $f$ becomes
+\be
+\frac 1{\sqrt{1-\rho^2}}\exp\bb{-\frac{\rho^2 (x^2+y^2)- 2\rho xy}{2(1-\rho^2)}} = \sum_{n=0}^\infty \frac{\rho^n}{n!} He_n(x) He_n(y) .
+\ee
+
+The left-hand side here is $p(x,y)/p(x)p(y)$ where $p(x,y)$ is the bivariate Gaussian probability density function for variables $x,y$ having zero means and unit variances:
+\be
+p(x,y) = \frac 1{2\pi \sqrt{1-\rho^2}}\exp\left(-\frac{(x^2+y^2)- 2\rho xy}{2(1-\rho^2)}\right) ,
+\ee
+and $p(x)$, $p(y)$ are the corresponding probability densities of $x$ and $y$,
+\be
+p(x) = \frac 1{\sqrt{2\pi}}\exp\bb{-\frac{x^2}{2}},\qquad p(y) = \frac 1{\sqrt{2\pi}}\exp\bb{-\frac{y^2}{2}}.
+\ee
+\end{remark}
+
+There follows the usually quoted form of the result.\footnote{see Kibble, W. F. (1945), "An extension of a theorem of Mehler's on Hermite polynomials", Proc. Cambridge Philos. Soc. 41: 12�C15, doi:10.1017/S0305004100022313,
+MR 0012728}
+
+\begin{theorem}\label{thm:mehler_formula_extension}
+Let $p(x,y)$ be the joint density function of bivariate normal distribution. Then
+\be
+p(x,y) = p(x) p(y)\sum_{n=0}^\infty \frac{\rho^n}{n!} He_n(x) He_n(y) .
+\ee
+\end{theorem}
+
+\begin{remark}
+This result is useful, in modified form, in quantum physics, probability theory, and harmonic analysis.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed.}
+\end{proof}
+

@@ -1,0 +1,3429 @@
+\chapter{Linear Analysis}
+
+\section{Some inequalities} Inequalities lie at the heart of analysis.
+In this section we prove some inequalities which lie at
+the heart of this course.
+
+We start with some observations from Part~1A.
+\begin{exercise} Suppose $f:(0,\infty)\rightarrow{\mathbb R}$
+is twice differentiable with $f''(x)<0$ for all $x\in{\mathbb R}$.
+Then if $0<t<s$ and $0<\lambda<1$, it follows that
+\[\lambda f(t)+(1-\lambda) f(s)<f\big(\lambda t+(1-\lambda)s\big).\]
+\end{exercise}
+In other words, if $f''(x)<0$, then $f$ is strictly concave.
+Applying the result with $f=\log$, we obtain the following result.
+\begin{lemma} Suppose $p,\ q$ are real and positive with
+\[\frac{1}{p}+\frac{1}{q}=1.\]
+Then, if $a,\,b>0$, we have
+\[a^{1/p}b^{1/q}\leq \frac{a}{p}+\frac{b}{q}\]
+with equality if and only if $a=b$.
+
+Our result remains true if $a,\,b\geq 0$.
+\end{lemma}
+We can now obtain our first version of the
+H{\"o}lder inequality\footnote{Mathematical 
+nomenclature should not be confused
+with historic truth. H\"{o}lder's paper makes it clear
+that he is discussing an inequality previously proved by
+L.~G.~Rogers (1862--1933). Rogers was Professor of Mathematics at Yorkshire
+College (now the University of Leeds) and a fine mathematician
+`with little ambition or desire for recognition'. In 1913,
+Ramanujan conjectured some remarkable identities which
+no-one could prove. In 1917, whilst looking through old journals,
+Ramanujan came across a 1894 paper of Rogers in which
+a more general form of the identities were proved.
+Rogers' election to the Royal Society followed.}.
+(Here and elsewhere
+we will write ${\mathbb F}$ to mean either
+${\mathbb R}$ or ${\mathbb C}$. This reflects the
+fact that many theorems of Linear Analysis
+apply both to real and complex vector spaces. However, just as in
+other branches of analysis and algebra, there are important
+theorems which apply only to complex or only to real spaces.)
+\begin{theorem}\label{T;Holder 1} Suppose $p,\ q$ are real and positive with
+\[\frac{1}{p}+\frac{1}{q}=1.\]
+If $a_{j},\,b_{j}\in{\mathbb F}$, then
+\[\sum_{j=1}^{n}|a_{j}b_{j}|\leq
+\left(\sum_{j=1}^{n}|a_{j}|^{p}\right)^{1/p}
+\left(\sum_{j=1}^{n}|b_{j}|^{q}\right)^{1/q}\]
+with equality if and only if we can find $A,\,B\in{\mathbb R}$,
+not both zero,
+with $A|b_{j}|^{q}=B|a_{j}|^{p}$ for all $1\leq j\leq n$.
+\end{theorem}
+I will probably leave out the examination of the case of equality
+in Theorems~\ref{T;Holder 1} and~\ref{T;Minkowski} but once
+you have mastered the main proof it a very instructive exercise
+to look closely the cases of equality.
+
+If we set $p=2$ in H{\"o}lder's inequality
+we recover the Cauchy-Schwarz inequality.
+
+Our H{\"o}lder inequality is complemented by
+a `reverse H{\"o}lder inequality'.
+\begin{theorem} (i) Suppose $p,\ q$ are real and positive with
+\[\frac{1}{p}+\frac{1}{q}=1.\]
+If $a_{j}\in{\mathbb F}$ and
+\[\sum_{j=1}^{n}|a_{j}b_{j}|\leq A
+\left(\sum_{j=1}^{n}|b_{j}|^{q}\right)^{1/q}\]
+for all choices of $b_{j}\in{\mathbb F}$  
+then
+\[\left(\sum_{j=1}^{n}|a_{j}|^{p}\right)^{1/p}\leq A.\]
+
+(ii) (Stronger version) Suppose $p,\ q$ are real and positive with
+\[\frac{1}{p}+\frac{1}{q}=1.\]
+If $a_{j}\in{\mathbb F}$ and
+\[\left|\sum_{j=1}^{n}a_{j}b_{j}\right|\leq A
+\left(\sum_{j=1}^{n}|b_{j}|^{q}\right)^{1/q}\]
+for all choices of $b_{j}\in{\mathbb F}$
+then
+\[\left(\sum_{j=1}^{n}|a_{j}|^{p}\right)^{1/p}\leq A.\]
+\end{theorem}
+
+Putting H{\"o}lder's inequality and the reverse
+H{\"o}lder inequality together, we
+get Minkowski's inequality.
+\begin{theorem}\label{T;Minkowski} 
+Suppose $p>1$. Then 
+\[\left(\sum_{j=1}^{n}|a_{j}|^{p}\right)^{1/p} 
++\left(\sum_{j=1}^{n}|b_{j}|^{p}\right)^{1/p}
+\geq \left(\sum_{j=1}^{n}|a_{j}+b_{j}|^{p}\right)^{1/p}\]
+with equality only if we can find $\alpha,\,\beta\in{\mathbb F}$,
+not both zero,
+such that $\beta a_{j}=\alpha b_{j}$ for all $1\leq j\leq n$.
+\end{theorem}
+(Exercise~\ref{C5.2} contains an apparently simpler proof,
+but the explicit use of the reverse
+H{\"o}lder inequality in the proof above may help fix it 
+in the reader's mind.)
+
+For us, as for Minkowski, this has a clear geometrical interpretation.
+\begin{theorem} Suppose $p>1$. Then
+\[\|{\mathbf a}\|_{p}=\left(\sum_{j=1}^{n}|a_{j}|^{p}\right)^{1/p}\]
+defines a norm on ${\mathbb F}^{n}$.
+\end{theorem}
+We can extend most of our results (but not all) to
+the cases $p=1$ and $p=\infty$.
+\begin{exercise}
+(i) Show that
+\[\|{\mathbf a}\|_{1}=\sum_{j=1}^{n}|a_{j}|\]
+defines a norm on ${\mathbb F}^{n}$.
+
+(ii) Show that
+\[\|{\mathbf a}\|_{\infty}=\max_{1\leq j\leq n}|a_{j}|\] 
+defines a norm on ${\mathbb F}^{n}$.
+
+(iii) Show that, if ${\mathbf a},\,{\mathbf b}\in{\mathbb F}^{n}$,
+then
+\[\sum_{j=1}^{n}|a_{j}||b_{j}|\leq \|{\mathbf a}\|_{\infty}
+\|{\mathbf b}\|_{1}.\]
+
+(iv) State and prove the \emph{two} `reverse H{\"o}lder'
+inequalities corresponding to~(iii).
+
+(v) If $\|{\mathbf a}+{\mathbf b}\|_{1}=
+\|{\mathbf a}\|_{1}+\|{\mathbf b}\|_{1}$,
+does it follow that we can find $\alpha,\,\beta\in{\mathbb F}$,
+not both zero,
+such that $\beta a_{j}=\alpha b_{j}$ for all $1\leq j\leq n$?
+Give reasons.
+
+(vi) If $\|{\mathbf a}+{\mathbf b}\|_{\infty}= 
+\|{\mathbf a}\|_{\infty}+\|{\mathbf b}\|_{\infty}$,
+does it follow that we can find $\alpha,\,\beta\in{\mathbb F}$,
+not both zero,
+such that $\beta a_{j}=\alpha b_{j}$ for all $1\leq j\leq n$?
+Give reasons.
+\end{exercise}
+\section{In finite dimension, norms are equivalent}
+We have produced a variety of norms on ${\mathbb F}^{n}$,
+but the following theorem (which the reader may have seen in
+Part 1B) shows that they are all equivalent in a rather
+strong sense (called Lipschitz equivalence).
+\begin{theorem}\label{T;norms same} 
+Suppose $E$ is a finite dimensional vector space
+over ${\mathbb F}$.
+If $\|.\|_{1}$ and $\|.\|_{2}$ are two norms on $E$,
+then we can find a constant $K>0$ such that
+\[K\|{\mathbf x}\|_{1}\geq \|{\mathbf x}\|_{2}
+\geq K^{-1}\|{\mathbf x}\|_{1}\]
+for all ${\mathbf x}\in E$.
+\end{theorem}
+Note that the proof depends ultimately on the fundamental axiom
+of analysis.
+
+However, the unit balls of the different norms $\|.\|_{p}$
+look more and more different as the dimension of the space increases.
+\begin{exercise}\label{E;increase norm} (i) If $\infty>s>r\geq 1$ 
+show, by applying H\"{o}lder's inequality with
+$a_{j}=x_{j}^{s}$, $b_{j}=1$ and $p=s/r$, that,
+if $x_{j}\geq 0$, we have
+\[\left(\sum_{j=1}^{n}x_{j}^{r}\right)^{1/r}\leq
+\left(\sum_{j=1}^{n}x_{j}^{s}\right)^{1/s}n^{r^{-1}-s^{-1}}\]
+with equality if and only if $x_{1}=x_{2}=\dots=x_{n}$.
+
+Thus, if we work in ${\mathbb F}^{n}$,
+\[\|{\mathbf x}\|_{r}\leq n^{r^{-1}-s^{-1}}\|{\mathbf x}\|_{s}\]
+and we cannot improve the inequality.
+
+(ii) If $\infty>s>r\geq 1$, show, by setting $t=x_{j}/\|{\mathbf x}\|_{s}$
+in the inequality $t^{r}\geq t^{s}$ $[0\leq t\leq 1]$,
+or otherwise, that, if $x_{j}\geq 0$,
+\[\left(\sum_{j=1}^{n}x_{j}^{s}\right)^{1/s}\leq
+\left(\sum_{j=1}^{n}x_{j}^{r}\right)^{1/r}\]
+and identify the cases of equality.
+
+Conclude that, if we work in ${\mathbb F}^{n}$,
+\[\|{\mathbf x}\|_{s}\leq \|{\mathbf x}\|_{r}\]
+and we cannot improve the inequality.
+
+(iii) State and prove (the proofs are easy)
+the corresponding results when we allow $s=\infty$.
+\end{exercise}
+
+Once we reach the simplest infinite dimensional space
+Theorem~\ref{T;norms same} fails.
+\begin{definition} We write $c_{00}$ for the space
+of sequences
+\[{\mathbf a}=(a_{1},a_{2},\dots)\]
+with $a_{n}\in{\mathbb F}$ and only finitely many $a_{j}$
+non-zero. [Warning: The notation $c_{00}$ is not universal.]
+\end{definition}
+\begin{exercise}\label{E;many norms} 
+(i) Check that  $c_{00}$ is a vector space.
+
+(ii) Check that 
+\[\|{\mathbf a}\|_{p}=\left(\sum_{j=1}^{\infty}|a_{j}|^{p}\right)^{1/p}\]
+defines a norm on $c_{00}$ for $\infty>p\geq 1$.
+
+(iii) Define an appropriate norm $\|.\|_{\infty}$ and
+show that is a norm.
+
+(iv) Show that, given any   $\infty\geq s>r\geq 1$
+and any $K>0$, we can find a non-zero ${\mathbf a}\in c_{00}$
+such that
+\[\frac{\|{\mathbf a}\|_{r}}{\|{\mathbf a}\|_{s}}>K.\]
+\end{exercise} 
+\section{Banach spaces} It is generally thought that
+the algebraic properties of large objects are rather dull
+and this is certainly the case for normed spaces.
+The remedy is to introduce extra analytic structure,
+in this case completeness.
+\begin{definition} A Banach space is a complete normed space.
+\end{definition}
+We observe that the norms we have placed on $c_{00}$
+are not complete. 
+\begin{exercise} Verify this statement.
+\end{exercise}
+Later, in Lemma~\ref{L;no countable}, 
+we shall show that $c_{00}$ cannot be given a complete norm.
+Thus $c_{00}$ is good for nothing except the production of counterexamples.
+(But it is very good for this purpose.)
+ 
+However, the work we have already done enables us to produce
+some nice infinite dimensional Banach spaces.
+\begin{theorem} Let $1\leq p<\infty$. If $l^{p}$ is
+the collection of sequences 
+\[{\mathbf a}=(a_{1},a_{2},\dots)\]
+with $a_{n}\in{\mathbb F}$ and
+\[\sum_{j=1}^{\infty}|a_{j}|^{p}\ \text{convergent},\]
+then $l^{p}$ is a vector space with the usual coordinatewise
+definition of addition and multiplication by scalars.
+If we set
+\[\|{\mathbf a}\|_{p}
+=\left(\sum_{j=1}^{\infty}|a_{j}|^{p}\right)^{1/p},\]
+then $\|.\|_{p}$ is a complete norm on $l^{p}$.
+\end{theorem}
+\begin{lemma} If $l^{\infty}$ is
+the collection of bounded sequences 
+\[{\mathbf a}=(a_{1},a_{2},\dots)\]
+with $a_{n}\in{\mathbb F}$,
+then $l^{\infty}$ is a vector space with the usual coordinatewise
+definition of addition and multiplication by scalars.
+If we set
+\[\|{\mathbf a}\|_{\infty}=\sup_{1\leq j}|a_{j}|\]
+then $\|.\|_{\infty}$ is a complete norm on $l^{\infty}$.
+\end{lemma}
+At some point, it became fashionable to write $l_{p}$
+instead of $l^{p}$. The reader must be prepared for both notations.
+\begin{exercise} (i) Show that, if $\infty\geq s>r\geq 1$,
+then $l^{r}\subseteq l^{s}$, $l^{r}\neq l^{s}$.
+
+(ii) If $\infty\geq s>r\geq 1$ show that, if ${\mathbf x}\in l^{r}$,
+then ${\mathbf x}\in l^{s}$ and $\|{\mathbf x}\|_{s}\leq\|{\mathbf x}\|_{r}$.
+Give an explicit example of a sequence ${\mathbf x}(k)\in l^{r}$
+with $\|{\mathbf x}(k)\|_{s}=1$ but 
+$\|{\mathbf x}(k)\|_{r}\rightarrow\infty$
+as $k\rightarrow\infty$.
+\end{exercise}
+
+Although we seek to study infinite dimensional
+Banach spaces by using geometrical
+intuition, they differ in important respects from finite
+dimensional spaces. Here is one example.
+\begin{theorem}\label{T;not compact} The closed unit ball
+\[\bar{B}=\{{\mathbf x}\in E\,:\,\|{\mathbf x}\|\leq 1\}\]
+of an infinite dimensional Banach space $(E,\|.\|)$
+is not compact.
+\end{theorem}
+Our proof depends on two results which are of independent interest.
+\begin{lemma} Any finite dimensional subspace
+of a Banach space is closed.
+\end{lemma}
+\begin{theorem}\label{T;Riesz}{\bf [Lemma of F. Riesz]} 
+If $F$ is a closed subspace of a  Banach space $(E,\|.\|)$
+and $F\neq E$, then, given any $\epsilon>0$, we can find
+an ${\mathbf e}\in E$ with $\|{\mathbf e}\|=1$ such that
+\[\|{\mathbf e}- {\mathbf f}\|>1-\epsilon\]
+for all ${\mathbf f}\in F$.
+\end{theorem}
+The technique that we use to prove Theorem~\ref{T;Riesz}
+is very useful in a wide variety of circumstances.
+\section{Continuous linear functions} When we studied linear maps on
+finite dimensional normed spaces we made repeated use of
+the fact that they were continuous.
+\begin{exercise} Suppose $(U,\|.\|_{U})$ and
+and $(V,\|.\|_{V})$ are finite dimensional normed spaces.
+Show that every linear map $\alpha:U\rightarrow V$
+is continuous.
+\end{exercise}
+We cannot make this assumption when we study linear
+maps on infinite dimensional spaces.
+\begin{exercise}\label{E;not continuous linear} 
+Consider the space $c_{00}$ of sequences
+of complex numbers only finitely many of which are non-zero,
+equipped with the norm
+\[\|{\mathbf a}\|_{1}=\sum_{j=1}^{\infty}|a_{j}|.\]
+Give an example of a linear map
+$\alpha:c_{00}\rightarrow{\mathbb F}$ which is not continuous.
+\end{exercise}
+The treatment of continuous linear maps on
+infinite
+dimensional vector spaces is much aided by some simple observations.
+\begin{lemma}  Suppose $(U,\|.\|_{U})$ and
+and $(V,\|.\|_{V})$ are normed spaces
+and $\alpha:U\rightarrow V$ is linear. 
+The following statements are equivalent.
+
+(i) $\alpha$ is continuous everywhere.
+
+(ii) $\alpha$ is continuous at ${\boldsymbol 0}$.
+
+(iii) There exists a $C$ such that
+\[\|\alpha{\mathbf u}\|_{V}\leq C\|{\mathbf u}\|_{U}\]
+for all ${\mathbf u}\in U$.
+\end{lemma}
+For this reason continuous linear maps are sometimes called bounded linear 
+maps. 
+
+We can define the \emph{operator norm}
+and derive its elementary properties in exactly
+the same way as in the finite dimension case.
+\begin{definition} Suppose $(U,\|.\|_{U})$ and
+$(V,\|.\|_{V})$ are normed spaces
+and $\alpha:U\rightarrow V$ is continuous and linear.
+We define the operator norm $\|\alpha\|$ of $\alpha$ as
+follows.
+\[\|\alpha\|=\sup_{\|{\mathbf u}\|_{U}\leq 1}\|\alpha{\mathbf u}\|_{V}.\]
+\end{definition}
+\begin{exercise} (i) Suppose $(U,\|.\|_{U})$ and
+$(V,\|.\|_{V})$ are normed spaces. The collection
+${\mathcal L}(U,V)$ 
+of continuous linear maps $\alpha:U\rightarrow V$
+forms a vector space under 
+pointwise addition and multiplication by scalars.
+The operator norm is indeed a norm on ${\mathcal L}(U,V)$.
+
+(ii) Suppose $(U,\|.\|_{U})$ is
+a normed space. Then the identity map $\iota\in{\mathcal L}(U,U)$
+and $\|\iota\|=1$.
+
+(iii) Suppose $(U,\|.\|_{U})$,
+$(V,\|.\|_{V})$ and $(W,\|.\|_{W})$ are normed spaces.
+If $\alpha\in {\mathcal L}(U,V)$ and $\beta\in{\mathcal L}(V,W)$,
+then $\beta\alpha\in {\mathcal L}(U,W)$ and
+\[\|\beta\alpha\|\leq \|\beta\|\|\alpha\|.\]
+\end{exercise}
+\begin{theorem}\label{T;dual complete} If $(U,\|.\|_{U})$ and
+and $(V,\|.\|_{V})$ are Banach spaces, it follows that
+$\big({\mathcal L}(U,V),\|.\|\big)$ is a Banach space.
+\end{theorem}
+(For an improvement see Exercise~\ref{E;more dual complete}.)
+A particularly important example of 
+the space $({\mathcal L}(U,V),\|.\|)$
+occurs when $V={\mathbb F}$.
+\begin{definition} If $(U,\|.\|_{U})$ is a normed space
+over ${\mathbb F}$ we say that a continuous
+linear map $T:U\rightarrow{\mathbb F}$
+is a \emph{bounded linear functional}.
+The space $U'={\mathcal L}(U,{\mathbb F},\|.\|)$
+is called the \emph{dual} space of $U$.
+\end{definition}
+\begin{theorem}\label{T;dual p} If $\infty>p\geq 1$ 
+and $p^{-1}+q^{-1}=1$, then $({l^{p}})'=l^{q}$
+(More exactly, there is a natural identification
+of $({l^{p}})'$ and $l^{q}$. When we have introduced more definitions,
+you may prefer the statement that there is a natural isometric
+isomorphism between  $({l^{p}})'$ and $l^{q}$.)
+\end{theorem}
+The following important exercise illustrates both our method of
+proving Theorem~\ref{T;dual p} and its limitations.
+\begin{exercise}\label{E;dual $c$} 
+(i) Show that $c$, the set of all sequences 
+${\mathbf a}$ such that $a_{j}$ tends to a limit 
+as $j\rightarrow\infty$, is a closed subspace of
+$l^{\infty}$ with its usual norm. Show that $c_{0}$, 
+the set of all sequences 
+${\mathbf a}$ such that $a_{j}\rightarrow 0$ 
+as $j\rightarrow\infty$, is a closed subspace of
+$l^{\infty}$ with its usual norm.
+
+Because of these results we may consider
+$c$ and $c_{0}$ as Banach spaces under the supremum norm
+(that is to say the $l^{\infty}$ norm).
+
+(ii) Show that $c_{0}'$ can be identified in a natural manner
+with $l^{1}$.
+
+(iii) Identify the elements of $c'$ in a reasonably
+natural manner.
+\end{exercise}
+It is an important fact that the method we use
+to prove Theorem~\ref{T;dual p} fails when we
+try to find the dual of $l^{\infty}$.
+In some sense $l^{\infty}$ is too large
+for us to deal with. Lemma~\ref{L;large space}
+make it clear what is going on.
+
+\begin{definition}\label{def:dense} 
+We say that a subset $E$ of a metric space $(X,d)$ is dense\index{dense} in $X$, if given any $x\in X$, we can find $x_{n}\in E$  with $x_{n}\rightarrow x$.
+\end{definition}
+
+\begin{definition}\label{def:seperable}
+A metric space $(X,d)$ is separable\index{separable} if we can find a countable dense subset of $X$.
+\end{definition}
+
+\begin{lemma}\label{L;large space}
+The space $l^{p}$ is separable if $\infty>p\geq 1$
+but $l^{\infty}$ is not separable.
+\end{lemma}  
+\section{Second duals} Students find it hard to understand
+the treatment of second duals in 1B Algebra but the
+subject actually becomes easier to understand when treated
+in a more general setting.
+\begin{lemma}\label{L;double dual 1} Let $U$ be a normed vector space.
+Then the map $J:U\rightarrow U''$ given by
+\[(Ju)(T)=Tu\]
+for $u\in U$ and $T\in U'$ is a well
+defined continuous linear map.
+\end{lemma}
+In 1B Algebra, when $U$ is a finite dimensional space
+it is easy to show that $J$ is injective.
+In the infinite dimensional case we need a further idea.
+\begin{definition}\label{D;sufficiently rich} 
+[Warning. This is non-standard.]
+We say that a dual $U'$ of a normed space $U$ is
+\emph{sufficiently rich} if, whenever $u\in U$, 
+\[\sup_{T\in U',\|T\|\leq 1}\|Tu\|=\|u\|.\]
+\end{definition}
+It is easy to check that all the spaces we have met
+so far are sufficiently rich.
+\begin{exercise} (i) Show that the duals of the $l^{p}$
+spaces are sufficiently rich $[1\leq p\leq \infty]$.
+(Note that, although we cannot fully identify the
+dual of $l^{\infty}$ we can, nonetheless, show that
+it is sufficiently rich.)
+
+(ii) Show that if $U$ is a Banach space with sufficiently
+rich dual then ${\mathcal L}(U,U)$ has sufficiently rich dual.
+(We need this later in the proof of Lemma~\ref{L;non-empty spectrum}
+but the reader should not loose any sleep over this.)
+\end{exercise}
+The reader will find it easy to check
+(and should carry out the check) that any
+specific space has a sufficiently rich dual.
+
+If we use the axiom of choice, then it can be shown
+that all duals are sufficiently rich. Any text that the
+reader consults will use the  axiom of choice
+and will therefore omit the condition that
+the dual is sufficiently rich.  
+\begin{lemma} Let $U$ be a normed vector space
+with a sufficiently rich dual.
+Then the map $J:U\rightarrow U''$ introduced
+in Lemma~\ref{L;double dual 1} is isometric
+(that is to say $\|Ju\|_{U''}=\|u\|_{U}$)
+and so injective.
+\end{lemma}
+(Here and everywhere else, we use the operator norm on
+$U'$ and $U''$.)
+
+If $U'$ is sufficiently rich,
+it is reasonable to use $J$ to give natural identification
+of $U$ with $JU$ and write $U\subseteq U''$.
+\begin{lemma} If $U$ is a Banach space with sufficiently rich dual
+then (with the natural identification) $U$ is a closed
+subspace of $U''$.
+\end{lemma}
+
+In 1B Algebra, when $U$ is a finite dimensional space,
+a dimensional argument shows that $J$ is surjective
+(and so, with the natural identification, $U=U''$).
+If $1<p<\infty$ then the work we have already done shows 
+that $(l^{p})''=l^{p}$.
+
+However, the following important example shows that
+$U$ may be a proper subspace of its second dual $U''$.
+\begin{exercise} (Part~(i) and most of part~(iii) 
+were done in  Exercise~\ref{E;dual $c$}.)
+Let $c_{0}$ be the the subset of $l^{\infty}$
+consisting of those sequences ${\mathbf a}$ such that
+that $a_{j}\rightarrow 0$ as $j\rightarrow\infty$.
+
+(i) Show that $c_{0}$ is a closed subspace of $l^{\infty}$
+and so $(c_{0},\|.\|_{\infty})$ is a Banach space.
+
+(ii) Show that $c_{0}$ is separable.
+
+(iii) Show that $c_{0}'$ can be identified in a natural manner
+with $l^{1}$. Show also that the dual of $c_{0}$ is sufficiently rich.
+
+(iv) Deduce that $c_{0}''$ can identified in a natural manner with 
+$l^{\infty}$ and so the mapping $J:c_{0}\rightarrow c_{0}''$ introduced
+in Lemma~\ref{L;double dual 1} cannot be surjective.
+\end{exercise}
+
+There are two ways of looking at Banach spaces. One is to study
+each space in its own right using the the language and insights
+of linear analysis as tools. Each of the spaces $l^{1}$,
+$l^{2}$ and $l^{\infty}$ could be, and has been, the
+object of a lifetime's study. This is the point of view
+of the present course or, at least, the present 
+lecturer\footnote{Who has spent most of his mathematical life studying
+a particular representation of $l^{1}$.}.
+
+The second way of looking at Banach spaces is to study
+them as general structures. In this case we do not study
+individual spaces but isomorphism classes or
+isometric isomorphism classes of Banach spaces.
+\begin{definition} (i) The normed spaces $(U,\|.\|_{U})$
+and $(V,\|.\|_{V})$ are \emph{isomorphic} if there exists a
+vector space isomorphism $T:U\rightarrow V$ such that
+both $T$ and $T^{-1}$ are continuous.
+
+(ii)  The normed spaces $(U,\|.\|_{U})$
+and $(V,\|.\|_{V})$ are 
+\emph{isometrically isomorphic} if there exists a
+vector space isomorphism $T:U\rightarrow V$ such that
+\[\|Tu\|_{V}=\|u\|_{U}\]
+for all $u\in U$.
+\end{definition}
+From this point of view, all we know so far
+about the $l^{p}$ spaces is that 
+$l^{\infty}$ is not isomorphic to $l^{p}$ for $1\leq p<\infty$.
+(If the reader is interested, Exercise~\ref{E;not $l^{1}$}
+shows that $l^{1}$ is not isomorphic to $l^{p}$ for $p\neq 1$
+and Exercise~\ref{E;not Hilbert}
+shows that $l^{2}$ is not isomorphic to $l^{p}$ for $p\neq 2$.
+It has been shown that, in fact, spaces $l^{p}$ with distinct
+$p$ are not isomorphic.) We give a very simple example of Banach space
+isomorphism in Exercise~\ref{E;see isomorphism}.
+
+For the avoidance of doubt, the reader is instructed that,
+both in the notes and in examination questions, statements
+about $l^{p}$ and similar spaces refer to their concrete realisations
+and not to their isomorphism classes. If isomorphism
+is to be considered, this will be stated explicitly.
+\section{Baire category} The Baire category is a profound triviality
+which condenses the folk wisdom of a generation of ingenious
+mathematicians into a single statement.
+
+\begin{theorem}\label{T;Baire 1} If $(X,d)$ is a complete metric space
+and $U_{j}$ is an open dense subset of $X$ for each $j\geq 1$,
+then $\bigcap_{j=1}^{\infty}U_{j}\neq\emptyset$.
+\end{theorem}
+(The same ideas are used to prove a similar result for compact
+topological spaces in Exercise~\ref{E;Baire compact}.)
+
+In some sense,the property of belonging to $U_{j}$ is
+stable (since $U_{j}$ is open, small perturbations 
+leave us within $U_{j}$) and the property of not belonging
+to $U_{j}$ unstable (since $U_{j}$ is dense, we can move
+to $U_{j}$ by arbitrarily small perturbations). 
+\begin{exercise}\label{E;dense matrices}
+Consider the space of $n\times n$ complex
+matrices with the operator norm. Recall that given
+any matrix $A$ we can find a non-singular matrix $B$
+such that $BAB^{-1}$ is upper triangular. By using this result,
+or otherwise, 
+show that the set of of matrices with $n$ distinct eigenvalues
+is open and dense.
+\end{exercise}
+For historical reasons Baire's theorem is associated
+with some rather unhelpful nomenclature.
+\begin{definition} Consider a metric space $(X,d)$.
+If $E_{j}$ is closed with dense complement and
+$E\subseteq\bigcup_{j=1}^{\infty}E_{j}$, then
+$E$ is said to be of \emph{first category}.
+\end{definition}
+Baire's theorem can be restated as follows.
+\begin{theorem}{\bf[Baire's category theorem]}
+If $(X,d)$ is a complete metric space, then
+$X$ is not of first category.
+\end{theorem}
+The following remark is very useful.
+\begin{lemma} Consider a metric space $(X,d)$.
+The countable union of sets of the first category
+is of first category.
+\end{lemma}
+The next remark that may already have occurred to the reader.
+\begin{exercise} If $(X,d)$ is a complete metric space
+and $E$ is a subset of first category, then $X\setminus E$
+is dense in $E$.
+\end{exercise}
+Recall that a point $x$ in a metric space $(X,d)$ is called
+\emph{isolated} if we can find a $\delta>0$ such that
+$d(x,y)<\delta$ implies $y=x$.
+\begin{lemma} A complete metric space without isolated
+points is uncountable.
+\end{lemma}
+Observe that this gives us a new proof that 
+${\mathbb R}$ is uncountable (and so transcendental numbers exist)
+which does not depend on establishing decimal representation.
+\begin{lemma}\label{L;no countable} (i) If $E$ is an infinite dimensional 
+Banach space over ${\mathbb F}$, 
+then $E$ cannot have a countable spanning set.
+In other words, we cannot find a sequence $e_{1}$, $e_{2}$, \dots
+in $E$ such that every $u\in E$ can be  written
+\[u=\sum_{j=1}^{N}\lambda_{j}e_{j}\]
+for some $\lambda_{j}\in{\mathbb F}$ and some $N\geq 1$.
+
+(ii) The space $c_{00}$ cannot be given a complete norm.
+\end{lemma}
+
+\begin{exercise} Consider the Banach space $(l^{p},\|.\|_{p})$.
+We know that \emph{considered as a set}, $l^{r}$ is a subset
+of $l^{p}$ whenever $p\geq r\geq 1$. With this convention
+$\bigcup_{p>r}l^{r}$ is of first category in $(l^{p},\|.\|_{p})$.
+\end{exercise}
+Banach and Steinhauss used the Baire category theorem to isolate
+another piece of folk wisdom.
+\begin{theorem}{\bf[Principle of uniform boundedness]}
+Suppose $(U,\|.\|_{U})$
+and $(V,\|.\|)$ are Banach spaces. If we have a family
+${\mathcal T}$ of continuous linear maps $T:U\rightarrow V$
+such that $\sup_{T\in{\mathcal T}}\|Tu\|_{V}<\infty$
+for each $u\in U$, then  $\sup_{T\in{\mathcal T}}\|T\|<\infty$.
+\end{theorem}
+Here is a typical use of the principle. We work
+on the circle ${\mathbb T}={\mathbb R}/{2\pi\mathbb Z}$
+(but if the reader prefers she may work on $[-\pi,\pi]$).
+To see why this result may be interestiong recall
+applied lecturers writing down the following
+`aspirational prose'.
+
+\begin{small}\begin{sf}
+We have $g_{n}\rightarrow \delta$, that is to say
+the  continuous function $g_{n}$ tends to the delta function,
+and so
+\[\int g_{n}(t)f(t)\,dt\rightarrow\int g_{n}(t)\delta(t)\,dt=f(0).\]
+\end{sf}\end{small}
+
+\begin{exercise}\label{E;kernel 1} Suppose that 
+$g_{n}:{\mathbb T}\rightarrow{\mathbb R}$
+is continuous and
+\[\frac{1}{2\pi}\int_{\mathbb T}g_{n}(t)f(t)\,dt 
+\rightarrow f(0)\]
+as
+$n\rightarrow\infty$ for all continuous functions
+$f:{\mathbb T}\rightarrow{\mathbb R}$. Then
+the following must be true. 
+
+(i) There exists a constant $K$
+such that
+\[\frac{1}{2\pi}\int_{\mathbb T}|g_{n}(t)|\,dt\leq K\]
+for all $n\geq 1$.
+
+(ii) If $\delta>0$ and $f$ is a continuous function
+with $f(t)=0$ for $|t|<\delta$, then
+\[\frac{1}{2\pi}\int_{\mathbb T}f(t)g_{n}(t)\,dt\rightarrow 0\] 
+as $n\rightarrow \infty$.
+
+(iii) We have
+\[\frac{1}{2\pi}\int_{\mathbb T}g_{n}(t)\,dt\rightarrow 1\]
+as $n\rightarrow\infty$.
+
+\noindent[In Exercise~\ref{E;kernel 2} 
+we establish that these necessary conditions 
+are also sufficient. In Exercise~\ref{E;kernel 4}
+we use Exercise~\ref{E;kernel 1} to establish that the
+Fourier series of a continuous function
+need not converge pointwise to that function.]
+\end{exercise}
+We use the Baire category theorem to prove the following series
+of rather more subtle results.
+\begin{theorem}{\bf [Open mapping theorem]}\label{T;open mapping}
+Suppose $(U,\|.\|_{U})$
+and $(V,\|.\|)$ are Banach spaces. If $T\in{\mathcal L}(U,V)$
+is surjective, then $T$ maps open sets in $U$ to open sets in $V$.
+\end{theorem}
+\begin{exercise} It is easy to see that linearity is essential
+for results like these. Give an example of a continuous
+surjective map $f:{\mathbb R}\rightarrow{\mathbb R}$
+which is not open.
+\end{exercise}
+
+We give an example of the use of the open mapping theorem in
+Exercise~\ref{E;equivalent norms} 
+The reader may recall a very useful `open mapping theorem'
+in complex variable theory. The following is an immediate
+consequence of Theorem~\ref{T;open mapping}.
+\begin{theorem}{\bf [Inverse mapping theorem]}\label{T:inverse}%
+\footnote{Called the \emph{inversion theorem} in the syllabus.}
+Suppose that $(U,\|.\|_{U})$
+and $(V,\|.\|_{V})$ are Banach spaces. If $T\in{\mathcal L}(U,V)$
+is bijective, then $T^{-1}$ is continuous (so $T$ is an isomorphism).
+\end{theorem}
+(For a variation on this theme, see Exercise~\ref{E;dense surjective}.)
+
+Here is a simple example of the use of Theorem~\ref{T:inverse}.
+\begin{exercise}\label{E;see isomorphism} 
+The space $c$ of sequences with limits and the space
+$c_{0}$ of sequences with limit zero (both equipped with the
+supremum norm) are Banach space isomorphic.
+\end {exercise}
+
+We introduce the last of this group of theorems with an exercise.
+\begin{exercise} (i) Let $(X,d)$ be a metric space.
+If $f:X\rightarrow X$ is continuous, then the graph
+\[\left\{\big(x,f(x)\big)\,:\,x\in X\right\}\]
+is closed with respect to the product metric.
+
+(ii) If $g:{\mathbb R}\rightarrow{\mathbb R}$ is given
+by $g(x)=x^{-2}$ for $x\neq 0$ and $g(0)=0$, then
+the graph
+\[\left\{\big(x,g(x)\big)\,:\,x\in X\right\}\]
+is closed in the usual metric but $g$ is not continuous.
+\end{exercise}  
+\begin{theorem}{\bf [Closed graph theorem]} Suppose $(U,\|.\|_{U})$
+is  Banach space and $T:U\rightarrow U$ is a linear function.
+If the graph
+\[ \left\{\big(u,T(u)\big)\,:\,u\in U\right\}\]
+is closed with respect to the product norm, then
+$T$ is continuous.
+\end{theorem}
+To see how such a theorem can be used, we recall some definitions
+and results from from 1B algebra. The reader can check that
+they apply without change in the infinite dimensional case.
+\begin{exercise} If $U$ is a vector space, we say that
+a linear map $P:U\rightarrow U$ is a \emph{projection} if
+$P^{2}=P$. Show that, for such a $P$,
+\[(I-P)^{-1}(0)=P(U)\ \text{and}\ P^{-1}(0)=(I-P)(U).\]
+Show further that every $u\in U$ can be written uniquely
+in the form $u=v+w$ with $v\in P(U)$ and $w\in P^{-1}(0)$.
+\end{exercise}
+\begin{theorem}  Suppose $(U,\|.\|_{U})$
+is  Banach space and $P:U\rightarrow U$ is a projection.
+Then $P$ is continuous if and only if the kernel $P^{-1}(0)$
+and image $P(U)$ are closed.
+\end{theorem}
+\section{Continuous functions} We recall the discussion of continuous
+functions in the Topological and Metric Spaces course.
+\begin{exercise}\label{E;continuous} Let $(X,\tau)$ 
+and $(Y,\sigma)$ be topological
+spaces. The following two statements about a function
+$f:X\rightarrow Y$ are equivalent.
+
+(i) If $U\in\sigma$, then $f^{-1}(U)\in\tau$.
+
+(ii) Given $x\in X$ and $V\in\sigma$ with $f(x)\in V$,
+we can find a $W\in\tau$ with $x\in W$ and $F(W)\subseteq V$.
+\end{exercise}  
+Any $f$ satisfying the conditions of Exercise~\ref{E;continuous}
+is called continuous. We shall be interested 
+in continuous functions $F:X\rightarrow{\mathbb F}$
+where $(X,\tau)$ is a topological space\footnote{As usual,
+we shall sometimes merely refer to $X$
+with the topology $\tau$ being understood.} 
+and ${\mathbb F}$
+has its usual topology. 
+
+Even if the reader has not
+seen the next three exercises before, she should have no difficulty
+with them.
+\begin{exercise} (i) Let $(X,\tau)$ be a topological space
+and let $f_{n}:X\rightarrow{\mathbb F}$ be continuous. Suppose
+that $f:X\rightarrow{\mathbb F}$ is such that we can find 
+$\epsilon_{n}\rightarrow 0$ with
+\[|f_{n}(x)-f(x)|<\epsilon_{n}\ \text{for all $x\in X$}.\]
+Show that $f$ is continuous. (In other words, the uniform limit
+of continuous functions is continuous.)
+
+(ii) Let $C_{0}(X)$ be the space of bounded continuous
+functions $f:X\rightarrow{\mathbb F}$.
+Show that
+\[\|f\|_{\infty}=\sup_{x\in X}|f(x)|\]
+defines a complete norm on $C_{0}(X)$.
+\end{exercise}
+Note that the completeness of $l^{\infty}$ is a special case
+where $X={\mathbb N}$ and $\tau$ is the discrete topology.
+\begin{exercise} If $(X,\tau)$ is compact, show that every continuous
+function $f:X\rightarrow{\mathbb R}$ is bounded.
+\end{exercise}
+\begin{exercise} Show that, if $E$ is subset of ${\mathbb F}^{n}$
+with the usual topology, then every continuous function
+$f:E\rightarrow{\mathbb F}^{n}$ is bounded if and only if
+$E$ is compact.
+\end{exercise}
+These results strongly suggest that we should study
+the space $C(X)=C_{\mathbb F}(X)$ of continuous functions
+$f:X\rightarrow{\mathbb F}$ with the uniform norm
+$\|f\|_{\infty}=\sup_{x\in X}|f(x)|$ in the case when $X$ is compact.
+
+However, if we simply demand that $X$ is compact, the 
+\emph{space} $C(X)$
+may not have much to do with the \emph{set} X.
+\begin{exercise} If $X$ has the indiscrete topology
+$\tau=\{X,\,\emptyset\}$, then $C(X)$ consists of the constant functions.
+\end{exercise}
+The following simple observation puts us on a profitable path.
+\begin{exercise} If $C(X)$ is such that, given $x\neq y$,
+we can find an $f\in C(X)$ with $f(x)\neq f(y)$
+(informally, if $C(X)$ \emph{separates} the points of $X$),
+then $X$ is Hausdorff.
+\end{exercise}
+In this section we prove the remarkable fact that the converse
+also holds for compact spaces. 
+Thus it is natural to study $C(X)$ when $X$
+is compact and Hausdorff\footnote{This result so impressed
+a retired French general that he proposed using the
+word `compact' to mean `compact and Hausdorff'. The innovation
+was not popular but the reader should be aware of this possible
+source of confusion.}.
+
+We need to recall a couple of elementary topological results.
+\begin{exercise}\label{E;Watson} 
+(i) In a compact space, every closed set is compact.
+
+(ii) In a Hausdorff space, singleton sets $\{a\}$ are closed.
+\end{exercise}
+We now start our theorem sequence.
+\begin{theorem}\label{T;normal} If $(X,\tau)$ is compact and Hausdorff,
+then, given $A$ and $B$ non-empty disjoint closed sets, 
+we can find disjoint open sets $U$ and $V$ such that
+$A\subseteq U$ and $B\subseteq V$.
+\end{theorem}
+(A space satisfying the conclusions of Theorem~\ref{T;normal}
+is called normal. See Exercise~\ref{E;normal one} for more on this topic.)
+\begin{theorem} {\bf[Urysohn's lemma]} If $(X,\tau)$ is
+compact and Hausdorff,
+then, given $A$ and $B$ non-empty disjoint closed sets, 
+we can find an $f\in C_{\mathbb R}(X)$ such that
+$0\leq f(x)\leq 1$ for all $x\in X$ and 
+\begin{align*}
+f(a)&=1\ \text{when $a\in A$}\\
+f(b)&=0\ \text{when $b\in B$}.
+\end{align*}
+\end{theorem}
+Exercise~\ref{E;Watson} now tells us that $C(X)$ separates
+points whenever $X$ is compact and Hausdorff.
+It is, perhaps, worth remarking that Urysohn's lemma
+has a much simpler proof if $\tau$ is derived from a metric.
+
+
+The following simple remark comes in useful in our
+proof of Urysohn's lemma.
+\begin{exercise} Let $(X,\tau)$ be a topological space
+and let ${\mathbb R}$ have its usual topology.
+A function $f:X\rightarrow {\mathbb R}$ is continuous
+if and only if $f^{-1}\big((-\infty,a)\big)$ is open
+and  $f^{-1}\big((-\infty,a]\big)$ is closed for all $a\in{\mathbb R}$.
+\end {exercise}
+
+
+In fact we can prove an apparently stronger result than Urysohn's
+lemma.
+\begin{theorem} {\bf[Tietze's extension theorem]}\label{T;Tietze}
+If $Y$ is closed subset of a compact Hausdorff space
+$(X,\tau)$, then, given any $f\in C_{\mathbb R}(Y)$
+(where $Y$ has the subspace topology), we can find
+an $F\in C_{\mathbb R}(X)$ such that $F(y)=f(y)$ for all $y\in Y$.
+\end{theorem}
+
+To see that Tietze's extension theorem is non-trivial
+consider the following example.
+\begin{exercise} Consider the closed interval
+$X=[-4,4]$ with the usual topology
+and the open interval $Y=(0,1)$. Show that if $f:Y\rightarrow{\mathbb R}$ 
+is defined by $f(y)=\sin(1/y)$ then $f$ is continuous
+but  there does not exist an
+$F\in C(X)$ such that $F(y)=f(y)$ for all $y\in Y$.
+\end{exercise}
+
+We strengthen Theorem~\ref{T;Tietze} in two steps.
+\begin{corollary}  If $Y$ is closed subset of a compact Hausdorff space
+$(X,\tau)$, then, given any $f\in C_{\mathbb F}(Y)$,
+we can find
+an $F\in C_{\mathbb F}(X)$ such that $F(y)=f(y)$ for all $y\in Y$.
+\end{corollary}
+\begin{corollary}  If $Y$ is closed subset of a compact Hausdorff space
+$(X,\tau)$, then, given any $f\in C_{\mathbb F}(Y)$,
+we can find
+an $F\in C_{\mathbb F}(X)$ such that $F(y)=f(y)$ for all $y\in Y$
+and $\|F\|_{\infty}=\|f\|_{\infty}$.
+\end{corollary}
+\section{The Stone--Weierstrass theorem} Unless the reader
+has lead a very sheltered life she will have done the following
+important exercise many times before.
+(If not, she should do it at once.)
+\begin{exercise} {\bf [Cauchy's example]}
+Let $E(x)=\exp(-1/x^{2})$ for $x\neq 0$
+and $E(0)=0$.
+
+(i) Show that $E$ is infinitely differentiable
+on ${\mathbb R}\setminus\{0\}$ with
+\[E^{(n)}(x)=P_{n}(1/x)E(x)\]
+for some polynomial $P_{n}$.
+
+(ii) Show that $E$ is infinitely differentiable
+everywhere with $E^{(n)}(0)=0$ for all $n$.
+
+(iii) Use the fact that a power series is infinitely differentiable
+term by term to show that we cannot find $a_{j}\in{\mathbb R}$
+with $E(x)=\sum_{j=-\infty}^{\infty}a_{j}x^{j}$.
+\end{exercise}
+(Exercise~\ref{E;smooth non-analytic}, which
+uses the Baire category theorem from a later section, 
+provides an even stronger result.)
+Weierstrass must, therefore, have been delighted to
+prove the following result.
+\begin{theorem} The set of real polynomials is
+uniformly dense in $C_{\mathbb R}([a,b])$.
+\end{theorem}
+In other words, given any continuous real function
+$f:[a,b]\rightarrow{\mathbb R}$ and any $\epsilon>0$,
+we can find a real polynomial with 
+\[|P(t)-f(t)|<\epsilon\]
+for all $t\in [a,b]$.
+
+When Stone was asked to contribute an article to the
+first issue of the \emph{American Mathematical Monthly},
+he produced the following far reaching extension of Weierstrass's
+theorem.
+\begin{theorem}{\bf [The Stone--Weierstrass theorem]}
+Consider a compact Hausdorff space $X$. Suppose
+that $A$ is a subspace of $C_{\mathbb R}(X)$ 
+with the following properties.
+
+(i) If $f,\,g\in A$ then $f\times g\in A$.
+
+(ii) $1\in A$.
+
+(iii) If $x,\,y\in X$ then we can find an $f\in A$ 
+such that $f(x)\neq f(y)$.
+
+Then $A$ is dense in $(C_{\mathbb R},\|.\|_{\infty})$.
+\end{theorem}
+(If $A$ is a subspace of $C(X)$ satisfying~(i), we
+sometimes say that $A$ is a \emph{subalgebra} of $C(X)$.)
+
+Our proof of the Stone--Weierstrass theorem makes use
+of the following fact.
+\begin{lemma}\label{L;Taylor for Stone} 
+We can find $a_{j}\in{\mathbb R}$ such that
+\[(1-x)^{1/2}=\sum_{j=0}^{\infty}a_{j}x^{j}\]
+for all real $x$ with $|x|<1$.
+\end{lemma}
+
+Our version of the Stone--Weierstrass theorem 
+deals with \emph{real valued} functions.
+The following example shows that it will not
+apply in the complex case without modification.
+\begin{example} We work in the complex plane ${\mathbb C}$.
+Let
+\[\bar{D}=\{z\in{\mathbb C}\,:\,|z|\leq 1\}
+\ \text{and}
+\ D=\{z\in{\mathbb C}\,:\,|z|<1\}.\]
+We write $A(\bar{D})$ for the set of $f\in C(\bar{D})$
+such that $f$ is analytic on $D$. Then
+$A(\bar{D})$ is a subspace of $C_{\mathbb C}(\bar{D})$ 
+with the following properties.
+
+(i) If $f,\,g\in A(\bar{D})$ then $f\times g\in A$.
+
+(ii) $1\in A(\bar{D})$.
+
+(iii) If $z,\,w\in \bar{D}$ then we can find an $f\in A(\bar{D})$ 
+such that $f(z)\neq f(w)$.
+
+However, $A(\bar{D})$ is not uniformly dense in $C(\bar{D})$.
+\end{example}
+
+Instead we produce the following variation.
+\begin{theorem}{\bf [The complex Stone--Weierstrass theorem]}
+Consider a compact Hausdorff space $X$. Suppose
+that $A$ is a subspace of $C_{\mathbb C}(X)$
+with the following properties.
+
+(i) If $f,\,g\in A$, then $f\times g\in A$.
+
+(ii) $1\in A$.
+
+(iii) If $x,\,y\in X$, then we can find an $f\in A$
+such that $f(x)\neq f(y)$.
+
+(iv) If $f\in A$, then its complex conjugate $f^{*}\in A$.
+
+Then $A$ is dense in $(C_{\mathbb C}(X),\|.\|_{\infty})$.
+\end{theorem}
+The following exercise gives a typical application
+and clears up matters left vague in the 1B methods course.
+\begin{exercise}\label{E; Fourier dense}
+We work on the circle
+${\mathbb T}={\mathbb R}/2\pi{\mathbb Z}$.
+If $f:{\mathbb T}\rightarrow{\mathbb C}$ is continuous
+we write
+\[\hat{f}(n)=\frac{1}{2\pi}\int_{\mathbb T}f(t)\exp(-int)\,dt.\]
+
+(i) The collection of trigonometric polynomials
+$\sum_{j=-n}^{n}a_{j}\exp(ijt)$ is uniformly dense in
+$C_{\mathbb C}({\mathbb T})$.
+
+(ii) (Uniqueness of Fourier series.)
+If $f,\,g\in C_{\mathbb C}({\mathbb T})$ and
+$\hat{f}(n)=\hat{g}(n)$ for all $n\in{\mathbb Z}$,
+then $f=g$.
+
+(iii) If $f\in C_{\mathbb C}({\mathbb T})$
+and $\sum_{n=-\infty}^{\infty}|\hat{f}(n)|$ converges,
+then
+\[f(t)=\sum_{n=-\infty}^{\infty}\hat{f}(n)\exp(int)\]
+for all $t\in{\mathbb T}$.
+\end{exercise}
+Exercise~\ref{E;Fubini} gives another example
+of Stone--Weierstrass in action.
+\section{Ascoli--Arzel{\`a}}
+It is frequently possible to show that a problem can be solved
+`apart from an error which can be made as small as we like'.
+Under these circumstances an appeal to compactness,
+if available, will often show that the problem has an exact solution.
+
+The Ascoli--Arzel{\`a} theorem enables us to characterise
+the compact subsets of $C(X)$ when $X$ is a 
+compact metric space.
+\begin{definition} Let $(X,\tau)$ be a topological space
+and $(Y,\rho)$ a metric space. We say that
+a collection ${\mathcal F}$ of functions $f:X\rightarrow Y$
+is \emph{equicontinuous} at $x$ if given $\epsilon>0$
+we can find a $U\in\tau$ with $x\in U$ such that
+\[y\in U
+\ \text{implies $\rho(f(x),f(y))<\epsilon$
+for all $f\in{\mathcal F}$}.\]
+
+If  ${\mathcal F}$
+is equicontinuous at all points of $X$ we say that
+${\mathcal F}$ is equicontinuous.
+\end{definition}
+\begin{exercise} If $(X,d)$ and $(Y,\rho)$ are metric spaces,
+write out the definition of equicontinuity in $\epsilon$,
+$\delta$ form.
+\end{exercise}
+\begin{theorem}{\bf [Ascoli--Arzel{\`a}]}\label{T;Ascoli}
+Let $(X,\tau)$ be a compact Hausdorff space.
+Then a subset ${\mathcal F}$ of $C(X)$ is compact
+under the the uniform norm if and only if
+both the following conditions hold.
+
+(i) ${\mathcal F}$ is closed and bounded in the uniform norm.
+
+(ii) ${\mathcal F}$ is equicontinuous.
+\end{theorem}
+We shall prove the Ascoli--Arzel{\`a} theorem by a
+direct attack. A cleaner proof depending on results
+from the Metric and Topological course is given in
+Exercise~\ref{E;alternate Ascoli} but the basic ideas
+of the two proofs are the same.  
+
+A typical example of the use of these ideas appears in the proof
+of the following nice result.
+\begin{theorem}\label{T;differential equation} 
+If $\eta>0$ and
+$f:[x_{0}-\eta,x_{0}+\eta]\times[y_{0}-\eta,y_{0}+\eta]
+\rightarrow{\mathbb R}$
+is continuous, then  we can find
+a $\delta$ with $\eta\geq\delta>0$
+and a differentiable
+function
+\[\phi:(x_{0}-\delta,x_{0}+\delta)\rightarrow{\mathbb R}\]
+such that $\phi(x_{0})=y_{0}$ and
+\[\phi'(t)=f(t,\phi(t))\]
+for all $t\in(x_{0}-\delta,x_{0}+\delta)$.
+\end{theorem}
+In Part~1B we used the contraction mapping theorem
+(another idea from `abstract analysis') to prove the following theorem.
+\begin{theorem}\label{T;Picard} If $\eta>0$, $K>0$ and
+$f:[x_{0}-\eta,x_{0}+\eta]\times[y_{0}-\eta,y_{0}+\eta]
+\rightarrow{\mathbb R}$ satisfies
+the Lipschitz condition.
+\[|f(x,y)-f(x',y)|\leq K|x-x'|\]
+for all $x,\,x'\in  [x_{0}-\eta,x_{0}+\eta]$
+and all $y\in [y_{0}-\eta,y_{0}+\eta]$,
+then we can find
+a $\delta$ with $\eta\geq\delta>0$
+and a unique differentiable
+function
+\[\phi:(x_{0}-\delta,x_{0}+\delta)\rightarrow{\mathbb R}\]
+such that $\phi(x_{0})=y_{0}$ and
+\[\phi'(t)=f(t,\phi(t))\]
+for all $t\in(x_{0}-\delta,x_{0}+\delta)$.
+\end{theorem}
+\begin{exercise} By using the mean value theorem, establish that
+if 
+\[f:[x_{0}-\eta,x_{0}+\eta]\times[y_{0}-\eta,y_{0}+\eta]
+\rightarrow{\mathbb R}\]
+has continuous first partial
+derivative $\partial f(x,y)/\partial x$, then it
+satisfies a  Lipschitz condition.
+\end{exercise}
+Our new theorem establishes existence
+under much more general conditions 
+that those of Theorem~\ref{T;Picard},
+but the solution need not be unique.
+\begin{exercise} The differential equation $x'(t)=3x(t)^{2/3}$
+has more than one solution with $x_{0}=0$.
+\end{exercise}
+It is helpful, when considering the form of our proof for
+Theorem~\ref{T;differential equation}, to observe that
+if there are different solutions of the equations
+then a series of `approximate solutions' may switch between
+approximating one solution and another.
+
+Even in the Lipschitz case we cannot hope to prove more than the existence
+of \emph{local} solutions since no \emph{global} solution may exist.
+\begin{exercise} Find all the solutions of $x'(t)=(1+x(t)^{2})$.
+Observe that there is no solution which is valid over
+an interval of length greater than $\pi$.
+\end{exercise}   
+\section{Inner product spaces} Since the reader's first arrival 
+in Cambridge she has been bombarded with inner product spaces.
+In this section we recall some of the results she already knows.
+She should check where appropriate that the results hold
+in infinite dimensional spaces.
+\begin{definition} Let $V$ be a vector space over ${\mathbb C}$.
+Suppose that exists a map $p:V^{2}\rightarrow{\mathbb C}$
+such that, writing $\langle u,v\rangle=p(u,v)$
+we have
+
+(i) $\langle\lambda_{1} u_{1}+\lambda_{2} u_{2},v\rangle
+= \lambda_{1}\langle u_{1},v\rangle
++\lambda_{2}\langle u_{2},v\rangle$
+for all $\lambda_{1},\,\lambda_{2}\in{\mathbb C}$,
+$u_{1},\,u_{2},\,v\in V$.
+
+(ii) $\langle u,v\rangle=\langle v,u\rangle^{*}$
+for all $u,\,v\in V$.
+
+(iii) $\langle u,u\rangle\geq 0$ for all $u\in V$.
+
+(iv) $\langle u,u\rangle=0$ implies $u=0$.
+
+Then we say that $(V,p)$ is an inner product space. 
+We call $p$ an inner product.
+\end{definition}
+A similar definition applies with ${\mathbb C}$ replaced by ${\mathbb R}$
+except that the complex conjugation in
+condition~(ii) is superfluous.
+\begin{exercise}\label{E;inner product norm} 
+(i) (Cauchy--Schwarz)
+If $V$ is an inner product space
+then
+\[|\langle u,v\rangle|^{2}\leq \langle u,u\rangle\langle v,v\rangle\]
+with equality if and only if $u$ and $v$ are linearly dependent.
+
+(ii) If $V$ is an inner product space then
+\[\|u\|_{2}^{2}=\langle u,u\rangle,\ \|u\|_{2}\geq 0\]
+defines a norm on $V$.
+
+(iii) (Parallelogram law)
+With the notation of~(ii)
+\[\|u+v\|_{2}^{2}+\|u-v\|_{2}^{2}=2\big(\|u\|_{2}^{2}+\|v\|_{2}^{2}).\]
+\end{exercise}
+
+We derived the norm from the inner product but the process can be reversed
+and we can
+recover the inner product from the norm.
+\begin{exercise} {\bf [The polarisation identity]}\label{E;polarisation}
+With the notation and assumptions
+of Exercise~\ref{E;inner product norm},
+\[4\langle u,v\rangle=\|u+v\|_{2}^{2}-\|u-v\|_{2}^{2}
++i(\|u+iv\|_{2}^{2}-\|u-iv\|_{2}^{2})\]
+for all $u\,\,v\in V$.
+\end{exercise}
+(For an interesting sidelight see Exercise~\ref{E;parallelepiped}.)
+\begin{definition} Let $V$ be an inner product space.
+
+(i) If $u,\,v\in V$ and $\langle u,v\rangle=0$
+we say that $u$ and $v$ are orthogonal
+and write $u\perp v$.
+
+(ii) A collection $E$ of vectors is said to be orthonormal
+if, whenever $e,\,f\in E$
+\[\langle e,f\rangle
+=\begin{cases}
+0&\text{if $e\neq f$,}\\
+1&\text{if $e=f$.}
+\end{cases}\]
+\end{definition}
+We have the following extensions of Pythagoras's theorem.
+\begin{exercise} Consider an inner product space $V$.
+Suppose $e_{1},\,e_{2},\,\dots,\,e_{n}$ are orthonormal
+vectors in $V$ and $f\in V$. Then
+\[\|f-\sum_{j=1}^{n}\lambda_{j}e_{j}\|_{2}^{2}
+\geq \|f\|_{2}^{2}-\sum_{j=1}^{n}|\langle f,e_{j}\rangle|^{2}\]
+with equality if and only if $\lambda_{j}=\langle f,e_{j}\rangle$.
+\end{exercise}
+\begin{theorem} {\bf [Bessel's inequality]}
+Consider an inner product space $V$.
+Suppose $e_{1},\,e_{2},\,\dots$ is an orthonormal
+sequence of vectors in $V$ and $f\in V$. Then
+
+\[
+\sum_{j=1}^{\infty}|\langle f,e_{j}\rangle|^{2}
+\leq \|f\|_{2}^{2}\]
+with equality if and only if
+\[\left\|f-\sum_{j=1}^{N}\langle f,e_{j}\rangle e_{j}\right\|_{2}
+\rightarrow 0\]
+as $n\rightarrow\infty$.
+\end{theorem}
+We illustrate these familiar general results with
+a familiar special case. Note that Exercise~\ref{E;inner continuous}~(iii)
+resolves a problem left open by the 1B mathematical methods course.
+\begin{exercise}\label{E;inner continuous} 
+We work on ${\mathbb T}={\mathbb R}/{2\pi\mathbb Z}$.
+
+(i) Show that if $f\in C_{\mathbb R}({\mathbb T})$, $f(t)\geq 0$
+for all $t$ and 
+\[\frac{1}{2\pi}\int_{\mathbb T}f(t)\,dt=0,\]
+then $f(t)=0$ for all $t$.
+
+(ii) Show that the formula
+\[\langle f,g\rangle=\frac{1}{2\pi}\int_{\mathbb T}f(t)g(t)^{*}\,dt=0\]
+defines an inner product on $C_{\mathbb C}({\mathbb T})$.
+From now on we consider $C_{\mathbb C}({\mathbb T})$
+with this inner product.
+
+(iii) Show that, if we write $e_{j}(t)=\exp ijt$, then the $e_{j}$
+are orthonormal. By using the fact that the trigonometric polynomials
+are dense in $(C_{\mathbb C}({\mathbb T}),\|.\|_{\infty})$
+(Exercise~\ref{E; Fourier dense}), show that
+the trigonometric polynomials
+are dense in $(C_{\mathbb C}({\mathbb T}),\|.\|_{2})$.
+Hence show that
+\[\left\|f-\sum_{j=-M}^{N}\langle f,e_{j}\rangle e_{j}\right\|_{2}
+\rightarrow 0\]
+as $M,N\rightarrow\infty$.
+
+(iv) (Parseval's formula) Use~(iii) to
+show that, if we write $\hat{f}(j)=\langle f,e_{j}\rangle$,
+then
+\[\sum_{j=-\infty}^{\infty}|\hat{f}(n)|^{2}=
+\frac{1}{2\pi}\int_{\mathbb T}|f(t)|^{2}\,dt\]
+for all $f\in C_{\mathbb C}({\mathbb T})$. Show also that
+\[\sum_{j=-\infty}^{\infty}\hat{f}(n)\hat{g}(n)^{*}=
+\frac{1}{2\pi}\int_{\mathbb T}f(t)g(t)^{*}\,dt.\]
+\end{exercise}
+However, we note the following important fact.
+\begin{exercise}\label{E;continuous square not complete}
+$(C({\mathbb T}),\|.\|_{2})$ is not complete.
+\end{exercise}
+This result needs careful proof. We need to show, not
+that Cauchy sequence does not converge to the \emph{obvious} answer,
+but that it does not converge to \emph{any} continuous function.
+The next exercise illustrates this remark.
+\begin{exercise} Write
+\[\Delta_{n}(t)=
+\begin{cases}
+1-2^{n}|t|&\text{for $|t|\leq 2^{-n}$,}\\
+0&\text{otherwise.}
+\end{cases}\]
+Show that,if we define $f_{n}\in C({\mathbb T})$ by
+\[f_{n}=\sum_{j=1}^{n}n\Delta_{n}(t-2\pi r/n),\]
+then $\|f\|_{2}\rightarrow 0$.
+\end{exercise}
+\section{Hilbert space}  The work of this section depends 
+on the following key result.
+\begin{theorem} Let $V$ be an infinite inner product space. The
+following statements are equivalent.
+
+(i) $V$ is separable.
+
+(ii) There exists an orthonormal sequence $e_{j}$
+such that
+\[\left\|f-\sum_{j=1}^{n}\langle f,e_{j}\rangle e_{j}\right\|_{2}
+\rightarrow 0\]
+as $n\rightarrow\infty$ for all $f\in V$.
+\end{theorem}
+Our proof calls on an old friend, the Gramm--Schmidt
+orthogonalisation process.
+\begin{exercise} Suppose $V$ is an inner product space.
+If $e_{1},\,e_{2},\,\dots,\,e_{n}$ are orthonormal
+and $f\in V$ then either
+
+(i) $f=\sum_{j}^{n}\langle f,e_{j}\rangle e_{j}$
+and $f\in\Span\{e_{1},\,e_{2},\,\dots,\,e_{n}\}$, or
+
+(ii) $f\neq\sum_{j}^{n}\langle f,e_{j}\rangle e_{j}$
+in which case $f\notin \Span\{e_{1},\,e_{2},\,\dots,\,e_{n}\}$.
+In this case, setting
+\[u=f-\sum_{j}^{n}\langle f,e_{j}\rangle e_{j}\]
+and $e_{n+1}=\|u\|_{2}^{-1}u$, we have
+$e_{1},\,e_{2},\,\dots,\,e_{n+1}$ orthonormal and
+\[\Span\{e_{1},\,e_{2},\,\dots,\,e_{n+1}\}
+=\Span\{e_{1},\,e_{2},\,\dots,\,f\}.\]
+\end{exercise}
+From now on, if
+\[\left\|f-\sum_{j=1}^{n} f_{j}\right\|_{2}
+\rightarrow 0,\]
+we feel free to write
+\[f=\sum_{j=1}^{\infty} f_{j}.\] 
+\begin{exercise} (Uniqueness)
+Let $V$ be an infinite inner product space. If
+we have an orthonormal sequence $e_{j}$, then,
+if $\lambda_{j}\in{\mathbb F}$,
+\[\sum_{j=1}^{\infty}\lambda_{j}e_{j}=0\]
+implies $\lambda_{j}=0$ for all $j$.
+
+\noindent[Note this is result of analysis and not
+of algebra since it involves limits.]
+\end{exercise}
+\begin{definition} If $U$ is an inner product space,
+we say that an orthonormal sequence $e_{j}$ in $U$ is a 
+basis\footnote{NB This is not an \emph{algebraic} basis.}
+(or more exactly an orthonormal basis)
+for $U$ if 
+\[x= \sum_{j=1}^{\infty}\langle x,e_{j}\rangle e_{j}\]
+for all $x\in U$. 
+\end{definition}
+
+We immediately obtain the following remarkable result.
+\begin{theorem} {\bf [Riesz--Fisher]} All separable
+complete infinite dimensional inner product spaces are inner
+product isomorphic. 
+More precisely, if $U$ and $V$
+are separable complete infinite dimensional
+inner product spaces with inner products $p_{U}$ and $p_{V}$,
+then there exists a linear map $T:U\rightarrow V$
+such that
+\[p_{V}(Tx,Ty)=p_{U}(x,y)\]
+for all $x,\,y\in U$. We note that $T$ is automatically an
+isometric Banach space isomorphism.
+\end{theorem}
+Since all separable
+complete infinite dimensional inner product spaces
+are isomorphic, we simply talk about the 
+Hilbert\footnote{Hilbert developed the theory 
+$H$ in a non-abstract way for particular purposes. 
+There is a, no doubt
+apocryphal, story of his asking `What is this Hilbert space
+which the young people are talking about?'.} space $H$.
+Sometimes people talk about complete inner product
+spaces which are not separable and are then careful
+to talk about `non-separable Hilbert spaces' but
+the study of such large 
+spaces has not yet been very profitable. 
+(If you want to see such a space, 
+consult Exercise~\ref{E;non-separable Hilbert}.)
+ 
+Our arguments also give the following results
+more or less for free.
+\begin{exercise} Consider $l^{2}$. If ${\mathbf a},\,{\mathbf b}\in l^{2}$
+then $\sum_{j=1}^{\infty}a_{j}b_{j}^{*}$ is 
+absolutely convergent. Further
+\[\langle {\mathbf a},\,{\mathbf b}\rangle=\sum_{j=1}^{\infty}a_{j}b_{j}^{*}\]
+defines an inner product which induces the norm $\|.\|_{2}$.
+With this inner product, $l^{2}$ is (inner product isomorphic to)
+Hilbert space.
+\end{exercise}
+\begin{exercise}\label{E;completion} Let $U$ be a
+separable infinite dimensional
+inner product space.
+Then there exists an inner product preserving 
+linear map
+$J:U\rightarrow H$ of $U$ into the Hilbert space $H$
+such that $J(U)$ is dense in $H$.
+\end{exercise}
+If the reader knows about such things, she will be able to
+restate Exercise~\ref{E;completion} as the observation that
+the completion of a separable infinite dimensional
+inner product space is (inner product isomorphic to)
+Hilbert space. 
+\begin{lemma} If $U$ is an inner product space,
+with basis $e_{j}$,
+then $U$ is complete if and only if
+\[\sum_{j=1}^{\infty}x_{j}e_{j}\]
+converges whenever $\sum_{j=1}^{\infty}|x_{j}|^{2}$ converges.
+\end{lemma}
+\section{The dual of Hilbert space} We already know that
+Hilbert space is isometrically isomorphic to $l^{2}$
+and we know that $l^{2}$ has dual space isometrically isomorphic  
+to itself. Thus the dual space of Hilbert space is isometrically
+isomorphic to itself. 
+
+However, Hilbert space is the 
+infinite dimensional space in which our geometrical
+intuition has freest play and it is instructive to follow a geometric
+path to a closely related result. Not only 
+does this avoid the inelegant use
+of specific bases, but it provides additional insight into
+the structure of Hilbert space\footnote{Since we do not
+use bases, our results will also apply to non-seperable
+Hilbert spaces but the reader may ignore this.}..
+\begin{theorem}\label{T;closest Hilbert} 
+Let $U$ be a complete inner product space.
+If $F$ is closed subspace and $a\in U$, then we can find a unique
+$f_{0}\in F$ such that
+\[\|a-f_{0}\|_{2}\leq\|a-f\|_{2}\]
+for all $f\in F$.
+\end{theorem}
+(See also Exercises~\ref{E;closest convex}
+and~\ref{E;not closed closest}.)
+\begin{lemma}\label{L;closest orthogonal} With the hypotheses and notation of 
+Theorem~\ref{T;closest Hilbert}, $f_{0}\in F$ is the unique
+element of $F$ such that $a-f_{0}$ is orthogonal to every element
+of $F$.
+\end{lemma}
+We immediately deduce the following pleasing result. 
+\begin{theorem}{\bf [Riesz representation]}\label{T;Riesz representation}
+If
+$U$ is a complete inner product space and
+$T\in U'$ (that is to say, $T:U\rightarrow{\mathbb F}$
+is a continuous linear map), then there is a unique
+$w\in U$ with
+\[Tu=\langle u,w\rangle\]
+for all $u\in U$.
+\end{theorem}
+\begin{exercise} If
+$U$ is a complete inner product space and we define
+by
+\[J(v)u=\langle u,v\rangle\]
+for all $u,\,v\in U$, then $J(v)\in U'$ for all $v\in U$
+and $J$ has the following properties.
+
+(i) $J(\lambda_{1}v_{1}+\lambda_{2}v_{2})=
+\lambda_{1}^{*}J(v_{1})+\lambda_{2}^{*}J(v_{2})$
+for all $\lambda_{1},\,\lambda_{2}\in{\mathbb C}$
+and all $v_{1},\,v_{2}\in V$. (We say that $J$
+is \emph{anti-linear}.)
+
+(ii) $\|J(v)\|=\|v\|_{2}$ for all $v\in V$.
+
+(iii) $J$ is surjective.
+\end{exercise}
+Thus (using the polarisation identity of 
+Exercise~\ref{E;polarisation}) $J:U\rightarrow U'$
+is an inner product \emph{anti-isomorphism} 
+and $U'$ is naturally anti-isomorphic to $U$.
+(If the reader is interested, but only if she is interested,
+she may glance at Exercise~\ref{E;anti}.)
+
+Theorem~\ref{T;closest Hilbert} 
+and Lemma~\ref{L;closest orthogonal}
+also give us information on orthogonal complements
+which will be used later.
+\begin{lemma} If $F$ is a closed subspace of a Hilbert space $H$,
+then 
+\[F^{\perp}=
+\{g\in H\,:\,\langle g,f\rangle=0\ \text{for all $f\in F$}\}\]
+is a closed subspace of $H$. Every $u\in H$ can be written in one
+and only one way as
+\[u=f+g\]
+with $f\in F$ and $g\in F^{\perp}$.
+\end{lemma} 
+\section{The spectrum} When we studied linear maps
+$\alpha:{\mathbb C}^{n}\rightarrow{\mathbb C}^{n}$,
+we were particularly interested in those $\lambda\in{\mathbb C}$
+such that $\alpha-\lambda\iota$ was not invertible. This interest
+carries over to infinite dimensional spaces\footnote{Even in the finite
+dimensional case, the study of such things in real vector spaces
+turned out to be less interesting, so we shall stick to
+complex Banach spaces.}. The elementary theory is no harder
+for general Banach spaces than for Hilbert 
+spaces\footnote{However
+is only true for the elementary theory.} so we shall
+work in the general context.
+
+\begin{definition} If $U$ is a Banach space over ${\mathbb C}$
+and $T:U\rightarrow U$ is a continuous linear map, we define
+the spectrum $\sigma(T)$ of $T$ by
+\[\sigma(T)=\{\lambda\in{\mathbb C}\,:\,T-\lambda I
+\ \text{not invertible}\}.\]
+\end{definition}
+The inverse mapping theorem shows that, if $\lambda\notin \sigma(T)$,
+then $(T-\lambda I)^{-1}$ is a continuous linear map.
+The structure of the spectrum can be exceedingly intricate
+but some useful general results can be obtained by applying
+the following simple `master theorem'.
+\begin{theorem} If $U$ is a Banach space over ${\mathbb C}$
+and $T:U\rightarrow U$ is a continuous linear map
+with $\|T\|<1$, then $\sum_{j=0}^{\infty}T^{j}$ converges
+in the uniform norm and $I-T$ is invertible with
+\[(I-T)^{-1}=\sum_{j=0}^{\infty}T^{j}.\]
+\end{theorem}
+ 
+\begin{lemma}  If $U$ is a Banach space over ${\mathbb C}$
+and $T:U\rightarrow U$ is a continuous linear map, then
+$\sigma(T)$ is bounded.
+\end{lemma}
+\begin{lemma}  If $U$ is a Banach space over ${\mathbb C}$
+and $T:U\rightarrow U$ is a continuous linear map,
+then $\sigma(T)$ is closed.
+\end{lemma}
+\begin{definition} If $U$ is a Banach space over ${\mathbb C}$
+and $T:U\rightarrow U$ is a continuous linear map, we say
+that $\lambda$ is an \emph{eigenvalue} of $T$ if
+\[\ker(T-\lambda I)\neq \{0\}.\]
+If $u$ is a non-zero element of $\ker(T-\lambda I)$,
+we call $u$ an \emph{eigenvector} with 
+associated eigenvalue $\lambda$.
+\end{definition}
+\begin{exercise} With the notation just introduced,
+every eigenvalue of $T$ lies in $\sigma(T)$.
+\end{exercise}
+\begin{example} (i) If $K$ is a non-empty closed bounded set in
+${\mathbb C}$, then we can find a continuous linear map
+$T:l^{2}\rightarrow l^{2}$ with $\sigma(T)=K$.
+
+(ii) We can find a continuous linear map
+$T:l^{2}\rightarrow l^{2}$ such that $\sigma(T)=\{0\}$
+but $0$ is not an eigenvalue.
+\end{example}
+Recall that every Banach space we have studied has
+a sufficiently rich dual in the sense of 
+Definition~\ref{D;sufficiently rich}.
+\begin{lemma}\label{L;non-empty spectrum} 
+If $U$ is a Banach space over ${\mathbb C}$
+with sufficiently rich dual
+and $T:U\rightarrow U$ is a continuous linear map,
+then $\sigma(T)$ is non-empty.
+\end{lemma}
+If we were prepared to develop complex analysis for ${\mathcal L}(U,U)$
+valued functions from scratch, we could replace
+Lemma~\ref{L;non-empty spectrum}
+by a stronger and simpler result.
+\begin{lemma} 
+If $U$ is a Banach space over ${\mathbb C}$
+and $T:U\rightarrow U$ is a continuous linear map,
+then $\sigma(T)$ is non-empty.
+\end{lemma}
+\section{Self-adjoint compact operators on Hilbert space}
+In the previous section we developed the elementary theory
+of the spectrum for general Banach spaces. From now on we
+are only interested in Hilbert space.
+
+The reader will recall the very pretty theory of diagonalisation
+for self-adjoint (that is to say, Hermitian)
+maps $\alpha:V\rightarrow V$ on finite dimensional
+inner product spaces. We conclude this course by developing a parallel
+theory for Hilbert space. We need two definitions of which
+only the second is really new.
+\begin{definition} Let $H$ be a Hilbert space. A continuous linear
+map $T:H\rightarrow H$ is called \emph{self-adjoint}
+(or \emph{Hermitian}) if
+\[\langle Tx,y\rangle=\langle x,Ty\rangle\]
+for all $x,\,y\in H$.
+\end{definition}
+\begin{exercise} The eigenvalues of a self-adjoint 
+continuous linear map are real.
+\end{exercise}
+\begin{definition}\label{D;compact} 
+Let $H$ be a Hilbert space. A continuous linear
+map $T:H\rightarrow H$ is called \emph{compact} if 
+$\Cl(T(B))$,
+the closure of the image under $T$ of the unit ball
+$B=\{x\,:\,\|x\|\leq 1\}$, is compact.
+\end{definition}
+\begin{exercise}  Let $H$ be a Hilbert space. 
+Show that a continuous linear
+map $T:H\rightarrow H$ is compact, if given any $x_{n}\in H$
+with $\|x_{n}\|\leq 1$,
+we can find $n(j)\rightarrow\infty$ and a $y\in H$ such that
+\[\|Tx_{n(j)}-y\|_{2}\rightarrow 0.\]
+\end{exercise}
+Exercise~\ref{E;compact as limit} gives some insight into 
+what the compact operators\footnote{A continuous linear
+map $T:H\rightarrow H$ is called an operator.} look like.
+ 
+We state the theorem which we wish to prove.
+\begin{theorem}{\bf [The spectral theorem]}\label{T;spectral}
+Let $H$ be a Hilbert space. If
+$T:H\rightarrow H$ is a continuous linear compact self-adjoint map,
+we can find an orthonormal basis $e_{n}$ of eigenvectors
+whose associated eigenvalues $\lambda_{n}$ are real and
+satisfy the condition
+$\lambda_{n}\rightarrow 0$ as $n\rightarrow\infty$.
+\end{theorem}
+\begin{exercise} Show that the following is an equivalent
+statement of Theorem~\ref{T;spectral}.
+
+Let $H$ be a Hilbert space. If
+$T:H\rightarrow H$ is a continuous linear compact self-adjoint map
+we can find an orthonormal basis $e_{n}$ and a sequence $\lambda_{n}$
+of real numbers with $\lambda_{n}\rightarrow 0$ such that
+\[Tu=\sum_{j=1}^{\infty}\lambda_{j}\langle u,e_{j}\rangle e_{j}\]
+for all $u\in H$.
+\end{exercise}
+We give yet another equivalent form in 
+Exercise~\ref{E;spectral projection}.
+\begin{exercise} Let $H$ be a Hilbert space.
+with orthonormal basis $e_{n}$. If $\lambda_{n}$ is a sequence
+of real numbers with $\lambda_{n}\rightarrow 0$, then
+the equation
+\[Tu=\sum_{j=1}^{\infty}\lambda_{j}\langle u,e_{j}\rangle e_{j}\]
+defines a  continuous linear compact self-adjoint map
+$T:H\rightarrow H$.
+\end{exercise}
+The proof of Theorem~\ref{T;spectral} parallels its finite dimensional
+analogue but additional work is required. For the rest of the section
+we work in a Hilbert space $H$ and `$T$ is an operator'
+will mean that $T:H\rightarrow H$ is a continuous linear map.
+\begin{lemma} If $T$ is a self-adjoint operator, then
+\[\sup_{\|x\|_{2}=1}|\langle x,Tx\rangle|=\|T\|.\]
+\end{lemma}
+\begin{lemma} If $T$ is a compact self-adjoint operator, then
+at least one of $\|T\|$ or $-\|T\|$ is an eigenvalue.
+\end{lemma}
+The next result recalls 1B Linear Algebra.
+\begin{exercise} If $T$ is a self-adjoint operator
+and $e$ is an eigenvector for $T$, then, writing
+\[e^{\perp}=\{f\in H\,:\,\langle e,f\rangle=0\},\]
+we know that $T(e^{\perp})\subseteq e^{\perp}$.
+The map $T|_{e^{\perp}}:e^{\perp}\rightarrow e^{\perp}$
+is self-adjoint and, if $T$ is compact, so is $T|_{e^{\perp}}$.
+\end{exercise}
+\begin{lemma} If $T$ is a compact operator then, given any
+$\epsilon>0$, $T$ has only finitely many
+orthonormal eigenvectors with associated eigenvalues
+having absolute values greater than $\epsilon$.
+\end{lemma}
+Putting these these results together we obtain
+the spectral theorem for compact self-adjoint operators.
+\begin{exercise} Suppose that $T$ is a compact self-adjoint
+(ie Hermitian) operator.
+Consider the following properties which $T$ may or may not have.
+
+(A) $T^{-1}(0)=\{0\}$.
+
+(B) $T^{-1}(0)$ has dimension $r$ for some $r\geq 1$.
+
+(C) $T^{-1}(0)$ has infinite dimension.
+
+(a) $T$ has infinitely many eigenvalues.
+
+(b) $T$ has $s$ eigenvalues for some $s\geq 1$.
+
+Which of the pairs ($X$,$y$) can be true of $T$ and which cannot?
+Give reasons or examples.
+\end{exercise}
+This completes the course, but I have added two extra sections.
+The first is an extended exercise on the use of the spectral
+theorem which is strongly recommended to the reader.
+\section{Using the spectral theorem}\label{S;use spectral}
+In mathematical methods you studied
+Sturm--Liouville equations
+\[\frac{d\ }{dt}\biggl(p(t)y'(t)\biggr)+q(t)y(t)=f(t)\]
+on an interval $[a,b]$ subject to conditions
+\[A_{1}y(a)+A_{2}y'(a)=0,\ B_{1}y(b)+B_{2}y'(b)=0\]
+with $(A_{1},A_{2})\neq(0,0)$, $(B_{1},B_{2})\neq(0,0)$,
+$p$ continuously differentiable, $f$, $q$ continuous and $p(t)>0$
+for all $t\in[a,b]$. You showed that it is generally possible
+to find a continuous \emph{Green's function} 
+$G:[a,b]^{2}\rightarrow{\mathbb R}$ 
+with $G(s,t)=G(t,s)$ such that
+\[y(t)=\int_{a}^{b}G(s,t)f(s)\,ds\]
+solves the given problem.
+
+We shall not into the details here. (They are in~\cite{Pryce}~\S19
+and in~\cite{Young}.)
+The next exercise gives a particular case.
+\begin{exercise}\label{E;Green sine}\label{D1} 
+(i) If $G:{\mathbb R}^{2}\rightarrow{\mathbb R}$
+is differentiable and $g(t)=G(t,t)$, write down $g'(t)$.
+
+(ii) By using the fundamental theorem of the calculus
+and differentiation under the integral show, that under
+conditions on $F$ that you should specify,
+\[\frac{d\ }{dt}\int_{a}^{t}F(s,t)\,ds
+=F(t,t)+\int_{a}^{t}\frac{\partial F}{\partial t}(s,t)\,ds.\]
+
+(iii) Show that, if
+\[G(s,t)=
+\begin{cases}(1-s)t&\text{if $1\geq t\geq s\geq 0$},\\
+s(1-t)&\text{if $1\geq s>t\geq 0$},
+\end{cases}\]
+then, if $f:[0,1]\rightarrow{\mathbb R}$ is continuous,
+\[y(t)=\int_{0}^{1}f(s)G(s,t)\,ds\]
+defines a twice differentiable function with $y(0)=y(1)=0$ and
+\[y''(t)=f(t)\]
+for $t\in[0,1]$.
+\end{exercise}
+
+We now investigate the equation
+\[y(t)=\int_{a}^{b}G(s,t)f(s)\,ds\]
+using the methods of linear analysis.
+\begin{exercise}\label{D2} Suppose that $G:[a,b]^{2}\rightarrow{\mathbb R}$
+is continuous. Show that, if $f:[a,b]\rightarrow{\mathbb C}$
+is continuous, then $Lf:[a,b]\rightarrow{\mathbb C}$ given by
+\[Lf(t)=\int_{a}^{b}G(s,t)f(s)\,ds\]
+is continuous.
+\end{exercise}
+\begin{exercise}\label{D3} (This is a reprise
+of parts Exercises~\ref{E;inner continuous}
+and~\ref{E;continuous square not complete}.)
+Show that, if we set
+\[\langle f,g\rangle=\int_{a}^{b}f(t)g(t)^{*}\,dt,\]
+we obtain $C([a,b])$ as an inner product space.
+Show that $C([a,b])$ is an infinite dimensional
+separable inner product space but is not complete.
+\end{exercise}
+
+
+\begin{exercise}\label{D4} 
+We consider $C([a,b])$ both with the
+uniform norm $\|.\|_{\infty}$ and the inner product derived
+norm $\|.\|_{2}$. We shall use the Cauchy--Schwarz inequality
+for integrals repeatedly.
+ 
+(i) Show that
+\[L:(C([a,b]),\|.\|_{2})\rightarrow (C([a,b]),\|.\|_{\infty})\]
+is a continuous linear map.
+
+(ii) Show that the collection of $Lf$ such that $f\in C([a,b])$
+and $\|f\|_{2}\leq 1$ is equicontinuous.
+
+(iii) Show (Exercise~\ref{E;Fubini} is relevant) that,
+if $G(s,t)=G(t,s)$ for all $t,\,s\in[a,b]$, then
+\[\langle Lf,g\rangle=\langle f,Lg\rangle\]
+for all $f,\,g\in (C([a,b])$.
+\end{exercise}
+We know that $C([a,b])$ is not a complete inner product space, so we cannot
+apply the spectral theorem directly. However,
+Exercise~\ref{E;completion} tells us that 
+there exists an inner product preserving 
+linear map
+$J:C([a,b])\rightarrow H$ of $U$ into the Hilbert space $H$
+such that $J(C([a,b]))$ is dense in $H$.
+\begin{exercise}\label{D5} The results of this exercise are not hard
+but the reader should not sleep walk through them.
+
+(i) Show that, if $u\in H$, $u_{n}\in C([a,b])$ and 
+$\|Ju_{n}-u\|_{2}\rightarrow 0$, then $Lu_{n}$ converges
+uniformly in $C([a,b])$ to a continuous function $g$ say.
+Show that if $v_{n}\in C([a,b])$ and 
+$\|Jv_{n}-u\|_{2}\rightarrow 0$, then
+\[\|Lv_{n}-g\|_{\infty}\rightarrow 0.\]
+Thus we can write $\tilde{L}u=g$.
+
+(ii) Show that $\tilde{L}$ is a well defined function
+$\tilde{L}:H\rightarrow C([a,b])$.
+
+(iii) Show that
+\[\tilde{L}:H\rightarrow (C([a,b]),\|.\|_{\infty})\]
+is a continuous linear map.
+
+(iv) Show that the collection of $\tilde{L}f$ such that $f\in H$
+and $\|f\|_{2}\leq 1$ is equicontinuous.
+\end{exercise} 
+\begin{exercise}\label{D6} We now define $\breve{L}=J\tilde{L}$.
+
+(i) Show that
+\[\breve{L}:H\rightarrow H.\]
+is a continuous linear map.
+
+(ii) Show that $\breve{L}$ is compact.
+
+(iii) From now on we suppose $G(s,t)=G(t,s)$ for all $s,\,t\in[a,b]$.
+Show that $\breve{L}$ is self-adjoint.
+
+(iv) Deduce that 
+we can find an orthonormal basis $w_{n}$ and a sequence $\lambda_{n}$
+of real numbers with $\lambda_{n}\rightarrow 0$ such that
+\[\breve{L}u=\sum_{j=1}^{\infty}\lambda_{j}\langle u,w_{j}\rangle w_{j}\]
+for all $u\in H$.
+\end{exercise}
+The result of the previous exercise tells us something about $\breve{L}$,
+which is an operator on $H$, and we are interested in $L$, 
+which is an operator
+on $C([a,b])$. However, this is soon remedied.
+\begin{exercise}\label{D7} (i) If $\lambda_{j}\neq 0$, use the fact that
+$\lambda_{j}w_{j}=\breve{L}w_{j}$ to show that $w_{j}=Je_{j}$
+for some $e_{j}\in C([a,b])$.
+
+(ii) Conclude that, if $G:[a,b]^{2}\rightarrow{\mathbb R}$
+is continuous and $G(s,t)=G(t,s)$, then 
+\emph{either} we can find an orthonormal
+sequence $v_{j}$ in $C([a,b])$ and a sequence $\zeta_{j}$
+of non-zero real numbers with $\zeta_{j}\rightarrow 0$
+having the property
+\[\left\|\int_{a}^{b}f(s)G(s,.)\,ds-\sum_{j=1}^{N}\zeta_{j}
+\langle f,v_{j}\rangle v_{j}\right\|_{2}\rightarrow 0\]
+as $N\rightarrow\infty$,
+\emph{or} we can find a finite orthonormal collection
+$v_{j}$ in $C([a,b])$ and $\zeta_{j}$
+non-zero real numbers with
+\[\int_{a}^{b}f(s)G(s,t)\,ds=\sum \zeta_{j}
+\langle f,v_{j}\rangle v_{j}(t).\]
+
+(iii) Show that $\langle f,v_{j}\rangle =0$ for all $j$ implies
+$f=0$ whenever $f\in C([a,b])$
+if and only if
+\[\int_{a}^{b}f(t)G(s,t)\,dt=0\]
+for all $s$ implies $f=0$ whenever $f\in C([a,b])$.
+\end{exercise}
+\begin{exercise}\label{D8} Briefly identify the `eigenfunctions'
+$v_{j}$ associated with non-zero 
+eigenvalues in the case of Exercise~\ref{E;Green sine}.
+\end{exercise}
+\section{Where next?} In this section which will neither be examined
+nor lectured, I look at the different ways in which the ideas
+of this course can be developed.
+
+\noindent\emph{Measure theory} Measure theory interacts
+with linear analysis in many ways. 
+
+(1) We have seen that $C([a,b])$
+with the usual inner product can be identified with a dense
+subset of of a complete inner product space. It is a surprising
+fact that we can realise this complete inner product space
+as a space of functions $L^{2}([a,b])$ on $[a,b]$
+by using Lebesgue integration. 
+
+In much the same way, it can be shown
+that, if we write
+\[\|f\|_{p}=\left(\int_{a}^{b}|f(x)|^{p}\,dx\right)^{1/p},\]
+then $\|.\|_{p}$ is a norm on $C([a,b])$ 
+(see Exercise~\ref{E;integral Holder}) and the completion
+gives rise in a natural manner to a space of
+$L^{p}([a,b])$ on $[a,b]$. These spaces are natural subjects
+for linear analysis.
+
+(2) Although we have studied the space $C([a,b])$ with
+the the uniform norm, we did not try to identify its dual
+(for some members of the dual see Exercise~\ref{E;some dual continuous}).
+It is not hard to show that that the dual space can be
+identified with the space of \emph{Borel measures}.
+
+(3) The theory of compact self-adjoint operators that
+we have developed on Hilbert space corresponds to
+the theory of Fourier sums
+\[f(t)\sim\sum_{j=-\infty}^{\infty}\hat{f}(j)\exp(ijt).\]
+If we are to get something like the theory of Fourier
+transforms with the putative inversion formula
+\[f(t)\sim\frac{1}{2\pi}\int_{-\infty}^{\infty}\hat{f}(x)\exp(ixt)\,dx\]
+we need to extend our notions of integration.
+(In fact, we only need to extend the ideas of Riemann integration,
+but, nonetheless, the extension is quite subtle.)
+
+\noindent\emph{Examples} Spaces like $l^{p}$ and 
+$C([a,b]),\|.\|_{\infty})$ are good examples of Banach spaces
+to start with because they have a great deal of structure.
+For the same reason, they are inadequate if we wish to
+understand what a general Banach space might look like.
+
+As a result of seventy years of hard work 
+(including that of our own Professor Gowers)
+we know that the good behaviour of $l^{p}$,
+$C([a,b]),\|.\|_{\infty})$ and similar spaces
+is not typical of Banach spaces in general. 
+The study of Banach spaces (like the study of
+most general mathematical objects) requires 
+a plentiful stock of examples.
+
+\noindent\emph{The axiom of choice} The reader will be aware
+of a principle called the \emph{axiom of choice}\footnote{For
+historical reasons this axiom has acquired an air of glamour and mystery
+which it it hardly deserves.}.
+This asserts that, given a non-empty collection ${\mathcal A}$
+of non-empty sets, we can find a function
+\[f:{\mathcal A}\rightarrow\bigcup_{A\in{\mathcal A}}A\]
+such that $f(A)\in A$. (That is to say, $f$ \emph{chooses}
+an element $f(A)$ from each $A\in{\mathcal A}$.)
+Mathematical logicians have shown that, if the ordinary
+axioms for set theory are consistent, then they remain
+consistent if we add the axiom of choice but that the
+axiom of choice is not implied by the ordinary axioms.
+
+It turns out that the general study of Banach spaces
+takes a more elegant form if we assume the
+axiom of choice and, for this reason, it is customary
+to assume it. Here are some consequences of this assumption.
+\begin{theorem}\label{T;basis} 
+Assuming the axiom of choice, every vector
+space $V$ over  ${\mathbb F}$ has an algebraic basis 
+(that is to say a subset $E$ such that any $v\in V$ may be written
+uniquely as a finite sum
+\[v=\sum_{g\in G}\lambda_{g}g\]
+with $G$ a finite subset of $E$ and $\lambda_{g}\in{\mathbb F}$).
+\end{theorem}   
+Using this theorem, it is easy to prove the following result which
+reinforces the lesson of Exercise~\ref{E;not continuous linear}.
+\begin{theorem} Assuming the axiom of choice,
+if $U$ is any infinite dimensional normed vector space
+over  ${\mathbb F}$, then there exists a linear map
+$\alpha:U\rightarrow{\mathbb F}$ which is not continuous.
+\end{theorem}
+We can also prove the following supplement to
+Exercise~\ref{E;many norms}.
+\begin{theorem} Assuming the axiom of choice,
+we can find an infinite dimensional vector space
+$U$ and two complete norms $\|.\|_{A}$ $\|.\|_{B}$
+on $U$ such that
+\[\sup_{u\neq 0}\frac{\|u\|_{A}}{\|u\|_{B}}
+=\sup_{u\neq 0}\frac{\|u\|_{B}}{\|u\|_{A}}=\infty.\]
+\end{theorem} 
+(For example we can set up an algebraic isomorphism 
+between $l^{2}$ and $l^{\infty}$.)
+
+The axiom of choice also enables us to prove a beautiful
+result of Hahn--Banach. We shall not discuss this but
+here are some of its consequence. The first result
+sheds light on the paragraph following
+Theorem~\ref{T;dual p}.
+\begin{lemma}\label{L;big dual} 
+We work in $l^{\infty}$ and define 
+${\mathbf e}_{n}\in l^{\infty}$ by
+\[e_{nj}= 
+\begin{cases}
+1&\text{if $j=n$,}\\
+0&\text{otherwise.}
+\end{cases}
+\]
+Assuming the axiom of choice,
+there there exists a non-zero continuous linear functional
+$T:l^{\infty}\rightarrow{\mathbb C}$ such that
+\[T{\mathbf e}_{n}=0\]
+for all $n$.
+\end{lemma} 
+The second consequence was already stated in the discussion
+of Definition~\ref{D;sufficiently rich}.
+\begin{theorem} Assuming the axiom of choice, every Banach
+space has a sufficiently rich dual.
+\end{theorem}
+
+The strengths and weaknesses of linear analysis
+using the axiom of choice are well illustrated
+by Lemma~\ref{L;big dual}. On the one hand, it asserts
+the existence of an object $T$ without giving any clue
+as to what it looks like. On the other hand, if we
+did not know the result of Lemma~\ref{L;big dual},
+we could waste an awful lot of time trying to show
+that no such object exists.
+\section{Books} There are many excellent introductions
+to linear analysis. The book of Bollob\'as~\cite{Bolobas}
+has the advantage of being based on this course and
+a subsequent Part~III course. I think that~\cite{Pryce}
+and~\cite{Gofman} are nice and reasonably simple.
+
+If you wish to learn more about Hilbert space then~\cite{Young}
+is an  excellent introduction and, if you simply want
+to learn more analysis in a non-exam driven way, then
+Rudin's \emph{Real and Complex Analysis} is a masterpiece. 
+\begin{thebibliography}{9}
+\bibitem{Bolobas} B.~Bollob\'as, 
+\emph{Linear Analysis}, CUP, 1991.
+
+\bibitem{Gofman} C.~Gofman and G.~Pedrick,
+\emph{A First Course in Functional Analysis},
+Prentice Hall, 1965. (This is now reissued by
+AMS, Chelsea)
+
+\bibitem{Pryce}J.~D.~Pryce 
+\emph{Basic Methods of Linear Functional Analysis}, 
+Hutchinson, 1973. (Out of print but should be
+in college libraries.)
+
+
+\bibitem{Rudin}
+ W.Rudin \emph{Real and Complex Analysis}, McGraw Hill, 2nd Ed, 1974.
+
+\bibitem{Young} N.~Young \emph{An Introduction to Hilbert Space},
+CUP, 1988.
+\end{thebibliography}
+
+\section{First example sheet} 
+Students who are unsure of  their ground should
+check that they can do the exercises in the main text. 
+Strong students should at least glance at the supplementary
+example sheet. The order of the exercises roughly follows the
+order of the lectures.
+
+\begin{exercise}\label{E;integral Holder}\label{C1.1} In 
+this exercise, $\infty>p>1$
+and $p^{-1}+q^{-1}=1$.
+We work with the space $C([a,b])$ of continuous functions
+on $[a,b]$.
+
+(i) Prove H{\"o}lder's integral inequality
+\[\int_{a}^{b}|f(t)g(t)|\,dt\leq 
+\left(\int_{a}^{b}|f(t)|^{p}\,dt\right)^{1/p}
+\left(\int_{a}^{b}|g(t)|^{q}\,dt\right)^{1/q}\]
+for all $f,\,g\in C([a,b])$.
+
+(ii) State and prove an appropriate reverse form of
+H{\"o}lder's integral inequality.
+
+(iii) Show that
+\[\|f\|_{p}=\left(\int_{a}^{b}|f(t)|^{p}\,dt\right)^{1/p}\]
+defines a norm on $C([a,b])$.
+
+(iv) Show that $(C([a,b]),\|.\|_{p})$ is not complete.
+(We shall consider the particular case $p=2$
+in Exercise~\ref{E;continuous square not complete}.) 
+
+(v) By applying  H{\"o}lder's integral inequality
+with $g=1$, $p=v/u$, or otherwise, show that
+\[\|F\|_{u}\leq (b-a)^{(u^{-1}-v^{-1})}\|F\|_{v}\]
+when $\infty>v>u>1$. 
+
+(vi) Show that, if  $\infty>v>u>1$, then, given
+any $K>0$, we can find an $f\in C([a,b])$ such that
+\[\|f\|_{v}>K\|f\|_{u}.\]
+
+\noindent[Note that the inequalities in (v) and (vi)
+run in the {\bf opposite} way to the $l^{p}$ case.]
+
+(vii) [Optional extra] Show that, if $\infty>v>u>1$, then 
+given $K>0$, we can find continuous functions
+$f$ and $g$ which are zero outside some interval
+such that
+\begin{gather*}
+\left(\int_{-\infty}^{\infty}|f(x)|^{u}\,dx\right)^{1/u}
+>K\left(\int_{-\infty}^{\infty}|f(x)|^{v}\,dx\right)^{1/v},\\
+\left(\int_{-\infty}^{\infty}|g(x)|^{v}\,dx\right)^{1/v}
+>K\left(\int_{-\infty}^{\infty}|g(x)|^{u}\,dx\right)^{1/u}.
+\end{gather*}
+\end{exercise}
+\begin{exercise}\label{C1.2} Suppose $1>p>0$.
+
+(a) Find $(x_{1},x_{2}),\,(y_{1},y_{2})\in{\mathbb R}^{2}$
+such that
+\[\big((x_{1}+y_{1})^{p}+(x_{2}+y_{2})^{p})\big)^{1/p}
+> (x_{1}^{p}+x_{2}^{p})^{1/p}+(y_{1}^{p}+y_{2}^{p})^{1/p}.\]
+
+(b) Show, by considering the behaviour of
+$1+t^{p}-(1+t)^{p}$, or otherwise, that, if $a,\,b\geq 0$,
+then 
+\[a^{p}+b^{p}\geq(a+b)^{p}.\]
+
+(c) Show that, if we write $l^{p}$ for the space of complex
+sequences ${\mathbf a}$ with
+\[\sum_{j=1}^{\infty}|a_{j}|^{p}<\infty,\]
+then $l^{p}$ can be made into a vector space in the standard way.
+
+Show that, if we set
+\[d({\mathbf a},{\mathbf b})=\sum_{j=1}^{\infty}|a_{j}-b_{j}|^{p},\]
+then $d$ is a complete metric on $l^{p}$.
+\end{exercise}
+\begin{exercise}\label{C1.3} 
+Show that we can find a constant $A_{n}$ such that
+\[\sup_{t\in[0,1]}|p'(t)|\leq A_{n}\sup_{t\in[0,1]}|p(t)|\]
+for every real polynomial of degree $n$ or less.
+\end{exercise}
+\begin{exercise}\label{C1.4} Let $E$ and $F$ be normed spaces. 
+Let $A$ be a dense subset of $E$,
+and let
+$T_{n}:E\rightarrow F$ be a continuous linear map for each $n\geq 1$.
+Show that if
+
+(a) there exists a $K$ with $\|T_{n}\|\leq K$ for all $n$, and
+
+(b) $T_{n}(a)\rightarrow 0$ for all $a\in A$,
+
+\noindent then $T_{n}(e)\rightarrow 0$ for all $e\in E$.
+
+Is the  result true if condition (a) is  dropped? Give a proof or
+a counterexample.
+
+If (a) and (b) hold, does it follow that $\|T_{n}\|\rightarrow 0$
+as $n\rightarrow\infty$? Give a proof or
+a counterexample.
+\end{exercise}
+\begin{exercise}\label{C1.5}  
+(A useful fact.) Let $(V,\|.\|)$ be a normed space.
+Show that it is a Banach space if and only if $\sum_{j=1}^{\infty}x_{j}$
+converges whenever
+$\sum_{j=1}^{\infty}\|x_{j}\|$ converges.
+
+In the special case when $V={\mathbb C}$ and $\|z\|=|z|$ deduce
+that absolute convergence implies convergence.
+\end{exercise} 
+
+\begin{exercise}\label{C1.6} (i) Consider $C([0,1])$ with the uniform norm.
+Show that
+\[E=\{f\in C([0,1])\,:\,f(0)=0\}\]
+is a closed subspace of $C([0,1])$ and explain why this
+means that $E$ is a Banach space under the uniform norm.
+
+Show that
+\[F=\left\{f\in E\,:\,\int_{0}^{1}f(t)\,dt=0\right\}\]
+is a closed subspace of $E$. Show that there does
+not exist a $g\in E$ such that $\|g\|_{\infty}=1$
+and 
+\[\|g-f\|_{\infty}\geq 1\]
+for all $f\in F$.
+
+Thus Theorem~\ref{T;Riesz} cannot be improved
+in general.
+
+(ii) Show, however, that,
+if $F$ is a subspace of a  finite dimensional
+normed space space $(E,\|.\|)$
+and $F\neq E$, then we can find
+an ${\mathbf e}\in E$ with $\|{\mathbf e}\|=1$ such that
+\[\|{\mathbf e}- {\mathbf f}\|\geq 1.\]
+for all ${\mathbf f}\in F$.
+\end{exercise}
+\begin{exercise}\label{E;some dual continuous}\label{C1.7} 
+In this question we work with real valued continuous functions although
+similar results hold for the complex valued case.
+
+(i) Consider the space $(C([a,b]),\|.\|_{\infty})$.
+Show that, if $s\in[a,b]$ and
+\[\delta_{s}(g)=g(s),\]
+then $\delta_{s}\in  C([a,b])'$. What is $\|\delta_{s}\|$
+and why? Can you find a $g\in C([a,b])$ with 
+$\|g\|_{\infty}=1$ and $\delta_{s}(g)=\|\delta_{s}\|$?
+Give reasons.
+Show that $C([a,b])$ has a sufficiently rich dual in the sense of
+Definition~\ref{D;sufficiently rich}.
+
+(ii) Consider the space $(C([a,b]),\|.\|_{\infty})$.
+If $F\in C([a,b])$ set
+\[T_{F}(g)=\int_{a}^{b}F(t)g(t)\,dt.\]
+Show that $T_{F}\in  C([a,b])'$. What is $\|T_{F}\|$
+and why? Can you always find a $g\in C([a,b])$ with 
+$\|g\|_{\infty}=1$ and $T_{F}(g)=\|T_{F}\|$?
+Give reasons.
+
+(iii) Consider the space $(C([a,b]),\|.\|_{1})$
+where, as usual,
+\[\|g\|_{1}=\int_{a}^{b}|g(t)|\,dt.\]
+If $\delta_{s}$ and $T_{F}$ are defined as before, show that
+$\delta_{s}$ is not continuous, but $T_{F}$ is.
+
+(iv) [Optional extra] Continuing with the ideas of (iii),
+find  $\|T_{F}\|$ and prove your answer.
+\end{exercise}
+\begin{exercise}\label{E;more dual complete}\label{C1.8}
+(i) Show that if $(U,\|.\|_{U})$ is a normed space and
+$(V,\|.\|_{V})$ is a Banach space, then
+$({\mathcal L}(U,V),\|.\|)$ is a Banach space.
+
+(ii) Consider $c_{00}$ (the space of sequences with 
+all but finitely many terms zero) with the norm
+\[\|{\mathbf a}\|_{*}=\sum_{j=1}^{\infty}|a_{j}|\]
+and the space $l^{1}$ with its usual norm. Let
+${\mathcal L}(l^{1},C_{00})$
+be defined as in Theorem~\ref{T;dual complete}.
+
+If we
+set
+\[T_{n}({\mathbf a})=(a_{1},2^{-1}a_{2},3^{-1}a_{3},\dots,n^{-1}a_{n},
+0,0,\dots),\]
+show that
+$T_{n}\in {\mathcal L}(l^{1},c_{00})$. Show that the $T_{n}$ form a Cauchy sequence
+in ${\mathcal L}(l^{1},c_{00})$ with no limit point.
+
+Thus Theorem~\ref{T;dual complete} may fail if $(V,\|.\|)$ is
+not complete.
+\end{exercise}
+\begin{exercise}\label{E;not $l^{1}$}\label{C1.9}
+If $T:U\rightarrow V$ is an isomorphism
+between the Banach spaces $U$ and $V$ (that is to say, a linear
+bijection such that $T$ and $T^{-1}$ are continuous),
+show that the map $T':V'\rightarrow U'$ between the
+dual spaces given by
+\[T'(v')u=v'(Tu)\]
+for all $v'\in V'$ and $u\in U$ is a well defined isomorphism between
+$V'$ and $U'$. (Observe, that, on general grounds, the verification
+must consist of routine and rather easy steps.)
+
+Deduce that $l^{1}$ cannot be isomorphic to $l^{p}$ for any $p>1$.
+\end{exercise} 
+
+
+\begin{exercise}\label{C1.10} Suppose that $X$, $Y$ and $Z$ are Banach spaces.
+Suppose that $F:X\times Y\rightarrow Z$ is linear and continuous
+in each variable separately,
+that is to say that, if $y$ is fixed,
+\[F(.,y)):X\rightarrow Z\]
+is a continuous linear map and, if $x$ is fixed,
+\[F(x,.):Y\rightarrow Z\]
+is a continuous linear map. Show, by using the principle
+of uniform boundedness, that there exists an $M$ such that
+\[\|F(x,y)\|_{Z}\leq M\|x\|_{X}\|y\|_{Y}\]
+for all $x\in X,\, y\in Y$. Deduce that
+$F$ is continuous.
+\end{exercise}
+\begin{exercise}\label{E;equivalent norms}\label{C1.11} 
+Suppose that $U$
+is a vector space with two complete norms $\|.\|_{A}$ and
+$\|.\|_{B}$. By applying the open mapping theorem to
+an appropriate linear map, show that if there exists a $K$ such that
+\[K \|u\|_{A}\geq  \|u\|_{B}\]
+for all $u\in U$, then there exists a $K'$ such that
+\[K' \|u\|_{B}\geq  \|u\|_{A}\]
+for all $u\in U$. Thus comparable complete norms are equivalent.
+
+\noindent[We could also use the inverse mapping theorem but this
+comes to much the same thing.]
+\end{exercise}
+\begin{exercise}\label{C1.12}  (i) (Dini's theorem) Let $(X,d)$ 
+be a compact metric space. Suppose $f_{n}:X\rightarrow{\mathbb R}$
+is a sequence of continuous functions such that,
+for each fixed $x\in X$, $f_{n}(x)$ is a decreasing sequence
+with $f_{n}(x)\rightarrow 0$ as $n\rightarrow\infty$.
+By considering
+\[B_{n}=\{x\,:\,f_{n}(x)<\epsilon\}\]
+for any fixed $\epsilon>0$ show that $f_{n}\rightarrow 0$
+uniformly on $X$.
+
+(ii) Show, by means of an example,
+that the condition $(X,d)$ compact cannot be dropped.
+Show, by means of an example,
+that the condition $f_{n}$ decreasing cannot be dropped.
+Show, by means of an example,
+that the condition $f_{n}$ continuous cannot be dropped.
+
+
+(iii) Set $p_{0}=0$ and 
+$p_{n+1}(x)=\tfrac{1}{2}x^{2}+p_{n}(x)-\tfrac{1}{2}p_{n}(x)^{2}$.
+Explain why $p_{n}$ is a polynomial. Show that
+\[p_{n}(x)\leq p_{n+1}(x)\leq |x|\]
+and all $n\geq 0$ for all $x\in [0,1]$. 
+Hence deduce 
+that $p_{n}(x)\rightarrow |x|$ as $n\rightarrow\infty$ for all $x\in[0,1]$.
+Now use Dini's theorem to show that the convergence is uniform.
+
+Explain how to use this result as a replacement for
+Lemma~\ref{L;Taylor for Stone} in the proof of the Stone--Weierstrass
+theorem.
+\end{exercise}
+\section{Second example sheet}
+Students who are unsure of  their ground should
+check that they can do the exercises in the main text. 
+Strong students should at least glance at the supplementary
+example sheet. The order of the exercises roughly follows the
+order of the lectures.
+
+\begin{exercise}\label{C2.1}
+(i) Here is a typical use of the Stone--Weierstrass
+theorem. If $f\in C[0,1]$, we say that $f$ has $n$th moment
+\[E_{n}(f)=\int_{0}^{1}f(t)t^{n}\,dt.\]
+
+Show that, if all the moments of $f$ vanish, then
+\[\int_{0}^{1}f(t)P(t)\,dt=0\]
+for all polynomials. Use the Stone--Weierstrass
+theorem to deduce that
+\[\int_{0}^{1}f(t)g(t)\,dt=0\]
+for all $g\in C[0,1]$. Deduce that $f=0$.
+
+(ii) (Optional) Let $\omega=\exp(i\pi/4)$. Show
+that
+\[\int_{0}^{\infty}y^{n}e^{-\omega y}\,dy=n!\omega^{-n-1}\]
+and deduce that
+\[\int_{0}^{\infty}y^{4n+3}\exp(-2^{-1/2}y)\sin(2^{-1/2}y)\,dy=0.\]
+By making the substitution $x=y^{4}/4$, show that
+\[\int_{0}^{\infty}x^{n}\exp(-x^{1/4})\sin(x^{1/4})\,dy=0\]
+for all $n$ although $x\mapsto\exp(-x^{1/4})\sin(x^{1/4})$
+is a well behaved non-zero continuous function. Why does
+the
+argument of part~(i) fail?
+
+\noindent[Both parts have obvious relevance to the question
+of what we can say about a random variable $X$ from knowledge
+of its moments.]
+\end{exercise}
+\begin{exercise}\label{E:Riemann--Lebesgue}\label{C2.2} 
+(The Riemann--Lebesgue lemma)
+(i) The Riemann--Lebesgue lemma tells us that, if $f\in C({\mathbb T})$,
+then $\hat{f}(n)\rightarrow 0$ as $|n|\rightarrow\infty$. There
+are many ways of proving this but you are asked to prove it by
+finding a dense subalgebra of $C({\mathbb T})$ for which
+the result is true `for obvious reasons' and then using a density
+argument to extend the result to all of $C({\mathbb T})$.
+
+(ii) (Optional) Suppose that $\phi(n)>0$ and $\phi(n)\rightarrow 0$.
+Show that we can find $0<n_{1}<n_{2}<\dots$ such that
+$\sum_{j=1}^{\infty}\phi(n_{j})$ converges. By considering
+$\sum_{j=1}^{\infty}\phi(n_{j})\cos n_{j}x$, or otherwise,
+show that there exists an $f\in  C({\mathbb T})$ such that
+$\phi(n)^{-1}\hat{f}(n)\nrightarrow 0$. Thus part~(i) cannot be improved.
+\end{exercise}
+\begin{exercise}\label{E;Fubini}\label{C2.3} In this question
+you may use results about Riemann integration in
+one dimension but not in higher dimensions.
+
+(i) Suppose that $f:[0,1]^{2}\rightarrow{\mathbb R}$
+is continuous. Explain why the function
+$g:[0,1]\rightarrow{\mathbb R}$ defined by
+\[g(x)=\int_{0}^{1}f(x,y)\,dy\]
+is continuous and so
+\[\int_{0}^{1}\left(\int_{0}^{1}f(x,y)\,dy\right)\,dx\]
+exists.
+
+(ii) Show that, if $u,\,v:[0,1]\rightarrow{\mathbb R}$
+are continuous,
+\[\int_{0}^{1}\left(\int_{0}^{1}u(x)v(y)\,dy\right)\,dx
+=\int_{0}^{1}\left(\int_{0}^{1}u(x)v(y)\,dx\right)\,dy.\]
+
+(iii) Use the theorem of Stone--Weierstrass to show that the
+collection of functions $h$ of the form
+\[h(x,y)=\sum_{j=1}^{n}u_{j}(x)v_{j}(y)\]
+with $u_{j},\,v_{j}:[0,1]\rightarrow{\mathbb R}$
+continuous, is uniformly dense in $C([0,1]^{2})$.
+
+(iv) Deduce that
+\[\int_{0}^{1}\left(\int_{0}^{1}f(x,y)\,dy\right)\,dx
+=\int_{0}^{1}\left(\int_{0}^{1}f(x,y)\,dx\right)\,dy\]
+for all $f\in C([0,1]^{2})$.
+\end{exercise}
+\begin{exercise}\label{C2.4} 
+(i) Show that we cannot find
+a sequence $P_{n}$ of polynomials such that
+$P_{n}(x)\rightarrow \exp(x)$ uniformly on $[0,\infty)$
+as $n\rightarrow\infty$. 
+Show that we cannot find
+a sequence $Q_{n}$ of polynomials such that
+$Q_{n}(x)\rightarrow \exp(-x)$ uniformly on $[0,\infty)$
+as $n\rightarrow\infty$.
+
+Why do these results not
+contradict the Stone--Weierstrass theorem?
+
+(ii) Let $A_{0}$ be the subset of $C_{\mathbb R}([0,1])$
+consisting of polynomials of the form 
+$\sum_{j=1}^{n}a_{j}x^{j}$. Show that $A_{0}$ is not
+uniformly dense in $C_{\mathbb R}([0,1])$.Why does this not
+contradict the Stone--Weierstrass theorem?
+Identify the uniform closure of $A_{0}$
+and prove your statement.
+
+(iii) Let $A_{1}$ be the subset of $C_{\mathbb R}([0,1])$
+consisting of polynomials of the form
+$\sum_{j=0}^{n}a_{j}x^{2j}$. Show that $A_{1}$ is
+uniformly dense in $C_{\mathbb R}([0,1])$.
+
+(iii) Let $A_{2}$ be the subset of $C_{\mathbb R}([-1,1])$
+consisting of polynomials of the form 
+$\sum_{j=0}^{n}a_{j}x^{2j}$. Show that $A_{2}$ is not
+uniformly dense in $C_{\mathbb R}([-1,1])$.Why does this not
+contradict the Stone--Weierstrass theorem?
+Identify the uniform closure of $A_{2}$
+and prove your statement.
+\end{exercise}
+\begin{exercise}\label{E;Baire compact}\label{C2.5}
+(i) Show that a topological space $(X,\tau)$ 
+is compact if and only if
+it satisfies the following condition:--
+
+If ${\mathcal F}$ is a non-empty collection of closed sets
+such that, whenever 
+\[F_{1},\,F_{2},\,\dots,\,F_{n}\in{\mathcal F},\]
+we have $\bigcap_{j=1}^{n}F_{j}\neq\emptyset$, then
+$\bigcap_{F\in{\mathcal F}}F\neq\emptyset$.
+
+(ii) By quoting the appropriate theorem or (if you need the
+practice, reproving the result which is used in obtaining that
+theorem) show that if $(X,\tau)$ is compact and Hausdorff,
+then, given $V\in\tau$ and $x\in V$, we can find a closed set $F$
+and an open set $U$ with
+\[x\in U\subseteq F\subseteq V.\]
+
+(iii) (Baire's theorem for compact Hausdorff spaces.)
+If $(X,\tau)$ is a compact Hausdorff topological space
+and $U_{j}$ is an open subset of $X$ 
+with the property that $U_{j}\cap V\neq\emptyset$  for all 
+non-empty open $V$ $[j\geq 1]$, show that
+$\bigcap_{j=1}^{\infty}U_{j}\neq\emptyset$.
+\end{exercise}
+\begin{exercise}\label{C2.6} (i) If $A$ is a set of first category
+in a complete metric space $(X,d)$ without isolated points
+show that $X\setminus A$ is uncountable.
+
+(ii) If $A$ is a set of first category
+in a complete metric space $(X,d)$ without isolated points,
+show, by considering the subspace
+\[\Cl\{x\,:\,d(x,y)<\delta\},\]
+or otherwise, that
+\[\{x\,:\,d(x,y)\leq \delta\}\setminus A\]
+is uncountable for all $y\in X$ and $\delta>0$.
+
+\noindent[Be careful. A subspace may have isolated points even if 
+the original  space does not.]
+\end{exercise}
+\begin{exercise}\label{E;smooth non-analytic}\label{C2.7} 
+Consider the space
+$C_{\mathbb R}^{\infty}([0,1])$ of infinitely
+differentiable real functions on $[0,1]$ (with appropriate conventions
+about left and right derivatives at end points).
+
+(i) Show that, if we define
+\[d(f,g)=\sum_{j=0}^{\infty}\min(2^{-j},\|f^{(j)}-g^{(j)}\|_{\infty}),\]
+then $d$ is a complete metric on $C_{\mathbb R}^{\infty}([0,1])$.
+
+(ii) Suppose $q$ is a point of $[0,1]$. Show that
+\[E_{m}(q)=\{f\in C_{\mathbb R}^{\infty}([0,1])
+\,:\,|f^{(j)}(q)|\leq m \times j!\times j^{j}
+\ \text{for all $j\geq 0$}\}\]
+is closed in the $d$ metric and its complement is dense.
+
+(iii) Deduce that we can find an $F\notin\bigcup_{m=1}^{\infty}E_{m}(q)$.
+Show that 
+\[\limsup_{j\rightarrow\infty}\frac{|F^{(j)}(q)||y|^{j}}{j!}=\infty\]
+for all $y\neq 0$. Deduce that the Taylor expansion of $F$ around $q$
+diverges except at $q$  (ie has zero radius of convergence).
+
+(iv) If $F$ is as in~(iii), explain why $F$ cannot have a power series
+expansion valid in any open interval containing $q$.
+
+(v) Up to now we have kept $q$ fixed. Extend our argument to show the
+existence of an infinitely differentiable 
+function $G:[0,1]\rightarrow{\mathbb R}$
+which does have a power series
+expansion valid in any open interval.
+\end{exercise}
+
+
+\begin{exercise}\label{C2.8} The object of this exercise is to
+prove the following form of the Tietze extension theorem.
+
+If $(X,\tau)$ is a topological space and $Y$
+is a compact subset of $X$ such that, given any
+$x,\,y\in Y$ with $x\neq y$,
+we can find a $g\in C_{\mathbb R}(X)$
+with $g(x)\neq g(y)$ then,  given any $f\in C_{\mathbb R}(Y)$,
+we can find
+an $F\in C_{\mathbb R}(X)$ such that $F(y)=f(y)$ for all $y\in Y$.
+
+(i) Prove Tietze's extension theorem in the form
+given in Theorem~\ref{T;Tietze} using Urysohn's lemma
+and the result just stated.
+
+(ii) From now on, we assume that $(X,\tau)$ and $Y$
+satisfy the hypotheses of our theorem. Let us write
+$A$ for the collection of $f \in C_{\mathbb R}(Y)$
+such that we can find
+an $F\in C_{\mathbb R}(X)$ with $F(y)=f(y)$ for all $y\in Y$.
+Use the Stone--Weierstrass theorem to show that $A$
+is uniformly dense in $C_{\mathbb R}(Y)$.
+
+(iii) Show that, if $f \in A$,
+we can find $\tilde{f}\in C_{\mathbb R}(X)$
+with $\tilde{f}(y)=f(y)$ for all $y\in Y$
+and $\|\tilde{f}\|_{\infty}=\|f\|_{\infty}$.
+Use this result to show that $A$ is uniformly
+closed in $C_{\mathbb R}(Y)$. Deduce that
+$A=C_{\mathbb R}(Y)$ and our theorem holds.
+\end{exercise}
+\begin{exercise}\label{C2.9} We work in ${\mathbb C}$ and write
+\[\partial D=\{z\in {\mathbb C}\,:\,|z|=1\}.\]
+Suppose $K$ is a compact subset of ${\mathbb C}$
+and $\phi:K\rightarrow \partial D$ is continuous.
+By considering functions of the form $\Phi(z)/|\Phi(z)|$,
+or otherwise, show that there is an open set $\Omega\supseteq K$
+and a continuous function $\tilde{\phi}:\Omega\rightarrow \partial D$.
+
+Explain, giving an explicit $K$ and $\phi$ and 
+using ideas from complex analysis or topology
+(you are not asked for proofs), why we cannot always take
+$\Omega={\mathbb C}$.
+\end{exercise}
+\begin{exercise}\label{C2.10} 
+We work with continuous functions on $[0,1]$.
+
+(i) Show that, if $f_{n}\rightarrow f$, uniformly then
+the set ${\mathcal F}=\{f_{n}:n\geq 1\}$ is equicontinuous.
+
+(ii) Show that, if ${\mathcal F}=\{f_{n}:n\geq 1\}$ is equicontinuous
+and $f_{n}(q)\rightarrow f(q)$ as $n\rightarrow\infty$ at each rational
+point $q\in [0,1]$, then $f_{n}\rightarrow f$ uniformly.
+\end{exercise}
+\begin{exercise}\label{E;alternate Ascoli}\label{C2.11}
+Recall the definition of \emph{total boundedness}
+from the metric and topological spaces course.
+Let $(X,\tau)$ be a compact Hausdorff space.
+Suppose  that ${\mathcal F}$ is a subset of $C(X)$.
+
+(i) Explain why  ${\mathcal F}$ is complete
+under the natural metric $d$ (that is the restriction of the
+metric induced by $\|.\|_{\infty}$) if and only if
+${\mathcal F}$ is closed in $C(X)$.
+Explain why this means that ${\mathcal F}$
+is compact if and only if ${\mathcal F}$
+is closed and totally bounded.
+
+(ii) Show that  ${\mathcal F}$
+is totally bounded if and only if it
+is uniformly bounded and equicontinuous.
+
+(iii) Deduce the Ascoli--Arzel{\`a} theorem (Theorem~\ref{T;Ascoli}).
+\end{exercise}
+\begin{exercise}\label{C2.12} 
+Find all continuously differentiable functions
+$x:{\mathbb R}\rightarrow{\mathbb R}$ with
+\[x'(t)=3x(t)^{2/3}\ \text{for all $t$}\]
+subject to the condition $x(0)=0$ and show 
+(formally or informally according to taste) 
+that you have found them all.
+
+\noindent[Note that $x\mapsto 2x^{2/3}$ is differentiable
+(and so satisfies a Lipschitz condition) for $x\neq 0$.]
+\end{exercise}
+\section{Third example sheet}
+Students who are unsure of  their ground should
+check that they can do the exercises in the main text. 
+Strong students should at least glance at the supplementary
+example sheet. The order of the exercises roughly follows the
+order of the lectures.
+
+\begin{exercise}\label{C3.1} 
+We work with the set $A(D)$ of functions
+analytic on
+\[D=\{z\in{\mathbb C}\,:\,|z|<1\}.\]
+
+(i) Let $1>R>r$. By considering Cauchy's formula with the
+contour $z=Re^{i\theta}$, or otherwise, show that
+\[{\mathcal F}_{R}(M)=
+\{f\in A(D)\,:\,|f(z)|\leq M\ \text{for all $|z|\leq R$}\}\]
+is equicontinuous at every point $z$ with $|z|\leq r$.
+
+(ii) If $f_{n}\in {\mathcal F}$ and $|f_{n}(z)|\leq M$ for all $|z|\leq R$,
+show that we can find a continuous function
+\[F:\{z\in{\mathbb C}\,:\,|z|\leq r\}\rightarrow{\mathbb C}\]
+and $n(j)\rightarrow\infty$ such that $f_{n(j)}(z)\rightarrow F(z)$
+uniformly for $|z|\leq r$. Explain why $F$ is analytic on 
+$D_{r}=\{z\,:\,|z|<r\}$.
+
+(iii) Show that the formula
+\[d(f,g)=\sum_{j=1}^{\infty}
+2^{-j}\min(1,\sup_{|z|\leq 1-2^{-j}}|f(z)-g(z)|)\]
+gives a complete metric on $A(D)$.  Show that the set
+\[{\mathcal F}(M)=\{f\in A(D)\,:\,|f(z)|\leq M\ \text{for all $|z|<1$}\}\]
+is compact in this metric.
+
+\noindent[Simple developments of these ideas produce the powerful 
+method of \emph{normal families} in complex variable theory.]
+\end{exercise}
+\begin{exercise}\label{C3.2} Consider the space of continuous functions
+$C([0,1])$ with the uniform norm. Suppose that
+$E$ is a closed subspace consisting of continuously
+differentiable functions.
+
+(i) By applying the closed graph theorem, or otherwise, show that the
+differentiation map $D:E\rightarrow  C([0,1])$ 
+(given by $Df=f'$) is continuous.
+
+
+(ii) Deduce, using the  Ascoli--Arzel{\`a} theorem, or otherwise that
+the unit ball in $E$  is compact.
+
+(iii) Deduce, quoting the appropriate theorem, that $E$ is finite dimensional.
+\end{exercise} 
+\begin{exercise}\label{C3.3} Suppose $K$ is a compact Hausdorff space
+and $C(K)$ is the countable union of equicontinuous sets.
+Show that $C(K)$ is the countable union of 
+bounded and closed (in the uniform norm) equicontinuous sets.
+Deduce, using three of the `big theorems' of the course,
+or otherwise,
+that $C(K)$ is finite dimensional and so $K$ is finite.
+\end{exercise}
+\begin{exercise}\label{E;closest convex}\label{C3.4}
+(i) Let $U$ be a complete inner product space.
+If $F$ is closed convex subset of $U$ and $a\in U$, 
+show that  we can find a unique
+$f_{0}\in F$ such that
+\[\|a-f_{0}\|_{2}\leq\|a-f\|_{2}\]
+for all $f\in F$.
+
+\noindent[A set $F$ is convex if, whenever $x,\,y\in F$ 
+and $1\geq \lambda\geq 0$, it follows that $\lambda x+(1-\lambda) y\in F$.]
+
+(ii)  Give an example of a closed convex subset $F$ of $l^{\infty}$
+and a point ${\mathbf a}\in l^{\infty}$
+with the property that the equation
+\[\|{\mathbf a}-{\mathbf g}\|_{\infty}=
+\inf_{{\mathbf f}\in F}\|{\mathbf a}-{\mathbf f}\|_{\infty}\]
+has more than one solution with ${\mathbf g}\in F$.
+\end{exercise}
+\begin{exercise}\label{E;not closed closest}\label{C3.5}
+We work in $l^{2}$. Let $F$ be the collection of
+${\mathbf x}\in l^{2}$ such that all but finitely many
+$x_{j}$ are zero and let 
+\[{\mathbf a}=(1,1/2,1/3,\dots).\]
+Show that $F$ is a subspace of $l^{2}$, but,
+given  ${\mathbf f}\in F$,
+we can always find a ${\mathbf g}\in F$ such that
+\[\|{\mathbf a}-{\mathbf f}\|_{2}>\|{\mathbf a}-{\mathbf g}\|_{2}.\]
+Why does this not contradict Theorem~\ref{T;closest Hilbert}?
+\end{exercise}
+\begin{exercise}\label{C3.6} 
+(i) Use Theorem~\ref{T;closest Hilbert}
+and Lemma~\ref{L;closest orthogonal} to show that,
+if $U$ is complete separable inner product space 
+and $F$ is closed subspace of $U$, then $F$, considered
+as a space in its own right (inheriting the inner product from $U$),
+is itself a complete separable inner product space.
+
+(ii) Suppose that $U$ is an inner product space 
+and $F$ is closed subspace of $U$. Suppose further
+that $F$ considered as
+a space in its own right has an orthonormal basis $e_{1}$,
+$e_{2}$, \dots. Use the arguments which we used to establish Bessel's
+inequality to show that, if $a\in U$ and 
+$\sum_{j=1}^{\infty}|x_{j}|^{2}<\infty$, then
+\[\left\|\sum_{j=1}^{\infty}x_{j}e_{j}-a\right\|_{2}
+\geq \left\|\sum_{j=1}^{\infty}\langle a,e_{j}\rangle e_{j}-a\right\|_{2}\]
+with equality only if $x_{j}=\langle a,e_{j}\rangle$. Deduce
+the conclusions of
+Theorem~\ref{T;closest Hilbert}
+and Lemma~\ref{L;closest orthogonal} in this case.
+\end{exercise}
+\begin{exercise}\label{C3.7} (i) Consider the inner product space $c_{00}$ 
+of sequences with only finitely many non-zero terms and inner
+product
+\[\langle {\mathbf a},{\mathbf b}\rangle=
+\sum_{j=1}^{\infty}a_{j}b_{j}^{*}.\]
+Show that the formula
+\[T{\mathbf u}=\sum_{j=1}^{\infty}j^{-1}u_{j}\]
+defines a continuous linear map $T:c_{00}\rightarrow{\mathbb C}$
+but there does not exist a ${\mathbf w}\in  c_{00}$ such that
+\[T{\mathbf u}=\langle {\mathbf u},{\mathbf w}\rangle.\]
+Why does this not contradict the Riesz representation theorem
+(Theorem~\ref{T;Riesz representation})?
+
+(ii) Find a closed subspace $F$ of $c_{00}$
+and an ${\mathbf a}\in c_{00}$ such that,
+given  ${\mathbf f}\in F$,
+we can always find a ${\mathbf g}\in F$ such that
+\[\|{\mathbf a}-{\mathbf f}\|_{2}>\|{\mathbf a}-{\mathbf g}\|_{2}.\]
+Why does this not contradict Theorem~\ref{T;closest Hilbert}?
+\end{exercise}
+\begin{exercise}\label{C3.8} Suppose that $U$ is an inner product space
+and $e_{1}$, $e_{2}$, \dots are orthonormal. Show that
+\[\langle f,e_{n}\rangle\rightarrow 0\]
+as $n\rightarrow\infty$. 
+
+Use this result to give another proof of the Riemann--Lebesgue
+lemma (see Exercise~\ref{E:Riemann--Lebesgue}).
+\end{exercise}
+\begin{exercise}\label{C3.9} 
+Suppose that $e_{1}$, $e_{2}$, \dots is an orthonormal
+basis for an inner product space $E$. Show reasonably carefully that
+\[\langle x,y\rangle=\sum_{j=1}^{\infty}
+\langle x,e_{j}\rangle\langle y,e_{j}\rangle^{*}.\]
+\end{exercise}
+\begin{exercise}\label{C3.10} Consider
+a Hilbert space $H$ with a closed subspace 
+$E$ and $T:E\rightarrow{\mathbb C}$ a continuous linear
+functional. Show that there exists a continuous linear
+functional $\tilde{T}:H\rightarrow{\mathbb C}$ such that
+$\tilde{T}|_{E}=T$ and $\|\tilde{T}\|=\|T\|$.
+
+\noindent[You can prove this using bases but well brought up people
+do not use bases unless they have to. (However, if they have to, they
+instantly forget their upbringing.)]
+\end{exercise}
+\begin{exercise}\label{C3.11} Let $E$ be an inner product space.
+We say that a non-zero continuous linear map $P:E\rightarrow E$
+is a \emph{projection} if $P^{2}=P$. We say that $P$
+is an \emph{orthogonal projection} if $P(U)\perp P^{-1}(0)$.
+
+(i) Give a example of an orthogonal projection $Q:l^{2}\rightarrow l^{2}$
+such that both $Q(U)$ and $Q^{-1}(0)$ are infinite dimensional.
+
+(ii)  Give a example of a projection 
+$R:{\mathbb C}^{2}\rightarrow {\mathbb C}^{2}$ which is 
+not an orthogonal projection.
+
+(iii) If $E$ is an inner product space and $P:E\rightarrow E$ 
+is a projection, show that $P$ is an orthogonal projection
+if and only if $\|P\|=1$.
+\end{exercise}
+\begin{exercise}\label{C3.12} Suppose that $H$ is a Hilbert space.
+If $C$ is a subset (NB no algebraic structure is implied)
+of $H$ we write
+\[C^{\perp}=\{g\in H\,:\,\langle g,f\rangle=0\ \text{for all $f\in C$}\}.\]
+
+(i) Show that $C^{\perp}$ is a closed subspace of $H$.
+
+(ii) Show that $C^{\perp\perp}=C$ if and only if $C$ is
+a closed subspace of $H$.
+
+(iii) Show that
+$C^{\perp\perp}=\Cl\Span C$.
+\end{exercise}
+\section{Fourth example sheet}
+Students who are unsure of  their ground should
+check that they can do the exercises in the main text. 
+Strong students should at least glance at the supplementary
+example sheet. The order of the exercises roughly follows the
+order of the lectures.
+
+\begin{exercise}\label{C4.1} Let $e_{1}$, $e_{2}$, \dots be an orthonormal basis
+for the Hilbert space $H$. Write
+\begin{align*}
+u_{n}&=e_{2n-1}\\
+v_{n}&=e_{2n-1}+n^{-1}e_{2n}
+\end{align*}
+and let $U$ be the closed subspace generated by the $u_{n}$
+(ie the smallest closed subspace containing the $u_{n}$)
+and $V$ be the closed subspace generated by the $v_{n}$.
+
+(i) Show that $U\cap V=\{0\}$.
+
+(ii) Show that every $x\in U+V$ has a unique expression
+as $x=Px+Qx$ with $Px\in U$ and $Qx=V$.
+Show that $P:U+V\rightarrow U$ is linear and
+satisfies $P^{2}=P$ (so $P$ is a projection)
+but that $P$ is not continuous.
+
+(iii) Show that $U+V$ is dense in $H$ but  $U+V\neq H$.
+\end{exercise}
+\begin{exercise}\label{C4.2} Let $H$ be Hilbert space. Suppose that
+$T:H\rightarrow H$ is linear and self-adjoint 
+(that is to say $\langle Tx,y\rangle=\langle x,Ty\rangle$
+for all $x,\,y\in H$). Use the the principle of uniform
+boundedness to show that $T$ is continuous.
+\end{exercise}
+\begin{exercise}\label{C4.3} Let $U$ be a normed space and $T:U\rightarrow U$
+a continuous linear map. Explain why
+\[\rho(T)=\liminf_{n\rightarrow\infty}\|T^{n}\|^{1/n}\]
+is well defined.
+ 
+By making the observation that
+\[\|T^{Nk+r}\|\leq \|T^{N}\|^{k}\|T\|^{r},\]
+or otherwise, show that, in fact
+\[\|T^{n}\|^{1/n}\rightarrow\rho(T)\]
+as $n\rightarrow\infty$. (We call $\rho(T)$ the spectral
+radius of $T$.)
+
+Now suppose that $U$ is a Banach space.
+Show that $\lambda I-T$ is invertible 
+(that is to say, has continuous inverse) for all $|\lambda|>\rho(T)$.
+
+By considering maps of the form
+\[(x_{1},x_{2},x_{3},\dots)\mapsto(0,c_{1}x_{1},c_{2}x_{2},\dots)\]
+with appropriate $c_{j}$, show that we can find $T:l^{2}\rightarrow l^{2}$
+such that $T^{n}$ is injective (so, in particular,
+$T^{n}\neq 0$) for all $n\geq 1$ but $\rho(T)=0$.
+\end{exercise}
+\begin{exercise}\label{C4.4}\label{E;dense surjective} 
+Let $U$  and $V$ be Banach spaces.
+Suppose $T:U\rightarrow V$ is a continuous injective 
+linear map
+such that $T(U)$ is dense in $V$.
+Show that the following three statements are equivalent.
+
+(i) There exists
+a $c>0$ with the property that
+\[\|Tu\|_{V}\geq c\|u\|_{U}\]
+for all $u\in U$.
+
+(ii) $T$ is surjective.
+
+(iii) $T$ is invertible (that is to say, has continuous inverse).
+\end{exercise}
+
+\begin{exercise}\label{C4.5}\label{E;approximate eigenvalue} 
+(i) Consider the the shift map $S:l^{2}\rightarrow l^{2}$
+given by
+\[S(a_{1},a_{2},\dots)=(0,a_{1},a_{2},\dots).\] 
+Show that $S$ is a well defined continuous linear map
+and find its adjoint.
+
+(ii) Let $U$ be a finite dimensional space and $T:U\rightarrow U$
+a linear map. Explain why $\lambda I -T$ fails to be invertible
+if and only if there exists a $u\neq 0$ such that $Tu=\lambda u$.
+
+(iii) Give an example of a 
+continuous linear map $R_{1}:l^{2}\rightarrow l^{2}$
+which is surjective but not bijective.
+Give an example of a 
+continuous linear map $R_{2}:l^{2}\rightarrow l^{2}$
+which is injective but not bijective.
+
+(iv) By using Exercise~\ref{E;dense surjective}, or otherwise, show that,
+if $U$ is a Banach space and $T:U\rightarrow U$
+is a continuous linear map, then $\lambda\in\sigma(T)$ if and only if
+at least one of the  following conditions hold.
+
+(A) $\lambda$ is an eigenvalue of $T$, that is to say, there exists
+a $u\neq 0$ such that $Tu=\lambda u$.
+
+(B) $\lambda$ is not an eigenvalue of $T$ but
+$\lambda$ is an \emph{approximate eigenvalue} of $T$,
+that is to say, there exist
+$u_{j}\in U$ with $\|u_{j}\|=1$ such that 
+$\|Tu_{j}-\lambda u_{j}\|\rightarrow 0$.
+
+(C) $(\lambda I-T)(U)$ is not dense in $V$.
+
+(v) Give an example of a continuous linear map
+$T:l^{2}\rightarrow l^{2}$ such that $\sigma(T)=\{0\}$ but $0$
+is not an eigenvalue of $T$.
+ 
+\noindent[The moral of this question is that the spectrum 
+is much  more a complicated
+than at first appears. We find an interesting spectrum in 
+Exercise~\ref{E;shift spectrum}.]
+\end{exercise}
+\begin{exercise}\label{C4.6} 
+(i) Let  $U$ be a Banach space and $T:U\rightarrow U$
+a continuous linear map.
+Suppose that $\lambda$ is in the \emph{frontier}
+of $\sigma(T)$ (that is to say $\lambda$ lies in $\sigma(T)$
+and in the closure of the complement of  $\sigma(T)$). By
+examining possibility (C) in Exercise~\ref{E;approximate eigenvalue},
+show that $\lambda$ is an approximate eigenvalue
+(this includes the possibility that $\lambda$ is an eigenvalue).
+In other words, the frontier of the spectrum is composed
+of approximate eigenvalues. 
+
+(ii) Now suppose $T:H\rightarrow H$ is a continuous
+Hermitian (that is to say, self-adjoint) linear map.
+Show that the approximate eigenvalues of $T$ are real.
+Deduce from~(i) that the spectrum of $T$ consists of
+real numbers.
+\end{exercise}
+\begin{exercise}\label{E;compact as limit}\label{C4.7} 
+(This quite long, though instructive. Those who want a shorter,
+thought still non-trivial, question should ignore parts~(i)
+and~(iii), and
+do that part of~(ii) which says that the limit of finite rank operators
+is compact.)
+
+Consider
+Hilbert space $H$. 
+Let us write
+$B(H)$ for the space of continuous linear maps
+$T:H\rightarrow H$.
+
+(i) Show that the following statements about
+a bounded sequence $x_{n}$ are equivalent.
+
+\ \ (A) Every subsequence of the sequence has a convergent 
+subsequence.
+
+\ \ (B) Given any $\epsilon>0$ we can find a finite 
+dimensional subspace $E$ such that, if $P$ is the orthogonal
+projection onto $E$, we have $\|(I-P)x_{n}\|_{2}<\epsilon$. 
+
+(ii) We say that an $S\in B(H)$ is of finite rank if
+the image space $S(H)$ is finite  dimensional.
+Show that $T\in B(H)$ is compact if and only if
+we can find finite rank $S_{n}$ such that
+$\|S_{n}-T\|\rightarrow 0$ as $n\rightarrow\infty$.
+
+\noindent[It may be helpful to recall that $H$ is separable]
+
+(iii) Show that the collection of compact operators is a closed
+nowhere dense (ie having dense complement)
+subset of $B(H)$.
+\end{exercise}
+\begin{exercise}\label{C4.8} 
+(i) We work on the Hilbert space $l^{2}$. Show that
+\[S(a_{1},a_{2},a_{3},\dots)=(a_{2},a_{3},a_{4}\dots)\]
+is a continuous linear map from $l^{2}$ to $l^{2}$
+and find its adjoint map $S^{*}$. Find $\|S\|$ and $\|S^{*}\|$.
+
+(ii) We use the notation of Exercise~\ref{E;compact as limit}.
+Show that the collection of self-adjoint operators is a closed
+nowhere dense subset of $B(H)$.
+\end{exercise}
+\begin{exercise}\label{E;spectral projection}\label{C4.9} 
+Check that the following statement is equivalent to the spectral
+theorem for compact self-adjoint operators
+(Theorem~\ref{T;spectral}).
+Let $H$ be a Hilbert space. If
+$T:H\rightarrow H$ is a continuous linear compact self-adjoint map
+we can find a finite or infinite sequence $P_{1}$, $P_{2}$,
+\dots of orthogonal projections (that is to say
+continuous linear maps $P_{j}:H\rightarrow H$ with
+$P_{j}^{-1}(\{0\})\perp P_{j}(H)$) which are mutually
+orthogonal
+(that is to say $P_{j}(H)\perp P_{k}(H)$ for $j\neq k$)
+and have finite dimensional non-trivial images (that is to say
+$1\leq \dim P_{j}(H)<\infty$) together with
+distinct non-zero real $\lambda_{j}$, with
+$\lambda_{n}\rightarrow 0$ as $n\rightarrow\infty$
+if the sequence is infinite, such that
+\[T=\sum_{j}\lambda_{j}P_{j}.\]
+
+\noindent[Although this is just a simple rewrite of
+Theorem~\ref{T;spectral} it provides a better jumping off point
+for generalisation.]
+\end{exercise}
+\begin{exercise}\label{C4.10} Suppose
+$T:H\rightarrow H$ is a compact self-adjoint operator
+on a Hilbert space $H$.
+Let $\lambda$ be a non-zero real number and let 
+${\mathbf y}\in H$.
+Consider the two equations
+\begin{gather*}
+T{\mathbf x}=\lambda{\mathbf x},\tag{1}\\
+T{\mathbf x}=\lambda{\mathbf x}+{\mathbf y}.\tag{2}
+\end{gather*}
+Prove the \emph{Fredholm alternative} which states that 
+\emph{either} (1) has no non-zero solutions and (2) has
+a unique solution \emph{or} the space of solutions
+$E_{\lambda}$ of (1) contains non-zero vectors and (2) has solutions
+if and only if ${\mathbf y}\perp E_{\lambda}$.
+In the second case, if ${\mathbf z}$ is a solution of (2),
+the set of solutions is
+\[\{{\mathbf z}+{\mathbf w}\,:\,{\mathbf w}\in E_{\lambda}\}.\]
+
+\noindent[Hint: If this was a 1B mathematical methods question you
+would consider it rather easy.]   
+\end{exercise}
+\begin{exercise}\label{C4.11} 
+Work through Section~\ref{S;use spectral}.
+\end{exercise}
+\begin{exercise}\label{C4.12}
+In this exercise we work in a Hilbert space $H$.
+
+(i) Suppose that $T$ and $S$ are commuting compact self-adjoint
+continuous maps from $H$ to $H$. If we write
+\[E_{\lambda}=\{x\in H\,:Tx=\lambda x\}\]
+show that $S(E_{\lambda})\subseteq E_{\lambda}$. By repeated
+use of Theorem~\ref{T;spectral}, or otherwise, show that
+we can find an orthonormal basis $f_{1}$, $f_{2}$,
+$f_{3}$, \dots such that each
+$f_{j}$ is an eigenvector of both $T$ and $S$.
+
+(ii) A continuous linear map $R:H\rightarrow H$ is called \emph{normal}
+if $RR^{*}=R^{*}R$. By considering $T=(R+R^{*})/2$
+and $S=(R-R^{*})/(2i)$, or otherwise show that,
+if $R$ a compact normal continuous linear map
+from $H$ to $H$,  we can find
+an orthonormal basis $f_{j}$ of $H$ and $\lambda_{j}\in{\mathbb C}$
+with $\lambda_{j}\rightarrow 0$ such that
+\[Ru=\sum_{j=1}^{\infty}\lambda_{j}\langle u,f_{j}\rangle f_{j}\]
+for all $u\in U$.
+
+(iii) Show conversely that if $f_{j}$ is any orthonormal basis 
+of of $H$ and $\lambda_{j}$ any sequence in ${\mathbb C}$ with
+$\lambda_{j}\rightarrow 0$ then the formula
+\[Ru=\sum_{j=1}^{\infty}\lambda_{j}\langle u,f_{j}\rangle f_{j}\]
+for all $u\in U$ defines a continuous linear map $R:H\rightarrow H$
+which is compact and normal.
+\end{exercise} 
+\section{Supplementary exercises} These exercises are not intended to be harder
+but are less closely linked 
+to the immediate needs of the course. 
+They do, however,
+provide background and anyone intending to do more analysis should at least
+glance at them.
+
+\begin{exercise}\label{C5.1} (Revision of 1A)
+We say that a function 
+$f:[a,b]\rightarrow{\mathbb R}$ is strictly concave if, whenever
+$a\leq t<s\leq b$ and $0<\lambda<1$, it follows that
+\[\lambda f(t)+(1-\lambda) f(s)<f\big(\lambda t+(1-\lambda)s).\]
+
+(i) Show that, if $g:[a,b]\rightarrow{\mathbb R}$ is twice differentiable
+with $g''(t)<0$ for all $t\in(a,b)$, then $g$ is strictly concave.
+
+(ii) Give an example of a strictly concave function
+$g:[-1,1]\rightarrow{\mathbb R}$ which is not differentiable
+at $0$.
+
+(iii) Suppose that $f:[a,b]\rightarrow{\mathbb R}$ is strictly concave.
+By using induction, or otherwise, prove
+Jensen's inequality which states that
+if $x_{1}$, $x_{2}$, \dots, $x_{n}$ are distinct points of
+$[a,b]$ and $\lambda_{1}$, $\lambda_{2}$, \dots, $\lambda_{n}$
+are strictly positive real numbers with 
+$\sum_{j=1}^{n}\lambda_{j}=1$, then
+\[f\left(\sum_{j=1}^{n}\lambda_{j}x_{j}\right)
+>\sum_{j=1}^{n}\lambda_{j}f(x_{j}).\]
+
+Deduce that if $x_{1}$, $x_{2}$, \dots, $x_{n}$ are points of
+$[a,b]$ and $\lambda_{1}$, $\lambda_{2}$, \dots, $\lambda_{n}$
+are strictly positive real numbers with
+$\sum_{j=1}^{n}\lambda_{j}=1$, then
+\[f\left(\sum_{j=1}^{n}\lambda_{j}x_{j}\right)
+=\sum_{j=1}^{n}\lambda_{j}f(x_{j})\]
+if and only if $x_{1}=x_{2}=\dots=x_{n}$.
+
+(iv) Use Jensen's inequality to show that, if $a_{j}>0$, then
+\[(a_{1}a_{2}\dots a_{n})^{1/n}\leq \frac{a_{1}+a_{2}+\dots+a_{n}}{n}.\]
+(This is Cauchy's arithmetic-geometric inequality.)
+What are the conditions for equality?
+
+ 
+(v) Suppose that $p>1$ and let $g(x)=(1+x^{1/p})^{p}$.
+Show that $g$ is a concave function.
+
+Suppose that $a_{1},\,a_{2},\,\dots,\,a_{n}>0$,
+$\sum_{j=1}^{n}a_{j}^{p}=1$
+and $b_{1},\,b_{2},\,\dots,\,b_{n}>0$.
+By applying Jensen's inequality with
+$x_{k}=b_{k}^{p}/a_{k}^{p}$ and $\lambda_{k}$
+chosen appropriately, prove Minkowski's inequality.
+\[\left(\sum_{j=1}^{n}(a_{j}+b_{j})^{p}\right)^{1/p}
+\leq \left(\sum_{j=1}^{n}a_{j}^{p}\right)^{1/p}
++\left(\sum_{j=1}^{n}b_{j}^{p}\right)^{1/p}\]
+and obtain the conditions for equality.
+Why does the result 
+fllow for general values of $\sum_{j=1}^{n}a_{j}^{p}$?
+\end{exercise}
+\begin{exercise}\label{C5.2} Obtain Minkowski's inequality
+by applying H{\"o}lder's inequality to the observation
+\[\sum_{j=1}^{n}|x_{j}+y_{j}|^{p}
+\leq \sum_{j=1}^{n}|x_{j}||x_{j}+y_{j}|^{p-1}
++\sum_{j=1}^{n}|y_{j}||x_{j}+y_{j}|^{p-1}.\]
+Is this really a different proof to the one given
+in the lectures using the reverse H{\"o}lder inequality?
+\end{exercise}
+\begin{exercise}\label{C5.3} The results of Exercise~\ref{E;increase norm}
+depend on clever inequalities\footnote{To the writer
+all inequalities seem clever.} but there are other
+ways of arriving at the results.
+
+Let $\infty\geq s>r\geq 1$.
+Investigate maxima and minima of $\sum_{j=1}^{n}x_{j}^{s}$
+subject to $x_{j}\geq 0$,
+$\sum_{j=1}^{n}x_{j}^{r}=1$ using the calculus of variations.
+(Unless we take care, which you are not asked to do,
+the results will not be rigorous
+but, once we know what is happening, it is much easier
+to prove that it happens by some other technique.)
+\end{exercise}
+\begin{exercise}\label{C5.4} 
+If $V$ is a vector space over ${\mathbb F}$,
+we say that $E$ is an \emph{algebraic basis}
+(that is to say a basis in the sense of~1B algebra)
+if every $v\in V$ can be written uniquely as a finite sum
+\[v=\sum_{j=1}^{n}\lambda_{j}e_{j}\]
+with $e_{1}$, $e_{2}$, \dots, $e_{n}$ distinct
+elements of $E$ and $\lambda_{j}\in{\mathbb F}$.
+The collection $V^{*}$ of linear maps $\alpha:V\rightarrow{\mathbb F}$
+is called the \emph{algebraic dual} 
+(that is to say, the dual space in the sense of~1B algebra).
+The proofs of ~1B algebra show that $U^{*}$ can be given the
+structure of a vector space.
+
+Let $c_{00}$ be the vector space
+of complex sequences with only a finite number of 
+non-zero terms. Explain why $c_{00}$ has a countable basis.
+Identify $c_{00}^{*}$ in a natural manner with the
+space ${\mathbb C}^{\mathbb N}$ of all 
+complex sequences. Show that $c_{00}^{*}$
+does not have a countable basis. (The argument
+is not difficult but you should not sleep walk
+through it.)
+
+Although this question deals only with one space the
+reader should require little convincing that, if we
+only deal with algebraic duals, the algebraic dual of
+an infinite dimensional space will be very much bigger
+than the the space (and the dual of the dual will be even bigger).
+\end{exercise}  
+\begin{exercise}\label{E;not Hilbert}\label{C5.5} 
+(i) Prove the parallelogram law
+\[\|{\mathbf a}+{\mathbf b}\|_{2}^{2}
++\|{\mathbf a}-{\mathbf b}\|_{2}^{2}
+=2(\|{\mathbf a}\|_{2}+{\mathbf b}\|_{2}^{2})\]
+for all ${\mathbf a},\,{\mathbf b}\in l^{2}$.
+
+(ii) Use induction to show that, for each $n$, we can find
+$\zeta_{jk}(n)=\pm 1$ such that
+\[\sum_{j=1}^{2^{n}}\left\|\sum_{k=1}^{2^{n}}
+\zeta_{jk}(n){\mathbf a}(k)\right\|_{2}^{2}
+=2^{n}\sum_{k=1}^{2^{n}}\|{\mathbf a}(k)\|_{2}^{2}\]
+for all ${\mathbf a}(k)\in l^{2}$.
+
+(iii) If $(U,\|.\|)$ is isomorphic to $(l^{2},\|.\|_{2})$
+explain why there is a constant $K$ independent of $n$
+such that
+\[K\sum_{j=1}^{2^{n}}\left\|\sum_{k=1}^{2^{n}}
+\zeta_{jk}(n){\mathbf u}(k)\right\|_{U}^{2}
+\geq 2^{n}\sum_{j=1}^{2^{n}}\|{\mathbf u}(k)\|_{U}^{2}
+\geq K^{-1}\sum_{j=1}^{2^{n}}\left\|\sum_{k=1}^{2^{n}}
+\zeta_{jk}(n){\mathbf u}(k)\right\|_{U}^{2}\]
+for all ${\mathbf u}(k)\in U$.
+
+(iv) Show that $l^{2}$ is not isomorphic to $l^{p}$
+when $p\neq 2$.
+\end{exercise}
+\begin{exercise}\label{C5.6}
+Consider the space of $n\times n$ complex
+matrices with the operator norm.
+Prove the Cayley--Hamilton theorem by using
+the fact proved in Exercise~\ref{E;dense matrices}
+that the set of of matrices 
+with $n$ distinct eigenvalues
+is dense.
+\end{exercise}
+\begin{exercise}~\label{E;kernel 2}\label{C5.7} 
+Suppose that 
+$g_{n}:{\mathbb T}\rightarrow{\mathbb R}$
+is continuous and satisfies the conditions
+set out in Exercise~\ref{E;kernel 1} as follows.
+
+(i) There exists a constant $K$
+such that
+\[\frac{1}{2\pi}\int_{\mathbb T}|g_{n}(t)|\,dt\leq K\]
+for all $n\geq 1$.
+
+(ii) If $\delta>0$ and $f$ is a continuous function
+with $f(t)=0$ for $|t|<\delta$, then
+\[\frac{1}{2\pi}\int_{\mathbb T}f(t)g_{n}(t)\,dt\rightarrow 0\]
+as $n\rightarrow \infty$.
+
+(iii) We have
+\[\frac{1}{2\pi}\int_{\mathbb T}g_{n}(t)\,dt\rightarrow 1\]
+as $n\rightarrow\infty$.
+
+If $f:{\mathbb T}\rightarrow{\mathbb R}$ is continuous
+and $\delta>0$ observe that
+\begin{align*}
+\frac{1}{2\pi}&\int_{\mathbb T}g_{n}(t)f(t)\,dt-f(0)
+=\frac{1}{2\pi}\int_{|t|<\delta}g_{n}(t)(f(t)-f(0))\,dt\\
+&+\frac{1}{2\pi}\int_{|t|\geq\delta}g_{n}(t)(f(t)-f(0))\,dt
++\left(\frac{1}{2\pi}\int_{\mathbb T}g_{n}(t)\,dt-1\right)\times f(0),
+\end{align*}
+and, by estimating the three terms separately,
+show that
+\[\frac{1}{2\pi}\int_{\mathbb T}g_{n}(t)f(t)\,dt
+\rightarrow f(0)\]
+as $n\rightarrow\infty$.
+
+Show that condition~(ii) is implied by
+
+(ii)$'$ If $\delta>0$ then $g_{n}(t)\rightarrow 0$ uniformly
+for $t\notin(-\delta,\delta)$.
+
+\noindent Show also, by considering the Riemann--Lebesgue lemma
+or otherwise, that condition~(ii) does not imply (ii)$'$.
+
+
+
+\end{exercise}
+\begin{exercise}\label{C5.8}\label{E;kernel 3} Let 
+$f:{\mathbb T}\rightarrow{\mathbb C}$
+be continuous. We write
+\[\hat{f}(n)=\frac{1}{2\pi}\int_{\mathbb T}f(t)\exp(-int)\,dt.\]
+
+(i) Show that $\sum_{n=-N}^{N}r^{|n|}\exp(int)$ converges
+uniformly, to $P_{r}(t)$ say, for $t\in{\mathbb T}$ as $N\rightarrow\infty$
+for each fixed $r$ with $0<r<1$. Deduce that
+\[\sum_{n=-\infty}^{\infty}r^{|n|}\hat{f}(n)
+=\frac{1}{2\pi}\int_{\mathbb T}f(t)P_{r}(-t)\,dt
+=\frac{1}{2\pi}\int_{\mathbb T}f(t)P_{r}(t)\,dt.\]
+Show that
+\[P_{r}(t)=\frac{1-r^{2}}{1-2r\cos t+r^{2}}.\]
+
+(ii) Show that
+
+(A) $P_{r}(t)\geq 0$ for all $t$.
+
+(B) ${\displaystyle\frac{1}{2\pi}\int_{\mathbb T}P_{r}(t)\,dt=1}$.
+
+(C) $P_{r}(t)\rightarrow 0$ uniformly as $r\rightarrow 1-$ 
+for $t\notin(-\delta,\delta)$.
+
+(iii) Deduce, by the arguments of Exercise~\ref{E;kernel 2},
+or otherwise, that
+\[\sum_{n=-\infty}^{\infty}r^{n}\hat{f}(n)\rightarrow f(0)\]
+as $r\rightarrow 1-$. By considering the Fourier coefficients
+of $f_{a}$ given by $f_{a}(t)=f(t-a)$, or otherwise, show that
+\[\sum_{n=-\infty}^{\infty}r^{n}\hat{f}(n)\exp(int)\rightarrow f(t)\]
+as $r\rightarrow 1-$.
+\end{exercise}
+\begin{exercise}\label{E;kernel 4}\label{C5.9} 
+Let $f:{\mathbb T}\rightarrow{\mathbb C}$
+be continuous. We write
+\[\hat{f}(n)=\frac{1}{2\pi}\int_{\mathbb T}f(t)\exp(-int)\,dt.\]
+
+(i) We write $D_{n}(t)=\sum_{j=-n}^{n}\exp(ijt)$.
+Show that, if $t\neq 0$,
+\[D_{n}(t)=\frac{\sin\big((n+\tfrac{1}{2})t\big)}
+{\sin\tfrac{t}{2}}.\]
+What is the value of $D_{n}(0)$?
+
+(ii) Show that
+\[\sum_{j=-n}^{n}\hat{f}(j)
+=\frac{1}{2\pi}\int_{\mathbb T}f(t)D_{n}(-t)\,dt
+=\frac{1}{2\pi}\int_{\mathbb T}f(t)D_{n}(t)\,dt.\]
+
+(iii) Show that
+\[|D_{n}(t)|\geq \frac{A(n+\tfrac{1}{2})}{r+1}
+|\sin\big((n+\tfrac{1}{2})t\big)|\]
+for all $r\pi/(n+\tfrac{1}{2})\leq |t|\leq (r+1)\pi/(n+\tfrac{1}{2})$
+and $1\leq r\leq n-1$ for some $A>0$ (to be chosen to fit your convenience)
+independent of $n$.
+
+(iv) Deduce that
+\[\frac{1}{2\pi}\int_{\mathbb T}|D_{n}(t)|\,dt\geq B\log n\]
+for all $n\geq N$ and some $B>0$ (where both $N$ and $B$
+are chosen to fit your convenience).
+
+(v) Use Exercise~\ref{E;kernel 1} to show that
+there exists a continuous function $f$ whose Fourier sum
+does not converge to $f$ at $0$.
+\end{exercise}
+
+
+\begin{exercise}\label{C5.10} Let $(X,\tau)$ be a topological space.
+Write $x\sim y$ if $f(x)=f(y)$ whenever $f\in C(X)$ the space
+of real valued continuous functions on $X$.
+
+(i) Show that $\sim$ is an equivalence relation.
+
+(ii) Show that, if we give $X/\!\sim$ the quotient topology
+$\tau/\!\sim$, then the function $J:C(X)\rightarrow C(X/\!\sim)$
+given by $J(f)[x]=f(x)$ (where $[x]$ denotes the
+equivalence class of $x$) is a well defined linear isometry.
+
+(iii) Show that  $(X/\!\sim,\tau/\!\sim)$ is Hausdorff.
+
+(iv) If $(X,\tau)$ is compact, show that $(X/\!\sim,\tau/\!\sim)$
+is also compact.
+\end{exercise}
+\begin{exercise}\label{E;normal one}\label{C5.11} 
+In this exercise we discuss various 
+\emph{separation axioms} for topological spaces $(X,\tau)$.
+
+
+A topological space $(X,\tau)$
+is said to be $T_{0}$ if, given
+$a,\,b\in X$ with $a\neq b$,
+at least one of these statements is true.
+($\alpha$) There exists a $U\in\tau$ such that $a\in U$
+and $b\notin U$. ($\beta$) There exists a $V\in\tau$ such that $a\notin V$
+and $b\in V$. A topological space $(X,\tau)$ is called $T_{1}$
+if given
+$a,\,b\in X$ with $a\neq b$,
+at both of these statement are true.
+
+(i) Show that $(X,\tau)$ is $T_{1}$ if and only if 
+every singleton set $\{x\}$ is closed.
+
+(ii) Consider ${\mathbb N}$. If the elements of $\sigma_{0}$ are
+$\emptyset$ and sets of the form
+$\{m\in{\mathbb N}\,:\,m\geq n\}$ show that $\sigma_{1}$
+is a topology and $({\mathbb N},\sigma_{1})$ is $T_{0}$
+but not $T_{1}$.
+
+(iii) Consider ${\mathbb N}$. If the elements of $U\in\sigma_{1}$
+if and only if $A=\emptyset$ or ${\mathbb N}\setminus A$ is finite
+show that $\sigma_{1}$
+is a topology and $({\mathbb N},\sigma_{1})$ is $T_{1}$
+but not Hausdorff. (In this classification, Hausdorff spaces
+are
+called $T_{2}$.)
+
+(iv) Show that every $T_{1}$ normal space is Hausdorff
+but give an example of a normal space which is not
+Hausdorff. (Recall that a topological space is said to be
+normal if,
+given $A$ and $B$ non-empty disjoint closed sets,
+we can find disjoint open sets $U$ and $V$ such that
+$A\subseteq U$ and $B\subseteq V$.)
+
+\noindent[There are very small and simple examples.]
+
+(v) Carry out us much of the proof of Urysohn's lemma
+and the Tietze extension theorem as you need\footnote{Either
+do the whole thing as a revision exercise or just cast your eyes
+over your notes.}
+to show that Urysohn's lemma holds with the hypothesis `compact and Hausdorff'
+replaced by `normal' and the Tietze extension theorem
+holds in the following form:-
+
+If $Y$ is closed subset of a normal topological space
+$(X,\tau)$, then, given any bounded continuous real valued
+function $f$ on $Y$
+(where $Y$ has the subspace topology), we can find
+a bounded continuous real valued
+function $F$ on $X$ such that $F(y)=f(y)$ for all $y\in Y$.
+\end{exercise}
+\begin{exercise}\label{E;parallelepiped}\label{C5.12} 
+We work with a real 
+vector space to simplify the algebra but similar
+results can be obtained in the complex case.
+
+(i) Consider a real inner product space. 
+Obtain the formulae
+\[4\langle u,v\rangle=\|u+v\|_{2}^{2}-\|u-v\|_{2}^{2}\]
+and
+\[\|u+v\|_{2}^{2}+\|u-v\|_{2}^{2}
+=2\big(\|u\|_{2}^{2}+\|v\|_{2}^{2}\big).\]
+
+(ii) Suppose that $V$ is a real normed vector space
+such that
+\[\|u+v\|^{2}+\|u-v\|^{2}=2\big(\|u\|^{2}+\|v\|^{2}\big).\]
+Show that if we set
+\[p(u,v)=(\|u+v\|^{2}-\|u-v\|^{2})/4\]
+then
+\[p(u+w,v)=p(u,v)+p(w,v).\]
+
+\noindent[It may or may not be helpful to consider
+the parallelepiped associated with $u$, $v$ and $w$.]
+
+(iii) Continuing with the hypotheses and notation
+of (ii), show that 
+\[p(nu,v)=np(u,v)\] 
+for $n$ a strictly positive integer.
+Deduce that $p(\lambda u,v)=\lambda p(u,v)$ when $\lambda$ is rational.
+Show that $p$ is an inner product and $\|.\|$ is the norm associated 
+with $p$.
+\end{exercise}
+\begin{exercise}\label{C5.13}
+In some of the exercises we used metrics rather than norms.
+This exercise
+shows why the need may arise. 
+We work in $C^{\infty}([0,1])$.
+
+(i) Show that 
+$d(f,g)=\sum_{j=0}^{\infty}2^{-j}\min(1,\|f^{(j)}-g^{(j)}\|_{\infty})$
+is a metric. Show that $f_{n}^{(j)}\rightarrow f^{(j)}$
+uniformly on $[0,1]$ for each $j$ if and only if  $d(f_{n},f)\rightarrow 0$.
+Show that $d$ is a complete metric.
+
+(ii) The object of the rest of this question is to show that there is no norm
+with this property. To this end, suppose 
+that $\|.\|$ is a norm on $C^{\infty}([0,1])$.
+such that  $\|f_{n}-f\|\rightarrow 0$ implies $f_{n}^{(j)}\rightarrow f^{(j)}$
+uniformly on $[0,1]$ for each $j$. Show, by reductio ad absurdum, or otherwise,
+that there must exist $\epsilon_{j}>0$ with 
+the property that $\|f^{(j)}\|_{\infty}\geq 1$
+implies $\|f\|\geq\epsilon_{j}$.
+
+(iii) Show that we can find a sequence of $f_{n}\in C^{\infty}([0,1])$
+such that
+\begin{align*}
+\|f^{(j)}_{n}\|_{\infty}&\leq 2^{-n}\ \text{for $0\leq j\leq n-1$}\\
+\|f^{(n)}_{n}\|_{\infty}&\geq 2^{n}\epsilon_{n}^{-1}.
+\end{align*}
+Show that  $f_{n}^{(j)}\rightarrow f^{(j)}$
+uniformly on $[0,1]$ for each $j$ but $\|f_{n}\|\rightarrow \infty$.
+\end{exercise}
+\begin{exercise}\label{C5.14}
+Suppose that we have a sequence of metrics $d_{j}$ on a space $X$.
+
+(i) Show that
+\[d(x,y)=\sum_{j=1}^{\infty}
+2^{-j}\min\big(1,d_{j}(x,y)\big)\]
+is a metric on $X$ such that
+the identity map $\iota:(X,d)\rightarrow (X,d_{j})$ is continuous
+for each $j$.
+
+(ii) Show that if $\rho$ is a metric on $X$ such that
+the identity map $\iota:(X,\rho)\rightarrow (X,d_{j})$ is continuous
+for each $j$ then $\iota:(X,\rho)\rightarrow (X,d)$ 
+is continuous.
+\end{exercise}
+\begin{exercise}\label{C5.15}\label{E;anti}
+(This easy exercise discusses anti-isomorphism\footnote{And shows that
+there is not much to discuss}.)
+If $(U,+,.,{\mathbb C})$ is a vector space show that, if we write
+\[\lambda\bullet u=\lambda^{*}u,\]
+then $(U,+,\bullet,{\mathbb C})$ is a vector space. Show that
+$(U,+,.,{\mathbb C})$ and $(U,+,\bullet,{\mathbb C})$
+are algebraically anti-isomorphic.
+\end{exercise}
+
+\begin{exercise}\label{C5.16}\label{E;shift spectrum} 
+(i) (This is about difference equations in the sense of
+the 1A differential equations course.)
+If $\lambda\in{\mathbb C}$, $\lambda\neq 0$,
+find the general solution of the difference equation
+\[\lambda u_{n}-u_{n+1}=0 \ [n\in{\mathbb Z}].\]
+
+(ii) Find the general solution of the
+the difference equation.
+\[\lambda u_{n}-u_{n+1}=0\ [n\in{\mathbb Z},\ n\neq 0].\]
+(Note that there are two arbitrary constants.)
+
+(iii) Find the general solution of the
+the difference equation.
+\[
+\lambda u_{n}-u_{n+1}
+=\begin{cases}0&\text{if $n\neq 0$}\\
+1&\text{if $n=0$.}
+\end{cases}
+\]
+
+(iv) From now on we work in $l^{2}({\mathbb Z})$ the vector
+space of \emph{two sided} square summable sequences of complex numbers
+\[{\mathbf a}=(\dots,a_{-2},a_{-1},a_{0},a_{1},a_{2},\dots)\]
+with norm 
+\[\|{\mathbf a}\|_{2}
+=\left(\sum_{j=-\infty}^{\infty}|a_{j}|^{2}\right)^{1/2}.\]
+Show that, if $0<|\lambda|<1$,
+there is exactly one ${\mathbf u}\in l^{2}({\mathbb Z})$
+such that
+\[
+\lambda u_{n}-u_{n+1}
+=\begin{cases}0&\text{if $n\neq 0$}\\
+1&\text{if $n=0$},
+\end{cases}
+\] 
+and that the same is true if $|\lambda|>1$.
+
+(iv) Show that the shift operator $S$ defined by $S{\mathbf a}={\mathbf b}$
+with $b_{j}=a_{j+1}$ is a well defined continuous linear map from
+$l^{2}({\mathbb Z})$ to itself. Show that, if $|\lambda|\neq 1$,
+then $\lambda\notin\sigma(S)$.
+
+(v) Show that $1$ is not an eigenvalue of $S$. By considering
+${\mathbf v}$ with
+\[
+v_{n}=
+\begin{cases}N^{-1/2}&\text{if $1\leq n\leq N$}\\
+0&\text{otherwise,}
+\end{cases}
+\] 
+show that $1$ is an approximate eigenvalue of $S$.
+
+(vi) Show that
+\[\sigma(S)=\{\lambda\in{\mathbb C}\,:\,|\lambda|=1\},\]
+that all the points of $\sigma(S)$ are approximate eigenvalues
+and that none of them are eigenvalues.
+\end{exercise}
+\begin{exercise}\label{C5.17}\label{E;non-separable Hilbert}
+The object of this exercise is to exhibit a complete inner product
+space which is not separable.
+
+(i) Let $X$ be a non-empty set and $a:X\rightarrow{\mathbb R}$
+a function such that $a(x)\geq 0$ for all $x\in X$ and
+such that there exists a $K$ with
+\[\sum_{x\in F}a(x)\leq K\]
+whenever $F$ is a finite subset of $X$. Show that
+\[Y=\{x\in X\,:\,a(x)\neq 0\}\]
+is countable.
+
+Using the fact that the sum of a sequence of positive
+numbers is unaffected by the order of summation, this means
+that we can define
+\[\sum_{x\in X}a(x)=\sum_{x\in Y}a(x).\]
+
+Suppose $b:X\rightarrow{\mathbb R}$
+a function such that $b(x)\geq 0$ for all $x\in X$.
+In what follows we say that $\sum_{x\in X}b(x)$ converges
+if $\sum_{x\in F}b(x)\leq K$
+whenever $F$ is a finite subset of $X$ and we write
+\[\sum_{x\in X}b(x)=\sum_{b(x)\neq 0}b(x).\]
+
+(ii) If $X$ is a non-empty set and $a:X\rightarrow{\mathbb C}$,
+we say that $a\in l^{2}(X)$ if $\sum_{x\in X}|a(x)|^{2}$ converges.
+Show that  $l^{2}(X)$ is a vector space. Show further that
+\[\langle a,b\rangle=\sum_{x\in X}a(x)b(x)^{*}\]
+gives a well defined inner product on $l^{2}(X)$.
+
+(iii) Show that $l^{2}(X)$ is separable if and only if $X$
+is countable.
+
+(iv) Show that $l^{2}(X)$ is complete.
+\end{exercise}

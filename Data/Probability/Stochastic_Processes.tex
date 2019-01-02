@@ -1,0 +1,2901 @@
+\chapter{Stochastic Processes}
+
+\section{Discrete-time Stochastic Processes}
+
+\subsection{Stochastic processes and filtrations}
+
+Let $(\Omega,\sF,\pro)$ be a probability space and $(E,\sE)$ be a measurable space. (We will mostly consider $E =\R,\R^d,\C$). %Let $I \subseteq \R$ (i.e. $I = \Z$ or $I = [0,\infty)$) be the set of times on which we will define a process.
+
+\begin{definition}[stochastic process, discrete]
+A (discrete) stochastic process\index{stochastic process!discrete} in $E$, $X = (X_n)_{n\geq 0}$ is a sequence of random variables in $E$.
+\end{definition}
+
+\begin{remark}
+stochastic process is also called random process\index{random process!discrete}.
+\end{remark}
+
+\begin{definition}\label{def:integrable_stochastic_process_discrete}
+If $X_n$ is $\R$-valued, $X$ is integrable\index{integrable!stochastic process} if $X_n \in \sL^1(\Omega,\sF,\pro)$ for every $n\geq 0$, i.e. $\E\abs{X_n} <\infty$.
+\end{definition}
+
+\begin{definition}[filtration, discrete]\label{def:filtration_discrete}
+A filtration\index{filtration!discrete} is an increasing family of sub-$\sigma$-algebras of $\sF$, i.e., $\sF_{n}\subseteq \sF_{n+1}\subseteq \sF$, for all $n$. % indexed by $I$, $(\sF_t)_{t \in I}$, such that if $s \leq t$ then $\sF_s \subseteq \sF_t$.
+\end{definition}
+
+\begin{remark}
+We think of $\sF_n$ as `the information available at and before time $n$.'
+\end{remark}
+
+\begin{definition}\label{def:sigma_algebra_infinite_discrete}
+We define
+\be
+\sF_\infty = \bigvee_{n\geq 0} \sF_n = \sigma\bb{\bigcup_{n\geq 0} \sF_n}. %= \sigma (\sF_n:n\geq 0)
+\ee
+\end{definition}
+
+\begin{remark}
+$\sF_\infty\subseteq \sF$\footnote{proof needed.}.%\footnote{We need to check that if $\sF_\infty\subseteq \sF$.}Usually, we set 
+\end{remark}
+
+\begin{definition}[filtered probability space, discrete]
+If $(\sF_n)_{n\geq 0}$ is a filtration, we say that $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ is a filtered probability space\index{filtered probability space!discrete} (or f.p.s.).
+\end{definition}
+
+\begin{definition}[adapted process, discrete]\label{def:adapted_process_discrete}
+Let $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ be a filtered probability space. A stochastic process $X = (X_n)_{n\geq 0}$ is adapted to the filtration $(\sF_n)_{n \geq 0}$\index{adapted process} if $X_n$ is $\sF_n$-measurable for all $n\geq 0$. $(X_n)_{n\geq 0}$ is called adapted process (or non-anticipating process).
+\end{definition}
+
+\begin{remark}
+An adapted process is one that cannot `see into the future'.
+\end{remark}
+
+\begin{definition}[natural filtration, discrete]
+Let $(X_n)_{n\geq 0}$ be a stochastic process, and let $\sF^X_n = \sigma\bb{X_k, k \leq n}$. Then $\sF^X_n$ is the natural filtration\index{natural filtration!discrete} of $X$. It is the smallest filtration with respect to which $X$ is adapted.
+\end{definition}
+
+\subsection{Stopping times}
+
+\begin{definition}[Doob's stopping time, discrete]
+Let $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ be a filtered probability space. A stopping time\index{stopping time!discrete} with respect to the filtration $(\sF_n)_{n\geq 0}$ is a random variable $T:\Omega \to \Z^+\cup \bra{+\infty}$ such that $\bra{T \leq n} \in \sF_n$ for all $n$.
+\end{definition}
+%Let $T : \Omega \to I \cup \{+\infty\}$ be a random variable.
+
+
+\begin{example}\label{exa:stopping_time_discrete}
+\ben
+\item [(i)] Constant times are trivial stopping times.
+\item [(ii)] Let $X = (X_n)_{n\geq 0}$ be an adapted process taking values in $\R$. Let $A \in \sB(\R)$. The first entrance time to $A$ is
+\be
+T_A = \inf\bra{n \geq 0 : X_n(\omega) \in A}
+\ee
+with the convention that $\inf(\emptyset) = \infty$, so that $T_A = \infty$, if $X$ never enters $A$. This is a stopping time, since
+\be
+\bra{T_A \leq n} = \bigcup_{k\leq n} \bra{X_k \in A} \in \sF_n.
+\ee
+
+\item [(iii)] The last exit time though, $L_A = \sup\bra{n \leq N: X_n\in A}$ for some $N\in \R$, is not a stopping time in general.
+\een
+\end{example}
+
+
+%\begin{example}.
+%Let $I = \Z^+$, $(X_n)_{n \geq 0}$ be a random process, and $\sF_n = \sF^X_n$. Let $A$ be a Borel subset of $\R$ and $T_A(\omega) = \inf \{n \geq 0 : X_n(\omega) \in A\}$ (with convention $\inf \bra{\emptyset} = \infty$). Then $T_A$ is a stopping time since
+%\be
+%\{T_A \leq n\} = \bigcup_{m\leq n} \{X_m \in A\}
+%\ee
+%and $\bra{X_m \in A}$ are $\sF_n$-measurable. $T_A$ is known as the first entrance time into $A$ and is an important example of a stopping time. However, $L_A(\omega ) = \sup\{N \geq n \geq 0: X_n(\omega) \in A\}$ is not a stopping time in general.
+%\end{example}
+
+\begin{proposition}\label{pro:stopping_time_discrete_equal}
+$T$ is a stopping time if and only if $\bra{T=n} \in \sF_n$ for all $n$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Indeed, if $\bra{T \leq n}\in \sF_n$ for all $n$, $\bra{T=n} = \bra{T\leq n}\bs \bra{T\leq n-1} \in \sF_n$.
+
+Conversely, if $\bra{T = n} \in \sF_n$ for all $n$. $\bra{T\leq n} = \bigcup_{k\leq n} \bra{T=k} \in \sF_n$.%Note that constant random variables $T \equiv t$ for some $t \in I$ are stopping times.
+\end{proof}
+
+\begin{proposition}\label{pro:stopping_time_discrete_strictly_smaller}
+$T$ is stopping time if and only if $\bra{T<n}\in \sF_{n-1}$ for all $n$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Obviously, if $T$ is a stopping time, then $\bra{T<n} = \bra{T\leq n-1} \in \sF_{n-1}$.
+
+Conversely, $\bra{T\leq n} = \bra{T<n+1} \in \sF_{n}$ for all $n$ implie that $T$ is a stopping time.
+\end{proof}
+
+
+
+\begin{proposition}\label{pro:stopping_time_property_discrete}
+Let $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ be a filtered probability space. Let $S$, $T$, and $(T_n)_{n \geq 0}$ all be stopping times. Then the following are stopping times\footnote{Note that in discrete time everything follows straight from the definitions. But when one considers continuous time processes, then right continuity of the filtration is needed to ensure that the limits are indeed stopping times. See Proposition \ref{pro:stopping_time_strictly_smaller_than_t_measurable}}
+\beast
+\text{(i)}\ S \land T,\quad\quad \text{(ii)}\ S\vee T,\quad\quad \text{(iii)}\ S+T,\quad\quad \text{(iv)}\ \sup_{n\geq 0} T_n,\quad\quad \text{(v)}\ \inf_{n\geq 0} T_n, \quad\quad \text{(vi)}\ \liminf_n T_n, \quad\quad\text{(vii)}\ \limsup_n T_n.
+\eeast
+\end{proposition}
+
+\begin{remark}
+$S-T$ is not.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+\ben 
+\item [(i)] $\bra{S\land T \leq n} = \underbrace{\bra{S\leq n}}_{\in \sF_n}\cup \underbrace{\bra{T\leq n}}_{\in \sF_n} \in \sF_n$ for all $n$.
+\item [(ii)] $\bra{S\vee T \leq n} = \underbrace{\bra{S\leq n}}_{\in \sF_n}\cap \underbrace{\bra{T\leq n}}_{\in \sF_n} \in \sF_n$ for all $n$.
+
+\item [(iii)] For $n\in [0,\infty)$, by Proposition \ref{pro:stopping_time_discrete_equal} and \ref{pro:stopping_time_discrete_strictly_smaller},
+\beast
+& & \bra{S+T > n} \\
+& = & \bra{S=0,S+T>n} + \bra{0<S<n,S+T>n} + \bra{S\geq n,S+T>n} \\
+& = & \bra{S=0}\cap \bra{T>n} + \bigcup_{k\in [0,n),k\in \Z} \underbrace{\bra{k<S<n}\cap\bra{T>n-k}}_{\in \sF_n} + \bra{S\geq n,T=0,S+T>n} + \bra{S\geq n,T>0,S+T>n} \\
+& = & \bra{\underbrace{\bra{S=0}\cap \bra{T>n}}_{\in \sF_n} + \underbrace{\bigcup_{k\in [0,n),k\in \Z} \bra{k<S<n}\cap\bra{T>n-k}}_{\in \sF_n} + \underbrace{\bra{S> n}\cap \bra{T=0}}_{\in \sF_n} + \underbrace{\bra{S\geq n}\cap \bra{T>0}}_{\in \sF_n} } \in \sF_n .
+\eeast
+
+\item [(iv)] If $\sup_n T_n \in [0,\infty]$
+\be
+\bra{\sup_n T_n \leq k} = \bigcap_n\underbrace{\bra{T_n \leq k}}_{\in \sF_k} \in \sF_k.
+\ee
+
+\item [(v)] If $\inf_n T_n \in [0,\infty)$
+\be
+\bra{\inf_n T_n < k} = \bra{\inf_n T_n \geq k}^c = \bb{\bigcap_n \bra{T_n \geq k}}^c = \bigcup_n \bb{ \bb{\bra{T_n < k}}^c}^c =\bigcup_n \underbrace{\bra{T_n < k}}_{\in \sF_k} \in \sF_k.
+\ee
+
+\item [(vi)] By (iv) and (v),
+\be
+\bra{\limsup_n T_n \leq k}= \bra{\inf_{n}\bb{\sup_{m\geq n}T_m} \leq k} \in \sF_k.
+\ee
+
+\item [(viii)]
+\be
+\bra{\liminf_n T_n \leq k}= \bra{\sup_{n}\bb{\inf_{m\geq n}T_m} \leq k} \in \sF_k.
+\ee%where $\sup_{m\geq n}T_m$ and $\inf_{m\geq n}T_m$ are stopping time sequences.
+\een%\cite{Klenke_2008}.$P_{193}$
+\end{proof}
+
+\begin{definition}\label{def:sigma_algebra_stopping_time_discrete}
+Let $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ be a filtered probability space. Let $T$ be stopping time with respect to $(\sF_n)_{n\geq 0}$, and
+\be
+\sF_T = \bra{A \in\sF : A\cap \{T \leq n\} \in \sF_n \text{ for all }n}.
+\ee
+
+This defines a $\sigma$-algebra $\sF_T$, called the $\sigma$-algebra of measurable events before $T$\index{sigma-algebra of measurable events before stopping time@$\sigma$-algebra of measurable events before stopping time!discrete}.
+\end{definition}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Since $\bra{\emptyset \cap \bra{T\leq n}} = \bra{\emptyset} \in \sF_n$, $\emptyset \in \sF_T$.
+\item [(ii)] If $A\in \sF_T$, $A \cap \bra{T\leq n} \in \sF_n$. Since $T$ is stopping time, $\bra{T\leq n}\in \sF_n$. Thus, since $\sF_n$ is $\sigma$-algebra
+\be
+A^c \cap \bra{T\leq n} = \bra{T\leq n} \bs \bb{A \cap \bra{T\leq n}} \in \sF_n.
+\ee
+\item [(iii)] For a sequence $A_m \in \sF_T$, we have $A_m \cap \bra{T\leq n}\in \sF_n$ for all $n$. Thus, since $\sF_n$ is $\sigma$-algebra
+\be
+\bb{\bigcup_m A_m} \cap \bra{T\leq n} = \bigcup_m \bb{A_m \cap \bra{T\leq n}} \in \sF_n  \ \ra \ \bigcup_m A_m \in \sF_T.
+\ee
+\een
+
+Thus, $\sF_T$ is a $\sigma$-algebra.
+\end{proof}
+
+\begin{remark}
+Intuitively $\sF_T$ is the information available at time $T$.%It is easy to check that if $T = n$, then $T$ is a stopping time and $\sF_T = \sF_n$.
+\end{remark}
+ 
+ 
+\begin{proposition}
+Let $T$ be stopping time with respect to $(\sF_n)_{n\geq 0}$. Then $T$ is $\sF_T$-measurable.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+It suffices to show that $\bra{T\leq n}\in \sF_T$ for each $n\in [0,\infty)$. First we have
+\be
+\bra{T\leq n}\cap \bra{T\leq m} = \left\{
+\ba{ll}
+\bra{T\leq n} (\in \sF_n\subseteq \sF_m) \quad\quad & n\leq m \\
+\bra{T\leq m}(\in \sF_m) & n> m
+\ea
+\right. \ \ra\ \bra{T\leq n}\cap \bra{T\leq m} \in \sF_m.
+\ee 
+
+Then by definition of $\sigma$-algebra of stopping time, we have that $\bra{T\leq n}\in \sF_T$.
+\end{proof}
+
+
+\begin{proposition}
+Suppose the stopping time $T(\omega)=n$ for all $\omega \in \Omega$ with fixed $n\in [0,\infty)$. Then $\sF_T = \sF_n$. 
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Suppose that $A\in \sF_n$ and then $A\in \sF$. Thus, for $m\in [0,\infty)$, 
+\be
+A\cap \bra{T\leq m} = \left\{
+\ba{ll}
+A\ (\in \sF_n\subseteq \sF_m) \quad\quad & n\leq m \\
+\emptyset & n>m 
+\ea\right. \ \ra\ A\cap \bra{T\leq m} \in \sF_m \ \ra\ A\in \sF_T \ \ra\ \sF_n\subseteq \sF_T.
+\ee
+
+Conversely, suppose that $A\in \sF_T$. Then
+\be
+A = A \cap \bra{T\leq n} \in \sF_n.
+\ee
+
+Thus, $\sF_T\subseteq \sF_n$ and therefore $\sF_n= \sF_T$.
+\end{proof}
+
+
+
+ 
+\begin{proposition}
+Let $T$ be stopping time and $A\in \sF_T$. Then for $n\in [0,\infty)$,
+\ben
+\item [(i)] $A\cap \bra{T<n} \in \sF_n$.
+\item [(ii)] $A\cap \bra{T=n}\in \sF_n$.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] By definition $A\cap \bra{T\leq n} \in \sF_n$. Also, by Proposition \ref{pro:stopping_time_discrete_strictly_smaller}, $\bra{T<n}\in \sF_{n-1}$ and $\bra{T<n}\subseteq \bra{T\leq n}$. Hence
+\be
+A\cap \bra{T<n} = \bb{A\cap \bra{T\leq n}}\cap \bra{T<n} \in \sF_n.
+\ee
+
+\item [(ii)] Similarly, $\bra{T=n} \subseteq \bra{T\leq n} \in \sF_n$. Hence
+\be
+A\cap \bra{T=n} = \bb{A\cap \bra{T\leq n}} \cap \bra{T=n} = \bb{A\cap \bra{T\leq n}} \cap \bb{\underbrace{\bra{T\leq n}}_{\in \sF_n} \bs\underbrace{\bra{T<n}}_{\in \sF_n}} \in \sF_n. 
+\ee
+\een
+\end{proof}
+
+
+
+\begin{proposition}\label{pro:sigma_algebra_stopping_time_increasing}
+Let $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ be a filtered probability space. If $S$ and $T$ are stopping times such that $S \leq T$ then $\sF_S \subseteq \sF_T$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Since $S$ and $T$ are stopping times, then $\bra{S \leq n}\in \sF_n$, $\bra{T \leq n}\in \sF_n$ with $\bra{T\leq n} \subseteq \bra{S\leq n}$ for all $n$. $\forall A \in \sF_S$, we have for all $n$, $A \cap \bra{S \leq n} \in \sF_n$. Then
+\be
+A \cap \bra{T \leq n} = A \cap \bb{\bra{S \leq n} \cap \bra{T \leq n}} = \underbrace{\bb{A \cap \bra{S \leq n}}}_{\in \sF_n} \cap \underbrace{\bra{T \leq n}}_{\in \sF_n} \in \sF_n.
+\ee
+
+Thus, $A\in \sF_T$.
+%\footnote{need proof}
+\end{proof}
+
+
+
+\begin{proposition}
+Let $S,T$ be two stopping times. Then each of the following events is in $\sF_S$ and $\sF_T$:
+\be
+\text{(i)}\ \bra{S<T},\quad\text{(ii)}\ \bra{S=T},\quad \text{(iii)}\ \bra{S>T}, \quad \text{(iv)}\  \bra{S\leq T},\quad\text{(v)}\ \bra{S\geq T}.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] First, $\bra{S<T}\in \sF$ since it can be expressed by 
+\be
+\bra{S<T} = \bigcup_{k\in \N} \bb{\underbrace{\bra{S\leq k}}_{\in \sF}\cap \underbrace{\bra{T>k}}_{\in \sF}}.
+\ee
+
+Then for $n\in [0,\infty)$,
+\be
+\bra{S<T} \cap \bra{T\leq n} = \bra{S<T\leq n} = \bigcup_{k\in \N,k< n} \bra{S\leq k}\cap \bra{k<T\leq n} \in \sF_n \ \ra \ \bra{S<T}  \in \sF_T.
+\ee
+\be
+\bra{S<T} \cap \bra{S\leq n} = \bra{S<T\leq n}  \cup \bra{S\leq n<T} = \bb{\bigcup_{k\in \N,k< n} \bra{S\leq k}\cap \bra{k<T\leq n}} \cup \bb{\bra{S\leq n}\cap \bra{T\leq n}^c} \in \sF_n \nonumber
+\ee
+which implies $\bra{S<T}  \in \sF_S$.
+
+\item [(ii)] Similarly, $\bra{S=T}\in \sF$ and 
+\be
+\bra{S=T}\cap \bra{T\leq n} = \bra{S=T\leq n} = \bigcup_{k\in \N,k<n} \bra{S= k}\cap \bra{k=T\leq n} \in \sF_n \ \ra \ \bra{S=T}  \in \sF_T.
+\ee
+
+Then switching $S$ and $T$ we can have $\bra{S=T}  \in \sF_S$.
+
+\item [(iii)] Switch the argument of $S$ and $T$ in (i).
+
+\item [(iv)] $\bra{S\leq T} = \bra{S<T}\cup\bra{S=T}$ in $\sF_S$ and $\sF_T$.
+\item [(v)] Switch argument of $S$ and $T$ in (iv).
+\een
+\end{proof}
+
+
+\subsection{Stopped process}
+
+\begin{definition}[stopped process]\label{def:stopped_process_discrete}
+For a process $X$, we set $X_T (\omega) = X_{T(\omega)}(\omega)$, whenever $T(\omega) < \infty$.
+
+We also define the stopped process\index{stopped process!discrete} $X^T$ by $X^T_n = X_{T\land n}$.
+\end{definition}
+
+
+
+\begin{proposition}
+Let $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ be a filtered probability space. Let $S$ be stopping time and let $X = (X_n)_{n\geq 0}$ be an adapted process. ($X: \Omega \to E$)
+\ben
+\item [(i)] $X_T\ind_{\bra{T <\infty}}$ is an $\sF_T$-measurable random variable.
+\item [(ii)] $X^T$ is adapted.
+\item [(iii)] If $X$ is integrable, then $X^T$ is integrable.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] $\forall A \in \sE$. Then since $X$ is adapted ($\bra{X_n \in A} \in \sF_n$) and $\bra{T = m} = \bra{T \leq m} \bs \bigcup_{k\leq m} \bra{T \leq k} \in \sF_m$.
+\be
+\bra{X_T\ind_{\bra{T < \infty}} \in A} \cap \bra{T \leq n} = \bigcup^n_{m=1} \bra{X_m(\omega) \in A} \cap \bra{T(\omega)=m} \in \sF_n
+\ee
+
+\item [(ii)] For every $n$ we have that $X_{T\land n}$ is $\sF_{T\land n}$-measurable since $X$ is adapted. Hence, $X_{T\land n}$ is $\sF_n$-measurable since $T \land n \leq n$ by Proposition \ref{pro:stopping_time_property_discrete} and Proposition \ref{pro:sigma_algebra_stopping_time_increasing} (constant $n$ is also a stopping time).
+\item [(iii)] We have $X_n^T = X_n \ind_{\bra{T>n}} + \sum_{m\leq n}X_m \ind_{\bra{T=m}}$. Thus, since $X$ is integrable, for every $n$,
+\be
+\E\abs{X_n^T} = \E\abs{X_n^T} \leq \E\abs{X_n \ind_{\bra{T>n}}} + \sum_{m\leq n}\abs{X_m} \ind_{\bra{T=m}} \leq \E\abs{X_n} + \sum_{m\leq n}\abs{X_m} < \infty.
+\ee
+
+%\be
+%\E \abs{X_{T\land n}} =  \E\bb{\sum^{n-1}_{m=0} \abs{X_m} \ind_{\bra{T = m}} } + \E\bb{\sum^\infty_{m=n} \abs{X_n} \ind_{\bra{T = m}}} \leq \sum^n_{m=0} \E\abs{X_n} < \infty.
+%\ee
+
+\een
+\end{proof}
+
+\section{Branching process}
+
+As an example of conditional expectations and of generating functions we will consider a model of population growth and extinction known as the Bienaym\'e-Galton-Watson process (branching process).
+
+\begin{definition}[branching process\index{branching process}]\label{def:branching_process}
+Consider a sequence of random variables $X_0,X_1,\dots$, where $X_n$ represents the number of individuals in the $n$th generation. We will assume that the population is initiated by one individual, take $X_0 \equiv 1$, and
+when he dies he is replaced by $k$ individuals with probability $p_k$, $k = 0, 1, 2, \dots$. These individuals behave independently and identically to the parent individual, as do those in subsequent generations.
+
+The number in the $(n+1)$st generation, $X_{n+1}$, depends on the number in the $n$th generation and is given by
+\be X_{n+1} = \left\{\ba{ll}
+Y^n_1 + Y^n_2 + \dots + Y^n_{X_n} \quad\quad & X_n \geq 1,\\
+0 & X_n = 0. \ea\right.
+\ee
+
+Here $\{Y^n_j : n \geq 1, j \geq 1\}$ are independent, identically distributed random variables with $\pro(Y^n_j = k) = p_k$, for $k \geq 0$ and $Y^n_j$ represents the number of offspring of the $j$th individual in the
+$n$th generation, $j \leq X_n$.
+
+Additionally, we have two assumptions:
+
+\ben
+\item [(i)] $p_0 > 0$. It means that the population can die out (extinction) since in each generation there is positive probability that all individuals have no offspring.
+
+\item [(ii)] $p_0 + p_1 < 1$. It means that the population may grow, there is positive probability that the next generation has more individuals than the present one.
+\een
+\end{definition}
+
+\begin{definition}[probability generating function of $X_n$]\label{def:probability_generating_function_branching}
+Now let
+\be
+G(z) = \sum^\infty_{k=0} p_kz^k = \E \bb{z^{X_1}}\,\qquad G_n(z) = \E \bb{z^{X_n}},\qquad \text{for }n \geq 1,
+\ee
+so that $G_1 = G$.
+\end{definition}
+
+\begin{theorem}
+Let $(X_n)_{n\geq 0}$ be a branching process. For all $n \geq 1$, \be G_{n+1}(z) = G_n (G(z)) = G(\dots (G(z)) \dots) = G(G_n(z)) \ee.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Note that $Y^n_1, Y^n_2 , \dots$ are independent of $X_n$, so that by total law of probability (Proposition \ref{pro:conditional_expectation_elementary_event}),
+\beast G_{n+1}(z) & = & \E\bb{z^{X_{n+1}}} = \sum^\infty_{k=0} \E \bb{z^{X_{n+1}} |X_n = k} \pro (X_n = k) = \sum^\infty_{k=0} \E\bb{z^{Y^n_1 + \dots+Y^n_k}|X_n = k}\pro (X_n = k) \\
+& = & \sum^\infty_{k=0} \E\bb{z^{Y^n_1 + \dots+Y^n_k}}\pro (X_n = k) = \sum^\infty_{k=0} (G(z))^k p_k  =  \E\bb{(G(z))^{X_n}} = G_n (G(z)). \eeast
+
+Similary, we have $G_n (G(z)) = G (G_n(z))$.
+\end{proof}
+
+\begin{corollary}
+Let $(X_n)_{n\geq 0}$ be a branching process. For $m = \E X_1 = \sum^\infty_{k=1} k p_k$ and $\sigma^2 = \var X_1 = \sum^\infty_{k=0} (k - m)^2 p_k$, then for $n \geq 1$, we have
+
+\be \E X_n = m^n,\quad\quad \var X_n = \left\{\ba{ll}
+\frac{\sigma^2m^{n-1} (m^n - 1)}{m- 1} \quad\quad & m \neq 1,\\
+n\sigma^2 & m=1. \ea\right. \ee
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+Differentiating $G_n(z) = G_{n-1}(G(z))$ to obtain $G_n'(z) = G'_{n-1}(G(z))G'(z)$ and letting $z \ua 1$ (so $G(z) \ua 1$ accordingly), by Theorem \ref{thm:pgf_moment} it follows that
+
+\be \E (X_n) = m\E (X_{n-1}) = \dots = m^n\E (X_0) = m^n, \ee
+since $X_0 = 1$.
+
+Differentiating $G_n(z)$ a second time gives
+
+\be G''_n(z) = G''_{n-1} (G(z)) (G'(z))^2 + G'_{n-1} (G(z))G''(z), \ee
+
+and letting $z \ua 1$ again we have
+
+\be \E (X_n (X_n - 1)) = m^2 \E (X_{n-1} (X_{n-1} - 1)) + \bb{\sigma^2 + m^2 - m} \E (X_{n-1}). \ee
+
+We then have, using the fact that $\E X_n = m^n$, \beast
+\var (X_n) & = & \E (X_n(X_n - 1)) + \E (X_n) - (\E X_n)^2\\
+& = & m^2\E (X_{n-1}(X_{n-1} - 1)) + \bb{\sigma^2 + m^2 - m}\E (X_{n-1}) + m^n - m^{2n} \\
+& = & m^2\bb{\var (X_{n-1}) - \E (X_{n-1}) + (\E X_{n-1})^2} + \bb{\sigma^2 + m^2} m^{n-1} - m^{2n}\\
+& = & m^2\var (X_{n-1}) + \sigma^2 m^{n-1}. \eeast Iterating this, we see that \beast
+\var (X_n) & = & m^2\var (X_{n-1}) + \sigma^2 m^{n-1} = m^4\var (X_{n-2}) + \sigma^2 \bb{m^{n-1} + m^n} = \dots \\
+& = & m^{2n}\var (X_0) + \sigma^2 \bb{m^{n-1} + \dots + m^{2n-2}}\\
+& = & \sigma^2 \bb{m^{n-1} + \dots + m^{2n-2}},\quad\quad \text{since $\var (X_0) = 0$ because $X_0 = 1$}, \eeast and then the result may be obtained immediately.
+\end{proof}
+
+\begin{definition}[extinction of branching process]
+Let $(X_n)_{n\geq 0}$ be a branching process. If $X_n = 0$ for some $n$, then we say that the branching process get extincted.
+\end{definition}
+
+\begin{theorem}
+For branching process $(X_n)_{n\geq 0}$, its extinction probability $q$ is the smallest positive root of the equation $G(z) = z$. When $m$, the mean number of offspring per individual, satisfies $m \leq 1$ then $q = 1$,
+when $m
+> 1$ then $q < 1$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Notice that $X_n = 0$ implies that $X_{n+1} = 0$ so that if we let $A_n = \bra{X_n = 0}$, the event that the population is extinct at or before generation $n$, we have $A_n \subseteq A_{n+1}$ and $A = \bigcup^\infty_{n=1}
+A_n$ represents the event that extinction ever occurs. Notice that $\pro(A_n) = G_n(0)$ and by the continuity property of probabilities on increasing events (fundamental property of measure, Lemma
+\ref{lem:measure_increasing_sequence}) we see that the extinction probability is \be q = \pro(A) = \lim_{n\to\infty} \pro (A_n) = \lim_{n\to\infty} G_n(0) = \lim_{n\to\infty} \pro \bb{X_n = 0}. \ee
+
+The fact that the extinction probability $q$ is well defined follows from the above and since $G$ is continuous and $q = \lim_{n\to \infty}G_n(0)$ we have
+
+\be G\bb{\lim_{n\to\infty} G_n(0)} = \lim_{n\to\infty}G_{n+1}(0) \ee,
+
+so that $G(q) = q$, that is $q$ is a root of $G(z) = z$, note that 1 is always a root since $G(1) = \sum^\infty_{r=0} p_r = 1$.
+
+Let $\alpha > 0$ be any positive root of $G(z) = z$, so that because $G$ is increasing, $\alpha = G(\alpha) > G(0)$, and repeating $n$ times we have $\alpha > G_n(0)$, whence $\alpha \geq \lim_{n\to\infty} G_n(0) = q$, so
+that we must have $\alpha\geq q$, that is, $q$ is the smallest positive root of $G(z) = z$.
+
+Now let $H(z) = G(z)-z$ (which is continuous and differentiable on $(0,1)$), then
+
+\be H'' = \sum^\infty_{r=0} r(r-1)p_rz^{r-2} > 0,\qquad 0 < z < 1 \ee
+
+provided $p_0 + p_1 < 1$, so the derivative of $H$ is strictly increasing in the range $0 < z < 1$, hence $H$ can have at most one root different from 1 in $[0, 1]$ with the following two cases.% (Rolle's Theorem (Theorem \ref{thm:rolle_analysis})).
+
+%Note. The following two figures illustrate the two situations $m \leq 1$ and $m > 1$, the dotted lines illustrate the iteration $G_{n+1}(0) = G(G_n(0))$ tending to the smallest positive root, $q$.
+
+\centertexdraw{
+
+\drawdim in
+
+\def\bdot {\fcir f:0 r:0.02 }
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04 \linewd 0.01 \setgray 0
+
+\move (-0.2 0) \avec(2 0) \move (0 -0.2) \avec(0 1.8)
+
+\move (0 0) \lvec (1.8 1.8) \move (0 0.6) \clvec (0.9 1)(1.3 1.3)(1.6 1.6)
+
+\htext (-0.1 -0.15){0} \htext (1.6 -0.15){1} \htext (0.55 -0.2){$m\leq 1$, $q=1$} \htext (1.9 -0.15){$z$} \htext (-0.4 0.45){$G(0)$}
+
+\lpatt (0.05 0.05)
+
+\move (1.6 1.6) \lvec (1.6 0)
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lpatt (1 0)
+
+\move (2.8 0) \avec(5 0) \move (3 -0.2) \avec(3 1.8)
+
+\move (3 0) \lvec (4.8 1.8) \move (3 0.6) \clvec (4.2 0.9)(4.5 1.4)(4.6 1.6)
+
+\htext (2.9 -0.15){0} \htext (4.6 -0.15){1} \htext (3.55 -0.2){$m>1$, $q<1$} \htext (4.9 -0.15){$z$} \htext (2.6 0.45){$G(0)$}
+
+\lpatt (0.05 0.05) \move (4 1) \lvec (4 0) \move (4.6 1.6) \lvec (4.6 0)
+
+\move(0 2) }
+
+Firstly, suppose that $H$ has no root in $[0, 1)$ and $q=1$ in this case. Since $H(0) = p_0 > 0$ we must have $H(z) > 0$ for all $0 < z < 1$, so $H(1) - H(z) < H(1) = 0$ and so
+
+\be H'(1^-) = \lim_{z\ua 1} \frac{H(1) - H(z)}{1 - z} \leq 0 \ \ra \ G'(1^-) - 1 \leq 0\ \ra\  m = G'(1^-) \leq 1. \ee
+
+Next, suppose that $H$ has a unique root $r$ in $[0, 1)$ and $q<1$ in this case. Then $H'$ must have a root in $[r, 1)$ (by Rolle's Theorem, Theorem \ref{thm:rolle_analysis} as $H$ is continuous and differentiable), that is
+$H'(z) = G'(z)-1 = 0$ for some $z$, $r \leq z < 1$. The function $G'$ is strictly increasing (since $p_0 + p_1 < 1$) so that $m = G'(1^-) > G'(z) = 1$. Thus we see that $m \leq 1$, if and only if, $q = 1$.
+\end{proof}
+
+
+\section{Random walks}
+
+\begin{definition}[random walk\index{random walk!one-dimensional}]\label{def:random_walk_one_dimensional}
+Let $X_1,X_2,\dots$ be i.i.d. random variables and set
+
+\be S_n = S_0 + \sum^n_{k=1}X_k, \quad n \geq 1 \ee where $S_0$ is a constant then $\bb{S_n}_{n \geq 0}$ is known as a (one-dimensional) random walk.
+
+When each $X_i$ just takes the two values +1 and -1 with probabilities $p$ and $q = 1 - p$, respectively, it is a simple random walk\index{random walk!simple}\footnote{It goes also by the title of the Bernoulli walk, Rademacher walk, etc.} and further when $p = q = \frac 12$ it is a simple symmetric
+random walk\index{random walk!simple symmetric} (see Example \ref{exa:random_walk_simple_symmetric_single_boundary}, \ref{exa:random_walk_simple_symmetric_double_boundaries}).
+\end{definition}
+
+In the following context, we will consider simple random walks.
+
+\subsection{Symmetric random walks}
+
+At any step of simple random walk construction, a lattice path can go up or down. Therefore, there are $2^n$ paths of length $n$. Consequently, with probability $2^{-n}$, the first $n$ steps of our simple random walk $(S_k)_{k\geq 0}$ are equal to a given path of length $n$ that starts from $(0,0)$, where $S_0 = 0$. That is, all paths that start from $(0,0)$ and have length $n$are equally likely. Therefore, if $\Pi$ is a property of paths of length $n$, then
+\be
+\pro\bb{(S_k)^n_{k=0}\in \Pi} = \frac{\text{\# of paths of length $n$ that start from (0,0) and are in $\Pi$}}{2^n}.
+\ee
+
+Thus, any probabilistic problem for the simple random walk has a combinatorial variant, and vice versa.
+
+\begin{definition}\label{def:paths_count_simple_symmetric_random_walk}
+For the simple symmetric random walk $(S_n)_{n\geq 0}$. Let $N_{n,x}$ denote the number of paths that go from $(0,0)$ to $(n,x)$.
+
+An elementary computation shows that
+\be
+N_{n,x} = \left\{\ba{ll}
+\binom{n}{(n+x)/2},\quad\quad & n+x\text{ is even},\\
+0 & \text{otherwise}.
+\ea\right.
+\ee
+\end{definition}
+
+Another important fact is the `reflection principle' of D\'esir\'e Andr\'e (1887) (see \footnote{Andr\'e D\'esir\'e, Solution directe du probl\`em r\'esolu par M. Bertrand, Comptes Rendus Acad Sci Paris, 105, 436-437, 1887})
+
+\begin{theorem}[reflection principle\index{reflection principle!simple random walk}]\label{thm:reflection_principle_simple_symmetric_random_walk}
+Let $(S_n)_{n\geq 0}$ be a simple symmetric random walk. Suppose $n,x,y>0$ and $k\geq 0$ are integers. Let $M$ denote the number of paths that go from $(k,x)$ to $(k+n,y)$ and hit zero at some point. Then $M$ is equal to the number of paths that go from $(0,-x)$ to $(n,y)$. That is, $M=N_{n,x+y}$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $T$ denote the first instant when a given path from $(k,x)$ to $(k+n,y)$ crosses zero. Reflect the pre-$T$ portion of this path to obtain a path that goes from $(k,-x)$ to $(k+n,y)$. 
+
+\centertexdraw{
+
+\drawdim in
+
+\def\bdot {\fcir f:0 r:0.03 }
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04 \linewd 0.01 \setgray 0
+
+\move (-0.2 0) \avec(5 0) \move (0 -1.5) \avec(0 1.5)
+
+\move (0 0.6) \bdot \move (0.2 0.3) \bdot \move (0.4 0.6) \bdot \move (0.6 0.9) \bdot \move (0.8 0.6) \bdot \move (1 0.3) \bdot \move (1.2 0.6) \bdot \move (1.4 0.9) \bdot \move (1.6 0.6) \bdot \move (1.8 0.9) \bdot \move
+(2 1.2) \bdot \move (2.2 0.9) \bdot \move (2.4 1.2) \bdot \move (2.6 0.9) \bdot \move (2.8 0.6) \bdot \move (3 0.3) \bdot \move (3.2 0) \bdot \move (3.4 -0.3) \bdot \move (3.6 -0.6) \bdot \move (3.8 -0.9) \bdot \move (4 -0.6)
+\bdot \move (4.2 -0.3) \bdot \move (4.4 0) \bdot \move (4.6 0.3) \bdot \move (4.8 0.6) \bdot
+
+%\htext (1.4 -0.15){$T_a$} \htext (3.8 -0.15){$T_0$} \htext (-0.15 1.45){$x$} 
+\htext (-0.25 -0.6){$-x$}\htext (-0.2 0.5){$x$} \htext (4.9 0.5){$S_n$} \htext (4.8 -0.15){$n$}
+
+\move (0 0.6) \lvec (0.2 0.3) \lvec (0.4 0.6) \lvec (0.6 0.9) \lvec (0.8 0.6) \lvec (1 0.3) \lvec (1.2 0.6) \lvec (1.4 0.9) \lvec (1.6 0.6) \lvec (1.8 0.9) \lvec (2 1.2) \lvec (2.2 0.9) \lvec (2.4 1.2) \lvec (2.6 0.9) \lvec
+(2.8 0.6) \lvec (3 0.3) \lvec (3.2 0) \lvec (3.4 -0.3) \lvec (3.6 -0.6) \lvec (3.8 -0.9) \lvec (4 -0.6) \lvec (4.2 -0.3) \lvec (4.4 0) \lvec (4.6 0.3) \lvec (4.8 0.6)
+
+
+\lpatt (0.05 0.05)
+
+\move (0 -0.6) \lvec (0.2 -0.3) \lvec (0.4 -0.6) \lvec (0.6 -0.9) \lvec (0.8 -0.6) \lvec (1 -0.3) \lvec (1.2 -0.6) \lvec (1.4 -0.9) \lvec (1.6 -0.6) \lvec (1.8 -0.9) \lvec (2 -1.2) \lvec (2.2 -0.9) \lvec (2.4 -1.2) \lvec (2.6 -0.9) \lvec
+(2.8 -0.6) \lvec (3 -0.3) \lvec (3.2 0)
+
+%\move (0 1.5) \lvec(5 1.5) %\move (1.4 1.4) \lvec (1.4 0)
+
+\move (0 1.6)
+
+}
+
+This map is an invertible operation, therefore $M$ is equal to the number of paths that go from $(k,-x)$ to $(k+n,y)$. It is easy to see that $M$ does not depend on $k$.
+\end{proof}
+
+\begin{corollary}
+Suppose $\bb{S_n}_{n\geq 0}$ is a simple symmetric random walk and $a\in \Z^+$. Then
+\be
+\pro\bb{\max_{0\leq k\leq n}S_k \geq a} = 2\pro\bb{S_n \geq a} = \pro\bb{\abs{S_n}\geq a}.
+\ee
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed. see CAM Part IB past paper.}
+\end{proof}
+
+
+
+\begin{theorem}[ballot problem\index{ballot problem}]\label{thm:ballot_problem}
+For the simple symmetric random walk $(S_n)_{n\geq 0}$ and $n,x>0$ be integers. Then the number of paths that go from $(0,0)$ to $(n,x)$ and $S_1,\dots,S_n>0$ (i.e., never goes back to zero) is $(x/n) N_{n,x}$.
+\end{theorem}
+
+\begin{remark}
+Define $T_0$ to be the first time the simple walk crosses $y=0$, i.e.,
+\be
+T_0 := \inf\bra{k\geq 1:S_k=0}\qquad (\inf \emptyset :=\infty).
+\ee
+
+Then, the ballot theorem is saying the following
+\be
+\pro\bb{T_0 >n|S_n=x} = \frac xn,\qquad \forall x=1,\dots,n.
+\ee
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Let $M$ denote the number of paths that go from $(0,0)$ to $(n,x)$ and $S_1,\dots,S_n$. All paths question have the property that they go from $(1,1)$ to $(n,x)$. Therefore, we might as well assume that $x\leq n$ (otherwise $x$ cannot be archived by $n$ steps), whence 
+\beast
+M & = & \#\text{paths from $(1,1)$ to $(n,x)$} - \#\text{paths from $(1,1)$ to $(n,x)$ and cross $y=0$ at some intervening time}\\
+& = & N_{n-1,x-1} - N_{n-1,x+1}.
+\eeast
+
+We have applied the reflection principle (Theorem \ref{thm:reflection_principle_simple_symmetric_random_walk})in the very last step. If $n+x$ is odd then 
+\be
+N_{n-1,x-1} = N_{n-1,x+1} = N_{n,x} = 0,
+\ee
+and the result follows (as $(x/n)N_{n,x} = 0$). On the other hand, if $n+x$ is even, then by Definition \ref{def:paths_count_simple_symmetric_random_walk},
+\beast
+N_{n-1,x-1} = N_{n-1,x+1} & = & \binom{n-1}{\frac{n+x}2-1} - \binom{n-1}{\frac{n+x}2} = \frac{(n-1)!}{(\frac{n+x}2-1)!(\frac{n-x}2)!} - \frac{(n-1)!}{(\frac{n+x}2)!(\frac{n-x}2-1)!} \\
+& = & \frac {N_{n,x}}n \bb{\frac{n+x}2 - \frac{n-x}2} = \frac xn N_{n,x}.
+\eeast
+\end{proof}
+
+\begin{proposition}\label{pro:random_walk_number_paths_greater_than_zero}
+For the simple symmetric random walk $(S_n)_{n\geq 0}$. If $S_k > 0$ for all $k\leq 2n-1$ and $S_{2n} = 0$. Then for any $n\in \Z^+$, the number of paths of length $2n$ is $\frac 1{n}\binom{2n-2}{n-1}$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Let $M$ denote the number of all paths of length $2n$ which have $S_k>0$ for all $k\leq 2n-1$ and $S_{2n}=0$. Evidently, $M$ is the number of all paths that go from $(0,0)$ to $(2n-1,1)$ and do not cross $y=0$. By the ballot theorem (Theorem \ref{thm:ballot_problem}, put $x=1$, $n=2n-1$)
+\be
+M = \frac 1{2n-1}N_{2n-1,1} = \frac 1{2n-1}\binom{2n-1}{(2n-1+1)/2} = \frac 1{2n-1}\binom{2n-1}{n} = \frac{(2n-2)!}{n!(n-1)!} = \frac 1n\binom{2n-2}{n-1}.
+\ee
+\end{proof}
+
+\begin{proposition}\label{pro:random_walk_number_paths_greater_equal_than_zero}
+For the simple symmetric random walk $(S_n)_{n\geq 0}$, if $S_k \geq 0$ for all $k\leq 2n-1$ and $S_{2n} = 0$. Then for any $n\in \Z^+$, the number of paths of length $2n$ is $\frac 1{n+1}\binom{2n}{n}$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Consier the random walk $S_{k+1}' = S_k+1$ with $S_0' = 0$. If $M$ denotes the number of $(S_k)_{k\geq 0}$ paths of interest, then $M$ is the number of paths for $(S_k')_{k\geq 0}$ that go from $(0,0)$ to $(2n+1,1)$ such that $S_k'>0$ for all $k\leq 2n+1$. That is, we simply shift the axes to the -1 and a piece that goes from $(0,0)$ to $1,1$ in new coordinate system.
+
+
+% (see Problem \ref{exe:ticket_line}).
+
+\centertexdraw{
+
+\drawdim in
+
+\def\bdot {\fcir f:0 r:0.03 }
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+\linewd 0.01 \setgray 0
+
+\move (-0.2 0) \avec(4.9 0)
+\move (0 -0.6) \avec(0 1)
+
+%\move (4.5 -0.5) \bdot
+
+
+\move (0 0) \lvec(0.5 0.5)
+\move (0.5 0.5)\lvec(1 0)
+\move (1 0)\lvec(1.25 0.25)
+\move (1.25 0.25)\lvec(1.5 0)\lvec(2 0.5)\lvec(2.5 0)
+\move (2.5 0) \lvec(3.25 0.75)
+\move (3.25 0.75) \lvec (4 0)
+\move (4 0) \lvec(4.25 0.25)
+\move (4.25 0.25) \lvec (4.5 0)
+
+\lpatt (0.05 0.05)
+
+%\move ( 1.5) \lvec(5 1.5)
+\move (-0.25 -0.25) \avec(4.9 -0.25)
+\move (4.5 0)\lvec(4.75 -0.25)
+\move (-0.25 -0.25)\lvec(0 0)
+\move (-0.25 -0.6) \avec(-0.25 1)
+
+\htext (4.5 0.1){$2n$} 
+
+%\move (1.75 -0.25)\lvec(2 0)\lvec(3.25 -1.25) \lvec (4 -0.5) \lvec(4.25 -0.75) \lvec (4.5 -0.5)
+
+\move (0 1)
+\move (0 -0.8)
+
+}
+
+Therefore, what we want becomes the number of paths of length of $2n+2$ which have $S_k >0$ forall $k\leq 2n+1$ and $S_{2n+2}=0$. Then we can apply Proposition \ref{pro:random_walk_number_paths_greater_than_zero} and replace $n$ with $n+1$ in the conclusion and get $\frac 1{n+1}\binom{2n}{n}$.
+\end{proof}
+
+
+\begin{proposition}
+For the simple symmetric random walk $(S_n)_{n\geq 0}$, we define
+\be
+T_0 :=\inf\bra{k\geq 1:S_k=0}.
+\ee
+%and
+%\be
+%u_{2n} := \frac{\binom{2n}{n}}{2^{2n}},\qquad f_{2n} := \frac{u_{}}{2n}
+%\ee
+
+Then we have
+\ben
+\item [(i)] $\pro\bb{S_{2n}=0} =  \frac{\binom{2n}{n}}{2^{2n}}$.
+\item [(ii)] $\pro\bb{T_0 = 2n} = \frac{\binom{2n-2}{n-1}}{2^{2n+1}n}$.
+\item [(iii)] $\pro\bb{S_k\geq 0,\forall k\leq 2n-3, S_{2n-2} =0, S_{2n-1}=-1} = \frac{\binom{2n-2}{n-1}}{2^{2n+1}n}$.
+\item [(iv)] $\pro(T_0>2n) = \frac{\binom{2n}{n}}{2^{2n}}$.
+\item [(v)] $\pro\bb{S_k\geq 0, \forall k\leq 2n} = \frac{\binom{2n}{n}}{2^{2n}}$.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]%\be
+%\pro(T_0=2n) = u_{2n} = \frac{\binom{2n}{n}}{2^{2n}},\qquad f_{2n} = \frac{u_{2n-2}}{2n} = \frac{\binom{2n-2}{n-1}}{2^{2n-1}n}
+%\ee
+\ben
+\item [(i)] Because there $N_{2n,0} = 2^{2n}\pro\bb{S_{2n} = 0}$ paths that end up at zero at time $2n$, we have by Definition \ref{def:paths_count_simple_symmetric_random_walk}
+\be
+\pro\bb{S_{2n} = 0} = \frac{\binom{2n}{n}}{2^{2n}}.
+\ee
+
+\item [(ii)] To prove this, note that the number of paths that hit zero, for the first time, at time $2n$ is exactly twice the number of paths which satisfying $S_k>0$ for all $k\leq 2n-1$ and $S_{2n}=0$. Then Proposition \ref{pro:random_walk_number_paths_greater_than_zero} implies that
+\be
+\pro\bb{T_0 = 2n} = \frac{2\binom{2n-2}{n-1}}{n} \frac 1{2^{2n}} = \frac{\binom{2n-2}{n-1}}{2^{2n-1}n}.
+ \ee
+    
+
+\item [(iii)] By Proposition \ref{pro:random_walk_number_paths_greater_equal_than_zero}, 
+\beast
+\pro\bb{S_k\geq 0,\forall k\leq 2n-3,S_{2n-2}=0,S_{2n-1}=-1} & = & \frac 12 \pro\bb{S_k\geq 0,\forall k\leq 2n-3,S_{2n-2}=0} \\
+& = & \frac 12 \frac {\binom{2n-2}{n-1}}{2^{2n-2}n} = \frac {\binom{2n-2}{n-1}}{2^{2n-1}n}.
+\eeast
+
+
+\item [(iv)] By (ii), we have 
+\be
+\pro\bb{T_0 > 2n} = 1 - \sum^{n}_{k=1} \pro\bb{T_0 = 2k} = 1 - \sum^n_{k=1} \frac{\binom{2k-2}{k-1}}{2^{2k-1}k}
+\ee
+
+It is easy to check that
+\be
+\frac{\binom{2k-2}{k-1}}{2^{2k-1}k} = \frac{\binom{2k-2}{k-1}}{2^{2k-2}} - \frac{\binom{2k}{k}}{2^{2k}}.
+\ee
+
+Therefore, we have
+\be
+\pro\bb{T_0 > 2n} = 1 - \sum^n_{k=1} \bb{\frac{\binom{2k-2}{k-1}}{2^{2k-2}} - \frac{\binom{2k}{k}}{2^{2k}}}  = \frac{1}{2^{2n}}\binom{2n}{n}.
+\ee
+
+
+\item [(v)] $S_{2n}$ can take value $0,2,\dots,2n$. Then by ballot problem (Theorem \ref{thm:ballot_problem})
+\beast
+\pro\bb{S_k \geq 0, \forall k \leq 2n} & = & 2\sum^n_{k=0} \pro\bb{S_{-1} = -1, S_0 = 0,S_m \geq 0, m = 1,\dots,2n-1,S_{2n}=2k}\\
+ & = & 2\sum^n_{k=0} \pro\bb{S_{0} = 0, S_m > 0, m = 1,\dots,2n,S_{2n+1}=2k+1}\\
+ & = & 2\sum^{n}_{k=0} \frac {2k+1}{2n+1}N_{2n+1,2k+1} \frac 1{2^{2n+1}}= \frac 1{2^{2n}}\sum^{n}_{k=0} \frac {2k+1}{2n+1}\binom{2n+1}{n+k+1} \\ %1 - \pro\bb{\exists k\leq 2n, S_k = -1}
+ & = & \frac 1{2^{2n}}\sum^{n}_{k=0} \bb{\binom{2n}{n+k} - \binom{2n}{n+k+1}} = \frac 1{2^{2n}}\binom{2n}{n}.
+\eeast
+
+Alternatively, we can have that
+\be
+\#\bra{S_k \geq 0, \forall k \leq 2n} = \#\bra{S_{-1}=-1, S_k \geq 0, k =0,\dots, 2n} = \#\bra{S_{0}=0, S_k \geq 1, k =1,\dots, 2n+1}
+\ee
+
+Thus,
+\beast
+\pro\bb{S_k \geq 0, \forall k \leq 2n} & = & \frac 1{2^{2n}} \#\bra{S_k \geq 0, \forall k \leq 2n} = \frac{2}{2^{2n+1}}\#\bra{S_{0}=0, S_k \geq 1, k =1,\dots, 2n+1}\\
+& = & \frac{1}{2^{2n+1}}\bb{\#\bra{S_{0}=0, S_k \geq 1, k =1,\dots, 2n+1} + \#\bra{S_{0}=0, S_k \leq -1, k =1,\dots, 2n+1}} \\
+& = & \frac{1}{2^{2n+1}}\#\bra{S_{0}=0, S_k \neq 0, k =1,\dots, 2n+1} = \pro\bb{T_0 > 2n} = \frac 1{2^{2n}}\binom{2n}{n}
+\eeast
+by (iv).
+\een
+\end{proof}
+
+\begin{proposition}
+Suppose $\bb{S_n}_{n\geq 0}$ is a simple symmetric random. Then if $n$ is odd, $k = 0,1\dots \floor{\frac n2}$,
+\beast
+& &\pro\bb{\max_{0\leq i\leq n}S_i - S_n = n-2k} = \left.\binom{n}{k}\right/ 2^n,\\
+& &\pro\bb{\max_{0\leq i\leq n}S_i - S_n = n-2k-1} = \left.\binom{n}{k}\right/ 2^n = \left.\binom{n}{n-k}\right/ 2^n.
+\eeast
+
+If $n$ is even, $k = 0,1\dots \frac n2-1$,
+\beast
+& & \pro\bb{\max_{0\leq i\leq n}S_i - S_n = 0} = \left.\binom{n}{n/2}\right/ 2^n,\\
+& &\pro\bb{\max_{0\leq i\leq n}S_i - S_n = n-2k} = \left.\binom{n}{k}\right/ 2^n,\\
+& &\pro\bb{\max_{0\leq i\leq n}S_i - S_n = n-2k-1} = \left.\binom{n}{k}\right/ 2^n = \left.\binom{n}{n-k}\right/ 2^n.
+\eeast
+
+In particular, the probability that the process reaches the maximum point at time $n$ is 
+\be
+\pro\bb{S_n = \max_{0\leq i\leq n}S_i} = \left\{\ba{ll}\left.\binom{n}{n/2}\right/2^n\quad \quad & n\text{ is even} \\
+\left.\binom{n+1}{(n+1)/2}\right/2^{n+1}\quad \quad & n\text{ is odd}
+\ea \right..
+\ee 
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+We give the proof by using induction\footnote{other method needed.}. For $n=1$, we have 
+\be
+\pro\bb{\max_{0\leq i\leq 1} S_i - S_1 =0} = \pro\bb{\max_{0\leq i\leq 1} S_i - S_1 = 1} = \frac 12 = \left.\binom{1}{1}\right/2^1= \left.\binom{1}{0}\right/2^1.
+\ee
+
+For $n=2$, we have 
+\beast
+& & \pro\bb{\max_{0\leq i\leq 2} S_i - S_2 =0} = \frac 12 = \left.\binom{2}{1}\right/2^2,\\
+& & \pro\bb{\max_{0\leq i\leq 2} S_i - S_2 =1} = \frac 14 = \left.\binom{2}{0}\right/2^2,\\
+& & \pro\bb{\max_{0\leq i\leq 2} S_i - S_2 =2} = \frac 14 = \left.\binom{2}{0}\right/2^2.
+\eeast
+
+We can see that the required results hold for these two cases. Also, we let $h_{k,n} = \pro\bb{\max_{0\leq i\leq n} S_i - S_n =k}$ and for $k=0,1,\dots,n-2$
+\beast
+h_{0,n} & = & \frac 12 h_{-1,n-1} + \frac 12 h_{1,n-1}\\
+\vdots & = & \vdots \\
+h_{k,n} & = & \frac 12 h_{k-1,n-1} + \frac 12 h_{k+1,n-1}\\
+\vdots & = & \vdots \\
+h_{n-1,n} & =& h_{n,n} = 2^{-n} 
+\eeast
+where $h_{0,n} = h_{-1,n}$.
+
+The have $\max_{0\leq i\leq n} S_i - S_n =n-1$, the process must have +1 at the first step and -1 for the rest and therefore the probability $h_{n-1,n}$ is $2^{-n}$.
+
+Now assume the required result holds for $n$. Thus, %for $m=0,1,\dots, \frac n-1$
+\be
+h_{n-m,n+1} = \frac 12 h_{n-m-1,n} + \frac 12 h_{n-m+1,n}
+\ee
+and 
+\be
+h_{n,n+1} = h_{n+1,n+1} = 2^{-(n+1)}.
+\ee
+
+If $n$ is even, by the required result for $n$ ($m=2k$ or $m=2k+1$)
+\be
+h_{n-m,n+1} = \frac 12 \frac{\binom{n}{k}}{2^n} + \frac 12 \frac{\binom{n}{k-1}}{2^n} = 2^{-(n+1)}\bb{\binom{n}{k} +\binom{n}{k-1}} = 2^{-(n+1)}\binom{n+1}{k}
+\ee
+satisfying the required result. Similarly, we have the required result for odd $n = 2k+1$. In particular, if $m = n$ we have
+\beast
+h_{0,n+1} & = & \frac 12 h_{-1,n} + \frac 12 h_{1,n} = \frac 12 h_{0,n} + \frac 12 h_{1,n} = \frac 12 \frac{\binom{n}{k}}{2^n} + \frac 12 \frac{\binom{n}{k}}{2^n} = 2^{-(n+1)}2\binom{2k+1}{k} \\
+& = & 2^{-(n+1)} \frac{(2k+1)!2(k+1)}{k!(k+1)!(k+1)} = 2^{-(n+1)}\binom{2k+2}{k+1} = 2^{-(n+1)}\binom{n+1}{(n+1)/2},
+\eeast
+as required.
+
+For $n = 2k+1$ is odd, we have that 
+\be
+\pro\bb{S_n = \max_{0\leq i\leq n}S_i} = 2^{-n}\binom{n}{k} = 2^{-(n+1)} 2\binom{2k+1}{k} = 2^{-(n+1)} \binom{2k+2}{k+1} = 2^{-(n+1)} \binom{n+1}{(n+1)/2}.
+\ee
+\end{proof}
+
+
+\subsection{Asymmetric random walks}
+
+\begin{example}[gambler's ruin]\label{exa:randam_walk_simple}
+For the simple random walk, $\bb{S_n}_{n\geq 0}$ may represent the fortune of a gambler after $n$ plays of a game where on each play he either wins \pounds 1, with probability $p$, or loses \pounds 1 with probability $q =
+1-p$, his initial fortune is \pounds $S_0$ and a classical problem is to calculate the probability that his fortune achieves the level $a$, $a > S_0$ , before the time of ruin, that is the time that he goes bankrupt (his
+fortune hits the level 0). If $T_a$ denotes the first time that the random walk hits the level $a$ and $T_0$ the time the random walk first hits the level 0, we would wish to calculate $\pro (T_a < T_0)$, given that his
+fortune starts at $S_0 = r$, $0 < r < a$.
+
+\centertexdraw{
+
+\drawdim in
+
+\def\bdot {\fcir f:0 r:0.03 }
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04 \linewd 0.01 \setgray 0
+
+\move (-0.2 0) \avec(5 0) \move (0 -0.2) \avec(0 1.8)
+
+\move (0 0.6) \bdot \move (0.2 0.9) \bdot \move (0.4 0.6) \bdot \move (0.6 0.9) \bdot \move (0.8 1.2) \bdot \move (1 0.9) \bdot \move (1.2 1.2) \bdot \move (1.4 1.5) \bdot \move (1.6 1.2) \bdot \move (1.8 0.9) \bdot \move
+(2 1.2) \bdot \move (2.2 1.5) \bdot \move (2.4 1.2) \bdot \move (2.6 0.9) \bdot \move (2.8 1.2) \bdot \move (3 0.9) \bdot \move (3.2 0.6) \bdot \move (3.4 0.9) \bdot \move (3.6 0.6) \bdot \move (3.8 0.3) \bdot \move (4 0)
+\bdot \move (4.2 -0.3) \bdot \move (4.4 0) \bdot \move (4.6 0.3) \bdot \move (4.8 0.6) \bdot
+
+
+
+\htext (1.4 -0.15){$T_a$} \htext (3.8 -0.15){$T_0$} \htext (-0.15 1.45){$a$} \htext (-0.2 0.5){$S_0$} \htext (4.9 0.5){$S_n$} \htext (4.8 -0.15){$n$}
+
+\move (0 0.6) \lvec (0.2 0.9) \lvec (0.4 0.6) \lvec (0.6 0.9) \lvec (0.8 1.2) \lvec (1 0.9) \lvec (1.2 1.2) \lvec (1.4 1.5) \lvec (1.6 1.2) \lvec (1.8 0.9) \lvec (2 1.2) \lvec (2.2 1.5) \lvec (2.4 1.2) \lvec (2.6 0.9) \lvec
+(2.8 1.2) \lvec (3 0.9) \lvec (3.2 0.6) \lvec (3.4 0.9) \lvec (3.6 0.6) \lvec (3.8 0.3) \lvec (4 0) \lvec (4.2 -0.3) \lvec (4.4 0) \lvec (4.6 0.3) \lvec (4.8 0.6)
+
+
+\lpatt (0.05 0.05)
+
+\move (0 1.5) \lvec(5 1.5) \move (1.4 1.4) \lvec (1.4 0)
+
+
+\move (0 2)
+
+}
+
+The figure illustrates a path of the random walk-although, in the case of the game, it finishes at the instant $T_0$, the time of bankruptcy! Let $p_r = \pro (T_a < T_0)$ when $S_0 = r$, for $0 \leq r \leq a$, so that we
+have the boundary conditions $p_a = 1$ and $p_0 = 0$.
+
+A general rule in problems of this type in probability may be summed up as `condition on the first thing that happens', which here would be a shorthand for using the law of total probability (Theorem
+\ref{thm:law_total_probability}) to express the probability conditional on the outcome of the first play of the game, that is, whether $X_1 = 1$ or $X_1 = -1$, or equivalently, $S_1 = r+1$ or $S_1 = r-1$. Thus, for $0 < r <
+a$, \be p_r = \pro (T_a < T_0 | S_1 = r + 1) \pro(X_1 = 1) + \pro(T_a < T_0 | S_1 = r - 1) \pro (X_1 = -1) = p \cdot p_{r+1} + q \cdot p_{r-1}. \ee
+
+The auxiliary equation\footnote{details needed in ODE.} for this relation is $px^2 - x +q = 0$, and since $p+q = 1$, this may be factored as $(x - 1)(px - q) = 0$ to give roots $x = 1$ and $x = q/p$.
+
+Case $p \neq q$: the roots are distinct and the general solution is of the form $p_r = A+B (q/p)^r$ for some constants $A$ and $B$, the boundary conditions at $r = a$ and $r = 0$, fix $A$ and $B$ and we conclude that \be
+p_r = \pro (T_a < T_0) = \frac{1 - (q/p)^r}{1 - (q/p)^a},\quad 0 \leq r \leq a. \ee
+
+Case $p = q = \frac 12$: here $x = 1$ is a repeated root of the auxiliary equation so that the general solution of the recurrence relation is $p_r = A+Br$, which, after using the boundary conditions, leads to the solution
+$p_r = r/a$, $0 \leq r \leq a$.
+
+We do not know necessarily that at least one of $T_0$ and $T_a$ must be finite, but if we interchange $p$ and $q$ and replace $r$ by $a - r$, (or just calculate directly as above) we may obtain, for $S_0 = r$, $0 \leq r
+\leq a$, that \be \pro (T_0 < T_a) = \left\{\ba{ll}
+\frac{(q/p)^r - (q/p)^a}{1 - (q/p)^a} \quad \quad & p \neq q,\\
+1 - r/a & p = q = \frac 12. \ea\right. \ee
+
+It follows, in both cases, that $\pro(T_a < T_0) + \pro (T_0 < T_a) = 1$, so that at least one of the the two barriers, 0 or $a$, must be reached with certainty.
+\end{example}
+
+
+
+
+
+
+\section{Continuous-time Stochastic Processes}
+
+Now we typically take $I \subseteq \R$ to be an interval, and most of the time we take $I$ to be the non-negative reals, $I = \R^{++} = \R^+ \cup \bra{0} = [0,\infty)$ (0 plus the whole positive real line). Also, we
+consider a probability space $(\Omega,\sF,\pro)$ and $t\in \R^{++}$.
+
+%Let $(\Omega,\sF,\pro)$ be a probability space. So far we have considered stochastic processes in discrete time only. In this section the time index set is going to be the whole positive real line, $\R^{++}$.
+
+
+\subsection{Stochastic processes and filtrations}
+
+\begin{definition}[stochastic process, continuous]\label{def:stochastic_process_continuous}
+A (continuous) stochastic process\index{stochastic process!continuous} in $E$, $X = (X_t)_{t\geq 0}$ is a collection of random variables in $E$ where $t\in [0,\infty)$.
+\end{definition}
+
+\begin{remark}
+stochastic process is also called random process\index{random process!continuous}.
+\end{remark}
+
+Note that Definition \ref{def:stochastic_process_continuous} has no extra constraint.
+
+\begin{definition}[sample continuous process\index{continuous process!sample}]\label{def:sample_continuous_process}
+A stochastic process $X$ is said to be sample continuous if for fixed $\omega \in \Omega$, the sample path $X_t(\omega)$ is continuous in all $t$ a.s., i.e.
+\be
+\pro\bb{\omega:X_t(\omega)\text{ is continuous for all }t} = 1.
+\ee
+\end{definition}
+
+\begin{definition}[pathwise continuous process\index{continuous process!pathwise}]\label{def:pathwise_continuous_process}
+A stochastic process $X$ is said to be pathwise continuous if for fixed $\omega \in \Omega$, all the sample path $X_t(\omega)$ (considered as functions) are continuous.
+\end{definition}
+
+
+\begin{definition}\label{def:integrable_stochastic_process_continuous}
+If $X_t$ is $\R$-valued, $X$ is integrable\index{integrable!stochastic process} if $X_t \in \sL^1(\Omega,\sF,\pro)$ for every $t\in \R^{++}$, i.e. $\E\abs{X_t} <\infty$.
+\end{definition}
+
+\begin{definition}[filtration, continuous]\label{def:filtration_continuous}
+A filtration\index{filtration!continuous} is an increasing family of sub-$\sigma$-algebras of $\sF$, i.e., if $s \leq t$ then $\sF_{s}\subseteq \sF_{t}\subseteq \dots \sF$. % indexed by $I$, $(\sF_t)_{t \in I}$, such that if then $\sF_s \subseteq \sF_t$.
+\end{definition}
+
+\begin{remark}
+We think of $\sF_t$ as `the information available at and before time $t$.'
+\end{remark}
+
+\begin{definition}\label{def:sigma_algebra_infinite_continuous}
+We define \be
+\sF_\infty = \bigvee_{t\geq 0} \sF_t = \sigma\bb{\bigcup_{t\geq 0} \sF_t}. %= \sigma (\sF_t:t\geq 0)
+\ee
+\end{definition}
+
+\begin{remark}
+Obviously, $\sF_\infty\subseteq \sF$.\footnote{proof needed.}%\footnote{We need to check that if $\sF_\infty\subseteq \sF$.}
+\end{remark}
+
+
+\begin{definition}\label{def:right_continuous_filtration}
+Let $(\sF_t)_{t\geq 0}$ be a filtration. For each $t$ we define
+\be
+\sF_{t^+} := \bigcap_{s>t} \sF_s.
+\ee
+
+By Proposition \ref{pro:intersection_of_sigma_algebra_is_still_sigma_algebra}, we know that $\sF_{t^+}$ is also a $\sigma$-algebra.
+
+Also, since $\sF_t \subseteq \sF_s$ for $s>t$, we have that $\sF_t\subseteq \sF_{t^+}$. If $\sF_{t^+} = \sF_t$ for all $t$, then we call the filtration $(\sF_t)_{t\geq 0}$ right-continuous\index{right-continuous!filtration}.
+\end{definition}
+
+%\begin{definition}\label{def:sigma_algebra_infinite_continuous}
+%We define
+%\be
+%\sF_\infty = \bigvee_{n\geq 0} \sF_n = \sigma\bb{\bigcup_{n\geq 0} \sF_n}. %= \sigma (\sF_n:n\geq 0)
+%\ee
+%\end{definition}
+
+\begin{definition}[filtered probability space, continuous]
+If $(\sF_t)_{t\geq 0}$ is a filtration, we say that $(\Omega,\sF, (\sF_t)_{t\geq 0},\pro)$ is a filtered probability space\index{filtered probability space!continuous} (or f.p.s.).
+\end{definition}
+
+\begin{definition}[adapted process, continuous]\label{def:adapted_process_continuous}
+Let $(\Omega,\sF, (\sF_t)_{t\geq 0},\pro)$ be a filtered probability space. A stochastic process $X = (X_t)_{t\geq 0}$ is adapted to the filtration $(\sF_t)_{t\geq 0}$\index{adapted process!continuous} if $X_t$ is $\sF_t$-measurable for all $t\in \R^{++}$. $(X_t)_{t\geq 0}$ is called adapted process (or non-anticipating process).
+\end{definition}
+
+%\begin{remark}
+%An adapted process is one that cannot `see into the future'.
+%\end{remark}
+
+\begin{definition}[natural filtration, discrete]
+Let $(X_t)_{t\geq 0}$ be a stochastic process, and let $\sF^X_t = \sigma\bb{X_s: s \leq t}$. Then $\sF^X_t$ is the natural filtration\index{natural filtration!continuous} of $X$. It is the smallest filtration with respect to which $X$ is adapted.
+\end{definition}
+
+\begin{definition}[indenpendence of processes]\label{def:independence_stochastic_process}
+Let $(X_t)_{t\geq 0}$, $(Y_t)_{t\geq 0}$ be two stochastic processes. We say $X$ and $Y$ are independent if $\sigma(X_s: s \geq 0)$ and $\sigma(Y_s: s \geq 0)$ are independent.
+\end{definition}
+
+\begin{definition}[independent and stationary increments\index{independent and stationary increments}]\label{def:independent_stationary_increments_stochastic_process}
+We say that a process $(X_t)_{t \geq 0}$ has independent and stationary increments if for all $t_1,\dots, t_n$ the random variables $X_{t_{i+1}} -X_{t_i}$ are mutually independent and their law depends only on $t_{i+1} - t_i$.
+\end{definition}
+
+\begin{definition}[complete filtration\index{complete!filtration}]\label{def:complete_filtration}
+We say that the filtration $\bb{\sF_t}_{t\geq 0}$ is complete with respect to $\pro$ if
+\ben
+\item [(i)] $\sF$ is complete (see Definition \ref{def:complete_measure_space}).
+\item [(ii)] for any $A\in \sF$ with $\pro(A)=0$, $A\in \sF_0$.	
+\een%If $\sF_t$ is complete (see Definition \ref{def:complete_measure_space}) for all $t\geq 0$, we say that the filtration $\bb{\sF_t}_{t\geq 0}$ is complete.
+\end{definition}
+
+
+\begin{definition}[usual conditions\index{usual conditions!filtered probability space}]\label{def:usual_conditions_filtration}
+Let $(\Omega,\sF,(\sF_t)_{t\in I},\pro)$ be a filtered probability space. Let $\sN$ be the collection of $\pro$-null sets, i.e., sets in $\sF$ of measure 0. Then the filtered probability space is said to satisfy the usual conditions or usual hypotheses if the following conditions are met:
+\ben%\item [(i)] The probability space $(\Omega,\sF,\pro)$ is complete (see Definition \ref{def:complete_measure_space}).
+%\item [(ii)] The $\sigma$-algebras $\sF_t$ contain all $\pro$-null sets in $\sF$, i.e., $\sN\subseteq \sF_t$ for all $t$. (Equivalently, $\sN \subseteq \sF_0$.)
+\item [(i)] The filtration $\bra{\sF_t}_{t\geq 0}$ is complete. That is, for all $t$, $\sF_t$ contains every null set (which implies that, $\forall$ null set $\sN$, $\sN\in \sF_0$ and $\sN\in \sF$).
+\item [(ii)] The filtration $\bra{\sF_t}_{t\geq 0}$ is right-continuous. That is, for every non-maximal $t\in I$, \be \sF_t = \sF_{t^+} := \bigcap_{s>t}\sF_s. \ee \een
+\end{definition}
+
+Given any filtered probability space, it can always be enlarged by passing to the completion of the probability space, adding zero probability sets to $\sF_t$, and by replacing $\sF_t$ by $\sF_{t^+}$. This will then satisfy the usual conditions.
+
+Another way to express it is:
+%\begin{remark}
+%$\sF_t = \sigma (\sF_{t^+},\sN)$ in some books and notes.
+%\end{remark}
+
+\begin{definition}[completion of the filtered probability space]\label{def:completion_filtered_probability_space}
+With the same setup as above, we write $\wt{\sF}_t := \sigma (\sF_{t^+},\sN)$ for all $t$. We say that the filtered probability space $(\Omega,\sF,(\sF_t)_{t\geq 0},\pro)$ satisfies the usual conditions if $\sF_t = \wt{\sF}_t$ for all $t$.
+\end{definition}
+
+
+
+\subsection{Stopping time}
+
+\begin{definition}[stopping time, continuous]\label{def:stopping_time_continuous}
+Let $(\Omega,\sF, (\sF_t)_{t\geq 0},\pro)$ be a filtered probability space. A stopping time\index{stopping time!continuous} with respect to the filtration $(\sF_t)_{t\geq 0}$ is a random variable $T:\Omega \to \ol{\R} = \R^{++}\cup \bra{+\infty}$ such that $\bra{T \leq t} \in \sF_t$ for all $t\in [0,\infty)$.
+\end{definition}
+
+
+\begin{remark}
+It is obvious that any constant in $[0,\infty)$ is stopping time.
+\end{remark}
+
+%Recall that a filtration is an increasing family $(\sF_t , t \in I)$ of sub-$\sigma$-algebras of $\sF$, and a process $(X_t , t \in I)$ is a family of r.v.'s, and is said to be adapted if $X_t$ is $\sF_t$-measurable for all $t \in I$. A stopping time is a r.v. $T$: $\Omega \to I\cup \{\infty\}$ such that $\{T \leq t\} \in \sF_t$ for all $t \in I$.
+
+\begin{proposition}
+If $I$ is countable (for example, if $I = \Z^+$) then $T$ is a stopping time with respect to $\sF_t$ if and only if $\bra{T = t}\in \sF_t$ for all $t \in I$.
+\end{proposition}
+
+\begin{remark}
+This is not true in general (if $I$ is not countable \footnote{give an example}).
+\end{remark}
+
+\begin{proof}[\bf Proof]
+`$\la$'. If $\bra{T=t}\in \sF_t$ for all $t\in I$. We have $\bra{T\leq t} = \bigcup_{s\leq t} \bra{T=s} \in \sF_t$ since the union of countable sets.
+
+`$\ra$'. If $\bra{T\leq t}\in \sF_t$ for all $t\in [0,\infty)$, then $\bra{T\leq t-\frac 1n} \in \sF_t$, then
+\be
+\bra{T=t} = \bra{T\leq t}\bs \bra{T<t} = \bra{T\leq t} \left\bs \bb{\bigcup_n \bra{T\leq t-\frac 1n}} \right.\in \sF_t.
+\ee
+\end{proof}
+
+\begin{proposition}\label{pro:stopping_time_strictly_smaller_than_t_measurable}
+Let $T$ be a stopping time, then $\bra{T<t} \in \sF_t$ for $t\in [0,\infty)$. If the filtration $(\sF_t)_{t\geq 0}$ is right-continuous, then $\bra{T<t}\in \sF_t$ with $t\in [0,\infty)$ implies that $T$ is a stopping time.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Suppose that $s_1,s_2,\dots$ be a strictly increasing sequence in $[0,\infty)$ with $s_n\ua t$ as $n\to\infty$. Then
+\be
+\bra{T<t} = \bigcup^\infty_{n=1} \bra{T\leq s_n}.
+\ee
+
+But $\bra{T\leq s_n} \in \sF_{s_n} \subseteq \sF_t$ for each $n$, so $\bra{T\leq t} \in \sF_t$.
+
+Now suppose that the family $\sF_t$ is right-continuous and that $T$ is a random time with $\bra{T<t}\in \sF_t$ for each $t$. Then fix $t\in [0,\infty)$ and let $s_1,s_2,\dots$ be a strictly decreasing sequence in $[0,\infty)$ with $s_n\da t$ as $n\to \infty$. Then for each $k\in \Z^+$,
+\be
+\bra{T\leq t} = \bigcap^\infty_{n=k} \bra{T< s_n}
+\ee
+
+But for $n\geq k$, $\bra{T<s_n} \in \sF_{s_n} \subseteq \sF_{s_k}$. Hence $\bra{T\leq t} \in \sF_{s_k}$ for each $k\in \Z^+$ and therefore
+\be
+\bra{T\leq t} \in \sF_{t^+} = \sF_t.
+\ee
+\end{proof}
+
+
+\begin{proposition}\label{pro:stopping_time_property_continuous}
+Let $(\Omega,\sF, (\sF_t)_{t\geq 0},\pro)$ be a filtered probability space. Let $S$, $T$ be stopping times and $T_n$ is a sequence of stopping times. Then
+\ben
+\item [(i)] $S \land T$ is a stopping time.
+\item [(ii)] $S\lor T$ is a stopping time.
+\item [(iii)] $S+T$ is a stopping time.
+\item [(iv)] $\sup_n T_n$ is a stopping time.
+\item [(v)] If $T_n$ is increasing. Then $\lim_{n\to \infty}T_n$ is a stopping time.
+\een
+
+In addition, if the continuous filtration $\sF_t$ is right continuous for fixed $t\in [0,\infty)$, then
+\ben
+\item [(vi)] $\inf_n T_n$ is a stopping time.
+\item [(vii)] $\limsup_n T_n$ is a stopping time.
+\item [(viii)] $\liminf_n T_n$ is a stopping time.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Since $S,T$ are stopping times, we have $\bra{S \leq t} \in \sF_t$, $\bra{T \leq t} \in \sF_t$ for all $t$. Thus,
+\be
+\bra{S\land T \leq t} = \bra{S \leq t} \cup \bra{T \leq t} \in \sF_t \ \ra \ S\land T \text{ is a stopping time.}
+\ee
+
+\item [(ii)] Obviously, $\bra{S\lor T \leq t} = \underbrace{\bra{S\leq t}}_{\in \sF_t}\cap \underbrace{\bra{T\leq t}}_{\in \sF_t} \in \sF_t$.
+
+\item [(iii)] For $t\in [0,\infty)$,
+\beast
+& & \bra{S+T > t} \\
+& = & \bra{S=0,S+T>t} + \bra{0<S<t,S+T>t} + \bra{S\geq t,S+T>t} \\
+& = & \bra{S=0}\cap \bra{T>t} + \bigcup_{r\in (0,t),r\in \Q} \underbrace{\bra{r<S<t}\cap\bra{T>t-r}}_{\in \sF_t} + \bra{S\geq t,T=0,S+T>t} + \bra{S\geq t,T>0,S+T>t} \\
+& = & \bra{\underbrace{\bra{S=0}\cap \bra{T>t}}_{\in \sF_t} + \underbrace{\bigcup_{r\in (0,t),r\in \Q} \bra{r<S<t}\cap\bra{T>t-r}}_{\in \sF_t} + \underbrace{\bra{S> t}\cap \bra{T=0}}_{\in \sF_t} + \underbrace{\bra{S\geq t}\cap \bra{T>0}}_{\in \sF_t} } \in \sF_t .
+\eeast
+
+\item [(iv)] If $\sup_n T_n \in [0,\infty]$
+\be
+\bra{\sup_n T_n \leq t} = \bigcap_n \underbrace{\bra{T_n\leq t}}_{\in \sF_t} \in \sF_t.
+\ee
+
+\item [(v)] From (iv), we have
+\be
+\lim_{n\to \infty} T_n = \sup_n T_n.
+\ee
+
+\item [(vi)] If $(\sF_t)_{t\geq 0}$ is right-continuous, $\bra{T_n<t}\in \sF_t$ by Proposition \ref{pro:stopping_time_strictly_smaller_than_t_measurable} and thus
+\be
+\bra{\inf_n T_n < t} = \bra{\inf_n T_n \geq t}^c = \bb{\bigcap_n \bra{T_n \geq t}}^c = \bigcup_n\bb{ \bb{\bra{T_n < t}}^c}^c =\bigcup_n \underbrace{\bra{T_n < t}}_{\in \sF_t} \in \sF_t.
+\ee
+
+\item [(vii)]
+\be
+\bra{\limsup_n T_n \leq t}= \bra{\inf_{n}\bb{\sup_{m\geq n}T_m} \leq t} \in \sF_t.
+\ee
+
+\item [(viii)]
+\be
+\bra{\liminf_n T_n \leq t}= \bra{\sup_{n}\bb{\inf_{m\geq n}T_m} \leq t} \in \sF_t.
+\ee%where $\sup_{m\geq n}T_m$ and $\inf_{m\geq n}T_m$ are stopping time sequences.
+\een
+\end{proof}
+
+
+%----------------
+
+\begin{definition}[$\sigma$-algebra of stopping time]\label{def:sigma_algebra_stopping_time_continuous}
+Let $(\Omega,\sF, (\sF_t)_{t\geq 0},\pro)$ be a filtered probability space. Let $T$ be stopping time with respect to $(\sF_t)_{t\geq 0}$, and
+\be
+\sF_T = \bra{A \in\sF : A\cap \{T \leq t\} \in \sF_t,\ \forall t\in [0,\infty)}.
+\ee
+
+This defines a $\sigma$-algebra $\sF_T$, called the $\sigma$-algebra of measurable events before $T$\index{sigma-algebra of measurable events before stopping time@$\sigma$-algebra of measurable events before stopping time!continuous}.
+\end{definition}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Since $\bra{\emptyset \cap \bra{T\leq t}} = \bra{\emptyset} \in \sF_t$, $\emptyset \in \sF_T$.
+\item [(ii)] If $A\in \sF_T$, $A \cap \bra{T\leq t} \in \sF_t$. Since $T$ is stopping time, $\bra{T\leq t}\in \sF_t$. Thus, since $\sF_t$ is $\sigma$-algebra
+\be
+A^c \cap \bra{T\leq t} = \bra{T\leq t} \bs \bb{A \cap \bra{T\leq t}} \in \sF_t.
+\ee
+\item [(iii)] For a sequence $A_m \in \sF_T$, we have $A_m \cap \bra{T\leq t}\in \sF_t$ for all $n$. Thus, since $\sF_t$ is $\sigma$-algebra
+\be
+\bb{\bigcup_m A_m} \cap \bra{T\leq t} = \bigcup_m \bb{A_m \cap \bra{T\leq t}} \in \sF_t  \ \ra \ \bigcup_m A_m \in \sF_T.
+\ee
+\een
+
+Thus, $\sF_T$ is a $\sigma$-algebra.
+\end{proof}
+
+\begin{proposition}
+Let $T$ be stopping time with respect to $(\sF_t)_{t\geq 0}$. Then $T$ is $\sF_T$-measurable.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+It suffices to show that $\bra{T\leq t}\in \sF_T$ for each $t\in [0,\infty)$. First we have
+\be
+\bra{T\leq t}\cap \bra{T\leq s} = \left\{
+\ba{ll}
+\bra{T\leq t} (\in \sF_t\subseteq \sF_s) \quad\quad & t\leq s \\
+\bra{T\leq s}(\in \sF_s) & t> s
+\ea
+\right. \ \ra\ \bra{T\leq t}\cap \bra{T\leq s} \in \sF_s.
+\ee 
+
+Then by definition of $\sigma$-algebra of stopping time, we have that $\bra{T\leq t}\in \sF_T$.
+\end{proof}
+
+\begin{proposition}
+Suppose the stopping time $T(\omega)=t$ for all $\omega \in \Omega$ with fixed $t\in [0,\infty)$. Then $\sF_T = \sF_t$. 
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Suppose that $A\in \sF_t$ and then $A\in \sF$. Thus, for $s\in [0,\infty)$, 
+\be
+A\cap \bra{T\leq s} = \left\{
+\ba{ll}
+A\ (\in \sF_t\subseteq \sF_s) \quad\quad & t\leq s \\
+\emptyset & t>s 
+\ea\right. \ \ra\ A\cap \bra{T\leq s} \in \sF_s \ \ra\ A\in \sF_T \ \ra\ \sF_t\subseteq \sF_T.
+\ee
+
+Conversely, suppose that $A\in \sF_T$. Then
+\be
+A = A \cap \bra{T\leq t} \in \sF_t.
+\ee
+
+Thus, $\sF_T\subseteq \sF_t$ and therefore $\sF_t= \sF_T$.
+\end{proof}
+
+
+\begin{proposition}
+Let $T$ be stopping time and $A\in \sF_T$. Then for $t\in [0,\infty)$,
+\ben
+\item [(i)] $A\cap \bra{T<t} \in \sF_t$.
+\item [(ii)] $A\cap \bra{T=t}\in \sF_t$.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] By definition $A\cap \bra{T\leq t} \in \sF_t$. Also, by Proposition \ref{pro:stopping_time_strictly_smaller_than_t_measurable}, $\bra{T<t}\in \sF_t$ and $\bra{T<t}\subseteq \bra{T\leq t}$. Hence
+\be
+A\cap \bra{T<t} = \bb{A\cap \bra{T\leq t}}\cap \bra{T<t} \in \sF_t.
+\ee
+
+\item [(ii)] Similarly, $\bra{T=t} \subseteq \bra{T\leq t} \in \sF_t$. Hence
+\be
+A\cap \bra{T=t} = \bb{A\cap \bra{T\leq t}} \cap \bra{T=t} = \bb{A\cap \bra{T\leq t}} \cap \bb{\underbrace{\bra{T\leq t}}_{\in \sF_t} \bs\underbrace{\bra{T<t}}_{\in \sF_t}} \in \sF_t. 
+\ee
+\een
+\end{proof}
+
+\begin{proposition}
+Let $S,T$ be two stopping times. If $S\leq T$, then $\sF_S \subseteq \sF_T$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Since $S$ and $T$ are stopping times, then $\bra{S \leq t}\in \sF_t$, $\bra{T \leq t}\in \sF_t$ with $\bra{T\leq t} \subseteq \bra{S\leq t}$ for all $t$. $\forall A \in \sF_S$, we have for all $t$, $A \cap \bra{S \leq t} \in \sF_t$. Then
+\be
+A \cap \bra{T \leq t} = A \cap \bb{\bra{S \leq t} \cap \bra{T \leq t}} = \underbrace{\bb{A \cap \bra{S \leq t}}}_{\in \sF_t} \cap \underbrace{\bra{T \leq t}}_{\in \sF_t} \in \sF_t \ \ra \ A \in \sF_T.
+\ee
+\end{proof}
+
+
+\begin{proposition}
+Let $S,T$ be two stopping times. Then each of the following events is in $\sF_S$ and $\sF_T$:
+\be
+\text{(i)}\ \bra{S<T},\quad\text{(ii)}\ \bra{S=T},\quad \text{(iii)}\ \bra{S>T}, \quad \text{(iv)}\  \bra{S\leq T},\quad\text{(v)}\ \bra{S\geq T}.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] First, $\bra{S<T}\in \sF$ since it can be expressed by 
+\be
+\bra{S<T} = \bigcup_{r\in \Q} \bb{\underbrace{\bra{S\leq r}}_{\in \sF}\cap \underbrace{\bra{T>r}}_{\in \sF}}.
+\ee
+
+Then for $t\in [0,\infty)$,
+\be
+\bra{S<T} \cap \bra{T\leq t} = \bra{S<T\leq t} = \bigcup_{r\in \Q,r< t} \bra{S\leq r}\cap \bra{r<T\leq t} \in \sF_t \ \ra \ \bra{S<T}  \in \sF_T.
+\ee
+\be
+\bra{S<T} \cap \bra{S\leq t} = \bra{S<T\leq t}  \cup \bra{S\leq t<T} = \bb{\bigcup_{r\in \Q,r< t} \bra{S\leq r}\cap \bra{r<T\leq t}} \cup \bb{\bra{S\leq t}\cap \bra{T\leq t}^c} \in \sF_t \nonumber
+\ee
+which implies $\bra{S<T}  \in \sF_S$.
+
+\item [(ii)] Similarly, $\bra{S=T}\in \sF$ and 
+\be
+\bra{S=T}\cap \bra{T\leq t} = \bra{S=T\leq t} = \bigcup_{r\in \Q,r< t} \bra{S= r}\cap \bra{r=T\leq t} \in \sF_t \ \ra \ \bra{S=T}  \in \sF_T.
+\ee
+
+Then switching $S$ and $T$ we can have $\bra{S=T}  \in \sF_S$.
+
+\item [(iii)] Switch the argument of $S$ and $T$ in (i).
+
+\item [(iv)] $\bra{S\leq T} = \bra{S<T}\cup\bra{S=T}$ in $\sF_S$ and $\sF_T$.
+\item [(v)] Switch argument of $S$ and $T$ in (iv).
+\een
+\end{proof}
+
+
+\begin{proposition}\label{pro:random_variable_stopping_time_measurable}
+Let $T$ be a stopping time with respect to $(\sF_t)_{t\geq 0}$. Then a random variable $X$ is $\sF_T$-measurable if and only if $X\ind_{\bra{T \leq t}}$ is $\sF_t$-measurable for all $t$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Let $X = \ind_A$, $A\in \sF$. Then if $X$ is $\sF_T$-measurable, $A\in \sF_T$, by Definition \ref{def:sigma_algebra_stopping_time_continuous},
+\be
+A \cap \bra{T \leq t} \in \sF_t \ \lra \ X\ind_{\bra{T\leq t}} = \ind_{A}\ind_{\bra{T\leq t}} = \ind_{A \cap \bra{T\leq t}} \text{ is $\sF_t$-measurable}
+\ee
+by Proposition \ref{pro:indicator_measurable} and Definition \ref{def:measurable_function}. Similarly, this holds for $X = c\ind_A$, $c\in [0,\infty]$ (including two extreme cases $c = 0,\infty$).
+
+If $X$ is a simple function (finite linear combination of indicators), then we can write $X$ as a linear combination of indicators of disjoint sets (by Proposition \ref{pro:simple_normal}), say, $X = \sum^n_{i=1} c_i\ind_{A_i}$, where the constants $c_i\in [0,\infty]$, $c_i \neq c_j$ for $i\neq j$ and $A_i \in \sF$.
+
+%Then let
+%\be
+%B = \bigcup_{i=1}^n \bra{A_i:c_i = c}.
+%\ee
+
+%By the case $Y = c\ind_B$, we have $Y$ is $\sF_T$-measurable if and only if $Y\ind_{\bra{T \leq t}}$ is $\sF_t$-measurable. That is,
+%\be
+%c\ind_{\bra{\bigcup_{i=1}^n \bra{A_i:c_i = c}}} \text{ is $\sF_T$-measurable }\ \lra \  c\ind_{\bra{\bigcup_{i=1}^n \bra{A_i:c_i = c}}}\ind_{\bra{T \leq t}}\text{ is $\sF_t$-measurable.}
+%\ee
+
+%Since $A_i$ are disjoint, we have
+%\be
+%c\ind_{\bra{\bigcup_{i=1}^n \bra{A_i:c_i = c}}} = \sum^n_{i=1} \ind_{A_i}
+%\ee
+%it is equivalent to
+%\be
+%X = c\ind_{\bra{\bigcup_{i=1}^n \bra{A_i:c_i = c}}} \text{ is $\sF_T$-measurable }\ \lra \  c\ind_{\bra{\bigcup_{i=1}^n \bra{A_i:c_i = c}}}\ind_{\bra{T \leq t}}\text{ is $\sF_t$-measurable.}
+%\ee
+
+$\forall c \in [0,\infty]$, $B = \bra{X \leq c}\in \sB(\ol{\R})$ (this forms a $\pi$-system so we can apply Proposition \ref{pro:pi_system_measurable}), then since $A_i$ are disjoint,
+\beast
+\text{$X$ is $\sF_T$-measurable} & \lra &  \bigcup_{i=1}^n \bra{A_i:c_i \leq c} = X^{-1}(B) \in \sF_T \\
+& \lra & \bb{\bigcup_{i=1}^n \bra{A_i:c_i \leq c} }\cap \bra{T\leq t}  \in \sF_t.\\ %\bigcup_{i=1}^n \bra{A_i\cap \bra{T\leq t} :c_i = c}\\
+& \lra & \bra{X\ind_{\bra{T\leq t}}\leq c} = \bra{\sum^n_{i=1} c_i\ind_{A_i \cap \bra{T\leq t}} \leq c}= \bra{\bb{\bigcup_{i=1}^n \bra{A_i:c_i \leq c} }\cap \bra{T\leq t} } \in \sF_t \\
+& \lra & X\ind_{\bra{T\leq t}} \text{ is $\sF_t$-measurable.}
+\eeast
+
+%Thus, $\ind_{\bigcup_{i=1}^n \bra{A_i\cap \bra{T\leq t} :c_i = c} } = \sum^n_{i=1} \ind_{\bra{A_i\cap \bra{T\leq t}:c_i = c}}$ is $\sF_t$-measurable (since $A_i$ are disjoint). Then
+
+For any non-negative random variable $X$, we can approximate it by $X_n = 2^{-n}\floor{2^nX} \land n \ua X$ as $n \to \infty$. Then the claim follows for
+each $X_n$, since $X_n$ are simple functions. So, by Theorem \ref{thm:measurable_function_property_infinity},
+\beast
+X\ind_{\bra{T \leq t}} \text{ is $\sF_t$-measurable, for all }t & \lra & X_n\ind_{\bra{T \leq t}} \text{ is $\sF_t$-measurable, for all }t\\
+& \lra & X_n \text{ is $\sF_T$-measurable} \ \lra \ X \text{ is $\sF_T$-measurable}.
+\eeast
+
+For any random variable $X$, we have $X = X^+ - X^-$, $X^+,X^-$ are non-negative random variable ($X^+ = X\vee 0$, $X^- = (-X)\vee 0$). Thus, by Theorem \ref{thm:measurable_function_property}, we have that for any random variable $X$, $X$ is $\sF_T$-measurable if and only if $X\ind_{\bra{T \leq t}}$ is $\sF_t$-measurable for all $t$.
+\end{proof}
+
+Recalling the discrete case (Definition \ref{def:stopped_process_discrete}),
+
+\begin{definition}[stopped process]\label{def:stopped_process_continuous}
+For a process $X$, we set $X_T (\omega) = X_{T(\omega)}(\omega)$, whenever $T(\omega) < \infty$. We define the stopped process\index{stopped process!continuous} $X^T$ by $X^T_t = X_{T\land t}$.
+\end{definition}
+
+\begin{proposition}\label{pro:cadlag_adapted_process_property}
+Let $T$ be stopping time and $X$ a \cadlag\ adapted process. Then
+\ben
+\item [(i)] $X_T\ind_{\bra{T < \infty}}$ is an $\sF_T$ -measurable random variable.
+\item [(ii)] $X^T$ is adapted.
+\item [(iii)] If $X$ is integrable, then $X^T$ is integrable.
+\item [(iv)] $X^T$ is \cadlag.
+\een
+\end{proposition}
+
+\begin{remark}
+Similarly, if $X$ is a sample-continunous process, $X^T$ is also sample-continunous.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] By Proposition \ref{pro:random_variable_stopping_time_measurable}, in order to prove that $X_T\ind_{\bra{T < \infty}}$ is $\sF_T$-measurable, we will show that
+\be
+X_T\ind_{\bra{T< \infty}}\ind_{\bra{T\leq t}} = X_T\ind_{\bra{T \leq t}}\text{ is $\sF_t$-measurable for all $t$.}
+\ee
+
+We can write $X_T\ind_{\bra{T \leq t}} = X_T\ind_{\bra{T < t}} + X_t\ind_{\bra{T = t}}$. Clearly, the random variable
+\be
+X_t\ind_{\bra{T = t}} = \underbrace{X_t}_{\sF_t\text{-measurable}} \bb{\ind\bra{\underbrace{T\leq t}_{\in \sF_t}} - \ind\bra{\bigcup_n \underbrace{\bra{T\leq t-\frac 1n}}_{\in \sF_{t-\frac 1n}\subseteq \sF_t}}} \ \ra \ X_t \ind_{\bra{T=t}} \text{ is $\sF_t$-measurable}
+\ee
+
+It only remains to show that $X_T\ind_{\bra{T < t}}$ is $\sF_t$-measurable. If we let $T_n = 2^{-n}\ceil{2^nT}$, then it is easy to see that $T_n$ is a stopping time that takes values in the set $\sD_n = \bra{k2^{-n} : k \in \N}$. Indeed
+\be
+\bra{T_n \leq t} = \bra{\ceil{2^nT} \leq 2^nt} = \bra{T \leq 2^{-n}\floor{2^nt}} \in \sF_{2^{-n}\floor{2^n t}} \subseteq \sF_t.
+\ee
+
+By the cadlag property of $X$ and the convergence $T_n \da T$ ($T_n\land t \da T\land t$) we get that
+\be
+X_{T\land t} = \lim_{n\to \infty} X_{T_n \land t} \ \ra \ X_T\ind_{\bra{T < t}} = \lim_{n\to \infty} X_{T_n \land t}\ind_{\bra{T < t}}.\quad (*)
+\ee
+
+Since $T_n$ takes only countably many values, we have
+\beast
+X_{T_n\land t} \ind_{\bra{T < t}} & = & \sum_{d\in \sD_n,d\leq t} X_d\ind_{\bra{T_n = d}} + X_t\ind_{\bra{T_n > t}}\ind_{\bra{T < t}}\\
+& = & \sum_{d\in \sD_n,d\leq t} X_d (\underbrace{\ind_{\bra{T_n \leq d}}}_{\in \sF_d \subseteq \sF_t} - \underbrace{\ind_{\bra{T_n \leq d-2^{-n}}}}_{\in \sF_{d-2^{-n}} \subseteq \sF_t} ) + X_t\underbrace{\ind_{\bra{T_n \leq t}^c}}_{\in \sF_t} \ind_{\bra{T < t}}\\
+& \ra & X_{T_n\land t} \ind_{\bra{T < t}} \text{ is $\sF_t$-measurable for all $n$}
+\eeast
+since $T_n$ is a stopping time wrt the filtration $(\sF_t)_{t\geq 0}$. Then we have $X_T\ind_{\bra{T < t}}$ is $\sF_t$-measurable by ($*$) and Theorem \ref{thm:measurable_function_property_infinity}.
+
+\item [(ii)] Since $X_{T\land t}$ is $\sF_{T\land t}$-measurable (by (i)), and hence $\sF_t$-measurable, since by Proposition \ref{pro:stopping_time_property_continuous}, $\sF_{T\land t} \subseteq \sF_t$. Hence, $X^T_t$ is $\sF_t$-measurable and thus $X^T$ is adapted.
+
+\item [(iii)] We have $X^T_t = X_t\ind_{\bra{T>t}} + X_T\ind_{\bra{T\leq t}}$,
+\be
+\E\abs{X^T_t} \leq \E\abs{X_t\ind_{\bra{T>t}}} + \E\abs{X_T\ind_{\bra{T\leq t}}} \leq \E\abs{X_t} + \sup_{s\in [0,t]}\E\abs{X_s} < \infty.
+\ee
+
+\item [(iv)] for any $t$, we have can find $s\da t$, $r\ua t$ such that $s\land T\da t\land T$ and $r\land T\ua t\land T$. Since $X$ is \cadlag,
+\be
+\lim_{s\da t} X^T_s = \lim_{s\land T \da t\land T } X_{T\land s} = X_{T\land t} = X^T_t,\quad\quad \lim_{r\ua t} X^T_s = \lim_{r\land T \ua t\land T } X_{T\land r}\ \text{\ exists} \quad \ra \quad X^T \text{ is \cadlag.}
+\ee
+\een
+\end{proof}
+
+
+%\begin{proposition}
+%Let $(X_t , t \geq 0)$ be a continuous process (so that $t \to X_t (\omega) \in C(I, E)$ for all $\omega$), and let $A\subseteq E$ be closed. Then $T_A = \inf\{t \geq 0 | X_t \in A\}$ is a stopping time with respect to $\sF^X$.
+%\end{proposition}
+%\begin{proof}[\bf Proof]
+%If $X$ is continuous with and $X_s \in A$ for some $s \in [0, t]$ then we can find a nieghbourhood $V$ of s in $[0, t]$ on which $d(X_s, X_q) \leq \ve$ for some fixed $\ve > 0$ and all $q \in V$. Therefore $\{T_A \leq t\} = \inf_{q\in[0,t],q\in\Q} \{d(X_q,A) = 0\}$ ($\subseteq$ is clear, and $\supseteq$ comes from compactness (prove this)).
+%\end{proof}
+
+%If $A$ is open then $T_A$ is not an $\sF^X$-stopping time in general. However, define $F_{t^+} = \bigcap_{\ve\geq 0} \sF_{t+\ve}$. If $(X_t , t \geq 0)$ is $(\sF_t , t \geq 0)$-adapted then it is $(\sF_{t^+} , t \geq 0)$-adapted and $T_A$ is a stopping time with respect to $(F_{t^+} , t \geq 0)$ for $A\subseteq E$ open.
+
+
+\subsection{Optional time}
+
+\begin{definition}[optional time, continuous-time]\label{def:optional_time_continuous_time}
+Let $(\Omega,\sF, (\sF_t)_{t\geq 0},\pro)$ be a filtered probability space. An optional time\index{optional time} with respect to the filtration $(\sF_t)_{t\geq 0}$ is a random variable $T:\Omega \to \ol{\R} = \R^{++}\cup \bra{+\infty}$ such that $\bra{T < t} \in \sF_t$ for all $t\in [0,\infty)$.
+\end{definition}
+
+\begin{proposition}
+Let $(\Omega,\sF, (\sF_t)_{t\geq 0},\pro)$ be a filtered probability space. Then $T$ is an optional time with respect to the filtration $(\sF_t)$ if and only if it is a stopping time with respect to the filtration $(\sF_{t^+})_{t\geq 0}$.
+\end{proposition}
+
+Therefore, we can have the following corollary.
+
+\begin{corollary}
+The optional times and the stopping times are the same notions when the filtration is right-continuous ($\sF_t = \sF_{t^+}$).
+\end{corollary}
+
+
+
+
+\subsection{First entry time and first hitting time}
+
+\begin{definition}[first entry time\index{first entry time}]\label{def:first_entry_time_stochastic_process}
+\footnote{need
+definition of the first entry time and hitting time (see Rogers-Williams\cite{Rogers_1994}.I.$P_{183}$)}
+\end{definition}
+
+\begin{definition}[first hitting time\index{first hitting time}]\label{def:first_hitting_time_stochastic_process}
+
+\end{definition}
+
+\begin{example}
+When the time index set is $[0,\infty)$, then entry (d\'ebut) times\footnote{definition needed.} are not always stopping times. Let $J$ be a random variable that takes values +1 or -1 each with probability 1/2. Consider now the following process
+\be
+X_t = \left\{\ba{ll}
+t & t \in [0,1]\\
+1 + J(t - 1) \quad\quad & t > 1
+\ea\right..
+\ee
+
+Let $\sF_t = \sigma(X_s: s \leq t)$ be the natural filtration of $X$ ($\sF_t = \sF_t^X$). Then if $A = (1, 2)$ and we consider
+\be
+T_A = \inf\bra{t \geq 0 : X_t \in A},
+\ee
+then clearly $\bra{T_A \leq 1} \notin \sF_1$ (since $T_A$ depends on the information of $t>1$).
+\end{example}
+
+
+If we impose some regularity conditions on the process or the filtration though, then we get stopping times like in the next two propositions.
+
+\begin{proposition}\label{pro:debut_time_closed_set_stopping_time}%filtration $(\sF_t)_{t\geq 0}$
+Let $(E,d)$ be a metric space. The filtered space satisfies the usual conditions. Let $A\subseteq E$ be a closed set and $X$ a (sample) continuous adapted process. Then the first entry (d\'ebut) time of $A$, \be T_A = \inf\bra{t \geq 0 : X_t \in A}, \ee is a stopping time with respect to $(\sF_t)_{t\geq 0}$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Let $d(x,A)$ stand for the distance of $x$ from the set $A$. Let $\Omega' = \bra{\omega:X(\omega)\text{ is continuous}}$ with $\pro(\Omega') = 1$. We pick any $\omega \in \Omega'$.
+
+If $T_A(\omega) = s \leq t$, then there exists a sequence $s_n$ of times such that $X_{s_n}(\omega) \in A$ and $s_n \da s$ as $n \to \infty$ (by definition of d\'ebut time). By continuity of $X$, we then deduce that $X_{s_n}(\omega) \to X_s(\omega)$ as $n\to \infty$. Since $A$ is closed, we must have that $X_s(\omega) \in A$. Thus we showed that $X_{T_A}(\omega) \in A$.
+
+We can now find a sequence of rationals $q_n \in \Q$ such that $q_n \ua T_A$ as $n \to \infty$ and since $d(X_{T_A}(\omega),A) = 0$ we get that $d(X_{q_n}(\omega),A) \to 0$ as $n \to \infty$ by continuity of $X(\omega)$ and $d(\cdot,A)$. Thus, $\bra{T_A(\omega) \leq t} \subseteq \bra{\inf_{s\in \Q,s\leq t} d(X_s(\omega),A) = 0}$.
+
+Suppose now that $\inf_{s\in \Q,s\leq t} d(X_s(\omega),A) = 0$. Then there exists a sequence $s_n \in \Q$, $s_n \leq t$ (since rational set is dense), for all $n$ such that
+\be
+d(X_{s_n}(\omega),A) \to 0 \text{ as }n \to \infty.
+\ee
+
+We can find a converging subsequence of $s_{n_k}$ and $s\leq t$ such that $s_{n_k} \to s$ (by Bolzano-Weierstrass Theorem\footnote{need link} since $s_n \in [0,t]$ is bounded) as $k \to \infty$. By continuity of $X$ we get that $X_{s_{n_k}}(\omega) \to X_s(\omega)$ as $n \to\infty$. So $d(X_{s_{n_k}}(\omega),A) \to d(X_s(\omega),A)$ as $n \to\infty$ which implies that $d(X_s(\omega),A) = 0$. Since $d(X_s,A) = 0$ and $A$ is a closed set, we conclude that $X_s(\omega) \in A$ (We can find $s_n$ such that $X_{s_n}(\omega)\in A$ and $d(X_{s_n},A) = 0$, so $d(X_{s_n}(\omega),A) \to d(X_s(\omega),A)$. If $X_s \notin A$, then $A$ is open (contradiction), so we must have $X_s(\omega)\in A$). Hence $T_A(\omega) \leq s \leq t$.
+
+Thus, $\bra{T_A(\omega) \leq t} \supseteq \bra{\inf_{s\in \Q,s\leq t} d(X_s(\omega),A) = 0}$.
+
+Hence, we have that
+\be
+\bra{\omega \in \Omega':T_A (\omega)\leq t} = \bra{\omega \in \Omega' :\inf_{s\in \Q,s\leq t} d(X_s(\omega),A) = 0}.
+\ee
+
+Thus,%\bra{\omega \in \Omega':T_A(\omega)\leq t} \cup \bra{\omega \in \Omega'^c:T_A(\omega)\leq t} =$B\subseteq \Omega'^c$ with $\pro(B) \leq \pro(\Omega'^c) = 0$. Thus,
+%\beast
+%\bra{T_A \leq t} & = & \bra{T_A(\omega)\ind_{\omega\in \Omega'} + T_A(\omega)\ind_{\omega\in \Omega'^c}\leq t} = \bigcup_{q\leq t,q\in \Q} \bra{T_A(\omega)\ind_{\omega\in \Omega'} \leq q} \cap \bra{T_A(\omega)\ind_{\omega\in \Omega'^c}\leq t-q} \\
+%& = & \bigcup_{q\leq t,q\in \Q} \bra{\bra{\omega \in \Omega':T_A(\omega) \leq q} \cup \bra{\omega \in \Omega'^c:T_A(\omega)\ind_{\omega\in \Omega'} \leq q}}\cap \bra{\bra{\omega\in \Omega'^c: T_A(\omega) \leq t-q}\cup \bra{\Omega'}} \\
+%& = & \bigcup_{q\leq t,q\in\Q} \bra{\omega \in \Omega':\inf_{s\in \Q,s\leq q} d(X_s(\omega),A) = 0} \cap \bra{\omega \in \Omega'^c: T_A(\omega) \leq t} \\
+%& = & \bigcup_{q\leq t,q\in\Q} \bra{\omega \in \Omega:\inf_{s\in \Q,s\leq q} d(X_s(\omega),A) = 0}\cap \bra{\omega \in \Omega'^c:\inf_{s\in \Q,s\leq q} d(X_s(\omega),A) = 0}^c \cap \bra{\omega \in \Omega'^c: T_A(\omega) \leq t} \\
+%& = &  \bigcup_{q\leq t,q\in \Q} B_q \cap C_q \cap D_q.
+%\eeast
+\beast
+\bra{T_A \leq t} & = & \bra{\omega \in \Omega':T_A(\omega) \leq t} \cup \bra{\omega \in \Omega'^c:T_A(\omega) \leq t} \\
+& = & \bra{\omega \in \Omega':\inf_{s\in \Q,s\leq t} d(X_s(\omega),A) = 0} \cup \bra{\omega \in \Omega'^c: T_A(\omega) \leq t} \\
+& = & \bra{\bra{\omega \in \Omega:\inf_{s\in \Q,s\leq q} d(X_s(\omega),A) = 0}\cap \bra{\omega \in \Omega'^c:\inf_{s\in \Q,s\leq q} d(X_s(\omega),A) = 0}^c} \cup \bra{\omega \in \Omega'^c: T_A(\omega) \leq t} \\
+& = & (B \cap C) \cap D.
+\eeast
+where $C$ and $D$ ($\pro(C^c) \leq \pro(\Omega'^c) = 0$, $\pro(D) \leq \pro(\Omega'^c) = 0$) are $\sF_t$-measurable since $(\sF_t)_{t\geq 0}$ satisfies the usual condition. Also, $X_s$ is $\sF_s$-measurable and thus $\sF_t$-measurable, $d(X_s,A)$ and $\inf_{s\in \Q,s\leq t} d(X_s,A)$ are $\sF_t$-measurable (since $x\mapsto d(x,A)$ is continuous and then $\sF_t$-measurable by Proposition \ref{pro:continuous_measurable}). Thus, $B$ is $\sF_t$-measurable. Thus, $\bra{T_A \leq t}$ is $\sF_t$-measurable and $T_A$ is a stopping time.
+\end{proof}
+
+
+\begin{proposition}\label{pro:right_continuous_open_set_stopping_time}%$(\sF_t)_{t\geq 0}$be the filtration
+Let $(E,d)$ be a metric space. The filtered space satisfies the usual conditions. Let $A$ be an open set and $X$ a (sample) right-continuous adapted process. Then \be T_A = \inf\bra{t \geq 0 : X_t \in A} \ee is a stopping
+time with respect to the filtration $(\sF_t)_{t\geq 0}$.
+
+%\begin{remark}
+
+If we ignore the usual condition for the filtered space and consider a pathwise right-continuous adapted process, we can have that $T_A$ is a stopping time with respect to the filtration $\bb{\sF_{t^+}}_{t\geq 0}$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+First we show that for all $t$, the event $\bra{T_A < t} \in \sF_t$.
+
+Indeed, for any $\omega \in \Omega' = \bra{X(\omega)\text{ is right-continuous}}$ ($\pro\bb{\Omega'} = 1$), $\forall s<t, s\in \Q$, $X_s(\omega) \in A \ \ra \ T_A(\omega) \leq s <t$, thus $\bra{T_A(\omega)<t} \supseteq \bra{X_s(\omega) \in A}$ and then $\bra{T_A(\omega)<t} \supseteq \bigcup_{s\in \Q,s<t}\bra{X_s(\omega) \in A}$.
+
+Now consider $\bra{T_A(\omega) <t}$, we have that
+\be
+\bra{T_A(\omega) <t} \subseteq \bigcup_{s\leq t}\bra{X_s(\omega) \in A}.
+\ee
+
+$\forall \ve > 0$, if $X_s(\omega) \in A$, by the right-continuity of paths, there exists $\delta >0$, for all $s' < \delta$, $d(X_{s+s'}(\omega),X_s(\omega)) < \ve$. Since $A$ is open, we have that for all $t\in [s,s+\delta)$, $X_t(\omega) \in A$. Thus,
+\be
+\bigcup_{s\leq t}\bra{X_s(\omega) \in A} \subseteq \bigcup_{s\in \Q,s< t}\bra{X_s(\omega) \in A}
+\ee
+since we can cover the whole set with rational $s$ ($\Q$ is dense). Then we have $\bra{T_A(\omega)<t} \subseteq \bigcup_{s\in \Q,s<t}\bra{X_s(\omega) \in A}$.
+
+Hence we have %for fixed $s<t$, $\bra{X_s(\omega) \in A} \in \sF_t$, and   %By the continuity of $X$ and the fact that $A$ is open we get that
+\be
+\bra{T_A(\omega) < t} = \bigcup_{s\in \Q,s<t} \bra{X_s(\omega) \in A}.
+\ee
+
+Thus,
+\beast
+\bra{T_A < t} & = & \bra{\omega \in \Omega':T_A(\omega) < t} \cup \bra{\omega \in \Omega'^c:T_A < t} = \bra{\omega\in \Omega':\bigcup_{s\in \Q,s<t} \bra{X_s(\omega) \in A}}\cup \bra{\omega \in \Omega'^c:T_A < t} \\
+& = & \bra{\bra{\omega\in \Omega:\bigcup_{s\in \Q,s<t} \bra{X_s(\omega) \in A}} \cap \bra{\omega\in \Omega'^c:\bigcup_{s\in \Q,s<t} \bra{X_s(\omega) \in A}}^c}\cup \bra{\omega \in \Omega'^c:T_A < t} \\
+& = & (B\cap C) \cup D. \eeast where $C$ and $D$ ($\pro(C^c) \leq \pro(\Omega'^c) = 0$, $\pro(D) \leq \pro(\Omega'^c) = 0$) are $\sF_t$-measurable since $(\sF_t)_{t\geq 0}$ satisfies the usual condition (Accordingly, if $X$
+is pathwise right-continuous, $C$ and $D$ are empty sets and thus they are $\sF_t$-measurable.). For fixed $s<t$, $X_s$ is $\sF_s$-measurable and $x \mapsto d(x,A)$ is continuous (thus $d(X_s,A)$ is $\sF_s$-measurable by
+Proposition \ref{pro:continuous_measurable}) thus $\sF_t$-measurable. Then we have $\bra{X_s \in A} = \bra{d(X_s,A) = 0} \in \sF_t$. Thus, $\bra{T_A < t} \in \sF_t$ since it is a countable union. Since we can write \be
+\bra{T_A \leq t} = \bigcap_n \bra{T < t + 1/n} \ee we get that $\bra{T_A \leq t} \in \sF_{t^+}$. Since the filtered space satisfies the usual conditions, we have $\sF_{t} = \sF_{t^+}$. Thus, $T_A$ is a stopping time with
+respect to $(\sF_t)$.
+\end{proof}
+
+\footnote{add example here see \cite{Rogers_1994}.$P_{184}$}
+
+
+
+
+
+\subsection{Technical issues in dealing with continuous-time}
+
+When we consider processes in discrete time, if we equip $\N$ with the $\sigma$-algebra $\sP(\N)$ that contains all the subsets of $\N$, then the process
+\be
+X:\Omega \times\N\to \ol{\R} = \R\cup \bra{\pm \infty}:(\omega, n) \mapsto X_n(\omega)
+\ee
+is measurable with respect to the product $\sigma$-algebra $\sF\otimes \sP(\N)$. This can be proved by the following argument.
+
+If we fix $n$, then $w\mapsto X_n(\omega)$ is a random variable and thus $\sF$-measurable (i.e., $\forall y\in \ol{\R}$, $A_n = \bra{\omega:X_n(\omega) \leq y, n\text{ fixed}} \in \sF$). Thus $A_n \in \sF$ and $\bra{n} \in \sP(\N)$, we have $A_n\times \bra{n}$ is $\sF\otimes \sP(\N)$-measurable ($A_n\times \bra{n} \in \sF\otimes \sP(\N)$, see Definition \ref{def:product_sigma_algebra}). %$\forall y\in \ol{\R}$, let $A_n = \bra{(\omega,n):X_n(\omega) \leq y, n\text{ fixed}} \in \sF\otimes \sP(\N)$. Then
+\be
+A := \bra{(\omega,n):X_n(\omega) \leq y} = \bigcup_{n\geq 0}\bra{ A_n \times \bra{n}} \in  \sF\otimes \sP(\N)
+\ee
+since $A$ is a union of countably many subsets. Thus, $X$ is $\sF\otimes \sP(\N)$-measurable.
+
+%Proposition \ref{pro:pi_system_measurable}
+%$\forall y\in \ol{\R}$, $\bra{x \in \Omega \times \N: X(x) \leq y} \in \sF \otimes \sP(\N)$,
+%$A = A_1\times A_2 $ where $A_1 \in \sF,A_2\in \sP(\N)$,
+
+%Now $\omega \to X_t (\omega)$ is measurable (with respect to $(\Omega,\sF)$) for all $t \in I$, but what about the sample path $t \to  X_t (\omega)$ given by $\omega \in \Omega$ (with respect to $(I,\sB(I)$) as a sub-$\sigma$-algebra of $(\R,\sB(\R))$)? Also, if $T$ is a stopping time then $X_T\ind_{T<\infty} = \sum_{s\in I} X_s\ind_{T=s}$ is not a r.v. in general. Worse, there are 'few' stopping times. Typically, for a Borel subset $A$ of $\R$, $T_A = \inf\{t\geq 0 | X_t \in A\}$ has no reason to be a stopping time, since $\{T_A \leq t\} = \bigcup_{s\leq t,s\in I} \{T_A = s\}$ is typically an uncountable union.
+
+
+Back to continuous time, if we fix $t \in\R^{++}$, then $\omega \mapsto X_t(\omega)$ is a random variable. But, the mapping $(\omega,t) \mapsto X_t(\omega)$ has no reason to be measurable with respect to $\sF \otimes \sB(\R)$ ($\sB(\R)$ is the Borel $\sigma$-algebra) unless some regularity conditions are imposed on $X$ (We can not apply the above argument for the discrete case.).
+
+Also, if $A \subseteq\R$, then the first hitting time of $A$, $T_A = \inf\bra{t : X_t \in A}$ is not in general a stopping time as the set
+\be
+\bra{T_A \leq t} = \bigcup_{0\leq s\leq t} \bra{T = s} \notin \sF_t \text{ in general, since this is an uncountable union.}
+\ee
+
+A quite natural requirement is that for a fixed $\omega$ the mapping $t \mapsto X_t(\omega)$ is continuous in $t$. Then, indeed the mapping $(\omega,t) \mapsto X_t(\omega)$ is measurable. More generally we will consider the following process.
+
+\begin{definition}[\cadlag\ process\index{\cadlag\ process}]\label{def:cadlag_process}
+A process $X = X_t(\omega)$ is \cadlag\ (from the french continu $\grave{\text{a}}$ droite limit\'e $\grave{\text{a}}$ gauche) is all its sample paths are \cadlag\ function (Definition \ref{def:cadlag_function}, right-continuous and admitting left limits everywhere) a.s., i.e., for fixed $\omega$,
+\be
+X_t(\omega) = X_{t^+}(\omega) = \lim_{s\da t}X_s(\omega),\qquad X_{t^-}(\omega) = \lim_{s\ua t}X_s(\omega) \ \text{ exists \quad with probability one.}.
+\ee
+\end{definition}
+
+\begin{remark}
+Continuous and \cadlag\ processes are determined by their values in a countable dense subset of $\R^{++}$, for instance $\Q^+$.
+\end{remark}
+
+\begin{proposition}
+If a process $X = (X_t)_{t\in [0,1)}$ is \cadlag, then the mapping $(\omega, t) \mapsto X_t(\omega)$ is measurable with respect to $\sF\otimes \sB([0, 1))$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+We can write (by right-continuity)
+\be
+X_t(\omega) = \lim_{n\to \infty} \sum^{2^n}_{k=1} \ind_{\bra{t \in [(k-1)2^{-n},k2^{-n})}} X_{k2^{-n}}(\omega).
+\ee
+
+For each $n$ it is easy to see that
+\be
+(\omega, t) \mapsto \sum^{2^n}_{k=1} \ind_{\bra{t \in [(k-1)2^{-n},k2^{-n})}} X_{k2^{-n}}(\omega).
+\ee
+
+$X_{k2^{-n}}(\omega)$ is $\sF$-measurable and thus $\sF\otimes \sB([0,1))$-measurable (since $\bra{k2^{-n}} \in \sB([0,1))$). Also, $\ind_{\bra{t \in [(k-1)2^{-n},k2^{-n})}}$ is $\sB([0,1))$-measurable and thus $\sF\otimes \sB([0,1))$-measurable. Hence $X_t(\omega)$ is $\sF\otimes \sB([0, 1))$-measurable, as a limit of measurable
+functions.
+\end{proof}
+
+%Let $(X_t , t \in I)$ be a process with values in some metric space $(E, d)$ (usually we will have $E = \R^n$ for some $n$). $C(I, E)$ denotes the set of continuous functions $I \to E$ and $D(I, E)$ denotes the set of \cadlag functions, those that are right-continuous and admit left-limits at every point (from the French). If $f$ is \cadlag then, for all $t \in I$, $f (t^+) = \lim_{s\to t^+} f (s) = f (t)$ and $f (t^-) = \lim_{s\to t^-} f (s)$ exists.
+
+\begin{remark}
+Similarly, we can prove that $X$ is measurable with respect to $\sF\otimes \sB(\R)$.
+
+Also, we can have that continuous or \ladcag\ (left-continuous and right limit exists) function also implies that the mapping $(\omega, t) \mapsto X_t(\omega)$ is measurable with respect to $\sF\otimes \sB([0, 1))$.
+\end{remark}
+
+\subsection{C$\grave{\text{a}}$dl$\grave{\text{a}}$g processes, finite variation processes}
+
+Recalling definition of \cadlag\ process (Definition \ref{def:cadlag_process}) and total variation of \cadlag\ function (Definition \ref{def:total_variation_cadlag}), we definie total variation process.
+
+\begin{definition}[total variation process\index{total variation process}, finite variation process\index{finite variation process}]\label{def:total_variation_process}
+Let $A$ be a \cadlag\ adapted process. Its total variation process $V$ is defined pathwise (for each $\omega \in \Omega)$ as the total variation (Definition \ref{def:total_variation_cadlag}) of $A(\omega, \cdot)$.
+
+We say that $A$ is of finite variation if $A$ is of finite variation a.s., i.e., for fixed $\omega$, $A(\omega, \cdot)$ (the sample path) is (a \cadlag\ function and) of finite variation with probability one. % for all $\omega \in \Omega$.
+Then $A$ is called finite variation process.
+\end{definition}
+
+\begin{example}\label{exa:cadlag_increasing_process_is_of_finite_variation}
+It is clear that any \cadlag\ increasing process is finite variation process according to Proposition \ref{pro:cadlag_function_two_increasing_function}
+\end{example}
+
+\begin{lemma}\label{lem:cadlag_sample_continuous_process_finite_variation_process}
+Let $A$ be a \cadlag\ adapted process with finite total variation process $V$. Then $V$ is \cadlag\ process, non-decreasing a.s..% $V$ is called finite variation process\index{finite variation process}.
+
+Furthermore, if the filtration is right-continuous (i.e., $\sF_t = \sF_{t^+}$), then $V$ is adapted.% non-decreasing with probability one.
+\end{lemma}
+
+\begin{remark}
+If $A$ is a sample-continuous adapted process, $V$ is also sample-continuous (by replacing the following proof with sample-continuous condition).
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Using the same definition in Lemma \ref{lem:total_variation_function}, we get for each $\omega$, $t_n^- = 2^{-n}\bb{\ceil{2^n t}-1}$,
+\beast
+V^n_t(\omega) & = & \sum^{\ceil{2^nt}-1}_{k=0} \abs{A_{(k + 1)2^{-n}}(\omega) - A_{k2^{-n}}(\omega)} \\
+& = & \sum^{2^n t^-_n -1}_{k=0} \abs{A_{(k + 1)2^{-n}}(\omega) - A_{k2^{-n}}(\omega)} + \abs{A_{2^{-n}\ceil{2^n t}}(\omega) - A_{2^{-n}(\ceil{2^n t}-1)}(\omega)}
+\eeast
+
+Thus,
+\beast
+V_t & = & \lim_{n\to \infty} \sum^{2^nt^-_n-1}_{k=0} \abs{A_{(k+1)2^{-n}} - A_{k2^{-n}}} + \lim_{n\to \infty}\abs{A_{2^{-n}\ceil{2^n t}} - A_{2^{-n}(\ceil{2^n t}-1)}}\\
+& = & \lim_{n\to \infty} \sum^{2^nt^-_n-1}_{k=0} \abs{A_{(k+1)2^{-n}} - A_{k2^{-n}}} + \abs{A_{t^+} - A_{t^-}} \quad \quad (*).
+\eeast
+
+If the sample path $A(\omega)$ is \cadlag, we have
+\beast
+V_t(\omega) & = & \lim_{n\to \infty} \sum^{2^nt^-_n-1}_{k=0} \abs{A_{(k+1)2^{-n}}(\omega) - A_{k2^{-n}}(\omega)} + \abs{A_{t^+}(\omega) - A_{t^-}(\omega)}\\
+& = & \lim_{n\to \infty} \sum^{2^nt^-_n-1}_{k=0} \abs{A_{(k+1)2^{-n}}(\omega) - A_{k2^{-n}}(\omega)} + \abs{\Delta A_t(\omega)}
+\eeast
+and $V_t(\omega)$ is non-decreasing (by Lemma \ref{lem:total_variation_function}) and \cadlag\ (by Proposition \ref{pro:cadlag_function_two_increasing_function}). Thus, $V$ is non-decreasing a.s. and $V$ is a \cadlag\ process (by Definition \ref{def:cadlag_process}).
+
+We know that $A_{k2^{-n}}$ is $\sF_t$-measurable for $k\leq 2^nt^-_n$ since $2^nt^-_n < t$. Thus,
+\be
+\lim_{n\to \infty} \sum^{2^nt^-_n-1}_{k=0} \abs{A_{(k+1)2^{-n}} - A_{k2^{-n}}} \ \text{ is $\sF_t$-measurable}.
+\ee
+
+Thus, the process $U(t) := \lim_{n\to \infty} \sum^{2^nt^-_n-1}_{k=0} \abs{A_{(k+1)2^{-n}} - A_{k2^{-n}}}$ is adapted.
+
+Also, $\abs{A_{t^+} - A_{t^-}}$ in ($*$) is $\sF_{t^+}$-measurable. If the filtration is right-continuous ($\sF_t=\sF_{t^+}$), then $\abs{A_{t^+} - A_{t^-}}$ is $\sF_t$-measurable. Therefore, $V_t$ is $\sF_t$-measurable and thus $V$ is adapted.% adapted since there is $\omega \in \Omega$ such that $A_{2^{-n}\ceil{2^n t}}(\omega)$ is not $\sF_t$-measuralbe. %since $t^-_n \leq t$ and $\Delta A_t$ is $\sF_t$-measurable since $A$ is \cadlag\ adapted. Thus $V$ is adapted and it is \cadlag and increasing because $V(\omega, \cdot)$ is \cadlag and increasing for all $\omega \in \Omega$.
+\end{proof}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+\subsection{Finite dimensional distribution}
+
+\begin{definition}[law of process]\label{def:law_of_process}
+Recalling the law of random variable $X:\Omega \to \sS$ (Definition \ref{def:r_random_variable_law})\footnote{usually $\sS= \R$},
+\be
+\mu_X((-\infty, x]) = \pro(X \leq x) = \pro\bb{\{\omega:X(\omega) \leq x\}} \ \ra \ \mu_X(A) = \pro\bb{\bra{\omega:X(\omega) \in A}},\quad A\in \sB(\sS).
+\ee
+
+Now we can view a stochastic process $X$ indexed by $\R^{++}$ as a random variable with values in the space of functions $W = \bra{f:\R^{++} \to \sS}$ endowed with the $\sigma$-algebra $\sE$ on $W$ that makes the projections $f \mapsto f(t)$ measurable for every $t\in \R^{++}$. The law of the process\index{law!process} $X$ is the measure $\mu$ that is defined as
+\be
+\mu(A) = \pro(X \in A),\quad A \in \sE.%B(S)\otimes \sT
+\ee
+
+Or we can denote it as
+\be
+\mu(A) = \pro(X \in A),\quad A \in \sB(\sS)\otimes \sT
+\ee
+where $\sT$ is a compact-open topology\footnote{definition needed.} (wrt $t$).
+\end{definition}
+
+However the measure $\mu$ is not easy to work with. Instead we consider simpler objects that we define below.
+
+\begin{definition}[finite dimensional distribution]
+Let $X$ be the stochastic process definited on probability space $(\Omega,\sF,\pro)$ having the state space $(\sS, \sB(\sS))$. Then we consider the probability measure $\mu_J$, where $J \subseteq \R^{++}$ is a finite set, defined as the law of $(X_t)_{t \in J}$ i.e., $\abs{J} = n$, and $J = \bra{t_1,t_2,\dots, t_n}$ ($t_i < \infty$ since $J\subseteq \R^{++}$),
+\be
+\mu_J = \pro\bb{\bb{X_{t_1},\dots,X_{t_n} }\in A},\quad A \in \sB(\sS^n)
+\ee
+
+The probability measures $(\mu_J)$ are called the finite dimensional distributions\index{finite dimensional distributions!stochastic process} of stochastic process $X$.
+\end{definition}
+
+\begin{definition}\label{def:same_finite_dimensional_distribution}
+Let $X,Y$ be the stochastic processes definited on probability space $(\Omega,\sF,\pro)$ and $(\wt{\Omega},\wt{\sF},\wt{\pro})$, respectively, and having the same state space $(\sS, \sB(\sS))$.
+
+Then $X$ and $Y$ have the same finite dimensional distributions if, for any integer $n\geq 1$, real numbers $0\leq t_1< t_2 < \dots t_n< \infty$, and $A\in \sB(\sS^n)$, we have
+\be
+\pro\bb{\bb{X_{t_1},\dots,X_{t_n}}\in A} = \wt{\pro}\bb{\bb{Y_{t_1},\dots,Y_{t_n}}\in A}.
+\ee
+\end{definition}
+
+\begin{proposition}\label{pro:process_law_is_uniquely_determined_by_its_finite_dimensional_marginal_distribution}
+Let $\mu$ be the law of process $X$. Then $\mu$ is uniquely determined by its finite dimensional marginal distributions.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+By a $\pi$-system uniqueness argument, $\mu$ is uniquely determined by its finite dimensional distributions (by Theorem \ref{thm:uniqueness_of_extension_measure} since $\pro$ is probability measure (and thus finite)).
+
+Indeed the set
+\be
+\bra{\omega:\bigcap_{s\in J}\bra{X_s(\omega)\in A_s} : J \text{ is finite, } A_s \in \sB(\sS)}
+\ee
+is a $\pi$-system generating $\sigma$-algebra $\sE$ (or $\sB(\sS)\otimes \sT$) (by checking Definition \ref{def:pi_system}\footnote{details needed. see \cite{Rogers_1994}.I.$P_{120}$.}).
+\end{proof}
+
+Therefore, when we want to specify the law of a \cadlag\ process (or just a right-continuous process), it suffices to describe its finite dimensional marginal distributions. Of course we have no a priori reason to believe there exists a \cadlag\ process whose finite dimensional distributions coincide with a given family of measures $(\mu_J : J \subseteq \R^{++}, J\text{ finite})$.
+
+\subsection{Versions and indistinguishability}
+
+Even if we know the law of a process, this does not give us much information about the sample path properties of the process. Namely, there could be different processes with the same finite marginal distributions. This motivates the following definition:
+
+\begin{definition}[version\index{version!stochastic process}]\label{def:version_process}
+Let $X$ and $X'$ be two processes defined on the same probability space $(\Omega,\sF,\pro)$. We say that $X'$ is a version (or modification\index{modification!stochastic process}) of $X$ if $X_t = X'_t$ a.s. (i.e., $\pro(X_t(\omega) = X'_t(\omega)) = 1$) for every (fixed) $t$.
+\end{definition}
+
+\begin{remark}
+Note that two versions of the same process have the same finite marginal distributions. But they do not share the same sample path properties (there doesn't necessarily exist an $\omega$ such that $X_t(\omega) = X'_t(\omega)$ for every $t$).
+\end{remark}
+
+\begin{example}
+Let $X = (X_t)_{t\in [0,1]}$ be the process that is identical to 0 for all $t$. Then obviously the finite marginal distributions will be Dirac measures at 0. Now let $U$ be a uniform random variable on $[0, 1]$. We define $X'_t = \ind_{\bra{U = t}}$. Then clearly the finite marginal distributions of $X'$ are Dirac measures at 0, and hence it is a version of $X$. However it is not continuous and furthermore
+\be
+\pro\bb{X'_t = 0,\ \forall t \in [0, 1]} = 0.
+\ee
+\end{example}
+
+However, we can define a stronger version,
+
+\begin{definition}[indistinguishable version\index{indistinguishable version!stochastic process}]\label{def:indistinguishable_version_process}
+If $X$ and $X'$ are two processes defined on some common probability space $(\Omega,\sF,\pro)$, we say that $X'$ is an indistinguishable version of $X$, if $\pro(X_t(\omega) = X'_t(\omega) \text{ for all }t) = 1$ i.e., $X$ and $X'$ have the same sample paths a.s.. We say that $X$ and $X'$ are indistinguishable.
+\end{definition}
+
+\begin{proposition}\label{pro:continuous_cadlag_version_indistinguishable}
+If $X$ and $X'$ are \cadlag\ (or sample continuous) and $X'$ is a version of $X$, then $X'$ is also a indistinguishable version of $X$.
+\end{proposition}
+
+\begin{remark}
+Actually, we can release the condition to all (sample) right-continuous (or left-continuous) process.
+
+Note that, up to indistinguishability, there exists at most one continuous version of a given process $(X_t)_{t \geq 0}$ by Proposition \ref{pro:continuous_cadlag_version_indistinguishable}.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Since sample continous process is \cadlag\ (by Definition \ref{def:sample_continuous_process}, \ref{def:cadlag_process}), we only check \cadlag\ case. First we have for any $t\in [0,\infty)$, $\pro\bb{X_t(\omega) \neq
+X_t(\omega)} = 0$. Then by Proposition \ref{pro:probability_property}, \be \pro(X_t(\omega) = X_t(\omega),\forall t\in \Q) = 1 - \pro\bb{X_t(\omega) \neq X_t(\omega),\exists t\in \Q} \geq 1 - \underbrace{\sum_{t\in \Q}
+\pro\bb{X_t(\omega) \neq X_t(\omega)} }_{\text{sum of countably many 0}} = 1-0 = 1. \ee
+
+However for any $t\in \R^{++}$, since $X$ and $X'$ are \cadlag, we can find non-negative rational sequence $t_n \da t$, $X_{t_n}(\omega) = X'_{t_n}(\omega)$ for any $t_n$ and
+\be
+X_t(\omega) = \lim_{t_n \da t} X_{t_n}(\omega) = \lim_{t_n \da t} X'_{t_n}(\omega) = X'_t(\omega).
+\ee
+
+Thus, $\bra{X_t(\omega) = X'_t(\omega),\forall t\in \Q^+} = \bra{X_t(\omega) = X'_t(\omega),\forall t\in \R^{++}}$. This imples that
+\be
+\pro(X_t(\omega) = X'_t(\omega),\forall t\in \R^{++})  = \pro(X_t(\omega) = X'_t(\omega),\forall t\in \Q^+) = 1.
+\ee
+
+This means that $X$ and $X'$ are indistinguishable.
+\end{proof}
+
+%\footnote{add kolmogorov's continuity criterion.}
+
+Kolmogorov's criterion is a fundamental result which guarantees the existence of a continuous version (but not necessarily indistinguishable version).% based solely on an Lp control of the two-dimensional distributions. We will apply to Brownian motion below, but it is useful in many other contexts.
+
+\begin{theorem}[Kolmogorov's continuity criterion\index{Kolmogorov's continuity criterion}]\label{thm:kolmogorov_continuity_criterion}
+Let $(X_t)_{0 \leq t \leq 1}$ be a stochastic process with real values. Suppose there exist $p > 0$, $c > 0$, $\ve > 0$ so that for every $s, t \geq 0$, \be \E\abs{X_t - X_s}^p \leq c\abs{t - s}^{1+\ve}. \ee
+
+Then, there exists a version $\wt{X}$ of $X$ which is (pathwise or sample) continuous, and even $\alpha$-H\"older continuous for any $\alpha \in (0, \ve/p)$, i.e., for all $s,t \in [0,1]$, there exists $K_\alpha$ such that
+\be
+\abs{\wt{X}_t -\wt{X}_s} \leq K_\alpha \abs{s-t}^\alpha \ \text{ a.s.}.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $\sD_n = \{k  2^{-n}: 0 \leq k \leq 2^n\}$ denote the dyadic numbers of $[0, 1]$ with level $n$.%, so $\sD_n$ increases as $n$ increases.
+
+Then letting $\alpha \in (0, \ve/p)$, Markov's inequality (Theorem \ref{thm:markov_inequality_probability}) gives for $0 \leq k < 2^n$,
+\beast
+\pro\bb{\abs{X_{k2^{-n}} - X_{(k+1)2^{-n}}} \geq 2^{-n\alpha}} & = & \pro\bb{\abs{X_{k2^{-n}} - X_{(k+1)2^{-n}}}^p \geq 2^{-np\alpha }} \leq  \frac{\E\abs{X_{k2^{-n}} - X_{(k+1)2^{-n}}}^p}{2^{-np\alpha}}\\
+& = & \E\bsb{\abs{X_{k2^{-n}} - X_{(k+1)2^{-n}}}^p}2^{np\alpha} \leq c 2^{-n(1+\ve)} 2^{np\alpha}  \leq c2^{-n}2^{-(\ve-p\alpha)n}.
+\eeast
+
+Summing over $\sD_n$ we obtain
+\be
+\pro\bb{\max_{0\leq k<2^n} \abs{X_{k2^{-n}} - X_{(k+1)2^{-n}} } \geq 2^{-n\alpha}} \leq c 2^{-n(\ve-p\alpha)},
+\ee
+which is summable. Therefore, the Borel-Cantelli lemma (Lemma \ref{lem:borel_cantelli_1_probability}) shows that for sufficiently large $n$,
+\be
+\max_{0\leq k<2^n} \abs{X_{k2^{-n}} - X_{(k+1)2^{-n}} } < 2^{-n\alpha}\quad \text{a.s.}
+\ee
+
+Suppose the set satisfying this condition is $\Omega'$ with $\pro(\Omega') = 1$. Then for any $\omega \in \Omega'$, we can find $M(\omega)$ (where $M$ is a random variable) such that
+\be
+\sup_{n\geq 0} \max_{0\leq k<2^n} \frac{\abs{X_{k2^{-n}}(\omega) - X_{(k+1)2^{-n}}(\omega)}}{2^{-n\alpha}} \leq M(\omega) < \infty.
+\ee
+
+We claim that this implies that for every $s, t \in \sD = \bigcup_{n\geq 0} \sD_n$, $\abs{X_s - X_t} \leq M'(\omega)\abs{t - s}^\alpha$, for some $M'(\omega) < \infty$.
+
+Indeed, if $s, t \in \sD$, $s < t$, and let $r$ be the unique integer such that
+\be
+2^{-r-1} < t-s \leq 2^{-r}.\quad\quad (*)
+\ee
+
+Then there exists $0 \leq k \leq 2^r$ such that $s < k2^{-r-1} < t$ since the gap between $s$ and $t$ is bigger than $2^{-r-1}$. Thus, the gap between $t$ and $k2^{-r-1}$ smaller than $2^{-r}$. Similarly, we have the gap between $s$ and $k2^{-r-1}$ smaller than $2^{-r}$.
+\beast
+s & = & k2^{-r-1} - \ve_1 2^{-r-1} - \ve'_2 2^{-r-2} - \dots \\
+t & = & k2^{-r-1} + \ve'_1 2^{-r-1} + \ve'_2 2^{-r-2} + \dots
+\eeast
+with $\ve_i$, $\ve'_i \in \{0, 1\}$, $i\geq 0$. For $i,j\geq 1$, we let
+\beast
+s_i & = & k2^{-r-1} - \ve_1 2^{-r-1} - \dots - \ve_i2^{-r-i}\\
+t_j & = & k2^{-r-1} - \ve'_1 2^{-r-1} - \dots - \ve'_i2^{-r-j}.
+\eeast
+
+By the triangular inequality, with assumption and ($*$),
+\beast
+\abs{X_t - X_s} & \leq & \abs{X_{t_0} - X_{s_0}} + \sum^\infty_{i=1} \abs{X_{t_i} - X_{t_{i-1}}} + \sum^\infty_{j=1} \abs{X_{s_j} - X_{s_{j-1}}}\\
+& \leq & \sum^\infty_{i=1} M(\omega) 2^{-(r+i)\alpha} + \sum^\infty_{j=1} M(\omega) 2^{-(r+j)\alpha } = \frac{2M(\omega) 2^{-(r+1)\alpha}}{1 - 2^{-\alpha}} \leq M'(\omega)\abs{t - s}^\alpha \quad\quad (\dag)
+\eeast
+where $M'(\omega) = 2M(\omega)/(1-2^{-\alpha})$.
+
+
+Therefore, the process $(X_t)_{t \in \sD}(\omega)$ is uniformly continuous (and even $\alpha$-H\"older continuous) for $\omega \in \Omega'$. Since $\sD$ is an everywhere dense set in $[0, 1]$, for any $t\in [0,1]$, we can find a sequence $t_n \in \sD$ such that $t_n \to t$. Since $t_n$ is a Cauchy sequence in $[0,1]$, with ($\dag$) we have $X_{t_n}(\omega)$ is also a Cauchy sequence. Thus, we have that $X_{t_n}(\omega)$ converges by Theorem \ref{thm:cauchy_sequence_convergence_real} and $\lim_{n\to\infty}X_{t_n}(\omega)$ is well-defined.
+
+Now defined by $\wt{X}_t(\omega) = \lim_n X_{t_n}(\omega)$, where $(t_n)_{n \geq 0}$ is any $\sD$-valued sequence converging to $t\in [0,1]$). Obviously, $\wt{X}(\omega)$ is continous by definition. For the exceptional set where $(X_d)_{d \in \sD}$ is not uniformly continuous ($\omega \in \Omega'^c$), we let $\wt{X_t}(\omega) = 0$, $t\in [0, 1]$, so $\wt{X}$ is pathwise continuous. Note that if we don't consider the exceptional set, $\wt{X}$ is still a sample continuous process, i.e., the sample path is continuous a.s..
+
+
+It remains to show that $\wt{X}$ is a version of $X$. If $t_n \to t$ for $t_n \in \sD$, then $\liminf_n X_{t_n} = \lim_{n\to \infty}X_{t_n}$. We estimate by Fatou's lemma (Lemma \ref{lem:fatou_probability}),
+\be
+\E\abs{X_t - \wt{X}_t}^p = \E\abs{X_t - \liminf_n X_{t_n}}^p = \E\bb{\liminf_n \abs{X_t - X_{t_n}}^p} \leq \liminf_n \E[\abs{X_t - X_{t_n}}^p],
+\ee
+%where $(t_n, n \geq 0)$ is any $D$-valued sequence converging to $t$. But s
+
+Since $\E\abs{X_t - X_{t_n}}^p \leq c\abs{t - t_n}^{1+\ve}$, this converges to 0 as $n \to \infty$. Therefore, for every $t$, by Theorem \ref{thm:non_negative_measurable_property}.(iii),
+\be
+\E\abs{X_t - \wt{X}_t}^p = 0 \ \ra \ \abs{X_t - \wt{X}_t}^p = 0 \text{ a.s.} \ \ra \ X_t = \wt{X}_t \text{ a.s.}
+\ee
+
+Thus, $\wt{X}$ is a (pathwise or sample) continuous version of $X$. %$X_t = \wt{X}_t$ a.s. for every $t$. the latter process a.s. admits a unique continuous extension $\wt{X}$ on $[0, 1]$, which is also $\alpha$-H\"older continuous (it is consistently
+\end{proof}
+
+\subsection{Canonical Processes}
+
+\begin{definition}[function space\index{function space!with time index}]\label{def:function_space_with_time_index}
+A function space $F(T,E)=E^T$ with time index is the collection of function $f$ such that
+\be
+f: T\to E,\ t\mapsto f(t).\ %$f(t)\in E$
+\ee
+\end{definition}
+
+\begin{definition}[coordinate mapping\index{coordinate mapping}]\label{def:coordinate_mapping_time_index}
+Let $E^T$ be a function space with time index. The functions
+\be
+Y_t: E^T\to E,\ \phi \mapsto \phi(t) = Y_t(\phi)
+\ee
+for any $t\in T$ are called coordinate mappings.
+\end{definition}
+
+\begin{definition}[canonical process\index{canonical process}]\label{def:canonical_process}
+Let $(X_t)_{t\in T}$, be a process defined on $(\Omega,\sF,\pro)$ with state space $(E,\sE)$. The mapping $\phi:\Omega \to E^T,\ \omega \mapsto \phi(\omega)$ is defined by
+\be
+\phi(\omega) = X(\omega).\quad\quad (\phi(\omega)(t) = X_t(\omega))
+\ee
+
+Then the coordinate mapping are
+\be
+Y_t: E^T\to E,\ \phi(\omega) \mapsto (\phi(\omega))(t) = Y_t(\phi(\omega)) = Y_t\circ \phi (\omega)
+\ee
+with probability one (i.e., a.s.).
+
+They are random variables, hence form a process indexed by $T$, if $E^T$ is endowed with the product $\sigma$-algebra $\sE^T$. This $\sigma$-algebra is the smallest for which all the functions $Y_t$ are measurable and it is the union of the $\sigma$-algebras generated by the countable sub-families of funcitons $Y_t$, $t\in T$. It is also the smallest $\sigma$-algebra containing the measurable rectangles $\prod_{t\in T}A_t$ where $A_t\in \sE$ for each $t$ and $A_t = E$ but for a finite sub-famility $(t_1,\dots,t_n)$ of $T$.
+
+Thus, we have for any finite subset $(t_1,\dots,t_n)$ of $T$ and sets $A_i \in \sE$,
+\beast
+\pro\bb{X_{t_1}\in A_1,\dots X_{t_n}\in A_n} & = & \pro\bb{\omega:X_{t_1}(\omega)\in A_1,\dots, X_{t_n}(\omega)\in A_n} \\
+& = & \pro\bb{\omega:\phi(\omega)\bb{t_1}\in A_1,\dots, \phi(\omega)\bb{t_n}\in A_n} \\
+& = & \pro\bb{\omega:Y_{t_1}\circ \phi (\omega)\in A_1,\dots, Y_{t_n}\circ \phi(\omega)\in A_n} \\
+& = & \pro\circ \phi^{-1} \bb{Y_{t_1}\in A_1,\dots, Y_{t_n}\in A_n}.\quad\quad (*)
+\eeast
+
+Thus, by Definition \ref{def:same_finite_dimensional_distribution}, $X$ and $Y$ have the same finite dimensional distributions.
+
+We call $Y$ the canonical process of the process $X$.
+\end{definition}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Previsible processes}
+
+\begin{definition}[previsible $\sigma$-algebra\index{previsible $\sigma$-algebra@previsible sigma-algebra}]\label{def:previsible_sigma_algebra}
+The previsible $\sigma$-algebra $\sP$ on $\Omega \times (0,\infty)$ is the $\sigma$-algebra generated by sets of the form $E \times(s, t]$ where $E \in \sF_s$ and $s < t$.
+\end{definition}
+
+\begin{definition}[previsible process\index{previsible process!continuous-time}, continuous-time]\label{def:previsible_process_continuous}
+A previsible process $H$ is a $\sP$-measurable map $H: \Omega \times (0,\infty) \to \R$.
+\end{definition}
+
+\begin{proposition}\label{pro:previsible}
+Let $\bb{\sF_t}_{t\geq 0}$ be the filtration satisfying the usual conditions and $X$ be \cadlag\ adapted and $H_t = X_{t^-}$ for \cadlag\ paths, $t > 0$. Then $H$ is previsible.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+For $\Omega' = \bra{\omega :H(\omega) \text{ has \cadlag\ path}}$, we have $\pro\bb{\Omega'} = 1$. Then for any $\omega \in \Omega'$,
+%$H :\Omega\times (0,\infty) \to \R$ is left-continuous and adapted. That is, since $X$ is \cadlag,
+\be
+\lim_{s\ua t} H_s(\omega) = \lim_{s\ua t} X_{s^-}(\omega) = X_{(t^-)^-}(\omega) = X_{t^-}(\omega) = H_t(\omega).
+\ee
+
+For $\omega \in \Omega'^c$, we have $H_s(\omega) = Y_s(\omega)$ for any random variable $Y_s$ (which might not be adapted). Since the filtration satisfies the usual conditions,
+\be
+H_t = X_{t^-}(\omega)\ind_{\bra{\omega\in \Omega'}}+ Y_t(\omega)\ind_{\bra{\omega\in \Omega'^c}}
+\ee
+is $\sF_t$-measurable ($X_{t^-}(\omega)\ind_{\bra{\omega\in \Omega'}}$ is $\sF_{t^-}$-measurable and thus $\sF_t$-measurable. Meanwhile, for any $c\in \R$,
+\be
+\pro\bb{\omega:Y_t(\omega)\ind_{\bra{\omega\in \Omega'^c}}\leq c} = 0\text{ or }1 \ \ra \bra{\omega:Y_t(\omega)\ind_{\bra{\omega\in \Omega'^c}}\leq c}\text{ is $\sF_t$-measurable}).
+\ee
+
+Thus, $H$ is (sample) left-continuous and adapted.
+
+Set $t^-_n = k2^{-n}$ when $k2^{-n} < t \leq (k + 1)2^{-n}$ and
+\be
+H^n_t = H_{t^-_n} = \sum^\infty_{k=0} X_{k2^{-n}}(t) \ind_{\bra{(k2^{-n},(k+1)2^{-n}]}}(t).
+\ee
+where
+\be
+X_{k2^{-n}}(t)(\omega) = \left\{\ba{ll}
+H_{k2^{-n}}(\omega)\quad\quad & \omega \in \Omega'\\
+Y_t(\omega) & \omega \in \Omega'^c
+\ea\right.
+\ee
+
+%where $H_{k2^{-n}} = H$
+
+So $X_{k2^{-n}}(t)$ is $\sF_{t^-_n}$-measurable. $H$ is also previsible as it is a pointwise limit of measurable functions.
+%So $H^n$ is previsible for all $n \in \N$ since $H_{t^-_n}$ is $\sF_{t^-_n}$-measurable as $H$ is adapted and $t^-_n < t$. Since $t^-_n \ua t$ and so $H^n_t \to H_t$ as $n\to \infty$ by left-continuity and $H$ is also previsible as it is a limit of measurable functions.
+\end{proof}
+
+\begin{proposition}
+Let $H$ be a previsible process. Then $H_t$ is $\sF_{t^-}$-measurable for all $t > 0$, where $\sF_{t^-} = \sigma(F_s:s < t) = \sigma\bb{\bigcup_{s<t}\sF_s}$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+The previsible $\sigma$-algebra $\sP$ is generated by $\pi$-system
+\be
+\Pi = \bra{A \times (s,u]: s<u,A\in \sF_s}.
+\ee
+
+If $H= \ind_{\bra{A\times (s,u]}}$, then since $\bra{1}$ is measurable in $\R$
+\be
+H_t^{-1}(\bra{1}) = \left\{\ba{ll}
+A \quad\quad & s<t\leq u\\
+\emptyset & \text{otherwise}
+\ea\right.
+\ee
+
+Since $A\in \sF_s$, we have $H_t^{-1}(\bra{1}) \in \sF_s \subseteq \sF_{t^-}$. Thus, $\ind_{\bra{A\times (s,u]}}$ is $\sF_{t^-}$-measurable.
+
+Now we define
+\be
+\sA = \bra{B\in \sP: \ind_{B}(\cdot,t)\text{ is $\sF_{t^-}$-measurable}} \subseteq \sP.
+\ee
+
+Clearly, $\Pi \subseteq \sA$ since every set $A\times (s,u]$ in $\Pi$ satisfies $\ind_{\bra{A\times (s,u]}}$ is $\sF_{t^-}$-measurable. Also, we have $\sigma(\Pi) = \sP$. Now we show that $\sA$ is a $d$-system. Recall definition of $d$-system (Definition \ref{def:d_system}),
+\ben
+\item [(i)] $\Omega \times (0,\infty) \in \sA$ as 1 is $\sF_{t^-}$-measurable.
+\item [(ii)] If $C\subset D\in \sA$, then $\ind_{D\bs C} = \ind_D -\ind_C$ is $\sF_{t^-}$-measurable since $\ind_D, \ind_C$ are $\sF_{t^-}$-measurable.
+\item [(iii)] If $C_n \in \sA$ with $C_1\subseteq C_2 \subseteq \dots$, $\ind_{C_n} \ua \ind_{\bigcup_n C_n}$. Thus $\ind_{\bigcup_n C_n}$ is $\sF_{t^-}$-measurable as a limit of $\sF_{t^-}$-measurable functions.
+\een
+
+Thus, $\sA$ is a $d$-system, then by Dynkin's lemma (Lemma \ref{lem:dynkin_lemma}), we have $\sP \subseteq \sA$. So $\sA = \sP$ and $\forall B\in \sP$, we have $\ind_{B}(\cdot,t)$ is $\sF_{t^-}$-measurable.
+
+Thus, for $\sP$-measurable function $H$, we define
+\be
+H^n_t := 2^{-n}\floor{2^nH_t} = \sum^\infty_{k=1} 2^{-n} k\ \overbrace{\ind_{\underbrace{\bra{H_t\in [2^{-n}k, 2^{-n}(k+1))}}_{\in \sP}}}^{\text{$\sF_{t^-}$-measurable}}
+\ee
+
+Then $H^n_t$ is $\sF_{t^-}$-measurable since it is a linear combination of $\sF_{t^-}$-measurable functions. Then since $H^n_t \ua H_t$, we have $H_t$ is $\sF_{t^-}$-measurable as a limit of measurable functions.
+\end{proof}
+
+\begin{proposition}
+Suppose that $S$ and $T$ are stopping times with $S\leq T \leq \infty$. Let $Z$ be a bounded and $\sF_S$-measurable. Then $H = Z\ind_{(S,T]}$ is $\sP$-measurable.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{see Rogers-Williams\cite{Rogers_1994}.IV.6}.
+\end{proof}
+
+\begin{theorem}\label{thm:previsible_sigma_algebra_contains_all_adapted_left_continuous_process}
+$\sP$ is the smallest $\sigma$-algebra such that all adapted (pathwise) left-continuous processes on $(0,\infty)$ are $\sP$-measurable and actually it is the smallest $\sigma$-algebra such that all bounded (pathwise) adapted left-continuous processes on $(0,\infty)$ are $\sP$-measurable.% (see Rogers-Williams\cite{Rogers_1994}.IV.6).
+
+If the filtered probability space satisfies usual condition, we have taht $\sP$ is the smallest $\sigma$-algebra such that all adapted (sample) left-continuous processes on $(0,\infty)$ are $\sP$-measurable and actually it is the smallest $\sigma$-algebra such that all bounded (sample) adapted left-continuous processes on $(0,\infty)$ are $\sP$-measurable.% (see Rogers-Williams\cite{Rogers_1994}.IV.6).
+\end{theorem}
+
+%\begin{remark}
+%\end{remark}
+
+\begin{proof}[\bf Proof]
+We only consider the case that the filtration satisfies usual condition. The case without usual condition is similar.
+
+For $\Omega' = \bra{\omega:H(\omega)\text{ has left-continuous path}}$, we have $\pro(\Omega') = 1$. For any bounded (sample) left-continuous adapted process $H$ is the pointwise limit of the processes,% we have $\Omega' = \bra{\omega:H(\omega)\text{ has left-continuous path}}$ with $\pro(\Omega') = 1$. Thus, %for any $\omega \in \Omega$,
+%\be
+%H = \lim_{k\to \infty} \lim_{n\to \infty} \sum^{nk}_{i=2} H_{(i-1)/n}\left(\frac {i-1}n, \frac in\right],\quad\quad H_{(i-1)/n} \in \sF_{(i-1)/n}
+%\ee
+%since $H$ is adapted ($H_t$ is $\sF_t$-measurable). Thus, $H$ is $\sP$-measurable.
+\be
+H^n_t = H_0\ind_{\bra{0}}(t) + \sum^\infty_{k=0} X_{k/n}(t)\ind_{(k/n,(k+1)/n]}(t).
+\ee
+where
+\be
+X_{k/n}(t) = H_{k/n}(\omega) \ind_{\bra{\omega \in \Omega'}} + Y_t(\omega)\ind_{\bra{\omega \in \Omega'^c}}.
+\ee
+
+%For $H(\omega)$ has continuous path, we simply let $X_{k/n}(\omega) = H_{k/n}(\omega)$. Otherwise, we can construct a \cadlag\ process $X_t$ such that we can have $X_{t^-}(\omega) = H_t(\omega)$ as $X_{t^{-}}$ is $\sF_t$-measurable.
+
+Obviously, we have for any $c\in \R$, $\pro\bb{Y_t(\omega)\ind_{\bra{\omega \in \Omega'^c}} \leq c}=$ 0 or 1. Thus, $\bra{\omega:Y_t(\omega)\ind_{\bra{\omega \in \Omega'^c}} \leq c}$ is $\sF_{k/n}$-measurable (by usual condition of filtered probability space). Therefore, $X_{k/n}(t)$ is $\sF_{k/n}$-measurable and $H^n$ is $\sP$-measurable. Furthermore, we have $H^n \ua H$ which implies that $H$ is $\sP$-measurable.
+
+%Now suppose $H$ is any non-negative (sample) left-continuous process, we define $H_n := 2^{-n}\floor{2^n H}$. Thus $H^n$ is bounded and so it is $\sP$-measurable.
+
+
+Then for any (sample) left-continuous process $H$, let $H^m = m \land H \vee (-m)$. Since $H^m$ is $\sP$-measurable and $H$ is the limit of $H^m$, we have $H$ is $\sP$-measurable as well. % $H = H^+ - H^-$, it is also $\sP$-measurable since $H^+,H^-$ are $\sP$-measurable.
+Therefore, we have that any (sample) left-continuous process is $\sP$-measurable and
+\beast
+\sigma \bb{\text{all bounded adapted (sample) left-continuous processes}} \subseteq \sigma \bb{\text{all adapted (sample) left-continuous processes}} \subseteq \sP.
+\eeast
+
+Now we prove the other direction. Define
+\be
+\sA := \bra{A\in \sP: \ind_A \text{ is (sample) left-continuous}} = \bra{A\in \sP: \ind_A(t) \text{ is (sample) left-continuous for any }t}.
+\ee
+
+Obviously, $\sA$ is a $\pi$-system generating $\sP$ since $\ind_{A\cap B}$ is (sample) left-continuous ($A\cap B\in \sA$) for $A\in \sA$ and $B\in \sA$. For $\pi$ system $\Pi = \bra{B\times (s,t]: s<t,B\in \sF_s}$, we have
+$\Pi\subseteq \sA$ as $\ind_{B\times (s,t]} = \ind_{\omega \in B} \ind_{(s,t]}$ is (bounded sample) left-continuous for fixed $\omega$. Thus,
+
+Now we check that $\sA$ is actually a $d$-system: \ben
+\item [(i)] $\ind_{\Omega \times (0,\infty)}$ is constant 1 a.s. for fixed $\omega$. So it is (sample) continuous and then $\ind_{\Omega \times (0,\infty)} \in \sA$.
+\item [(ii)] If $C\subseteq D\in \sA$, we have for fixed $\omega \in \Omega$,
+\be
+\ind_C,\ind_D \text{ are (sample) left-continuous} \ \ra \ \ind_{D\bs C} = \ind_D - \ind_C \text{ is (sample) left-continuous}  \ \ra \ D\bs C \in \sA.
+\ee
+\item [(iii)] If $C_n \in \sA$ and $C_n \ua C$, we have $\ind_{C_n}$ is (sample) left-continuous for all $n$ for fixed $\omega$. Then for fixed $\omega \in \Omega$, and $C_0 = \emptyset$,
+\be
+\lim_{t_m \ua t}\ind_C(t_m) = \lim_{t_m \ua t}\lim_{n\to \infty} \ind_{C_n}(t_m) = \lim_{t_m \ua t} \sum^\infty_{n=1} \bb{\ind_{C_n}- \ind_{C_{n-1}}}(t_m)\quad \text{a.s..}
+\ee
+
+We can consider $\sum^\infty_{n=1}$ as a $\sigma$-finite measure. Threrefore, since $\bb{\ind_{C_n}- \ind_{C_{n-1}}}(t_m) \ua \bb{\ind_{C_n}- \ind_{C_{n-1}}}(t)$ a.s.. Then by monotone convergence theorem (Theorem \ref{thm:monotone_convergence_pointwise}), we can have (by (sample) left-continuity of $C_n$ and $C_{n-1}$)
+\be
+\lim_{t_m \ua t} \sum^\infty_{n=1} \bb{\ind_{C_n}- \ind_{C_{n-1}}}(t_m) = \sum^\infty_{n=1} \lim_{t_m \ua t} \bb{\ind_{C_n}- \ind_{C_{n-1}}}(t_m) = \sum^\infty_{n=1} \bb{\ind_{C_n}- \ind_{C_{n-1}}}(t) = \ind_C(t)\quad\text{a.s.}.
+\ee
+
+Thus, $\ind_C$ is (sample) left-continuous and $C\in \sA$.
+\een
+
+Therefore, by Dynkin's lemma (Lemma \ref{lem:dynkin_lemma}), we have $\sP \subseteq \sA$. Hence, $\sA = \sP$, i.e., $\sP$ is the smallest $\sigma$-algebra such that all (bounded) adapted (sample) left-continuous processes
+are $\sP$-measurable.
+\end{proof}
+
+
+\begin{proposition}\label{pro:sigma_algebra_simple_process_left_continuous_continuous_equal}
+The $\sigma$-algebra generated on $\Omega \times (0,\infty)$ by
+\ben
+\item [(i)] the space of $E \times(s, t]$ where $E \in \sF_s$ and $s < t$,
+\item [(ii)] the space of all adapted (pathwise) left-continuous processes on $(0,\infty)$,
+\item [(iii)] the space of all adapted (pathwise) continuous processes on $(0,\infty)$ \een are equal.
+
+The conclusion becomes sample continuous case when we assume the filtered probability space satisfies usual condition.
+\end{proposition}
+
+\begin{remark}
+The smallest $\sigma$-algebra such that all adapted (pathwise) continuous processes are $\sP$-measurable is the same as the smallest $\sigma$-algebra such that all adapted (pathwise) left-continuous processes are
+$\sP$-measurable!
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Obviously, $\sigma_3 \subseteq \sigma_2$. Also, from Theorem \ref{thm:previsible_sigma_algebra_contains_all_adapted_left_continuous_process}, we have $\sigma_2\subseteq \sigma_1$. So it suffices to prove that $\sigma_1
+\subseteq \sigma_3$.
+
+We can see that $\ind_{(s,t]}$ is the limit of continuous function $f_n$ with compact support contained in $(s,t+1/n)$. If $H_s\in \sF_s$, the process $Hf_n$ is continuous and adapted which implies that $\sigma_1 \subseteq \sigma_3$.
+\end{proof}
+
+Combining Theorem \ref{thm:previsible_sigma_algebra_contains_all_adapted_left_continuous_process} and Proposition \ref{pro:sigma_algebra_simple_process_left_continuous_continuous_equal}, we have
+\begin{proposition}
+The previsible $\sigma$-algebra $\sP$ on $\Omega \times (0,\infty)$ is the $\sigma$-algebra generated by
+\ben
+\item [(i)] the space of $E \times(s, t]$ where $E \in \sF_s$ and $s < t$,
+\item [(ii)] the space of all bounded adapted (pathwise) left-continuous processes on $(0,\infty)$,
+\item [(iii)] the space of all adapted (pathwise) left-continuous processes on $(0,\infty)$,
+\item [(iv)] the space of all adapted (pathwise) continuous processes on $(0,\infty)$ \een are equal. If the filtered probability space satisfies usual condition, it becomes \ben
+\item [(i)] the space of $E \times(s, t]$ where $E \in \sF_s$ and $s < t$,
+\item [(ii)] the space of all bounded adapted (sample) left-continuous processes on $(0,\infty)$,
+\item [(iii)] the space of all adapted (sample) left-continuous processes on $(0,\infty)$,
+\item [(iv)] the space of all adapted (sample) continuous processes on $(0,\infty)$ \een are equal.
+\end{proposition}
+
+\subsection{Locally bounded processes and finite variation integrals}
+
+\begin{definition}[locally bounded stochastic process\index{locally bounded!stochastic process}]\label{def:locally_bounded_stochastic_process}%Let $H$ be previsible.
+I say that the stochastic process $H$ is locally bounded if there exist stopping times $S_n \ua \infty$ a.s. such that $H \ind_{(0,S_n]}$ is bounded for all $n \in \N$ a.s., i.e. there exist $C_n < \infty$ non-random such that $\sup_{t\geq0} \abs{H_t \ind_{(0,S_n]}(t)} \leq C_n$ a.s.. We say $(S_n)_{n\in \N}$ reduce $H$.
+\end{definition}
+
+%Note that if $H_t$ is \cadlag\ and adapted, then $H_{t^-}$ is previsible and locally bounded\footnote{need proof}.
+
+\begin{proposition}\label{pro:continuous_adapted_process_is_locally_bounded_previsible}
+Any (sample) continuous adapted process $H$ is locally bounded and previsible.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Local boundedness is the direct result from Proposition \ref{pro:debut_time_closed_set_stopping_time} by taking $T_n = \inf\bra{t:\abs{H_t}\geq n}$. %Let $X$ be a local martingale. Recalling Proposition \ref{pro:continuous_local_martingale_stopping_time}, we have $S_n$ reduce $X$ and $X\ind_{(0,S_n]}$ is bounded for all $n\in \N$ a.s..
+
+From Proposition \ref{pro:sigma_algebra_simple_process_left_continuous_continuous_equal}, we know that all left-continuous processes are previsible.
+\end{proof}
+
+%\begin{proposition}\label{pro:left_continuous_adapted_process_is_locally_bounded_previsible}
+%Any (sample) left-continuous adapted process $H$ on $(0,\infty)$ is previsible.
+%\end{proposition}
+
+%\begin{proof}[\bf Proof]
+%Local boundedness is the direct result from Proposition \ref{pro:debut_time_closed_set_stopping_time} by taking $T_n = \inf\bra{t:\abs{H_t}\geq n}$. %Let $X$ be a local martingale. Recalling Proposition \ref{pro:continuous_local_martingale_stopping_time}, we have $S_n$ reduce $X$ and $X\ind_{(0,S_n]}$ is bounded for all $n\in \N$ a.s..
+%From Proposition \ref{pro:sigma_algebra_simple_process_left_continuous_continuous_equal}, we know that all left-continuous processes are previsible.
+%By , $H$ is previsible.
+%\end{proof}
+
+
+
+\begin{proposition}\label{pro:right_continuous_adapted_process_is_locally_bounded_usual_conditions}
+Assume that the filtered probability space satisfies usual conditions. Then any \cadlag\ adapted process $H$ is locally bounded.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Local boundedness is the direct result from Proposition \ref{pro:right_continuous_open_set_stopping_time} by taking $T_n = \inf\bra{t:\abs{H_t} > n}$ as $A$ is open ($A := \bra{\abs{H_t} > n}$).
+\end{proof}
+
+%\footnote{need change, see Rogers-Williams\cite{Rogers_1994}.IV10. Let $H$ be an adapted left-continuous process for which $\limsup_{t\da 0} \abs{H_t} < \infty$. Then $H$ is locally bounded and previsible.}
+
+
+%\subsection{Finite variation integrals}
+
+%Finite variation processes are essentially those for which the standard notion of integral (the one you learn about in measure theory courses) is well-defined. Since finite variation is a pathwise property, we will first establish integrals with respect to deterministic integrants and lift it to stochastic processes in the last part of this section.
+
+%Recall that a function $f: \R \to \R$ is \cadlag or rcll if it is right-continuous and has left limits. For such functions we write $\Delta f(t) := f(t) - f(t^-)$ where $f(t^-) = \lim_{s\ua t} f(s)$. Suppose $a: [0,1)\to \R$ is an increasing \cadlag function. Then there exists a unique Borel measure da on $(0,1)$ such that $da\bb{(s, t]} = a(t) - a(s)$, the Lebesgue-Stieltjes measure with distribution function $a$. Since $da$ is a proper measure, there is no problem in defining, for any non-negative measurable function $h$ and $t \geq 0$.
+%\be
+%(h \cdot a)(t) = \int_{(0,t]} h(s) da(s) .
+%\ee
+
+%We may extend this definition to a \cadlag function $a = a' - a''$, where $a'$ and $a''$ are both increasing \cadlag, and to integrable $h : [0,1) \to\R$. Subject to the finiteness of all the terms on the right we define
+%\be\label{equ:h_pm}
+%h \cdot a = h^+ \cdot a' - h^+ \cdot a'' - h^- \cdot a' + h^- \cdot a'' .
+%\ee
+%where $h^\pm := \max\{\pm h, 0\}$ are the positive and negative part of $h$.
+
+%To be able to make this definition we have assumed that a was the difference between two non-decreasing functions. We now ask for an analytic characterization of those functions which have this property. If a is a measurable function and $I$ an interval, we define (with a slight abuse of notation) $da(I) := a(\sup I)-a(\inf I)$, even though da is not really a measure.
+
+
+\begin{theorem}\label{thm:cadlag_finite_variation_previsible_integral}
+Let $(\sF_t)_{t\geq 0}$ be a filtration satisfying usual conditions and $A$ be a \cadlag\ adapted process with \cadlag\ finite variation process $V$, i.e., for all $\omega \in \Omega$, $A(\omega)$ is \cadlag\ with finite
+variation $V(\omega)$ a.s..
+
+Let $H$ be previsible such that for all $t \geq 0$ and $\omega \in \Omega$
+\be%\label{equ:integral_total_variation_finite}
+\int_{(0,t]} \abs{H(\omega, s)} dV (\omega, s) < \infty\ \text{ a.s.}.
+\ee
+
+Then we pick set $\Omega' \subseteq \Omega$ ($\pro(\Omega') =1$) such that for all $\omega' \in \Omega'$, $A(\omega')$ is \cadlag\ with finite variation $V(\omega')$ and
+\be
+\int_{(0,t]} \abs{H(\omega', s)} dV (\omega', s) < \infty
+\ee
+
+Then the process defined by for all $\omega \in \Omega$,
+\be
+(H \cdot A)_t(\omega) = \left\{\ba{ll}
+\int_{(0,t]} H_s(\omega) dA_s(\omega) \quad \quad & \omega \in \Omega' \\
+0 & \omega \in \Omega'^c
+\ea\right.%\quad \quad (*)
+\ee
+is well-defined, \cadlag, adapted and of (sample) finite variation.%\footnote{\cadlag\ and finite variation are in sense of a.s.}.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+First note that
+\be
+\Delta A_t(\omega) = A_t(\omega) - A_{t^-}(\omega).
+\ee
+
+Since $A$ is a \cadlag\ process with finite variation process $V$, by Proposition \ref{pro:cadlag_function_two_increasing_function}, we define
+\be
+A^+ = \frac 12 (V+A),\quad A^- = \frac 12 (V-A)
+\ee
+and we have that $A^+$ and $A^-$ are non-decreasing (a.s.) \cadlag\ processes. Then for any $\omega \in \Omega'$, %We pick $\omega \in \Omega' \subseteq \Omega$ such that $A(\omega)$ is \cadlag, $A^+(\omega)$ and $A^+(\omega)$ are \cadlag\ and non-decreasing, $V(\omega)$ is finite variation and $\int_{(0,t]} \abs{H(\omega, s)} dV (\omega, s) < \infty$. By definition of \cadlag\ process and finite variation process, we have $\pro(\Omega') = 1$.Then we have
+\be
+\abs{(H \cdot A)_t(\omega)} = \abs{\int_{(0,t]} H_s(\omega) dA_s(\omega)} = \abs{\int_{(0,t]} H_s(\omega) dA^+_s(\omega) - \int_{(0,t]} H_s(\omega) dA^-_s(\omega)} %\\& \leq & \abs{\int_{(0,t]} H_s(\omega) dA^+_s(\omega)} + \abs{\int_{(0,t]} H_s(\omega) dA^-_s(\omega)}.
+\ee
+
+We know that $dA^+(\omega)$ and $dA^-(\omega)$ are Lebesgue-Stieltjes measure on $\Omega'$ by Theorem \ref{thm:existence_radon}.
+
+Then by Theorem \ref{thm:non_negative_measurable_property}.(i), for $H_s^+ = \max\bra{H_s,0}$ and $H_s^+ = \max\bra{-H_s,0}$,
+\beast
+\abs{(H \cdot A)_t(\omega)} & \leq & \abs{\int_{(0,t]} H_s^+(\omega) dA^+_s(\omega) - \int_{(0,t]} H_s^-(\omega) dA^+_s(\omega) - \bb{\int_{(0,t]} H_s^+(\omega) dA^-_s(\omega) -  \int_{(0,t]} H_s^-(\omega) dA^-_s(\omega)}}\quad (*)\\
+& \leq &  \abs{\int_{(0,t]} H_s^+(\omega) dA^+_s(\omega) - \int_{(0,t]} H_s^-(\omega) dA^+_s(\omega)} + \abs{\int_{(0,t]} H_s^+(\omega) dA^-_s(\omega) -  \int_{(0,t]} H_s^-(\omega) dA^-_s(\omega)}\\
+& \leq &  \abs{\int_{(0,t]} H_s^+(\omega) dA^+_s(\omega)} + \abs{\int_{(0,t]} H_s^-(\omega) dA^+_s(\omega)} + \abs{\int_{(0,t]} H_s^+(\omega) dA^-_s(\omega)} + \abs{\int_{(0,t]} H_s^-(\omega) dA^-_s(\omega)}.
+\eeast
+
+Since $H^+(\omega)$ and $H^-(\omega)$ are non-negative, we can get rid of absolute symbols (as $dA^+(\omega)$ and $dA^-(\omega)$ are measures.). Thus, we have
+\beast
+\abs{(H \cdot A)_t(\omega)} & \leq &  \int_{(0,t]} H_s^+(\omega) dA^+_s(\omega) + \int_{(0,t]} H_s^-(\omega) dA^+_s(\omega)+\int_{(0,t]} H_s^+(\omega) dA^-_s(\omega)+ \int_{(0,t]} H_s^-(\omega) dA^-_s(\omega)\\
+& = & \int_{(0,t]} \abs{H_s(\omega)} dA^+_s(\omega) + \int_{(0,t]} \abs{H_s(\omega)} dA^-_s(\omega) = \int_{(0,t]} \abs{H_s(\omega)} dV_s(\omega) < \infty.
+\eeast
+%since $\omega \in \Omega'$.
+
+Thus we have $\abs{(H \cdot A)_t(\omega)}< \infty$ for $\omega \in \Omega'$ and $(H \cdot A)_t(\omega) = 0$ for $\omega \in \Omega'^c$. Thus $(H \cdot A)_t$ is well-defined. In particular, we have
+\be
+(H\cdot A)_t = (H\ind_{\bra{\omega \in \Omega'}}\cdot A)_t.\quad\quad (\dag)
+\ee
+
+%First note that the integral in ($*$)is well-defined for all $t$ due to the finiteness of the integral in (\ref{equ:integral_total_variation_finite}). (More precisely, (\ref{equ:integral_total_variation_finite}) implies that all four terms defining ($*$) in (\ref{equ:h_pm}) are finite).
+
+By referring to ($*$) we may assume without loss of generality in the rest of the proof that $H(\omega)$ is non-negative and $A(\omega)$ non-decreasing and \cadlag for $\omega \in \Omega'$.
+
+%We now show that $(H \cdot A)$ is \cadlag for each fixed $\omega\in \Omega$.
+
+We have
+\beast
+& & \ind_{\{(0,s]\}} \to \ind_{(0,t]},\quad H_s(\omega)\ind_{(0,s]}(s) \to H_s(\omega)\ind_{(0,t]}(s)\quad\text{as }s \da t,\\
+& & \ind_{\{(0,s]\}} \to \ind_{(0,t)},\quad H_s(\omega)\ind_{(0,s]}(s) \to H_s(\omega)\ind_{(0,t)}(s)\quad\text{as }s \ua t.
+\eeast
+%\be (H \cdot A)_t(\omega) = \int_{(0,\infty)} H_s(\omega) \ind_{(0,t]}(s) dA_s(\omega).\ee
+
+Hence, since $dA$ is a measure and  by dominated convergence theorem (Theorem \ref{thm:dominated_convergence_measure}), the following limits exist
+\beast
+(H \cdot A)_{t^+}(\omega) & = & \lim_{s\da t} (H \cdot A)_s(\omega) =  \lim_{s\da t} \int_{(0,\infty)} H_s(\omega) \ind_{(0,s]}(s) dA_s(\omega) = \int_{(0,\infty)} H_s(\omega) \ind_{(0,t]}(s) dA_s(\omega) =  (H \cdot A)_t(\omega)\\
+(H \cdot A)_{t^-}(\omega) & = & \lim_{s\ua t} (H \cdot A)_s(\omega) =  \lim_{s\ua t} \int_{(0,\infty)} H_s(\omega) \ind_{(0,s]}(s) dA_s(\omega) = \int_{(0,\infty)} H_s(\omega) \ind_{(0,t)}(s) dA_s(\omega) .
+\eeast
+
+Thus, $(H\cdot A)(\omega)$ is pathwise \cadlag\ on $\Omega$' with probability one. Also,
+\be
+\Delta(H \cdot A)_t(\omega) = \int_{(0,\infty)} H_s(\omega) \ind_{\{t\}}(s) dA_s(\omega) = H_t(\omega) \int_{\bra{t}} dA_s(\omega) = H_t(\omega)\Delta A_t(\omega).\quad\quad (**)
+\ee
+where $H_t(\omega)$ can dragged out of the integral since $H_t(\omega)$ is a real number. Thus, $(H\cdot A)(\omega)$ is \cadlag\ a.s. on $\Omega$ and therefore $(H\cdot A)$ is a \cadlag\ process.
+
+Next, we show that $H \cdot A$ is adapted.
+
+Suppose first $H = \ind_{B\times(u,v]}\ind_{\bra{\omega \in \Omega'}}$ where $B \in \sF_u$. Then
+\beast
+(H \cdot A)_t & = & \int_{(0,t]} \ind_{B\times(u,v]}(s)\ind_{\bra{\omega \in \Omega'}} dA_s = \left\{\ba{ll}
+0 \quad\quad & t\leq u\\
+\ind_B (A_t - A_u)\ind_{\bra{\omega \in \Omega'}} & u< t\leq v\\
+\ind_B (A_v - A_u)\ind_{\bra{\omega \in \Omega'}} \quad\quad & t > v
+\ea\right. \\
+& = &  \ind_{B}\ind_{u<t}(A_{t\land v} -A_{t\land u})\ind_{\bra{\omega \in \Omega'}}
+\eeast
+which is clearly $\sF_t$-measurable. This is true because since $\pro\bb{\omega \in \Omega'^c} = 0$ and $\bra{\bra{\omega \in \Omega'^c}} \in \sF_t$ by definition of usual conditions (Definition \ref{def:usual_conditions_filtration}). Also, $\ind_{B}\ind_{u<t}$ and $(A_{t\land v} -A_{t\land u})$ are $\sF_t$-measurable. Thus, $\bb{\ind_{B\times(u,v]}\ind_{\bra{\omega \in \Omega'}} \cdot A}_t$ is $\sF_t$-measurable. Now let
+\be
+\Pi = \bra{B \times (u, v]: B \in \sF_u, u < v},\quad \quad \sA = \bra{C \in \sP : (\ind_{C}\ind_{\bra{\omega \in \Omega'}} \cdot A)_t \text{ is $\sF_t$-measurable}} \subseteq \sP
+\ee
+so that $\Pi$ is a $\pi$-system. Clearly, $\Pi \subseteq \sA$ since every set $B\times (u,v]$ in $\Pi$ satisfies $\bb{\ind_{\bra{B\times (u,v]}}\ind_{\bra{\omega \in \Omega'}}\cdot A}_t$ is $\sF_t$-measurable. Also, we have $\sigma(\Pi) = \sP$. Now we show that $\sA$ is a $d$-system. Recall definition of $d$-system (Definition \ref{def:d_system}),
+
+\ben
+\item [(i)] $(\ind_{\Omega\times (0,\infty)}\ind_{\bra{\omega \in \Omega'}} \cdot A)_t = (A_t - A_0)\ind_{\bra{\omega \in \Omega'}}$ is $\sF_{t}$-measurable since $A$ is adapted and $\bra{\omega \in \Omega'} \in \sF_t$ by definition of usual conditions. Thus, $\Omega \times (0,\infty) \in \sA$.
+\item [(ii)] If $C\subset D\in \sA$, then $(\ind_D\ind_{\bra{\omega \in \Omega'}}\cdot A)_t$ and $(\ind_C\ind_{\bra{\omega \in \Omega'}} \cdot A)_t$ are $\sF_{t}$-measurable. Then
+\be
+\bb{\ind_{D\bs C}\ind_{\bra{\omega \in \Omega'}} \cdot A}_t = \bb{(\ind_D -\ind_C) \cdot A}_t\ind_{\bra{\omega \in \Omega'}} = \underbrace{\bb{\bb{\ind_D \cdot A}_t - \bb{\ind_C\cdot A}_t}}_{\text{by Theorem \ref{thm:non_negative_measurable_property}.(i)}}\ind_{\bra{\omega \in \Omega'}} \quad \text{is $\sF_t$-measurable.}
+\ee
+
+\item [(iii)] If $C_n \in \sA$ with $C_1\subseteq C_2 \subseteq \dots$, $\ind_{C_n} \ua \ind_{\bigcup_n C_n}$. Thus by monotone convergence theorem (Theorem \ref{thm:monotone_convergence_pointwise}),
+\be
+\bb{\ind_{\bigcup_n C_n}\ind_{\bra{\omega \in \Omega'}} \cdot A}_t = \int_{(0,t]} \ind_{\bigcup_n C_n}(s)\ind_{\bra{\omega \in \Omega'}} dA_s = \lim_{n\to \infty} \int_{(0,t]} \ind_{C_n}(s)dA_s \ind_{\bra{\omega \in \Omega'}} = \lim_{n \to \infty}\bb{\ind_{C_n}\cdot A}_t \ind_{\bra{\omega \in \Omega'}}
+\ee
+which is $\sF_{t^-}$-measurable as a limit of $\sF_{t^-}$-measurable functions.
+\een
+
+%But $\sA \subseteq \sP = \sigma(\Pi)$ and $\sA$ is a $\lm$-system.
+%[Recall. A $\pi$-system contains , and is stable by intersection. A $\lm$-system (or $d$-system) is stable by taking the difference and countable unions. To see that $\sA$ is $\lm$-system, note that if $C \subseteq D \in \sA$ then $\bb{\bb{\ind_D-\ind_C} \cdot A}_t$ is $\sF_t$-measurable, which gives $D\bs C \in \sA$, and if $C_n \in \sA$ with $C_n \ua C$ then $C \in \sA$ since a limit of measurable functions is measurable.]
+
+Hence, $\sA$ is a $d$-system. Then by Dynkin's lemma, $\sigma(\Pi) \subseteq \sA$ since $\Pi \subseteq \sA$. But by definition, $\sigma(\Pi) = \sP$ and $\sA \subseteq \sP$. Thus $\sA = \sP$.
+
+Recall that $H$ is non-negative and $\sP$-measurable. For all $n \in \N$, we set
+\be
+H^n\ind_{\bra{\omega \in \Omega'}} := 2^{-n} \floor{2^nH}\ind_{\bra{\omega \in \Omega'}} = \sum^\infty_{k=1} 2^{-n} k\ \ind_{\underbrace{\bra{H \in \left[2^{-n}k, 2^{-n}(k + 1)\right)}}_{\in \sP}} \ind_{\bra{\omega \in \Omega'}} ,
+\ee
+so that by Theorem \ref{thm:non_negative_measurable_property}.(i) and Fubini theorem (Theorem \ref{thm:fubini}),
+\beast
+(H^n\ind_{\bra{\omega \in \Omega'}}  \cdot A)_t & = & \int_{(0,t]} \sum^\infty_{k=1} 2^{-n} k\ \ind_{\bra{H \in \left[2^{-n}k, 2^{-n}(k + 1)\right)}}dA_s \ind_{\bra{\omega \in \Omega'}}  =  \sum^\infty_{k=1} \int_{(0,t]}  2^{-n} k\ \ind_{\bra{H \in \left[2^{-n}k, 2^{-n}(k + 1)\right)}} \ind_{\bra{\omega \in \Omega'}}  dA_s \\
+& = & \sum^\infty_{k=1} \underbrace{\bb{\ind_{\bra{H \in \left[2^{-n}k, 2^{-n}(k + 1)\right)}}\ind_{\bra{\omega \in \Omega'}} \cdot A}_t}_{\text{$\sF_t$-measurable}}\quad \text{is $\sF_t$-measurable as a sum of $\sF_t$-measurable functions.}
+\eeast
+% is $\sF_t$-measurable.
+
+We have $(H^n\ind_{\bra{\omega \in \Omega'}}  \cdot A)_t \ua (H\ind_{\bra{\omega \in \Omega'}}  \cdot A)_t$ by monotone convergence theorem (Theorem \ref{thm:monotone_convergence_pointwise} for each $\omega$). Hence, $(H\ind_{\bra{\omega \in \Omega'}}  \cdot A)_t$ is $\sF_t$-measurable as a limit of $\sF_t$-measurable functions. Thus, by ($\dag$), $(H\cdot A) = \bb{H\ind_{\bra{\omega \in \Omega'}} \cdot A}$ is adapted.
+
+We know that for all $\omega \in \Omega'$,
+\beast
+(H \cdot A)_t(\omega) & = & \int_{(0,t]} H_s^+(\omega) dA^+_s(\omega) - \int_{(0,t]} H_s^-(\omega) dA^+_s(\omega) - \int_{(0,t]} H_s^+(\omega) dA^-_s(\omega) +  \int_{(0,t]} H_s^-(\omega) dA^-_s(\omega)\\
+& = & \underbrace{\bb{\int_{(0,t]} H_s^+(\omega) dA^+_s(\omega) +  \int_{(0,t]} H_s^-(\omega) dA^-_s(\omega)}}_{:= X_1(\omega)}- \underbrace{\bb{\int_{(0,t]} H_s^-(\omega) dA^+_s(\omega) + \int_{(0,t]} H_s^+(\omega) dA^-_s(\omega) }}_{:= X_2(\omega)}
+\eeast
+
+We have proved that each integral is \cadlag\ and non-decreasing. Thus, $X_1(\omega)$ and $X_2(\omega)$ are \cadlag\ and non-decreasing. So by Proposition \ref{pro:cadlag_function_two_increasing_function}, $(H \cdot A)_t(\omega)$ is of finite variation and thus $(H \cdot A)_t$ is of finite variation a.s..
+\end{proof}
+
+\begin{example}
+Suppose that $H$ is a previsible process and $A_s = s$ for all $\omega \in \Omega$ (thus $A$ is pathwise continuous and of finite variation on $(0,t]$ with pathwise $V_s = s$). If  % such as Brownian motion, and that
+\be
+\int_{(0,t]} \abs{H_s}(\omega) ds = \int_{(0,t]} \abs{H_s} dV_s(\omega) < \infty \quad \text{for all }\omega \in \Omega,\ t \geq 0 .
+\ee
+
+Then for all $\omega \in \Omega$,
+\be
+\int_{(0,t]} H_s(\omega) ds = \int_{(0,t]} H_s(\omega) dA_s(\omega)
+\ee
+is \cadlag, adapted and of finite variation.
+\end{example}
+
+\begin{theorem}\label{thm:left_continuous_bounded_on_compact_time_intervals_integral}
+Let $H$ be a (sample) left-continuous adapted process which is bounded on compact time intervals (i.e., $\sup_{s\leq t} \abs{H_s} < \infty$ and $\sup_{s\leq t} \abs{K_s} < \infty$ for all $t$) and let $A$ be a \cadlag\ adapted finite variation process. Then
+\be
+(H \cdot A)_t = \lim_{n\to\infty} \sum^\infty_{k=0} H_{k2^{-n}} (A_{(k+1)2^{-n}\land t} - A_{k2^{-n}\land t})\ \text{ a.s.}
+\ee
+\end{theorem} %with convergence uniform on compact time intervals. %(Consider the limit $\omega$ by $\omega$.)
+
+\begin{remark}
+\ben
+\item [(i)] If $A$ is (sample) continuous, we have
+\beast
+(H \cdot A)_t & = & \lim_{n\to\infty} \sum^{\infty}_{k=0} H_{k2^{-n}} (A_{(k+1)2^{-n}\land t} - A_{k2^{-n}\land t})\ \text{ a.s.}\\
+& = & \lim_{n\to\infty} \sum^{\floor{2^nt}-1}_{k=0} H_{k2^{-n}} (A_{(k+1)2^{-n}\land t} - A_{k2^{-n}\land t}) + H_{2^{-n}\floor{2^nt}}(A_t - A_{2^{-n}\floor{2^nt}})\ \text{ a.s.} \\
+& = & \lim_{n\to\infty} \sum^{\floor{2^nt}-1}_{k=0} H_{k2^{-n}} (A_{(k+1)2^{-n}\land t} - A_{k2^{-n}\land t}) \ \text{ a.s.}
+\eeast
+
+We can ignore the second term since $A$ is continuous.
+
+\item [(ii)] We can also extend this to $H$ locally bounded.
+\een
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Since $H$ is bounded on compact time intervals, $(H\cdot A)_t$ is well-defined. Let $H^n_t = H_{2^{-n}\floor{2^n t}}$. Then
+\be
+\bb{H^n \cdot A}_t = \sum^\infty_{k =0} H_{k2^{-n}}\bb{A_{(k+1)2^{-n}\land t} - A_{k2^{-n}\land t}}
+\ee
+
+Since $H$ is (sample) left-continuous, we have $H^n_t \to H_t$ a.s. as $n\to \infty$. Fix $T\geq 0$. For $0\leq t\leq T$ we have (we can consider $A$ as the difference between to non-decreasing \cadlag\ process, i.e. $A = A^+ - A^-$ and $dA^+$ and $dA^-$ are Lebesgue-Stieltjes measures by Theorem \ref{thm:existence_radon})
+\be
+\abs{\bb{H^n \cdot A}_t- \bb{H \cdot A}_t }  = \abs{\bb{\bb{H^n - H} \cdot A}_t} \leq \bb{\abs{H^n-H}\cdot (A^+ + A^-)}_t \leq \bb{\abs{H^n-H}\cdot (A^+ + A^-)}_T
+\ee
+since $\bb{\abs{H^n-H}\cdot (A^+ + A^-)}_t$ is non-decreasing. But we know that $\abs{H^n - H} \leq 2\sup_{t\leq T}\abs{H_t} < \infty$ since $H$ is bounded on compact time intervals. Then we use bounded convergence theorem (Theorem \ref{thm:bounded_convergence_probability} as $dA^+$ and $dA^-$ are Lebesgue-Stieltjes measures), for any $t\geq 0$
+\be
+\abs{\bb{H^n \cdot A}_t- \bb{H \cdot A}_t } \to 0\ \text{ a.s.}.
+\ee
+as required.
+\end{proof}
+
+
+\begin{theorem}[chain rule\index{chain rule!\cadlag\ adapted finite variation process with integrands bounded on compact time intervals}]\label{thm:bounded_on_compact_previsible_finite_variation_integral}
+Suppose that $H$ and $K$ are previsible processes which are bounded on compact time intervals (i.e., $\sup_{s\leq t} \abs{H_s} < \infty$ and $\sup_{s\leq t} \abs{K_s} < \infty$ for all $t$). Let $A$ be a \cadlag\ adapted finite variation process. Then
+\be
+H\cdot (K\cdot A) = (HK)\cdot A.
+\ee
+\end{theorem}
+
+\begin{remark}
+That is, by Proposition \ref{pro:density_function_measure} as $d\bb{\int_{(0,t]}K_s dA_s}$ is a Lebesgue-Stieltjes measure,
+\be
+\int_{(0,t]} H_s d\bb{(K\cdot A)_s} = \int_{(0,t]} H_s K_s d A_s \ \ra \ d\bb{\int_{(0,t]}K_s dA_s} = K_t dA_t.
+\ee
+%\ben
+%\item [(i)]
+%\item [(ii)] %Since both processes are non-decreasing, we have $\bb{H\cdot (K\cdot A)}_\infty = ((HK)\cdot A)_\infty$. Then monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability}) implies that
+%\be
+%\E\bb{\bb{H\cdot (K\cdot A)}_\infty} = \E\bb{((HK)\cdot A)_\infty}.
+%\ee
+%\een
+\end{remark}
+
+\begin{proof}[\bf Proof]
+By Theorem \ref{thm:cadlag_finite_variation_previsible_integral}, $K\cdot A$ and $(HK)\cdot A$ are well-defined (since $H,K$ are bounded on compact time intervals and thus satisfy the condition). Also, from Theorem \ref{thm:cadlag_finite_variation_previsible_integral}, we know that $K\cdot A$ is also \cadlag, adapted and of finite variation. Thus, $H\cdot (K\cdot A)$ is well-defined.
+
+Therefore, we only consider non-negative $H$ and \cadlag\ adapted non-decreasing (a.s.) $A$. For $\omega \in \Omega'^c$ (see the assumption of Theorem \ref{thm:cadlag_finite_variation_previsible_integral}), we have for any $t\geq 0$, %$A(\omega)$ is not \cadlag
+\be
+\bb{H\cdot (K\cdot A)}_t = \bb{(HK)\cdot A}_t = 0.
+\ee
+
+For $\omega \in \Omega'$ and any $t\geq 0$, we suppose first
+\be
+H_t = \ind_{B_H\times(u_H,v_H]}(t),\quad K_t = \ind_{B_K\times(u_K,v_K]}(t)
+\ee
+where $B_{H} \in \sF_{u_H},B_{K} \in \sF_{u_K}$. Then
+\be
+(H \cdot A)_t = \int_{(0,t]} \ind_{B_H\times(u_H,v_H]}(s) dA_s = \left\{\ba{ll}
+0 \quad\quad & t\leq u_H\\
+\ind_{B_H} (A_t - A_{u_H}) & u_H < t\leq v_H\\
+\ind_{B_H} (A_{v_H} - A_{u_H})\quad\quad & t > v_H
+\ea\right.  =  \ind_{B_H}\bb{A_{t\land v_H} - A_{t\land u_H}}
+\ee
+
+Similarly, we have $(K \cdot A)_t = \ind_{B_K}\bb{A_{t\land v_K} - A_{t\land u_K}} $, Thus,
+\beast
+(H \cdot (K\cdot A))_t & = & \ind_{B_H} \bb{(K\cdot A)_{t\land v_K} - (K\cdot A)_{t\land u_K}}\\
+& = & \ind_{B_H}\ind_{B_K} \bb{A_{t\land v_H\land v_K} + A_{t\land u_H\land u_K} - A_{t\land u_H \land v_K} - A_{t\land u_K\land v_H}}
+%& = & \ind_{B_H}\ind_{B_K} \bb{A_{t\land v_H\land v_K} + A_{t\land v_H\land v_K} - A_{t\land \bb{\bb{u_H\land u_K}\vee\bb{v_H\land v_K}}} - A_{t\land u_H \land v_K} - A_{t\land u_K\land v_H}} \\
+%& = & \ind_{B_H}\ind_{B_K} \bb{A_{(u_H\vee u_K)\vee (v_H\land v_K) \land t} - A_{(u_H\vee u_K)\land t}}\\%& = & \ind_{B_H}\ind_{B_K}\ind_{\bra{u_H<t}}\ind_{\bra{u_K<t}} \bb{A_{\bb{(u_H\vee u_K)\vee (v_H\land v_K)}\land t} - A_{(u_H\vee u_K)\land t}}\\
+%& = & \bb{\ind_{B_H}\ind_{B_K} \ind_{\left(u_H\vee u_K, (u_H\vee u_K)\vee (v_H\land v_K)\right]} \cdot A}_t = ((HK)\cdot A)_t
+\eeast
+
+%Wlog, we assume $u_K \leq u_H$. Thus, we have that $A_{t\land v_H\land v_K} + A_{t\land u_H\land u_K} -A_{t\land u_H\land v_K} - A_{t\land v_H\land u_K}$ is
+%\beast
+%& & \left\{\ba{ll}
+%A_{t} + A_{t} - A_t-A_t = 0 \quad \quad & t< u_H \land u_K\\%\quad (t< v_H,v_K)\\
+%A_{t\land v_K} + A_{t\land u_K} -A_{t \land v_K} - A_{t \land u_K}  = 0\quad \quad & u_H\land u_K \leq t < u_H\vee u_K\quad (u_K \leq t< u_H, t< v_H)%\\
+%%%A_{t\land v_H\land v_K} + A_{u_K} -A_{u_H\land v_K} - A_{u_K}  \quad \quad & u_H\vee u_K \leq t \quad \quad \bb{ u_K\leq u_H \leq t } %\\%< \bb{u_H\vee u_K} \vee \bb{v_H\land v_K}\\
+%%%\qquad\qquad = A_{t\land v_H\land v_K} -A_{u_H\land v_K}  & \qquad%< u_H \vee \bb{v_H\land v_K}}
+%%%A_{t\land v_H\land v_K} + A_{u_K} -A_{u_H\land v_K} - A_{u_K} \quad \quad & t \geq \bb{ u_H\vee u_K} \vee \bb{v_H\land v_K}\\
+%%% & \qquad\qquad \bb{ t > u_H\geq u_K, t > v_H\land v_K}\\
+%\ea\right.
+%\eeast
+
+%Thus, we have $A_{t\land v_H\land v_K} + A_{t\land u_H\land u_K} -A_{t\land u_H\land v_K} - A_{t\land v_H\land u_K} = 0$ if $t< u_H\vee u_K$.
+%Now we
+
+%\be
+%\left\{\ba{ll}
+%0\quad \quad & t < u_H\vee u_K \\
+%A_{t\land v_H\land v_K} -A_{u_H\land v_K} \quad\quad  & t \geq u_H \vee u_K
+%%A_{t\land v_H\land v_K} + A_{u_K} -A_{u_H\land v_K} - A_{u_K} \quad \quad & t \geq \bb{ u_H\vee u_K} \vee \bb{v_H\land v_K}\\
+% & \qquad\qquad \bb{ t > u_H\geq u_K, t > v_H\land v_K}\\
+%\ea\right.
+%\ee
+
+%Thus, we can have two cases, either $v_K \leq u_H$ or $u_H < v_K$. Thus,
+%\be
+%\left\{\ba{ll}
+%0\quad \quad & t < u_H\vee u_K \\
+%A_{t} -A_{v_K} \quad\quad  & u_H \vee u_K \leq t < v_H \land v_K\\ \quad (t< v_H)% v_K \leq u_H\quad (v_K < v_H)\\
+%A_{t\land v_H\land v_K} -A_{u_H} \quad\quad  & t \geq u_H \vee u_K, v_K > u_H
+%% & \qquad\qquad \bb{ t > u_H\geq u_K, t > v_H\land v_K}\\
+%\ea\right.
+%\ee
+
+Since $A_{p\land q} + A_{p\vee q} = A_p + A_q$, we let $A'=  A_{t\land u_H\land u_K} - A_{t\land \bb{u_H\vee u_K}}$. Then
+\beast
+& & A_{t\land v_H\land v_K} + A_{t\land u_H\land u_K} - A_{t\land u_H \land v_K} - A_{t\land u_K\land v_H}\\
+& = & A_{t\land v_H\land v_K} + A_{t\land \bb{u_H\vee u_K}} - A_{t\land u_H \land v_K} - A_{t\land u_K\land v_H}  + A'\\
+& = & A_{\bb{t\land v_H\land v_K} \land \bb{t\land \bb{u_H\vee u_K}} } + A_{\bb{t\land v_H\land v_K} \vee \bb{t\land \bb{u_H\vee u_K}} } - A_{\bb{t\land u_H \land v_K} \land \bb{t\land u_K\land v_H}} - A_{\bb{t\land u_H \land v_K} \vee \bb{t\land u_K\land v_H}} + A'\\
+& = & A_{\bb{\bb{v_H\land v_K} \land \bb{u_H\vee u_K} }\land t} + A_{\bb{\bb{v_H\land v_K} \vee \bb{u_H\vee u_K}}\land t} - A_{\bb{\bb{ u_H \land v_K} \land \bb{ u_K\land v_H}}\land t} - A_{\bb{\bb{ u_H \land v_K} \vee \bb{ u_K\land v_H}}\land t} + A'\\
+& = & A_{\bb{\bb{u_H\land v_K}\vee \bb{v_H\land u_K}}\land t} + A_{\bb{\bb{v_H\land v_K} \vee \bb{u_H\vee u_K}}\land t} - A_{\bb{u_H \land u_K}\land t} - A_{\bb{\bb{ u_H \land v_K} \vee \bb{ u_K\land v_H}}\land t} + A'\\
+& = & A_{\bb{\bb{v_H\land v_K} \vee \bb{u_H\vee u_K}}\land t} - A_{\bb{u_H \land u_K}\land t}  + A' =  A_{\bb{\bb{v_H\land v_K} \vee \bb{u_H\vee u_K}}\land t} - A_{\bb{u_H \vee u_K}\land t}.\quad\quad (*)
+\eeast
+
+Thus,
+\beast
+(H \cdot (K\cdot A))_t & = & \ind_{B_H}\ind_{B_K} \bb{A_{\bb{\bb{v_H\land v_K} \vee \bb{u_H\vee u_K}}\land t} - A_{\bb{u_H \vee u_K}\land t}} \\
+& = & \bb{\ind_{B_H}\ind_{B_K} \ind_{\left(u_H \vee u_K, \bb{v_H\land v_K} \vee \bb{u_H\vee u_K}\right]} \cdot A}_t = \bb{(HK)\cdot A}_t.
+\eeast
+
+Similarly, suppose
+\be
+H = \sum^{m-1}_{i=1}a_i\ind_{B^H_i \times(t_i,t_{i+1}]}(t),\quad  K = \sum^{n-1}_{j=1} b_j \ind_{B^K_j\times(s_j,s_{j+1}]}(t)
+\ee
+where $a_i,b_j \in \R^{++}$ and $B^H_i \in \sF_{t_i},B^K_j \in \sF_{s_j}$. Then
+\beast
+& & (H \cdot (K\cdot A))_t \\
+& = & \sum^{m-1}_{i=1} a_i \ind_{B^H_i \times(t_i,t_{i+1}]} \cdot \bb{\sum^{n-1}_{j=1} b_j\ind_{B^K_j\times(s_j,s_{j+1}]} \cdot A}_t  = \sum^{m-1}_{i=1} \sum^{n-1}_{j=1} a_ib_j \ind_{B^H_i \times(t_i,t_{i+1}]} \cdot \bb{\ind_{B^K_j\times(s_j,s_{j+1}]} \cdot A}_t\\
+& = & \sum^{m-1}_{i=1} \sum^{n-1}_{j=1} a_ib_j \bb{\bb{\ind_{B^H_i \times(t_i,t_{i+1}]} \ind_{B^K_j\times(s_j,s_{j+1}]}} \cdot A}_t = \bb{\bb{\sum^{m-1}_{i=1} \sum^{n-1}_{j=1}  a_ib_j \ind_{B^H_i \cap B^K_j} \ind_{\left(t_i\vee s_j,(t_i\vee s_j)\vee (t_{i+1} \land s_{j+1}) \right]}} \cdot A}_t\\
+& = & \bb{(HK)\cdot A}_t.
+\eeast
+
+Then for any non-negative uniformly bounded previsible processes $H,K$, we define $H^m = 2^{-m}\floor{2^m H}$, $K^n = 2^{-n}\floor{2^n K}$, we have
+\be
+\bb{H^m \cdot \bb{K^n\cdot A}}_t = \bb{\bb{H^m K^n}\cdot A}_t
+\ee
+
+By monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability} as $dA$, $d(K^n\cdot A)$ and $d(K\cdot A)$ are Lebesgue-Stieltjes measures),
+\be
+(K^n \cdot A)_t \ua (K\cdot A)_t, \quad \bb{H^m\cdot (K\cdot A)}_t \ua \bb{H\cdot (K\cdot A)}_t,\quad\bb{\bb{H^m K^n}\cdot A}_t \ua \bb{\bb{H K}\cdot A}_t
+\ee
+
+We can see that there is an indicator function $\ind_{C_n} \ua 1$ such that $(K^n \cdot A)_t(\cdot) = (K \cdot A)_t\bb{\ind_{C_n}}$. Then we have by Proposition \ref{pro:density_function_measure},
+\be
+H^m \cdot (K^n \cdot A)_t = (K^n \cdot A)_t(H^m) = (K \cdot A)_t\bb{\ind_{C_n}H^m}.
+\ee
+
+Since $\ind_{C_n}H^m \ua H^m$, by monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability} as $d(K\cdot A)$ is Lebesgue-Stieltjes measure),
+\be
+H^m \cdot (K^n \cdot A)_t \ua H^m \cdot (K \cdot A)_t.
+\ee
+
+
+%However, we cannot get $H^m\cdot (K^n \cdot A)_t \ua H^m \cdot (K\cdot A)_t$ directly. We know that $H,K$ are uniformly bounded, so assume that $\sup_{t\geq 0}\abs{H_t} \leq C$, $\sup_{t\geq 0}\abs{K_t} \leq D$. Then we know that $H^m \cdot (K\cdot A)_t$ is bounded for any $t\geq 0$.
+%\be
+%\ee
+
+Combining these, we have
+\be
+\bb{H\cdot (K\cdot A)}_t =  \bb{(HK)\cdot A}_t.
+\ee
+
+Since both processes are \cadlag, they are (pathwise) the same, i.e., $H\cdot (K\cdot A) = (HK)\cdot A$.
+\end{proof}
+
+\begin{theorem}[chain rule\index{chain rule!\cadlag\ adapted finite variation process with locally bounded integrands}]\label{thm:locally_bounded_previsible_finite_variation_integral}
+Suppose that $H$ and $K$ are locally bounded previsible processes (i.e., there exist stopping times $S_n\ua \infty$ a.s. and $S_n'\ua \infty$ a.s. such that $\sup_{ t\geq 0} \abs{H_t\ind_{(0,S_n]}} < \infty$ and $\sup_{t\geq 0} \abs{K_t\ind_{(0,S_n']}} < \infty$ for all $t$). Let $A$ be a \cadlag\ adapted finite variation process. Then
+\be
+H\cdot (K\cdot A) = (HK)\cdot A.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $V$ be the finite variation process of $A$, we can have (since $H,K$ are locally bounded),
+\be
+\int_{(0,t]} \abs{H(\omega, s)} dV (\omega, s) < \infty\ \text{ a.s.}.
+\ee	
+
+Thus, we can use Theorem \ref{thm:cadlag_finite_variation_previsible_integral} and see that $H\cdot (K\cdot A)$ and $(HK)\cdot A$ are well-defined. Let $T_n = S_n \land S_n'$, we have by Theorem \ref{thm:bounded_on_compact_previsible_finite_variation_integral}, for all $t\geq 0$,
+\be
+\bb{H\ind_{(0,T_n]}\cdot (K\ind_{(0,T_n]}\cdot A)}_t = \bb{(H\ind_{(0,T_n]}K\ind_{(0,T_n]})\cdot A}_t
+\ee
+
+But $\bb{(H\ind_{(0,T_n]}\ind_{(0,T_n]})\cdot A}_t \to \bb{(HK)\cdot A}_t$ a.s., as $n\to \infty$. Similarly,
+\be
+\bb{H\ind_{(0,T_n]}\cdot (K\ind_{(0,T_n]}\cdot A)}_t = \bb{H\ind_{(0,T_n]}\cdot (K\cdot A)^{T_n}}_t = \bb{H\cdot (K\cdot A)}_t^{T_n} \to \bb{H\cdot (K\cdot A)}_t\quad \text{a.s.}
+\ee
+
+%(by using the same trick in proof of Theorem \ref{thm:bounded_on_compact_previsible_finite_variation_integral}).
+
+Thus, we have
+\be
+\bb{H\cdot (K\cdot A)}_t = \bb{(HK)\cdot A}_t\quad \text{a.s.}.
+\ee
+
+But both processes are \cadlag, we have these two processes are indistinguishable. That is,
+\be
+H\cdot (K\cdot A) = (HK)\cdot A.
+\ee
+
+\end{proof}
+
+
+\subsection{Convergence of stochastic processes}
+
+Recalling uniform convergence on compacts (Definition \ref{def:uniform_convergence_on_compacts}), we have the following definition for stochastic processes:% and taking the metric space $(X,d)$ as $(\R,d)$ where $d(x,y) = \abs{x-y}$, we have the following definition for stochastic processes:
+
+\begin{definition}[uniform convergence on compacts almost surely\index{uniform convergence on compacts!stochastic process, almost surely}]\label{def:ucas_convergence_process}
+Let $(\Omega,\sF,(\sF_t)_{t\geq 0},\pro)$ be a filtered probability space. For a sequence of jointly measurable ($\sF\otimes \sB(\R)$-measurable) stochastic processes $(X^n)_{n\in \N}$ we say that $X^n$ uniformly converges on compacts a.s. to the process $X$ if
+\be
+\forall \ve > 0, \forall t \geq 0,\quad \pro\bb{\sup_{s\leq t} \abs{X^n_s - X_s} \to 0} =1 \quad \text{ as }n \to\infty.
+\ee
+
+$X^n$ is said to converge u.c.a.s. to $X$ and it is denoted by $X^n \xrightarrow{ucas}X$, or $X^n \to X$ u.c.a.s..
+\end{definition}
+
+\begin{definition}[uniform convergence on compacts in probability\index{uniform convergence on compacts!stochastic process, in probability}]\label{def:ucp_convergence_process}
+Let $(\Omega,\sF,(\sF_t)_{t\geq 0},\pro)$ be a filtered probability space. For a sequence of jointly measurable ($\sF\otimes \sB(\R)$-measurable) stochastic processes $(X^n)_{n\in \N}$ we say that $X^n$ converge to the process $X$ in the ucp topology (uniform convergence on compacts in probability, u.c.p.) if
+\be
+\forall \ve > 0, \forall t \geq 0,\quad \pro\bb{\sup_{s\leq t} \abs{X^n_s - X_s} > \ve} \to 0 \quad \text{ as }n \to\infty.
+\ee
+
+$X^n$ is said to converge u.c.p. to $X$ and it is denoted by $X^n \xrightarrow{ucp}X$, or $X^n \to X$ u.c.p..
+\end{definition}
+
+\begin{remark}
+This mode of convergence occurs frequently in the theory of continuous-time stochastic processes\footnote{need some examples}.
+
+Note that this definition does not make sense for arbitrary stochastic processes, as the supremum is over the uncountable index set $[0,t]$ and need not be measurable. However, for right or left continuous processes, the supremum can be restricted to the countable set of rational times, which will be measurable. In fact, for jointly measurable processes, it can be shown that the supremum is measurable with respect to the completion of the probability space, so ucp convergence makes sense.
+\end{remark}
+
+Comparing to Theorem \ref{thm:convergence_in_probability}, we have the following theorem:
+
+\begin{theorem}\label{thm:convergence_ucp_ucas}%Let $(\Omega,\sF,\pro)$ be a probability space and
+Let $(X^n)_{n \in \N}$ be a sequence of stochastic processes. Then
+\ben
+\item [(i)] If $X^n \to 0$ u.c.a.s., then $X^n \to 0$ u.c.p..
+\item [(ii)] If $X^n \to 0$ u.c.p., then $X^{n_k}\to 0$ u.c.a.s. for some subsequence $(n_k)_{k\in \N}$.
+\een
+\end{theorem}
+
+\begin{remark}
+For some stochastic process $X$, we can have (by definitions and Theorem \ref{thm:convergence_ucp_ucas})
+\ben
+\item [(i)] If $X^n \to X$ u.c.a.s., then $X^n \to X$ u.c.p..
+\item [(ii)] If $X^n \to X$ u.c.p., then $X^{n_k}\to X$ u.c.a.s. for some subsequence $(n_k)_{k\in \N}$.
+\een
+\end{remark}
+
+\begin{proof}[\bf Proof]
+\ben
+\item [(i)] Suppose $X^n \to 0$ u.c.a.s.. That is,
+\be
+\pro\bb{\sup_{0\leq s\leq t}|X^n_s| \to 0 } = 1\quad \text{as }n\to \infty.
+\ee
+
+Then for each $\ve > 0$ and $t\geq 0$,
+\be
+\pro\bb{\sup_{0\leq s\leq t}|X^n_s| \leq \ve} \geq \underbrace{\pro \bb{\bigcap_{m\geq n} \bra{\sup_{0\leq s\leq t}|X^n_s| \leq \ve}} \ua \pro\bb{\sup_{0\leq s\leq t}|X^n_s| \leq \ve \text{ ev.}}}_{\text{Lemma }\ref{lem:measure_increasing_sequence}} \geq \pro\bb{\sup_{0\leq s\leq t}|X^n_s| \to 0},
+\ee
+
+\be
+\pro\bb{\sup_{0\leq s\leq t}|X^n_s| > \ve} = 1 - \pro\bb{\sup_{0\leq s\leq t}|X^n_s| \leq \ve} \leq 1 - \pro\bb{\sup_{0\leq s\leq t}|X^n_s| \to 0} = 0.
+\ee
+Hence $\pro\bb{\sup_{0\leq s\leq t}|X^n_s| > \ve} \to 0$ and $X^n \to 0$ u.c.a.s..
+
+\item [(ii)] Suppose $X^n \to 0$ u.c.p., then $\forall \ve>0$, $\pro\bb{\sup_{0\leq s\leq t}|X^n_s| > \ve} \to 0$ i.e.
+\be
+\forall \ve>0,\ \delta >0, \ \exists N,\ \forall n\geq N,\quad \pro\bb{\sup_{0\leq s\leq t}|X^n_s| > \ve} < \delta.
+\ee
+so we can find a subsequence ($n_k$) such that $\ve_k = 1/k$ and $\delta_k = 2^{-k}$,
+\be
+\pro\bb{\sup_{0\leq s\leq t}\abs{X^{n_k}_s} > 1/k} < 2^{-k} \ \ra \ \sum_{k=1}^\infty \pro\bb{\sup_{0\leq s\leq t}\abs{X^{n_k}_s} > 1/k} < \sum_k 2^{-k} = 1 < \infty.
+\ee
+So, by the first Borel-Cantelli lemma (Lemma \ref{lem:borel_cantelli_1_probability}),
+\be
+0 = \pro\bb{\sup_{0\leq s\leq t}\abs{X^{n_k}_s} > 1/k \text{ i.o.}} = \pro\bb{\bra{\sup_{0\leq s\leq t}\abs{X^{n_k}_s} \leq 1/k \text{ ev.}}^c} = \pro\bb{\bra{\sup_{0\leq s\leq t}\abs{X^{n_k}_s} \to 0}^c} \ \ra\ \sup_{0\leq s\leq t}\abs{X^{n_k}_s} \to 0\text{ a.s.}\nonumber
+\ee
+which means that $X^{n_k} \to 0$ u.c.a.s.
+\een
+\end{proof}
+
+
+
+\begin{proposition}\label{pro:convergence_ucp_unique_in_sense_of_indistingushability}
+Let $X^n$ be a sequence of stochastic processes and $X,Y$ be two stochastic processes.
+
+If $X^n\to X$ u.c.p. and $X^n\to Y$ u.c.p., then the stochastic processes $X$ and $Y$ are identical in the sense of indistinguishability. That is, $\pro\bb{X_t(\omega) = Y_t(\omega), \forall t} = 1$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+By definition of u.c.p., we have for fixed $t$
+\be
+\pro\bb{\sup_{0\leq s\leq t}\abs{X^n_s -X_s} > \ve} \to 0,\qquad \pro\bb{\sup_{0\leq s\leq t}\abs{X^n_s -Y_s} > \ve} \to 0.
+\ee
+
+Then for any $\ve >0$,
+\beast
+& & \pro\bb{\sup_{0\leq s\leq t}\abs{X_s -Y_s} > \ve} \\
+& \leq & \pro\bb{\sup_{0\leq s\leq t}\abs{X^n_s -X_s} + \sup_{0\leq s\leq t}\abs{X^n_s -Y_s} > \ve} \\
+& \leq & \pro\bb{\sup_{0\leq s\leq t}\abs{X^n_s -X_s}>\ve/2, \sup_{0\leq s\leq t}\abs{X^n_s -Y_s} > \ve/2} + \pro\bb{\sup_{0\leq s\leq t}\abs{X^n_s -X_s}>\ve/2, \sup_{0\leq s\leq t}\abs{X^n_s -Y_s} \leq \ve/2} \\
+& & \qquad + \pro\bb{\sup_{0\leq s\leq t}\abs{X^n_s -X_s}\leq \ve/2, \sup_{0\leq s\leq t}\abs{X^n_s -Y_s} > \ve/2} \\
+& \leq & \pro\bb{\sup_{0\leq s\leq t}\abs{X^n_s -X_s}>\ve/2} + \pro\bb{\sup_{0\leq s\leq t}\abs{X^n_s -Y_s} > \ve/2} \to 0 + 0 = 0.
+\eeast
+
+Therefore, 
+\be
+\pro\bb{\sup_{0\leq s\leq t}\abs{X_s -Y_s} > \ve} = 0 \ \ra\ \pro\bb{\sup_{0\leq s\leq t}\abs{X_s -Y_s} = 0} = 1\ \ra\ \pro\bb{X_t = Y_t, \forall t} = 1,
+\ee
+as required.
+\end{proof}
+
+
+
+%We now assume the filtered probability space satisfies usual conditions. Then for any $t\geq 0$, We now define the following pseudometric (see Definition \ref{def:pseudometric}) for locally bounded deterministic processes (in other words, locally bounded functions\footnote{need definitions for real-valued and metric space}) $f$ and $g$,
+%\be
+%d_t\bb{f,g} = \sup_{0\leq s\leq t}\abs{f_s - g_s}.
+%\ee
+
+%Note that it is well-defined as $f$ and $g$ are locally bounded.
+
+%Therefore, letting $\Omega' = \bra{\omega:\sup_{0\leq s\leq t}\abs{X_s(\omega) - Y_s(\omega)}\text{ is well-defined}}$, we can redefine pseudometric by
+%\be
+%d_t\bb{X,Y} = \left\{\ba{ll}
+%\sup_{0\leq s\leq t}\abs{X_s - Y_s}\quad\quad & \omega \in \Omega'\\
+%0 & \omega \in \Omega'^c
+%\ea\right.
+%\ee
+
+%Then we define another pseudometric by $d_t$,
+%\be
+%d\bb{X,Y} = \sum^\infty_{k=1} 2^{-k}\land d_k\bb{X,Y}.
+%\ee
+
+%Thus, for a sequence of stochastic processes $X^n$ and a stochastic process $X$, by bounded convergence theorem (Theorem \ref{thm:bounded_convergence_probability})
+%\be
+%d(X^n,X) \xrightarrow{p} 0 \ \ra \ \E\bb{d(X^n,X)} \to 0%\pro\bb{d(X^n,X)\geq \ve} \to 0
+%\ee
+%as $d(X^n,X) \leq 1$. Hence, for any $k\in \Z^+$, $\E\bb{d_k(X^n,X)} \to 0$. Then by Markov's inequality (Theorem \ref{thm:markov_inequality_probability}), for any $\ve >0$,
+%\be
+%\pro\bb{\sup_{0\leq s\leq k} \abs{X^n_s - X_s}\geq \ve} \leq \frac 1{\ve}\E\bb{d_k(X^n,X)} \to 0
+%\ee
+%which implies that $X^n\to X$ u.c.p.. Therefore, we can see that $d(X^n,X) \xrightarrow{p} 0$ is the sufficient condition for $X^n\to X$ u.c.p.. So we define
+%\be
+%d^{\text{ucp}}(X,Y) = \E\bb{d(X,Y)} = \sum^\infty_{k=1} \E\bb{2^{-k}\land d_k\bb{X,Y}}.
+%\ee
+
+%Note that we can exchange the expectation and summation by Fubini theorem (Theorem \ref{thm:fubini}) as $2^{-k}\land d_k\bb{X,Y}$ are non-negative.
+
+\begin{theorem}[completeness under u.c.p. convergence\label{complete!under u.c.p convergence}]\label{thm:complete_cadlag_continuous_under_ucp_convergence}
+Suppose that $(\Omega,\sF,(\sF_t)_{t\geq 0}, \pro)$ is the filtered probability space satisfying usual conditions. The space of \cadlag\ (respectively, (sample) continuous) adapted process is complete under u.c.p. convergence.
+
+Furthermore, if $X^n \xrightarrow{ucp} X$ then there is a subsequence whose sample paths almost surely converge to those of $X$ uniformly on compacts.
+\end{theorem}
+
+%\begin{remark}
+%The idea we use here is similar to the proof of Borel-Cantelli theorem (Theorem \ref{lem:borel_cantelli_1_probability}).
+%\end{remark}
+
+\begin{proof}[\bf Proof]
+We only consider \cadlag\ case. For any \cadlag\ adapted process $X$ and $Y$, we can find stopping time sequence $T_n\ua \infty$ a.s. such that the following is well-defined a.s.
+\be
+\sup_{0\leq s\leq t}\abs{X_s^{T_n} - Y_s^{T_n}}% \quad \text{a.s. } (\text{where the supremum is well-defined})
+\ee
+as they are locally bounded by Proposition \ref{pro:right_continuous_adapted_process_is_locally_bounded_usual_conditions}. Thus, for $t$ and any $s\in [0,t]$, we can always find $T_n > s$ a.s. such that we can define
+\be
+\sup_{0\leq s\leq t}\abs{X_s - Y_s}\quad\text{a.s.}.
+\ee
+
+Let $X^n$ be a Cauchy sequence under u.c.p. convergence, so that for any $t\in \R^{++}$ and $\ve >0$,
+\be
+\pro\bb{\sup_{0\leq s\leq t}\abs{X^m_s - X^n_s} > \ve} \to 0\quad \text{as }m,n\to \infty. %d^{\text{ucp}}\bb{X^m,X^n} \to 0 \quad \text{as }m,n\to \infty.
+\ee
+
+This is equal to the statement
+\be
+\forall \ve>0,\ \delta>0, \ \exists N, \ \forall n\geq N,\ \forall m\geq 0,\quad \pro\bb{\sup_{0\leq s\leq t}\abs{X^{m+n}_s - X^n_s} > \ve} < \delta
+\ee
+which means $X^{n+m} - X^n \to 0$ u.c.p.. Then by Theorem \ref{thm:convergence_ucp_ucas}, we have a subsequence $(n_k)_{k\in \N}$ such that $X^{n_k+m}-X^{n_k} \to 0$ u.c.a.s. for any $m\geq 0$. Thus, let $n_k+m = n_{k+1}$, we can see that
+\be
+\pro\bb{\sup_{0\leq s\leq t}\abs{X^{n_{k+1}}_s - X^{n_k}_s} \to 0} = 1
+\ee
+which means $X^{n_k}$ is also a Cauchy sequence under uniform convergence on compacts a.s.. %
+%$d^{\text{ucp}}\bb{X^{n_k},X^{m}} \leq 2^{-k}$ for all $m\geq n_k$. In this case, we have
+%\be
+%\sum^\infty_{k=1}\E\bb{d\bb{X^{n_k},X^{n_{k+1}}}} = \sum^\infty_{k=1}d^{\text{ucp}}\bb{X^{n_k},X^{n_{k+1}}} \leq 1. %= \E\bb{\sum^\infty_{k=1} d\bb{X^{n_k},X^{n_{k+1}}}} \leq 1.
+%\ee
+%Thus, this imples that $d\bb{X^{n_k},X^{n_{k+1}}} \to 0$ a.s.\footnote{need theorem here}. Thus, we will have, for all $n\in \Z^+$ and all $t\in \R^{++}$,
+%\be
+%\sup_{0\leq s\leq n}\abs{X^{n_k}_s - X^{n_{k+1}}_s} \stackrel{\text{a.s.}}{=} d_n\bb{X^{n_k},X^{n_{k+1}}} \to 0\text{ a.s.} \ \ra \ \sup_{0\leq s\leq t}\abs{X^{n_k}_s - X^{n_{k+1}}_s} \to 0\text{ a.s.}.
+%\ee
+%which implies that $X^{n_k}$ is a Cauchy sequence under uniform convergence on compacts a.s..
+Thus, for any $t\in \R^{++}$, we have that
+\be
+\abs{X^{n_k}_t - X^{n_{k+1}}_t} \to 0\text{ a.s.} \ \ra \ X^{n_k}_t \to X_t\text{ a.s.}
+\ee
+by completeness of $\R$ (Theorem \ref{thm:completeness_of_r}). We know that $X^n$ is adapted (i.e., $X^n_t$ is $\sF_t$-measurable for any $t$), then we have $X$ is also adapted a.s. (as $X_t = \lim X^{n_k}_t$ is still $\sF_t$-measurable by Theorem \ref{thm:measurable_function_property_infinity}). But we know that the filtered probability space satisfies usual conditions, we have $X$ is adapted by the definition of usual conditions ($\sF_t$ containing all null sets).
+
+Since $X^{n_k}$ have left limits a.s., then it is clear that\footnote{need details}
+\be
+\sup_{0\leq s\leq t} \abs{X^{n_k}_{s^-} - X^{n_{k+1}}_{s^-}} \leq \sup_{0\leq s\leq t} \abs{X^{n_k}_{s} - X^{n_{k+1}}_{s}}
+\ee
+and therefore, the left limits of $X^{n_k}$ ($X^{n_k}_-$) are also Cauchy sequence under uniform convergence on compacts a.s.. As limits can be commuted with uniform convergence of sequences\footnote{need theorem}, if the processes are \cadlag\ then,
+\beast
+& & \lim_{s\da t}X_s \stackrel{\text{a.s.}}{=} \lim_{s\da t}\lim_{k\to \infty} X^{n_k}_s = \lim_{k\to \infty} \lim_{s\da t} X^{n_k}_s = \lim_{k\to \infty} X^{n_k}_t \stackrel{\text{a.s.}}{=} X_t \quad \text{a.s.}\\
+& & \lim_{s\ua t}X_s \stackrel{\text{a.s.}}{=} \lim_{s\ua t}\lim_{k\to \infty} X^{n_k}_s = \lim_{k\to \infty} \lim_{s\ua t} X^{n_k}_s = \lim_{k\to \infty} X^{n_k}_{t^-} := X_{t^-} \quad \text{a.s.}
+\eeast
+%as $X^{n_k}_{t^-}$ is Cauchy sequence under uniform convergence on compacts.
+
+So $X$ is \cadlag\ and $X^{n_k}_- \to X_-$ under uniform convergence on compacts.
+
+To complete the proof, it just remains to show that the original sequence $X^n$ does indeed converge ucp to $X$. We already have that $X^{n_k}$ converges to $X$ under uniform convergence on compacts a.s. (i.e. the sample paths of $X^{n_k}$ almost surely converge to those of $X$ uniformly on compacts). Thus, it is obvious that $X^{n_k}$ converges to $X$ u.c.p., i.e., for any $t\in \R^{++}$ and $\ve >0$,
+\be
+\lim_{k\to\infty} \pro\bb{\sup_{0\leq s\leq t} \abs{X^{n_k}_s - X_s}> \ve} = 0\quad (*)
+\ee
+
+%Then since $d^{\text{ucp}}$ is a pseudometric, we have
+%\be
+%\lim_{n\to\infty}d^{\text{ucp}}(X^n,X) = \limsup_{n\to\infty}d^{\text{ucp}}(X^n,X) \leq \limsup_{k,n\to\infty}\bb{d^{\text{ucp}}(X^n,X^{n_k})+ d^{\text{ucp}}(X^{n_k},X)} = 0,
+%\ee
+%as required. %we have $X^{n_k}$ is Cauchy sequen
+
+Then by the assumption that $X^n$ is a Cauchy sequence under u.c.p convergence and ($*$), we have
+\beast
+\pro\bb{\sup_{0\leq s\leq t}\abs{X^{n}_s - X_s} > \ve} & \leq & \pro\bb{\sup_{0\leq s\leq t}\abs{X^{n}_s - X^{n_k}_s} + \sup_{0\leq s\leq t}\abs{X^{n_k}_s - X_s} > \ve}\\
+& \leq & \pro\bb{\sup_{0\leq s\leq t}\abs{X^{n}_s - X^{n_k}_s} > \ve/2} + \pro\bb{\sup_{0\leq s\leq t}\abs{X^{n_k}_s - X_s} > \ve/2} \to 0 + 0 = 0
+\eeast
+which means $X^n \to X$ u.c.p..
+
+We skip the the continuous adpated processes space case as the argument is similar.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%
+
+\section{Infinitesimal Generator}
+
+\section{Other Stochastic Processes}
+
+\subsection{Gaussian processes}
+
+\begin{definition}[Gaussian process\index{Gaussian process}]\label{def:gaussian_process}
+A Gaussian process is a stochastic process $X_t$, for which any finite linear combination of samples has a joint Gaussian distribution a.s..
+
+More accurately, any linear functional applied to the sample function $X_t$ will give a normally distributed result. Notation-wise, one can write $X \sim \gp(M,K)$, meaning the random function $X$ is distributed as a GP with mean function $M$ and covariance function $K$.
+\end{definition}
+
+
+
+\section{Summary}
+
+\section{Problems}
+
+\subsection{Random walks}
+
+\begin{problem}[ticket line, see \cite{Zhou_2008}.$P_{117}$]\label{exe:ticket_line}
+At a theater ticket office, $2n$ people are waiting to buy tickets, $n$ of them have only \$5 bills and the other $n$ people have only \$10 bills. The ticket seller has no change to start with. If
+each person buys one \$5 ticket, what is the probability that all people will be able to buy their tickets without having to change positions?
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+Assign +1 to the $n$ people with \$5 bills and -1 to the $n$ people with \$10 bills. Consider the process as a random walk. Let $(a,b)$ represent that after $a$ steps, the walk ends at $b$. So we
+start at $(0,0)$ and reaches $(2n,0)$ after $2n$ steps.
+
+For these $2n$ steps, we need to choose $n$ steps as +1, so there are $\binom{2n}{n} = \frac{(2n)!}{n!n!}$ possible paths. We are interested in the paths that have the property $b\geq 0$, $\forall
+0<a<2n$ steps. It is easier to calculate the number of complement paths that reach $b=-1$, $\exists 0<a<2n$.
+
+\centertexdraw{
+
+\drawdim in
+
+\def\bdot {\fcir f:0 r:0.03 }
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+\linewd 0.01 \setgray 0
+
+\move (-0.2 0) \avec(4.9 0)
+\move (0 -1.2) \avec(0 1)
+
+\move (4.5 -0.5) \bdot
+%\move (4.2 -0.3) \bdot
+%\move (4.4 0.1) \bdot
+%\move (4.6 0.8) \bdot
+%\move (4.8 1.6) \bdot
+
+%\htext (0.4 -0.15){$S_1$}
+%\htext (1.4 -0.15){$T_1$}
+%\htext (1.8 -0.15){$S_2$}
+%\htext (2.4 -0.15){$T_2$}
+%\htext (3.8 -0.15){$S_3$}
+%\htext (4.8 -0.15){$T_3$}
+
+\htext (4.4 -0.15){$2n$}
+%\htext (-0.15 0.5){$a$}
+%\htext (-0.2 0.5){$S_0$}
+%\htext (4.9 0.5){$S_k$}
+%\htext (4.8 -0.15){$k$}
+
+\move (0 0) \lvec(0.5 0.5)
+\move (0.5 0.5)\lvec(1 0)
+\move (1 0)\lvec(1.25 0.25)
+\move (1.25 0.25)\lvec(2 -0.5)
+\move (2 -0.5) \lvec(3.25 0.75)
+\move (3.25 0.75) \lvec (4 0)
+\move (4 0) \lvec(4.25 0.25)
+\move (4.25 0.25) \lvec (4.5 0)
+
+\lpatt (0.05 0.05)
+
+%\move ( 1.5) \lvec(5 1.5)
+\move (0 -0.25) \lvec(4.9 -0.25)
+
+%\move (0.4 0.4) \lvec (0.4 0)
+%\move (1.4 1.6) \lvec (1.4 0)
+%\move (1.8 0.2) \lvec (1.8 0)
+%\move (2.4 1.6) \lvec (2.4 0)
+%\move (3.8 0.3) \lvec (3.8 0)
+%\move (4.8 1.6) \lvec (4.8 0)
+
+\move (1.75 -0.25)\lvec(2 0)\lvec(3.25 -1.25) \lvec (4 -0.5) \lvec(4.25 -0.75) \lvec (4.5 -0.5)
+
+%\move (0 0.6) \lvec (0.2 0.9) \lvec (0.4 0.4) \lvec (0.6 0.9) \lvec (0.8 1.2) \lvec (1 0.6) \lvec (1.2 1.2) \lvec (1.4 1.6) \lvec (1.6 0.9) \lvec (1.8 0.2) \lvec (2 0.9) \lvec (2.2 1.4) \lvec (2.4 1.6) \lvec (2.6 1.4) \lvec (2.8 1.2) \lvec (3 0.9) \lvec (3.2 0.6) \lvec (3.4 0.9) \lvec (3.6 0.6) \lvec (3.8 0.3) \lvec (4 0) \lvec (4.2 -0.3) \lvec (4.4 0.1) \lvec (4.6 0.8) \lvec (4.8 1.6)
+
+\move (0 1)
+
+}
+
+As shown in the figure, if we reflect the path across the line $y=-1$ after a path first reach -1., for every path that reaches $(2n,0)$ at step $2n$, we have one corresponding reflected path that
+reaches $(2n,-2)$ at step $(2n)$. For a path to reach $(2n,2)$, there are $(n-1)$ steps of +1 and $(n+1)$ steps of -1. So there $\binom{2n}{n-1} = \frac{(2n)!}{(n-1)!(n+1)!}$ such paths. The number
+of paths that have the property $b=-1$, $\exists 0<a<2n$, given that the path reaches $(2n,0)$ is also $\binom{2n}{n-1}$ and the number of paths that have the property $b\geq 0$, $\forall 0<a<2n$ is
+\be
+\binom{2n}{n} - \binom{2n}{n-1} = \binom{2n}{n} - \frac n{n+1}\binom{2n}{n} = \frac 1{n+1}\binom{2n}{n}.
+\ee
+
+Hence, the probability that all people will be able to buy their tickets without have to change positions is $1/(n+1)$.
+
+Alternatively, we can apply Proposition \ref{pro:random_walk_number_paths_greater_equal_than_zero}.
+\end{solution}

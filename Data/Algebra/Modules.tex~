@@ -1,0 +1,825 @@
+
+\chapter{Modules}
+
+\qcutline
+
+{\large \textcolor{red}{unsorted below}}
+
+Module
+Let m 2 M. Since M is a group with identity element 0, we have
+0 = 0+0 and 0+0m = 0m. Then 0+0m = 0m = (0+0)m = 0m+0m
+by the module axiom (r+s)m = rm+sm. Since M is a group, we can
+cancel 0m from both sides, leaving 0 = 0m.
+
+\section{Introduction}
+
+\begin{definition}
+Let $R$ be a commutative ring. A set $M$ is an $R$-module with operation $+$, with $(M, +)$ forming an abelian group, and also has a map 
+\be
+R \times M \to M,\ (r,m) \mapsto m
+\ee
+satisfying
+\beast
+(r_1 + r_2)m & = & r_1m + r_2m\\
+r(m_1 + m_2) & = & rm_1 + rm_2\\
+r_1(r_2m) & = & (r_1r_2)m\\
+1m & = & m
+\eeast
+for all $r_1, r_2, r \in R$ and $m_1,m_2,m \in M$.
+\end{definition}
+
+\begin{example}
+\ben
+\item [(i)] Let $R = \F$ be a field. Then all vector spaces over $\F$ are $\F$-modules.
+\item [(ii)] For any $R$, $R^n$ forms an $R$-module,
+\be
+r(r_1,\dots , r_n) = (rr_1,\dots , rr_n).
+\ee
+In particular, when $n = 1$, $R$ itself is an $R$-module.
+
+\item [(iii)] If $I \lhd R$ is an ideal then $I$ is an $R$-module and $R/I$ is an $R$-module.
+\item [(iv)] Let $R = \Z$. $\Z$-modules are precisely the abelian groups. Given an abelian group $A$ with operation written as $+$ then the module map is given by
+\beast
+na & = & \underbrace{a + \dots+ a}_{n \text{ times}} \quad\quad n\geq 1\\
+0a & = & 0\\
+(-n)a & = & -(an) \quad\quad n \geq 1
+\eeast
+
+\item [(v)] $R = \F[X]$, $\F$ a field. If $V$ is an $\F$-vector space and $\alpha: V \to V$ a linear map (vector space endomorphism) then $V$ may be regarded as a $\F[X]$-module via 
+\be
+f(X)\dots v = f(\alpha)(v)
+\ee
+for $v \in V$. Different maps $\alpha$ yield different $\F[X]$-modules.
+
+\item [(vi)] If $R \leq S$ are rings then $S$ can be regarded as an $R$-module via
+\be
+rs = (rs)
+\ee
+for $r \in R$, $s \in S$. For example, let $\Z \leq \Z[\alpha]$, $\alpha$ an algebraic integer. We can regard $\Z[\alpha]$ as a $\Z$-module.
+
+\item [(vii)] Let $R$ be the prime subring of a finite field $\F$. Here $R \cong \F_p$ for some prime $p$. (Question 8 on Example Sheet 3 shows that $\F$ has cardinality $p^n$ for some $n$.) We can view $\F$ as an $\F_p$-vector space.
+\een
+\end{example}
+
+\begin{remark}
+There exists exactly one field of cardinality $p^n$ for every prime $p$ and $n \geq 1$, up to isomorphism. For example, 
+
+\begin{center}
+\begin{tabular}{cc}
+Cardinality & Field \\
+\hline
+4 & \quad  $\F_2[X]/(X^2 + X + 1)$\quad \\
+8 & $\F_2[X]/(X^3 + X + 1)$
+\end{tabular}
+\end{center}
+
+noting that e.g. $X^2 + X + 1$ is irreducible modulo 2. See also Question 9 on Example Sheet 2.
+\end{remark}
+
+\begin{definition}
+A subset $N$ of an $R$-module $M$ is an $R$-submodule, written $N \leq M$, if it is an additive subgroup of $M$ and $rn \in N$ for all $r \in R$, $n \in N$.
+\end{definition}
+
+\begin{example}
+Ideals $I \lhd R$ are the $R$-submodules of the $R$-module $R$. In a $\F$-vector space the vector subspaces are the $\F$-submodules.
+\end{example}
+
+\begin{definition}
+If $N \leq M$ then the quotient module\index{quotient module} $M/N$ has elements $m + N$ with the operation + defined as for quotients of the additive groups,
+\be
+r(m + N) = rm + N
+\ee
+for $r \in R$, $m \in M$. Check that this turns $M/N$ into an $R$-module.
+\end{definition}
+
+\begin{definition}
+A map $\theta : M \to N$ is an $R$-module homomorphism if
+\beast
+\theta(m_1 + m_2) = \theta(m_1) + \theta(m_2),\\
+\theta(rm) & = & r\theta(m).
+\eeast
+\end{definition}
+
+\begin{example}
+If $R = \F$, $\F$ a field, then an $R$-module homomorphism is a linear map between $\F$-vector spaces.
+\end{example}
+
+\begin{theorem}[First isomorphism theorem]\label{thm:modulo_isomorphism_1}
+If $\theta : M \to N$ is an $R$-module homorphism then $\ker \theta$ is an $R$-submodule of $M$, the image of $\theta$ is a submodule of $N$ and with
+\beast
+\ker \theta & = & \{a \in M : \theta(m) = 0\},\\
+\im \theta & = & \{\theta(m) : m \in M\}
+\eeast
+we have that $M/\ker \theta \cong \im \theta$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Left to the reader. The isomorphism theorem for additive subgroups shows that $M/ \ker \theta \cong \im \theta$ for the additive groups. So we only need to check the multiplicative properties.
+\end{proof}
+
+As usual there is a 1-1 correspondence,
+\be
+\{\text{submodules of }M/N\} \longleftrightarrow \{\text{submodules of $M$ containing $N$}\}.
+\ee
+
+If $N \leq L \leq M$ are $R$-modules then
+\be
+M/L \cong (M/N)/(L/N).
+\ee
+Compare this with the third isomorphism theorem.
+
+\begin{example}
+In the special case of $R = \F$ a field and vector spaces, we have quotient spaces $V/W$ where $W \leq V$ and there are isomorphism theorems for linear maps ($\F$-module homomorphisms).
+\end{example}
+
+\begin{definition}
+Let $m \in M$ then the annihilator\index{annihilator} of $m$ is
+\be
+\ann(m) = \{r \in R : rm = 0\}.
+\ee
+
+The annihilator of $M$ is
+\be
+\ann(M) = \{r \in R : \forall m \in M,\ rm = 0\} = \bigcap_{m\in M} \ann(m).
+\ee
+
+These annihilators are ideals in $R$ since
+\be
+r_1m = 0, r_2m = 0 \ \ra \ 0 = r_1m + r_2m = (r_1 + r_2)m, \quad r_1m = 0 \ \ra \ (rr_1)m = 0.
+\ee
+\end{definition}
+
+\begin{lemma}
+If $M$ is an $R$-module and $m \in M$ then
+\be
+Rm \cong R/ \ann(m)
+\ee
+where $Rm = \{rm : r \in R\}$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Apply Theorem \ref{thm:modulo_isomorphism_1} to the $R$-module homomorphism $\theta : R \to M,\ r \mapsto rm$ with $\ker \theta = \ann(m)$ and $\im \theta = Rm$.
+\end{proof}
+
+Modules of the form $Rm$ are cyclic modules. More generally, if $m_1,\dots ,m_k \in M$ and
+\be
+M = Rm_1 + \dots + Rm_k = \{r_1m_1 + \dots + r_km_k : r_1,\dots,r_k \in R\}
+\ee
+then $M$ is generated by $m_1,\dots ,m_k$, and $M$ is finitely generated.
+
+\begin{example}
+If $R = \Z$ then $\Z[\alpha]$ is a $\Z$-module where $\alpha$ is an algebraic integer. In fact, it is a finitely generated $\Z$-module. (Exercise.)
+\end{example}
+
+\begin{lemma}
+Let $N \leq M$ be $R$-modules. If $M$ is finitely generated then $M/N$ is finitely generated.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Suppose $M = Rm_1 +\dots+Rm_k$ then $M/N$ is generated by $m_1 +N,\dots ,m_k +N$ since
+\be
+m + N = r_1m_1 + \dots + r_km_k + N = r_1(m_1 + N) + \dots + r_k(m_k + N).
+\ee
+for some $r_1,\dots,r_k \in R$.
+\end{proof}
+
+Warning. $N$ need not be finitely generated.
+
+\begin{example}
+The polynomial ring $\C[X_1,X_2,\dots]$ in countably infinitely many variables $X_1,X_2,\dots$. Consider the ideal $I$ of polynomials with zero constant term. This is not finitely generated since $I = \bigcup I_j$ where $I_j = (X_1,\dots ,X_j)$ and hence $I_1 \subsetneq I_2 \subsetneq I_3 \subsetneq \dots$.
+Thus $\C[X_1,X_2,\dots]$ is not Noetherian.
+
+If $R = \C[X_1,X_2,\dots]$ then the submodules are the ideals, and we have shown that there is a submodule which is not finitely generated inside the cyclic module $R$.
+\end{example}
+
+\section{Direct sums, free modules}
+
+\begin{definition}
+If $M_1,\dots ,M_k$ are $R$-modules then the direct sum\index{direct sum} $M_1 \oplus \dots\oplus M_k$ has elements $(m_1,\dots ,m_k)$ with $m_i \in M_i$, addition
+\be
+(m_1,\dots ,m_k) + (m'_1,\dots ,m'_k) = (m_1 + m'_1,\dots ,m_k + m'_k)
+\ee
+and scalar multiplication
+\be
+r(m_1,\dots ,m_k) = (rm_1,\dots , rm_k).
+\ee
+\end{definition}
+
+\begin{definition}
+Let $m_1,\dots ,m_k \in M$. Then the set $\{m_1,\dots ,m_k\}$ is independent if
+\be
+r_1m_1 + \dots + r_km_k = 0 \ \ra \ r_1 = \dots = r_k = 0.
+\ee
+\end{definition}
+
+\begin{definition}
+The subset $S \subset M$ generates $M$ freely if
+\ben
+\item [(i)] $S$ generates $M$,
+\item [(ii)] every map $\psi : S \to N$, where $N$ is an $R$-module, extends to an $R$-module homomorphism $\theta : M \to N$.
+\een
+\end{definition}
+
+\begin{remark}
+If such a $\theta$ exists then it is unique since if we have two such $\theta_1$ and $\theta_2$ then $S \subset \ker(\theta_1 - \theta_2)$ and so $M \leq \ker(\theta_1 - \theta_2)$ since $S$ generates $M$. Thus $\theta_1 = \theta_2$.
+\end{remark}
+
+\begin{definition}
+A module freely generated by some subset $S$ is free and $S$ is a basis\index{basis}.
+\end{definition}
+
+\begin{proposition}
+For $S = \{m_1,\dots ,m_k\} \subset M$ the following are equivalent:
+\ben
+\item [(i)] $S$ generates $M$ freely.
+\item [(ii)] $S$ generates $M$ and is an independent set.
+\item [(iii)] Every element of $M$ is uniquely expressible in the form $r_1m_1+\dots+r_km_k$ for some $r_i \in R$.
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+[(i) $\ra$ (ii)] Suppose that $S$ generates $M$ freely. We need to show independence. Let $N = R^k$ and define
+\be
+\psi : S \to N,\ m_j \mapsto  (0,\dots , 1,\dots),
+\ee
+i.e. a 1 in the $j$th place. So there is an $R$-module homomorphism $\theta : M \to N$. Then
+\be
+\theta(r_1m_1 + \dots + r_km_k) = (r_1,\dots , r_k).
+\ee
+So if $r_1m_1 + \dots + r_km_k = 0$ then $r_1 = \dots = r_k = 0$.
+
+The two implications (ii) $\ra$ (iii) and (iii) $\ra$ (i) are left as an exercise.
+\end{proof}
+
+\begin{example}
+For $R = \Z$, $M = \Z$, the set $\{2, 3\}$ is a generating set, but contains no basis for $M$. For example, $\{2\}$ is independent, but is not a generating set.
+\end{example}
+
+\begin{proposition}\label{pro:r_k}
+Let $M$ be a $R$-module, generated by $\{m_1,\dots ,m_k\}$. Then there is a free module $R^k$ and a surjective homomorphism $\theta : R^k \to M$. Thus $M \cong R^k/ \ker \theta$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Define an $R$-module homomorphism
+\be
+\theta : R^k \to M,\ (r_1,\dots ,r_k) \mapsto  r_1m_1 + \dots + r_km_k.
+\ee
+\end{proof}
+
+The kernel in Proposition \ref{pro:r_k} is the relation module.
+
+\begin{definition}
+An $R$-module $M$ is finitely presented if there exists a finite generating set $S = \{m_1,\dots ,m_k\} \subset M$ and the relation module is also finitely generated, by $\{n_1,\dots , n_l\}$. We say that $M$ is generated by $S$ subject to relations $r_1m_1+\dots+r_km_k = 0$ for each $n_i = (r_{i_1},\dots,r_{i_k})$.
+\end{definition}
+
+\begin{proposition}
+Let $R$ be a non-zero ring, $M$ be an $R$-module freely generated by $\{u_1,\dots , u_m\}$ and $\{v_1,\dots , v_n\}$. Then $m = n$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+One can define determinants for square matrices with coefficients just as in Linear Algebra by
+\beast
+\det A & = & \sum_{\pi \in S_n} \sgn(\pi)A_{1,\pi(1)} \dots A_{n,\pi(n)},\\
+\det AB & = & \det A\det B,\\
+A \adj(A) & = & (\det A)I.
+\eeast
+
+Thus $A$ is invertible if and only if $\det A$ is a unit in $R$. Assume that $n \geq m$ with unique expressions
+\be
+v_j = \sum_i A_{ij}u_i,\quad\quad u_k = \sum_j B_{jk}v_j .
+\ee
+
+So
+\be
+u_k = \sum_j\sum_i B_{jk}A_{ij}u_i = \sum_i \sum_j A_{ij}B_jku_i = \sum_i (AB)_{ik}u_i.
+\ee
+
+As $\{u_1,\dots , u_m\}$ is independent we have $AB = I$. If $n > m$ then
+\be
+\bepm
+A & 0
+\eepm
+\bepm
+B\\
+0
+\eepm
+= I_m
+\ee
+so $\det \bepm A & 0 \eepm \neq 0$. Contradiction. So $m = n$.
+\end{proof}
+
+\section{Matrices over Euclidean domains, equivalence of matrices, Smith normal form}
+
+In this section we will assume that $R$ is a Euclidean domain with Euclidean function $\phi: R - \{0\} \to \Z_{\geq0}$.
+
+If $a, b \in R$ then there exists a $\hcf(a, b)$, defined up to associates, obtained by Euclid's algorithm (cf. the Part IA course Numbers and Sets, Example Sheet Question 2). Moreover, $\hcf(a, b) = ax + by$ for some $x, y \in R$.
+
+\begin{definition}
+The elementary row operations on a $m \times n$ matrix $A$ are:
+\ben
+\item [(ER1)] Add $c$ times $i$th row to $j$th row. (Achieved by multiplying $A$ on the left by $I +C$ where $C_{kl} = 0$ except for $C_{ij} = c$.)
+\item [(ER2)] Interchange rows $i$ and $j$, $i \neq j$. (Multiplying by $I + C$ where $C_{kl} = 0$, $C_{ii} = C_{jj} = -1$, $C_{ij} = C_{ji} = 1$.)
+\item [(ER3)] Multiplying row $i$ by a unit $c$. (Multiplying by $C$ diagonal, all diagonal entries 1 apart from $C_{ii} = c$.)
+\een
+
+All of these are achieved by multiplication on the left by suitable matrices. These operations are reversible as the corresponding matrices are invertible.
+We could similarly consider elementary column operations (EC1), (EC2), (EC3), which are achieved by multiplying on the right by suitable invertible matrices.
+\end{definition}
+
+\begin{definition}
+Two $m\times n$ matrices are equivalent if one can get from one to the other via a sequence of elementary operations.
+\end{definition}
+
+If $A,B$ are equivalent then there exists an invertible $m\times m$ matrix $Q$ and an invertible $n \times n$ matrix $P$ with $B = QAP^{-1}$. We can see this by doing the bookkeeping on the accumulation of row and column operations.
+
+\begin{theorem}[Smith normal form]\label{thm:smith_normal_form}
+Let $A$ be an $m\times n$ matrix over a Euclidean domain $R$. Then by a sequence of elementary operations, we can put it into the form
+\be
+\bepm
+d_1 & & & & & 0\\
+& \ddots & & & &\\
+& & d_r & & & \\
+& & & 0 & & \\
+& & & & \ddots &\\
+0 & & & & & 0
+\eepm
+\ee
+with $d_1,\dots ,d_r$ non-zero and $d_1 | d_2 | \dots | d_r$. These $d_k$, the invariant factors, are unique up to associates.
+
+In fact, the product $d_1 \dots d_k$ is a highest common factor of the $k \times k$ minors of $A$.
+
+Recall the following definition. A $k\times k$ minor of $A$ is the determinant of a $k\times k$ submatrix of $A$. In particular, $d_1$ is a highest common factor of the entries of $A$, $d_1d_2$ is a highest common factor of the $2 \times 2$ minors.
+\end{theorem}
+
+\begin{lemma}\label{lem:unchanged_under_elementary_operation}
+The ideal in $R$ generated by $k \times k$ minors of $A$ is unchanged under elementary operations.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Consider the $1 \times 1$ minors, i.e. the entries of $A$. Under an elementary operation, $A_{ij}$ either stays the same or is replaced by $A_{ij} + cA_{ik}$ or $A_{ij} + cA_{kj}$ or multiplied by a unit or replaced by some other entry $A_{kl}$, and so we deduce that the ideal generated by the entries of the new matrix is contained in the ideal generated by the entries of the old matrix. Now the other direction follows from the fact that the operations are revertible. We thus obtain equality.
+
+More generally, have a similar but messier argument.
+\end{proof}
+
+\begin{proof}[\bf Proof of Theorem \ref{thm:smith_normal_form}]
+If $A = 0$ there is nothing to do. Suppose $A \neq 0$ and we may assume after switching rows and columns that $A_{11} \neq 0$. The idea is to use sequences of elementary operations to reduce $\phi(A_{11})$. The process must stop since $\phi(A_{11}) \in \Z_{\geq 0}$.
+
+{\bf Case 1}. If A11 does not divide some entry $A_{1j}$ of the first row then use Euclid's algorithm, write $A_{1j} = qA_{11} + r$ with $r \neq 0$, so $\phi(r) < \phi(A_{11})$. Subtract $q$ times the first column from the $j$th column to give entry $r$ in the $(1\ j)$ position. Switch columns 1 and $j$ so that $r$ is now in the top left hand corner.
+
+{\bf Case 2}. If A11 does not divide some entry of the first column, use a similar process to get a new matrix with $r \neq 0$ and $phi(r) < \phi(A_{11})$ in the top left hand corner.
+
+Keep using these two cases until we cannot do so any longer, i.e. when $A_k$ divides all entries in first row and column. Then subtract suitable multiples of the first column from the others and substract suitable multiples of the first row from the others to get matrix of the form
+\be
+\bepm
+d & 0\\
+0 & C
+\eepm
+\ee
+with $d \neq 0$ for some $(m - 1) \times (n - 1)$ matrix $C$.
+
+{\bf Case 3}. If we have a matrix of the form
+\be
+\bepm
+d & 0\\
+0 & C
+\eepm
+\ee
+but $d$ does not divide some entry of $C$ then $d \nmid A_{ij}$, say. Use Euclid's algorithm so that $A_{ij} = qd + r$ with $r \neq 0$ and $\phi(r) < \phi(d)$. Add column 1 to column $j$. Subtract $q$ times row 1 from row $i$ so that we have replaced $A_{ij}$ by $r$. Switch columns $j$ and 1, rows $i$ and
+1, so $r$ appears in top left hand corner.
+
+We are now in a position to apply Case 1 and Case 2 again to reduce the $\phi$-value of the top left hand corner. Repeat the whole process (Cases 1, 2 and 3) until we can't anymore, i.e. when the matrix is of the form
+\be
+\bepm
+d & 0\\
+0 & C
+\eepm
+\ee
+with $d$ dividing all entries of $C$.
+
+Keep on going with elementary operations on $C$ etc. The result follows.
+\end{proof}
+
+Observe that for a matrix of the form
+\be
+\bepm
+d_1 & & & & & 0\\
+& \ddots & & & &\\
+& & d_r & & & \\
+& & & 0 & & \\
+& & & & \ddots &\\
+0 & & & & & 0
+\eepm
+\ee
+with $d_1 | d_2 | \dots | d_r$ and $d_k \neq 0$ for all $k$ the ideal generated by the $k \times k$ minors is $(d_1 \dots d_k)$, thus by Lemma \ref{lem:unchanged_under_elementary_operation} the ideal generated by the $k \times k$ minors of the original matrix is $(d_1 \dots d_k)$.
+
+\begin{example}
+We consider the following sequence of transformations,
+\be
+A = \bepm
+2 & -1\\
+1 & 2
+\eepm \ \ra \ 
+\bepm
+1 & -1\\
+3 & 2
+\eepm 
+\ \ra \ 
+\bepm
+1 & 0\\
+3 & 5
+\eepm
+\ \ra \ 
+\bepm
+1 & 0\\
+0 & 5
+\eepm.
+\ee
+
+\ben
+\item [(i)] Add column 2 to column 1. (Multiply on the right by $\bepm 1 & 0\\ 1 & 1 \eepm$.)
+\item [(ii)] Add column 1 to column 2. (Multiply on the right by $\bepm 1 & 1\\ 0 & 1 \eepm$.)
+\item [(iii)] Subtract $3\times$ row 1 from row 2. (Multiply on the left by $\bepm 1 & 0\\-3 & 1\eepm$.)
+\een
+
+Thus 
+\be
+\bepm
+1 & 0\\
+0 & 5
+\eepm
+=
+\bepm
+1 & 0\\
+-3 & 1
+\eepm
+A
+\bepm
+1 & 1\\
+1 & 2
+\eepm.
+\ee
+\end{example}
+
+\begin{lemma}\label{lem:finitely_generated}
+Let $M$ be a free $R$-module of rank $m$, i.e. there is a basis of cardinality $m$, and $R$ be an Euclidean domain and suppose that $N \leq M$ is a submodule. Then $N$ is finitely generated.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Pick a basis for $M$ and so $M \cong R^m$. Identify $M$ with $R^m$. Consider the ideal
+\be
+I = \{r \in R : (r_1, r_2,\dots , r_m) \in N\} \lhd R.
+\ee
+
+Since $R$ is an ED and hence a PID, $I$ is generated by $a\in R$, say. Fix an element $n \in N$ of form $(a, a_2,\dots , a_m)$. Then for any $(r_1, r_2,\dots , r_m) \in N$ we have $r_1 = ra$ for some $r \in R$. Then
+\beast
+(r_1, r_2,\dots , r_m) - rn & = & (r_1, r_2,\dots , r_m) - r(a, a_2,\dots , a_m) \in N\\
+& = & (0, r_2 - ra_2,\dots , r_m - ra_m).
+\eeast
+Consider $\{(0, s_2,\dots , s_m) \in N\} \leq \{(0, r_2,\dots , r_m) \in R^m\}$ and apply induction to see that the module on the LHS is of rank $m - 1$, generated by $n_2,\dots , n_m$, say. Then $n, n_2,\dots , n_m$ generate $N$.
+\end{proof}
+
+\begin{theorem}
+Let $R$ be a Euclidean domain, $N \leq R^m$. Then there is a basis $\{v_1,\dots , v_m\}$ of $R^m$ such that N is generated by $\{d_1v_1, d_2v_2,\dots , d_rv_r\}$ for some $1 \leq r \leq m$ and $d_1 | d_2 | \dots | d_r$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Use Lemma \ref{lem:finitely_generated} to see that $N$ is finitely generated by $x_1,\dots , x_n$, say. So write these as columns of a matrix $A$, an $m \times n$ matrix.
+
+By Theorem \ref{thm:smith_normal_form} on Smith normal forms, we know that we can put $A$ into the form
+\be
+\bepm
+d_1 & & & & & 0\\
+& \ddots & & & &\\
+& & d_r & & & \\
+& & & 0 & & \\
+& & & & \ddots &\\
+0 & & & & & 0
+\eepm,\quad\quad d_i \neq 0,\quad d_1 | d_2 | \dots | d_r
+\ee
+by elementary row and columns operations.
+
+Observe that performing an elementary row operation is associated with a change of basis of $R^m$, e.g. adding $c$ times row $j$ to row $i$ replaces the basis ${\bf e}_1,\dots , {\bf e}_m$ of $R^m$ by ${\bf e}_1,\dots , {\bf e}_i,\dots , {\bf e}_j - c{\bf e}_i,\dots , {\bf e}_m$ (replacing the $j$th element ${\bf e}_j$ by ${\bf e}_j - c{\bf e}_i$) since
+\be
+a_1\bbe_1 +\dots + a_m\bbe_m = a_1\bbe_1 + \dots + (a_i + ca_j)\bbe_i \dots + a_j(\bbe_j - c\bbe_i) + \dots + a_m\bbe_m
+\ee
+Thus the $i$th coefficient has been replaced by $a_i + ca_j$.
+
+Similary, column operations arise in connection with the change of the generating set of $N$. Thus the elementary operations arise when changing basis for Rm and generating set for $N$.
+
+At the end of the process the matrix is in Smith normal form and the basis $\{v_1,\dots , v_m\}$ of $R^m$ is such that $\{d_1v_1, d_2v_2,\dots , d_rv_r, 0,\dots , 0\}$ is a generating set for $N$, as required. We can throw away the 0s.
+\end{proof}
+
+\begin{corollary}
+A submodule $N$ of $R^m$ when $R$ is a ED is free of rank at most $m$.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+The set $\{d_1v_1,\dots , d_rv_r\}$ freely generates $N$ since $\{v_1,\dots , v_m\}$ are free generators of $R^m$.
+\end{proof}
+
+\begin{theorem}\label{thm:r_ed}
+Let $M$ be a finitely generated $R$-module, where $R$ is an ED. Then
+\be
+M \cong \frac{R}{(d_1)} \oplus \frac{R}{(d_2)} \oplus \dots \oplus \frac{R}{(d_r)} \oplus R \dots \oplus R
+\ee
+for some $d_k \neq 0$ with $d_1 | d_2 | \dots | d_r$.
+\end{theorem}
+
+\begin{remark}
+\ben
+\item [(i)] We may assume that all the $d_k$ are non-units, for if $d_k$ is a unit then $\frac{R}{(d_k)} \cong \{0\}$ which may be thrown away.
+\item [(ii)] A finitely generated $R$-module is a direct sum of cyclic $R$-modules. (Assuming that $R$ an ED.)
+\een
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Suppose the module $M$ is finitely generated by $\{m_1,\dots ,m_m\}$. Then $M \cong R^m/N$ by Proposition \ref{pro:r_k}. This is because there is a $R$-module homomorphism
+\be
+\theta : R^m \to M, \ (r_1,\dots , r_m) \mapsto  r_1m_1 + \dots + r_mm_m
+\ee
+and $\im \theta = M$ since $\{m_1,\dots ,m_m\}$ generates $M$ and $N = \ker \theta \leq R^m$. By the isomorphism theorem, $M \cong R^m/N$.
+
+There exists a basis $\{v_1,\dots , v_m\}$ of $R^m$ such that $\{d_1v_1,\dots , d_rv_r\}$ is a generating set for $N$. So
+\be
+R^m/N \cong R/(d_1) \oplus \dots \oplus R/(d_r) \oplus R \oplus \dots R,
+\ee
+as required.
+\end{proof}
+
+\begin{example}
+Take $R = \Z$. The theorem tells us about finitely generated $\Z$-modules, that is, finitely generated abelian groups. Consider an abelian group $A$, written additively, generated by $a, b, c$ subject to relations
+\beast
+2a + 3b + c & = & 0,\\
+a + 4b & = & 0,\\
+5a + 6b + 7c & = & 0.
+\eeast
+Then $A$ is a $\Z$-module and $A \cong \Z^3/N$, where $N$ is generated by $(2, 3, 1)$, $(1, 4, 0)$, $(5, 6, 7)$. Write these as columns of a matrix
+\be
+\bepm
+2 & 1 & 5\\
+3 & 4 & 6\\
+1 & 0 & 7
+\eepm
+\ee
+and put this into Smith normal form,
+\be
+\bepm
+1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 21
+\eepm
+\ee
+(Check.) So $A \cong \Z^3/N \cong \Z/(1\Z)\oplus \Z/(1\Z) \oplus \Z/(21\Z) \cong \Z/(21\Z)$, a cyclic abelian group of order 21.
+\end{example}
+
+\begin{theorem}[Structure theorem for finitely generated abelian groups]
+A finitely generated abelian group is isomorphic to
+\be
+C_{d_1} \times C_{d_2} \times \dots \times C_{d_r} \times C_\infty \times \dots \times C_\infty,
+\ee
+where $C_\infty$ is the infinite cyclic group.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Set $R = \Z$ in Theorem \ref{thm:r_ed} and write the group operation multiplicatively.
+\end{proof}
+
+\begin{remark}
+For a finite group there are no copies of $C_\infty$, see Theorem \ref{thm:structure_theorem_finite_abelian_group}.
+\end{remark}
+
+\begin{proposition}[Primary decomposition]\label{pro:primary_decomposition}
+Let $R$ be a ED. Then
+\be
+R/(d) \cong R/(p^{n_1}_1) \oplus \dots \oplus R/(p^{n_s}_s),
+\ee
+where $d = p^{n_1}_1 \dots p^{n_s}_s$ is the factorisation into irreducibles (and primes).
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+(cf. (Lemma \ref{lem:coprime_cycle_cong}). Split off one summand $R/\bb{p^{n_j}_j}$ at a time using the following lemma.
+\end{proof}
+
+\begin{lemma}
+If $d = r_1r_2$ with $\hcf(r_1, r_2) = 1$ then $M = R/(d) \cong R/(r_1) \oplus R/(r_2)$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Let $m$ be a generator of $M$ with $\ann(m) = (d)$. If $\hcf(r_1, r_2) = 1$ then we can write $1 = xr_1 + yr_2$ for some $x, y \in R$ by Euclid's algorithm. Then
+\be
+m = 1\cdot m = x(r_1m) + y(r_2m).
+\ee
+We have $\ann(r_1m) = (r_2)$, $\ann(r_2m) = (r_1)$ using that we have good factorisation in $R$. Set
+\be
+M_1 \cong R/(r_2),\quad\quad M_2 \cong R/(r_1).
+\ee
+$M_1 \cap M_2 = \{0\}$ since if $sm \in M_1 \cap M_2$ then $s$ is a multiple of both $r_1$ and $r_2$, and hence of $r_1r_2$ since $\hcf(r_1, r_2) = 1$ and so $sm = 0$.
+
+Consider the $R$-module homomorphism
+\be
+M_1 \oplus M_2 \to M,(m_1,m_2) \mapsto  m_1 + m_2.
+\ee
+It is onto since $M = M_1 +M_2$, $M_1 \cap M_2 = \{0\}$. Hence $M \cong M_1 \oplus M_2$.
+\end{proof}
+
+\begin{theorem}
+Let $M$ be a finitely generated $R$-module, where $R$ is a Euclidean domain. Then
+\be
+M \cong N_1 \oplus N_2 \oplus \dots \oplus N_t
+\ee
+where each $N_j \cong R/(p^{n_j}_j)$ and $p_j$ is prime (and irreducible) and $n_j \geq 1$, or $N_j \cong R$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Use primary decomposition from Lemma \ref{thm:r_ed} to split the components in Proposition \ref{pro:primary_decomposition} as direct sums of modules of this form.
+
+Note that the $p_j$ are not necessarily distinct. The $p^{n_j}_j$ are the elementary divisors and they are unique up to ordering. (Proof omitted.)
+\end{proof}
+
+\section{Modules over $\F[X]$ for a field $\F$ -- normal forms for matrices}
+
+Let $\alpha: V \to V$ be a linear map and $V$ a finite dimensional vector space over a field $\F$. We regard $V$ as a $\F[X]$-module via
+\be
+g(X)\cdot v = g(\alpha)(v)
+\ee
+for $v \in V$, dependent on the choice of $\alpha$.
+
+\begin{example}
+Cyclic modules over $\F[X]$, e.g. $V = M \cong \F[X]/(f(X))$. Here $f(X)$ is a polynomial of least degree such that $f(\alpha) = 0$. We may assume that $f(X)$ is monic, it is the minimal polynomial for $\alpha$.
+\ben
+\item [(i)] $f(X) = X^r$. Take generator $m$ of the $\F[X]$-module $M$, $\ann(m) = (f(X))$. Then $m,Xm,X^2m,\dots ,X^{r-1}m$ is a vector space basis of $M = V$. Note that
+\be
+(m,Xm,\dots ,X^{r-1}m) = (m, \alpha(m),\dots , \alpha^{r-1}(m)).
+\ee
+$\alpha$ is represented by the matrix (with coefficients in $\F$)
+\be
+\bepm
+0 & 0 & & & 0\\
+1 & 0 & & & \\
+0 & 1 & \ddots & & \\
+& & \ddots  & 0 &\\
+0 & & & 1 & 0
+\eepm.
+\ee
+
+\item [(ii)] $f(X) = (X - \lm)^r$. Then $(\alpha - \lm)^r = 0$. Consider $\beta = \alpha - \geq\cdot \iota$ then the minimal polynomial of $\beta$ is $X^r$. So there exists a vector space basis of $M = V$ such that $\beta$ is represented by
+\be
+\bepm
+0 & 0 & & & 0\\
+1 & 0 & & & \\
+0 & 1 & \ddots & & \\
+& & \ddots  & 0 &\\
+0 & & & 1 & 0
+\eepm.
+\ee
+and so $\alpha$ is represented by
+\be
+\bepm
+\lm & 0 & & & 0\\
+1 & \lm & & & \\
+0 & 1 & \ddots & & \\
+& & \ddots  & \lm &\\
+0 & & & 1 & \lm
+\eepm.
+\ee
+
+\item [(iii)] For a general $f(X)$, for a generator $m$ with $\ann(m) = (f(X))$ as in (i), we can pick a vector space basis $m,Xm,\dots ,X^{r-1}m$ where
+\be
+f(X) = a_0 + a_1X + \dots + a^{r-1}X^{r-1} + X^r
+\ee
+and
+\be
+m,Xm,\dots ,X^{r-1}m = m, \alpha(m),\dots , \alpha^{r-1}(m).
+\ee
+$\alpha$ is represented with respect to this basis by
+\be
+\bepm
+0 & 0 & & & -a_0\\
+1 & 0 & & & -a_1\\
+0 & 1 & \ddots & & \vdots \\
+& & \ddots  & 0 &\\
+0 & & & 1 & -a_{r-1}
+\eepm.
+\ee
+
+This is called the companion matrix\index{companion matrix} of $f(X)$, written $C(f)$.
+\een
+\end{example}
+
+\begin{theorem}[Rational canonical form]
+Let $\alpha : V \to V$ be an endomorphism of a finite dimensional $\F$-vector space and $\F$ be a field. Then, regarding $V$ as an $\F[X]$-module $M$, $M \cong M_1 \oplus \dots \oplus M_s$ with each $M_j$ cyclic and $M_j \cong \F[X]/(f_j(X))$ where $f_1(X) | f_2(X) | \dots | f_s(X)$, and on choosing an vector space basis for each $M_j$ as in Example (iii), $\alpha$ is represented by a matrix (with coefficients in $\F$)
+\be
+\bepm
+C(f_1) & & & 0\\
+& C(f_2) & & \\
+& & \ddots & \\
+0 & & & C(f_s)
+\eepm.
+\ee
+\end{theorem}
+\begin{proof}[\bf Proof]
+Theorem \ref{thm:r_ed} splits $M$ as a direct sum of cyclic modules of the right form, and since $M$ is finite dimensional as a $\F$-vector space there are no components isomorphic to $\F[X]$. Now use Example (iii) to represent $\alpha$.
+\end{proof}
+
+\begin{remark}
+The name is due to the special case where $\F = \Q$.
+\end{remark}
+
+\begin{remark}
+\ben
+\item [(i)] The invariant factors $f_i(X)$ are unique up to associates. (This is not quite proved here).
+\item [(ii)] If $A$ is a square $n\times n$ matrix with coefficients in $\F$, then $A$ represents a linear map $\alpha: V \to V$. So the theorem says we can pick a new basis with respect to which $\alpha$ is represented in rational canonical form. Thus $A$ is conjugate to a matrix in rational canonical form.
+\item [(iii)] Minimal polynomials: The minimal polynomial of $\alpha$ is a generator of the annihilator $\ann(M)$, and this is equal to $f_s(X)$ after adjusting to make sure it is monic.
+\item [(iv)] The characteristic polynomial of $\alpha$ is the product of the characteristic polynomials of the $C(f_i)$, that is, the product $f_1(X) \dots f_s(X)$.
+\een
+\end{remark}
+
+Now we can use Proposition \ref{pro:primary_decomposition} on primary decomposition to split the $M_i$ as direct sums of cyclic modules with annihilators generated by powers of irreducibles.
+
+Assume that $\F = \C$, so that the irreducibles are linear.
+
+\begin{theorem}[Jordan normal form for $\C$]
+Let $\alpha: V \to V$ be an endomorphism of a finite dimensional $\C$-vector space and regard $V$ as a $\C[X]$-module $M$. Then
+\be
+M \cong M_1 \oplus \dots \oplus M_s
+\ee
+where $M_j \cong \C[X]/((X - \lm_j)^{a_j})$ for some $\lm_j \in \C$. Here, $\lm_1,\dots , \lm_s$ are not necessarily distinct.
+\end{theorem}
+
+Taking a $\C$-vector space basis for each $M_j$ as in Example (ii), $\alpha$ is represented by a matrix of the form
+\be
+\bepm
+\lm_1 & & & 0 & & & & 0 & 0\\
+1 & \ddots & & & & & & & \\
+& \ddots & \lm_1 & & & & & & \\
+0 & & 1 & \lm_1 & 0 & & & & \\
+& & & 0 & \lm_2 & & & & \\
+& & & & 1 & \ddots & & & \\
+& & & & & \ddots & \lm_2 & & \\
+& & & & 0 &  & 1 & \lm_2 & \\
+0 & & & & & & & 0 & \ddots
+\eepm.
+\ee
+
+\begin{remark}
+\ben
+\item [(i)] A submatrix of the form
+\be
+\bepm
+\lm & & & 0\\
+1 & \ddots & & \\
+& \ddots & \lm & \\
+0 & & 1 & \lm
+\eepm
+\ee
+is called a Jordan $\lm$-block.
+
+\item [(ii)] The Jordan blocks for $\alpha$ are unique up to reordering. (This is not proved here.)
+
+\item [(iii)] Minimal polynomials of $\alpha$: Observe that each $M_i$ is in rational canonical form, so the theorem yields a $\lm$-block for each $\lm$ with $X - \lm$ dividing $f_i(X)$. Since
+\be
+f_1(X) | f_2(X) | \dots | f_s(X),
+\ee
+the powers of $X - \lm$ increase as we pass from $f_1(X)$ to $f_s(X)$. Thus the size of $\lm$-blocks increases as we pass from $M_1$ to $M_s$, so the largest $\lm$-block arises from $M_s$.
+
+Recall that the minimal polynomial of $\alpha$ is
+\be
+f_s(X) = \prod_{\lm \text{ distinct}} (X - \lm)^{a_\lm}.
+\ee
+Then $a_\lm$ is the size of the largest $\lm$-block.
+
+\item [(iv)] The characteristic polynomial of $\alpha$ factorises into irreducibles as follows,
+\be
+f_1(X) \dots f_s(X) = \prod_{\lm \text{ distinct}} (X - \lm)^{b_\lm}
+\ee
+where $b_\lm$ is the sum of the sizes of $\lm$-blocks. Observe that the $\lm$ are the eigenvalues of $\alpha$.
+
+\item [(v)] The geometric multiplicity of $\lm$ is defined to be the dimension of the $\lm$-eigenspace and equal to the number of $\lm$-blocks.
+
+\item [(vi)] Given a square complex matrix $A$, it is conjugate to a matrix in Jordan normal form.
+\een
+\end{remark}
+
+\begin{example}[Solutions of linear difference equations and differential equations]
+Consider the space $V$ of complex sequences $(z_k) \in \C^\infty$ that are solutions of
+\be
+z_{i+k} + c_{k-1}z_{i+(k-1)} + \dots + c_0z_i = 0
+\ee
+for $i \geq 1$ with $c_0,\dots , c_{k-1} \in \C$.
+
+Note that $V$ is a finite dimensional $\C$-vector space. Let $\alpha: V \to V$ be the left-shift, 
+\be
+(z_1, z_2,\dots ) \mapsto  (z_2, z_3,\dots ).
+\ee
+The minimal polynomial of $\alpha$ is $X^k + c_{k-1} X^{k-1} + \dots + c_0 = f(X)$, the auxiliary polynomial. Factorise this is as
+\be
+f(X) = \prod_{\lm \text{ distinct}} (X - \lm)^{a_\lm}.
+\ee
+Write down the $\C$-vector space associated with the Jordan normal form, as sequences for each $\lm$, 
+\be
+\bb{\binom{k}{a} \lm^{k-a}}, \quad 0 \leq a \leq a_{\lm} - 1
+\ee
+e.g. for $a = 0$ we have the sequence $(\lm, \lm^2, \lm^3,\dots)$ and for $a = 1$ etc. 
+
+For differential equations, the linear map is differentiation.
+\end{example}

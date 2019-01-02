@@ -1,0 +1,4 @@
+2011.08.30 
+
+add pst-func package (pst-func.sty, pst-func.tex, pst-func.pro) (need extra files: xkeyval.sty, xkeyval.tex)
+add pstricks.pro (dvi -> ps)

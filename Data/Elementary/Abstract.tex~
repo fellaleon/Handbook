@@ -1,0 +1,14 @@
+\part{Elementary}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%This part will give elementary notations and knowledge.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\input{Data/Elementary/Notations}
+\input{Data/Elementary/Numbers}
+\input{Data/Elementary/Sets}
+\input{Data/Elementary/Functions}
+\input{Data/Elementary/Vectors}
+%\include{Data/Temp/Logic_and_Set_Theory}

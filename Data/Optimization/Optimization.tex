@@ -1,0 +1,36 @@
+\chapter{Optimization}
+
+\section{Problems}
+
+\begin{problem}[the locker puzzle\cite{Curtin_2006}]\label{que:locker_puzzle}
+Suppose there are $2n$ person indexed from 1 to $2n$. Also, there is a room having $2n$ doors in order and behind each of the doors there is a corresponding number to each person with random distribution without repeat. Now $2n$ person are allowed to get into the room one by one, open at most $n$ doors and leave without communication with other person. If one of the doors the person checked has his corresponding number, we say that this person is successful. 
+
+All the person could have a chat to make a particular stategy to open the doors. What's the optimal strategy to maximize the probability that all the persons are successful?
+\end{problem}
+
+\begin{solution}[\bf Solution.]
+We can have the following strategy. The $i$th person checks the $i$th door. If the number behind the door is $i$ then the person stops and leaves the room. If the number is $j\neq i$, then the person checks the $j$th door. 
+
+Note that any permutation of a finite set can be written as a product of disjoint cycles (Theorem \ref{thm:disjoint_cycle_decomposition}). Thus, this strategy will let the persons forming cycles (by the numbers behind the doors) follow the overlapping paths. Thus, it will be different from the strategy that pick the doors independent for each person (which gives the probability $2^{-2n}$). Thus, we need to count the number of situations in which $n$-cycle is the biggest one. Or we can count the number of situations that the size of maximal cycle is equal to or more than $n+1$. If the maximal cycle is $k$-cycle for $2n\geq k \geq n+1$, we have
+\be
+C^k_{2n} (k-1)! (2n-k)! = \frac{(2n)!}{(2n-k)!k!} (k-1)! (2n-k)! = \frac{(2n)!}{k} \text{ possible ways.}
+\ee
+Here we have $(k-1)!$ for all the possible ways of $k$-cycle. Thus, the totally unsuccessful probability is
+\be
+\frac 1{(2n)!}\sum^{2n}_{k=n+1} \frac{(2n)!}{k} = \sum^{2n}_{k=n+1} \frac 1{k}.
+\ee 
+
+Then successful probability is
+\be
+1 - \sum^{2n}_{k=n+1} \frac 1k,\quad\quad \text{e.g., for $n=2$, it is }1 - \frac 13 - \frac 14 = \frac{5}{12}.
+\ee
+
+If $n \to \infty$, we can have that (by Corollary\footnote{need corollary})
+\be
+1 - \sum^{2n}_{k=n+1} \frac 1k \to 1 - \ln 2 = 0.306853.
+\ee
+
+However, we still need to show that this strategy is optimal\footnote{need details}.
+\end{solution}
+
+

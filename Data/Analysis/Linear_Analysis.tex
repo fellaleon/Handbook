@@ -1,0 +1,222 @@
+\chapter{Linear Analysis}
+
+\section{Normed Space}
+
+\subsection{Normed space}
+
+\begin{definition}[normed space\index{normed space}]\label{def:normed_space}
+A normed (vector) space over field $\F$\footnote{Usually, we take $\F = \R,\C$} is a pair $(X,\dabs{\cdot})$ where $X$ is a vector space over $\F$ and $\dabs{\cdot} : X\to [0,\infty), x\mapsto \dabs{x}$ such
+that:
+\ben
+\item [(i)] $\dabs{x}\geq 0,\forall x\in X$.
+\item [(ii)] $\dabs{x} = 0 \ \lra\ x = 0$.
+\item [(iii)] $\dabs{\lm x} = \abs{\lm}\dabs{x}$, $\forall \lm \in \F$, $\forall x\in X$.
+\item [(iv)] $\dabs{x+y} \leq \dabs{x} + \dabs{y}$, $\forall x,y\in X$.
+\een
+
+$\dabs{\cdot}$ is called a norm\index{norm} on $X$ (see Definition \ref{def:norm_vector_space}).
+\end{definition}
+
+
+
+\begin{remark}\label{rem:normed_space_is_metric_space}
+Note that every normed space is a metric space. Recalling the definition of metric space (Definition \ref{def:metric_space}), we can define a metric $d(x,y) = \dabs{x-y}$ on $X$.
+
+Conversely, if $X$ is a vector space over $\F$ and $d$ is a metric on $X$ with
+\be
+d(\lm x, \lm y) = \abs{\lm} d(x,y),\qquad d(x+z,y+z) = d(x,y),\qquad \forall \lm \in \F,x,y,z\in X,
+\ee
+then $\dabs{x} = d(x,0)$ is a norm on $X$. So metric space is not normed space in general case.
+\end{remark}
+
+
+\begin{proposition}
+For normed vector space $(X,\dabs{\cdot})$, we have for $x,y\in X$,
+\be
+\abs{\dabs{x}-\dabs{y}} \leq \dabs{x-y}.
+\ee
+\end{proposition}
+
+\begin{remark}
+For metric space, the triangle inequality is
+\be
+\abs{d(y,x) - d(x,z)} \leq d(y,z).
+\ee
+\end{remark}
+
+\begin{proof}[\bf Proof]
+First, by the triangle inequality we have
+\be
+\dabs{x} = \dabs{(x-y)+y} \leq \dabs{x-y} + \dabs{y} \ \ra\ \dabs{x} -\dabs{y} \leq \dabs{x-y}.
+\ee
+
+Then switch $x$ and $y$ we have
+\be
+\dabs{y} - \dabs{x} \leq \dabs{x-y} \ \ra\ \dabs{x} -\dabs{y} \geq -\dabs{x-y}.
+\ee
+
+Therefore,
+\be
+-\dabs{x-y} \leq \dabs{x} -\dabs{y} \leq \dabs{x-y} \ \ra\ \abs{\dabs{x} -\dabs{y}} \leq \dabs{x-y}.
+\ee
+\end{proof}
+
+
+\subsection{Typical spaces}
+
+Let us give a list of examples of normed vector spaces.
+
+\begin{example}
+\ben
+\item [(i)] The $n$-dimensional Euclidean space\footnote{definition needed.}. The vector space $X$ is $\R^n$ or $\C^n$ and the norm is 
+\be
+\dabs{x} := \bb{\sum^n_{i=1}\abs{x_i}^2}^{1/2},\qquad x=(x_1,\dots, x_n)\in X.
+\ee
+
+The former is a real Euclidean space, the latter is a complex one.
+
+\item [(ii)] Let $X$ be any set and $\F_b(X)$ be the vector space of all bounded scalar-valued functions ($f: X \to \F$) of $X$. The norm is defined by
+\be
+\dabs{f} := \sup_{x\in X}\abs{f(x)},\qquad f\in \F_b(X).
+\ee
+
+This norm is the uniform or supremum norm.
+
+\item [(iii)] Let $L$ be a topological space and $X = C_b(L)$ be the vector space of all bounded continuous scalar-valued functions on $L$ and set
+\be
+\dabs{f} := \sup_{t\in L}\abs{f(t)},\qquad f\in C_b(L).
+\ee
+
+\item [(iv)] Consider the speical case of (ii) and (iii). Let $K$ be a compact Hausdorff space and let $C(K)$ be the space of continuous functions on $K$, with the supremum norm
+\be
+\dabs{f} = \dabs{f}_\infty = \sup_{x\in K}\abs{f(x)}.
+\ee
+
+Since $K$ is compact, $\abs{f(x)}$ is bounded on $K$ and attains its supremum.
+
+\item [(v)] Let $X$ be $\R^n$ or $\C^n$ and set
+\be
+\dabs{x}_1 = \sum^n_{i=1}\abs{x_i} .
+\ee
+
+The space is $\ell^n_1(X)$ space and the norm is the $\ell_1$ norm. Also,
+\be
+\dabs{x}_\infty = \max_{1\leq i \leq n}\abs{x_i} .
+\ee
+is a norm, the $\ell_\infty$ norm. The space is $\ell_\infty^n(X)$ space.
+
+\item [(vi)]
+
+\een
+\end{example}
+
+
+\subsection{Formulas}
+
+\begin{theorem}[arithmetic-geometric mean inequality\index{arithmetic-geometric mean inequality}]\label{thm:arithmetic_geometric_mean_inequality}
+For positive real numbers $x_1, \dots, x_n$, 
+\be 
+\bb{\prod^n_{i=1} x_i}^{1/n} \leq \frac 1n \sum^n_{i=1} x_i. 
+\ee
+
+The equality holds only if $x_1 = x_2 = \dots = x_n$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+See Corollary \ref{cor:arithmetic_geometric_mean_inequality_probability_proof} for probability proof.
+\end{proof}
+
+
+\subsection{Separable normed space}
+
+
+\begin{definition}[separable normed space\index{separable!normed space}]\label{def:separable_normed_space}
+A normed space $(X,\dabs{\cdot})$ is called separable if there exist countably many dense subsets of $X$.
+\end{definition}
+
+\footnote{there is different definition for separable space.}
+
+\begin{example}
+$\forall p\in [1,\infty)$, $\ell_p(\F)$ is separable. However, $\ell_\infty(\F)$ is not separable\footnote{proof needed.}.
+\end{example}
+
+
+\section{Hahn-Banach Theorem}
+
+
+
+
+
+\section{Banach Space}
+
+
+
+\begin{definition}[Banach space\index{Banach space}]\label{def:banach_space}
+\footnote{definition needed.}
+\end{definition}
+
+\begin{theorem}[Stone-Weierstrass theorem\index{Stone-Weierstrass theorem}]\label{thm:stone_Weierstrass_separates_points}
+Suppose $X$ is a compact Hausdorff space and $\sA$ is a subalgebra of $C(X)$ which contains a non-zero constant function. Then $\sA$ is dense in $C(X)$ if and only if it separates points, i.e.,
+$\forall x\in X$, there exist elements $f,g\in \sA$ such that $f(x) \neq g(x)$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+see \cite{Rogers_1994}.II80
+\end{proof}
+
+
+\begin{corollary}[Weierstrass' approximation theorem\index{Weierstrass' approximation theorem}]\label{cor:weierstrass_approximation}
+Since the polynomials on $[a,b]$ form a subalgebra of $C[a,b]$\footnote{Note that the coefficients of the polynomial can be outside of $[a,b]$}, $\sA$, which contains the constants and separates
+points, then $\sA$ is dense.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+\footnote{see Rogers' book}
+\end{proof}
+
+
+\section{Hilbert Space}
+
+\begin{definition}[orthogonal complement\index{orthogonal complement}]
+\footnote{details needed.}
+\end{definition}
+
+\begin{proposition}
+For infinite dimensional Hilbert space $X$ with linear subspace (vector space) W, we have 
+\be
+\bb{W^\perp }^\perp = \ol{W}.
+\ee 
+
+Furthermore, if $W$ is closed, we have 
+\be
+\bb{W^\perp }^\perp = W.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+\footnote{proof needed. see wiki, orthogonal complement}
+\end{proof}
+
+\subsection{Adjoint operator}
+
+\begin{definition}[adjoint operator\index{adjoint operator}]
+Let $\sL$ be operator for all functions $f$ and $g$ in the Hilbert space with inner product. Then $\sL^*$ is defined as its adjoint operator if
+\be
+\inner{f}{\sL g} = \inner{\sL^*f}{g}.
+\ee
+\end{definition}
+
+\begin{definition}[self-adjoint operator\index{self-adjoint operator}]
+Let $\sL$ be operator in the Hilbert space and its adjoint operator is $\sL^*$. Then we call $\sL$ self-adjoint if $\sL = \sL^*$.
+\end{definition}
+
+
+\section{Summary}
+
+normed space $\subseteq$ metric space (see Remark \ref{rem:normed_space_is_metric_space}).
+
+normed space $\subseteq$ topological space\footnote{with respect to the norm topology}.
+
+topological vector space $\subseteq$ Hausdorff.
+
+complete metric space $\subseteq$ Baire space.

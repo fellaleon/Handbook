@@ -1,0 +1,15 @@
+\chapter{Matrix Analysis}
+
+\section{Matrix Norm}
+
+\section{Convergence of Matrix}
+
+$A\in M_n(\F)$ is convergent matrix iff the moduli of all its eigenvalues are smaller than 1 (see \cite{Horn_Johnson_1990}.$P_{137}$).
+
+
+
+\section{Matrix Calculus}
+
+\footnote{need Mike Brooks Homepage.}
+
+

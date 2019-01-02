@@ -1,0 +1,190 @@
+
+%{\large \textcolor{red}{unsorted below}}
+
+\chapter{Unsorted to do}
+
+\section{Set and logics}
+
+Zorn's lemma
+
+\section{Numbers}
+
+\begin{theorem}[Cauchy-Schwarz inequality\index{Cauchy-Schwarz inequality!inner product}]\label{thm:cauchy_schwarz_inequality_inner_product}
+For all vectors $x$ and $y$ of an inner product space,
+\be
+\abs{\inner{x}{y}}^2 \leq \inner{x}{x} \cdot \inner{y}{y},
+\ee
+where $\inner{\cdot}{\cdot}$ is the inner product. Equivalently, by taking the square root of both sides, and referring to the norms of the vectors, the inequality is written as 
+\be
+\abs{\inner{x}{y}} \leq \dabs{x} \cdot \dabs{y}.
+\ee 
+
+Moreover, the two sides are equal if and only if $x$ and $y$ are linearly dependent (or, in a geometrical sense, they are parallel or one of the vectors is equal to zero).
+\end{theorem}
+
+\qcutline
+
+%\subsection{Review from N\&S}
+
+$a_n\in\R$ is a sequence of real numbers.
+
+\begin{definition}
+$a_n\to a\in \mathbb{R}$ as $n\to \infty$
+
+if given $\varepsilon>0$, $\exists N$ such that $|a_n-a|<\varepsilon$ for all $n\geq N$.
+\end{definition}
+
+
+%\section{Sets}
+
+\centertexdraw{
+\drawdim in
+
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+    
+\linewd 0.01 \setgray 0
+    
+\move (0 0) \fcir f:0.8 r:0.5 
+\move (0.5 0) \fcir f:0.8 r:0.5 
+\move (0.25 -0.433) \fcir f:0.8 r:0.5 
+
+%x=-1/12,y=\pm (sqrt(35)/8- 7sqrt(3)/24)
+
+\move (0.25 -0.433) \clvec (-0.0833 -0.2343)(-0.0833 0.2343)(0.25 0.433)  \clvec (0.5833 0.2343)(0.5833 -0.2343)(0.25 -0.433) \lfill f:1
+\move (-0.25 -0.433) \clvec (-0.2446 -0.045)(0.16127 0.1893)(0.5 0) \clvec (0.4946 -0.388)(0.0887 -0.6223)(-0.25 -0.433) \lfill f:1
+\move (0.75 -0.433) \clvec (0.7446 -0.045)(0.33873 0.1893)(0 0) \clvec (0.0054 -0.388)(0.4113 -0.6223)(0.75 -0.433) \lfill f:1
+
+%y= (2-sqrt(3))/3 = 0.0893, x = (4*sqrt(25 -12*sqrt(3))-5)/18
+
+\move (0 0) \clvec (0.1785 0.0893)(0.3215 0.0893)(0.5 0) \clvec (0.4881 -0.1992)(0.4166 -0.3231)(0.25 -0.433) \clvec (0.0834 -0.3231)(0.0119 -0.1992)(0 0) \lfill f:0.8
+
+\move (0 0) \lcir  r:0.5
+\move (0.5 0) \lcir  r:0.5
+\move (0.25 -0.433) \lcir  r:0.5
+
+\move (0 1)
+
+}
+
+
+\section{Groups}
+
+\ben
+\item [(i)] $A_n$ is simple for $n\geq 5$.
+\item [(ii)] For any field $\F$ we have the following groups:
+
+$GL_n(\F) = \bra{\text{invertible $n\times n$ matrices over $\F$}}$.
+
+$SL_n(\F) = \bra{\text{$n\times n$ matrices over $\F$ with determinant 1}}$.
+
+$PGL_n(\F) = GL_n(\F)/Z$, where $Z = Z(GL_n(\F)) = \bra{\lm I:\lm \in \F^*}$ %\bra{\text{$n\times n$ matrices over $\F$ with determinant 1}}$.
+
+$PSL_n(\F) = SL_n(\F)/Z$, where $Z = Z(SL_n(\F)) = \bra{\lm I:\lm^n = 1}$.
+\een
+
+\section{Algebra}
+
+\begin{definition}
+A magma is a set M matched with an operation ``$\cdot$" that sends any two elements $a,b \in M$ to another element $a \cdot b$. The symbol ``$\cdot$" is a general placeholder for a properly defined operation. To qualify as a magma, the set and operation $(M,\cdot)$ must satisfy the following requirement (known as the magma axiom):
+
+For all $a, b \in M$, the result of the operation $a \cdot b$ is also in $M$. And in mathematical notation:
+\be
+\forall a,b \in M : a \cdot b \in M 
+\ee
+\end{definition}
+
+\section{Linear Algebra}
+
+\ben
+\item [(i)] UL decomposition.
+\een
+
+\section{Analysis}
+\ben
+\item [(i)] If $f_n \to f$, then $\abs{f_n} \to \abs{f}$. The converse does not hold.
+\item [(ii)] If $f_n \to f$, then $f_n^p \to f^p$.
+\item [(iii)] Is is true that we can always find a convergent subsequence of Cauchy sequence?
+\een
+
+
+\section{Differential Geometry}
+
+\ben
+\item [(i)] Lie Algebra
+\een
+
+\begin{definition}[Lie algebra\index{Lie algebra}]\label{def:lie_algebra}
+A Lie algebra is a vector space $\mathfrak{g}$ over some field $\F$ together with a binary operation $[\cdot,\cdot]: \mathfrak{g}\times\mathfrak{g}\to\mathfrak{g}$ called the Lie bracket, which satisfies the following axioms:
+
+Bilinearity:
+\be
+[a x + b y, z] = a [x, z] + b [y, z], \quad [z, a x + b y] = a[z, x] + b [z, y] 
+\ee
+for all scalars $a, b \in\F$ and all elements $x, y, z \in \mathfrak{g}$.
+
+Alternating on $\mathfrak{g}$:
+\be
+[x,x]=0
+\ee
+for all $x \in \mathfrak{g}$.
+
+The Jacobi identity:
+\be
+[x,[y,z]] + [y,[z,x]] + [z,[x,y]] = 0 \quad 
+\ee
+for all $x, y, z \in \mathfrak{g}$.
+
+Note that the bilinearity and alternating properties imply anticommutativity, i.e., $[x,y]=-[y,x]$, for all elements $x, y \in \mathfrak{g}$, while anticommutativity only implies the alternating property if the field's characteristic is not 2\footnote{see wiki}.
+
+For any associative algebra A with multiplication $*$, one can construct a Lie algebra $L(A)$. As a vector space, $L(A)$ is the same as $A$. The Lie bracket of two elements of $L(A)$ is defined to be their commutator in $A$:
+\be
+[a,b]=a * b-b * a.
+\ee
+\end{definition}
+
+
+\section{Probability}
+
+\ben
+\item [(i)] Kolmogorov Forward equation
+\item [(ii)] large derivations
+\item [(iii)] DW book, Levy inverse formula, p175
+\een
+
+From wiki-coprime
+
+Given two randomly chosen integers a and b, it is reasonable to ask how likely it is that a and b are coprime. In this determination, it is convenient to use the characterization that a and b are coprime if and only if no prime number divides both of them (see Fundamental theorem of arithmetic).
+
+book: Introduction to Probability, Charles M. Grinstead
+
+P4.example 1.3
+P11. History of my life
+P11. origin of martingale
+
+\section{Stochastic Processes}
+\ben
+\item [(i)] Kolmogorov's criterion needs more general statement.
+\item [(ii)] The relationship between $\sL^2(M)$ and locally bounded.
+%\item [(iii)] large derivative.
+\item [(iii)] Martingales via local martingales (see wiki)
+\een
+
+%\section{Markov Chains}
+%\ben
+%\item [(i)] Village green painting problems: alternative way (use gambler's ruin) to calculate the expected time to paint all the fences.
+%\een
+
+\section{Brownian motion}
+
+\ben
+\item [(i)] Brownian excursion process
+\item [(ii)] Law of iteration log
+\item [(iii)] Local time (same distribution as $S_t$)
+\item [(iv)] excursion (same distribution $S_t-I_t$)
+\een
+
+%\qcutline
+%{\large \textcolor{red}{unsorted below}}\qcutline
+
+
+%\chapter{Vectors}

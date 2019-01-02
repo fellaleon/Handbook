@@ -1,0 +1,357 @@
+
+\chapter{ODE}
+
+\qcutline
+
+{\large \textcolor{red}{unsorted below}}
+
+
+\section{Differential Equations and Their Solutions}
+
+Let $w = \psi'\varphi - \psi \varphi'$, $\lm >0$, $\gamma>0$, $p>0$, $q>0$.\footnote{From \cite{Borodin_2002}.Appendix 4}
+
+\ben
+\item 
+\be
+\frac 12 Y''(x) - \lm Y(x) = 0,\quad x\in \R
+\ee
+\be
+\psi(x) = e^{x\sqrt{2\lm}},\quad \varphi(x) = e^{-x\sqrt{2\lm}},\quad w = 2\sqrt{2\lm}
+\ee
+
+\item 
+\be
+\frac 12 Y''(x) - (\lm + \gamma x)Y(x) = 0,\quad x>0,
+\ee
+\be
+\psi(x) = \sqrt{\lm + \gamma x}I_{1/3}\bb{\frac{2\sqrt{2}}{3\gamma}(\lm + \gamma x)^{3/2}},\quad\quad w = 3\gamma/2,
+\ee
+
+\be
+\varphi(x) = \sqrt{\lm + \gamma x}K_{1/3}\bb{\frac{2\sqrt{2}}{3\gamma}(\lm + \gamma x)^{3/2}} = \pi \sqrt{3}\ai\bb{2^{1/3}\gamma^{-2/3}(\lm + \gamma x)}
+\ee
+
+
+\item 
+\be
+\frac 12 Y''(x) - \bb{\lm + \frac{\gamma^2}2x^2}Y(x) =0,\quad x\in\R
+\ee
+
+\be
+\psi(x) = D_{-1/2-\lm/\gamma}(-x\sqrt{2\gamma}),\quad\quad \varphi(x) = D_{-1/2-\lm/\gamma}(x\sqrt{2\gamma}), \quad\quad w=\frac{2\sqrt{\pi \gamma}}{\Gamma(1/2+\lm/\gamma)}
+\ee
+
+
+\item 
+\be
+\frac 12 Y''(x) - \bb{\lm + \frac{\gamma^2 - 2^{-2}}{2x^2}}Y(x) = 0,\quad x>0
+\ee
+
+\be
+\psi(x) = \sqrt{x} I_\gamma(x\sqrt{2\lm}),\quad\quad \varphi(x) = \sqrt{x}K_\gamma(x\sqrt{2\lm}),\quad \quad w =1
+\ee
+
+\item 
+\be
+\frac 12 Y''(x) - \bb{\frac{\gamma^2 - 2^{-2}}{2x^2}}Y(x) = 0,\quad x>0
+\ee
+
+\be
+\psi(x) = x^{1/2+\gamma},\quad\quad \varphi(x) = x^{1/2-\gamma} ,\quad \quad w = 2\gamma
+\ee
+
+\item 
+
+\be
+\frac 12 Y''(x) - \bb{\lm + \frac{p^2 - 2^{-2}}{2x^2}+\frac{q^2 x^2}2}Y(x) =0,\quad x>0
+\ee
+
+\be
+\psi(x) = x^{-1/2}M_{-\lm/2q,p/2}(qx^2),\quad\quad \varphi(x) = x^{-1/2}W_{-\lm/2q,p/2}(qx^2),\quad\quad w=\frac{2q\Gamma(1+p)}{\Gamma((1+p+\lm/q)/2)}
+\ee
+
+\item 
+
+\be
+\frac 12 Y''(x) - \bb{\frac{p^2 -2^{-2}}{2x^2}+ \frac{q^2 x^2}2}Y(x) = 0,\quad x>0
+\ee
+
+\be
+\psi(x) = \sqrt{x}I_{p/2}(qx^2/2),\quad\quad \varphi(x) = \sqrt{x}K_{p/2}(qx^2/2),\quad\quad w = 2
+\ee
+
+\item 
+
+\be
+\frac 12 Y''(x) - \bb{\lm + \frac{p^2 -2^{-2}}{2x^2}+ \frac qx}Y(x) = 0,\quad x>0
+\ee
+
+\be
+\psi(x) = M_{-q/\sqrt{2\lm},p}(2x\sqrt{2\lm}),\quad\quad \varphi(x) = W_{-q/\sqrt{2\lm},p}(2x\sqrt{2\lm}),\quad\quad w = \frac{2\sqrt{2\lm}\Gamma(2p+1)}{\Gamma(p+1/2+q/\sqrt{2\lm})}
+\ee
+
+\item 
+
+\be
+\frac 12 Y''(x) - \bb{\frac{p^2 -2^{-2}}{2x^2}+ \frac qx}Y(x) = 0,\quad x>0
+\ee
+
+\be
+\psi(x) = \sqrt{x}I_{2p}(2\sqrt{2qx}),\quad\quad \varphi(x) = \sqrt{x}K_{2p}(2\sqrt{2qx}),\quad\quad w = \frac 12
+\ee
+
+\item 
+
+\be
+\frac 12 Y''(x) - \bb{\lm + \gamma e^{2\beta x}}Y(x) = 0,\quad x\in \R
+\ee
+
+\be
+\psi(x) = I_{\sqrt{2\lm}/\abs{\beta}}\bb{\frac{2\gamma}{\abs{\beta}}e^{\beta x}},\quad\quad \varphi(x) = K_{\sqrt{2\lm}/\abs{\beta}}\bb{\frac{2\gamma}{\abs{\beta}}e^{\beta x}},\quad\quad w = \beta
+\ee
+
+\item
+
+\be
+\frac 12 Y''(x) - \bb{\lm + \frac {p^2}2 e^{2\beta x} + qe^{\beta x}}Y(x) =0,\quad x\in \R
+\ee
+
+\be
+\psi(x) = e^{-\beta x/2} M_{-q/p\abs{\beta},\sqrt{2\lm}/\beta{\beta}}\bb{\frac{2p}{\abs{\beta}}e^{\beta x}},\quad\quad \varphi(x) = e^{-\beta x/2} W_{-q/p\abs{\beta},\sqrt{2\lm}/\beta{\beta}}\bb{\frac{2p}{\abs{\beta}}e^{\beta x}},\quad\quad w = \frac{2p\Gamma(2\sqrt{2\lm}/\abs{\beta}+1)}{\Gamma(\sqrt{2\lm}/\abs{\beta}+1/2+q/p\abs{\beta})}
+\ee
+
+\item 
+
+\be
+\frac 12 Y''(x) + \mu Y'(x) - (\lm + f(x))Y(x) = 0,\quad x\in \R
+\ee
+
+solution $Y_{\mu,\lm}(x)$ of this equation satisfies the relation
+
+\be
+Y_{\mu,\lm}(x) = e^{-\mu x} Y_{0,\lm + \mu^2/2}(x).
+\ee
+
+\item 
+
+\be
+\frac 12 Y''(x) + \frac 1x Y''(X) - (\lm + f(x))Y(x) = 0,\quad x>0
+\ee
+
+solution of this equation is $x^{-1}Y_{0,\lm}(x)$, where $Y_{0,\lm}(x)$ is the solution of the previous equation for $\mu = 0$
+
+
+\item 
+\be
+\frac 12 Y''(x) + \frac{2\nu + 1}{2x}Y'(x)- \lm Y(x) = 0,\quad x>0
+\ee
+
+\be
+\psi(x) = x^{-\nu} I_\nu (x\sqrt{2\lm}),\quad\quad \varphi(x) = x^{-\nu}K_\nu(x\sqrt{2\lm}),\quad\quad w = x^{-2\nu -1}
+\ee
+
+\item 
+
+\be
+\frac 12 Y''(x) + \frac{2\nu+1}{2x} Y'(x) = 0,\quad x>0
+\ee
+
+\be
+\psi(x) = 1,\quad\quad \varphi(x)= x^{-2\nu},\quad\quad w = 2\nu x^{-2\nu -1}
+\ee
+
+\item 
+
+\be
+\frac 12 Y''(x) + \frac 1{2x} Y'(x) = 0,\quad x>0
+\ee
+
+\be
+\psi(x) = \ln x,\quad\quad \varphi(x) = 1,\quad\quad w = \frac 1x
+\ee
+
+\item 
+
+\be
+\frac 12 Y''(x) + \frac 1x Y'(x) - \lm Y(x) = 0,\quad x>0
+\ee
+
+\be
+\psi(x) = \frac 1x \sinh (x\sqrt{2\lm}),\quad\quad \varphi(x) = \frac 1x e^{-x\sqrt{2\lm}},\quad\quad w = \frac{2\sqrt{2\lm}}{x^2}
+\ee
+
+\item 
+
+\be
+\frac 12 Y''(x) + \frac{2\nu +1}{2x}Y'(x) - \gamma x Y(x) = 0,\quad x>0
+\ee
+
+\be
+\psi(x) = x^{-\nu} I_{2\nu/3} \bb{\frac 23 x^{3/2}\sqrt{2\gamma}},\quad\quad \varphi(x) = x^{-\nu} K_{2\nu/3} \bb{\frac 23 x^{3/2}\sqrt{2\gamma}},\quad\quad w = \frac 32 x^{-2\nu -1}
+\ee
+
+
+\item 
+
+\be
+\frac 12 Y''(x) + \frac{2\nu + 1}{2x} Y'(x) - \bb{\lm + \frac{\gamma^2}{2x^2}} Y(x) = 0,\quad x>0
+\ee
+
+\be
+\psi(x) = x^{-\nu} I_{\sqrt{\nu^2 + \gamma^2}} \bb{x\sqrt{2\lm}},\quad\quad \varphi(x) = x^{-\nu} K_{\sqrt{\nu^2 + \gamma^2}} \bb{x\sqrt{2\lm}},\quad\quad w = x^{-2\nu -1}
+\ee
+
+\item 
+
+\be
+\frac 12 Y''(x) + \frac{2\nu + 1}{2x} Y'(x) - \frac{\gamma^2}{2x^2} Y(x) = 0,\quad x>0
+\ee
+
+\be
+\psi(x) = x^{\sqrt{\nu^2 + \gamma^2}-\nu},\quad\quad \varphi(x) = x^{-\sqrt{\nu^2 + \gamma^2}-\nu},\quad\quad, w = 2\sqrt{\nu^2 + \gamma^2} x^{-2\nu -1}
+\ee
+
+\item 
+
+\be
+\frac 12 Y''(x) + \frac{2\nu + 1}{2x} Y'(x) - \bb{\lm + \frac{p^2}{2x^2} + \frac{q^2x^2}{2}} Y(x) = 0,\quad x>0
+\ee
+
+\be
+\psi(x) = x^{-\nu -1} M_{-\lm/2q,\sqrt{p^2 + \nu^2 }/2}(qx^2),\quad\quad \varphi(x) = = x^{-\nu -1} W_{-\lm/2q,\sqrt{p^2 + \nu^2 }/2}(qx^2),
+\ee
+
+\be
+w = \frac{2q\Gamma(1+ \sqrt{p^2 +\nu^2})x^{-2\nu -1}}{\Gamma((1+\sqrt{p^2 + \nu^2}+ \lm /q)/2)}
+\ee
+
+\item 
+
+\be
+\frac 12 Y''(x) + \frac{2\nu + 1}{2x} Y'(x) - \bb{\frac{p^2}{2x^2} + \frac{q^2x^2}{2}} Y(x) = 0,\quad x>0
+\ee
+
+\be
+\psi(x) = x^{-\nu} I_{\sqrt{\nu^2 +p^2}/2}(qx^2/2),\quad\quad \varphi(x) = x^{-\nu} K_{\sqrt{\nu^2 +p^2}/2}(qx^2/2),\quad\quad w = 2x^{-2\nu -1}
+\ee
+
+\item 
+
+\be
+\frac 12 Y''(x) + \frac{2\nu + 1}{2x} Y'(x) - \bb{\lm + \frac{p^2}{2x^2} + \frac qx} Y(x) = 0,\quad x>0
+\ee
+
+\be
+\psi(x) = \frac 1{x^{\nu + 1/2}} M_{-q/\sqrt{2\lm},\sqrt{\nu^2+p^2}}(2x\sqrt{2\lm}),\quad\quad \varphi(x) = \frac 1{x^{\nu + 1/2}} W_{-q/\sqrt{2\lm},\sqrt{\nu^2+p^2}}(2x\sqrt{2\lm}),
+\ee
+\be
+w = \frac{2x^{1-2\nu}\sqrt{2\lm}\Gamma(2\sqrt{\nu^2 + p^2}+1)}{\Gamma(\sqrt{\nu^2 + p^2} + 1/2 + q/\sqrt{2\lm})}
+\ee
+
+\item 
+
+\be
+\frac 12 Y''(x) + \frac{2\nu + 1}{2x} Y'(x) - \bb{\frac{p^2}{2x^2} + \frac qx} Y(x) = 0,\quad x>0
+\ee
+
+\be
+\psi(x) = x^{-\nu} I_{2\sqrt{\nu^2 + p^2}}(2\sqrt{2qx}),\quad\quad \varphi(x) = x^{-\nu} K_{2\sqrt{\nu^2 + p^2}}(2\sqrt{2qx}),\quad\quad w = 2^{-1}x^{-2\nu -1}
+\ee
+
+\item 
+
+\be
+\frac 12 Y''(x) + \frac{2\nu + 1}{2x} Y'(x) - \bb{\frac {\lm}{x^2} + \frac{q}{x^3} + \frac {p^2}{2x^4}} Y(x) = 0,\quad x>0
+\ee
+
+\be
+\psi(x) = x^{1/2-\nu} W_{-q/p,\sqrt{\nu^2+2\lm}}(2p/x),\quad\quad \varphi(x) = x^{1/2-\nu} M_{-q/p,\sqrt{\nu^2+2\lm}}(2p/x),
+\ee
+\be
+w = \frac{2px^{1-2\nu}\Gamma(2\sqrt{\nu^2 + 2\lm}+1)}{\Gamma(\sqrt{\nu^2 + 2\lm} + 1/2 + q/p)}
+\ee
+
+\item
+
+\be
+\sigma^2 \theta Y''(x) - \theta x Y'(x) - \bb{\lm + \frac{(\gamma^2 -1)\theta x^2}{4\sigma^2}}Y(x) = 0,\quad x\in \R
+\ee
+
+\be
+\psi(x) = e^{x^2/4\sigma^2} D_{-\frac 12+ \frac 1{2\gamma} - \frac{\lm}{\theta \gamma}}\bb{-\frac{x\sqrt{\gamma}}{\sigma}},\quad\quad \varphi(x) =  e^{x^2/4\sigma^2} D_{-\frac 12+ \frac 1{2\gamma} - \frac{\lm}{\theta \gamma}}\bb{\frac{x\sqrt{\gamma}}{\sigma}}
+\ee
+\be
+w = \frac{\sqrt{2\pi \gamma}}{\sigma \Gamma\bb{\frac 12 - \frac 1{2\gamma} + \frac{\lm}{\theta \gamma}}} e^{x^2/2\sigma^2}
+\ee
+
+\item
+
+\be
+\sigma^2 Y''(x) - xY'(x) = 0,\quad x\in \R
+\ee
+
+\be
+\psi(x) = \frac 2{\sqrt{\pi}} \int^{x/\sigma\sqrt{2}}_0 e^{v^2}dv,\quad\quad \varphi(x) =1,\quad\quad w = \frac{\sqrt{2}}{\sqrt{\pi} \sigma} e^{x^2/2\sigma^2}
+\ee
+
+\item 
+
+\be
+\sigma^2 \theta Y''(x) - \theta x Y'(x) - \bb{\lm + \frac{\gamma \theta x}{\sigma}}Y(x) = 0,\quad x\in \R
+\ee
+
+\be
+\psi(x) = e^{x^2/4\sigma^2} D_{\gamma^2 - \lm/\theta}\bb{-\frac{x}{\sigma}-2\gamma},\quad\quad \varphi(x) =  e^{x^2/4\sigma^2} D_{\gamma^2 - \lm/\theta}\bb{\frac{x}{\sigma}+2\gamma}
+\ee
+\be
+w = \frac{\sqrt{2\pi }}{\sigma \Gamma\bb{\frac {\lm}{\theta} - \gamma^2}} e^{x^2/2\sigma^2}
+\ee
+
+\item 
+
+\be
+\sigma^2 \theta Y''(x) - \theta x Y'(x) - \bb{\lm + \frac{(p^2 - 2^{-2})\sigma^2 \theta}{x^2} + \frac{(q^2-1)\theta x^2}{4\sigma^2}}Y(x) = 0,\quad x >0
+\ee
+
+\be
+\psi(x) = x^{-1/2} e^{x^2/4\sigma^2} M_{\frac{\theta -2\lm}{4\theta q},\frac p2}\bb{\frac{qx^2}{2\sigma^2}},\quad\quad \varphi(x) =  x^{-1/2} e^{x^2/4\sigma^2} W_{\frac{\theta -2\lm}{4\theta q},\frac p2}\bb{\frac{qx^2}{2\sigma^2}}
+\ee
+\be
+w = \frac{q\Gamma(p+1)e^{x^2/2\sigma^2}}{\sigma^2 \Gamma\bb{\frac {p+1}2 + \frac{2\lm -\theta}{4\theta q}}}
+\ee
+
+\item 
+
+\be
+\sigma^2 \theta Y''(x) + \bb{\frac{\sigma^2 \theta (2\nu +1)}{x} -\theta x} Y'(x) - \lm Y(x) = 0,\quad x >0
+\ee
+
+\be
+\psi(x) = M_{\frac{\lm}{2\theta},\nu+1,\frac{x^2}{2\sigma^2}} = \bb{\frac{x}{\sigma\sqrt{2}}}^{-\nu-1} e^{x^2/4\sigma^2} M_{-\frac{\lm}{2\theta} + \frac{\nu+1}2, \frac{\nu}2}\bb{\frac{x^2}{2\sigma^2}},
+\ee
+
+\be
+\varphi(x) = U_{\frac{\lm}{2\theta},\nu+1,\frac{x^2}{2\sigma^2}} = \bb{\frac{x}{\sigma\sqrt{2}}}^{-\nu-1} e^{x^2/4\sigma^2} W_{-\frac{\lm}{2\theta} + \frac{\nu+1}2, \frac{\nu}2}\bb{\frac{x^2}{2\sigma^2}},
+\ee
+\be
+w = \frac{2^{\nu+1} \sigma^{2\nu} \Gamma(\nu+1)}{\Gamma\bb{\lm/2\theta}x^{2\nu+1}} e^{x^2/2\sigma^2}
+\ee
+
+\item 
+
+\be
+\sigma^2 \theta Y''(x) + \bb{\frac{\sigma^2 \theta (2\nu +1)}{x} -\theta x} Y'(x) - \bb{\lm + \frac{p^2 \sigma^2 \theta}{x^2} + \frac{(q^2-1)\theta}{4\sigma^2}x^2} Y(x) = 0,\quad x >0
+\ee
+
+\be
+\psi(x) = x^{-\nu-1} e^{x^2/4\sigma^2} M_{-\frac{\nu \theta + \theta -\lm}{2\theta q}, \sqrt{\nu^2 + p^2}}\bb{\frac{qx^2}{2\sigma^2}},\quad\quad \varphi(x) = x^{-\nu-1} e^{x^2/4\sigma^2} W_{-\frac{\nu \theta + \theta -\lm}{2\theta q}, \sqrt{\nu^2 + p^2}}\bb{\frac{qx^2}{2\sigma^2}},
+\ee
+\be
+w = \frac{qe^{x^2/2\sigma^2} \Gamma(\sqrt{\nu^2+p^2}+1)}{\sigma^2 x^{2\nu + 1}\Gamma\bb{\frac 12\sqrt{\nu^2 +p^2}+\frac 12 + \frac{\lm -\nu \theta - \theta}{2\theta q}}}
+\ee
+
+\een
+
+
+
+

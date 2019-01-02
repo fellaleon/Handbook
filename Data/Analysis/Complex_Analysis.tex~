@@ -1,0 +1,28 @@
+\chapter{Complex Analysis}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\begin{theorem}[Cauchy's residue theorem\index{Cauchy's residue theorem}]\label{thm:cauchy_residue_complex}
+\footnote{need statement}
+\end{theorem}
+
+\begin{example}\label{exa:sinx_over_x_integral}
+\be
+\lim_{N\to \infty} \int^N_{-N} \frac{\sin x}x dx = \pi.
+\ee
+\end{example}
+
+
+\begin{example}\label{exa:sin2x_over_x2_integral}
+\be
+\int^\infty_{-\infty} \frac{\sin^2 x}{x^2} dx = \pi.
+\ee
+\end{example}
+
+
+

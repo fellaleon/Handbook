@@ -1,0 +1,77 @@
+
+
+\section{Unsorted}
+
+\qcutline
+
+{\large \textcolor{red}{unsorted below}}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{proposition}\label{pro:sigma_algebra_stopping_time_random_variable}
+$X$ is an $\sF_T$-measurable random variable if and only if $X \ind_{\{T\leq t \}}$ is $\sF_t$-measurable for all $t \in I$. 
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+%If $X = \sum^m_{i=1} \alpha_i \ind_{A_i}$, $A_i\in \sF_T$.
+\footnote{Hint: begin with $X =\sum^n_{i=1} \alpha_i\ind_{A_i}$, $A_i \in \sF_T$.}
+\end{proof}
+
+
+\subsection{Likelihood ratio}
+
+A very general statement of a basic problem in applied statistics is as follows. Let $(\R^\N,\sB(\R)^{\times \N})$ be the measurable space of real sequences and
+\be
+X_n : \R^\N \to \R : \omega  = (\omega_i , i \geq 0) \to \omega_n
+\ee
+be the canonical projections. Let $( f_i , i \geq 0)$ and $(g_i , i \geq 0)$ be sequences of strictly positive p.d.f.'s. Let $\pro$ and $\Q$ be the probability distributions under which $X_i$ is a r.v. with distribution $f_i(x)d x$ and $g_i(x)d x$, respectively. Further suppose that the $X_i$ 's are independent under $\pro$ and $\Q$. When is $\Q \ll \pro$?
+
+\begin{definition}
+The likelihood ratio is
+\be
+L_n = \prod^n_{i=1} \frac{g_i(X_i)}{f_i(X_i)},
+\ee
+for $n \geq 0$ (taking $L_0 = 1$).
+\end{definition}
+
+Let $\sF_n = \sF^X_n = \sigma(X_1,\dots, X_n)$.
+
+\begin{proposition}
+$(L_n, n \geq 0)$ is a $(\sF_n)$-martingale in the probability space $(\R^\N,\sB(\R)^{times \N}, \pro)$, and $\Q|_{\sF_n} = L_n \cdot \pro|_{\sF_n}$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Let $A_1, \dots,A_n$ be measurable Borel sets in $\R$. Compute
+\beast
+\Q|_{\sF_n} (X_1 \in A_1,\dots, X_n \in A_n) & = & \int_{A_1\times\dots\times A_n} g_1(x_1)d x_1 \dots g_n(x_n)d x_n\\
+& = & \int_{A_1\times\dots\times A_n} \frac{g_1(x_1) \dots g_n(x_n) }{f_1(x_1) \dots f_n(x_n)}f_1(x_1) \dots f_n(x_n)d x_1 \dots d x_n\\
+& = & \E^{\pro|_{\sF_n}}(L_n\ind_{\{X_1\in A_1,\dots,X_n\in A_n\}})
+\eeast
+\end{proof}
+
+Thus $\Q = L_\infty \cdot \pro$ (or $L_\infty = \frac{d\Q}{d\pro}$) if and only if $(L_n, n \geq 0)$ is a u.i. martingale.
+
+But $(L_n, n \geq 0)$ is a product martingale (under $\pro$) with $Y_n = \frac{g_n(X_n)}{f_n(X_n)}$ for all $n$. These are independent under $\pro$ and have $\E[Y_n] = 1$ for all $n$, so $L$ is u.i. if and only if
+\be
+\prod_{n\geq1} \E^\pro \bsb{\sqrt{\frac{g_n(X_n)}{f_n(X_n)}}} > 0
+\ee
+by Kakutani's theorem. But
+\be
+\int_\R d x_n f_n(x_n) \sqrt{\frac{g_n(x_n)}{f_n(x_n)}} = \int_\R \sqrt{f_n g_n}.
+\ee
+
+Using the fact that $(\sqrt{f} -\sqrt{g})^2 = f +g-2\sqrt{f g}$, it is easy to check that $\prod_{n\geq1} \int\sqrt{f_n g_n} > 0$ if and only if $\sum_{n \geq 1} \int(\sqrt{f_n}-\sqrt{g_n})^2 <\infty$ (exercise).
+
+\begin{example}
+Assume that $f_n = f$ and $g_n = g$ for all $n$. Thus under $\pro$ and $\Q$, the $X_n$'s are i.i.d. r.v.'s, namely $f (x)d x$ and $g(x)d x$, respectively. Is it true that $\Q \ll \pro$? It is true if and only if $\sum_{n\geq1} \int \bb{\sqrt{f} -\sqrt{g}}^2 < \infty$, so $\Q \ll \pro$ if and only if $\int\bb{\sqrt{f} -\sqrt{g}}^2 = 0$, or equivalently when $f = g$ a.s.
+
+This has applications to statistical experiments. Suppose that $X_1, \dots, X_n$ are outcomes of an experiment, known to be i.i.d., either distributed according to $f (x)d x$ or $g(x)d x$. We will test hypotheses 
+\be
+H_0 : Law(X_1) = f (x)d x\quad\text{ against }\quad H_1 : Law(X_1) = g(x)d x.
+\ee
+
+The test is as following. If $L_n = \prod^n_{i=1} \frac{g_i (X_i )}{f_i (X_i )} < 1$ then $H_0$ is validated, otherwise reject $H_0$. This test is consistent because if $H_0$ holds we showed that $L_n \to 0$ a.s. as $n\to \infty$, while if $H_1$ holds then $L_n \to \infty$ a.s.
+\end{example}

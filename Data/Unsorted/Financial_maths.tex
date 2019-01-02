@@ -1,0 +1,115 @@
+
+\chapter{Financial Problems}
+
+\begin{problem}
+A vulnerable option is an option subject to default risk of the option writer. Assume the underlying asset of a European call option has value $S_t$ at time $t \geq 0$, the option matures at time $T$, at which time it pays $(S_T - K)^+$. If the option writer cannot make the promised payment, the option holder receives the assets of the option writer, which have total value $V_t$ at time $t \geq 0$. Hence the payoff function at maturity of the vulnerable option is 
+\be
+v_T = \min \bra{V_T , (S_T - K)^+}.
+\ee
+
+\ben
+\item [(a)] Show that the vulnerable option can be considered as a package formed by a long position in a European call option written on $S$, struck at $K$ and expiring at $T$, and a short position in an exchange option to exchange an asset with value $K +V_T$ for an asset with value $S_T$ at time $T$.
+
+\item [(b)] Consider the case of a Black-Scholes economy, where the rate of interest is constant and continuously compounded. Use the previous result to solve the following. 
+
+\ben
+\item [(i)] Assume the option is written by an investor whose only asset is $\alpha$ shares of the underlying asset. Show that the price at time $t \in [0, T)$ of the vulnerable option is 
+\be
+v_t = \left\{\ba{ll}
+S_t \bb{N (d_1) - (1 - \alpha)N (d_3)} - Ke^{-r(T -t)} \bb{N (d_2) - N (d_4)}\quad\quad & \alpha < 1\\
+S_t N (d_1) - Ke^{-r(T-t)} N (d_2) & \alpha \geq 1
+\ea\right.,
+\ee
+where
+\be
+d_1 = \frac{\ln \frac{S_t}{K}  + \bb{r + \frac{\sigma^2}2} (T - t)}{\sigma\sqrt{T - t}},\quad\quad d_2 = d_1 - \sigma\sqrt{T - t},
+\ee
+\be
+d_3 = \frac{\ln \frac{(1-\alpha)S_t}{K} + \bb{r + \frac{\sigma^2}2 }(T - t)}{\sigma\sqrt{T - t}},\quad\quad d_4 = d_3 - \sigma\sqrt{T - t}
+\ee
+and $N(\cdot)$ denotes the cumulative distribution function of the standard normal random variable. Verify that the probability of default is zero if $\alpha \geq 1$.
+
+\item [(ii)] Assume the European call option is guaranteed by a fixed margin deposit $M$. Show that the price at time $t \in [0, T)$ of the vulnerable option is 
+\be
+v_t = S_t \bb{N (d_1) - N (d_3)} - Ke^{-r(T-t)} z\bb{N (d_2) - N (d_4)} + Me^{-r(T-t)}N (d_4) ,
+\ee
+where
+\be
+d_1 = \frac{\ln \frac{S_t}{K}  + \bb{r + \frac{\sigma^2}2} (T - t)}{\sigma\sqrt{T - t}},\quad\quad d_2 = d_1 - \sigma\sqrt{T - t},
+\ee
+\be
+d_3 = \frac{\ln \frac{S_t}{K+M} + \bb{r + \frac{\sigma^2}2 }(T - t)}{\sigma\sqrt{T - t}},\quad\quad d_4 = d_3 - \sigma\sqrt{T - t}
+\ee
+and $N(\cdot)$ denotes the cumulative distribution function of the standard normal random variable.
+\een
+
+\een
+\end{problem}
+
+\begin{solution}[\bf Solution]
+\ben
+\item [(a)] The payoff of an exchange option to exchange an asset with value $K+V_T$ for an asset with value $S_T$ at time $T$ is
+\be
+\bb{S_T - (K+V_T)}^+.
+\ee
+
+Also, the payoff of a European call option is
+\be
+\bb{S_T - K}^+.
+\ee
+
+Obviously,
+\be
+\bb{S_T - K}^+ - \bb{S_T - (K+V_T)}^+ = \left\{\ba{ll}
+0 \quad\quad & S_T < K\\
+S_T - K\quad\quad & K \leq S_T < K+V_T \\
+V_T \quad\quad & S_T \geq K+V_T
+\ea\right. \quad = \min\bra{V_T , (S_T - K)^+}.
+\ee
+
+\item [(b)] We know that the prices of European call and put option are (Black-scholes formula)
+\be
+C_t = S_t N(d_1) - Ke^{-r(T-t)}N(d_2),\quad\quad P_t = Ke^{-r(T-t)}N(d_1) - S_t N(d_2)
+\ee
+where 
+\be
+d_1 = \frac{\ln \frac{S_t}{K}  + \bb{r + \frac{\sigma^2}2} (T - t)}{\sigma\sqrt{T - t}},\quad\quad d_2 = d_1 - \sigma\sqrt{T - t},
+\ee
+\ben
+\item [(i)] Now assume $V = \alpha S$. From (a) we know that
+\beast
+v_T = \bb{S_T - K}^+ - \bb{S_T - (K+V_T)}^+ & = & \bb{S_T - K}^+ - \bb{(1-\alpha)S_T - K}^+ \\
+& = & \left\{\ba{ll}
+\bb{S_T - K}^+  & \alpha \geq 1\\
+\bb{S_T - K}^+ - \bb{(1-\alpha)S_T - K}^+ \quad \quad & \alpha < 1
+\ea\right.
+\eeast
+
+That is, if $\alpha \geq 1$, the vulnerable option is just European call option, which is worth (by Black-scholes formula)
+\be
+S_t N(d_1) - Ke^{-r(T-t)}N(d_2)
+\ee
+at time $t$. If $\alpha<1$, the vulnerable option is the difference of two European call options with stock prices $S_t$ and $(1-\alpha)S_t$, respectively, but the same strike $K$. Then plug these parameters into Black-Scholes formula, we have
+\be
+v_t = S_t \bb{N (d_1) - (1 - \alpha)N (d_3)} - Ke^{-r(T -t)} \bb{N (d_2) - N (d_4)}
+\ee
+\item [(ii)] Now assume $V= M$. From (a) we have
+\beast
+v_T = \bb{S_T - K}^+ - \bb{S_T - (K+V_T)}^+ & = & \bb{S_T - K}^+ - \bb{S_T - K-M}^+.
+\eeast
+
+the vulnerable option is the difference of two European call options with the same stock price $S_t$, but different strike $K$, $K+M$ respectively. Then plug these parameters into Black-Scholes formula, we have
+\beast
+v_t & = & S_t N(d_1) - Ke^{-r(T-t)}N(d_2) - \bb{S_t N(d_3) - (K+M)e^{-r(T-t)}N(d_4)}\\
+& = & S_t \bb{N (d_1) - N (d_3)} - Ke^{-r(T-t)} z\bb{N (d_2) - N (d_4)} + Me^{-r(T-t)}N (d_4)
+\eeast
+where 
+\be
+d_3 = \frac{\ln \frac{S_t}{K+M} + \bb{r + \frac{\sigma^2}2 }(T - t)}{\sigma\sqrt{T - t}},\quad\quad d_4 = d_3 - \sigma\sqrt{T - t}.
+\ee
+\een
+\een
+\end{solution}
+
+
+

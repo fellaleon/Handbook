@@ -1,0 +1,144 @@
+\section{Continuous Random Variables}
+
+\subsection{Introduction}
+
+\begin{definition}
+Up to now we have restricted consideration to sample spaces ­ which are finite, or countable, we will now relax that assumption. We assume that we have a probability $\pro(\cdot)$ defined on subsets (events) of ­ satisfying the axioms given previously. We will be interested in random variables which may take on uncountably many values. Here if $X : \Omega\to \R$, define the distribution function (sometimes called the cumulative distribution function\index{cumulative distribution function}) of $X$ as
+\be
+F(x) = \pro (X \leq x),\quad -\infty < x < \infty,
+\ee
+so that $F : \R \to [0, 1]$. Note that $\pro (X > x) = 1 - F(x)$.
+\end{definition}
+
+Properties of the distribution function $F(x)$
+\ben
+\item [1.] $F(x)$ is non-decreasing in $x$, $-\infty < x < \infty$.
+\begin{proof}[\bf Proof]
+If $x \leq y$, then the event $(X \leq x) \subseteq (X \leq y)$, so that
+\be
+F(x) = \pro (X \leq x) \leq \pro (X \leq y) = F(y).
+\ee
+\end{proof}
+
+
+\item [2.] For $a < b$, $pro (a < X \leq b) = F(b) - F(a)$.
+\begin{proof}[\bf Proof]
+We have
+\beast
+\pro(a < X \leq b) & = & \pro ((X \leq a)^c \cap (X \leq b))\\
+& = & \pro ((X \leq a)^c) + \pro (X \leq b) - \pro ((X \leq b) \cup (X \leq a)^c)\\
+& = & 1 - \pro (X \leq a) + \pro (X \leq b) - \pro(\Omega­) = F(b) - F(a).
+\eeast
+\end{proof}
+
+\item [3.] $F(x)$ is right continuous in $x$, that is, when $y \da x$ we have $F(y) \da F(x)$, since $F$ is non-decreasing the limit from the left $\lim_{y\ua x} F(y) = F(x-) \leq F(x)$ always exists.
+\begin{proof}[\bf Proof]
+Fix $x$, then for $n \geq 1$, consider the event
+\be
+A_n = (x < X \leq x + 1/n) = (X \leq x + 1/n) \cap (X \leq x)^c,
+\ee
+then the $\{A_n\}$ are decreasing events $A_n \supseteq A_{n+1}$, and $\cap_n A_n = \emptyset$, so by the continuity property of probabilities $\lim_{n\to \infty} \pro (A_n) = 0$. But $\pro(A_n) = F (x + 1/n) - F (x)$, from which the conclusion follows.
+\end{proof}
+
+\item [4.] $\lim_{x\to -\infty} F(x) = 0$ and $\lim_{x\to \infty} F(x) = 1$.
+
+We say that a random variable $X$ is continuous if its distribution function, $F$, is a continuous function. We have seen that a distribution function is necessarily right continuous, then if $X$ is a continuous random variable, $F$ must also be left continuous. This is equivalent to the statement that $\pro (X = x) = 0$ for all $x \in \R$, since as in the proof of Property 2, we will have $\pro(X = x) = \lim_{y\ua x} \pro(y < X \leq x) = \lim_{y\ua x} [F(x) - F(y)]$.
+
+In discussing continuous random variables we will restrict consideration to the situation where $F$ is not only continuous but also differentiable, and we will set $f(x) = F'(x)$, $f(\cdot)$ is known as the probability density function\index{probability density function} (p.d.f) of the random variable $X$. A
+probability density function satisfies the following two conditions:
+\be
+\text{(i)}\ f(x) > 0,\text{ for all }x \in \R,\quad\quad \text{(ii)} \ \int^\infty_{-\infty} f(x)dx = 1,
+\ee
+and then $F(x) = \int^x_{-\infty} f(y)dy$.
+
+Note that for a discrete random variable the distribution function is a right-continuous step function as illustrated in Figure 1, with the heights of the steps being $\pro(X = x_i)$ for the possible values $x_i$, while for a continuous random variable the distribution function is a continuous non-decreasing function as in Figure 2.
+
+
+\centertexdraw{
+    
+\drawdim in
+
+\def\bdot {\fcir f:0 r:0.02 }
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+\linewd 0.01 \setgray 0 
+
+\move (-1.5 0) \avec(1.5 0) 
+\move (0 0) \avec(0 1.5) 
+
+\move (0.9 1.1) \lvec (1.5 1.1) 
+\move (0.9 1.1) \bdot
+\move (0.3 0.9) \lvec (0.9 0.9) 
+\move (0.3 0.9) \bdot
+\move (-0.3 0.6) \lvec (0.3 0.6) 
+\move (-0.3 0.6) \bdot
+\move (-0.9 0.3) \lvec (-0.3 0.3) 
+\move (-0.9 0.3) \bdot
+
+\htext (-0.9 -0.15){$x_1$}
+\htext (-0.3 -0.15){$x_2$}
+\htext (0.3 -0.15){$x_3$}
+\htext (0.9 -0.15){$x_4$}
+\htext (-0.15 1){1}
+\htext (1.5 -0.15){$x$}
+\htext (0.05 1.35){$F(x)$}
+
+\lpatt (0.05 0.05)
+
+\move (-1.5 1.2) \lvec (1.5 1.2)
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\lpatt (1 0)
+
+\move (2 0) \avec(5 0) 
+\move (3.5 0) \avec(3.5 1.5) 
+
+\move (2 0.1) \clvec (3.1 0.2)(3.9 1)(5 1.1) 
+
+\htext (3.35 1){1}
+\htext (5 -0.15){$x$}
+\htext (3.55 1.35){$F(x)$}
+
+\lpatt (0.05 0.05)
+\move (2 1.2) \lvec (5 1.2)
+
+\move(0 1.6)
+}
+
+
+Note that there is not a straight split between discrete and continuous random variables, it is possible to have a random variable which is continuous over some ranges of values while at the same time taking certain values with positive probabilities, however, in this course we will deal with the two cases separately. 
+
+The intuitive interpretation of the p.d.f. is that for small $\triangle x$,
+\be
+\pro(x < X \leq x + \triangle x) = F (x + \triangle x) - F(x) = \int^{x+\triangle x}_x f(y) \approx f(x)\triangle x,
+\ee
+so that while $f(x)$ does not represent a probability, the probability that $X$ lies in a small interval around $x$ is proportional to $f(x)$, and for this reason many intuitive arguments involving probabilities carry over to probability density functions. Note that areas under the probability density function represent probabilities as illustrated in the figure.
+
+\centertexdraw{
+    
+\drawdim in
+
+\def\bdot {\fcir f:0 r:0.02 }
+\arrowheadtype t:F \arrowheadsize l:0.08 w:0.04
+\linewd 0.01 \setgray 0 
+
+\move (-1 0) \avec(3 0) 
+\move (0 0) \avec(0 1.5) 
+
+\move (-1 0.1) \clvec (0 0.3)(0.3 1.2)(1 1.2) 
+\move (1 1.2) \clvec (1.2 1.2)(1.4 1)(1.5 0.9) 
+\move (1.5 0.9) \clvec (1.6 0.8)(2 0.3)(3 0.1) 
+
+\htext (0.95 -0.15){$a$}
+\htext (1.45 -0.15){$b$}
+\htext (0.05 1.35){$f(x)$}
+\htext (1.55 1.1){$\pro(a < X \leq b)$}
+\htext (3 -0.15){$x$}
+
+\move (1 1.2) \clvec (1.2 1.2)(1.4 1)(1.5 0.9) \lvec (1.5 0) \lvec (1 0) \lvec (1 1.2) \lfill f:0.8
+
+\move(0 1.6)
+}
+
+More generally, for a set $S \subseteq \Omega_X$, we have $\pro(X \in S) = \int_{x\in S} f(x)dx$.
+\een

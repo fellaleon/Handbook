@@ -1,0 +1,31 @@
+% Modified L.Zhang 11-07-24
+\def\makethesistitle{\begin{titlepage}
+ \let\footnotesize\small      % Local definitions to make \thanks produce
+ \let\footnoterule\relax      % \normalsize footnotes with no separating rule.
+\setcounter{page}{1}
+ \null
+ \begin{center}
+\bfseries \vfill \vfill
+{\large \ }\\
+\vfill 
+   {\@title \par}        % Set title in size.
+\vfill                  % Vertical space after title.
+%by \\
+\vfill \vfill \vfill \vfill \vfill \vfill \vfill
+   {\@author \par }              % Set author
+\vfill \vfill
+%{A \@THESIS} \par                % Allow the word dissertation to be used here
+{\large Statistical Laboratory, University of Cambridge}%\par
+%{DEGREE OF \@degree}
+%\vfill {DEPARTMENT OF \@dept \par} \vfill {DEPARTMENT OF \@dept
+%\par}
+%\vfill {\@dept \par} \vfill {\@dept \par}
+%\vfill {CALGARY, ALBERTA
+%\par} {{\@monthname}, {\@year} \par} \vfill {\copyright\
+%{\@author}~~{\@year} \par}
+\end{center} \par
+\null
+\end{titlepage}
+\setcounter{footnote}{0}       % Footnotes start at zero again.
+\let\thanks\relax
+\gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\maketitle\relax}

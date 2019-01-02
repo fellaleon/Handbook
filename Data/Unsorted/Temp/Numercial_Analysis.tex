@@ -1,0 +1,2337 @@
+\chapter{Numerical Anlaysis}
+
+Lagrange equations
+
+\section{Problems}
+
+\ben
+
+\item Suppose that the function values $f(0)$, $f(1)$, $f(2)$ and $f(3)$ are given and that we wish to estimate
+\be
+f(6), \quad f'(0) \quad \text{ and }\quad \int^3_0 f(x) dx.
+\ee
+One method is to let $p$ be the cubic polynomial that interpolates these function values, and then to employ the approximants 
+\be
+p(6), \quad p'(0) \quad \text{ and } \quad \int^3_0 p(x) dx
+\ee
+respectively. Deduce from the Lagrange formula for $p$ that each approximant is a linear combination of the four data with constant coefficients. Calculate the numerical values of these constants. Verify your work by showing that the approximants are exact when $f$ is an arbitrary cubic polynomial.
+
+
+
+Solution. 
+\beast
+p(x) & = & \sum^3_{k=0} f(k)\prod_{l=0,\ l\neq k}\frac{x-x_l}{x_k-x_l} \\
+& = & f(0)\frac{x-1}{0-1}\frac{x-2}{0-2}\frac{x-3}{0-3} + f(1)\frac{x-0}{1-0}\frac{x-2}{1-2}\frac{x-3}{1-3}  + f(2)\frac{x-0}{2-0}\frac{x-1}{2-1}\frac{x-3}{2-3} + f(3)\frac{x-0}{3-0}\frac{x-1}{3-1}\frac{x-2}{3-2} \\
+& = & \frac 16\bb{-f(0)(x-1)(x-2)(x-3) + 3f(1)x(x-2)(x-3) - 3f(2)x(x-1)(x-3) + f(3)x(x-1)(x-2)}.
+\eeast
+
+Thus,
+\be
+f(6) = \frac 16\bb{-f(0)60 + 3f(1)72 - 3f(2)90 + f(3)120} = -10 f(0) + 36f(1) - 45f(2) + 20f(3).
+\ee
+\be
+p'(x) = -\frac 16 \bb{3x^2 - 12x +11} f(0) + \frac 12 (3x^2 -10x + 6)f(1) - \frac 12 (3x^2 -8x + 3)f(2) + \frac 16(3x^2 - 6x + 2)f(3).
+\ee
+\be
+p'(0) = -\frac {11}6 f(0) + 3f(1) - \frac 32 f(2) + \frac 13 f(3).
+\ee
+\beast
+\int^3_0 p(x)dx & = & \left[-\frac 16 \bb{\frac14 x^4 - 2x^3 + \frac {11}2 x^2 - 6x} f(0) + \frac 12 (\frac 14x^4 -\frac 53 x^3 + 3x^2)f(1) \right.\\
+& & \quad\quad \left.- \frac 12 (\frac 14x^4 -\frac 43x^3 + \frac 32 x^2)f(2) + \frac 16(\frac 14 x^4 - x^3 + x^2)f(3)\right]^3_0\\
+& = & \frac 38f(0) + \frac 98 f(1) + \frac 98 f(2) + \frac 38f(3).
+\eeast
+
+Since $p\in \pro_3[x]$, $f\in \pro_3[x]$, they interpolate to the same 4 points at $x=0,1,2,3$. So $n$th degree polynomial $p-f$ vanishes at 4 distinct points. Thus, $p-f\equiv 0$. Hence $p$ is exact when $f$ is an arbitrary cubic polynomial.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $f$ be a function in $C^4[0, 1]$ and let $p$ be a cubic polynomial that interpolates $f(0)$, $f'(0)$, $f(1)$ and $f'(1)$. Deduce from the Rolle theorem that for every $x \in [0, 1]$ there exists $\xi \in [0, 1]$ such that the equation
+\be
+f(x) - p(x) = \frac 1{24}x^2(x - 1)^2f^{(4)}(\xi)
+\ee
+is satisfied.
+
+
+
+Solution. We have $p(0)=f(0)$, $p(1) =f(1)$, $p'(0) = f'(0)$ and $p'(1) = f'(1)$.
+
+Let $\phi(t) = (f(t)-p(t))(x-0)^2 (x-1)^2 - (f(x)-p(x))(t-0)^2(t-1)^2$ and we get
+\be
+\phi(0) = 0,\quad \phi(1) = 0,\quad \phi(x) =0.
+\ee
+
+Thus, there exist $x_1\in (0,x)$, $x_2 \in (x,1)$ such that $\phi'(x_1) = \phi'(x_2) = 0$ (Rolle's theorem). Then
+\be
+\phi'(t) = (f'(t)-p'(t))(x-0)^2 (x-1)^2 - (f(x)-p(x))\bb{2t(t-1)(2t-1)}
+\ee
+
+By previous condition, we have $\phi'(0) = 0$ and $\phi'(1) =1$. So $0,x_1,x_2,1\in [0,1]$ are zeros of $\phi'$, we apply Rolle's theorem three times, there exist some $\xi \in [0,1]$, $\phi^{(4)}(\xi) = 0$. So
+\be
+0 = \phi^{(4)}(\xi) = \bb{f^{(4)}(\xi)- p^{(4)}(\xi)} x^2(x-1)^2 - (f(x)-p(x))\left.\frac{d^4}{dt^4} t^2(t-1)^2\right|_\xi
+\ee
+
+Since p is a cubic polynomial, $p^{(4)}(\xi) = 0$, then
+\be
+0 = f^{(4)}(\xi) x^2(x-1)^2 - 24(f(x)-p(x)) \quad\ra\quad f(x)-p(x) = \frac 1{24} x^2(x-1)^2 f^{(4)}(\xi).
+\ee
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $a$, $b$ and $c$ be distinct real numbers (not necessarily in ascending order), and let $f(a)$, $f(b)$, $f'(a)$, $f'(b)$ and $f'(c)$ be given. Because there are five data, one might try to approximate $f$ by a polynomial of degree at most four that interpolates the data. Prove by a general argument that this interpolation problem has a solution and the solution is unique if and only if there is no nonzero polynomial $p \in \pro^4[x]$ that satisfies 
+\be
+p(a) = p(b) = p'(a) = p'(b) = p'(c) = 0.
+\ee
+Hence, given $a$ and $b$, show that there exists a unique value of $c \neq a$, $b$ such that there is no unique solution.
+
+[Note: This form of interpolation when both function values and derivatives are fitted, perhaps at different points, is known as Birkhoff–Hermite interpolation.]
+
+
+
+Solution. Write down the general method, $Ax^4 + Bx^3 + Cx^2 + Dx +E = p(x)$, intepolating these, we require
+\beast
+& & \bepm
+a^4 & a^3 & a^2 & a & 1\\
+b^4 & b^3 & b^2 & b & 1\\
+4a^3 & 3a^2 & 2a & 1 & 0\\
+4b^3 & 3b^2 & 2b & 1 & 0\\
+4c^3 & 3c^2 & 2c & 1 & 0
+\eepm
+\bepm
+A\\
+B\\
+C\\
+D\\
+E
+\eepm = 
+\bepm
+f(a)\\
+f(b)\\
+f'(a)\\
+f'(b)\\
+f'(c)
+\eepm \quad \text{ has unique solution }\quad\lra \quad \text{kernal of the matrix is trivial}\\
+& \lra & \text{There is no $\bepm
+A\\
+B\\
+C\\
+D\\
+E
+\eepm$ s.t. }\quad  \bepm
+a^4 & a^3 & a^2 & a & 1\\
+b^4 & b^3 & b^2 & b & 1\\
+4a^3 & 3a^2 & 2a & 1 & 0\\
+4b^3 & 3b^2 & 2b & 1 & 0\\
+4c^3 & 3c^2 & 2c & 1 & 0
+\eepm
+\bepm
+A\\
+B\\
+C\\
+D\\
+E
+\eepm = 
+\bepm
+0\\
+0\\
+0\\
+0\\
+0
+\eepm \\
+& \lra & \text{ There is no non-zero polynomial $p\in \pro_4[x]$, s.t. }p(a) = p(b) = p'(a) = p'(b) = p'(c) = 0.
+\eeast
+
+There is no unique solution when kernel is non-trivial, when we have $p(a) = p(b) = p'(a) = p'(b) = p'(c) = 0$, $p\in \pro_4[x]$, so $p(x) = A(x-a)^2(x-b)^2$,
+\be
+p'(c) =0 \quad\ra\quad \left.2A(x-a)(x-b)\bb{2x-a-b} =0\right|_{x=c} \quad\ra\quad c = \frac {a+b}2 \text{ which is unique.}
+\ee
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $f : \R \to \R$ be a given function and let $p$ be the polynomial of degree at most $n$ that interpolates $f$ at the pairwise distinct points $x_0, x_1, \dots, x_n$. Further, let $x$ be any real number that is not an interpolation point. Deduce the identity
+\be
+f(x) - p(x) = f[x_0, x_1, \dots, x_n, x] \prod^n_{j=0} (x - x_j)
+\ee
+from the definition of the divided difference $f[x_0, x_1,\dots,x_n, x]$.
+
+
+
+Solution. \emph{Approch 1.} We know that
+\be
+f[x_0,x_1,\dots,x_n] = \sum^n_{k=0}f(x_k) \prod^n_{l=0,\ l\neq k}\frac{1}{x_k - x_l},
+\ee
+\be
+f[x_0,x_1,\dots,x_n,x] = \sum^n_{k=0}f(x_k) \bb{\prod^n_{l=0,\ l\neq k}\frac{1}{x_k - x_l}}\frac 1{x_k - x} + f(x) \prod^n_{l=0}\frac 1{x-x_l}, 
+\ee
+\beast
+f[x_0,x_1,\dots,x_n,x]\prod^n_{j=0} (x - x_j)& = & \bb{\sum^n_{k=0}f(x_k) \prod^n_{l=0,\ l\neq k}\frac{1}{x_k - x_l}\frac 1{x_k - x} + f(x) \prod^n_{l=0}\frac 1{x-x_l}}\prod^n_{j=0} (x - x_j)\\
+& = & -\sum^n_{k=0}f(x_k) \prod^n_{l=0,\ l\neq k}\frac{x-x_l}{x_k - x_l} + f(x) = f(x) -p(x).
+\eeast
+
+\emph{Approach 2.} Let $q(y)$ interpolate $x_0,x_1,\dots,x_n,x$ with $f(x) = q(x)$. For $q(y)-p(y)$,
+\be
+q(x_0) -p(x_0) = q(x_1) -p(x_1) = \dots = q(x_n) -p(x_n) = 0
+\ee
+
+Thus, $q(y)-p(y)$ is divisible by $\prod^n_{j=0}(y-x_j)$. We know that $p(y)$ has degree $n+1$, $q(y)$ has degree $n+2$, so the coefficient of $x^{n+1}$ is just $f[x_0,x_1,\dots,x_n,x]$, so 
+\be
+q(y) - p(y) = f[x_0,x_1,\dots,x_n,x] \prod^n_{j=0}(y-x_j) \quad\ra\quad f(x) -p(x) = f[x_0,x_1,\dots,x_n,x] \prod^n_{j=0}(x-x_j).
+\ee
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Simulating a computer that works to only four decimal places, form the table of divided differences of the values $f(0) = 0$, $f(0.1) = 0.0998$, $f(0.4) = 0.3894$ and $f(0.7) = 0.6442$ of $\sin x$. Hence identify the polynomial that is given by Newton's interpolation method. Due to rounding errors, this polynomial should differ from the one that would be given by exact arithmetic. Take the view, however, that the computed values of $f[0.0, 0.1]$, $f[0.0, 0.1, 0.4]$ and $f[0.0, 0.1, 0.4, 0.7]$ and the function value $f(0)$ are correct. Then, by working backwards through the difference table, identify the values of $f(0)$, $f(0.1)$, $f(0.4)$ and $f(0.7)$ that would give these divided differences in exact arithmetic.
+
+
+
+Solution. By the theorem in Lecture note 2, we have
+\beast
+f[0,0.1] & = & \frac{f(0.1)-f(0)}{0.1-0} = \frac{0.0998 - 0}{0.1} = 0.998,\\
+f[0.1,0.4] & = & \frac{f(0.4)-f(0.1)}{0.4-0.1} = \frac{0.3894 - 0.0998}{0.3} = \frac{0.2896}{0.3} = 0.9653,\\
+f[0.4,0.7] & = & \frac{f(0.7)-f(0.4)}{0.7-0.4} = \frac{0.6442 - 0.3894}{0.3} = \frac{0.2548}{0.3} = 0.8493,\\
+f[0,0.1,0.4] & = & \frac{f[0.1,0.4]-f[0,0.1]}{0.4-0} = \frac{0.9653 - 0.998}{0.4} = \frac{-0.0327}{0.4} = -0.0818,\\
+f[0.1,0.4,0.7] & = & \frac{f[0.4,0.7]-f[0.1,0.4]}{0.7-0.1} = \frac{0.8493 - 0.9653}{0.6} = \frac{-0.116}{0.6} = -0.1933,\\
+f[0,0.1,0.4,0.7] & = & \frac{f[0.1,0.4,0.7]-f[0,0.1,0.4]}{0.7-0} = \frac{-0.1933 - (-0.0818)}{0.7} = \frac{-0.1115}{0.7} = -0.1593.
+\eeast
+\beast
+p(x) & = & f(0) + f[0,0.1](x-0) + f[0,0.1,0.4](x-0)(x-0.1) + f[0,0.1,0.4,0.7](x-0)(x-0.1)(x-0.4)\\
+& = & 0 + 0.998 (x-0) + (-0.0818)(x-0)(x-0.1) + (-0.1593)(x-0)(x-0.1)(x-0.4)\\
+& = & -0.1593 x^3 - 0.0022 x^2 + 0.9998 x
+\eeast
+
+Now if $f(0)$, $f[0,0.1]$, $f[0,0.1,0.4]$ and $f[0,0.1,0.4,0.7]$ are accurate.
+\beast
+f(0.1) & = & 0.1 \times f[0,0.1] + f(0) = 0.1\times 0.998 + 0 = 0.0998,\\
+f[0.1,0.4] & = & 0.4 \times f[0,0.1,0.4] + f[0,0.1] = 0.4\times (-0.0818) + 0.998 = 0.9653,\\
+f(0.4) & = & 0.3 \times f[0.1,0.4] + f(0.1) = 0.3 \times 0.9653 + 0.0998 = 0.3894,\\
+f[0.1,0.4,0.7] & = & 0.7 \times f[0,0.1,0.4,0.7] + f[0,0.1,0.4] = 0.7\times (-0.1593) - 0.0818 = -0.1933,\\
+f[0.4,0.7] & = & 0.6 \times f[0.1,0.4,0.7] + f[0.1,0.4] = 0.6\times (-0.1933) + 0.9653 = 0.8493,\\
+f(0.7) & = & 0.3 \times f[0.4,0.7] + f(0.4) = 0.3 \times 0.8493 + 0.3894 = 0.6442.
+\eeast
+agreed all 7 values.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Set $f(x) = 2x - 1$, $x \in [0, 1]$. We require a function of form
+\be
+p(x) = \sum^n_{k=0} a_k \cos(k\pi x),\quad 0 \leq x \leq 1,
+\ee
+that satisfies the condition
+\be
+\int^1_0 [f(x) - p(x)]^2 dx < 10^{-4}.
+\ee
+Explain why it is sufficient if the value of $a^2_0 + \frac 12 \sum^n_{k=1} a^2_k$ exceeds $\frac 13 -10^{-4}$, where the coefficients $\{a_k\}^n_{k=0}$ are calculated to minimize this integral. Hence find the smallest acceptable value of $n$. 
+
+
+
+Solution. Let $p_k(x) = \cos k\pi x$, we have 
+\be
+\int^1_0 (f(x)-p(x))^2 dx = \inner{f-p}{f-p} = \inner{f}{f}- 2\inner{f}{p} + \inner{p}{p} = \inner{f}{f}- 2\sum^n_{k=0} a_k \inner{p_k}{f} + \sum^n_{i=0}\sum^n_{j=0} \inner{p_i}{p_j}
+\ee
+
+By the fact that $\inner{p_i}{p_j} = 0$ when $i\neq j$, we have
+\be
+\int^1_0 (f(x)-p(x))^2 dx = \inner{f}{f}- 2\sum^n_{k=0} a_k \inner{p_k}{f} + \sum^n_{k=0}a_k^2 \inner{p_k}{p_k}.
+\ee
+
+Also,
+\be
+\inner{f}{f} = \int^1_0 (2x-1)^2 dx = \int^1_0 \bb{4x^2 - 4x + 1} dx = \frac 43 - 2 + 1 = \frac 13.
+\ee
+\be
+\text{For }k\neq 0,\quad\quad\inner{p_k}{p_k} = \int^1_0 \cos^2 k\pi x dx = \int^1_0 \frac {1+\cos 2k\pi x}2dx = \frac 12, \quad\quad \text{for }k=0, \quad\quad \inner{p_k}{p_k} = 1.
+\ee
+
+We know that the coefficients $\{a_k\}^n_{k=0}$ minimize this integral, thus
+\be
+0 = \fp{}{a_k}\int^1_0 (f(x)-p(x))^2 dx = - 2\inner{p_k}{f} + 2 a_k\inner{p_k}{p_k} \quad\ra\quad a_k = \frac{\inner{p_k}{f}}{\inner{p_k}{p_k}}.
+\ee
+
+So we have
+\be
+\int^1_0 (f(x)-p(x))^2 dx = \inner{f}{f}- \sum^n_{k=0}a_k^2 \inner{p_k}{p_k} = \frac 13 - \bb{a_0^2 + \frac 12\sum^n_{k=1}a_k^2}.
+\ee
+
+Thus,
+\be
+a_0^2 + \frac 12\sum^n_{k=1}a_k^2 > \frac 13 -10^{-4} \quad\ra\quad \int^1_0 (f(x)-p(x))^2 dx = \frac 13 - \bb{a_0^2 + \frac 12\sum^n_{k=1}a_k^2} < 10^{-4}.
+\ee
+
+For $k=0$, $\inner{p_k}{f} = \int^1_0 (2x-1) dx = 0\ \ra \ a_0 = 0$. For $k\neq 0$,
+\beast
+\inner{p_k}{f} & = & \int^1_0 (2x-1) \cos k\pi x dx = \frac 1{k\pi}\bb{\int^1_0 (2x-1)d\sin k\pi x} = \frac 1{k\pi}\bb{(2x-1)\sin k\pi x|^1_0 - 2\int^1_0 \sin k\pi xdx}\\
+& = & \frac 1{k^2\pi^2}\bb{2\int^1_0 d\cos k\pi x} = \frac 2{k^2\pi^2}\bb{\cos k\pi - 1}\quad\ra\quad a_k = \frac 4{k^2\pi^2}\bb{\cos k\pi - 1}.
+\eeast
+
+Thus, $a_k =0$ for even $k$ and
+\be
+a_1 = -\frac 8{\pi^2},\quad a_3 = -\frac 8{9\pi^2},\quad a_5 = -\frac 8{25\pi^2},\quad a_7 = -\frac 8{49\pi^2},\quad a_9 = -\frac 8{81\pi^2}.
+\ee
+
+Then
+\beast
+\frac 12 \bb{\sum^7_{k=1} a_k^2} = \frac {32}{\pi^4} \bb{1+ \frac 1{3^4} + \frac 1{5^4}+ \frac 1{7^4}} & \approx & 0.333230 \\
+& < & \frac 13 -10^{-4} < 0.333280 \approx \frac {32}{\pi^4} \bb{1+ \frac 1{3^4} + \frac 1{5^4}+ \frac 1{7^4} + \frac 1{9^4}} = \frac 12 \bb{\sum^9_{k=1} a_k^2}.
+\eeast
+
+Thus, the smallest $n$ is 9.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item The polynomials $\{p_n\}_{n\in Z^+}$ are defined by the three-term recurrence formula 
+\beast
+p_0(x) & \equiv & 1,\\
+p_1(x) & = & 2x,\\
+p_{n+1}(x) & = & 2xp_n(x) - p_{n-1}(x),\quad n = 1, 2,\dots
+\eeast
+Prove that they are orthogonal with respect to the inner product
+\be
+\langle f, g\rangle = \int^1_{-1} f(x)g(x)\sqrt{1 - x^2} dx
+\ee
+and evaluate $\langle p_n, p_n\rangle$ for $n \in \Z^+$. [Hint: Prove that $p_n(x) = \sin(n+1)\theta/ \sin \theta$, where $x = \cos \theta$.]
+
+[Note: These $p_n$s are known as Chebyshev polynomials of the second kind and denoted by $p_n = U_n$.]
+
+
+
+Solution. We assume that 
+\be
+p_n(x) = \frac{\sin(n+1)\theta}{\sin\theta} \quad\quad \text{where }x=\cos \theta.
+\ee
+
+For $n=0$, $p_0(x) = \frac{\sin \theta}{\sin\theta} = 1$, which is true. For $n=1$,
+\be
+p_1(x) = \frac{\sin 2\theta}{\sin\theta} = 2\cos\theta = 2x
+\ee
+holds for the given condition. Now assume it is true for $n$, we have
+\beast
+p_{n+1}(x) & = & \frac{\sin(n+2)\theta}{\sin\theta} = \frac{\sin n\theta\cos 2\theta + \cos n\theta \sin 2\theta}{\sin\theta} = p_{n-1} (x)\bb{2\cos^2\theta -1} + 2\cos \theta\cos n\theta \\
+& = & 2\cos \theta\bb{\frac{\cos\theta}{\sin\theta} \sin n\theta + \cos n\theta} - p_{n-1}(x) = 2\cos \theta\bb{\frac{\cos\theta  \sin n\theta +  \sin\theta \cos n\theta}{\sin\theta}} - p_{n-1}(x)\\
+& = & 2xp_n(x) - p_{n-1}(x).
+\eeast
+
+Now consider $i$ and $j$,
+\beast
+\inner{p_i(x)}{p_j(x)} & = & \int^1_{-1}p_i(x)p_j(x)\sqrt{1-x^2}dx = \int^0_{-\pi}\frac{\sin(i+1)\theta}{\sin\theta} \frac{\sin(j+1)\theta}{\sin\theta} (-\sin \theta)(-\sin \theta)d\theta\\
+& = & \int^0_{-\pi}\sin(i+1)\theta \sin(j+1)\theta d\theta = \int^0_{-\pi}\frac 12 \bb{\cos(i-j)\theta - \cos (i+j+2)\theta} d\theta.
+\eeast
+
+If $i\neq j$, $\inner{p_i(x)}{p_j(x)} = 0$. If $i=j$, 
+\be
+\inner{p_i(x)}{p_j(x)} = \frac 12 \int^0_{-\pi} 1  d\theta = \frac {\pi}2.
+\ee
+
+Thus, $p_n$s are orthogonal.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Calculate the coefficients $b_1$, $b_2$, $c_1$ and $c_2$ so that the approximant 
+\be
+\int^1_0 f(x) dx \approx b_1 f(c_1) + b_2f(c_2)
+\ee
+is exact when $f$ is a cubic polynomial. You may exploit the fact that $c_1$ and $c_2$ are the zeros of a quadratic polynomial that is orthogonal to all linear polynomials. Verify your calculation by testing the formula when $f(x) = 1$, $x$, $x^2$ and $x^3$.
+
+
+
+Solution. Let $p_{-1}(x) = 0$, $p_0(x) =1$. We construct the orthogonal polynomials
+\be
+p_{n+1}(x) = (x-\alpha_n)p_n(x) - \beta_n p_{n-1}(x),\quad\quad \text{where }\alpha_n := \frac{\inner{p_n}{xp_n}}{\inner{p_n}{p_n}},\quad \beta_n := \frac{\inner{p_n}{p_n}}{\inner{p_{n-1}}{p_{n-1}}}.
+\ee
+\be
+\alpha_0 = \frac{\inner{1}{x}}{\inner{1}{1}} = \int^1_0 xdx = \frac 12 \quad \ra\quad p_1(x) = \bb{x-\frac 12}p_0(x) = x-\frac 12.
+\ee
+\be
+\alpha_1 = \frac{\inner{p_1}{xp_1}}{\inner{p_1}{p_1}} = \frac{\int^1_0 x\bb{x-\frac 12}\bb{x-\frac 12}dx}{\int^1_0 \bb{x-\frac 12}\bb{x-\frac 12}dx} = \frac{\frac 14 - \frac 13 + \frac 18}{\frac 13 - \frac 12 + \frac 14} = \frac{\frac{1}{24}}{\frac 1{12}} = \frac 12, \quad\quad\beta_1 = \frac{\inner{p_1}{p_1}}{\inner{p_0}{p_0}} = \frac{\frac 1{12}}{1} = \frac 1{12}. 
+\ee
+\be
+p_2(x) = (x-\alpha_1)p_1(x) - \beta_1 p_0(x) = \bb{x-\frac 12}\bb{x-\frac 12} - \frac 1{12} = x^2 - x + \frac 16.
+\ee
+
+The roots of $p_2(x)$ is $c_{1,2} = \frac 12 \pm \frac{\sqrt{\frac 13}}{2}$. Then
+\be
+b_1 = \int^1_0 \frac{x-c_2}{c_1-c_2}dx = \sqrt{3} \int^1_0 \bb{x-\frac 12 + \frac{\sqrt{\frac 13}}{2}}dx = \frac 12,\quad b_2 = \int^1_0 \frac{x-c_1}{c_2-c_1}dx = -\sqrt{3} \int^1_0 \bb{x-\frac 12 - \frac{\sqrt{\frac 13}}{2}}dx = \frac 12.
+\ee
+
+Hence,
+\be
+\int^1_0 f(x) dx \approx \frac 12 f\bb{\frac 12 + \frac{\sqrt{\frac 13}}{2}} + \frac 12 f\bb{\frac 12 - \frac{\sqrt{\frac 13}}{2}}.
+\ee
+
+We try $f=1$, then
+\be
+LHS = \int^1_0 1dx = 1 = \frac 12 \cdot 1 + \frac 12\cdot 1 = RHS.
+\ee
+
+If $f=x$, then
+\be
+LHS = \int^1_0 xdx = \frac 12 = \frac 12 \bb{\frac 12 + \frac{\sqrt{\frac 13}}{2}} + \frac 12 \bb{\frac 12 - \frac{\sqrt{\frac 13}}{2}} = \frac 12 f\bb{\frac 12 + \frac{\sqrt{\frac 13}}{2}} + \frac 12 f\bb{\frac 12 - \frac{\sqrt{\frac 13}}{2}} = RHS.
+\ee
+
+If $f=x^2$, then
+\be
+LHS = \int^1_0 x^2dx = \frac 13 = \frac 12 \bb{\frac 13 + \frac{\sqrt{\frac 13}}{2}} + \frac 12 \bb{\frac 13 - \frac{\sqrt{\frac 13}}{2}} = \frac 12 f\bb{\frac 12 + \frac{\sqrt{\frac 13}}{2}} + \frac 12 f\bb{\frac 12 - \frac{\sqrt{\frac 13}}{2}} = RHS.
+\ee
+
+If $f=x^3$, then
+\be
+LHS = \int^1_0 x^3dx = \frac 14 = \frac 12 \bb{\frac 14 + \frac{\sqrt{\frac 13}}{4}} + \frac 12 \bb{\frac 14 - \frac{\sqrt{\frac 13}}{4}} = \frac 12 f\bb{\frac 12 + \frac{\sqrt{\frac 13}}{2}} + \frac 12 f\bb{\frac 12 - \frac{\sqrt{\frac 13}}{2}} = RHS.
+\ee
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item The functions $p_0, p_1, p2, \dots$ are generated by the Rodrigues formula 
+\be
+p_n(x) = e^x \frac{d^n}{dx^n} (x^ne^{-x}),\quad  0 \leq x < \infty.
+\ee
+Show that these functions are polynomials and prove by integration by parts that for every $p \in \pro_{n-1}[x]$ we have the orthogonality condition $\langle p_n, p\rangle = 0$ with respect to the scalar product 
+\be
+\langle f, g\rangle := \int^\infty_0 e^{-x}f(x)g(x) dx.
+\ee
+Derive the coefficients of $p_3$, $p_4$ and $p_5$ from the Rodrigues formula. Verify that these coefficients are compatible with a three term recurrence relation of the form 
+\be
+p_5(x) = (\gamma x - \alpha)p_4(x) - \beta p_3(x),\quad x \in \R,
+\ee
+where $\alpha$, $\beta$ and $\gamma$ are constants.
+
+[Note: These $p_ns$ are known as Laguerre polynomials and denoted by $p_n = L_n$ - or, if you want to be really sophisticated, $L^{(0)}_n$.]
+
+
+
+Solution. If $n=0$, we have
+\be
+p_0(x) = e^x x^0 e^{-x} = 1 \text{ which is polynomial.}
+\ee
+
+If $n\leq k-1$ are true, we have
+\be
+p_k(x) = e^x \frac{d^k}{dx^k} (x^ke^{-x}) = e^x \frac{d^{k-1}}{dx^{k-1}} \bb{(kx^{k-1} - x^k)e^{-x}} = e^x \frac{d^{k-1}}{dx^{k-1}} \bb{kx^{k-1} e^{-x}} -  e^x \frac{d^{k-1}}{dx^{k-1}} \bb{x^ke^{-x}}.
+\ee
+
+The first term is a polynomial (by $p_{k-1}(x)$). The second term can be reduced to $x^ne^{x}$ plus a sum of polynomials ($p_0(x),\dots,p_{k-2}(x)$).
+
+Now we consider
+\beast
+\inner{p_n}{p} & = & \int^\infty_0 e^{-x}e^x \frac{d^n}{dx^n} (x^ne^{-x}) p(x)dx = \int^\infty_0 \frac{d^n}{dx^n} (x^ne^{-x}) p(x)dx \\
+& = & \bsb{\frac{d^{n-1}}{dx^{n-1}} (x^ne^{-x})p(x)}^\infty_0 - \int^\infty_0 \frac{d^{n-1}}{dx^{n-1}} (x^ne^{-x}) p'(x)dx\\
+& = & \dots = (-1)^n \int^\infty_0 x^ne^{-x} p^{(n)}(x)dx = 0\quad\quad \text{since $p \in \pro_{n-1}[x]$.}
+\eeast
+
+Furthermore,
+\beast
+p_3(x) & = & e^x \frac{d^3}{dx^3} (x^3e^{-x}) = e^x \frac{d^2}{dx^2} \bb{\bb{3x^2 - x^3}e^{-x}} = e^x \frac{d}{dx} \bb{\bb{6x -3x^2 - 3x^2 + x^3}e^{-x}}  \\
+& = & e^x \bb{\bb{6 - 6x - 6x + 3x^2 - 6x + 3x^2 + 3x^2 - x^3}e^{-x}} = 6 - 18x + 9x^2 - x^3.
+\eeast
+
+\beast
+p_4(x) & = & e^x \frac{d^4}{dx^4} (x^4e^{-x}) = e^x \frac{d^3}{dx^3} \bb{\bb{4x^3 - x^4}e^{-x}} = 4p_3(x) - e^x \frac{d^2}{dx^2} \bb{\bb{4x^3 - x^4}e^{-x}}  \\
+& = & 4p_3(x) - e^x \frac{d}{dx} \bb{\bb{12x^2 - 4x^3 - 4x^3 + x^4}e^{-x}} = 4p_3(x) - e^x \bb{\bb{24x - 12x^2 - 24x^2 + 8x^3 + 4x^3 - x^4}e^{-x}} \\
+& = & 24 - 96x + 72x^2 - 16x^3 + x^4.
+\eeast
+
+\beast
+p_5(x) & = & e^x \frac{d^5}{dx^5} (x^5e^{-x}) = e^x \frac{d^4}{dx^4} \bb{\bb{5x^4 - x^5}e^{-x}} = 5p_4(x) - e^x \frac{d^3}{dx^3} \bb{\bb{5x^4 - x^5}e^{-x}}  \\
+& = & 5p_4(x) - e^x \frac{d^2}{dx^2} \bb{\bb{20x^3 - 5x^4 - 5x^4 + x^5}e^{-x}} \\
+& = & 5p_4(x) - e^x \frac{d}{dx} \bb{\bb{60x^2 - 20x^3 - 40x^3 + 10x^4 + 5x^4 -x^5}e^{-x}}\\
+& = & 5p_4(x) - e^x \bb{\bb{120x - 60x^2 - 180x^2 + 60x^3 + 60x^3 - 15x^4 - 5x^4 + x^5}e^{-x}}\\
+& = & 120 - 600x + 600x^2 - 200 x^3 + 25x^4 - x^5 .
+\eeast
+
+Thus, we can find $\gamma =-1$, $\alpha = -9$ and $\beta = 16$ such that
+\be
+p_5(x) = (\gamma x - \alpha)p_4(x) - \beta p_3(x).
+\ee
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $p\bb{\frac 12} = \frac 12 (f(0) + f(1))$, where $f$ is a function in $C^2[0, 1]$. Find the least constants $c_0$, $c_1$ and $c_2$ such that the error bounds
+\be
+\abs{f\bb{\frac 12} - p\bb{\frac 12}} \leq c_k \dabs{f^{(k)}}_\infty ,\quad k = 0, 1, 2,
+\ee
+are valid.
+
+[Note: The cases $k = 0$ and $k = 1$ are easy if one works from first principles, and the Peano kernel theorem is suitable when $k = 2$. Also try the Peano kernel theorem when $k = 1$.]
+
+
+
+Solution. We have for $k=0$,
+\be
+\abs{f\bb{\frac 12} - p\bb{\frac 12}} = \abs{f\bb{\frac 12} - \frac 12 (f(0) + f(1))} \leq \abs{f\bb{\frac 12}} + \frac 12\abs{f(0)} + \frac 12\abs{f(1)} \leq 2\dabs{f}_\infty \quad\ra\quad c_0 = 2.
+\ee
+
+For $k=1$, by mean value theorem,
+\beast
+\abs{f\bb{\frac 12} - p\bb{\frac 12}} & = & \abs{f\bb{\frac 12} - \frac 12 (f(0) + f(1))} \leq \frac 12\abs{f\bb{\frac 12}-f(0)} + \frac 12\abs{f\bb{\frac 12}-f(1)} \\
+& = & \frac 12 \frac 12 \abs{f'(\xi_1)} + \frac 12 \frac 12 \abs{f'(\xi_2)} \leq \frac 12\dabs{f'}_\infty \quad\ra\quad c_1 = \frac 12.
+\eeast
+
+For $k=2$, 
+\be
+L(f) = f\bb{\frac 12} - p\bb{\frac 12} = f\bb{\frac 12} - \frac 12 f(1) -\frac 12 f(0),\quad f\in C^2[0,1].
+\ee
+
+If $f=1$, we have $L(f) =0$. If $f=x$, we have $L(f) = 0$ as well. Thus, $L(f)=0$ for $f\in \pro_1[x]$. Let
+\be
+K(\theta) = L\bb{(x-\theta)^+} = \bb{\frac 12 -\theta}^+ - \frac 12\bb{0 -\theta}^+ - \frac 12\bb{1 -\theta}^+ = \left\{ \ba{ll}
+-\frac {\theta}2 & \theta \in \bsb{0,\frac 12}\\
+-\frac {1-\theta}2 \quad\quad & \theta \in \bsb{\frac 12,1}\\
+0 & \text{otherwise}
+\ea\right.
+\ee
+
+By Peano kernel theorem, we have $n = 1$,
+\beast
+\abs{L(f)} & = & \abs{\frac 1{n!}\int^1_0 K(\theta)f^{(n+1)}(\theta) d\theta} = \abs{\int^1_0 K(\theta)f''(\theta) d\theta} \leq \abs{\int^1_0 K(\theta) d\theta }\dabs{f''}_\infty \\
+& = & \abs{\int^{\frac 12}_0 -\frac {\theta}2 d\theta + \int^1_{\frac 12}-\frac {1-\theta}2 d\theta }\dabs{f''}_\infty = \frac 18 \dabs{f''}_\infty \quad\ra \quad c_2 = \frac 18.
+\eeast
+
+For $k=1$, we have
+\be
+K(\theta) = L\bb{\bb{(x-\theta)^+}^0} = \bb{\bb{\frac 12 -\theta}^+}^0 - \frac 12\bb{\bb{0 -\theta}^+}^0 - \frac 12\bb{\bb{1 -\theta}^+}^0 = \left\{ \ba{ll}
+\frac 12 & \theta \in \left[0,\frac 12\right)\\
+-\frac 12 \quad\quad & \theta \in \bsb{\frac 12,1}\\
+0 & \text{otherwise}
+\ea\right.
+\ee
+
+Thus, by Peano kernel theorem, $n=0$
+
+\be
+\abs{L(f)} = \abs{\frac 1{n!}\int^1_0 K(\theta)f^{(n+1)}(\theta) d\theta} = \abs{\int^1_0 K(\theta)f'(\theta) d\theta} \leq \abs{\int^1_0 \frac 12 d\theta }\dabs{f'}_\infty \leq \frac 12 \dabs{f'}_\infty\quad\ra \quad c_1 = \frac 12.
+\ee
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Express the divided difference $f[0, 1, 2, 4]$ in the form
+\be
+f[0, 1, 2, 4] = \int^4_0 K(\theta)f'''(\theta) d\theta,
+\ee
+assuming that $f'''$ exists and is continuous. Sketch the kernel function $K(\theta)$ for $0 \leq \theta \leq 4$. By integrating $K(\theta)$ analytically and using the mean value theorem prove that
+\be
+f[0, 1, 2, 4] = \frac 16 f'''(\xi)
+\ee
+for some point $\xi \in [0, 4]$. Note that another proof of this result was given in the lecture on divided differences.
+
+
+
+Solution. Using Lagrange,
+\beast
+L(f) = f[0,1,2,4] & = & \frac{f[1,2,4] - f[0,1,2]}4 = \frac 14\bb{\frac{f[2,4]-f[1,2]}{3} - \frac{f[1,2]-f[0,1]}{2} }\\
+& = & \frac 14 \bb{\frac 13 \bb{\frac 12 (f(4)-f(2)) - (f(2)-f(1))}- \frac 12 \bb{f(2) - 2f(1) + f(0)}}\\
+& = & \frac 1{24}f(4) - \frac 14 f(2) + \frac 13 f(1) - \frac 18 f(0).
+\eeast
+
+For $f(x)=1$, $L(f) = 0$. If $f(x)=x$, 
+\be
+L(f) = \frac 1{24} 4 - \frac 14 2 + \frac 13 1 - \frac 18 0 = \frac 16 - \frac 12 + \frac 13 = 0.
+\ee
+
+If $f(x) = x^2$, 
+\be
+L(f) = \frac 1{24} 16 - \frac 14 4 + \frac 13 1 - \frac 18 0 = \frac 23 - 1 + \frac 13 = 0.
+\ee
+
+Thus, $L(f)=0$ for all $f\in \pro_2[x]$. Let
+\beast
+K(\theta) & = & L\bb{\bb{\bb{x-\theta}^+}^2} = \frac 1{24}\bb{\bb{4-\theta}^+}^2 - \frac 14 \bb{\bb{2-\theta}^+}^2 + \frac 13 \bb{\bb{1-\theta}^+}^2 - \frac 18 \bb{\bb{0-\theta}^+}^2.\\
+ & = & \left\{\ba{ll}
+\frac 18 \theta^2 & \theta \in [0,1]\\
+-\frac 5{24}\theta^2 + \frac 23 \theta - \frac 13 \quad\quad & \theta \in [1,2]\\
+\frac 1{24}\theta^2 - \frac 13\theta + \frac 23 & \theta \in [2,4]\\
+0 & \text{otherwise}
+\ea\right.
+\eeast
+
+Hence, we have $n=2$ and some $\xi \in [0,4]$
+\beast
+L(f) & = & \frac 1{n!}\int^4_0 K(\theta) f^{(n+1)}(\theta)d\theta = \frac 12 \int^4_0 K(\theta) f'''(\theta)d\theta = \frac 12 \int^4_0 K(\theta) d\theta f'''(\xi)\\
+& = & \frac 12 \bb{\int^1_0 \frac 18 \theta^2 d\theta + \int^2_1 \bb{-\frac 5{24}\theta^2 + \frac 23 \theta - \frac 13 }d\theta + \int^4_2\bb{\frac 1{24}\theta^2 - \frac 13\theta + \frac 23} d\theta }f'''(\xi)\\
+& = & \frac 12 \bb{\frac 1{24} + \bb{-\frac 5{24}\frac13(8-1) + \frac 23 \frac 12 (4-1) - \frac 13(2-1)} + \bb{\frac 1{24}\frac 13 (64-8) - \frac 13\frac 12(16-4)+ \frac 23(4-2)} }f'''(\xi)\\
+& = & \frac 12 \bb{\frac 1{24} + \bb{-\frac 5{24}\frac13(8-1) + \frac 23 \frac 12 (4-1) - \frac 13(2-1)} + \bb{\frac 1{24}\frac 13 (64-8) - \frac 13\frac 12(16-4)+ \frac 23(4-2)} }f'''(\xi)\\
+& = & \frac 16f'''(\xi).
+\eeast
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $f$ be a function in $C^4[0, 1]$ and let $\xi$ be any fixed point in $[0, 1]$. Calculate the coefficients $\alpha$, $\beta$, $\gamma$ and $\delta$ such that the approximant
+\be
+f'''(\xi) \approx \alpha f(0) + \beta f(1) + \gamma f'(0) + \delta f'(1)
+\ee
+is exact for all cubic polynomials. Prove that the inequality
+\be
+\abs{f'''(\xi) - \alpha f(0) - \beta f(1) -\gamma f'(0) - \delta f'(1)} \leq \left\{\frac 12 - \xi + 2\xi^3 - \xi^4\right\} \dabs{f^{(4)}}_\infty
+\ee
+is satisfied. Show that this inequality holds as an equation if we allow $f$ to be the function
+\be
+f(x) = \left\{\ba{ll}
+-(x - \xi)^4\quad\quad & 0 \leq x \leq \xi\\
+(x - \xi)^4 & \xi \leq x \leq 1
+\ea\right.
+\ee
+
+
+
+Solution. Let $f$ be a cubic polynomial, $f(x) =ax^3 + bx^2 + cx + d$, we want
+\be
+6a = \alpha d + \beta (a+b+c+d) + \gamma c + \delta (3a+2b+c) \quad\ra\quad \left\{\ba{l}
+\beta + 3\delta = 6\\
+\beta + 2\delta = 0 \\
+\beta + \gamma + \delta = 0\\
+\alpha + \beta = 0
+\ea\right.\quad\ra\quad \left\{\ba{l}
+\alpha = 12\\
+\beta = -12 \\
+\delta = 6\\
+\gamma = 6
+\ea\right.
+\ee
+
+Now let
+\be
+L(f) = f'''(\xi)  - 12 f(0) + 12 f(1) - 6 f'(0) - 6 f'(1)\quad\ra\quad L(f) = 0 \quad \text{for }f=1,x,x^2,x^3.
+\ee
+
+Thus, $n=3$, (the derivatives are with respect to $x$)
+\beast
+K(\theta) & = & \bb{\bb{(\xi -\theta)^+}^3}''' - 12 \bb{(0 -\theta)^+}^3 + 12 \bb{(1 -\theta)^+}^3 - 6\bb{\bb{(0 -\theta)^+}^3}' - 6\bb{\bb{(1 -\theta)^+}^3}'\\
+& = & \left\{\ba{ll}
+-12\theta^3 + 18\theta^2 & \theta \in [0,\xi)\\
+-12\theta^3 + 18\theta^2 - 6 \quad\quad & \theta \in [\xi,1]\\
+0 & \text{otherwise}
+\ea\right.
+\eeast
+
+Hence, by Peano kernel theorem,
+\beast
+\abs{L(f)} & = & \abs{\frac 1{n!} \int^1_0 K(\theta) f^{(n+1)}(\theta )d\theta} = \abs{\frac 1{3!} \int^1_0 K(\theta) f''''(\theta )d\theta} \leq \frac 16\abs{\int^1_0 K(\theta) d\theta}\dabs{f^{(4)}}_\infty \\
+& \leq & \frac 16\bb{\abs{\int^\xi_0\bb{-12\theta^3 + 18\theta^2}  d\theta} + \abs{\int^1_\xi\bb{-12\theta^3 + 18\theta^2-6}  d\theta}}\dabs{f^{(4)}}_\infty \\
+& = & \frac 16\dabs{f^{(4)}}_\infty \bb{\abs{-3\xi^4 + 6\xi^3}+ \abs{-3+3\xi^4 - 6\xi^3 + 6\xi}}\\
+& = & \frac 16\dabs{f^{(4)}}_\infty \bb{-3\xi^4 + 6\xi^3 + 3 - 3\xi^4 + 6\xi^3 - 6\xi} = \bb{\frac 12 - \xi + 2\xi^3 - \xi^4}\dabs{f^{(4)}}_\infty.
+\eeast
+
+Thus,
+\be
+f(x) = \left\{\ba{ll}
+-(x - \xi)^4\quad\quad & 0 \leq x \leq \xi\\
+(x - \xi)^4 & \xi \leq x \leq 1
+\ea\right. \quad\ra\quad f'(x) = \left\{\ba{ll}
+-4(x - \xi)^3\quad\quad & 0 \leq x \leq \xi\\
+4(x - \xi)^3 & \xi \leq x \leq 1
+\ea\right.
+\ee
+\be
+\ra\quad f''(x) = \left\{\ba{ll}
+-12(x - \xi)^2\quad\quad & 0 \leq x \leq \xi\\
+12(x - \xi)^2 & \xi \leq x \leq 1
+\ea\right.\quad\ra \quad f'''(x) = \left\{\ba{ll}
+-24(x - \xi)\quad\quad & 0 \leq x \leq \xi\\
+24(x - \xi)& \xi \leq x \leq 1
+\ea\right.
+\ee
+and $\dabs{f^{(4)}}_\infty = 24$. Thus,
+\be
+LHS = \abs{0 + 12 \xi^4 + 12 (1-\xi)^4 + 24 \xi^3 - 24(1-\xi)^3}= \abs{-12+ 24\xi - 48\xi^3 + 24\xi^4} = RHS.
+\ee
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Given $f$ and $g$ in $C[a, b]$, let $h := fg$. Prove by induction that the divided differences of $h$ satisfy the equation
+\be
+h[x_0, x_1, \dots, x_n] = \sum^n_{j=0} f[x_0, x_1, \dots, x_j] g[x_j , x_{j+1}, \dots, x_n].
+\ee
+By expressing the differences in terms of derivatives and by letting the points $x_0, x_1,\dots, x_n$ become coincident, deduce the Leibniz formula for the $n$th derivative of a product of two functions.
+
+
+
+Solution. For $n=0$, $h[x_0] = h(x_0)=f(x_0)g(x_0) = f[x_0]g[x_0]$. Thus, we can have the result by induction, assume the result holds for $n-1$,
+
+\beast
+& & h[x_0,\dots,x_n] =  \frac{h[x_1,\dots,x_n] - h[x_0,\dots,x_{n-1}]}{x_n-x_0}\\
+& = &\frac 1{x_n-x_0}\bb{\sum^n_{j=1}f[x_1,\dots,x_j]g[x_j,\dots,x_n]-\sum^{n-1}_{j=0}f[x_0,\dots,x_j]g[x_j,\dots,x_{n-1}]}\\
+& = &\frac 1{x_n-x_0}\left[\sum^n_{j=1}\bb{f[x_1,\dots,x_j] - f[x_0,\dots,x_{j-1}]}g[x_j,\dots,x_n] + \sum^n_{j=1}f[x_0,\dots,x_{j-1}]g[x_j,\dots,x_n] \right.\\
+& & \quad\quad \quad\quad\left.+\sum^{n-1}_{j=0}f[x_0,\dots,x_j]\bb{g[x_{j+1},\dots,x_n] - g[x_j,\dots,x_{n-1}]} - \sum^{n-1}_{j=0}f[x_0,\dots,x_j]g[x_{j+1},\dots,x_n] \right]\\
+& = &\frac 1{x_n-x_0}\bb{\sum^n_{j=1}(x_j-x_0)f[x_0,\dots,x_j]g[x_j,\dots,x_n]+ \sum^{n-1}_{j=0}f[x_0,\dots,x_j](x_n -x_j)g[x_j,\dots,x_n]}\\
+& = &\frac 1{x_n-x_0}\left(\sum^{n-1}_{j=1}(x_j-x_0)f[x_0,\dots,x_j]g[x_j,\dots,x_n] + \sum^{n-1}_{j=0}(x_n -x_j)f[x_0,\dots,x_j]g[x_j,\dots,x_n] \right.\\
+& & \quad\quad \quad\quad\quad\quad \quad\quad\left.+ (x_n-x_0)f[x_0,\dots,x_n]g[x_n] \right)\\
+& = &\frac 1{x_n-x_0}\left(\sum^{n-1}_{j=0}(x_n-x_0)f[x_0,\dots,x_j]g[x_j,\dots,x_n] + (x_n-x_0)f[x_0,\dots,x_n]g[x_n] \right)\\
+& = & \sum^n_{j=0}f[x_0,\dots,x_j]g[x_j,\dots,x_n].
+\eeast
+
+Note that 
+\be
+h[x_0,\dots,x_n] = \frac {1}{n!}h^{(n)}(\xi),\quad\quad\text{where }\xi\in[a,b].
+\ee
+
+Let $x_0,\dots,x_n$ be coincident, we have $h[c,\dots,c] = \frac {1}{n!}h^{(n)}(c)$. Also,
+\be
+h[x_0,\dots,x_n] = \sum^n_{j=0}f[x_0,\dots,x_j]g[x_j,\dots,x_n] = \sum^n_{j=0} \frac 1{j!}f^{(j)}(\xi_1)\frac 1{(n-j)!}g^{(n-j)}(\xi_2)
+\ee
+
+So,
+\be
+(fg)^{(n)}(c) = n!\sum^n_{j=0} \frac 1{j!}f^{(j)}(c)\frac 1{(n-j)!}g^{(n-j)}(c) = \sum^n_{j=0} \binom{n}{j}f^{(j)}(c)g^{(n-j)}(c),
+\ee
+which is the Leibniz formula.
+
+
+\item Let $h = 1/M$, where $M \geq 1$ is an integer, and let Euler's method be applied to calculate the estimates $\{y_n\}_{n=1,2,\dots,M}$ of $y(nh)$ for each of the differential equations
+\be
+y' = - \frac y{1 + t},\quad\quad y' = \frac{2y}{1 + t},\quad\quad 0 \leq t \leq 1,
+\ee
+starting with $y_0 = y(0) = 1$ in both cases. By using induction and by cancelling as many terms as possible in the resultant products, deduce simple explicit expressions for $y_n$, $n = 1, 2, \dots,M$, which should be free from summations and products of $n$ terms.
+
+Hence deduce the exact solutions of the equations from the limit $h\to 0$. Verify that the magnitude of the errors $y_n - y(nh)$, $n = 1, 2, \dots,M$, is at most $\sO(h)$.
+
+
+
+Solution. For $y' = f(t,y) = -\frac y{1+t}$,
+\beast
+y_{n+1} & = & y_n + hf(t_n,y_n) = y_n - \frac{hy_n}{1+t_n} = y_n - \frac{hy_n}{1+nh} = \frac {1+nh-h}{1+nh}y_n \\
+& = & \frac {1+nh-h}{1+nh} \dots \frac{1-h}{1}y_0 = \frac{1-h}{1+nh} \quad\ra\quad y_n = \frac{1-h}{1+(n-1)h}.
+\eeast
+
+For $y' = \frac{2y}{1+t}$,
+\beast
+y_{n+1} & = & y_n + hf(t_n,y_n) = y_n + \frac{2hy_n}{1+t_n} = y_n + \frac{2hy_n}{1+nh} = \frac {1+nh + 2h}{1+nh}y_n \\
+& = & \frac {1+nh+2h}{1+nh} \dots \frac{1+2h}{1}y_0 = \frac{(1+nh+2h)(1+nh+h)}{1+h} \quad\ra\quad y_n= \frac{(1+nh+h)(1+nh)}{1+h}.
+\eeast
+
+The exact solution of $y' = -\frac y{1+t}$ is $y=\frac 1{1+t}$, thus the error is
+\be
+\abs{y_n - y(nh)} = \abs{\frac{1-h}{1+(n-1)h} - \frac 1{1+nh}} = \abs{\frac{nh^2}{(1+(n-1)h)(1+nh)}} = \abs{\frac{t_nh}{(1+t_{n-1})(1+t_n)}} = \sO(h)\quad\text{as }h\to 0.
+\ee
+
+The exact solution of $y' = \frac {2y}{1+t}$ is $y=(1+t)^2$, thus the error is
+\beast
+\abs{y_n - y(nh)} & = & \abs{\frac{(1+nh+h)(1+nh)}{1+h} - (1+nh)^2} = \abs{\frac{(1+nh+h)-(1+nh)(1+h)}{1+h}}\abs{1+nh} \\
+& = & \abs{\frac{t_nh}{(1+t_{n-1})(1+t_n)}} = \sO(h)\quad\text{as }h\to 0.
+\eeast
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Assuming that $f$ satisfies the Lipschitz condition and possesses a bounded third derivative in $[0, t^*]$, apply the method of analysis of the Euler method, given in the lectures, to prove that the trapezoidal rule
+\be
+y_{n+1} = y_n + \frac 12 h[f(t_n, y_n) + f(t_{n+1}, y_{n+1})]
+\ee
+converges and that $\dabs{y_n - y(t_n)} \leq ch^2$ for some $c > 0$ and all $n$ such that $0 \leq nh \leq t^*$.
+
+
+
+Solution. $y'(t_n) = f(t_n,y(t_n))$ and $\abs{f'''} \leq M$. By Lipschitz condition, there exists $\lm \geq 0$ s.t. 
+\be
+\abs{f(t,x)-f(t,y)} \leq \lm \abs{x-y}.
+\ee
+
+\emph{Approach 1}. Thus, 
+\be
+y(t_{n+1}) = y(t_n) + hy'(t_n) + \frac 12 h^2 y''(t_n) + \frac 16 h^3 y'''(t_n) + \sO( h^4 ),\quad y'(t_{n+1}) = y'(t_n) + hy''(t_n) + \frac 12h^2 y'''(t_n) + \sO( h^3).
+\ee
+
+\beast
+e_{n+1} & = & y\bb{t_{n+1}} - y_{n+1} \\
+& = & y(t_n) + hy'(t_n) + \frac 12 h^2 y''(t_n) + \frac 16 h^3 y'''(t_n) + \sO( h^4 ) - \bb{y_n + \frac 12 h[f(t_n, y_n) + f(t_{n+1}, y_{n+1})]}\\
+& = & y(t_n) - y_n + \frac 12 h\bb{y'(t_n) - f(t_n, y_n)} + \frac 12 h\bb{y'(t_n) - f(t_{n+1}, y_{n+1})} + \frac 12 h^2 y''(t_n) + \frac 16 h^3 y'''(t_n) + \sO( h^4 ) \\
+& = & e_n + \frac 12 h\bb{y'(t_n) - f(t_n, y_n)} + \frac 12 h\bb{y'(t_{n+1}) - f(t_{n+1}, y_{n+1})} \\
+& & \quad\quad + \frac 12 h^2 y''(t_n) + \frac 16 h^3 y'''(t_n) - \frac 12h^2y''(t_n) - \frac 14 h^3y'''(t_n) + \sO( h^4 ) \\
+& = & e_n + \frac 12 h\bb{y'(t_n) - f(t_n, y_n)} + \frac 12 h\bb{y'(t_{n+1}) - f(t_{n+1}, y_{n+1})} - \frac 1{12} h^3 y'''(t_n) + \sO( h^4 ) .
+\eeast
+
+Then
+\be
+\abs{e_{n+1}} \leq \abs{e_n} + \frac 12 \lm h\abs{e_n} + \frac 12 \lm h \abs{e_{n+1}} + \frac 1{12}h^3 M + \sO( h^4 ).
+\ee
+so
+\beast
+\bb{1-\frac 12 \lm h} \abs{e_{n+1}} & \leq & \bb{1+\frac 12 \lm h}\abs{e_n} + \frac 1{12}h^3 M\\
+\bb{1-\frac 12 \lm h} \bb{\abs{e_{n+1}} + \frac {Mh^2}{12\lm}} & \leq & \bb{1+\frac 12 \lm h}\bb{\abs{e_n} + \frac {Mh^2 }{12\lm}}\\
+\bb{\abs{e_{n+1}} + \frac {Mh^2}{12\lm}} & \leq & \bb{\frac{1+\frac 12 \lm h}{1-\frac 12 \lm h}}^n \bb{\abs{e_0} + \frac {Mh^2 }{12\lm}}\\
+\abs{e_{n+1}} & \leq & \bb{\bb{\frac{1+\frac 12 \lm h}{1-\frac 12 \lm h}}^n-1}  \frac {Mh^2 }{12\lm}
+\eeast
+
+Hence,
+\be
+\abs{e_{n+1}} \leq \bb{\bb{1+ \frac{\lm h}{1-\frac 12 \lm h} }^n -1} \frac {Mh^2 }{12\lm} = \bb{\frac{\lm n h}{1-\frac 12 \lm h} + \sO(h^2)} \frac {Mh^2 }{12\lm}  = \bb{\frac{\lm t_n}{1-\frac 12 \lm h} + \sO(h^2)} \frac {Mh^2 }{12\lm}  = ch^2,
+\ee
+as $h\to 0$.
+
+\emph{Approach 2}.
+\beast
+\abs{e_{n}} & = & \abs{y_n - y(t_n)} = \abs{ y_{n-1} + \frac 12 h[f(t_{n-1}, y_{n-1}) + f(t_{n}, y_{n})] - y(t_{n-1}) - hy'(t_{n-1}) + \sO(h^2)}\\
+& = & \abs{ y_{n-1} + \frac 12 h[f(t_{n-1}, y_{n-1}) + f(t_{n}, y_{n})] - y(t_{n-1}) - hf(t_{n-1},y_{n-1}) + \sO(h^2)}\\
+& \leq & \abs{ y_{n-1} -  y(t_{n-1})} + \frac 12 h \abs{f(t_{n-1}, y(t_{n-1})) -f(t_{n-1}, y_{n-1}) }  + \frac 12 h \abs{f(t_{n}, y_{n}) -f(t_{n-1}, y(t_{n-1})}+ \sO(h^2)\\
+& \leq & \abs{ y_{n-1} -  y(t_{n-1})} + \frac {\lm h}2 \abs{y(t_{n-1})-  y_{n-1}}  + \frac 12 h \abs{f(t_{n}, y_{n}) -f(t_{n-1}, y(t_{n-1})}+ \sO(h^2)\\
+& = & \abs{ e_{n-1}} + \frac {\lm h}2 \abs{e_{n-1}}  + \frac 12 h \abs{f(t_{n}, y_{n-1} + \sO(h)) -f(t_{n-1}, y(t_{n-1})}+ \sO(h^2)\\
+& = & \abs{ e_{n-1}} + \frac {\lm h}2 \abs{e_{n-1}}  + \frac 12 h \abs{f(t_{n-1},y_{n-1} + \sO(h)) + h f_t(t_{n-1}, y_n + \sO(h)) + \sO(h^2) -f(t_{n-1}, y(t_{n-1})}+ \sO(h^2) 
+\eeast
+
+$f_t(t_n,y(t_n))$ is bounded since the third derivative is bounded, then
+\beast
+\abs{e_{n}} & \leq & \abs{ e_{n-1}} + \frac {\lm h}2 \abs{e_{n-1}} + \frac 12 h \abs{f(t_{n-1},y_{n-1} + \sO(h))- f(t_{n-1}, y(t_{n-1})) + \sO(h)}+ \sO(h^2)\\
+& \leq & \abs{ e_{n-1}} + \frac {\lm h}2 \abs{e_{n-1}} + \frac {\lm h}2 \abs{y_{n-1} + \sO(h)- y(t_{n-1})} + \sO(h^2)\\
+& \leq & \abs{ e_{n-1}} + \frac {\lm h}2 \abs{e_{n-1}} + \frac {\lm h}2 \abs{y_{n-1} - y(t_{n-1})} + \sO(h^2)\\
+& \leq & \abs{ e_{n-1}} + \lm h \abs{e_{n-1}} + \sO(h^2) = (1+\lm h)\abs{e_{n-1}} + ah^2.
+\eeast
+
+Then
+\be
+\abs{e_{n}} \leq (1+h\lm)^m \abs{e_{n-m}} + ah^2 \sum^{m-1}_{i=0}(1+h\lm)^i,
+\ee
+
+Let $m=n$, we have $e_0 = 0$ and
+\be
+\abs{e_{n}} \leq ah^2 \sum^{n-1}_{i=0}(1+h\lm)^i = ah^2 \frac{(1+h\lm)^n-1}{1+h\lm - 1} = \frac {ah}{\lm} \bb{(1+h\lm)^n-1} = \frac {ah}{\lm} \sO(h) = \sO(h^2).
+\ee
+
+Thus, we can find some $c>0$ such that $\dabs{y_n - y(t_n)} \leq ch^2$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item The $s$-step Adams-Bashforth method is of order $s$ and has the form 
+\be
+y_{n+s} = y_{n+s-1} + h \sum^{s-1}_{j=0} \sigma_j f(t_{n+j}, y_{n+j}).
+\ee
+Calculate the actual values of the coefficients in the case $s = 3$.
+
+Denoting the polynomials generating the $s$-step Adams-Bashforth by $\{\rho_s, \sigma_s\}$, prove that 
+\be
+\sigma_s(z) = z\sigma_{s-1}(z) + \alpha_{s-1}(z - 1)^{s-1},
+\ee
+where $\alpha_s \neq 0$ is a constant s.t. $\rho_s(z) - \sigma_s(z) \log z = \alpha_s (z - 1)^{s+1} + \sO\bb{\abs{z-1}^{s+2}},\ z \to 1$.
+
+[Hint: Use induction, the order conditions and the fact that the degree of each $\sigma_s$ is $s-1$.]
+
+
+
+Solution. Don't use induction. We can either apply $\rho(e^z) -z\sigma(e^z) = \sO(z^{p+1})$ as $z\to 0$ or the condition for coefficient. For $s$-step Adams-Bashfortm method, for $s=3$,
+\be
+\sum^s_{l=0} \rho_l =0,\quad\quad \sum^s_{l=0}l^k \rho_l = k\sum^s_{l=0} l^{k-1}\sigma_l,\quad\quad k=1,2,\dots,p.
+\ee
+
+Since $\rho_0 =\rho_1 = 0$, $\rho_2 = -1$ and $\rho_3 = 1$, $\sum^s_{l=0} \rho_l =0$. 
+\be
+k=1:\quad\quad LHS = \sum^3_{l=0}l^k \rho_l = -2 + 3 = 1 = \sigma_0 + \sigma_1 + \sigma_2 + \sigma_3 =  k\sum^3_{l=0} l^{k-1}\sigma_l = RHS.
+\ee
+\be
+k=2:\quad\quad LHS = \sum^3_{l=0}l^k \rho_l = -4 + 9 = 5 = \sigma_1 + 2\sigma_2 + 3\sigma_3 =  k\sum^3_{l=0} l^{k-1}\sigma_l = RHS.
+\ee
+\be
+k=3:\quad\quad LHS = \sum^3_{l=0}l^k \rho_l = -8 + 27 = 19 = \sigma_1 + 4\sigma_2 + 9\sigma_3 =  k\sum^3_{l=0} l^{k-1}\sigma_l = RHS.
+\ee
+
+Then we have 
+\be
+\sigma_0 = \frac 5{12},\quad\sigma_1 = -\frac 43,\quad \sigma_2 = \frac {23}{12},\quad \sigma_3 = 0.
+\ee
+
+Note that $z\rho_s(z) = \rho_{s+1}(z)$. The basic idea is $\rho(e^z)-z\sigma(e^z) = \sO(z^{s+1})$. Let $z=\log w$, it is
+\be
+\rho(w) - \log w \sigma(w) = \sO\bb{\abs{w-1}^{s+1}}.
+\ee
+
+Thus, we have
+\be
+\rho_s(w) - \log w \sigma_s(w) = \sO\bb{\abs{w-1}^{s+1}} = \alpha_s \abs{w-1}^{s+1} + \sO\bb{\abs{w-1}^{s+2}}.
+\ee
+for some $\alpha_s$. Multiplying bothsides by $w$, we have
+\be
+w\rho_s(w) - w\log w \sigma_s(w) = \alpha_s w\abs{w-1}^{s+1} + w\sO\bb{\abs{w-1}^{s+2}}.
+\ee
+
+We know that $w\sO\bb{\abs{w-1}^{s+2}} = (w-1)w\sO\bb{\abs{w-1}^{s+2}} + \sO\bb{\abs{w-1}^{s+2}} = \sO\bb{\abs{w-1}^{s+2}}$, thus
+\be
+\rho_{s+1}(w) - w\log w \sigma_s(w) = w\rho_s(w) - w\log w \sigma_s(w) = \alpha_s w\abs{w-1}^{s+1} + \sO\bb{\abs{w-1}^{s+2}}.\quad\quad(*)
+\ee
+
+Furthermore, by the previous argument,
+\be
+\rho_{s+1}(w) - \log w \sigma_{s+1}(w) = \sO\bb{\abs{w-1}^{s+2}} . \quad\quad(\dag)
+\ee
+
+Thus, $(\dag)-(*)$, we have 
+\beast
+\log w \sigma_{s+1}(w) - w\log w \sigma_s(w) & = & \alpha_s w\abs{w-1}^{s+1} + \sO\bb{\abs{w-1}^{s+2}}  = \alpha_s \abs{w-1}^{s+1} + \sO\bb{\abs{w-1}^{s+2}}
+\eeast
+
+Then by expanding $\log w = (w-1) - \frac{(w-1)^2}2 + \dots$, we have
+\beast
+(w-1)\sigma_{s+1}(w) - w(w-1)\sigma_s(w) & = & \alpha_s \bb{w-1}^{s+1} + \sO\bb{\abs{w-1}^{s+2}}\\
+\sigma_{s+1}(w) - w\sigma_s(w) & = & \alpha_s \bb{w-1}^{s} + \sO\bb{\abs{w-1}^{s+1}}
+\eeast
+
+Comparing the coefficient, we have
+\be
+\sigma_{s+1}(w) =  w\sigma_s(w) + \alpha_s \bb{w-1}^{s} \quad\ra\quad \sigma_{s}(w) =  w\sigma_{s-1}(w) + \alpha_{s-1} \bb{w-1}^{s-1} .
+\ee
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item By solving a three-term recurrence relation, calculate analytically the sequence of values $\{y_n : n = 2, 3, 4,\dots\}$ that is generated by the explicit midpoint rule 
+\be
+y_{n+2} = y_n + 2hf(t_{n+1}, y_{n+1}),
+\ee
+when it is applied to the ODE $y' = -y$, $t \geq 0$. Starting from the values $y_0 = 1$ and $y_1 = 1-h$, show that the sequence diverges as $n \to \infty$ for all $h > 0$. Recall, however, that order $\geq 1$, the root condition and suitable starting conditions imply convergence in a finite interval. Prove that the above implementation of the explicit midpoint rule is consistent with this theorem.
+
+Hint: In the last part, relate the roots of the recurrence relation to $\pm e^{\mp h} + \sO (h^3)$.
+
+
+
+Solution. We have
+\be
+y_{n+2} = y_n + 2h(-y_{n+1}) \quad\ra\quad y_{n+2} + 2hy_{n+1} -y_n.
+\ee
+
+Let $y_n = k^n$, we have $k^2 + 2kh -1 = 0$,
+\be
+k = \frac{-2h \pm \sqrt{4h^2 + 4}}2 = -h \pm \sqrt{h^2+1} \ \ra\  y_n = A\bb{-h + \sqrt{h^2+1}}^n + B\bb{-h - \sqrt{h^2+1}}^n.
+\ee
+
+It diverges because $\abs{-h - \sqrt{h^2+1}}>1$ for all $h>0$. With the boundary condition $y_0 = 1$ and $y_1 = 1-h$,
+\be
+1 = A+B,\quad 1-h = A \bb{-h + \sqrt{h^2+1}} + B\bb{-h - \sqrt{h^2+1}},
+\ee
+we have
+\be
+A = \frac{1+ \sqrt{h^2+1}}{2\sqrt{h^2+1}},\quad B = \frac{-1+\sqrt{h^2+1}}{2\sqrt{h^2+1}}.
+\ee
+
+With suitable starting condition, we choose that $B=0$, then $y_n$ converges.
+
+On the other hand, root condition,
+\be
+y_{n+2} - 2hf(t_{n+1},y_{n+1}) - y_n = 0,\quad \rho(w) = w^2 -1,\ \sigma(w) = 2w, \quad \rho(w)=0 \ \ra \ w=\pm 1,
+\ee
+so root condition is satisfied.
+
+We want to show it's of order $\geq 1$, so try $p=1$, $\sum^2_{l=0}\rho_l = -1+0+1 = 0$. For $k=1$,
+\be
+\sum^2_{l=0}\rho_l l^k = 2 = k\sum^2_{l=0}\sigma_l l^{k-1},\quad \sigma_0=\sigma_2 =0,\ \sigma_1=2.
+\ee
+
+Thus, it is of order 1. Or use the definition, $y=e^{-t}$, and $y(nh) = e^{-nh}$, we have
+\beast
+y_n & = & A\bb{-h + \sqrt{h^2+1}}^n + B\bb{-h - \sqrt{h^2+1}}^n \\
+& = & A \bb{-h + 1 + \frac 12 h^2 + \sO(h^3)}^n + B \bb{\bb{-h - 1 - \frac 12 h^2} + \sO(h^3)}^n\\
+& = & A e^{-nh} + B(-1)^n e^{nh} + \sO(h^3). 
+\eeast
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Show that the multistep method
+\be
+\sum^3_{j=0} \rho_jy_{n+j} = h \sum^2_{j=0} \sigma_j f(t_{n+j}, y_{n+j})
+\ee
+is fourth order only if the conditions $\rho_0 +\rho_2 = 8$ and $\rho_1 = -9$ are satisfied. Hence deduce that this method cannot be both fourth order and satisfy the root condition.
+
+
+
+Solution. We have $\rho_3 =1$, and $\sum^3_{l=0}\rho_l =0$. 
+\be\label{equ:1}
+k=1:\quad\quad \rho_1 + 2\rho_2 + 3\rho_3 = \sum^3_{l=0}l^k\rho_l = k\sum^2_{l=0} l^{k-1}\sigma_l = \sigma_0 + \sigma_1 + \sigma_2.
+\ee
+\be\label{equ:2}
+k=2:\quad\quad \rho_1 + 4\rho_2 + 9\rho_3 = \sum^3_{l=0}l^k\rho_l = k\sum^2_{l=0} l^{k-1}\sigma_l = 2\sigma_1 + 4\sigma_2.
+\ee
+\be\label{equ:3}
+k=3\quad\quad \rho_1 + 8\rho_2 + 27\rho_3 = \sum^3_{l=0}l^k\rho_l = k\sum^2_{l=0} l^{k-1}\sigma_l = 3\sigma_1 + 12\sigma_2.
+\ee
+\be\label{equ:4}
+k=4\quad\quad \rho_1 + 16\rho_2 + 81\rho_3 = \sum^3_{l=0}l^k\rho_l = k\sum^2_{l=0} l^{k-1}\sigma_l = 4\sigma_1 + 32\sigma_2.
+\ee
+
+(\ref{equ:2}) and (\ref{equ:3}) give $2\rho_1 + 4\rho_2 = 3\sigma_1$, (\ref{equ:2}) and (\ref{equ:4}) give $7\rho_1 + 16\rho_2 -9\rho_3 = 12\sigma_1$. Then these two equations imply
+\be
+\rho_1 + 9\rho_3 = 0 \ \ra\ \rho_1 = -9\rho_3 = -9 \quad \ra\quad \rho_2 + \rho_0 = 8.
+\ee
+
+If it's fourth order, then it must have $\rho_3 =1$, $\rho_1 = -1$ and $\rho_0 + \rho_2 = 8$. Let $\rho_0 = y$ and $\rho_2 = 8 -y$, and so
+\be
+\rho(w) = w^3 + (8-y)w^2 - 9w + y \quad\ra\quad \rho(1) = 0.
+\ee
+
+Thus $\rho(w)$ has a factor $(w-1)$, $\rho(w) = (w-1)(w^2 + (9-y)w -y)$. Let $w^2 + (9-y)w -y = 0$. If $w_1,w_2\in [-1,1]$, then
+\be
+\abs{w_1+w_2} \leq 2,\quad \abs{w_1w_2} \leq 1, \quad \abs{y} \leq 1,\ \abs{y-9}\leq 2 \quad\ra\quad \text{contradiction.}
+\ee
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item An $s$-stage explicit Runge-Kutta method of order $s$ with constant step size $h > 0$ is applied to the differential equation $y' = \lm y$, $t \geq 0$. Prove the identity
+\be
+y_n = \left[\sum^s_{l=0} \frac 1{l!} (h\lm )^l\right]^n y_0,\quad n = 0, 1, 2,\dots
+\ee
+
+
+
+Solution. For Runge-Kutta method of order $s$, $y'=\lm y$, $y^{(n)} = \lm^ny$. So $y= y_0e^{\lm t}$ and
+\be
+y(t_n) = y_0e^{\lm t_n} = y_0 \bb{e^{\lm h}}^n = y_0 \bb{\sum^s_{l=0}\frac 1{l!}(\lm h)^l}^n + \sO(h^{s+1})
+\ee
+
+So if it has order $s$, it must be 
+\be
+y_n = y_0 \left[\sum^s_{l=0} \frac 1{l!} (h\lm )^l\right]^n .
+\ee
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item The following four-stage Runge-Kutta method has order four,
+\beast
+k_1 & = & f(t_n, y_n)\\
+k_2 & = & f(t_n + \tfrac 13h, y_n + \tfrac 13 hk_1)\\
+k_3 & = & f(t_n + \tfrac 23h, y_n - \tfrac 13 hk_1 + hk_2)\\
+k_4 & = & f(t_n + h, y_n + hk_1 - hk_2 + hk_3)\\
+y_{n+1} & = & y_n + h( \tfrac 18k_1 + \tfrac 38k_2 + \tfrac 38k_3 + \tfrac 18k_4).
+\eeast
+
+By considering the equation $y' = y$, show that the order is at most four. Then, for scalar functions, prove that the order is at least four in the easy case when $f$ is independent of $y$, and that the order is at least three in the relatively easy case when $f$ is independent of $t$.
+
+[You are not expected to derive all of the (gory) details when $f(t, y)$ depends on both $t$ and $y$.]
+
+
+
+Solution. First, we have
+\be
+y(t_{n+1}) = y(t_n) + hy'(t_n) + \frac 12h^2 y''(t_n) + \frac 16 h^3y'''(t_n) + \frac 1{24}h^4y''''(t_n) + \frac 1{120}h^5 y^{(5)}(t_n) + \sO(h^6),
+\ee
+
+Now consider $y'=y$, $y_n = f(t_n,y_n)$, 
+\be
+k_1 = y_n,\quad k_2 = y_n + \frac 13 hk_1 = y_n \bb{1+\frac 13h},\quad k_3 = y_n - \frac 13 hk_1 + hk_2 = y_n \bb{1+ \frac 23h + \frac13h^2},
+\ee
+\be
+k_4 = y_n + hk_1 - hk_2 + hk_3 = y_n + hy_n - h y_n\bb{1+\frac 13h} + hy_n\bb{1+ \frac 23h + \frac13h^2} = y_n \bb{1+h + \frac 13 h^2 + \frac 13 h^3}.
+\ee
+\beast
+y_{n+1} & = & y_n + hy_n\bb{ \frac 18 + \frac 38\bb{1+\frac 13h}  + \frac 38\bb{1+ \frac 23h + \frac13h^2} + \frac 18\bb{1+h + \frac 13 h^2 + \frac 13 h^3}}\\
+& = & y_n \bb{1+h + \frac 12 h^2 + \frac 16 h^3 + \frac 1{24}h^4}.
+\eeast
+
+
+
+Thus,
+\be
+y(t_{n+1}) - y_{n+1}|_{t_n} = \frac 1{120}h^5 y^{(5)}(t_n) + \sO(h^6),
+\ee
+which is at least of order 4.
+
+Now consider $f$ independent of $y$, $f(t_n,y_n) =f(t_n)$, $y' = f(t,y) = f(t)$
+\be
+k_1 = f(t_n),\quad k_2 = f\bb{t_n + \frac 13h},\quad k_3 = f\bb{t_n + \frac 23h}, \quad k_4 = f\bb{t_n + h}
+\ee
+
+\beast
+y_{n+1} & = & y_n + h\bb{ \frac 18f(t_n) + \frac 38 f\bb{t_n + \frac 13h} + \frac 38 f\bb{t_n + \frac 23h} + \frac 18 f\bb{t_n + h}}\\
+& = & y_n + h\bb{ f(t_n) + \frac 12h f_t\bb{t_n} + \frac 16h^2 f_{tt}\bb{t_n } + \frac 1{24} h^3 f_{ttt}\bb{t_n} + \sO(h^4)}\\
+& = & y_n + hf(t_n) + \frac 12h^2 f_t\bb{t_n} + \frac 16h^3 f_{tt}\bb{t_n } + \frac 1{24} h^4 f_{ttt}\bb{t_n} + \sO(h^5)
+\eeast
+which is at least of order 4.
+
+If $f$ independent of $t$, $f(t_n,y_n) =f(y_n)$, $y' = f(y)$, $y'' = \frac{df(y)}{dt} = \frac{df(y)}{dy}y' = f'f$ and $y''' = \frac{d(ff')}{dt} = ff'f' + f^2f''$,
+\be
+k_1 = f(y_n),\quad k_2 = f\bb{y_n + \frac 13hf(y_n)} = f(y_n) + \frac 13h f(y_n)f'(y_n) + \frac 1{18}h^2 (f(y_n))^2f''(y_n) + \sO(h^3),
+\ee
+\beast
+\quad k_3 & = & f\bb{y_n+ h \bb{f\bb{y_n + \frac 13hf(y_n)}-\frac 13 f(y_n)}}\\
+& = & f(y_n) + h\bb{f\bb{y_n + \frac 13hf(y_n)} - \frac 13 f(y_n)}f'(y_n) + \frac 12h^2\bb{f\bb{y_n + \frac 13hf(y_n)} - \frac 13 f(y_n)}^2f''(y_n) + \sO(h^3)\\
+& = & f(y_n) + h\bb{\frac 23f(y_n) + \frac 13hf(y_n)f'(y_n) }f'(y_n) + \frac 12h^2\bb{\frac 23f(y_n) + \frac 13hf(y_n)f'(y_n)}^2f''(y_n) + \sO(h^3)\\
+& = & f(y_n) + h\bb{\frac 23f(y_n) + \frac 13hf(y_n)f'(y_n) }f'(y_n) + \frac 29 h^2 f^2(y_n) f''(y_n) + \sO(h^3)
+\eeast
+
+\beast
+\quad k_4 & = & f\bb{y_n + h\bb{f(y_n) + f\bb{y_n+ h \bb{f\bb{y_n + \frac 13hf(y_n)}-\frac 13 f(y_n)}}- f\bb{y_n + \frac 13hf(y_n)}}}\\
+& = & f\bb{y_n + h\bb{f(y_n) + f(y_n) + h\bb{f\bb{y_n + \frac 13hf(y_n)} - \frac 13 f(y_n)}f'(y_n) + \sO(h^2)- f\bb{y_n + \frac 13hf(y_n)}}}\\
+& = & f\bb{y_n + h\bb{f(y_n) + f(y_n) + h\bb{\frac 23 f(y_n)}f'(y_n) + \sO(h^2)- f\bb{y_n} - \frac 13h f(y_n)f'\bb{y_n}}}\\
+& = & f\bb{y_n + h\bb{f(y_n) + h\bb{\frac 13 f(y_n)}f'(y_n) + \sO(h^2) }} \\
+& = & f(y_n) + h\bb{f(y_n) + h\bb{\frac 13 f(y_n)}f'(y_n) }f'(y_n) + \frac 12h^2\bb{f(y_n) + h\bb{\frac 13 f(y_n)}f'(y_n) }^2f''(y_n) + \sO(h^3)\\
+& = & f(y_n) + hf(y_n)f'(y_n) + \frac{h^2}3 f(y_n)f'(y_n) f'(y_n) + \frac {h^2}2 f(y_n) ^2f''(y_n) + \sO(h^3).
+\eeast
+
+\beast
+y_{n+1} & = & y_n + h\left( \frac 18f(y_n) + \frac 38\bb{ f(y_n) + \frac 13h f(y_n)f'(y_n) + \frac 1{18}h^2 (f(y_n))^2f''(y_n) }\right.\\ 
+& & \quad\quad\quad\quad\quad\left. + \frac 38 \bb{f(y_n) + h\bb{\frac 23f(y_n) + \frac 13hf(y_n)f'(y_n) }f'(y_n) + \frac 29 h^2 f^2(y_n) f''(y_n)} \right.\\
+& & \quad\quad\quad\quad\quad\left. + \frac 18 \bb{ f(y_n) + hf(y_n)f'(y_n) + \frac{h^2}3 f(y_n)f'(y_n) f'(y_n) + \frac {h^2}2 f(y_n) ^2f''(y_n)} \right) + \sO(h^4)\\
+& = & y_n + \frac h8f(y_n) + \frac {3h}8 f(y_n) + \frac 18h^2 f(y_n)f'(y_n) + \frac 1{48}h^3 f^2(y_n)f''(y_n) \\ 
+& & \quad\quad\quad\quad\quad\left. + \frac 38h f(y_n) + \frac 14 h^2f(y_n)f'(y_n) + \frac 18h^3f(y_n)f'(y_n) f'(y_n) + \frac 1{12} h^3 f^2(y_n) f''(y_n) \right.\\
+& & \quad\quad\quad\quad\quad + \frac 18 hf(y_n) + \frac 18h^2 f(y_n)f'(y_n) + \frac{h^3}{24} f(y_n)f'(y_n) f'(y_n) + \frac {h^3}{16} f^2(y_n)f''(y_n) + \sO(h^4)\\
+& = & y_n + hf(y_n) + \frac 12h^2 f(y_n)f'(y_n) + \frac{1}{6}h^3 f(y_n)f'(y_n) f'(y_n) + \frac 1{6}h^3 f^2(y_n)f''(y_n) + \sO(h^4)
+\eeast
+which is at least of order 3.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Find $\sD \cap \R$, the intersection of the linear stability domain $\sD$ with the real axis, for the following methods:
+\beast
+& (i) & y_{n+1} = y_n + hf(t_n, y_n)\\
+& (ii) & y_{n+1} = y_n + \tfrac 12 h[f(t_n, y_n) + f(t_{n+1}, y_{n+1})]\\
+& (iii) & y_{n+2} = y_n + 2hf(t_{n+1}, y_{n+1})\\
+& (iv) & y_{n+2} = y_{n+1} + \tfrac 12 h[3f(t_{n+1}, y_{n+1})-f(t_n, y_n)]\\
+& (v) & \text{The RK method }k_1=f(t_n, y_n),\quad k_2=f(t_{n}+h, y_{n}+hk_1),\quad y_{n+1}=y_n+ \tfrac 12h(k_1+k_2).
+\eeast
+
+
+
+Solution. \ben
+\item [(i)] $y_{n+1} = y_n + hf(t_n, y_n) = y_n + h\lm y_n = y_n(1+h\lm)$, 
+\be
+y= k^n,\quad k= 1+ h\lm, \quad \abs{1+\lm}<1\quad\ra\quad \abs{1+z} <1 \quad\ra \quad z \in (-2,0)
+\ee
+\item [(ii)] $y_{n+1} = y_n + \tfrac 12 h[f(t_n, y_n) + f(t_{n+1}, y_{n+1})]$, 
+\be
+y_{n+1}\bb{1-\frac 12 h\lm} = y_n \bb{1+\frac 12 h\lm },\quad y_n= k^n,\quad \abs{k}= \abs{\frac{1+ \frac 12z}{1-\frac 12z}} < 1,
+\ee
+\be
+\abs{1+\frac 12 z} < \abs{1-\frac 12 z} \quad\ra\quad z<0.
+\ee
+\item [(iii)] $y_{n+2} = y_n + 2h\lm y_{n+1}$,
+\be
+y_n = k^n,\quad k^2 - 2h\lm k -1 = 0 \quad\ra\quad k^2 - 2zk -1 = 0,\quad \abs{k} = \abs{z\pm \sqrt{z^2+1}} <1.
+\ee
+
+But 
+\be
+\abs{z- \sqrt{z^2+1}} <1 \ \ra\ z>0,\quad \abs{z- \sqrt{z^2+1}} <1 \ \ra\ z<0 \quad\ra\quad \sD =\emptyset.
+\ee
+
+\item [(iv)] $y_{n+2} = y_{n+1} + \tfrac 12 h[3f(t_{n+1}, y_{n+1})-f(t_n, y_n)]$,
+\be
+y_{n+2} = y_{n+1} \bb{1+\frac 32z} - \frac 12 z y_n\quad\ra\quad y_n= k^n,\quad k^2 = k\bb{1+\frac 32z} - \frac 12z\quad\ra\quad z = \frac{k^2-k}{\frac 32k -\frac 12}.
+\ee
+
+When $\abs{k}=1$, $k= e^{i\theta}$,
+\beast
+z & = & \frac{e^{2i\theta} -e^{i\theta}}{\frac 32 e^{i\theta}-\frac 12} = 2\frac{\cos2\theta + i\sin 2\theta - \cos\theta - i\sin \theta}{3\cos \theta + 3i\sin\theta - 1}= \frac{2e^{i\theta}\bb{\cos \theta + i\sin \theta - 1}\bb{3\cos \theta - 3i\sin\theta - 1}}{9 - 6\cos \theta + 1}\\
+& = & \frac{2e^{i\theta}\bb{3\cos^2 \theta + i\sin \theta - 1}\bb{3\cos \theta - 3i\sin\theta - 1}}{9 - 6\cos \theta + 1} = \frac{2\bb{\cos\theta + i\sin \theta}\bb{4-4\cos\theta + 2i\sin\theta }}{9 - 6\cos \theta + 1}\\
+& = & \frac{2\bb{4\cos\theta - 2\cos^2 \theta -2 + i\bb{4\sin\theta -2\cos\theta \sin \theta}}}{9 - 6\cos \theta + 1}.
+\eeast
+
+Let imaginary part be 0, 
+\be
+\sin \theta (2-\cos\theta) = 0\quad\ra\quad \sin \theta = 0 \quad\ra\quad \theta = 0,\pi.
+\ee
+
+Then $\theta = 0$, $\cos\theta = 1$,
+\be
+\frac{4\bb{2\cos\theta - \cos^2 \theta -1 }}{9 - 6\cos \theta + 1} = 0.
+\ee
+
+If $\theta =\pi$, $\cos\theta = -1$,
+\be
+\frac{4\bb{2\cos\theta - \cos^2 \theta -1 }}{9 - 6\cos \theta + 1} = -1.
+\ee
+
+So $z\cap \sD = (-1,0)$.
+
+\item [(v)] $y_{n+1}=y_n+ \frac 12h(\lm y_n +k_2)$, $k_2=f(t_{n}+h, y_{n}+hk_1)$,
+\be
+y_{n+1} = y_n \bb{1+ h\lm + \frac 12 h^2 \lm^2} = y_n \bb{1+  z + \frac 12 z^2}\quad\ra\quad k = 1+  z + \frac 12 z^2
+\ee
+
+So, $\abs{k} <1$ implies that
+\be
+\abs{1+  z + \frac 12 z^2} <1 \quad\ra\quad z\in(-2,0).
+\ee
+\een 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Show that, if $z$ is a nonzero complex number that is on the boundary of the linear stability domain of the two-step BDF method
+\be
+y_{n+2} - \frac 43 y_{n+1} + \frac 13 y_n = \frac 23 h f(t_{n+2}, y_{n+2})
+\ee
+then the real part of $z$ is positive. Thus deduce that this method is A-stable.
+
+
+
+Solution. We have
+\be
+y_{n+2} - \frac 43 y_{n+1} + \frac 13 y_n = \frac 23z y_{n+2} \quad\ra\quad y_{n+2}\bb{1-\frac 23z} - \frac 43 y_{n+1} + \frac 13 y_n = 0
+\ee
+
+For $y_n = k^n$, we have
+\be
+k^2 \bb{1-\frac 23z} - \frac 43 k + \frac 13 k = 0 \quad\ra\quad z = \frac 32 \bb{1-\frac 4{3k} + \frac 1{3k^2}}
+\ee
+
+On the boundary, $k= e^{i\theta}$,
+\beast
+z & = & \frac 32 \bb{1- \frac 43 e^{-i\theta} + \frac 13 e^{-2i\theta}} = \frac 32 \bb{1- \frac 43 \cos \theta + \frac 43i\sin \theta + \frac 13 \cos2\theta - \frac 13i \sin 2\theta}.
+\eeast
+
+The real part is 
+\be
+\Re z = \frac 32 \bb{1- \frac 43 \cos \theta + \frac 13 \cos2\theta} = \frac 32 \bb{1- \frac 43 \cos \theta + \frac 23 \cos^2\theta - \frac 13} = (\cos\theta -1)^2 \geq 0.
+\ee
+
+If $\theta = 2n\pi$, the imaginary part is
+\be
+\Im = \frac 32 \bb{\frac 43i\sin \theta - \frac 13i \sin 2\theta} = 0\quad\ra\quad z = 0
+\ee
+which is a contradiction with the assumption ($z$ is nonzero). Thus we have $\Re z >0$.
+
+We know on the boundary $\Re z>0$, for any $z$. Then the boundary does not contain anything in $\C^-$. So $\sD$ is either the right hand side of boundary of the left hand side of it. Now check $z=0$, it is in $\sD$ because $z=0\ \ra\ k=\frac 13,1$, which is stable. So $\sD$ is the left hand side of the boundary, thus $\C^-\subseteq \sD$ and hence A-stable.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item The (stiff) differential equation
+\be
+y'(t) = -10^4(y - t^{-1}) - t^{-2},\quad  t \geq 1, \quad y(1) = 1,
+\ee
+has the analytic solution $y(t) = t^{-1}$, $t \geq 1$. Let it be solved numerically by Euler's method
+\be
+y_{n+1} = y_n + h_n f(t_n, y_n)
+\ee
+and the backward Euler method 
+\be
+y_{n+1} = y_n + h_n f(t_{n+1}, y_{n+1}),
+\ee
+where $h_n = t_{n+1}-t_n$ is allowed to depend on $n$ and to be different in the two cases. Suppose that, for any $t_n \geq 1$, we have $\abs{y_n - y(t_n)} \leq 10^{-6}$, and that we require $\abs{y_{n+1} - y(t_{n+1})} \leq 10^{-6}$. Show that Euler's method can fail if $h_n = 2 \times 10^{-4}$, but that the backward Euler method always succeeds if $h_n \leq 10^{-2} t_n t^2_{n+1}$.
+
+Hint: Find relations between $y_{n+1} - y(t_{n+1})$ and $y_n - y(t_n)$ for general $y_n$ and $t_n$.
+
+
+
+Solution. Let $\lm = 10^{4}$. Also, $y' = -\lm(y-t^{-1})- t^{-2} $, $h = 2\times 10^{-4}$. For Euler's method,
+\beast
+e_{n+1} & = & y_{n+1} - y(t_{n+1}) = y_n + h\bb{-\lm\bb{y_n-\frac 1{t_n}}- \frac 1{t_n^2}} - \frac 1{t_{n+1}} = y_n - \lm h\bb{y_n-\frac 1{t_n}}- h\frac 1{t_n^2} - \frac 1{t_{n+1}} \\
+& = & (1-\lm h)\bb{y_n - \frac 1{t_n}} + \frac 1{t_n}- h\frac 1{t_n^2} - \frac 1{t_{n+1}} = (1-\lm h)e_n + \frac{t_nt_{n+1} - ht_{n+1} - t_n^2}{t_n^2 t_{n+1}} = (1-\lm h)e_n - \frac{h^2}{t_n^2 t_{n+1}}.
+\eeast
+
+Thus, let $e_n = 10^{-6}$
+\be
+\abs{e_{n+1}} = \abs{(1-\lm h)e_n -  \frac{h^2}{t_n^2 t_{n+1}}} = \abs{-e_n -  \frac{h^2}{t_n^2 t_{n+1}}} > 10^{-6}.
+\ee
+
+Thus, it fails for Euler's method. For backward Euler method, we have
+\beast
+e_{n+1} & = & y_{n+1} - y(t_{n+1}) = y_n + h\bb{-\lm\bb{y_{n+1}-\frac 1{t_{n+1}}}- \frac 1{t_{n+1}^2}} - \frac 1{t_{n+1}} = y_n - \lm h\bb{y_{n+1}-\frac 1{t_{n+1}}}- \frac h{t_{n+1}^2} - \frac 1{t_{n+1}} \\
+& = & -\lm he_{n+1} + y_n - \frac 1{t_n} + \frac 1{t_n} - \frac h{t_{n+1}^2} - \frac 1{t_{n+1}} = -\lm he_{n+1} + e_n + \frac {h^2}{t_nt_{n+1}^2}.
+\eeast
+
+Thus,
+\be
+\bb{1+\lm h}e_{n+1} = e_n + \frac {h^2}{t_nt_{n+1}^2}\quad\ra\quad e_{n+1} = \frac1{1+\lm h}\bb{e_n + \frac {h^2}{t_nt_{n+1}^2}} = \frac 13\bb{e_n + \frac {h^2}{t_nt_{n+1}^2}}.
+\ee
+
+For $e_n \leq \ve = 10^{-6}$ and $h \leq 10^{-2} t_n t^2_{n+1}$, we have
+\be
+\abs{e_{n+1}} \leq \frac 13\abs{e_n} + \frac 13 h\abs{\frac {h}{t_nt_{n+1}^2}} \leq \frac 13 \ve + \frac 13 h 10^{-2} = \frac 13\ve + \frac 23 \ve = \ve = 10^{-6}.
+\ee
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item This question concerns the predictor-corrector pair
+\beast
+y^P_{n+3} & = & -\frac 12y_n + 3y_{n+1} - \frac 32 y_{n+2} + 3hf(t_{n+2}, y_{n+2}),\\
+y^C_{n+3} & = & \frac 1{11}[2y_n - 9y_{n+1} + 18y_{n+2} + 6h f(t_{n+3}, y_{n+3})].
+\eeast
+Show that both methods are third order, and that the estimate of the error of the corrector formula by Milne's device has the value $\frac 6{17} \abs{y^P_{n+3} - y^C_{n+3}}$.
+
+
+
+Solution. For the predictor, $\rho(w) = w^3 + \frac 32 w^2 - 3w + \frac 12$, $\sigma(w) = 3w^2$,
+\beast
+\rho(e^z) - z\sigma(e^z) & = & e^{3z} + \frac 32 e^{2z} - 3e^z + \frac 12 - 3ze^{2z}\\
+& = & \frac 12 + \bb{1+ 3z + \frac 92z^2 + \frac 92z^3 + \frac{27}8 z^4 + \sO(z^5)} + \frac 32 \bb{1+ 2z + 2z^2 + \frac 43 z^3 + \frac 23 z^4 + \sO(z^5) }\\
+& & \quad\quad - 3 \bb{1+z + \frac 12 z^2 + \frac 16z^3 + \frac 1{24}z^4 + \sO(z^5)} - 3z \bb{1+ 2z + 2z^2 + \frac 43 z^3 + \sO(z^4) }\\
+& = & \frac 14 z^4 + \sO(z^5).
+\eeast
+which is of order 3.
+
+For the corrector, $\rho(w) = w^3 - \frac {18}{11} w^2 + \frac 9{11}w - \frac 2{11}$, $\sigma(w) = \frac 6{11}w^3$,
+\beast
+\rho(e^z) - z\sigma(e^z) & = & e^{3z} - \frac {18}{11} e^{2z} + \frac 9{11}e^z - \frac 2{11} - \frac 6{11}ze^{3z}\\
+& = & -\frac 2{11} + \bb{1+ 3z + \frac 92z^2 + \frac 92z^3 + \frac{27}8 z^4 + \sO(z^5)} - \frac {18}{11}  \bb{1+ 2z + 2z^2 + \frac 43 z^3 + \frac 23 z^4 + \sO(z^5) }\\
+& & \quad\quad \frac 9{11} \bb{1+z + \frac 12 z^2 + \frac 16z^3 + \frac 1{24}z^4 + \sO(z^5)} - \frac 6{11} z \bb{1+ 3z + \frac 92z^2 + \frac 92z^3 + \sO(z^4) }\\
+& = & -\frac 3{22} z^4 + \sO(z^5).
+\eeast
+
+Thus, 
+\be
+\frac{e_C}{e_P - e_C} = -\frac{\frac 3{22} }{\frac 14 + \frac 3{22} } = -\frac 6{17}.
+\ee
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $p$ be the cubic polynomial that is defined by $p(t_j) = y_j$, $j = n, n + 1, n + 2$, and by $p'(t_{n+2}) = f(t_{n+2}, y_{n+2})$. Show that the predictor formula of the previous exercise is $y^P_{n+3} = p(t_{n+2}+h)$. Further, show that the corrector formula is equivalent to the equation
+\be
+y^C_{n+3} = p(t_{n+2}) + \frac 5{11} h p'(t_{n+2}) - \frac 1{22} h^2 p''(t_{n+2}) - \frac 7{66} h^3 p'''(t_{n+2}) + \frac 6{11} h f(t_{n+2} + h, y_{n+3}).
+\ee
+The point of these remarks is that $p$ can be derived from available data, and then the above forms of the predictor and corrector can be applied for any choice of $h = t_{n+3}-t_{n+2}$.
+
+
+
+Solution. Let $p(t) = At^3 + Bt^2 + Ct + D$, then
+\be
+\left\{\ba{l}
+y_n = At_n^3 + Bt_n^2 + Ct_n +D\\
+y_{n+1} = At_{n+1}^3 + Bt_{n+1}^2 + Ct_{n+1} +D\\
+y_{n+2} = At_{n+2}^3 + Bt_{n+2}^2 + Ct_{n+2} +D\\
+f(t_{n+2}, y_{n+2}) = 3At_{n+2}^2 + 2Bt_{n+2} + C
+\ea\right.
+\ee
+
+Then, we have
+\beast
+& & -\frac 12y_n + 3y_{n+1} - \frac 32 y_{n+2} \\
+& = & - \frac 12\bb{ At_n^3 + Bt_n^2 + Ct_n +D} + 3\bb{At_{n+1}^3 + Bt_{n+1}^2 + Ct_{n+1} +D} - \frac 32\bb{At_{n+2}^3 + Bt_{n+2}^2 + Ct_{n+2} +D}\\
+& = & A\bb{-\frac 12 (t_{n+2}-2h)^3 + 3(t_{n+2}-h)^3- \frac 32 t_{n+2}^3} + B\bb{-\frac 12 (t_{n+2}-2h)^2 + 3(t_{n+2}-h)^2 -\frac 32 t_{n+2}^2} \\
+& & \quad\quad + C\bb{-\frac 12(t_{n+2} - 2h) + 3(t_{n+2}-h) -\frac 32 t_{n+2}} + D \\
+& = & A\bb{t_{n+2}^3 -6t_{n+2}^2 h + 3t_{n+2}h^2 + h^3 } + B\bb{t_{n+2}^2 - 4t_{n+2} h + h^2} + C\bb{t_{n+2} - 2h} + D.
+\eeast
+
+Thus,
+\beast
+& & p(t_{n+2}+h) \\
+& = & A\bb{t_{n+2}^3 + 3t_{n+2}^2 h + 3t_{n+2}h^2 + h^3 } + B\bb{t_{n+2}^2 + 2t_{n+2} h + h^2} + C\bb{t_{n+2} + h} +D\\
+ & = & A\bb{t_{n+2}^3 -6t_{n+2}^2 h + 3t_{n+2}h^2 + h^3 } + B\bb{t_{n+2}^2 - 4t_{n+2} h + h^2} + C\bb{t_{n+2} - 2h} + D + 3hf(t_{n+2}, y_{n+2})\\
+ & = & -\frac 12y_n + 3y_{n+1} - \frac 32 y_{n+2} + 3hf(t_{n+2}, y_{n+2}).
+\eeast
+
+Similarly, we have
+\be
+y^C_{n+3} = p(t_{n+2}) + \frac 5{11} h p'(t_{n+2}) - \frac 1{22} h^2 p''(t_{n+2}) - \frac 7{66} h^3 p'''(t_{n+2}) + \frac 6{11} h f(t_{n+2} + h, y_{n+3}).
+\ee
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $u(x)$, $0 \leq x \leq 1$, be a six-times differentiable function that satisfies the ODE $u''(x) = f(x)$, $0 \leq x \leq 1$, $u(0)$ and $u(1)$ being given. Further, we let $x_m = m h = m/M$, $m = 0, 1, \dots,M$, for some positive integer $M$, and calculate the estimates $u_m \approx u(x_m)$, $m = 1, 2, \dots,M - 1$, by solving the difference equation
+\be
+u_{m-1}-2u_m + u_{m+1} = h^2 f(x_m)+ \alpha h^2[f(x_{m-1})-2f(x_m)+f(x_{m+1})],\quad m = 1, 2, \dots,M-1,
+\ee
+where $u_0 = u(0)$, $u_M = u(1)$, and $\alpha$ is a positive parameter. Show that there exists a choice of $\alpha$ such that the local truncation error of the difference equation is $\sO(h^6)$. In this case, deduce that the Euclidean norm of the vector of errors $u(x_m)-u_m$, $m = 0, 1,\dots,M$, is bounded above by a constant multiple of $\dabs{u^{(6)}}_\infty h^{7/2}$, and provide an upper bound on this constant.
+
+
+
+Solution. First we have
+\beast
+& & u(x-h) - 2u(x) + u(x+h) \\
+& = & u(x) - hu'(x) + \frac 12 h^2 u''(x) - \frac 16h^3 u'''(x) + \frac 1{24}h^4 u^{(4)}(x) - \frac 1{120}h^5 u^{(5)}(x) + \frac 1{720}h^6u^{(6)}(x) + \sO(h^7)\\
+& & -2u(x) + u(x) + hu'(x) + \frac 12 h^2 u''(x) + \frac 16h^3 u'''(x) + \frac 1{24}h^4 u^{(4)}(x) + \frac 1{120}h^5 u^{(5)}(x) + \frac 1{720}h^6u^{(6)}(x)+ \sO(h^7)\\
+& = & h^2 u''(x) + \frac 1{12}h^4 u^{(4)}(x) + \frac 1{360}h^6u^{(6)}(x)+ \sO(h^7).
+\eeast
+
+Also,
+\be
+f(x_{m-1})-2f(x_m)+f(x_{m+1}) = h^2 u^{(4)}(x) + \frac 1{12}h^4 u^{(6)}(x) + \sO(h^5).
+\ee
+
+So let $\alpha = \frac 1{12}$,
+\beast
+& & u_{m-1}-2u_m + u_{m+1} - \bb{u(x_m-h) - 2u(x_m) + u(x_m+h)} \\
+& = & h^2 f(x_m)+ \alpha h^2\bb{f(x_{m-1})-2f(x_m)+f(x_{m+1})} - \bb{h^2 u''(x_m) + \frac 1{12}h^4 u^{(4)}(x_m) + \frac 1{360}h^6u^{(6)}(x_m)+ \sO(h^7)}\\
+& = & \bb{\frac 1{12^2} - \frac 1{360}} h^6u^{(6)}(x_m)+ \sO(h^7) = \frac 1{240}h^6u^{(6)}(x_m)+ \sO(h^7).
+\eeast
+
+Now let $e_m = u_m - u(x_m)$, $e_{m-1} - 2e_m + e_{m+1}=$ local truncation error $\tilde{e}$. This is $e_0=e_M = 0$.
+\be
+\bepm 
+-2 & 1 & 0 & \dots & \dots \\
+1 & -2 & 1 & 0 & \dots \\
+0 & 1 & -2 & 1 & \\
+& & \ddots & & \\
+& & & 1 & -2 
+\eepm 
+\bepm
+e_1\\
+\vdots\\
+e_{M-1}
+\eepm
+= \tilde{e}= \sO(h^6) \quad\ra\quad He= \tilde{e} \quad\ra\quad e = H^{-1} \tilde{e}.
+\ee
+
+Thus,
+\be
+\dabs{e}_2 \leq \dabs{H^{-1}}_2 \dabs{\tilde{e}}_2, \quad\quad \text{where }\dabs{H^{-1}}_2 \text{ is largest eigenvalue of }H^{-1}
+\ee
+
+By the definition (you check it on wiki), $\dabs{H^{-1}}_2$ is actually the inverse of smallest eigenvalue of $H$. We know that $H$ has eigenvalues
+\be
+-2 + 2\cos \bb{\frac{k\pi}{M}},\quad k= 1,\dots,M-1,
+\ee
+by tridiagonal matrix's eigenvalues. So we pick the smallest, $k=1$, which gives 
+\be
+\abs{-2 + 2\cos \frac{\pi}{M}} = 4\sin^2 \frac{\pi}{2M}.
+\ee
+
+Then take the inverse we have $\dabs{H^{-1}}_2 =\bb{4\sin^2 \frac{\pi}{2M}}^{-1}$. Also, we have the fact that $\dabs{x}_2 \leq \sqrt{M}\dabs{x}_\infty$. Thus,
+\be
+\dabs{e}_2 \leq \dabs{H^{-1}}_2 \dabs{\tilde{e}}_2 = \frac 1{4\sin^2 \frac{\pi}{2M}}\dabs{\tilde{e}}_2 \leq  \frac 1{4\sin^2 \frac{\pi}{2M}}\sqrt{M}\frac 1{240}h^6\dabs{u^{(6)}}_\infty.
+\ee
+
+Furthermore, we have for $M\geq 1$
+\be
+\frac 1{4\sin^2 \frac{\pi}{2M}} \leq \frac 1{4}M^2 \quad\quad \text{which you can check by derivative of }x^2 -\frac 1{\sin^2 \frac{\pi}{2x}}.
+\ee
+
+Thus, 
+\be
+\dabs{e}_2 \leq \frac 14 M^{\frac 52}\sO(h^6)\dabs{u^{(6)}}_\infty = \sO(h^{\frac 72})\dabs{u^{(6)}}_\infty,
+\ee
+as $M = \frac 1h$.
+
+
+\item Calculate all LU factorizations of the matrix
+\be
+A = \bepm
+10 & 6 & -2 & 1\\
+10 & 10 & -5 & 0\\
+-2 & 2 & -2 & 1\\
+1 & 3 & -2 & 3
+\eepm,
+\ee
+where all diagonal elements of $L$ are one. By using one of these factorizations, find all solutions of the equation $Ax = b$ where $b^T = [-2, 0, 2, 1]$.
+
+
+
+Solution. Let $u_1 = \bepm 10 & 6 & -2 & 1 \eepm$, $l_1^T = \bepm 1 & 1 & -\frac 15 & \frac 1{10} \eepm$, then
+\beast
+A_1 = A - l_1u_1 = \bepm
+10 & 6 & -2 & 1\\
+10 & 10 & -5 & 0\\
+-2 & 2 & -2 & 1\\
+1 & 3 & -2 & 3
+\eepm - \bepm 1 \\ 1 \\ -\frac 15 \\ \frac 1{10} \eepm\bepm 10 & 6 & -2 & 1 \eepm = \bepm
+10 & 6 & -2 & 1\\
+10 & 10 & -5 & 0\\
+-2 & 2 & -2 & 1\\
+1 & 3 & -2 & 3
+\eepm - \bepm
+10 & 6 & -2 & 1\\
+10 & 6 & -2 & 1\\
+-2 & -\frac 65 & \frac 25 & -\frac 15\\
+1 & \frac 35 & -\frac 15 & \frac 1{10}
+\eepm = \bepm
+0 & 0 & 0 & 0\\
+0 & 4 & -3 & -1\\
+0 & \frac {16}5 & -\frac {12}5 & \frac 65\\
+0 & \frac {12}5 & -\frac 95 & \frac {29}{10}
+\eepm.
+\eeast
+
+Then $u_2 = \bepm 0 & 4 & -3 & -1 \eepm$, $l_2^T = \bepm 0 & 1 & \frac 45 & \frac 35 \eepm$, then
+\beast
+A_2 = A_1 - l_2u_2 = \bepm
+0 & 0 & 0 & 0\\
+0 & 4 & -3 & -1\\
+0 & \frac {16}5 & -\frac {12}5 & \frac 65\\
+0 & \frac {12}5 & -\frac 95 & \frac {29}{10}
+\eepm - \bepm 0 \\ 1 \\ \frac 45 \\ \frac 35 \eepm \bepm 0 & 4 & -3 & -1 \eepm = \bepm
+0 & 0 & 0 & 0\\
+0 & 4 & -3 & -1\\
+0 & \frac {16}5 & -\frac {12}5 & \frac 65\\
+0 & \frac {12}5 & -\frac 95 & \frac {29}{10}
+\eepm - \bepm
+0 & 0 & 0 & 0\\
+0 & 4 & -3 & -1\\
+0 & \frac {16}5 & -\frac {12}5 & -\frac 45\\
+0 & \frac {12}5 & -\frac 95 & -\frac 35
+\eepm = \bepm
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 0\\
+0 & 0 & 0 & 2 \\
+0 & 0 & 0 & \frac 72
+\eepm.
+\eeast
+
+Thus, $u_3 = \bepm 0 & 0 & 0 & 2 \eepm$, $l_3^T = \bepm 0 & 0 & 1 & k\eepm$. Then
+\be
+A = LU = \bepm
+1 & 0 & 0 & 0\\
+1 & 1 & 0 & 0\\
+-\frac 15 & \frac 45 & 1 & 0 \\
+\frac 1{10} & \frac 35 & k & 1
+\eepm \bepm
+10 & 6 & -2 & 1 \\
+0 & 4 & -3 & -1\\
+0 & 0 & 0 & 2 \\
+0 & 0 & 0 & \frac 72 - 2k
+\eepm
+\ee
+
+Now consider 
+\be
+Ax =  b  \quad \ra\quad \bepm
+10 & 6 & -2 & 1\\
+10 & 10 & -5 & 0\\
+-2 & 2 & -2 & 1\\
+1 & 3 & -2 & 3
+\eepm x = \bepm
+-2\\
+0\\
+2\\ 
+1
+\eepm \quad\ra\quad \bepm
+1 & 0 & 0 & 0\\
+1 & 1 & 0 & 0\\
+-\frac 15 & \frac 45 & 1 & 0 \\
+\frac 1{10} & \frac 35 & k & 1
+\eepm \bepm
+10 & 6 & -2 & 1 \\
+0 & 4 & -3 & -1\\
+0 & 0 & 0 & 2 \\
+0 & 0 & 0 & \frac 72 - 2k
+\eepm x = \bepm
+-2\\
+0\\
+2\\ 
+1
+\eepm 
+\ee
+
+Let $Ux =y$ with $Ly =b$. Thus, we have
+\be
+y = \bepm
+-2\\
+2\\
+0\\
+0
+\eepm \quad\ra\quad \bepm
+10 & 6 & -2 & 1 \\
+0 & 4 & -3 & -1\\
+0 & 0 & 0 & 2 \\
+0 & 0 & 0 & \frac 72 - 2k
+\eepm x = \bepm
+-2\\
+2\\
+0\\
+0
+\eepm \quad\ra\quad x= \bepm
+\frac 12\\
+\frac 12\\
+0\\
+0
+\eepm + \lm \bepm
+-\frac 14\\
+\frac 34\\
+1\\
+0
+\eepm.
+\ee
+%Note that $\det U = 0 \ \ra \ \det A = 0$, thus $A$ has a zero eigenvalue such that $Ax = 0$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item By using column pivoting if necessary to exchange rows of $A$, an LU factorization of a real $n\times n$ matrix $A$ is calculated, where $L$ has ones on its diagonal, and where the moduli of the off-diagonal elements of $L$ do not exceed one. Let $\alpha$ be the largest of the moduli of the elements of $A$. Prove by induction on $i$ that elements of $U$ satisfy the condition $\abs{u_{ij}} \leq 2^{i-1}\alpha$. Then construct $2 \times 2$ and $3 \times 3$ nonzero matrices $A$ that yield $\abs{u_{22}} = 2\alpha$ and $\abs{u_{33}} = 4\alpha$ respectively.
+
+
+
+Solution. We know that $l_{ij} = 0$, $j>i$, $u_{ij} = 0$, $i>j$. By the assumption, $\abs{l_{ij}} \leq 1$, $\forall i,j$ and $l_{ii} =1$, $\forall i$. 
+
+We prove it by induction. Let $P_i$ be the statement $\abs{u_{ij}}\leq 2^{i-1}\alpha$.
+
+If $i=1$, we have $\abs{u_{ij}} =  \leq  2^{i-1}\alpha$. Now assume the statement $P_1,\dots, P_{i-1}$ are true,
+\be
+a_{ij} = \sum^{i}_{k=1} l_{ik} u_{kj} = u_{ij}\underbrace{l_{ii}}_{=1} + \sum^{i-1}_{k=1}l_{ik} u_{kj} = u_{ij}+ \sum^{i-1}_{k=1}l_{ik} u_{kj}
+\ee
+
+Thus,
+\be
+\abs{u_{ij}} = \abs{a_{ij} - \sum^{i-1}_{k=1}l_{ik} u_{kj} } \leq \abs{a_{ij}} + \sum^{i-1}_{k=1}\abs{l_{ik} u_{kj}} \leq \alpha + \sum^{i-1}_{k=1}\abs{u_{kj}} \leq \alpha + \sum^{i-1}_{k=1} 2^{k-1}\alpha = \alpha + \bb{2^{i-1}-1}\alpha = 2^{i-1}\alpha.
+\ee
+
+From the inequality, we know that the equality holds when all elements of $l$ are 1 or -1. So we can construct $2\times 2$ matrix by 
+\be
+L = \bepm
+1 & 0\\
+1 & 1
+\eepm,\quad U = \bepm
+\alpha & \alpha\\
+0 & -2\alpha
+\eepm \quad\ra\quad A = \bepm
+\alpha & \alpha \\
+\alpha & -\alpha
+\eepm.
+\ee
+
+For $3\times 3$ matrix, let
+\be
+A_1 = \bepm
+0 & 0 & 0\\
+0 & 2\alpha & -2\alpha \\
+0 & -2\alpha & 2\alpha 
+\eepm ,\quad \quad u_2 = \bepm
+0 & 2\alpha & -2\alpha
+\eepm,\quad\quad l_2^T = \bepm
+0 & 1 & 1
+\eepm \quad\ra\quad u_{33} = 4\alpha.
+\ee
+
+Thus, we can have 
+\be
+A = \bepm
+\alpha & -\alpha & \alpha \\
+\alpha & \alpha & -\alpha\\
+-\alpha & -\alpha & \alpha
+\eepm \quad\ra\quad 
+L = \bepm
+1 & 0 & 0 \\
+1 & 1 & 0 \\
+-1 & 1 & 1
+\eepm,\quad U = \bepm
+\alpha & -\alpha & \alpha \\
+0 & 2\alpha & -2\alpha \\
+0 & 0 & 4\alpha 
+\eepm .
+\ee
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $A$ be a real $n \times n$ matrix that has the factorization $A = LU$, where $L$ is lower triangular with ones on its diagonal and $U$ is upper triangular. Prove that, for every integer $k \in \{1, 2, \dots , n\}$, the first $k$ rows of $U$ span the same space as the first $k$ rows of $A$. Prove also that the first $k$ columns of $A$ are in the $k$-dimensional subspace that is spanned by the first $k$ columns of $L$. Hence deduce that no LU factorization of the given form exists if we have $\text{rank}H_k < \text{rank}B_k$, where $H_k$ is the leading $k \times k$ submatrix of $A$ and where $B_k$ is the $n \times k$ matrix whose columns are the first $k$ columns of $A$.
+
+
+
+Solution. Denote $a_k$ as $k$th row of $A$ and consider the effect of $i$th column of $L$, $l_i$, $j$th row of $U$, $u_j$. 
+\be
+u_{1i} = A^0_{1i} = a_{1i},\quad u_{2i} = A^1_{2i} = \bb{A^0 - l_1u_1}_{2i} = A^0_{2i} - \bb{l_1u_1}_{2i} = A^0_{2i} - (l_1)_2 (u_1)_i,
+\ee
+\be
+u_{3i} = A^2_{3i} = \bb{A^0 - l_1u_2 - l_2u_2}_{3i} = A^0_{3i} - \bb{l_1}_3\bb{u_1}_{i} - \bb{l_2}_3\bb{u_2}_{i},
+\ee
+
+Thus,
+\be
+u_1 = a_1,\quad u_2 = a_2 - l_{12}u_1,\quad\dots \quad u_k = a_k - \sum^{k-1}_{i=1}l_{ik}u_i
+\ee
+
+So $u_k$ can be expressed as a linear combination of $a_1,\dots,a_k$. Hence the subspace spanned by $u_1,\dots,u_k$ is the same as the one spanned by $a_1,\dots,a_k$. Then similar argument for the matrix columns.
+
+Suppose $A=LU$, $M_k$ is the leading $k\times k$ submatrix of $L$ and $C_k$ is the first $n\times k$ submatrix of $L$. Also, let $N_k$ be the leading $k\times k$ submatrix of $U$. Thus, 
+\be
+H_k = M_k N_k,\quad B_k = C_k N_k.
+\ee
+
+Since the diagonal elements of $L$ are 1, so the submatrix $M_k$ is full-rank. Thus, $\rank H_k = \rank N_k$ (by matrix property). Now suppose $N_k = \bb{n_1|n_2|\dots|n_k}$,
+\be
+\rank(B_k) \leq \min \bra{ \rank C_k, \rank N_k} = \min \bra{k,\rank N_k} \leq \rank N_k = \rank H_k.
+\ee
+
+So if $\text{rank}H_k < \text{rank}B_k$, there is no such LU factorization.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Calculate the Cholesky factorization of the matrix
+\be
+\bepm
+1 & 1 & & & & \\
+1 & 2 & 1 & & & \\
+& 1 & 3 & 1 & & \\
+& & 1 & 4 & 1 & \\
+& & & 1 & 5 & 1 \\
+& & & & 1 & \lm 
+\eepm.
+\ee
+Deduce from the factorization the value of $\lm$ that makes the matrix singular. Also find this value of $\lm$ by seeking the vector in the null-space of the matrix whose first component is one.
+
+
+
+Solution. Let $A = LDL^T$ where $D$ is diagonal matrix. Let $l_1 = (1,1,0,0,0,0)^T$, $d_{11} =1$,
+\be
+A_1 = A_0 - l_1 d_{11} l_1^T = \bepm
+0 & 0 & & & & \\
+0 & 1 & 1 & & & \\
+& 1 & 3 & 1 & & \\
+& & 1 & 4 & 1 & \\
+& & & 1 & 5 & 1 \\
+& & & & 1 & \lm 
+\eepm \quad\ra\quad l_2 = (0,1,1,0,0,0)^T,\ d_{22} = 1\quad\ra\quad A_2 = A_1 - l_2 d_{22} l_2^T = \bepm
+0 & 0 & & & & \\
+0 & 0 & 0 & & & \\
+& 0 & 2 & 1 & & \\
+& & 1 & 4 & 1 & \\
+& & & 1 & 5 & 1 \\
+& & & & 1 & \lm 
+\eepm ,
+\ee
+
+\be
+\quad\ra\quad l_3 = (0,0,1,\frac 12,0,0)^T,\ d_{33} = 2\quad\ra\quad A_3 = A_2 - l_3 d_{33} l_3^T = \bepm
+0 & 0 & & & & \\
+0 & 0 & 0 & & & \\
+& 0 & 0 & 0 & & \\
+& & 0 & \frac 72 & 1 & \\
+& & & 1 & 5 & 1 \\
+& & & & 1 & \lm 
+\eepm,
+\ee
+
+\be
+\quad\ra\quad l_4 = \bb{0,0,0,0,1,\frac 27,0}^T,\ d_{44} = \frac 72\quad\ra\quad A_4 = A_3 - l_4 d_{44} l_4^T = \bepm
+0 & 0 & & & & \\
+0 & 0 & 0 & & & \\
+& 0 & 0 & 0 & & \\
+& & 0 & 0 & 0 & \\
+& & & 0 & \frac{33}7 & 1 \\
+& & & & 1 & \lm 
+\eepm,
+\ee
+
+\be
+\quad\ra\quad l_5 = \bb{0,0,0,0,0,1,\frac 7{33}}^T,\ d_{55} = \frac {33}7\quad\ra\quad A_5 = A_4 - l_5 d_{55} l_5^T = \bepm
+0 & 0 & & & & \\
+0 & 0 & 0 & & & \\
+& 0 & 0 & 0 & & \\
+& & 0 & 0 & 0 & \\
+& & & 0 & 0 & 0 \\
+& & & & 0 & \lm -\frac 7{33}
+\eepm
+\ee
+
+Thus,
+\be
+L = \bepm
+1 &  & & & & \\
+1 & 1 & & & & \\
+& 1 & 1 & & & \\
+& & \frac 12& 1 & & \\
+& & & \frac27 & 1 & \\
+& & & & \frac 7{33} & 1
+\eepm,\quad\quad D = \bepm
+1 &  & & & & \\
+& 1 & & & & \\
+& & 2 & & & \\
+& & & \frac 72 & & \\
+& & & & \frac{33}7 & \\
+& & & & & \lm - \frac 7{33}
+\eepm
+\ee
+which is singular when $\lm = \frac 7{33}$. Now WLOG, let $\bb{1,x_2,x_3,x_4,x_5,x_6} \in \ker A$,
+\be
+\bepm
+1 & 1 & & & & \\
+1 & 2 & 1 & & & \\
+& 1 & 3 & 1 & & \\
+& & 1 & 4 & 1 & \\
+& & & 1 & 5 & 1 \\
+& & & & 1 & \lm 
+\eepm\bepm
+1\\
+x_2\\
+x_3\\
+x_4\\
+x_5\\
+x_6
+\eepm = 0 \quad\ra\quad x_2 = -1,\ x_3 = 1,\ x_4 = -2,\ x_5 = 7,\ x_6 = -33.
+\ee
+
+Thus, $1\cdot x_5 + \lm \cdot x_6 = 0 \quad\ra\quad 7 - 33\lm = 0\quad\ra\quad \lm = \frac 7{33}$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $A$ be an $n \times n$ nonsingular band matrix that satisfies the condition $a_{ij} = 0$ if $\abs{i - j} > r$, where $r$ is small, and let Gaussian elimination \emph{with column pivoting} be used to solve $Ax = b$. Identify all the coefficients of the intermediate equations that can become nonzero. Hence deduce that the total number of additions and multiplications of the complete calculation can be bounded by a constant multiple of $nr^2$.
+
+
+
+Solution. We have 
+\be
+A = \bepm
+a_{11} & a_{12} & \dots & a_{1,r+1} & 0 & \dots & & \\
+a_{21} & a_{22} & \dots & a_{2,r+1} & a_{2,r+2}& 0 & & \\
+\vdots & \vdots & & & & \ddots & 0 & & & \\
+a_{r+1,1} & a_{r+1,2} & & & & & \ddots & 0 & & \\
+0 & a_{r+2,2} & & & & & & \ddots & 0 & \\
+& 0 & \ddots & & & & & & \ddots & 0 \\
+& & 0 & \ddots & & & & & & a_{n-r,n} \\
+& & & 0 & \ddots& & & & & \vdots \\
+& & & & 0 & \ddots& & &  & a_{n-1,n} \\
+& & & & & 0 & a_{n,n-r} & \dots & a_{n,n-1} & a_{nn}
+\eepm
+\ee
+
+Each time, we choose a pivot and divide the equation by the leading coefficient, that's $r$ operations. Then we subtract all other equations which have the non-zero leading term, this makes a multiple of the pivoted equation first then an addition, thus we have $(r+r)r = 2r^2$ operations. We repeat these steps $n$ times as the matrix has $n$ columns, thus the upper bound of operations is $2nr^2$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \label{ques:gram-schmidt} Let $a_1$, $a_2$ and $a_3$ denote the columns of the matrix
+\be
+A = \bepm
+6 & 6 & 1\\
+3 & 6 & 1\\
+2 & 1 & 1
+\eepm.
+\ee
+Apply the Gram-Schmidt procedure to $A$, which generates orthonormal vectors $q_1$, $q_2$ and $q_3$. Note that this calculation provides real numbers $r_{jk}$ such that $a_k = \sum^k_{j=1} r_{jk} q_j$, $k = 1, 2, 3$. Hence express $A$ as the product $A = QR$, where $Q$ and $R$ are orthogonal and upper-triangular matrices respectively.
+
+
+
+Solution. We have $A = (a_1|a_2|a_3)$ and $b_1 = a_1= (6,3,2)^T$, thus $R_{11} = \sqrt{6^2 + 3^2 + 2^2} = 7$. Thus
+\be
+q_1 = a_1/\dabs{a_1} = \bepm
+\frac 67\\
+\frac 37\\
+\frac 27
+\eepm\quad\ra\quad b_2= a_2 - \inner{q_1}{a_2}q_1 = \bepm 6\\ 6\\ 1\eepm - \bb{\frac 67 6 + \frac 37 6 + \frac 27 1}\bepm \frac 67\\ \frac 37\\ \frac 27 \eepm = \bepm -\frac 67\\ \frac {18}7\\ -\frac 97 \eepm
+\ee
+Thus, we have $R_{12} = \inner{q_1}{a_2} =\frac 67 6 + \frac 37 6 + \frac 27 = 8 $ and 
+\be
+R_{22} = \dabs{b} = 3 \quad\ra\quad q_2 = b_2/\dabs{b_2} = \bepm -\frac 27\\ \frac {6}7\\ -\frac 37 \eepm.
+\ee
+
+Furthermore, $R_{13} = \inner{q_1}{a_3} = \frac 67 + \frac 37 + \frac 27  = \frac {11}7$, $R_{23} = \inner{q_2}{a_3} = -\frac 27 + \frac 67 - \frac 37  = \frac 17$
+\beast
+b_3 & = & a_3 - \inner{q_1}{a_3}q_1 - \inner{q_2}{a_3}q_2 = \bepm 6\\ 6\\ 1\eepm - \bb{\frac 67 + \frac 37 + \frac 27}\bepm \frac 67\\ \frac 37\\ \frac 27 \eepm - \bb{-\frac 27 + \frac 67 - \frac 37}\bepm -\frac 27\\ \frac 67\\ -\frac 37 \eepm  \\
+& = & \bepm 6\\ 6\\ 1\eepm - \frac {11}7\bepm \frac 67\\ \frac 37\\ \frac 27 \eepm - \frac 17\bepm -\frac 27\\ \frac 67\\ -\frac 37 \eepm  =  \bepm -\frac {15}{49}\\ \frac {10}{49}\\ \frac {30}{49} \eepm \quad\ra\quad R_{33} = \dabs{b_3} = \frac 57,\quad q_3 = b_3/\dabs{b_3} = \bepm
+-\frac 37\\ \frac 27 \\ \frac 67\eepm.
+\eeast
+
+Hence, we have
+\be
+Q = \bepm
+\frac 67 & -\frac 27 & -\frac 37 \\
+\frac 37 & \frac 67 & \frac 27\\
+\frac 27 & -\frac 37 & \frac 67 
+\eepm,\quad\quad R = \bepm
+7 & 8 & \frac {11}7\\
+0 & 3 & \frac 17\\
+0 & 0 & \frac 57
+\eepm
+\ee
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Calculate the QR factorization of the matrix of Exercise \ref{ques:gram-schmidt} by using three Givens rotations. Explain why the initial rotation can be any one of the three types $\Omega^{[1,2]}$, $\Omega^{[1,3]}$ and $\Omega^{[2,3]}$. Prove that the final factorization is independent of this initial choice in exact arithmetic, provided that we satisfy the condition that in each row of $R$ the leading nonzero element is positive.
+
+
+
+Solution. First, we want to remove $A_{21}$, thus
+\be
+A_1 = \Omega_1^{[1,2]} A_0 = \bepm
+\cos\theta & \sin \theta & \\
+-\sin \theta & \cos\theta & \\
+& & 1
+\eepm \bepm
+6 & 6 & 1\\
+3 & 6 & 1\\
+2 & 1 & 1
+\eepm\quad\ra\quad -6\sin \theta + 3\cos\theta = 0 \quad\ra\quad \cos \theta = \frac 2{\sqrt{5}},\ \sin \theta = \frac 1{\sqrt{5}}
+\ee
+
+Thus, 
+\be
+A_1 = \bepm
+\frac 2{\sqrt{5}} & \frac 1{\sqrt{5}} & \\
+-\frac 1{\sqrt{5}}& \frac 2{\sqrt{5}} & \\
+& & 1
+\eepm \bepm
+6 & 6 & 1\\
+3 & 6 & 1\\
+2 & 1 & 1
+\eepm = \bepm
+\frac {15}{\sqrt{5}} & \frac {18}{\sqrt{5}} & \frac 3{\sqrt{5}}\\
+0 & \frac 6{\sqrt{5}} & \frac 1{\sqrt{5}}\\
+2 & 1 & 1
+\eepm
+\ee
+
+Second, we want to remove $A_{31}$,
+\be
+A_2 = \Omega_1^{[1,3]} A_1 = \bepm
+\cos\theta &  & \sin \theta \\
+& 1 &\\
+-\sin \theta & & \cos\theta & 
+\eepm \bepm
+\frac {15}{\sqrt{5}} & \frac {18}{\sqrt{5}} & \frac 3{\sqrt{5}}\\
+0 & \frac 6{\sqrt{5}} & \frac 1{\sqrt{5}}\\
+2 & 1 & 1
+\eepm\quad\ra\quad -3\sqrt{5}\sin \theta + 2\cos\theta = 0 \quad\ra\quad \cos \theta = \frac {3\sqrt{5}}7,\ \sin \theta = \frac 27
+\ee
+
+Thus, 
+\be
+A_2 = \bepm
+\frac {3\sqrt{5}}7 & & \frac 27 \\
+& 1 & \\
+-\frac 27 &  & \frac {3\sqrt{5}}7 
+\eepm \bepm
+\frac {15}{\sqrt{5}} & \frac {18}{\sqrt{5}} & \frac 3{\sqrt{5}}\\
+0 & \frac 6{\sqrt{5}} & \frac 1{\sqrt{5}}\\
+2 & 1 & 1
+\eepm = \bepm
+7 & 8 & \frac {11}7\\
+0 & \frac 6{\sqrt{5}} & \frac 1{\sqrt{5}}\\
+0 & -\frac 3{\sqrt{5}} & \frac 9{7\sqrt{5}}
+\eepm
+\ee
+
+Then, remove $A_{32}$, 
+\be
+A_3 = \Omega_1^{[2,3]} A_2 = \bepm
+1 & & \\
+& \cos\theta & \sin \theta \\
+& -\sin \theta & \cos\theta & 
+\eepm \bepm
+7 & 8 & \frac {11}7\\
+0 & \frac 6{\sqrt{5}} & \frac 1{\sqrt{5}}\\
+0 & -\frac 3{\sqrt{5}} & \frac 9{7\sqrt{5}}
+\eepm \quad\ra\quad -6\sin \theta -3\cos\theta = 0 \quad\ra\quad \cos \theta = \frac 2{\sqrt{5}},\ \sin \theta = -\frac 1{\sqrt{5}}
+\ee
+
+So, 
+\be
+A_3 = \bepm
+1 & &\\
+& \frac 2{\sqrt{5}} & -\frac 1{\sqrt{5}}\\
+& \frac 1{\sqrt{5}}& \frac 2{\sqrt{5}}
+\eepm \bepm
+7 & 8 & \frac {11}7\\
+0 & \frac 6{\sqrt{5}} & \frac 1{\sqrt{5}}\\
+0 & -\frac 3{\sqrt{5}} & \frac 9{7\sqrt{5}}
+\eepm = \bepm
+7 & 8 & \frac {11}7\\
+0 & 3 & \frac 17\\
+0 & 0 & \frac 57
+\eepm,
+\ee
+as required. The initial can be any one of these rotation matrix because we see the algorithm is based on the fact that rotation in $x-y$ plane does not change $z$ component etc, so any order of $\Omega_1, \Omega_2,\Omega_3$ is fine.
+
+Now prove that the $QR$ factorization is unique.
+
+\emph{Approach 1}. Recall that rotation is isometry, so whatever order of $\Omega_1, \Omega_2,\Omega_3$ is, we treat the region bounded by the three vector lines as a triangle, then any combination of $\Omega_1, \Omega_2,\Omega_3$ takes this triangle to another one and they are congruent.
+
+If we restrict that $R$ has positive leading elements. Then we see the final triangle must have one vertex at positive $x$-direction, and this vertex must be induced by $\bepm 6 & 3 & 2\eepm^T$. Since isometry preserves distance, it has to be $\bepm 7 & 0&  0 \eepm^T$ and similarly, the second vertex has only one choice, and so is the third.
+
+\emph{Approach 2}. Assume that $A=QR = \wh{Q}\wh{R}$. Then we have
+\be
+\wh{Q}^{-1}Q = \wh{R}R^{-1} = B.
+\ee
+
+We know that the orthogonal matrices form a group, thus the upper triangular matrices with positive leading elements also form a group. However, we know that $B = \wh{R}R^{-1}$ is actually a diagonal matrix with all elements positive. Also, $B^TB = I$, so we have $B=I$ and thus
+\be
+Q = \wh{Q},\quad R = \wh{R}.
+\ee
+
+\emph{Approach 3}. We can use the fact that $A^TA = R_1^TQ^TQ R_1 = R_1^TR_1 = R_2^T R_2$.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $A$ be an $n \times n$ matrix, and for $i = 1, 2, \dots , n$ let $k(i)$ be the number of zero elements in the $i$-th row of $A$ that come before all nonzero elements in this row and before the diagonal element $a_{ii}$. Show that the QR factorization of $A$ can be calculated by using at most $\frac 12 n(n - 1) -\sum k(i)$ Givens rotations. Hence show that, if $A$ is an upper triangular matrix except that there are nonzero elements in its first column, i.e. $a_{ij} = 0$ when $2 \leq j < i \leq n$, then its QR factorization can be calculated by using only $2n - 3$ Givens rotations. [Hint: Your should find the order of the first $(n-2)$ rotations that brings your matrix to the form considered above.]
+
+
+
+Solution. Consider $n\times n$ matrix $A$, we want to remove all the non-zero elements under the diagonal. Thus the total number of the non-zero elements is 
+\be
+1+ 2 +\dots (n-1) - \sum k(i) = \frac {n(n-1)}2 - \sum k(i),
+\ee
+which the number of rotations needed.
+
+Now consider the $n\times n$ matrix $A$ by the assumption. Let $\Omega^{[n-1,n]}$ remove $a_{n1}$ and add a non-zero elements $a_{n,n-1}$. Then take $\Omega^{[n-2,n-1]}$ remove $a_{n-1,1}$ and add a non-zero elements $a_{n-1,n-2}$, $\dots$, and $\Omega^{[2,3]}$ remove $a_{31}$ and add a non-zero elements $a_{3,2}$ with $n-2$ steps (from $n$ to 3).
+\be
+A = \bepm
+a_{11} & a_{21} & a_{13} &\dots & & \dots \\
+a_{21} & a_{22} & a_{23} & \dots  & & \dots \\
+a_{31} & 0 & a_{33} & \\
+a_{41} & 0 & 0 & a_{44}\\
+\vdots & \vdots & & \ddots & \\
+a_{n1} & 0 & \dots & \dots & 0 & a_{nn}
+\eepm \quad\ra\quad A' = \bepm
+a_{11} & a_{21} & a_{13} &\dots & & \dots \\
+a_{21} & a_{22} & a_{23} & \dots & & \dots \\
+0 & a_{32} & a_{33} & \\
+0 & & a_{43} & a_{44}\\
+\vdots & \vdots & & \ddots & \\
+0 & 0 & \dots & \dots & a_{n,n-1} & a_{nn}
+\eepm 
+\ee
+
+Thus, use the previous statement, it needs 
+\be
+\frac {n(n-1)}2 - \sum k(i) = \frac {n(n-1)}2 - \bb{1+2+\dots + n-2} = \frac {n(n-1)}2 - \frac{(n-1)(n-2)}2 = n-1
+\ee
+rotations to form an upper triangular matrix. Thus, totally, we need. $n-2 + n-1 = 2n-3$ rotations.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Calculate the QR factorization of the matrix of Exercise \ref{ques:gram-schmidt} by using two Householder reflections. Show that, if this technique is used to generate the QR factorization of a general $n \times n$ matrix $A$, then the computation can be organised so that the total number of additions and multiplications is bounded above by a constant multiple of $n^3$.
+
+
+
+Solution. Let 
+\be
+u_1 = \bepm
+6 - \dabs{a_1}\\
+3\\
+2
+\eepm = \bepm
+-1\\
+3\\
+2
+\eepm \quad\ra\quad \dabs{u_1} = \sqrt{1^2 + 3^2 + 2^2} = \sqrt{14}.
+\ee
+
+Thus,
+\beast
+A_1 = \bb{I - 2\frac{u_1 u_1^T}{\dabs{u_1}^2}}A = \bb{\bepm 1 & & \\ & 1 & \\ & & 1 \eepm - \frac 17 \bepm
+1 & -3 & -2\\
+-3 & 9 & 6\\
+-2 & 6 & 4
+\eepm }\bepm
+6 & 6 & 1\\
+3 & 6 & 1\\
+2 & 1 & 1
+\eepm = \frac 17\bepm
+6 & 3 & 2\\
+3 & -2 & -6\\
+2 & -6 & 3
+\eepm \bepm
+6 & 6 & 1\\
+3 & 6 & 1\\
+2 & 1 & 1
+\eepm = \bepm
+7 & 8 & \frac {11}7\\
+0 & 0 & -\frac 57\\
+0 & -3 & -\frac 17
+\eepm.
+\eeast
+
+Thus let
+\be
+u_2 = \bepm
+0\\
+0 - \dabs{a_2'}\\
+-3
+\eepm = \bepm
+0\\
+-3\\
+-3
+\eepm \quad\ra\quad \dabs{u_2} = \sqrt{0^2 + 3^2 + 3^2} = 3\sqrt{2}.
+\ee
+
+Then,
+\beast
+A_2 & = & \bb{I - 2\frac{u_2 u_2^T}{\dabs{u_2}^2}}A_1 = \bb{\bepm 1 & & \\ & 1 & \\ & & 1 \eepm - \frac 19 \bepm
+0 & 0 & 0\\
+0 & 9 & 9\\
+0 & 9 & 9
+\eepm }\bepm
+7 & 8 & \frac {11}7\\
+0 & 0 & -\frac 57\\
+0 & -3 & -\frac 17
+\eepm  =\bepm
+1 & 0 & 0\\
+0 & 0 & -1\\
+0 & -1 & 0
+\eepm \bepm
+7 & 8 & \frac {11}7\\
+0 & 0 & -\frac 57\\
+0 & -3 & -\frac 17
+\eepm = \bepm
+7 & 8 & \frac {11}7\\
+0 & 3 & \frac 17\\
+0 & 0 & \frac 57
+\eepm.
+\eeast
+
+Furthermore,
+\be
+Q^T = Q^{-1} = \Omega_2 \Omega_1 =  \bb{I - 2\frac{u_2 u_2^T}{\dabs{u_2}^2}}\bb{I - 2\frac{u_1 u_1^T}{\dabs{u_1}^2}} = \bepm
+1 & 0 & 0\\
+0 & 0 & -1\\
+0 & -1 & 0
+\eepm \frac 17\bepm
+6 & 3 & 2\\
+3 & -2 & -6\\
+2 & -6 & 3
+\eepm = \frac 17\bepm
+6 & 3 & 2\\
+-2 & 6 & -3\\
+-3 & 2 & 6
+\eepm 
+\ee
+
+Then
+\be
+Q = \frac 17\bepm
+6 & -2 & -3\\
+3 & 6 & 2\\
+2 & -3 & 6
+\eepm.
+\ee
+
+Now consider Household reflection, the first stage
+\be
+u_1 = (a_1)_1 \pm \dabs{a_1},\quad A_1 = A - 2\frac{u_1 u_1^T}{\dabs{u_1}^2}A
+\ee
+
+It needs $n$ multiples, $(n-1)$ additions and one square root to get $\dabs{a_1}$ and then it takes one more operation to get $u_1$. Thus, this step takes $n+ (n-1) + 1 + 1 = 2n+ 1$ operations.
+
+$y = u_1^T A$, each entry takes $n$ multiples and $(n-1)$ additions, totally $n(2n-1)$ operations.
+
+Then $\dabs{u_1}^2$ takes $n$ multiples and $n-1$ additions and $\frac 2{\dabs{u_1}^2}$ takes one, totally, $2n$ operations.
+
+Multiply each entry of $u_1$ by $\frac 2{\dabs{u_1}^2}$ to get $x$, $n$ operations
+
+Moreover, $A_1 = A - xy$ takes $n^2$ multiples and $n^2$ subtracts, thus $2n^2$ operations. 
+
+Hence, for the first stage the operations need are
+\be
+(2n+1) + n(2n-1) + 2n + n + 2n^2 = 4n^2 + 4n+1 = (2n+1)^2 .
+\ee
+
+Since $A_1$ is $(n-1)\times (n-1)$, $A_{n-2}$ is $2\times 2$ and it is the last stage. So the total number of operations is
+\be
+\sum^n_{i=2} (2i+1)^2 = \sum^{n-1}_{i=1} \bb{4i^2 + 12 i + 9} = \frac 46(n-1)n(2n-1) + \frac{12}2 n(n-1) + 9(n-1) = \frac 13(n-1)\bb{4n^2 + 16n + 27} \sim \frac 43n^3.
+\ee
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let
+\be
+A = \bepm
+3 & 4 & 7 & -2 \\
+5 & 4 & 9 & 3 \\
+1 & -1 & 0 & 3 \\
+1 & -1 & 0 & 0
+\eepm, 
+\quad\quad 
+b = \bepm
+11 \\
+29 \\
+16 \\
+10 \\
+\eepm.
+\ee
+Calculate the QR factorization of $A$ by using Householder reflections. In this case $A$ is singular and you should choose $Q$ so that the last row of $R$ is zero. Hence identify all the least squares solutions of the inconsistent system $Ax = b$, where we require $x$ to minimize $\dabs{Ax-b}_2$. Verify that all the solutions give the same vector of residuals $Ax-b$, and that this vector is orthogonal to the columns of $A$. There is no need to calculate the elements of $Q$ explicitly.
+
+
+
+Solution. $\dabs{a_1} = 6$. Let
+\be
+u_1 = \bepm
+3-6\\
+5\\
+1\\
+1 
+\eepm = \bepm
+-3\\
+5\\
+1\\
+1 
+\eepm \quad \ra\quad \dabs{u_1} = 6,
+\ee
+
+\beast
+A_1 & = & \bb{I - 2\frac{u_1 u_1^T}{\dabs{u_1}^2}}A = \bb{\bepm 1 & & & \\ & 1 & & \\ & & 1 & \\ & & & 1 \eepm - \frac 1{18} \bepm
+9 & -15 & -3 & -3\\
+-15 & 25 & 5 & 5\\
+-3 & 5 & 1 & 1\\
+-3 & 5 & 1 & 1
+\eepm }\bepm
+3 & 4 & 7 & -2 \\
+5 & 4 & 9 & 3 \\
+1 & -1 & 0 & 3 \\
+1 & -1 & 0 & 0
+\eepm\\
+& = & \frac 1{18}\bepm
+9 & 15 & 3 & 3 \\
+15 & -7 & -5 & -5 \\
+3 & -5 & 17 & -1 \\
+3 & -5 & -1 & 17
+\eepm  \bepm
+3 & 4 & 7 & -2 \\
+5 & 4 & 9 & 3 \\
+1 & -1 & 0 & 3 \\
+1 & -1 & 0 & 0
+\eepm = \bepm
+6 & 5 & 11 & 2 \\
+0 & \frac 73 & \frac 73 & -\frac{11}3 \\
+0 & -\frac 43 & -\frac 43 & \frac 53 \\
+0 & -\frac 43 & -\frac 43 & -\frac 43
+\eepm .
+\eeast
+
+$\dabs{a_2}' = 3$, thus $u_2 = \bb{0, \frac 73-3, -\frac 43,-\frac 43} = \bb{0, -\frac 23, -\frac 43,-\frac 43}$, $\dabs{u_2} = 2$,
+\beast
+A_2 & = & \bb{I - 2\frac{u_2 u_2^T}{\dabs{u_2}^2}}A_1 = \bb{\bepm 1 & & & \\ & 1 & & \\ & & 1 & \\ & & & 1 \eepm - \frac 12\bepm
+0 & 0 & 0 & 0\\
+0 & \frac 49 & \frac 89 & \frac 89\\
+0 & \frac 89 & \frac {16}9 & \frac {16}9\\
+0 & \frac 89 & \frac {16}9 & \frac {16}9
+\eepm }\bepm
+6 & 5 & 11 & 2 \\
+0 & \frac 73 & \frac 73 & -\frac{11}3 \\
+0 & -\frac 43 & -\frac 43 & \frac 53 \\
+0 & -\frac 43 & -\frac 43 & -\frac 43
+\eepm \\
+& = & \bepm
+1 & 0 & 0 & 0 \\
+0 & \frac 79 & -\frac 49 & -\frac 49 \\
+0 & -\frac 49 & \frac 19 & -\frac {8}9 \\
+0 & -\frac 49 & -\frac {8}9 & \frac 19
+\eepm  \bepm
+6 & 5 & 11 & 2 \\
+0 & \frac 73 & \frac 73 & -\frac{11}3 \\
+0 & -\frac 43 & -\frac 43 & \frac 53 \\
+0 & -\frac 43 & -\frac 43 & -\frac 43
+\eepm  = \bepm
+6 & 5 & 11 & 2 \\
+0 & 3 & 3 & -3 \\
+0 & -0 & 0 & 3 \\
+0 & 0 & 0 & 0
+\eepm .
+\eeast
+
+Furthermore,
+\beast
+Q^T & =&  Q^{-1} = \Omega_2 \Omega_1 =  \bb{I - 2\frac{u_2 u_2^T}{\dabs{u_2}^2}}\bb{I - 2\frac{u_1 u_1^T}{\dabs{u_1}^2}} \\
+& = & \bepm
+1 & 0 & 0 & 0 \\
+0 & \frac 79 & -\frac 49 & -\frac 49 \\
+0 & -\frac 49 & \frac 19 & -\frac {8}9 \\
+0 & -\frac 49 & -\frac {8}9 & \frac 19
+\eepm \frac 1{18}\bepm
+9 & 15 & 3 & 3 \\
+15 & -7 & -5 & -5 \\
+3 & -5 & 17 & -1 \\
+3 & -5 & -1 & 17
+\eepm  = \bepm
+\frac 12 & \frac 56 & \frac 16 & \frac 16 \\
+\frac 12 & -\frac 1{18} & -\frac {11}{18} & -\frac {11}{18} \\
+-\frac 12 & \frac 7{18} & \frac 5{18} & -\frac {13}{18} \\
+-\frac 12 & \frac 7{18} & -\frac {13}{18} & \frac 5{18}
+\eepm
+\eeast
+
+We know that
+\be
+\dabs{Ax-b}_2 = \dabs{QRx - QQ^T b}_2 = \dabs{Q\bb{Rx - Q^T b}}_2.
+\ee
+
+Thus, we have let 
+\be
+Rx - Q^T b = 0 \quad \ra\quad Rx = Q^Tb \quad\ra\quad \bepm
+6 & 5 & 11 & 2 \\
+0 & 3 & 3 & -3 \\
+0 & -0 & 0 & 3 \\
+0 & 0 & 0 & 0
+\eepm \bepm
+x_1\\
+x_2\\
+x_3\\
+x_4
+\eepm = \bepm
+\frac 12 & \frac 56 & \frac 16 & \frac 16 \\
+\frac 12 & -\frac 1{18} & -\frac {11}{18} & -\frac {11}{18} \\
+-\frac 12 & \frac 7{18} & \frac 5{18} & -\frac {13}{18} \\
+-\frac 12 & \frac 7{18} & -\frac {13}{18} & \frac 5{18}
+\eepm\bepm
+11 \\
+29 \\
+16 \\
+10 \\
+\eepm = \bepm
+34 \\
+-12 \\
+3 \\
+-3 \\
+\eepm
+\ee
+
+It is easy to have the solutions
+\be
+x = \bepm
+\frac {47}6\\
+-3\\
+0\\
+1
+\eepm + \lm \bepm
+-1\\
+-1\\
+1\\
+0
+\eepm.
+\ee
+
+Thus,
+\be
+Ax- b = \bepm
+3 & 4 & 7 & -2 \\
+5 & 4 & 9 & 3 \\
+1 & -1 & 0 & 3 \\
+1 & -1 & 0 & 0
+\eepm \bb{\bepm
+\frac {47}6\\
+-3\\
+0\\
+1
+\eepm + \lm \bepm
+-1\\
+-1\\
+1\\
+0
+\eepm}- \bepm
+11 \\
+29 \\
+16 \\
+10 \\
+\eepm = \bepm
+3 & 4 & 7 & -2 \\
+5 & 4 & 9 & 3 \\
+1 & -1 & 0 & 3 \\
+1 & -1 & 0 & 0
+\eepm \bepm
+\frac {47}6\\
+-3\\
+0\\
+1
+\eepm  - \bepm
+11 \\
+29 \\
+16 \\
+10 \\
+\eepm = \bepm
+-\frac 32 \\
+\frac 76 \\
+-\frac {13}6 \\
+\frac 56
+\eepm.
+\ee
+
+Then we can check that
+\be
+ (Ax-b)^TA = \bepm
+-\frac 32 & \frac 76 & -\frac {13}6 & \frac 56
+\eepm \bepm
+3 & 4 & 7 & -2 \\
+5 & 4 & 9 & 3 \\
+1 & -1 & 0 & 3 \\
+1 & -1 & 0 & 0
+\eepm  = \bepm 0 & 0 & 0 & 0 \eepm
+\ee
+which implies that $Ax-b$ is orthogonal to all columns of $A$. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\een
+
+

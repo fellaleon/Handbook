@@ -1,0 +1,2901 @@
+
+\chapter{Brownian Motion}
+
+%\subsection{Wiener's theorem}
+
+{\bf from Perla}
+
+Remark 6.5. The proof above gives that the Brownian paths are a.s. $\alpha$-H\"older continuous for all $\alpha < 1/2$. However, a.s. there exists no interval $[a, b]$ with $a < b$ such that $B$ is H\"older continuous with exponent $\alpha \geq 1/2$ on $[a, b]$. See example sheet for the last fact.
+
+%%%%%%%%%%%%%%%%%%
+
+\subsection{Continuity and H\"older continuity of Brownian paths}
+
+In the last section we gave a construction of Brownian motion which directly yields a random process satisfying the three properties defining a a Brownian motion, and which was at the same time continuous. In fact, and that is the reason why continuity is part of Definition \ref{def:brownian_motion_d}, the next theorem will imply that any process satisfying (i), (ii) and (iii) can be slightly modified so that its trajectories are a.s continuous. The result is in fact much more general than that. As a consequence, we establish stronger regularity properties for Brownian motion than mere continuity. we prove that the path is almost surely H\"older with exponent $1/2 - \ve$ for all $\ve > 0$. To start with, we need to introduce the concept of version (modification) and indistinguishable versions.
+
+From now on we will consider exclusively a continuous modification of Brownian motion, which is unique up to indistinguishability. As a corollary to Kolmogorov's criterion, we obtain the aforementioned result on the H\"older properties of Brownian motion.
+
+\begin{corollary}
+Let $(B_t, t \geq 0)$ be a standard Brownian motion in dimension 1. Almost surely, $B$ is H\"older-continuous of order $\alpha$ for any $0 < \alpha < \infty/2$. More precisely, with probability 1, for
+\be
+\sup_{n\leq t,s\leq n+1} \frac{\abs{B_t - B_s}}{\abs{t - s}^\alpha} < \infty.
+\ee
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+Let $s \leq t \in D$, and notice that for every $p > 0$, since $B_t - B_s$ has the same law as $\sqrt{(t - s)N}$, (where $N$ is a standard Gaussian random variable), we have $\E(\abs{B_t - B_s}^p) \leq M\abs{t-s}^{1+\ve}$ with $\ve = p/2-1$ and $M = \E(\abs{N}^p) < \infty$. For $p > 2$, $\ve > 0$ and thus $X$ is H\"older of order $\alpha$ for $\alpha < \ve/p = 1/2 - 1/p$. Since $p > 2$ is arbitrary, then $B$ is $\alpha$-H\"older for any $\alpha < \infty/2$, almost surely.
+\end{proof}
+
+Notice that the above corollary does not say anything about higher-order H\"older continuity. all we know is that the path is a.s. H\"older of order $\alpha < \infty/2$. The next result tells us that this is, in some sense, sharp. 
+
+\begin{theorem}
+Let $B$ be a continuous modification of Brownian motion. Let $\gamma > 1/2$. Then it holds:
+\be
+\pro\bb{\forall t \geq 0:\limsup_{h\to 0^+} \frac{\abs{B_{t+h} - B_t}}{h^\gamma} = +\infty} = 1
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+We first observe that
+\beast
+\bra{\exists t \geq 0: \limsup_{h\to 0^+} \frac{\abs{B_{t+h} - B_t}}{h^\gamma}  < \infty} \subseteq \bigcup^\infty_{p=1}\bigcup^\infty_{k=1} \bigcup^\infty_{m=1} \bra{\exists t \in [0,m]: j\abs{B_{t+h} - B_{t}} \leq ph^\gamma , \forall h^\gamma \in (0, 1/k)}.
+\eeast
+
+Therefore, it suffices to show that
+\be
+\pro\bb{\exists t \in [0,m]: \abs{B_{t+h} - B_t} \leq ph^\gamma,\forall h \in (0, \delta)} = 0
+\ee
+for all $p \geq 1$, $m \geq 1$, $\delta > 0$. For $n \geq 1$, $1 \leq i \leq mn - 1$, define:
+\be
+A_{i,n} = \bra{\exists s \in \bsb{\frac in,\frac{i + 1}n} :\abs{B_{s+h} - B_s} \leq ph^\gamma, \forall h \in (0, \delta)}.
+\ee
+It suffices to show:
+\be
+\lim_{n\to \infty} \sum^{mn-1}_{i=0} \pro(A_{i,n}) = 0 
+\ee
+
+Fix a large constant $K > 0$ to be chosen suitably later. We wish to exploit the fact that on the event $A_{i,n}$ many increments must be small. The trick is to be able to fix in advance the times at which these increments will be too small. More precisely, on $A_{i,n}$, as long as $n \geq (K + 1)/\delta$, for all $1 \leq j \leq K$.
+\be
+0 \leq \frac{i + j}n - s \leq \frac{K + 1}n \leq \delta
+\ee
+where $s$ is as in the definition of $A_{i,n}$. Thus, taking $h = (i + j)/n - s$, on $A_{i,n}$.
+\be
+\abs{B_{\frac{i+j}n} - B_s} \leq p\bb{\frac{i + j}n - s)}^\gamma \leq p\bb{\frac{K + 1}n}^\gamma.
+\ee
+
+If $2 \leq j \leq K$, by the triangular inequality:
+\be
+\abs{B_{\frac{i+j}n} - B_{\frac{i+j-1}n} }\leq 2p\bb{\frac{K + 1}n}^\gamma.
+\ee
+
+Therefore, there exists $C > 0$ such that for all $n \geq (K + 1)/\delta$,
+\beast
+\pro(A_{i,n}) & \leq & \pro\bb{\bigcap^K_{j=2} \bra{\abs{B_{\frac{i+j}n} - B_{\frac{i+j-1}n} } \leq 2p\bb{\frac{K + 1}n}^\gamma}} \leq \prod^K_{j=2} \pro\bb{\abs{\sN (0, 1/n)} \leq 2p\bb{\frac{K + 1}n}^\gamma} \\
+& \leq & \bb{\pro\bb{\abs{\sN (0, 1)} \leq 2p\bb{\frac {K + 1}n}^\gamma n^{1/2}}}^{K-1} \leq \bb{2p\bb{\frac{K + 1}n}^\gamma n^{1/2}}^{K-1} = \frac C{n^{(\gamma - 1/2)(K-1)}}.
+\eeast
+
+It follows that for all $n \geq (K + 1)/\delta$.
+\be
+\sum^{mn-1}_{i=0} \pro(A_{i,n}) \leq \frac{Cm}{n^{(\gamma-1/2)(K-1)-1}}
+\ee
+
+Thus if $K$ is large enough that $(\gamma - 1/2)(K - 1) > 1$, the right-hand side tends to 0 for all $n \geq n_0 := \ceil{(K + 1)/\delta} + 1$. This proves the required result, and, as a consequence, Theorem \ref{thm:kolmogorov_continuity_criterion}.
+\end{proof}
+
+As a corollary to the last result, we obtain the celebrated Paley-Wiener-Zygmund theorem.
+
+\begin{corollary}
+Almost surely, $t \mapsto B_t$ is nowhere differentiable.
+\end{corollary}
+
+\subsection{Basic properties}
+
+%We now state some fundamental results, which are often referred to as the scaling properties of Brownian motion, or scale-invariance of Brownian motion. They are easy to prove and are left as an exercise.
+
+%We will use this easy lemma, which is an important property worth remembering:
+
+%\begin{proposition}\label{pro:brownian_motion_limit_value}
+%\ben
+%\item [(i)] For $d = 1$ and $t \geq 0$, let $S_t = \sup_{0\leq s\leq t} B_s$ and $I_t = \inf_{0\leq s\leq t} B_s$ (these are random variables because $B$ is continuous). Then almost surely, for every $\ve > 0$, one has 
+%\be
+%S_\ve > 0 \quad\text{and}\quad I_\ve < 0
+%\ee
+
+%In particular, a.s. there exists a zero of $B$ in any interval of the form $(0, \ve)$, $\ve > 0$.
+
+%\item [(ii)] A.s.,
+%\be
+%\sup_{t\geq 0} B_t = -\inf_{t\geq0} B_t = +\infty
+%\ee
+
+%\item [(iii)] Let $C$ be an open cone in $\R^d$ with non-empty interior and origin at 0 (i.e., a set of the form $\{tu: t > 0, u \in A\}$ , where $A$ is a non-empty open subset of the unit sphere of $\R^d$). If
+%\be
+%H_C = \inf\{t > 0:B_t \in C\}
+%\ee
+%is the first hitting time of $C$, then $H_C = 0$ a.s.
+%\een
+%\end{proposition}
+
+%\begin{proof}[\bf Proof]
+%\ben
+%\item [(i)] The probability that $B_t > 0$ is $1/2$ for every $t$, so $\pro(S_t > 0) \geq 1/2$, and therefore if $t_n$, $n \geq 0$ is any sequence decreasing to 0, $\pro\bb{\limsup_n \{B_{t_n} > 0\}} \geq \limsup_n \pro\bb{B_{t_n} > 0} = 1/2$. Since the event $\limsup_n\{B_{t_n} > 0\}$ is in $\sF_{0^+}$, Blumenthal's law shows that its probability must be 1. The same is true for the infimum by considering the Brownian motion $-B$.
+
+%\item [(ii)] Let $S_\infty = \sup_{t\geq 0} B_t$. By scaling invariance, for every $\lm > 0$, $\lm S_\infty = \sup_{t>0} \lm B_t$ has same law as $\sup_{t\geq0} B_{\lm^2t} = S_\infty$. This is possible only if $S_\infty \in \{0,1\}$ a.s., however, it cannot be 0 by (i).
+
+%\item [(iii)] The cone $C$ is invariant by multiplication by a positive scalar, so that $\pro(B_t \in C)$ is the same as $\pro(B_1\in C)$ for every $t$ by the scaling invariance of Brownian motion. Now, if $C$ has nonempty interior, it is straightforward to check that $\pro(B_1 \in C) > 0$, and one concludes similarly as above. Details are left to the reader.
+%\een
+%\end{proof}
+
+
+%\begin{definition}
+%Let $\sF$ be a filtration and let $T$ be a stopping time. The $\sigma$-field $\sF_T$ is defined by
+%\be
+%\sF_T = \{A \in \sF_\infty: A \cap \{T \leq t\} \in \sF_t \text{ for all }t \geq 0\}.
+%\ee
+%\end{definition}
+
+%It is elementary (but tedious) that in the case of filtration generated by a process $X$, $\sF_T = \sigma(X_{s\land T} , s \geq 0)$. In particular $T$ and $X_T$ are $\sF_T$-measurable. This corroborates the intuition that $\sF_T$ is the $\sigma$-algebra generated by all the events occurring prior to time $T$. We may now state the strong Markov property.
+
+
+We end with a famous result of P. \levy on the quadratic variation of Brownian motion. This result plays a fundamental role in the development of the stochastic integral. Let $(B_t, t \geq 0)$ be a standard Brownian motion. Let $t > 0$ be fixed and for $n \geq 1$ let $\Delta_n = \{0 = t_0(n) < t_1(n) <\dots < t_{m_n}(n) := t\}$ be a subdivision of $[0, t]$, such that
+
+%\vspace{2mm}
+
+$\qquad\qquad\qquad\qquad \eta_n := \max\limits_{1\leq i\leq m_n} (t_i(n) - t_{i-1}(n)) \to 0\quad\text{as }\ n\to\infty$.
+
+
+\begin{theorem}[\levy]
+\be
+\lim_{n\to \infty} \sum^{m_n}_{i=1} \bb{B_{t_i} - B_{t_{i-1}}}^2 = t.
+\ee
+\end{theorem}
+
+Problem 1.4 asks for a proof. (In fact, this convergence holds almost surely as soon as the subdivisions are nested, but this is more difficult).
+
+
+%\qcutline
+
+{\large \textcolor{red}{unsorted below}}
+
+\section{Brownian Motion(from AP)}
+
+%\subsection{Historical notes}
+
+%Around 1827 Brown observed the erratic motion of pollen particles in water. Later, Langevin and Einstein realized that Brownian motion is an isotropic Gaussian process. The first mathematical construction of Brownian motion is due to Wiener in 1923, using Fourier Analysis. Lévy studied the sample path properties of Brownian motion, and Kakutani and Doob made the link with potential theory. It\^o's calculus was developed in 1950.
+
+
+%\begin{theorem}[Weiner, 1923]
+%There exists a probability space $(\Omega,\sF,\pro)$ on which a standard Brownian motion is defined.
+%\end{theorem}
+
+
+%\begin{definition}
+%Let $\Omega_W = C(\R^+,\R^d )$, the Weiner space. The Weiner measure $W_0(dw)$ is the law of the standard Brownian motion, the unique measure on $\Omega_W$
+%such that for every $A_1, \dots,A_k\in \sB(\R^d )$,
+%\be
+%W_0(\{w \in \Omega_W | w_{t_1} \in A_1, \dots,w_{t_k} \in A_k\}) = \int_{A_1\times\dots\times A_k} \prod^k_{i=1} p_{t_i-t_{i-1}} (x_i - x_{i-1})d x_1 \dots d x_k.
+%\ee
+%\end{definition}
+
+%Here $\Omega_W$ is endowed with the product $\sigma$-algebra, i.e. the smallest $\sigma$-algebra such that $X_t : w \to w_t$ is measureable for all $t \in \R^+$. Under the probability space $(\Omega_W, \pro,W_0(dw))$, the process $(X_t , t \geq 0)$ (where $X_t (w) = w_t)$ is a standard Brownian motion, called the canonical Brownian motion.
+
+
+%\subsection{First properties}
+
+%\begin{proposition}
+%\ben
+%\item [(i)] Let $(B_t , t \geq 0)$ be a standard Brownian motion in $\R^d$, and let $U \in O(d)$ be an orthogonal matrix, then $(UB_t , t \geq 0)$ is a standard Brownian motion as well. In particular, $(-B_t , t \geq 0)$ is a standard Brownian motion.
+%\item [(ii)] (Scaling) Let $\lm > 0$, then $(\frac 1{\sqrt{\lm}} B_{\lm t}, t \geq 0)$ is a standard Brownian motion.
+%\item [(iii)] (Simple Markov property) Let $B^{(t)} := (B_{t+s} - B_t , s \geq 0)$, then $B^{(t)}$ is a standard Brownian motion, independent of $\sF^B_t$, where $\sF^B_t = \sigma(B_s, 0 \leq s \leq t)$.
+%\een
+%\end{proposition}
+%\begin{proof}[\bf Proof]
+%\ben
+%\item [(i)] Use the fact that $N \sim \sN (0,\sigma^2 I_d)$ then $UN \sim \sN (0,\sigma^2 I_d )$.
+%\item [(ii)] Use $\frac 1{\sqrt{\lm}} B_{\lm t} \sim \frac 1{\sqrt{\lm}} \sN (0,\lm t) \sim \sN (0, t)$ and apply this fact to the increments of $(\frac 1{\sqrt{\lm}} B_{\lm t}, t \geq 0)$.
+%\item [(iii)] Let $t_1,\dots, t_k \leq t \leq s_1,\dots, s_{k'}$, and let $F,G \geq 0$ be measurable functions. Then $\E[F(B_{t_1} ,\dots, B_{t_k})G(B^{(t)}_{s_1}, \dots, B^{(t)}_{s_{k'}})]$ is going to split because of the independent increment property of Brownian motion (since $B^{(t)}_{s_i} - B^{(t)}_{s_{i-1}} = B_{s_i} - B_{s_{i-1}})$.
+%\een
+%\end{proof}
+
+
+Since $B_t - B_s \sim \sN (0, (t -s)I_d )$ we have, for $p > 2$,
+\be
+\E[\abs{B_t - B_s}^p] \leq C_p\abs{t -s}^{1+(\frac p2-1)}.
+\ee
+
+By Kolmogorov's continuity criterion, $(B_t , t \geq 0)$ is H\"older continuous with index $\alpha \in (0, \frac 12- \frac 1p)$ over any compact interval. Letting $p \to \infty$ we see that, a.s., $(B_t, t \geq 0)$ is $\alpha$-H\"older continuous for $\alpha \in (0, \frac 12)$ over any compact set.
+
+\begin{proposition}
+Almost surely, $(B_t , t \geq 0)$ is not $\frac 12$-H\"older continuous over any interval with non-empty interior.
+\end{proposition}
+
+\begin{proposition}
+Let $(B_t , t \geq 0)$ be a standard Brownian motion in dimension $d = 1$.
+\ben
+\item [(i)] $\limsup_{t\to 0} \frac{B_t}{\sqrt{t}} = +\infty$ a.s., and $\liminf_{t\to 0} \frac{B_t}{\sqrt{t}} = -\infty$ a.s.
+\item [(ii)] For all $t_0 \geq 0$, $(B_t)$ is not differentiable at $t_0$, a.s.
+\item [(iii)] $(B_t)$ is not differentiable at $t = t_0$ for any $t_0$, a.s.
+\een
+\end{proposition}
+
+%\subsection{Strong Markov property, Reflection principle}
+
+%We would like to consider starting a Brownian motion from a random initial value. A process $(B_t , t \geq 0)$ is a Brownian motion (starting at a random point $B_0$) if $(B_t - B_0, t \geq 0)$ is a standard Brownian motion that is independent of $B_0$.
+
+%\begin{example}
+%If $B_0 = x \in \R^d$ a.s. then a Brownian motion started at $x$ is just $(x + B_t , t \geq 0)$, where $(B_t , t \geq 0)$ is a standard Brownian motion. Its distribution is the measure $W_x (dw)$ on $\Omega_W$ (Weiner space) which is the image measure of $W_0(dw)$ (Weiner measure) by the map 
+%\be
+%\Omega_W \to \Omega_W : w \to  (x + w_t , t \geq 0) = x + w.
+%\ee
+
+%The law of a Brownian motion started at a r.v. $B_0$ is determined by 
+%\beast
+%\E[F(B)] & = & \E[F((B_t - B_0, t \geq 0)+ B_0)] = \int \pro(B_0 \in d x) \int W_0(dw)F(w + x) = \int \pro(B_0 \in d x)W_x (F) =: \E[W_{B_0} (F)].
+%\eeast
+
+%Equivalently, the law of $B_t$ given $B_0$ is $W_{B_0}$.
+%\end{example}
+
+%\begin{definition}
+%Let $(\sF_t , t \geq 0)$ be a filtration and $(B_t , t \geq 0)$ be a Brownian motion. We say that $(\sF_t)$ is a Brownian filtration (or ($B_t$) is an ($\sF_t$)-Brownian motion) if $\sF^B_t \subseteq \sF_t$ for all $t$ (so in particular $B$ is adapted) and for all $t$, $B^{(t)}$ is a standard Brownian motion independent of $\sF_t$ (this is the simple Markov property).
+%\end{definition}
+
+%\begin{theorem}[Reflection Principle]
+%Let $(B_t)$ be a standard ($\sF_t$)-Brownian motion and let $T$ be an ($\sF_t$)-stopping time. Let
+%\be
+%\wt{B}_t = B_t\ind_{t\leq T} +(2B_T - B_t )\ind_{t>T}
+%\ee
+%for $t \geq 0$. Then $\wt{B}$ is a standard ($\sF_t$)-Brownian motion as well.
+%\end{theorem}
+
+%\begin{proof}[\bf Proof]
+%We know by the Strong Markov Property that $(B_t , 0 \leq t \leq T)$ and $B^{(T)}$ are independent. We know also by invariance properties of Brownian motion, $-B^{(T)} \stackrel{(d)}{=} B^{(T)}$. Therefore ($(B_t , 0 \leq t \leq T), B^{(T)}$) has the same joint distribution as ($(B_t , 0 \leq t \leq T),-B^{(T)}$). Hence for all $F \geq 0$ measurable, $\E[F(B)] = \E[F(\wt{B})]$.
+%\end{proof}
+
+%\begin{corollary}
+%Let $d = 1$ and $S_t = \sup_{0\leq s\leq t} B_s$ for $t \geq 0$. For every $b > 0$ and for all $a \leq b$, $\pro(S_t \geq b, B_t \leq a) = \pro(B_t \geq 2b - a)$.
+%\end{corollary}
+%\begin{proof}[\bf Proof]
+%Introduce, for $x > 0$, $T_x = \inf\{t \geq 0 | B_t \geq x\}$, a stopping time since Brownian motion is continuous and $[x,\infty)$ is closed. The event $\{S_t \geq b, B_t \leq a\} = \{T_b \leq t, 2b - B_t \geq 2b - a\} = \{\wt{B}_t \geq 2b - a\}$ since $\wt{B}_t \geq 2b - a \geq b$ implies $T_b \leq t$. The result follows by the reflection principle for $T = T_b$.
+%\end{proof}
+
+%\begin{corollary}
+%For all $t \geq 0$, $S_t\stackrel{(d)}{=}\abs{B_t}$.
+%\end{corollary}
+%\begin{proof}[\bf Proof]
+%For any $b \geq 0$,
+%\beast
+%\pro(S_t \geq b) & = & \pro(S_t \geq b, B_t \leq b)+\pro(S_t \geq b, B_t \geq b) = \pro(B_t \geq b)+ \pro(B_t \geq b) = 2\pro(B_t \geq b) = \pro(\abs{B_t} \geq b).
+%\eeast
+%by the symmetry of the Gaussian law.
+%\end{proof}
+
+%Warning: It is not true that $S$ and $B$ have the same distribution as processes, since $(S_t)$ is monotone while ($\abs{B_t}$) is not.
+
+%\begin{corollary}
+%For all $x \geq 0$, the stopping time $T_x \stackrel{(d)}{=} \bb{\frac x{B_1}}^2$.
+%\end{corollary}
+
+%\begin{proof}[\bf Proof]
+%Indeed,
+%\be
+%\pro(T_x \leq t) = \pro(S_t \geq x) = \pro(\abs{B_t} \geq x) = \pro(\sqrt{t}\abs{B_1} \geq x) = P\bb{\bb{\frac x{B_1}}^2 \leq t}
+%\ee
+%implying that they have the same probability distribution function.
+%\end{proof}
+
+%\subsection{Martingales associated with Brownian motion}
+
+
+%\begin{proposition}
+%Let $(B_t)$ be an ($\sF_t$)-Brownian motion.
+%\ben
+%\item [(i)] In $d = 1$, $(B_t , t \geq 0)$ is an $(\sF_t)$-martingale when $B_0 \in L^1$.
+%\item [(ii)] In $d = 1$, $(B^2_t - t, t \geq 0)$ is an $(\sF_t)$-martingale when $B_0 \in L^2$.
+%\item [(iii)] For $\xi \in \R^d$, $(\exp(i\inner{\xi}{B_t} + \frac 12 t\abs{\xi}^2), t \geq 0)$ is an $(\sF_t)$-martingale.
+%\een
+%\end{proposition}
+
+%\begin{proof}[\bf Proof]
+%\ben
+%\item [(i)] $\E[B_t - B_s | \sF_s] = 0$ for all $s < t$.
+%\item [(ii)] $B^2_t = (B_t - B_s + B_s)^2 = (B_t - B_s)^2 + 2B_s(B_t - B_s) + B^2_s$, so $\E[B^2_t |\sF_s] = \E[(B_t - B_s)^2 |\sF_s]+ B^2_s = t -s + B^2_s$.
+%\item [(iii)] $\E[\exp(i\inner{\xi}{B_t - B_s}+ i\inner{\xi}{B_s}) | \sF_s] = \exp(i\inner{\xi}{B_s}) \exp\bb{-\frac 12 (t -s)\abs{\xi}^2}$.
+%\een
+%\end{proof}
+
+
+
+
+\subsection{Dirichlet problem}
+
+Let $D \subseteq \R^d (d \geq 2)$ be a connected open set (i.e. a domain), and let $g$ be a measureable function on $\partial D$. $f \in C^2(D) \cap C(\bar{D})$ is said to satisfy the Dirichlet problem with boundry condition $g$ if $\Delta f = 0$ on $D$ and $f|_{\partial D} = g$. We will see that in many cases $f (x) := \E^{\pro_x} [g(B_T)]$ is the unique solution, where $T$ is the first exit time of $B$ from $D$. Recall that ($\fp{}{t} - \frac{\Delta}2 )p_t (x) = 0$. We restrict our attention to the case where $g \in C(\partial D,R)$ and $D$ is such that $\pro_x (T < \infty) = 1$ for all $x \in D$, where
+$T = \inf\{t \geq 0 | B_t \notin D\}$.
+
+\begin{proposition}
+Let $v$ be a bounded solution of the Dirichlet problem with boundry condition $g$. Then necessarily $v(x) = \E_x [g(B_T )]$ for all $x \in \bar{D}$.
+\end{proposition}
+\begin{proof}[\bf Proof]
+Let $D_N = B(0,N) \cap \{x \in D | d(x, \partial D) > \frac 1N\}$, and let $\wt{v}_N$ be a bounded $C^2$ function which agrees with $v$ on $D_N$ and has bounded partials (it is non-trivial that such a $\wt{v}_N$ exists). Let $T_N = \inf\{t \geq 0 | B_t \notin D_N\}$. Since $\Delta \wt{v}_N = 0$ on $D_N$,
+\be
+\wt{v}_N (B_{t\land T_N} )- \wt{v}_N (x) = \wt{v}_N (B_{t\land T_N} )- \wt{v}_N (x)- \int^{t\land T}_0 \Delta \wt{v}_N (B_s)ds
+\ee
+is a martingale. Since it is bounded, Optional Stopping implies that
+\be
+v(x)-\E_x [\wt{v}_N (B_{T_N} )] = \E_x [v(B_{T_N})].
+\ee
+
+Letting $N \to \infty$, $B_{T_N} \to B_T$ (this uses the fact that $T <\infty$ a.s.) Since $v$ is bounded on $\bar{D}$, DCT implies that $v(x) = \E_x [v(B_T )] = \E_x [g(B_T )]$. 
+\end{proof}
+
+\begin{definition}
+A locally bounded measurable function $h : D \to \R$ is harmonic if for all $x \in D$ and $r > 0$ such that $\overline{B(x, r)} \subseteq D$, 
+\be
+h(x) = \int_{S_{x,r}} h( y)d\sigma_{x,r} ( y),
+\ee
+where $S_{x,r}$ is the sphere centered at $x$ of radius $r$ and $\sigma_{x,r}$ is the uniform distribution on $S_{x,r}$.
+\end{definition}
+
+\begin{remark}
+$\sigma_{x,r}$ is the unique probability measure on $S_{x,r}$ which is invariant under isometries fixing $x$.
+\end{remark}
+
+\begin{proposition}
+A harmonic function $h$ is $C^\infty(D)$ and satisfies $\Delta h = 0$.
+\end{proposition}
+\begin{proof}[\bf Proof]
+See lecture notes.
+\end{proof}
+
+\begin{proposition}
+For $g \in C_b(D)$, the function $u(x) = \E_x [g(B_T)]$ is harmonic on $D$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+See the lecture notes for a proof that $u$ is bounded and measurable. Fix $x \in D$ and $r > 0$ such that $\overline{B(x, r)} \subseteq D$. Define $S = \inf\{t \geq 0| \abs{B_t - x} \geq r\}$, a stopping time such that $S \leq T <\infty$ a.s. under $\pro_x$. Then by $ T -S = \inf\{t \geq 0 | B^{(S)}_t + B_S \notin D\}$
+\be
+u(x) = \E_x [g(B_T - B_S + B_S)] = \E_x [g(B^{(S)}_{T-S} + B_S)] = \int \pro_x (B_S \in d y)\E_y[g(B_T)].
+\ee
+
+Now $B_S \in S_{x,r}$ a.s. and by the invariance of standard Brownian motion under the action of $O(d)$, the law of $B_S$ under $\pro_x$ is invariant under isometries preserving $x$. Therefore $\pro_x (B_S \in d y) = \sigma_{x,r} (d y)$, so $u(x) = \int_{S_{x,r}} \sigma_{x,r} (d y)u( y)$ and $u$ is harmonic.
+\end{proof}
+
+It is not true in general that $u(x) \to g( y)$ as $x \to  y$ in $D$. For example, if $D = B(0, 1) \bs\{0\}$ and $g = 1_{\{0\}}$ then $u(x) = 0$ for all $x \in D$. The problem can also arise with very complicated boundries. 
+
+\begin{theorem}
+Let $D$ be a domain with smooth boundry (i.e. for all $y \in \partial D$ there is a neighbourhood $V$ of $y$ such that $\partial D \cap V$ is a smooth surface) and assume that $\pro_x (T < \infty) = 1$ for all $x \in D$. Then for all $g \in C_b(\partial D)$, $u(x) = \E_x [g(B_T)]$ is the unique bounded solution to the Dirichlet problem.
+\end{theorem}
+
+\begin{lemma}
+Let $D$ be a domain with smooth boundry. Then for all $y \in D$, $\pro_x (T > \eta)\to 0$ as $x \to y$ in $D$ for all $\eta > 0$.
+\end{lemma}
+
+\begin{corollary}
+If $D$ is a bounded domain and $g \in C(\partial D)$ then the unique solution to the Dirichlet problem is $u(x) = \E_x [g(B_T )]$.
+\end{corollary}
+
+\subsection{Donsker's invariance principle}
+
+Let $X_1, X_2, \dots$ be i.i.d. real-valued r.v.'s such that $\E[X_1] = 0$ and $\E[X^2_1] = 1$. Consider $S_n = X_1+\dots+X_n$, and define a continuous process from this but interpolating linearly between values (so $S_t = (1-\{t\})S_{\floor{t}} + \{t\}S_{\floor{t}+1}$ for all $t \in \R$).
+
+\begin{theorem}
+Let $S^{\floor{N}}_t = \frac{S_{N_t}}{\sqrt{N}}$ for all $t \in [0, 1]$. Then $(S^{\floor{N}}_t , 0 \leq t \leq 1) \to (B_t , 0 \leq t \leq 1)$ in distribution, where $B$ is standard Brownian motion.
+
+By $S^{\floor{N}}\to B$ in distribution we mean that it converges in distribution in the space $(C([0, 1],\R), \dabs{ \cdot }_1)$ with the Borel $\sigma$-algebra. Using this theorem one can prove, for example, that $\frac 1{\sqrt{N}} \sup_{0\leq n\leq N} S_n \to \sup_{0\leq t\leq 1} B_t$ in distribution at $N \to \infty$.
+\end{theorem}
+
+
+\section{Poisson Random Measures}
+
+\subsection{Motivation}
+
+The Poisson distribution $\pd(\lm) (\lm \geq 0)$ is such that if $N$ has distribution $\pd(\lm)$ then $\pro(N = n) = e^{-\lm} \frac{\lm^n}{n!}$ for $n \geq 0$. It is a 'law of rare events,' in that $\bd(n, \frac {\lm}n )\to \pd (\lm)$ weakly as $n\to \infty$.
+
+Let $(E,\sE)$ be a measurable space. Define $E^*$ to be the set of $\sigma$-finite measures on $(E,\sE)$ of the form $m = \sum_{i\in I} \delta_{x_i}$ for some countable set $I$ and $x_i \in E$ for all $i \in I$. Let $E^*$ be the smallest $\sigma$-algebra for which $X_A$ is measurable for all $A \in \sE$, where $X_A : E^* \to \R^+ \cup \{\infty\} : m \to m(A)$.
+
+\begin{definition}
+Let $\mu$ be a $\sigma$-finite on $(E,\sE)$. An $E^*$-valued r.v. $M$ on $\sE$ is a Poisson random measure with intensity $\mu$ if for all $A_1, \dots ,A_k \in \sE$ pairwise disjoint,
+\ben
+\item [(i)] $M(A_1),\dots,M(A_k)$ are independent; and
+\item [(ii)] for all $j \in \{1,\dots, k\}$, $M(A_j) \sim \pd(\mu(A_j))$ if $\mu(A_j) <\infty$.
+\een
+\end{definition}
+
+\begin{lemma}
+If $M$ is a Poisson random measure with intensity $\mu (PRM(\mu))$ then its law is uniquely determined.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Let $A_1,\dots,A_k \in \sE$ be pairwise disjoint and of finite $\mu$-mass, and $i_1 \geq 0,\dots, i_k \geq 0$. Consider $\{m \in E^* | m(A_1) = i_1,\dots,m(A_k) = i_k\} = \{X_{A_1} = i_1, \dots, X_{A_k} = i_k\}$. Such events are stable under intersection and generate the $\sigma$-algebra $\sE^*$. Now if $M$ is $PRM(\mu)$ then
+\be
+\pro(M(A_1) = i_1,\dots,M(A_k) = i_k) = \prod^k_{j=1} \pro(M(A_j) = i_j) =\prod^k_{j=1} e^{-\mu(A_j )}\frac{ (\mu(A_j))^{i_j}}{i_j !}.
+\ee
+Thus the probabilities $\pro(B)$ are determined by the definition of $PRM(\mu)$ for all $B$ in a $\pi$-system that generates $\sE^*$, so the definition determines the law of $M$ uniquely.
+\end{proof}
+
+\begin{lemma}
+\ben
+\item [(i)] If $N_1,N_2 \sim \pd(\lm_1),\pd (\lm_2)$ then $N_1 + N_2 \sim \pd (\lm_1 +\lm_2)$.
+\item [(ii)] Let $N \sim \pd(\lm)$ and let $Y_1, Y_2, \dots$ be i.i.d. and taking values in $\{1,\dots, k\}$, independent of $N$, and such that $\pro(Y_i = j) = p_j$ for some $p_1, \dots, p_k$ which sum to 1. If $N_i = \sum^N_{n=1} \ind_{\{Y_n=i\}}$. Then $N_1, \dots,N_k$ are independent and $N_i \sim \pd(p_i\lm)$ for $1 \leq i \leq k$.
+\een
+\end{lemma}
+\begin{proof}[\bf Proof]
+Exercise.
+\end{proof}
+
+\begin{proposition}
+There exists a $PRM(\mu)$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+First assume that $\mu(E) < \infty$. Let $N$ be a $\pd(\mu(E))$ r.v. Independently of $N$, let $X_1, X_2, \dots$ be i.i.d. with law $\frac{\mu(\cdot)}{\mu(E)}$. Set $M = \sum^N_{i=1} \delta_{X_i}$. Then $M$ is a $PRM(\mu)$.
+
+Indeed, let $A_1, \dots,A_k$ be pairwise disjoint, then $M(A_j) = \sum^N_{i=1} \ind_{X_i\in A_j}$. Setting $Y_i = j$ if and only if $X_i \in A_j$, the $Y_i$'s are independent and $\pro(Y_i = j) = \pro(X_i \in A_j) = \frac{\mu(A_j )}{\mu(E)}$. By the lemma, the $M(A_j)$ are independent and follow a $\pd\bb{\mu(E) \frac{\mu(A_j )}{\mu(E) )}} = \pd(\mu(A_j))$, as we wanted.
+
+If $\mu(E) =\infty$ then we can find $E_n (n \geq 1)$ that partition $E$ and $\mu(E_n) <\infty$ for all $n$. Let $M_n$, $n \geq 1$ be independent Poisson random measures with intensities $\mu(\cdot \cap E_n)$, the restriction of $\mu$ to $E_n$. Then $M = \sum_{n\geq 1} M_n$ is $PRM(\mu)$. Indeed, if $A_1,\dots,A_k$ are disjoint and of finite $\mu$-mass then $M(A_j) = \sum_{n\geq1} M_n(A_j) = \sum_{n\geq1} M_n(A_j \cap E_n)$. By definition, $(M_n(A_j \cap E_n), 1 \leq j \leq k)$ are independent and these vectors are independent over $n$. Thus $M(A_1),\dots,M(A_k)$ are independent and $M(A_j) \sim \pd(
+\sum_{n\geq1} \mu(A_j \cap E_n)) = \pd (\mu(A_j))$.
+\end{proof}
+
+\begin{corollary}
+If $M$ is a $PRM(\mu)$ and if $A_1,\dots,A_k$ are pairwise disjoint with finite $\mu$-mass then $M|_{A_1} ,\dots,M|_{A_k}$ are independent, and moreover, $M|_{A_j}$, given $M(A_j) = n$, has the same distribution as $\sum^n_{i=1} \delta_{X_i}$, where $X_1,\dots, X_n$ are i.i.d. with respect to the measure $\frac{\mu(\cdot\cap A_j )}{\mu(A_j )} (=: \mu(\cdot | A_j))$.
+\end{corollary}
+
+Note that $\E[M(A)] = \mu(A)$. Indeed, $\E[\pd(\lm)] = \lm$.
+
+\subsection{Integrating with respect to a Poisson measure}
+
+
+\begin{proposition}
+For $f : E \to \R^+$ measurable, $M( f ) = \int_E f (x)M(d x)$ defines a positive r.v. with $\E[M( f )] = \mu( f )$, the first moment formula. Moreover,
+\be
+\E[e^{-M( f )}] = \exp(\mu(e^{-f} -1)),
+\ee
+the Laplace functional formula.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+If $f = \ind_A$ for some $A \in \sE$ with $\mu(A) < \infty$ then $M( f ) = M(A)$ is a r.v. By approximating $f$ by simple functions (i.e. functions of form
+$\sum_{i\in I} \alpha_i\ind_{A_i}$), the usual argument shows that $M( f )$ is a r.v. If the Laplace functional formula holds then replacing $f$ by $\lm f (\lm \geq 0)$ and differentiaing with respect $\lm$ at $\lm = 0$, we directly obtain $\E[M( f )] = \int_E \mu(d x) f (x) = \mu( f )$.
+
+Now assume that $\mu(E) < \infty$ and $M = \sum^N_{i=1} \delta_{X_i}$, where $N \sim \pd (\mu(E))$ and $(X_i , i \geq 1)$ are i.i.d. and independent of $N$, with $\sL(X_i) = \frac{\mu}{\mu(E)}$. Then
+\beast
+\E[e^{-M( f )}] & = & \E \bsb{e^{-\sum^N_{i=1} f (X_i )}} = \sum_{n\geq0} e^{-\mu(E)} \frac{\mu(E)^n}{n!} \E\bsb{e^{-\sum^n_{i=1} f (X_i )}} = \sum_{n\geq0} e^{-\mu(E)} \frac{\mu(E)^n}{n!} \bb{\int_E \frac{\mu(d x)}{\mu(E)}e^{-f (x)}}^n
+\eeast
+hence, since $\mu(E) = \int_E \mu(d x)$,
+\be
+\E[e^{-M( f )}] = e^{-\mu(E)}e^{\int_E \mu(d x)e^{f (x)}} = \exp(\mu(e^{-f} -1)).
+\ee
+
+If $\mu(E) =\infty$ then find $E_n$ that partition $E$ with $\mu(E_n) <\infty$ for all $n$. The measures $M|_{E_n}$ are independent, and $M( f \ind_{E_n} )$ are independent, so
+\be
+\E[e^{-M( f \ind_{E_n})}] = \exp\bb{\int_{E_n} (e^{-f (x)} -1)\mu(d x)}.
+\ee
+
+Thus
+\be
+\E[e^{-M( f )}] = \prod_{n\geq0} \E[e^{-M( f \ind_{E_n})}] =\exp\bb{\sum_{n\geq0} \int_{E_n} (e^{-f (x)} -1)\mu(d x) } = \exp(\mu(e^{-f} -1)).
+\ee
+\end{proof}
+
+
+\begin{corollary} If $f \in L^1(\mu)$ then $f \in L^1(M)$ a.s.,
+\be
+\E[e^{iM( f )}] = \exp \bb{\int \mu(d x)(e^{i f (x)} -1)},
+\ee
+and $\E[M( f )] = \mu( f )$.
+\end{corollary}
+
+\begin{proof}[\bf Proof]
+Apply the previous proof to $\abs{ f}$ to get $\E[M(\abs{ f })] = \mu(\abs{ f }) <\infty$. Therefore $M( f ) < \infty$ a.s., so $f \in L^1(M)$. Then redo the previous proof and note that $\abs{e^{i f (x)} -1} \leq \abs{ f (x)} \in L^1(\mu)$. (Apply DCT?)
+\end{proof}
+
+Note that if moreover we have $f \in L^2(\mu)$ then $M( f )$ has finite variance
+\be
+\var(M( f )) = \int f (x)^2d\mu(x) = \mu( f^2),
+\ee
+the second moment formula.
+
+
+\begin{proposition}
+\ben
+\item [(i)] Let $M$ be a Poisson random measure on $(E,\sE)$, let $(F,\sF)$ be a measurable space, let $f : E \to  F$ be measurable, and let $f_*$ denote the push-forward of $f$. Then $f_*M$ (i.e. $\sum \delta_{f (X_i )}$ if $M = \sum \delta_{X_i}$) is a $PRM( f_*\mu)$ on $F$.
+\item [(ii)] (Marking property) Let $M$ be a $PRM(\mu)$ written in the form $M = \sum\delta_{X_i}$ and let $(Y_i , i \geq 1)$ be i.i.d. and independent of $M$, with $\sL(Y_i) = \nu$ on some space $(F,\sF)$. Then $M^* = \sum_{i\geq1} \delta(X_i ,Y_i )$ is a $PRM(\mu\times \nu)$ on $E \times F$.
+PROOF: Exercise (apparently it is obvious given the definitions). 
+\een
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Exercise (apparently it is obvious given the definitions)
+\end{proof}
+
+\subsection{Poisson point processes}
+
+\begin{definition}
+Let $(E,\sE,G)$ be a $\sigma$-finite measure space. A Poisson point process with intensity $G$ (or $PPP(G)$) is a Poisson random measure on $\R^+ \times E$ with intensity $d t \times G(d x)$, where $d t$ is Lebesgue measure on $\R^+$. 
+\end{definition}
+
+Such a process $M$ can be written $M(d t d x) = \sum_{i\in I} \delta_{(t_i ,x_i )}$, where $I$ is a countable index set. Since $d t$ is diffuse (i.e. it has no atoms), with probability 1, for all $t$, there is at most one $i \in I$ such that $t_i = t$. Therefore we can define a process $(e_t , t \geq 0)$ with values in $E\Pi\{*\}$ by
+\be
+e_t = \left\{\ba{ll}
+x_i \quad\quad & \text{if $t = t_i$ for some $i \in I$}\\
+* & \text{otherwise}
+\ea\right.
+\ee
+
+Then $(e_t , t \geq 0)$ is also called a Poisson point process with intensity $G$.
+
+\begin{definition}
+Let $(X_t , t \geq 0)$ be a stochastic process with values in $\R$. We say that $(X_t )$ is a L\'evy process if 
+\ben
+\item [(i)] For all $s < t$, $X_t - X_s \stackrel{(d)}{=} X_{t-s}$ (increments are stationary);
+\item [(ii)] For all $0 = t_0 < t_1 < \dots < t_k$, ($X_{t_i} - X_{t_{i-1}}, 1 \leq i \leq k)$ are independent.
+\een
+\end{definition}
+
+\begin{proposition}
+Let $M(d t d x)$ (resp. $(e_t , t \geq 0)$) be a $PPP(G)$ on $E$. Let $f \in L^1(G)$ and define 
+\be
+X^f_t := \int_{[0,1]\times E} f (x)M(ds d x)
+\ee
+(resp. $X^f_t := \sum_{0\leq s\leq t} f (e_s)$, where $f (*) := 0$) for $t \geq 0$. Then $X^f_t$ is a L\'evy process, and moreover
+\ben
+\item [(i)] $M^f_t := X^f_t - t\int_E f (x)G(d x)$ defines a martingale; and
+\item [(ii)] if $f \in L^2(G) \cap L^1(G)$ then $((M^f_t )^2 - t\int_E f^2(x)G(d x), t \geq 0)$ is a martingale.
+\een
+\end{proposition}
+\begin{proof}[\bf Proof]
+Let $M' : \R^+ \times E \to  E$ denote the push-forward of $M$ by projection on the second coordinate. Then $\int_{[0,t]\times E} f (x)M(ds d t) = M( f ) = M'( f )$ and it is easy to see that its intensity is equal to $tG(x)$. Since $G( f ) < \infty$, we obtain that $(s, x) \to  f (x)$ is in $L^1(ds\ind_{[0,1]}\times G(d x))$.
+Check L\'evy:
+\ben
+\item [(i)] Let $0 \leq s < t$. Then
+\be
+X^f_t - X^f_s = \int_{(s,t]\times E} f (x)M(ds d t)
+\ee
+and notice $M'( f ) = M( f \ind_{(s,t]})$ and $M'$ is a $PRM((t -s)G)$, whence $X^f_t -X^f_s$ has the same distribution as $X^f_{t-s}$.
+\item [(ii)] Let $0 = t_0 < t_1 < \dots < t_k$. Then
+\be
+X_{t_i} - X_{t_{i-1}} = \int_{(t_i ,t_{i-1}]\times E} f (x)M(ds d t) = M|_{(t_i ,t_{i-1}]\times E} ( f )
+\ee
+which are independent since the bands $(t_i , t_{i-1}]\times E$ are pairwise disjoint.
+\een
+
+Check martingale:
+\ben
+\item [(i)] Apply the formula for the first moment and note that the latter half of the right hand side of the first equation below is independent of $\sF_t$.
+\beast
+\E[X^f_{t+s} | \sF_t] & = & \E\bsb{\int_{[0,t]\times E} f (x)M(ds d x)+ \int_{[t,t+s]\times E} f (x)M(ds d x) | \sF_t}\\
+& = & X^f_t +\E\bsb{\int_{[t,t+s]\times E} f (x)M(ds d x)} = X^f_t + \int_{[t,t+s]\times E} f (x)dsG(d x)\\
+& = & X^f_t +sG( f ) = M^f_t +(t +s)G( f )
+\eeast
+
+\item [(ii)] Use the fact that $(M^f_t )^2 = (M^f_{t+s} - M^f_t )^2 - (M^f_t )^2 + 2M^f_t M^f_{t+s}$, and use the formula for the variance.
+\een
+\end{proof}
+
+\begin{example}[Poisson process]
+Taking $E = \{0\}$, $G = \theta \delta_0$, and $f (0) = 1$ gives the Poisson process which we have seen in its alternate form as a sum of i.i.d. exponential r.v.'s with parameter $\theta$. Let $N^\theta_t = \sum^\infty_{k=1} \ind_{T_1+\dots+T_k \leq t}$, the Poisson process with intensity $\theta$.
+\end{example}
+
+\begin{example}[Compound Poisson process]
+Let $\nu$ be a finite measure on $\R$. Let $M(d t d x) = \sum\delta_{(t_i ,x_i )}$, a $PPP(\nu)$. Then for any $t$ there are only a finite number
+of $t_i$ in the interval $[0, t]$, so we may label them in increasing order $0(= t_0) < t_1 < t_2 < \dots$. Then
+\be
+N^\nu_t := \int_{[0,t]\times \R} xM(ds d x) = \sum_{i\geq1} x_i\ind_{t_i\leq t},
+\ee
+for $t \geq 0$, is the compound Poisson process. (By finiteness this makes sense even if $\int_{\R}\abs{x}\nu(d x) =\infty$.) It is easy to see that
+$\sum_{i\geq1} \delta_{t_i}$ is a $PRM(\theta d t)$, where $\theta = \nu(\R)$, a Poisson point process corresponding to a homogeneous Poisson process with
+intensity $\theta$. By the Marking property of Poisson random measures, we obtain the following alternative construction of $(N^\nu_t , t \geq 0)$. Take $T_1 < T_2 < \dots$ such that the increments $(T_i - T_{i-1}, i > 1)$ are independent and exponentially distributed with parameter $\theta$. Take an i.i.d. ($Y_i , i \geq 1)$ independent of $(T_i)$ with $\sL(Y_i) = \frac{\nu}{\nu(\R)} = \frac{\nu}{\theta}$. Then $(N^\nu_t)$ has the same distribution as $(\sum_{
+i\geq1} Y_i\ind_{T_i\leq t}, t \geq 0)$. The law of $N^\nu_1$ is called the compound Poisson distribution, $CP(\nu)$, so
+\be
+CP(\nu) = \sum_{n\geq0}\underbrace{e^{-\theta} \frac{\theta^n}{n!}}_{\text{prob of $n$ atoms before time 1}} \underbrace{\bb{\frac{\nu}{\theta}}^{*n}}_{\text{Law of $Y_1+\dots+Y_n$}} = e^{-\theta} \sum_{n\geq0} \frac{\nu^{*n}}{n!}.
+\ee
+
+(Recall that $\mu * \nu$ is the convolution of $\mu$ and $\nu$, the unique measure such that $\mu * \nu( f ) = \int f (x + y)\mu(d x)\nu(d y)$.)
+\end{example}
+
+
+\begin{remark}
+Notice that
+\be
+\E[e^{i\lm N^\nu_t} ] = \exp\bb{\int_{[0,1]\times \R} ds\nu(d x)(e^{i\lm x} -1)} = \exp\bb{t\theta \int_\R \frac{\nu(d x)}{\theta} (e^{i\lm x} -1)} = \exp\bb{t\theta(\phi_{\frac{\nu}{\theta}} (\lm)-1)}
+\ee
+where $\phi_{\frac{\nu}{\theta}}$ is the characteristic function of $\frac{\nu}{\theta}$.
+\end{remark}
+
+\subsection{L\'evy processes in $\R$}
+
+Recall that $(X_t , t \geq 0)$ is a L\'evy process if it has stationary independent increments. Notice that the law of the L\'evy process $(X_t)$ is determined by the 1-dimensional marginals $(\sL(X_t ), t \geq 0)$, since 
+\be
+\sL(X_{t_1} ,\dots, X_{t_k}) = \sL(F((X_{t_i} - X_{t_{i-1}} )_{1\leq i\leq k}))
+\ee
+for some function $F$, and each of the $X_{t_i} -X_{t_{i-1}}$ are independent with law $\sL(X_{t_i-t_{i-1}})$.
+
+\begin{definition}
+A triple $(a, q,\Pi)$ is a L\'evy triple if
+\ben
+\item [(i)] $a \in \R$;
+\item [(ii)] $q \geq 0$; and
+\item [(iii)] $\Pi$ is a $\sigma$-finite measure on $\R$ such that $\Pi(\{0\}) = 0$ and 
+\be
+\int_\R \Pi(d x)(x^2 \land 1) <\infty.
+\ee
+\een
+\end{definition}
+
+\begin{theorem}
+There is a one-to-one correspondence between \cadlag L\'evy processes $(X_t , t \geq 0)$ and L\'evy triples $(a, q,\Pi)$ in such a way that if $(X_t , t \geq 0)$ is the \cadlag L\'evy process associated with $(a, q,\Pi)$ then $\E[e^{i\lm X_t} ] = e^{t\Psi(\lm)}$ where
+\be
+\Psi(\lm) = ia\lm - q\frac{\lm^2}2 + \int_\R \Pi(d x)(e^{i\lm x}  -1- i\lm x \ind_{\abs{x}\leq 1}).
+\ee
+This is the L\'evy-Khintchine formula.
+\end{theorem}
+
+\begin{example}
+\ben
+\item [(i)] If $q = 0$ and $\Pi$ is the zero measure then $\E[e^{i\lm X_t} ] = e^{i\lm at}$, so $X_t = at$ and $X$ is just a (deterministic) linear function.
+\item [(ii)] If $a = 0$ and $\Pi$ is the zero measure then $E[e^{i\lm X_t} ] = e^{-tq \frac{\lm^2}2}$, so $X_t$ has distribution $\sN (0, qt)$ and hence $X_t = \sqrt{q}B_t$, where $B$ is a standard Brownian motion.
+\item [(iii)] If $q = 0$, $\Pi(d x)$ is a finite measure (i.e. $\int_\R \Pi(d x)\abs{x} < \infty$), and if $a = \int^1_{-1} x\Pi(d x)$, then $\Psi(\lm) = \int_\R \Pi(d x)(e^{i\lm x} -1)$, so $X_t$ is a compound Poisson process with intensity $\Pi$.
+\een
+\end{example}
+
+In general, L\'evy processes have jumps which are only square-summable over compact intervals and the term $i\lm x \ind_{\abs{x} \leq1}$ is a compensation for this.
+
+How can we construct the L\'evy process with triple $(a, q,\Pi)$? Let $(Y^n, n \geq 1)$ be independent compound Poisson processes with respective intensities equal to $\Pi_n := \Pi|_{(\frac 1{n+1}, \frac 1n]}$. Then $\Pi_n(\abs{x}) < \infty$ for all $n$, so $M^n = (Y^n_t - t\int_\R x\Pi_n(d x), t \geq 0)$ is a martingale. Let $\bar{M}^n_t = \sum^n_{k=1} M^k_t$, and note that
+\be
+\E[e^{i\lm M^n_t} ] = \exp\bb{t\int^{\frac 1n}_{\frac 1{n+1}} \Pi_n(d x)(e^{i\lm x} -1- i\lm x)}.
+\ee
+
+\begin{theorem}
+For every $t \geq 0$, $\bar{M}^n_t \to M^\infty_t$ in $L^2$, where $(M^\infty_t , t \geq 0)$ is an $L^2$-martingale with a \cadlag modification, which we will also denote by $M^\infty$. If we are given
+\ben
+\item [(i)] a standard $BM (B_t)$;
+\item [(ii)] a $CP$ process $Y^0$ with intensity $(\Pi|_{(0,\infty)})$; and
+\item [(iii)] the martingale $M^\infty$;
+\een
+then $X_t = at + \sqrt{q}B_t + Y^0_t + M^\infty_t$ is a \cadlag L\'evy process with characteristic function given by the L\'evy-Khintchine formula.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $n \geq m \geq 1$ and notice
+\be
+\E\bsb{\sup_{0\leq s\leq t} \abs{\bar{M}^n_s - \bar{M}^m_s}^2} \leq 4\E[\abs{\bar{M}^n_t - \bar{M}^m_t}^2]
+\ee
+by Doob's $L^2$-inequality. Now
+\be
+\E\bsb{\abs{\sum^n_{k=m+1} M^k_t}^2} = t\int^{\frac 1{m+1}}_{x= \frac 1{n+1}} x^2\Pi(d x)
+\ee
+by the second moment formula for PRM's since
+\be
+mg\lra PPP(\Pi(d x)|_{[\frac 1{n+1}, \frac 1{m+1}])}
+\ee
+Thus, for all $\ve > 0$ and for all $n,m$ large, $\E[\sup_{0\leq s\leq t} \abs{\bar{M}^n_s - \bar{M}^m_s}^2] \leq \ve$, so in particular $(\bar{M}^n_t)_{n\geq 1}$ is an $L^2$-Cauchy sequence. Therefore $\bar{M}^n_t \to  M^\infty_t$ in $L^2$ as $n\to \infty$. By the Borel-Cantelli Lemma and the above we even get that $\bar{M}^n_t \to M^\infty$ uniformly over compact intervals, up to extraction. A uniform limit of \cadlag processes is \cadlag, so $M^\infty$ is a \cadlag martingale.
+\end{proof}
+
+
+%\section{Existence}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%5
+
+\section{Problems from (AP)}
+
+\ben
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $X, Y$ be two independent Bernoulli random variables with parameter $p \in (0, 1)$. Let $Z = \ind_{\bra{X + Y = 0}}$. Compute $\E\bb{X|Z}$ and $\E\bb{Y |Z}$.
+
+\scutline
+
+Solution. By symmetry $\E[X|Z] = \E[Y|Z]$ a.s., so it is enough to find just one. Note that, as $\bra{Z = 0}$ and $\bra{Z = 1}$ are nonnull events that partition our sample space, it follows that
+\beast
+\E[X|Z] & = & \E[X|Z = 0]\ind_{\bra{Z=0}} + \E[X|Z = 1]\ind_{\bra{Z=1}}\text{ a.s.}\\
+& = & \frac{E[X\ind_{\bra{Z=0}}]}{\pro\bb{Z = 0}} \ind_{\bra{Z=0}} + \frac{\E[X\ind_{\bra{Z=1}}]}{\pro\bb{Z = 1}} \ind_{\bra{Z=1}}
+\eeast
+
+Recall that $Z = \ind_{\bra{X+Y=0}}$. It is immediate then that the second term above is equal to 0. For the first term, observe that
+\be
+\pro\bb{Z = 0} = 1 - \pro\bb{Z = 1} = 1 - \pro\bb{X = 0,Y = 0} = 1 - (1- p)^2 = p(2- p)
+\ee
+and, additionally, that
+\be
+\E[X\ind_{\bra{Z=0}}] = \pro\bb{Z = 0,X = 1} = \pro\bb{X = 1} = p.
+\ee
+
+Putting the above into the earlier work, it follows that
+\be
+\E[X|Z] = \frac{\ind_{\bra{Z=0}}}{2- p} \text{ a.s.}
+\ee
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $X$, $Y$ be two independent exponential random variables of parameter $\theta$. Let $Z = X + Y$, then check that the distribution of $Z$ is gamma with parameter $(2, \theta)$, whose density with respect to the Lebesgue measure is $\theta^2xe^{-\theta x} \ind(x \geq  0)$. Show that for any non-negative measurable $h$,
+\be
+\E[h(X)|Z] = \frac 1Z \int^Z_0 h(u) du.
+\ee
+
+Conversely, let $Z$ be a random variable with a $\Gamma(2, \theta)$ distribution, and suppose that $X$ is a random variable whose conditional distribution given $Z$ is uniform on $[0,Z]$. Namely, for every Borel non-negative function $h$
+\be
+\E[h(X)|Z] = \frac 1Z \int^Z_0 h(u) du \text{ a.s.}
+\ee
+
+Show that $X$ and $Z - X$ are independent, with exponential law.
+
+\scutline
+
+Solution. In the following, suppose that $X$ and $Y$ are iid $\sE(q)$ random variables and that $Z := X +Y$.
+
+Claim. $Z \sim  \Gamma(2,\theta)$.
+
+Proof. It suffices to check that the density of $Z$ (with respect to Lebesgue measure), $f_Z$, exists and is such that $f_Z(z) = \theta^2 z e^{-\theta z} \ind_{\bra{z\geq 0}}$ for almost all $z$. If $z \leq 0$ then, as $X,Y > 0$ a.s., it follows that $\pro\bb{Z \leq  z} = 0$. Suppose that $z > 0$. Then, as $(X,Y)$ has a density given by $f_{X,Y}(x,y) = f_X(x) f_Y (y) = \theta^2 e^{-\theta (x+y)} \ind_{\bra{x\geq 0,y\geq 0}}$, we have that
+\beast
+\pro\bb{Z \leq z} = \pro\bb{X +Y \leq z} & = & \int_{\bra{x+y\leq z}} \theta^2 e^{-\theta (x+y)} \ind_{\bra{x\geq 0,y\geq 0}} dxdy = \theta^2 \int^z_0 \bb{ e^{-\theta y} \int^{z-y}_0 e^{-\theta x} dx} dy\\
+& = & \theta \int^z_0 \bb{1-e^{-\theta(z-y)}}e^{-\theta y} dy  =  1-e^{-\theta z} - \theta z e^{-\theta z}
+\eeast
+
+Hence the cdf of $Z$, $F_Z$, is such that $F_Z(z) = \bb{1-e^{-\theta z} - \theta z e^{-\theta z}}\ind_{\bra{z\geq 0}}$. This is differentiable everywhere, so $f_Z$ exists and is equal a.e. to the derivative of $F_Z$. With this in mind,
+\be
+F'_Z (z) = \bb{\theta e^{-\theta z} - \theta e^{-\theta z} + \theta^2z e^{-\theta z}}\ind_{\bra{z\geq 0}} = \theta^2 z e^{-\theta z} \ind_{\bra{z\geq 0}}
+\ee
+and hence $Z \sim \Gamma(2,\theta)$.
+
+Claim. Suppose that $h:\R \to \R$ is a nonnegative Borel-measurable function. Then
+\be
+\E[h(X)|Z] = \frac 1Z \int^Z_0 h(x)dx \text{ a.s.}
+\ee
+
+Proof. If we can show that a density for $(X,Z)$ exists, then we can apply the work in 1.4.2 of the lecture notes. Define $\Phi : \R^2 \to \R^2: (x,y) \mapsto (x,x+y)$. Then this is a $\sC^1$-diffeomorphism, further, $\Phi^{-1}:\R^2 \to \R^2: (x, z) \mapsto (x, z-x)$ is such that $\det(D\Phi^{-1})\equiv 1$. So the change of variables formula applies and tells us that the density of $(X,Z)$ exists and is given by, say,
+\be
+f_{X,Z}(x, z) = f_{\Phi(X,Y)}(x, z) = f_{X,Y} (\Phi^{-1}(x, z)) = f_{X,Y} (x, z-x) = f_X(x) f_Y (z-x) = \theta^2 e^{-\theta z} \ind_{\bra{z\geq x\geq 0}}
+\ee
+
+Therefore, by the work in 1.4.2,
+\beast
+\E[h(X)|Z] & = & \int_\R h(x) \frac{f_{X,Z}(x,Z)}{f_Z(Z)} dx \cdot \ind_{\bra{f_Z(Z)>0}} \text{ a.s.}\\
+& = & \int_\R h(x) \frac{\theta^2 e^{-\theta Z}}{\theta^2 Z e^{-\theta Z}} \ind_{\bra{Z\geq x\geq 0}} dx =  \frac 1Z \int^Z_0 h(x)dx
+\eeast
+as required.
+
+
+Claim. Suppose that $Z \sim \Gamma(2,\theta)$ and that $X$ is such that, for every nonnegative and Borelmeasurable function $h:\R\to \R$,
+\be
+\E[h(X)|Z] = \frac 1Z \int^Z_0 h(u)du \text{ a.s.}
+\ee
+
+Then $X$ and $Z-X$ are iid $\sE(\theta)$ random variables.
+
+Proof. We will begin by attempting to find the density of $(X,Z)$, from this, the claim will readily follow. Let $A,B \in \sB(\R)$ and note that 
+\be
+\pro\bb{X \in A,Z \in B} = \E[\ind_A(X)\ind_B(Z)] = \E[\E[\ind_A(X)\ind_B(Z)|Z]] = \E[\ind_B(Z)\E[\ind_A(X)|Z]]
+\ee
+with the last equality holding as $1_B(Z)$ is $\sigma(Z)$-measurable and bounded and $\ind_A(X)$ is integrable. By our hypothesis with $h = \ind_A$, we see that
+\beast
+\E[\ind_B(Z)\E[\ind_A(X)|Z]] & = & \E\bb{\ind_B(Z) \cdot \frac 1Z \int^Z_0 \ind_A(x)dx} \\
+& = & \int_\R \int^z_0 \ind_B(z) \cdot \frac 1z \cdot \ind_A(x) \theta^2 z e^{-\theta z} \ind_{\bra{z\geq 0}} dxdz\\
+& = & \int_{\R^2} \theta^2 e^{-\theta z} \ind_A(x)\ind_B(z)\ind_{\bra{z\geq x\geq 0}} dxdz\\
+& = & \int_{A\times B} \theta^2 e^{-\theta z} \ind_{\bra{z\geq x\geq 0}} dxdz
+\eeast
+
+It follows then, as $\bra{A\times B: A,B \in\ sB(\R)}$ is a generating $\pi$-system for $\sB(\R^2)$, that $(X,Z)$ has a density $f_{X,Z}(x, z) = \theta^2 e^{-\theta z} \ind_{\bra{z\geq x\geq 0}}$ a.e.. We can now use the change of variables formula again but with $\Phi$ instead, noting that $\det(D\Phi) \equiv 1$, that is,
+\beast
+f_{X,Z-X}(x,y) & = & f_{\Phi^{-1}}(X,Z)(x,y) = f_{X,Z}(\Phi(x,y)) = f_{X,Z}(x,x+y) \\
+& = & \theta^2 e^{-\theta (x+y)} \ind_{\bra{x+y\geq x\geq 0}} = \theta e^{-\theta x} \ind_{\bra{x\geq 0}} \theta e^{-\theta y} \ind_{\bra{y\geq 0}}
+\eeast
+and it follows that $X$ and $Z-X$ are iid $\sE(\theta)$ random variables.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $X \geq  0$ be a random variable on a probability space $(\Omega,\sF, \pro)$ and let $\sG \subseteq \sF$ be a sub-$\sigma$-algebra.
+\ben
+\item [(i)] Show that $X > 0$ implies that $\E[X|\sG] > 0$ up to an event of zero probability.
+\item [(ii)] Show that $\bra{\E[X|\sG] > 0}$ is the smallest $\sG$-measurable event that contains the event $\bra{X > 0}$ up to zero probability events.
+\een
+
+\scutline
+
+Solution. Claim. If $X > 0$ then $\E[X|\sG ] > 0$ up to a null event.
+
+Proof. Define $A := \bra{\E[X|\sG ] \leq  0}\in \sG$. Then
+\be
+0 \leq  \E[X\ind_A] = \E[\E[X|\sG ]\ind_A] \leq  0
+\ee
+and therefore $\pro(A) = 0$ as $X > 0$ on $A$, giving the claim.
+
+Claim. The event $\bra{\E[X|\sG ] > 0}$ is, up to null events, the smallest element of $\sG$ that contains the event $\bra{X > 0}$ up to a null event.
+
+Proof. Suppose that $\bra{X >0}\subseteq B \in \sG$ and consider the event $C:=\bra{\E[X|\sG ]>0} \bs B \in \sG$. Then
+\be
+0 \geq \E[X\ind_C] = \E[\E[X|\sG ]\ind_C] \geq  0
+\ee
+and so $pro(C) = 0$ as $\E[X|\sG ] > 0$ on $C$. Therefore $\bra{\E[X|\sG ] > 0} \subseteq B$, up to a null event.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Suppose given $a, b > 0$, and let $X$, $Y$ be two random variables with values in $\Z^+$ and $\R^+$ respectively, whose distribution is given by the formula 
+\be
+\pro(X = n, Y \leq t) = b \int^t_0 \frac{(ay)^n}{n!}\exp(-(a + b)y) dy.
+\ee
+
+Let $n \in \Z^+$ and $h : \R^+ \to \R^+$ be a measurable function, compute $\E[h(Y)|X = n]$. Then compute $\E[Y/(X + 1)]$, $\E[\ind(X = n)|Y ]$ and $\E[X|Y ]$.
+
+\scutline
+
+Solution. Note that
+\beast
+\pro\bb{X = n} = \lim_{t\to \infty} \pro\bb{ X= n,Y \leq  t} & = & b \int^\infty_0 \frac{(ay)^n}{n!} e^{-(a+b)y} dy = \frac{ba^n}{(a+b)^nn!} \int^\infty_0 ((a+b)y)^n e^{-(a+b)y} dy\\
+& = & \frac{ba^n}{(a+b)^{n+1}n!} \int^\infty_0 u^n e^{-u} du  = \frac{ba^n}{(a+b)^{n+1}n!}\cdot \Gamma(n+1) = \frac{ba^n}{(a+b)^{n+1}}
+\eeast
+
+So, in particular, $\bra{X = n}$ is a nonnull event for all $n \geq 0$. Define $\Q_n(A) := \pro(A|X = n)$ for all $A \in \sF$. Then $\E[h(Y)|X = n] = \E_{\Q_n} [h(Y)]$ which we can readily evaluate if $Y$ has a $\Q_n$-density. First note that $\pro\bb{Y \leq t} = 0$ for all $t \leq 0$, it follows that $\Q_n\bra{Y \leq t} = 0$ for all $t \leq 0$. Suppose that $t > 0$. Then
+\be
+\Q_n\bb{Y \leq  t} = \frac{\pro\bb{X = n,Y \leq  t}}{\pro\bb{X = n}} = \frac{(a+b)^{n+1}}{n!} \int^t_0 y^n e^{-(a+b)y} dy
+\ee
+and this is differentiable on $(0,\infty)$. It is easy to see that the right-hand and left-hand derivatives of the $\Q_n$-cdf at 0 are both 0, so $Y$ does have a $\Q_n$-density, and this is given by
+\be
+f_Y (y) = \frac{(a+b)^{n+1}}{n!} y^n e^{-(a+b)y} \ind_{\bra{y\geq 0}}
+\ee
+
+Therefore
+\be
+\E[h(Y)|X = n] = \E_{\Q_n} [h(Y)] = \frac{(a+b)^{n+1}}{n!} \int^\infty_0 h(y)y^n e^{-(a+b)y} dy
+\ee
+
+To compute $\E[Y/(X +1)]$, notice that $\bra{\bra{X = n}: n \geq  0}$ is a partition of $\Omega$ using nonnull events in $\sF$. Therefore
+\be
+\E \bb{\frac Y{X +1}} = \E\bb{\sum^\infty_{n=0} \frac{Y\ind_{\bra{X=n}}}{X +1}} = \sum^\infty_{n=0} \E\bb{\frac{Y\ind_{\bra{X=n}}}{X +1}} = \sum^\infty_{n=0} \frac{\E[Y\ind_{\bra{X=n}}]}{n+1} = \sum^\infty_{n=0} \frac{\E[Y|X = n]\pro\bb{X = n}}{n+1}
+\ee
+and therefore, from the above,
+\beast
+\E\bb{\frac Y{X +1}} & = & \sum^\infty_{n=0} \frac{(a+b)^{n+1}}{n!} \int^\infty_0 y^{n+1} e^{-(a+b)y} dy \cdot \frac{ba^n}{(a+b)^{n+1}} \cdot \frac 1{n+1}\\
+& = & \sum^\infty_{n=0} \frac{ba^n}{(n+1)!} \cdot \frac 1{(a+b)^{n+1}} \int^\infty_0 ((a+b)y)^{n+1} e^{-(a+b)y} dy\\
+& = & \sum^\infty_{n=0} \frac{ba^n}{(n+1)!} \cdot \frac 1{(a+b)^{n+2}} \int^\infty_0 u^{n+1} e^{-u} du\\
+& = & \sum^\infty_{n=0} \frac{ba^n}{(a+b)^{n+2}} = \frac b{(a+b)^2} \cdot \frac 1{1- \frac a{a+b}} = \frac 1{a+b}
+\eeast
+
+Now, to compute $\E[\ind_{\bra{X=n}}|Y]$, it is enough to find some integrable and $\sigma(Y)$-measurable random variable $Z$, which without loss of generality (see [Kal97, Lemma 1.13]) can be written as $h(Y)$ for some Borel-measurable $h :\R\to \R$, such that $\E[\ind_{\bra{X=n,Y\leq t}}] = \E[h(Y)\ind_{\bra{Y\leq t}}]$ for all $t \in \R$. (That it is enough to check on sets of the form $\bra{Y \leq  t}$ follows from the usual $\pi$-system argument.) Now, note that for all $t > 0$
+\be
+\pro\bb{Y \leq  t} = \sum^\infty_{n=0} \pro\bb{X = n,Y \leq  t} = \sum^\infty_{n=0} b \int^t_0 \frac{(ay)^n}{n!} e^{-(a+b)y }dy = \int^t_0 be^{-by} dy
+\ee
+by Tonelli's theorem, and further that $\pro\bb{Y \leq 0}=0$ (so if $t \leq 0$ any Borel-measurable $h$ works). It follows that $Y \sim \sE(b)$. Now observe that 
+\be
+\E[\ind_{\bra{X=n,Y\leq t}}] = b \int^t_0 \frac{(ay)^n}{n!} e^{-(a+b)y }dy = \int^t_0 \frac{(ay)^n}{n!} e^{-ay} be^{-by} dy
+\ee
+and, as $Y \sim \sE(b)$,
+\be
+\E[h(Y)\ind_{\bra{Y\leq t}}] = \int^t_0 h(y)be^{-by} dy
+\ee
+
+So take $h :\R\to \R : y \mapsto (ay)^n e^{-ay} \ind_{\bra{y\geq 0}}/n!$, from the above, it follows that
+\be
+\frac{(aY)^n}{n!} e^{-aY} \ind_{\bra{ Y \geq 0}} = h(Y) = \E[\ind_{\bra{X=n}}|Y] \text{ a.s.}
+\ee
+
+Finally, to calculate $\E[X|Y]$, as $\bra{\bra{X = n}: n \geq 0} \subseteq \sF$ partitions $\Omega$ and everything is nonnegative (so that Tonelli's theorem applies), we have that
+\beast
+\E[X|Y] & = & \sum^\infty_{n=0} \E[n\ind_{\bra{X=n}}|Y] \text{ a.s.}\\
+& = & \sum^\infty_{n=0} n \frac{(aY)^n}{n!} e^{-aY} \ind_{\bra{Y\geq 0}}\text{ a.s.}\\
+& = & aY e^{-aY} \sum^\infty_{n=0} \frac{(aY)^n}{n!} \ind_{\bra{Y\geq 0}} = aY\ind_{\bra{Y\geq 0}} = aY\text{ a.s.}
+\eeast
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item (Conditional independence). Let $\sG \subseteq \sF$ be a sub-$\sigma$-algebra. Two random variables $X$, $Y$ are said to be independent conditionally on $\sG$ if for every non-negative measurable $f$, $g$,
+\be
+\E[f(X)g(Y )|\sG] = \E[f(X)|\sG]\E[g(Y)|\sG] \text{ a.s.}
+\ee
+
+What are two random variables independent conditionally on $\bra{\emptyset, \Omega}$? On $\sF$?
+
+Show that $X$, $Y$ are independent conditionally on $\sG$ if and only if for every non-negative $\sG$-measurable random variable $Z$, and every $f$, $g$ non-negative measurable functions,
+\be
+\E[f(X)g(Y )Z] = \E[f(X)Z\E[g(Y )|G]],
+\ee
+and this if and only for every measurable non-negative $g$,
+\be
+\E[g(Y )|G \vee \sigma(X)] = \E[g(Y )|G].
+\ee
+
+\scutline
+
+Solution. In the following, suppose that $\sG$ is a sub-$\sigma$-algebra of $\sF$. We have that $X$ and $Y$ are conditionally independent given $\sG$ iff for all nonnegative, Borel-measurable $f ,g: \R\to \R$,
+\be
+\E[ f (X)g(Y)|\sG ] = \E[ f (X)|\sG ]\E[g(Y)|\sG ] \text{ a.s.}
+\ee
+
+As all random variables are independent of $\bra{\emptyset,\Omega}$, if $\sG = \bra{\emptyset,\Omega}$ then the above holds iff $X$ and $Y$ are independent. If $\sG = \sF$, then the above holds for all random variables $X$ and $Y$.
+
+Claim. The random variables $X$ and $Y$ are conditionally independent given $\sG$ iff for every nonnegative, $\sG$-measurable random variable $Z$ and every pair of nonnegative, Borel-measurable functions $f$ and $g$,
+\be
+\E[ f (X)g(Y)Z] = \E[ f (X)Z\E[g(Y)|\sG ]] 
+\ee
+
+Proof. Only if. Fix $Z, f$ and $g$ as in the claim and note that
+\be
+\E[ f (X)g(Y)Z] = \E[\E[ f (X)g(Y)Z|\sG ]] = \E[Z\E[ f (X)g(Y)|\sG ]] = \E[Z\E[ f (X)|\sG ]\E[g(Y)|\sG ]]
+\ee
+with the second equality holding as $Z$ is $\sG$-measurable and everything is nonnegative. Further, as $Z\E[g(X)|\sG ]$ is $\sG$-measurable and almost surely nonnegative, it follows that 
+\be
+\E[Z\E[ f (X)|\sG ]\E[g(Y)|\sG ]] = \E[ f (X)Z\E[g(Y)|\sG ]]
+\ee
+as required.
+
+If. Let $A \in \sG$ and take $Z = \ind_A$. Then
+\be
+\E[\E[ f (X)g(Y)|\sG ]\ind_A] = \E[ f (X)g(Y)\ind_A] = \E[ f (X)\ind_A \E[g(Y)|\sG ]] = \E[\E[ f (X)|\sG ]\E[g(Y)|\sG ]\ind_A]
+\ee
+where the final equality holds as $\ind_A\E[g(Y)|\sG ]$ is, again, $\sG$-measurable and almost surely nonnegative. Therefore, as $E[ f (X)|\sG ]E[g(Y)|\sG ]$ is $\sG$-measurable and integrable, the conclusion follows.
+
+Claim. Let $X$ and $Y$ be random variables. Then
+\be
+\E[ f (X)g(Y)Z] = \E[ f (X)Z\E[g(Y)|\sG ]]
+\ee
+for every $\sG$-measurable random variable $Z$ and every pair of nonnegative, Borel-measurable functions $f$ and $g$ iff
+\be
+\E[g(Y)|\sigma(\sG ,\sigma(X))] = \E[g(Y)|\sG ]
+\ee
+for every nonnegative, Borel-measurable $g$.
+
+Proof. Only if. It is immediate that $\E[g(Y)|\sG ]$ is $\sigma(\sG ,\sigma(X))$-measurable and integrable, so we are to show that, for all $A \in \sigma(\sG ,\sigma(X))$, $\E[g(Y)|A] = \E[\E[g(Y)|\sG ]\ind_A]$. It suffices to prove this for all $A\cap B$, where $A \in \sG$ and $B \in \sigma(X)$, as the set $\bra{A\cap B: A \in \sG ,B \in \sigma(X)}$ is a generating $\pi$-system for $\sigma(\sG ,\sigma(X))$. So let $A \in \sG$ and $B \in \sigma(X)$ and note that, by our hypothesis,
+\be
+\E[g(Y)\ind_{A\cap B}] = \E[\ind_Ag(Y)\ind_B] = \E[\ind_A\ind_B\E[g(Y)|\sG ]] = \E[\ind_{A\cap B}\E[g(Y)|\sG ]]
+\ee
+as required.
+
+If. As $f (X)Z$ is nonnegative and $\sigma(\sG ,\sigma(X))$-measurable and $g(Y)$ is nonnegative, we have that
+\be
+\E[g(Y) f (X)Z] = \E[\E[g(Y)|\sigma(\sG ,\sigma(X))] f (X)Z] = \E[\E[g(Y)|\sG ] f (X)Z]
+\ee
+as required.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Give an example of a random variable $X$ and two $\sigma$-algebras $\sH$ and $\sG$ such that $X$ is independent of $\sH$ and $\sG$ is independent of $\sH$, nevertheless
+\be
+\E[X|\sigma(\sG,\sH)] \neq \E[X|\sG].
+\ee
+
+Hint: Consider coin tosses.
+
+\scutline
+
+Solution. Suppose that $X$ and $Y$ are iid Bernoulli(1/2) random variables and define $Z = \ind_{\bra{X=Y}}$. (We can view $X$ and $Y$ as coin flips, with $Z$ being 1 when they are both heads or both tails and 0 otherwise.) Define $\sG := \sigma(X)$ and $\sH := \sigma(Y)$. Then $\sG$ and $\sH$ are independent by assumption and $Z$ is independent of $\sG$. To see this, note that $\sigma(Z)$ is the $\sigma$-algebra generated by the partition $\bra{\bra{Z = 0},\bra{Z = 1}}$ and $\sG$ is the $\sigma$-algebra generated by the partition $\bra{\bra{X = 0},\bra{X = 1}}$. Then
+\beast
+& & \pro\bb{X = 0,Z = 0} = \pro\bb{X = 0,Y = 1} = 1/4 = \pro\bb{X = 0}\pro\bb{Z = 0}\\
+& & \pro\bb{X = 1,Z = 0} = \pro\bb{X = 1,Y = 0} = 1/4 = \pro\bb{X = 1}\pro\bb{Z = 0}\\
+& & \pro\bb{X = 0,Z = 1} = \pro\bb{X = 0,Y = 0} = 1/4 = \pro\bb{X = 0}\pro\bb{Z = 1}\\
+& & \pro\bb{X = 1,Z = 1} = \pro\bb{X = 1,Y = 1} = 1/4 = \pro\bb{X = 1}\pro\bb{Z = 1}
+\eeast
+and therefore we have the required independence. Moreover, note that
+\beast
+\E[Z|\sG ] & = & \E[Z|X = 0]\ind_{\bra{X=0}} + \E[Z|X = 1]\ind_{\bra{X=1}}\\
+& = & 2\E[Z\ind_{\bra{X=0}}]\ind_{\bra{X=0}} + 2\E[Z\ind_{\bra{X=1}}]\ind_{\bra{X=1}}\\
+& = & 2\E[\ind_{\bb{X=0=Y}}]\ind_{\bra{X=0}} + 2\E[\ind_{\bra{X=1=Y}}]\ind_{\bra{X=1}} = 1/2
+\eeast
+and that $Z$ is $\sigma(\sG ,\sH)$-measurable, so that $\E[Z|\sigma(\sG ,\sH )] = Z$ a.s., therefore, it is false that $\E[Z|\sG ] = \E[Z|\sigma(\sG ,\sH )]$ a.s., which is what we wanted to show. (Note that $Z$ is also independent of $\sH$ by symmetry, so we have proven something mildly stronger than the claim.)
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $(X_n, n \geq  0)$ be an integrable process with values in a countable subset $E \subseteq \R$. Show that $X$ is a martingale with respect to its natural filtration if and only if for every $n$ and every $i_0, \dots, i_n \in E$, we have
+\be
+\E[X_{n+1}|X_0 = i_0,\dots ,X_n = i_n] = i_n.
+\ee
+
+\scutline
+
+Solution. There was a small error in the exercise, the claim below is correct.
+
+Claim. Suppose that $X = (X_n)_{n\geq 0}$ is an integrable process that takes values in $E$, a countable subset of $\R$. Then $X$ is a martingale with respect to its natural filtration iff for every $n \geq 0$ and every $i_0, \dots , i_n \in E$ such that $\pro\bb{X_0 = i_0, \dots ,X_n = i_n} > 0$,
+\be
+\E[X_{n+1}|X_0 = i_0, \dots ,X_n = i_n] = i_n
+\ee
+
+Proof. Only if. Suppose that $n \geq 0$ and $i_0, \dots , i_n\in E$ are fixed and such that $A :\bra{X_0 = i_0, \dots ,X_n = i_n}$ has positive probability. Then
+\be
+\E[X_{n+1}|A] = \frac{\E[X_{n+1}\ind_A]}{\pro(A)} = \frac{\E[\E[X_{n+1}\ind_A|\sF_n]]}{\pro(A)} = \frac{\E[\ind_A\E[X_{n+1}|\sF_n]]}{\pro(A)} = \frac{\E[\ind_AX_n]}{\pro(A)} = i_n
+\ee
+as required, noting that the third equality holds as $\ind_A$ is $\sF_n$-measurable and bounded and $X_{n+1}$ is integrable.
+
+If. As $X$ is integrable by assumption, it is a martingale with respect to the natural filtration provided that $\E[X_{n+1}\ind_A] = \E[X_n\ind_A]$ for all $n \geq 0$ and all $A \in \sF_n$. But $\sF_n$ is generated by the countable partition $\bra{\bra{X_0 = i_0, \dots ,X_n = i_n} : i_0, \dots , i_n \in E}$, so it suffices to check the property for elements of this partition. So fix any $A = \bra{X_0 = i_0, \dots ,X_n = i_n}$. If $\pro(A) = 0$, then $\E[X_{n+1}\ind_A] = 0 = \E[X_n\ind_A]$. If $\pro(A) > 0$, then 
+\be
+\E[X_{n+1}\ind_A] = \E[X_{n+1}|A]\pro(A) = i_n\pro(A) = \E[X_n\ind_A]
+\ee
+as required, so $X$ is a martingale.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item A process $C = (C_n, n \geq  0)$ is called previsible, if $C_n$ is $\sF_{n-1}$-measurable, for all $n \geq 1$. Let $C$ be a previsible process and $X$ a martingale (resp. supermartingale). We set
+\be
+Y_n = \sum_{k\leq n} C_k(X_k - X_{k-1}), \text{ for all }n \geq  0.
+\ee
+
+Show that if $C$ is bounded then $(Y_n, n \geq  0)$ is a martingale (if $C_n \geq  0$ for all $n$ and bounded then it is a supermartingale).
+
+We write $Y_n = (C \cdot X)_n$ and call it the martingale transform of $X$ by $C$. It is the discrete analogue of the stochastic integral $\int C dX$. More on that in the ``Stochastic calculus'' course next term.
+
+\scutline
+
+Solution. Suppose first that $X = (X_n)_{n\geq 0}$ is a martingale and that $C = (C_n)_{n\geq 0}$ is previsible and bounded. We see that, for all $n \geq 0$,
+\be
+\E[Y_{n+1}-Y_n|\sF_n] = \E[C_{n+1}(X_{n+1}-X_n)|\sF_n] = C_{n+1}\E[X_{n+1}-X_n|\sF_n] = 0
+\ee
+where the penultimate equality holds as $C_{n+1}$ is bounded and $\sF_n$-measurable and $X_{n+1} -X_n$ is integrable, and the final equality holds by the martingale property. We have thus shown that the martingale property holds for $Y = (Y_n)_{n\geq 0}$. As the process $Y$ is immediately adapted and integrable, it follows that it is a martingale.
+
+Suppose instead that $X$ is a supermartingale and that $C$ is bounded and nonnegative. Then, for all $n \geq 0$, the equation above holds, with the final equality changed to `$\leq$' because of the supermartingale property and the nonnegativity of $C$. Hence the supermartingale property has been verified for $Y$ and, as $Y$ is adapted and integrable, it follows that $Y$ is a supermartingale.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $(X_n, n \geq  1)$ be a sequence of independent random variables with respective laws given by 
+\be
+\pro(X_n = -n^2) = \frac 1{n^2},\quad \pro\bb{X_n = \frac{n^2}{n^2 - 1}} = 1 - \frac 1{n^2}.
+\ee
+
+Let $S_n = X_1 + \dots + X_n$. Show that $S_n/n \to 1$ a.s. as $n \to \infty$ and deduce that $(S_n, n \geq  0)$ is a martingale which converges to $+\infty$.
+
+\scutline
+
+Solution. Let $A_n := \bra{X_n = -n^2}$. By the Borel-Cantelli lemma, $\pro(A_n \text{ i.o.}) = 0$. Define $\Omega' := \bra{\omega\in \Omega: X_n(\omega) = n^2/(n^2 -1) \text{ev.}}\in \sF$, by definition, $\pro(\Omega') = 1$ and there exists a random time $N:\Omega' \to \Z^{>0}$ such that, if $\omega \in \Omega'$, then for all $n \geq N(\omega)$, $X_n(\omega) = n^2/(n^2-1)$. So if $\omega \in \Omega'$, then
+\beast
+\frac{S_n(\omega)}n & = & \sum^{N(\omega)-1}_{i=1} \frac{X_i(w)}n + \sum^n_{i=N(\omega)} \frac{i^2}{n(i^2-1)} = \frac 1n \sum^n_{i=N(\omega)} \bb{1+ \frac 1{i^2-1} } + o(1)\\
+& = & \frac 1n \sum^n_{i=N(\omega)} \bb{1+ \frac 1{2(i-1)} - \frac 1{2(i+1)}} +o(1)\\
+& = & \frac 1n \bb{n-N(\omega)+1+ \frac 1{2(N(\omega)-1)} - \frac 1{2(n+1)}} +o(1)\\
+& = & 1+o(1)
+\eeast
+and therefore $S_n(\omega)/n \to 1$ as $n \to \infty$. As this holds for all $\omega \in\Omega'$, a set of probability 1, we conclude that $S_n/n\to 1$ almost surely.
+
+To prove that the process $S = (S_n)_{n\geq 1}$ is a martingale with respect to its natural filtration, we first notice that as $S_n$ is a finite sum of integrable random variables, it is itself integrable. Second (and finally),
+\be
+\E[S_{n+1}-S_n|\sF_n] = \E[X_{n+1}|\sF_n] = \E[X_{n+1}] = -1+1 = 0
+\ee
+where the second equality comes from the fact that $X_{n+1}$ is independent of $X_1, \dots ,X_n$, and hence of $\sF_n$. It is immediate from multiplying the equations at the start by $n$ that, for all $\omega \in \Omega'$, $S_{n(\omega)} \to \infty$, and that therefore $S_n \to \infty$ a.s..
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $(\Omega,\sF, (\sF_n), \pro)$ be a filtered probability space. Let $A \in \sF_n$ for some $n$ and let $m,m' \geq n$. Show that $m\ind(A) + m'\ind(A^c)$ is a stopping time.
+
+Show that an adapted process $(X_n, n \geq  0)$ with respect to some filtered probability space is a martingale if and only if it is integrable, and for every bounded stopping time $T$, $\E[X_T ] = \E[X_0]$.
+
+\scutline
+
+Solution. Claim. If $m,m' \geq n$ and $A \in \sF_n$ then $m\ind_A+m'\ind_{A^c}$ is a stopping time.
+
+Proof. Let $i \geq 0$. Notice that $\bra{T = m} = A \in \sF_n \subseteq \sF_m$; that $\bra{T = m'} = A^c \in \sF_n \subseteq \sF_{m'}$, and finally that, if $i$ is neither $m$ nor $m'$, then $\bra{T = i} = \emptyset \in \sF_i$. Therefore $m\ind_A+m'\ind_{A^c}$ is a stopping time.
+
+Claim. Suppose that $X = (X_n)_{n\geq 0}$ is an adapted process. Then $X$ is a martingale iff $X$ is integrable and, for every bounded stopping time $T$, $\E[X_T ] = \E[X_0]$.
+
+Proof. Only if. This follows from the optional stopping theorem.
+
+If. Fix $n \geq 0$ and note that $T = n$ is a bounded stopping time, so $\E[X_n] = \E[X_0]$ by our hypothesis. Let $A \in \sF_n$ and consider $T' =(n+1)\ind_A+ n\ind_{A^c}$. By the first claim, this is a (bounded) stopping time, therefore, by our hypothesis,
+\be
+\E[X_0] = \E[X_{T'}] = \E[X_{n+1}\ind_A+X_n\ind_{A^c}] = \E[X_{n+1}\ind_A]+\E[X_n(1-\ind_A)] = \E[(X_{n+1}-X_n)\ind_A]+\E[X_n]
+\ee
+
+But $\E[X_0] = \E[X_n]$, so the above implies that $\E[X_{n+1}\ind_A] = \E[X_n\ind_A]$. Finally, we have assumed that $X$ is integrable and adapted, so $\E[X_{n+1}|\sF_n] = X_n$ a.s., hence, $X$ is a martingale.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item\label{exe:2.5} Let $X$ be a martingale (resp. supermartingale) on some filtered probability space, and let T be an a.s. finite stopping time. Prove that $\E[X_T ] = \E[X_0]$ (resp. $\E[X_T ] \leq E[X0]$) if either one of the following conditions holds:
+\ben
+\item [(i)] $X$ is bounded ($\exists M > 0 : \forall n \geq  0,\ \abs{X_n} \leq M$ a.s.)
+\item [(ii)] $X$ has bounded increments ($\exists M > 0 : \forall n \geq  0,\ \abs{X_{n+1} -X_n} \leq M$ a.s.) and $\E[T] < \infty$.
+\een
+
+\scutline
+
+Solution. Claim. Suppose that $X = (X_n)_{n\geq 0}$ is a martingale (respectively, a supermartingale) and that $T$ is an a.s. finite stopping time. If $X$ is a.s. bounded, then $\E[X_T ] = \E[X_0]$ (respectively, $\E[X_T ] \leq  \E[X_0]$).
+
+Proof. We know that $X^T$ is a martingale (respectively, a supermartingale). As $T < \infty$ a.s., it follows that $T \land n \to T$ a.s.. Hence
+\be
+\E[X_T ] = \E\bb{\lim_{n\to \infty}X_{T\land n}} = \lim_{n\to \infty}\E[X_{T\land n}] = \lim_{n\to \infty}\E[X_{T\land 0}] = \E[X_0]
+\ee
+where the second equality holds by the dominated convergence theorem with the almost sure bound on $X$ as the dominator, and the penultimate equality holds as $X^T$ is a martingale. (In the case where $X$ is a supermartingale, the penultimate equality becomes `$\leq$' by the supermartingale property.)
+
+Claim. With $X$ as above, if $X$ has a.s. bounded increments (in the sense that there exists some $M \geq 0$ such that, for all $n \geq 0$, $\abs{X_{n+1} -X_n} \leq  M$ a.s.) and $\E[T] < \infty$, then $\E[X_T ] = \E[X_0]$ (respectively, $\E[X_T ] \leq \E[X_0]$).
+
+Proof. Note that, for all $n \geq 0$,
+\be
+\abs{X_{T\land n}} = \abs{X_0 + \sum^{T\land n}_{i=1} (X_i-X_{i-1}) } \leq  \abs{X_0} + \sum^{T\land n}_{i=1} \abs{X_i-X_{i-1}} \leq \abs{X_0} + MT\text{ a.s.}
+\ee
+and that the far right-hand side is integrable by assumption. Therefore, by the same reasoning as above,
+\be
+\E[X_T ] = \E\bb{\lim_{n\to \infty} X_{T\land n}} = \lim_{n\to \infty}\E[X_{T\land n}] = \lim_{n\to \infty}\E[X_{T\land 0}] = \E[X_0]
+\ee
+where the second equality holds by the dominated convergence theorem with $\abs{X_0}+MT$ as the dominator, and the penultimate equality holds as $X^T$ is a martingale. (Again, in the case where $X$ is a supermartingale, the penultimate equality because `$\leq$' by the supermartingale property.)
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $T$ be an $(\sF_n, n \geq  0)$-stopping time such that for some integer $N > 0$ and $\ve > 0$,
+\be
+\pro(T \leq N + n|\sF_n) \geq \ve, \text{ for every }n \geq  0.
+\ee
+
+Show that $\E[T] < \infty$.
+
+Hint: Find bounds for $\pro(T > kN)$.
+
+\scutline
+
+Solution. Fix $k \geq 1$ and suppose that $\pro\bb{T > (k-1)N} > 0$. (Any bound will obviously be satisfied in the case where $\pro\bb{T > (k-1)N} = 0$.) Then we see that
+\be
+\pro\bb{T > kN} = \pro\bb{T > kN|T > (k-1)N}\dots \pro\bb{T > 2N|T > N} \pro\bb{T > N}
+\ee
+and further that
+\be
+\pro\bb{T > kN|T > (k-1)N} = \frac{\E[\ind_{\bra{T>kN,T>(k-1)N}}]}{\pro\bb{T > (k-1)N}} = \frac{\E[\E[\ind_{\bra{T>kN}}|\sF_{(k-1)N}]\ind_{\bra{T>(k-1)N}}]}{\pro\bb{T > (k-1)N}} \leq  1-\ve
+\ee
+and similarly for every other factor except the last. For the last term,
+\be
+\pro\bb{T > N} = \E[\ind_{\bra{T>N}}] = \E[\E[\ind_{\bra{T>N}}|\sF_0]] \leq  1-\ve
+\ee
+and hence $\pro\bb{\bra{T > kN}} \leq  (1-\ve)^k$ for all $k \geq 0$, as it clearly holds if $k = 0$. We conclude by noting that
+\be
+\E[T] = \sum^\infty_{n=0} \pro\bb{T > n} = \sum^\infty_{k=0} \sum^{N-1}_{n=0} \pro\bb{T > kN +n} \leq \sum^\infty_{k=0} N\pro\bb{T > kN} \leq  N \sum^\infty_{k=0} (1-\ve)^k < \infty
+\ee
+as required.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Your winnings per unit stake on game n are $\ve_n$, where the $\ve_n$ are independent random variables with
+\be
+\pro(\ve_n = 1) = p \quad \text{ and } \quad \pro(\ve_n = -1) = q,
+\ee
+where $p \in (1/2, 1)$ and $q = 1 - p$. Your stake $C_n$ on game $n$ must lie between 0 and $Z_{n-1}$, where $Z_{n-1}$ is your fortune at time $n - 1$. Your object is to maximize the expected `interest rate' $\E[\log(Z_N/Z_0)]$, where $N$ is a given integer representing the length of the game, and $Z_0$, your fortune at time 0, is a given constant. Let $\sF_n = \sigma(\ve_1, \dots, \ve_n)$. Show that if $C$ is any previsible strategy, that is $C_n$ is $\sF_{n-1}$-measurable for all $n$, then $\log Z_n - n\alpha$ is a supermartingale, where $\alpha$ denotes the entropy
+\be
+\alpha = p \log p + q \log q + \log 2,
+\ee
+so that $\E[\log(Z_n/Z_0)] \leq N\alpha$, but that, for a certain strategy, $\log Z_n - n\alpha$ is a martingale. What is the best strategy?
+
+\scutline
+
+Solution. From the definitions in the question, we have that for all $n \geq 0$, $Z_{n+1} = Z_n + \ve_{n+1}C_{n+1}$. Notice that
+\beast
+\E[\log Z_{n+1}|\sF_n] & = & \E[\log(Z_n+\ve_{n+1}C_{n+1})|\sF_n]\\
+& = & p\log(Z_n+C_{n+1}) + q\log(Z_n-C_{n+1}) \text{ a.s.}\\
+& = & \log Z_n+ p(\log(Z_n+C_{n+1})-\log Z_n)+q(\log(Z_n-C_{n+1})-\log Z_n)\\
+& = & \log Z_n+ p\log\bb{1+\frac{C_{n+1}}{Z_n}} + q\log\bb{1- \frac{C_{n+1}}{Z_n}}
+\eeast
+Write $f : (-1,1) \to \R: x \mapsto p\log(1+x)+q\log(1-x)$. Then by elementary calculus, $f$ is maximised at $p-q$ and $f (p-q) = \log 2+ p\log p+q\log q =:\alpha$. Therefore
+\be
+\E[\log Z_{n+1}|\sF_n] = \log Z_n+ f (C_{n+1}/Z_n) \text{ a.s. }\leq  \log Z_n+\alpha
+\ee
+or, equivalently,
+\be
+\E[\log Z_{n+1}-(n+1)\alpha| \sF_n] \leq  \log Z_n-n\alpha \text{ a.s.}
+\ee
+
+As $\log Z_n-n\alpha$ is clearly $\sF_n$-measurable and integrable for all $n \geq 0$, the process $(\log Z_n- n\alpha)_{n\geq 0}$ is a supermartingale. Finally, if we take $C_{n+1} := (p-q)Z_n$ for all $n \geq 0$, then we have equalities everywhere, as $p-q$ is the unique maximiser of $f$, this is the unique optimal strategy (and ensures that the process is in fact a martingale for this $(C_n)_{n\geq 1}$).
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item (Polya's urn). At time 0, an urn contains 1 black ball and 1 white ball. At each time $1, 2, 3, \dots$, a ball is chosen at random from the urn and is replaced together with a new ball of the same colour. Just after time $n$, there are therefore $n + 2$ balls in the urn, of which $B_n + 1$ are black, where $B_n$ is the number of black balls chosen by time $n$. Let $M_n = (B_n + 1)/(n + 2)$ the proportion of black balls in the urn just after time $n$. Prove that, relative to a natural filtration which you should specify, $M$ is a martingale. Show that it converges a.s. and in $\sL^p$ for all $p \geq 1$ to a $[0, 1]$-valued random variable $X_\infty$.
+
+Show that for every $k$, the process
+\be
+\frac{(B_n + 1)(B_n + 2) \dots (B_n + k)}{(n + 2)(n + 3) \dots (n + k + 1)},\ n \geq  1
+\ee
+is a martingale. Deduce the value of $\E[X^k_\infty]$, and finally the law of $X_\infty$. Reobtain this result by showing directly that $\pro(B_n = k) = (n + 1)^{-1}$ for $0 \leq k \leq n$.
+
+Prove that for $0 < \theta < 1$, $(N_n(\theta))_{n\geq 0}$ is a martingale, where
+\be
+N_n(\theta) := \frac{(n + 1)!}{B_n!(n - B_n)!} \theta^{B_n}(1 - \theta)^{n-B_n}.
+\ee
+
+\scutline
+
+Solution. Define $\sF_n := \sigma(B_0, \dots ,B_n)$ for all $n \geq 0$. Then the process $M = (M_n)_{n\geq 0} = ((B_n+1)/(n+2))_{n\geq 0}$ is a martingale with respect to this filtration. To see why, note that for all $n \geq 0$, $M_n$ is clearly $\sF_n$-measurable and such that $\abs{M_n} \leq 1$, and that $M_n$ is therefore integrable. For the martingale property,
+\beast
+\E[M_{n+1}|\sF_n] = \E\bb{\left.\frac{B_{n+1}+1}{n+3}\right|\sF_n} & = & M_n \frac{B_{n+2}}{n+3} +(1-M_n)\frac{B_n+1}{n+3} \text{ a.s.}\\
+& = & \frac{(B_n+1)(B_n+2)+(n+1-B_n)(B_n+1)}{(n+2)(n+3)} \\
+& = & \frac{(n+3)B_n+n+3}{(n+2)(n+3)} = M_n
+\eeast
+and therefore $M$ is a martingale. As mentioned earlier, $M$ is bounded and hence is bounded in $\sL^p$ for all $p \geq 1$. Therefore, by the $\sL^p$ convergence theorem, there exists a random variable $X_\infty$ such that, for all $p > 1$, $M_n \to X_\infty$ a.s. and in $\sL^p$. For the case where $p = 1$, note that on finite measure spaces convergence in $\sL^q$ implies convergence in $\sL^p$ if $1 \leq  p \leq  q < \infty$. Additionally, as the image of $M_n$ is contained in [0,1], the image of $X_\infty$ is (a.s.) contained in [0,1].
+
+Define for all $k \geq 1$ and all $n \geq  0$
+\be
+M^{(k)}_n := \prod^k_{i=1} \frac{B_n+i}{n+i+1}
+\ee
+
+We claim that this is a martingale. Again, it is clearly $\sF_n$-measurable and such that $\abs{M^{(k)}_n} \leq  1$, as each factor lies in [0,1], and therefore it is integrable. To check the martingale property, let $n \geq  0$.
+\beast
+\E[M^{(k)}_n+1|\sF_n] & = & \E\bb{\left.\prod^k_{i=1} \frac{B_n+1+i}{n+i+2}\right|\sF_n} = M_n \prod^k_{i=1} \frac{B_n+i+1}{n+i+2} +(1-M_n) \prod^k_{ i=1}\frac{B_n+i}{n+i+2} \text{ a.s.}\\
+& = & \frac{\prod^k_{i=2}(B_n+i)}{\prod^k_{i=1}(n+i+2)} \cdot \frac{(B_n+1)(B_n+k+1)+(n+1-B_n)(B_n+1)}{n+2}\\
+& = & \frac{\prod^k_{i=2}(B_n+i)}{\prod^k_{i=1}(n+i+2)} \cdot \frac{(n+k+2)(B_n+1)}{n+2} = \frac{\prod^k_{i=1}(B_n+i)}{\prod^k_{i=1} (n+i+1)} = M^{(k)}_n
+\eeast
+and so $(M^{(k)}_n)_{n\geq 0}$ is a martingale.
+
+Looking back at the definition of $M^{(k)}_n$, it's clear that it's `almost' equal to $M^k_n$, we will next quantify this and show that as $n\to \infty$, the difference disappears in a suitable manner. Each factor can be rewritten as follows:
+\be
+\frac{B_n+i}{n+i+1} = \frac{B_n+i}{n+2} \frac{n+2}{n+i+1} = \frac{B_n+1+i-1}{n+2} \frac{n+2}{n+i+1} = \bb{M_n+ \frac{i-1}{n+2}} \frac{n+2}{n+i+2}
+\ee
+
+From this, it is clear that each of the $k$ factors tends to $X_\infty$ a.s. as $n \to \infty$. By the continuous mapping theorem, it follows that $M^{(k)}_n \to X^k_\infty$ a.s. as $n \to \infty$. Now, as we mentioned earlier, $\abs{M^{(k)}_n} \leq 1$. By the same reasoning as earlier there exists a random variable $M_\infty$ such that for all $p \geq 1$, $M^{(k)}_n \to M_\infty$ almost surely and in $\sL^p$. Therefore $X^k_\infty = M_\infty$ a.s. and so, for all $p \geq 1$, $M^{(k)}_n \to X^k_\infty$ a.s. and in $\sL^p$. In particular, then, the convergence holds in $\sL^1$: so we see that
+\be
+\E[X^k_\infty] = \lim_{n\to \infty}\E[M^{(k)}_n ] = \lim_{n\to \infty}\E[M^{(k)}_0 ] = \frac 1{k+1}
+\ee
+where the penultimate equality holds by the martingale property.
+
+The mgf of $X_\infty$ exists as $X_\infty \in [0,1]$ a.s. and it is given by
+\be
+M_{X_\infty}(t) := \E[e^{tX_\infty}] = \E\bb{\sum^\infty_{n=0} \frac{(tX_\infty)^n}{n!}} = \sum^\infty_{n=0} \frac {t^n\E[X^n_\infty]}{n!} = \sum^\infty_{
+n=0} \frac{t^n}{(n+1)!} = \frac{e^t -1}t
+\ee
+where we used Fubini's theorem in the third equality together with the absolute convergence of the series in the third term. The mgf of a $U[0,1]$ random variable is precisely equal to $M_{X_\infty}$ so it follows that $X_\infty \sim  U[0,1]$.
+
+We next claim that we can show that $B_n \sim  U\bra{0,1, \dots ,n}$ directly. (We will prove a result about the joint distribution as we will need it in the following exercise.) Define $\Delta_n := B_n-B_{n-1}$ for all $n \geq 1$ and define $ol{\Delta}_n := (\Delta_1, \dots ,\Delta_n)$. Note that $\Delta_n$ takes values in $\bra{0,1}$. We proceed by induction, we claim that for all $n \geq  1$,
+\be
+\pro\bb{\ol{\Delta}_n = \bba_n} = \frac{K_n!(n-K_n)!}{(n+1)!}
+\ee
+where $\bba_n = (a_1, \dots ,a_n)\in \bra{0,1}^n$ and $K_n := \sum^n_{i=1} a_i$. Note that $\pro\bb{\Delta_1 = a_1} = 1/2$ if $a_1 \in \bra{0,1}$, which satisfies the claim. Suppose the claim holds for $n \leq  N$. Then
+\beast
+\pro\bb{\ol{\Delta}_{N+1} = \bba_{N+1}} & = & \pro\bb{\Delta_{N+1} = a_{N+1}|\ol{\Delta}_N = \bba_N} \frac{K_N!(N -K_N)!}{(N +1)!}\\
+& = & \frac{a_{N+1}(K_N +1)+(1-a_{N+1})(N +1-K_N)}{N +2} \frac{K_N!(N -K_N)!}{(N +1)!} \\
+& = & \frac{A_{N+1}K_N!(N -K_N)!}{(N +2)!}
+\eeast
+and note that
+\be
+\frac{K_{N+1}!(N +1-K_{N+1})!}{K_N!(N -K_N)!} = (a_{N+1}(K_N +1)+1-a_{N+1})(a_{N+1}+(1-a_{N+1})(N -K_N +1)) =: B_{N+1}
+\ee
+
+Next, observe that $B_{N+1}-A_{N+1} = (a_{N+1}-1)a_{N+1}K_{N+1}(N -K_{N+1}) = 0$ when $a_{N+1}\in \bra{0,1}$. It follows that
+\be
+\pro\bb{\ol{\Delta}_{N+1} = \bba_{N+1}} = \frac{B_{N+1}K_N!(N -K_N)!}{(N +2)!} = \frac{K_{N+1}!(N +1-K_{N+1}!)}{(N +2)!}
+\ee
+as required, so induction completes the proof of the claim. From this we see that, if $K \sim U\bra{0,1, \dots ,n}$,
+\be
+\pro\bb{B_n = K} = \pro\bb{\sum^n_{i=1}\Delta_i = K} = \sum_{K_n=K} \pro\bb{\ol{\Delta}_n = a_n} = \binom{n}{K} \frac{K_n!(n-K_n)!}{(n+1)!} = \frac 1{n+1}
+\ee
+i.e. that $K \sim  U\bra{0,1, \dots ,n}$.
+
+We next claim that we can rederive the distribution of $X_\infty$ from this.\footnote{My preferred proof uses the portmanteau lemma, which you may not be aware of.} As $M_n \to X_\infty$ a.s., $M_n \to X_\infty$ in distribution a fortiori. If we can show that the cdf of $M_n$ converges everywhere to that of a $U[0,1]$ random variable then it will follow that $X_\infty \sim  U[0,1]$. First note that $M_n = (B_n+1)/(n+2)$, it follows that $M_n \sim  U\bra{1/(n+2), \dots , (n+1)/(n+2)}$ and so, if $F_n$ denotes the cdf of $M_n$,
+\be
+F_n(x) = \left\{ \ba{ll}
+0 & x < 0\\
+\frac{\floor{(n+2)x}}{n+1}\qquad 0 \leq  x \leq  1\\
+1 & x > 1
+\ea\right.
+\ee
+
+Clearly, $F_n(x) \to 0$ if $x < 0$ and $F_n(x)\to 1$ if $x > 1$. Suppose that $0 \leq  x \leq  1$. Then
+\be
+F_n(x) = \frac{\floor{(n+2)x}}{n+1} \to x
+\ee
+as $n\to \infty$. If $F$ denotes the cdf of a $U[0,1]$ random variable then, for all $x \in\R$, $F_n(x) \to F(x)$. Therefore $X_\infty \sim  U[0,1]$, as we had earlier.
+
+For the final part of this question, let $0 < q < 1$ and define, for all $n \geq  0$,
+\be
+N_n(\theta) := \frac{(n+1)!}{B_n!(n-B_n)!} \theta^{B_n}(1-\theta)^{n-B_n}
+\ee
+
+We claim that the process $N(\theta) :=(N_n(\theta))_{n\geq 0}$ is a martingale. Again, it is clearly $\sF_n$-measurable and integrable, so it suffices to check the martingale property. Let $n \geq 0$. Then
+\beast
+\E[N_{n+1}(\theta)|\sF_n] & = & \E\bb{\left.\frac{(n+2)!}{B_{n+1}!(n+1-B_{n+1})!} \theta^{B_{n+1}}(1-\theta)^{n+1-B_{n+1}} \right|\sF_n}\\
+& = & M_n \frac{(n+2)!}{(B_{n+1})!(n-B_n)!} \theta^{B_n+1}(1-\theta)^{n-B_n} + (1-M_n)\frac{(n+2)!}{B_n!(n+1-B_n)!} \theta^{B_n}(1-\theta)^{n+1-B_n}\text{ a.s.} \\
+& = & \frac{(n+1)!}{B_n!(n-B_n)!} \theta^{B_n}(1-\theta)^{n-B_n} (\theta +1-\theta) = N_n(\theta) 
+\eeast
+as required. Therefore $N(\theta)$ is a martingale.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item (Bayes' urn). A random number $\Theta$ is chosen uniformly between 0 and 1, and a coin with probability $\Theta$ of heads is minted. The coin is tossed repeatedly. Let $B_n$ be the number of heads in $n$ tosses. Prove that $(B_n)$ has exactly the same probabilistic structure as the $(B_n)$ sequence in previous Exercise. Prove that $N_n(\theta)$ is a conditional density function of $\Theta$ given $B_1,B_2,\dots,B_n$.
+
+\scutline
+
+Solution. By what is given in the question we know that, where the notation is as in the prior solution,
+\be
+\pro\bb{\ol{\Delta}_n = \bba_n|\Theta} = \Theta^{K_n}(1-\Theta)^{n-K_n}
+\ee
+for all $n \geq 1$ and $\bba_n \in \bra{0,1}^n$. Hence
+\be
+\pro\bb{\ol{\Delta}_n = \bba_n} = \E[\pro\bb{\ol{\Delta}_n = \bba_n|\Theta}] = \E[\Theta^{K_n}(1-\Theta)^{n-K_n}] = \int^1_0 x^{K_n}(1-x)^{n-K_n} dx
+\ee
+
+By the definition of the beta function, $B$, we have that
+\be
+\pro\bb{\ol{\Delta}_n = \bba_n} = B(K_n+1,n+1-K_n) = \frac{\Gamma(K_n+1)\Gamma(n+1-K_n)}{\Gamma(n+2)} = \frac{K_n!(n-K_n)!}{(n+1)!}
+\ee
+which exactly coincides with what we found in previous exercise. It follows that $(B_n)_{n\geq 0}$ has precisely the same probabilistic structure in both instances.
+
+We will next show that $(\ol{\Delta}_n,\Theta)$ has a joint density. Let $A \in \sB(\R)$ and $\bba_n \in \bra{0,1}^n$. Then
+\beast
+\pro\bb{\ol{\Delta}_n = \bba_n,\Theta\in A} & = & \E[\ind_{\bba_n}(\ol{\Delta}_n)\ind_A(\Theta)] = \E[\E[\ind_{\bba_n}(\ol{\Delta}_n)\ind_A(\Theta)|\Theta]]\\
+& = & \E[\ind_A(\Theta)\E[\ind_{\bba_n}(\ol{\Delta}_n)|\Theta]] = \E[\ind_A(\Theta)\Theta^{K_n}(1-\Theta)^{n-K_n }]\\
+& = & \int_A \theta^{K_n}(1-\theta)^{n-K_n} \ind_{[0,1]}(\theta)d\theta
+\eeast
+and so the density of $(\ol{\Delta}_n,\Theta)$ (with respect to $\mu_{\bra{0,1}^n} \otimes \sL$, where $\mu_E$ denotes the counting measure on $E$ and $\sL$ denotes Lebesgue measure) is given by 
+\be
+f_{\ol{\Delta}_n,\Theta}(\bba_n,\theta) = \theta^{K_n}(1-\theta)^{n-K_n} \ind_{[0,1]}(\theta)
+\ee
+
+Therefore
+\beast
+f_{\Theta|\ol{\Delta}_n}(\theta|\ol{\Delta}_n) & = & \frac{f_{\ol{\Delta}_n,\Theta}(\ol{\Delta}_n,\theta)}{f_{\ol{\Delta}_n}(\ol{\Delta}_n)} \ind_{\bra{0,1}^n}(\ol{\Delta}_n)\\
+& = & \frac{(n+1)!}{B_n!(n-B_n)!} \theta^{B_n}(1-\theta)^{n-B_n} \ind_{[0,1]}(\theta)\ind_{\bra{0,1}^n}(\ol{\Delta}_n)\\
+& = & N_n(\theta)\ind_{[0,1]}(\theta)\ind_{\bra{0,1}^n}(\ol{\Delta}_n)
+\eeast
+as required.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item (ABRACADABRA). At each of times $1, 2, 3,\dots$, a monkey types a capital letter at random, the sequence of letters typed forming a sequence of independent random variables, each chosen uniformly from amongst the 26 possible capital letters.
+
+Just before each time $n = 1, 2,\dots$, a new gambler arrives on the scene. He bets \$1 that the $n$th letter will be $A$.
+
+If he loses, he leaves. If he wins, he receives \$26 all of which he bets on the event that the $(n + 1)$th letter will be $B$.
+
+If he loses, he leaves. If he wins, he bets his whole current fortune \$$26^2$ that the $(n + 2)$th letter will be $R$ and so on through the ABRACADABRA sequence. Let $T$ be the first time by which the monkey has produced the consecutive sequence ABRACADABRA. Prove, by a martingale argument, that
+\be
+\E[T] = 26^{11} + 26^4 + 26.
+\ee
+
+\scutline
+
+Solution. Suppose that, for all $k \geq 0$, $X^{(k)}_n$ is the fortune between times $n$ and $n+1$ of the player who joined between times $k$ and $k+1$ so that, in particular, $X^{(k)}_k = 1$ as he has $\pounds$1 before he first bets. Set $X^{(k)}_n = 0$ if $n < k$ or if $n$ is a time step after the player has won (i.e. bet correctly that the monkey would type `ABRACADABRA' and has a fortune of $26^{11}$) or lost. Define $X_n := \sum^n_{k=0} X^{(k)}_n$ and an iid sequence $(U_n)_{n\geq 1}$ of $U\bra{A, \dots ,Z}$ random variables-corresponding to the result of the monkey's random typing at time $n$-and let $\sF_n := \sigma(U_1, \dots ,U_n)$ if $n \geq  1$, with $\sF_0 := \bra{\emptyset,\Omega}$. Then
+\be
+\E[X_{n+1}|\sF_n] = \E\bb{\left.1+ \sum^n_{k=0} X^{(k)}_{n+1}\right|\sF_n} = 1+ \sum^n_{k=0} \E[X^{(k)}_{n+1}|\sF_n] = 1+ \sum^n_{k=0} \bb{\frac {26}{26} \cdot X^{(k)}_n +0 \cdot \frac{25}{26}} = 1+X_n
+\ee
+and therefore the process $(X_n -n)_{n\geq 0}$ satisfies the martingale property. Moreover, $X_n -n$ is clearly $\sF_n$-measurable and it is integrable as $\abs{X_n-n} \leq 11\cdot 26^{11}+n$, with the first bound coming from the fact that there are at most 11 people with nonzero fortunes at any time, and each of these fortunes is bounded above by $26^{11}$. Therefore $(X_n-n)_{n\geq 0}$ is a martingale.
+
+Now, set $T := \inf\bra{n \geq  1 : U_{n-10} = A,U_{n-9} = B, \dots ,U_n = A}$, this is the first time that the monkey types `ABRACADABRA' and it is a stopping time. We will show that $T$ has finite expectation and we will do this by bounding $T$ above by something integrable. It is clearly the case that
+\be
+T \leq \inf\bra{n \in 11 \cdot \Z_{\geq 1} :U_{n-10} = A,U_{n-9} = B,U_{n-8} = R, \dots ,U_n = A}
+\ee
+but, by independence, the right-hand side is a Geom($26^{-11}$) random variable. As this has finite expectation, $\E[T] < \infty$. Now, the result from Exercise \ref{exe:2.5} tells us that, if we can show that $(X_n -n)_{n\geq 1}$ has a.s. bounded increments, then we can apply an optional stopping theorem.
+Observe that
+\beast
+\abs{X_{n+1}-(n+1)-X_n+n} & \leq & 1+\abs{X_{n+1}-X_n} = 1+ \abs{\sum^{n+1}_{k=0} X^{(k)}_{n+1} - \sum^n_{k=0} X^{(k)}_n}\\
+& \leq & 2+ \sum^n_{k=0} \abs{X^{(k)}_{n+1}} + \sum^n_{k=0} \abs{X^{(k)}_n} \leq  2+2 \cdot 11 \cdot 26^{11}
+\eeast
+with the bound as described earlier. So, therefore, by our optional stopping theorem, $\E[X_T -T] = \E[X_0] = 1$, which implies that 
+\be
+\E[T] = \E[X_T]-1 = 26^{11}+26^4+26+1-1 = 26^{11}+26^4+26
+\ee
+because the only players with nonzero fortunes at $T$ are those with $k \in \bra{T,T -1,T -4,T -11}$.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $(X_n, n \geq  0)$ be a sequence of $[0, 1]$-valued random variables, which satisfy the following property. First, $X_0 = a$ a.s. for some $a \in (0, 1)$ and for $n \geq  0$,
+\be
+\pro\bb{\left.X_{n+1} = \frac {X_n}2\right| \sF_n} = 1 - X_n = 1 - \pro\bb{\left.X_{n+1} = \frac{X_n + 1}2 \right|\sF_n},
+\ee
+where $\sF_n = \sigma(X_k, 0 \leq k \leq n)$. Here, we have denoted $\pro(A|\sG) = \E[\ind(A)|\sG]$.
+\ben
+\item [(i)] Prove that $(X_n, n \geq  0)$ is a martingale that converges in $\sL^p$ for every $p \geq  1$.
+\item [(ii)] Check that $\E[(X_{n+1} - X_n)^2] = \E[X_n(1 - X_n)]/4$. Then determine $\E[X_\infty(1 - X_\infty)]$ and deduce that law of $X_\infty$.
+\een
+
+\scutline
+
+Solution. We first claim that $X = (X_n)_{n\geq 0}$ is a martingale with respect to the natural filtration. It is immediate that the process is adapted and, as $X_n$ is a.s. [0,1]-valued, it is integrable. We will now check the martingale property. Fix $n \geq 0$ and observe that, as $X_{n+1}$ is a.s. equal to either $X_n/2$ or $(X_{n+1})/2$,
+\beast
+\E[X_{n+1}|\sF_n] & = & \E[X_{n+1}\ind_{\bra{X_{n+1} =X_n/2}}|\sF_n]+\E[X_{n+1} \ind_{\bra{X_{n+1}=(X_n+1)/2}}|\sF_n]\\
+& = & \E\bb{\left.\frac{X_n}2 \cdot \ind_{\bra{X_{n+1}=X_n/2}}\right|\sF_n} + \E\bb{\left.\frac{X_n+1}2 \cdot \ind_{\bra{X_{n+1}=(X_n+1)/2}}\right|\sF_n} \\
+& = & \frac{X_n}2 \cdot \E[\ind_{\bra{X_{n+1}=X_n/2}}|\sF_n]+ \frac{X_n+1} 2 \cdot \E[\ind_{\bra{X_{n+1}=(X_n+1)/2}}|\sF_n]\\
+& = & \frac {X_n}2 \cdot (1-X_n)+ \frac{X_n+1}2 \cdot X_n = X_n
+\eeast
+where we have used the fact that $X_n$ is bounded and $\sF_n$-measurable in the third equality. The process is therefore a martingale. As $X$ is bounded, it is in particular bounded in $\sL^p$ for all $p > 1$, by the $\sL^p$ convergence theorem, the process converges in $\sL^p$ for all $p > 1$, and as $\sL^p$
+convergence implies $\sL^1$ convergence on finite measure spaces when $p \geq 1$, $X$ also converges in $\sL^1$.
+
+
+For the second part, we see that
+\beast
+\E[(X_{n+1}-X_n)^2] & = & \E[\E[(X_{n+1}-X_n)^2\ind_{\bra{X_{n+1}=X_n/2}}|\sF_n]+\E[(X_{n+1}-X_n)^2\ind_{\bra{X_{n+1}=(X_n+1)/2}}|\sF_n]]\\
+& = & \E\bb{\E\bb{\left.\frac{X^2_n}4 \cdot \ind_{\bra{X_{n+1}=X_n/2}}\right|\sF_n }} + \E\bb{\E\bb{\left.\frac{(1-X_n)^2}4 \cdot \ind_{\bra{X_{n+1}=(X_n+1)/2}} \right|\sF_n} } \\
+& = & \E\bb{\frac{X_n^2}4 \cdot\E[\ind_{\bra{X_{n+1}=X_n/2}}|\sF_n]} + \E\bb{\frac{(1-X_n)^2}4 \cdot\E[\ind_{\bra{X_{n+1}=(X_n+1)/2}}|\sF_n]} \\
+& = & \frac 14 \cdot \E[X_n^2 (1-X_n)+(1-X_n)^2X_n] = \frac 14 \cdot\E[X_n(1-X_n)]
+\eeast
+as required, where in the third equality we have used that $X_n$ is bounded and $\sF_n$-measurable.
+
+By the convergence of $X$ in $\sL^1$ and $\sL^2$ to $X_\infty$, we have that $\E[X_n]\to \E[X_\infty]$ and $\E[X^2_n]\to \E[X^2_\infty]$ and hence $\E[X_n(1-X_n)] \to \E[X_\infty(1-X_\infty)]$. Moreover, as $X$ is convergent in $\sL^2$ it is a Cauchy sequence in $\sL^2$, and so $\E[(X_{n+1} -X_n)^2] \to 0$. By combining these observations and the above we have that $\E[X_\infty(1-X_\infty)] = 0$. As the integrand on the right-hand side is a.s. nonnegative, it
+follows that it is a.s. 0. Therefore $X_\infty$ is a.s. $\bra{0,1}$-valued. Now note that, by the $\sL^1$ convergence and the martingale property, $\E[X_\infty] = \E[X_0] = a$. We conclude that $X_\infty \sim \text{Bernoulli}(a)$.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $(X_n, n \geq  0)$ be a martingale in $\sL^2$. Show that its increments $(X_{n+1}-X_n : n \geq  0)$ are pairwise orthogonal, i.e. for all $n \neq m$ the increments satisfy
+\be
+\E[(X_{n+1} - X_n)(X_{m+1} - X_m)] = 0.
+\ee
+
+Conclude that $X$ is bounded in $\sL^2$ if and only if
+\be
+\sum_{n\geq 0}\E[(X_{n+1} - X_n)^2] < \infty.
+\ee
+
+\scutline
+
+Solution. Suppose in the following that $X = (X_n)_{n\geq 0}$ is an $\sL^2$ martingale. Without loss of generality $n > m \geq  0$ and, hence,
+\beast
+\E[(X_{m+1}-X_m)(X_{n+1}-X_n)] & = & \E[\E[(X_{m+1}-X_m)(X_{n+1}-X_n)|\sF_n]] \\
+& = & \E[(X_{m+1}-X_m)\E[X_{n+1}-X_n|\sF_n]]\\
+& = & \E[(X_{m+1}-X_m)(X_n-X_n)] = 0
+\eeast
+where the second equality holds as $X_{m+1}-X_m$ is $\sF_n$-measurable and in $\sL^2$ and $X_{n+1}-X_n$ is in $\sL^2$, and the penultimate equality holds by the martingale property. Therefore distinct increments are orthogonal.
+
+Claim. The process $X = (X_n)_{n\geq 0}$ is bounded in $\sL^2$ iff $\sum_{n\geq 0}\E[(X_{n+1}-X_n)^2] < \infty$.
+
+Proof. Recall the Pythagorean theorem for inner product spaces. if $\bra{v_1, \dots ,v_n}$ is an orthogonal set, then $\dabs{\sum^n_{i =1} v_i}^2 = \sum^n_{i=1} \dabs{v_i}^2$. Applied to the Hilbert space $\sL^2(\pro)$ and the orthogonal set $\bra{X_{i+1}-X_i : 0 \leq  i \leq  n}$, we see that $\sum^n_{i=0} \E[(X_{i+1}-X_i)^2] = \E[(X_{n+1}-X_0)^2]$ and hence that
+\be
+\sum^\infty_{i=0} \E[(X_{i+1}-X_i)^2] = \lim_{n\to \infty} \sum^n_{i=0} \E[(X_{i+1}-X_i)^2] = \lim_{n\to \infty}\E[(X_n-X_0)^2] \leq \sup_{n\geq 1} \E[(X_n-X_0)^2]
+\ee
+
+If $\sum^\infty_{i=0} \E[(X_{i+1} - X_i)^2] < \infty$ then the third term is also finite, as convergent sequences are bounded, the fourth term is finite, and therefore $(X -X_0)+X_0 = X$ is bounded in $\sL^2$. Conversely, if $X$ is bounded in $\sL^2$, then the fourth term is finite, and so is the first term.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item (Wald's identity) Let $(X_n, n \geq  0)$ be a sequence of independent and identically distributed real integrable random variables. We let $S_n = X_1 +\dots +X_n$ (with $S_0 = 0$) be the associated random walk and $T$ an ($\sF_n$)-stopping time, where $\sF_n = \sigma(X_k, k \leq n)$.
+\ben
+\item [(i)] Show that if the variables $X_i$ are non-negative, then
+\be
+\E[S_T ] = \E[T]\E[X_1].
+\ee
+\item [(ii)] Show that if $\E[T] < \infty$, then
+\be
+\E[S_T ] = \E[T]\E[X_1].
+\ee
+
+\item [(iii)] Suppose that $\E[X_1] = 0$ and set $T_a = \inf\bra{n \geq  0 : S_n \geq  a}$, for some $a > 0$. Show that $\E[T_a] = \infty$.
+\item [(iv)] Suppose that $\pro(X_1 = +1) = 2/3 = 1 - \pro(X_1 = -1)$ and set $T_a = \inf\bra{n \geq  0 : S_n \geq  a}$, for some $a > 0$. Find $\E[T_a]$. (You cannot assume that $\E[T_a] < \infty$.)
+\een
+
+\scutline
+
+Solution. Suppose in the following that $X =(X_n)_{n\geq 0}$ is an iid sequence of integrable random variables.
+
+Claim. If, for all $n \geq 0$, $X_n$ is a.s. nonnegative then $\E[S_T ] = \E[T]\E[X_1]$.
+
+Remark. Under the assumptions of the question, whenever $T(\omega)=\infty$ we should interpret $S_T(\omega)$ to mean $\lim_{n\to \infty} S_n(\omega)$, this interpretation is sensible as $(S_n)_{n\geq 1}$ is a.s. an increasing sequence. The limit of this sequence may, of course, be infinite. (We can define $S_T$ arbitrarily on the null set on which the limit does not exist.)
+
+Proof. Consider the process $Y = (Y_n)_{n\geq 0} := (S_n-n\E[X_1])_{n\geq 0}$. It is trivially adapted to the filtration $(\sF_n)_{n\geq 0}$ and it is integrable as for every $n \geq 0$, $Y_n$ is a finite sum of integrable random variables added to a constant. The martingale property holds as
+\be
+\E[Y_{n+1}|\sF_n] = Y_n + \E[X_{n+1}|\sF_n]-\E[X_1] = Y_n+\E[X_{n+1}]-\E[X_1] =Y_n
+\ee
+with the first equality holding as $Y$ is adapted and the second and third holding as $X$ is iid. It follows that $Y$ is a martingale and that $Y^T$ is, too. By the martingale property, $\E[Y^T_n ]=\E[Y_0]=0$, that is, $\E[S_{T\land n}] = \E[n\land T]\E[X_1]$. By the monotone convergence theorem applied to both sides, noting that $n\land T \ua T$ and $S_{T\land n} \ua S_T$ a.s., we have that $\E[S_T ] = \E[T]\E[X_1]$.
+
+Claim. If $\E[T] < \infty$, then $\E[S_T ] = \E[T]\E[X1]$.
+
+Proof. We will leverage the first part in order to prove the claim. Note that
+\be
+S_n = \sum^n_{i=1} X_i = \sum^n_{i=1} X^+_i - \sum^n_{i=1} X^-_i =: S^1_n-S^2_n
+\ee
+
+After observing that $(X^+_i)_{i\geq 0}$ and $(X^-_i)_{i\geq 0}$ are iid sequences of nonnegative, integrable random variables, the first part of the question implies that $\E[S^1_T]=\E[T]\E[X^+_1]$ and $\E[S^2_T]=\E[T]\E[X^-_1]$. As $\E[T] < \infty$ and $\E[\abs{X_1}] < \infty$, $\E[S^1_T]$ and $\E[S^2_T]$ are integrable, so
+\be
+\E[S_T] = \E[S^1_T]-\E[S^2_T] = \E[T](\E[X^+_1]-\E[X^-_1]) = \E[T]\E[X_1]
+\ee
+as required.
+
+The third part of the question is an immediate corollary of the second. were it the case that $\E[T_a] < \infty$, we would have that $T_a < \infty$ a.s. and that $a \leq \E[S_{T_a}] = \E[T_a]\E[X_1] = 0$, which is a contradiction.
+
+For the fourth part of the question, we may as well generalise to the case where $\pro\bb{X_n =1} = p \in (1/2,1)$ and $\pro\bb{X_n-1} = q = 1- p$ as the proof is identical. If we can prove that $\E[T_a] < \infty$ then we can apply the second part of the problem and conclude that $\E[X_1]\E[T_a] = \E[S_{T_a}]$, i.e. that $\E[T_a] = \ceil{a}/(p-q)$. Observe that, for all $n \geq 0$, $T_a \land n$ is a bounded stopping time and that it thus has finite expectation so, by the second part of the problem, $\E[T_a\land n] = \E[S_{T_a\land n}] \E[X_1]$. The monotone convergence theorem then tells us that
+\be
+0 \leq \E[T_a]\E[X_1] = \E\bb{\lim_{n\to \infty} T_a \land n} \E[X_1] = \lim_{n\to \infty}\E[T_a \land n]\E[X_1] = \lim_{n\to \infty}\E[S_{T_a\land n}] \leq \ceil{a}
+\ee
+with the last inequality holding as for all $n\geq 0$, $\E[S_{T_a\land t}]\leq \ceil{a}$. Therefore, as $\E[X_1]>0$, $\E[T_a]< \infty$ and so, from our above reasoning, we conclude that $\E[T_a] = \ceil{a} /(p-q)$. In the case where $p = 2/3$, we have that $\E[T_a] = 3\ceil{a}$.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item (Gambler's ruin). Suppose that $X_1,X_2, \dots$ are independent random variables with
+\be
+\pro(X = +1) = p,\quad \pro(X = -1) = q,
+\ee
+where $p \in (0, 1)$, $q = 1 - p$ and $p \neq q$. Suppose that $a$ and $b$ are integers with $ 0 < a < b$. Define
+\be
+S_n := a + X_1 + \dots + X_n,\quad T := \inf\bra{n : S_n = 0\text{ or }S_n = b}.
+\ee
+
+Let $\sF_n = \sigma(X_1, \dots ,X_n)$. Prove that
+\be
+M_n := \bb{\frac qp}^{S_n},\quad N_n = S_n - n(p - q)
+\ee
+define martingales $M$ and $N$. Deduce the values of $\pro(S_T = 0)$ and $\E[T]$.
+
+\scutline
+
+Solution. Claim. The process $M = (M_n)_{n\geq 0}$ is a martingale, where $\sF_0 := \bra{\emptyset,\Omega}$.
+
+Proof. $M$ is immediately seen to be adapted. Additionally, the process is integrable as $\abs{S_n} \leq n$, so $\abs{M_n} = (q/p)^{S_n} \leq  (q/p)^n \vee(q/p)^{-n} < \infty$. For the martingale property, set $n \geq 0$. Then
+\beast
+\E[M_{n+1}|\sF_n] & = & \E\bb{\left.\bb{\frac qp}^{S_n+X_n+1}\right|\sF_n} = \E\bb{\left.\bb{\frac qp}^{S_n}\bb{\frac qp}^{X_{n+1}} \right|\sF_n} = \bb{\frac qp}^{S_n} \E\bb{\left.\bb{\frac qp}^{X_{n+1}}\right|\sF_n} \\
+& = & M_n\E\bb{\bb{\frac qp}^{X_{n+1}}} = M_n\bb{\frac qp \cdot p+ \frac pq \cdot q} = M_n
+\eeast
+with the third equality holding by the boundedness and $\sF_n$-measurability mentioned earlier. It follows that $M$ is indeed a martingale.
+
+Claim. The process $N = (N_n)_{n\geq 0}$ is a martingale (again, where $\sF_0 := \bra{\emptyset,\Omega})$.
+
+Proof. $N$ is immediately adapted and, as $N_n$ is a finite sum of integrable random variables added to a constant, it is integrable. Fix $n \geq 0$. We see that, as $S_n$ is $\sF_n$-measurable and $X_{n+1}$ is independent of $\sF_n$, $\E[N_{n+1}|\sF_n] = \E[X_{n+1}+S_n-(n+1)(p-q)|\sF_n] = \E[X_{n+1}]+S_n-(n+ 1)(p-q) = N_n$ as $\E[X_{n+1}] = p-q$. Therefore the martingale property is satisfied, so $N$ is a martingale.
+
+A similar comparison to a geometric random variable as in 2.3 of the lecture notes implies that $\E[T] < \infty$, and hence $T < \infty$ a.s.. It follows that, where $T_a$ is the first time that $S$ hits $\alpha \in \Z$,
+\be
+\pro\bb{T_0 < T_b} + \pro\bb{T_b < T_0} = 1 \qquad (*)
+\ee
+
+By the martingale property and the dominated convergence theorem (noting that $T \land n \to T$ a.s. and that $M^T$ is a bounded process),
+\be
+\bb{\frac qp}^a = \E[M^T_0] = \E[M^T_n] \stackrel{n\to \infty}{\to} \E[M_T] = 1 \cdot \pro\bb{T_0 < T_b} + \bb{\frac qp}^b \pro\bb{T_b < T_0} \qquad (\dag)
+\ee
+
+Using ($*$) and ($\dag$), it follows that 
+\be
+\pro\bb{T_b < T_0}  = \frac{\bb{\frac qp}^a -1}{\bb{\frac qp}^b -1},\qquad \pro\bb{T_0 < T_b} = \frac{\bb{\frac qp}^b - \bb{\frac qp}^a}{\bb{\frac qp}^b -1}. \qquad (**)
+\ee
+
+As $\pro\bb{S_T = 0} = \pro\bb{T_0 < T_b}$, we have solved the first part of the question. For the second part, 
+\be
+\abs{N_{n+1}-N_n} = \abs{(S_{n+1}-S_n)-((n+1)(p-q)-n(p-q))} \leq \abs{X_{n+1}} + \abs{p-q} \leq 2
+\ee
+and so $N$ has bounded increments. As noted, $\E[T] < \infty$, so by the optional stopping theorem 
+\be
+a = \E[N_0] = \E[N_T ] = \E[S_T -T(p-q)] = b\pro\bb{T_b < T_0} -\E[T](p-q)
+\ee
+and therefore, using ($**$), we conclude that
+\be
+\E[T] = \frac{b\pro\bb{T_b < T_0} -a}{p-q} = \frac{b\bb{\bb{\frac qp}^a-1} -a \bb{\bb{\frac qp}^b-1}}{(p-q)\bb{\bb{\frac qp}^b-1}}.
+\ee
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item (Azuma-Hoeffding Inequality). 
+\ben
+\item [(a)] Show that if $Y$ is a random variable with values in $[-c, c]$ and with $\E[Y ] = 0$, then, for $\theta \in\R$,
+\be
+\E[e^{\theta Y} ] \leq \cosh \theta c \leq \exp\bb{\frac 12 \theta^2c^2}.
+\ee
+
+\item [(b)] Prove that if $M$ is a martingale, with $M_0 = 0$ and such that for some sequence $(c_n : n \in\N)$ of positive constants, $\abs{M_n -M_{n-1}} \leq c_n$ for all $n$, then, for $x > 0$,
+\be
+\pro\bb{\sup_{k\leq n} M_k \geq  x} \leq \exp\bb{-\frac 12 x^2\left/\sum^n_{k=1}c^2_k\right.}.
+\ee
+\een
+
+Hint for (a). Let $f(z) := \exp(\theta z)$, $z \in [-c, c]$. Then, since $f$ is convex,
+\be
+f(y) \leq \frac{c - y}{2c} f(-c) + \frac{c + y}{2c}f(c).
+\ee
+
+Hint for (b). Optimize over $\theta$.
+
+\scutline
+
+Solution. The convexity of $f : [-c,c] \to \R : y \mapsto e^{\theta y}$ tells us that, if $-c \leq  y \leq  c$, then $e^{\theta y} \leq  e^{-\theta c}(c-y)/(2c)+ e^{\theta c}(c+y)/(2c)$ and hence
+\be
+\E[e^{\theta Y}] \leq \E\bb{\frac{c-Y}{2c} e^{-\theta c} +  \frac{c+Y}{2c} e^{\theta c}} = \frac{e^{-\theta c}}2 - \frac{e^{-\theta c}}{2c} \E[Y]+
+\frac{e^{\theta c}}2 + \frac{e^{\theta c}}{2c} \E[Y] = \frac{e^{\theta c}+e^{-\theta c}}2 = \cosh(\theta c)
+\ee
+
+
+Further, observe that
+\be
+\cosh(\theta c) = \sum^\infty_{n=0} \frac{(\theta c)^{2n}}{(2n)!} \leq  \sum^\infty_{n=0} \frac{(\theta c)^{2n}}{2^n \cdot n!} = \sum^\infty_{n=0} \frac 1{n!} \cdot \bb{\frac{(\theta c)^2}2}^n = \exp\bb{\frac{(\theta c)^2}2}
+\ee
+
+Compiling these results, we have that
+\be
+\E[e^{\theta Y}] \leq \cosh(\theta c) \leq \exp\bb{\frac{(\theta c)^2}2}
+\ee
+
+For the second part of the question, first we observe that $y \mapsto e^{\theta y}$ is convex and nonnegative, so that by Jensen's inequality $(e^{\theta M_n})_{n\geq 0}$ is a nonnegative submartingale. As this map is also increasing if $\theta > 0$,
+\be
+\pro\bb{\sup_{k\leq n} M_k \geq x} = \pro\bb{\sup_{k\leq n} e^{\theta M_k} \geq  e^{\theta x} } \leq  e^{-\theta x}\E[e^{\theta M_n}]
+\ee
+by Doob's submartingale inequality. Further, we have the following lemma, whose proof is identical to the unconditional version that we started with.
+
+Lemma (Conditional analogue to the first part). If $Y$ is a random variable taking values in $[-c,c]$ and if $\E[Y|\sG ] = 0$ for some sub-$\sigma$-algebra $\sG$ of $\sF$, then for all $\theta \in \R$
+\be
+\E[e^{\theta Y} |\sG ] \leq \cosh(\theta c) \leq \exp\bb{\frac{(\theta c)^2}2}
+\ee
+
+After seeing that $e^{\theta M_n}$ is bounded for every $n \geq 0$, we have that for all $n \geq 1$
+\be
+\E[e^{\theta M_n} ] =\E[\E[e^{\theta (M_n-M_{n-1})} e^{\theta M_{n-1}}|\sF_{n-1}]] = \E[e^{\theta M_{n-1}} \E[e^{\theta (M_n-M_{n-1})}|\sF_{n-1}]]
+\ee
+and so, as $M_n-M_{n-1}$ satisfies the conditions of the lemma by the martingale property,
+\be
+\E[e^{\theta M_n} ] \leq \exp\bb{\frac{(\theta c_n)^2}2} \E[e^{\theta M_{n-1}}] \leq  \dots \leq \exp\bb{\frac{\theta^2}2 \sum^n_{i=1}c_i^2}
+\ee
+
+Therefore, for every $\theta > 0$,
+\be
+\pro\bb{\sup_{k\leq n} M_k \geq  x} \leq \exp\bb{\frac{\theta^2}2 \sum^n_{i=1}c^2_i -\theta x} 
+\ee
+
+By varying $\theta \in \R$ and using elementary calculus, we see that the right-hand side is minimised when $\theta \sum^n_{i=1} c^2_i = x$. By putting this value of $\theta$ (which is positive) into the above, we have that
+\be
+\pro\bb{\sup_{k\leq n} M_k \geq  x} \leq  \exp\bb{\frac{-x^2/2}{\sum^n_{i=1} c^2_i}}
+\ee
+as required.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $f : [0, 1] \to \R$ be Lipschitz, that is, suppose that, for some $K < \infty$ and all $x, y \in [0, 1]$
+\be
+\abs{f(x) - f(y)} \leq K\abs{x - y}.
+\ee
+
+Denote by $f_n$ the simplest piecewise linear function agreeing with $f$ on $\bra{k2^{-n} : k = 0, 1, \dots , 2^n}$. Set $M_n = f'_n$. Show that $M_n$ converges a.e. and in $\sL^1$ and deduce that $f$ is the indefinite integral of a bounded function.
+
+\scutline
+
+Solution. To be careful, for every $n \geq 0$ let us define $M_n$ to equal the right-hand derivative of $f_n$, which exists everywhere. (The only points where this may differ from $f_n'$ are $k2^{-n}$ for $0 \leq  k \leq  2^n -1$, where $f_n$ may not have a derivative, this is a Lebesgue-null set, so it doesn't really change anything. I've made this choice for definiteness and convenience.) We first have that
+\be
+M_n = \sum^{2^n-2}_{k=0} \frac{f ((k+1)2^{-n})- f (k2^{-n})}{2^{-n}} \cdot \ind_{[k2^{-n},(k+1)2^{-n})} + \frac{f (1)- f (1-2^{-n})}{2^{-n}} \cdot \ind_{[1-2^{-n},1]}
+\ee
+
+This is a very suggestive way of writing $M_n$, especially once we realise that $([0,1],\sB([0,1]),\sL)$ is a probability space (where $\sL$ is Lebesgue measure). The obvious filtration to consider is 
+\be
+\sF_n := \sigma(\bra{[k2^{-n}, (k+1)2^{-n}) : 0 \leq  k \leq 2^n-2}, [1-2^{-n},1])
+\ee
+
+Claim. The process $M = (M_n)_{n\geq 0}$ is a martingale adapted to $(\sF_n)_{n\geq 0}$.
+
+Proof. Let $n \geq 0$. $M_n$ is integrable as it is given $\sL$-a.e. as the derivative of a $\sC^1([0,1])$ function. For adaptedness, recall that $M_n$ is a linear combination of indicator functions of generators of $\sF_n$, is $\sF_n$-measurable. To show that the martingale property holds, it is enough to verify that $\E[M_{n+1}\ind_A] = \E[M_n\ind_A]$ for every generator $A$ of the finitely-generated $\sigma$-algebra $\sF_n$. If $0 \leq  k < 2^n-1$, then
+\be
+\E[M_{n+1}\ind_{[k2^{-n},(k+1)2^{-n})}] = f ((k+1)2^{-n})- f (k2^{-n}) = \E[M_n\ind_{[k2-n,(k+1)2-n)}]
+\ee
+and similarly when $k = 2^n-1$, completing the proof.
+
+Further, we have that
+\be
+\abs{M_n} \leq \sum^{2^n-2}_{k=0} \bb{\frac{\abs{f ((k+1)2^{-n})- f (k2^{-n})}}{2^{-n}} \cdot \ind_{[k2-n,(k+1)2-n)} } + \frac{\abs{ f (1)- f (1-2^{-n})}}{2^{-n}} \cdot \ind_{[1-2^{-n},1]} \leq  K
+\ee
+because $f$ is a Lipschitz function with Lipschitz constant $K$. So $M$ is a bounded process, and thus it is UI, and hence by the UI convergence theorem there exists an integrable random variable $M_\infty$ such that $M_n \to M_\infty$ a.s. and in $\sL^1$ as $n\to \infty$. Note that $\abs{M_\infty} \leq  K$. By the $\sL^1$ convergence, if $m \geq 1$ and $0 \leq  k < 2^n$,
+\be
+\abs{\E[M_{n+m}\ind_{[0,k2^{-n})}]-\E[M_\infty\ind_{[0,k2^{-n})}]} \leq \E[\abs{M_{n+m}-M_\infty}\ind_{[0,k2^{-n})}] \stackrel{m\to \infty}{\to} 0
+\ee
+and if $k = 2^n$ we merely close the interval in the above. Hence,
+\be
+f (k2^{-n})- f (0) = \int^{k2^{-n}}_0 f'_{n+m}(x)dx = \E[M_{n+m}\ind_{[0,k2^{-n})}] \stackrel{m\to \infty}{\to} \E[M_\infty\ind_{[0,k2^{-n})}] = \int^{k2^{-n}}_0 M_\infty(x)dx
+\ee
+
+So, for all dyadic rationals $q \in [0,1]$,
+\be
+f (q) = f (0)+ \int^q_0 M_\infty(x)dx \qquad (*)
+\ee
+
+Let $x \in [0,1]$ and suppose that $(q_n)_{n\geq 0}$ is a sequence of dyadic rationals in [0,1] such that $q_n \ua x$ as $n\to \infty$. Then
+\be
+\abs{f (x)- f (0)-\int^x_0 M_\infty(y)dy} \leq  \abs{ f (x)- f (q_n)} + \abs{f (q_n)- f (0)- \int^{q_n}_0 M_\infty(y)dy} + \abs{\int^x_{q_n} M_\infty(y)dy}
+\ee
+and this tends to 0 as $n\to \infty$ because $f$ is continuous and $\abs{M_\infty} \leq  K$. Therefore ($*$) also holds when $q \in [0,1]$, which finishes the question.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item (Doob's decomposition of submartingales). Let $(X_n, n \geq  0)$ be a submartingale.
+\ben
+\item [(i)] Show that there exists a unique martingale $M_n$ and a unique previsible process $(A_n, n \geq  0)$ (i.e. $A_n$ is $\sF_{n-1}$-measurable) such that $A_0 = 0$, $A$ is increasing and $X = M + A$.
+\item [(ii)] Show that $M,A$ are bounded in $\sL^1$ if and only if $X$ is, and that $A_\infty < \infty$ a.s. in this case (and even that $\E[A_\infty] < \infty$), where $A_\infty$ is the increasing limit of $A_n$ as $n \to\infty$.
+\een
+
+\scutline
+
+Solution. Our approach to proving uniqueness will show that $A$ and $M$ must have a particular form. We will then show that this form allows us to always find a decomposition. Suppose that $X$ has a decomposition $X = M+A$ of the type in the question, then 
+\be
+\E[X_{n+1}-X_n|\sF_n] = \E[M_{n+1}-M_n|\sF_n] +\E[A_{n+1}-A_n|\sF_n] = A_{n+1}-A_n
+\ee
+where we have used the martingale property and previsibility. Therefore, for all $n \geq 0$
+\be
+A_{n+1} = \sum^n_{i=0} (A_{i+1}-A_i) = \sum^n_{i=0} \E[X_{i+1}-X_i|\sF_i]\qquad (*)
+\ee
+and so $A$ is uniquely determined as $A_0$ is prescribed and hence $M = X -A$ is also uniquely determined.
+
+Now, suppose that we don't know whether a decomposition exists. The obvious thing to do is to set $A_0 := 0$ and, for all $n \geq 0$, define $A_{n+1}$ as in ($*$). We are forced, then, to define $M := X -A$. It is immediate from the definition of $A$ that it is previsible and such that $A_0 = 0$, it is equally immediate from the submartingale property that $A$ is increasing. To prove that $M$ is a martingale, notice that $M$ is adapted and integrable as $M_n$ is a linear combination of adapted and integrable functions for all $n \geq 0$. To see that M has the martingale property, observe that for all $n \geq 0$
+\be
+\E[M_{n+1}-M_n|\sF_n] = \E[X_{n+1}-X_n|\sF_n]-\E[A_{n+1}-A_n|\sF_n] = 0
+\ee
+by the definition of $A$. We have established that a decomposition exists, completing the proof.
+
+Turning to the second part, it follows immediately from the triangle inequality that if $A$ and $M$ are bounded in $\sL^1$ then $X$ is bounded in $\sL^1$. Conversely, if $\sup_{n\geq 0}\E\abs{X_n} \leq K$ then for every $n \geq 0$
+\be
+\E\abs{A_{n+1}} = \E[A_{n+1}] = \E\bb{\sum^n_{i=0} \E[X_{i+1}-X_i|\sF_i} = \E[X_n]-\E[X_0] \leq 2K
+\ee
+and hence, as $A_0 = 0$, $\sup_{n\geq 0}\E\abs{A_n} \leq 2K$. As $M = X -A$, the triangle inequality implies that $M$ is also bounded in $\sL^1$.
+
+When $X$ is bounded in $\sL^1$, then, $A$ is a nondecreasing process bounded in $\sL^1$. There is therefore an a.s. limit, $A_\infty$, which has finite expectation by the monotone convergence theorem. 
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $(X_n, n \geq  0)$ be a UI submartingale.
+\ben
+\item [(i)] Show that if $X = M + A$ is the Doob decomposition of $X$, then $M$ is UI.
+\item [(ii)] Show that for every pair of stopping times $S, T$ with $S \leq T$,
+\be
+\E[X_T |\sF_S] \geq  X_S.
+\ee
+\een
+
+\scutline
+
+Solution. By the work in previous exercise, as $X$ is UI it follows that $A$ is bounded in $\sL^1$. Further, previous exercise also showed that $0 \leq  A_n \leq  A_\infty \in \sL^1$, so $A$ is UI. We are left with showing that $M = X -A$ is UI. Fix $\ve > 0$ and let $\delta > 0$ be such that, if $\pro(A) < \delta$, then $\sup_{n\geq 0}\E[\abs{A_n}\ind_A] < \ve/2$ and $\sup_{n\geq 0}\E[\abs{X_n}\ind_A] < \ve/2$. Then
+\be
+\sup_{n\geq 0} \E[\abs{M_n}\ind_A] \leq \sup_{n\geq 0} \E[\abs{A_n}\ind_A]+\sup_{n\geq 0} \E[\abs{X_n}\ind_A] < \ve/2+\ve/2 = \ve
+\ee
+and hence $M$ is also UI, as required.
+
+For the second part, notice that
+\be
+\E[X_T |\sF_S] = \E[A_T +M_T |\sF_S] = \E[M_T |\sF_S]+\E[A_T -A_S|\sF_S]+\E[A_S|\sF_S] \geq M_S+A_S = X_S
+\ee
+where we have used (respectively) the optional stopping theorem for UI martingales (Theorem 2.30 from the lecture notes), that $T \geq S$ and $A$ is nondecreasing, and the fact that $A_S$ is FSmeasurable. This last fact wasn't proven in lectures, but it's quite easy to see. It is enough to show that $A_n\ind_{\bra{S=n}}$ is $\sF_S$-measurable for all $n \geq 0$ and that $A_\infty\ind_{\bra{S=\infty}}$ is also $\sF_S$-measurable. By the usual approximation and limiting arguments, it is enough to show that $B\cap \bra{S = n} \in \sF_S$ for all $n \geq 0$ and every $B \in \sF_{n-1}$ (recalling that $A$ is previsible) and that $C\cap \bra{S = \infty}\in \sF_S$ for every $C \in \sF_\infty$ (as $A_\infty$ is $\sF_\infty$-measurable). We see that, for all $m \geq  0$,
+\be
+B\cap \bra{S = n} \cap \bra{S \leq m} = \left\{\ba{ll}
+\emptyset & m < n\\
+B\cap \bra{S = n}\qquad \text{otherwise}
+\ea\right.
+\ee
+which belongs to $\sF_m$ in both cases, similarly, $B\cap \bra{S = \infty} \cap \bra{S \leq m} = \emptyset$, which is an element of every $\sigma$-algebra. Therefore $A_S$ is $\sF_S$-measurable.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item (Gaussian processes). A real-valued process $(X_t, t \geq  0)$ is called a Gaussian process if for every $t_1 < t_2 < \dots < t_k$, the random vector $(X_{t_1} ,\dots ,X_{t_k})$ is a Gaussian random vector. Show that the law of a Gaussian process is uniquely characterized by the numbers $\E[X_t]$, $t \geq  0$ and $\cov(X_s,X_t)$ for $s, t \geq  0$.
+
+\scutline
+
+Solution. By a result in lectures, it is sufficient to prove that the finite-dimensional distributions are uniquely characterised by the covariance structure and the means of the process $X = (X_t)_{t\geq 0}$. That is, if we fix $0 \leq  t_1 < t_2 < \dots < t_k < \infty$, then we hope that the distribution of the random vector $(X_{t_1} , \dots ,X_{t_k})$ is uniquely characterised by the covariance structure and means of $X$. By the hypothesis that $X$ is a Gaussian process, the random vector has a $k$-dimensional normal distribution of some type, this is uniquely characterised by its covariance matrix and its mean vector, i.e. by $\E[X_{t_i}X_{t_j}]$ and $\E[X_{t_i}]$ where $i, j \in \bra{1, \dots ,k}$.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $T \sim \E(\lm )$. Define
+\be
+Z_t = \left\{\ba{ll}
+0 \qquad & t < T\\
+1 & t \geq  T
+\ea\right., \quad \sF_t = \sigma\bra{Z_s : s \leq t},\quad  M_t = \left\{\ba{ll}
+1 - e^{\lm t}\qquad & t < T\\
+1 & t \geq  T
+\ea\right.
+\ee
+
+Prove that $\E\abs{M_t} < \infty$, and that $\E[M_t; \bra{T > r}] = \E[M_s; \bra{T > r}]$ for $r \leq s \leq t$, and hence deduce that $M_t$ is a cadlag martingale with respect to the filtration $\bra{\sF_t}$.
+
+Is $M$ bounded in $\sL^1$? Is $M$ uniformly integrable? Is $M_{T^-}$ in $\sL^1$?
+
+\scutline
+
+Solution. It is easy to see that, for every $t \geq 0$,
+\be
+\E[\abs{M_t}] = \E[\abs{M_t}\ind_{\bra{t<T}}]+\E[\abs{M_t}\ind_{\bra{t\geq T}}] = \abs{1-e^{\lm t}} e^{-\lm t} + 1-e^{-\lm t} = 2-2e^{-\lm t} < \infty \qquad (*)
+\ee
+
+Now fix $0 \leq r \leq t$. Then
+\beast
+\E[M_t\ind_{\bra{T>r}}] & = & \E[M_t\ind_{\bra{t\geq T>r}}]+\E[M_t\ind_{\bra{T>t}}] = \pro\bb{t \geq  T > r} + (1-e^{\lm t})\pro\bb{T > t}\\
+& = & e^{-\lm r}- e^{-\lm t} + (1-e^{\lm t})e^{-\lm t} = e^{-\lm r}-1
+\eeast
+
+This expression is independent of $t$ so it follows that if $0\leq r\leq s\leq t$, $\E[M_t\ind_{\bra{T>r}}]=\E[M_s\ind_{\bra{T>r}}]$.
+
+We claim that $M = (M_t)_{t\geq 0}$ is a \cadlag martingale with respect to $(\sF_t)_{t\geq 0}$. By the first part, $M$ is an integrable process and, by writing $M_t = (1-e^{\lm t} )\ind_{\bra{t=0}} + \ind_{\bra{Z_t=1}}$, it is clear that $M_t$ is $\sigma(Z_t)$-measurable and thus $\sF_t$-measurable a fortiori. Notice that $\sigma(Z_t) = \sigma(\bra{T > t})$ so that $\sF_t = \sigma(\bra{T > s}: t \geq  s \geq  0)$, moreover, the family $\Pi_t = \bra{\bra{T > s}: t \geq  s \geq  0} \cup \bra{\emptyset}$ is a generating $\pi$-system for $\sF_t$ that contains a set with probability 1, namely $\bra{T > 0}$. However, we cannot quickly conclude that $M$ is a martingale from the `uniqueness of extensions' result for measures and the fact that $\E[M_t\ind_A] = \E[M_s\ind_A]$ for all $A \in \Pi_s$. if $0 \leq  s \leq t$ and we define
+\be
+\mu:\sF_s \to [-\infty,\infty] : A \mapsto \E[M_s\ind_A],\qquad \nu: \sF_s \to [-\infty,\infty] : A \mapsto \E[M_t\ind_A]
+\ee
+then, in particular, these are only signed measures as $M$ can be negative\footnote{Thanks to Artiom Fiodorov for pointing this out to me.}. One slick way\footnote{This method will only work if $M^+_t$ and $M^+_s$ are bounded or if $M^-_t$ and $M^-_s$ are bounded. However, the `uniqueness of extensions' result is generalisable. if two finite signed (or, indeed, complex) measures agree on a $\pi$-system and the set on which the $\pi$-system is defined, then they agree on the s-algebra generated by this $\pi$-system. } of getting around this problem is to note that $1-M$ is nonnegative and that we can apply the usual extension result to this, that $\mu = \nu$ then follows, and hence $M$ is a martingale. Finally, for all $\omega$ on a set of probability 1, $T(\omega) < \infty$. For all such $\omega$ the sample path is clearly \cadlag, so $M$ is a.s. \cadlag and so our claim follows.
+
+Now, $M$ is bounded in $\sL^1$ by the explicit calculation in ($*$). As $M$ is a martingale, $\E[M_t ] =\E[M_0] = 0$. We can also see that $M_t\to 1$ a.s. as $t \to \infty$. But then $M_t \nrightarrow 1$ in $\sL^1$ as $t \to \infty$, as this would imply that $\E[M_t ]\to 1$ as $t \to \infty$, which is absurd. Therefore $M$ does not converge in $\sL^1$ to its a.s. limit so, by the UI martingale convergence theorem, the martingale cannot be UI.
+
+As mentioned, for all $\omega$ on a set of probability 1, $T(\omega) < \infty$. For all such $\omega$ we have that $M_{T^-(\omega)} = 1-e^{\lm T(\omega)}$. Therefore
+\be
+\E\abs{M_{T^-}} = \E\abs{1-e^{\lm T}} = \int^\infty_0 \abs{1-e^{\lm t}} e^{-\lm t} dt = \int^\infty_0 (e^{\lm t} -1)\lm e^{-\lm t} dt = \int^\infty_0 \lm(1-e^{-\lm t})dt = \infty
+\ee
+and thus $M_{T^-}$ is not integrable.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $T$ be a random variable with values in $(0,\infty)$ and with strictly positive continuous density $f$ on $(0,\infty)$ and distribution function $F(t) = \pro(T \leq t)$. Define
+\be
+A_t = \int^t_0 \frac{f(s)}{1 - F(s)} ds, 0 \leq t < \infty.
+\ee
+
+By expressing the distribution function of $A_T$, $G(t) = \pro(A_T \leq t)$, in terms of the inverse function $A^{-1}$ of $A$, or otherwise, deduce that $A_T$ has the exponential distribution of mean 1.
+
+Define $Z_t$ and $\sF_t$ as in previous exercise, and prove that $M_t = Z_t - A_{t\land T}$ is a cadlag martingale relative to $\bra{F_t}$. The function $A_t$ is called the hazard function for $T$.
+
+\scutline
+
+Solution. The function $A : [0,\infty)\to \R : t \mapsto A_t$ is increasing as, if $t \geq 0$ and $\delta > 0$,
+\be
+A_{t+\delta} -A_t = \int^{t+\delta}_t \frac{f (s)}{1-F(s)} ds > 0
+\ee
+as the integrand is positive on $[0,\infty)$. Additionally, $A_0 = 0$ and, as $A$ is defined as the integral of a continuous function, $A$ is automatically $\sC^1$. With this in hand, observe that
+\be
+G(t) = \pro\bb{A_T \leq  t}  = \pro\bb{T \leq  A^{-1}_t}  = F(A^{-1}_t) = \int^{A^{-1}_t}_0 f (s)ds
+\ee
+
+By the inverse function theorem $A^{-1}$ is $\sC^1$ and
+\be
+\left.\frac{dA^{-1}_s}{ds}\right|_{s=u} = \bb{ \left.\frac{dA_s}{ds}\right|_{s=A^{-1}}}^{-1} = \frac{1-F(A^{-1}_u)}{f (A^{-1}_u)}
+\ee
+
+We can legitimately integrate by substitution with $A^{-1}$, i.e.,
+\beast
+G(t) & = & \int^{A^{-1}_t}_{A^{-1}_0} f (s)ds = \int^t_0 f (A^{-1}_u) \cdot\left.\bb{\frac{dA^{-1}_s}{ds}}\right|_{s=u} du \\
+& = & \int^t_0 f (A^{-1}_u) \cdot \frac{1-F(A^{-1}_u)}{f (A^{-1}_u )} du = \int^t_0 1-F(A^{-1}_u)du = \int^t_0 1-G(u)du
+\eeast
+
+Therefore $G$ solves the differential equation $G'(t) = 1-G(t)$ for all $t \geq 0$, subject to the condition that $G(0) = 0$. It follows that $G(t) = 1-e^{-t}$ and we conclude that $A_T \sim \sE(1)$.
+
+Using the notation of previous exercise we claim that $M_t := Z_t -A_{t\land T}$ is a \cadlag martingale with respect to $(\sF_t)_{t\geq 0}$. To prove that the process is adapted, note that $Z_t$ is trivially $\sF_t$-measurable, so it suffices to prove that $A_{t\land T}$ is $\sF_t$-measurable. As $A$ is a continuous map it is enough to show that $t \land T$ is $\sF_t$-measurable. Observe that, where $s \geq 0$
+\be
+(t \land T)^{-1}([0, s]) = \bra{\omega : t\land T(\omega) \in [0, s]} = \left\{\ba{ll}
+\Omega & s \geq  t\\
+\bra{T \leq  s}\qquad & s < t
+\ea\right.
+\ee
+and, in either case, the set is an element of $\sF_t$. It is also trivially the case that $(t\land T)^{-1}(\emptyset) = \emptyset$. As $\bra{[0, s] : s \geq 0} \cup \bra{\emptyset}$ is a generating $\pi$-system for $\sB([0,\infty))$, it follows that $t \land T$ is $\sF_t$-measurable. For integrability, note that
+\be
+\E\abs{M_t} \leq \E\abs{Z_t} + \E\abs{A_{t\land T}} = \pro\bb{T \leq  t} + \int^t_0 A_s f (s)ds + A_t\int^\infty_t f (s)ds
+\ee
+
+The first of these terms is bounded above by 1, the second is finite as $A_s f (s)$ is continuous on the compact set $[0, t]$ and hence is a bounded function on $[0, t]$, and the third is finite as $f$ is the pdf of a random variable, so the integral is bounded above by 1.
+
+Similarly to the prior exercise (as $M^+$ is bounded), the martingale property will follow provided we show that $\E[M_t ] = \E[M_s]$ and that, if $0 \leq  r \leq  s \leq t$, then $\E[M_t\ind_{\bra{T\leq r}}] = \E[M_s\ind_{\bra{T\leq r}}]$, it follows because $\bra{\bra{T \leq  s}: t \geq  s \geq  0} \cup \bra{\emptyset}$ is a generating $\pi$-system for $\sF_t$. For the first part,
+\beast
+\E[M_t] = \E[Z_t -A_{t\land T}] & = & -\E[A_t\ind_{\bra{t<T}}]+\E[(1-A_T )\ind_{\bra{t\geq T}}] = A_t\pro\bb{A_T > A_t} + \pro\bb{A_T \leq A_t} - \E[A_T \ind_{\bra{A_T\leq A_t}}] \\
+& = & A_t e^{-A_t} + 1 - e^{-A_t} - \int^{A_t}_0 ue^{-u} du = 1+(A_t -1)e^{-A_t} - \bb{-ue^{-u} }^{A_t}_0 - \int^{A_t}_0 e^{-u} du\\
+& = & 1+(A_t -1)e^{-A_t} + A_t e^{-A_t} + \bb{e^{-u}}^{A_t}_0 = 1-e^{-A_t} + e^{-A_t} -1 = 0
+\eeast
+and hence $\E[M_t] = \E[M_s]$ for all $s, t \geq 0$. For the second part, let $0 \leq  r \leq  s \leq  t$ and observe that
+\be
+\E[M_t\ind_{\bra{T\leq r}}] = \E[Z_t\ind_{\bra{T\leq r}}]-\E[A_{t\land T} \ind_{\bra{T\leq r}}] = \pro\bb{T \leq r} -\E[A_T \ind_{\bra{T\leq r}}] = \pro\bb{T \leq r} - \int^r_0 A_u f (u)du
+\ee
+which is independent of $t$, the same argument with $s$ replacing $t$ produces the same result, so $\E[M_t\ind_{\bra{T\leq r}}] = \E[M_s\ind_{\bra{T\leq r}}]$. Finally, the process is clearly \cadlag as $A$ is continuous and $Z$ is \cadlag. Therefore $M$ is a \cadlag martingale.
+
+\vspace{2mm}
+
+\qcutline
+
+\item Let $(X_n, n \geq  1)$ be a sequence of independent random variables with uniform distribution on [0, 1]. Let $M_n = \max(X_1,\dots,X_n)$. Show that $n(1 - M_n)$ converges in distribution as $n\to \infty$ and determine the limit law.
+
+\scutline
+
+Solution. Define $Y_n := n(1-M_n)$ for all $n \geq 1$ and let $F_{Y_n}$ be the cdf of $Y_n$. Then
+\beast
+F_{Y_n}(x) & = & \pro\bb{n(1-M_n) \leq x} = \pro\bb{M_n \geq  1- \frac xn} = 1- \pro\bb{M_n < 1- \frac xn} \\
+& = & 1- \pro\bb{\forall i \leq  n, X_i < 1- \frac xn} = 1-\bb{\pro\bb{X_1 < 1- \frac xn}}^n
+\eeast
+where we have used the iid hypothesis in the final line. If $x < 0$, then $\pro\bb{X_1 < 1- \frac xn} = 1$ and so $F_{Y_n}(x) = 0$ for all $n \geq 1$. If $x \geq 0$ then for all sufficiently large $n$, $\pro\bb{X_1 < 1- \frac xn} = 1- \frac xn$ and therefore $\bb{\pro\bb{X_1 < 1- \frac xn}}^n = \bb{1- \frac xn}^n \to e^{-x}$ as $n\to \infty$, and hence $F_{Y_n}(x) \to 1-e^{-x}$ as $n\to \infty$. It follows that
+\be
+F_{Y_n}(x) \to \left\{\ba{ll}
+0 & x < 0\\
+1-e^{-x} \qquad & x \geq  0
+\ea\right.
+\ee
+and the right-hand side is the cdf of a $\sE(1)$ random variable, it follows that $Y_n \to \sE(1)$ in distribution as $n\to \infty$.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $(X_n, n \geq  0)$ be a sequence of random variables defined on some probability space $(\Omega,\sF, \pro)$ with values in a metric space $(M, d)$.
+\ben
+\item [(i)] Suppose that $X_n \to X_\infty$ a.s. as $n\to\infty$. Show that $X_n$ converges to $X_\infty$ in distribution.
+\item [(ii)] Suppose that $X_n$ converges in probability to $X_\infty$. Show that $X_n$ converges in distribution to $X_\infty$.
+
+Hint: use the fact that $(X_n, n \geq  0)$ converges in probability to $X_\infty$ if and only if for every subsequence extracted from $(X_n, n \geq  0)$, there exists a further subsequence converging a.s. to $X_\infty$.
+
+\item [(iii)] If $X_n$ converges in distribution to a constant $X_\infty = c$, then $X_n$ converges in probability to $c$.
+\een
+
+\scutline
+
+Solution. For the first part, suppose that $X_n \to X_\infty$ a.s. and let $f \in C_b(M)$. Then as $f$ is continuous, $f(X_n)\to f(X_\infty)$ a.s., and thus by the dominated convergence theorem (noting that $\abs{ f (X_n)} \leq \dabs{f}_\infty < \infty$) we have that $\E[ f(X_n)]\to \E[ f (X_\infty)]$. Therefore $X_n \to X_\infty$ in distribution.
+
+For the second part, suppose that $X_n\to X_\infty$ in probability and suppose for a contradiction that $X_n \nrightarrow X_\infty$ in distribution. Then there is some $f \in C_b(M)$ such that $\E[ f(X_n)] \nrightarrow \E[ f (X_\infty)]$, that is, there is an $\ve > 0$ and a subsequence $(n(k))$ such that, for all $k$, $\abs{\E[ f (X_{n(k)})]-\E[ f(X_\infty)]} \geq \ve$. But, as $X_n \to X_\infty$ in probability, there is a further subsequence $(n(k(r)))$ such that $X_{n(k(r))} \to X_\infty$ a.s.. By the first part $X_{n(k(r))} \to X_\infty$ in distribution and therefore $\E[ f (X_{n(k(r))})]\to \E[ f (X_\infty)]$. This is a contradiction, so $X_n \to X_\infty$ in distribution.
+
+For the third and final part, suppose that $X_n\to c$ in distribution, fix $\ve >0$ and set $U := B_\ve (c)$, the ball in $M$ of centre $c$ and radius $\ve$. This is an open set so, by the portmanteau lemma, $\liminf_{n\to \infty} \pro\bb{X_n \in U} \geq \pro\bb{c \in U} = 1$, and therefore $\limsup_{n\to \infty} \pro\bb{X_n \in U} = 1$, so $\pro\bb{X_n \in U} \to 1$ as $n \to \infty$. Or, phrased equivalently, $\pro\bb{d(X_n,c) \geq \ve} \to 0$ as $n \to \infty$. As $\ve > 0$ was arbitrary we thus have that $X_n \to c$ in probability as $n\to \infty$.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Suppose given sequences $(X_n, n \geq  0)$ and $(Y_n, n \geq  0)$ of real valued random variables, and two extra random variables $X,Y$, such that $X_n$, $Y_n$ respectively converge in distribution to $X, Y$. Is it true that $(X_n, Y_n)$ converges in distribution to $(X, Y)$? Show that this is true in the following cases:
+\ben
+\item [(i)] For every $n$, the random variables $X_n$ and $Y_n$ are independent, as well as $X$ and $Y$.
+\item [(ii)] $Y$ is a.s. constant (Hint: use 3 of the previous question).
+\een
+
+\scutline
+
+Solution. We first remark that it need not be the case that, if $X_n \to X$ in distribution and $Y_n \to Y$ in distribution, then $(X_n,Y_n)\to (X,Y)$ in distribution. For a trivial example, take
+\be
+X_n = \left\{\ba{ll}
+1 & \text{with probability }\frac 12\\
+-1 \qquad & \text{with probability }\frac 12
+\ea\right.
+\ee
+and define $Y_n = -X_n$. Let $Z$ also be a random variable with this distribution. Then $X_n \to Z$ in distribution and $Y_n \to Z$ in distribution, but $(X_n,Y_n)$ does not tend to $(Z,Z)$ in distribution. To see this, take the open set $U = (-2,0)\times (-2,0)$ and observe that, for all $n$,
+\be
+\pro\bb{(X_n,Y_n) \in U} = 0 < \frac 12 = \pro\bb{(Z,Z) \in U}
+\ee
+which implies that it is not the case that $\liminf_{n\to \infty} \pro\bb{(X_n,Y_n) \in U} \geq \pro\bb{(Z,Z) \in U}$, so by the portmanteau lemma it cannot be the case that $(X_n,Y_n) \to(Z,Z)$ in distribution.
+
+
+Proposition (Part 1). Suppose that $X$ and $Y$ are independent random variables on the probability space $(\Omega,\sF,\pro)$ and that, for every $n\geq 0$, $X_n$ and $Y_n$ are independent random variables on the probability space $(\Omega_n,\sF_n,\pro_n)$. Then, if $X_n \to X$ and $Y_n \to Y$ in distribution, $(X_n,Y_n) \to (X,Y)$ in distribution.
+
+Proof. Let $\vp_Z$ denote the characteristic function of $Z$ and note that for all $\xi = (\xi_1,\xi_2) \in \R^2$,
+\be
+\vp_{(X_n,Y_n)}(\xi) = \vp_{X_n}(\xi_1)\vp_{Y_n}(\xi_2) \to \vp_X(\xi_1)\vp_Y (\xi_2) = \vp_{(X,Y)}(\xi)
+\ee
+where the convergence follows from \levy's convergence theorem and the equalities follow from our independence assumptions. So, again by \levy's convergence theorem, $(X_n,Y_n)\to (X,Y)$ in distribution.
+
+
+Proposition (Part 2). Suppose that $X$ is a random variable on $(\Omega,\sF,\pro)$, $Y$ is an a.s. constant random variable on $(\Omega',\sF',\pro')$, and that for all $n\geq 0$, $X_n$ is a random variable on $(\Omega_n,\sF_n,\pro_n)$ and $Y_n$ is a random variable on $(\Omega'_n,\sF'_n,\pro'_n)$. Then, if $X_n \to X$ and $Y_n \to Y$ in distribution, $(X_n,Y_n) \to (X,Y)$ in distribution.
+
+Remark. It is natural to consider the weak convergence of probability measures when those measures are on a given metric space. Both parts of the question, unsurprisingly, generalise to this setting, for details, see Billingsley's essential text [Bil68, Theorems 3.2 \& 4.4]. Unlike the first part, I will present a general proof so that we can appreciate the change in flavour when we attempt to generalise results to metric spaces. For the proposition above there is a faster and easier proof that uses, like in the first part, \levy's convergence theorem.
+
+
+Proof. Suppose that $Y_n \to c$ in distribution, where $c =Y$ a.s. is a constant. By our earlier work $Y_n \to c$ in probability. Let $U$ be an open set in $\R^2$. We will show that $\liminf_{n\to \infty} \pro\bb{(X_n,Y_n) \in U} \geq \pro\bb{(X,c) \in U}$ and from this it will follow that $(X_n,Y_n) \to (X,c)$ in distribution. Define an open set $V := \bra{x \in \R : (x,c) \in U}$ and, for all $\delta > 0$, define $V_\delta := \bra{x \in \R : B_\delta ((x,c) \subseteq U}$, where $B_r(a)$ is the ball (in $\R^2$) of centre $a$ and radius $r$. The interior of $V_\delta$, $V_\delta^circ$, is an open set and such that $V_\delta^\circ \ua V$ as $\delta \to 0$. (This follows by the triangle inequality and the fact that $V$ is open.) Then
+\beast
+\pro\bb{(X_n,Y_n) \in U} & \geq & \pro\bb{(X_n,Y_n) \in U, \abs{Y_n-c} < \delta}\\ 
+& \geq & \pro\bb{X_n \in V_\delta^\circ, \abs{Y_n-c} < \delta} \qquad \text{ by set inclusion}\\
+& \geq & \pro\bb{X_n \in V_\delta^\circ} - \pro\bb{\abs{Y_n-c} \geq \delta}
+\eeast
+
+By rearranging, we have that $\pro\bb{X_n \in V_\delta^\circ} \leq \pro\bb{(X_n,Y_n) \in U} + \pro\bb{\abs{Y_n-c} \geq \delta}$. As $X_n \to X$ in distribution, we therefore have that
+\be
+\pro\bb{X \in V_\delta^\circ} \leq \liminf_{n\to \infty} \pro\bb{X_n \in V_\delta^\circ} \leq \liminf_{n\to \infty} \bb{\pro\bb{(X_n,Y_n) \in U} + \pro\bb{\abs{Y_n-c} \geq \delta}}
+\ee
+
+It is generally true that, if ($a_n$) and ($b_n$) are sequences of real numbers, then $\liminf_{n\to \infty}(a_n + b_n) \leq \liminf_{n\to \infty} a_n+\limsup_{n\to \infty} b_n$, and hence
+\be
+\pro\bb{X \in V_\delta^\circ} \leq \liminf_{n\to \infty} \pro\bb{(X_n,Y_n) \in U} + \limsup_{n\to \infty} \pro\bb{\abs{Y_n-c} \geq \delta} = \liminf_{n\to \infty} \pro\bb{(X_n,Y_n) \in U}
+\ee
+as $Y_n \to c$ in probability. Therefore, by taking $\delta \da 0$, we have that
+\be
+\pro\bb{(X,c) \in U}  = \pro\bb{X \in V} \leq \liminf_{n\to \infty} \pro\bb{(X_n,Y_n) \in U}
+\ee
+as we wanted to prove.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $d \geq  1$.
+\ben
+\item [(i)] Show that a finite family of probability measures on $\R^d$ is tight.
+\item [(ii)] Assuming Prohorov's theorem for probability measures on $\R^d$, show that if $(\mu_n, n \geq  0)$ is a sequence of non-negative measures on $\R^d$ which is tight and such that 
+\be
+\sup_{n\geq 0} \mu_n(\R^d) < \infty,
+\ee
+then there exists a subsequence $n_k$ along which $\mu_n$ converges weakly to a limit $\mu$.
+\een
+
+\scutline
+
+Solution. For the first part, we begin by defining $K(m) := [-m,m]^d$ for all $m \geq 1$. This is a compact set and $K(m) \ua \R^d$. Suppose that our finite set of probability measures on $\R^d$ is denoted by $\bra{\mu_1, \dots ,\mu_n}$ and fix $\ve >0$. Then, as $1=\mu_i(\R^d)=\mu_i(\lim_{m\to \infty}K(m))= \lim_{m\to \infty} m_i(K(m))$ we must have that $\mu_i(K(m)^c) \leq \ve$ for all $m \geq m^{(\ve)}_i$, and therefore
+\be
+\sup_{1\leq i\leq n} \mu_i\bb{K\bb{\max_{1\leq i\leq n}m^{(\ve)}_i}^c} \leq \ve
+\ee
+As $\ve > 0$ was arbitrary, it follows that $\bra{\mu_1, \dots ,\mu_n}$ is tight.
+
+For the second part, if $\inf_n \mu_n(\R^d) = 0$ then we can extract a subsequence $(\mu_{n(k)})$ such that $\mu_{n(k)}(\R^d)\to 0$. In this case, if $f \in C_b(\R^d)$,
+\be
+\abs{\int_{\R^d} f d\mu_{n(k)}} \leq \dabs{ f }_\infty \mu_{n(k)} (\R^d) \to 0
+\ee
+and hence $\mu_{n(k)} \to 0$, giving the claim. So suppose that $\inf_n \mu_n(\R^d) > 0$ and define $\nu_n(\cdot) := \mu_n(\cdot)/\mu_n(\R^d)$ for all $n$. Then $(\nu_n)$ is a tight sequence of probability measures on $\R^d$, after all, if $K$ is a compact set such that $\sup_n \mu_n(K^c) \leq \ve$, then
+\be
+\sup_n \nu_n(K^c) = \sup_n \frac{\mu_n(K^c)}{\mu_n(\R^d)} \leq \frac{\ve}{\inf_n \mu_n(\R^d)}
+\ee
+
+By Prohorov's theorem, there is a convergent subsequence $(\nu_{n(k)})$ of $(\nu_n)$, so say that $\nu_{n(k)} \to \nu$. Further, note that $(\mu_{n(k)}(\R^d))$ is a bounded sequence in $\R$. The Bolzano-Weierstrass theorem tells us that there is a convergent subsequence $(\mu_{n(k(r))}(\R^d))$. Therefore $\nu_{n(k(r))} \to\nu$ and $\mu_{n(k(r))}(\R^d)\to C$, say. We finally claim that $\mu_{n(k(r))} = \mu_{n(k(r))}(\R^d) \cdot \nu_{n(k(r))} \to C\nu =: \mu$. To prove this, observe that if $f \in C_b(\R^d)$,
+\be
+\int_{\R^d} f d\mu_{n(k(r))} = \mu_{n(k(r))}(\R^d) \int_{\R^d} \int_{\R^d} f d\nu_{n(k(r)) } \to C \int_{\R^d} f d\nu = \int_{\R^d} f d\mu
+\ee
+and therefore $\mu_{n(k(r))} \to \mu$, as required.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Show that the standard Brownian motion in $\R^d$ is the unique Gaussian process $(B_t, t \geq  0)$ with $\E[B_t] = 0$ for all $t \geq  0$ and $\cov(B_s,B_t) = (s \land t)I_d$ for every $s, t \geq  0$.
+
+\scutline
+
+Solution. We begin with a definition.
+
+Definition (Gaussian processes in $\R^d$). If $X = ((X^{(1)}_t , \dots ,X^{(d)}_t ))_{t\geq 0}$ is a process taking values in $\R^d$ then we say that $X$ is a Gaussian process if $\sum^n_{i=1} \sum^d_{j=1} \lm_{ij}X^{( j)}_{t_i}$ is a normal random variable for every $\lm_{ij} \in \R$, $n \geq 1$ and $0 \leq t_1 < \dots < t_n < \infty$.
+
+The Brownian motion $B = ((B^{(1)}_t , \dots ,B^{(d)}_t))_{t\geq 0}$ is a Gaussian process in $\R^d$: to see this, fix $n \geq 1$, $0 = t_0 < \dots < t_n < \infty$ and $\lm_{ij} \in \R$. Then $\sum^d_{j=1} \sum^n_{i=1} \lm_{ij}B^{(j)}_{t_i} = \sum^d_{j=1}\sum^n_{i=1} \mu_{ij}(B^{(j)}_{t_i} -B^{(j)}_{t_{i-1}})$
+for some $\mu_{ij} \in\R$. This is a normal random variable, as we require, because the above is a linear combination of independent normal random variables, the independence comes from the fact that the processes $B^{(j)}$ are independent Brownian motions in $\R$ and that the increments thereof are independent normal random variables.
+
+Additionally, notice that, as $B_t \sim \sN (0, tI_d)$, we have that $\E[B_t ] = 0$. Moreover, if $0 \leq  s \leq t$, then 
+\be
+\cov(B_s,B_t) = \E[B_sB^T_t]-\E[B_s]\E[B_t ]^T = \E[B_sB^T_t] = \E[B_s(B_t -B_s)^T]+\E[B_sB^T_s ] = sI_d,
+\ee
+where in the final equality we have used that $B^{(j)}$ are independent Brownian motions. By symmetry, $\cov(B_s,B_t) = (s\land t)I_d$. We will close by generalising the point made in Exercise 2.1 of Sheet 2 by showing that an $\R^d$-valued Gaussian process $X$ is uniquely determined in law by the mean vectors $\E[X_t]$ and covariance matrices $\cov(X_t ,X_s)$. Remember that the law of a process is characterised by its fdds, so it suffices to verify that if $n \geq 1$ and $0 =t_0 < \dots <t_n < \infty$, then the law of $(X_{t_1}, \dots ,X_{t_n})$ is uniquely determined by the mean vectors and covariance matrices, by \levy's convergence theorem it is enough to show that if $u_i \in\R^d$, then the law of $\sum^n_{i=1} \inner{u_i}{X_{t_i}}$ is characterised by, again, the mean vectors and covariance matrices. As $X$ is a Gaussian process, this sum has a normal distribution, it has mean
+\be
+\E\bb{\sum^n_{i=1} \inner{u_i}{X_{t_i}} } = \sum^n_{i=1} \inner{u_i}{\E[X_{t_i}]}
+\ee
+and variance
+\beast
+\var \bb{\sum^n_{i=1} \inner{u_i}{X_{t_i}}} & = & \cov \bb{\sum^n_{i=1} \inner{u_i}{X_{t_i}},\sum^n_{j=1} \inner{u_j}{X_{t_j}}} \\
+& = & \sum^n_{i, j=1} \cov\bb{\inner{u_i}{X_{t_i}}, \inner{u_j}{X_{t_j}}} = \sum^n_{i,j=1}\mu_i^T\cov\bb{X_{t_i},X_{t_j}}u_j
+\eeast
+which completes the proof. In particular, then, Brownian motion is the unique centred Gaussian process $X$ (in law) with covariance matrices $\cov(X_s,X_t) = (s\land t)I_d$.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item\label{exe:2.2} Let $B$ be a standard Brownian in 1 dimension. 
+\ben
+\item [(i)] Show that a.s.
+\be
+\limsup_{t\da 0} \frac{B_t}{\sqrt{t}} = \infty,\qquad \liminf_{t\da 0} \frac{B_t}{\sqrt{t}} = -\infty.
+\ee
+\item [(ii)] Show that a.s. $B_n/n \to 0$ as $n \to \infty$. Then show that a.s. for $n$ large enough
+\be
+\sup_{t\in [n,n+1]} \abs{B_t - B_n} \leq \sqrt{n}
+\ee
+and conclude that $B_t/t \to 0$ as $t \to \infty$ a.s.
+
+\item [(iii)] Using the time inversion theorem, show that a.s.
+\be
+\limsup_{t\to\infty} \frac{B_t}{\sqrt{t}} = \infty,\qquad \liminf_{t\to\infty}\frac{B_t}{\sqrt{t}} = -\infty.
+\ee
+\een
+
+\scutline
+
+Solution. In the following, suppose that $B$ is a standard Brownian motion in $\R$.
+
+Proposition (Part 1). With probability 1,
+\be
+\limsup_{t\da 0} \frac{B_t}{\sqrt{t}} = \infty \qquad \liminf_{t\da 0} \frac{B_t}{\sqrt{t}} = -\infty
+\ee
+
+Proof. As $-B$ is also a standard Brownian motion in $\R$, it is sufficient to prove the first of the two claims. Define $A := \bra{\limsup_{t\da 0} B_t / \sqrt{t} = \infty}$ and $A_n := \bra{\limsup_{t\da 0}B_t/\sqrt{t} > n}$ and observe that $A = \bigcap^\infty_{n=1}A_n$. Hence, to show that $\pro(A) = 1$, it is enough to show that $\pro(A_n) = 1$ for all $n$. Now, it is clear that $A_n \in \sF^+_0$ so by Blumenthal's 0-1 law it is enough to show that $\pro(A_n)>0$ for all $n$. Define $A^{(m)}_n := \bra{\sqrt{m}B_{1/m} >n}$. Then, where $\Phi$ denotes the cdf of a $\sN (0,1)$ random variable,
+\be
+\pro(A_n) = \pro\bb{\limsup_{m\to \infty} A^{(m)}_n } \geq  \limsup_{m\to \infty} \pro\bb{A^{(m)}_n } = 1-\Phi(n) > 0
+\ee
+where the first inequality is by the `reverse' version of Fatou's lemma and the final equality holds as $\sqrt{m} B_{1/m} \sim \sN (0,1)$.
+
+Proposition (Part 2.1). $B_n/n \to 0$ a.s. as $n\to \infty$.
+
+Proof. Observe that $B_n =\sum^n_{i=1}(B_i-B_{i-1})$ and that $(B_i-B_{i-1})_{i\geq 1}$ is an iid sequence of $\sN (0,1)$ random variables. By the strong law of large numbers, $B_n/n \to \E[B_1] = 0$ a.s..
+
+Proposition (Part 2.2). $\pro\bb{\sup_{n\leq t\leq n+1}\abs{B_t -B_n} \leq \sqrt{n}\text{ ev.}} = 1$.
+
+Proof. The claim is equivalent to showing that $\pro\bb{\sup_{n\leq t\leq n+1}\abs{B_t -B_n} >\sqrt{n} \text{ i.o.}} = 0$ and, by the Borel-Cantelli lemma, it is enough to show that
+\be
+\sum^\infty_{n=1} \pro\bb{\sup_{n\leq t\leq n+1} \abs{B_t -B_n} >\sqrt{n}} < \infty
+\ee
+
+Observe that, as $(B_{t+n}-B_n)_{t\geq 0}$ is a Brownian motion by the Markov property,
+\beast
+\pro\bb{\sup_{n\leq t\leq n+1} \abs{B_t -B_n} > \sqrt{n}} & = & \pro\bb{\sup_{0\leq t\leq 1}\abs{B_t} > \sqrt{n}} \leq  2\pro\bb{\sup_{0\leq t\leq 1} B_t > \sqrt{n}} \\
+& = & 2\pro\bb{\abs{B_1} > \sqrt{n}} = 4\pro\bb{B_1 >\sqrt{n}}
+\eeast
+where we have used Corollary 6.21. Further, we have that
+\be
+\pro\bb{B_1 > \sqrt{n}}  = \frac 1{\sqrt{2\pi}} \int^\infty_{\sqrt{n}} e^{-u^2/2} du \leq \frac 1{\sqrt{2\pi}} \int^\infty_{\sqrt{n}} \frac u{\sqrt{n}} \cdot e^{-u^2/2} du = \frac 1{\sqrt{2\pi n}} \cdot e^{-n/2}
+\ee
+and, once we note that $\sum^\infty_{n=1} n^{-1/2} e^{-n/2} < \infty$, the claim follows.
+
+
+Corollary (Part 2.3). $B_t/t \to 0$ a.s. as $t \to \infty$.
+
+Proof. Almost all $\omega$ are such that $B_n(\omega)/n \to 0$ and $\sup_{n\leq t\leq n+1} \abs{B_t(\omega)-B_n(\omega)} \leq \sqrt{n}$ ev., fix
+any such $\omega$ and let $\ve >0$. Then there is some $N(\omega)\geq 0$ such that, for all $n\geq N(\omega)$, $B_n(\omega)/n\leq \ve$ and $\sup_{n\leq t\leq n+1}\abs{B_t(\omega)-B_n(\omega)} \leq \sqrt{n}$. If $t \geq  N(\omega)$,
+\be
+\abs{\frac{B_t(\omega)}t} \leq \frac{\abs{B_t(\omega)-B_{\floor{t}}(\omega)}}{\floor{t}} + \frac{\abs{B_{\floor{t}}(\omega)}}{\floor{t}} \leq  \frac 1{\sqrt{\floor{t}}} +\ve
+\ee
+and so, for all large enough $t$, $\abs{B_t(\omega)/t} \leq 2\ve$. As $\ve$ was arbitrary, we have that $B_t(\omega)/t \to 0$ as $t \to \infty$. Therefore $B_t/t \to 0$ a.s. as $t \to \infty$.
+
+Proposition (Part 3). With probability 1,
+\be
+\limsup_{t\to \infty} \frac{B_t}{\sqrt{t}} = \infty,\qquad \liminf_{t\to \infty} \frac{B_t}{\sqrt{t}} = -\infty
+\ee
+
+Proof. As with the first part it is enough to prove just the first of the two statements. By the time inversion property of Brownian motion and the first part of the question,
+\be
+\limsup_{t\to \infty} \frac{B_t}{\sqrt{t}} = \limsup_{t\to \infty} \frac{tB_{1/t}}{\sqrt{t}} = \limsup_{t\to \infty} \sqrt{t} B_{1/t} = \limsup_{t\da 0} \frac{B_t}{\sqrt{t}} = \infty
+\ee
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $B$ be a standard Brownian motion in 1 dimension. Show that a.s. for all $0 < a < b < \infty$, the Brownian motion $B$ is not monotone on the interval $[a, b]$.
+
+\scutline
+
+Solution. Let $B$ be a standard Brownian motion in $\R$. We claim that, with probability 1, $B$ is not monotone on any interval $[a,b]$ for $0 < a < b < \infty$. Notice that for all such $a$ and $b$ we can find rational numbers $q$ and $r$ such that $0 < a < q < r < b < \infty$. Obviously, if $B$ is not monotone on $[q, r]$ then it cannot be monotone on $[a,b]$, so it suffices to prove that $B$ is a.s. not monotone on any interval $[q, r]$ for $0 < q < r < \infty$ and $q, r \in \Q$. As the set of such pairs $(q, r)$ is countable, the claim will follow if, for every such pair $(q, r)$, $B$ is a.s. not monotone on $[q, r]$.
+
+Note that $B$ is a.s. not monotone on $[q, r]$ iff $B-B_q$ is a.s. not monotone on $[q, r]$. As $(B_{t+q}- B_q)_{t\geq 0}$ is a standard Brownian motion, $B$ is a.s. not monotone on $[q, r]$ iff $B$ is a.s. not monotone on $[0, r-q]$. By Proposition 6.15, $B$ a.s. takes both positive and negative values in any (temporal) neighbourhood of $t = 0$, and therefore $B$ is a.s. not monotone on $[0, r-q]$.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $(B_t, t \geq  0)$ be a standard Brownian motion in 1 dimension. Let $T_x = \inf\bra{t \geq  0 : B_t = x}$ for $x \in \R$.
+\ben
+\item [(i)] Prove that $T_x$ has the same distribution as $(x/B_1)^2$ and compute its probability distribution function.
+\item [(ii)] For $x, y > 0$, show that
+\be
+\pro(T_{-y} < T_x) = \frac x{x + y},\qquad \E[T_{-y} \land T_x] = xy.
+\ee
+
+\item [(iii)] Show that if $0 < x < y$, the random variable $T_y - T_x$ has the same law as $T_{y-x}$ and is independent of $\sF_{T_x}$ (where $(\sF_t, t \geq  0)$ is the natural filtration of Brownian motion).
+\een
+
+Hint: the three questions are independent.
+
+\scutline
+
+Solution. Proposition (Part 1). $T_x \sim  (x/B_1)^2$ for all $x \in\R$.
+
+Proof. If $a < 0$ then, for all $x \in \R$, $\pro\bb{T_x \leq  a} = 0 = \pro\bb{(x/B_1)^2 \leq a}$ as $B_1$ is a.s. nonzero. Now suppose that $a,x \geq  0$. Then, by Corollary 6.21 and the fact that $B_1$ is a.s. nonzero, 
+\be
+\pro\bb{T_x \leq a} = \pro\bb{\sup_{0\leq t\leq a} B_t \geq x} = \pro\bb{\abs{B_a} \geq x} = \pro\bb{B^2_a \geq x^2} = \pro\bb{aB^2_1 \geq  x^2} = \pro\bb{(x/B_1)^2 \leq a}.
+\ee
+
+Finally, if $a \geq 0$ and $x < 0$, then $\pro\bb{T_x \leq a} = \pro\bb{\inf_{0\leq t\leq a} B_t \leq  x} = \pro\bb{\sup_{0\leq t\leq a}(-B_t) \geq -x} =
+\pro\bb{(x/B_1)^2 \leq a}$ as $-B$ is a Brownian motion, completing the proof.
+
+From the above and computing $\pro\bb{\abs{B_a} \geq \abs{x}}$, we see that the cdf of $T_x$ is given by
+\be
+\pro\bb{T_x \leq  a}  = \left\{\ba{ll}
+0 & a < 0\\
+2\bb{1-\Phi\bb{\frac{\abs{x}}{\sqrt{a}}}}\qquad & a \geq  0
+\ea\right.
+\ee
+
+
+Proposition (Part 2). If $x,y > 0$ and we define $T := T_x \land T_{-y}$, then
+\be
+\pro\bb{T_{-y} < T_x} = \frac x{x+y},\qquad \E[T] = xy
+\ee
+
+Proof. One corollary of Exercise \ref{exe:2.2} is that Brownian motion in $\R$ almost surely escapes any proper subsets of $\R$, so it is clear that $T$ is an a.s. finite stopping time, by this and continuity (which implies that $T_x$ and $T_{-y}$ are a.s. distinct),
+\be
+\pro\bb{T_x < T_{-y}} + \pro\bb{T_{-y} < T_x} = 1 \qquad (*)
+\ee
+
+Moreover, as $B$ is a continuous martingale (Proposition 6.23) and $T$ is a stopping time, $B^T$ is a martingale that is a.s. bounded, so in particular $B^T$ is UI. By the optional stopping theorem we therefore have that
+\be
+x\pro\bb{T_x < T_{-y}} -y\pro\bb{T_{-y} < T_x} = \E[B_T ] = \E[B_0] = 0 \qquad (\dag)
+\ee
+
+By solving the simultaneous equations ($*$) and ($\dag$), we see that $\pro\bb{T_{-y} < T_x} = x/(x+y)$.
+
+It was also proven in lectures (Proposition 6.23) that $(B^2_t -t)_{t\geq 0}$ is a continuous martingale. As $T \land n$ is a stopping time for all $n \geq 1$, we have that $(B^2_{T\land n \land t} -T \land n\land t)_{t\geq 0}$ is a martingale that is a.s. bounded so it is also UI. By the optional stopping theorem again, we have that $\E[B^2_{T\land n} -T\land n] = 0$, i.e. for all $n \geq 1$, $\E[B^2_{T\land n}] = \E[T \land n]$. The right-hand side of this tends to $\E[T]$ by the monotone convergence theorem, the left-hand side converges to $\E[B^2_T]$ by the dominated convergence theorem. By the earlier result,
+\be
+xy = x^2\pro\bb{T_x < T_{-y}} + y^2\pro\bb{T_{-y} < T_x} = \E[T]
+\ee
+
+Proposition (Part 3). If $0 < x < y$, then $T_y-T_x$ is independent of $\sF_{T_x}$ and has the same distribution as $T_{y-x}$.
+
+Proof. We have that (with equalities being a.s. and using the fact that $T_x < T_y$ a.s.)
+\beast
+T_y-T_x & = & \inf\bra{t \geq  T_x : B_t = y} -T_x = \inf\bra{t \geq  0 : B_{t+T_x} = y}\\
+& = & \inf\bra{t \geq  0 : B_{t+T_x} -B_{T_x} +B_{T_x} = y} \\
+& = & \inf\bra{t \geq  0 : B_{t+T_x} -B_{T_x} = y-x}
+\eeast
+
+By the strong Markov property (after observing that $T_x$ is a.s. finite) $B_{t+T_x}-B_{T_x}$ is independent of $\sF^+_{T_x}$, and hence of $\sF_{T_x}$, and therefore so is $T_y-T_x$.We conclude by noting that $(B_{t+T_x} -B_{T_x})_{t\geq 0}$ is a standard Brownian motion, so $T_y-T_x \sim T_{y-x}$.
+
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $(B_t, t \geq  0)$ be a standard Brownian motion in 1 dimension, and let $0 \leq a < b$.
+\ben
+\item [(i)] Compute the mean and variance of
+\be
+X_n := \sum^{2^n}_{k=1} \bb{B_{a+k(b-a)2^{-n}} - B_{a+(k-1)(b-a)2^{-n}}}^2.
+\ee
+
+\item [(ii)] Show that $X_n$ converges a.s. and give its limit.
+\item [(iii)] Deduce that a.s. there exists no interval $[a, b]$ with $a < b$ such that B is H\"older continuous with exponent $\alpha > 1/2$ on $[a, b]$, i.e. $\sup_{a\leq s,t\leq b} \bb{\abs{B_t - B_s}/\abs{t - s}^\alpha} < \infty$.
+\een
+
+\scutline
+
+Solution. In the following, let $B$ be a Brownian motion in $\R$ and fix $0 \leq  a < b$. Define $\Delta^n_{a,b}B(k) := B_{a+k(b-a)2^{-n}} -B_{a+(k-1)(b-a)2^{-n}}$, where we write $\Delta B(k)$ instead of $\Delta^n_{a,b}B(k)$ when the parameters $a,b$ and $n$ are obvious, and $X_n := \sum^{2^n}_{k=1}(\Delta B(k))^2$. By the definition of Brownian motion $\bra{\Delta B(k) : 1 \leq  k \leq 2^n}$ is a set of independent $\sN (0, (b-a)2^{-n})$ random variables. It
+follows that 
+\be
+\E[X_n] = \sum^{2^n}_{k=1} \E[(\Delta B(k))^2] = \sum^{2^n}_{k=1} (b-a)2^{-n} = b-a
+\ee
+and that, as the summands are iid,
+\be
+\var(X_n)= \sum^{2^n}_{k=1} \var((\Delta B(k))^2)=2^n(\E[(\Delta B(1))^4]-\E[(\Delta B(1))^2]^2)=2^n\E[(\Delta B(1))^4]-(b-a)^22^{-n}
+\ee
+
+Recall that the mgf, $M_X$, of$X \sim \sN (0, (b-a)2^{-n})$ is given by $M_X(t) = e^{t^2(b-a)2^{-n}/2}$. Hence
+\be
+\sum^\infty_{m=0} \frac{t^{2m}(b-a)^m2^{-mn}}{2^m \cdot m!} = e^{t^2(b-a)2^{-n}/2} = M_X(t) = \E[e^{tX}] = \sum^\infty_{m=0} \frac{t^m\E[X^m]}{m!}
+\ee
+and so, by comparing the coefficients of $t^4$, we have that $\E[X^4] = 3(b-a)^22^{-2n}$. Hence
+\be
+\var(X_n) = 2^n(3(b-a)^22^{-2n})-(b-a)^22^{-n} = 2^{1-n}(b-a)^2
+\ee
+which completes the first part.
+
+We will now consider the second part. We have that 
+\be
+\var(X_n) = \E[(\E[X_n]-(b-a))^2] = 2^{1-n}(b-a)^2 \to 0,
+\ee
+so it is natural to conjecture that $X_n \to b-a$ a.s.. It's (truly) easy to see that if $\vp: \Z_{>0} \to [0,\infty)$ is a function such that $\vp(n) \to 0$ and $\abs{X_n(\omega)-(b-a)} < \vp(n)$ ev., then $X_n(\omega) \to b-a$. In particular, then, $X_n \to b-a$ a.s. if for some such $\vp$, $\pro\bb{\abs{X_n -(b-a)} \geq \vp(n)\text{ i.o.}} = 0$. By Chebychev's inequality, we have that
+\be
+\pro\bb{\abs{X_n-(b-a)} \geq \vp(n)} \leq \frac{\E[\abs{X_n-(b-a)}^2]}{\vp(n)^2} = \frac{2^{1-n}(b-a)^2}{\vp(n)^2}
+\ee
+
+Take $\vp(n) = 1/n$ and let $A_n := \bra{\abs{X_n-(b-a)} \geq \vp(n)}$. Then $\pro(A_n) \leq n^22^{1-n}(b-a)^2$ and so $\sum^\infty_{n=1} \pro(A_n) < \infty$. The Borel-Cantelli lemma then implies that $X_n \to b-a$ a.s..
+
+For the final part, note that if $0 \leq  p \leq a < b \leq q < \infty$ and $\beta > \alpha > 0$, then $f$ is a-H\"older continuous on $[a,b]$ if it is $\beta$-H\"polder continuous on $[p,q]$. Hence, if we can show that for all $q, r \in\Q$ such that $0 \leq  q < r$ and all $a \in (1/2,\infty)\cap \Q$,
+\be
+\pro\bb{\sup_{q\leq s\neq t\leq r} \frac{\abs{B_t -B_s}}{\abs{t -s}^\alpha} < \infty} = 0
+\ee
+then, as the set of admissible triples $(q, r,\alpha)$ is countable, the claim will follow. So fix such a triple, let $\omega$ lie in the set above and write $K(\omega) := \sup_{q\leq s,t\leq r:s\neq t} \abs{B_t(\omega)-B_s(\omega)}/\abs{t -s}^\alpha < \infty$. Then
+\be
+\sum^{2^n}_{k=1} (\Delta^n_{p,q} B(k))^2 \leq 2^nK(\omega)^2(2^{-n})^{2\alpha} = K(\omega)^22^{n(1-2\alpha)} \to 0
+\ee
+as $n \to \infty$ because $1-2\alpha < 0$. We must have that $\omega \in \bra{X_n \nrightarrow r-q}$ and, by the work above and the observation that $r-q \neq 0$, this event has probability 0.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $(B_t, t \geq  0)$ be a standard Brownian motion in 1 dimension. Define $G_1 = \sup\bb{t \leq 1 : B_t = 0}$ and $D_1 = \inf\bra{t \geq  1 : B_t = 0}$.
+\ben
+\item [(i)] Are these random variables stopping times? Show that $G_1$ has the same distribution as $D^{-1}_1$.
+\item [(ii)] By applying the Markov property at time 1, compute the law of $D_1$. Deduce that of $G_1$ (this is called the arcsine law).
+\een
+
+\scutline
+
+Solution. We first claim that $D_1:= \inf_{t \geq  1 : B_t = 0}$ is a stopping time. If $0 \leq  s < 1$ then $\bra{D_1 \leq s} = \emptyset \in \sF^+_s$. If $s \geq 1$ then
+\be
+\bra{B_1 \leq s} = \bigcup_{1\leq u\leq s} B^{-1}_u (0) = \bigcap^\infty_{n=1} \bigcup_{u\in [1,s]\cap \Q} B^{-1}_u \bb{-\frac 1n , \frac 1n} \in \sF_s \subseteq \sF^+_s
+\ee
+where the second equality is up to a null set - namely, the set on which $B$ is not continuous. If the `usual conditions' are not satisfied, we can always complete $(\Omega,\sF,\pro)$ and augment $\sF^+_s$ with the null sets of $\sF$ to ensure that $\bra{B_1 \leq s} \in \sF^+_s$. Therefore $D_1$ is a stopping time.
+
+We next claim that $G_1 := \sup\bra{t \leq 1: B_t = 0}$ is not a stopping time. First observe that $G_1 \leq 1$ and that, as $\pro\bb{G_1 = 1} = \pro\bb{B_1 = 0} = 0$, we must have that $G_1 < 1$ a.s.. Suppose for a contradiction that $G_1$ is a stopping time. Then by the strong Markov property at this time, $(B_{t+G_1}-B_{G_1})_{t\geq 0} =(B_{t+G_1})_{t\geq 0}$ is a Brownian motion (in $\R$). But as Brownian motions a.s. have a zero in $(0, \ve)$ for every $\ve > 0$ (Proposition 6.15), and as $(G_1,1]$ a.s. has positive measure, we have a contradiction to $G_1$ being the last zero of $B$ in [0,1]. Therefore $G_1$ is not a stopping time. 
+
+To show that $G_1 \sim 1/D_1$, fix $x \in \R$. If $x\leq 0$ then, trivially, $\pro\bb{G_1 \leq x} =0=\pro\bb{1/D_1 \leq x}$. If $x \geq 1$ then, again trivially, $\pro\bb{G_1 \leq x} = 1 = \pro\bb{D_1 \geq 1/x} = \pro\bb{1/D_1 \leq x}$. Finally, if $x \in (0,1)$, we see that
+\beast
+\pro\bb{G_1 \leq x} & = & \pro\bb{\forall t \in (x,1], B_t \neq 0} = \pro\bb{\forall t \in (x,1], tB_{1/t} \neq 0} = \pro\bb{\forall t\in (x,1], B_{1/t} \neq 0}\\
+& = & \pro\bb{\forall t \in [1,\frac 1x), B_t \neq 0} = \pro\bb{D_1 \geq \frac 1x} = \pro\bb{\frac 1{D_1} \leq  x}
+\eeast
+where we have used the time inversion property of Brownian motion.
+
+We will now compute the law of $D_1$. If $x < 1$ then $\pro\bb{D_1 \leq x} = 0$, so let $x \geq 1$. Then, where $\pro = \pro_0 (etc.)$,
+\beast
+\pro\bb{D_1 \leq x} & = & \pro\bb{\exists t \in [1,x] \text{ s.t. }B_t = 0} = \pro\bb{\exists t \in [1,x] \text{ s.t. }B_t -B_1 = B_1}\\
+& = & \E[\pro\bb{\exists t \in [1,x]\text{ s.t. }B_t -B_1 = B_1|B_1}]\\
+& = & \int_\R \pro\bb{\exists t \in [0,x-1]\text{ s.t. }B_t = y}  \cdot \frac{e^{-y^2/2}}{\sqrt{2\pi}} dy
+\eeast
+by the strong Markov property. If $y \geq  0$, then
+\be
+\pro\bb{\exists t \in [0,x-1] \text{ s.t. }B_t = y} = \pro\bb{\sup_{0\leq t\leq x-1} B_t \geq y} = \pro\bb{\abs{B_{x-1}} \geq  y} = 2\pro\bb{B_1 \geq \frac y{\sqrt{x-1}}} = 2\bb{1-\Phi\bb{\frac y{\sqrt{x-1}}}}
+\ee
+and, if $y \leq 0$, then
+\be
+\pro\bb{\exists t\in [0,x-1] \text{ s.t. }B_t =y} = \pro\bb{\inf_{0\leq t\leq x-1} B_t \leq y} = \pro\bb{\sup_{0\leq t\leq x-1} B_t \geq -y} =2\bb{
+1-\Phi\bb{\frac {-y}{\sqrt{x-1}}}} 
+\ee
+
+Therefore
+\be
+\pro\bb{D_1 \leq x} = \int_\R 2\bb{1-\Phi\bb{\frac{\abs{y}}{\sqrt{x-1}}}} \cdot \frac{e^{-y^2/2}}{\sqrt{2\pi}} dy = \int_\R \int^\infty_{\frac{\abs{y}}{\sqrt{x-1}}} 2 \cdot \frac{e^{-u^2/2}}{\sqrt{2\pi}} \cdot \frac{e^{-y^2/2}}{\sqrt{2\pi}} dudy
+\ee
+
+We will transform the above integral into polar coordinates. Let $\alpha := \arcsin\bb{\sqrt{\frac{x-1}x}}$. Then
+\be
+\pro\bb{D_1 \leq  x} = \frac 1{\pi} \int^\infty_0 \int^\alpha_{-\alpha} e^{-r^2/2} r dr dq = \frac{2\alpha}{\pi}
+\ee
+
+Now that we have the law of $D_1$ (which is a continuous function of $x$), we will calculate the law of $G_1$ or, equivalently, of $1/D_1$. By our earlier remarks, $\pro\bb{G_1 \leq x} = 0$ if $x \leq 0$ and $\pro\bb{G_1 \leq x} = 1$ if $x \geq 1$, so let $x \in (0,1)$. Then observe that
+\be
+\pro\bb{\frac 1{D_1} \leq  x} = \pro\bb{D_1 \geq \frac 1x} = 1 - \pro\bb{D_1 < \frac 1x}  = 1- \pro\bb{D_1 \leq \frac 1x} = 1- \frac 2{\pi} \arcsin\bb{\sqrt{1-x}}
+\ee
+
+In other words,
+\be
+\sqrt{1-x} = \sin\bb{\frac{\pi}2 - \frac{\pi}2 \cdot \pro\bb{\frac 1{D_1} \leq  x}} = \cos\bb{\frac {\pi}2 \cdot \pro\bb{\frac 1{D_1} \leq  x}} := \cos\beta
+\ee
+
+If we draw a right-angled triangle with sides of length $\sqrt{1-x}$, $\sqrt{x}$ and 1, then $\beta$ is the angle between the sides of lengths $\sqrt{1-x}$ and 1, and so $\sin\beta = \sqrt{x}$. Hence $\beta = \frac {\pi}2 \cdot \pro\bb{1/D_1 \leq x} = \arcsin\bb{\sqrt{x}}$, i.e. $\pro\bb{1/D_1 \leq x} = \frac 2{\pi} \arcsin\bb{\sqrt{x}}$. Compiling these results, we have that
+\be
+\pro\bb{G_1 \leq  x} = \left\{\ba{ll}
+0 & x \leq  0\\
+\frac 2{\pi} \arcsin\bb{\sqrt{x}}\qquad & x \in (0,1)\\
+1 & x \geq  1
+\ea\right.
+\ee
+or, alternatively put, $G_1$ is arcsine distributed.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $(B_t, t \geq  0)$ be a standard Brownian motion in 1 dimension. Define
+\be
+\tau = \inf\bra{t \geq  0 : B_t = \max_{0\leq s\leq 1} B_s}.
+\ee
+
+Is this a stopping time? Hint: First show that $\tau < 1$ a.s.
+
+\scutline
+
+Solution. We will first show that $\tau <1$ a.s.. As $B$ is a.s. continuous on the compact set [0,1], it a.s. attains a maximum on [0,1], so $0 \leq  t \leq 1$ a.s.. It suffices to prove that $\pro\bb{\tau = 1} = 0$. By the definition of $\tau$, $\tau= 1$ iff $B_1 > \sup_{0\leq s<1} B_s$, which holds iff $B_1 -\sup_{0\leq s<1}B_s > 0$, which itself holds iff $\inf_{0\leq s<1}(B_1-B_s) > 0$, which is the case iff $\inf_{0<s\leq 1}(B_1-B_{1-s}) > 0$.
+
+Proposition. The process $X = (X_s)_{0\leq s\leq 1}$ defined by $X_s := B_1 -B_{1-s}$ is a Brownian motion. (Note that-if we really want to-we can extend the time set to $[0,\infty)$ by gluing this process with $(B_s)_{s\geq 1}$ at time 1.)
+
+Proof. The continuity of $X$ is clear and so is the fact that $X_0 = 0$ a.s.. It suffices to verify that $X$ possesses independent increments with the `correct' distribution. Let $0 \leq  t_0 < \dots < t_n \leq 1$. Then $(X_{t_n} -X_{t_{n-1}} , \dots ,X_{t_1} -X_{t_0}) = (B_{1-t_{n-1}} -B_{1-t_n}, \dots ,B_{1-t_0} -B_{1-t_1})$, as $B$ is a Brownian motion, each of these terms is independent and each is distributed as a $\sN (0, t_i-t_{i-1})$ random
+variable.
+
+By the proposition, $\tau = 1$ iff $\inf_{0<s\leq 1} X_s > 0$, and this occurs with probability 0 by Proposition 6.15. We will now use this fact to prove that $\tau$ is not a stopping time, suppose for a contradiction that it is. Then by the strong Markov property, the process $\wt{B} = (\wt{B}_t)_{t\geq 0}$ defined by $\wt{B}_t := B_{t+\tau} -B_\tau$ is a Brownian motion started from 0. By the definition of $\tau$, $\sup_{0<t\leq 1-\tau} \wt{B}_t < 0$. But the interval $(0,1-\tau]$ is a.s. of positive measure, so we have a contradiction to Proposition 6.15. Therefore $\tau$ is not a stopping time.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item \ben
+\item [(i)] Let $(B_t)_{t\geq 0}$ be a Brownian motion in $\R^2$ starting from $(x, y)$. Compute the distribution of $B_T$, where
+\be
+T = \inf\bra{t \geq  0 : B_t \notin H}
+\ee
+and where $H$ is the upper half plane $\bra{(x, y) : y > 0}$.
+
+\item [(ii)] Show that, for any bounded continuous function $u : \ol{H} \to\R$, harmonic in $H$, with $u(x, 0) = f(x)$ for all $x \in\R$, we have
+\be
+u(x, y) = \int_{\R} f(s)\frac 1{\pi} \frac y{(x - s)^2 + y^2} ds.
+\ee
+\een
+
+\scutline
+
+Solution. We'll begin by writing $B_t = (B^{(1)}_t + x, B^{(2)}_t + y)$, where $B^{(1)}$ and $B^{(2)}$ are independent standard Brownian motions in $\R$. If $y \leq 0$ then $B_T = B_0 = (x, y)$, so suppose that $y > 0$. Then $T = \inf\bra{t \geq 0 : B^{(2)}_t = -y}$ a.s. and $B_T = (B^{(1)}_T + x, 0)$ a.s.. By Exercise 2.4.1 of Sheet 3, the cdf of $T$ is 
+\be
+\pro\bb{T \leq t} = \left\{\ba{ll}
+0 & t < 0\\
+2\bb{1 - \Phi\bb{\frac{y}{\sqrt{t}}}}\quad\quad & t \geq 0
+\ea\right.
+\ee
+and hence the pdf is given by
+\be
+f_T(t) = \ind_{\bra{t\geq 0}} \cdot  \frac{d}{dt} \bb{ \int^\infty_{y/\sqrt{t}} \frac 2{\sqrt{2\pi}} e^{-u^2/2} du} = \ind_{\bra{t\geq0} } \cdot \frac y{\sqrt{2\pi t^3}} e^{-y^2/(2t)}
+\ee
+
+We thus have that, where $\alpha \in \R$,
+\beast
+\pro\bb{B^{(1)}_T + x \leq \alpha} & = & \int^\infty_0 \pro\bb{B^{(1)}_t \leq \alpha - x} \cdot \frac y{\sqrt{2\pi t^3}} \cdot e^{-y^2/(2t)} dt \\
+& = & \int^\infty_0 \Phi\bb{\frac{ \alpha-x}{\sqrt{t}}} \cdot \frac y{\sqrt{2\pi t^3}} \cdot e^{-y^2/(2t)} dt = \frac y{2\pi} \int^\infty_0 \int^{(\alpha-x)/\sqrt{t}}_{-\infty} e^{-v^2/2} t^{-3/2} e^{-y^2/(2t)} dv dt
+\eeast
+
+If we make the substitution $\tau = yt^{-1/2}$ then
+\be
+\pro\bb{B^{(1)}_T + x \leq \alpha} = \frac 1{\pi} \int^\infty_0 \int^{(\alpha-x)\tau/y}_{-\infty} e^{-(v^2+\tau^2)/2} dv d\tau
+\ee
+and hence, with a polar substitution, we have that $\pro\bb{B^{(1)}_T + x \leq \alpha} = \frac 12 + \frac 1{\pi}\arctan\bb{\frac{\alpha-x}y}$. This is the cdf of a Cauchy$(y, x)$ random variable evaluated at $\alpha$, where y is the scale parameter and $x$ is the location parameter.
+
+For the second part of the question, first note that by the maximum principle (Theorem 6.32) there is at most one function which is harmonic on a domain  $D$, has prescribed values on $\partial D$, and is continuous on $\ol{D}$. We will show that if $f \in C_b$ then the function $u:\ol{H} \to \R$ defined by $u(x, 0):= f(x)$ for all $x \in \R$ and
+\be
+u(x, y) = \int_\R \frac{f(s)}{\pi} \cdot \frac y{(x - s)^2 + y^2} ds
+\ee
+for all $(x, y) \in H$ is harmonic on $H$ and an element of $C_b(\ol{H̄})$, by the uniqueness we mentioned, this will give the required result.
+
+That $u$ is bounded is easy to see. $|u(x, 0)| = |f(x)| \leq \dabs{f}_\infty$ and, for every $(x, y) \in H$,
+\be
+|u(x, y)| \leq \int_\R \frac{|f(s)|}{\pi} \cdot \frac y{(x - s)^2 + y^2} ds \leq \dabs{f}_\infty \int_\R \frac 1{\pi} \cdot \frac y{(x - s)^2 + y^2} ds = \dabs{f}_\infty
+\ee
+with the last equality coming from the integrand being the pdf of a Cauchy$(y, x)$ random variable. It follows that $\dabs{u}_\infty \leq \dabs{f}_\infty$ and so $u$ is bounded. Suppose that $(x, y) \in H$ and notice that
+\be
+\Delta u(x, y) = \int_\R \frac{f(s)}{\pi} \cdot \Delta\bb{\frac y{(x - s)^2 + y^2}} ds = 0
+\ee
+with the second equality holding because the operand of $\Delta$ is harmonic on $H$, which can be verified by some tedious calculations, so $u$ is harmonic on $H$. 
+
+We are left with showing that $u$ is continuous on $\ol{H}$. By definition, $u|_H$ and $u|_{\partial H}$ are continuous, so it suffices to prove that if $((x_n, y_n))$ is a sequence in $H$ that tends to $(x, 0) \in \partial H$, then $u(x_n, y_n) \to f(x)$. If we bear in mind the pdf of a Cauchy$(y_n, x_n)$ random variable, we see that
+\be
+|u(x_n, y_n) - f(x)| \leq \int_\R \frac{|f(x) - f(s)|}{\pi} \cdot \frac{y_n}{y^2_n + (x_n - s)^2} ds
+\ee
+
+As $f$ is continuous at $x$, for every $\ve > 0$ there is a $\delta > 0$ such that $|f(x) - f(s)| \leq \ve$ whenever $|x - s| \leq \delta$. 
+
+This implies that, if $A_\delta := [x - \delta, x + \delta]$, then
+\beast
+\int_\R \frac{|f(x) - f(s)|}{\pi} \cdot \frac{y_n}{y^2_n + (x_n - s)^2} ds & \leq & \int_{A_\delta} \frac{\ve}{\pi} \cdot \frac{y_n}{y^2_n + (x_n - s)^2} ds + \frac{2\dabs{f}_\infty}{\pi} \int_{A^c_\delta} \frac{y_n}{y^2_n + (x_n - s)^2} ds\\
+& \leq & \ve + \frac{2\dabs{f}_\infty}{\pi} \int_{A^c_\delta} \frac{y_n}{y^2_n  + (x_n - s)^2} ds \qquad (*)
+\eeast
+where we have, again, used the pdf of a Cauchy$(y_n, x_n)$ random variable. Define $f_n(s) := y_n/(y^2_n +(x_n -s)^2)$. Then, on $A^c_\delta$, $\dabs{f_n}\infty \leq y_n/(y^2_n + \delta^2) \to 0$, which implies that $(f_n)$ is a bounded sequence of functions that converges pointwise to the zero function. By the dominated convergence theorem we can make the integral in ($*$) arbitrarily small by taking $n$ to be sufficiently large, we can thus make $|u(x_n, y_n) - f(x)|$ as small as we wish by taking $n$ to be large enough and therefore $u(x_n, y_n) \to f(x)$, as we wanted to show.
+
+Remark. Notice that $u(x, y) = \E_{(x,y)}[f(B_T)]$, that is, we can solve the Dirichlet problem on an unbounded domain with Brownian motion. A more general approach to this type of problem (in the plane) would be to exploit the conformal invariance of Brownian motion and conformally map $H$ onto $B_1(0)$. For more on this topic, see the book of M\"orters \& Peres [MP10, Section 7.2].
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item (Brownian bridge). Let $(B_t, 0 \leq t \leq 1)$ be a standard Brownian motion in 1 dimension. We let ($Z^y_t = yt + (B_t - tB_1)$, $0 \leq t \leq 1$) for any $y \in \R$ and call it the Brownian bridge from 0 to $y$. Let $W^y_0$ be the law of ($Z^y_t , 0 \leq t \leq 1)$ on $\sC([0, 1])$. Show that for any
+non-negative measurable function $F : \sC([0, 1]) \to \R^+$ for $f(y) = W^y_0 (F)$, we have
+\be
+\E[F(B)|B_1] = f(B_1)\text{ a.s.}
+\ee
+
+Hint: Find a simple argument entailing that $B_1$ is independent of process $(B_t -tB_1, 0 \leq t \leq 1)$.
+
+Explain why we can interpret $W^y_0$ as the law of a Brownian motion ``conditioned to hit $y$ at time 1''.
+
+\scutline
+
+Solution. To ease our notation, we will write $C := C([0, 1])$.
+
+Proposition. The random variable $B_1$ is independent of the process $(B_t - tB_1)_{0\leq t\leq 1}$.
+
+Proof. The process $(B_1, B_t - tB_1)_{0\leq t\leq 1}$ is a Gaussian process in $\R^2$ and $\cov(B_1, B_t - tB_1) = \cov(B_1, B_t) - t\cov(B_1, B_1) = t - t = 0$, so the two are independent.
+
+Theorem. Let $F ∶ C \to [0, \infty)$ be measurable. Then
+\be
+\E[F(B)|B_1] = \int_C F dW^{B_1}_0 \text{ a.s.}
+\ee
+
+Proof. By the monotone convergence theorem it is enough to prove the claim when $F$ is measurable, bounded and nonnegative. The proof that the function $\omega \mapsto \int_C F dW^{B_1(\omega)}_0$ is $\sigma(B_1$)-measurable is long and technical and is relegated to an appendix. To see that the function is integrable, note that $\abs{ \int_C F dW^{B_1}_0} \leq \dabs{F}_\infty < \infty$ as $F$ is bounded, and hence $\int_C F dW^{B_1}_0$ is integrable. It suffices to prove that the `defining relation' holds, so let $A' = B^{-1}_1 (A)$ where $A \in \sB(\R)$. We are to show that $\E[F(B)1_{A'}] = \E[(\int_C F dW^{B_1}_0 )1_{A'}]$.
+
+Remark. We will prove our claim in slowly and in detail. The essential (implicit) observation is that, if $X$ and $Y$ are independent random variables, $g :\R^2 \to \R$ is bounded and measurable, and $A$ is a Borel subset of $\R$, then $\E[g(X, Y)1_A(Y)] = \int_A \E[g(X, y)](Y_*\pro)(dy)$. When you are comfortable with what's going on in the below proof, try and prove this general observation in the same way. 
+
+Let $\xi_t := B_t - tB_1$ and write $\xi = (\xi_t)_{0\leq t\leq 1}$. Then $\E[F(B)1_{A'} ] = \E[F((tB_1)_{0\leq t\leq 1} + \xi)1_A(B_1)]$. Define a function
+\be
+g : \R \times C \to \R : (x, f) \mapsto \left\{\ba{ll}
+F(t \mapsto tx + f(t)) \quad\quad & x \in A\\
+0 & x \in A
+\ea\right.
+\ee
+
+From the above, we have that
+\beast
+\E[F(B)1_{A'} ] = \int_\Omega g(B_1, \xi) d\pro & = & \int_{\R\times C} g(x, f) ((B_1, \xi)_*\pro)(dx, df) \\
+& = & \int_{\R\times C} g(x, f)((B_1)_*\pro \otimes \xi_*\pro)(dx, df)\qquad \text{ by independence}\\
+& = & \int_\R\bb{\int_C g(x, f)(\xi_*\pro)(df)}(B_1)_*\pro(dx) \qquad \text{ by Fubini's theorem}\\
+& = & \int_\R\bb{\int_C g(x, \xi) d\pro}(B_1)_*\pro(dx) = \int_A \bb{\int_C F(t \mapsto tx + \xi_t) d\pro}(B_1)_*\pro(dx)\\
+& = & \int_A \bb{\int_C F(Z^x) d\pro}(B_1)_*\pro(dx) = \int_A \bb{\int_C F d((Z^x)_*\pro)}(B_1)_*\pro(dx) \\
+& = & \int_A \bb{\int_C F dW^x_0 }(B_1)_*\pro(dx) = \int_{A'} \bb{\int_C F dW^{B_1}_0} d\pro = \E\bb{\bb{\int_C F dW^{B_1}_0 }\ind_{A'}}
+\eeast
+as required.
+
+We will complete Exercise 2 by proving a measurability result\footnote{The proof that I will present will be long and technical, but I know of no other way of proving the result.}, so suppose that everything is as in Exercise 2. We will use the following (which implies as a corollary that the map $y \mapsto W^y_0$ is continuous in the weak topology) to prove a measurability result.
+
+Proposition. If $F : C \to \R$ is bounded and continuous then the map $y \mapsto \int_C F dW^y_0$ is continuous.
+
+Proof. Fix $y \in \R$. Recall that $W^y_0 = (Z^y_0)_*\pro$ where $Z^y_0 : \Omega \to C$ is the Brownian bridge pinned at $0$ and $y$. It follows that
+\be
+\int_C F dW^y_0 = \int_C F(Z^y) d\pro
+\ee
+and hence
+\be
+\abs{\int_C F dW^y_0 - \int_C F dW^x_0 } \leq \int_C\abs{F(Z^y) - F(Z^x)} d\pro
+\ee
+
+Notice that $\abs{Z^y_t - Z^x_t}  = |ty + B_t - tB_1 - tx - B_t + tB_1| = t|y - x|$, and hence that $\dabs{Z^y - Z^x}_\infty \leq |y - x|$. As $F$ is continuous at $Z^y$, for every $\ve > 0$ there is a $\delta > 0$ such that, if $|y - x| < \delta$, then $|F(Z^y) - F(Z^x)| \leq \ve$. That is, if $|y - x| < \delta$, then
+\be
+\abs{\int_C F dW^y_0 - \int_C F dW^x_0 } \leq \ve
+\ee
+
+As $y$ was arbitrary, the claim follows.
+
+We will also prove an extremely useful technical lemma.
+
+Lemma. Suppose that $(M, d)$ is a metric space and that $B$ is a closed subset of $M$. For every $\ve > 0$ there is a bounded Lipschitz function $f : M \to [0, 1]$, such that $f$ is 1 on $B$ and 0 on $B^c_{\ol{\ve}} := \bra{x \in M : d(x, B) > \ve}$, where $d(x, B) := inf\bra{d(x, y) : y \in B}$.
+
+Proof. Fix $\ve > 0$ and define $g : M \to R : x \mapsto d(x, B)$ and $h_\ve : [0, \infty) \to \R : x \mapsto \ve^{-2}(x - \ve)^2\ind_{[0,\ve]}(x)$. It is
+easily verified that $g$ is a Lipschitz function and that $h_\ve$ is a bounded, continuously differentiable function with a bounded derivative (and hence that $h_\ve$ is a bounded Lipschitz function), it follows that $h_\ve \circ g$ is a bounded Lipschitz function. It is also easy to see that this function has the properties required of $f_\ve$.
+
+Proposition. If $F : C \to [0, \infty)$ is measurable then $\omega \mapsto \int_C F dW^{B_1(\omega)}_0$ is $\sigma(B_1)$-measurable.
+
+Proof. By the monotone convergence theorem it suffices to suppose that $F$ is a simple function, to prove the claim for such an $F$ it is clearly enough to prove the claim when $F = \ind_A$ for some Borel set $A$. As Wiener measure is a probability measure on a Polish metric space (i.e., a complete and separable metric space), we have [Bog07, Theorem 7.1.7] that it is a Radon measure, so
+\be
+\pro(A) = \sup\bra{\pro(K) : K \subset A, K \text{ compact}}
+\ee
+for all Borel sets $A$. As compacta in Hausdorff spaces are closed, we also have that
+\be
+\pro(A) = \sup\bra{\pro(K) : K \subset A, K \text{ closed}}
+\ee
+for all Borel sets $A$. We can thus find a sequence of closed sets, $(A_n)_{n\geq 1}$, such that $A_n \subset A$ and $\pro(A_n) \to \pro(A)$. If we define $B_n := \bigcup^n_{j=1} A_j$, we have an increasing sequence of closed sets, $(B_n)_{n\geq1}$, such that $B_n \subset A$ and $\pro(B_n) \to \pro(A)$. We thus have that $\ind_{B_n} \to \ind_A$ almost surely. the only possible points at which $\ind_{B_n}$ might not tend to $\ind_A$ are contained in $A \bs \bigcup^\infty_{n=1} B_n$, which is a null set.
+
+It is therefore enough, by the monotone convergence theorem, to suppose that $F = \ind_B$ for some closed set, $B$. From the previous lemma, for every $\ve > 0$ there is a bounded Lipschitz function $F_\ve$ such that $F_\ve$ is 1 on $B$, 0 outside of a $\ve$-neighbourhood of $B$, $B_{\ol{\ve}}$, and at most 1 everywhere. In particular, then, $\ind_B \leq F_\ve \leq \ind_{B_{\ol{ve}}} \leq 1$. Next note that as $B$ is closed, $B_{\ol{\ve}} \da B$ as $\ve \da  0$, and that therefore $\ind_{B_{\ol{\ve}}} \da \ind_B$ as $\ve \da  0$. By comparison it follows that $F_\ve \to \ind_B$ as $\ve \to 0$.
+
+We thus have our final reduction. by the dominated convergence theorem, it is enough to prove the claim when $F$ is bounded and continuous. By our earlier proposition, $y \mapsto \int_C F dW^y_0$ is continuous, so the composition $\omega \mapsto B_1(\omega) \mapsto \int_C F dW^{B_1(\omega)}_0$ is thus $\sigma(B_1)$-measurable, as required.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $(B_t)_{t\geq 0}$ be a standard Brownian motion in $\R^3$. Set $R_t = 1/\abs{B_t}$. Show that
+\ben
+\item [(i)] $(R_t, t \geq  1)$ is bounded in $\sL^2$,
+\item [(ii)] $\E[R_t] \to 0$ as $t \to \infty$,
+\item [(iii)] $(R_t)_{t>0}$ is a supermartingale.
+\een
+
+\scutline
+
+Solution. Let $B = (B_t)_{t\geq 0} = (B^{(1)}_t , B^{(2)}_t , B^{(3)}_t )_{t\geq0}$ be a standard Brownian motion in $\R^3$ and define, for all $t \geq 1$, $R_t := 1/|B_t|$.
+
+Proposition (Part 1). The process $(R_t)_{t\geq1}$ is bounded in $\sL^2$.
+
+Proof. For each $t \geq 1$,
+\be
+\E[R^2_t] = \E\bb{\frac 1{|B_t|^2}} = \E\bb{\frac 1{t\abs{B_1}^2}} = \frac{\E[R^2_1}t \leq \E[R^2_1]
+\ee
+and, clearly, $\E[R^2_1] < \infty$, so $(R_t)_{t\geq1}$ is bounded in $\sL^2$. (The quantity $\E[R^2_1]$ can be computed exactly by using spherical coordinates.)
+
+Proposition (Part 2). $\E[R_t] \to 0$ as $t \to \infty$.
+
+Proof. From the explicit calculation above, $\E[R^2_t] = \E[R^2_1]/t \to 0$ as $t \to \infty$, that is, $R_t \to 0$ in $\sL^2$ as $t \to \infty$. As $\sL^2$ convergence implies $\sL^1$ convergence on finite measure spaces the proposition follows.
+
+Proposition (Part 3). The process $(R_t)_{t\geq1}$ is a supermartingale.
+
+Proof. We begin with some definitions. let $h : \R^3 \bs \bra{0} \to \R: x \mapsto |x|^{-1}$, $D_n := B(0, n) \bs \ol{B}(0, 1/n)$ and $T_n := \inf\bra{t \geq 1 :B_t \notin D_n}$. Then $R_t = h(B_t)$ and $D_n$ is a bounded domain that satisfies the Poincar\'e cone condition, so the Dirichlet problem
+\be
+\left\{\ba{ll}
+\Delta u(x) = 0 & x \in  D_n\\
+u(x) = h(x) \quad\quad x \in \partial D_n
+\ea\right.
+\ee
+has a solution given by $u(x) = \E_x[h(B_{T_n})] = \E_x[R_{T_n}]$. But $h$ itself is a solution to the above problem (the `h' being for `harmonic'...) so, as the solution to the problem is unique (which is provable by the maximum principle), we must have that $h(x) = \E_x[R_{T_n} ]$. In particular, then, the Markov property implies that $R_t \ind_{\bra{t<T_n}} = \E_{B_t} [R_{T_n}]\ind_{\bra{t<T_n}} = \E_x[R_{T_n} |\sF_t]\ind_{\bra{t<T_n}}$. We claim that the process $(R^{T_n}_t )_{t\geq1}$ is a martingale. Observe that
+\be
+R_{t\land T_n} = R_t\ind_{\bra{t<T_n}} + R_{T_n} \ind_{\bra{T_n\leq t}} = \E_x[R_{T_n} |\sF_t]\ind_{\bra{t<T_n}} + \E_x[R_{T_n} |\sF_t]\ind_{\bra{T_n\leq t}} = \E_x[R_{T_n} |\sF_t]
+\ee
+where we have used the fact that $R_{T_n} \ind_{\bra{T_n\leq t}}$ is nonnegative and $\sF_t$-measurable. It is immediate from the above representation that $(R^{T_n}_t )_{t\geq1}$ is a martingale. As $\pro\bb{\exists t \geq 1\text{ s.t. }B_t = 0} = 0$, it follows that $T_n \ua \infty$ a.s., so in particular by Fatou's lemma (which applies as $R \geq 0$) we have that
+\be
+\E[R_t|\sF_s] = \E[\liminf_{n\to\infty} R_{t\land T_n} |\sF_s] \leq \liminf_{n\to\infty} \E[R_{t\land T_n} |\sF_s] = \liminf_{n\to\infty} R_{s\land T_n} = R_s
+\ee
+That is, $R$ is a supermartingale.
+
+Remark. The above demonstrates that the above process, which is sometimes referred to as an inverse Bessel process, is an $\sL^2$-bounded local martingale which is not itself a martingale. In other words, strict local martingales exist. To see that $(R_t)_{t\geq1}$ is not a martingale, suppose for a contradiction that it is. Then as this process is bounded in $\sL^2$ and tends to 0 in $\sL^2$, by the $\sL^p$ martingale convergence theorem it follows
+that for all $t \geq 1$, $R_t = \E[0|\sF_t] = 0$ a.s., which is absurd.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Fix $t \geq 0$. Show that, almost surely, Brownian motion in one dimension is not differentiable at $t$.
+
+\scutline
+
+Solution. Theorem. Let $t \geq 0$ and $B$ be a Brownian motion in $\R$. Then $B$ is almost surely not differentiable at $t$.
+
+Proof. By the Markov property, $(B_{t+h} -B_t)_{h\geq0}$ is a standard Brownianmotion. Hence, if $(\wt{B}_h)_{h\geq0}$ is a second Brownian motion,
+\be
+\limsup_{h\da 0} \frac{B_{t+h} - B_t}h = \limsup_{h\da 0} \frac{\wt{B}_h}h \geq \limsup_{h\da 0} \frac{\wt{B}_h}{\sqrt{h}} = \infty \text { a.s.}
+\ee
+by Exercise 2.2 of Sheet 2, so $B$ cannot be differentiable at $t$.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $(\xi(s))_{s\leq t}$ be a standard Brownian motion in $d \geq 1$ dimensions. Set $W(t) = \bigcup_{s\leq t}\sB(\xi(s), r)$, where $\sB(x, r)$ stands for a ball centred at $x$ of radius $r$, for $r > 0$. 
+
+Show that if $d = 1$, then for all $t$
+\be
+\E[vol(W(t)] = 2r + \sqrt{\frac{8t}{\pi}}.
+\ee
+
+\scutline
+
+Solution. In the following, let $(\xi_s)_{s\geq0}$ denote a standard Brownian motion and let $W_t := \bigcup^t_{s=0} B(\xi_s, r)$ be the Wiener sausage of radius $r$.
+
+Proposition. $\E[vol(W_t)] = 2r + \sqrt{8t/\pi}$ for all $t \geq 0$.
+
+Proof. Fix $t \geq 0$. Then, as $\xi$ is almost surely continuous, $vol(W_t) = S_t - I_t + 2r$ with probability 1, where $S_t := \sup_{0\leq s\leq t} \xi_s$ and $I_t := \inf_{0\leq s\leq t} \xi_s$. Therefore
+\be
+\E[vol(W_t)] = 2r + \E[S_t] - \E[I_t] = 2r + 2\E[S_t] = 2r + 2\E[|B_t|]
+\ee
+by the reflection principle, and hence
+\be
+\E[|B_t|] = \frac 1{\sqrt{2\pi t}} \int_\R |x| e^{-x^2/(2t)} dx = \sqrt{\frac 2{\pi t}} \int^\infty_0 x e^{-x^2/(2t)} dx = \sqrt{\frac{ 2t}{\pi}}
+\ee
+which implies that $\E[vol(W_t)] = 2r + \sqrt{8t/\pi}$, as required.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $N, Y_n, n \in\N$, be independent random variables, with $N \sim P(\lm), \lm  < \infty$ and $\pro(Y_n = j) = p_j$, for $j = 1, \dots, k$ and all $n$. Set
+\be
+N_j = \sum^N_{n=1} \ind(Y_n = j).
+\ee
+
+Show that $N_1, \dots,N_k$ are independent random variables with $N_j \sim P(\lm p_j)$ for all $j$.
+
+\scutline
+
+Solution. Proposition. If $N, Y1, Y2, \dots$ are independent random variables with $N \sim \pd(\lm )$ for some $\lm  < \infty$ and $\pro{Y_n = j} = p_j$ for every $n \geq 1$ and $1 \leq j \leq k$, then the random variables
+\be
+N_j := \sum^N_{n=1} \ind_{\bra{Y_n=j}}
+\ee
+(where $1 \leq j \leq k$) are independent, with $N_j \sim \pd(\lm p_j)$.
+
+Proof. In the following, $j$ will implicitly lie between 1 and $k$. If $a_j < 0$ for any $j$, then $\pro\bb{\forall j, N_j = a_j} = 0$, so in the following let $a_j \geq 0$ for all $j$. By conditioning on $N$, we see that
+\be
+\pro\bb{\forall j, N_j = a_j} = \E[\pro\bb{\forall j, N_j = a_j|N}] = \sum^\infty_{n=0} \frac{e^{-\lm } \lm^n}{n!} \pro\bb{\forall j, N_j = a_j|N = n}
+\ee
+
+Define $\alpha := \sum^n_{j=1} a_j$. If $n < \alpha$, $\pro\bb{\forall j, N_j = a_j|N = n} = 0$, if $n \geq \alpha$, we have that
+\be
+\pro\bb{\forall j, N_j = a_j|N = n} = \binom{ n}{a_1, \dots , a_k, n - \alpha} p^{a_1}_1 \dots p^{a_k}_k \bb{1 - \sum^k_{j=1} p_j}^{n-\alpha}
+\ee
+
+By compiling the above, we see that
+\beast
+\pro\bb{\forall j, N_j = a_j} & = & \sum^\infty_{n=\alpha} \frac{e^{-\lm}  \lm^n}{n!} \cdot \frac{ n!}{a_1! \dots a_k! (n - \alpha)!} \cdot p^{a_1}_1 \dots p^{a_k}_k \cdot \bb{1 - \sum^k_{j=1} p_j}^{n-\alpha} \\
+& = & \sum^\infty_{n=\alpha} \bb{\prod^k_{j=1} \frac{e^{-\lm p_j} (\lm p_j)^{a_j}}{a_j!}} \cdot \frac{e^{-\lm \bb{1-\sum^k_{j=1} p_j} \lm^{n-\alpha}}}{(n - \alpha)!} \cdot \bb{1 - \sum^k_{j=1} p_j}^{n-\alpha}\\
+& = & \prod^k_{j=1} \frac{e^{-\lm p_j} (\lm p_j)^{a_j}}{a_j!}
+\eeast
+It follows that $N_1, \dots , N_k$ are independent random variables with $N_j \sim \pd(\lm p_j)$.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Let $E = \R^+$ and $\mu = \theta\ind(t \geq  0) dt$. Let $M$ be a Poisson random measure on $\R^+$ with intensity measure $\mu$ and let $(T_n)_{n\geq 1}$ and $T_0 = 0$ be a sequence of random variables such that $(T_n - T_{n-1}, n \geq 1)$ are independent exponential random variables with parameter $\theta > 0$. Show that
+\be
+\bb{N_t = \sum_{n\geq 1} \ind(T_n \leq t), t \geq  0},\qquad (N'_t = M([0, t]), t \geq  0)
+\ee
+have the same distribution.
+
+\scutline
+
+Solution. Our proof relies on the properties of Poisson processes.
+
+Theorem. Suppose that $E = [0, \infty)$ is equipped with its Borel $\sigma$-algebra, let $\mu  = \theta  dt$ (for $\theta  > 0$) be a measure on this space, and let $M$ be a Poisson random measure with intensity $\mu$. If $N'_t := M([0, t])$ then $(N'_t)_{t\geq0}$ is equal in law to a Poisson process with rate $\theta$.
+
+Proof. Let $(N_t)_{t\geq0}$ be a Poisson process with rate $\theta$. It suffices to prove that the two processes have the same fdds, moreover, it is enough to show that if $0 \leq t_0 < \dots < t_n < \infty$ and $0 \leq \eta_0 \leq \dots \leq \eta_n$, then
+\be
+\pro\bb{\forall i \leq n, N'_{t_i} = \eta_i} = \pro\bb{\forall i \leq n, N_{t_i} = \eta_i}
+\ee
+
+Notice that
+\be
+\pro\bb{\forall i \leq n, N'_{t_i} = \eta_i} = \pro\bb{N'_{t_n} = \eta_n|\forall i \leq n - 1, N'_{t_i} = \eta_i} \dots \pro\bb{N'_{t_0} = \eta_0}
+\ee
+and further that, if $1 \leq j \leq n$,
+\beast
+\pro\bb{N'_{t_j} = \eta_j|\forall i \leq j - 1, N'_{t_i} = \eta_i} & = & \pro\bb{N'_{t_{j-1}} + M((t_{j-1}, t_j]) = \eta_j|\forall i \leq j - 1, N'_{t_i} = \eta_i}\\
+& = & \pro\bb{M((t_{j-1}, t_j]) = \eta_j - \eta_{j-1}} = \frac{e^{-(t_j-t_{j-1})\theta} (\theta (t_j - t_{j-1}))^{\eta_j-\eta_{j-1}}} {(\eta_j - \eta_{j-1})!}
+\eeast
+where we have used the properties of a Poisson random measure. Therefore
+\be
+\pro\bb{\forall i \leq n, N'_{t_i} = \eta_i} = \frac{e^{-t_0\theta} (\theta t_0)^{\eta_0}}{\eta_0!} \prod^n_{j=1} \frac{e^{-(t_j-t_{j-1})\theta} (\theta (t_j - t_{j-1}))^{\eta_j-\eta_{j-1}}}{(\eta_j - \eta_{j-1})!} = e^{-t_n\theta} \theta^{\eta_n} \frac{t^{\eta_0}_0}{\eta_0!} \prod^n_{j=1} \frac{(t_j - t_{j-1})^{\eta_j-\eta_{j-1}}}{(\eta_j - \eta_{j-1})!} \qquad(\dag)
+\ee
+
+We will next show the same result for the Poisson process $N$, the proof is very similar. We have that
+\be
+\pro\bb{\forall i \leq n, N_{t_i} = \eta_i} = \pro\bb{N_{t_n} = \eta_n|\forall i \leq n - 1, N_{t_i} = \eta_i} \dots \pro\bb{N_{t_0} = \eta_0} = \pro{N_{t_n} = \eta_n|N_{t_{n-1}} = \eta_{n-1}} \dots \pro\bb{N_{t_0} = \eta_0}
+\ee
+as $N$ is a Markov process. As earlier, we also have that
+\beast
+\pro\bb{N_{t_j} = \eta_j|N_{t_{j-1}} = \eta_{j-1}} & = & \pro\bb{N_{t_j} - N_{t_{j-1}} + N_{t_{j-1}} = \eta_j|N_{t_{j-1}} = \eta_{j-1}}\\
+& = & \pro\bb{N_{t_j} - N_{t_{j-1}} = \eta_j - \eta_{j-1}|N_{t_{j-1}} = \eta_{j-1}} \\
+& = & \pro\bb{N_{t_j} - N_{t_{j-1}} = \eta_j - \eta_{j-1}} \pro\bb{N_{t_j-t_{j-1}} = \eta_j - \eta_{j-1}}\\
+& = & \frac{e^{-\theta (t_j-t_{j-1})}(\theta (t_j - t_{j-1}))^{\eta_j-\eta_{j-1}}}{(\eta_j - \eta_{j-1})!}
+\eeast
+where we have repeatedly used the fact that $N$ is a \levy process. We thus have the same result as in ($\dag$). 
+
+Remark. In other words, Poisson random measures generalise Poisson processes.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item Prove that the Poisson law with parameter $\lm  > 0$ is the weak limit of the Binomial law with parameters $(n, \lm/n)$ as $n \to \infty$.
+
+\scutline
+
+Solution. Proposition. If $X_n \sim  Bin(n, \lm /n)$ and $X \sim \pd(\lm )$ then $X_n \to X$ in distribution.
+
+Proof. If we can show that $\pro\bb{X_n = k} \to \pro\bb{X = k}$ for every $k \in \Z_{\geq0}$ then, if $F_{X_n}$ and $F_X$ are the cdfs of $X_n$ and $X$ respectively, we would have that $F_{X_n} (x) \to F_X(x)$ for every $x \in \R$, it would follow that $X_n \to X$ in distribution. Fix $k \in \Z_{\geq0}$. If $n > k$, we have that
+\be
+\pro\bb{X_n = k} = \frac{n!}{k! (n - k)!} \cdot \bb{\frac{\lm }n}^k\bb{1 - \frac {\lm }n}^{n-k} = \frac{1 \cdot (1 - 1/n) \dots (1 - (k - 1)/n)}{(1 - \lm /n)^k} \cdot \frac{\lm^k}{ k!} \cdot (1 - \lm /n)^n \to \frac {\lm^k e^{-\lm }}{k!} = \pro\bb{X = k}
+\ee
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\item (The bus paradox). Why do we always feel we are waiting a very long time before buses arrive? This exercise gives an indication of why... well, if buses arrive according to a Poisson process.
+
+\ben
+\item [(i)] Suppose buses are circulating in a city day and night since ever, the counterpart being that drivers do not offciate with a timetable. Rather, the times of arrival of buses at a given bus-stop are the atoms of a Poisson measure on $\R$ with intensity $\theta dt$, where $dt$ is Lebesgue measure on $\R$. A customer arrives at a fixed time $t$ at the bus-stop. Let $S, T$ be the two consecutive atoms of the Poisson measure satisfying $S < t < T$. Show that the average time $\E[T -S]$ that elapses between the arrivals of the last bus before time $t$ and the first bus after time $t$ is $2/\theta$. Explain why this is twice the average time between consecutive buses. Can you see why this is so?
+
+\item [(ii)] Suppose that buses start circulating at time 0, so that arrivals of buses at the station are now the jump times of a Poisson process with intensity $\theta$ on $\R^+$. If the customer arrives at time $t$, show that the average elapsed time between the bus before (time $S$) and after his
+arrival (time $T$) is $\theta^{-1}(2 - e^{-\theta t})$ (with the convention $S = 0$ if no atom has fallen in $[0, t]$).
+\een
+
+\scutline
+
+Solution. For the first part, consider the process
+\be
+\Gamma (s) := \left\{\ba{ll}
+-M(t + s, t] \quad\quad & s < 0\\
+0 & s = 0\\
+M(t, t + s] & s > 0
+\ea\right.
+\ee
+
+This is, contrary to its rather obscure-looking definition, a natural process to consider. it is a process that jumps in units of 1 at the atoms of $M$, with everything shifted so that $\Gamma(0) = 0$ and, morally, $t = 0$. We have that $T = \inf\bra{s \in \R : \Gamma(s) = 1}$ and $S = \inf\bra{s \in \R : \Gamma(s) = 0}$. Our first goal is to compute $\E[T - S]$.
+
+Note that if $s \leq 0$, then $\pro\bb{T \leq s} = 0$ and that if $s > 0$, then 
+\be
+\pro\bb{T \leq s} = \pro\bb{\Gamma(s) \geq 1} = 1 - \pro\bb{\Gamma(s) = 0} = 1 - \pro\bb{M(t, t + s] = 0} = 1 - e^{-\theta s},
+\ee
+in other words $T \sim \sE(\theta )$ and hence $\E[T] = 1/\theta$. Next note that if $s \geq 0$, then $\pro\bb{S \leq s} = 1$ and that if $s < 0$, then 
+\be
+\pro\bb{S \leq s} = \pro\bb{\Gamma(s) = 0} = \pro\bb{-M(t + s, t] = 0} = e^{\theta s}.
+\ee
+
+The pdf of $S$ is given by $f_S(s) = \theta  e^{\theta s} \ind_{(-\infty,0)}(s)$ and hence $\E[S] = -1/\theta$. Therefore $\E[T - S] = 2/\theta$. To calculate the typical interarrival distribution, notice that $\Gamma|_{[0,\infty)}$ is a Poisson process of rate $\theta$ and hence if $T_n = \inf\bra{s \geq 0 :\Gamma(s) = n}$, then $T_{n+1}-T_n \sim \sE(\theta )$ if $n \geq 1$, which implies that $\E[T_{n+1}-T_n] = 1/\theta$. As Poisson point processes are homogeneous, the distribution between any two consecutive atoms of $M$ is an $\sE(\theta)$ random variable.
+
+The intuitive explanation of the paradox is that, as the time $t$ is `unrelated' to the Poisson point process, it is more likely to fall into a `large' interval between atoms than a `small' interval.
+
+For the final part, let $(N_s)_{s\geq0}$ be a Poisson process of rate $\theta$, fix $t \geq 0$ and define $T' := \inf\bra{s \geq t : N_s > N_t}$ and $S' := \inf\bra{s \geq 0:N_s = N_t}$. Our goal is to compute $\E[T' - S']$. If $s \leq t$, then $\pro\bb{T' \leq t} = 0$ and if $s > t$, then
+\be
+\pro\bb{T \leq s} = \pro\bb{N_s > N_t} = \pro\bb{N_{s-t} > 0} = 1 - e^{-\theta (s-t)}.
+\ee
+
+That is, the cdf of $T'$ is given by $F_{T'} (s) = \ind_{(t,\infty)}(s)(1 - e^{-\theta (s-t)})$, and so the pdf is given by $f_{T'} (s) = \ind_{(t,\infty)}(s)\theta  e^{-\theta (s-t)}$. Therefore
+\be
+\E[T'] = \int^\infty_t s\theta  e^{-\theta (s-t)} ds = \frac 1{\theta } + t
+\ee
+
+Next, observe that $\E[S'] = \E[S'\ind_{\bra{N_t>0}}]$, define $S'' := S'\ind_{\bra{N_t>0}}$. If $s \leq 0$, then $\pro{S'' \leq s} = 0$, if $s \geq t$,
+then $\pro{S'' \leq s} = 1$, and if $0 < s < t$, then
+\beast
+\pro\bb{S'' \leq s} & = & \sum^\infty_{m=1} \pro\bb{S'\ind_{\bra{N_t>0}}, N_t = m} = \sum^\infty_{m=1} \pro\bb{S' \leq s, N_t = m} = \sum^\infty_{m=1} \pro\bb{N_s = m, N_t = m}\\
+& = & \sum^\infty_{m=1} \pro\bb{N_t = m|N_s = m}\pro\bb{N_s = m} = \sum^\infty_{m=1} \pro\bb{N_{t-s} = 0} \frac{e^{-\theta s}(\theta s)^m}{m!} \text{ as $N$ is a \levy process}\\
+& = & e^{-\theta t} \sum^\infty_{m=1} \frac{(\theta s)^m}{m!} = e^{-\theta t}(e^{\theta s} -1)
+\eeast
+
+The cdf of $S''$ is thus given by $F_{S''}(s) = \ind_{(0,t)}(s) e^{-\theta t}(e^{\theta s} -1) + \ind_{[t,\infty)}(s)$, and hence the pdf is given by
+$f_{S''} (s) = \ind_{(0,t)}(s)\theta  e^{-\theta (t-s)}$. Therefore
+\be
+\E[S'] = \E[S''] = \int^t_0 s\theta  e^{-\theta (t-s)} ds = t - \frac 1{\theta } + \frac{e^{-\theta t}}{\theta }
+\ee
+and therefore $\E[T' - S'] = (2 - e^{-\theta t})/\theta$, as given in the question.
+
+\vspace{2mm}
+
+\qcutline
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\een

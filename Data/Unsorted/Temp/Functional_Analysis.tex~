@@ -1,0 +1,2158 @@
+\chapter{Functional Analysis}
+
+\section{Some notes on prerequisites} Many years ago
+it was more or less clear what could and what could
+not be assumed in an introductory functional analysis
+course. Since then, however, many of the concepts
+have drifted into courses at lower levels. 
+
+I shall therefore assume that you know what is a normed space,
+and what is a
+a linear map and that you can do the following exercise.
+\begin{exercise} Let $(X,\|\ \|_{X})$ and $(Y,\|\ \|_{Y})$
+be normed spaces.
+
+(i) If $T:X\rightarrow Y$ is linear, then $T$ is continuous
+if and only if there exists a constant $K$ such that
+\[\|Tx\|_{Y}\leq K\|x\|_{X}\]
+for all $x\in X$.
+
+(ii) If $T:X\rightarrow Y$ is linear and $x_{0}\in X$,
+then $T$ is continuous at $x_{0}$
+if and only if there exists a constant $K$ such that
+\[\|Tx\|_{Y}\leq K\|x\|_{X}\]
+for all $x\in X$. 
+
+(iii) If we write ${\mathcal L}(X,Y)$ for the space of continuous
+linear maps from $X$ to $Y$ and write
+\[\|T\|=\sup\{\|Tx\|_{Y}\,:\, \|x\|_{X}=1,\ x\in X\}\]
+then $({\mathcal L}(X,Y),\|\ \|)$  is a normed space.
+\end{exercise}
+
+I also assume familiarity with the concept of a metric
+space and a complete metric space. You should be able
+to do at least parts~(i) and~(ii) of the following exercise
+(part~(iii) is a little harder).
+\begin{exercise}  Let $(X,\|\ \|_{X})$ and $(Y,\|\ \|_{Y})$
+be normed spaces.
+
+(i) If $(Y,\|\ \|_{Y})$ is complete then 
+$({\mathcal L}(X,Y),\|\ \|)$ is.
+
+(ii) Consider the set $s$ of sequences $x=(x_{1},x_{2},\dots)$
+in which only finitely many of the $x_{j}$ are non-zero.
+Explain briefly how $s$ may be considered as a vector space.
+If we write
+\[\|x\|=\sup_{j}|x_{j}|\]
+show that $(s,\|\ \|)$ is a normed vector space which
+is not complete.
+
+(iii) If $(X,\|\ \|_{X})$ is complete does it follow that 
+$({\mathcal L}(X,Y),\|\ \|)$ is? Give a proof or a counter-example.
+\end{exercise}
+
+The reader will notice that I have not distinguished
+between vector spaces over ${\mathbb R}$ and those over ${\mathbb C}$.
+I shall try to make the distinction when it matters but,
+if the two cases are treated in the same way, I shall
+often proceed as above.
+
+Although I shall stick with metric spaces as much
+as possible, there will be points where we shall need
+the notions of a topological space, a compact
+topological space and a Hausdorff topological space.
+I would be happy, if requested, to give a supplementary
+lecture introducing these notions. (Even where I use them,
+no great depth of understanding is required.)
+
+I shall also use, without proof, the famous
+Stone-Weierstrass theorem.
+\begin{theorem} (A) Let $X$ be a compact space and
+$C(X)$ the space of real valued continuous functions
+on $X$. Suppose $A$ is a subalgebra of $C(X)$ (that is a
+subspace which is algebraically closed under multiplication)
+and
+
+(i) $1\in A$, 
+
+(ii) Given any two distinct points $x$ and $y$
+in $X$ there is an $f\in A$ with $f(x)\neq f(y)$.
+
+Then $A$ is uniformly dense in $C(X)$.
+
+(B) Let $X$ be a compact space and
+$C(X)$ the space of complex valued continuous functions
+on $X$. Suppose $A$ is a subalgebra of $C(X)$
+and
+
+(i) $1\in A$, 
+
+(ii) Given any two distinct points $x$ and $y$
+in $X$ there is an $f\in A$ with $f(x)\neq f(y)$.
+
+(iii) If $f\in A$ then $f^{*}\in A$.
+
+Then $A$ is uniformly dense in $C(X)$.
+\end{theorem}
+
+The proof will not be examinable, but if you have not
+met it, you may wish to request a supplementary lecture
+on the topic.
+
+Functional analysis goes hand in hand with measure theory.
+Towards the end of the course I will need to refer
+Borel measures on the line. However, I will not
+use any theorems from measure theory proper
+and I will make my treatment independent of previous knowledge.
+Elsewhere I may make a few remarks involving measure
+theory. These are for interest only and will not be 
+examinable\footnote{In this course, as in other Part~III
+courses you should assume that everything in the
+lectures and nothing outside them is examinable
+unless you are explicitly told to the contrary. If you
+are in any doubt, ask the lecturer.}. I intend the course
+to be fully accessible without measure theory.
+\section{Baire category} If $(X,d)$ is a metric space
+we say that a set $E$ in $X$ has dense 
+complement\footnote{If the lecturer uses the words
+`nowhere dense' correct him for using an old fashioned
+and confusing terminology} if,
+given $x\in E$ and $\delta>0$, we can find a $y\notin E$
+such that $d(x,y)<\delta$.
+\begin{exercise} Consider the space $M_{n}$ of $n\times n$
+complex matrices with an appropriate norm. Show that
+the set of matrices which do not have $n$ distinct
+eigenvalues is a closed set with dense complement.
+\end{exercise}
+
+\begin{theorem}[Baire's theorem]
+If $(X,d)$ is a complete metric
+space and $E_{1}$, $E_{2}$, \dots are
+closed sets with dense complement
+then $X\neq \bigcup_{j=1}^{\infty}E_{j}$.
+\end{theorem}
+\begin{exercise} (If you are happy with general topology.)
+Show that a result along the same lines holds true
+for compact Hausdorff spaces.
+\end{exercise}
+We call the countable union of closed
+sets with dense complement
+a set of first category. The following observations
+are trivial but useful.
+\begin{lemma} (i) The countable union of first
+category sets is itself of first category.
+
+(ii) If $(X,d)$ is a complete metric
+space, then Baire's theorem asserts that $X$
+is not of first category.
+\end{lemma}
+\begin{exercise}
+If $(X,d)$ is a complete metric space
+and $X$ is countable show that there
+is an $x\in X$ and a $\delta>0$ such that
+the ball $B(x,\delta)$ with centre $x$ and
+radius $\delta$ consists of one point.
+\end{exercise}
+
+The following exercise is a standard application of
+Baire's theorem.
+\begin{exercise} Consider the space $C([0,1])$
+of continuous functions under the uniform norm
+$\|\ \|$. Let
+\begin{align*}
+E_{m}=\{f\in C([0,1])\,:&\, \text{there exists an $x\in [0,1]$
+with}\\
+&\text{$|f(x+h)-f(x)|\leq m|h|$ for all $x+h\in[0,1]$}\}.
+\end{align*}
+
+(i) Show that $E_{m}$ is closed in $(C([0,1],\|\ \|_{\infty})$.
+
+(ii) If $f\in C([0,1])$ and $\epsilon>0$ explain why we can
+find an infinitely differentiable function $g$ such that
+$\|f-g\|_{\infty}<\epsilon/2$. By considering the function $h$
+given by
+\[h(x)=g(x)+\tfrac{\epsilon}{2}\sin Nx\]
+with $N$ large show that $E_{m}$ has dense complement.
+
+(iii) Using Baire's theorem show that there exist continuous
+nowhere differentiable functions.
+\end{exercise}
+\begin{exercise} (This is quite long and not very
+central.)
+
+(i) Consider the space ${\mathcal F}$ of non-empty
+closed sets in $[0,1]$. Show that if we write
+\[d_{0}(x,E)=\inf_{e\in E}|x-e|\]
+when $x\in[0,1]$ and $E\in{\mathcal F}$
+and write
+\[d(E,F)=\sup_{f\in F}d_{0}(f,E)+\sup_{e\in E}d_{0}(e,F)\]
+then $d$ is a metric on ${\mathcal F}$.
+
+(ii) Suppose $E_{n}$ is a Cauchy sequence in 
+$({\mathcal F},d)$. By considering
+\[E=\{x\,:\,\text{there exist $e_{n}\in E_{n}$ such that
+$e_{n}\rightarrow x$}\},\]
+or otherwise, show that $E_{n}$ converges.
+Thus $({\mathcal F},d)$ is complete.
+
+(iii) Show that the set
+\[\mathcal{A}_{n}=\{E\in{\mathcal F}\,:\,\text{there exists
+an $x\in E$ with $(x-1/n,x+1/n)\cap E=\{x\}$}\}\]
+is closed with dense complement in $({\mathcal F},d)$.
+Deduce that the set of elements of ${\mathcal F}$ with
+isolated points is of first category. (A set $E$ has
+an isolated point $e$ if we can find a $\delta>0$
+such that $(e-\delta,e+\delta)\cap E=\{e\}$.)
+
+(iv) Let $I=[r/n,(r+1)/n]$ with $0\leq r\leq n-1$ and
+$r$ and $n$ integers. Show that the set
+\[\mathcal{B}_{r,n}=
+\{E\in{\mathcal F}\,:\,E\supseteq I\}\]
+is closed with dense complement in $({\mathcal F},d)$.
+Deduce that the set of elements of ${\mathcal F}$
+containing an open interval is of first category.
+
+(v) Deduce the existence of non-empty closed sets
+which have no isolated points and contain no intervals.
+\end{exercise} 
+\section{Non-existence of functions of several variables}
+This course is very much a penny plain rather than tuppence
+coloured\footnote{And thus suitable for those
+`who want from books plain cooking made still
+plainer by plain cooks'.}. One exception is the
+theorem proved in this section.
+\begin{theorem}\label{Hilbert; Theorem} Let $\lambda$ be irrational
+We can find increasing continuous functions
+$\phi_{j}:[0,1]\rightarrow{\mathbb R}$ $[1\leq j\leq 5]$
+with the following property. Given any continuous
+function
+$f:[0,1]^{2}\rightarrow{\mathbb R}$ we can find a
+function $g:{\mathbb R}\rightarrow{\mathbb R}$ such that
+\[f(x,y)=\sum_{j=1}^{5}g(\phi_{j}(x)+\lambda\phi_{j}(y)).\]
+\end{theorem}
+The main point of Theorem~\ref{Hilbert; Theorem}
+may be expressed as follows.
+\begin{theorem}\label{Gilbert; Theorem}
+Any continuous function of two variables
+can be written in terms of 
+continuous functions of one variable
+and addition.
+\end{theorem}
+That is, there are no true functions of two variables!
+(We shall explain why this statement is slightly
+less shocking than it seems at the end of this section.)
+
+For the moment we merely observe that the result is due
+in successively more exact forms to Kolmogorov, Arnol'd
+and a succession of mathematicians ending with Kahane 
+whose proof we use here. It is, of course, much easier to
+prove a specific result like Theorem~\ref{Hilbert; Theorem}
+than one like Theorem~\ref{Gilbert; Theorem}.
+
+Our first step is to observe that Theorem~\ref{Hilbert; Theorem}
+follows from the apparently simpler result that follows.
+\begin{lemma}\label{Hilbert A; Lemma} Let $\lambda$ be irrational.
+We can find increasing continuous functions
+$\phi_{j}:[0,1]\rightarrow{\mathbb R}$ $[1\leq j\leq 5]$
+with the following property. Given any continuous
+function
+$F:[0,1]^{2}\rightarrow{\mathbb R}$ we can find a
+function $G:{\mathbb R}\rightarrow{\mathbb R}$ such that
+$\|G\|_{\infty}\leq\|F\|_{\infty}$ and 
+\[\sup_{(x,y)\in[0,1]^{2}}
+\left|F(x,y)-\sum_{j=1}^{5}G(\phi_{j}(x)+\lambda\phi_{j}(y))
+\right|\leq \frac{999}{1000}\|F\|_{\infty}.\]
+\end{lemma}
+
+Next we make the following observation.
+\begin{lemma}\label{Hilbert B; Lemma} We can find
+a sequence of functions $f_{n}:[0,1]^{2}\rightarrow{\mathbb R}$
+which are uniformly dense in $C([0,1])^{2}$.
+\end{lemma}
+This enables us to obtain Lemma~\ref{Hilbert A; Lemma}
+from a much more specific result.
+\begin{lemma}\label{Hilbert C; Lemma} Let $\lambda$ be irrational
+and let the $f_{n}$ be as in Lemma~\ref{Hilbert B; Lemma}.
+We can find increasing continuous functions
+$\phi_{j}:[0,1]\rightarrow{\mathbb R}$ $[1\leq j\leq 5]$
+with the following property. We can find 
+functions $g_{n}:{\mathbb R}\rightarrow{\mathbb R}$ such that
+$\|g_{n}\|_{\infty}\leq\|f_{n}\|_{\infty}$ and 
+\[\sup_{(x,y)\in[0,1]^{2}}
+\left|f_{n}(x,y)-\sum_{j=1}^{5}g_{n}(\phi_{j}(x)+\lambda\phi_{j}(y))
+\right|\leq \frac{998}{1000}\|f_{n}\|_{\infty}.\]
+\end{lemma}
+
+Now that we have reduced the matter to 
+satisfying a countable set of conditions,
+we can use a Baire category argument.
+We need to use the correct metric space.
+\begin{lemma}\label{Lemma Kahane space}
+The space $Y$ of continuous functions
+${\boldsymbol \phi}:[0,1]\rightarrow{\mathbb R}^{5}$
+with norm
+\[\|{\boldsymbol \phi}\|_{\infty}=
+\sup_{t\in[0,1]}\|{\boldsymbol \phi}(t)\|\]
+is complete. The subset $X$ of $Y$ consisting of
+those ${\boldsymbol \phi}$ such that each $\phi_{j}$
+is increasing is a closed
+subset of $Y$. Thus if $d$ is the metric on $X$
+obtained by restricting the metric on $Y$ derived from
+$\|\ \|_{\infty}$  we have $(X,d)$ complete.
+\end{lemma}
+\begin{exercise} Prove Lemma~\ref{Lemma Kahane space}
+\end{exercise}
+
+\begin{lemma}\label{Hilbert D; Lemma}  Let
+$f:[0,1]^{2}\rightarrow{\mathbb R}$ be continuous
+and let $\lambda$ be irrational. Consider the
+set $E$ of ${\boldsymbol \phi}\in X$ such that
+there exists a 
+$g:{\mathbb R}\rightarrow{\mathbb R}$ such that
+$\|g\|_{\infty}\leq\|f\|_{\infty}$
+\[\sup_{(x,y)\in[0,1]^{2}}
+\left|f(x,y)-\sum_{j=1}^{5}g(\phi_{j}(x)+\lambda\phi_{j}(y))
+\right|<\frac{998}{1000}\|f\|_{\infty}.\]
+Then $X\setminus E$ is a closed set with dense complement
+in $(X,d)$.
+\end{lemma}
+(Notice that it is important to take `$<$' rather than
+`$\leq$' in the displayed formula of Lemma~\ref{Hilbert D; Lemma}.)
+Lemma~\ref{Hilbert D; Lemma} is the heart of the proof
+and once it is proved we can easily retrace our steps
+and obtain Theorem~\ref{Hilbert; Theorem}.
+
+By using appropriate notions of information
+Vitushkin was able to show that we can not replace
+continuous by continuously differentiable
+in Theorem~\ref{Gilbert; Theorem}. Thus
+Theorem~\ref{Hilbert; Theorem} is an `exotic'
+rather than a `central' result.
+\section{The principle of uniform boundedness}
+We start with a result which is sometimes useful
+by itself but which, for us, is merely a stepping 
+stone to Theorem~\ref{Theorem, Banach Steinhaus}.
+\begin{lemma}[Principle of uniform boundedness]
+Suppose that $(X,d)$ is a complete metric space
+and we have a collection ${\mathcal F}$ of continuous
+functions $f:X\rightarrow{\mathbb R}$ which
+are pointwise bounded, that is, given any $x\in X$
+we can find a $K(x)>0$ such that
+\[|f(x)|\leq K(x)\ \text{for all $f\in{\mathcal F}$}.\]
+Then we can find a ball $B(x_{0},\delta)$ and a $K$
+such that
+\[|f(x)|\leq K\ \text{for all $f\in{\mathcal F}$
+and all $x\in B(x_{0},\delta)$ }.\]
+\end{lemma}
+\begin{exercise} (i) Suppose that $(X,d)$ is a complete metric space
+and we have a sequence of continuous
+functions $f_{n}:X\rightarrow{\mathbb R}$ and
+a function $f:X\rightarrow{\mathbb R}$
+such that $f_{n}$ converges pointwise
+that is
+\[f_{n}(x)\rightarrow f(x)\ \text{for all $f\in{\mathcal F}$}.\]
+Then we can find a ball $B(x_{0},\delta)$ and a $K$
+such that
+\[|f_{n}(x)|\leq K\ \text{for all $n$
+and all $x\in B(x_{0},\delta)$ }.\]
+
+(ii) (This is elementary but acts as a hint for (iii).)
+Suppose $y\in [0,1]$. Show that we can find
+a sequence of continuous functions $f_{n}:[0,1]\rightarrow{\mathbb R}$
+such that $1\geq f_{n}(x)\geq 0$ for all $x$ and $n$,
+$f_{n}$ converges pointwise to $0$ everywhere,
+$f_{n}$ converges uniformly on $[0,1]\setminus (y-\delta,y+\delta)$
+and fails to converge uniformly on 
+$[0,1]\cap (y-\delta,y+\delta)$  for all $\delta>0$.
+
+(iii) State with reasons whether the following statement
+is true or false. Under the conditions of (i) we can obtain the 
+stronger conclusion that
+we can find a ball $B(x_{0},\delta)$ such that
+\[f_{n}(x)\rightarrow f(x)\ \text{uniformly on}
+\ B(x_{0},\delta).\]
+\end{exercise}
+\begin{exercise}
+Suppose that $(X,d)$ is a complete metric space
+and $Y$ is a subset of $X$ which is of first category
+in $X$.
+Suppose further that we have a collection ${\mathcal F}$ of continuous
+functions $f:X\rightarrow{\mathbb R}$ which
+are pointwise bounded on $X\setminus Y$,
+that is, given any $x\notin Y$,
+we can find a $K(x)>0$ such that
+\[|f(x)|\leq K(x)\ \text{for all $f\in{\mathcal F}$}.\]
+Show that
+we can find a ball $B(x_{0},\delta)$ and a $K$
+such that
+\[|f(x)|\leq K\ \text{for all $f\in{\mathcal F}$
+and all $x\in B(x_{0},\delta)$ }.\]
+\end{exercise}
+
+We now use the principle of uniform boundedness to prove
+the Banach-Steinhaus theorem\footnote{You should be warned that
+a lot of people, including the present writer, tend to
+confuse the names of these two theorems. My research supervisor
+took the simpler course of referring to all the theorems
+of functional analysis as `Banach's theorem'.}.
+\begin{theorem}{\bf (Banach-Steinhaus theorem)}%
+\label{Theorem, Banach Steinhaus}
+Let $(U,\|\ \|_{U})$ and $(V,\|\ \|_{V})$ be normed
+spaces and suppose $\|\ \|_{U}$ is complete.
+If we have a collection ${\mathcal F}$ of continuous
+linear maps from $U$ to $V$ which are pointwise bounded
+then we can find a $K$ such that $\|T\|\leq K$
+for all $T\in{\mathcal F}$.
+\end{theorem}
+
+Here is a typical use of the Banach-Steinhaus theorem.
+\begin{theorem} There exists a continuous
+$2\pi$ periodic function $f:{\mathbb R}\rightarrow{\mathbb R}$
+whose Fourier series fails to converge at a given point.
+\end{theorem}
+The next exercise contains results that most
+of you will have already met.
+\begin{exercise} (i) Show that the set $l^{\infty}$ of
+bounded sequences over ${\mathbb F}$ (with
+${\mathbb F}={\mathbb R}$ or ${\mathbb F}={\mathbb C}$) 
+\[{\mathbf a}=(a_{1},\ a_{2},\ \dots)\]
+can be made into a vector space in a natural manner.
+Show that $\|{\mathbf a}\|_{\infty}=\sup_{j\geq 1}|a_{j}|$
+defines a complete norm on $l^{\infty}$.
+
+(ii) Show that $s$, the set of convergent sequences
+and $s_{0}$ the set of sequences convergent to $0$
+are both closed subspaces of $(l^{\infty},\|\ \|_{\infty})$.
+
+(iii) Show that the set $l^{1}$ of
+sequences
+\[{\mathbf a}=(a_{1},\ a_{2},\ \dots)
+\ \text{such that $\sum_{j=1}^{\infty}|a_{j}|$ converges}\]
+can be made into vector space in a natural manner.
+Show that $\|{\mathbf a}\|_{1}=\sum_{j=1}^{\infty}|a_{j}|$
+defines a complete norm on $l^{1}$.
+
+(iv) Show that, if ${\mathbf a}\in l^{1}$, then
+\[T_{\mathbf a}({\mathbf b})=\sum_{j=1}^{\infty}a_{j}b_{j}\]
+defines a continuous linear map from $l^{\infty}$ to ${\mathbb F}$
+and that $\|T_{\mathbf a}\|=\|{\mathbf a}\|_{1}$.
+\end{exercise}
+Here is another use of the Banach-Steinhaus theorem.
+\begin{lemma}\label{Lemma, summation}
+Let $a_{ij}\in{\mathbb R}$ $[i,j\geq 1]$.
+We say that the $a_{ij}$ constitute a summation
+method if whenever $c_{j}\rightarrow c$ we have
+$\sum_{j=1}^{\infty}a_{ij}c_{j}$ convergent for each $i$
+and
+\[\sum_{j=1}^{\infty}a_{ij}c_{j}\rightarrow c\]
+as $i\rightarrow\infty$.
+
+The following conditions are necessary and sufficient
+for the $a_{ij}$ to constitute a summation method:-
+
+(i) There exists a $K$ such that
+\[\sum_{j=1}^{\infty}|a_{ij}|\leq K\ \text{for all $i$}.\]
+
+(ii) ${\displaystyle
+\sum_{j=1}^{\infty}a_{ij}\rightarrow 1\ \text{as $i\rightarrow\infty$}}$.
+
+(iii) $a_{ij}\rightarrow 0$ as $i\rightarrow\infty$ for each $j$.
+\end{lemma}
+\begin{exercise} Ces\`{a}ro's summation method takes
+a sequence $c_{0},\ c_{1},\ c_{2},\dots $ and replaces it
+with a new sequence whose $n$th term
+\[b_{n}=\frac{c_{1}+c_{2}+\dots+c_{n}}{n}\]
+is the average of the first $n$ terms of the old sequence.
+
+(i) By rewriting the statement above along the lines
+of Lemma~\ref{Lemma, summation} show that if the old
+sequence converges to $c$ so does the new one.
+
+(ii) Examine what happens when $c_{j}=(-1)^{j}$.
+Examine what happens if $c_{j}=(-1)^{k}$ when
+$2^{k}\leq j<2^{k+1}$.
+
+(iii) Show that, in the notation of Lemma~\ref{Lemma, summation},
+taking $a_{n,2n}=1$, $a_{n,m}=0$, otherwise, gives a summation
+method. Show that
+taking $a_{n,2n+1}=1$, $a_{n,m}=0$, otherwise, 
+also gives a summation
+method. Show that the two methods disagree
+when presented with the sequence $1$, $-1$, $1$, $-1$, \dots. 
+\end{exercise}
+Another important consequence of the Baire
+category theorem is the open mapping theorem.
+(Recall that a complete normed space is called
+a Banach space.)
+\begin{theorem}[Open mapping theorem]
+Let $E$ and $F$ be Banach spaces and
+$T:E\rightarrow F$ be a continuous linear
+surjection. Then $T$ is an open map
+(that is to say, if $U$ is open in $E$
+we have $TU$ open in $F$.)
+\end{theorem}
+This has an immediate corollary.
+\begin{theorem}[Inverse mapping theorem]
+Let $E$ and $F$ be Banach spaces and let
+$T:E\rightarrow F$ be a continuous linear
+bijection. Then $T^{-1}$ is continuous.
+\end{theorem}
+The next exercise is simple, and if you can not
+do it this reveals a gap in your knowledge
+(which can be remedied by asking the lecturer)
+rather than in intelligence.
+\begin{exercise} Let $(X,d)$ and $(Y,\rho)$
+be metric spaces with associated topologies
+$\tau$ and $\sigma$. Then the product topology
+induced on $X\times Y$ by $\tau$ and $\sigma$
+is the same as the topology given by the metric
+\[\triangle((x_{1},y_{1}),(x_{2},y_{2}))
+=d(x_{1},x_{2})+\rho(y_{1},y_{2}).\]
+\end{exercise} 
+The inverse mapping theorem has the
+following useful consequence.
+\begin{theorem}[Closed graph theorem]
+Let $E$ and $F$ be Banach spaces and let
+$T:E\rightarrow F$ be linear.
+Then $T$ is continuous if and only
+the graph
+\[\{(x,Tx)\,:\,x\in E\}\]
+is closed in $E\times F$ with the product topology.
+\end{theorem}
+\section{Zorn's lemma and Tychonov's theorem}
+Let $A$ be a non-empty set and, for each $\alpha\in A$,
+let $X_{\alpha}$
+be a non-empty set. Is $\prod_{\alpha\in A}X_{\alpha}$
+non-empty (or, equivalently, does there exist a function
+$f:A\rightarrow\bigcup_{\alpha\in A}X_{\alpha}$ with
+$f(\alpha)\in X_{\alpha})$? It is known that the standard
+axioms of set theory do not suffice to answer this question
+in general. (In particular cases they do suffice. If
+$X_{\alpha}=A$ for all $\alpha\in A$ then $f(\alpha)=\alpha$
+will do.) Specifically, if there exists any
+model for standard
+set theory, then there exist models for set theory
+obeying the standard axioms in which the answer to
+our question is always yes (such systems are said to
+obey the axiom of choice) and there exist models in
+which the answer is sometimes no.
+
+Most mathematicians are happy to add the axiom of choice
+to the standard axioms and this is what we shall do.
+Note that if we prove something using 
+the standard axioms and the axiom of choice
+then we will be unable to find a counter-example
+using only the standard axioms. Note also that,
+when dealing with specific systems we may be able
+to prove the result for that system without using
+the axiom of choice.
+
+The axiom of choice is not very easy to use in the form
+that we have stated it and it is usually more convenient
+to use an equivalent formulation called Zorn's lemma.
+\begin{definition} Suppose $X$ is a non-empty set.
+We say that
+$\succeq$ is a partial order on $X$, that is to say,
+that $\succeq$ is a relation on $X$ with
+
+(i) $x\succeq y$, $y\succeq z$ implies $x\succeq z$,
+
+(ii) $x\succeq y$ and $y\succeq x$ implies $x=y$,
+
+(iii) $x\succeq x$
+
+\noindent for all $x$, $y$, $z$.
+
+We say that a subset $C$ of $X$ is a chain
+if, for every $x,\ y\in C$ at least one of
+the statements $x\succeq y$, $y\succeq x$ is true.
+
+If $Y$ is a non-empty subset of $X$ we say that $z\in X$
+is an upper bound for $Y$ if $z\succeq y$ for all $y\in Y$.
+
+We say that $m$ is a maximal element for $(X,\succeq)$
+if $x\succeq m$ implies $x=m$.
+\end{definition}
+You must be able to do the following exercise.
+\begin{exercise} (i) Give an example of a partially
+ordered set which is not a chain.
+
+(ii) Give an example of a partially ordered set
+and a chain $C$ such that (a) the chain has an upper bound
+lying in $C$, (b) the chain has an upper bound but no
+upper bound within $C$, (c) the chain has no upper bound.
+
+(iii) If a chain $C$ has an upper bound lying in $C$,
+show that it is unique. Give an example to show that,
+even in this case $C$ may have infinitely many
+upper bounds (not lying in $C$).
+
+(iv) Give examples of partially ordered sets
+which have (a) no maximal elements, (b) exactly one
+maximal element, (b) infinitely many maximal elements.
+
+(v) how should a minimal element be defined?
+Give examples of partially ordered sets
+which have (a) no maximal or minimal elements, (b) exactly one
+maximal element and no minimal element, 
+(c) infinitely many maximal elements and infinitely many minimal
+elements.
+\end{exercise}
+\begin{axiom}[Zorn's lemma] Let $(X,\succeq)$ be
+a partially ordered set. If every chain in $X$ has
+an upper bound then $X$ contains a maximal element.
+\end{axiom}
+
+Zorn's lemma is associated with a proof routine
+which we illustrate in Lemmas~\ref{Zorn to choice}
+and~\ref{Hamel}
+\begin{lemma}\label{Zorn to choice} Zorn's lemma implies the axiom of choice.
+\end{lemma}
+The converse result is less important to us
+but we prove it for completeness.
+\begin{lemma}\label{choice to Zorn} The axiom of choice
+implies Zorn's lemma.
+\end{lemma}
+\begin{proof} (Since the proof we use is non-standard,
+I give it in detail.)
+Let $X$ be a non-empty set with a partial order $\succeq$
+having no maximal elements. We show that the assumption
+that every chain has a upper bound leads to a contradiction.
+
+We write $x\succ y$ if $x\succeq y$ and $x\neq y$.
+If $C$ is a chain we write 
+\[C_{x}=\{c\in C\,:\,x\succ c\}.\]
+
+Observe that, if $C$ is a chain in $X$, we can
+find an $x\in X$ such that $x\succ c$ for all $c\in C$.
+(By assumption, $C$ has an upper bound, $x'$, say.
+Since $X$ has no maximal elements, we can find an 
+$x\in X$ such that $x\succ x'$.) We shall take
+$\emptyset$ to be a well ordered chain. 
+
+We shall look at well ordered chains, that is to say,
+chains for which every non-empty subset has a minimum.
+(Formally, if $S\subseteq C$ is non-empty we can
+find an $s_{0}\in C$ such that $s\succeq s_{0}$
+for all $s\in S$. We write $\min C=s_{0}$.)
+By the previous paragraph 
+\[A_{C}=\{x\,:\,x\succ c\ \text{for all $c\in C$}\}\neq\emptyset.\]
+Thus, if we write ${\mathcal W}$ for the set of all well
+ordered chains, the axiom of choice tells us that
+there is a function $\kappa:{\mathcal W}\rightarrow X$
+such that $\kappa(C)\succ c$ for all $c\in C$.
+
+We now consider `special chains' defined to be
+well ordered chains $C$ such that
+\[\kappa(C_{x})=x\ \text{for all $x\in C$}.\]
+(Note that `well ordering' is an important general
+idea, but `special chains' are an ad hoc notion
+for this particular proof. Note also that if $C$
+is a special chain and $x\in C$ then $C_{x}$ is a special
+chain.)
+
+The key point is that, if $K$ and $L$ are special
+chains, then either $K=L$ or $K=L_{x}$ for some $x\in L$
+or $L=K_{x}$ for some $x\in K$.
+\newline\emph{Subproof} If $K=L$, we are done. If not, at
+least one of $K\setminus L$ and $L\setminus K$ is non-empty.
+Suppose, without loss of generality, that $K\setminus L\neq \emptyset$.
+Since $K$ is well ordered, $x=\min K\setminus L$ exists.
+We observe that $K_{x}\subseteq L$. If $K_{x}=L$, we are done.
+
+We show that the remaining possibility $K_{x}\neq L$ leads
+to contradiction. In this case, $L\setminus K_{x}\neq \emptyset$
+so $y=\min L\setminus K_{x}$ exists. 
+
+If $L_{y}=K_{x}$
+then
+\[y=\kappa(L_{y})=\kappa(K_{x})=x\]
+so $x=y\in L\cap K$ contradicting the statement that $x\in K\setminus L$.
+
+If $L_{y}\neq K_{x}$ let $z$
+be the least member of $K_{x}\setminus L_{y}$.   
+Observe that, since $K_{x}\subseteq L$
+and so
+\[w\in L_{y},\ z'\in K_{x},\ w\succ z'\Rightarrow
+z'\in L,\ y\succ w\succ z'\Rightarrow z'\in L_{y}\]
+whence
+\[z'\notin L _{y},\ z'\in K_{x},\ w\succ z'\Rightarrow
+w\notin L_{y}.\]
+Thus $K_{z}=L_{y}$ and
+\[y=\kappa(L_{y})=\kappa(K_{z})=z\]
+so $y=z\in K\cap L$ contradicting the definition of $y$.
+\newline\emph{End subproof}
+
+We now take $S$ to be the union of all special chains.
+Using the key observation, it is routine to see that:
+
+(i) $S$ is a chain. (If $a,\,b\in S$, then $a\in L$ and $b\in K$
+for some special chains. By our key observation, either $L\supseteq K$
+of $K\supseteq L$. Without loss of generality, $K\supseteq L$ so $a,\,b \in K$
+and $a\succeq b$ or $b\succeq a$.)
+
+(ii) If $a\in S$, then $S_{a}$ is a special chain. (We must have
+$a\in K$ for some special chain $K$. Since $K\subseteq S$, we have 
+$K_{a}\subseteq S_{a}$. On the other hand, if $b\in S_{a}$
+then $b\in L$ for some special chain $L$  and each of the three
+possible relationships given in our key observation imply $b\in K_{a}$.
+Thus $S_{a}\subseteq K_{a}$, so $S_{a}=K_{a}$ and $S_{a}$ is a special chain.)
+
+(iii) $S$ is well ordered. (If $E$ is a non empty subset of $S$,
+pick an $x\in E$. If $S_{x}\cap E=\emptyset$, then $x$ is a minimum for $E$.
+If not, then $S_{x}\cap E$ is a non-empty subset of the special, so
+well ordered, chain  $S_{x}$, so $\min S_{x}\cap E$ 
+exists and is a minimum for $E$.)
+
+(iv) $S$ is a special chain. (If $x\in S$, we can find a special chain $K$
+such that $x\in K$. Let $y=\kappa(K)$. Then $L=K\cup\{y\}$ is a special
+chain. As in (ii), $S_{y}=L_{y}$, so $S_{x}=L_{x}$ and
+$\kappa(S_{x})=\kappa(L_{x})=x$.)
+
+We can now swiftly obtain a contradiction. Since $S$ is well ordered
+$\kappa(S)$ exists and does not lie in $S$. But $S$ is special,
+so $S\cup \kappa(S)$ is, so $S\cup\kappa(S)\subseteq S$,
+so $\kappa(S)$ lies in $S$. The required result follows
+by reductio ad absurdum\footnote{To the best of my knowledge, 
+this particular proof is due to
+Jonathon Letwin (\emph{American Mathematical Monthly},
+Volume 98, {\bf 1991}, pp. 353--4). If you know about
+transfinite induction, there are more direct proofs.}.
+\end{proof}
+\begin{lemma}[Hamel basis theorem]\label{Hamel} 
+(i) Every vector space
+has a basis.
+
+(ii) If $U$ is an infinite dimensional normed space
+over ${\mathbb F}$ then we can find a
+linear map $T:U\rightarrow{\mathbb F}$.
+
+(iii) If $U$ is an infinite dimensional normed space
+over ${\mathbb F}$ then we can find a
+discontinuous linear map $T:U\rightarrow{\mathbb F}$.
+\end{lemma}
+[Note that we do not claim that $T$ in (ii) is continuous.]
+\begin{exercise} (i) Show that, if 
+$f:{\mathbb R}\rightarrow{\mathbb R}$ is continuous
+and satisfies the equation
+\[f(x+y)=f(x)+f(y)\]
+for all $x,\ y\in{\mathbb R}$, then there exists a $c$
+such that $f(x)=cx$ for all $x\in{\mathbb R}$.
+
+(ii) Show that there exists a discontinuous function
+$f:{\mathbb R}\rightarrow{\mathbb R}$
+satisfying the equation
+\[f(x+y)=f(x)+f(y)\]
+for all $x,\ y\in{\mathbb R}$.
+
+\noindent[Hint. Consider ${\mathbb R}$ as a vector space
+over ${\mathbb Q}$.]
+\end{exercise}
+
+The rest of this section is devoted to a proof of Tychonov's
+theorem. We recall a definition.
+\begin{added}[Definition]\label{D;weak} 
+Let $(X_{\alpha},\tau_{\alpha})$
+be a topological space for each $\alpha\in A$.
+The weak (or Tychonov) topology $\tau$ on 
+$\prod_{\alpha\in A}X_{\alpha}$ is the collection of sets
+$U$ such that if ${\mathbf u}\in U$ we can find
+$\alpha_{1},\,\alpha_{2},\,\dots,\,\alpha_{n}\in A$
+and $O_{\alpha_{j}}\in\tau_{\alpha_{j}}$ such that
+${\mathbf x}\in U$ whenever $x_{\alpha_{j}}\in O_{\alpha_{j}}$
+for $1\leq j\leq n$.  
+\end{added} 
+\begin{added}[Exercise] We retain the notation of
+Definition Added~\ref{D;weak} and write 
+$\pi_{\alpha}{\mathbf x}=x_{\alpha}$.
+
+(i) Show that $\tau$ is indeed a topology
+and that, with this topology, the maps 
+$\pi_{\alpha}:X\rightarrow X_{\alpha}$
+are continuous. 
+
+(ii) Show that $\tau$ is the weakest topology
+for which the $\pi_{\alpha}$ are continuous.
+[Thus, if $\sigma$ is a topology for which
+the $\pi_{\alpha}$ are continuous, we have 
+$\sigma\supseteq\tau$.]
+
+(iii) Show that if all the $\tau_{\alpha}$ are Hausdorff
+so is $\tau$. 
+
+(iv) Suppose that $A=[0,1]$ and $X_{t}={\mathbb R}$
+and $\tau_{t}$ is the usual Euclidean topology
+on $X_{t}$. Explain how an $f\in\prod_{t\in[0,1]}X_{t}$
+can be identified in a natural manner with a function
+$f:[0,1]\rightarrow{\mathbb R}$. With this identification
+show that the sequence of functions $f_{n}\rightarrow f$
+pointwise if and only if, given any $U\in\tau$ with $f\in U$
+we can find an $N$ such that $f_{n}\in U$ for all $n\geq N$.
+\end{added}
+\begin{theorem}[Tychonov] The product of compact
+spaces is itself compact.
+\end{theorem}
+We follow the presentation in~\cite{Bollobas}.
+(The method of proof is due to Bourbaki.)
+
+The following result should be familiar to almost
+all of my readers.
+\begin{lemma}[Finite intersection property] 
+(i) A topological
+space is compact if and only if whenever a non-empty collection
+of closed sets ${\mathcal F}$ has the property
+that $\bigcap_{j=1}^{n}F_{j}\neq\emptyset$,
+for any $F_{1}$, $F_{2}$, \dots, $F_{n}\in {\mathcal F}$
+it follows that $\bigcap_{F\in{\mathcal F}}F\neq\emptyset$.
+
+(ii) A topological
+space is compact if and only if whenever a non-empty collection
+of sets ${\mathcal A}$ has the property
+that $\bigcap_{j=1}^{n}A_{j}\neq\emptyset$
+for any $A_{1}$, $A_{2}$, \dots, $A_{n}\in {\mathcal A}$
+it follows that $\bigcap_{A\in{\mathcal A}}\bar{A}\neq\emptyset$.
+\end{lemma}
+\begin{definition} A system ${\mathcal F}$
+of subsets of a given set $S$ is said to be of finite character
+if 
+
+(i) whenever every finite subset of a set $A\subseteq S$
+belongs to ${\mathcal F}$ it follows that $A\in{\mathcal F}$
+and
+
+(ii) whenever $A\in{\mathcal F}$ every finite subset
+of $A$ belongs to ${\mathcal F}$.
+\end{definition}
+\begin{lemma} [Tukey's lemma] If a system ${\mathcal F}$
+of subsets of a given set $S$ has finite character
+and $F\in{\mathcal F}$ then ${\mathcal F}$ has a maximal 
+(with respect to inclusion) element containing $F$.
+\end{lemma}
+We now prove Tychonov's theorem.
+
+\begin{added}[Exercise] If $(X,\tau)$ is a Hausdorff
+space and ${\mathcal G}$ is a maximal collection 
+of sets with the finite intersection property
+explain why $\bigcap_{G\in{\mathcal G}}\bar{G}$
+consists of one point.
+
+If you are interested, examine how the second 
+(but not the first) appeal to the axiom of choice
+may be avoided in our proof of Tychonov's theorem
+if all our spaces are Hausdorff.
+\end{added} 
+
+The reason why Tychonov's theorem demands the axiom 
+of choice is made clear by the final result
+of this section.
+\begin{lemma} Tychonov's theorem implies the axiom 
+of choice.
+\end{lemma}
+\section{The Hahn-Banach theorem} A good example
+of the use of Zorn's lemma occurs when we ask
+if given a Banach space $(U,\|\ \|)$ (over ${\mathbb C}$,
+say) there exist
+any non-trivial continuous linear maps $T:U\rightarrow{\mathbb C}$.
+For any space that we can think of, the answer is
+obviously yes, but to show that the result is
+always yes we need Zorn's lemma\footnote{In fact the statement
+is marginally weaker than Zorn's lemma but you need to
+be logician either to know or care about this.}.
+Our proof uses the theorem of Hahn-Banach.
+
+One form of this theorem is the following.
+\begin{theorem}{\bf (Hahn--Banach)}\label{T;Hahn--Banach} Let $U$
+be a real vector space. Suppose
+$p:U\rightarrow{\mathbb R}$ is such that
+\[p(u+v)\leq p(u)+p(v)\ \text{and}\ p(au)=ap(u)\]
+for all $u,\ v\in U$ and all real and positive $a$.
+
+If $E$ is a subspace of $U$ and there exists
+a linear map $T:E\rightarrow{\mathbb R}$
+with $Tx\leq p(x)$ for all $x\in E$
+then there exists 
+a linear map $\tilde{T}:U\rightarrow{\mathbb R}$
+with $Tx\leq p(x)$ for all $x\in U$
+and $\tilde{T}(x)=Tx$ for all $x\in E$.
+\end{theorem}
+\noindent[Note that we do not assume that
+the vector space $U$ is normed but we do assume
+that the vector space is real.]
+\begin{added}[Exercise] We say that a function
+$f:{\mathbb R}\rightarrow{\mathbb R}$ is convex if
+\[f\big(\lambda x+(1-\lambda)y\big)\leq \lambda f(x)+(1-\lambda)f(y)\]
+for all $x,\,y\in{\mathbb R}$. Using the ideas of the
+proof of the Hahn--Banach theorem but not the result itself
+show that a convex function $f$ is continuous
+and that given any $a\in{\mathbb R}$ we can find
+a $c$ such that
+\[f(x)\geq f(a)+c(x-a)\]
+for all $x\in{\mathbb R}$. Give an example to show that
+$f$ need not be differentiable.
+\end{added}
+\begin{added}[Exercise] Let $X$ be a real vector space and
+$p,\,q:X\rightarrow {\mathbb R}$ be functions such that
+$p(\lambda x)=\lambda p(x)$, $q(\lambda x)=\lambda q(x)$
+for all $\lambda\in{\mathbb R}$ with $\lambda\geq 0$
+and all $x\in X$, whilst
+\[p(x+y)\leq p(x)+p(y),\ q(x)+q(y)\leq q(x+y)\]
+for all $x,\,y\in X$.
+
+(i) Suppose that $Y$ is a subspace of $X$ and 
+$S:Y\rightarrow{\mathbb R}$ a linear function such that
+\[S(y)\leq p(x+y)-q(x)\]
+for all $x\in X$, $y\in Y$. Show that
+\[S(y')-p(x'+y'-z)+q(x')\leq -S(y)+p(x+y+z)-q(x)\]
+for all $x,\,x',\,z\in X$ and $y,\,y' \in Y$.
+
+(ii) Suppose that $Y_{0}$ is a subspace of $X$ and
+$T_{0}:Y\rightarrow{\mathbb R}$ a linear function such that
+\[T_{0}(y)\leq p(x+y)-q(x)\]
+for all $x\in X$, $y\in Y_{0}$. Show that there exists a linear
+function $T_{0}:X\rightarrow{\mathbb R}$ such that
+\[T(y)\leq p(x+y)-q(x)\]
+for all $x,\,y\in X$ and $Tu=Tu_{0}$  for all $u\in Y_{0}$.
+Show that 
+\[q(x)\leq T(x)\leq p(x)\]
+for all $x\in X$.
+
+(iii) Suppose $p(x)\geq q(x)$ for all $x\in X$. 
+Show that there exists 
+a linear function (possibly the zero function) 
+$U:X\rightarrow{\mathbb R}$
+such that
+\[q(x)\leq U(x)\leq p(x)\]
+for all $x\in X$.
+
+(iv) Let $X={\mathbb R}^{2}$, ${\mathbf n}$ be a unit vector
+and $p({\mathbf x})=|{\mathbf n}.{\mathbf x}|$
+(the absolute value of the usual inner product)
+and $q({\mathbf x})=-|{\mathbf n}.{\mathbf x}|$.
+Show that $p$ and $q$ obey the conditions of the introductory
+paragraph and part~(iii). What can you say about $U$? 
+\end{added}
+We have the following important corollary
+to Theorem~\ref{T;Hahn--Banach}.
+\begin{theorem} Let $(U,\|\ \|)$
+be a real normed vector space.
+If $E$ is a subspace of $U$ and there exists
+a continuous linear map $T:E\rightarrow{\mathbb R}$,
+then there exists 
+a continuous linear map $\tilde{T}:U\rightarrow{\mathbb R}$
+with $\|\tilde{T}\|=\|T\|$.
+\end{theorem}
+The next result is famous as `the result that
+Banach did not prove'.
+\begin{theorem} Let $(U,\|\ \|)$
+be a complex normed vector space.
+If $E$ is a subspace of $U$ and there exists
+a continuous linear map $T:E\rightarrow{\mathbb C}$
+then there exists 
+a continuous linear map $\tilde{T}:U\rightarrow{\mathbb C}$
+with $\|\tilde{T}\|=\|T\|$.
+\end{theorem}
+We can now answer the question posed in the first 
+sentence of this section.
+\begin{lemma} If $(U,\|\ \|)$ is
+normed space over the field ${\mathbb F}$
+of real or complex numbers
+and $a\in U$ with $a\neq 0$, then
+we can find a continuous linear map
+$T:U\rightarrow{\mathbb F}$ with $Ta\neq 0$.
+\end{lemma} 
+The importance of this lemma becomes more obvious if
+we state it in reverse. If $Ta=0$ for all continuous linear
+maps then $a=0$.
+
+
+Here are a couple of results proved by Banach using his theorem.
+\begin{theorem}[Generalised limits]\label{Theorem, Banach limits}
+Consider the vector space $l^{\infty}$ of bounded real
+sequences. There exists a linear map $L:l^{\infty}\rightarrow {\mathbb R}$
+such that
+
+(i) If $x_{n}\geq 0$ for all $n$ then $L{\mathbf x}\geq 0$.
+
+(ii) $L((x_{1},x_{2},x_{3},\dots))=L((x_{0},x_{1},x_{2},\dots))$.
+                                                                
+(iii) $L((1,1,1,\dots))=1$.
+\end{theorem}
+The theorem is illustrated by the following lemma.
+\begin{lemma} Let $L$ be as in Theorem~\ref{Theorem, Banach limits}.
+Then
+\[\limsup_{n\rightarrow\infty}x_{n}\geq L({\mathbf x})
+\geq \liminf_{n\rightarrow\infty}x_{n}.\]
+In particular, if $x_{n}\rightarrow x$ then $L({\mathbf x})=x$.
+\end{lemma}
+\begin{exercise} (i) Show that, even though the sequence
+$x_{n}=(-1)^{n}$ has no limit, $L({\mathbf x})$ is uniquely
+defined.
+
+(ii) Find, with reasons, a sequence ${\mathbf x}\in l^{\infty}$ 
+for which $L({\mathbf x})$ is not uniquely
+defined.
+\end{exercise}
+
+Banach used the same idea to prove the following
+odd result.
+\begin{lemma}\label{Banach integral} 
+Let ${\mathbb T}={\mathbb R}/{\mathbb Z}$
+be the unit circle and let $B({\mathbb T})$ be the 
+vector space
+of real valued bounded functions.
+Then we can find a linear map 
+$I:B({\mathbb T})\rightarrow{\mathbb R}$ obeying the following conditions.
+
+(i) $I(1)=1$.
+
+(ii) $If\geq 0$ if $f$ is positive.
+
+(iii) If $f\in B({\mathbb T})$, $a\in{\mathbb T}$ and
+we write $f_{a}(x)=f(x-a)$ then $If_{a}=If$.
+\end{lemma}
+\begin{exercise} Show that if $I$ is as in
+Lemma~\ref{Banach integral} and $f$ is Riemann
+integrable then 
+\[If=\int_{\mathbb T}f(t)\,dt.\]
+\end{exercise}
+
+However, Lemma~\ref{Banach integral} is put in context
+by the following.
+\begin{lemma}\label{Two generators}
+Let $G$ be the group freely generated by
+two generators and $B(G)$ be the 
+vector space
+of real valued bounded functions on $G$.
+If $f\in B(G)$ let us write $f_{c}(x)=f(xc^{-1})$
+for all $x,\ c\in G$.  
+
+There exists a function $f\in B(G)$ 
+and $c_{1},\ c_{2},\ c_{3}$ such that
+$f(x)\geq 0$ for all $x\in G$ and
+\[f(x)+f_{c_{1}}(x)-f_{c_{2}}(x)-f_{c_{3}}(x)\leq -1\]
+for all $x\in G$. 
+\end{lemma}
+\begin{exercise} If $G$ is as in Lemma~\ref{Two generators}
+then there is no linear map $I:B(G)\rightarrow{\mathbb R}$
+obeying the following conditions.
+
+(i) $I(1)=1$.
+
+(ii) $If\geq 0$ if $f$ is positive.
+
+(iii)  $If_{c}=If$ for all $c\in G$.
+\end{exercise}
+It can be shown that there is a finitely additive,
+congruence respecting integral for ${\mathbb R}$ and
+${\mathbb R}^{2}$ but not ${\mathbb R}^{n}$ for $n\geq 3$.
+\section{Banach algebras} Many of the objects studied
+in analysis turn out to be Banach algebras.
+\begin{definition} An algebra $(B,+,.,\times)$
+is a vector space $(B,+,.,{\mathbb C})$ equipped
+with a multiplication $\times$ such that
+
+(i) $x\times( y\times z)=(x\times y)\times z$,
+
+(ii) $(x+y)\times z=x\times z+y\times z$
+and $z\times(x+y)=z\times x+z\times y$,
+
+(iii) $(\lambda x)\times y=x\times(\lambda y)=\lambda(x\times y)$
+for all $x,\ y,\ z\in B$.
+
+\noindent[We shall write $x\times y=xy$.]
+\end{definition}
+Note that there is no assumption that multiplication
+is commutative. In principle, we could talk about
+real Banach algebras (in which ${\mathbb C}$ is replaced by
+${\mathbb R}$) but, though some elementary results carry
+over, our treatment will only cover complex Banach algebras.
+\begin{definition} A Banach algebra 
+$(B,+,.,\times,\|\ \|)$ is an algebra
+$(B,+,.,\times,{\mathbb C})$ such that
+$(B,+,.,{\mathbb C},\|\ \|)$ is a 
+Banach space and such that the map $(x,y)\mapsto xy$
+is continuous.
+\end{definition}
+
+Note that the two definitions above are not to
+be memorised; so far as this course is concerned the
+following definition is all that is required.
+\begin{definition} A Banach algebra $(B,\|\ \|)$
+is a Banach space equipped with a continuous multiplication
+which makes it an algebra.
+\end{definition}
+As usual there is a little amount of playing about
+with the definition.
+\begin{lemma} The following statements about
+$(B,\|\ \|)$ a Banach space equipped with a multiplication
+are equivalent.
+
+(i) Multiplication is left and right continuous
+(that is, the map $x\mapsto xy$ is continuous
+for all $y$ and the map $y\mapsto xy$ is continuous
+for all $x$).
+
+(ii) There exists a $K$ such that $\|xy\|\leq K\|x\|\|y\|$
+for all $x$ and $y$.
+
+(iii) $(B,\|\ \|)$ is a Banach algebra.
+\end{lemma}
+\begin{lemma}\label{Lemma, renorm}
+If $(B,\|\ \|)$ is a Banach algebra
+we can find a norm $\|\ \|_{B}$ on $B$ which is
+equivalent to $\|\ \|$ (that is, there exists a $C>0$
+such that $C^{-1}\|x\|\leq \|x\|_{B}\leq C\|x\|$)
+such that
+\[\|xy\|_{B}\leq \|x\|_{B}\|y\|_{B}\]
+for all $x,\ y\in B$.
+\end{lemma}
+\emph{Unless specifically indicated otherwise} you
+may assume both in the rest of the notes and in the
+literature generally that the norm on a Banach algebra
+has been chosen to satisfy
+\[\|xy\|\leq \|x\|\|y\|\]
+for all $x$ and $y$.
+
+\begin{definition} We say that a Banach algebra $B$ has a unit
+$e$ if $xe=ex=x$ for all $x\in B$.
+\end{definition}
+The following remarks form part of the course but
+are left as an exercise.
+\begin{exercise} (i) If a Banach algebra has a unit 
+that unit is unique.
+
+(ii) If $(B,\|\ \|)$ is a Banach algebra with unit $e$
+we can find a norm $\|\ \|_{B}$ on $B$ which is
+equivalent to $\|\ \|$ such that
+\[\|xy\|_{B}\leq \|x\|_{B}\|y\|_{B}\]
+for all $x,\ y\in B$ and
+\[\|e\|_{B}=1.\]
+\end{exercise}
+\emph{Unless specifically indicated otherwise} you
+may assume both in the rest of the notes and in the
+literature generally that the norm on a Banach algebra
+with unit $e$
+has been chosen to satisfy
+$\|e\|= 1$ and $\|xy\|_{B}\leq \|x\|_{B}\|y\|_{B}$
+for all $x$ and $y$.
+\begin{example} (i) A Banach space $(B,\|\ \|)$ becomes
+a commutative Banach algebra if we define $xy=0$ for
+all $x,\ y\in B$. If $B$ is non-trivial the resulting algebra
+has no unit.
+
+(ii) Consider the Banach space $l^{1}$ of sequences
+${\mathbf a}=(a_{0},a_{1},\dots)$. If we define
+${\mathbf a}*{\mathbf b}={\mathbf c}$ with
+\[c_{r}=\sum_{k+j=r,\,k\geq 0,j\geq 0}a_{j}b_{k}\]
+then $*$ is a well defined multiplication
+and $l^{1}$ is a Banach algebra with this multiplication.
+As a Banach algebra, $l^{1}$ is commutative with a unit.
+
+(iii) Consider the Banach space $l^{1}$ of sequences
+${\mathbf a}=(a_{1},a_{2},\dots)$. If we define
+${\mathbf a}*{\mathbf b}={\mathbf c}$ with
+\[c_{r}=\sum_{k+j=r,\,k\geq 1,j\geq 1}a_{j}b_{k}\]
+then $*$ is a well defined multiplication
+and $l^{1}$ is a Banach algebra with this multiplication.
+As a Banach algebra, $l^{1}$ is commutative but has no unit.
+
+(iv) Consider the Banach space $l^{1}$ of 
+two sided sequences
+${\mathbf a}=(\dots,a_{-2},a_{-1},a_{0},a_{1},\dots)$. If we define
+${\mathbf a}*{\mathbf b}={\mathbf c}$ with
+\[c_{r}=\sum_{k+j=r}a_{j}b_{k}\]
+then $*$ is a well defined multiplication
+and $l^{1}$ is a Banach algebra with this multiplication.
+As a Banach algebra, $l^{1}$ is commutative and has a unit.
+
+\end{example}
+\begin{exercise}\label{L one} 
+If you know measure theory you ought
+to work through this exercise. We work in $L^{1}$
+the space of Lebesgue integrable functions 
+$f:{\mathbb R}\rightarrow{\mathbb C}$.
+
+(i) Use Fubini's theorem to show that, if $f,\ g\in L^{1}$,
+then
+\[f*g(x)=\int_{-\infty}^{\infty}f(x-t)g(t)\,dx\]
+is well defined almost everywhere and that 
+$f*g\in L^{1}$ with
+\[\|f*g\|_{1}\leq \|f\|_{1}\|g\|_{1}\]
+
+(ii) Use Fubini's theorem to show that, if $f,\ g\in L^{1}$
+then
+\[\widehat{f*g}(\lambda)=\hat{f}(\lambda)\hat{g}(\lambda)\]
+for all $\lambda\in{\mathbb R}$.
+
+(iii) If $e_{a}(t)=e^{-iat}$ compute $\hat{e_{a}f}$
+for $f\in L^{1}$. Show that if $e\in L^{1}$ is a unit then
+$\hat{e}=1$.
+
+(iv) Show that if $f\in L^{1}$ then 
+$\sup_{\lambda\in{\mathbb R}}|\hat{f}(\lambda)|\leq \|f\|_{1}$.
+Show that if $f$ is once continuously differentiable with
+$f,\ f'\in L^{1}$ and $f(t),\ f'(t)\rightarrow 0$ 
+as $|t|\rightarrow \infty$ then $\hat{f}(\lambda)\rightarrow 0$
+as $|\lambda|\rightarrow\infty$. Use a density argument
+to show that $\hat{g}(\lambda)\rightarrow 0$
+as $|\lambda|\rightarrow\infty$ whenever $g\in L^{1}$
+(this is the Lebesgue-Riemann lemma).
+
+(v) Use~(iii) and~(iv) to show that $(L^{1},*)$ 
+has no unit.
+\end{exercise}
+\begin{lemma}\label{Lemma, add unit} 
+If $B$ is a Banach algebra without unit
+we can find $\tilde{B}$ a Banach algebra with a unit $e$
+such that
+
+(i) $B$ is a sub Banach algebra of $\tilde{B}$,
+
+(ii) $B$ is closed in $\tilde{B}$,
+
+(iii) $\tilde{B}=\operatorname{span}(B,e)$ in the
+algebraic sense.
+\end{lemma}
+\begin{exercise} (i) Suppose we apply the construction 
+of Lemma~\ref{Lemma, add unit} to a Banach algebra $B$
+with unit $u$. Is $u$ a unit of the extended algebra
+$\tilde{B}$? Does $\tilde{B}$ have a unit? 
+
+(ii) (Needs measure theory.) Can you find a natural
+identification for the unit of $\widetilde{L^{1}}$
+where $L^{1}$ is the Banach algebra of Exercise~\ref{L one}.
+\end{exercise}
+Thus any Banach algebra $B$ without a unit
+can be studied by `adjoining
+a unit and then removing it'. This is our excuse
+for only studying Banach algebras with a unit. 
+
+The following result is easy but fundamental.
+\begin{lemma}\label{Lemma, nice inverse}
+Let $B$ be a Banach algebra with
+unit $e$. 
+
+(i) If $\|e-a\|<1$ then $a$ is invertible (that is
+has a multiplicative inverse).
+
+(ii) If $E$ is the set of invertible elements
+in $B$ then $E$ is open.
+\end{lemma}
+
+Lemma~\ref{Lemma, nice inverse}~(i) can be improved
+in a useful way.
+\begin{theorem}\label{Theorem, spectral radius}
+(i) If $B$ is a Banach algebra and $b\in B$ then,
+writing $\rho(b)=\inf_{n}\|b^{n}\|^{1/n}$
+we have
+\[\|b^{n}\|^{1/n}\rightarrow \rho(b)\]
+as $n\rightarrow\infty$.
+
+(ii) If $B$ is a Banach algebra with unit $e$
+and $\rho(e-a)<1$ then $a$ is invertible.
+\end{theorem}
+We call $\rho(a)$
+the spectral radius of $a$.
+
+\begin{exercise} Consider the space $M_{n}$
+of $n\times n$ matrices over ${\mathbb C}$
+with the operator norm.
+
+(i) Show that $M_{n}$ is a Banach algebra with
+unit. For which values of $n$ is it commutative?
+
+(ii) Give an example of an $A\in M_{2}$ with
+$A\neq 0$ but $\rho(A)=0$.
+
+(iii) If $A$ is diagonalisable show that 
+\[\rho(A)=\max\{|\lambda|\,:\,\lambda\ \text{an eigenvalue of $A$}\}.\]
+
+(iv) (Harder and not essential.) Show that the formula
+of (iii) holds in general.
+\end{exercise}
+\section{Maximal ideals} We now embark on a line of reasoning
+which will eventually lead to a characterisation of
+a large class of commutative Banach algebras.
+
+Initially we continue to deal with Banach algebras which
+are not necessarily commutative. The generality is
+more apparent than real as the next exercise reveals.
+\begin{exercise} Let $B$ be a Banach algebra with unit
+$e$. Let $A$ be the closed Banach algebra generated by 
+$e$ and some $a\in B$. (Formally, $A$ is the smallest closed sub
+Banach algebra containing $e$ and $a$.) Then $A$ is
+commutative.
+\end{exercise}
+\begin{definition}\label{Definition, resolvent}
+Let $B$ be a Banach space with unit $e$.
+If $x\in B$ the resolvent $R(x)$ of $x$ is defined by
+\[R(x)=\{\lambda\in{\mathbb C}\,:\,x-\lambda e
+\ \text{is invertible}\}.\]
+\end{definition}
+\begin{lemma}\label{Lemma, not all resolvent}
+We use the notation of 
+Definition~\ref{Definition, resolvent}.
+
+(i) ${\mathbb C}\setminus R(x)$ is bounded.
+
+(ii) $R(x)$ is open.
+
+(iii) If $\mu\in R(x)$ we can find a $\delta>0$
+and $a_{0}$, $a_{1}$, \dots $\in B$ such that
+$\sum_{j=0}^{\infty}a_{j}z^{j}$ converges for all
+$|z|<\delta$ and
+\[(x-\lambda e)^{-1}=\sum_{j=0}^{\infty}a_{j}(\lambda-\mu)^{j}\]
+for $\lambda\in{\mathbb C}$ and $|\lambda-\mu|<\delta$.
+
+(iv) $R(x)\neq {\mathbb C}$.
+\end{lemma}
+Lemma~\ref{Lemma, not all resolvent} gives us our first
+substantial result on the nature of commutative
+Banach algebras.
+\begin{theorem}[Gelfand-Mazur] Any Banach algebra which
+is also a field is isomorphic as a Banach algebra to
+${\mathbb C}$.
+\end{theorem}
+\section{Analytic functions}
+In order to extract more information on the resolvent
+we take a detour through a little (easy)
+integration theory and complex variable theory.
+\begin{theorem} Let $U$ be a Banach space, $[a,b]$
+a closed bounded interval in ${\mathbb R}$.
+Then we can define an integral $\int_{a}^{b}F(t)\,dt$
+for every $F:[a,b]\rightarrow U$ a continuous function
+having the following properties (here
+$F,\ G:[a,b]\rightarrow U$ are continuous and 
+$\lambda,\ \mu\in{\mathbb C}$).
+
+(i) ${\displaystyle \int_{a}^{b}\lambda F(t)+\mu G(t)\,dt 
+=\lambda \int_{a}^{b} F(t)\,dt
++\mu \int_{a}^{b} G(t)\,dt}$.
+
+(ii) If $a<c<b$ then
+\[ \int_{a}^{b} F(t)\,dt
+=\int_{a}^{c} F(t)\,dt+\int_{c}^{b} F(t)\,dt.\]
+
+(iii) ${\displaystyle \left\|\int_{a}^{b} F(t)\,dt\right\|
+\leq \int_{a}^{b} \|F(t)\|\,dt.}$
+
+(iv) If $T:U\rightarrow{\mathbb C}$ is a continuous
+linear functional
+\[ \int_{a}^{b}T (F(t))dt 
+=T\int_{a}^{b} F(t)\,dt.\]
+\end{theorem}
+
+Using the integral just defined we can define
+contour integrals as we did in the complex variable course.
+\begin{definition} If $\gamma:[a,b]\rightarrow{\mathbb C}$
+is continuously differentiable with $\gamma(a)=\gamma(b)$
+and 
+$F:[a,b]\rightarrow U$ a continuous function
+we define
+\[\int_{\gamma}F(z)\,dz=\int_{a}^{b}F(\gamma(t))\gamma'(t)\,dt.\]
+\end{definition}
+(We shall talk about the `closed contour' $\gamma$.)         
+
+We can now introduce the notion of an
+analytic Banach algebra valued function.
+\begin{definition} Let $B$ be a Banach algebra
+and $\Omega$ a simply connected\footnote{Informally `with no holes'.}
+open set in ${\mathbb C}$.
+A function $f:\Omega\rightarrow B$ is said to be analytic
+on $\Omega$ if there exists an $f':\Omega\rightarrow B$
+such that, for all $z\in \Omega$
+\[\left\|\frac{f(z+h)-f(z)}{h}-f'(z)\right\|\rightarrow 0\]
+as $h\rightarrow 0$ through values of $h$
+such that $z+h\in\Omega$.
+\end{definition}
+\begin{theorem} Let $B$ be a Banach algebra,
+$\Omega$ an open simply connected set in ${\mathbb C}$,
+and $\gamma$ a closed contour in $\Omega$.
+Then, if $f$ is analytic on $\Omega$,
+\[\int_{\gamma}f(z)\,dz=0.\]
+\end{theorem}
+
+We can follow a first undergraduate complex variable
+course to prove the following results.
+\begin{lemma} Let $B$ be a Banach algebra
+with a unit $e$,
+$\Omega$ an open set in ${\mathbb C}$
+containing a disc $D(z_{0},R)$,
+$f:\Omega\rightarrow B$ an analytic function
+and $\gamma$ a contour describing a circle
+centre $z_{0}$ radius $0<r<R$. If
+$|z_{0}-z|<r$ then
+\[f(z)=\frac{1}{2\pi i}\int_{\gamma}\frac{f(w)}{w-z}\,dw.\]
+\end{lemma}
+\begin{lemma} Let $B$ be a Banach algebra
+with a unit $e$,
+$\Omega$ an open set in ${\mathbb C}$
+containing a disc $D(z_{0},R)$
+and $f$ an analytic function on $\Omega$.
+There exist unique $a_{0}$, $a_{1}$, $a_{2}$, \dots$\in B$
+such that $\sum_{j=0}^{\infty}a_{r}(z-z_{0})^{r}$ converges and
+\[f(z)=\sum_{j=0}^{\infty}a_{r}(z-z_{0})^{r}\]
+for all $|z-z_{0}|<R$.
+\end{lemma}
+\begin{theorem} If $B$ is a Banach algebra with unit
+\[\sup\{|\lambda|\,:\,\lambda\notin R(x)\}=\rho(x).\]
+\end{theorem}
+\begin{added}[Exercise] It may help the reader's understanding to
+prove the corresponding classical result.
+
+We work in ${\mathbb C}$. Suppose that $a_{j}\in{\mathbb C}$
+and that $\limsup_{n\rightarrow\infty}|a_{n}|^{1/n}<\infty$.
+Write
+\[R=\frac{1}{\limsup_{n\rightarrow\infty}|a_{n}|^{1/n}}\]
+and 
+\[D(0,r)=\{z\in\in{\mathbb C}\,:\,|z|<r\}.\]
+
+
+(i) Show that there exists an analytic function
+$f:D(0,r)\rightarrow{\mathbb C}$ such that $f^{(j)}(0)=a_{j}$
+for all $j$.
+
+(ii) Show that, if $\delta>0$ there does not exist
+an analytic function
+$g:D(0,r+\delta)\rightarrow{\mathbb C}$ such that $g^{(j)}(0)=a_{j}$
+for all $j$.
+\end{added} 
+\section{Maximal ideals}
+One way of exploiting the Gelfand-Mazur theorem is
+to introduce the notion of maximal ideals. (From
+now on all our Banach algebras will be commutative.)
+\begin{lemma} Every proper ideal in a commutative algebra
+with unit is contained in a maximal ideal.
+\end{lemma}
+
+(Recall that an ideal $I$ in a commutative algebra
+$B$ is a vector subspace of $B$ such that
+if $a\in B$ and $b\in I$ then $ab\in I$.
+An ideal $J$ is maximal if $J\neq B$ but
+whenever an ideal $K$ satisfies $J\subseteq K\subseteq B$
+either $K=J$ or $K=B$.)
+
+\begin{added}[Lemma] If $I$ is a closed ideal in a Banach algebra
+then $B/I$ is a Banach algebra under the norm
+\[\|x+I\|_{B/I}=\inf\{\|y\|\,:\,y-x\in I\}\]
+If $I\neq B$, then
+\[\|e+I\|_{B/I}=1.\]
+\end{added}
+\begin{added}[Exercise] The following remark is useful
+in proving results like the above.
+
+Show that a normed space $(V,\|\ \|)$ is complete
+if and only if $\sum_{j=1}^{\infty}x_{j}$ converges whenever
+$\sum_{j=1}^{\infty}\|x_{j}\|$ does.
+\end{added}
+\begin{lemma} Every maximal ideal $M$ in a commutative
+Banach algebra with unit is closed.
+\end{lemma}
+\begin{lemma} If $M$ is a maximal ideal in a commutative
+Banach algebra with unit then the quotient $B/M$
+is isomorphic to ${\mathbb C}$ as a Banach algebra.
+\end{lemma} 
+
+
+The notion of a maximal ideal is closely linked
+to that of a multiplicative linear functional.
+\begin{definition} A multiplicative linear functional
+on a Banach algebra is  a non-trivial
+(i.e. not the zero map)
+linear map $\chi:B\rightarrow{\mathbb C}$
+such that $\chi(xy)=\chi(x)\chi(y)$ for all $x,\ y\in B$.
+\end{definition}
+\begin{lemma} If $B$ is a commutative Banach algebra
+with identity and $\chi$ is a multiplicative linear
+functional then the following results hold.
+
+(i) $\ker\chi$ is a maximal ideal.
+
+(ii) The map $x+\ker\chi\mapsto\chi(x)$ is an algebraic 
+isomorphism of $B/\ker\chi$ with ${\mathbb C}$.
+
+(iii) $\chi$ is continuous and $\|\chi\|=1$.
+\end{lemma}
+\begin{theorem}\label{Theorem, functionals and ideals}
+If $B$ is a commutative Banach algebra
+with identity then the mapping $\chi\mapsto\ker\chi$
+is a bijection between the set of multiplicative
+linear functionals on $B$ and its maximal ideals.
+\end{theorem}
+We now have the following useful corollary.
+\begin{lemma} If $B$ is a commutative Banach algebra
+with identity then an element $x\in B$ is invertible if
+and only $\chi(x)\neq 0$ for all multiplicative
+linear functionals $\chi$.
+\end{lemma}
+
+The Banach algebra proof Theorem~\ref{Weiner via Banach}
+was the first result to convince classical analysts
+of the utility of these ideas. The lemma that precedes
+it places the result in context.
+\begin{lemma} If $f\in C({\mathbb T})$ has 
+an absolutely convergent
+Fourier series (that is to say,
+$\sum_{-\infty}^{\infty}|\hat{f}(n)|<\infty$)
+then
+\[f(t)=\sum_{-\infty}^{\infty}\hat{f}(n)\exp(int).\]
+\end{lemma}
+\begin{theorem}[Wiener's theorem]\label{Weiner via Banach} 
+Suppose
+$f\in C({\mathbb T})$ has an absolutely convergent
+Fourier series.
+Then, if $f(t)\neq 0$ for all $t\in{\mathbb T}$,
+$1/f$ also has an absolutely convergent
+Fourier series.
+\end{theorem}
+\begin{exercise}\label{Exercise, not many ideals}
+Let $B$ be any Banach space.
+Make it into a Banach algebra by defining $xy=0$
+for all $x,\ y\in B$. Now add an identity in the
+usual manner. Identify all the multiplicative 
+linear functionals.
+\end{exercise}
+\section{The Gelfand representation}
+Throughout
+this section $B$ will be a commutative Banach
+algebra with a unit $e$ and ${\mathcal M}$ will
+be the space of maximal ideals.
+If $x\in B$ and $M\in{\mathcal M}$
+we know by
+Theorem~\ref{Theorem, functionals and ideals}
+that there is a unique multiplicative linear
+functional $\chi_{M}$ with kernel $M$
+so we may write $M(x)=\chi_{M}(x)$.
+We give the space
+${\mathcal M}$ the weak star topology, that
+is to say, the smallest topology containing
+sets of the form
+\[\{M\in {\mathcal M}\,:\ |M(x)-M_{0}(x)|<\epsilon\}\]
+with $M_{0}\in {\mathcal M}$ and $x\in B$.
+\begin{lemma} Under the weak topology ${\mathcal M}$ is
+a compact Hausdorff space.
+\end{lemma}
+
+If $x\in B$ and $M\in{\mathcal M}$ we now write
+$\hat{x}(M)=M(x)$.
+\begin{lemma} Let $B$ be a commutative Banach algebra with unit.
+The mapping $x\mapsto \hat{x}$
+is an algebraic homomorphism of $B$ into $C({\mathcal M})$.
+As linear map from $(B,\|\ \|)$ to $C({\mathcal M},\|\ \|_{\infty})$
+it is continuous with operator norm exactly $1$.
+\end{lemma}
+
+We know that the homomorphism $x\mapsto \hat{x}$
+need not be injective
+\begin{exercise} Justify this statement by considering
+the Banach algebra of Exercise~\ref{Exercise, not many ideals}.
+\end{exercise}
+The following simple observation is the key
+to the question of when we have isomorphism.
+
+\begin{lemma} Suppose $x$ is an element of a 
+commutative Banach algebra with unit.
+Then the complement of the resolvent $R(x)$ is the range of $\hat{x}$.
+\end{lemma}
+That is to say,
+\[\{\hat{x}(M)\,:\,M\in{\mathcal M}\}
+=\{\lambda\in{\mathbb C}\,:\,
+(x-\lambda e)\ \text{is not invertible}\}.\]
+
+There are two immediate corollaries.
+\begin{lemma} If $x$ is an element of a 
+commutative Banach algebra with unit,
+then $\|\hat{x}\|_{\infty}=\rho(x)$.
+\end{lemma}
+\begin{lemma} If $x$ is an element of a 
+commutative Banach algebra with unit,
+then $\rho(x)=0$ if and only if $x$ is contained
+in every maximal ideal.
+\end{lemma}
+
+We make the following definitions.
+\begin{definition} If $B$ is a commutative
+Banach algebra with unit we define the radical of $B$
+to be the set of all elements contained in every
+maximal ideal.
+\end{definition}
+Thus $x\in\operatorname{radical}(B)$ if and only
+if $\rho(x)=0$.
+\begin{definition} We say that a commutative
+Banach algebra with unit is semi-simple if
+and only if its radical consists of $0$ alone.
+\end{definition}
+\begin{theorem} Let $B$ be a commutative Banach algebra with unit.
+The mapping $x\mapsto \hat{x}$
+is injective if and only if $B$ is semi-simple.
+\end{theorem}
+\begin{exercise} Consider the Banach algebra $X$ of continuous
+linear maps $T:l^{\infty}\rightarrow l^{\infty}$.
+Let $S$ be the map given by
+\[S(a_{1},a_{2},\dots)=(0,c_{1}a_{1},c_{2}a_{2},\dots),\]
+with the sequence $c_{j}$ bounded.
+Explain why the closed Banach subalgebra generated by
+$I$ and $S$ is a commutative Banach algebra. Show that
+with an appropriate choice of $c_{j}$ we can have $S^{n}\neq 0$
+for all $n$ but $\rho(S)=0$.
+\end{exercise}
+\begin{theorem} Let $B$ be a commutative Banach algebra with unit.
+If there exists a $K>0$ such that $\|x\|^{2}\leq K\|x^{2}\|$
+for all $x\in B$, then $\rho$ is a norm equivalent to
+the original norm on $B$.
+\end{theorem}
+
+\section{Finding the Gelfand representation}
+Suppose we are given a commutative Banach algebra $B$ and
+we wish to find its Gelfand representation. It is not
+enough to find its maximal ideals (or, equivalently
+its multiplicative linear functionals). We must also
+find the correct topology on the space of maximal ideals.
+The following simple remarks resolve the problem in
+all the cases that we shall consider.
+\begin{exercise} Write out the proof that if $(X,\tau)$
+and $(Y,\sigma)$ are topological spaces
+with $(X,\tau)$ compact and $(Y,\sigma)$ Hausdorff
+then, if $f:(X,\tau)\rightarrow (Y,\sigma)$ is
+a continuous bijection, $f$ is a homeomorphism.
+\end{exercise}
+\begin{lemma} Suppose $\tau$ is a compact
+topology on the space
+${\mathcal M}$ of maximal ideals of commutative Banach
+space $B$ with identity. If the maps 
+$\hat{x}:({\mathcal M},\tau)\rightarrow{\mathbb C}$
+are continuous for each $x\in B$
+then $\tau$ is the weak star topology on ${\mathcal M}$.
+\end{lemma}
+
+Our first identification was adumbrated in our proof of
+Wiener's theorem.
+\begin{example} Consider the space $A({\mathbb T})$
+of continuous functions $f:{\mathbb T}\rightarrow{\mathbb C}$
+with absolutely convergent
+Fourier series (that is to say,
+$\sum_{-\infty}^{\infty}|\tilde{f}(n)|<\infty$
+where $\tilde{f}(n)$ is the $n$th Fourier coefficient). If we set
+\[\|f\|_{A}=\sum_{-\infty}^{\infty}|\tilde{f}(n)|,\]
+then $(A({\mathbb T}),\|\ \|_{A})$ is a commutative
+Banach algebra with unit $1$ under pointwise multiplication.
+$(A({\mathbb T}),\|\ \|_{A})$ has maximal ideal space
+(identified with) ${\mathbb T}$ under its usual topology.
+We have $\hat{f}(t)=f(t)$.
+\end{example}
+\begin{example} The `transform' nature of the Gelfand transform
+is clearer if we seek the maximal ideal space and transform
+associated with the Banach algebra $l^{1}({\mathbb Z})$
+with standard norm and addition and multiplication
+given by convolution (that is ${\mathbf a}*{\mathbf b}={\mathbf c}$
+where $c_{m}=\sum_{r=-\infty}^{\infty}a_{m-r}b_{r}$).
+\end{example}
+
+Here is a variation on the theme.
+\begin{lemma} Let $D=\{z\in{\mathbb C}\,:\,|z|<1\}$
+and $\bar{D}=\{z\in{\mathbb C}\,:\,|z|\leq1\}$.
+Consider $A(D)$ the set of continuous functions
+$f:\bar{D}\rightarrow{\mathbb C}$ such that $f$
+is analytic in $D$. If $f_{1},\ f_{2},\ \dots,\ f_{n}\in A(D)$
+are such that $\sum_{j=1}^{n}|f_{j}(z)|>0$ for all $z\in{\mathbb C}$
+(that is to say that the $f_{j}$ do not vanish simultaneously)
+show that we can find $g_{1},\ g_{2},\ \dots,\ g_{n}\in A(D)$
+such that $\sum_{j=1}^{n}f_{j}(z)g_{j}(z)=1$ for
+all $z\in\bar{D}$.
+\end{lemma}
+We deviate slightly from our main theme to
+introduce some interesting algebras.
+\begin{added}[Lemma] If $K$ is a compact set in ${\mathbb C}$,
+then the following are closed subalgebras of $C(K)$.
+
+(i) $A(K)$ the collection of $f\in C(K)$ such that
+$F$ is analytic on $\Int K$.
+
+(ii) $R(K)$ the collection of $f\in C(K)$ which are
+uniform limits of rational functions with poles outside $K$.
+
+(iii) $P(K)$ the collection of $f\in C(K)$ which are
+uniform limits of polynomials.
+
+We have $C(K)\supseteq A(K)\supseteq R(K)\supseteq P(K)$.
+\end{added}
+\begin{added}[Exercise] (i) If $K$ is the closed unit disc, then
+$P(K)=R(K)=A(K)\neq C(K)$.
+
+(ii) If $K=\{z\,:\,|z|=1\}$, then
+$P(K)\neq R(K)=A(K)=C(K)$.
+\end{added}
+\begin{added}[The Swiss Cheese] There exists a $K$ with
+$R(K)\neq A(K)$.
+\end{added}
+\begin{added}[Exercise] There exists a $K$ with
+$P(K)\neq R(K)\neq A(K)\neq C(K)$.
+\end{added}
+
+
+The next example is a key one in understanding the kind
+of problem we face.
+\begin{example} Consider the sub Banach algebra $A_{+}({\mathbb T})$
+of $A({\mathbb T})$ consisting of elements $f$ of $A({\mathbb T})$
+with $\tilde{f}(n)=0$ for $n<0$. Show that $A_{+}({\mathbb T})$
+has maximal ideal space
+(identified with) ${\mathbb D}$ the closed unit disc.
+We have $\hat{f}(z)=\sum_{n=0}^{\infty}\tilde{f}(n)z^{n}$.
+\end{example}
+\begin{exercise} Consider the sub Banach algebra $A_{-}({\mathbb T})$
+of $A({\mathbb T})$ consisting of elements $f$ of $A({\mathbb T})$
+with $\tilde{f}(n)=0$ for $n>0$. Find the maximal ideal
+space and associated Gelfand transform.
+\end{exercise}
+\begin{exercise} Consider the space $B({\mathbb T})$
+of continuous functions $f:{\mathbb T}\rightarrow{\mathbb C}$
+with
+$\sum_{-\infty}^{\infty}|n\tilde{f}(n)|<\infty$.
+Show that if we set
+\[\|f\|_{B}=\sum_{-\infty}^{\infty}(|n|+1)|\tilde{f}(n)|\]
+then $(B({\mathbb T}),\|\ \|_{B})$ is a commutative
+Banach algebra with unit $1$ under pointwise multiplication.
+Find the maximal ideal
+space and associated Gelfand transform.
+\end{exercise}
+\begin{exercise} Consider the sub Banach algebra $B_{+}({\mathbb T})$
+of $B({\mathbb T})$ consisting of elements $f$ of $B({\mathbb T})$
+with $\tilde{f}(n)=0$ for $n<0$. Find the maximal ideal
+space and associated Gelfand transform.
+\end{exercise}
+
+Our next example is fundamental.
+\begin{example} Let $(X,\tau)$ be a compact Hausdorff
+space. The space $C(X)$
+of continuous functions $f:X\rightarrow{\mathbb C}$
+with the uniform norm is a commutative
+Banach algebra with unit $1$ under pointwise operations.
+$C(X)$ has maximal ideal space
+(identified with) $X$ under its usual topology.
+We have $\hat{f}(t)=f(t)$.
+\end{example}
+
+One way of expressing many of our results is in
+terms of function algebras.
+\begin{definition}\label{Definition, function algebra}
+Let $(X,\tau)$ be a compact Hausdorff
+space. If we consider $C(X)$ as a Banach algebra
+in the usual way then any subalgebra $A$ with
+a norm which makes it a Banach algebra is
+called a function algebra.
+\end{definition}
+\begin{lemma} With the notation of 
+Definition~\ref{Definition, function algebra},
+if $A$ is a function algebra containing $1$
+with norm $\|\ \|$,
+then $\|f\|\geq\|f\|_{\infty}$ for all $f\in A$.
+\end{lemma}
+\begin{lemma} We use the notation of 
+Definition~\ref{Definition, function algebra}.
+
+(i) If
+$A$ separates points (that is, given $x,\, y\in X$
+with $x\neq y$, we can find an $f\in A$ such that
+$f(x)\neq f(y)$),
+if $f\in A$ implies $f^{*}\in A$ and
+if $f(t)\neq 0$ for all $t\in X$ and $f\in A$ implies $1/f\in A$,
+then
+$A$ has maximal ideal space
+(identified with) $X$ under its usual topology.
+We have $\hat{f}(t)=f(t)$.
+
+(ii) If $A$ satisfies (i) and, in addition,
+there exists a $K$ such that
+$\|f\|^{2}\leq K\|f^{2}\|$, then
+$A=C(X)$ and there exists a $\kappa$ such that
+\[\kappa \|f\|_{\infty}\geq\|f\|\geq\|f\|_{\infty}\]
+for all $f\in A$ 
+(so the norms $\|\ \|$ and $\|\ \|_{\infty}$
+are Lipschitz equivalent)
+\end{lemma}
+\begin{exercise} Show that the space $B$
+of continuous functions $f:[0,1]\cup[2,3]\rightarrow{\mathbb C}$
+such that $f(2+t)=f(t)$ for $t\in[0,1]$ equipped with the
+uniform norm
+is a function algebra.
+Find the maximal ideal
+space and associated Gelfand transform.
+\end{exercise}
+
+\begin{exercise} Show that the space $C^{1}([0,1])$
+of once
+continuously differentiable functions equipped
+with norm 
+\[\|f\|=\|f\|_{\infty}+\|f'\|_{\infty}\]
+is a function algebra. 
+Find the maximal ideal
+space and associated Gelfand transform.
+\end{exercise}
+Our final set of results on Gelfand transforms is introduced by the 
+following fairly simple exercise.
+\begin{added}[Exercise] (i) If $B$ is a (not necessarily commutative) 
+Banach algebra with unit
+then $\exp a$ can be defined in a natural manner using power series.
+Show that if $a$ and $b$ commute then
+\[\exp(a+b)=\exp(a)\exp(b).\]
+
+(ii) Show that this result may be false if $a$ and $b$ do not commute.
+
+[Hint: Suppose that $a$ and $d$ do not commute. Consider
+the expression
+$\exp(\eta a+\eta b)-\exp(\eta a)\exp(\eta b)$ when $\eta$ is very
+small.]
+\end{added}
+\begin{added}[Definition] If $B$ is a commutative Banach algebra
+with a unit we say that $B$ has an involution if there
+exists a map $B\rightarrow B$ given by $f\mapsto f^{*}$
+with the following properties.
+
+(i) $f^{**}=f$.
+
+(ii) $(\lambda f)^{*}=\bar{\lambda}f^{*}$ where $\lambda\in{\mathbb C}$
+and $\bar{\lambda}$ is the complex conjugate of $\lambda$.
+
+(iii) $(f+g)^{*}=f^{*}+g^{*}$.
+
+(iv) $(fg)^{*}=f^{*}g^{*}$.
+
+(v) $\|ff^{*}\|=\|f\|^{2}$
+\end{added}
+\begin{added}[Theorem] If $B$ is a commutative Banach algebra
+with a unit and $B$ has an involution   $f\mapsto f^{*}$
+then the Gelfand transform $B\rightarrow C({\mathcal M})$
+is a norm preserving isomorphism with $(f^{*})\hat{\ }=(f\hat{\ })\bar{\ }$.
+\end{added}
+\begin{added}[Corollary] Suppose that $V$ is a finite dimensional
+complex inner product space and
+$\alpha:V\rightarrow V$
+is a linear map which is normal 
+(that is to say $\alpha\alpha^{*}=\alpha^{*}\alpha$
+where $\alpha^{*}$ denotes the adjoint map). Then we can
+find a set $\pi_{1}$, $\pi_{2}$, \dots, $\pi_{m}$
+of commuting orthogonal projections and $\lambda_{1}$, $\lambda_{2}$,
+\dots, $\lambda_{m}\in{\mathbb C}$ such that
+\[\alpha=\sum_{j=1}^{m}\lambda_{j}\pi_{j}.\]
+\end{added}
+The result and proof extend without problems to
+normal compact operators on Hilbert space.
+The general
+spectral theorem for normal operators in Hilbert space
+can also be obtained in the same way but requires some discussion
+of integration theory.
+\begin{added}[Exercise] Consider the Banach algebra of $n\times n$
+complex matrices. 
+Let $A$ be an $n\times n$ diagonal matrix.
+Write down a typical matrix in the closed subalgebra generated
+by $A$, $A^{*}$ and $I$. What are the multiplicative linear functionals.
+\end{added}
+\section{Three more uses of Hahn-Banach} The following exercise
+provides background for our first discussion but is not examinable.
+For the moment $C([a,b])$ will be the set of real valued
+continuous functions.
+\begin{exercise} We say that a function $G:[a,b]\rightarrow{\mathbb R}$
+is of bounded variation if there exists a $K$ such that
+whenever we have a dissection 
+\[{\mathcal D}=\{x_{0},\ x_{1},\ x_{2},\ \dots,\ x_{n}\}\]
+$a=x_{0}<x_{1}<x_{2}<\dots<x_{n}=b$ we have
+\[\sum_{j=1}^{n}|G(x_{j})-G(x_{j-1})|\leq K.\]
+We write
+\[\|G\|_{BV}=\sup_{\mathcal D}\sum_{j=1}^{n}|G(x_{j})-G(x_{j-1})|\]
+where the supremum is taken over all possible dissections.
+
+Suppose $f:[a,b]\rightarrow{\mathbb R}$ is continuous.
+Let us write
+\[S({\mathcal D},f,G)=\sum_{j=1}^{n}f(x_{j})\big(G(x_{j})-G(x_{j-1})\big).\]
+If ${\mathcal D}=\{x_{0},\ x_{1},\ x_{2},\ \dots,\ x_{n}\}$
+and ${\mathcal D'}=\{x_{0}',\ x_{1}',\ x_{2}',\ \dots,\ x_{n'}'\}$
+are such that $|f(t)-f(s)|<\epsilon$ for all $t,\ s\in[x_{j-1},x_{j}]$
+$[1\leq j\leq n]$ and for all $t,\ s\in[x_{j-1}',x_{j}']$
+$[1\leq j\leq n']$ show by considering 
+${\mathcal D}\cup{\mathcal D'}$, or otherwise that
+\[|S({\mathcal D},f,G)-S({\mathcal D}',f,G)|\leq 2K\epsilon.\]
+
+Hence, or otherwise, show that there exists a unique $I(f,G)$
+such that, given any $\epsilon>0$ we can find a $\delta>0$
+such that, given any 
+\[{\mathcal D}=\{x_{0},\ x_{1},\ x_{2},\ \dots,\ x_{n}\}\]
+with $|x_{j-1}-x_{j}|<\delta$ $[1\leq j\leq n]$ we have
+\[|S({\mathcal D},f,G)-I(f,G)|<\epsilon.\] 
+
+We write 
+\[I(f,G)=\int_{a}^{b}f(t)\,dG(t).\]
+
+(i) Let $[a,b]=[0,1]$. Find elementary expressions
+for $\int_{a}^{b}f(t)\,dG(t)$ 
+in the three cases when $G(t)=t$, when $G(t)=-t$
+and when $G(t)=0$ for $t<1/2$, $G(t)=1$ for $t\geq 1/2$.
+
+(ii) Show that the map $T:(C([a,b]),\|\ \|_{\infty})\rightarrow{\mathbb R}$
+given by
+\[Tf=\int_{a}^{b}f(t)\,dG(t)\]
+is linear and continuous with $\|T\|\leq\|G\|_{BV}$.
+\end{exercise}
+(In order to obtain the more satisfactory result $\|T\|=\|G\|_{BV}$
+we must put an extra condition on $G$ such as left continuity.)
+\begin{added}[Exercise] (i) Suppose $G:{\mathbb R}\rightarrow{\mathbb R}$
+is of bounded variation in every interval $[a,b]$. 
+Show that if we write
+\[G_{+}(t)=G(a)+\sup\left\{\sum_{j=1}^{m}G(b_{j})-G(a_{j})
+\,:\,a\leq a_{1}\leq b_{1}\leq a_{2}\leq b_{2}\leq\dots\leq
+a_{m}\leq b_{m}\leq t,\ m\geq 1\right\}\]
+and
+\[G_{-}(t)=\sup\{\sum_{j=1}^{m}G(a_{j})-G(b_{j})
+\,:\,a\leq a_{1}\leq b_{1}\leq a_{2}\leq b_{2}\leq\dots\leq
+a_{m}\leq b_{m}\leq t,\ m\geq 1\}\]
+then $G_{+},\,G_{-}:[a,b]\rightarrow{\mathbb R}$
+are increasing functions with
+\[G(t)=G_{+}(t)-G_{-}(t)\]
+and $\|G\|_{BV}=(G_{+}(b)-G_{+}(a))+(G_{-}(b)-G_{-}(a))$.
+
+(ii) By first considering increasing functions, or otherwise,
+show that if $G$ is a function of bounded variation in every interval
+then the left and right limits
+\[G(t+)=\lim_{h\rightarrow 0,h>0}G(t+h), 
+G(t-)=\lim_{h\rightarrow 0,h>0}G(t-h)\]
+exist everywhere. 
+\end{added}
+\begin{theorem} If $T:C([a,b])\rightarrow{\mathbb R}$
+is a continuous linear function then we can find
+a left continuous function $G:{mathbb R}\rightarrow{\mathbb R}$
+of bounded variation in every interval such that
+\[Tf=\int_{a}^{b}f(t)\,dG(t)\]
+for all $f\in C([a,b])$.
+\end{theorem}
+
+If you know a little measure theory you can restate
+the theorem in more modern language.
+\begin{theorem} {\bf (The Riesz representation theorem.)}
+The dual of $C([a,b])$ is the space of Borel
+measures on $[a,b]$.
+\end{theorem}
+The method used can easily be extended to all compact
+spaces.
+
+Our second result is more abstract. We require
+Aloaoglu's theorem.
+\begin{theorem} The unit ball of the dual of a normed
+space $X$ is compact in the weak star topology.
+\end{theorem}
+Our proof of the Riesz representation theorem
+used the Hahn-Banach theorem as a convenience.
+Our proof of the next result uses it as basic
+ingredient.
+\begin{theorem} Every Banach space is isometrically
+isomorphic to some subspace of $C(K)$ for some
+compact space $K$.
+\end{theorem}
+(In my opinion this result looks more interesting
+than it is.)
+
+Our third result requires us to recast 
+the Hahn Banach theorem in a geometric form.
+\begin{lemma}\label{L;geometrical Banach} 
+If $V$ is a real normed space
+and $E$ is a convex subset of $V$ containing
+$B({\boldsymbol 0},\epsilon)$ for some $\epsilon>0$,
+then, given any ${\mathbf x}\notin E$ we can find
+a continuous linear map $T:V\rightarrow{\mathbb R}$
+such that $T{\mathbf x}=1\geq T{\mathbf e}$ for
+all ${\mathbf e}\in E$.
+\end{lemma}
+\begin{theorem} 
+If $V$ is a real normed space
+and $F$ is a closed convex subset of $V$,
+then, given any ${\mathbf x}\notin F$ we can find
+a continuous linear map $T:V\rightarrow{\mathbb R}$
+and a real $\alpha$
+such that $T{\mathbf x}>\alpha>T{\mathbf k}$ for
+all ${\mathbf k}\in F$.
+\end{theorem}
+\begin{definition} Let $V$ be a real or complex
+vector space. If $K$ is a non-empty subset of $V$
+we say that $E\subseteq K$ is an \emph{extreme set}
+of $K$ if, whenever $u,\ v\in K$, $1>\lambda>0$
+and $\lambda u+(1-\lambda)v\in E$, it follows that
+$u,\ v\in E$. If $\{e\}$ is an extreme set we
+call $e$ an extreme point.
+\end{definition}
+\begin{exercise} Define an extreme point directly.
+\end{exercise}
+\begin{exercise} We work in ${\mathbb R}^{2}$.
+Find the extreme points, if any, of the following sets
+and prove your statements.
+
+(i) $E_{1}=\{{\mathbf x}\,:\,\|{\mathbf x}\|<1\}$.
+ 
+(ii) $E_{2}=\{{\mathbf x}\,:\,\|{\mathbf x}\|\leq 1\}$.
+
+(iii) $E_{3}=\{(x,0)\,:\,x\in{\mathbb R}\}$.
+
+(iv) $E_{4}=\{(x,y)\,:\,|x|,|y|\leq 1\}$.
+\end{exercise}
+\begin{theorem}{\bf (Krein-Milman).} A non-empty
+compact convex subset $K$ of a normed vector space
+has at least one extreme point.
+\end{theorem}
+\begin{theorem} A non-empty
+compact convex subset $K$ of a normed vector space
+is the closed convex hull of its extreme points
+(that is, is the smallest closed convex set
+containing its extreme points).
+\end{theorem}
+Our hypotheses in our version of the Krein-Milman theorem
+are so strong as to make the conclusion practically useless.
+However the hypotheses can be much weakened as is indicated
+by the following version.
+\begin{theorem}{\bf (Krein-Milman).} Let $E$
+be the dual space of a normed vector space.
+A non-empty
+convex subset $K$ which is compact in the weak star topology
+has at least one extreme point.
+\end{theorem}
+\begin{theorem} Let $E$
+be the dual space of a normed vector space.
+A non-empty
+convex subset $K$ which is compact in the weak star topology
+is the weak star closed convex hull of its extreme points.
+\end{theorem}
+The results follow at once from a new version of 
+Lemma~\ref{L;geometrical Banach}
+\begin{added}[Lemma]
+If $V$ is a real normed space
+and $E$ is a convex subset of the dual space $V'$ containing
+an open neighbourhood of ${\boldsymbol 0}$,
+then, given any ${\mathbf x}\notin E$ we can find
+a continuous linear map $T:V\rightarrow{\mathbb R}$
+such that $T{\mathbf x}=1\geq T{\mathbf e}$ for
+all ${\mathbf e}\in E$.
+\end{added}
+
+\begin{lemma} The extreme points of the closed
+unit ball of the dual of $C([0,1])$ are the delta masses
+$\delta_{a}$ and $-\delta_{a}$ with $a\in[0,1]$.
+\end{lemma}
+ 
+
+
+\section{The Rivlin-Shapiro formula} In this section
+we give an elegant use of extreme points due to
+Rivlin and Shapiro.
+\begin{lemma}{\bf Carath\'{e}odory}
+We work in ${\mathbb R}^{n}$. Suppose
+that ${\mathbf x}\in{\mathbb R}^{n}$ and we are given
+a finite set of points ${\mathbf e}_{1}$,
+${\mathbf e}_{2}$, \dots, ${\mathbf e}_{N}$ and positive
+real numbers $\lambda_{1}$, $\lambda_{2}$, \dots, $\lambda_{N}$
+such that
+\[\sum_{j=1}^{N}\lambda_{j}=1,
+\ \sum_{j=1}^{N}\lambda_{j}{\mathbf e}_{j}={\mathbf x}.\]
+Then {\bf after renumbering} the ${\mathbf e}_{j}$
+we can find positive
+real numbers $\lambda_{1}'$, $\lambda_{2}'$, \dots, $\lambda_{m}'$
+with $m\leq n+1$ such that
+\[\sum_{j=1}^{m}\lambda_{j}'=1,
+\ \sum_{j=1}^{m}\lambda_{j}'{\mathbf e}_{j}={\mathbf x}.\]
+\end{lemma}
+\begin{added}[Exercise] Show by means of an example
+that we can not necessarilly 
+take $m=n$ in Carath\'{e}odory's lemma.
+\end{added} 
+\begin{lemma}\label{Shapiro 1} 
+Consider ${\mathcal P}_{n}$, the subspace
+of $C([-1,1])$ consisting of real polynomials of degree
+$n$ or less. If $S:{\mathcal P}_{n}\rightarrow{\mathbb R}$
+is linear then we can find an $N\leq n+2$
+and 
+distinct points $x_{1}$, $x_{2}$, \dots, $x_{N}\in[-1,1]$
+and non-zero
+real numbers $\lambda_{1}$, $\lambda_{2}$, \dots, $\lambda_{N}$
+such that
+\[\sum_{j=1}^{N}|\lambda_{j}|=1,
+\ \|S\|\sum_{j=1}^{N}\lambda_{j}P(x_{j})=SP\]
+for all $P\in{\mathcal P}_{n}$. 
+\end{lemma}
+\begin{lemma}\label{Shapiro 2} 
+We continue with the hypotheses
+and notation of Lemma~\ref{Shapiro 1}
+There exists a $P_{*}\in{\mathcal P}_{n}$ such that
+\[P_{*}(x_{j})=\|P_{*}\|_{\infty}\sgn\lambda_{j}\]
+for all $j$ with $0\leq j\leq N$.
+Further, if $P\in{\mathcal P}_{n}$ satisfies
+\[P(x_{j})=\|P\|_{\infty}\sgn\lambda_{j}\]
+then $\|P\|_{\infty}\|S\|=SP$.
+\end{lemma}
+
+The following
+results are of considerable interest
+in view of Lemma~\ref{Shapiro 2}.
+\begin{lemma} We have $\cos n\theta=T_{n}(\cos\theta)$
+where $T_{n}$ is a real polynomial of degree $n$.
+Further
+
+(i) $|T_{n}(x)|\leq 1$ for all $x\in [-1,1]$.
+
+(ii) There exist $n+1$ 
+distinct points $x_{1}$, $x_{2}$, \dots, $x_{n+1}\in[-1,1]$
+such that $|T_{n}(x_{j})|=1$ for all $1\leq j\leq n+1$.
+\end{lemma}
+\begin{lemma}\label{L;Tchebychev extremme}
+Suppose that $P$ is a real polynomial of degree
+$n$ or less such that
+
+(i) $|P(x)|\leq 1$ for all $x\in [-1,1]$ and
+
+(ii) there exist $n+1$ 
+distinct points $x_{1}$, $x_{2}$, \dots, $x_{n+1}\in[-1,1]$
+such that $|P(x_{j})|=1$ for all $1\leq j\leq n+1$.
+
+\noindent Then $P=\pm T_{n}$.
+\end{lemma}
+Note that Lemma~\ref{L;Tchebychev extremme} tells
+us that there is no  real polynomial of degree
+$n$ or less which takes its extreme absolute value
+on $[-1,1]$ at $n+2$ points. (Thus we can replace the condition
+$N\leq n+2$ in Lemma~\ref{Shapiro 1} by $N\leq n+1$.)
+\begin{theorem}If
+$P$ is a real polynomial of degree at most $n$
+and $t\notin[-1,1]$, then
+\[|P(t)|\leq \sup _{|x|\leq 1}|P(x)||T_{n}(t)|.\]
+\end{theorem}
+\begin{exercise} If
+$P$ is a real polynomial of degree at most $n$
+and $t\notin[-1,1]$, then
+then
+\[|P^{(r)}(t)|\leq |T^{(r)}(t)|\sup_{|x|\leq 1}|P(x)|.\]
+\end{exercise}
+\begin{exercise} (This exercise is part of the course.)
+(i) Show that if $n\geq 1$ the coefficient of $t^{n}$ in
+$T_{n}(t)$ is $2^{n-1}$.
+
+(ii) Show that if $n\geq 1$ and $P$ is a real polynomial
+of degree $n$ or less with $|P(t)|\leq 1$ then 
+the coefficient of $t^{n}$ in
+$P(t)$ has absolute value at most $2^{n-1}$.
+
+(iii) Find, with proof, a polynomial $P$ of degree at
+most $n-1$ which minimises
+\[\sup_{t\in[-1,1]}|t^{n}-P(t)|.\]
+Show that $P$ is unique. (Tchebychev introduced his polynomials
+$T_{n}$ in this context.)
+\end{exercise}
+
+   
+\begin{thebibliography}{9}
+\bibitem{Bollobas} B. Bollob\'as \emph{Linear Analysis
+: an Introductory Course} (CUP 1991)
+\bibitem{Gofman}
+C. Gofman and G. Pedrick \emph{A First
+Course in Functional Analysis} (Prentice Hall 1965,
+available as a Chelsea reprint from the AMS)
+\bibitem{Pryce} J. D. Pryce \emph{Basic Methods of Linear Functional
+Analysis} (Hutchinson 1973)
+\bibitem{Rudin 1}
+W. Rudin \emph{Real and Complex Analysis} (McGraw Hill, 2nd Edition, 1974)
+\bibitem{Rudin 2}
+W. Rudin \emph{Functional Analysis} (McGraw Hill 1973)
+\end{thebibliography}
