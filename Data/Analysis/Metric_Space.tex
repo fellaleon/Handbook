@@ -133,7 +133,7 @@ Let $(X,d)$ a metric space. Then a map $f:\Z^+\to X$ is defined to a sequence $(
 \subsection{Convergence in metric space}
 
 \begin{definition}[convergence\index{convergence!metric space}, limit\index{limit!metric space}]\label{def:limit_convergence_metric_space}
-Consider a sequence $\bb{x_{n}}$ in a metric space $(X,d)$. If for $x\in X$ and any $\ve > 0$, we can find an integer $N\geq 1$ (depending on $\ve$) such that
+Consider a sequence $\brb{x_{n}}$ in a metric space $(X,d)$. If for $x\in X$ and any $\ve > 0$, we can find an integer $N\geq 1$ (depending on $\ve$) such that
 \be
 d(x_{n},x)<\ve \quad \text{for all $n\geq N$},
 \ee
@@ -143,7 +143,7 @@ In other words, $x_{n} \to x$ if for any $\ve>0$ there eixsts $N\geq 1$ such tha
 \end{definition}
 
 \begin{theorem}[uniqueness of limit]\label{thm:limit_unique_metric_space}
-Let $(X,d)$ be a metric space. If a sequence $\bb{x_{n}}$ has a limit then that limit is unique.
+Let $(X,d)$ be a metric space. If a sequence $\brb{x_{n}}$ has a limit then that limit is unique.
 \end{theorem}
 
 \begin{proof}[\bf Proof]
@@ -163,25 +163,25 @@ Since $\ve$ was arbitrary, $d(x,y)=0$ and therefore $x=y$ by definition.
 \subsection{Cauchy sequence}
 
 \begin{definition}[Cauchy sequence\index{Cauchy sequence!metric space}]\label{def:cauchy_sequence_metric_space}
-A sequence $(x_n)$ in a metric space $(X,d)$ is called Cauchy sequence if for any $\ve>0$ there exists $N\in \Z^+$ such that 
+A sequence $(x_n)$ in a metric space $(X,d)$ is called Cauchy sequence if for any $\ve>0$ there exists $N\in \Z^+$ such that
 \be
-d\bb{x_m,x_n} <\ve,\qquad\text{whenever }m,n\geq N.
+d\brb{x_m,x_n} <\ve,\qquad\text{whenever }m,n\geq N.
 \ee
 \end{definition}
 
 \begin{proposition}\label{pro:convergent_sequence_is_cauchy_sequence_metric}
-Any convergent sequence in a metric space is a Cauchy sequence. 
+Any convergent sequence in a metric space is a Cauchy sequence.
 \end{proposition}
 
 \begin{proof}[\bf Proof]
-Suppose that sequence $(x_n)$ converges to $x$ in metric space $(X,d)$. Then given $\ve>0$, there exists $N\in \Z^+$ such that 
+Suppose that sequence $(x_n)$ converges to $x$ in metric space $(X,d)$. Then given $\ve>0$, there exists $N\in \Z^+$ such that
 \be
-d\bb{x_n,x} <\ve/2,\quad \text{for all }n\geq N.
+d\brb{x_n,x} <\ve/2,\quad \text{for all }n\geq N.
 \ee
 
 So for $m,n\geq N$ the triangle inequality gives
 \be
-d(x_m,x_n) \leq d\bb{x_m,x} + d\bb{x_n,x} < \ve/2 + \ve/2 = \ve
+d(x_m,x_n) \leq d\brb{x_m,x} + d\brb{x_n,x} < \ve/2 + \ve/2 = \ve
 \ee
 which implies that $(x_n)$ is a Cauchy sequence.
 \end{proof}
@@ -373,7 +373,7 @@ x\in \bigcap_{j=1}^{n} U_{j}\quad \text{whenever}\ d(x,e)<\delta \ \ra\ \text{ $
 
 \subsection{Closed sets in metric space}
 
-Besides open set, the second class of well behaved sets identified by Cantor were the closed sets. In order to define closed sets in metric spaces we need the notion of limit (see Definition \ref{def:limit_convergence_metric_space}). Fortunately, the classical definition generalises without difficulty. Now we generalize the notion of `closed interval' $[a,b]$ in $\R$. 
+Besides open set, the second class of well behaved sets identified by Cantor were the closed sets. In order to define closed sets in metric spaces we need the notion of limit (see Definition \ref{def:limit_convergence_metric_space}). Fortunately, the classical definition generalises without difficulty. Now we generalize the notion of `closed interval' $[a,b]$ in $\R$.
 
 \begin{definition}[closed set\index{closed set!metric space}]\label{def:closed_set_metric_space}
 Let $(X,d)$ be a metric space. A set $V\subseteq X$ is said to be closed if, whenever $x_{n}\in V$ and $x_{n}\to x$ as $n\to\infty$, it follows that $x\in V$.
@@ -450,7 +450,7 @@ If $(X,d)$ is a metric space, then the following statements are true.
 
 \item [(ii)] Since $V_i$ is closed, $X\bs V_i$ is open for all $i \in I$. It follows that (by De Morgan laws, Theorem \ref{thm:basic_set_properties}.(viii))
 \be
-X\left\bs \bigcap_{i\in I} V_i \right. = \bigcup_{i\in I}\bb{X\bs V_i}
+X\left\bs \bigcap_{i\in I} V_i \right. = \bigcup_{i\in I}\brb{X\bs V_i}
 \ee
 is open (by Theorem \ref{thm:open_set_metric}.(ii)) and so $\bigcap_{i\in I} V_i$ is closed.
 
@@ -594,7 +594,7 @@ Conversely, if $\ol{A} = A$ we can show that $X\bs A$ is open in $X$, hence $A$ 
 
 \item [(vi)] Obviously, $A\subseteq \ol{A}$ from (i). Suppose $B$ is any closed subset of $X$ containing $A$ ($A\subseteq B$). We can have $\ol{A}\subseteq \ol{B}$ by (ii). But by (iii) we have $\ol{B} = B$ since $B$ is closed. Thus, $\ol{A}\subseteq B$ as required.
 
-Another way of expressing (vi) is to say that $\ol{A}$ is the intersection, call it $B$, of all sets which are both closed in $X$ and contain $A$. By Theorem \ref{thm:closed_set_metric_space}, $B$ is also closed in $X$ and $B$ contains $A$. Thus, $A\subseteq B$ implies $\ol{A} \subseteq B$. However, $\ol{A}$ is itself closed in $X$ by (v) and it contains $A$ by (i), so it is one of the sets we take the intersection of to form $B$, so $B\subseteq \ol{A}$. This implies that $B = \ol{A}$. 
+Another way of expressing (vi) is to say that $\ol{A}$ is the intersection, call it $B$, of all sets which are both closed in $X$ and contain $A$. By Theorem \ref{thm:closed_set_metric_space}, $B$ is also closed in $X$ and $B$ contains $A$. Thus, $A\subseteq B$ implies $\ol{A} \subseteq B$. However, $\ol{A}$ is itself closed in $X$ by (v) and it contains $A$ by (i), so it is one of the sets we take the intersection of to form $B$, so $B\subseteq \ol{A}$. This implies that $B = \ol{A}$.
 \een
 \end{proof}
 
@@ -642,7 +642,7 @@ since $\bigcap_{i\in I}\ol{A_i}$ is closed by Theorem \ref{thm:closed_set_metric
 
 
 \begin{theorem}\label{thm:sequence_convergence_in_closure_metric_space}
-Suppose that $A$ is a subset of a metric space $(X,d)$ and $(x_n)$ is a sequence in $A$ converges to a point $x\in X$. Then $x\in \ol{A}$. 
+Suppose that $A$ is a subset of a metric space $(X,d)$ and $(x_n)$ is a sequence in $A$ converges to a point $x\in X$. Then $x\in \ol{A}$.
 \end{theorem}
 
 \begin{proof}[\bf Proof]
@@ -651,7 +651,7 @@ Since $(x_n)$ converges to $x$, then for any $\ve>0$ we have that $x_n \in B_\ve
 
 
 \begin{corollary}
-If $A$ is closed subset of a metric space $(X,d)$ and $(x_n)$ is a sequence of points in $A$ which converges to a point $x\in X$. Then $x\in A$. 
+If $A$ is closed subset of a metric space $(X,d)$ and $(x_n)$ is a sequence of points in $A$ which converges to a point $x\in X$. Then $x\in A$.
 \end{corollary}
 
 \begin{proof}[\bf Proof]
@@ -667,7 +667,7 @@ For analysis it is often useful to consider limit points as well as closure.
 \begin{definition}[limit point\index{limit point!metric space}]\label{def:limit_point_metric_space}%{def:limit_point}
 A point $x$ in a metric space $(X,d)$ is said to be a limit point of a subset $A\in X$ if given $\ve>0$ there is a point in $B_\ve(x)\cap A$ other than $x$ itself, i.e.,
 \be
-\bb{B_\ve(x)\bs\bra{x}}\cap A \neq \emptyset.
+\brb{B_\ve(x)\bs\bra{x}}\cap A \neq \emptyset.
 \ee
 \end{definition}
 
@@ -692,7 +692,7 @@ Let $(X,d)$ be a metric space and $A$ be any subset of $X$. Then $\ol{A}$ is the
 \begin{proof}[\bf Proof]
 Let $B$ be the union of $A$ with all its limit points in $X$. We have already noted that from the definitions all limit points of $A$ in $X$ are contained in $\ol{A}$. Also, we have $A\subseteq \ol{A}$ by Proposition \ref{pro:closure_properties_metric_space}.(i). Therefore, $B\subseteq \ol{A}$.
 
-Conversely suppose $x\in \ol{A}$. If $x\in A$ then $x\in B$ as required. Suppose $x\notin A$. Then since $x\in \ol{A}$, for any $\ve>0$ we know that $B_\ve(x)\cap A \neq \emptyset$. Since $x\notin A$, we have that $\bb{B_\ve(x)\bs{x}}\cap A \neq \emptyset$ so $x$ is a limit point of $A$ in $X$. Thus, $x\in B$. Hence, $\ol{A}\subseteq B$ and this implies that $B = \ol{A}$ as required.
+Conversely suppose $x\in \ol{A}$. If $x\in A$ then $x\in B$ as required. Suppose $x\notin A$. Then since $x\in \ol{A}$, for any $\ve>0$ we know that $B_\ve(x)\cap A \neq \emptyset$. Since $x\notin A$, we have that $\brb{B_\ve(x)\bs{x}}\cap A \neq \emptyset$ so $x$ is a limit point of $A$ in $X$. Thus, $x\in B$. Hence, $\ol{A}\subseteq B$ and this implies that $B = \ol{A}$ as required.
 \end{proof}
 
 Thus, we have the following corollary.
@@ -724,26 +724,26 @@ The interior $\inter{A}$ of a subset $A$ in metric space $(X,d)$ is the set of p
 \begin{proposition}\label{pro:relation_between_closure_and_interior}
 Let $(X,d)$ be a metric space and $A$ is any subset of $X$. Then
 \be
-\inter{A} = X\left\bs\bb{ \ol{X\bs A} }\right.\qquad (\text{or } \ol{X\bs A} = X\left\bs \inter{A}\right.)% \ol{A^c} = \bb{\inter{A}}^c )
+\inter{A} = X\left\bs\brb{ \ol{X\bs A} }\right.\qquad (\text{or } \ol{X\bs A} = X\left\bs \inter{A}\right.)% \ol{A^c} = \brb{\inter{A}}^c )
 \ee
 \end{proposition}
 
 \begin{proof}[\bf Proof]
 Suppose that $A$ is any subset in $X$.
 
-For any $x\in \ol{A}$, if $x\in \inter{\bb{X\bs A}}$ then $x\in X\bs A$ and there exists $\ve>0$ such that $B_\ve(x) \subseteq X\bs A$. This implies that $B_\ve(x) \cap A = \emptyset$ and thus $x\notin \ol{A}$. Contradiction. Thus, $x\in X\left\bs\inter{\bb{X\bs A}}\right.$. This is actually
+For any $x\in \ol{A}$, if $x\in \inter{\brb{X\bs A}}$ then $x\in X\bs A$ and there exists $\ve>0$ such that $B_\ve(x) \subseteq X\bs A$. This implies that $B_\ve(x) \cap A = \emptyset$ and thus $x\notin \ol{A}$. Contradiction. Thus, $x\in X\left\bs\inter{\brb{X\bs A}}\right.$. This is actually
 \be
-\ol{A}\subseteq X\left\bs\inter{\bb{X\bs A}}\right. \ \ra\ \inter{\bb{X\bs A}} \subseteq X\left\bs\ol{A}\right..
+\ol{A}\subseteq X\left\bs\inter{\brb{X\bs A}}\right. \ \ra\ \inter{\brb{X\bs A}} \subseteq X\left\bs\ol{A}\right..
 \ee
 
 For any $x\in X\left\bs\ol{A}\right.$, there exists $\ve>0$ such that $B_\ve(x)\cap A = \emptyset$. This implies that $B_\ve(x)\subseteq (X\bs A)$. Also, by Proposition \ref{pro:closure_properties_metric_space}.(i)
 \be
-A \subseteq \ol{A} \ \ra\ X\left\bs\ol{A}\right. \subseteq X\bs A \ \ra\ x \in X\bs A \ \ra\ x\in \inter{\bb{X\bs A}}.
+A \subseteq \ol{A} \ \ra\ X\left\bs\ol{A}\right. \subseteq X\bs A \ \ra\ x \in X\bs A \ \ra\ x\in \inter{\brb{X\bs A}}.
 \ee
 
-This gives that $X\left\bs\ol{A}\right.\subseteq \inter{\bb{X\bs A}}$ and thus $X\left\bs\ol{A}\right.= \inter{\bb{X\bs A}}$.
+This gives that $X\left\bs\ol{A}\right.\subseteq \inter{\brb{X\bs A}}$ and thus $X\left\bs\ol{A}\right.= \inter{\brb{X\bs A}}$.
 
-Then we can replace $A$ by $X\bs A$ and get $X\left\bs\bb{\ol{X\bs A}}\right.= \inter{A} \ \lra\ \ol{X\bs A}= X\left\bs\inter{A}\right.$ as required.
+Then we can replace $A$ by $X\bs A$ and get $X\left\bs\brb{\ol{X\bs A}}\right.= \inter{A} \ \lra\ \ol{X\bs A}= X\left\bs\inter{A}\right.$ as required.
 \end{proof}
 
 
@@ -761,7 +761,7 @@ Let $A,B$ be subsets of a metric space $(X,d)$. Then
 \end{proposition}
 
 \begin{remark}
-Note that we can prove these properties by relating interior to closure (see Proposition \ref{pro:relation_between_closure_and_interior}, $\inter{A} = X\left\bs\bb{ \ol{X\bs A} }\right.$) and applying Proposition \ref{pro:closure_properties_metric_space} and Theorem \ref{thm:closed_complements_open_metric_space}.
+Note that we can prove these properties by relating interior to closure (see Proposition \ref{pro:relation_between_closure_and_interior}, $\inter{A} = X\left\bs\brb{ \ol{X\bs A} }\right.$) and applying Proposition \ref{pro:closure_properties_metric_space} and Theorem \ref{thm:closed_complements_open_metric_space}.
 \end{remark}
 
 \begin{proof}[\bf Proof]
@@ -802,7 +802,7 @@ Given a subset $A$ of metric space $(X,d)$, a point $x\in X$ is in $\partial A$ 
 \begin{proof}[\bf Proof]
 Suppose $x\in \partial A$ and this gives that $x\in \ol{A}$ and $x\notin\inter{A}$. Then for any $\ve>0$, $x\in \ol{A}$ implies that $A\cap B_\ve(x)\neq \emptyset$. Also, $x\notin \inter{A}$ so we have two cases: (i) $x\in A$ and $B_\ve(x) \nsubseteq A$ and (ii) $x\notin A$. But both cases show that $(X\bs A)\cap B_\ve(x)\neq \emptyset$.
 
-Conversely suppose that $A\cap B_\ve(x)$ and $(X\bs A)\cap B_\ve(x)$ are non-empty, for any choice of $\ve>0$. Then by definition we can have $x\in \ol{A}$ and $x\notin \inter{A}$ which implies that $x\in \partial A$. 
+Conversely suppose that $A\cap B_\ve(x)$ and $(X\bs A)\cap B_\ve(x)$ are non-empty, for any choice of $\ve>0$. Then by definition we can have $x\in \ol{A}$ and $x\notin \inter{A}$ which implies that $x\in \partial A$.
 \end{proof}
 
 
@@ -819,23 +819,23 @@ Let $(X,d)$ be a metric space and $A$ be any subset in $X$. Then
 \begin{proof}[\bf Proof]
 \ben
 \item [(i)] First $A\bs \partial A \subseteq \ol{A}\bs \partial A = \inter{A}$ since $A\subseteq \ol{A}$. Also, since $\inter{A} \subseteq A$ by Proposition \ref{pro:interior_properties_metric_space}.(i), we have $\inter{A} = \inter{A}\bs \partial A \subseteq A\bs \partial A$. Therefore, $\inter{A} = A\bs \partial A$.
-    
+
 \item [(ii)] ($\ra$). If $A$ is closed then $A = \ol{A}$ by Proposition \ref{pro:closure_properties_metric_space}, so $\partial A \subseteq \ol{A} = A$.
 
-($\la$). If $A$ contains $\partial A$, we have that 
+($\la$). If $A$ contains $\partial A$, we have that
 \be
 \inter{A} \subseteq A \ \ra\ \ol{A} = \inter{A}\cup \partial A \subseteq A \cup \partial A = A
 \ee
 which implies that $A = \ol{A}$ and $A$ is closed.
 
-\item [(iii)] By Proposition \ref{pro:relation_between_closure_and_interior}, we have that 
+\item [(iii)] By Proposition \ref{pro:relation_between_closure_and_interior}, we have that
 \be
-\inter{A} = X\left\bs \bb{\ol{X\bs A}}\right.
+\inter{A} = X\left\bs \brb{\ol{X\bs A}}\right.
 \ee
 
 Then substituting this into the definition of boundary, we have
 \be
-\partial A = \ol{A} \left\bs \inter{A}\right. = \ol{A} \cap \bb{X \left\bs \inter{A}\right.} = \ol{A} \cap \ol{X\bs A}.
+\partial A = \ol{A} \left\bs \inter{A}\right. = \ol{A} \cap \brb{X \left\bs \inter{A}\right.} = \ol{A} \cap \ol{X\bs A}.
 \ee
 
 The second equality follows by symmetry.
@@ -868,7 +868,7 @@ A subset $A$ of a metric space $(X,d)$ is said to be dense in $(X,d)$ if $\ol{A}
 \begin{definition}[diameter]
 Let $A$ be a subset of metric space $(X,d)$. Then its diameter by
 \be
-\diam\bb{A} := \sup_{z,w\in A}d(z,w).
+\diam\brb{A} := \sup_{z,w\in A}d(z,w).
 \ee
 \end{definition}
 
@@ -1002,7 +1002,7 @@ A metric space $(X,d)$ is connected if the only subsets of $X$ which are both op
 \end{definition}
 
 \begin{remark}
-Equivalently, with the similar argument in Definition \ref{def:connected_set_complex_space} $X$ is connected if we cannot find two non-empty disjoint open sets $X_1$ and $X_2$ such that $X = X_1\cup X_2$. 
+Equivalently, with the similar argument in Definition \ref{def:connected_set_complex_space} $X$ is connected if we cannot find two non-empty disjoint open sets $X_1$ and $X_2$ such that $X = X_1\cup X_2$.
 \end{remark}
 
 
@@ -1357,7 +1357,7 @@ Let $(X,d)$ be a metric space. Then a set $A\subseteq X$ is compact if and only 
 
 In particular, $\sG$ is an open cover of $A$. Since $A$ is compact there are finitely many $V_1,\dots, V_n \in \sF$ such that
 \be
-A \subseteq \bigcup^n_{k=1} V_k = \bigcup^n_{k=1} \bb{X\bs U_k} = X\left\bs \bigcap^n_{k=1} U_k \right. \ \ra \ \bigcap^n_{k=1} U_k \subseteq X\bs A.
+A \subseteq \bigcup^n_{k=1} V_k = \bigcup^n_{k=1} \brb{X\bs U_k} = X\left\bs \bigcap^n_{k=1} U_k \right. \ \ra \ \bigcap^n_{k=1} U_k \subseteq X\bs A.
 \ee
 
 Since each $U_k$ is a subset of $A$ it must be that $\bigcap^n_{k=1} U_k = \emptyset$ which contradicts the finite intersection property.
@@ -1371,12 +1371,12 @@ A \subseteq \bigcup_{i\in I} V_i \ \ra\   X\left\bs \bigcup_{i\in I} V_i\right. 
 
 Suppose that $A \not\subseteq \bigcup_{i\in J}V_i$ for all finite $J\subseteq I$, then
 \be
-A \cap \bb{X\left\bs \bigcup_{i\in J}V_i \right.} = A \cap \bb{\bigcap_{i\in J} X\left\bs V_i \right.} \neq \emptyset.
+A \cap \brb{X\left\bs \bigcup_{i\in J}V_i \right.} = A \cap \brb{\bigcap_{i\in J} X\left\bs V_i \right.} \neq \emptyset.
 \ee
 
-Then we can find $x\in A \cap \bb{X\left\bs \bigcup_{i\in J}V_i \right.}$. Then $B = \bra{x}$ is a closed set in $A$ by Proposition \ref{pro:singleton_set_is_closed_metric}. Then we consider the collection $ \bra{U_i}_{i\in I} := \bra{B\cap \bb{X\bs V_i}}_{i\in I}$ which consists of closed subsets of $A$ with finite intersection property. Thus, we have
+Then we can find $x\in A \cap \brb{X\left\bs \bigcup_{i\in J}V_i \right.}$. Then $B = \bra{x}$ is a closed set in $A$ by Proposition \ref{pro:singleton_set_is_closed_metric}. Then we consider the collection $ \bra{U_i}_{i\in I} := \bra{B\cap \brb{X\bs V_i}}_{i\in I}$ which consists of closed subsets of $A$ with finite intersection property. Thus, we have
 \be
-\emptyset \neq \bigcap_{i\in I} U_i = \bigcap_{i\in I} \bb{B\cap \bb{X\bs V_i}} = B \cap \bigcap_{i\in I} \bb{X\bs V_i} = \underbrace{B}_{\subseteq A}\cap \underbrace{\bb{X\left\bs \bigcup_{i\in I} V_i\right.}}_{\subseteq X\bs A}
+\emptyset \neq \bigcap_{i\in I} U_i = \bigcap_{i\in I} \brb{B\cap \brb{X\bs V_i}} = B \cap \bigcap_{i\in I} \brb{X\bs V_i} = \underbrace{B}_{\subseteq A}\cap \underbrace{\brb{X\left\bs \bigcup_{i\in I} V_i\right.}}_{\subseteq X\bs A}
 \ee
 which is absurd. Thus, we have $A \subseteq \bigcup_{i\in J}V_i$ for some finite $J\subseteq I$ and this means that $A$ is compact.
 \end{proof}
@@ -1532,7 +1532,7 @@ which implies that $X$ is compact.
 
 
 
-Now we recall Heine-Borel theorem (Theorem \ref{thm:heine_borel_compact_real_n_closed_bounded}) and give the alternative proof.% of Heine-Borel theorem 
+Now we recall Heine-Borel theorem (Theorem \ref{thm:heine_borel_compact_real_n_closed_bounded}) and give the alternative proof.% of Heine-Borel theorem
 
 \begin{theorem}[Heine-Borel theorem]\label{thm:heine_borel_compact_real_n_closed_bounded_metric_proof}
 Let $A \subseteq \R^n$. Then the following are equivalent.
@@ -1548,16 +1548,16 @@ Let $A \subseteq \R^n$. Then the following are equivalent.
 
 (i) $\ra$ (iii). If $A$ is compact then $A$ $A$ must be closed by Proposition \ref{pro:closed_subset_is_compact_metric}.(i). Also, $A$ is totally bounded by Theorem \ref{thm:equivalent_form_of_compactness}. It is easy to show that a totally bounded set is also bounded.
 
-(iii) $\ra$ (i). Now suppose that $A$ is closed and bounded. Hence, there are real numbers $a_1,\dots,a_n$ and $b_1,\dots,b_n$ such that 
+(iii) $\ra$ (i). Now suppose that $A$ is closed and bounded. Hence, there are real numbers $a_1,\dots,a_n$ and $b_1,\dots,b_n$ such that
 \be
-A \subseteq K = [a_1,b_1] \times [a_2,b_2] \times \dots \times [a_n,b_n]. 
+A \subseteq K = [a_1,b_1] \times [a_2,b_2] \times \dots \times [a_n,b_n].
 \ee
 
 So it suffices to show that $K$ is compact so that we can have $A$ is compact by Proposition \ref{pro:closed_subset_is_compact_metric}.(ii) since $A$ is closed.
 
 Since $\R^n$ is complete and $K$ is closed it follows that $K$ is complete by Proposition \ref{pro:complete_space_subset_complete_iff_closed_metric}. Hence, by Theorem \ref{thm:equivalent_form_of_compactness} we need only show that $K$ is totally bounded.
 
-Given any $\ve>0$, Then let 
+Given any $\ve>0$, Then let
 \be
 m_i = \sqrt{n+1}\ceil{\frac{b_i- a_i}{\ve}} ,\qquad 1\leq i\leq n
 \ee
@@ -1568,7 +1568,7 @@ K \subseteq \bigcup_{k_1=1}^{m_1} \dots \bigcup_{k_n=1}^{m_n} [c^1_{k_1},d^1_{k_
 
 Let $X$ be any of these rectangles and its diameter is actually
 \be
-\diam X = \sup_{x,y\in X}\abs{x-y} = \sqrt{\sum^n_{k=1} \bb{\frac{\ve}{\sqrt{n+1}}}^2} = \ve \sqrt{\frac{n}{n+1}}
+\diam X = \sup_{x,y\in X}\abs{x-y} = \sqrt{\sum^n_{k=1} \brb{\frac{\ve}{\sqrt{n+1}}}^2} = \ve \sqrt{\frac{n}{n+1}}
 \ee
 
 Thus, for any $x\in X$, we can have that all the point in $X$ are contained in $B_\ve(x)$. Thus, we can have that for any $\ve>0$ there are $m_1\times m_2\times \dots \times m_n$ finite number of points such that
@@ -1601,7 +1601,7 @@ We say that $f$ is continuous if $f$ is continuous at every $x\in X$.
 \begin{definition}[equivalent definition of continuity at point]
 Let $(X,d_X)$ and $(Y,d_Y)$ be metric spaces. A function $f:X\to Y$ is called continuous at $x\in X$ if and only if for any $\ve >0$, there exists $\delta >0$ such that
 \be
-f\bb{B^{d_X}_\delta(x)} \subseteq B^{d_Y}_\ve\bb{f(x)}.
+f\brb{B^{d_X}_\delta(x)} \subseteq B^{d_Y}_\ve\brb{f(x)}.
 \ee
 \end{definition}
 
@@ -1640,9 +1640,9 @@ Thus, we have shown that $f^{-1}(U)$ is open (as $x\in f^{-1}(U)$).
 B_\ve(f(x))=\bra{y\in Y: d_Y(f(x),y)<\ve} \quad \text{is open in $Y$ (by Theorem \ref{thm:open_ball_properties}.(i)).}
 \ee
 Thus
-$x\in f^{-1}\bb{B_\ve(f(x))}$ and $f^{-1}\bb{B_\ve(f(x))}$ is open by assumption. It follows that there is a $\delta>0$ such that
+$x\in f^{-1}\brb{B_\ve(f(x))}$ and $f^{-1}\brb{B_\ve(f(x))}$ is open by assumption. It follows that there is a $\delta>0$ such that
 \be
-w\in f^{-1}\bb{B_\ve(f(x))} \quad \text{whenever }\ d_X(x,w)<\delta \ \ra\  f(w) \in B_\ve(f(x)) \quad \text{whenever }\ d_X(x,w)<\delta.
+w\in f^{-1}\brb{B_\ve(f(x))} \quad \text{whenever }\ d_X(x,w)<\delta \ \ra\  f(w) \in B_\ve(f(x)) \quad \text{whenever }\ d_X(x,w)<\delta.
 \ee
 
 So, in other words,
@@ -1661,7 +1661,7 @@ Let $(X,d_X), (Y,d_Y), (Z,d_Z)$ be three metric spaces and two functions $f:X\to
 \begin{proof}[\bf Proof]
 If $U$ is open in $Z$, then $g^{-1}(U)$ is open in $Y$ by Theorem \ref{thm:continuity_inverse_image_open_is_open_metric}. Then by Proposition \ref{pro:composition_of_inverse_images} and Theorem \ref{thm:continuity_inverse_image_open_is_open_metric},
 \be
-(g\circ f)^{-1}(U) = f^{-1}\bb{g^{-1}(U)}
+(g\circ f)^{-1}(U) = f^{-1}\brb{g^{-1}(U)}
 \ee
 is open in $X$. Thus, by Theorem \ref{thm:continuity_inverse_image_open_is_open_metric} again, we have that $g\circ f$ is continuous.
 \end{proof}
@@ -1701,45 +1701,45 @@ Now we can express continuity of a map in terms of closure.
 \begin{theorem}\label{thm:continuous_closure_relation}
 Let $(X,d_X)$ and $(Y,d_Y)$ be two metric spaces. Then a map $f:X\to Y$ of metric spaces is continuous if and only if
 \be
-f\bb{\ol{A}} \subseteq \ol{f(A)} \quad \text{for every }A\subseteq X.
+f\brb{\ol{A}} \subseteq \ol{f(A)} \quad \text{for every }A\subseteq X.
 \ee
 \end{theorem}
 
 \begin{proof}[\bf Proof]
-($\ra$). Suppose that $f:X\to Y$ is continuous. 
+($\ra$). Suppose that $f:X\to Y$ is continuous.
 
-Apporach 1. Let $y\in f\bb{\ol{A}}$ for some $A\subseteq X$. Then $y = f(x)$ for at least one $x\in \ol{A}$. Then by continuity of $f$ at $x$, for any $\ve>0$ there exists $\delta>0$ such that $f\bb{B_\delta(x)}\subseteq B_\ve(y)$. By definition of $\ol{A}$ there exists some $a\in A\cap B_\delta(x)$. Then 
+Apporach 1. Let $y\in f\brb{\ol{A}}$ for some $A\subseteq X$. Then $y = f(x)$ for at least one $x\in \ol{A}$. Then by continuity of $f$ at $x$, for any $\ve>0$ there exists $\delta>0$ such that $f\brb{B_\delta(x)}\subseteq B_\ve(y)$. By definition of $\ol{A}$ there exists some $a\in A\cap B_\delta(x)$. Then
 \be
-f(a) \in f\bb{B_\delta(x)} \subseteq B_\ve(y) \ \ra\ f(a) \in B_\ve(y)\cap f(A) \ \ra\ B_\ve(y)\cap f(A) \neq \emptyset \ \ra\ y \in\ol{f(A)} \ \ra\  f\bb{\ol{A}} \subseteq \ol{f(A)}.
+f(a) \in f\brb{B_\delta(x)} \subseteq B_\ve(y) \ \ra\ f(a) \in B_\ve(y)\cap f(A) \ \ra\ B_\ve(y)\cap f(A) \neq \emptyset \ \ra\ y \in\ol{f(A)} \ \ra\  f\brb{\ol{A}} \subseteq \ol{f(A)}.
 \ee
-%{lem:image_inverse_image_composition} 
+%{lem:image_inverse_image_composition}
 
 Apporach 2. By Lemma \ref{lem:image_inverse_image_composition} and Proposition \ref{pro:closure_properties_metric_space}.(i),(ii), we have that
 \be
-A \subseteq f^{-1}\bb{f(A)} \ \ra\ A \subseteq f^{-1}\bb{\ol{f(A)}} \ \ra\ \ol{A} \subseteq \ol{f^{-1}\bb{\ol{f(A)}}}.
+A \subseteq f^{-1}\brb{f(A)} \ \ra\ A \subseteq f^{-1}\brb{\ol{f(A)}} \ \ra\ \ol{A} \subseteq \ol{f^{-1}\brb{\ol{f(A)}}}.
 \ee
 
-But $f$ is continuous, we have $\ol{f^{-1}\bb{\ol{f(A)}}} = f^{-1}\bb{\ol{f(A)}}$ by Proposition \ref{pro:closure_properties_metric_space}.(v) and Corollary \ref{cor:continuity_inverse_image_closed_is_closed}. Therefore,
+But $f$ is continuous, we have $\ol{f^{-1}\brb{\ol{f(A)}}} = f^{-1}\brb{\ol{f(A)}}$ by Proposition \ref{pro:closure_properties_metric_space}.(v) and Corollary \ref{cor:continuity_inverse_image_closed_is_closed}. Therefore,
 \be
-\ol{A} \subseteq f^{-1}\bb{\ol{f(A)}} \ \ra\ f\bb{\ol{A}} \subseteq f\bb{f^{-1}\bb{\ol{f(A)}}} 
+\ol{A} \subseteq f^{-1}\brb{\ol{f(A)}} \ \ra\ f\brb{\ol{A}} \subseteq f\brb{f^{-1}\brb{\ol{f(A)}}}
 \ee
 
 By Lemma \ref{lem:image_inverse_image_composition} again,
 \be
- f\bb{f^{-1}\bb{\ol{f(A)}}} = \ol{f(A)}\cap f(X) \ \ra\  f\bb{f^{-1}\bb{\ol{f(A)}}} \subseteq \ol{f(A)} \ \ra\ f\bb{\ol{A}} \subseteq \ol{f(A)}
+ f\brb{f^{-1}\brb{\ol{f(A)}}} = \ol{f(A)}\cap f(X) \ \ra\  f\brb{f^{-1}\brb{\ol{f(A)}}} \subseteq \ol{f(A)} \ \ra\ f\brb{\ol{A}} \subseteq \ol{f(A)}
 \ee
 as required. %Theorem \ref{thm:metric_continuous_closed}.
 
-($\la$). Suppose that $f\bb{\ol{A}} \subseteq \ol{f(A)}$ for any subset $A$ of $X$. We shall prove that the inverse image of any closed subset $B$ of $Y$ is closed in $X$, so that $f$ is continuous by Corollary \ref{cor:continuity_inverse_image_closed_is_closed}. So suppose that $B$ is closed in $Y$. We have by Lemma \ref{lem:image_inverse_image_composition}, $f\bb{f^{-1}(B)} \subseteq B$ and then by the assumption and Proposition \ref{pro:closure_properties_metric_space}.(ii) we have
+($\la$). Suppose that $f\brb{\ol{A}} \subseteq \ol{f(A)}$ for any subset $A$ of $X$. We shall prove that the inverse image of any closed subset $B$ of $Y$ is closed in $X$, so that $f$ is continuous by Corollary \ref{cor:continuity_inverse_image_closed_is_closed}. So suppose that $B$ is closed in $Y$. We have by Lemma \ref{lem:image_inverse_image_composition}, $f\brb{f^{-1}(B)} \subseteq B$ and then by the assumption and Proposition \ref{pro:closure_properties_metric_space}.(ii) we have
 \be
-f\bb{\ol{f^{-1}(B)}} \subseteq \ol{f\bb{f^{-1}(B)}} \subseteq \ol{B} = B
+f\brb{\ol{f^{-1}(B)}} \subseteq \ol{f\brb{f^{-1}(B)}} \subseteq \ol{B} = B
 \ee
 since $B$ is closed. By Lemma \ref{lem:image_inverse_image_composition} again,
 \be
-\ol{f^{-1}(B)} \subseteq f^{-1}\bb{f\bb{\ol{f^{-1}(B)} }} \subseteq f^{-1}(B).
+\ol{f^{-1}(B)} \subseteq f^{-1}\brb{f\brb{\ol{f^{-1}(B)} }} \subseteq f^{-1}(B).
 \ee
 
-However, we have $f^{-1}(B)\subseteq \ol{f^{-1}(B)}$ by Proposition \ref{pro:closure_properties_metric_space}.(i) and this implies that $f^{-1}(B)= \ol{f^{-1}(B)}$. By Proposition \ref{pro:closure_properties_metric_space}.(iii), $f^{-1}(B)$ is closed in $X$, which was what we want. 
+However, we have $f^{-1}(B)\subseteq \ol{f^{-1}(B)}$ by Proposition \ref{pro:closure_properties_metric_space}.(i) and this implies that $f^{-1}(B)= \ol{f^{-1}(B)}$. By Proposition \ref{pro:closure_properties_metric_space}.(iii), $f^{-1}(B)$ is closed in $X$, which was what we want.
 \end{proof}
 
 
@@ -1753,20 +1753,20 @@ Let $(X,d_X)$ and $(Y,d_Y)$ be two metric spaces and $f: X\to Y$ be a continuous
 \een
 \end{theorem}
 
-\begin{proof}[\bf Proof]%Let $f(X) = A$. 
+\begin{proof}[\bf Proof]%Let $f(X) = A$.
 \ben
-\item [(i)] Let $(y_n)$ be any sequence in $f(X)$. Then there is, for each $n\geq 1$, a point $x_n\in X$ with $y_n = f(x_n)$. Since $X$ is compact there is a point $x\in X$ and a subsequence $(x_{n_k})$ such that $\lim_{k\to\infty} x_{n_k} = x$. If $f(x) = y$, then by continuity of $f$ we have 
+\item [(i)] Let $(y_n)$ be any sequence in $f(X)$. Then there is, for each $n\geq 1$, a point $x_n\in X$ with $y_n = f(x_n)$. Since $X$ is compact there is a point $x\in X$ and a subsequence $(x_{n_k})$ such that $\lim_{k\to\infty} x_{n_k} = x$. If $f(x) = y$, then by continuity of $f$ we have
     \be
     \lim_{k\to\infty}y_{n_k} = \lim_{k\to \infty} f(x_{n_k}) = f(x) = y.
     \ee
-    
+
     Thus, $f(X)$ is compact by Theorem \ref{thm:equivalent_form_of_compactness}.
-    
+
 \item [(ii)] Suppose $A\subseteq f(X)$ is both open and closed in $f(X)$ and $A\neq \emptyset$. Since $f$ is continuous, we have $f^{-1}(A)$ is both open and continuous by Theorem \ref{thm:continuity_inverse_image_open_is_open_metric} and Corollary \ref{cor:continuity_inverse_image_closed_is_closed} and $f^{-1}(A) \neq \emptyset$. Thus, $f^{-1}(A) = X$ since $X$ is connected. Then by Lemma \ref{lem:image_inverse_image_composition}
     \be
     A = f(f^{-1}(A)) = f(X)
     \ee
-    which implies that $f(X)$ is connected. 
+    which implies that $f(X)$ is connected.
 \een
 \end{proof}
 
@@ -1793,7 +1793,7 @@ f(y) = \sup\bra{f(x):x\in A},\qquad g(z) = \inf\bra{g(x):x\in A}.
 \end{corollary}
 
 \begin{proof}[\bf Proof]
-Since $A$ is compact and $f$ is continuous, $f(A)$ is also compact by Theorem \ref{thm:image_of_compact_or_connected_reserves_property}. Thus, $f(A)$ must be closed and bounded in $\R$ by Heine-Borel theorem (Theorem \ref{thm:heine_borel_compact_real_n_closed_bounded}). 
+Since $A$ is compact and $f$ is continuous, $f(A)$ is also compact by Theorem \ref{thm:image_of_compact_or_connected_reserves_property}. Thus, $f(A)$ must be closed and bounded in $\R$ by Heine-Borel theorem (Theorem \ref{thm:heine_borel_compact_real_n_closed_bounded}).
 
 Let $a = \sup\bra{f(x):x\in A}$. If $a\not\in f(A)$, then there must exist $\ve>0$ such that $(a-\ve,a+\ve)\subseteq f(A)^c$ since $f(A)^c$ is open. This contradicts the assumption that $a$ is supremum of $f(A)$. Thus, we must have that $a\in f(A)$, as required. Similarly, we have the result for infimum case.
 \end{proof}
@@ -1822,7 +1822,7 @@ Let $(X,d)$ be a metric space. If $A,B$ are disjoint subsets in $X$ with $A$ com
 \begin{proof}[\bf Proof]%\footnote{proof needed. see p28 of Conway's book.}
 Define $f:X\to \R$ by $f(x) = d(x,B)$. By definition of convergence, if $x_n \to x$ which means $d(x_n, x)\to 0$ then
 \be
-\abs{f(x_n) - f(x)} = \abs{d(x_n,B) - d(x,B)} \leq d\bb{x_n,x} \to 0
+\abs{f(x_n) - f(x)} = \abs{d(x_n,B) - d(x,B)} \leq d\brb{x_n,x} \to 0
 \ee
 by Proposition \ref{pro:distance_of_point_set_inequality_metric}, Thus, $f$ is continuous.
 
@@ -1884,9 +1884,9 @@ This is the general version of Theorem \ref{thm:continuous_on_closed_interval_im
 \end{remark}
 
 \begin{proof}[\bf Proof]
-Given any $\ve>0$, we wish to find $\delta>0$ such that $d_X(x,y)<\delta$ implies that $d_Y(f(x),f(y))<\ve$. 
+Given any $\ve>0$, we wish to find $\delta>0$ such that $d_X(x,y)<\delta$ implies that $d_Y(f(x),f(y))<\ve$.
 
-Suppose there is no such $\delta$. In particular, each $\delta = 1/n$ will fail to work. Then there are sequences $(x_n)$ and $(y_n)$ such that the points $x_n,y_n\in X$ with $d_X(x_n,y_n)<\delta$ but $d_Y(f(x_n),f(y_n)) > \ve$ for every $n\geq 1$. 
+Suppose there is no such $\delta$. In particular, each $\delta = 1/n$ will fail to work. Then there are sequences $(x_n)$ and $(y_n)$ such that the points $x_n,y_n\in X$ with $d_X(x_n,y_n)<\delta$ but $d_Y(f(x_n),f(y_n)) > \ve$ for every $n\geq 1$.
 
 Since $X$ is compact (thus sequentially compact by Theorem \ref{thm:equivalent_form_of_compactness}), there is a subsequence $(x_{n_k})$ and a point $x\in X$ with $\lim_{k\to\infty} x_{n_k} = x$. Also,
 \be
@@ -1897,7 +1897,7 @@ Thus, by continuity of $f$ we have
 \be
 \lim_{k\to\infty} f(x_{n_k}) = \lim_{k\to\infty} f(y_{n_k}) = f(x)
 \ee
-which implies that 
+which implies that
 \be
 \ve \leq d_Y(f(x_{n_k}), f(y_{n_k})) \leq d_Y(f(x_{n_k}), f(x)) + d_Y(f(y_{n_k}), f(x)) \to 0.
 \ee
@@ -1985,7 +1985,7 @@ closed vs complete in metric space
 close: whenever $x_n\in X$ and $x_n\to x$ as $n\to \infty$, it follows that $x\in X$.
 
 complete: $(x_n)$ is a Cauchy sequence in $X$, i.e., $d(x_n,x_m) \to 0$ for $n,m\to \infty$, then $(x_n)$ converges to $x\in X$.
- 
+
 compact space $\subseteq$ complete space
 
 compact $\lra$ sequentially compact $\lra$ complete + totally bounded.
