@@ -24,7 +24,7 @@ Let $ABC$ be any triangle where $a$, $b$, and $c$ are the lengths of the sides o
 \end{theorem}
 
 \begin{proof}[\bf Proof]
-The area $T$ of any triangle can be written as one half of its base times its height. Selecting one side of the triangle as the base, the height of the triangle relative to that base is computed as the length of another side times the sine of the angle between the chosen side and the base. 
+The area $T$ of any triangle can be written as one half of its base times its height. Selecting one side of the triangle as the base, the height of the triangle relative to that base is computed as the length of another side times the sine of the angle between the chosen side and the base.
 
 \begin{center}
 \psset{yunit=3cm,xunit=3cm}
@@ -194,16 +194,16 @@ If $a$ and $b$ are not scalar multiples of each other, then by the law of cosine
 
 Also, we have $\dabs{a-b}^2 = (a-b)\cdot (a-b) = a\cdot a + b\cdot b - 2 a\cdot b$ and thus
 \beast
-\dabs{a}\dabs{b}\cos \theta & = & \frac 12 \bb{\dabs{a}^2 + \dabs{b}^2 - \dabs{a-b}^2} = \frac 12 \bb{\dabs{a}^2 + \dabs{b}^2 - a\cdot a - b\cdot b + 2 a\cdot b} \\
-& = & \frac 12 \bb{\dabs{a}^2 + \dabs{b}^2 - \dabs{a}^2 - \dabs{b}^2 + 2 a\cdot b}  = a\cdot b.
+\dabs{a}\dabs{b}\cos \theta & = & \frac 12 \brb{\dabs{a}^2 + \dabs{b}^2 - \dabs{a-b}^2} = \frac 12 \brb{\dabs{a}^2 + \dabs{b}^2 - a\cdot a - b\cdot b + 2 a\cdot b} \\
+& = & \frac 12 \brb{\dabs{a}^2 + \dabs{b}^2 - \dabs{a}^2 - \dabs{b}^2 + 2 a\cdot b}  = a\cdot b.
 \eeast
 
 Otherwise, if $a$ and $b$ are scalar multiples of each other, we can assume that $a = kb$ where $k\in \R$.
 
 If $k>0$, then $\theta=0$ and thus $\cos \theta =1$. If $k<0$, $\theta=\pi$ thus $\cos\theta = -1$. Note that $k$ cannot be 0 because that we may assume that $a$ and $b$ are non-zero vector. Then
 \beast
-a\cdot b & = & a \cdot (ka) = k(a\cdot a) = k\dabs{a}^2 = \dabs{a}\bb{k\sqrt{\sum^n_{i=1}a_i^2}} = \dabs{a}\bb{\sgn(k)\sqrt{k^2\sum^n_{i=1}a_i^2}} \\
-& = & \dabs{a}\bb{\sgn(k)\sqrt{\sum^n_{i=1}(ka_i)^2}} = \sgn(k)\dabs{a}\sqrt{\sum^n_{i=1}(b_i)^2} = \sgn(k)\dabs{a}\dabs{b} = \dabs{a}\dabs{b}\cos\theta.
+a\cdot b & = & a \cdot (ka) = k(a\cdot a) = k\dabs{a}^2 = \dabs{a}\brb{k\sqrt{\sum^n_{i=1}a_i^2}} = \dabs{a}\brb{\sgn(k)\sqrt{k^2\sum^n_{i=1}a_i^2}} \\
+& = & \dabs{a}\brb{\sgn(k)\sqrt{\sum^n_{i=1}(ka_i)^2}} = \sgn(k)\dabs{a}\sqrt{\sum^n_{i=1}(b_i)^2} = \sgn(k)\dabs{a}\dabs{b} = \dabs{a}\dabs{b}\cos\theta.
 \eeast
 \end{remark}
 
@@ -212,7 +212,7 @@ a\cdot b & = & a \cdot (ka) = k(a\cdot a) = k\dabs{a}^2 = \dabs{a}\bb{k\sqrt{\su
 \begin{lemma}
 Let $v_1,v_2$ be two vectors with spherical coordinate $(r_1,\theta_1,\phi_1)$ and $(r_2,\theta_2,\phi_2)$. Then $\phi$, the angle between $v_1$ and $v_2$ satisfies
 \be
-\cos\bb{\theta_2-\theta_1} \sin\phi_1\sin\phi_2 + \cos\phi_1\cos\phi_2.
+\cos\brb{\theta_2-\theta_1} \sin\phi_1\sin\phi_2 + \cos\phi_1\cos\phi_2.
 \ee
 \end{lemma}
 
@@ -224,14 +224,14 @@ p = \sqrt{r_1^2\sin^2\phi_1 + r_2^2\sin^2\phi_2 - 2\cos\theta r_1r_2\sin\phi_1\s
 by law of cosines (Theorem \ref{thm:law_of_cosines}). The height difference of two vectors is $h = \abs{r_1\cos\phi_1 - r_2\cos\phi_2}$. Then the distance between these two vectors are
 \beast
 c & = & \sqrt{p^2 + h^2} \\
-& = & \sqrt{r_1^2\sin^2\phi_1 + r_2^2\sin^2\phi_2 - 2\cos\bb{\theta_2-\theta_1} r_1r_2\sin\phi_1\sin\phi_2 + \bb{r_1\cos\phi_1 - r_2\cos\phi_2}^2} \\
-& = & \sqrt{r_1^2\sin^2\phi_1 + r_2^2\sin^2\phi_2 - 2\cos\cos\bb{\theta_2-\theta_1} r_1r_2\sin\phi_1\sin\phi_2 + r_1^2\cos^2\phi_1 + r_2^2\cos^2\phi_2 - 2r_1r_2\cos\phi_1\cos\phi_2} \\
-& = & \sqrt{r_1^2 + r_2^2 - 2\cos\bb{\theta_2-\theta_1} r_1r_2\sin\phi_1\sin\phi_2 - 2r_1r_2\cos\phi_1\cos\phi_2}.
+& = & \sqrt{r_1^2\sin^2\phi_1 + r_2^2\sin^2\phi_2 - 2\cos\brb{\theta_2-\theta_1} r_1r_2\sin\phi_1\sin\phi_2 + \brb{r_1\cos\phi_1 - r_2\cos\phi_2}^2} \\
+& = & \sqrt{r_1^2\sin^2\phi_1 + r_2^2\sin^2\phi_2 - 2\cos\cos\brb{\theta_2-\theta_1} r_1r_2\sin\phi_1\sin\phi_2 + r_1^2\cos^2\phi_1 + r_2^2\cos^2\phi_2 - 2r_1r_2\cos\phi_1\cos\phi_2} \\
+& = & \sqrt{r_1^2 + r_2^2 - 2\cos\brb{\theta_2-\theta_1} r_1r_2\sin\phi_1\sin\phi_2 - 2r_1r_2\cos\phi_1\cos\phi_2}.
 \eeast
 
 Then the angle between the vectors $\phi$ has relation
 \be
-\cos\phi = \frac{r_1^2 + r_2^2 - c^2}{2r_1r_2} = \cos\bb{\theta_2-\theta_1} \sin\phi_1\sin\phi_2 + \cos\phi_1\cos\phi_2.
+\cos\phi = \frac{r_1^2 + r_2^2 - c^2}{2r_1r_2} = \cos\brb{\theta_2-\theta_1} \sin\phi_1\sin\phi_2 + \cos\phi_1\cos\phi_2.
 \ee
 \end{proof}
 
@@ -334,7 +334,7 @@ DF = CD - CF = \frac{x^2}{2(x-2)} - \frac{x(x+2)}{4(x-2)} = \frac{2x^2 - x^2 - 2
 
 Then by Pythagorean theorem\footnote{theorem needed.},
 \be
-DE^2 = EF^2 + DF^2 \ \ra\ 4 = \frac{x^2}{16(x-2)^2}\bb{64 - (x+2)^2} + \frac{x^2}{16} \ \ra\ x^3 - 32x + 32 = 0.
+DE^2 = EF^2 + DF^2 \ \ra\ 4 = \frac{x^2}{16(x-2)^2}\brb{64 - (x+2)^2} + \frac{x^2}{16} \ \ra\ x^3 - 32x + 32 = 0.
 \ee
 
 %\begin{center}%\begin{pspicture}%(-4,-4.5)(4,2)
@@ -439,9 +439,9 @@ Let the rectangle be $4\times 2$ and it has two incircles with radius 1. Then th
 \end{pspicture}
 \end{center}
 
-{\bf Approach 1.} The area $\wt{ABC}$ with arc $BC$ is 
+{\bf Approach 1.} The area $\wt{ABC}$ with arc $BC$ is
 \beast
-\int^{\arctan \frac 12}_0 \int^{2\cos\theta}_0 rdr d\theta & = & 2\int^{\arctan \frac 12}_0 \cos^2\theta d\theta = \int^{\arctan \frac 12}_0 \bb{1 + \cos 2\theta} d\theta = \arctan \frac 12 + \left.\frac 12 \sin 2\theta \right|^{\arctan \frac 12}_0
+\int^{\arctan \frac 12}_0 \int^{2\cos\theta}_0 rdr d\theta & = & 2\int^{\arctan \frac 12}_0 \cos^2\theta d\theta = \int^{\arctan \frac 12}_0 \brb{1 + \cos 2\theta} d\theta = \arctan \frac 12 + \left.\frac 12 \sin 2\theta \right|^{\arctan \frac 12}_0
 \eeast
 
 Then by universal formula of trigonometric function\footnote{theorem needed.} we have for $\theta = \arctan \frac 12$,
@@ -451,15 +451,15 @@ Then by universal formula of trigonometric function\footnote{theorem needed.} we
 
 Therefore, the area of shadow is
 \be
-\frac 12 \cdot 1 \cdot 2 - S_{\wt{ABC}} = 1 - \bb{\arctan \frac 12 + \frac 25} = \frac 35 - \arctan \frac 12
+\frac 12 \cdot 1 \cdot 2 - S_{\wt{ABC}} = 1 - \brb{\arctan \frac 12 + \frac 25} = \frac 35 - \arctan \frac 12
 \ee
 
 {\bf Approach 2.} Let $G$ be the middle point of $AB$ then $\triangle AOB = 2\triangle AOG$. Since $\triangle AOG \sim \triangle ADC$,
 \be
-\frac{AD}{AO} = \frac{\sqrt{1+2^2}}{1} = \sqrt{5} \ \ra\ \frac{S_{\triangle AOG}}{S_{\triangle ADC}} = \bb{\frac{1}{\sqrt{5}}}^2 = \frac 15 \ \ra\  S_{\triangle AOB} = 2S_{\triangle AOG} = \frac 25 S_{\triangle ACD} = \frac 25.
+\frac{AD}{AO} = \frac{\sqrt{1+2^2}}{1} = \sqrt{5} \ \ra\ \frac{S_{\triangle AOG}}{S_{\triangle ADC}} = \brb{\frac{1}{\sqrt{5}}}^2 = \frac 15 \ \ra\  S_{\triangle AOB} = 2S_{\triangle AOG} = \frac 25 S_{\triangle ACD} = \frac 25.
 \ee
 
-Then the area of circular section $\wt{BOC}$ is 
+Then the area of circular section $\wt{BOC}$ is
 \be
 S_{\wt{BOC}} = \frac 12\cdot 2\theta \cdot r^2 = \frac 12 \cdot 2\theta \cdot 1^2 = \theta = \arctan \frac 12.
 \ee
@@ -472,16 +472,16 @@ S_{\wt{BCD}} = S_{\triangle ACD} - S_{\triangle AOB} - S_{\wt{BOC}} = 1 - \frac 
 
 
 \begin{example}
-Let $O$ be the incircle with radius 1 in the square. Then the area of the shadow is given by the following argument. 
+Let $O$ be the incircle with radius 1 in the square. Then the area of the shadow is given by the following argument.
 
 {\bf Approach 1.} Let $x = r\cos \theta$ and $y =r\sin\theta$ with $r = OA$. Then
 \be
-x^2 + \bb{y+\sqrt{2}}^2 = 4 \ \ra\ x^2 + y^2 + 2\sqrt{2} y = 2 \ \ra\ r^2 + 2\sqrt{2} r\sin\theta = 2.
+x^2 + \brb{y+\sqrt{2}}^2 = 4 \ \ra\ x^2 + y^2 + 2\sqrt{2} y = 2 \ \ra\ r^2 + 2\sqrt{2} r\sin\theta = 2.
 \ee
 
 Thus,
 \be
-r = \frac 12\bb{-2\sqrt{2}\sin\theta + \sqrt{8 \sin^2\theta+ 8}} = \sqrt{2\sin^2\theta + 2} - \sqrt{2}\sin\theta = \sqrt{2}\bb{\sqrt{\sin^2\theta + 1} - \sin\theta}.
+r = \frac 12\brb{-2\sqrt{2}\sin\theta + \sqrt{8 \sin^2\theta+ 8}} = \sqrt{2\sin^2\theta + 2} - \sqrt{2}\sin\theta = \sqrt{2}\brb{\sqrt{\sin^2\theta + 1} - \sin\theta}.
 \ee
 
 %\begin{center}%\psset{yunit=4cm,xunit=4}
@@ -506,7 +506,7 @@ r = \frac 12\bb{-2\sqrt{2}\sin\theta + \sqrt{8 \sin^2\theta+ 8}} = \sqrt{2\sin^2
 %\psframe*[linecolor=gray](-3,-3)(3,3)
 %\endpsclip
 
-        
+
 %\psplot[linewidth=0.5pt]{-2}{2}{4 x x mul sub sqrt}
 %\psplot[linewidth=0.5pt]{-2}{2}{0 4 x x mul sub sqrt sub}
 %\psplot[linewidth=0.5pt]{-2.828}{2.828}{16 x x mul sub sqrt 2.828 sub}
@@ -533,21 +533,21 @@ r = \frac 12\bb{-2\sqrt{2}\sin\theta + \sqrt{8 \sin^2\theta+ 8}} = \sqrt{2\sin^2
 
 If $r=1$, we have
 \beast
-\frac {\sqrt{2}}2 + \sin\theta = \sqrt{\sin^2\theta + 1}\ \ra\ 
-\frac 12 + \sqrt{2}\sin\theta = 1 \ \ra\ \sin\theta = \frac{\sqrt{2}}{4}. 
+\frac {\sqrt{2}}2 + \sin\theta = \sqrt{\sin^2\theta + 1}\ \ra\
+\frac 12 + \sqrt{2}\sin\theta = 1 \ \ra\ \sin\theta = \frac{\sqrt{2}}{4}.
 \eeast
 
 Thus the shadow area is
 \beast
-4\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}} \int^1_{\sqrt{2}\bb{\sqrt{\sin^2\theta + 1} - \sin\theta}} rdr d\theta & = & 2\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}}  1 - 2\bb{2\sin^2\theta+1 -2\sin\theta\sqrt{\sin^2\theta + 1}}  d\theta \\
+4\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}} \int^1_{\sqrt{2}\brb{\sqrt{\sin^2\theta + 1} - \sin\theta}} rdr d\theta & = & 2\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}}  1 - 2\brb{2\sin^2\theta+1 -2\sin\theta\sqrt{\sin^2\theta + 1}}  d\theta \\
 & = & -2\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}}  d\theta - 2\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}}  (1-\cos2\theta)d2\theta + 8\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}}  \sin\theta\sqrt{\sin^2\theta + 1}  d\theta \\
-& = & -6\bb{\frac {\pi}2 - \arcsin \frac{\sqrt{2}}{4}}  - 4\frac{\sqrt{2}}{4}\frac{\sqrt{14}}{4} - 8\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}}\sqrt{2-\cos^2\theta}  d\cos\theta \\
-& = & -6\bb{\frac {\pi}2 - \arcsin \frac{\sqrt{2}}{4}}  - 4\frac{\sqrt{2}}{4}\frac{\sqrt{14}}{4} + 8\int^{\frac{\sqrt{14}}4}_0 \sqrt{2-x^2}  dx .
+& = & -6\brb{\frac {\pi}2 - \arcsin \frac{\sqrt{2}}{4}}  - 4\frac{\sqrt{2}}{4}\frac{\sqrt{14}}{4} - 8\int^{\pi/2}_{\arcsin \frac{\sqrt{2}}{4}}\sqrt{2-\cos^2\theta}  d\cos\theta \\
+& = & -6\brb{\frac {\pi}2 - \arcsin \frac{\sqrt{2}}{4}}  - 4\frac{\sqrt{2}}{4}\frac{\sqrt{14}}{4} + 8\int^{\frac{\sqrt{14}}4}_0 \sqrt{2-x^2}  dx .
 \eeast
 
-Then the integral\footnote{detail or proposition is needed.} is given by 
+Then the integral\footnote{detail or proposition is needed.} is given by
 \beast
-& & -3\pi  + 6\arcsin \frac{\sqrt{2}}{4}  - \frac{\sqrt{7}}{2}+ 8\bb{\frac{\pi}2 - \arcsin \frac{3}{4}  +\frac{3\sqrt{7}}{16}} \\
+& & -3\pi  + 6\arcsin \frac{\sqrt{2}}{4}  - \frac{\sqrt{7}}{2}+ 8\brb{\frac{\pi}2 - \arcsin \frac{3}{4}  +\frac{3\sqrt{7}}{16}} \\
 & = & \pi + \sqrt{7} + 6\arcsin\frac{\sqrt{2}}{4} - 8\arcsin\frac 34 = \frac {5\pi}2 + \sqrt{7} - 11\arcsin\frac 34 \approx 1.1711
 \eeast
 
@@ -619,17 +619,17 @@ since $2\arcsin \frac{\sqrt{2}}4 = \frac {\pi}2 - \arcsin\frac 34$.
 
 {\bf Approach 2.}  The area of $\wt{DEG}$ is actually
 \be
-S_{\wt{DEG}} = S_{\wt{ODG}} - S_{\wt{ODE}} = S_{\wt{ODG}} - \bb{S_{\wt{FDE}} - S_{\triangle ODF}} = S_{\wt{ODG}} + S_{\triangle ODF} - S_{\wt{FDE}}.
+S_{\wt{DEG}} = S_{\wt{ODG}} - S_{\wt{ODE}} = S_{\wt{ODG}} - \brb{S_{\wt{FDE}} - S_{\triangle ODF}} = S_{\wt{ODG}} + S_{\triangle ODF} - S_{\wt{FDE}}.
 \ee
 
 For triangle $\triangle ODF$, $OD=1$, $OF =\sqrt{2}$ and $DF = 2$. Then by Heron's formula\footnote{theorem needed.}, we have that $s = \frac{OD+OF+DF}{2} = \frac{3+\sqrt{2}}{2}$ and the area of $\triangle ODF$ is
 \be
-S_{\triangle ODF } = \sqrt{s\bb{s-OD}\bb{s-OF}\bb{s-DF}} = \sqrt{\frac{3+\sqrt{2}}{2}\cdot\frac{1+\sqrt{2}}{2}\cdot \frac{3-\sqrt{2}}{2} \cdot \frac{-1+\sqrt{2}}{2}} = \frac{\sqrt{7}}{4}.
+S_{\triangle ODF } = \sqrt{s\brb{s-OD}\brb{s-OF}\brb{s-DF}} = \sqrt{\frac{3+\sqrt{2}}{2}\cdot\frac{1+\sqrt{2}}{2}\cdot \frac{3-\sqrt{2}}{2} \cdot \frac{-1+\sqrt{2}}{2}} = \frac{\sqrt{7}}{4}.
 \ee
 
 Also,
 \be
-S_{\triangle ODF} = \frac 12 OF\cdot DF\sin \alpha \ \ra\ \angle \alpha = \arcsin \bb{\frac{2S_{\triangle ODF}}{OF\cdot DF}} = \arcsin\frac{\frac{\sqrt{7}}2}{2\sqrt{2}} = \arcsin\frac{\sqrt{14}}{8}.
+S_{\triangle ODF} = \frac 12 OF\cdot DF\sin \alpha \ \ra\ \angle \alpha = \arcsin \brb{\frac{2S_{\triangle ODF}}{OF\cdot DF}} = \arcsin\frac{\frac{\sqrt{7}}2}{2\sqrt{2}} = \arcsin\frac{\sqrt{14}}{8}.
 \ee
 
 Thus,
@@ -639,7 +639,7 @@ S_{\wt{FDE}} = \frac 12 DF^2 \angle \alpha = 2\arcsin\frac{\sqrt{14}}8.
 
 Similarly,
 \be
-S_{\triangle ODF} = \frac 12 OF\cdot OD\sin \beta \ \ra\ \angle \beta = \arcsin \bb{\frac{2S_{\triangle ODF}}{OF\cdot OD}} = \arcsin\frac{\frac{\sqrt{7}}2}{\sqrt{2}} = \arcsin\frac{\sqrt{14}}4 = \frac{\pi}2 - \arcsin\frac{\sqrt{2}}4.
+S_{\triangle ODF} = \frac 12 OF\cdot OD\sin \beta \ \ra\ \angle \beta = \arcsin \brb{\frac{2S_{\triangle ODF}}{OF\cdot OD}} = \arcsin\frac{\frac{\sqrt{7}}2}{\sqrt{2}} = \arcsin\frac{\sqrt{14}}4 = \frac{\pi}2 - \arcsin\frac{\sqrt{2}}4.
 \ee
 
 Thus,
@@ -650,8 +650,8 @@ S_{\wt{ODG}} = \frac 12 OD^2 \angle \beta = \frac{\pi}4 - \frac 12 \arcsin\frac{
 Therefore,
 \beast
 S_{\wt{DEG}} & = & S_{\wt{ODG}} + S_{\triangle ODF} - S_{\wt{FDE}} \\
-& = & \frac{\pi}4 - \frac 12 \arcsin\frac{\sqrt{2}}4 + \frac{\sqrt{7}}{4}  - 2\arcsin\frac{\sqrt{14}}8 = \frac{\pi}4 + \frac 32 \arcsin\frac{\sqrt{2}}4 + \frac{\sqrt{7}}{4}  - 2\bb{\arcsin \frac{\sqrt{14}}8 +\arcsin\frac{\sqrt{2}}4}\\
-& = & \frac{\pi}4 + \frac 32 \arcsin\frac{\sqrt{2}}4 + \frac{\sqrt{7}}{4}  - 2\arcsin \bb{\frac{\sqrt{14}}8\frac{\sqrt{14}}4 +\frac{5\sqrt{2}}8\frac{\sqrt{2}}4} = \frac{\pi}4 + \frac 32 \arcsin\frac{\sqrt{2}}4 + \frac{\sqrt{7}}{4}  - 2\arcsin\frac 34.
+& = & \frac{\pi}4 - \frac 12 \arcsin\frac{\sqrt{2}}4 + \frac{\sqrt{7}}{4}  - 2\arcsin\frac{\sqrt{14}}8 = \frac{\pi}4 + \frac 32 \arcsin\frac{\sqrt{2}}4 + \frac{\sqrt{7}}{4}  - 2\brb{\arcsin \frac{\sqrt{14}}8 +\arcsin\frac{\sqrt{2}}4}\\
+& = & \frac{\pi}4 + \frac 32 \arcsin\frac{\sqrt{2}}4 + \frac{\sqrt{7}}{4}  - 2\arcsin \brb{\frac{\sqrt{14}}8\frac{\sqrt{14}}4 +\frac{5\sqrt{2}}8\frac{\sqrt{2}}4} = \frac{\pi}4 + \frac 32 \arcsin\frac{\sqrt{2}}4 + \frac{\sqrt{7}}{4}  - 2\arcsin\frac 34.
 \eeast
 
 Then timing this result by 4 we have
@@ -925,7 +925,7 @@ thus,
 Then by $(*)$ and $(\dag)$
 \beast
 1 + \frac{CF}{AC} & = & 1 + \frac{BE}{AB}  = \frac{AB+ BE}{AB} = \frac{AE + 2BE}{AB} = \frac{BE(AE + 2BE)}{AB \cdot BE} \\
-& = & \frac{BE(AE + 2BE)}{BO^2} = \frac{2BE\cdot BD}{BO^2} = 2 \frac{BE}{CK} = 2\frac{CF}{CK} = 2\bb{1 - \frac{FK}{CK}}
+& = & \frac{BE(AE + 2BE)}{BO^2} = \frac{2BE\cdot BD}{BO^2} = 2 \frac{BE}{CK} = 2\frac{CF}{CK} = 2\brb{1 - \frac{FK}{CK}}
 \eeast
 which implies that
 \be
@@ -953,13 +953,13 @@ Consider isosceles triangle $\triangle ABC$ with $\angle ABC = \angle ACB = 80^\
 \pstTriangle(5.6713;90){A}(1;180){B}(1;0){C}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
-\pstInterLL[PosAngle=30]{A}{C}{B}{D2}{D} 
+\pstInterLL[PosAngle=30]{A}{C}{B}{D2}{D}
 \pstLineAB{B}{D}
 
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
-\pstInterLL[PosAngle=120]{A}{B}{C}{E3}{E} 
+\pstInterLL[PosAngle=120]{A}{B}{C}{E3}{E}
 
 \pstLineAB{C}{E}
 \pstLineAB{D}{E}
@@ -984,18 +984,18 @@ We have two approaches.
 \pstTriangle(8.507;90){A}(1.5;180){B}(1.5;0){C}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
-\pstInterLL[PosAngle=30]{A}{C}{B}{D2}{D} 
+\pstInterLL[PosAngle=30]{A}{C}{B}{D2}{D}
 \pstLineAB{B}{D}
 
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{D1}{D4}
-\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F} 
+\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F}
 \pstLineAB[linestyle=dashed]{B}{F}
 \pstLineAB[linestyle=dashed]{D}{F}
 
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
-\pstInterLL[PosAngle=120]{A}{B}{C}{E3}{E} 
+\pstInterLL[PosAngle=120]{A}{B}{C}{E3}{E}
 \pstLineAB{C}{E}
 \pstLineAB{E}{D}
 \pstLineAB[linestyle=dashed]{E}{F}
@@ -1009,13 +1009,13 @@ We have two approaches.
 \pstTriangle(8.507;90){A}(1.5;180){B}(1.5;0){C}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
-\pstInterLL[PosAngle=30]{A}{C}{B}{D2}{D} 
+\pstInterLL[PosAngle=30]{A}{C}{B}{D2}{D}
 \pstLineAB{B}{D}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
-\pstInterLL[PosAngle=120]{A}{B}{C}{E3}{E} 
-\pstInterLL[PosAngle=30]{B}{D}{C}{E2}{F} 
+\pstInterLL[PosAngle=120]{A}{B}{C}{E3}{E}
+\pstInterLL[PosAngle=30]{B}{D}{C}{E2}{F}
 
 \pstLineAB{E}{D}
 \pstLineAB{E}{C}
@@ -1029,7 +1029,7 @@ We have two approaches.
 \pstLineAB[linestyle=dashed]{C}{F}
 \pstLineAB[linestyle=dashed]{D}{F}
 \pstLineAB[linestyle=dashed]{E}{F}
-\pstInterLL[PointSymbol=none, PointName=none]{B}{D}{E}{F}{G} 
+\pstInterLL[PointSymbol=none, PointName=none]{B}{D}{E}{F}{G}
 %\pstRightAngle[RightAngleSize=0.2]{D}{G}{F}
 \pstMarkAngle[LabelSep=0.7]{C}{B}{F}{$60^\circ$}
 \pstMarkAngle[LabelSep=0.7]{E}{C}{B}{$50^\circ$}
@@ -1049,7 +1049,7 @@ We have two approaches.
 
 Furthermore, $\angle BEC = 50^\circ$ implies that $BC = BE$ and therefore
 \be
-BE = BF \ \ra\ \angle BEF = \angle BFE = \frac 12\bb{180^\circ - \angle EBF} = 80^\circ.
+BE = BF \ \ra\ \angle BEF = \angle BFE = \frac 12\brb{180^\circ - \angle EBF} = 80^\circ.
 \ee
 
 Hence, $\angle EFG = \angle BEF - \angle EGF = 80^\circ - 40^\circ = 40^\circ$ and thus $EG = EF$. So
@@ -1071,7 +1071,7 @@ Consider isosceles triangle $\triangle ABC$ with $\angle ABC = \angle ACB = 80^\
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D2}{B}{A}{D3}
-\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D} 
+\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D}
 \pstLineAB{B}{D}
 \rput[lb](2,2){$\angle DBC = 70^\circ$}
 \rput[lb](2,1.5){$\angle BDC = 30^\circ$}
@@ -1111,9 +1111,9 @@ Therefore, $\angle EDF = \angle DFE = 180^\circ - 80^\circ - 60^\circ = 40^\circ
 
 Also, by law of cosines (Theorem \ref{thm:law_of_cosines}), we have that
 \be
-DF^2 = CF^2 + CD^2 - 2\cdot CF\cdot CD \cdot \cos 20^\circ = BC^2 + 4BC^2 \sin^2 70^\circ - 4BC^2 \sin 70^\circ \cos 20^\circ = BC^2 
+DF^2 = CF^2 + CD^2 - 2\cdot CF\cdot CD \cdot \cos 20^\circ = BC^2 + 4BC^2 \sin^2 70^\circ - 4BC^2 \sin 70^\circ \cos 20^\circ = BC^2
 \ee
-which impies that 
+which impies that
 \be
 BE = BC = CF = DF = DE.
 \ee
@@ -1129,18 +1129,18 @@ Thus, $\angle AED = 2\angle ABD = 20^\circ = \angle BAC$ and therefore $AD = DE 
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D2}{B}{A}{D3}
 %\pstGeonode[PointSymbol=none, PointName=none]{B}(5;70){DD1}
-\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D} 
+\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D}
 \pstLineAB{B}{D}
 
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{D1}{D4}
-\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F} 
+\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F}
 \pstLineAB[linestyle=dashed]{B}{F}
 %\pstLineAB[linestyle=dashed]{D}{F}
 
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
-\pstInterLL[PosAngle=120]{A}{B}{C}{E3}{E} 
+\pstInterLL[PosAngle=120]{A}{B}{C}{E3}{E}
 \pstLineAB[linestyle=dashed]{C}{E}
 \pstLineAB[linestyle=dashed]{E}{D}
 \pstLineAB[linestyle=dashed]{E}{F}
@@ -1163,12 +1163,12 @@ Thus, $\angle AED = 2\angle ABD = 20^\circ = \angle BAC$ and therefore $AD = DE 
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D2}{B}{A}{D3}
 %\pstGeonode[PointSymbol=none, PointName=none]{B}(5;70){DD1}
-\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D} 
+\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D}
 \pstLineAB{B}{D}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
-\pstInterLL[PosAngle=120]{A}{B}{C}{E3}{E} 
+\pstInterLL[PosAngle=120]{A}{B}{C}{E3}{E}
 \pstLineAB[linestyle=dashed]{E}{D}
 \pstLineAB[linestyle=dashed]{E}{C}
 
@@ -1177,7 +1177,7 @@ Thus, $\angle AED = 2\angle ABD = 20^\circ = \angle BAC$ and therefore $AD = DE 
 \pstLineAB[linestyle=dashed]{C}{F}
 \pstLineAB[linestyle=dashed]{D}{F}
 \pstLineAB[linestyle=dashed]{E}{F}
-\pstInterLL[PointSymbol=none, PointName=none]{B}{D}{E}{F}{G} 
+\pstInterLL[PointSymbol=none, PointName=none]{B}{D}{E}{F}{G}
 \pstRightAngle[RightAngleSize=0.2]{D}{G}{F}
 \pstMarkAngle[LabelSep=0.7]{C}{B}{F}{$60^\circ$}
 \pstMarkAngle[LabelSep=0.7]{E}{C}{B}{$50^\circ$}
@@ -1200,7 +1200,7 @@ Thus, $\angle AED = 2\angle ABD = 20^\circ = \angle BAC$ and therefore $AD = DE 
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D2}{B}{A}{D3}
 %\pstGeonode[PointSymbol=none, PointName=none]{B}(5;70){DD1}
-\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D} 
+\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D}
 \pstLineAB{B}{D}
 
 \pstGeonode[PosAngle=30](2.598;90){E}
@@ -1234,13 +1234,13 @@ Consider isosceles triangle $\triangle ABC$ with $\angle ABC = \angle ACB = 80^\
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D2}{B}{A}{D3}
-\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D} 
+\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D}
 \pstLineAB{B}{D}
 
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
 %\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
-\pstInterLL[PosAngle=120]{A}{B}{C}{E2}{E} 
+\pstInterLL[PosAngle=120]{A}{B}{C}{E2}{E}
 
 \pstLineAB{C}{E}
 \pstLineAB{D}{E}
@@ -1255,15 +1255,15 @@ Consider isosceles triangle $\triangle ABC$ with $\angle ABC = \angle ACB = 80^\
 
 
 \begin{proof}[\bf Proof]
-We can have three approaches. 
+We can have three approaches.
 
-{\bf Approach I.} Let $\angle CBF = 50^\circ$ with $BC=CF$ and $AD = BC$ by Lemma \ref{lem:world_hardest_easy_geometric_problem}. Then 
+{\bf Approach I.} Let $\angle CBF = 50^\circ$ with $BC=CF$ and $AD = BC$ by Lemma \ref{lem:world_hardest_easy_geometric_problem}. Then
 \be
 \angle DAE = \angle FCE = 20^\circ \ \ra\ \triangle ADE \cong \triangle CFE \ \ra\ \angle AED = \angle CEF = 30^\circ
 \ee
-by Proposition \ref{pro:langley_adventitious_angles}. Thus, 
+by Proposition \ref{pro:langley_adventitious_angles}. Thus,
 \be
-\angle BDE = \angle EDF - \angle BDC = \angle AED + \angle EAD - \angle BDC = 30^\circ + 20^\circ - 30^\circ = 20^\circ. 
+\angle BDE = \angle EDF - \angle BDC = \angle AED + \angle EAD - \angle BDC = 30^\circ + 20^\circ - 30^\circ = 20^\circ.
 \ee
 
 {\bf Approach II.} Let $\angle CBF = 50^\circ$ with $BC=CF$. Then $\angle DBF = 20^\circ = \angle ECF$ and by Proposition \ref{pro:langley_adventitious_angles}
@@ -1291,20 +1291,20 @@ and the fact $\angle DFE = \angle BFC = 50^\circ$ implies that $\triangle DEF \s
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{D2}{D4}
 
 %\pstGeonode[PointSymbol=none, PointName=none]{B}(5;70){DD1}
-\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D} 
-\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F} 
+\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D}
+\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F}
 \pstLineAB{B}{D}
 \pstLineAB[linestyle=dashed]{B}{F}
 
 %\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{D1}{D4}
-%\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F} 
+%\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F}
 %\pstLineAB[linestyle=dashed]{B}{F}
 %\pstLineAB[linestyle=dashed]{D}{F}
 
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
 %\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
-\pstInterLL[PosAngle=120]{A}{B}{C}{E2}{E} 
+\pstInterLL[PosAngle=120]{A}{B}{C}{E2}{E}
 \pstLineAB{C}{E}
 \pstLineAB{E}{D}
 %\pstLineAB[linestyle=dashed]{E}{F}
@@ -1323,20 +1323,20 @@ and the fact $\angle DFE = \angle BFC = 50^\circ$ implies that $\triangle DEF \s
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{D2}{D4}
 
 %\pstGeonode[PointSymbol=none, PointName=none]{B}(5;70){DD1}
-\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D} 
-\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F} 
+\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D}
+\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F}
 \pstLineAB{B}{D}
 %\pstLineAB[linestyle=dashed]{B}{F}
 
 %\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{D1}{D4}
-%\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F} 
+%\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F}
 %\pstLineAB[linestyle=dashed]{B}{F}
 %\pstLineAB[linestyle=dashed]{D}{F}
 
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
 %\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
-\pstInterLL[PosAngle=120]{A}{B}{C}{E2}{E} 
+\pstInterLL[PosAngle=120]{A}{B}{C}{E2}{E}
 \pstLineAB{C}{E}
 \pstLineAB{E}{D}
 %\pstLineAB[linestyle=dashed]{E}{F}
@@ -1359,21 +1359,21 @@ and the fact $\angle DFE = \angle BFC = 50^\circ$ implies that $\triangle DEF \s
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{D2}{D4}
 
 %\pstGeonode[PointSymbol=none, PointName=none]{B}(5;70){DD1}
-\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D} 
-\pstInterLL[PosAngle=-60]{A}{C}{B}{D4}{F} 
+\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D}
+\pstInterLL[PosAngle=-60]{A}{C}{B}{D4}{F}
 \pstLineAB{B}{D}
 %\pstLineAB[linestyle=dashed]{B}{F}
 
 %\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{D1}{D4}
-%\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F} 
+%\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F}
 %\pstLineAB[linestyle=dashed]{B}{F}
 %\pstLineAB[linestyle=dashed]{D}{F}
 
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
 %\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
-\pstInterLL[PosAngle=150]{A}{B}{C}{E2}{E} 
-\pstInterLL[PosAngle=220]{C}{E}{B}{D}{G} 
+\pstInterLL[PosAngle=150]{A}{B}{C}{E2}{E}
+\pstInterLL[PosAngle=220]{C}{E}{B}{D}{G}
 
 \pstLineAB{C}{E}
 \pstLineAB{E}{D}
@@ -1391,9 +1391,9 @@ and the fact $\angle DFE = \angle BFC = 50^\circ$ implies that $\triangle DEF \s
 \pstMediatorAB[PointSymbolA=none,linestyle=none,PointName=none]{B}{C}{Z}{BC}
 
 
-\pstInterLL[PosAngle=120,PointName=none]{X}{FG}{Y}{DE}{O1} 
+\pstInterLL[PosAngle=120,PointName=none]{X}{FG}{Y}{DE}{O1}
 \pstCircleOA[linestyle=dashed]{O1}{G}
-\pstInterLL[PosAngle=120,PointName=none]{X}{FG}{Z}{BC}{O2} 
+\pstInterLL[PosAngle=120,PointName=none]{X}{FG}{Z}{BC}{O2}
 \pstCircleOA[linestyle=dashed]{O2}{G}
 
 \pspolygon[fillstyle=solid,fillcolor=magenta,linestyle=dashed,opacity=0.3](E)(F)(G)
@@ -1426,7 +1426,7 @@ and the fact $\angle DFE = \angle BFC = 50^\circ$ implies that $\triangle DEF \s
 %\subsection{Cardioid}
 
 Cardioid
- 
+
 \begin{center}%
 \psset{yunit=1cm,xunit=1cm}  %%%%%%% this is wrong as t is theta
 \begin{pspicture}(-5,-3.5)(2,3.5)%(-2.5,-2.5)(2.5,2.5)
@@ -1450,7 +1450,7 @@ Cardioid
 \begin{pspicture}(-3,-3)(3,3)%(-2.5,-2.5)(2.5,2.5)
 \psaxes[linewidth=0.25pt,xlabelPos=top,labelFontSize=\scriptscriptstyle,labelsep=2pt,ticksize=0.05]{->}(0,0)(-2,-1.75)(2,2)[x,0][y,90]
 \psplotImp[linecolor=red,linewidth=1pt,stepFactor=0.2,algebraic](-2.5,-1.75)(2.5,2.5){x^2 + (5*y/4 -sqrt(abs(x)))^2-2.5}
-\rput[cb](3.2,1){\textcolor{black}{$x^2 + \bb{\frac{5y}{4} - \sqrt{\abs{x}}}^2 - \frac 52 = 0$}}%
+\rput[cb](3.2,1){\textcolor{black}{$x^2 + \brb{\frac{5y}{4} - \sqrt{\abs{x}}}^2 - \frac 52 = 0$}}%
 \end{pspicture}
 \end{center}
 
@@ -1464,7 +1464,7 @@ Cardioid
 
 %Striking picture created by K. F. Gauss. he also prooved that it is possible to build the regular polygons which have $2^{2^p} + 1$ sides, the following one has 17 sides!
 
-Gauss proved that it is impossible to divide the circle into $p$ equal parts unless it is of form $p = 2^{2^n}+1$. However, this does not show that it is possible to divide a circle into $p = 17 = 2^{2^2}+1$ parts; it only shows that it is not impossible. 
+Gauss proved that it is impossible to divide the circle into $p$ equal parts unless it is of form $p = 2^{2^n}+1$. However, this does not show that it is possible to divide a circle into $p = 17 = 2^{2^2}+1$ parts; it only shows that it is not impossible.
 
 Klein takes this a step further by showing that it is in fact possible to perform such a construction. It turns out that the division of the circle into $p$ equal parts is equivalent to constructing a regular $p$-gon.
 
@@ -1473,30 +1473,30 @@ In this section, we present Felix Klein's algebraic proof for this construction 
 First, we can construct a regular 5-sided polygon.
 
 \begin{example}[construction of 5-sided polygon]
-Recalling Example \ref{exa:sin_pi_divided_by_5}, we have that 
+Recalling Example \ref{exa:sin_pi_divided_by_5}, we have that
 \be
 \sin\frac{\pi}5=\sqrt{\frac{5-\sqrt{5}}{8}}=\frac 14\sqrt{10-2\sqrt{5}}.
-\ee 
+\ee
 
-Then we can have that 
+Then we can have that
 \be
 \cos \frac{2\pi}5 = 1 - 2\sin^2\frac{\pi}5 = 1- \frac{10-2\sqrt{5}}{8} = \frac{\sqrt{5}-1}{4}.
 \ee
- 
+
 
 \ben
 \item [(i)] {\bf Construct a circle with center $O$ and diameter $BA$. Construct the perpendicular bisector of $BA$, segment $OC$.}
 \item [(ii)] {\bf Construct $OD = OC/2$. Then construct segment $DA$.}
 \item [(iii)] {\bf Bisect angle $\angle ODA$ to construct angle $\angle ODE$.}
 
-Since $DE$ equally divides angle $\angle ODA$, we have 
+Since $DE$ equally divides angle $\angle ODA$, we have
 \be
 \frac{OE}{1-OE} = \frac{OE}{EA} =  \frac{OD}{DA} = \frac{\frac 12}{\frac{\sqrt{5}}2} \ \ra \ OE = \frac {\sqrt{5}-1}{4} = \cos \frac{2\pi}5.
 \ee
 
 Thus, the corresponding points $P_1$ and $P_4$ are the vertices of 5-sided polygon.
 
-The theoretical proof can be found in the proof of Theorem \ref{thm:algebraic_proof_of_17_sided_polygon}. 
+The theoretical proof can be found in the proof of Theorem \ref{thm:algebraic_proof_of_17_sided_polygon}.
 
 \begin{center}
 \begin{pspicture}(-5.5,-4.2)(5.5,4.7)
@@ -1526,7 +1526,7 @@ The theoretical proof can be found in the proof of Theorem \ref{thm:algebraic_pr
 %\pstInterLC[PosAngleA=-90,PosAngleB=135,PointNameB=G, PointNameA=]{O}{C}{MFA1}{A}{H_1}{G}%%[PointSymbolA=none, PointNameA=none] %% intersection of circles
 %\ncline{O}{H_1}
 
-%\pstCircleOA{E}{G} 
+%\pstCircleOA{E}{G}
 %\pstInterLC[PosAngleA=-135,PosAngleB=-45]{O}{A}{E}{G}{H}{K}
 \pstRotation[RotAngle=90,PointSymbol=none, PointName=none, CodeFigColor=white]{E}{A}[PP]%
 \pstInterLC[PosAngleA=90,PosAngleB=-90, PointNameB=P_{4}]{PP}{E}{O}{A}{P_1}{P_4}
@@ -1613,7 +1613,7 @@ Begin by forming two periods of 8 roots, denoted by $x_1$ and $x_2$, where $x_1$
 x_1 &= & \ve_9+\ve_{13}+\ve_{15}+\ve_{16}+\ve_8+\ve_{4}+\ve_{2}+\ve_{1},\\
 x_2 & = & \ve_3+\ve_{10}+\ve_{5}+\ve_{11}+\ve_{14}+\ve_{7}+\ve_{12}+\ve_{6}.
 \eeast
-with $x_1 + x_2 = -1$. 
+with $x_1 + x_2 = -1$.
 
 We can further break down each of these $x$ periods into four periods with four terms each. Again, we will take the roots in `even' and `odd' positions within each $x$ and form the following sums:
 \beast
@@ -1643,7 +1643,7 @@ Then for each of the periods $z_i$, we now know that $z_i$ is a real number, and
 & & z_5 = 2\cos \frac{12\pi}{17},\quad z_6 = 2\cos \frac{14\pi}{17}, \quad z_7 = 2\cos \frac{10\pi}{17},\quad z_8 = 2\cos \frac{6\pi}{17}.
 \eeast
 
-Additionally, 
+Additionally,
 \beast
 y_1 = z_1+z_2,&\quad & y_2 = z_3+z_4,\\
 y_3 = z_5 + z_6,&\quad & y_4 = z_7+z_8.
@@ -1660,7 +1660,7 @@ Now we have established exactly what our periods are, we will determine the magn
 Consider $\angle A_kA_{17}A_0$ which is equal to half the measure of the arc $A_kA_0$. This arc $A_kA_0$ has measure $2k\pi/34 = k\pi/17$, since the measure of this arc is $k$ times the measure of arc $A_0A_1$, and arc $A_0A_1$ measures $1/34$ of the circle. Thus, $\angle A_kA_{17}A_0 = k\pi/34$. Also notice that $\angle A_kA_0A_{17} = \pi/2 - \angle A_kA_{17}A_0 = (17-k)\pi/34$. Thus,
 \be
 S_k = 2\sin\angle A_kA_{17}A_0 = 2\cos\angle A_kA_{17}A_0 = 2\cos\frac{(17-k)\pi}{34}.
-\ee 
+\ee
 
 
 \begin{center}
@@ -1675,7 +1675,7 @@ S_k = 2\sin\angle A_kA_{17}A_0 = 2\cos\angle A_kA_{17}A_0 = 2\cos\frac{(17-k)\pi
 %\pstRightAngle[linestyle=solid]{B}{O}{A_0}
 %\ncline[linestyle=solid]{O}{B}
 
-\pstHomO[HomCoef=.25,PointSymbol=none, PointName=none]{O}{B}[J] 
+\pstHomO[HomCoef=.25,PointSymbol=none, PointName=none]{O}{B}[J]
 %\ncline{J}{P_1}
 \pstBissectBAC[PointSymbol=none, PointName=none,linecolor=white]{O}{J}{A_17}{PE1}
 \pstBissectBAC[PointSymbol=none, PointName=none,linecolor=white]{O}{J}{PE1}{PE2}
@@ -1786,7 +1786,7 @@ S_{k+p} < S_k + S_p.
 %S_{k+p} < S_{k+r} + S_{p+17-r}.
 %\ee
 
-To determine the relative magnitude of $y_1,y_2,y_3,y_4$, we can take their differences. To demonstrate, consider 
+To determine the relative magnitude of $y_1,y_2,y_3,y_4$, we can take their differences. To demonstrate, consider
 \be
 y_1 - y_2 = z_1+z_2 - z_3-z_4 = S_{13} + S_1 - S_9 + S_{15}.
 \ee
@@ -1797,7 +1797,7 @@ Since $S_{15}>S_9$, we have that $y_1>y_2$. Similarly,
 & & y_1 - y_4 = z_1+z_2 - z_7-z_8  = S_{13} + S_1 + S_3 - S_{5} > 0, \\
 & & y_2 - y_3 = z_3+z_4 - z_5-z_6  = S_{9} - S_{15} + S_7 + S_{11} > S_{16} -S_{15} + S_{11} >0, \\
 & & y_2 - y_4 = z_3+z_4 - z_7-z_8  = S_{9} - S_{15} + S_3 - S_{5} < 0, \\
-& & y_3 - y_4 = z_5+z_6 - z_7-z_8  = -S_{7} - S_{11} + S_3 - S_{5} < 0. 
+& & y_3 - y_4 = z_5+z_6 - z_7-z_8  = -S_{7} - S_{11} + S_3 - S_{5} < 0.
 \eeast
 
 Therefore, $y_3 < y_2 < y_4 < y_1$.
@@ -1927,9 +1927,9 @@ We then determine $y_1$ and $y_4$. First, consider $y_1$ and $y_2$ which form th
 y_1 + y_2 = x_1.
 \ee
 
-Additionally, 
+Additionally,
 \beast
-y_1y_2 & = & \bb{\ve_{13} +\ve_{16} + \ve_4 + \ve_1}\bb{\ve_{9} +\ve_{15} + \ve_8 + \ve_2} \\
+y_1y_2 & = & \brb{\ve_{13} +\ve_{16} + \ve_4 + \ve_1}\brb{\ve_{9} +\ve_{15} + \ve_8 + \ve_2} \\
 & = & \ve_{13+9} + \ve_{13+15} + \ve_{13 + 8} + \ve_{13+2} + \ve_{16+9} + \ve_{16+15} + \ve_{16 + 8} + \ve_{16+2} \\
 & & \qquad + \ve_{4+9} + \ve_{4+15} + \ve_{4 + 8} + \ve_{4+2} + \ve_{1+9} + \ve_{1+15} + \ve_{1 + 8} + \ve_{1+2} \\
 & = & \ve_{5} + \ve_{11} + \ve_{4} + \ve_{15} + \ve_{8} + \ve_{14} + \ve_{7} + \ve_{1} + \ve_{13} + \ve_{2} + \ve_{12} + \ve_{6} + \ve_{10} + \ve_{16} + \ve_{9} + \ve_{3} \\
@@ -1951,7 +1951,7 @@ Similarly, for $y_3$ and $y_4$,
 y_3 + y_4 = x_2,\qquad y_3y_4 = -1.
 \ee
 
-Therefore, $y_3$ and $y_4$ are roots of the equation 
+Therefore, $y_3$ and $y_4$ are roots of the equation
 \be
 y^2 - x_2 y - 1 = 0.
 \ee
@@ -1968,7 +1968,7 @@ x_1 + x_2 = \sum^{16}_{k=1}\ve_k = -1.
 
 Also,
 \beast
-x_1x_2 & = & \bb{\ve_{13} + \ve_{16} + \ve_4 +\ve_1 + \ve_9 +\ve_{15} +\ve_8 + \ve_2}\bb{\ve_{10} + \ve_{11} + \ve_7 +\ve_6 + \ve_3 +\ve_{5} +\ve_{14} + \ve_{12}} \\
+x_1x_2 & = & \brb{\ve_{13} + \ve_{16} + \ve_4 +\ve_1 + \ve_9 +\ve_{15} +\ve_8 + \ve_2}\brb{\ve_{10} + \ve_{11} + \ve_7 +\ve_6 + \ve_3 +\ve_{5} +\ve_{14} + \ve_{12}} \\
 & = & 4 \sum^{16}_{k=1}\ve_k = -4.
 \eeast
 
@@ -1982,25 +1982,25 @@ Since $x_1>x_2$, we have
 x_1 = \frac {-1+\sqrt{17}}2,\qquad x_2 = \frac {-1-\sqrt{17}}2.
 \ee
 
-Then we work back through $y_1,y_2,y_3,y_4$ and find 
+Then we work back through $y_1,y_2,y_3,y_4$ and find
 \be
-y_{1,2} = \frac{\frac{-1+\sqrt{17}}2 \pm \sqrt{\bb{ \frac {-1+\sqrt{17}}2}^2 + 4}}{2} = \frac{-1+\sqrt{17}\pm \sqrt{34-2\sqrt{17}}}{4},
+y_{1,2} = \frac{\frac{-1+\sqrt{17}}2 \pm \sqrt{\brb{ \frac {-1+\sqrt{17}}2}^2 + 4}}{2} = \frac{-1+\sqrt{17}\pm \sqrt{34-2\sqrt{17}}}{4},
 \ee
 
 \be
-y_{3,4} = \frac{\frac{-1-\sqrt{17}}2 \mp \sqrt{\bb{ \frac {-1-\sqrt{17}}2}^2 + 4}}{2} = \frac{-1-\sqrt{17} \mp \sqrt{34+2\sqrt{17}}}{4}.
+y_{3,4} = \frac{\frac{-1-\sqrt{17}}2 \mp \sqrt{\brb{ \frac {-1-\sqrt{17}}2}^2 + 4}}{2} = \frac{-1-\sqrt{17} \mp \sqrt{34+2\sqrt{17}}}{4}.
 \ee
 
 Then we have
 \beast
-z_1 & = & \frac 12\bb{\frac{-1+\sqrt{17} + \sqrt{34-2\sqrt{17}}}{4} + \sqrt{\bb{\frac{-1+\sqrt{17}+ \sqrt{34-2\sqrt{17}}}{4}}^2 + 1 + \sqrt{17} - \sqrt{34+2\sqrt{17}}}} \\
-& = & \frac 18\bb{-1+\sqrt{17} + \sqrt{34-2\sqrt{17}} + \sqrt{\bb{-1+\sqrt{17}+  \sqrt{34-2\sqrt{17}}}^2 + 16\bb{1 + \sqrt{17} - \sqrt{34+2\sqrt{17}}}}} \\
-& = & \frac 18\bb{-1+\sqrt{17} + \sqrt{34-2\sqrt{17}} + \sqrt{68 + 12\sqrt{17} - 16\sqrt{34+2\sqrt{17}} + 2 \bb{\sqrt{17}-1}\sqrt{34-2\sqrt{17}}}} .
+z_1 & = & \frac 12\brb{\frac{-1+\sqrt{17} + \sqrt{34-2\sqrt{17}}}{4} + \sqrt{\brb{\frac{-1+\sqrt{17}+ \sqrt{34-2\sqrt{17}}}{4}}^2 + 1 + \sqrt{17} - \sqrt{34+2\sqrt{17}}}} \\
+& = & \frac 18\brb{-1+\sqrt{17} + \sqrt{34-2\sqrt{17}} + \sqrt{\brb{-1+\sqrt{17}+  \sqrt{34-2\sqrt{17}}}^2 + 16\brb{1 + \sqrt{17} - \sqrt{34+2\sqrt{17}}}}} \\
+& = & \frac 18\brb{-1+\sqrt{17} + \sqrt{34-2\sqrt{17}} + \sqrt{68 + 12\sqrt{17} - 16\sqrt{34+2\sqrt{17}} + 2 \brb{\sqrt{17}-1}\sqrt{34-2\sqrt{17}}}} .
 \eeast
 
-Note that since $z_1$ consists of only addition, subtraction, multiplication, division, and square roots, $z_1$ is a constructible number\footnote{theorem needed.}. Also, $z_1 = \ve_1 + \ve_{16}$, and dividing $z_1$ by 2 gives us the real portion of both $\ve_1$ and $\ve_{16}$. This is also a real number. We can now construct a perpendicular through this point, which intersects the circle at $\ve_1$ and $\ve_{16}$. 
+Note that since $z_1$ consists of only addition, subtraction, multiplication, division, and square roots, $z_1$ is a constructible number\footnote{theorem needed.}. Also, $z_1 = \ve_1 + \ve_{16}$, and dividing $z_1$ by 2 gives us the real portion of both $\ve_1$ and $\ve_{16}$. This is also a real number. We can now construct a perpendicular through this point, which intersects the circle at $\ve_1$ and $\ve_{16}$.
 
-Note that for 5-sided polygon, we can have that $a=3$ and 
+Note that for 5-sided polygon, we can have that $a=3$ and
 \be
 3^1\equiv 3(\bmod 5),\quad 3^2\equiv 4(\bmod 5),\quad 3^3 \equiv 2(\bmod 5),\quad 3^4\equiv 1 (\bmod 5).
 \ee
@@ -2039,20 +2039,20 @@ Dozens of different constructions for the regular 17-gon have been given, some b
 
 \item [(iii)] {\bf Bisect angle $\angle ODA$ twice to construct angle $\angle ODE$, where the measures of $\angle ODN$ and $\angle ODE$ are 1/2 and 1/4 that of angle $\angle ODA$.}
 
-Since $DN$ equally divides angle $\angle ODA$, we have 
+Since $DN$ equally divides angle $\angle ODA$, we have
 \be
 \frac{ON}{1-ON} = \frac{ON}{NA} =  \frac{OD}{DA} = \frac{\frac 14}{\frac{\sqrt{17}}4} \ \ra \ ON = \frac {\sqrt{17}-1}{16}.
 \ee
 
 Again, $DE$ equally divides angle $\angle ODN$, we have
 \be
-\frac{OE}{\frac {\sqrt{17}-1}{16} - OE} = \frac{OE}{EN} =  \frac{OD}{DN} = \frac{\frac 14}{\sqrt{\bb{\frac {\sqrt{17}-1}{16}}^2+\bb{\frac 14}^2}} = \frac{4}{\sqrt{34 - 2\sqrt{17}}}
+\frac{OE}{\frac {\sqrt{17}-1}{16} - OE} = \frac{OE}{EN} =  \frac{OD}{DN} = \frac{\frac 14}{\sqrt{\brb{\frac {\sqrt{17}-1}{16}}^2+\brb{\frac 14}^2}} = \frac{4}{\sqrt{34 - 2\sqrt{17}}}
 \ee
 which gives that
 \beast
-OE & = & \frac {\sqrt{17}-1}4\bb{\frac 1{\sqrt{34- 2\sqrt{17}}+4}} = \frac 14\bb{\frac {\bb{\sqrt{17}-1}\bb{\sqrt{34- 2\sqrt{17}}-4}} {34- 2\sqrt{17} - 16}} = \frac 14\bb{\frac {\bb{\sqrt{34- 2\sqrt{17}}-4}} {\sqrt{17}-1}} \\
-& = & \frac 1{64}\bb{\sqrt{4^2 + (\sqrt{17}-1)^2}-4}\bb{\sqrt{17}+1} = \frac 1{16}\bb{-\sqrt{17}-1 + \sqrt{\bb{\sqrt{17}+1}^2 + 4^2}} \\
-& = & \frac 1{16}\bb{-\sqrt{17}-1 + \sqrt{34 + 2\sqrt{17}}} = \frac {y_4}4
+OE & = & \frac {\sqrt{17}-1}4\brb{\frac 1{\sqrt{34- 2\sqrt{17}}+4}} = \frac 14\brb{\frac {\brb{\sqrt{17}-1}\brb{\sqrt{34- 2\sqrt{17}}-4}} {34- 2\sqrt{17} - 16}} = \frac 14\brb{\frac {\brb{\sqrt{34- 2\sqrt{17}}-4}} {\sqrt{17}-1}} \\
+& = & \frac 1{64}\brb{\sqrt{4^2 + (\sqrt{17}-1)^2}-4}\brb{\sqrt{17}+1} = \frac 1{16}\brb{-\sqrt{17}-1 + \sqrt{\brb{\sqrt{17}+1}^2 + 4^2}} \\
+& = & \frac 1{16}\brb{-\sqrt{17}-1 + \sqrt{34 + 2\sqrt{17}}} = \frac {y_4}4
 \eeast
 where $y_4$ is defined in proof of Theorem \ref{thm:algebraic_proof_of_17_sided_polygon}.
 
@@ -2084,7 +2084,7 @@ where $y_4$ is defined in proof of Theorem \ref{thm:algebraic_proof_of_17_sided_
 \pstInterLC[PosAngleA=-90,PosAngleB=135,PointNameB=G, PointNameA=]{O}{C}{MFA1}{A}{H_1}{G}%%[PointSymbolA=none, PointNameA=none] %% intersection of circles
 \ncline{O}{H_1}
 
-\pstCircleOA{E}{G} 
+\pstCircleOA{E}{G}
 \pstInterLC[PosAngleA=-135,PosAngleB=-45]{O}{A}{E}{G}{H}{K}
 \pstRotation[RotAngle=90,PointSymbol=none, PointName=none, CodeFigColor=white]{H}{K}[PP_5]
 \pstInterLC[PosAngleA=90,PosAngleB=-90, PointNameB=P_{12}]{PP_5}{H}{O}{A}{P_5}{P_12}
@@ -2137,10 +2137,10 @@ where $y_4$ is defined in proof of Theorem \ref{thm:algebraic_proof_of_17_sided_
 % \pstInterLL[PosAngle=-90]{O}{P_1}{J}{PE2}{E}
 % \pstRotation[PosAngle=-90, RotAngle=-45, PointSymbol=none, PointName=none]{J}{E}[PF1]
 % \pstInterLL[PosAngle=-90]{O}{P_1}{J}{PF1}{F}
-% \pstMiddleAB[PointSymbol=none, PointName=none]{F}{P_1}{MFP1} 
+% \pstMiddleAB[PointSymbol=none, PointName=none]{F}{P_1}{MFP1}
 % \pstCircleOA{MFP1}{P_1}
 % \pstInterLC{O}{B}{MFP1}{P_1}{H}{K}%[PointSymbolA=none, PointNameA=none]
-% \pstCircleOA{E}{K} 
+% \pstCircleOA{E}{K}
 % \pstInterLC{O}{P_1}{E}{K}{N_6}{N_4}
 % \pstRotation[RotAngle=90,PointSymbol=none, PointName=none]{N_6}{E}[PP_6]
 % \pstInterLC[PosAngleA=90,PosAngleB=-90, PointNameB=P_{13}]{PP_6}{N_6}{O}{P_1}{P_6}{P_13}
@@ -2171,53 +2171,53 @@ where $y_4$ is defined in proof of Theorem \ref{thm:algebraic_proof_of_17_sided_
 
 By proposition\footnote{proposition needed.}, we have that
 \be
-\frac 12 EF\cdot OD = \text{area of }EDF = \frac 12 \sin\angle EDF \cdot DE \cdot DF 
+\frac 12 EF\cdot OD = \text{area of }EDF = \frac 12 \sin\angle EDF \cdot DE \cdot DF
 \ee
 which implies that
 \beast
 OD (OE + OF) & = &  \frac {\sqrt{2}}2 \sqrt{OD^2 + OE^2}\sqrt{OD^2 + OF^2} \\
-OD^2 (OE + OF)^2 & = & \frac 12 \bb{OD^2 + OE^2}\bb{OD^2 + OF^2} \\
-\frac 1{16} (OE + OF)^2 & = & \frac 12 \bb{\frac 1{16} + OE^2}\bb{\frac 1{16} + OF^2} 
+OD^2 (OE + OF)^2 & = & \frac 12 \brb{OD^2 + OE^2}\brb{OD^2 + OF^2} \\
+\frac 1{16} (OE + OF)^2 & = & \frac 12 \brb{\frac 1{16} + OE^2}\brb{\frac 1{16} + OF^2}
 \eeast
 
 Since $OE = y_4/4$, we have
 \be
-2(y_4/4 + OF)^2 = \bb{1+ y_4^2}\bb{\frac 1{16} + OF^2} 
+2(y_4/4 + OF)^2 = \brb{1+ y_4^2}\brb{\frac 1{16} + OF^2}
 \ee
 which implies that
 \be
-\bb{1- y_4^2} OF^2 + y_4 OF - \frac 1{16}\bb{1- y_4^2} = 0
+\brb{1- y_4^2} OF^2 + y_4 OF - \frac 1{16}\brb{1- y_4^2} = 0
 \ee
 
 Then since $y_4 <1$
 \be
-OF = \frac{-y_4 + \sqrt{y_4^2 + \frac 14 \bb{1- y_4^2}^2}}{2(1- y_4^2)} = \frac 14\frac{1-y_4}{1+y_4}
+OF = \frac{-y_4 + \sqrt{y_4^2 + \frac 14 \brb{1- y_4^2}^2}}{2(1- y_4^2)} = \frac 14\frac{1-y_4}{1+y_4}
 \ee
 
-In particular, 
+In particular,
 \beast
-\frac{1-y_4}{1+y_4} & = & \frac{\frac{5+\sqrt{17}-\sqrt{34+2\sqrt{17}}}4}{\frac{3-\sqrt{17}+\sqrt{34+2\sqrt{17}}}4} = \frac{5+\sqrt{17}-\sqrt{34+2\sqrt{17}}}{3-\sqrt{17}+\sqrt{34+2\sqrt{17}}} = \frac{\bb{5+\sqrt{17}-\sqrt{34+2\sqrt{17}}}\bb{3-\sqrt{17}-\sqrt{34+2\sqrt{17}}}}{\bb{3-\sqrt{17}}^2 - \bb{34+2\sqrt{17}}} \\
-& = & \frac{32 - 8\sqrt{34+2\sqrt{17}}}{-8 - 8\sqrt{17}} = \frac{-4 + \sqrt{34+2\sqrt{17}}}{1+\sqrt{17}} = \frac 1{16}\bb{-4\sqrt{17} + 4 + \bb{\sqrt{17}-1}\sqrt{\bb{\sqrt{17}+1}^2 + 4^2}} \\
+\frac{1-y_4}{1+y_4} & = & \frac{\frac{5+\sqrt{17}-\sqrt{34+2\sqrt{17}}}4}{\frac{3-\sqrt{17}+\sqrt{34+2\sqrt{17}}}4} = \frac{5+\sqrt{17}-\sqrt{34+2\sqrt{17}}}{3-\sqrt{17}+\sqrt{34+2\sqrt{17}}} = \frac{\brb{5+\sqrt{17}-\sqrt{34+2\sqrt{17}}}\brb{3-\sqrt{17}-\sqrt{34+2\sqrt{17}}}}{\brb{3-\sqrt{17}}^2 - \brb{34+2\sqrt{17}}} \\
+& = & \frac{32 - 8\sqrt{34+2\sqrt{17}}}{-8 - 8\sqrt{17}} = \frac{-4 + \sqrt{34+2\sqrt{17}}}{1+\sqrt{17}} = \frac 1{16}\brb{-4\sqrt{17} + 4 + \brb{\sqrt{17}-1}\sqrt{\brb{\sqrt{17}+1}^2 + 4^2}} \\
 & = & \frac{1-\sqrt{17}+ \sqrt{34-2\sqrt{17}}}{4} = -y_2
 \eeast
-where $y_2$ is defined in proof of Theorem \ref{thm:algebraic_proof_of_17_sided_polygon}. Thus, $OF = -y_2/4$. Then we have 
+where $y_2$ is defined in proof of Theorem \ref{thm:algebraic_proof_of_17_sided_polygon}. Thus, $OF = -y_2/4$. Then we have
 \be
 OF \cdot OA = OG^2 \ \ra\ OF = OG^2
 \ee
 since $\angle FGA = \pi/2$.
 
 \item [(v)] {\bf Construct a semicircle with center $E$ and radius $EG$, which intersects $AB$ at $H$ and $K$. }
-    
-We know that 
+
+We know that
 \be
-EH = EK = EG = \sqrt{OE^2 + OG^2} = \sqrt{OE^2+ OF} = \sqrt{\bb{\frac {y_4}4} - \frac{y_2}4} = \frac{\sqrt{y_4^2 - 4y_2}}{4}.
+EH = EK = EG = \sqrt{OE^2 + OG^2} = \sqrt{OE^2+ OF} = \sqrt{\brb{\frac {y_4}4} - \frac{y_2}4} = \frac{\sqrt{y_4^2 - 4y_2}}{4}.
 \ee
 
-Therefore, 
+Therefore,
 \be
 OH = EH - OE = \frac{\sqrt{y_4^2 - 4y_2}}{4} - \frac {y_4}4 = -\frac {z_7}2\qquad (*)
 \ee
-and 
+and
 \be
 OK = EK + OE = \frac{\sqrt{y_4^2 - 4y_2}}{4} + \frac {y_4}4 = \frac{z_8}2\qquad (\dag)
 \ee
@@ -2225,7 +2225,7 @@ where $z_7$ and $z_8$ are defined in proof of Theorem \ref{thm:algebraic_proof_o
 \be
 z_7 + z_8 = y_4
 \ee
-and 
+and
 \beast
 z_7z_8 & = &  (\ve_5 + \ve_{12})(\ve_3+ \ve_{14}) =\ve_{5+3} + \ve_{5+14} + \ve_{12+3} + \ve_{12+14} \\
 & = & \ve_8 + \ve_2+ \ve_{15} + \ve_9 = z_3 + z_4 = y_2.
@@ -2236,7 +2236,7 @@ Thus, $z_7$ and $z_8$ are the roots of equation
 z^2 - y_4 z + y_2\ \ra\ z_{7,8} = \frac{y_4 \pm \sqrt{y_4^2 - 4y_2} }{2}.
 \ee
 
-\item [(vi)] {\bf Construct $HL$ and $KM$, both perpendicular to $AB$. Measure of angle $\angle LOM = 4\pi/17$, so bisecting this angle gives us $2\pi/17$.} 
+\item [(vi)] {\bf Construct $HL$ and $KM$, both perpendicular to $AB$. Measure of angle $\angle LOM = 4\pi/17$, so bisecting this angle gives us $2\pi/17$.}
 
 Since $z_7 = \ve_5 + \ve_{12}$, $z_8 = \ve_3 + \ve_{14}$, $-OH$ and $OK$ are the real parts of $\ve_5$ and $\ve_3$.
 
@@ -2252,7 +2252,7 @@ We have now divided the circle into 17 equal parts. Connecting these points of d
 
 The maximal number of regions into which space can be divided by $n$ planes is\footnote{check needed. Yaglom, A.M. and Yaglom, I.M., Challenging Mathematical Problems with Elementary Solutions Vol. 1, New York, 1987, pp 102-106.}
 \be
-f(n) = \frac 16\bb{n^3 + 5n + 6}.
+f(n) = \frac 16\brb{n^3 + 5n + 6}.
 \ee
 
 
