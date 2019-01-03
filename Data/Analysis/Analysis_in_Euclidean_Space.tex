@@ -20,8 +20,8 @@ Every bounded sequence in $\R^n$ has a convergent subsequence.
 
 \begin{proof}[\bf Proof]%(We use subscripts to denote the terms of the sequence, because we’re going to use superscripts to denote the components of points in $\R^n$.)
 Let $(x_m) = (x_m^0)$ be a bounded sequence in $\R^n$. Then the sequence $(y_m^1)$ of first components of the terms of $(x_m^0)$ is a bounded real sequence, which has a convergent subsequence $(y_{m_k}^1)$, according to the Bolzano-Weierstrass theorem in $\R$ (Theorem \ref{thm:bolzano_weierstrass_r}).
- 
-Let $(x_{m}^1)$ be $(x_{m_k}^0)$, the corresponding subsequence of $(x_m^0)$. Then the sequence $(y_m^2)$ of second components of $(x_m^1)$ is a bounded sequence of real numbers, so it too has a convergent subsequence, and we again have $(x_{m}^2)$, a corresponding subsequence of $(x_{m}^1)$ (and therefore of $(x_{m}^0)$), in which the sequences of first and second components both converge. 
+
+Let $(x_{m}^1)$ be $(x_{m_k}^0)$, the corresponding subsequence of $(x_m^0)$. Then the sequence $(y_m^2)$ of second components of $(x_m^1)$ is a bounded sequence of real numbers, so it too has a convergent subsequence, and we again have $(x_{m}^2)$, a corresponding subsequence of $(x_{m}^1)$ (and therefore of $(x_{m}^0)$), in which the sequences of first and second components both converge.
 
 Continuing for $n$ iterations, we end up with a subsequence $(x_{m}^n)$ of $(x_{m}^0)$ in which the sequences of first to $n$th components all converge, and therefore the subsequence $(x_{m}^n)$ itself converges in $\R^n$.
 \end{proof}
@@ -103,14 +103,14 @@ Let $A \subseteq \R^n$. Then the following are equivalent.
 %\end{remark}
 
 %\begin{theorem}
-%A set $A \subseteq \R^n$ is compact if and only if 
+%A set $A \subseteq \R^n$ is compact if and only if
 %\end{theorem}
 
 \begin{proof}[\bf Proof]
 \ben
 \item [(i)] $\ra$ (ii). Suppose $A$ is closed and bounded and consider any sequence $(a_n)$ in $A$. Since $A$ is bounded, we have that $(a_n)$ has a convergent subsequence by Bolzano-Weierstrass theorem (Theorem \ref{thm:bolzano_weierstrass_multiple_real}). Since $A$ is closed, we have that the limit of this sequence is in $A$.
 
-\item [(ii)] $\ra$ (iii). Suppose that every sequence in $A$ contains a convergent subsequence with limit in $A$. 
+\item [(ii)] $\ra$ (iii). Suppose that every sequence in $A$ contains a convergent subsequence with limit in $A$.
 
 Consider an open cover $\bra{U_i}_{i\in I}$ of $A$ such that $A \subseteq \bigcup_{i\in I} U_i$. For any $a\in X$, we want to show that there exists $\ve>0$ such that $B_\ve(a) \subseteq U_i$ for some $i\in I$.
 
@@ -126,7 +126,7 @@ Therefore, $B_{1/n_k}(a_{n_k}) \subseteq B_{\delta/2} (a_{n_k}) \subseteq B_\del
 
 Now for any $a\in A$ we can find $\ve= \ve(a)>0$ such that $B_a := B_\ve(a) \subseteq U_{i}$ for some $i\in I$. Obviously, $\bra{B_a}_{a\in A}$ is an open cover of $A$. Suppose we know how to extract a finite subcover $\bra{B_{a_1},\dots,B_{a_M}}$ of $A$, then since each $B_{a_k}$ is contained in some $U_{i_k}$ we can conclude that $\bra{U_{i_1},\dots,U_{i_M}}$ is also a finite subcover. So it is enough to show that $\bra{B_{a}}_{a\in A}$ has a finite subcover of $A$.
 
-For any $a_0\in A$. If $B_{a_0}$ covers $A$ we are done, otherwise there is $a_1\in A\bs B_{a_0}$. If $\bra{B_{a_0},B_{a_1}}$ covers $A$ we are done, otherwise there is $a_2\in A\bs\bb{B_{a_0}\cup B_{a_1}}$. If we continue this process we either obtain a finite subcover or a sequence $(a_k)_{k\in \N}$. Observe that for any $k\in \N$, there exists $\ve = \ve(a_k)>0$ such that $\abs{a_k - a_j}>\ve$ for any $j>k$. So the sequence $(a_k)$ cannot have a convergent subsequence which is a contraction to the assumption. Therefore, the process must end at some point and we should have a finite subcover of $A$.
+For any $a_0\in A$. If $B_{a_0}$ covers $A$ we are done, otherwise there is $a_1\in A\bs B_{a_0}$. If $\bra{B_{a_0},B_{a_1}}$ covers $A$ we are done, otherwise there is $a_2\in A\bs\brb{B_{a_0}\cup B_{a_1}}$. If we continue this process we either obtain a finite subcover or a sequence $(a_k)_{k\in \N}$. Observe that for any $k\in \N$, there exists $\ve = \ve(a_k)>0$ such that $\abs{a_k - a_j}>\ve$ for any $j>k$. So the sequence $(a_k)$ cannot have a convergent subsequence which is a contraction to the assumption. Therefore, the process must end at some point and we should have a finite subcover of $A$.
 
 
 \item [(iii)] $\ra$ (i). Suppose $A$ is compact. Consider the collection
@@ -271,7 +271,7 @@ I_i = \bigcup_{j=1}^{N_i} I_{ij}.
 
 Define the rectangles $S_{j_1j_2\dots j_n} = I_{1,j_1} \times I_{2,j_2} \times \dots\times I_{n,j_n}$. Then
 \be
-\vol{I} = \sum^{N_1}_{j_1 = 1} \dots \sum^{N_n}_{j_n = 1} \vol\bb{S_{j_1j_2\dots j_n}}.
+\vol{I} = \sum^{N_1}_{j_1 = 1} \dots \sum^{N_n}_{j_n = 1} \vol\brb{S_{j_1j_2\dots j_n}}.
 \ee
 \end{lemma}
 
@@ -282,7 +282,7 @@ Denoting the length of an interval $I\subseteq \R$ by $\abs{I}$, using the fact 
 \ee
 and expanding the resulting product, we get that
 \beast
-\vol\bb{I} & = & \prod^n_{i=1}\abs{I_i} = \prod^n_{i=1} \bb{\sum^{N_i}_{j_i=1}\abs{I_{i,j_i}}} = \sum^{N_1}_{j_1=1}\dots \sum^{N_n}_{j_n=1}\prod^n_{i=1} \abs{I_{i,j_i}} = \sum^{N_1}_{j_1=1}\dots \sum^{N_n}_{j_n=1}\vol\bb{S_{j_1j_2\dots j_n}}
+\vol\brb{I} & = & \prod^n_{i=1}\abs{I_i} = \prod^n_{i=1} \brb{\sum^{N_i}_{j_i=1}\abs{I_{i,j_i}}} = \sum^{N_1}_{j_1=1}\dots \sum^{N_n}_{j_n=1}\prod^n_{i=1} \abs{I_{i,j_i}} = \sum^{N_1}_{j_1=1}\dots \sum^{N_n}_{j_n=1}\vol\brb{S_{j_1j_2\dots j_n}}
 \eeast
 as required.
 \end{proof}
@@ -323,12 +323,12 @@ S_{j_1j_2\dots j_n} = I_{1,j_1} \times I_{2,j_2} \times \dots\times I_{n,j_n},\q
 
 Obviously, each rectangle $A_k$ in the collection is an almost disjoint union of rectangles $S_{j_1j_2,\dots j_n}$ and their union contains all such products exactly once, so applying Lemma \ref{lem:subrectangles_volume_summation} to each $A_k$ and summing the results we see that
 \be
-\sum^N_{k=1}\vol(A_k) = \sum^{N_1}_{j_1=1}\dots \sum^{N_n}_{j_n=1}\vol\bb{S_{j_1j_2\dots j_n}}.
+\sum^N_{k=1}\vol(A_k) = \sum^{N_1}_{j_1=1}\dots \sum^{N_n}_{j_n=1}\vol\brb{S_{j_1j_2\dots j_n}}.
 \ee
 
 Similarly, $I$ is an almost disjoint union of all the rectangles $S_{j_1j_2\dots j_n}$, so Lemma \ref{lem:subrectangles_volume_summation} implies that
 \be
-\vol(I) = \sum^{N_1}_{j_1=1}\dots \sum^{N_n}_{j_n=1}\vol\bb{S_{j_1j_2\dots j_n}} \ \ra\ \vol(I) = \sum^N_{k=1}\vol(A_k).
+\vol(I) = \sum^{N_1}_{j_1=1}\dots \sum^{N_n}_{j_n=1}\vol\brb{S_{j_1j_2\dots j_n}} \ \ra\ \vol(I) = \sum^N_{k=1}\vol(A_k).
 \ee
 
 If finite collection of rectangles $B_1,\dots, B_M$ covers $I$, then we define $C_k = I\cap B_k$ for $k=1,\dots,M$ and thus $I = \bigcup_{k=1}^M C_k$. Then we can use the end points of $C_k$ to form finite collection of almost disjoint sub-rectangles
@@ -337,12 +337,12 @@ T_{j_1j_2\dots j_n} = I_{1,j_1} \times I_{2,j_2} \times \dots\times I_{n,j_n},\q
 \ee
 such that
 \be
-\vol(I) = \sum^{N_1}_{j_1=1}\dots \sum^{N_n}_{j_n=1}\vol\bb{T_{j_1j_2\dots j_n}}.
+\vol(I) = \sum^{N_1}_{j_1=1}\dots \sum^{N_n}_{j_n=1}\vol\brb{T_{j_1j_2\dots j_n}}.
 \ee
 
 Also, all of $C_k$ contains each $T_{j_1j_2\dots j_n}$ at least once, thus,
 \be
-\sum^{N_1}_{j_1=1}\dots \sum^{N_n}_{j_n=1}\vol\bb{T_{j_1j_2\dots j_n}} \leq \sum^M_{k=1} \vol(C_k).
+\sum^{N_1}_{j_1=1}\dots \sum^{N_n}_{j_n=1}\vol\brb{T_{j_1j_2\dots j_n}} \leq \sum^M_{k=1} \vol(C_k).
 \ee
 
 Since $\vol(\cdot)$ is increasing (Proposition \ref{pro:volume_of_rectangle_increasing}), we have that
@@ -389,7 +389,7 @@ J_f(x,y) = \bepm \fp{f_1}{x} & \fp{f_1}{y} \\ \fp{f_2}{x} & \fp{f_2}{y}  \eepm =
 \end{example}
 
 \begin{definition}[differentiability of multi-dimensional real valued function]\label{def:differentiable_multi_dimensional_real_function}
-Let $f:R^n\to \R^m,x\mapsto f(x)$ be $m$-dimension real valued function with with $f(x) = \bb{f_1(x),\dots,f_m(x)}^T$. Then $f$ is differentiable at point $x_0\in \R^n$ if there exists a linear transformation (matrix) $J$ such
+Let $f:R^n\to \R^m,x\mapsto f(x)$ be $m$-dimension real valued function with with $f(x) = \brb{f_1(x),\dots,f_m(x)}^T$. Then $f$ is differentiable at point $x_0\in \R^n$ if there exists a linear transformation (matrix) $J$ such
 \be
 \lim_{h\to 0}\frac{\dabs{f(x_0 + h) - f(x_0) - J\cdot h}}{\dabs{h}} = 0,\qquad h\in \R^n
 \ee
@@ -412,23 +412,23 @@ Let $f:E\subseteq R^n\to \R^m,x\mapsto f(x)$ be a given function defined on an o
 \begin{proof}[\bf Proof]
 Let $x_0 = \bepm x_0^1,\dots,x_0^n \eepm^T$ and $h= \bepm h_1,\dots,h_n\eepm^T$ and given any $\ve >0$. Then we define
 \be
-g_i^j(x_0^j) := f_i\bb{x_0^1,\dots,x_0^j,x_0^{j+1}+h_{j+1},\dots,x_0^{n}+h_{n}}
+g_i^j(x_0^j) := f_i\brb{x_0^1,\dots,x_0^j,x_0^{j+1}+h_{j+1},\dots,x_0^{n}+h_{n}}
 \ee
 for $j = 1,\dots,n$. Obviously, $g_i^j(x_0^j) = g_i^{j+1}(x_0^{j+1}+h_{j+1})$. Since the partial derivatives of each of $f_i$ are defined in an neighbourhood $N_r(x_0)$ of $x_0$, there exists $\delta_1 >0$ such that $\dabs{h}<\delta_1$ implies that $x_0 + h \in N_r(x_0)$. Therefore, each function $g_i(\cdot)$ is differentiable for any $x_j$ between $x_0^j$ and $x_0^j + h_j$ since its (partial) derivatives exist. Then by mean value theorem (Theorem \ref{thm:mean_value}) can find some $\wt{x}_j$ between $x_0^j$ and $x_0^j + h_j$ such that
 \be
-g_i^j(x_0^j + h_j) - g_i^j(x_0^j) = \bb{g_i^j}'(\wt{x}^j) h_j = \fp{f_i}{x_j}(y_j)\cdot h_j,
+g_i^j(x_0^j + h_j) - g_i^j(x_0^j) = \brb{g_i^j}'(\wt{x}^j) h_j = \fp{f_i}{x_j}(y_j)\cdot h_j,
 \ee
-where $y_j = \bb{x_0^1,\dots, x_0^{j-1}, \wt{x}_j,\dots, x_0^{j+1}+h_j,\dots, x_0^n + h_n}^T$. Therefore,
+where $y_j = \brb{x_0^1,\dots, x_0^{j-1}, \wt{x}_j,\dots, x_0^{j+1}+h_j,\dots, x_0^n + h_n}^T$. Therefore,
 \beast
-f_i\bb{x_0^1+h_1,\dots, x_0^n+h_n} - f_i\bb{x_0^1,\dots, x_0^n} & = &  f_i\bb{x_0^1+h_1,\dots, x_0^n+h_n} - f_i\bb{x_0^1,x_0^2+h_2,\dots, x_0^n+h_n} \\
-& & \qquad + f_i\bb{x_0^1,x_0^2+h_2,\dots, x_0^n+h_n} - f_i\bb{x_0^1,\dots, x_0^n} \\
-& = & g_i^1(x_0^1 + h_1) - g_i^1(x_0^1) + f_i\bb{x_0^1,x_0^2+h_2,\dots, x_0^n+h_n} - f_i\bb{x_0^1,\dots, x_0^n} \\
-& = & \dots = \sum^n_{j=1} g_i^j(x_0^j + h_j) - g_i^j(x_0^j) =  \sum^n_{j=1} \bb{g_i^j}'(\wt{x}^j) h_j = \sum^n_{j=1} \fp{f_i}{x_j}(y_j)\cdot h_j
+f_i\brb{x_0^1+h_1,\dots, x_0^n+h_n} - f_i\brb{x_0^1,\dots, x_0^n} & = &  f_i\brb{x_0^1+h_1,\dots, x_0^n+h_n} - f_i\brb{x_0^1,x_0^2+h_2,\dots, x_0^n+h_n} \\
+& & \qquad + f_i\brb{x_0^1,x_0^2+h_2,\dots, x_0^n+h_n} - f_i\brb{x_0^1,\dots, x_0^n} \\
+& = & g_i^1(x_0^1 + h_1) - g_i^1(x_0^1) + f_i\brb{x_0^1,x_0^2+h_2,\dots, x_0^n+h_n} - f_i\brb{x_0^1,\dots, x_0^n} \\
+& = & \dots = \sum^n_{j=1} g_i^j(x_0^j + h_j) - g_i^j(x_0^j) =  \sum^n_{j=1} \brb{g_i^j}'(\wt{x}^j) h_j = \sum^n_{j=1} \fp{f_i}{x_j}(y_j)\cdot h_j
 \eeast
 
 Since the partial derivatives exist, we can see that the Jacobian matrix $J$ is well-defined and
 \be
-\bb{J \cdot h}_i = \bb{\bepm
+\brb{J \cdot h}_i = \brb{\bepm
 \fp{f_1}{x_1} & \dots & \fp{f_1}{x_n} \\
 \vdots & \ddots & \vdots \\
 \fp{f_m}{x_1} & \dots & \fp{f_m}{x_n}
@@ -437,7 +437,7 @@ Since the partial derivatives exist, we can see that the Jacobian matrix $J$ is 
 
 Combining the above results, we have that
 \be
-\frac{\dabs{f_i(x_0 + h) - f_i(x_0) - \bb{J\cdot h}_i}}{\dabs{h}} = \dabs{\sum^n_{j=1} \bb{\fp{f_i}{x_j}(y_j) - \fp{f_i}{x_j}(x_0)}\frac{h_j}{\dabs{h}} }
+\frac{\dabs{f_i(x_0 + h) - f_i(x_0) - \brb{J\cdot h}_i}}{\dabs{h}} = \dabs{\sum^n_{j=1} \brb{\fp{f_i}{x_j}(y_j) - \fp{f_i}{x_j}(x_0)}\frac{h_j}{\dabs{h}} }
 \ee
 
 Since each partial derivative $\fp{f_i}{x_j}$ is continuous in an open neighbourhood of $x_0$, there exists $\delta_2>0$ such that $\dabs{y_j - x_0} \leq \dabs{h} <\delta_2$ implies that
@@ -446,13 +446,13 @@ Since each partial derivative $\fp{f_i}{x_j}$ is continuous in an open neighbour
 \ee
 for each $j=1,\dots,n$. Note that for each of the partial derivatives we might have a different $\delta$ that yields the inequality $\dabs{y_j - x_0} <\delta$. We take $\delta_2$ to be the smallest of these. Thus, if we take $\dabs{h}<\delta$ where $\delta = \min\bra{\delta_1,\delta_2}$ we can have
 \beast
-\frac{\dabs{f_i(x_0 + h) - f_i(x_0) - \bb{J\cdot h}_i}}{\dabs{h}} & \leq & \sum^n_{j=1} \dabs{ \bb{\fp{f_i}{x_j}(y_j) - \fp{f_i}{x_j}(x_0)} }\cdot \dabs{\frac{h_j}{\dabs{h}}} \\
+\frac{\dabs{f_i(x_0 + h) - f_i(x_0) - \brb{J\cdot h}_i}}{\dabs{h}} & \leq & \sum^n_{j=1} \dabs{ \brb{\fp{f_i}{x_j}(y_j) - \fp{f_i}{x_j}(x_0)} }\cdot \dabs{\frac{h_j}{\dabs{h}}} \\
 & < & \frac{\ve}{mn} + \dots + \frac{\ve}{mn} = \frac{\ve}{m}.
 \eeast
 
 Then we have that
 \be
-\frac{\dabs{f(x_0 + h) - f(x_0) - J\cdot h}}{\dabs{h}} \leq \sum^m_{i=1} \frac{\dabs{f_i(x_0 + h) - f_i(x_0) - \bb{J\cdot h}_i}}{\dabs{h}} < \ve
+\frac{\dabs{f(x_0 + h) - f(x_0) - J\cdot h}}{\dabs{h}} \leq \sum^m_{i=1} \frac{\dabs{f_i(x_0 + h) - f_i(x_0) - \brb{J\cdot h}_i}}{\dabs{h}} < \ve
 \ee
 which implies that
 \be
@@ -467,7 +467,7 @@ However, a differentiable function might have discontinuous partial derivatives.
 Let the function be
 \be
 f(x,y) = \left\{\ba{ll}
-(x^2+y^2)\sin \bb{\frac 1{\sqrt{x^2+y^2}}}\quad\quad & (x,y)\neq (0,0) \\
+(x^2+y^2)\sin \brb{\frac 1{\sqrt{x^2+y^2}}}\quad\quad & (x,y)\neq (0,0) \\
 0 & (x,y) = (0,0)
 \ea\right..
 \ee
@@ -490,12 +490,12 @@ as $\sin$ is bounded by -1 and 1. However, the partial derivatives oscillate wil
 
 For $x = \frac 1{2n\pi}$ and $n\in \Z$,
 \be
-\lim_{n\to \infty}\fp{f}{x} = \lim_{n\to \infty}\bb{\frac 2{2n\pi}\sin(2n\pi) - \cos(2n\pi)} = -1.
+\lim_{n\to \infty}\fp{f}{x} = \lim_{n\to \infty}\brb{\frac 2{2n\pi}\sin(2n\pi) - \cos(2n\pi)} = -1.
 \ee
 
 Similarly, for $x = \frac 1{(2n+1)\pi}$ and $n\in \Z$,
 \be
-\lim_{n\to \infty}\fp{f}{x} = \lim_{n\to \infty}\bb{\frac 2{(2n+1)\pi}\sin((2n+1)\pi) - \cos((2n+1)\pi)} = 1.
+\lim_{n\to \infty}\fp{f}{x} = \lim_{n\to \infty}\brb{\frac 2{(2n+1)\pi}\sin((2n+1)\pi) - \cos((2n+1)\pi)} = 1.
 \ee
 
 This creates a discontinuity of partial derivatives.
@@ -531,7 +531,7 @@ Let $s=s'$. we have that for $t\in [c,d]$
 
 Therefore,
 \beast
-\abs{g(t)-g(t_0)} & = & \abs{\int^b_a f(s,t)ds - \int^b_a f(s,t_0)ds} = \abs{\int^b_a \bb{f(s,t)-f(s,t_0)}dx} \\
+\abs{g(t)-g(t_0)} & = & \abs{\int^b_a f(s,t)ds - \int^b_a f(s,t_0)ds} = \abs{\int^b_a \brb{f(s,t)-f(s,t_0)}dx} \\
 & \leq & \int^b_a \abs{f(s,t) - f(s,t_0)} ds < \frac{\ve}{b-a}(b-a) = \ve
 \eeast
 which implies that $g(t)$ is continuous on $[c,d]$.
@@ -550,20 +550,20 @@ In particular,
 
 This gives that for $\abs{t-t_0}< \delta$ and $s\in [a,b]$,
 \be
-\abs{\int^t_{t_0} \bb{\fp{f}{t}(s,\tau) - \fp{f}{t}(s,t_0)}d\tau} < \frac{\ve \abs{t-t_0}}{b-a}.
+\abs{\int^t_{t_0} \brb{\fp{f}{t}(s,\tau) - \fp{f}{t}(s,t_0)}d\tau} < \frac{\ve \abs{t-t_0}}{b-a}.
 \ee
 
 But for a fixed $s\in [a,b]$, $\phi(t) := f(s,t) - t\fp{f}{t}(s,t_0)$ is a primitive function of $\fp{f}{t}(s,t) - \fp{f}{t}(s,t_0)$ on $[c,d]$. Then by Corollary \ref{cor:primitive_funtion_equation}, for any $s\in [a,b]$ when $\abs{t-t_0} < \delta$
 \beast
 \abs{f(s,t) - f(s,t_0) - (t- t_0)\fp{f}{t}(s,t_0)} & = & \abs{f(s,t) - t\fp{f}{t}(s,t_0) - f(s,t_0) + t_0\fp{f}{t}(s,t_0)} = \abs{\phi(t) - \phi(t_0)} \\
-& = & \abs{\int^t_{t_0} \bb{\fp{f}{t}(s,\tau) - \fp{f}{t}(s,t_0)}d\tau} < \frac{\ve \abs{t-t_0}}{b-a}.
+& = & \abs{\int^t_{t_0} \brb{\fp{f}{t}(s,\tau) - \fp{f}{t}(s,t_0)}d\tau} < \frac{\ve \abs{t-t_0}}{b-a}.
 \eeast
 
 Then we have
 \beast
 & & \abs{\frac{g(t)-g(t_0)}{t-t_0} - \int^b_a \fp{f}{t}(s,t_0) ds} \\
-& = & \abs{\frac{\int^b_a f(s,t)ds - \int^b_a f(s,t_0)ds}{t-t_0} - \int^b_a \fp{f}{t}(s,t_0) ds} = \frac 1{\abs{t-t_0}}\abs{\int^b_a \bb{f(s,t)-f(s,t_0) -(t-t_0) \fp{f}{t}(s,t_0)} ds} \\
-& \leq & \frac 1{\abs{t-t_0}}\int^b_a \abs{\bb{f(s,t)-f(s,t_0) -(t-t_0) \fp{f}{t}(s,t_0)}} ds < \frac 1{\abs{t-t_0}} \frac{\ve \abs{t-t_0}}{b-a} \int^b_a ds = \ve
+& = & \abs{\frac{\int^b_a f(s,t)ds - \int^b_a f(s,t_0)ds}{t-t_0} - \int^b_a \fp{f}{t}(s,t_0) ds} = \frac 1{\abs{t-t_0}}\abs{\int^b_a \brb{f(s,t)-f(s,t_0) -(t-t_0) \fp{f}{t}(s,t_0)} ds} \\
+& \leq & \frac 1{\abs{t-t_0}}\int^b_a \abs{\brb{f(s,t)-f(s,t_0) -(t-t_0) \fp{f}{t}(s,t_0)}} ds < \frac 1{\abs{t-t_0}} \frac{\ve \abs{t-t_0}}{b-a} \int^b_a ds = \ve
 \eeast
 when $\abs{t-t_0} < \delta$.
 \end{proof}
@@ -578,7 +578,7 @@ when $\abs{t-t_0} < \delta$.
 \begin{theorem}[Green's theorem]\label{thm:green_multiple_integral}
 Let $C$ be a positive oriented, piecewise smooth, simple closed curve in a plane $\R^2$ and let $\sD$ be the connected set bounded by $C$. If $P$ and $Q$ are functions of $(x,y)$ defined on an open connected set containing $\sD$ and have continuous partial derivative on $\sD$, then
 \be
-\oint_C \bb{Pdx + Qdy} = \iint_{\sD} \bb{\fp{Q}{x} - \fp{P}{y}}dxdy,
+\oint_C \brb{Pdx + Qdy} = \iint_{\sD} \brb{\fp{Q}{x} - \fp{P}{y}}dxdy,
 \ee
 where the path of integration along $C$ is anticlockwise.
 \end{theorem}
@@ -587,11 +587,11 @@ where the path of integration along $C$ is anticlockwise.
 \ben
 \item [(i)] Green's theorem is a special case of the three-dimensional version of Stoke's theorem, which states that for a vector function $F$,
 \be
-\oint_C F(x,y)\cdot ds = \iint_R \bb{\nabla\times F}\cdot ndA,
+\oint_C F(x,y)\cdot ds = \iint_R \brb{\nabla\times F}\cdot ndA,
 \ee
 where $n$ is the normal vector to the region $R$ and $\nabla \times F$ is the curl of $F$. When $F = (P,Q,0)$ and $R$ is a connected set in $xy$-plane, the setting of Green theorem, $n$ is the unit vector (0,0,1) and the third component of $\nabla \times F$ is $\fp{Q}{x} - \fp{P}{y}$, so the theorem becomes
 \be
-\oint_C (P,Q,0)\cdot (dx,dy,dz) = \iint_R\bb{\fp{Q}{x} - \fp{P}{y}}dA
+\oint_C (P,Q,0)\cdot (dx,dy,dz) = \iint_R\brb{\fp{Q}{x} - \fp{P}{y}}dA
 \ee
 and the left side is just $\oint_C (Pdx + Qdy)$ as desired.
 
@@ -646,7 +646,7 @@ Also, it is obvious that
 Hence,
 \beast
 \oint_C P(x,y)dx & = & \int_{C_1} P(x,y)dx + \int_{C_2} P(x,y)dx + \int_{C_3} P(x,y)dx+ \int_{C_4} P(x,y)dx \\
-& = & \int^b_a \bb{P(x,g_1(x)) - P(x,g_3(x))} dx = \int^b_a \int^{g_1(x)}_{g_3(x)} \fp{P}{y}(x,y) dy dx = - \iint_{\sD} \fp{P}{y}(x,y) dy dx.
+& = & \int^b_a \brb{P(x,g_1(x)) - P(x,g_3(x))} dx = \int^b_a \int^{g_1(x)}_{g_3(x)} \fp{P}{y}(x,y) dy dx = - \iint_{\sD} \fp{P}{y}(x,y) dy dx.
 \eeast
 
 %\begin{pspicture}
@@ -754,11 +754,11 @@ Evaluate the integral
 \ee
 where $C$ is the boundary of the upper half of the unit disk, traversed anticlockwise. Green's theorem gives
 \be
-\oint_C (y^2 dx + x^2 dy) = \iint_{\sD} \bb{\fp{x^2}{x} - \fp{y^2}{y}}dx dy =  \iint_{\sD} \bb{2x-2y}dx dy,
+\oint_C (y^2 dx + x^2 dy) = \iint_{\sD} \brb{\fp{x^2}{x} - \fp{y^2}{y}}dx dy =  \iint_{\sD} \brb{2x-2y}dx dy,
 \ee
 where $\sD$ is the upper half disk. This integral can be computed easily as
 \beast
-\int^1_{-1} \int^{\sqrt{1-x^2}}_0 (2x- 2y) dy dx & = & \int^1_{-1} \left. (2xy - y^2)\right|^{\sqrt{1-x^2}}_0 dx = \int^1_{-1} \bb{2x\sqrt{1-x^2} - (1-x^2)} dx \\
+\int^1_{-1} \int^{\sqrt{1-x^2}}_0 (2x- 2y) dy dx & = & \int^1_{-1} \left. (2xy - y^2)\right|^{\sqrt{1-x^2}}_0 dx = \int^1_{-1} \brb{2x\sqrt{1-x^2} - (1-x^2)} dx \\
 & = & 0 - \int^1_{-1} (1-x^2)dx = \left. \frac {x^3}3 - x \right|^1_{-1} = \frac 23 - 2 = -\frac 43.
 \eeast
 \end{example}
@@ -766,11 +766,11 @@ where $\sD$ is the upper half disk. This integral can be computed easily as
 \begin{example}
 Evaluate the line integral
 \be
-\oint_C \bb{x^4 dx + xydy}
+\oint_C \brb{x^4 dx + xydy}
 \ee
 where $C$ is the boundary of the triangle with vertices at (0,0), (1,0) and (0,1). By Green's theorem,
 \beast
-\oint_C \bb{x^4 dx + xydy} & = & \iint_R \bb{\fp{}{x}(xy) - \fp{}{y}x^4}dxdy = \iint_R y dx dy \\
+\oint_C \brb{x^4 dx + xydy} & = & \iint_R \brb{\fp{}{x}(xy) - \fp{}{y}x^4}dxdy = \iint_R y dx dy \\
 &= & \int^1_0 \int^{1-y}_0 y dx dy = \int^1_0 (y-y^2)dy = \frac 12 - \frac 13 = \frac 16.
 \eeast
 \end{example}
@@ -782,7 +782,7 @@ Evaluate the integral
 \ee
 where $C$ is the connected set enclosed by the $x$-axis and two circles $x^2 + y^2 = 1$ and $x^2 + y^2 = 4$. By Green's theorem,
 \be
-\oint_C (y^2 dx + 5xy dy) = \iint_{\sD} \bb{\fp{}{x}5xy - \fp{}{y}y^2}dx dy =  3\iint_{\sD} y dx dy
+\oint_C (y^2 dx + 5xy dy) = \iint_{\sD} \brb{\fp{}{x}5xy - \fp{}{y}y^2}dx dy =  3\iint_{\sD} y dx dy
 \ee
 
 Then, using the polar system, we have $x = r\cos \theta$ and $y = r\sin\theta$,
@@ -799,7 +799,7 @@ Then, using the polar system, we have $x = r\cos \theta$ and $y = r\sin\theta$,
 %\begin{theorem}[Green theorem, contour]
 %Let $C$ be a positive oriented contour in a plane and let $\sD$ be the connected set bounded by $C$. If $P$ and $Q$ are functions of $(x,y)$ defined on an open connected set containing $\sD$ and have continuous partial derivative on $\sD$, then
 %\be
-%\oint_C \bb{Pdx + Qdy} = \iint_{\sD} \bb{\fp{Q}{x} - \fp{P}{y}}dxdy,
+%\oint_C \brb{Pdx + Qdy} = \iint_{\sD} \brb{\fp{Q}{x} - \fp{P}{y}}dxdy,
 %\ee
 %where the path of integration along $C$ is anticlockwise.
 %\end{theorem}
@@ -831,19 +831,19 @@ Evaluate the line integral
 \ee
 where $C$ is the boundary of the disk of radius 3 centered at the origin. By Green's theorem,
 \beast
-\oint_C (3y - \exp(\sin x))dx + (7x + \sqrt[4]{y^4 + 1})dy  & = & \iint_R\bb{\fp{}{x}(7x + \sqrt[4]{y^4 + 1}) - \fp{}{y}(3y - \exp(\sin x))}dx dy \\
-& = & \iint_R \bb{7-3} dxdy = 4\iint_R dxdy = 4\cdot 9\pi = 36\pi.
+\oint_C (3y - \exp(\sin x))dx + (7x + \sqrt[4]{y^4 + 1})dy  & = & \iint_R\brb{\fp{}{x}(7x + \sqrt[4]{y^4 + 1}) - \fp{}{y}(3y - \exp(\sin x))}dx dy \\
+& = & \iint_R \brb{7-3} dxdy = 4\iint_R dxdy = 4\cdot 9\pi = 36\pi.
 \eeast
 \end{example}
 
 %\begin{example}
 %Evaluate the line integral
 %\be
-%\oint_C \bb{(y^2 - \arctan x )dx + (3x+\sin y)dy}
+%\oint_C \brb{(y^2 - \arctan x )dx + (3x+\sin y)dy}
 %\ee
 %where $C$ is the boundary of the region enclosed by $y = x^2$ and $y = 4$. By Green's theorem,
 %\beast
-%\oint_C \bb{(y^2 - \arctan x )dx + (3x+\sin y)dy} & = & \iint_R \bb{\fp{}{x}(3x + \sin y) - \fp{}{y}(y^2 - \tan)}dxdy
+%\oint_C \brb{(y^2 - \arctan x )dx + (3x+\sin y)dy} & = & \iint_R \brb{\fp{}{x}(3x + \sin y) - \fp{}{y}(y^2 - \tan)}dxdy
 %\eeast
 %\end{example}
 
@@ -866,14 +866,14 @@ x = a \cos t,\quad y = b\sin t,\qquad t\in [0,2\pi],
 \ee
 we can have the area
 \be
-A = \oint_C xdy = \int^{2\pi}_0 a\cos t d(b\sin t) = ab \int^{2\pi}_0 \cos^2 t dt = \frac 14 ab \int^{2\pi}_0 \bb{1+\cos(2t)} d(2t) = \frac 14 ab \cdot 4\pi = \pi ab.
+A = \oint_C xdy = \int^{2\pi}_0 a\cos t d(b\sin t) = ab \int^{2\pi}_0 \cos^2 t dt = \frac 14 ab \int^{2\pi}_0 \brb{1+\cos(2t)} d(2t) = \frac 14 ab \cdot 4\pi = \pi ab.
 \ee
 \end{example}
 
 \begin{example}
 A cardioid is a curve traced by a fixed point on the perimeter of a circle of radius $a$ which is rolling around another circle of radius $a$. It is parameterized by the equations
 \be
-x = a(2\cos t - \cos (2t)),\qquad y = a\bb{2\sin t - \sin(2t)},\qquad t\in [0,2\pi].
+x = a(2\cos t - \cos (2t)),\qquad y = a\brb{2\sin t - \sin(2t)},\qquad t\in [0,2\pi].
 \ee
 
 \begin{center}%\psset{yunit=2cm,xunit=2cm}  %%%%%%% this is wrong as t is theta
@@ -891,10 +891,10 @@ x = a(2\cos t - \cos (2t)),\qquad y = a\bb{2\sin t - \sin(2t)},\qquad t\in [0,2\
 
 Then the area inside the cardioid is ($dy = a(2\cos t - 2\cos (2t))dt$)
 \beast
-\oint_C x dy & = & \int^{2\pi}_0 a^2 \bb{2\cos t - \cos(2t)}\bb{2\cos t - 2\cos(2t)}dt \\
-& = & a^2 \bb{\int^{2\pi}_0 4\cos^2 t dt + \int^{2\pi}_0 2\cos^2 (2t) dt - \int^{2\pi}_0 4\cos t\cos(2t) dt} \\
-& = & a^2 \bb{\int^{2\pi}_0 2(1+\cos(2t))dt + \int^{2\pi}_0 (1+\cos(4t)) dt - \int^{2\pi}_0 2\bb{\cos t + \cos(3t)} dt} \\
-& = & a^2\bb{4\pi + 2\pi} = 6\pi a^2.
+\oint_C x dy & = & \int^{2\pi}_0 a^2 \brb{2\cos t - \cos(2t)}\brb{2\cos t - 2\cos(2t)}dt \\
+& = & a^2 \brb{\int^{2\pi}_0 4\cos^2 t dt + \int^{2\pi}_0 2\cos^2 (2t) dt - \int^{2\pi}_0 4\cos t\cos(2t) dt} \\
+& = & a^2 \brb{\int^{2\pi}_0 2(1+\cos(2t))dt + \int^{2\pi}_0 (1+\cos(4t)) dt - \int^{2\pi}_0 2\brb{\cos t + \cos(3t)} dt} \\
+& = & a^2\brb{4\pi + 2\pi} = 6\pi a^2.
 \eeast
 \end{example}
 
@@ -919,7 +919,7 @@ x = a\sin \theta, \quad y = a\sin^2\theta \cos\theta,\qquad \theta\in [0,2\pi].
 
 Then the right part area inside the curve is ($dx = a\cos\theta d\theta$ and we select the $C$ from $\theta = \pi$ to 0)
 \beast
--\oint_C y dx & = & \int^{\pi}_0 a^2 \sin^2\theta\cos^2\theta d\theta = \frac 14a^2 \int^{\pi}_0  \sin^2(2\theta) d\theta = \frac 18 a^2 \int^{\pi}_0  \bb{1-\cos(4\theta)} d\theta = \frac 18 \pi a^2.
+-\oint_C y dx & = & \int^{\pi}_0 a^2 \sin^2\theta\cos^2\theta d\theta = \frac 14a^2 \int^{\pi}_0  \sin^2(2\theta) d\theta = \frac 18 a^2 \int^{\pi}_0  \brb{1-\cos(4\theta)} d\theta = \frac 18 \pi a^2.
 \eeast
 
 Thus, the total area is $\frac 14 \pi a^2$.
@@ -933,7 +933,7 @@ Evaluate the line integral
 \ee
 where $C$ is the boundary of the shaded region show below.
 
-\begin{center}\psset{yunit=1.5cm,xunit=1.5cm}  
+\begin{center}\psset{yunit=1.5cm,xunit=1.5cm}
 \begin{pspicture}[algebraic](-2.5,-0.3)(2.5,2.3)
 \psaxes[Dx=1,Dy=1]{->}(0,0)(-2.5,-0.3)(2.5,2.3)%ticks=none,
 
@@ -968,7 +968,7 @@ where $C$ is the boundary of the shaded region show below.
 Clearly, $R$ is the upper half of an annulus with inner radius 1 and outer radius 2. Thus,
 \beast
 \oint_C y^2 dx + 3xy dy & = & \iint_R \fp{}{x}(3xy) - \fp{}{y}(y^2) = \iint_R (3y- 2y)dx dy = \iint_R y dx dy \\
-& = & \int^{\pi}_{0} \int^2_1 (r\sin \theta) rdr d\theta = \int^2_1 r^2 dr \int^{\pi}_0 \sin\theta d\theta = \frac 13 \bb{2^3-1}\cdot(-1)\bb{-1-1} = 14/3.
+& = & \int^{\pi}_{0} \int^2_1 (r\sin \theta) rdr d\theta = \int^2_1 r^2 dr \int^{\pi}_0 \sin\theta d\theta = \frac 13 \brb{2^3-1}\cdot(-1)\brb{-1-1} = 14/3.
 \eeast
 \end{example}
 
@@ -1011,8 +1011,8 @@ If $C$ is a simple closed curve contain the origin then there is a circle of rad
 
 Then we have
 \beast
-\oint_C F(x,y)\cdot dr - \oint_{C_1} F(x,y)\cdot dr & = & \oint_{\partial R} F(x,y)\cdot dr = \iint_R \bb{\fp{Q}{x} - \fp{P}{y}}dxdy \\
-& = & \iint_R \bb{\frac{x^2+y^2-2x^2}{(x^2+y^2)^2} - \frac{-x^2-y^2+2y^2}{(x^2+y^2)^2}}dx dy = \iint_R 0 dxdy = 0.
+\oint_C F(x,y)\cdot dr - \oint_{C_1} F(x,y)\cdot dr & = & \oint_{\partial R} F(x,y)\cdot dr = \iint_R \brb{\fp{Q}{x} - \fp{P}{y}}dxdy \\
+& = & \iint_R \brb{\frac{x^2+y^2-2x^2}{(x^2+y^2)^2} - \frac{-x^2-y^2+2y^2}{(x^2+y^2)^2}}dx dy = \iint_R 0 dxdy = 0.
 \eeast
 
 Thus,
@@ -1044,7 +1044,7 @@ Thus,
 %\end{remark}
 
 %\begin{example}\footnote{could be placed at absolute uniform-convergence series}
-%Let $a_n(x)= \frac{\sin\bb{n\pi x}}{n^2}$ and thus $a_n'(x) = \frac {\pi\cos\bb{n\pi x}}{n}$. Then
+%Let $a_n(x)= \frac{\sin\brb{n\pi x}}{n^2}$ and thus $a_n'(x) = \frac {\pi\cos\brb{n\pi x}}{n}$. Then
 %\be
 %\abs{\sum_n a_n(x)} \leq \sum_n \frac 1{n^2} \ \ra \ \sum_n a_n(x) \text{ converges.}
 %\ee
