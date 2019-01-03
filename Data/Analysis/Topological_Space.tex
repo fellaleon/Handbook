@@ -39,7 +39,7 @@ Note that $A\subseteq X$.
 \end{remark}
 
 \begin{definition}[neighbourhood]\label{def:neighbourhood_topology}
-A neighbourhood of a point $x$ in a space $X$ is a subset $N$ of $X$ which contains an open subset of $X$ containing $x$. 
+A neighbourhood of a point $x$ in a space $X$ is a subset $N$ of $X$ which contains an open subset of $X$ containing $x$.
 \end{definition}
 
 
@@ -106,13 +106,13 @@ Note that the set $A$ might not be bounded and closed as the case of complex pla
 \begin{proof}[\bf Proof]
 Let $\bra{U_\alpha}$ be an open cover of $f(X)$ (also an open cover $f(A)$). It exists since $f(X) \subseteq Y$. Since $f$ is continuous, we know that each of the sets $f^{-1}(U_\alpha)$ is open. Since $A$ is compact, there are finitely many indices $\alpha_1,\dots,\alpha_n$ such that
 \be
-A \subseteq \bigcup_{k=1}^n f^{-1}(U_{\alpha_k}) = f^{-1}\bb{\bigcup_{k=1}^n U_{\alpha_k}}
+A \subseteq \bigcup_{k=1}^n f^{-1}(U_{\alpha_k}) = f^{-1}\brb{\bigcup_{k=1}^n U_{\alpha_k}}
 \ee
 by Proposition \footnote{inverse image preserves set operation, p14}.
 
-Since $f\bb{f^{-1}(B)} \subseteq B$ for every subset $B \subseteq Y$, the above implies that
+Since $f\brb{f^{-1}(B)} \subseteq B$ for every subset $B \subseteq Y$, the above implies that
 \be
-f(A) \subseteq f\bb{f^{-1}\bb{\bigcup_{k=1}^n U_{\alpha_k}}} \subseteq \bigcup_{k=1}^n U_{\alpha_k}
+f(A) \subseteq f\brb{f^{-1}\brb{\bigcup_{k=1}^n U_{\alpha_k}}} \subseteq \bigcup_{k=1}^n U_{\alpha_k}
 \ee
 by Lemma \footnote{$f(f^{-1}(B)) = B\cap f(X)$ in p15}. Thus, we can have $f(A)$ is compact as it has finite subcover.
 \end{proof}
@@ -126,7 +126,7 @@ A topological space is called separable if it contains a countable, dense subset
 \end{definition}
 
 \begin{remark}
-Any topological space which is itself finite or countably infinite is separable, for the whole space is a countable dense subset of itself. An important example of an uncountable separable space is the real line, in which the rational numbers form a countable dense subset. Similarly the set of all vectors $\bb{r_{1},\ldots ,r_{n}}\in \R^n$ in which $r_{i}$ is rational for all $i$ is a countable dense subset of $\R^n$; so for every $n$ the $n$-dimensional Euclidean space is separable.
+Any topological space which is itself finite or countably infinite is separable, for the whole space is a countable dense subset of itself. An important example of an uncountable separable space is the real line, in which the rational numbers form a countable dense subset. Similarly the set of all vectors $\brb{r_{1},\ldots ,r_{n}}\in \R^n$ in which $r_{i}$ is rational for all $i$ is a countable dense subset of $\R^n$; so for every $n$ the $n$-dimensional Euclidean space is separable.
 
 A simple example of a space which is not separable is a discrete space of uncountable cardinality.\index{check needed for the whole remark.}
 \end{remark}
@@ -166,7 +166,7 @@ f_{n} : X \to Y,\quad n \in \N,
 \ee
 is said to converge on compact set (or converge compactly) as $n \to \infty$ to some function $f : X \to Y$ if, for every compact set $K \subseteq X$, $\forall x\in K$,
 \be
-\lim_{n\to\infty} d_Y\bb{f_{n}(x), f(x)} = 0.
+\lim_{n\to\infty} d_Y\brb{f_{n}(x), f(x)} = 0.
 \ee
 \end{definition}
 
