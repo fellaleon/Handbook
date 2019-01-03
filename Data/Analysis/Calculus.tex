@@ -5,44 +5,44 @@
 \subsection{Integrals related to exponential function}
 
 \begin{proposition}\label{pro:integral_exponential_trigonometric_function}%{pro:integral_exponential_cosine}
-For $a,b,y,z\in\R$, Then 
-\be 
-\int^y_z \exp\bb{ax}\cos(bx)dx = \left. \frac {1}{a^2 + b^2}\bb{b \exp\bb{ax}\sin(bx) + a \exp\bb{ax} \cos(bx)}\right|^y_z,
+For $a,b,y,z\in\R$, Then
+\be
+\int^y_z \exp\brb{ax}\cos(bx)dx = \left. \frac {1}{a^2 + b^2}\brb{b \exp\brb{ax}\sin(bx) + a \exp\brb{ax} \cos(bx)}\right|^y_z,
 \ee
-\be 
-\int^y_z \exp\bb{ax}\sin(bx)dx = \left. \frac {1}{a^2 + b^2}\bb{-b \exp\bb{ax}\cos(bx) + a \exp\bb{ax} \sin(bx)}\right|^y_z,
+\be
+\int^y_z \exp\brb{ax}\sin(bx)dx = \left. \frac {1}{a^2 + b^2}\brb{-b \exp\brb{ax}\cos(bx) + a \exp\brb{ax} \sin(bx)}\right|^y_z,
 \ee
 \end{proposition}
 
 \begin{proof}[\bf Proof]
-Let $I = \int^y_z \exp\bb{ax}\cos(bx)dx$. Then by integral by part, we have \beast I & = & \frac 1b \int^y_z \exp\bb{ax}d\sin(bx) = \frac 1b\bb{\left.\exp\bb{ax}\sin(bx) \right|^y_z - a\int^y_z \exp\bb{ax}\sin(bx) dx} \\
-& = & \frac 1b\bb{\left.\exp\bb{ax}\sin(bx) \right|^y_z + \frac ab \int^y_z \exp\bb{ax}d \cos(bx)} \\
-& = & \frac 1b\bb{\left.\exp\bb{ax}\sin(bx) \right|^y_z + \frac ab \bb{\left.\exp\bb{ax} \cos(bx)\right|^y_z - a\int^y_z \exp\bb{ax} \cos(bx)dx}}\\
-& = & \left.\frac 1b \exp\bb{ax}\sin(bx) + \frac a{b^2} \exp\bb{ax} \cos(bx)\right|^y_z - \frac {a^2}{b^2} I
-\eeast
-
-So we have 
-\be 
-\frac {a^2 + b^2}{b^2} I =  \left.\frac 1b \exp\bb{ax}\sin(bx) + \frac a{b^2} \exp\bb{ax} \cos(bx)\right|^y_z\ee which implies \be I = \left. \frac {1}{a^2 + b^2}\bb{b \exp\bb{ax}\sin(bx) + a \exp\bb{ax}
-\cos(bx)}\right|^y_z 
-\ee
-
-
-Let $I = \int^y_z \exp\bb{ax}\sin(bx)dx$. Then by integral by part, we have
-\beast
-I & = & -\frac 1b \int^y_z \exp\bb{ax}d\cos(bx) = -\frac 1b\bb{\left.\exp\bb{ax}\cos(bx) \right|^y_z - a\int^y_z \exp\bb{ax}\cos(bx) dx} \\
-& = & -\frac 1b\bb{\left.\exp\bb{ax}\cos(bx) \right|^y_z - \frac ab \int^y_z \exp\bb{ax}d \sin(bx)} \\
-& = & -\frac 1b\bb{\left.\exp\bb{ax}\cos(bx) \right|^y_z - \frac ab \bb{\left.\exp\bb{ax} \sin(bx)\right|^y_z - a\int^y_z \exp\bb{ax} \sin(bx)dx}}\\
-& = & -\left.\frac 1b \exp\bb{ax}\cos(bx) + \frac a{b^2} \exp\bb{ax} \sin(bx)\right|^y_z - \frac {a^2}{b^2} I
+Let $I = \int^y_z \exp\brb{ax}\cos(bx)dx$. Then by integral by part, we have \beast I & = & \frac 1b \int^y_z \exp\brb{ax}d\sin(bx) = \frac 1b\brb{\left.\exp\brb{ax}\sin(bx) \right|^y_z - a\int^y_z \exp\brb{ax}\sin(bx) dx} \\
+& = & \frac 1b\brb{\left.\exp\brb{ax}\sin(bx) \right|^y_z + \frac ab \int^y_z \exp\brb{ax}d \cos(bx)} \\
+& = & \frac 1b\brb{\left.\exp\brb{ax}\sin(bx) \right|^y_z + \frac ab \brb{\left.\exp\brb{ax} \cos(bx)\right|^y_z - a\int^y_z \exp\brb{ax} \cos(bx)dx}}\\
+& = & \left.\frac 1b \exp\brb{ax}\sin(bx) + \frac a{b^2} \exp\brb{ax} \cos(bx)\right|^y_z - \frac {a^2}{b^2} I
 \eeast
 
 So we have
 \be
-\frac {a^2 + b^2}{b^2} I =  -\left.\frac 1b \exp\bb{ax}\cos(bx) + \frac a{b^2} \exp\bb{ax} \sin(bx)\right|^y_z
+\frac {a^2 + b^2}{b^2} I =  \left.\frac 1b \exp\brb{ax}\sin(bx) + \frac a{b^2} \exp\brb{ax} \cos(bx)\right|^y_z\ee which implies \be I = \left. \frac {1}{a^2 + b^2}\brb{b \exp\brb{ax}\sin(bx) + a \exp\brb{ax}
+\cos(bx)}\right|^y_z
+\ee
+
+
+Let $I = \int^y_z \exp\brb{ax}\sin(bx)dx$. Then by integral by part, we have
+\beast
+I & = & -\frac 1b \int^y_z \exp\brb{ax}d\cos(bx) = -\frac 1b\brb{\left.\exp\brb{ax}\cos(bx) \right|^y_z - a\int^y_z \exp\brb{ax}\cos(bx) dx} \\
+& = & -\frac 1b\brb{\left.\exp\brb{ax}\cos(bx) \right|^y_z - \frac ab \int^y_z \exp\brb{ax}d \sin(bx)} \\
+& = & -\frac 1b\brb{\left.\exp\brb{ax}\cos(bx) \right|^y_z - \frac ab \brb{\left.\exp\brb{ax} \sin(bx)\right|^y_z - a\int^y_z \exp\brb{ax} \sin(bx)dx}}\\
+& = & -\left.\frac 1b \exp\brb{ax}\cos(bx) + \frac a{b^2} \exp\brb{ax} \sin(bx)\right|^y_z - \frac {a^2}{b^2} I
+\eeast
+
+So we have
+\be
+\frac {a^2 + b^2}{b^2} I =  -\left.\frac 1b \exp\brb{ax}\cos(bx) + \frac a{b^2} \exp\brb{ax} \sin(bx)\right|^y_z
 \ee
 which implies
 \be
-I = \left. \frac {1}{a^2 + b^2}\bb{-b \exp\bb{ax}\cos(bx) + a \exp\bb{ax}\sin(bx)}\right|^y_z
+I = \left. \frac {1}{a^2 + b^2}\brb{-b \exp\brb{ax}\cos(bx) + a \exp\brb{ax}\sin(bx)}\right|^y_z
 \ee
 \end{proof}
 
@@ -52,31 +52,31 @@ I = \left. \frac {1}{a^2 + b^2}\bb{-b \exp\bb{ax}\cos(bx) + a \exp\bb{ax}\sin(bx
 \begin{proposition}\label{pro:integral_x_lnx_product}
 For $m,n\in \N$, we have
 \be
-\int^1_0 x^m\bb{\log x}^n dx = \frac{(-1)^n n!}{(m+1)^{n+1}}.
+\int^1_0 x^m\brb{\log x}^n dx = \frac{(-1)^n n!}{(m+1)^{n+1}}.
 \ee
 \end{proposition}
 
 \begin{proof}[\bf Proof]
 Integrating by parts,
 \beast
-\int^1_0 x^m \bb{\log x}^n dx & = & \left.\frac{1}{m+1} x^{m+1}\bb{\log x}^n \right|^1_0 - \frac{n}{m+1}\int^1_0 x^{m} \bb{\log x}^{n-1} dx \\
+\int^1_0 x^m \brb{\log x}^n dx & = & \left.\frac{1}{m+1} x^{m+1}\brb{\log x}^n \right|^1_0 - \frac{n}{m+1}\int^1_0 x^{m} \brb{\log x}^{n-1} dx \\
 & = &  \dots = \frac{(-1)^n n!}{(m+1)^n} \int^1_0 x^{m} dx = \frac{(-1)^n n!}{(m+1)^{n+1}}.
 \eeast
 
-Note that $x^{m+1} \bb{\log x}^n \to 0$ as $x\to 0$ by L'Hopital's rule.
+Note that $x^{m+1} \brb{\log x}^n \to 0$ as $x\to 0$ by L'Hopital's rule.
 \end{proof}
 
 \begin{proposition}
 For $n\in \Z^+$, we have
 \be
-\int^1_0 \frac{\bb{\log x}^n}{(1-x)^2} dx = (-1)^n \zeta(n)\Gamma(n+1).
+\int^1_0 \frac{\brb{\log x}^n}{(1-x)^2} dx = (-1)^n \zeta(n)\Gamma(n+1).
 \ee
 \end{proposition}
 
 \begin{proof}[\bf Proof]
 Apply Proposition \ref{pro:geometric_series_sum} and Proposition \ref{pro:integral_x_lnx_product},
 \beast
-\int^1_0 \frac{\bb{\log x}^n}{(1-x)^2}dx & = & \int^1_0 \sum^\infty_{k=1} k x^{k-1}\bb{\log x}^n dx =\sum^\infty_{k=1} k \int^1_0 x^{k-1}\bb{\log x}^n dx = \sum^\infty_{k=1} k \frac{(-1)^n n!}{k^{n+1}} \\
+\int^1_0 \frac{\brb{\log x}^n}{(1-x)^2}dx & = & \int^1_0 \sum^\infty_{k=1} k x^{k-1}\brb{\log x}^n dx =\sum^\infty_{k=1} k \int^1_0 x^{k-1}\brb{\log x}^n dx = \sum^\infty_{k=1} k \frac{(-1)^n n!}{k^{n+1}} \\
 & = & (-1)^n n! \sum^\infty_{k=1} \frac{1 }{k^n} = (-1)^n n!\zeta(n) = (-1)^n \zeta(n)\Gamma(n+1).
 \eeast
 \end{proof}
@@ -85,7 +85,7 @@ Apply Proposition \ref{pro:geometric_series_sum} and Proposition \ref{pro:integr
 \begin{proposition}
 For $n\in\Z^+$, The integral
 \be
-\int^1_0 \frac{\bb{\log x}^n}{1+x}dx = (-1)^n \bb{1 - 2^{-n}}\zeta(n+1)\Gamma(n+1)
+\int^1_0 \frac{\brb{\log x}^n}{1+x}dx = (-1)^n \brb{1 - 2^{-n}}\zeta(n+1)\Gamma(n+1)
 \ee
 where $\zeta(\cdot)$ is the zeta function and $\Gamma(\cdot)$ is the gamma function.
 \end{proposition}
@@ -98,62 +98,62 @@ For $\abs{x}<1$, we have by Proposition \ref{pro:geometric_series_sum}
 
 Then by Fubini theorem (Theorem \ref{thm:fubini}) and Proposition \ref{pro:integral_x_lnx_product}
 \beast
-\int^1_0 \frac{\bb{\log x}^n}{1+x}dx & = & \int^1_0 \sum^\infty_{k=0} (-x)^{k}\bb{\log x}^n dx = \sum^\infty_{k=0} (-1)^{k}\int^1_0 x^{k}\bb{\log x}^n dx = \sum^\infty_{k=0} (-1)^{k}\frac{(-1)^n n!}{\bb{k+1}^{n+1}} \\
-& = & (-1)^n n! \sum^\infty_{k=1} (-1)^{k-1} \frac{1 }{k^{n+1}} = (-1)^{n} \bb{1 - 2^{-n}}\zeta(n+1)\Gamma(n+1)
+\int^1_0 \frac{\brb{\log x}^n}{1+x}dx & = & \int^1_0 \sum^\infty_{k=0} (-x)^{k}\brb{\log x}^n dx = \sum^\infty_{k=0} (-1)^{k}\int^1_0 x^{k}\brb{\log x}^n dx = \sum^\infty_{k=0} (-1)^{k}\frac{(-1)^n n!}{\brb{k+1}^{n+1}} \\
+& = & (-1)^n n! \sum^\infty_{k=1} (-1)^{k-1} \frac{1 }{k^{n+1}} = (-1)^{n} \brb{1 - 2^{-n}}\zeta(n+1)\Gamma(n+1)
 \eeast
 as required.
 \end{proof}
 
 \begin{example}
 \beast
-\int^1_0 \frac{\log x}{1+x} dx & = & -\bb{1 - \frac 12}\zeta(2)\Gamma(2) = - \frac{\pi^2}{12},\\
-\int^1_0 \frac{\bb{\log x}^2}{1+x} dx & = & \bb{1 - \frac 14}\zeta(3)\Gamma(3) = \frac 34 \cdot \zeta(3) \cdot 2 = \frac {3\zeta (3)}{2}.
+\int^1_0 \frac{\log x}{1+x} dx & = & -\brb{1 - \frac 12}\zeta(2)\Gamma(2) = - \frac{\pi^2}{12},\\
+\int^1_0 \frac{\brb{\log x}^2}{1+x} dx & = & \brb{1 - \frac 14}\zeta(3)\Gamma(3) = \frac 34 \cdot \zeta(3) \cdot 2 = \frac {3\zeta (3)}{2}.
 \eeast
 \end{example}
 
 \begin{proposition}\label{pro:integral_ln_even_power_over_one_plus_x_square}
 \be
-\int^{\infty}_0 \frac{\bb{\log x}^2}{(1+x)^2} dx = \frac {\pi^2}3,\qquad \int^{\infty}_0 \frac{\bb{\log x}^4}{(1+x)^2} dx = \frac {7\pi^4}{15}
+\int^{\infty}_0 \frac{\brb{\log x}^2}{(1+x)^2} dx = \frac {\pi^2}3,\qquad \int^{\infty}_0 \frac{\brb{\log x}^4}{(1+x)^2} dx = \frac {7\pi^4}{15}
 \ee
 \end{proposition}
 
 \begin{proof}[\bf Proof]
 Since the functions have pole -1 of order 2, we have that for keyhole contour $C$\footnote{details needed.},
 \beast
-\int_C \frac{\bb{\Log z}^m}{(1+z)^2}dz & = & 2\pi i \res\bsb{\frac{\bb{\Log z}^m}{(1+z)^2},-1} = 2\pi i \lim_{z\to -1}\frac{d}{dz}\bb{\Log z}^m \\
-& = & 2\pi i \lim_{z\to -1}\frac{m}{z}\bb{\Log z}^{m-1} = -2\pi i m\bb{\ln\abs{-1}+\pi i}^{m-1} = -2m\pi^mi^m.
+\int_C \frac{\brb{\Log z}^m}{(1+z)^2}dz & = & 2\pi i \res\bsb{\frac{\brb{\Log z}^m}{(1+z)^2},-1} = 2\pi i \lim_{z\to -1}\frac{d}{dz}\brb{\Log z}^m \\
+& = & 2\pi i \lim_{z\to -1}\frac{m}{z}\brb{\Log z}^{m-1} = -2\pi i m\brb{\ln\abs{-1}+\pi i}^{m-1} = -2m\pi^mi^m.
 \eeast
 
 Then set $m=3$, we have that (the integrals along $R$ and around zero are zeros)
 \beast
-6\pi^3i & = & \int_C \frac{\bb{\Log z}^3}{(1+z)^2}dz = \int^R_0 \frac{\bb{\Log (x+i\ve)}^3}{(1+x+i\ve)^2}dz + \int^0_R \frac{\bb{\Log (x-i\ve)}^3}{(1+x-i\ve)^2}dz \\
-& \to & \int^\infty_0 \frac{\bb{\log x}^3 - \bb{\log x + 2\pi i}^3}{(1+x)^2} dx = \int^\infty_0 \frac{-6\pi i \bb{\log x}^2 + 12\pi^2 \log x + 8\pi^3 i}{(1+x)^2} dx.
+6\pi^3i & = & \int_C \frac{\brb{\Log z}^3}{(1+z)^2}dz = \int^R_0 \frac{\brb{\Log (x+i\ve)}^3}{(1+x+i\ve)^2}dz + \int^0_R \frac{\brb{\Log (x-i\ve)}^3}{(1+x-i\ve)^2}dz \\
+& \to & \int^\infty_0 \frac{\brb{\log x}^3 - \brb{\log x + 2\pi i}^3}{(1+x)^2} dx = \int^\infty_0 \frac{-6\pi i \brb{\log x}^2 + 12\pi^2 \log x + 8\pi^3 i}{(1+x)^2} dx.
 \eeast
 
 Then for the imaginary part, we have
 \be
-6\pi^3 = -6\pi \int^\infty_0 \frac{ \bb{\log x}^2}{(1+x)^2} dx + 8\pi^3 \int^\infty_0 \frac{ 1}{(1+x)^2} dx = -6\pi \int^\infty_0 \frac{ \bb{\log x}^2}{(1+x)^2} dx +8\pi^3.
+6\pi^3 = -6\pi \int^\infty_0 \frac{ \brb{\log x}^2}{(1+x)^2} dx + 8\pi^3 \int^\infty_0 \frac{ 1}{(1+x)^2} dx = -6\pi \int^\infty_0 \frac{ \brb{\log x}^2}{(1+x)^2} dx +8\pi^3.
 \ee
 
 Therefore, we have
 \be
-\int^\infty_0 \frac{ \bb{\log x}^2}{(1+x)^2} = \frac{2\pi^3}{6\pi} = \frac{\pi^2}{3}.
+\int^\infty_0 \frac{ \brb{\log x}^2}{(1+x)^2} = \frac{2\pi^3}{6\pi} = \frac{\pi^2}{3}.
 \ee
 
-For $m=5$, we have that 
+For $m=5$, we have that
 \beast
--10\pi^5i & = & \int_C \frac{\bb{\Log z}^5}{(1+z)^2}dz = \int^R_0 \frac{\bb{\Log (x+i\ve)}^5}{(1+x+i\ve)^2}dz + \int^0_R \frac{\bb{\Log (x-i\ve)}^5}{(1+x-i\ve)^2}dz \\
-\ra\   \int^\infty_0 \frac{\bb{\log x}^5 - \bb{\log x + 2\pi i}^5}{(1+x)^2} dx & = & \int^\infty_0 \frac{-10\pi i \bb{\log x}^4 + 40\pi^2 \bb{\log x}^3 + 80\pi^3 i \bb{\log x}^2 - 80\pi^4\bb{\log x} - 32\pi^5i  }{(1+x)^2} dx.
+-10\pi^5i & = & \int_C \frac{\brb{\Log z}^5}{(1+z)^2}dz = \int^R_0 \frac{\brb{\Log (x+i\ve)}^5}{(1+x+i\ve)^2}dz + \int^0_R \frac{\brb{\Log (x-i\ve)}^5}{(1+x-i\ve)^2}dz \\
+\ra\   \int^\infty_0 \frac{\brb{\log x}^5 - \brb{\log x + 2\pi i}^5}{(1+x)^2} dx & = & \int^\infty_0 \frac{-10\pi i \brb{\log x}^4 + 40\pi^2 \brb{\log x}^3 + 80\pi^3 i \brb{\log x}^2 - 80\pi^4\brb{\log x} - 32\pi^5i  }{(1+x)^2} dx.
 \eeast
 
 Then for the imaginary part, we have
 \be
--10\pi^5 = -10\pi  \int^{\infty}_0 \frac{\bb{\log x}^4}{(1+x)^2} dx + 80\pi^3 \frac{\pi^2}{3} - 32\pi^5.
+-10\pi^5 = -10\pi  \int^{\infty}_0 \frac{\brb{\log x}^4}{(1+x)^2} dx + 80\pi^3 \frac{\pi^2}{3} - 32\pi^5.
 \ee
 
-Therefore, 
+Therefore,
 \be
-\int^{\infty}_0 \frac{\bb{\log x}^4}{(1+x)^2} dx = \frac{14\pi^5}{3\cdot 10\pi} = \frac{7\pi^4}{15} .
+\int^{\infty}_0 \frac{\brb{\log x}^4}{(1+x)^2} dx = \frac{14\pi^5}{3\cdot 10\pi} = \frac{7\pi^4}{15} .
 \ee
 \end{proof}
 
@@ -161,14 +161,14 @@ Therefore,
 
 %\begin{proposition}%\label{pro:integral_ln_odd_power_over_one_plus_x_square}%
 %\be
-%\int^1_0 \frac{\ln x}{(1+x)^2} dx = -\ln 2,\qquad \int^1_0 \frac{\bb{\ln x}^3}{(1+x)^2} dx = -\frac {9\zeta(3)}{2},\qquad \int^1_0 \frac{\bb{\ln x}^5}{(1+x)^2} dx = -\frac {225\zeta(5)}{2}.
+%\int^1_0 \frac{\ln x}{(1+x)^2} dx = -\ln 2,\qquad \int^1_0 \frac{\brb{\ln x}^3}{(1+x)^2} dx = -\frac {9\zeta(3)}{2},\qquad \int^1_0 \frac{\brb{\ln x}^5}{(1+x)^2} dx = -\frac {225\zeta(5)}{2}.
 %\ee
 %\end{proposition}
 
 %\begin{proof}[\bf Proof]
 %By integral by parts,
 %\be
-%\int^1_0 \frac{\ln x}{(1+x)^2}dx = -\int^{\infty}_1 \frac{\ln x}{(1+x)^2}dx = \left.\frac{\ln x}{1+x}\right|^{\infty}_1  - \int^{\infty}_1 \frac{1}{x(1+x)}dx = -\left.\ln\bb{\frac{x}{x+1}}\right|^{\infty}_1 = -\ln 2.
+%\int^1_0 \frac{\ln x}{(1+x)^2}dx = -\int^{\infty}_1 \frac{\ln x}{(1+x)^2}dx = \left.\frac{\ln x}{1+x}\right|^{\infty}_1  - \int^{\infty}_1 \frac{1}{x(1+x)}dx = -\left.\ln\brb{\frac{x}{x+1}}\right|^{\infty}_1 = -\ln 2.
 %\ee
 
 %\footnote{proof needed.}
@@ -183,7 +183,7 @@ Therefore,
 \begin{proposition}
 For $n\in\Z^+$, The integral
 \be
-\int^{\infty}_1 \frac{\bb{\log x}^n}{(1+x)^2}dx = (-1)^n\int^1_0  \frac{\bb{\log x}^n}{(1+x)^2}dx.
+\int^{\infty}_1 \frac{\brb{\log x}^n}{(1+x)^2}dx = (-1)^n\int^1_0  \frac{\brb{\log x}^n}{(1+x)^2}dx.
 \ee
 
 In particular,
@@ -193,8 +193,8 @@ In particular,
 
 For $n\in \bra{2,3,\dots}$, we have
 \beast
-\int^{\infty}_1 \frac{\bb{\log x}^n}{(1+x)^2}dx = (-1)^n\int^1_0  \frac{\bb{\log x}^n}{(1+x)^2}dx & = & n!\bb{1 - 2^{-(n-1)}}\zeta(n) \\
- & = & \bb{1 - 2^{-(n-1)}}\zeta(n)\Gamma(n+1)
+\int^{\infty}_1 \frac{\brb{\log x}^n}{(1+x)^2}dx = (-1)^n\int^1_0  \frac{\brb{\log x}^n}{(1+x)^2}dx & = & n!\brb{1 - 2^{-(n-1)}}\zeta(n) \\
+ & = & \brb{1 - 2^{-(n-1)}}\zeta(n)\Gamma(n+1)
 \eeast
 where $\zeta(\cdot)$ is the zeta function and $\Gamma(\cdot)$ is the gamma function.
 \end{proposition}
@@ -202,13 +202,13 @@ where $\zeta(\cdot)$ is the zeta function and $\Gamma(\cdot)$ is the gamma funct
 \begin{proof}[\bf Proof]
 First we use substitution $t = 1/x$, then
 \be
-\int^{\infty}_1 \frac{\bb{\log x}^n}{(1+x)^2}dx = \int^{0}_1 \frac{\bb{-\log t}^n}{-t^2(1+1/t)^2}dt = (-1)^n\int^1_0  \frac{\bb{\log t}^n}{(1+t)^2}dt.
+\int^{\infty}_1 \frac{\brb{\log x}^n}{(1+x)^2}dx = \int^{0}_1 \frac{\brb{-\log t}^n}{-t^2(1+1/t)^2}dt = (-1)^n\int^1_0  \frac{\brb{\log t}^n}{(1+t)^2}dt.
 \ee
 
 For $n=1$, integrating by parts we have
 \beast
-\int^\infty_1  \frac{\log x}{(1+x)^2}dx & = & -\int^\infty_1 \log x d \bb{\frac{1}{1+x}} = -\left. \frac{\log x}{1+x}\right|^\infty_1 + \int^\infty_1  \frac{1}{x(1+x)}d x \\
-& = &  \int^\infty_1  \frac{1}{x(1+x)}d x  = \left.\log\bb{\frac{x}{1+x}}\right|^\infty_1 = 0 - \ln(1/2) = \ln 2.
+\int^\infty_1  \frac{\log x}{(1+x)^2}dx & = & -\int^\infty_1 \log x d \brb{\frac{1}{1+x}} = -\left. \frac{\log x}{1+x}\right|^\infty_1 + \int^\infty_1  \frac{1}{x(1+x)}d x \\
+& = &  \int^\infty_1  \frac{1}{x(1+x)}d x  = \left.\log\brb{\frac{x}{1+x}}\right|^\infty_1 = 0 - \ln(1/2) = \ln 2.
 \eeast
 
 For $n\geq 2$, we have that for $\abs{x}<1$, Proposition \ref{pro:geometric_series_sum},
@@ -218,9 +218,9 @@ For $n\geq 2$, we have that for $\abs{x}<1$, Proposition \ref{pro:geometric_seri
 
 Then by Fubini theorem (Theorem \ref{thm:fubini}) and Proposition \ref{pro:integral_x_lnx_product}
 \beast
-\int^\infty_1 \frac{\bb{\log x}^n}{(1+x)^2}dx & = & (-1)^n\int^1_0 \frac{\bb{\log x}^n}{(1+x)^2}dx  = (-1)^n\int^1_0 \sum^\infty_{k=1} k(-x)^{k-1}\bb{\log x}^n dx \\
-& = & (-1)^n\sum^\infty_{k=1} k(-1)^{k-1}\int^1_0 x^{k-1}\bb{\log x}^n dx = (-1)^n\sum^\infty_{k=1} k(-1)^{k-1} \frac{(-1)^n n!}{k^{n+1}} \\
-& = & n! \sum^\infty_{k=1} (-1)^{k-1} \frac{1 }{k^n} = n!\bb{1 - 2^{-(n-1)}}\zeta(n)
+\int^\infty_1 \frac{\brb{\log x}^n}{(1+x)^2}dx & = & (-1)^n\int^1_0 \frac{\brb{\log x}^n}{(1+x)^2}dx  = (-1)^n\int^1_0 \sum^\infty_{k=1} k(-x)^{k-1}\brb{\log x}^n dx \\
+& = & (-1)^n\sum^\infty_{k=1} k(-1)^{k-1}\int^1_0 x^{k-1}\brb{\log x}^n dx = (-1)^n\sum^\infty_{k=1} k(-1)^{k-1} \frac{(-1)^n n!}{k^{n+1}} \\
+& = & n! \sum^\infty_{k=1} (-1)^{k-1} \frac{1 }{k^n} = n!\brb{1 - 2^{-(n-1)}}\zeta(n)
 \eeast
 as required.
 \end{proof}
@@ -229,7 +229,7 @@ as required.
 \begin{example}
 For $n=2$, we have that $\zeta(n) = \zeta(2) = \pi^2 /6$,
 \be
-\int^\infty_1 \frac{\bb{\log x}^2}{(1+x)^2}dx = \int^1_0 \frac{\bb{\log x}^2}{(1+x)^2}dx = 2!\bb{1 - \frac 12}\zeta(2) = \frac{\pi^2}6 \ \ra\ \int^\infty_0 \frac{\bb{\log x}^2}{(1+x)^2}dx = \frac{\pi^2}3
+\int^\infty_1 \frac{\brb{\log x}^2}{(1+x)^2}dx = \int^1_0 \frac{\brb{\log x}^2}{(1+x)^2}dx = 2!\brb{1 - \frac 12}\zeta(2) = \frac{\pi^2}6 \ \ra\ \int^\infty_0 \frac{\brb{\log x}^2}{(1+x)^2}dx = \frac{\pi^2}3
 \ee
 which is consistent with Proposition \ref{pro:integral_ln_even_power_over_one_plus_x_square} approached by other method.
 \end{example}
@@ -237,42 +237,42 @@ which is consistent with Proposition \ref{pro:integral_ln_even_power_over_one_pl
 \begin{example}
 For $n=3$, we have that
 \be
-\int^{\infty}_1 \frac{\bb{\log x}^3}{(1+x)^2}dx = 3!\bb{1 - \frac 14}\zeta(3) = \frac{9\zeta(3) }{2}\approx 5.4093.
+\int^{\infty}_1 \frac{\brb{\log x}^3}{(1+x)^2}dx = 3!\brb{1 - \frac 14}\zeta(3) = \frac{9\zeta(3) }{2}\approx 5.4093.
 \ee
 \end{example}
 
 Similarly, we have
 \begin{proposition}
 \be
-\int^1_0 \frac{\bb{\log x}^n}{(1+x)^3} dx = \frac 12 (-1)^n n! \bb{\bb{1-2^{-(n-2)}}\zeta(n-1) + \bb{1-2^{-(n-1)}}\zeta(n)}.
+\int^1_0 \frac{\brb{\log x}^n}{(1+x)^3} dx = \frac 12 (-1)^n n! \brb{\brb{1-2^{-(n-2)}}\zeta(n-1) + \brb{1-2^{-(n-1)}}\zeta(n)}.
 \ee
 \end{proposition}
 
 \begin{example}
 \be
-\int^1_0 \frac{\bb{\log x}^3}{(1+x)^3} dx = -3\bb{\frac 12\zeta(2) + \frac 34 \zeta(3)} = -\frac{\pi^2}{4} - \frac {9\zeta(3)}{4}.
+\int^1_0 \frac{\brb{\log x}^3}{(1+x)^3} dx = -3\brb{\frac 12\zeta(2) + \frac 34 \zeta(3)} = -\frac{\pi^2}{4} - \frac {9\zeta(3)}{4}.
 \ee
 
 \be
-\int^1_0 \frac{\bb{\log x}^4}{(1+x)^3} dx = 12 \bb{\frac 34\zeta(3) + \frac 78 \zeta(4)} = 9\zeta(3) + \frac{7\pi^4}{60} .
+\int^1_0 \frac{\brb{\log x}^4}{(1+x)^3} dx = 12 \brb{\frac 34\zeta(3) + \frac 78 \zeta(4)} = 9\zeta(3) + \frac{7\pi^4}{60} .
 \ee
 \end{example}
 
 \begin{proposition}
 \be
-\int^1_0 \frac{\bb{\log x}^n}{(1+x)^4} dx = \frac 16 (-1)^n n! \bb{\bb{1-2^{-(n-3)}}\zeta(n-2) + 3\bb{1-2^{-(n-2)}}\zeta(n-1) + 2\bb{1-2^{-(n-1)}}\zeta(n)}.
+\int^1_0 \frac{\brb{\log x}^n}{(1+x)^4} dx = \frac 16 (-1)^n n! \brb{\brb{1-2^{-(n-3)}}\zeta(n-2) + 3\brb{1-2^{-(n-2)}}\zeta(n-1) + 2\brb{1-2^{-(n-1)}}\zeta(n)}.
 \ee
 \end{proposition}
 
 \begin{example}
 \be
-\int^1_0 \frac{\bb{\log x}^4}{(1+x)^4} dx = 4 \bb{\frac 12\zeta(2) + 3\frac 34\zeta(3) + 2\frac 78 \zeta(4)} = \frac{\pi^2}{3} + 9\zeta(3) + \frac{7\pi^4}{90} .
+\int^1_0 \frac{\brb{\log x}^4}{(1+x)^4} dx = 4 \brb{\frac 12\zeta(2) + 3\frac 34\zeta(3) + 2\frac 78 \zeta(4)} = \frac{\pi^2}{3} + 9\zeta(3) + \frac{7\pi^4}{90} .
 \ee
 \end{example}
 
 \begin{proposition}\label{pro:logarithm_integral_x_divided_1-x}
 \be
-\int^1_0 \bsb{\log\bb{\frac x{1-x}}}^n dx = \bb{2-2^{2-n}} \zeta(n)\Gamma(n+1)=  \pi^n \bb{2^n-2} \cdot\abs{B_n}
+\int^1_0 \bsb{\log\brb{\frac x{1-x}}}^n dx = \brb{2-2^{2-n}} \zeta(n)\Gamma(n+1)=  \pi^n \brb{2^n-2} \cdot\abs{B_n}
 \ee
 where $B_n$ are the Bernoulli numbers of first kind.
 \end{proposition}
@@ -280,17 +280,17 @@ where $B_n$ are the Bernoulli numbers of first kind.
 \begin{proof}[\bf Proof]
 Let $t = \frac x{1-x}$, we have $x = \frac{t}{1+t}$,
 \be
-\int^1_0 \bsb{\log\bb{\frac x{1-x}}}^n dx = \int^\infty_0 \bb{\log t}^n d\bb{\frac{t}{1+t}} = \int^\infty_0 \frac{\bb{\log t}^n}{(1+t)^2} dt .
+\int^1_0 \bsb{\log\brb{\frac x{1-x}}}^n dx = \int^\infty_0 \brb{\log t}^n d\brb{\frac{t}{1+t}} = \int^\infty_0 \frac{\brb{\log t}^n}{(1+t)^2} dt .
 \ee
 
 If $n$ is odd, the result is zero. If $n$ is even, we have
 \be
-\int^1_0 \bsb{\log\bb{\frac x{1-x}}}^n dx = \bb{2-2^{2-n}} \zeta(n)\Gamma(n+1).
+\int^1_0 \bsb{\log\brb{\frac x{1-x}}}^n dx = \brb{2-2^{2-n}} \zeta(n)\Gamma(n+1).
 \ee
 
 Then by Proposition \ref{pro:zeta_function_first_bernoulli_number}, $\abs{B_{n}} = \frac{2n!}{(2\pi)^{n}}\zeta(n)$ and
 \be
-\int^1_0 \bsb{\log\bb{\frac x{1-x}}}^n dx = \bb{2-2^{2-n}} \abs{B_{n}} \frac{(2\pi)^{n}}{2n!} \Gamma(n+1) = \pi^n \bb{2^n-2} \cdot\abs{B_n}.
+\int^1_0 \bsb{\log\brb{\frac x{1-x}}}^n dx = \brb{2-2^{2-n}} \abs{B_{n}} \frac{(2\pi)^{n}}{2n!} \Gamma(n+1) = \pi^n \brb{2^n-2} \cdot\abs{B_n}.
 \ee
 \end{proof}
 
@@ -316,7 +316,7 @@ In particular, if $a=0$ then
 
 \begin{proposition}\label{pro:gamma_integral_equivalent_forms}
 \beast
-\gamma = \int^\infty_0 \bb{\frac 1{e^x -1} - \frac 1{xe^x}} dx = \int^1_0 \bb{\frac 1{\log x} + \frac 1{1-x}}dx = \int^\infty_0 \bb{\frac{1}{1+x^k} - e^{-x}} \frac{dx}{x} ,\ k>0.
+\gamma = \int^\infty_0 \brb{\frac 1{e^x -1} - \frac 1{xe^x}} dx = \int^1_0 \brb{\frac 1{\log x} + \frac 1{1-x}}dx = \int^\infty_0 \brb{\frac{1}{1+x^k} - e^{-x}} \frac{dx}{x} ,\ k>0.
 \eeast
 \end{proposition}
 
@@ -326,15 +326,15 @@ In particular, if $a=0$ then
 
 \begin{proposition}\label{pro:gamma_integral_exp_x_power_of_ln_x}
 \be
-\gamma = -\Gamma'(1) =  -\int^\infty_0 e^{-x}\log x dx = -4\int^\infty_0e^{-x^2} x\log xdx = -\int^1_0 \log\bb{\log \bb{\frac 1x}} dx ,
+\gamma = -\Gamma'(1) =  -\int^\infty_0 e^{-x}\log x dx = -4\int^\infty_0e^{-x^2} x\log xdx = -\int^1_0 \log\brb{\log \brb{\frac 1x}} dx ,
 \ee
 
 \be
-\int^\infty_0 e^{-x }\bb{\log x}^2 dx = \Gamma''(1) = \gamma^2 + \frac{\pi^2}6,\qquad \int^\infty_0 e^{-x }\bb{\log x}^3 dx = \Gamma'''(1) = -\gamma^3 - \frac {\gamma \pi^2}2 - 2\zeta(3),
+\int^\infty_0 e^{-x }\brb{\log x}^2 dx = \Gamma''(1) = \gamma^2 + \frac{\pi^2}6,\qquad \int^\infty_0 e^{-x }\brb{\log x}^3 dx = \Gamma'''(1) = -\gamma^3 - \frac {\gamma \pi^2}2 - 2\zeta(3),
 \ee
 
 \be
-\int^\infty_0 e^{-x }\bb{\log x}^4 dx = \Gamma''''(1) = \gamma^4 + \pi^2 \gamma^2 + 8 \gamma \zeta(3) + \frac{3\pi^4}{20}.
+\int^\infty_0 e^{-x }\brb{\log x}^4 dx = \Gamma''''(1) = \gamma^4 + \pi^2 \gamma^2 + 8 \gamma \zeta(3) + \frac{3\pi^4}{20}.
 \ee
 \end{proposition}
 
@@ -344,23 +344,23 @@ Direct result of Proposition \ref{pro:derivatives_of_gamma_function_integral} an
 
 \begin{proposition}\label{pro:gamma_integral_exp_x_square_ln_x}
 \be
-\int^\infty_0 e^{-x^2 }\log x dx = -\frac{\bb{\gamma + 2\ln 2}\sqrt{\pi}}{4}
+\int^\infty_0 e^{-x^2 }\log x dx = -\frac{\brb{\gamma + 2\ln 2}\sqrt{\pi}}{4}
 \ee
 \end{proposition}
 
 \begin{proof}[\bf Proof]
-\footnote{proof needed. This integral is actually equal to $\Gamma'\bb{\frac 12}$. see Proposition \ref{pro:derivatives_of_gamma_function_integral}}
+\footnote{proof needed. This integral is actually equal to $\Gamma'\brb{\frac 12}$. see Proposition \ref{pro:derivatives_of_gamma_function_integral}}
 \end{proof}
 
 \begin{proposition}
 \beast
-\gamma & = & \int^1_0\int^1_0 \frac{x-1}{(1-xy)\log (xy)}dxdy = \sum^\infty_{n=1}\bb{\frac 1n - \ln \bb{\frac{n+1}n}} ,\\
-\ln \bb{\frac 4{\pi}} & = & \int^1_0\int^1_0 \frac{x-1}{(1+xy)\log (xy)}dxdy = \sum^\infty_{n=1}\bb{(-1)^{n-1}\bb{\frac 1n - \ln \bb{\frac{n+1}n}}}.
+\gamma & = & \int^1_0\int^1_0 \frac{x-1}{(1-xy)\log (xy)}dxdy = \sum^\infty_{n=1}\brb{\frac 1n - \ln \brb{\frac{n+1}n}} ,\\
+\ln \brb{\frac 4{\pi}} & = & \int^1_0\int^1_0 \frac{x-1}{(1+xy)\log (xy)}dxdy = \sum^\infty_{n=1}\brb{(-1)^{n-1}\brb{\frac 1n - \ln \brb{\frac{n+1}n}}}.
 \eeast
 \end{proposition}
 
 \begin{remark}
-It shows that $\ln \bb{\frac 4{\pi}}$ may be thought of as an `alternative Euler constant'.
+It shows that $\ln \brb{\frac 4{\pi}}$ may be thought of as an `alternative Euler constant'.
 \end{remark}
 
 \begin{proof}[\bf Proof]
@@ -381,13 +381,13 @@ It shows that $\ln \bb{\frac 4{\pi}}$ may be thought of as an `alternative Euler
 The surface element spanning from $\theta$ to $\theta + d\theta$ and $\phi$ to $\phi + d\phi$ on a spherical surface at (constant) radius $r$ is
 
 \be
-d S_{r}=r^{2}\sin \phi \,d\theta \,d \phi 
+d S_{r}=r^{2}\sin \phi \,d\theta \,d \phi
 \ee
-as the area of small square on surface is $(r\sin \phi d\theta)\times (r d\phi) = r^2\sin \phi d\theta d \phi $ . 
+as the area of small square on surface is $(r\sin \phi d\theta)\times (r d\phi) = r^2\sin \phi d\theta d \phi $ .
 
 Thus the differential solid angle is
 \be
-d\Omega ={\frac {d S_{r}}{r^{2}}}=\sin \phi \,d\theta \,d \phi . 
+d\Omega ={\frac {d S_{r}}{r^{2}}}=\sin \phi \,d\theta \,d \phi .
 \ee
 
 The surface element in a surface of polar angle $\phi$ constant (a cone with vertex the origin) is
@@ -409,7 +409,7 @@ The area of the sphere with radius $r$ is $4\pi r^2$.
 \begin{proof}[\bf Proof]
 The area of the sphere can be consider as %the cumulation of the circumference of circular sections of the sphere. That is.
 %\be
-%\int^{\pi}_0 \pi \ell_{r\sin\theta} d\theta = \int^{\pi}_0 \pi r\sin\theta d\theta = -2r\int^{\pi/2}_0 d \sin\theta 
+%\int^{\pi}_0 \pi \ell_{r\sin\theta} d\theta = \int^{\pi}_0 \pi r\sin\theta d\theta = -2r\int^{\pi/2}_0 d \sin\theta
 %\ee
 \be
 \int^{\pi}_0 \int^{2\pi}_0 r^{2}\sin \phi \,d\theta \,d \phi = 2\pi r^2 \int^{\pi}_0 \sin\phi d\phi = 2\pi r^2 \left.(-\cos\phi)\right|^{\pi}_0 = 4\pi r^2.
@@ -421,9 +421,9 @@ Let $S$ be a sphere with radius $r$. Then the spherical area between to parallel
 \end{theorem}
 
 \begin{proof}[\bf Proof]
-Let two parallel planes have polar angle $\phi_1<\phi_2$. Thus the height of the zone between two planes is $r\bb{\cos\phi_1 - \cos\phi_2}$. Thus, the area is
+Let two parallel planes have polar angle $\phi_1<\phi_2$. Thus the height of the zone between two planes is $r\brb{\cos\phi_1 - \cos\phi_2}$. Thus, the area is
 \be
-\int^{\phi_2}_{\phi_1} \int^{2\pi}_0 r^2\sin \phi \,d\theta \,d \phi= 2r^2  \int^{\phi_2}_{\phi_1}  \sin\phi d\phi = 2r^2 \left.\bb{-\cos \phi}\right|^{\phi_2}_{\phi_1} = 2r^2 \bb{\cos \phi_1 - \cos\phi_2}
+\int^{\phi_2}_{\phi_1} \int^{2\pi}_0 r^2\sin \phi \,d\theta \,d \phi= 2r^2  \int^{\phi_2}_{\phi_1}  \sin\phi d\phi = 2r^2 \left.\brb{-\cos \phi}\right|^{\phi_2}_{\phi_1} = 2r^2 \brb{\cos \phi_1 - \cos\phi_2}
 \ee
 as required.
 \end{proof}
@@ -439,7 +439,7 @@ as required.
 \begin{problem}
 Let $f$ be continuously differentiable on $[0,a]$ with $f(0) = 0$. Then show that
 \be
-\int^a_0 \abs{f(x)f'(x)}dx \leq \frac a2 \int^a_0 \bb{f'(x)}^2 dx.
+\int^a_0 \abs{f(x)f'(x)}dx \leq \frac a2 \int^a_0 \brb{f'(x)}^2 dx.
 \ee
 \end{problem}
 
@@ -447,15 +447,15 @@ Let $f$ be continuously differentiable on $[0,a]$ with $f(0) = 0$. Then show tha
 {\it Approach 1.} By AM-GM theorem\footnote{theorem needed.} and the fact $f(x) = f(x) -f(0)= \int^x_0 f'(y)dy$
 \beast
 \int^a_0 \abs{f(x)f'(x)}dx & = & \int^a_0 \abs{f'(x)}\abs{ \int^x_0 f'(y)dy }dx \leq \int^a_0 \int^x_0 \abs{f'(x) f'(y) }dy dx \\
-& \leq & \frac 12 \int^a_0 \int^x_0 \bb{f'(x)}^2 dy dx + \frac 12 \int^a_0 \int^x_0 \bb{f'(y)}^2 dy dx = \frac 12 \int^a_0  x \bb{f'(x)}^2 dx + \frac 12 \int^a_0 \bb{f'(y)}^2 \int^a_y dx dy \\
-& = & \frac 12 \int^a_0  x \bb{f'(x)}^2 dx + \frac 12 \int^a_0 (a-x)\bb{f'(x)}^2 dx = \frac a2 \int^a_0  \bb{f'(x)}^2 dx.
+& \leq & \frac 12 \int^a_0 \int^x_0 \brb{f'(x)}^2 dy dx + \frac 12 \int^a_0 \int^x_0 \brb{f'(y)}^2 dy dx = \frac 12 \int^a_0  x \brb{f'(x)}^2 dx + \frac 12 \int^a_0 \brb{f'(y)}^2 \int^a_y dx dy \\
+& = & \frac 12 \int^a_0  x \brb{f'(x)}^2 dx + \frac 12 \int^a_0 (a-x)\brb{f'(x)}^2 dx = \frac a2 \int^a_0  \brb{f'(x)}^2 dx.
 \eeast
 
 {\it Approach 2.} , we have
 \beast
 \int^a_0 \abs{f(x)f'(x)}dx & \leq & \int^a_0 \int^x_0 \abs{f'(x) f'(y) }dy dx \\
-& \leq & \frac 12 \bb{\int^a_0 \int^x_0 \abs{f'(x) f'(y) }dy dx + \int^a_0 \int^a_y \abs{f'(x) f'(y) } dx dy} = \frac 12 \bb{\int^a_0  \abs{f'(x)} dx }^2 \\
-& \leq & \frac 12 \int^a_0 1 dx \int^a_0 \bb{f'(x)}^2 dx = \frac a2 \int^a_0  \bb{f'(x)}^2 dx
+& \leq & \frac 12 \brb{\int^a_0 \int^x_0 \abs{f'(x) f'(y) }dy dx + \int^a_0 \int^a_y \abs{f'(x) f'(y) } dx dy} = \frac 12 \brb{\int^a_0  \abs{f'(x)} dx }^2 \\
+& \leq & \frac 12 \int^a_0 1 dx \int^a_0 \brb{f'(x)}^2 dx = \frac a2 \int^a_0  \brb{f'(x)}^2 dx
 \eeast
 by Cauchy-Schwartz inequality\footnote{theorem needed.}.
 \end{solution}
@@ -463,11 +463,11 @@ by Cauchy-Schwartz inequality\footnote{theorem needed.}.
 \begin{remark}
 For $f(x) = x$, $f'(x) = 1$, then
 \be
-\int^a_0 \abs{f(x)f'(x)}dx = \int^a_0 x dx = \frac 12 a^2 \leq \frac a2 \int^a_0 1 dx = \frac a2 \int^a_0  \bb{f'(x)}^2 dx
+\int^a_0 \abs{f(x)f'(x)}dx = \int^a_0 x dx = \frac 12 a^2 \leq \frac a2 \int^a_0 1 dx = \frac a2 \int^a_0  \brb{f'(x)}^2 dx
 \ee
 
 For $f(x) = x^2$, $f'(x) = 2x$, then
 \be
-\int^a_0 \abs{f(x)f'(x)}dx = \int^a_0 2x^3 dx = \frac 12 a^4 \leq \frac 23a^4 = \frac a2 \int^a_0 4x^2 dx = \frac a2 \int^a_0  \bb{f'(x)}^2 dx
+\int^a_0 \abs{f(x)f'(x)}dx = \int^a_0 2x^3 dx = \frac 12 a^4 \leq \frac 23a^4 = \frac a2 \int^a_0 4x^2 dx = \frac a2 \int^a_0  \brb{f'(x)}^2 dx
 \ee
 \end{remark}
