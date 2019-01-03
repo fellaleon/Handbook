@@ -85,7 +85,7 @@ Hence we have $|x-y|<2\ve$. If $x\neq y$, just take $\ve=\frac{x-y|}{3}$, then $
 |x_n - c| = |c-c| = 0 < \ve, \ \forall n \geq N(\ve).
 \ee
 
-\item [(iv)] We know that given $\ve > 0$, $\exists N_1(\ve),N_2(\ve)$ such that $|x_n - x| < \ve\ \forall n \geq N_1(\ve),\ |y_n - y| < \ve\ \forall n \geq N_2(\ve)$. Thus if $n \geq N(\ve) = \max\bra{N_1\bb{\frac{\ve}2}, N_2\bb{\frac{\ve}2}}$, we have
+\item [(iv)] We know that given $\ve > 0$, $\exists N_1(\ve),N_2(\ve)$ such that $|x_n - x| < \ve\ \forall n \geq N_1(\ve),\ |y_n - y| < \ve\ \forall n \geq N_2(\ve)$. Thus if $n \geq N(\ve) = \max\bra{N_1\brb{\frac{\ve}2}, N_2\brb{\frac{\ve}2}}$, we have
 \be
 |(x_n + y_n) - (x - y)| = |(x_n - x) + (y_n - y)| \leq |x_n - x| + |y_n -y| < \frac{\ve}{2} + \frac{\ve}{2}
 \ee
@@ -101,7 +101,7 @@ We have $|x_n|\leq |x_n-x|+|x|\leq 1+|x|,\forall n\geq N_1(1) \ (\ve=1)$. Thus, 
 |x_ny_n-xy| \leq (1+|x|)\ve + |y|\ve = \ve(|x|+|y|+1), \ \forall n\geq \max\{N_1(1),N_1(\ve), N_2(\ve)\}.
 \ee
 
-\item [(vi)] Again, given $\ve > 0$, $\exists N_1(\ve)$ such that $|x_n -x| < \ve$. Thus if $n \geq N(\ve) = \max\bra{N_1\bb{\frac{|x|}{2}}, N_1\bb{\frac{\ve|x|^2}{2}}}$, then
+\item [(vi)] Again, given $\ve > 0$, $\exists N_1(\ve)$ such that $|x_n -x| < \ve$. Thus if $n \geq N(\ve) = \max\bra{N_1\brb{\frac{|x|}{2}}, N_1\brb{\frac{\ve|x|^2}{2}}}$, then
 \be
 \abs{\frac{1}{x_n} - \frac{1}{x}} = \abs{\frac{x - x_n}{xx_n}} = \frac{|x-x_n|}{|x||x_n|} <\frac{2|x_n - x|}{|x|^2} <\frac{\ve|a|^2}{2} \cdot \frac{2}{|x|^2} = \ve.
 \ee
@@ -129,7 +129,7 @@ which implies that $\abs{x_n} \to \abs{x}$.
 
 
 \begin{definition}[bounded sequence]
-Let $(x_n)$ be a real sequence. Then we say $(x_n)$ is bounded if there exists $K>0$ such that $\abs{x_n} \leq K$ for any $n\in \N$. Otherwise, $(x_n)$ is unbounded. 
+Let $(x_n)$ be a real sequence. Then we say $(x_n)$ is bounded if there exists $K>0$ such that $\abs{x_n} \leq K$ for any $n\in \N$. Otherwise, $(x_n)$ is unbounded.
 
 In particular, for any $K>0$, if there exists $n\in\N$ such that $x_n > K$, the sequence is called unbounded above. On the other hand, for any $K>0$, if there exists $n\in\N$ such that $x_n < -K$, the sequence is called unbounded below.
 \end{definition}
@@ -502,11 +502,11 @@ We say the a sequence is monotonic\index{monotonic!sequence} if it is either inc
 \begin{definition}[limit superior, limit inferior]\label{def:limsup_liminf_real}
 Let $(x_n)_{n \in \N}$ be a sequence of real numbers. We define
 \be
-\limsup_n x_n := \inf_n \bb{\sup_{m\geq n}x_m} = \da \lim_n \bb{\sup_{m\geq n}x_m} \in [-\infty,\infty].
+\limsup_n x_n := \inf_n \brb{\sup_{m\geq n}x_m} = \da \lim_n \brb{\sup_{m\geq n}x_m} \in [-\infty,\infty].
 \ee
 Obviously, $y_n := \sup_{m\geq n}x_m$ is monotone non-increasing in $n$, so that the limit of the sequence $y_n$ exists in $[-\infty,\infty]$. Analogously,
 \be
-\liminf_n x_n := \sup_n \bb{\inf_{m\geq n}x_m} = \ua \lim_n \bb{\inf_{m\geq n}x_m} \in [-\infty,\infty].
+\liminf_n x_n := \sup_n \brb{\inf_{m\geq n}x_m} = \ua \lim_n \brb{\inf_{m\geq n}x_m} \in [-\infty,\infty].
 \ee
 \end{definition}
 
@@ -542,12 +542,12 @@ Whenever the (ordinary) limit exists, the limit inferior and limit superior are 
 
 %\item [(ii)] Clearly, if $(x_n)$ is unbounded above we have $\limsup_n x_n = \infty$. If $(x_n)$ is unbounded below we have $\liminf_n x_n = - \infty$. Since $x_n$ unbounded above, for any $M>0$ we can pick any $n\in \N$ and there always exists $N\geq n$ such that $x_N > M$ (Otherwise, $x_m\leq M$ for all $m\geq n$ which contradicts the fact that $(x_n)$ is unbounded above.). Thus, for any $n\in \N$,
 %\be
-%\sup_{m\geq n} x_m > M \ \ra\ \limsup_n x_n = \inf_n\bb{\sup_{m\geq n}x_m} \geq M \ \ra\ \limsup_n x_n = \infty.
+%\sup_{m\geq n} x_m > M \ \ra\ \limsup_n x_n = \inf_n\brb{\sup_{m\geq n}x_m} \geq M \ \ra\ \limsup_n x_n = \infty.
 %\ee
 
 \item [(ii)] Note that $\limsup_n x_n$ and $\liminf_n x_n$ can both be $\infty$ or $-\infty$. For instance, let $x_n = n$. Obviously, $(x_n)$ is unbounded above so we have $\limsup_nx_n = \infty$. Also,
 \be
-\liminf_n x_n = \sup_n \bb{\inf_{m\geq n}x_m} = \sup_{n\in\N} n = \infty.
+\liminf_n x_n = \sup_n \brb{\inf_{m\geq n}x_m} = \sup_{n\in\N} n = \infty.
 \ee
 \een
 \end{remark}
@@ -651,7 +651,7 @@ x = \liminf_n x_n \ \lra \ \text{for all }\ve >0 \begin{cases}
 \begin{proof}[\bf Proof]
 We prove $\limsup$ case and $\liminf$ is similar.
 
-($\ra$). Assume $x=\limsup_n x_n = \inf_n\bb{\sup_{m\geq n}x_m}$. By definition of infimum, we have for any $\ve>0$,
+($\ra$). Assume $x=\limsup_n x_n = \inf_n\brb{\sup_{m\geq n}x_m}$. By definition of infimum, we have for any $\ve>0$,
 \be
 \begin{cases}
 \forall n\in \N,\ \sup_{m\geq n}x_m \geq x, \qquad (*)\\
@@ -675,12 +675,12 @@ Thus, there are only finitely many $n$ such that $x_n > x+\ve$.
 
 ($\la$). Assume that there are infinitely many $n\in \N$ such that $x_n > x-\ve$ and finitely many $n\in\N$ such that $x_n > x+\ve$. For any $\ve > 0$, since $x_n > x - \ve$ for infinitely many, we can have for any $n\in \N$,
 \be
-\sup_{m\geq n}x_m > x-\ve \ \ra\ \limsup_n x_n = \inf_n\bb{\sup_{m\geq n}x_m} \geq x - \ve.
+\sup_{m\geq n}x_m > x-\ve \ \ra\ \limsup_n x_n = \inf_n\brb{\sup_{m\geq n}x_m} \geq x - \ve.
 \ee
 
 Also, we can find $n\in \N$ such that $x_m \leq x+ \ve$ for all $m\geq n$. Then
 \be
-\sup_{m\geq n}{x_m} \leq x +\ve \ \ra\ \limsup_n x_n = \inf\bb{\sup_{m\geq n}x_m} \leq x + \ve.
+\sup_{m\geq n}{x_m} \leq x +\ve \ \ra\ \limsup_n x_n = \inf\brb{\sup_{m\geq n}x_m} \leq x + \ve.
 \ee
 
 Therefore, we have
@@ -747,7 +747,7 @@ x_n + y_n < x+y + \ve, \quad \forall n\geq N.
 
 Therefore, for all $n\geq N$, $\sup_{m\geq n} (x_m+ y_m) \leq x+y$ which implies that
 \be
-\limsup_n (x_n+y_n) = \inf_n \bb{\sup_{m\geq n}(x_m+y_m)} \leq x+ y
+\limsup_n (x_n+y_n) = \inf_n \brb{\sup_{m\geq n}(x_m+y_m)} \leq x+ y
 \ee
 as required. Similar for $\liminf$ case.
 \end{proof}
@@ -858,7 +858,7 @@ The real sequence $(a_n)$ with $a_n = 1/n$ converges. That is,
 \end{theorem}
 
 \begin{proof}[{\bf Proof}]
-The sequence $a_n=\frac 1n$ is decreasing and bounded below, so the $a_n\to a\in\mathbb{R}$ by the fundamental axiom of analysis\footnote{theorem needed.}. Thus,%We claim $a=0$, 
+The sequence $a_n=\frac 1n$ is decreasing and bounded below, so the $a_n\to a\in\mathbb{R}$ by the fundamental axiom of analysis\footnote{theorem needed.}. Thus,%We claim $a=0$,
 \be
 \frac{1}{2n}=\frac 12 \frac1n\to \frac 12a
 \ee
@@ -895,7 +895,7 @@ For real $p>0$ and $n\in \N$,
 \begin{proof}[\bf Proof]
 By definition of exponentiation function, we have
 \be
-n^p = \exp\bb{p\log n}.
+n^p = \exp\brb{p\log n}.
 \ee
 
 Thus, $n^p$ is an increasing function with respect to $n$ when $p>0$ (as $\exp$ and $\log$ are increasing functions). Thus, $\frac 1{n^p}$ is decreasing and bounded below by 0, so it converges to $\ell$ by the fundamental axiom of analysis\footnote{theorem needed.}. Therefore,
@@ -942,7 +942,7 @@ For $n\in \Z^+$,
 \begin{proof}[\bf Proof]
 Note that $n^{1/n}>1$ (since $n > 1 = 1^n$), so $a_n = \sqrt[n]{n}-1$ is positive. Apply the binomial formula,
 \be
-n = \bb{1+a_n}^n = \sum^n_{k=0} \binom{n}{k} a_n^k = 1 + na_n + \frac 12 n(n-1)a_n^2 + \dots
+n = \brb{1+a_n}^n = \sum^n_{k=0} \binom{n}{k} a_n^k = 1 + na_n + \frac 12 n(n-1)a_n^2 + \dots
 \ee
 
 We drop all terms but the second order one. Then we find
@@ -1191,12 +1191,12 @@ Let $X$ be a convex set\footnote{definition needed.} in real vector space and le
 
 $f$ is called convex if
 \be
-f\bb{tx_1 + (1-t)x_2} \leq tf(x_1) + (1-t)f(x_2),\qquad \forall x_1,x_2\in X, \ \forall t\in [0,1].
+f\brb{tx_1 + (1-t)x_2} \leq tf(x_1) + (1-t)f(x_2),\qquad \forall x_1,x_2\in X, \ \forall t\in [0,1].
 \ee
 
 $f$ is called strictly convex if
 \be
-f\bb{tx_1 + (1-t)x_2} < tf(x_1) + (1-t)f(x_2),\qquad \forall x_1,x_2\in X, x_1 \neq x_2, \ \forall t\in (0,1).
+f\brb{tx_1 + (1-t)x_2} < tf(x_1) + (1-t)f(x_2),\qquad \forall x_1,x_2\in X, x_1 \neq x_2, \ \forall t\in (0,1).
 \ee
 
 A function $f$ is said to be (strictly) concave if $-f$ is (strictly) convex.
@@ -1210,7 +1210,7 @@ t = \frac{x_2 - x}{x_2 -x_1}
 
 Then convexity implies that for $x\in (x_1,x_2)$,
 \be
-f\bb{x} \leq tf(x_1) + (1-t)f(x_2) = \frac{x_2 - x}{x_2 -x_1} f(x_1) + \frac{x-x_1}{x_2 -x_1} f(x_2)
+f\brb{x} \leq tf(x_1) + (1-t)f(x_2) = \frac{x_2 - x}{x_2 -x_1} f(x_1) + \frac{x-x_1}{x_2 -x_1} f(x_2)
 \ee
 which means that
 \be
@@ -1230,8 +1230,8 @@ is increasing.
 For any $a<x_1<x_2\leq b$, by definition of convex function
 \beast
 f(x_1) & \leq & \frac{x_1-a}{x_2-a}f(x_2) + \frac{x_2-x_1}{x_2-a}f(a) \\
-\ra   (x_2 - a) f(x_1) & \leq & \bb{x_1-a}f(x_2) + \bb{x_2-x_1} f(a) \\
-\ra   (x_2 - x_1) \bb{f(x_1) -f(a)} & \leq & \bb{x_1-a}\bb{f(x_2) - f(x_1)} \\
+\ra   (x_2 - a) f(x_1) & \leq & \brb{x_1-a}f(x_2) + \brb{x_2-x_1} f(a) \\
+\ra   (x_2 - x_1) \brb{f(x_1) -f(a)} & \leq & \brb{x_1-a}\brb{f(x_2) - f(x_1)} \\
 \ra \frac{f(x_1) -f(a)}{x_1-a}  & \leq & \frac{f(x_2) - f(x_1)}{x_2 - x_1}
 \eeast
 \end{proof}
@@ -1268,7 +1268,7 @@ which is the expression of (ii).
 \be
 (z-y)f(x) + (y-x)f(z)+ (x-z)f(y) \geq 0 \ \ra\ x(f(y) - f(z)) + y(f(z) - f(x)) + z(f(x) - f(y)) \geq 0
 \ee
-which implies 
+which implies
 \beast
 y(f(z) - f(x)) - xf(z) & \geq & - xf(y) + z(f(x) - f(y)) \\
 y(f(z) - f(x)) - xf(z) + xf(x) & \geq & - xf(y) + z(f(y)-f(x)) + xf(x) \\
@@ -1279,7 +1279,7 @@ as required. The proof of the second inequality is similar.
 
 \item [(iii)] $\ra$ (i). For any $x_1,x_2\in [a,b]$ with $a\leq x_1 < x_2 \leq b$, we define $x = tx_1 + (1-t)x_2$, $t\in (0,1)$. Then
 \beast
-\frac{f(x) -f(x_1)}{x-x_1} & \leq & \frac{f(x_2) -f(x)}{x_2-x}\\ 
+\frac{f(x) -f(x_1)}{x-x_1} & \leq & \frac{f(x_2) -f(x)}{x_2-x}\\
 (f(x) -f(x_1))(x_2-x) & \leq & (f(x_2) -f(x))(x-x_1) \\
 f(x)(x_2-x_1) & \leq & f(x_1)(x_2 -x) + f(x_2)(x-x_1) \\
 f(x) & \leq & \frac {x_2 -x}{x_2 - x_1}f(x_1) +  \frac {x-x_1}{x_2 - x_1}f(x_2) = tf(x_1) + (1-t)f(x_2)
@@ -1349,7 +1349,7 @@ where the inequality is strict as $x\neq 0$. Then we have the required result ag
 
 
 \begin{example}
-Let $(1+x)^{10} = 2.1\bb{1+5\%}^{10}$. Then what's the range of $x$?
+Let $(1+x)^{10} = 2.1\brb{1+5\%}^{10}$. Then what's the range of $x$?
 
 Obviously, $0\leq x\leq 1$. Then we have two inequality for $n\in \Z^+$,
 \beast
@@ -1366,7 +1366,7 @@ Then we have $1+x \leq (1+11\%)(1+5\%) = 1 + 16.55\% \ \ra\ x \leq 16.55\%$.
 
 Then we use the other inequality, we have
 \be
-\bb{1 - \frac{1.1}{21}}^{10} \geq 1 - \frac {1.1}{2.1} = \frac 1{2.1} = \bb{\frac{1+5\%}{1+x}}^{10} \ \ra\  1+x \geq \frac{1+5\%}{1 - \frac{1.1}{21}} = \frac{21/20}{19.9/21} = \frac{441}{398} = 1 + \frac{43}{398}.
+\brb{1 - \frac{1.1}{21}}^{10} \geq 1 - \frac {1.1}{2.1} = \frac 1{2.1} = \brb{\frac{1+5\%}{1+x}}^{10} \ \ra\  1+x \geq \frac{1+5\%}{1 - \frac{1.1}{21}} = \frac{21/20}{19.9/21} = \frac{441}{398} = 1 + \frac{43}{398}.
 \ee
 
 Thus, we have that $x\geq \frac{43}{398} \approx 10.80\%$. Hence, we have $10.80\% \leq x \leq 16.55\%$.
@@ -1381,14 +1381,14 @@ Indeed, the accurate result is $x \approx 13.09\%$.
 \subsection{Series and partial sum}
 
 \begin{definition}[real series\index{series!real}]\label{def:series_real}
-Real series is the sum of the terms of an infinite sequence $\bb{a_n}_{n\in \N}$ where $a_n\in \R$. It is denoted by
+Real series is the sum of the terms of an infinite sequence $\brb{a_n}_{n\in \N}$ where $a_n\in \R$. It is denoted by
 \be
 \sum^\infty_{n=1}a_n.
 \ee
 \end{definition}
 
 \begin{definition}[partial sum of real series\index{partial sum!real series}]\label{def:partial_sum_convergence_divergence_real}%also apply to $\c$% where $\F$ is $\R$ or $\C$
-Let $\bb{a_n}_{n\in\N}\in \R$ be a sequence. We define the partial sum of this sequence by
+Let $\brb{a_n}_{n\in\N}\in \R$ be a sequence. We define the partial sum of this sequence by
 \be
 \sum^N_{n=1}a_n.
 \ee
@@ -1454,8 +1454,8 @@ If $c_N\to c$ and $d_N\to d$, then clearly, $S_N\to \lm c + \mu d$ (by Lemma \re
 \ee
 by Lemma \ref{lem:basic_convergence_real}. So $\sum_{n=1}^\infty c_n$ exists, so if $\sum_{n=1}^\infty b_n$ exists, we $\sum_{n=1}^\infty (b_n + c_n)$ exists by (i), therefore %\begin{definition}
 \beast
-\lim_{N\to \infty} \sum^N_{n=1}a_n & = & \sum^{M-1}_{n=1}a_n + \lim_{N\to \infty} \sum^N_{n=M}a_n = \sum^{M-1}_{n=1}a_n + \lim_{N\to \infty} \sum^N_{n=M}\bb{b_n+c_n} \\
-& = & \sum^{M-1}_{n=1}(a_n-b_n-c_n) + \sum^\infty_{n=1}\bb{b_n+c_n}
+\lim_{N\to \infty} \sum^N_{n=1}a_n & = & \sum^{M-1}_{n=1}a_n + \lim_{N\to \infty} \sum^N_{n=M}a_n = \sum^{M-1}_{n=1}a_n + \lim_{N\to \infty} \sum^N_{n=M}\brb{b_n+c_n} \\
+& = & \sum^{M-1}_{n=1}(a_n-b_n-c_n) + \sum^\infty_{n=1}\brb{b_n+c_n}
 \eeast
 which implies that $\sum^\infty_{n=1}a_n$ exists.
 
@@ -1942,7 +1942,7 @@ In fact, it converges to $\arctan x$ (see Proposition \ref{pro:arctan_real_serie
 \subsection{Properties of convergence of series}
 
 \begin{proposition}[Baby Rudin Exercise 3.11]
-Suppose that $(a_n)_n$ is a positive real sequence ($a_n>0$). Then 
+Suppose that $(a_n)_n$ is a positive real sequence ($a_n>0$). Then
 \be
 \sum_{n=1}^\infty a_n \text{ converges } \quad \lra \quad \sum_{n=1}^\infty \frac{a_n}{1+a_n} \text{ converges.}
 \ee
@@ -1977,7 +1977,7 @@ Suppose that $(a_n)_n$ is a positive real sequence ($a_n>0$) and suppose $s_n = 
 \begin{proof}[\bf Proof]
 ($\ra$). Suppose that $\sum_n a_n$ converges then $0<s_n <\infty$ for each $n$. For any $N\in \N$ and $k\in \Z^+$
 \beast
-\frac{a_{N+1}}{s_{N+1}} + \dots + \frac{a_{N+k}}{s_{N+k}} & \leq & \sum^k_{i=1}\frac{a_{N+i}}{s_{N+1}} = \frac{1}{s_{N+1}}  \sum^k_{i=1}a_{N+i}= \frac{1}{s_{N+1}} \bb{s_{N+k} - s_{N}} %\\& \leq & \frac{1}{s_{N}} \bb{s_{N+k} - s_{N}} = \frac{s_{N+k}}{s_{N}} -1 
+\frac{a_{N+1}}{s_{N+1}} + \dots + \frac{a_{N+k}}{s_{N+k}} & \leq & \sum^k_{i=1}\frac{a_{N+i}}{s_{N+1}} = \frac{1}{s_{N+1}}  \sum^k_{i=1}a_{N+i}= \frac{1}{s_{N+1}} \brb{s_{N+k} - s_{N}} %\\& \leq & \frac{1}{s_{N}} \brb{s_{N+k} - s_{N}} = \frac{s_{N+k}}{s_{N}} -1
 \eeast
 
 For $N=0$, we have
@@ -2010,7 +2010,7 @@ Thus, for each $N\in \N$ there is a $k(N)> N$ such that
 
 Let $N_1=0$, and for $i\in \Z^+$ let $N_{i+1}=k(N_i)$. Then for each $m\in \Z^+$ we have
 \be
-\sum^{N_m}_{n=1} \frac {a_n}{s_n} = \sum^{m-1}_{i=1} \sum^{N_{i+1}}_{n = N_i+1} \frac{a_n}{s_n} \geq (m-1) \cdot \frac 12 = \frac{m-1}2 \to \infty 
+\sum^{N_m}_{n=1} \frac {a_n}{s_n} = \sum^{m-1}_{i=1} \sum^{N_{i+1}}_{n = N_i+1} \frac{a_n}{s_n} \geq (m-1) \cdot \frac 12 = \frac{m-1}2 \to \infty
 \ee
 as $m\to \infty$. Thus $\sum_{n=1}^\infty \frac{a_n}{s_n}$ diverges.
 \end{proof}
@@ -2021,7 +2021,7 @@ as $m\to \infty$. Thus $\sum_{n=1}^\infty \frac{a_n}{s_n}$ diverges.
 
 
 \begin{theorem}[Tonelli theorem]\label{thm:tonelli_summation}
-For non-negative series $\bb{a_{ij}}$, we can interchange the order of the infinite summation. That is,
+For non-negative series $\brb{a_{ij}}$, we can interchange the order of the infinite summation. That is,
 \be
 \sum^\infty_{i=1}\sum^\infty_{j=1}a_{ij} = \sum^\infty_{j=1}\sum^\infty_{i=1}a_{ij}.
 \ee
@@ -2413,7 +2413,7 @@ That is, $f$ is right-continuous with left limits.
 
 In this subsection, for a \cadlag\ function and an interval $I$, we define (with a slight abuse of notation)
 \be
-d f(I) := f\bb{\sup I} - f\bb{\inf I},\quad\quad \Delta f(t) := f(t) - f(t^-).
+d f(I) := f\brb{\sup I} - f\brb{\inf I},\quad\quad \Delta f(t) := f(t) - f(t^-).
 \ee
 
 \begin{proposition}
@@ -2438,13 +2438,13 @@ Then $v(t) := \lim_{n\to \infty}v^n(t)$ is well-defined for all $t \geq 0$ and i
 \end{lemma}
 
 \begin{proof}[\bf Proof]
-Let $t^+_n = 2^{-n} \ceil{2^nt}$, $t^-_n = 2^{-n}\bb{\ceil{2^nt} - 1}$ and $\Delta_n = \bra{(k2^{-n}, (k + 1)2^{-n}] :k \in \N}$. Write
+Let $t^+_n = 2^{-n} \ceil{2^nt}$, $t^-_n = 2^{-n}\brb{\ceil{2^nt} - 1}$ and $\Delta_n = \bra{(k2^{-n}, (k + 1)2^{-n}] :k \in \N}$. Write
 \beast
 v^n(t) = \sum^{\ceil{2^nt}-1}_{k=0} \abs{f((k + 1)2^{-n}) - f(k2^{-n})} & = & \sum_{\substack{I \in \Delta_n \\ \inf I \leq 2^{-n}(\ceil{2^nt}-1)}} \abs{f(\sup I) - f(\inf I)} = \sum_{\substack{I \in \Delta_n \\ \inf I \leq 2^{-n}(\ceil{2^nt}-1)}} \abs{df(I)} \\
 & = & \sum_{\substack{I\in \Delta_n\\ \inf I < 2^{-n}\ceil{2^nt}}} \abs{df(I)} = \sum_{\substack{I\in \Delta_n\\ \sup I < 2^{-n}\ceil{2^nt}}} \abs{df(I)} + \abs{f(t^+_n) - f(t^-_n)}.
 \eeast
 
-If $t = k2^{-n}$ for some $k\in \N$, we have $\sup I < k2^{-n} = t$. If $t \in \bb{(k-1)2^{-n}, k2^{-n}}$ for some $k\in \N$,
+If $t = k2^{-n}$ for some $k\in \N$, we have $\sup I < k2^{-n} = t$. If $t \in \brb{(k-1)2^{-n}, k2^{-n}}$ for some $k\in \N$,
 \be
 \ceil{2^nt} = k \ \ra \ 2^{-n}\ceil{2^nt} = k2^{-n} \ \ra \ \sup I < k2^{-n} \ \ra \ \max\bra{\sup I} = (k-1)2^{-n} \ \ra \ \sup I < t.
 \ee
@@ -2506,7 +2506,7 @@ If $I \in \Delta_n$, then we have by the triangle inequality (since $f'$ and $f'
 \ee
 as $f'$ and $f''$ are non-decreasing. So we sum over all intervals $I \in \Delta_n$ with $\inf I < t$, by noting that the sums on the right-hand side telescope: wlog we take $f'(0) = f''(0) = 0$,
 \be
-v^n(t) = \sum_{I\in \Delta_n, \inf I < t} \abs{df(I)} \leq \sum_{I\in \Delta_n, \inf I < t} \bb{df'(I) + df''(I)} \leq f'(t^+_n ) + f''(t^+_n).
+v^n(t) = \sum_{I\in \Delta_n, \inf I < t} \abs{df(I)} \leq \sum_{I\in \Delta_n, \inf I < t} \brb{df'(I) + df''(I)} \leq f'(t^+_n ) + f''(t^+_n).
 \ee
 
 Since $f'$ and $f''$ are \cadlag, the right-hand side converges to $f'(t) + f''(t)$ as $n \to \infty$ and is in particular bounded. Thus $v(t) < \infty$ for all $t \geq 0$.
@@ -2544,7 +2544,7 @@ Since $T$ was arbitrary and $u$ is right-continuous, we have $v$ is right-contin
 
 $v$ has left limits since it is non-decreasing, and taking the limit $n\to \infty$ in (*) of Lemma \ref{lem:total_variation_function} we get
 \beast
-v(t) & = & \lim_{n\to \infty} v^n(t) = \lim_{n\to \infty}  \bb{\sum_{I\in \Delta_n, \sup I < t} \abs{df(I)} + \abs{f(t^+_n) - f(t^-_n)} }   =  \lim_{n\to \infty}  \sum_{I\in \Delta_n, \sup I < t} \abs{df(I)} + \lim_{n\to \infty}\abs{f(t^+_n) - f(t^-_n)} \\
+v(t) & = & \lim_{n\to \infty} v^n(t) = \lim_{n\to \infty}  \brb{\sum_{I\in \Delta_n, \sup I < t} \abs{df(I)} + \abs{f(t^+_n) - f(t^-_n)} }   =  \lim_{n\to \infty}  \sum_{I\in \Delta_n, \sup I < t} \abs{df(I)} + \lim_{n\to \infty}\abs{f(t^+_n) - f(t^-_n)} \\
 & = & \lim_{n\to \infty}  \sum_{\substack{I\in \Delta_n\\ \inf I < t - \sup I + \inf I}} \abs{df(I)} + \lim_{n\to \infty}\abs{f(t^+_n) - f(t^-_n)}   = \sum_{\substack{I\in \Delta_n\\ \inf I < \lim_{s \ua t} s}} \abs{df(I)} + \lim_{n\to \infty}\abs{f(t^+_n) - f(t^-_n)} \\
 & = & \sum_{I\in \Delta_n, \inf I < t^-} \abs{df(I)} + \lim_{n\to \infty}\abs{f(t^+_n) - f(t^-_n)} = v(t^-) + \abs{\Delta a(t)}.\quad\quad(*)
 \eeast
@@ -2564,8 +2564,8 @@ dv^n(I) & \geq & \abs{df(I)}\quad\quad \text{for all }I \in \Delta_m \text{ if }
 
 Thus $df^\pm(I) = \frac 12 dv(I) \pm \frac 12 df(I) \geq 0$ for all $I\in \bigcup_{m\geq 1} \Delta_m$. So for any $s\leq t$, by right-continuity of $f^\pm$ we have
 \beast
-f^\pm(t) - f^\pm(s) & = & \lim_{n\to \infty} f^\pm\bb{2^{-n}\ceil{2^n t}} - \lim_{n\to \infty} f^\pm\bb{2^{-n}\ceil{2^n s}} \\
-& = & \lim_{n\to \infty} \bb{f^\pm\bb{2^{-n}\ceil{2^n t}} - f^\pm\bb{2^{-n}\ceil{2^n s}}}\\
+f^\pm(t) - f^\pm(s) & = & \lim_{n\to \infty} f^\pm\brb{2^{-n}\ceil{2^n t}} - \lim_{n\to \infty} f^\pm\brb{2^{-n}\ceil{2^n s}} \\
+& = & \lim_{n\to \infty} \brb{f^\pm\brb{2^{-n}\ceil{2^n t}} - f^\pm\brb{2^{-n}\ceil{2^n s}}}\\
 & = & \lim_{n\to \infty} \sum_{\substack{I\in \Delta_m\\ 2^{-n}\ceil{2^n s} \leq \inf I \\ \sup I \leq 2^{-n}\ceil{2^n t}}} df^\pm(I)\quad \geq 0.
 \eeast
 
@@ -2626,7 +2626,7 @@ If $x_1 = x_4$, we have $x_3<x_1<x_2$ with $f(x_3),f(x_2) \leq f(x_1)$.
 
 \item [(iii)] The case of four distinct points. We have
 \be
-0\leq f(x_1) - f(x_2) = \bb{f(x_1) - f(x_3)} + \underbrace{\bb{f(x_3)- f(x_4)}}_{\leq 0} + \bb{f(x_4)-f(x_2)}
+0\leq f(x_1) - f(x_2) = \brb{f(x_1) - f(x_3)} + \underbrace{\brb{f(x_3)- f(x_4)}}_{\leq 0} + \brb{f(x_4)-f(x_2)}
 \ee
 which means that at least one of $f(x_1)- f(x_3)$ and $f(x_4)-f(x_2)$ is non-negative which implies that the case is either $f(x_1)\geq f(x_3)$ or $f(x_4)\geq f(x_2)$.
 
@@ -2778,7 +2778,7 @@ Let $f:X\to Y$ ($X,Y\subseteq \R$) be a continuous bijective function and $f^{-1
 \begin{proof}[\bf Proof]
 If for any $y_0\in Y$, $\lim_{y\to y_0} f^{-1}(y)$ exists, we have
 \be
-f\bb{\lim_{y\to y_0} f^{-1}(y)} = \lim_{y\to y_0} f\bb{f^{-1}(y)} = \lim_{y\to y_0} y = y_0 = f(f^{-1}(y_0)) \ \ra\ \lim_{y\to y_0} f^{-1}(y) = f^{-1}(y_0)
+f\brb{\lim_{y\to y_0} f^{-1}(y)} = \lim_{y\to y_0} f\brb{f^{-1}(y)} = \lim_{y\to y_0} y = y_0 = f(f^{-1}(y_0)) \ \ra\ \lim_{y\to y_0} f^{-1}(y) = f^{-1}(y_0)
 \ee
 since $f$ is bijective continuous function. This implies that $f^{-1}$ is continuous on $Y$.
 \end{proof}
@@ -2905,11 +2905,11 @@ f_n^{\to}(u) -\ve \leq f^{\to}(u) \leq f_n^{\to}(u) + \ve.
 
 First, we can choose $\ve'$ such that $0<\ve'<\ve$ and $f^{\to}(u)-\ve'$ is a continuous point of $f$. This is possible since the continuous points of $f$ form a dense set (see Theorem \ref{thm:non_decreasing_function_continuous_points_dense_set}).
 
-%%For a quick proof, we need to prove that $\forall \ve > 0$ and $\exists \delta >0$, $\abs{f^{\to}(x)-\ve'-y}<\delta$, $\abs{f\bb{f^{\to}(x)-\ve'}-f(y)} < \ve$
+%%For a quick proof, we need to prove that $\forall \ve > 0$ and $\exists \delta >0$, $\abs{f^{\to}(x)-\ve'-y}<\delta$, $\abs{f\brb{f^{\to}(x)-\ve'}-f(y)} < \ve$
 %
 %Since $f^{\to}$ is continuous in $u$, $f^{\to}(u)$ is a strictly increasing point of $f$. Otherwise, there exists $\ve''>0$ such that
 %\be
-%f\bb{f^{\to}(u)} = f\bb{f^{\to}(u) + \ve''}\qquad \text{ or }\qquad f\bb{f^{\to}(u)} = f\bb{f^{\to}(u) - \ve''}.
+%f\brb{f^{\to}(u)} = f\brb{f^{\to}(u) + \ve''}\qquad \text{ or }\qquad f\brb{f^{\to}(u)} = f\brb{f^{\to}(u) - \ve''}.
 %\ee
 %
 %Then $\forall \delta >0$, we have $f^{\to}(u) = \inf\bra{x\in (a,b): f(x) \geq u}$ implies that
@@ -2924,7 +2924,7 @@ First, we can choose $\ve'$ such that $0<\ve'<\ve$ and $f^{\to}(u)-\ve'$ is a co
 %
 %If $f^{\to}(x)$ is not strictly increasing point of $f$, we can find $\delta>0$ such that $f(f^{\to}(x)) = f(f^{\to}(x+\delta))$
 
-%x_n \da x, f^{\to}(x_n) \da f^{\to}(x) \ra\ f\bb{f^{\to}(x_n)} \leq x_n
+%x_n \da x, f^{\to}(x_n) \da f^{\to}(x) \ra\ f\brb{f^{\to}(x_n)} \leq x_n
 
 %$\forall \ve''$ we can find $\delta'' >0$
 %\be
@@ -2933,12 +2933,12 @@ First, we can choose $\ve'$ such that $0<\ve'<\ve$ and $f^{\to}(u)-\ve'$ is a co
 %
 %Then we can find $\ve''' >0$ such that
 %\be
-%f\bb{f^{\to}(x+ \delta)} - f\bb{f^{\to}(x)} < \ve''\ \ra \ f\bb{f^{\to}(x+ \delta)} < f\bb{f^{\to}(x)} + \ve''
+%f\brb{f^{\to}(x+ \delta)} - f\brb{f^{\to}(x)} < \ve''\ \ra \ f\brb{f^{\to}(x+ \delta)} < f\brb{f^{\to}(x)} + \ve''
 %\ee
 
-If $f\bb{f^{\to }(u)-\ve'} \geq u$, we have $f^{\to}(u)-\ve' \geq f^{\to}(u)$. Contradiction. Therefore, we have that $f\bb{f^{\to}(u)-\ve'} < u$. Now choose $\delta < u - f\bb{f^{\to}(u)-\ve'}$. Since $f^{\to}(u)-\ve'$ is a continuous point of $f$, there exists large $n$ such that
+If $f\brb{f^{\to }(u)-\ve'} \geq u$, we have $f^{\to}(u)-\ve' \geq f^{\to}(u)$. Contradiction. Therefore, we have that $f\brb{f^{\to}(u)-\ve'} < u$. Now choose $\delta < u - f\brb{f^{\to}(u)-\ve'}$. Since $f^{\to}(u)-\ve'$ is a continuous point of $f$, there exists large $n$ such that
 \be
-f_n\bb{f^{\to}(u)-\ve'} < f\bb{f^{\to}(u)-\ve'} + \delta < u.
+f_n\brb{f^{\to}(u)-\ve'} < f\brb{f^{\to}(u)-\ve'} + \delta < u.
 \ee
 
 Therefore, the definition of $f_n^{\to}$ implies that $f^{\to}(u)-\ve' \leq f_n^{\to}(u)$.
@@ -2946,14 +2946,14 @@ Therefore, the definition of $f_n^{\to}$ implies that $f^{\to}(u)-\ve' \leq f_n^
 
 For left-hand inequality, we can find $0\leq \ve'< \ve$ such that $f^{\to}(u)+\ve'$ is a continuous point of $f$.
 
-If $f\bb{f^{\to }(u)+\ve'} \leq u$, then $\forall \delta >0$, $f\bb{f^{\to }(u)+\ve'} < u + \delta$. Then by definition of $f$, we have $f^{\to }(u)+\ve' \leq f^{\to}\bb{u + \delta}$. Since $f^{\to}$ is continuous at $u$, letting $\delta \to 0$, we have
+If $f\brb{f^{\to }(u)+\ve'} \leq u$, then $\forall \delta >0$, $f\brb{f^{\to }(u)+\ve'} < u + \delta$. Then by definition of $f$, we have $f^{\to }(u)+\ve' \leq f^{\to}\brb{u + \delta}$. Since $f^{\to}$ is continuous at $u$, letting $\delta \to 0$, we have
 \be
-f^{\to }(u)+\ve' \leq f^{\to}\bb{u}.
+f^{\to }(u)+\ve' \leq f^{\to}\brb{u}.
 \ee
 
-Contradiction again. Therefore, we have that $f\bb{f^{\to}(u)+\ve'} > u$. Now choose $\delta < f\bb{f^{\to}(u)+\ve'}-u$. Since $f^{\to}(u)+\ve'$ is a continuous point of $f$, there exists large $n$ such that
+Contradiction again. Therefore, we have that $f\brb{f^{\to}(u)+\ve'} > u$. Now choose $\delta < f\brb{f^{\to}(u)+\ve'}-u$. Since $f^{\to}(u)+\ve'$ is a continuous point of $f$, there exists large $n$ such that
 \be
-f_n\bb{f^{\to}(u)+\ve'} > f\bb{f^{\to}(u)+\ve'} - \delta > u \geq u.
+f_n\brb{f^{\to}(u)+\ve'} > f\brb{f^{\to}(u)+\ve'} - \delta > u \geq u.
 \ee
 
 Therefore, the definition of $f_n^{\to}$ implies that $f^{\to}(u)+\ve' \geq f_n^{\to}(u) \ \ra\ f^{\to}(u) \geq f_n^{\to}(u) - \ve'$.
@@ -2964,9 +2964,9 @@ Therefore, the definition of $f_n^{\to}$ implies that $f^{\to}(u)+\ve' \geq f_n^
 f_n(x) - \ve \leq f(x) \leq f_n(x)+\ve.
 \ee
 
-Choose $0<\ve'<\ve$ such that $f(x)-\ve'$ is a continuous point of $f^{\to}$ by Theorem \ref{thm:non_decreasing_function_continuous_points_dense_set}. If $f^{\to}\bb{f(x)-\ve'} \geq x$, then
+Choose $0<\ve'<\ve$ such that $f(x)-\ve'$ is a continuous point of $f^{\to}$ by Theorem \ref{thm:non_decreasing_function_continuous_points_dense_set}. If $f^{\to}\brb{f(x)-\ve'} \geq x$, then
 \be
-f^{\to}\bb{f(x)-\ve'} \geq x \ \ra\ \inf\bra{y\in (a,b): f(y) \geq f(x)-\ve'} \geq x
+f^{\to}\brb{f(x)-\ve'} \geq x \ \ra\ \inf\bra{y\in (a,b): f(y) \geq f(x)-\ve'} \geq x
 \ee
 
 Thus, $\exists \delta >0$ such that $f(x) - f(x-\delta)< \ve' \ \ra \ f(x)-\ve' < f(x-\delta)$. Therefore,
@@ -2974,9 +2974,9 @@ Thus, $\exists \delta >0$ such that $f(x) - f(x-\delta)< \ve' \ \ra \ f(x)-\ve' 
 x\leq \inf\bra{y\in (a,b): f(y) \geq f(x-\delta)} \leq x- \delta.\qquad (\text{contradiction})
 \ee
 
-Hence, we have that $f^{\to}\bb{f(x)-\ve'} < x$. Now choose $\delta < x - f^{\to}\bb{f(x)-\ve'}$. Since $f(x)-\ve'$ is a continuous point of $f^{\to}$, there exists large $n$ such that
+Hence, we have that $f^{\to}\brb{f(x)-\ve'} < x$. Now choose $\delta < x - f^{\to}\brb{f(x)-\ve'}$. Since $f(x)-\ve'$ is a continuous point of $f^{\to}$, there exists large $n$ such that
 \be
-f_n^{\to}\bb{f(x)-\ve'} < f^{\to}\bb{f(x)-\ve'} + \delta < x.
+f_n^{\to}\brb{f(x)-\ve'} < f^{\to}\brb{f(x)-\ve'} + \delta < x.
 \ee
 
 Therefore,
@@ -2988,9 +2988,9 @@ Therefore,
 %--------
 
 
-Choose $0<\ve'<\ve$ such that $f(x)+\ve'$ is a continuous point of $f^{\to}$ by Theorem \ref{thm:non_decreasing_function_continuous_points_dense_set}. If $f^{\to}\bb{f(x)+\ve'} \leq x$, then
+Choose $0<\ve'<\ve$ such that $f(x)+\ve'$ is a continuous point of $f^{\to}$ by Theorem \ref{thm:non_decreasing_function_continuous_points_dense_set}. If $f^{\to}\brb{f(x)+\ve'} \leq x$, then
 \be
-f^{\to}\bb{f(x)+\ve'} \leq x \ \ra\ \inf\bra{y\in (a,b): f(y) \geq f(x)+\ve'} \leq x
+f^{\to}\brb{f(x)+\ve'} \leq x \ \ra\ \inf\bra{y\in (a,b): f(y) \geq f(x)+\ve'} \leq x
 \ee
 
 Thus, $\exists \delta >0$ such that $f(x+\delta)-f(x)< \ve' \ \ra \ f(x)+\ve' > f(x+\delta)$. Therefore,
@@ -2998,9 +2998,9 @@ Thus, $\exists \delta >0$ such that $f(x+\delta)-f(x)< \ve' \ \ra \ f(x)+\ve' > 
 x\geq \inf\bra{y\in (a,b): f(y) > f(x+\delta)} \geq x +\delta.\qquad (\text{right-continuous inverse and contradiction})
 \ee
 
-Hence, we have that $f^{\to}\bb{f(x)+\ve'} > x$. Now choose $\delta < f^{\to}\bb{f(x)+\ve'}-x$. Since $f(x)+\ve'$ is a continuous point of $f^{\to}$, there exists large $n$ such that
+Hence, we have that $f^{\to}\brb{f(x)+\ve'} > x$. Now choose $\delta < f^{\to}\brb{f(x)+\ve'}-x$. Since $f(x)+\ve'$ is a continuous point of $f^{\to}$, there exists large $n$ such that
 \be
-f_n^{\to}\bb{f(x)+\ve'} > f^{\to}\bb{f(x)+\ve'} - \delta > x.
+f_n^{\to}\brb{f(x)+\ve'} > f^{\to}\brb{f(x)+\ve'} - \delta > x.
 \ee
 
 Therefore, $\inf\bra{y\in (a,b): f_n(y) \geq f(x)+\ve'} > x \ \ra\  f_n(x) < f(x)+\ve' \ \ra\ f(x) \geq f_n(x) - \ve'$.
@@ -3350,14 +3350,14 @@ Let $C$ be a real constant. For differentiable real-valued function $f(x)$ and $
 & \text{(i)} & \frac{d}{dx}C = 0, \\
 & \text{(ii)} & \frac{d}{dx}(f+g)(x) = f'(x)+g'(x), \\
 & \text{(iii)} & \frac{d}{dx}(f(x)g(x)) = f'(x)g(x) + f(x)g'(x), \\
-& \text{(iv)} & \frac{d}{dx}\bb{ \frac 1{f(x)}} = -\frac{f'(x)}{f^2(x)},\quad f(x) \neq 0.\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad%\\& \text{(v)} & f(x)=\sum_{r=0}^n a_r x^{r} \ \ra \ f'(x)=\sum_{r=1}^n ra_r x^{r-1}
+& \text{(iv)} & \frac{d}{dx}\brb{ \frac 1{f(x)}} = -\frac{f'(x)}{f^2(x)},\quad f(x) \neq 0.\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad%\\& \text{(v)} & f(x)=\sum_{r=0}^n a_r x^{r} \ \ra \ f'(x)=\sum_{r=1}^n ra_r x^{r-1}
 \eeast
 \end{proposition}
 
 \begin{remark}
 From (iii) and (iv), we get
 \be
-\bb{ \frac {f(x)}{g(x)}}' = \frac{f'(x)g(x)-f(x)g'(x)}{g^2(x)}.
+\brb{ \frac {f(x)}{g(x)}}' = \frac{f'(x)g(x)-f(x)g'(x)}{g^2(x)}.
 \ee
 \end{remark}
 
@@ -3519,13 +3519,13 @@ Thus $g \circ f$ is differentiable with derivative 0.
 \end{proof}
 
 \begin{example}
-Consider $\phi(x)=\sin \bb{x^2}$, $ f(x)=x^2$ and $g(x)=\sin x$. Obviously,
+Consider $\phi(x)=\sin \brb{x^2}$, $ f(x)=x^2$ and $g(x)=\sin x$. Obviously,
 \be
 \phi(x) = (g\circ f)(x).
 \ee
 Thus,
 \be
-\phi'(x) = g'(f(x)) f'(x) = \bb{\cos\bb{f(x)}}' \cdot (x^2)' = 2x \cos\bb{ x^2}.
+\phi'(x) = g'(f(x)) f'(x) = \brb{\cos\brb{f(x)}}' \cdot (x^2)' = 2x \cos\brb{ x^2}.
 \ee
 \end{example}
 
@@ -3620,7 +3620,7 @@ f(x) - f(a) = f'(c)(x-a) = 0 \Rightarrow \ f(x) = f(a).
 \begin{theorem}[Cauchy's mean value theorem\index{Cauchy's mean value theorem}]\label{thm:mean_value_cauchy}%$f,g: [a,b]\mapsto \R$ is continuous in $[a,b]$ and differentiable in $(a,b)$. Then $\exists c\in(a,b)$ s.t. $(f(b)-f(a))g'(c)=f'(c)(g(b)-g(a))$.
 Let $f$ and $g$ be continuous functions on the closed inverval $[a,b]$ and differentiable on the open interval $(a,b)$. Then there exists some $c\in (a,b)$ such that
 \be
-\bb{f(b)-f(a)}g'(c) = \bb{g(b)-g(a)}f'(c).
+\brb{f(b)-f(a)}g'(c) = \brb{g(b)-g(a)}f'(c).
 \ee
 
 If $g(a)\neq g(b)$ and $g'(c) \neq 0$, this is equivalent to
@@ -3680,7 +3680,7 @@ Thus,
 %\begin{theorem}[Cauchy's mean value theorem]\label{thm:cauchy_mean_value}
 %Let $f$ and $g$ be continuous functions on the closed inverval $[a,b]$ and differentiable on the open interval $(a,b)$. Then there exists some $c\in (a,b)$ such that
 %\be
-%\bb{f(b)-f(a)}g'(c) = \bb{g(b)-g(a)}f'(c).
+%\brb{f(b)-f(a)}g'(c) = \brb{g(b)-g(a)}f'(c).
 %\ee
 
 %If $g(a)\neq g(b)$ and $g'(c) \neq 0$, this is equivalent to
@@ -3764,11 +3764,11 @@ which implies that $f$ is strictly concave on $(-\infty,1]$ and strictly convex 
   \rput[cb](1.5,1){\textcolor{black}{$x^3 - 3x^2 + 1$}}
 %  \rput[cb](0.5,1.7){\textcolor{red}{$\arcsin x$}}
 
-        \rput[cb](-1.5,-3){\textcolor{blue}{$\bb{-1,-3}$}}
-      \rput[cb](0.4,1){\textcolor{blue}{$\bb{0,1}$}}
-    \rput[cb](1.5,-1){\textcolor{blue}{$\bb{1,-1}$}}
-      \rput[cb](2.5,-3){\textcolor{blue}{$\bb{2,-3}$}}
-            \rput[cb](3.3,1){\textcolor{blue}{$\bb{3,1}$}}
+        \rput[cb](-1.5,-3){\textcolor{blue}{$\brb{-1,-3}$}}
+      \rput[cb](0.4,1){\textcolor{blue}{$\brb{0,1}$}}
+    \rput[cb](1.5,-1){\textcolor{blue}{$\brb{1,-1}$}}
+      \rput[cb](2.5,-3){\textcolor{blue}{$\brb{2,-3}$}}
+            \rput[cb](3.3,1){\textcolor{blue}{$\brb{3,1}$}}
 \end{pspicture}
 \end{center}
 \end{example}
@@ -3807,25 +3807,25 @@ A continuous function might not be monotonic in a very small range.
 Consider the following counterexample. Let
 \be
 f(x) = \begin{cases}
-x+ 2x^2\sin\bb{\frac 1x} \quad\quad & x\neq 0 \\
+x+ 2x^2\sin\brb{\frac 1x} \quad\quad & x\neq 0 \\
 0 & x= 0
 \end{cases}
 \ee
 which derivative
 \be
 f'(x) = \begin{cases}
-1 + 4x\sin \bb{\frac 1x} - 2\cos\bb{\frac 1x} \quad\quad & x\neq 0 \\
+1 + 4x\sin \brb{\frac 1x} - 2\cos\brb{\frac 1x} \quad\quad & x\neq 0 \\
 1 & x = 0
 \end{cases}
 \ee
 as for $x= 0$
 \be
-f'(0) = \lim_{x\to 0}\frac{f(x) - f(0)}{x-0} = \lim_{x \to 0}\frac{x + 2x^2\sin \bb{\frac 1x}}{x} = \lim_{x\to 0} 1 + 2x\sin\bb{\frac 1x} = 1.
+f'(0) = \lim_{x\to 0}\frac{f(x) - f(0)}{x-0} = \lim_{x \to 0}\frac{x + 2x^2\sin \brb{\frac 1x}}{x} = \lim_{x\to 0} 1 + 2x\sin\brb{\frac 1x} = 1.
 \ee
 
 Note that $f'(0)>0$ but every neighbourhood of 0 has negative values and positive values of $f'(x)$.
 
-Clearly, this is because that $f'(x)$ is not continuous at 0 due to $2\cos\bb{\frac 1x}$.
+Clearly, this is because that $f'(x)$ is not continuous at 0 due to $2\cos\brb{\frac 1x}$.
 \end{example}
 
 
@@ -3975,8 +3975,8 @@ as desired. The argument that
 \ee
 is similar. Thus, since $\lim_{x\to c}f'(x)/g'(x)$ exists and is equal to $\lim_{x\to c} m(x)$ and $\lim_{x\to c} M(x)$ (see Corollary \ref{cor:liminf_equals_limsup_iff_convergent}). Therefore, we have
 %\beast
-%\lim_{x\to c}m(x) & = & \lim_{x\to c} \bb{\inf f'(x)/g'(x)} = \liminf_{x\to c}f'(x)/g'(x) =\lim_{x\to c}f'(x)/g'(x) \\
-%& = & \limsup_{x\to c}f'(x)/g'(x) = \lim_{x\to c} \bb{\sup f'(x)/g'(x)} =  \lim_{x\to c}M(x).
+%\lim_{x\to c}m(x) & = & \lim_{x\to c} \brb{\inf f'(x)/g'(x)} = \liminf_{x\to c}f'(x)/g'(x) =\lim_{x\to c}f'(x)/g'(x) \\
+%& = & \limsup_{x\to c}f'(x)/g'(x) = \lim_{x\to c} \brb{\sup f'(x)/g'(x)} =  \lim_{x\to c}M(x).
 %\eeast%Thus, we have %combining $(*)$, we have
 \be
 \lim_{x\to c}m(x) = \lim_{x\to c}M(x) = \lim_{x\to c}\frac{f'(x)}{g'(x)} \ \ra\ \lim_{x\to c}\frac{f(x)}{g(x)} = \lim_{x\to c}\frac{f'(x)}{g'(x)}.
@@ -3996,7 +3996,7 @@ m(x) \leq \liminf_{y\in S_x,y\to c} \frac{f(y)}{g(y)}\leq \limsup_{y\in S_x,y\to
 
 The limit superior and limit inferior are necessary since the existence of the limit of $f/g$ has not yet been established. We also use the fact that
 \be
-\lim_{x\to c}\bb{\liminf_{y\in S_x,y\to c} \frac{f(y)}{g(y)}} = \liminf_{x\to c} \frac{f(x)}{g(x)},\qquad \lim_{x\to c}\bb{\limsup_{y\in S_x,y\to c} \frac{f(y)}{g(y)}} = \limsup_{x\to c} \frac{f(x)}{g(x)}.
+\lim_{x\to c}\brb{\liminf_{y\in S_x,y\to c} \frac{f(y)}{g(y)}} = \liminf_{x\to c} \frac{f(x)}{g(x)},\qquad \lim_{x\to c}\brb{\limsup_{y\in S_x,y\to c} \frac{f(y)}{g(y)}} = \limsup_{x\to c} \frac{f(x)}{g(x)}.
 \ee
 
 Thus, combining $(\dag)$, we have
@@ -4022,7 +4022,7 @@ $\frac {0}{0}$ case. For $f(x) = e^x-1-x$ and $g(x) = x^2$,
 \begin{example}
 $\frac {0}{0}$ case.
 \beast
-\lim_{x\to 1} \bb{\frac x{x-1} - \frac 1{\log x}} & = & \lim_{x\to 1} \frac {x\log x - x+1}{(x-1)\log x} = \lim_{x\to 1} \frac {\bb{x\log x - x+1}'}{\bb{(x-1)\log x}'}  = \lim_{x\to 1} \frac {\log x}{\frac{x-1}{x} + \log x} \\
+\lim_{x\to 1} \brb{\frac x{x-1} - \frac 1{\log x}} & = & \lim_{x\to 1} \frac {x\log x - x+1}{(x-1)\log x} = \lim_{x\to 1} \frac {\brb{x\log x - x+1}'}{\brb{(x-1)\log x}'}  = \lim_{x\to 1} \frac {\log x}{\frac{x-1}{x} + \log x} \\
 & =  & \lim_{x\to 1} \frac {x \log x}{x-1 + x\log x} = \lim_{x\to 1} \frac {1+\log x}{1+1 + \log x}  = \lim_{x\to 1} \frac {1+\log x}{2 + \log x} = \frac 12.
 \eeast
 \end{example}
@@ -4158,15 +4158,15 @@ f(x)=\log(\cos x),\quad x\in \left(-{\frac {\pi }{2}},{\frac {\pi }{2}}\right),
 \ee
 one may first rewrite the function as
 \be
-f(x)=\log \bb{1+(\cos x-1)}.
+f(x)=\log \brb{1+(\cos x-1)}.
 \ee
 The Taylor series for the natural logarithm is (using the big O notation)
 \be
-\log(1+x)=x-\frac {x^{2}}{2}+\frac {x^{3}}{3}+O\bb{x^{4}}
+\log(1+x)=x-\frac {x^{2}}{2}+\frac {x^{3}}{3}+O\brb{x^{4}}
 \ee
 and for the cosine function
 \be
-\cos x-1= -\frac {x^{2}}{2} + \frac {x^{4}}{24}- \frac {x^{6}}{720}+ O\bb{x^{8}}.
+\cos x-1= -\frac {x^{2}}{2} + \frac {x^{4}}{24}- \frac {x^{6}}{720}+ O\brb{x^{8}}.
 \ee
 
 The latter series expansion has a zero constant term, which enables us to substitute the second series into the first one and to easily omit terms of higher order than the 7th degree by using the big O notation:
@@ -4763,7 +4763,7 @@ x_i = a+ \frac{(b-a)i}n,\quad 0\leq i\leq n.
 
 Then
 \be
-S(f,D) - s(f,D) = \sum^n_{i=1}\bb{\sup_{x\in[x_{i-1},x_i]}f(x) - \inf_{x\in[x_{i-1},x_i]}f(x)} \frac {b-a}n.
+S(f,D) - s(f,D) = \sum^n_{i=1}\brb{\sup_{x\in[x_{i-1},x_i]}f(x) - \inf_{x\in[x_{i-1},x_i]}f(x)} \frac {b-a}n.
 \ee%Let $\ve>0$ be given and consider $\delta$ given in Lemma \ref{lem:uni_con}.
 
 By Theorem \ref{thm:continuous_on_closed_interval_implies_uniformly_continuous}, we have that $f$ is uniformly continuous on $[a,b]$. So given any $\ve>0$ there exists $\delta>0$ such that for every $x,y\in [a,b]$ with $|x-y|<\delta$, we have $|f(x)-f(y)|<\frac{\ve}{b-a}$. Choose $n$ large enough such that $\frac{b-a}n<\delta$. Then for any $x,y\in [x_{i-1},x_i]$, $|f(x)-f(y)|<\frac{\ve}{b-a}$ which implies that
@@ -4796,7 +4796,7 @@ S(f,D_\delta) - s(f,D_\delta)< \frac{\ve}3
 \ee
 by Theorem \ref{thm:riemann_integrable_iff_upper_lower_sum_close_enough}. Then we define a new partition $D$ by $D := D\cup \bra{a,b}$. Then by definition the upper sum of $f$ with respect to $D$ is
 \be
-S(f,D) = M_a \bb{(a+\delta) -a} + S(f,D_\delta) + M_b \bb{b-(b-\delta)} = (M_a+M_b)\delta + S(f,D_\delta)
+S(f,D) = M_a \brb{(a+\delta) -a} + S(f,D_\delta) + M_b \brb{b-(b-\delta)} = (M_a+M_b)\delta + S(f,D_\delta)
 \ee
 where
 \be
@@ -4805,7 +4805,7 @@ M_a = \sup_{x\in [a,a+\delta]}f(x),\qquad M_b = \sup_{x\in [b-\delta,b]}f(x).
 
 Similarly,
 \be
-s(f,D) = m_a \bb{(a+\delta) -a} + s(f,D_\delta) + m_b \bb{b-(b-\delta)} = (m_a+m_b)\delta + s(f,D_\delta)
+s(f,D) = m_a \brb{(a+\delta) -a} + s(f,D_\delta) + m_b \brb{b-(b-\delta)} = (m_a+m_b)\delta + s(f,D_\delta)
 \ee
 where
 \be
@@ -4820,7 +4820,7 @@ s' & := & -2K\delta + s(f,D_\delta) \leq (m_a+m_b)\delta + s(f,D_\delta) = s(f,D
 
 Therefore,
 \beast
-S(f,D) - s(f,D) & \leq & S'-s' = 2K\delta + S(f,D_\delta) - \bb{-2K\delta + s(f,D_\delta)} = 4K\delta + S(f,D_\delta) - s(f,D_\delta) \\
+S(f,D) - s(f,D) & \leq & S'-s' = 2K\delta + S(f,D_\delta) - \brb{-2K\delta + s(f,D_\delta)} = 4K\delta + S(f,D_\delta) - s(f,D_\delta) \\
 & < & 4K\min\bra{\frac{\ve}{6K},\frac {b-a}2} + \frac{\ve}3 \leq 4K\frac{\ve}{6K} +  \frac{\ve}3 =  \frac{2\ve}3 +  \frac{\ve}3  = \ve
 \eeast
 which implies $f$ is Riemann integrable on $[a,b]$ by Theorem \ref{thm:riemann_integrable_iff_upper_lower_sum_close_enough}.
@@ -5153,7 +5153,7 @@ Since $f$ is continuous on $[a,b]$, we have that $f$ is Riemann integrable on $[
 Then for any $x\in (a,b)$ and $h\neq 0$,
 \beast
 \abs{\frac{F(x+h)-F(x)}h-f(x)} & = & \frac 1{|h|}|F(x+h)-F(x) - hf(x)| = \frac 1{|h|}\left|\int^{x+h}_x f(t)dt - hf(x)\right| \\
-& = & \frac 1{|h|}\left|\int^{x+h}_x f(t)dt - f(x) \int^{x+h}_x dt\right|  = \frac 1{|h|}\left|\int^{x+h}_x \bb{f(t)-f(x)}dt \right|.
+& = & \frac 1{|h|}\left|\int^{x+h}_x f(t)dt - f(x) \int^{x+h}_x dt\right|  = \frac 1{|h|}\left|\int^{x+h}_x \brb{f(t)-f(x)}dt \right|.
 \eeast
 
 Also, we have for any $t\in [x,x+h]$ (if $h<0$, this means $[x+h,x]$),
@@ -5272,7 +5272,7 @@ by Corollary \ref{cor:primitive_funtion_equation} and Proposition \ref{pro:riema
 \begin{theorem}[Hermite-Hadamard inequality\index{Hermite-Hadamard inequality}]\label{thm:hermite_hadamard_inequality}
 Let $f:[a,b]\to \R$ be a convex real-valued function on $[a,b]\subseteq \R$. Then
 \be
-f\bb{\frac{a+b}{2}} \leq \frac{1}{b-a}\int^b_a f(x)dx \leq \frac{f(a)+f(b)}{2}.
+f\brb{\frac{a+b}{2}} \leq \frac{1}{b-a}\int^b_a f(x)dx \leq \frac{f(a)+f(b)}{2}.
 \ee
 
 If $f$ is strictly convex, the inequalities are strict.
@@ -5292,40 +5292,40 @@ For any $x\in [a,b]$, we define
 
 Then by convexity,
 \be
-f(x) = f\bb{\frac{b-x}{b-a} a + \frac{x -a}{b-a}b} = f\bb{\lm a + (1-\lm)b} \leq \lm f(a) +(1-\lm) f(b) =  \frac{b-x}{b-a} f(a) + \frac{x -a}{b-a}f(b).
+f(x) = f\brb{\frac{b-x}{b-a} a + \frac{x -a}{b-a}b} = f\brb{\lm a + (1-\lm)b} \leq \lm f(a) +(1-\lm) f(b) =  \frac{b-x}{b-a} f(a) + \frac{x -a}{b-a}f(b).
 \ee
 
 They by Proposition \ref{pro:riemann_integral_elementary_property},
 \beast
-\int^b_a f(x)dx & \leq & \int^b_a \bb{\frac{b-x}{b-a} f(a) + \frac{x -a}{b-a}f(b)}dx = \frac{ f(a)}{b-a} \int^b_a (b-x)dx  + \frac{f(b) }{b-a} \int^b_a (x-a)dx \\
-& = & \frac{ f(a)}{b-a} \frac{(b-a)^2}2 + \frac{ f(b)}{b-a} \frac{(b-a)^2}2 = \frac {1}2(b-a)\bb{f(a)+f(b)}
+\int^b_a f(x)dx & \leq & \int^b_a \brb{\frac{b-x}{b-a} f(a) + \frac{x -a}{b-a}f(b)}dx = \frac{ f(a)}{b-a} \int^b_a (b-x)dx  + \frac{f(b) }{b-a} \int^b_a (x-a)dx \\
+& = & \frac{ f(a)}{b-a} \frac{(b-a)^2}2 + \frac{ f(b)}{b-a} \frac{(b-a)^2}2 = \frac {1}2(b-a)\brb{f(a)+f(b)}
 \eeast
 which is the RHS of the inequality.
 
 Recall that a convex function has left- and right-derivatives at each point of its domain. Thus,
 \be
-f\bb{\frac{a+b}2^-} := \lim_{x\ua \frac{a+b}2} \frac{f(x) - f\bb{ \frac{a+b}2}}{x - \frac{a+b}2} \leq \lim_{x\da \frac{a+b}2} \frac{f(x) - f\bb{ \frac{a+b}2}}{x - \frac{a+b}2} := f\bb{\frac{a+b}2^+}.
+f\brb{\frac{a+b}2^-} := \lim_{x\ua \frac{a+b}2} \frac{f(x) - f\brb{ \frac{a+b}2}}{x - \frac{a+b}2} \leq \lim_{x\da \frac{a+b}2} \frac{f(x) - f\brb{ \frac{a+b}2}}{x - \frac{a+b}2} := f\brb{\frac{a+b}2^+}.
 \ee
 
 Then using the increasing monotonicity of the function $\frac{f(x)-f(y)}{x-y}$ in both arguments, we obtain
 \be
-\frac{f(x) - f\bb{ \frac{a+b}2}}{x - \frac{a+b}2} \geq f\bb{\frac{a+b}2^+} \ \lra\ f(x) \geq f\bb{\frac{a+b}2} + f\bb{\frac{a+b}2^+}\bb{x-\frac{a+b}2}\qquad (*)
+\frac{f(x) - f\brb{ \frac{a+b}2}}{x - \frac{a+b}2} \geq f\brb{\frac{a+b}2^+} \ \lra\ f(x) \geq f\brb{\frac{a+b}2} + f\brb{\frac{a+b}2^+}\brb{x-\frac{a+b}2}\qquad (*)
 \ee
 for all $\frac{a+b}2 < x\leq b$ and
 \be
-\frac{f(x) - f\bb{ \frac{a+b}2}}{x - \frac{a+b}2} \leq f\bb{\frac{a+b}2^-} \ \lra\ f(x) \geq f\bb{\frac{a+b}2} + f\bb{\frac{a+b}2^-}\bb{x-\frac{a+b}2}\qquad (\dag)
+\frac{f(x) - f\brb{ \frac{a+b}2}}{x - \frac{a+b}2} \leq f\brb{\frac{a+b}2^-} \ \lra\ f(x) \geq f\brb{\frac{a+b}2} + f\brb{\frac{a+b}2^-}\brb{x-\frac{a+b}2}\qquad (\dag)
 \ee
 for all $a\leq x< \frac{a+b}2$. Then integrating ($*$) over $\bsb{\frac{a+b}2,b}$ and ($\dag$) over $\bsb{a,\frac{a+b}2}$, we see
 \beast
-\int^b_{\bb{a+b}/2} f(x)dx & \geq &  f\bb{\frac{a+b}2} \frac{b-a}2 + \frac 12 f\bb{\frac{a+b}2^+}\bb{\frac{b-a}2}^2, \\
-\int^{\bb{a+b}/2}_a f(x)dx & \geq &  f\bb{\frac{a+b}2} \frac{b-a}2 - \frac 12 f\bb{\frac{a+b}2^-}\bb{\frac{b-a}2}^2.
+\int^b_{\brb{a+b}/2} f(x)dx & \geq &  f\brb{\frac{a+b}2} \frac{b-a}2 + \frac 12 f\brb{\frac{a+b}2^+}\brb{\frac{b-a}2}^2, \\
+\int^{\brb{a+b}/2}_a f(x)dx & \geq &  f\brb{\frac{a+b}2} \frac{b-a}2 - \frac 12 f\brb{\frac{a+b}2^-}\brb{\frac{b-a}2}^2.
 \eeast
 
 Summing these two integrals, we obtain the inequality
 \beast
-\int^b_a f(x)dx & = & \int^b_{\bb{a+b}/2} f(x)dx + \int^{\bb{a+b}/2}_a f(x)dx \\
-& \geq & f\bb{\frac{a+b}2} \bb{b-a} + \frac 12\bb{f\bb{\frac{a+b}2^+}- f\bb{\frac{a+b}2^-}} \bb{\frac{b-a}2}^2 \\
-& \geq & f\bb{\frac{a+b}2} \bb{b-a}
+\int^b_a f(x)dx & = & \int^b_{\brb{a+b}/2} f(x)dx + \int^{\brb{a+b}/2}_a f(x)dx \\
+& \geq & f\brb{\frac{a+b}2} \brb{b-a} + \frac 12\brb{f\brb{\frac{a+b}2^+}- f\brb{\frac{a+b}2^-}} \brb{\frac{b-a}2}^2 \\
+& \geq & f\brb{\frac{a+b}2} \brb{b-a}
 \eeast
 which is the LHS of inequality.
 \end{proof}
@@ -5333,20 +5333,20 @@ which is the LHS of inequality.
 \begin{example}
 Consider convex function $f:\R\to (0,\infty), x\mapsto e^x$. Then for $-\infty <a<b<\infty$,
 \be
-e^{\frac{a+b}2} = f\bb{\frac{a+b}2} < \int^b_a f(x)dx = \int^b_a e^x dx = \frac{e^b-e^a}{b-a} < \frac 12\bb{f(a)+f(b)} = \frac{e^a+e^b}{2}.
+e^{\frac{a+b}2} = f\brb{\frac{a+b}2} < \int^b_a f(x)dx = \int^b_a e^x dx = \frac{e^b-e^a}{b-a} < \frac 12\brb{f(a)+f(b)} = \frac{e^a+e^b}{2}.
 \ee
 
 Then takeing $x : = e^a$ and $y:= e^b$ with $x<y$, we see that
 \be
-\sqrt{xy} = \exp\bb{\frac 12\log\bb{xy}} = \exp\bb{\frac{\log x + \log y}{2}} < \frac{y-x}{\log y - \log x} < \frac{x+y}2.
+\sqrt{xy} = \exp\brb{\frac 12\log\brb{xy}} = \exp\brb{\frac{\log x + \log y}{2}} < \frac{y-x}{\log y - \log x} < \frac{x+y}2.
 \ee
 \end{example}
 
 %\begin{example}
 %Consider real valued function $f:[0,\infty)\to \R,x\mapsto \frac 1{1+x}$. Obviously, $f$ is strictly convex since $f''(x) = \frac {2}{(1+x)^3} > 0$. Applying Hermite-Hadamard inequality with $a=0$ and $b=x$, we obtain
 %\beast
-%(b-a)f\bb{\frac {a+b}2}  = \frac{x}{1+\frac x2} = x - \frac{x^2}{2+x} & < & \int^x_0 f(t)dt = \int^x_0 \frac {dt}{1+t} = \log(1+x) \\
-%& < & \frac{f(a)+f(b)}{2}(b-a) = \frac x2 \bb{1 + \frac 1{1+x}} = \frac x2 + \frac{x}{2(1+x)} = x - \frac {x^2}{2(1+x)}.
+%(b-a)f\brb{\frac {a+b}2}  = \frac{x}{1+\frac x2} = x - \frac{x^2}{2+x} & < & \int^x_0 f(t)dt = \int^x_0 \frac {dt}{1+t} = \log(1+x) \\
+%& < & \frac{f(a)+f(b)}{2}(b-a) = \frac x2 \brb{1 + \frac 1{1+x}} = \frac x2 + \frac{x}{2(1+x)} = x - \frac {x^2}{2(1+x)}.
 %\eeast
 %
 %Taking the place of $x$ with $n$ and $n-1$ respectively, we have
@@ -5368,19 +5368,19 @@ f(x) = \frac{1}{n+\frac 12 + x}
 \ee
 on $\bsb{-\frac 12, \frac 12}$ with $n\in \Z^+$. Obviously, $f$ is strictly convex since $f''(x) = \frac {2}{(n+\frac 12 +x)^3} > 0$. Thus,
 \beast
-& & f\bb{\frac{a+b}{2}} =  f\bb{\frac 12 \bb{-\frac 12 + \frac 12}}   = f\bb{0} = \frac 1{n+\frac 12}  \\
-& < &  \frac{1}{b-a}\int^b_a f(x)dx = \int^{1/2}_{-1/2} \frac {dx}{n+\frac 12 + x} = \left. \log\bb{n+\frac 12 + x}\right|^{1/2}_{-1/2} =  \log\bb{\frac{n+1}{n}}\\
-& < & \frac 12\bb{f(a)+f(b)} = \frac 12\bb{\frac 1n + \frac 1{n+1}}.
+& & f\brb{\frac{a+b}{2}} =  f\brb{\frac 12 \brb{-\frac 12 + \frac 12}}   = f\brb{0} = \frac 1{n+\frac 12}  \\
+& < &  \frac{1}{b-a}\int^b_a f(x)dx = \int^{1/2}_{-1/2} \frac {dx}{n+\frac 12 + x} = \left. \log\brb{n+\frac 12 + x}\right|^{1/2}_{-1/2} =  \log\brb{\frac{n+1}{n}}\\
+& < & \frac 12\brb{f(a)+f(b)} = \frac 12\brb{\frac 1n + \frac 1{n+1}}.
 \eeast
 
 That is
 \be
-1 < \bb{n+\frac 12} \log\bb{\frac{n+1}{n}} < \bb{n+\frac 12} \frac 12\bb{\frac 1n + \frac 1{n+1}} = 1 + \frac{1}{4n(n+1)}
+1 < \brb{n+\frac 12} \log\brb{\frac{n+1}{n}} < \brb{n+\frac 12} \frac 12\brb{\frac 1n + \frac 1{n+1}} = 1 + \frac{1}{4n(n+1)}
 \ee
 
 Then taking natural exponential function on both sides, we have
 \be
-e < \bb{1 + \frac{1}{n}}^{n+\frac 12} < e^{1 + \frac{1}{4n(n+1)}}.
+e < \brb{1 + \frac{1}{n}}^{n+\frac 12} < e^{1 + \frac{1}{4n(n+1)}}.
 \ee
 
 This is consistent with\footnote{theorem needed.}.
@@ -5390,29 +5390,29 @@ This is consistent with\footnote{theorem needed.}.
 \begin{corollary}
 Let $f:[a,b] \to \R$ be a convex function on $[a,b]\subseteq \R$. Then for all $\lm \in [0,1]$, we have
 \be
-f\bb{\frac {a+b}2} \leq l(\lm) \leq \frac 1{b-a} \int^b_a f(x)dx \leq L(\lm) \leq \frac 12\bb{f(a)+f(b)},
+f\brb{\frac {a+b}2} \leq l(\lm) \leq \frac 1{b-a} \int^b_a f(x)dx \leq L(\lm) \leq \frac 12\brb{f(a)+f(b)},
 \ee
 where
 \be
-l(\lm) := \lm f\bb{\frac{\lm b + (2-\lm)a}2} + (1-\lm) f\bb{\frac{(1+\lm)b + (1+\lm)a}2}
+l(\lm) := \lm f\brb{\frac{\lm b + (2-\lm)a}2} + (1-\lm) f\brb{\frac{(1+\lm)b + (1+\lm)a}2}
 \ee
 and
 \be
-L(\lm) := \frac 12 \bb{f\bb{\lm b+ (1-\lm) a} + \lm f(a) + (1-\lm)f(b)}.
+L(\lm) := \frac 12 \brb{f\brb{\lm b+ (1-\lm) a} + \lm f(a) + (1-\lm)f(b)}.
 \ee
 \end{corollary}
 
 \begin{proof}[\bf Proof]
 Let $\lm \in [0,1]$ and apply Hermite-Hadamard inequality on the subinterval $[a,\lm b + (1-\lm)a]$ with $\lm \neq 0$, we get
 \beast
-f\bb{\frac{\lm b + (2-\lm)a}2} & \leq & \frac 1{\lm(b-a)} \int^{\lm b + (1-\lm)a}_a f(x) \leq  \frac 12 \bb{f\bb{\lm b+ (1-\lm) a} + f(a)}, \\
-\lm f\bb{\frac{\lm b + (2-\lm)a}2} & \leq & \frac 1{b-a} \int^{\lm b + (1-\lm)a}_a f(x) \leq  \frac 12\lm \bb{f\bb{\lm b+ (1-\lm) a} + f(a)}.
+f\brb{\frac{\lm b + (2-\lm)a}2} & \leq & \frac 1{\lm(b-a)} \int^{\lm b + (1-\lm)a}_a f(x) \leq  \frac 12 \brb{f\brb{\lm b+ (1-\lm) a} + f(a)}, \\
+\lm f\brb{\frac{\lm b + (2-\lm)a}2} & \leq & \frac 1{b-a} \int^{\lm b + (1-\lm)a}_a f(x) \leq  \frac 12\lm \brb{f\brb{\lm b+ (1-\lm) a} + f(a)}.
 \eeast
 
 Similarly, we apply Hermite-Hadamard inequality on the subinterval $[\lm b+(1-\lm)a,b]$ with $\lm \neq 1$, we get
 \beast
-f\bb{\frac{(1+\lm)b + (1+\lm)a}2} & \leq & \frac 1{(1-\lm)(b-a)}  \int^b_{\lm b + (1-\lm)a} f(x) \leq  \frac 12 \bb{f\bb{\lm b+ (1-\lm) a} + f(b)}, \\
-(1-\lm) f\bb{\frac{(1+\lm)b + (1+\lm)a}2} & \leq & \frac 1{b-a}  \int^b_{\lm b + (1-\lm)a} f(x) \leq  \frac 12(1-\lm) \bb{f\bb{\lm b+ (1-\lm) a} + f(b)}.
+f\brb{\frac{(1+\lm)b + (1+\lm)a}2} & \leq & \frac 1{(1-\lm)(b-a)}  \int^b_{\lm b + (1-\lm)a} f(x) \leq  \frac 12 \brb{f\brb{\lm b+ (1-\lm) a} + f(b)}, \\
+(1-\lm) f\brb{\frac{(1+\lm)b + (1+\lm)a}2} & \leq & \frac 1{b-a}  \int^b_{\lm b + (1-\lm)a} f(x) \leq  \frac 12(1-\lm) \brb{f\brb{\lm b+ (1-\lm) a} + f(b)}.
 \eeast
 
 Then we get the required result by adding these two inequalities.
@@ -5669,7 +5669,7 @@ $f: [1,\infty)\mapsto (0,\infty)$ be a positive decreasing function, then
 
 \item [(ii)] The limit
 \be
-\lim_{n\to\infty}\bb{\sum^n_{r=1}f(r)-\int^n_1 f(x)dx }= \ell
+\lim_{n\to\infty}\brb{\sum^n_{r=1}f(r)-\int^n_1 f(x)dx }= \ell
 \ee
 and $0\leq \ell \leq f(1)$.
 \een
@@ -5757,7 +5757,7 @@ exist for any $a\in \R$. %Furthermore, if $\int^\infty_a f(x)dx = l_1$, $\int^a_
 
 Then the sum of these equations will give that
 \be
-\bb{\int^\infty_{-\infty}f(x)dx}_{a'} = \bb{\int^\infty_{-\infty}f(x)dx}_{a} + \int^a_{a'}f(x)dx + \int^{a'}_a f(x)dx = \bb{\int^\infty_{-\infty}f(x)dx}_{a}.
+\brb{\int^\infty_{-\infty}f(x)dx}_{a'} = \brb{\int^\infty_{-\infty}f(x)dx}_{a} + \int^a_{a'}f(x)dx + \int^{a'}_a f(x)dx = \brb{\int^\infty_{-\infty}f(x)dx}_{a}.
 \ee
 
 \item [(ii)] Note that This definition is not quite the same as saying that
@@ -5811,7 +5811,7 @@ Similarly, we have the definition of the upper case.
 \begin{example}
 Consider $f(x) = 1/\sqrt{x}$, for $x \in (0,1]$. Then for $\delta >0$,
 \be
-\int^1_\delta f(x) dx = \int^1_\delta \frac 1{\sqrt{x}} dx = \left.2\sqrt{x}\right|^1_\delta = 2\bb{1-\sqrt{\delta}}\to 2
+\int^1_\delta f(x) dx = \int^1_\delta \frac 1{\sqrt{x}} dx = \left.2\sqrt{x}\right|^1_\delta = 2\brb{1-\sqrt{\delta}}\to 2
 \ee
 as $\delta \to 0$. So
 \be
@@ -6037,11 +6037,11 @@ a_{n+1}b_{n+1} = (a_n + b_n)/2 \times 2a_nb_n/(a_n+b_n) = a_n b_n \ \ra \ c^2 = 
 \subsection{Real series}
 
 \begin{problem}[Baby Rudin Exercise 3.11]
-Let $(a_n)_n$ be a positive real sequence. Suppose $s_n = a_1+\dots + a_n$ and $\sum_n a_n$ diverges. Prove that 
+Let $(a_n)_n$ be a positive real sequence. Suppose $s_n = a_1+\dots + a_n$ and $\sum_n a_n$ diverges. Prove that
 \be
 \frac{a_n}{s_n^2} \leq \frac 1{s_{n-1}} - \frac 1{s_n}
 \ee
-and deduce that $\sum_n \frac{a_n}{s_n^2}$ converges. 
+and deduce that $\sum_n \frac{a_n}{s_n^2}$ converges.
 
 What can be said about
 \be
@@ -6050,7 +6050,7 @@ What can be said about
 \end{problem}
 
 \begin{solution}[\bf Solution.]
-Clearly, for any $n\geq 2$, 
+Clearly, for any $n\geq 2$,
 \be
 \frac 1{s_{n-1}} - \frac 1{s_n} = \frac {s_n - s_{n-1}}{s_{n-1}s_n} = \frac{a_n}{s_{n-1}s_n} \geq \frac{a_n}{s_n^2}
 \ee
@@ -6061,9 +6061,9 @@ Thus, series $\frac 1{s_{n-1}} - \frac 1{s_n}$ is telescoping and
 \ee
 as $s_\infty = \infty$. Thus, $\sum_n \frac{a_n}{s_n^2}$ converges as it is increasing and bounded.
 
-Note that if $a_n=1/n$, $\sum_n \frac {a_n}{1 + na_n}$ diverges and $\sum_n \frac {a_n}{1 + n^2a_n}$ converges. Since the harmonic series is kind of a borderline divergent series, this suggests that the first series might always diverge and the second always converge. 
+Note that if $a_n=1/n$, $\sum_n \frac {a_n}{1 + na_n}$ diverges and $\sum_n \frac {a_n}{1 + n^2a_n}$ converges. Since the harmonic series is kind of a borderline divergent series, this suggests that the first series might always diverge and the second always converge.
 
-However, if we let 
+However, if we let
 \be
 a_n = \begin{cases}
 n=k! \quad\quad & \text{for some }k\in \Z^+,\\
@@ -6073,7 +6073,7 @@ n=k! \quad\quad & \text{for some }k\in \Z^+,\\
 
 The first case of that definition ensures that $\sum_n a_n$ diverges. Now we have
 \be
-\frac{a_n}{1 + na_n} = \frac{1}{n+\frac{1}{a_n}} = 
+\frac{a_n}{1 + na_n} = \frac{1}{n+\frac{1}{a_n}} =
 \begin{cases}
 \frac 1{n+1/n}\quad\quad & \text{if $n=k!$ for some }k\in \Z^+, \\
 \frac 1{n+2^n} & \text{otherwise.}
