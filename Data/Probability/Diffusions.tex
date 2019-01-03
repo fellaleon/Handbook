@@ -16,24 +16,24 @@ where $\mu$, $\theta$, $\sigma$ are constants with $\theta,\sigma >0$.
 \begin{theorem}
 Given the initial point $x_0$, the transition density of OU process at time $t$ is
 \be
-f(x) = \sqrt{\frac{\theta}{\pi\sigma^2\bb{1-e^{-2\theta t}}}} \exp\bb{-\frac{\theta}{\sigma^2}\bb{\frac{\bb{x - \mu - (x_0 -\mu)e^{-\theta t} }^2}{1-e^{-2\theta t}}}}
-\ee 
+f(x) = \sqrt{\frac{\theta}{\pi\sigma^2\brb{1-e^{-2\theta t}}}} \exp\brb{-\frac{\theta}{\sigma^2}\brb{\frac{\brb{x - \mu - (x_0 -\mu)e^{-\theta t} }^2}{1-e^{-2\theta t}}}}
+\ee
 which is Gaussian distribution with mean and variance
 \be
-\mu + (x_0 - \mu)e^{-\theta t}, \qquad \frac{\sigma^2}{2\theta }\bb{1-e^{-2\theta t}}.
+\mu + (x_0 - \mu)e^{-\theta t}, \qquad \frac{\sigma^2}{2\theta }\brb{1-e^{-2\theta t}}.
 \ee
 
 The limit for time tending to infinity is a Gaussian distribution with mean $\mu$ and variance $\frac{\sigma^2}{2\theta}$,
 \be
-f(x) = \sqrt{\frac{\theta}{\pi\sigma^2}} \exp\bb{-\frac{\theta(x-\mu)^2}{\sigma^2}}.
+f(x) = \sqrt{\frac{\theta}{\pi\sigma^2}} \exp\brb{-\frac{\theta(x-\mu)^2}{\sigma^2}}.
 \ee
 \end{theorem}
 
 \begin{proof}[\bf Proof]
 Let $f(t,x) = e^{\theta t}(x-\mu) $. Then by It\^o lemma (Corollary \ref{cor:ito_formula_semimartingale_time}), we have
 \beast
-df(t,X_t) & = & \theta f(t,X_t) dt + e^{\theta t} dX_t + \frac 12 \cdot 0 \cdot \bb{dX_t}^2 \\
-& = & \theta  e^{\theta t}(X_t-\mu) dt + e^{\theta t}\bb{\theta(\mu -X_t)}dt + \sigma e^{\theta t} dB_t \\
+df(t,X_t) & = & \theta f(t,X_t) dt + e^{\theta t} dX_t + \frac 12 \cdot 0 \cdot \brb{dX_t}^2 \\
+& = & \theta  e^{\theta t}(X_t-\mu) dt + e^{\theta t}\brb{\theta(\mu -X_t)}dt + \sigma e^{\theta t} dB_t \\
 & = & \sigma e^{\theta t} dB_t.
 \eeast
 
@@ -48,19 +48,19 @@ X_t = X_0 e^{-\theta t} + \mu(1- e^{-\theta t}) + \sigma e^{-\theta t}\int^t_0 e
 
 It can be proved by It\^o isometry\footnote{theorem needed.} that the stochastic integral $\int^t_0 e^{\theta s} dB_s$ is a Gaussian random variable with zero mean and variance
 \be
-\E\bb{\int^t_0 e^{\theta s} dB_s}^2 = \bsb{\int^t_0  e^{\theta s} dB_s} = \int^t_0 e^{2\theta s}\bsb{B_s} = \int^t_0 e^{2\theta s}s = \frac 1{2\theta} \bb{e^{2\theta t}-1}
+\E\brb{\int^t_0 e^{\theta s} dB_s}^2 = \bsb{\int^t_0  e^{\theta s} dB_s} = \int^t_0 e^{2\theta s}\bsb{B_s} = \int^t_0 e^{2\theta s}s = \frac 1{2\theta} \brb{e^{2\theta t}-1}
 \ee
 
 Therefore,
 \be
-X_t =  X_0 e^{-\theta t} + \mu\bb{1 - e^{-\theta t}} + \sigma\sqrt{\frac{1-e^{-2\theta t}}{2\theta}} Z
+X_t =  X_0 e^{-\theta t} + \mu\brb{1 - e^{-\theta t}} + \sigma\sqrt{\frac{1-e^{-2\theta t}}{2\theta}} Z
 \ee
 where $Z \sim \sN(0,1)$. Hence, the transition density of OU process at time $t$ is
 \be
-f(x) = \sqrt{\frac{\theta}{\pi\sigma^2\bb{1-e^{-2\theta t}}}}\exp\bb{-\frac{\theta\bb{x-\mu - (x_0 -\mu)e^{-\theta t}}^2}{\sigma^2\bb{1-e^{-2\theta t}}}}.
+f(x) = \sqrt{\frac{\theta}{\pi\sigma^2\brb{1-e^{-2\theta t}}}}\exp\brb{-\frac{\theta\brb{x-\mu - (x_0 -\mu)e^{-\theta t}}^2}{\sigma^2\brb{1-e^{-2\theta t}}}}.
 \ee
 
-Accordingly, the asymptotic distribution is $\sN\bb{\mu, \frac{\sigma^2}{2\theta}}$.
+Accordingly, the asymptotic distribution is $\sN\brb{\mu, \frac{\sigma^2}{2\theta}}$.
 \end{proof}
 
 
@@ -74,22 +74,22 @@ e^{\theta (t+\delta)}(X_{t+\delta}-\mu) - e^{\theta t}(X_{t}-\mu)  = \int^{t+\de
 
 If $X_t = S_{i-1}$ and $X_{t+\delta} = S_{i}$,
 \be
-S_{i} =  S_{i-1} e^{-\theta \delta} + \mu\bb{1 - e^{-\theta \delta}} + \sigma e^{-\theta (t+\delta)} \int^{t+\delta}_t  e^{\theta s} dB_s
+S_{i} =  S_{i-1} e^{-\theta \delta} + \mu\brb{1 - e^{-\theta \delta}} + \sigma e^{-\theta (t+\delta)} \int^{t+\delta}_t  e^{\theta s} dB_s
 \ee
 
 
 It can be proved by It\^o isometry\footnote{theorem needed.} that the stochastic integral $\int^{t+\delta}_t e^{\theta s} dB_s$ is a Gaussian random variable with zero mean and variance
 \be
-\E\bb{\int^{t+\delta}_t e^{\theta s} dB_s}^2 = \bsb{\int^{t+\delta}_t  e^{\theta s} dB_s} = \int^{t+\delta}_t e^{2\theta s}\bsb{B_s} = \int^{t+\delta}_t e^{2\theta s}s = \frac 1{2\theta} \bb{e^{2\theta (t+\delta)}-e^{2\theta t}}
+\E\brb{\int^{t+\delta}_t e^{\theta s} dB_s}^2 = \bsb{\int^{t+\delta}_t  e^{\theta s} dB_s} = \int^{t+\delta}_t e^{2\theta s}\bsb{B_s} = \int^{t+\delta}_t e^{2\theta s}s = \frac 1{2\theta} \brb{e^{2\theta (t+\delta)}-e^{2\theta t}}
 \ee
 
 Then given the previous observation $S_{i-1}$,
 \be
-S_{i} =  S_{i-1} e^{-\theta \delta} + \mu\bb{1 - e^{-\theta\delta}} + \sigma\sqrt{\frac{1-e^{-2\theta \delta}}{2\theta}} Z
+S_{i} =  S_{i-1} e^{-\theta \delta} + \mu\brb{1 - e^{-\theta\delta}} + \sigma\sqrt{\frac{1-e^{-2\theta \delta}}{2\theta}} Z
 \ee
 where $Z \sim \sN(0,1)$. The conditional probability density of $S_{i}$ given $S_{i-1}$ is
 \be
-f(x|S_{i-1}) = \sqrt{\frac {\theta}{\pi\sigma^2\bb{1-e^{-2\theta \delta}}}}\exp\bb{- \frac{\theta\bb{x- S_{i-1}e^{-\theta \delta} - \mu\bb{1-e^{-\theta\delta}}}^2}{\sigma^2\bb{1-e^{-2\theta\delta}}}}.
+f(x|S_{i-1}) = \sqrt{\frac {\theta}{\pi\sigma^2\brb{1-e^{-2\theta \delta}}}}\exp\brb{- \frac{\theta\brb{x- S_{i-1}e^{-\theta \delta} - \mu\brb{1-e^{-\theta\delta}}}^2}{\sigma^2\brb{1-e^{-2\theta\delta}}}}.
 \ee
 
 For simplicity, we define
@@ -103,7 +103,7 @@ Y = aX + b + \ve \ \lra \ S_{i} = aS_{i-1} + b + \ve,\quad i = 1,\dots,n
 \ee
 where
 \be
-Y = \bepm S_1 \\ \vdots \\ S_n \eepm,\qquad X = \bepm S_0 \\ \vdots \\ S_{n-1} \eepm, \qquad \ve = \bepm \ve_1 \\ \vdots \\ \ve_n \eepm, \qquad \ve_i \sim \sN\bb{0, \frac{\sigma^2\bb{1-e^{-2\theta \delta}}}{2\theta}}.
+Y = \bepm S_1 \\ \vdots \\ S_n \eepm,\qquad X = \bepm S_0 \\ \vdots \\ S_{n-1} \eepm, \qquad \ve = \bepm \ve_1 \\ \vdots \\ \ve_n \eepm, \qquad \ve_i \sim \sN\brb{0, \frac{\sigma^2\brb{1-e^{-2\theta \delta}}}{2\theta}}.
 \ee
 
 We can also write it in more general form of linear model we have $Y = W\beta + \ve$ where
@@ -114,45 +114,45 @@ W = \bepm 1 & S_0 \\ \vdots & \vdots \\ 1 & S_{n-1} \eepm,\qquad  \beta = \bepm 
 
 Assume $S_i$ are not all the same thus $W$ has rank 2. Hence, the estimator of $\beta$ is
 \beast
-\wh{\beta} & = & \bb{W^TW}^{-1}W^TY = \bepm n & S_x\\ S_x & S_{xx}\eepm^{-1} \bepm S_y \\ S_{xy} \eepm \\
+\wh{\beta} & = & \brb{W^TW}^{-1}W^TY = \bepm n & S_x\\ S_x & S_{xx}\eepm^{-1} \bepm S_y \\ S_{xy} \eepm \\
 & = & \frac{1}{nS_{xx} - S_x^2} \bepm S_{xx} & -S_x\\ -S_x & n \eepm \bepm S_y \\ S_{xy} \eepm = \frac{1}{nS_{xx} - S_x^2} \bepm S_{xx}S_y - S_x S_{xy}\\ nS_{xy} - S_x S_y\eepm
 \eeast
 
 Thus, we have
 \be
-e^{-\theta \delta} = a = \frac{nS_{xy} - S_x S_y}{nS_{xx} - S_x^2} \ \ra\ \wh{\theta} = -\frac 1{\delta} \ln a = -\frac 1{\delta} \ln\bb{\frac{nS_{xy} - S_x S_y}{nS_{xx} - S_x^2}}.\qquad (*)
+e^{-\theta \delta} = a = \frac{nS_{xy} - S_x S_y}{nS_{xx} - S_x^2} \ \ra\ \wh{\theta} = -\frac 1{\delta} \ln a = -\frac 1{\delta} \ln\brb{\frac{nS_{xy} - S_x S_y}{nS_{xx} - S_x^2}}.\qquad (*)
 \ee
 
 Also,
 \be
-\mu\bb{1 - e^{-\theta\delta}} = b = \frac{S_{xx}S_y - S_x S_{xy}}{nS_{xx} - S_x^2} = \frac{nS_{xx}S_y - S_yS_x^2 + S_yS_x^2 - n S_x S_{xy}}{n\bb{nS_{xx} - S_x^2}} = \frac {S_y - a S_x}n
+\mu\brb{1 - e^{-\theta\delta}} = b = \frac{S_{xx}S_y - S_x S_{xy}}{nS_{xx} - S_x^2} = \frac{nS_{xx}S_y - S_yS_x^2 + S_yS_x^2 - n S_x S_{xy}}{n\brb{nS_{xx} - S_x^2}} = \frac {S_y - a S_x}n
 \ee
 which implies
 \be
-\wh{\mu} = \frac{b}{1-a} = \frac{\frac{S_{xx}S_y - S_x S_{xy}}{nS_{xx} - S_x^2}}{1 - \frac{nS_{xy} - S_x S_y}{nS_{xx} - S_x^2}} = \frac{S_{xx}S_y - S_x S_{xy}}{n\bb{S_{xx} - S_{xy}}- S_x\bb{S_x - S_y}} = \frac{S_y - a S_x}{n(1-a)}.\qquad (\dag)
+\wh{\mu} = \frac{b}{1-a} = \frac{\frac{S_{xx}S_y - S_x S_{xy}}{nS_{xx} - S_x^2}}{1 - \frac{nS_{xy} - S_x S_y}{nS_{xx} - S_x^2}} = \frac{S_{xx}S_y - S_x S_{xy}}{n\brb{S_{xx} - S_{xy}}- S_x\brb{S_x - S_y}} = \frac{S_y - a S_x}{n(1-a)}.\qquad (\dag)
 \ee
 
-Furthermore, we have the unbiased estimator of $\frac{\sigma^2\bb{1-e^{-2\theta \delta}}}{2\theta}$ ($m=2$ for general linear model)
+Furthermore, we have the unbiased estimator of $\frac{\sigma^2\brb{1-e^{-2\theta \delta}}}{2\theta}$ ($m=2$ for general linear model)
 \beast
-\wt{\sigma}^2 & = & \frac 1{n-2} \dabs{Y - W\wh{\beta}}^2 = \frac 1{n-2} \bb{Y - W \bb{W^TW}^{-1}W^TY }^T \bb{Y - W \bb{W^TW}^{-1}W^TY } \\
-& = & \frac 1{n-2} Y^T\bb{I - W \bb{W^TW}^{-1}W^T }^T \bb{I - W \bb{W^TW}^{-1}W^T}Y = \frac 1{n-2} Y^T\bb{I - W \bb{W^TW}^{-1}W^T }Y \\
-& = & \frac 1{n-2} \bb{Y^TY - Y^TW \bb{W^TW}^{-1}W^TY } = \frac 1{n-2} \bb{S_{yy} -\bepm S_y & S_{xy} \eepm \bb{W^TW}^{-1}\bepm S_y \\ S_{xy} \eepm } \\
-& = & \frac 1{(n-2)\bb{nS_{xx} - S_x^2}} \bb{S_{yy}\bb{nS_{xx} - S_x^2} -\bepm S_y & S_{xy} \eepm \bepm S_{xx}S_y - S_x S_{xy}\\ nS_{xy} - S_x S_y\eepm } \\
-& = & \frac 1{(n-2)\bb{nS_{xx} - S_x^2}} \bb{n \bb{S_{xx}S_{yy} - S^2_{xy}} - S_x^2S_{yy} - S_y^2S_{xx} + 2S_xS_y S_{xy} } \qquad (\ddag)
+\wt{\sigma}^2 & = & \frac 1{n-2} \dabs{Y - W\wh{\beta}}^2 = \frac 1{n-2} \brb{Y - W \brb{W^TW}^{-1}W^TY }^T \brb{Y - W \brb{W^TW}^{-1}W^TY } \\
+& = & \frac 1{n-2} Y^T\brb{I - W \brb{W^TW}^{-1}W^T }^T \brb{I - W \brb{W^TW}^{-1}W^T}Y = \frac 1{n-2} Y^T\brb{I - W \brb{W^TW}^{-1}W^T }Y \\
+& = & \frac 1{n-2} \brb{Y^TY - Y^TW \brb{W^TW}^{-1}W^TY } = \frac 1{n-2} \brb{S_{yy} -\bepm S_y & S_{xy} \eepm \brb{W^TW}^{-1}\bepm S_y \\ S_{xy} \eepm } \\
+& = & \frac 1{(n-2)\brb{nS_{xx} - S_x^2}} \brb{S_{yy}\brb{nS_{xx} - S_x^2} -\bepm S_y & S_{xy} \eepm \bepm S_{xx}S_y - S_x S_{xy}\\ nS_{xy} - S_x S_y\eepm } \\
+& = & \frac 1{(n-2)\brb{nS_{xx} - S_x^2}} \brb{n \brb{S_{xx}S_{yy} - S^2_{xy}} - S_x^2S_{yy} - S_y^2S_{xx} + 2S_xS_y S_{xy} } \qquad (\ddag)
 \eeast
 
 Alternatively,
 \beast
-\wt{\sigma}^2 & = & \frac 1{n(n-2)\bb{nS_{xx} - S_x^2}} \bb{n^2 \bb{S_{xx}S_{yy} - S^2_{xy}} - nS_x^2S_{yy} - nS_y^2S_{xx} + 2nS_xS_y S_{xy} } \\
-& = & \frac 1{n(n-2)\bb{nS_{xx} - S_x^2}} \bb{n^2 S_{xx}S_{yy} - nS_x^2S_{yy} - nS_y^2S_{xx} + S_y^2 S_x^2 -  S_y^2 S_x^2 - n^2 S^2_{xy}  + 2nS_xS_y S_{xy} } \\
-& = & \frac 1{n(n-2)} \bb{\frac{n^2 S_{xx}S_{yy} - nS_x^2S_{yy} - nS_y^2S_{xx} + S_y^2 S_x^2}{\bb{nS_{xx} - S_x^2}} -  \frac{S_y^2 S_x^2 + n^2 S^2_{xy} -2nS_xS_y S_{xy}}{\bb{nS_{xx} - S_x^2}} } \\
-& = & \frac 1{n(n-2)} \bb{n S_{yy} - S^2_{y} - a\bb{n S_{xy} - S_xS_y}}
+\wt{\sigma}^2 & = & \frac 1{n(n-2)\brb{nS_{xx} - S_x^2}} \brb{n^2 \brb{S_{xx}S_{yy} - S^2_{xy}} - nS_x^2S_{yy} - nS_y^2S_{xx} + 2nS_xS_y S_{xy} } \\
+& = & \frac 1{n(n-2)\brb{nS_{xx} - S_x^2}} \brb{n^2 S_{xx}S_{yy} - nS_x^2S_{yy} - nS_y^2S_{xx} + S_y^2 S_x^2 -  S_y^2 S_x^2 - n^2 S^2_{xy}  + 2nS_xS_y S_{xy} } \\
+& = & \frac 1{n(n-2)} \brb{\frac{n^2 S_{xx}S_{yy} - nS_x^2S_{yy} - nS_y^2S_{xx} + S_y^2 S_x^2}{\brb{nS_{xx} - S_x^2}} -  \frac{S_y^2 S_x^2 + n^2 S^2_{xy} -2nS_xS_y S_{xy}}{\brb{nS_{xx} - S_x^2}} } \\
+& = & \frac 1{n(n-2)} \brb{n S_{yy} - S^2_{y} - a\brb{n S_{xy} - S_xS_y}}
 \eeast
 
 Therefore,
 \beast
-\wh{\sigma}^2 =  \frac{2\wt{\sigma}^2 \wh{\theta}}{\bb{1-e^{-2\wh{\theta} \delta}}}  & = & \frac{-\frac 2{\delta} \ln a }{1-a^2} \frac 1{n(n-2)} \bb{n S_{yy} - S^2_{y} - a\bb{n S_{xy} - S_xS_y}} \\
-& = & \frac{-\frac 2{\delta} \ln a }{n(n-2)\bb{1-a^2}} \bb{n S_{yy} - S^2_{y} - a\bb{n S_{xy} - S_xS_y}}
+\wh{\sigma}^2 =  \frac{2\wt{\sigma}^2 \wh{\theta}}{\brb{1-e^{-2\wh{\theta} \delta}}}  & = & \frac{-\frac 2{\delta} \ln a }{1-a^2} \frac 1{n(n-2)} \brb{n S_{yy} - S^2_{y} - a\brb{n S_{xy} - S_xS_y}} \\
+& = & \frac{-\frac 2{\delta} \ln a }{n(n-2)\brb{1-a^2}} \brb{n S_{yy} - S^2_{y} - a\brb{n S_{xy} - S_xS_y}}
 \eeast
 
 %\item OU Process calibration, MLE
@@ -160,65 +160,65 @@ Therefore,
 {\bf Approach 2: MLE}
 
 %\be
-%\sqrt{\frac {\theta}{\pi\sigma^2\bb{1-e^{-2\theta \delta}}}}\exp\bb{- \frac{\theta\bb{x- S_{i-1}e^{-\theta \delta} - \mu\bb{1-e^{-\theta\delta}}}^2}{\sigma^2\bb{1-e^{-2\theta\delta}}}}.
+%\sqrt{\frac {\theta}{\pi\sigma^2\brb{1-e^{-2\theta \delta}}}}\exp\brb{- \frac{\theta\brb{x- S_{i-1}e^{-\theta \delta} - \mu\brb{1-e^{-\theta\delta}}}^2}{\sigma^2\brb{1-e^{-2\theta\delta}}}}.
 %\ee
 
-The log-likelihood function of a set of observation $\bb{S_0,S_1,\dots,S_n}$ can be derived from the condition density function
+The log-likelihood function of a set of observation $\brb{S_0,S_1,\dots,S_n}$ can be derived from the condition density function
 \beast
-\sL\bb{\mu,\theta,\sigma} & = & \sum^n_{i=1} \log f\bb{S_i|S_{i-1}} \\
-& = & \frac n2 \log\bb{\frac {\theta}{\pi\bb{1-e^{-2\theta \delta}}}} - n\log\sigma  - \frac{\theta}{\sigma^2\bb{1-e^{-2\theta\delta}}} \sum^n_{i=1}\bb{S_i- S_{i-1}e^{-\theta \delta} - \mu\bb{1-e^{-\theta\delta}}}^2 \\
-\sL\bb{\mu,\theta,\rho} & = & -\frac n2\ln(2\pi) - n\log\rho - \frac 1{2\rho^2}\sum^n_{i=1} \bb{S_i- S_{i-1}e^{-\theta \delta} - \mu\bb{1-e^{-\theta\delta}}}^2
+\sL\brb{\mu,\theta,\sigma} & = & \sum^n_{i=1} \log f\brb{S_i|S_{i-1}} \\
+& = & \frac n2 \log\brb{\frac {\theta}{\pi\brb{1-e^{-2\theta \delta}}}} - n\log\sigma  - \frac{\theta}{\sigma^2\brb{1-e^{-2\theta\delta}}} \sum^n_{i=1}\brb{S_i- S_{i-1}e^{-\theta \delta} - \mu\brb{1-e^{-\theta\delta}}}^2 \\
+\sL\brb{\mu,\theta,\rho} & = & -\frac n2\ln(2\pi) - n\log\rho - \frac 1{2\rho^2}\sum^n_{i=1} \brb{S_i- S_{i-1}e^{-\theta \delta} - \mu\brb{1-e^{-\theta\delta}}}^2
 \eeast
-where $\rho^2 = \frac{\sigma^2\bb{1-e^{-2\theta \delta}}}{2\theta}$. Then we take the differentiation of the log-likelihood function
+where $\rho^2 = \frac{\sigma^2\brb{1-e^{-2\theta \delta}}}{2\theta}$. Then we take the differentiation of the log-likelihood function
 \beast
-0 & = & \fp{\sL(\mu,\theta,\rho)}{\mu} = \frac{\bb{1-e^{-\theta\delta}}}{\rho^2} \sum^n_{i=1}\bb{S_i- S_{i-1}e^{-\theta \delta} - \mu\bb{1-e^{-\theta\delta}}} \\
-\ra \ \mu & = & \frac 1{n\bb{1-e^{-\theta\delta}}} \sum^n_{i=1}\bb{S_i- S_{i-1}e^{-\theta \delta} } = \frac {S_y - S_x e^{-\theta \delta} }{n\bb{1-e^{-\theta\delta}}}
-\eeast
-
-\beast
-0 =\fp{\sL(\mu,\theta,\rho)}{\theta} & = & - \frac{\delta e^{-\theta\delta}}{\rho^2}  \sum^n_{i=1}\bb{S_i- \mu -  \bb{S_{i-1} - \mu}e^{-\theta\delta}}\bb{S_{i-1} - \mu} \\
-& = & - \frac{\delta e^{-\theta\delta}}{\rho^2}  \sum^n_{i=1}\bb{\bb{S_i- \mu}\bb{S_{i-1} - \mu}  -  \bb{S_{i-1} - \mu}^2e^{-\theta\delta}} \\% & & \qquad - \frac{2\theta\delta  e^{-\theta\delta}}{\sigma^2\bb{1-e^{-2\theta\delta}}} \sum^n_{i=1}\bb{S_i- \mu -  \bb{S_{i-1} - \mu}e^{-\theta\delta}}\bb{S_{i-1} - \mu} \\
-\ra \theta & = & -\frac 1{\delta}\log\bb{\frac{\sum^n_{i=1}\bb{S_i- \mu}\bb{S_{i-1} - \mu}}{\sum^n_{i=1}\bb{S_{i-1} - \mu}^2}} =  -\frac 1{\delta}\log\bb{\frac{S_{xy} - \mu S_x - \mu S_y + n\mu^2}{S_{xx} - 2\mu S_x + n\mu^2}} %\frac 1{n\bb{1-e^{-\theta\delta}}} \sum^n_{i=1}\bb{S_i- S_{i-1}e^{-\theta \delta} }^2
+0 & = & \fp{\sL(\mu,\theta,\rho)}{\mu} = \frac{\brb{1-e^{-\theta\delta}}}{\rho^2} \sum^n_{i=1}\brb{S_i- S_{i-1}e^{-\theta \delta} - \mu\brb{1-e^{-\theta\delta}}} \\
+\ra \ \mu & = & \frac 1{n\brb{1-e^{-\theta\delta}}} \sum^n_{i=1}\brb{S_i- S_{i-1}e^{-\theta \delta} } = \frac {S_y - S_x e^{-\theta \delta} }{n\brb{1-e^{-\theta\delta}}}
 \eeast
 
 \beast
-0 =\fp{\sL(\mu,\theta,\rho)}{\rho} & = & - \frac n{\rho} + \frac{1}{\rho^3}  \sum^n_{i=1}\bb{S_i- S_{i-1}e^{-\theta \delta} - \mu\bb{1-e^{-\theta\delta}}}^2 \\%& = & - \frac{\delta e^{-\theta\delta}}{\rho^2}  \sum^n_{i=1}\bb{\bb{S_i- \mu}\bb{S_{i-1} - \mu}  -  \bb{S_{i-1} - \mu}^2e^{-\theta\delta}} \\% & & \qquad - \frac{2\theta\delta  e^{-\theta\delta}}{\sigma^2\bb{1-e^{-2\theta\delta}}} \sum^n_{i=1}\bb{S_i- \mu -  \bb{S_{i-1} - \mu}e^{-\theta\delta}}\bb{S_{i-1} - \mu} \\
-\ra \rho^2 & = & \frac 1n  \sum^n_{i=1}\bb{S_i- S_{i-1}e^{-\theta \delta} - \mu\bb{1-e^{-\theta\delta}}}^2 \\
-& = & \frac 1n  \bb{S_{yy} - 2 S_{xy}e^{-\theta \delta} + S_{xx}e^{-2\theta\delta} - 2\mu\bb{1-e^{-\theta \delta}}\bb{S_y - S_xe^{-\theta \delta}} + n\mu^2 \bb{1-e^{-\theta \delta}}^2} . %\sum^n_{i=1}\bb{S_i- \mu -  \bb{S_{i-1} - \mu}e^{-\theta\delta}}^2 %-\frac 1{\delta}\log\bb{\frac{\sum^n_{i=1}\bb{S_i- \mu}\bb{S_{i-1} - \mu}}{\sum^n_{i=1}\bb{S_{i-1} - \mu}^2}} %\frac 1{n\bb{1-e^{-\theta\delta}}} \sum^n_{i=1}\bb{S_i- S_{i-1}e^{-\theta \delta} }^2
+0 =\fp{\sL(\mu,\theta,\rho)}{\theta} & = & - \frac{\delta e^{-\theta\delta}}{\rho^2}  \sum^n_{i=1}\brb{S_i- \mu -  \brb{S_{i-1} - \mu}e^{-\theta\delta}}\brb{S_{i-1} - \mu} \\
+& = & - \frac{\delta e^{-\theta\delta}}{\rho^2}  \sum^n_{i=1}\brb{\brb{S_i- \mu}\brb{S_{i-1} - \mu}  -  \brb{S_{i-1} - \mu}^2e^{-\theta\delta}} \\% & & \qquad - \frac{2\theta\delta  e^{-\theta\delta}}{\sigma^2\brb{1-e^{-2\theta\delta}}} \sum^n_{i=1}\brb{S_i- \mu -  \brb{S_{i-1} - \mu}e^{-\theta\delta}}\brb{S_{i-1} - \mu} \\
+\ra \theta & = & -\frac 1{\delta}\log\brb{\frac{\sum^n_{i=1}\brb{S_i- \mu}\brb{S_{i-1} - \mu}}{\sum^n_{i=1}\brb{S_{i-1} - \mu}^2}} =  -\frac 1{\delta}\log\brb{\frac{S_{xy} - \mu S_x - \mu S_y + n\mu^2}{S_{xx} - 2\mu S_x + n\mu^2}} %\frac 1{n\brb{1-e^{-\theta\delta}}} \sum^n_{i=1}\brb{S_i- S_{i-1}e^{-\theta \delta} }^2
+\eeast
+
+\beast
+0 =\fp{\sL(\mu,\theta,\rho)}{\rho} & = & - \frac n{\rho} + \frac{1}{\rho^3}  \sum^n_{i=1}\brb{S_i- S_{i-1}e^{-\theta \delta} - \mu\brb{1-e^{-\theta\delta}}}^2 \\%& = & - \frac{\delta e^{-\theta\delta}}{\rho^2}  \sum^n_{i=1}\brb{\brb{S_i- \mu}\brb{S_{i-1} - \mu}  -  \brb{S_{i-1} - \mu}^2e^{-\theta\delta}} \\% & & \qquad - \frac{2\theta\delta  e^{-\theta\delta}}{\sigma^2\brb{1-e^{-2\theta\delta}}} \sum^n_{i=1}\brb{S_i- \mu -  \brb{S_{i-1} - \mu}e^{-\theta\delta}}\brb{S_{i-1} - \mu} \\
+\ra \rho^2 & = & \frac 1n  \sum^n_{i=1}\brb{S_i- S_{i-1}e^{-\theta \delta} - \mu\brb{1-e^{-\theta\delta}}}^2 \\
+& = & \frac 1n  \brb{S_{yy} - 2 S_{xy}e^{-\theta \delta} + S_{xx}e^{-2\theta\delta} - 2\mu\brb{1-e^{-\theta \delta}}\brb{S_y - S_xe^{-\theta \delta}} + n\mu^2 \brb{1-e^{-\theta \delta}}^2} . %\sum^n_{i=1}\brb{S_i- \mu -  \brb{S_{i-1} - \mu}e^{-\theta\delta}}^2 %-\frac 1{\delta}\log\brb{\frac{\sum^n_{i=1}\brb{S_i- \mu}\brb{S_{i-1} - \mu}}{\sum^n_{i=1}\brb{S_{i-1} - \mu}^2}} %\frac 1{n\brb{1-e^{-\theta\delta}}} \sum^n_{i=1}\brb{S_i- S_{i-1}e^{-\theta \delta} }^2
 \eeast
 
 Thus, we plug expression of $\theta$ into $\mu$ and get
 \beast
-n\mu = \frac {S_y - S_x \bb{\frac{S_{xy} - \mu S_x - \mu S_y + n\mu^2}{S_{xx} - 2\mu S_x + n\mu^2}} }{1-\bb{\frac{S_{xy} - \mu S_x - \mu S_y + n\mu^2}{S_{xx} - 2\mu S_x + n\mu^2}}} & = &  \frac{S_y \bb{S_{xx} - 2\mu S_x + n\mu^2} -\bb{ S_{xy} - \mu S_x - \mu S_y + n\mu^2}S_x}{S_{xx} - 2\mu S_x + n\mu^2 - \bb{S_{xy} - \mu S_x - \mu S_y + n\mu^2} } \\
-& = & \frac{S_{xx}S_y - S_{xy}S_x + \mu\bb{S_x^2 - S_xS_y} + n\mu^2\bb{ S_{y} - S_x}}{S_{xx} - S_{xy} + \mu \bb{ S_y - S_x } }
+n\mu = \frac {S_y - S_x \brb{\frac{S_{xy} - \mu S_x - \mu S_y + n\mu^2}{S_{xx} - 2\mu S_x + n\mu^2}} }{1-\brb{\frac{S_{xy} - \mu S_x - \mu S_y + n\mu^2}{S_{xx} - 2\mu S_x + n\mu^2}}} & = &  \frac{S_y \brb{S_{xx} - 2\mu S_x + n\mu^2} -\brb{ S_{xy} - \mu S_x - \mu S_y + n\mu^2}S_x}{S_{xx} - 2\mu S_x + n\mu^2 - \brb{S_{xy} - \mu S_x - \mu S_y + n\mu^2} } \\
+& = & \frac{S_{xx}S_y - S_{xy}S_x + \mu\brb{S_x^2 - S_xS_y} + n\mu^2\brb{ S_{y} - S_x}}{S_{xx} - S_{xy} + \mu \brb{ S_y - S_x } }
 \eeast
 
 Balancing the equation we have
 \beast
-n\mu\bb{S_{xx}- S_{xy}} + n\mu^2 \bb{ S_y - S_x } & = & S_{xx}S_y - S_{xy}S_x + \mu\bb{S_x^2 - S_xS_y} + n\mu^2\bb{ S_{y} - S_x} \\
-n\mu\bb{S_{xx}- S_{xy}} - \mu\bb{S_x^2 - S_xS_y} & = & S_{xx}S_y - S_{xy}S_x
+n\mu\brb{S_{xx}- S_{xy}} + n\mu^2 \brb{ S_y - S_x } & = & S_{xx}S_y - S_{xy}S_x + \mu\brb{S_x^2 - S_xS_y} + n\mu^2\brb{ S_{y} - S_x} \\
+n\mu\brb{S_{xx}- S_{xy}} - \mu\brb{S_x^2 - S_xS_y} & = & S_{xx}S_y - S_{xy}S_x
 \eeast
 which implies
 \be
-\wh{\mu} = \frac{S_{xx}S_y - S_{xy}S_x}{n\bb{S_{xx}- S_{xy}} - \bb{S_x^2 - S_xS_y}}.
+\wh{\mu} = \frac{S_{xx}S_y - S_{xy}S_x}{n\brb{S_{xx}- S_{xy}} - \brb{S_x^2 - S_xS_y}}.
 \ee
 
 Thus, we can plug this into the expression of $\theta$
 \beast
-\wh{\theta} & = & -\frac 1{\delta}\log\bb{\frac{S_{xy} - \mu S_x - \mu S_y + n\mu^2}{S_{xx} - 2\mu S_x + n\mu^2}}
+\wh{\theta} & = & -\frac 1{\delta}\log\brb{\frac{S_{xy} - \mu S_x - \mu S_y + n\mu^2}{S_{xx} - 2\mu S_x + n\mu^2}}
 \eeast
 and
 \beast
 \wh{\sigma}^2 & =& \frac{2\theta}{1-e^{-2\theta\delta }}\rho^2 \\
-& = & \frac{2\theta}{n\bb{1-e^{-2\theta\delta }}}  \bb{S_{yy} - 2 S_{xy}e^{-\theta \delta} + S_{xx}e^{-2\theta\delta} - 2\mu\bb{1-e^{-\theta \delta}}\bb{S_y - S_xe^{-\theta \delta}} + n\mu^2 \bb{1-e^{-\theta \delta}}^2}
+& = & \frac{2\theta}{n\brb{1-e^{-2\theta\delta }}}  \brb{S_{yy} - 2 S_{xy}e^{-\theta \delta} + S_{xx}e^{-2\theta\delta} - 2\mu\brb{1-e^{-\theta \delta}}\brb{S_y - S_xe^{-\theta \delta}} + n\mu^2 \brb{1-e^{-\theta \delta}}^2}
 \eeast
 
 %\subsection{MLE for OU process}
 
 Use Fisher information\footnote{theorem needed. see MLE in wiki} to have
 \be
-\sqrt{n}\bb{\bepm \wh{\theta}_n \\ \wh{\mu}_n \\ \wh{\sigma}_n\eepm -\bepm \theta \\ \mu \\ \sigma \eepm } \stackrel{d}{\to} \sN\bb{\bepm 0\\ 0\\ 0 \eepm,
-\bepm \frac{e^{2t\theta}-1}{t^2}  & 0 & \frac {\sigma\bb{e^{2t\theta} -1 - 2t\theta}}{2t^2\theta} \\ 0 & \frac{\sigma^2\bb{e^{t\theta}+1}}{2\bb{e^{t\theta}-1}\theta} & 0 \\ \frac {\sigma\bb{e^{2t\theta} -1 - 2t\theta}}{2t^2\theta} & 0 &  \frac{\sigma^2 \bb{\bb{e^{2t\theta}-1}^2 + 2t^2\theta^2 \bb{e^{2t\theta}+1} -4t\theta\bb{e^{2t\theta}-1} }}{4t^2\theta^2\bb{e^{2t\theta}-1}} \eepm}
+\sqrt{n}\brb{\bepm \wh{\theta}_n \\ \wh{\mu}_n \\ \wh{\sigma}_n\eepm -\bepm \theta \\ \mu \\ \sigma \eepm } \stackrel{d}{\to} \sN\brb{\bepm 0\\ 0\\ 0 \eepm,
+\bepm \frac{e^{2t\theta}-1}{t^2}  & 0 & \frac {\sigma\brb{e^{2t\theta} -1 - 2t\theta}}{2t^2\theta} \\ 0 & \frac{\sigma^2\brb{e^{t\theta}+1}}{2\brb{e^{t\theta}-1}\theta} & 0 \\ \frac {\sigma\brb{e^{2t\theta} -1 - 2t\theta}}{2t^2\theta} & 0 &  \frac{\sigma^2 \brb{\brb{e^{2t\theta}-1}^2 + 2t^2\theta^2 \brb{e^{2t\theta}+1} -4t\theta\brb{e^{2t\theta}-1} }}{4t^2\theta^2\brb{e^{2t\theta}-1}} \eepm}
 \ee
 
 \section{Cox-Ingersoll-Ross Process}
@@ -233,11 +233,11 @@ where $\mu$, $\theta$, $\sigma$ are constants with $\theta,\sigma >0$.
 
 It is known (see \cite{Cox_Ingersoll_Ross_1985,Jeanblanc_Yor_Chesney_2009}) that given initial point $x_0$ the closed form transition density function of CIR process at time $t$ is
 \be
-f(x) = \frac{e^{\theta t}}{2c} \bb{\frac{x e^{\theta t}}{x_0}}^{\nu/2} \exp\bb{-\frac{x_0 + xe^{\theta t}}{2c}} I_\nu\bb{\frac{\sqrt{x_0xe^{\theta t}}}c}
+f(x) = \frac{e^{\theta t}}{2c} \brb{\frac{x e^{\theta t}}{x_0}}^{\nu/2} \exp\brb{-\frac{x_0 + xe^{\theta t}}{2c}} I_\nu\brb{\frac{\sqrt{x_0xe^{\theta t}}}c}
 \ee
 where
 \be
-c = \frac{\sigma^2}{4\theta}\bb{e^{\theta t}-1}, \qquad \nu = \frac{2\mu \theta}{\sigma^2}-1
+c = \frac{\sigma^2}{4\theta}\brb{e^{\theta t}-1}, \qquad \nu = \frac{2\mu \theta}{\sigma^2}-1
 \ee
 and $I_\nu$ is Bessel function of the first kind\footnote{proof needed.}.
 
@@ -246,7 +246,7 @@ and $I_\nu$ is Bessel function of the first kind\footnote{proof needed.}.
 \begin{definition}[Bessel process\index{Bessel process}]
 Bessel process $\bes(\nu)$ is a diffusion with infinitesmal generator
 \be
-\frac 12 \bb{\frac{\nu-1}{r}\fp{}{r} + \fpp{}{r}},\qquad r>0 . %,\qquad \nu>0,\theta \in (0,\pi).
+\frac 12 \brb{\frac{\nu-1}{r}\fp{}{r} + \fpp{}{r}},\qquad r>0 . %,\qquad \nu>0,\theta \in (0,\pi).
 \ee
 \end{definition}
 
@@ -256,7 +256,7 @@ Bessel process $\bes(\nu)$ is a diffusion with infinitesmal generator
 \begin{definition}[Legendre process\index{Legendre process}]
 Legendre process $\leg(\nu)$ is a diffusion with infinitesmal generator
 \be
-\frac 12 \bb{\sin\theta}^{1-\nu}\fp{}{\theta}\bb{\bb{\sin\theta}^{\nu-1}\fp{}{\theta}} = \frac {\nu-1}{2\tan\theta} \fp{}{\theta} + \frac 12 \fpp{}{\theta}  ,\qquad \nu\geq 0,\theta \in (0,\pi).
+\frac 12 \brb{\sin\theta}^{1-\nu}\fp{}{\theta}\brb{\brb{\sin\theta}^{\nu-1}\fp{}{\theta}} = \frac {\nu-1}{2\tan\theta} \fp{}{\theta} + \frac 12 \fpp{}{\theta}  ,\qquad \nu\geq 0,\theta \in (0,\pi).
 \ee
 where parameter $\nu$ is called index of Legendre process. The corresponding SDE of Legendre process is
 \be
@@ -265,7 +265,7 @@ d\Theta_t = \frac {\nu-1}{2\tan\Theta_t}dt +  dB_t,\qquad \Theta_t \in (0,\pi).
 
 Then we let $X_t = \cos \Theta_t$. By It\^o lemma\footnote{theorem needed.}
 \beast
-dX_t & = & -\sin \Theta_t d\Theta_t - \frac 12 \cos \Theta_t\bb{d\Theta_t}^2 =  -\sin \Theta_t\bb{\frac {\nu-1}{2\tan\Theta_t}dt + dB_t} - \frac 12 \cos \Theta_t dt \\
+dX_t & = & -\sin \Theta_t d\Theta_t - \frac 12 \cos \Theta_t\brb{d\Theta_t}^2 =  -\sin \Theta_t\brb{\frac {\nu-1}{2\tan\Theta_t}dt + dB_t} - \frac 12 \cos \Theta_t dt \\
 & = & - \frac {\nu}2 \cos \Theta_t dt - \sin \Theta_t  dB_t = - \frac{\nu X_t}2 dt + \sqrt{1-X_t^2}dB_t,\qquad X_t \in (-1,1).
 \eeast
 \end{definition}
@@ -273,7 +273,7 @@ dX_t & = & -\sin \Theta_t d\Theta_t - \frac 12 \cos \Theta_t\bb{d\Theta_t}^2 =  
 \begin{example}
 For $\nu =2$, we use the infinitesimal generator with extra parameter $\sigma$ (see David, R. Brillinger (1997), A particle migrating randomly on a sphere, Journal of Theoretical Probability, 10, 2, 429-443.)
 \be
-\frac {\sigma}{2\sin\theta}\fp{}{\theta}\bb{\sin\theta\fp{}{\theta}} = \frac {\sigma^2}{2\tan\theta}\fp{}{\theta} + \frac 12 \sigma^2 \fpp{}{\theta} .
+\frac {\sigma}{2\sin\theta}\fp{}{\theta}\brb{\sin\theta\fp{}{\theta}} = \frac {\sigma^2}{2\tan\theta}\fp{}{\theta} + \frac 12 \sigma^2 \fpp{}{\theta} .
 \ee
 
 Then the corresponding SDE\footnote{theorem needed.} is
@@ -283,7 +283,7 @@ d\Theta_t = \frac {\sigma^2}{2\tan\Theta_t}dt + \sigma dB_t,\qquad \Theta_t \in 
 
 Then we let $X_t = \cos \Theta_t$. By It\^o lemma\footnote{theorem needed.}
 \beast
-dX_t & = & -\sin \Theta_t d\Theta_t - \frac 12 \cos \Theta_t\bb{d\Theta_t}^2 =  -\sin \Theta_t\bb{\frac {\sigma^2}{2\tan\Theta_t}dt + \sigma dB_t} - \frac 12 \cos \Theta_t\sigma^2 dt \\
+dX_t & = & -\sin \Theta_t d\Theta_t - \frac 12 \cos \Theta_t\brb{d\Theta_t}^2 =  -\sin \Theta_t\brb{\frac {\sigma^2}{2\tan\Theta_t}dt + \sigma dB_t} - \frac 12 \cos \Theta_t\sigma^2 dt \\
 & = & - \sigma^2 \cos \Theta_t dt - \sigma\sin \Theta_t  dB_t = - \sigma^2 X_t dt + \sigma\sqrt{1-X_t^2}dB_t,\qquad X_t \in (-1,1).
 \eeast
 \end{example}
@@ -292,7 +292,7 @@ dX_t & = & -\sin \Theta_t d\Theta_t - \frac 12 \cos \Theta_t\bb{d\Theta_t}^2 =  
 \begin{theorem}
 The transition density of $\leg(\nu)$ is given $\theta_0$ at time 0,
 \be
-f(\theta_t) = \sin\theta_t \bb{\frac{\sin\theta_t}{\sin\theta_0}}^{\nu}\sum^\infty_{k=0}\bb{\nu + k + \frac 12} \frac{\Gamma(2\nu + k+1)}{\Gamma(k+1)}\exp\bb{-\frac{k(2\nu+k+1)t}{2}}P_{k+\nu}^{-\nu}(\cos\theta_t)P_{k+\nu}^{-\nu}(\cos\theta_0)  \nonumber
+f(\theta_t) = \sin\theta_t \brb{\frac{\sin\theta_t}{\sin\theta_0}}^{\nu}\sum^\infty_{k=0}\brb{\nu + k + \frac 12} \frac{\Gamma(2\nu + k+1)}{\Gamma(k+1)}\exp\brb{-\frac{k(2\nu+k+1)t}{2}}P_{k+\nu}^{-\nu}(\cos\theta_t)P_{k+\nu}^{-\nu}(\cos\theta_0)  \nonumber
 \ee
 where $\Gamma(\cdot)$ denotes Euler's gamma function and $P_n^m(\cdot)$ is the associated Legendre function of the first kind\footnote{definition needed.}.
 
@@ -311,12 +311,12 @@ where $\Gamma(\cdot)$ denotes Euler's gamma function and $P_n^m(\cdot)$ is the a
 \begin{definition}[Jacobi process\index{Jacobi process}]\label{def:jacobi_process}
 The stochastic process $(X_t)_{t\geq 0}$ is called Jacobi process if its SDE is given by
 \be
-dX_t = \theta \bb{\mu - X_t} dt + \sigma\sqrt{X_t(1-X_t)}dB_t
+dX_t = \theta \brb{\mu - X_t} dt + \sigma\sqrt{X_t(1-X_t)}dB_t
 \ee
 
 More generally, if bounds are $a,b\in \R$ with $a<b$. Then its SDE is
 \be
-dX_t = \theta \bb{\mu - X_t} dt + \sigma\sqrt{(X_t-a)(b-X_t)}dB_t
+dX_t = \theta \brb{\mu - X_t} dt + \sigma\sqrt{(X_t-a)(b-X_t)}dB_t
 \ee
 \end{definition}
 
@@ -324,11 +324,11 @@ dX_t = \theta \bb{\mu - X_t} dt + \sigma\sqrt{(X_t-a)(b-X_t)}dB_t
 
 For Jacobi process
 \be
-X_{t+\delta} = X_t + \theta\bb{\mu - X_t}\delta + \sigma\sqrt{X_t(1-X_t)} Z
+X_{t+\delta} = X_t + \theta\brb{\mu - X_t}\delta + \sigma\sqrt{X_t(1-X_t)} Z
 \ee
 where $Z\sim \sN(0,1)$ is a standard normal random variable. Let $S_i = X_{t+\delta}$ and $S_{i-1} = X_t$. Thus,
 \beast
-S_i & = & S_{i-1} + \theta\bb{\mu - S_{i-1}}\delta + \sigma\sqrt{S_{i-1}(1-S_{i-1})} Z \\
+S_i & = & S_{i-1} + \theta\brb{\mu - S_{i-1}}\delta + \sigma\sqrt{S_{i-1}(1-S_{i-1})} Z \\
 & = & \theta\mu \delta + (1-\theta \delta) S_{i-1} + \sigma\sqrt{S_{i-1}(1-S_{i-1})} Z
 \eeast
 
@@ -337,9 +337,9 @@ Then
 \frac{S_i}{\sqrt{S_{i-1}(1-S_{i-1})}} = \theta\mu \delta \frac{1}{\sqrt{S_{i-1}(1-S_{i-1})}} + (1-\theta \delta)\frac{S_{i-1}}{\sqrt{S_{i-1}(1-S_{i-1})}} + \sigma Z
 \ee
 
-Let $Y = (Y_1,\dots,Y_n)^T$ and $X = \bb{X_1^T,\dots,X_n^T}^T$ where
+Let $Y = (Y_1,\dots,Y_n)^T$ and $X = \brb{X_1^T,\dots,X_n^T}^T$ where
 \be
-Y_i = \frac{S_i}{\sqrt{S_{i-1}(1-S_{i-1})}},\qquad X_i = \bb{X_1^i,X^i_2} = \bb{{\frac{1}{\sqrt{S_{i-1}(1-S_{i-1})}},\frac{S_{i-1}}{\sqrt{S_{i-1}(1-S_{i-1})}} }}
+Y_i = \frac{S_i}{\sqrt{S_{i-1}(1-S_{i-1})}},\qquad X_i = \brb{X_1^i,X^i_2} = \brb{{\frac{1}{\sqrt{S_{i-1}(1-S_{i-1})}},\frac{S_{i-1}}{\sqrt{S_{i-1}(1-S_{i-1})}} }}
 \ee
 
 %Let
@@ -355,11 +355,11 @@ Then
 
 Therefore,
 \be
-1-\wh{\theta} \delta = \frac {X_1^T X_1X_2^TY -X_2^TX_1X_1^T Y }{X_1^TX_1X_2^TX_2 - X_1^TX_2X_2^TX_1} \ \ra\ \wh{\theta} = \frac 1{\delta}\bb{1 - \frac {X_1^T X_1X_2^TY -X_2^TX_1X_1^T Y }{X_1^TX_1X_2^TX_2 - X_1^TX_2X_2^TX_1}}
+1-\wh{\theta} \delta = \frac {X_1^T X_1X_2^TY -X_2^TX_1X_1^T Y }{X_1^TX_1X_2^TX_2 - X_1^TX_2X_2^TX_1} \ \ra\ \wh{\theta} = \frac 1{\delta}\brb{1 - \frac {X_1^T X_1X_2^TY -X_2^TX_1X_1^T Y }{X_1^TX_1X_2^TX_2 - X_1^TX_2X_2^TX_1}}
 \ee
 
 \be
-\wh{\mu} = \left.\frac {X_2^T X_2X_1^TY -X_1^TX_2X_2^T Y }{X_1^TX_1X_2^TX_2 - X_1^TX_2X_2^TX_1}  \right/\bb{1 - \frac {X_1^T X_1X_2^TY -X_2^TX_1X_1^T Y }{X_1^TX_1X_2^TX_2 - X_1^TX_2X_2^TX_1}}.
+\wh{\mu} = \left.\frac {X_2^T X_2X_1^TY -X_1^TX_2X_2^T Y }{X_1^TX_1X_2^TX_2 - X_1^TX_2X_2^TX_1}  \right/\brb{1 - \frac {X_1^T X_1X_2^TY -X_2^TX_1X_1^T Y }{X_1^TX_1X_2^TX_2 - X_1^TX_2X_2^TX_1}}.
 \ee
 
 \be
@@ -368,14 +368,14 @@ Therefore,
 
 \section{Planar Brownian motion}
 
-The polar Brownian motion transition density is $p_{s,t}\bb{(\rho,\phi),(r,\theta)}$. The transition density of 2-dimensional Brownian motion is $p_{s,t}(x,y)$ where $x,y\in \R^n$. Kolmogorov backward equation of 2-dimensinal Brownian motion is
+The polar Brownian motion transition density is $p_{s,t}\brb{(\rho,\phi),(r,\theta)}$. The transition density of 2-dimensional Brownian motion is $p_{s,t}(x,y)$ where $x,y\in \R^n$. Kolmogorov backward equation of 2-dimensinal Brownian motion is
 \be
-\fp{}{s}p + \frac 12 \Delta p = \frac 12 \bb{\fpp{}{x_1} + \fpp{}{x_2}}p = 0.
+\fp{}{s}p + \frac 12 \Delta p = \frac 12 \brb{\fpp{}{x_1} + \fpp{}{x_2}}p = 0.
 \ee
 
 By letting $x_1 = \rho\cos\phi$ and $x_2 = \rho\sin\phi$, we have
 \be
-\rho = \bb{x_1^2 + x_2^2}^{1/2},\quad \phi = \arctan \bb{\frac{x_2}{x_1}}.
+\rho = \brb{x_1^2 + x_2^2}^{1/2},\quad \phi = \arctan \brb{\frac{x_2}{x_1}}.
 \ee
 
 Then
@@ -386,41 +386,41 @@ Then
 
 This implies that
 \beast
-\fpp{p}{x_1} & = & \fp{}{\rho}\bb{\fp{p}{x_1}}\fp{\rho}{x_1} + \fp{}{\phi}\bb{\fp{p}{x_1}}\fp{\phi}{x_1}\\
-& = & \cos\phi \fp{}{\rho}\bb{\cos\phi \fp{p}{\rho} -\frac{\sin\phi}{\rho} \fp{p}{\phi} } - \frac{\sin\phi}{\rho} \fp{}{\phi}\bb{\cos\phi \fp{p}{\rho} -\frac{\sin\phi}{\rho} \fp{p}{\phi}  } \\
-& = & \bb{\cos\phi}^2 \fpp{p}{\rho} - \frac{\sin\phi\cos\phi}{\rho}  \frac{\partial^2 p}{\partial\rho\partial \phi} + \frac{\sin\phi\cos\phi}{\rho^2}  \fp{p}{\phi}  -\frac{\sin\phi\cos\phi}{\rho} \frac{\partial^2 p}{\partial \phi\partial\rho} + \frac{ \bb{\sin\phi}^2}{\rho} \fp{p}{\rho} + \frac{\sin\phi\cos\phi}{\rho^2} \fp{p}{\phi} + \frac{\bb{\sin\phi}^2}{\rho^2} \fpp{p}{\phi} ,
+\fpp{p}{x_1} & = & \fp{}{\rho}\brb{\fp{p}{x_1}}\fp{\rho}{x_1} + \fp{}{\phi}\brb{\fp{p}{x_1}}\fp{\phi}{x_1}\\
+& = & \cos\phi \fp{}{\rho}\brb{\cos\phi \fp{p}{\rho} -\frac{\sin\phi}{\rho} \fp{p}{\phi} } - \frac{\sin\phi}{\rho} \fp{}{\phi}\brb{\cos\phi \fp{p}{\rho} -\frac{\sin\phi}{\rho} \fp{p}{\phi}  } \\
+& = & \brb{\cos\phi}^2 \fpp{p}{\rho} - \frac{\sin\phi\cos\phi}{\rho}  \frac{\partial^2 p}{\partial\rho\partial \phi} + \frac{\sin\phi\cos\phi}{\rho^2}  \fp{p}{\phi}  -\frac{\sin\phi\cos\phi}{\rho} \frac{\partial^2 p}{\partial \phi\partial\rho} + \frac{ \brb{\sin\phi}^2}{\rho} \fp{p}{\rho} + \frac{\sin\phi\cos\phi}{\rho^2} \fp{p}{\phi} + \frac{\brb{\sin\phi}^2}{\rho^2} \fpp{p}{\phi} ,
 \eeast
 
 \beast
-\fpp{p}{x_1} & = & \fp{}{\rho}\bb{\fp{p}{x_2}}\fp{\rho}{x_2} + \fp{}{\phi}\bb{\fp{p}{x_2}}\fp{\phi}{x_2}\\
-& = & \sin\phi \fp{}{\rho}\bb{\sin\phi \fp{p}{\rho} + \frac{\cos\phi}{\rho} \fp{p}{\phi} }  + \frac{\cos\phi}{\rho} \fp{}{\phi}\bb{\sin\phi \fp{p}{\rho} + \frac{\cos\phi}{\rho} \fp{p}{\phi} } \\
-& = & \bb{\sin\phi}^2 \fpp{p}{\rho} + \frac{\sin\phi\cos\phi}{\rho}  \frac{\partial^2 p}{\partial\rho\partial \phi} - \frac{\sin\phi\cos\phi}{\rho^2}  \fp{p}{\phi}  + \frac{\sin\phi\cos\phi}{\rho} \frac{\partial^2 p}{\partial \phi\partial\rho} + \frac{ \bb{\cos\phi}^2}{\rho} \fp{p}{\rho} - \frac{\sin\phi\cos\phi}{\rho^2} \fp{p}{\phi} + \frac{\bb{\cos\phi}^2}{\rho^2} \fpp{p}{\phi}.
+\fpp{p}{x_1} & = & \fp{}{\rho}\brb{\fp{p}{x_2}}\fp{\rho}{x_2} + \fp{}{\phi}\brb{\fp{p}{x_2}}\fp{\phi}{x_2}\\
+& = & \sin\phi \fp{}{\rho}\brb{\sin\phi \fp{p}{\rho} + \frac{\cos\phi}{\rho} \fp{p}{\phi} }  + \frac{\cos\phi}{\rho} \fp{}{\phi}\brb{\sin\phi \fp{p}{\rho} + \frac{\cos\phi}{\rho} \fp{p}{\phi} } \\
+& = & \brb{\sin\phi}^2 \fpp{p}{\rho} + \frac{\sin\phi\cos\phi}{\rho}  \frac{\partial^2 p}{\partial\rho\partial \phi} - \frac{\sin\phi\cos\phi}{\rho^2}  \fp{p}{\phi}  + \frac{\sin\phi\cos\phi}{\rho} \frac{\partial^2 p}{\partial \phi\partial\rho} + \frac{ \brb{\cos\phi}^2}{\rho} \fp{p}{\rho} - \frac{\sin\phi\cos\phi}{\rho^2} \fp{p}{\phi} + \frac{\brb{\cos\phi}^2}{\rho^2} \fpp{p}{\phi}.
 \eeast
 
 Then we have
 \beast
-0 = \fp{p}{s} + \frac 12 \bb{\fpp{}{x_1} + \fpp{}{x_2}}p =  \fp{p}{s} + \frac 12 \bb{\fpp{}{\rho} + \frac{1}{\rho} \fp{}{\rho} + \frac{1}{\rho^2} \fpp{}{\phi}}p.
+0 = \fp{p}{s} + \frac 12 \brb{\fpp{}{x_1} + \fpp{}{x_2}}p =  \fp{p}{s} + \frac 12 \brb{\fpp{}{\rho} + \frac{1}{\rho} \fp{}{\rho} + \frac{1}{\rho^2} \fpp{}{\phi}}p.
 \eeast
 
 Since the forward and backward equation of 2-dimensional Brownian motion have the same term, we can simply replace the $\rho$ and $\phi$ with $r$ and $\theta$
 \be
-\fp{p}{t} = \frac 12 \bb{\fpp{}{r} + \frac{1}{r} \fp{}{r} + \frac{1}{r^2} \fpp{}{\theta}}p.
+\fp{p}{t} = \frac 12 \brb{\fpp{}{r} + \frac{1}{r} \fp{}{r} + \frac{1}{r^2} \fpp{}{\theta}}p.
 \ee
 
 Note that this forward equation cannot be derived by integral by part since the corresponding value will not vanish at the extreme point (i.e., $r=0$).
 
 The transition density is\footnote{see A note on planar Brownian motion, Stella Brassesco, The Annals of Probability, 1992, Vol 20, No 3., 1498-1503.}
 \be
-p_{s,t}\bb{(\rho,\phi),(r,\theta)} = \frac 1{\pi t}\exp\bb{-\frac{r^2 + \rho^2}{2t}} \int^\infty_0 \cos\bb{\nu(\theta -\phi)}I_{\nu}\bb{\frac{\rho r}{t}} d\nu.
+p_{s,t}\brb{(\rho,\phi),(r,\theta)} = \frac 1{\pi t}\exp\brb{-\frac{r^2 + \rho^2}{2t}} \int^\infty_0 \cos\brb{\nu(\theta -\phi)}I_{\nu}\brb{\frac{\rho r}{t}} d\nu.
 \ee
 
 \section{Spherical Brownian Motion}
 
 
 \begin{definition}[spherical Brownian motion]
-The spherical Brownian motion $B\bb{\sS^d}$ is the diffusion on the spherical surface $\bra{\sS^d:\dabs{x}=1}\subseteq \R^{d+1}$ with infinitesimal generator $\frac 12 \Delta^d$ where the spherical Laplace operator $\Delta^d$ is
+The spherical Brownian motion $B\brb{\sS^d}$ is the diffusion on the spherical surface $\bra{\sS^d:\dabs{x}=1}\subseteq \R^{d+1}$ with infinitesimal generator $\frac 12 \Delta^d$ where the spherical Laplace operator $\Delta^d$ is
 \be
-\Delta^d = \bb{\sin\phi}^{1-d}\fp{}{\phi}\bb{(\sin\phi)^{d-1}\fp{}{\phi}} + \bb{\sin\phi}^{-2}\Delta^{d-1},\qquad \Delta^1 = \frac{\partial^2}{\partial\theta^2}.
+\Delta^d = \brb{\sin\phi}^{1-d}\fp{}{\phi}\brb{(\sin\phi)^{d-1}\fp{}{\phi}} + \brb{\sin\phi}^{-2}\Delta^{d-1},\qquad \Delta^1 = \frac{\partial^2}{\partial\theta^2}.
 \ee
 
 Note that $\phi$ is the colatitude, the complementary angle of latitude.
@@ -432,8 +432,8 @@ In particular, $B(\sS^1)$ is the projection modulo $2\pi$ of the standard 1-dime
 \begin{example}[$B(\sS^2)$]
 The infinitesimal generator of $B(\sS^2)$ is
 \beast
-\frac 12\Delta^2  & = & \frac 12\bb{\bb{\sin\phi}^{-1}\fp{}{\phi}\bb{ \sin\phi \fp{}{\phi}} + \bb{\sin\phi}^{-2} \fpp{}{\theta} }\\
-& = & \frac 12 \bb{ \fpp{}{\phi} + \bb{\tan \phi}^{-1} \fp{}{\phi} + \bb{\sin\phi}^{-2} \fpp{}{\theta}}
+\frac 12\Delta^2  & = & \frac 12\brb{\brb{\sin\phi}^{-1}\fp{}{\phi}\brb{ \sin\phi \fp{}{\phi}} + \brb{\sin\phi}^{-2} \fpp{}{\theta} }\\
+& = & \frac 12 \brb{ \fpp{}{\phi} + \brb{\tan \phi}^{-1} \fp{}{\phi} + \brb{\sin\phi}^{-2} \fpp{}{\theta}}
 \eeast
 
 The backward Kolmogorov equation is
@@ -442,23 +442,23 @@ The backward Kolmogorov equation is
 \ee
 and forward Kolmogorov equation is
 \beast
-\fp{p}{t} & = & - \frac 12\fp{}{\phi}\bb{\frac {1}{\tan\phi}p} + \frac 12 \fpp{}{\phi} p+ \frac 12 \fpp{}{\theta}\bb{\frac 1{\sin^2\phi}p} \\
+\fp{p}{t} & = & - \frac 12\fp{}{\phi}\brb{\frac {1}{\tan\phi}p} + \frac 12 \fpp{}{\phi} p+ \frac 12 \fpp{}{\theta}\brb{\frac 1{\sin^2\phi}p} \\
 & = &  \frac p{2\sin^2\phi}  - \frac {1}{2\tan\phi} \fp{p}{\phi} + \frac 12 \fpp{p}{\phi}+ \frac 1{2\sin^2\phi} \fpp{p}{\theta}
 \eeast%The forward equation is
 %\beast
-%\fp{}{t}p_{s,t}\bb{(\theta_s,\phi_s),(\theta_t,\phi_t)} & = & \frac 12 \Delta p_{s,t}\bb{(\theta_s,\phi_s),(\theta_t,\phi_t)} \\
-%& = & \frac 12  \bb{\fpp{}{\phi_t} + \bb{\tan \phi_t}^{-1} \fp{}{\phi_t} + \bb{\sin\phi_t}^{-2} \fpp{}{\theta_t}}p_{s,t}\bb{(\theta_s,\phi_s),(\theta_t,\phi_t)}
+%\fp{}{t}p_{s,t}\brb{(\theta_s,\phi_s),(\theta_t,\phi_t)} & = & \frac 12 \Delta p_{s,t}\brb{(\theta_s,\phi_s),(\theta_t,\phi_t)} \\
+%& = & \frac 12  \brb{\fpp{}{\phi_t} + \brb{\tan \phi_t}^{-1} \fp{}{\phi_t} + \brb{\sin\phi_t}^{-2} \fpp{}{\theta_t}}p_{s,t}\brb{(\theta_s,\phi_s),(\theta_t,\phi_t)}
 %\eeastfor $\kappa >0$.
 
 Furthermore\footnote{check needed.},
 \beast
-p_{s,t}\bb{(\theta_s,\phi_s),(\theta_t,\phi_t)} & = & \sum^\infty_{k=0} \exp\bb{-\frac{k(k+1) t}{2}} \sum_{m=-k}^k Y_k^m(\theta_s,\phi_s) \ol{Y_k^m(\theta_t,\phi_t)} \\
-& = & \sum^\infty_{k=0} \exp\bb{-\frac{k(k+1) t}{2}} \sum_{m=-k}^k Y_{k,m}(\theta_s,\phi_s) Y_{k,m}(\theta_t,\phi_t) \\
-& = & \frac 1{4\pi}\sum^\infty_{k=0} (2k+1)\exp\bb{-\frac{k(k+1) t}{2}} P_k(\cos \vp)
+p_{s,t}\brb{(\theta_s,\phi_s),(\theta_t,\phi_t)} & = & \sum^\infty_{k=0} \exp\brb{-\frac{k(k+1) t}{2}} \sum_{m=-k}^k Y_k^m(\theta_s,\phi_s) \ol{Y_k^m(\theta_t,\phi_t)} \\
+& = & \sum^\infty_{k=0} \exp\brb{-\frac{k(k+1) t}{2}} \sum_{m=-k}^k Y_{k,m}(\theta_s,\phi_s) Y_{k,m}(\theta_t,\phi_t) \\
+& = & \frac 1{4\pi}\sum^\infty_{k=0} (2k+1)\exp\brb{-\frac{k(k+1) t}{2}} P_k(\cos \vp)
 \eeast%\footnote{definition needed. $Y_{n,k}(\theta,\phi)=e^{ik\phi}P_{n}^k(\cos\theta)$ where $P_n^k$ is the associated Legendre function and $P_n^0 = P_n$.}\footnote{$P_n(r\cdot r') = \frac{4\pi}{2n+1} \sum^n_{k=-n} Y_{n,k}(\theta,\phi)Y_{n,k}^*(\theta',\phi')$.}.
 where $P_n(\cdot)$ is the $n$th Legendre polynomial, $Y^k_n(\cdot)$ is the spherical harmonics (see Definition \ref{def:spherical_harmonics}), $Y_{n,k}(\cdot)$ is Laplacian (real) spherical harmonics (see Definition \ref{def:spherical_harmonics_laplacian}) and $\phi$ the angle between unit vector $r_s$ and $r_t$ with corresponding coordinates $(\theta_s,\phi_s)$ and $(\theta_t,\phi_t)$. That is,
 \be
-\cos\vp = \cos\bb{\theta_t - \theta_s}\sin\phi_s\sin\phi_t + \cos\phi_s\cos\phi_t.
+\cos\vp = \cos\brb{\theta_t - \theta_s}\sin\phi_s\sin\phi_t + \cos\phi_s\cos\phi_t.
 \ee
 \end{example}
 
@@ -466,20 +466,20 @@ where $P_n(\cdot)$ is the $n$th Legendre polynomial, $Y^k_n(\cdot)$ is the spher
 \ben
 \item [(i)] $B(\sS^2)$ is the skew product of Legendre process $\leg(2)$ with infinitesimal generator
 \be
-\frac 12 \bb{\sin\phi}^{-1}\fp{}{\phi}\bb{\sin\phi\fp{}{\phi}} ,\qquad \phi \in (0,\pi)
+\frac 12 \brb{\sin\phi}^{-1}\fp{}{\phi}\brb{\sin\phi\fp{}{\phi}} ,\qquad \phi \in (0,\pi)
 \ee
-and an independent spherical Brownian motion $B\bb{\sS^1}$ with the clock
+and an independent spherical Brownian motion $B\brb{\sS^1}$ with the clock
 \be
-I = \int^t_0 \sin^{-2}\bb{\phi(s)} ds.
+I = \int^t_0 \sin^{-2}\brb{\phi(s)} ds.
 \ee
 
 \item [(ii)] $B(\sS^d)$ is the skew product of Legendre process $\leg(d)$ with infinitesimal generator
 \be
-\frac 12 \bb{\sin\phi}^{1-d}\fp{}{\phi}\bb{\bb{\sin\phi}^{d-1}\fp{}{\phi}} ,\qquad \phi \in (0,\pi)
+\frac 12 \brb{\sin\phi}^{1-d}\fp{}{\phi}\brb{\brb{\sin\phi}^{d-1}\fp{}{\phi}} ,\qquad \phi \in (0,\pi)
 \ee
 and an independent spherical Brownian motion $B(\sS^{d-1})$ with the clock
 \be
-I = \int^t_0 \sin^{-2}\bb{\phi(s)} ds.
+I = \int^t_0 \sin^{-2}\brb{\phi(s)} ds.
 \ee
 \een
 \end{theorem}
@@ -497,11 +497,11 @@ See for \footnote{McKean book P270} skew product calculation. (F. Spitzer, Some 
 \begin{theorem}[$B(\R^d) = \bes(d)\times B(\sS^{d-1})$]
 $B(\R^d)$ is the skew product of Bessel process $\bes(d)$ with infinitesimal generator
 \be
-\frac 12 \bb{\frac{d-1}{r}\fp{}{r} + \fpp{}{r}},\qquad r>0
+\frac 12 \brb{\frac{d-1}{r}\fp{}{r} + \fpp{}{r}},\qquad r>0
 \ee
 and an independent spherical Brownian motion $B(\sS^{d-1})$ with the clock
 \be
-I = \int^t_0 \sin^{-2}\bb{(s)} ds.
+I = \int^t_0 \sin^{-2}\brb{(s)} ds.
 \ee
 \end{theorem}
 
