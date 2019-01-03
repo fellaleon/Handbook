@@ -90,7 +90,7 @@ r_1-r_2 = (s_1-s_2, t_1-t_2) \in R \text{ since }s_1-s_2\in S, t_1-t_2 \in T\tex
 \ee
 
 %Closed under the given operation, as $h_1h_2 \in H$ and $k_1k_2 \in K$.
-\item [(ii)] $r_1r_2 = (s_1,t_1)(s_2,t_2) = (s_1s_2,t_1t_2) \in S\times T $ and $1_R := \bb{1_S,1_T}$.%Associative since multiplication in $H$ and $K$ is associative.
+\item [(ii)] $r_1r_2 = (s_1,t_1)(s_2,t_2) = (s_1s_2,t_1t_2) \in S\times T $ and $1_R := \brb{1_S,1_T}$.%Associative since multiplication in $H$ and $K$ is associative.
 \item [(iii)] Distributivity is implied by %Identity $e = (e_H,e_K)$.%\item [(iv)] Inverse of $(h,k) = (h^{-1},k^{-1})$.
 \beast
 r_1(r_2 + r_3) & = & (s_1,t_1)(s_2+s_3, t_2+t_3) = (s_1s_2 + s_1s_3, t_1t_2 + t_1 t_3) = (s_1s_2, t_1t_2) + (s_1s_3,t_1t_3)\\
@@ -123,7 +123,7 @@ with $a_i \in R$. The degree\index{degree!polynomial} of $f$ is the largest $n$ 
 \begin{definition}[polynomial ring\index{polynomial ring}]
 $R[X]$ is the (commutative) polynomial ring over $R$ with ring operations
 \be
-(f + g)(X) = \sum_i (a_i + b_i)X^i,\quad\quad (fg)(X) = \sum_i \bb{\sum^i_{j=0} a_jb_{i-j} } X^i
+(f + g)(X) = \sum_i (a_i + b_i)X^i,\quad\quad (fg)(X) = \sum_i \brb{\sum^i_{j=0} a_jb_{i-j} } X^i
 \ee
 where $f(X) = \sum a_iX^i$, $g(X) = \sum b_iX^i$.
 \end{definition}
@@ -143,7 +143,7 @@ with the same addition and multiplication as for $R[X]$ but note that there is n
 \begin{definition}[Laurent polynomials\index{Laurent polynomials}]
 The (commutative) Laurent polynomials are
 \be
-f(X) = \sum_{i\in \Z} a_iX^i, \quad\quad (fg)(X) = \sum_i \bb{\sum_j a_jb_{i-j}} X^i
+f(X) = \sum_{i\in \Z} a_iX^i, \quad\quad (fg)(X) = \sum_i \brb{\sum_j a_jb_{i-j}} X^i
 \ee
 with the condition that all but finitely many $a_i$ are zero, e.g. $X^{-1} + X$.
 \end{definition}
@@ -455,12 +455,12 @@ Now we show that $\im \theta$ is a subring of $S$,
 \item [(ii)] $\theta(r_1)\theta(r_2) = \theta(r_1r_2)\in \im \theta$, so we have closure under multiplication. Associativity is inherited from $S$. Moreover, $\theta(1_R) = 1_S$.
 \item [(iii)] $\forall s_1,s_2,s_3 \in S$ where $s_1 = \theta(r_1),s_2 = \theta(r_2),s_3 = \theta(r_3)$, $r_1,r_2,r_3\in R$,
 \be
-s_1(s_2 + s_3) = \theta(r_1)\bb{\theta(r_2) + \theta(r_3)} = \theta(r_1)\theta(r_2+r_3) = \theta\bb{r_1(r_2 + r_3)}
+s_1(s_2 + s_3) = \theta(r_1)\brb{\theta(r_2) + \theta(r_3)} = \theta(r_1)\theta(r_2+r_3) = \theta\brb{r_1(r_2 + r_3)}
 \ee
 
 Then by distributivity of ring $R$,
 \be
-\theta\bb{r_1(r_2 + r_3)} = \theta (r_1r_2 + r_1r_3) = \theta (r_1r_2) + \theta(r_1r_3) = \theta (r_1)\theta(r_2) + \theta (r_1)\theta(r_3) = s_1s_2 + s_1 s_3.
+\theta\brb{r_1(r_2 + r_3)} = \theta (r_1r_2 + r_1r_3) = \theta (r_1r_2) + \theta(r_1r_3) = \theta (r_1)\theta(r_2) + \theta (r_1)\theta(r_3) = s_1s_2 + s_1 s_3.
 \ee
 
 Thus, $s_1(s_2 + s_3) = s_1s_2 + s_1 s_3$ and therefore $\im \theta$ is a subring of $R$.
@@ -472,7 +472,7 @@ r_1 - r_2 \in I = \ker\theta \ \ra\ \theta(r_1 - r_2) = 0 \ \ra\ \theta(r_1) = \
 \ee
 which implies that $\Phi$ is well-defined. It is easy to see that $\Phi$ is bijective and thus it is an isomorphism of abelian additive groups from first isomorphism theorem of group (Theorem \ref{thm:isomorphism_1_group}). Note that it is due to the fact that any subgroup of abelian additive groups is normal ($\ker\theta$ is an ideal (subgroup under addition) and thus normal).
 
-So it is left to check that $\Phi$ is a ring homomorphism. Accordingly, 
+So it is left to check that $\Phi$ is a ring homomorphism. Accordingly,
 \beast
 \Phi(r_1 + I + r_2 + I) & = & \Phi(r_1 + r_2 + I) = \theta (r_1 +r_2) = \theta (r_1) + \theta(r_2) = \Phi(r_1 + I) + \Phi(r_2 + I)\\
 \Phi((r_1 + I)(r_2 + I)) & = & \Phi(r_1r_2 + I) = \theta(r_1r_2) = \theta(r_1)\theta(r_2) = \Phi(r_1 + I)\Phi(r_2 + I),\\
@@ -497,7 +497,7 @@ Let $R$ be a subring of $S$ and $J \lhd S$ an ideal. Then $R \cap J\lhd R$ is an
 \be
 \bra{r + J : r \in R} = (R + J)/J \leq S/J
 \ee
-which means that $(R + J)/J $ is a subring of $S/J$ and 
+which means that $(R + J)/J $ is a subring of $S/J$ and
 \be
 R/(R \cap J) \cong (R + J)/J.
 \ee
@@ -567,7 +567,7 @@ Let $R$ be a ring and $I$ be an ideal of $R$ ($I\lhd R$). Then there is a biject
 
 Also, there is a bijection between the set of all ideals of $R$ containing $I$ and the set of all ideals of $R/I$. That is,
 \be
-\bra{\text{ideals of $R$ containing $I$}}\ \longleftrightarrow \ \bra{\text{ideals of $R/I$}} 
+\bra{\text{ideals of $R$ containing $I$}}\ \longleftrightarrow \ \bra{\text{ideals of $R/I$}}
 \ee
 
 In other words, for $I\subseteq J\subseteq R$,
@@ -583,7 +583,7 @@ There is a one-to-one correspondence with maps $\Phi$ and $\Theta$ between addit
 \beast
 \left\{\text{additive subgroups of $R$ containing ideal $I$}\right\} &  \longleftrightarrow & \left\{\text{additive subgroups of $R/I$}\right\} \\
 \Phi: \ S & \longrightarrow & S/I \\
-\Theta:\ \bra{r\in R:r+I\in T} & \longleftarrow & T 
+\Theta:\ \bra{r\in R:r+I\in T} & \longleftarrow & T
 \eeast
 as in group correspondence theorem (Theorem \ref{thm:correspondence_subgroup_containg_normal_subgroup_quotient_group}) since additive group is abelian (due to definition of ring $R$) and every subgroup is normal. Note that $r+I$ is the equivalent form of $rI$ under addition.
 
@@ -595,12 +595,12 @@ First, we want to show that there is one-to-one correspondence between
 \ee
 and it suffices to show that $\Phi$ and $\Theta$ maps subrings to subrings between the rings. Also, since $R$ and $R/I$ are both rings (by Proposition \ref{pro:quotient_ring}), distributive over addition and associative property can be easily inherited from $R$ and $R/I$. Thus, we only check the conditions that multiplication is closed and the multiplicative idenity is contained in the corresponding set.
 
-Let $S\in \sub(R:I)$ and $\Phi$ maps $S$ to $S/I = \bra{s+I: s\in S}$. Then for any $s_1+I,s_2+I\in S/I$ with $s_1,s_2\in S$, we have that $s_1s_2\in S$. Thus, 
+Let $S\in \sub(R:I)$ and $\Phi$ maps $S$ to $S/I = \bra{s+I: s\in S}$. Then for any $s_1+I,s_2+I\in S/I$ with $s_1,s_2\in S$, we have that $s_1s_2\in S$. Thus,
 \be
 (s_1+I)(s_2+I) = s_1s_2 + I \in S/I \ \ra\ S/I \text{ is closed.}
 \ee
 
-We know that $1_R+I$ is the identity of $R/I$ since $(r+I) (1_R+I) = r+I = (1_R+I)(r+I)$ for any $r+I \in R/I$. Also, $1_R$ is the identity of $S$ since $S$ is a subring of $R$. Thus, $s1_R = s = 1_Rs$ for any $s\in S$. Thus, for any $s+I \in S/I$, 
+We know that $1_R+I$ is the identity of $R/I$ since $(r+I) (1_R+I) = r+I = (1_R+I)(r+I)$ for any $r+I \in R/I$. Also, $1_R$ is the identity of $S$ since $S$ is a subring of $R$. Thus, $s1_R = s = 1_Rs$ for any $s\in S$. Thus, for any $s+I \in S/I$,
 \be
 (s+I)(1_R+I) = s1_R + I = s + I = 1_R s + I = (1_R+I)(s+I)
 \ee
@@ -612,7 +612,7 @@ Meanwhile, consider the $T \in \sub(R/I)$ and $\Theta$ maps $T$ to $\bra{r\in R:
 r_1r_2 + I = (r_1+I)(r_2+I) \in T \ \ra \ r_1r_2 \in \bra{r\in R: r+I\in T}\ \ra\  \bra{r\in R: r+I\in T}\text{ is closed.}
 \ee
 
-Also, $1_R + I$ is the identity of $R/I$ and $T$ since $T$ is a subring of $R/I$. Thus, $1_R\in \bra{r\in R:r+I \in T}$ as $1_R+I \in T$. 
+Also, $1_R + I$ is the identity of $R/I$ and $T$ since $T$ is a subring of $R/I$. Thus, $1_R\in \bra{r\in R:r+I \in T}$ as $1_R+I \in T$.
 
 Second, we want to show that there is one-to-one correspondence between
 \be
@@ -887,25 +887,25 @@ We can introduce the argument in proof of Theorem \ref{thm:chinese_remainder_num
 \begin{proof}[\bf Proof]
 Consider the mapping $\theta$:
 \be
-\Z/n\Z \to \Z/n_1\Z \times \dots \times \Z/n_k\Z,\quad r \mapsto \bb{r\lmod{n_1},\dots, r\lmod{n_k}}.
+\Z/n\Z \to \Z/n_1\Z \times \dots \times \Z/n_k\Z,\quad r \mapsto \brb{r\lmod{n_1},\dots, r\lmod{n_k}}.
 \ee
 
 First, we can see the mapping is well-defined. By Lemma \ref{lem:direct_product_of_rings}, we know that $\prod^k_{i=1} \Z/n_i\Z$ is ring. Thus, $r_1,r_2 \in \Z/n\Z$, by basic properties of product ring we have
 \beast
-\theta(r_1+r_2) & = & \bb{(r_1+r_2)\lmod{n_1},\dots, (r_1+r_2)\lmod{n_k}} \\
-& = & \bb{(r_1\lmod{n_1},\dots, r_1\lmod{n_k}} + \bb{(r_2\lmod{n_1},\dots, r_2\lmod{n_k}} \\
+\theta(r_1+r_2) & = & \brb{(r_1+r_2)\lmod{n_1},\dots, (r_1+r_2)\lmod{n_k}} \\
+& = & \brb{(r_1\lmod{n_1},\dots, r_1\lmod{n_k}} + \brb{(r_2\lmod{n_1},\dots, r_2\lmod{n_k}} \\
 & = & \theta(r_1)+ \theta(r_2).
 \eeast
 
 \beast
-\theta(r_1r_2) & = & \bb{(r_1r_2)\lmod{n_1},\dots, (r_1r_2)\lmod{n_k}} \\
-& = & \bb{(r_1\lmod{n_1},\dots, r_1\lmod{n_k}}\cdot \bb{(r_2\lmod{n_1},\dots, r_2\lmod{n_k}} \\
+\theta(r_1r_2) & = & \brb{(r_1r_2)\lmod{n_1},\dots, (r_1r_2)\lmod{n_k}} \\
+& = & \brb{(r_1\lmod{n_1},\dots, r_1\lmod{n_k}}\cdot \brb{(r_2\lmod{n_1},\dots, r_2\lmod{n_k}} \\
 & = & \theta(r_1)\theta(r_2).
 \eeast
 
 For $r = 1_{\Z/n\Z}$, we have that
 \be
-\theta(r) = \bb{r\lmod{n_1},\dots,r\lmod{n_k}} = \bb{1_{\Z/n_1\Z},\dots,1_{\Z/n_k\Z}}
+\theta(r) = \brb{r\lmod{n_1},\dots,r\lmod{n_k}} = \brb{1_{\Z/n_1\Z},\dots,1_{\Z/n_k\Z}}
 \ee
 which is the multiplicative identity of product ring. Thus, $\theta$ is a ring homomorphism.
 
@@ -945,7 +945,7 @@ We can also consider this corollary as the decomposition rule of modular rings.
 Recalling Definition \ref{def:multiplicative_group_ring} we restate the definition of multiplicative group of integers modulo $n$.
 
 \begin{definition}[multiplicative group of integers modulo $n$\index{multiplicative group!integers modulo $n$}]
-The multiplicative group of integers modulo $n$ under multiplication of the invertible elements of the ring $\Z/n\Z$, written by $\bb{\Z/n\Z}^{\times}$.
+The multiplicative group of integers modulo $n$ under multiplication of the invertible elements of the ring $\Z/n\Z$, written by $\brb{\Z/n\Z}^{\times}$.
 \end{definition}
 
 For multiplicative groups of modulo $n$
@@ -954,27 +954,27 @@ For multiplicative groups of modulo $n$
 \ben
 \item [(i)] The multiplicative group of quotient ring $\Z/p\Z$ with prime $p$ (actually a filed, see Corollary \ref{cor:znz_field_iff_prime}) is
 \be
-\bb{\Z/p\Z}^\times = \bb{\Z/p\Z}\bs \bra{0} = \bra{1,2,\dots,p-1}.
+\brb{\Z/p\Z}^\times = \brb{\Z/p\Z}\bs \bra{0} = \bra{1,2,\dots,p-1}.
 \ee
 
 In particular, if $p = 7$,
 \be
-\bb{\Z/p\Z}^\times = \bb{\Z/7\Z}^\times = \bra{1,2,3,4,5,6}.
+\brb{\Z/p\Z}^\times = \brb{\Z/7\Z}^\times = \bra{1,2,3,4,5,6}.
 \ee
 
 \item [(ii)] The multiplicative group of quotient ring $\Z/8\Z$ is
 \be
-\bb{\Z/8\Z}^\times = \bra{1,3,5,7}.
+\brb{\Z/8\Z}^\times = \bra{1,3,5,7}.
 \ee
 \een
 \end{example}
 
 \begin{theorem}\label{thm:multiplicative_group_znz_size_euler_totient}
-The multiplicative group of the quotient ring $\Z/n\Z$, written $\bb{\Z/n\Z}^\times$, has size $\phi(n)$ where $\phi$ is Euler's totient function.
+The multiplicative group of the quotient ring $\Z/n\Z$, written $\brb{\Z/n\Z}^\times$, has size $\phi(n)$ where $\phi$ is Euler's totient function.
 \end{theorem}
 
 \begin{proof}[\bf Proof]
-We know that $\bb{\Z/n\Z}^\times$ contains all the unit of $\Z/n\Z$. This means $a\in \bb{\Z/n\Z}^\times$ if there exists $ax \equiv 1 \lmod{n}$, which is equivalent to $\hcf(a,n)=1$ by Lemma \ref{lem:coprime_congruence_generator_group}. Thus, the size of $\bb{\Z/n\Z}^\times$ is $\phi(n)$, the size of
+We know that $\brb{\Z/n\Z}^\times$ contains all the unit of $\Z/n\Z$. This means $a\in \brb{\Z/n\Z}^\times$ if there exists $ax \equiv 1 \lmod{n}$, which is equivalent to $\hcf(a,n)=1$ by Lemma \ref{lem:coprime_congruence_generator_group}. Thus, the size of $\brb{\Z/n\Z}^\times$ is $\phi(n)$, the size of
 \be
 \bra{a\in \Z^+: 1\leq a\leq n, \hcf(a,n)=1}.
 \ee
@@ -991,7 +991,7 @@ $\Z/n\Z$ is a field if and only if every non-zero element is a unit, if and only
 \begin{theorem}
 The multiplicative groups of $\Z/2^n\Z$ have the following isomorphism.
 \be
-\bb{\Z/2\Z}^\times \cong C_1,\qquad \bb{\Z/4\Z}^\times \cong C_2,\qquad \bb{\Z/2^n\Z}^\times \cong C_2\times C_{2^{n-2}},\quad n\geq 2.
+\brb{\Z/2\Z}^\times \cong C_1,\qquad \brb{\Z/4\Z}^\times \cong C_2,\qquad \brb{\Z/2^n\Z}^\times \cong C_2\times C_{2^{n-2}},\quad n\geq 2.
 \ee
 \end{theorem}
 
@@ -1000,21 +1000,21 @@ First, we know that the order of $(\Z/2^n\Z)^\times$ is $2^{n-1}$ (containing al
 
 For $n=1,2$, we can easily see that
 \be
-\bb{\Z/2\Z}^\times = \bra{1} \cong C_1,\qquad \bb{\Z/4\Z}^\times = \bra{1,3} \cong C_2.
+\brb{\Z/2\Z}^\times = \bra{1} \cong C_1,\qquad \brb{\Z/4\Z}^\times = \bra{1,3} \cong C_2.
 \ee
 
 For $n=3$, we have
 \be
-\bb{\Z/8\Z}^\times = \bra{1,3,5,7} \cong C_2\times C_2
+\brb{\Z/8\Z}^\times = \bra{1,3,5,7} \cong C_2\times C_2
 \ee
 since orders of $3,5,7$ are 2 as
 \be
 3^2 = 9 \equiv 1 \lmod{8},\qquad 5^2 = 25 \equiv 1 \lmod{8},\qquad 7^2=49 \equiv 1\lmod{8}.
 \ee
 
-For $n=4$, we have $\bb{\Z/16\Z}^\times$ is not cyclic and
+For $n=4$, we have $\brb{\Z/16\Z}^\times$ is not cyclic and
 \be
-\bb{\Z/16\Z}^\times = \bra{1,3,5,7,9,11,13,15} \cong C_2\times C_4
+\brb{\Z/16\Z}^\times = \bra{1,3,5,7,9,11,13,15} \cong C_2\times C_4
 \ee
 since orders of $3$ are 4 as
 \be
@@ -1033,7 +1033,7 @@ So we consider the case $n\geq 5$. Picking $\pm 1,2^{n-1}\pm 1 \in (\Z/2^n\Z)^\t
 
 Therefore, $(\Z/2^n\Z)^\times$ is not cyclic by Lemma \ref{lem:subgroup_of_cyclic_group_is_cyclic}. Then we can have that
 \be
-\bb{\Z/2^n\Z}^\times \cong C_2 \times C_{2^{n-2}}
+\brb{\Z/2^n\Z}^\times \cong C_2 \times C_{2^{n-2}}
 \ee
 by Theorem \ref{thm:finite_abelian_p_group_direct_product_maximal_element} given that there is an element order $2^{n-2}$, indeed, this is 3. This can be done induction. If 3 has order $2^{n-3}$ with respect to modulo $2^{n-1}$ (which is true for $n=1,2,3,4,5$), then $k< n-3$
 \be
@@ -1048,7 +1048,7 @@ Thus, it suffices to show that for $n\geq 5$,
 
 %Since $3^{2^{n-3}} \equiv 1 \lmod{2^{n-1}}$, we have
 %\be
-%3^{2^{n-3}} = 1 + 2^{n-1}x \ \ra\ \ 3^{2^{n-2}} = 9 \bb{1 + 2^{n-1}x} = (1+8) \bb{1 + 2^{n-1}x} \equiv 1 + 2 + 2^{n-1}x \not\equiv 1 \lmod{2^{n}}.
+%3^{2^{n-3}} = 1 + 2^{n-1}x \ \ra\ \ 3^{2^{n-2}} = 9 \brb{1 + 2^{n-1}x} = (1+8) \brb{1 + 2^{n-1}x} \equiv 1 + 2 + 2^{n-1}x \not\equiv 1 \lmod{2^{n}}.
 %\ee
 %
 %Furthermore,
@@ -1058,16 +1058,16 @@ Thus, it suffices to show that for $n\geq 5$,
 
 Then for $k\geq 2$
 \be
-3^{2^{k}} = (1+2)^{2^{k}} = 1 + \sum^{2^k}_{i=1} 2^i \binom{2^k}{i} =  1 + \sum^{2^k}_{i=1} \frac{2^i \bb{2^k}!}{i!\bb{2^k-i}!}.
+3^{2^{k}} = (1+2)^{2^{k}} = 1 + \sum^{2^k}_{i=1} 2^i \binom{2^k}{i} =  1 + \sum^{2^k}_{i=1} \frac{2^i \brb{2^k}!}{i!\brb{2^k-i}!}.
 \ee
 
-%For any $i\geq 1$, we have that by fundamental theorem of arithmetic $i! = p^{a_i}z$ for some positive integer $z$. Then $a_i < i$ so $p\mid \frac{p^i}{p^{a_i}}$. Also we have $p^{n-1}\left|\frac{\bb{p^{n-1}}!}{\bb{p^{n-1}-i}!}\right.$. Therefore,
+%For any $i\geq 1$, we have that by fundamental theorem of arithmetic $i! = p^{a_i}z$ for some positive integer $z$. Then $a_i < i$ so $p\mid \frac{p^i}{p^{a_i}}$. Also we have $p^{n-1}\left|\frac{\brb{p^{n-1}}!}{\brb{p^{n-1}-i}!}\right.$. Therefore,
 %\be
-%p^n \left| \frac{p^i \bb{p^{n-1}}!}{i!\bb{p^{n-1}-i}!}\right.
+%p^n \left| \frac{p^i \brb{p^{n-1}}!}{i!\brb{p^{n-1}-i}!}\right.
 %\ee
 %which implies that
 
-Then by lemma \ref{lem:prime_power_divides_factorial}, the largest $a$ such that $2^a$ divides $i!$, largest $b$ such that $2^b$ divides $\bb{2^k-i}!$ and largest $c$ such that $2^c$ divides $\bb{2^k}!$ can be expressed by
+Then by lemma \ref{lem:prime_power_divides_factorial}, the largest $a$ such that $2^a$ divides $i!$, largest $b$ such that $2^b$ divides $\brb{2^k-i}!$ and largest $c$ such that $2^c$ divides $\brb{2^k}!$ can be expressed by
 \be
 a = \sum^\infty_{j=1}\floor{\frac{i}{2^j}}, \quad b = \sum^\infty_{j=1}\floor{\frac{2^k - i}{2^j}},\quad c = \sum^\infty_{j=1}\floor{\frac{2^k}{2^j}}
 \ee
@@ -1078,18 +1078,18 @@ c - (a+b) =  k - j
 \ee
 which implies that the $i$th term is
 \be
-\frac{2^i \bb{2^k}!}{i!\bb{2^k-i}!} = x 2^{i} 2^{k-j} = x 2^k 2^{2^j y -j}.
+\frac{2^i \brb{2^k}!}{i!\brb{2^k-i}!} = x 2^{i} 2^{k-j} = x 2^k 2^{2^j y -j}.
 \ee
 
 But we know that $2^j y - j \geq 2$ for all $j$ except $i=1,2$. Hence for ($\dag$),
 \beast
-3^{2^{n-2}} & = & (1+2)^{2^{n-2}} \equiv 1 + 2\cdot 2^{n-2} + 2^2 \cdot \frac{2^{n-2}\bb{2^{n-2}-1}}2 \lmod{2^n} \\
-& = & 1 + 2\cdot 2^{n-2} + 2 \cdot 2^{n-2}\bb{2^{n-2}-1} = 1 + 2^{2n-3} \equiv 1 \lmod{2^n}
+3^{2^{n-2}} & = & (1+2)^{2^{n-2}} \equiv 1 + 2\cdot 2^{n-2} + 2^2 \cdot \frac{2^{n-2}\brb{2^{n-2}-1}}2 \lmod{2^n} \\
+& = & 1 + 2\cdot 2^{n-2} + 2 \cdot 2^{n-2}\brb{2^{n-2}-1} = 1 + 2^{2n-3} \equiv 1 \lmod{2^n}
 \eeast
 since $n\geq 5$. Similarly, for ($*$) we know that $2^j y - j \geq 3$ for all $j$ except $i=1,2,4$,
 \beast
-3^{2^{n-3}} & = & (1+2)^{2^{n-3}} \equiv 1 + 2\cdot 2^{n-3} + 2^2 \cdot \frac{2^{n-3}\bb{2^{n-3}-1}}2 + 2^4\cdot \frac{2^{n-3}\bb{2^{n-3}-1}\bb{2^{n-3}-2}\bb{2^{n-3}-3}}{24} \lmod{2^n} \\
-& = & 1 + 2\cdot 2^{n-3} + 2 \cdot 2^{n-3}\bb{2^{n-3}-1} + \frac{2^{n-1}\bb{2^{n-3}-1}\bb{2^{n-4}-1}\bb{2^{n-3}-3}}{3} \lmod{2^n} \\
+3^{2^{n-3}} & = & (1+2)^{2^{n-3}} \equiv 1 + 2\cdot 2^{n-3} + 2^2 \cdot \frac{2^{n-3}\brb{2^{n-3}-1}}2 + 2^4\cdot \frac{2^{n-3}\brb{2^{n-3}-1}\brb{2^{n-3}-2}\brb{2^{n-3}-3}}{24} \lmod{2^n} \\
+& = & 1 + 2\cdot 2^{n-3} + 2 \cdot 2^{n-3}\brb{2^{n-3}-1} + \frac{2^{n-1}\brb{2^{n-3}-1}\brb{2^{n-4}-1}\brb{2^{n-3}-3}}{3} \lmod{2^n} \\
 & = & 1 + 2^{2n-5} + x 2^{n-1} \equiv1 + x 2^{n-1}  \not\equiv 1 \lmod{2^n}
 \eeast
 where $\hcf(x,2) =1$.
@@ -1099,14 +1099,14 @@ where $\hcf(x,2) =1$.
 
 Let $p$ be a prime number and for field $\Z/p\Z$ (see Example \ref{exa:zpz_field}), its multiplicative group
 \be
-\bb{\Z/p\Z}^{\times} = \bb{\Z/p\Z}\bs \bra{0} = \bra{1,2,\dots, p-1} \cong C_{p-1}.
-\ee%forms $\bb{\Z/p\Z}^{\times}$, the cyclic multiplicative groups of $\Z/p\Z$.%is cyclic.
+\brb{\Z/p\Z}^{\times} = \brb{\Z/p\Z}\bs \bra{0} = \bra{1,2,\dots, p-1} \cong C_{p-1}.
+\ee%forms $\brb{\Z/p\Z}^{\times}$, the cyclic multiplicative groups of $\Z/p\Z$.%is cyclic.
 \end{theorem}
 
 \begin{proof}[\bf Proof]
-{\bf Approach 1.} First, it is easy to see that $\bb{\Z/p\Z}\bs \bra{0}$ is a group under multiplication.
+{\bf Approach 1.} First, it is easy to see that $\brb{\Z/p\Z}\bs \bra{0}$ is a group under multiplication.
 
-%$\forall x\in \bb{\Z/p\Z}^*$. If $x = 1$ or $p-1$, then its inverse is itself since
+%$\forall x\in \brb{\Z/p\Z}^*$. If $x = 1$ or $p-1$, then its inverse is itself since
 %\be
 %1\cdot 1 \equiv 1 \lmod{p},\qquad (p-1)\cdot (p-1) = p^2 -2p+1 \equiv 1\lmod{p}.
 %\ee
@@ -1120,10 +1120,10 @@ Let $p$ be a prime number and for field $\Z/p\Z$ (see Example \ref{exa:zpz_field
 
 Then by structure theorem for finite abelian groups (Theorem \ref{thm:structure_theorem_finite_abelian_group}), we have the multiplicative group
 \be
-\bb{\Z/p\Z}^{\times} = \bb{\Z/p\Z}\bs \bra{0} \cong C_{d_1} \times C_{d_2} \times \dots \times C_{d_n}\quad \text{with }d_i\mid d_{i+1}
+\brb{\Z/p\Z}^{\times} = \brb{\Z/p\Z}\bs \bra{0} \cong C_{d_1} \times C_{d_2} \times \dots \times C_{d_n}\quad \text{with }d_i\mid d_{i+1}
 \ee
 
-If $\bb{\Z/p\Z}^{\times}$ is isomorphic to $C_{d_1} \times C_{d_2} \times \dots \times C_{d_n}$ where $n \geq 2$, then there exists $n_a,n_b \in \bra{d_1,d_2,\dots,d_n}$ s.t. $n_a\mid n_b$. Then there is a cyclic subgroup $\bsa{a} \cong C_{n_a}$ and $\bsa{b} \cong C_{n_b}$ generated by $a$ and $b$ with order $n_a$ and $n_b$. Since $n_a \mid n_b$ we have $\bsa{b^{\frac{n_b}{n_a}}} \cong \bsa{a} \cong C_m$ for some $m >1$. Thus, there exists a subgroup $\bsa{b^{\frac{n_b}{n_a}}} \times \bsa{a} \cong C_m \times C_m$ by Lemma \ref{lem:direct_product_of_groups}.
+If $\brb{\Z/p\Z}^{\times}$ is isomorphic to $C_{d_1} \times C_{d_2} \times \dots \times C_{d_n}$ where $n \geq 2$, then there exists $n_a,n_b \in \bra{d_1,d_2,\dots,d_n}$ s.t. $n_a\mid n_b$. Then there is a cyclic subgroup $\bsa{a} \cong C_{n_a}$ and $\bsa{b} \cong C_{n_b}$ generated by $a$ and $b$ with order $n_a$ and $n_b$. Since $n_a \mid n_b$ we have $\bsa{b^{\frac{n_b}{n_a}}} \cong \bsa{a} \cong C_m$ for some $m >1$. Thus, there exists a subgroup $\bsa{b^{\frac{n_b}{n_a}}} \times \bsa{a} \cong C_m \times C_m$ by Lemma \ref{lem:direct_product_of_groups}.
 
 % (That is, $p-1 = 4k$ for some $k\in \Z$, if $k$ is an odd number, by structure theorem for finite abelian groups (Theorem \ref{thm:structure_theorem_finite_abelian_group}) and Lemma \ref{lem:coprime_cycle_cong}, we can have
 %\be
@@ -1137,13 +1137,13 @@ If $\bb{\Z/p\Z}^{\times}$ is isomorphic to $C_{d_1} \times C_{d_2} \times \dots 
 
 %in $\F_p[X]$ which is a UFD. $X^m - 1$ has a unique expression up to ordering and associates as a product of at most $m$ irreducibles in $\F_p[X]$. In particular, there are at most $m$ linear factors $X - a$ and so at most $m$ roots, contradicting that there are at least $m^2$ roots.
 
-Thus there are at least $m^2$ elements satisfying $a^m = 1$. These are all roots of $X^m - 1$. Then by Lagrange theorem (Theorem \ref{thm:lagrange_ring}), there are at most $m$ linear factors $X - a$ and so at most $m$ roots, contradicting that there are at least $m^2$ roots. Thus, the multiplicative group $\bb{\Z/p\Z}^{\times}$ is cyclic.%$\F_p^*$
+Thus there are at least $m^2$ elements satisfying $a^m = 1$. These are all roots of $X^m - 1$. Then by Lagrange theorem (Theorem \ref{thm:lagrange_ring}), there are at most $m$ linear factors $X - a$ and so at most $m$ roots, contradicting that there are at least $m^2$ roots. Thus, the multiplicative group $\brb{\Z/p\Z}^{\times}$ is cyclic.%$\F_p^*$
 
-{\bf Approach 2.} For any $a\in \bb{\Z/p\Z}^\times$ satisfies that $a^{\abs{\bb{\Z/p\Z}^\times}} = a^{p-1} \equiv 1\lmod{p}$ by Theorem \ref{thm:multiplicative_group_znz_size_euler_totient}. So by Lagrange theorem (Theorem \ref{thm:lagrange_group}) the order of $a$ is $d$ for some $d\mid (p-1)$. Let $S_d$ be the set of elements with order $d$.
+{\bf Approach 2.} For any $a\in \brb{\Z/p\Z}^\times$ satisfies that $a^{\abs{\brb{\Z/p\Z}^\times}} = a^{p-1} \equiv 1\lmod{p}$ by Theorem \ref{thm:multiplicative_group_znz_size_euler_totient}. So by Lagrange theorem (Theorem \ref{thm:lagrange_group}) the order of $a$ is $d$ for some $d\mid (p-1)$. Let $S_d$ be the set of elements with order $d$.
 
 Suppose $S_d\neq \emptyset$ and let $G_d$ be the subgroup generated by $a$. Then $G_d = \bra{1,a,\dots,a^{d-1}}$. Let $R= \Z/p\Z$ and $f\in R[X]$ with $f(X) = X^d-1$. Then every element of order $d$ is a root of $f$. By Lagrange's theorem (Theorem \ref{thm:lagrange_ring}) $f$ has at most $d$ roots. But each element in $G_d$ is a root of $f$ and so these are all the roots of $f$. Therefore each element of order $d$ is $a^i$ for some $i<d$.
 
-By Proposition \ref{pro:cyclic_group_isomorphism_infinite_finite}, $G_d \cong C_d \cong \bb{\Z/d\Z,\oplus_d}$ via $a^i\mapsto i$. Then by Lemma \ref{lem:coprime_congruence_generator_group}, $\hcf(i,d)=1$. So $\abs{S_d} = \phi(d)$ by definition of Euler's totient function $\phi$. Therefore $\abs{S_d} = 0$ or $\phi(d)$. Recall Theorem \ref{thm:sum_of_factor_totient_equals_n},
+By Proposition \ref{pro:cyclic_group_isomorphism_infinite_finite}, $G_d \cong C_d \cong \brb{\Z/d\Z,\oplus_d}$ via $a^i\mapsto i$. Then by Lemma \ref{lem:coprime_congruence_generator_group}, $\hcf(i,d)=1$. So $\abs{S_d} = \phi(d)$ by definition of Euler's totient function $\phi$. Therefore $\abs{S_d} = 0$ or $\phi(d)$. Recall Theorem \ref{thm:sum_of_factor_totient_equals_n},
 \be
 \sum_{d\mid p-1} \phi(d) = p-1 = \sum_{d\mid p-1} \abs{S_d}
 \ee
@@ -1151,11 +1151,11 @@ as $S_d$ are pairwise disjoint for all $d$. This shows that $\abs{S_d} = \phi(d)
 \be
 \abs{S_{p-1}} = \phi(p-1) \geq 1,
 \ee
-which means that there exists an element of order $p-1$. Thus, $\bb{\Z/p\Z}^\times$ with size $p-1$ is cyclic.
+which means that there exists an element of order $p-1$. Thus, $\brb{\Z/p\Z}^\times$ with size $p-1$ is cyclic.
 \end{proof}
 
 \begin{example}
-$\bb{\Z/23\Z}^{\times}$ is the multiplicative group of $\Z/23\Z$. However, not all its elements generate the multiplicative group. In particular, it's easy to see that the order of each element divides the order of multiplicative group, 22.
+$\brb{\Z/23\Z}^{\times}$ is the multiplicative group of $\Z/23\Z$. However, not all its elements generate the multiplicative group. In particular, it's easy to see that the order of each element divides the order of multiplicative group, 22.
 \beast
 2^{11} & \equiv & 16^2 \cdot 8 \equiv (-7^2)\cdot 8 \equiv 49 \cdot 8 \equiv 3 \cdot 8 \equiv 1 \lmod{23} \\
 3^{11} & \equiv & 27^3 \cdot 9 \equiv 4^3 \cdot 9 \equiv -7\cdot 13\equiv -91 \equiv 1  \lmod{23}  \\
@@ -1172,33 +1172,33 @@ One of the generator is 5 as
 \end{example}
 
 \begin{lemma}\label{lem:generaor_multiplicative_group_zpnz_iff_generator_multiplicative_group_zpz}
-For each integer $n\geq 2$, an element $g$ generates $\bb{\Z/p^n\Z}^{\times}$ if and only if $g$ generates $\bb{\Z/p\Z}^{\times}$ and
+For each integer $n\geq 2$, an element $g$ generates $\brb{\Z/p^n\Z}^{\times}$ if and only if $g$ generates $\brb{\Z/p\Z}^{\times}$ and
 \be
 g^{p^{n-2}(p-1)}\not\equiv 1\lmod{p^n}.
 \ee
 \end{lemma}
 
 \begin{proof}[\bf Proof]
-Suppose $g$ generates $\bb{\Z/p^n\Z}^\times$, then clearly
+Suppose $g$ generates $\brb{\Z/p^n\Z}^\times$, then clearly
 \be
 g^{p^{n-2}(p-1)} \not\equiv 1 \mod{p^n}
 \ee
-as $p^{n-2}(p-1) < p^{n-1}(p-1) = p^n - p^{n-1} = \phi\bb{p^n} = \abs{\bb{\Z/p^n\Z}^\times}$ (by Theorem \ref{thm:multiplicative_group_znz_size_euler_totient}). Let $d$ be the order of $g$ in $\bb{\Z/p\Z}^\times$ so
+as $p^{n-2}(p-1) < p^{n-1}(p-1) = p^n - p^{n-1} = \phi\brb{p^n} = \abs{\brb{\Z/p^n\Z}^\times}$ (by Theorem \ref{thm:multiplicative_group_znz_size_euler_totient}). Let $d$ be the order of $g$ in $\brb{\Z/p\Z}^\times$ so
 \be
 g^d \equiv 1 \lmod{p} \ \lra \ g^d  = 1 + pz
 \ee
 for some $z\in \Z$. Then
 \be
-g^{dp^{n-1}} = (1+pz)^{p^{n-1}} = 1 + \sum^{p^{n-1}}_{i=1} (pz)^i \binom{p^{n-1}}{i} =  1 + \sum^{p^{n-1}}_{i=1} z^i \frac{p^i \bb{p^{n-1}}!}{i!\bb{p^{n-1}-i}!}.
+g^{dp^{n-1}} = (1+pz)^{p^{n-1}} = 1 + \sum^{p^{n-1}}_{i=1} (pz)^i \binom{p^{n-1}}{i} =  1 + \sum^{p^{n-1}}_{i=1} z^i \frac{p^i \brb{p^{n-1}}!}{i!\brb{p^{n-1}-i}!}.
 \ee
 
-%For any $i\geq 1$, we have that by fundamental theorem of arithmetic $i! = p^{a_i}z$ for some positive integer $z$. Then $a_i < i$ so $p\mid \frac{p^i}{p^{a_i}}$. Also we have $p^{n-1}\left|\frac{\bb{p^{n-1}}!}{\bb{p^{n-1}-i}!}\right.$. Therefore,
+%For any $i\geq 1$, we have that by fundamental theorem of arithmetic $i! = p^{a_i}z$ for some positive integer $z$. Then $a_i < i$ so $p\mid \frac{p^i}{p^{a_i}}$. Also we have $p^{n-1}\left|\frac{\brb{p^{n-1}}!}{\brb{p^{n-1}-i}!}\right.$. Therefore,
 %\be
-%p^n \left| \frac{p^i \bb{p^{n-1}}!}{i!\bb{p^{n-1}-i}!}\right.
+%p^n \left| \frac{p^i \brb{p^{n-1}}!}{i!\brb{p^{n-1}-i}!}\right.
 %\ee
 %which implies that
 
-Then by lemma \ref{lem:prime_power_divides_factorial}, the largest $a$ such that $p^a$ divides $i!$, largest $b$ such that $p^b$ divides $\bb{p^{n-1}-i}!$ and largest $c$ such that $p^c$ divides $\bb{p^{n-1}}!$ can be expressed by
+Then by lemma \ref{lem:prime_power_divides_factorial}, the largest $a$ such that $p^a$ divides $i!$, largest $b$ such that $p^b$ divides $\brb{p^{n-1}-i}!$ and largest $c$ such that $p^c$ divides $\brb{p^{n-1}}!$ can be expressed by
 \be
 a = \sum^\infty_{k=1}\floor{\frac{i}{p^k}}, \quad b = \sum^\infty_{k=1}\floor{\frac{p^{n-1} - i}{p^k}},\quad c = \sum^\infty_{k=1}\floor{\frac{p^{n-1}}{p^k}}
 \ee
@@ -1209,7 +1209,7 @@ c - (a+b) =  (n-1) - k
 \ee
 which implies that the $i$th term is
 \be
-z^i \frac{p^i \bb{p^{n-1}}!}{i!\bb{p^{n-1}-i}!} = z^i x p^{i} p^{n-1-k} = z^i x p^n p^{p^k y -1-k}.
+z^i \frac{p^i \brb{p^{n-1}}!}{i!\brb{p^{n-1}-i}!} = z^i x p^{i} p^{n-1-k} = z^i x p^n p^{p^k y -1-k}.
 \ee
 
 But we know that $p^k y - 1-k \geq 0$ for all $k$ thus $i$. Hence we conclude that
@@ -1217,61 +1217,61 @@ But we know that $p^k y - 1-k \geq 0$ for all $k$ thus $i$. Hence we conclude th
 g^{dp^{n-1}} \equiv 1 \lmod{p^n}.
 \ee
 
-Therefore the order of $g$ in $\bb{\Z/p^n\Z}^\times$ is at most $dp^{n-1}$, i.e., $o(g) \leq dp^{n-1}$. However, $o(g)$ should be $\phi\bb{p^n} = p^n - p^{n-1}$ and then $d\geq p-1$ which is the size of $\bb{\Z/p\Z}^\times$. Therefore, $g$ is also a generator in $\bb{\Z/p\Z}^\times$. %Since  which is a contradiction.
+Therefore the order of $g$ in $\brb{\Z/p^n\Z}^\times$ is at most $dp^{n-1}$, i.e., $o(g) \leq dp^{n-1}$. However, $o(g)$ should be $\phi\brb{p^n} = p^n - p^{n-1}$ and then $d\geq p-1$ which is the size of $\brb{\Z/p\Z}^\times$. Therefore, $g$ is also a generator in $\brb{\Z/p\Z}^\times$. %Since  which is a contradiction.
 
-Conversely, let $g$ be a generator of $\bb{\Z/p\Z}^\times$ and $g^{p^{n-2}(p-1)} \not\equiv 1 \lmod{p^n}$. Let $d$ be the order of $g$ in $\bb{\Z/p^n\Z}^\times$. Then we have
+Conversely, let $g$ be a generator of $\brb{\Z/p\Z}^\times$ and $g^{p^{n-2}(p-1)} \not\equiv 1 \lmod{p^n}$. Let $d$ be the order of $g$ in $\brb{\Z/p^n\Z}^\times$. Then we have
 \be
-\phi\bb{p^n} = p^{n-1}(p-1) \ \ra\ d\mid p^{n-1}(p-1).
+\phi\brb{p^n} = p^{n-1}(p-1) \ \ra\ d\mid p^{n-1}(p-1).
 \ee
 
 Also,
 \be
 g^d \equiv 1 \lmod{p^n} \ \ra\ g^d \equiv 1 \lmod{p} \ \ra\ p-1 = \phi(p) \mid d \ \ra\ d = p^k(p-1)
 \ee
-for some integer $k\geq 0$. However, $g^{p^{n-2}(p-1)} \not\equiv 1 \lmod{p^n}$, we have $k>n-2$ so $k=n-1$. Hence, $d = \phi(p^n)$, which is size of $\bb{\Z/p^n\Z}^\times$ and thus $g$ is a generator of $\bb{\Z/p^n\Z}^\times$.
+for some integer $k\geq 0$. However, $g^{p^{n-2}(p-1)} \not\equiv 1 \lmod{p^n}$, we have $k>n-2$ so $k=n-1$. Hence, $d = \phi(p^n)$, which is size of $\brb{\Z/p^n\Z}^\times$ and thus $g$ is a generator of $\brb{\Z/p^n\Z}^\times$.
 \end{proof}
 
 
 \begin{lemma}\label{lem:multiplicative_group_zp2z_cyclic}
-$\bb{\Z/p^2\Z}^\times$ is cyclic for each odd prime number $p$.
+$\brb{\Z/p^2\Z}^\times$ is cyclic for each odd prime number $p$.
 \end{lemma}
 
-\begin{proof}[\bf Proof]%For $a\in \bb{\Z/p\Z}^\times$, we can see that $a\in \bb{\Z/p^2\Z}^\times$ as well.
+\begin{proof}[\bf Proof]%For $a\in \brb{\Z/p\Z}^\times$, we can see that $a\in \brb{\Z/p^2\Z}^\times$ as well.
 Consider the natural reduction
 \be
-\theta: \ \bb{\Z/p^2\Z}^\times \to \bb{\Z/p\Z}^\times,\quad a+ p^2\Z \mapsto a+ p\Z,\qquad p\nmid a.% = 1,\dots p-1.
+\theta: \ \brb{\Z/p^2\Z}^\times \to \brb{\Z/p\Z}^\times,\quad a+ p^2\Z \mapsto a+ p\Z,\qquad p\nmid a.% = 1,\dots p-1.
 \ee
 
 %
 
-By considering the sizes of the groups, the kernel of $\theta$ is a normal subgroup of $\bb{\Z/p^2\Z}^\times$ with order $p$. Indeed,
+By considering the sizes of the groups, the kernel of $\theta$ is a normal subgroup of $\brb{\Z/p^2\Z}^\times$ with order $p$. Indeed,
 \be
 \ker\theta = \bra{1,p+1,2p+1,\dots, p(p-1)+1}.
 \ee
 
-So $\ker\theta$ is cyclic by Corollary \ref{cor:prime_order_cyclic}. Then we can find an element $g\in \bb{\Z/p^2\Z}^\times$ with order $p$.
+So $\ker\theta$ is cyclic by Corollary \ref{cor:prime_order_cyclic}. Then we can find an element $g\in \brb{\Z/p^2\Z}^\times$ with order $p$.
 
-Since $\bb{\Z/p\Z}^\times$ is cyclic (Theorem \ref{thm:multiplicative_group_pz_cyclic}), we can find a generator $a$ of $\bb{\Z/p\Z}^\times$. Then for $1\leq k< p-1$,
+Since $\brb{\Z/p\Z}^\times$ is cyclic (Theorem \ref{thm:multiplicative_group_pz_cyclic}), we can find a generator $a$ of $\brb{\Z/p\Z}^\times$. Then for $1\leq k< p-1$,
 \be
 a^{k} \not\equiv 1 \lmod{p},\quad a^{p-1} \equiv 1\lmod{p}.
 \ee
 
-If $a^{p-1}\equiv 1\lmod{p^2}$, we have that $a$ has order $p-1$ in $\bb{\Z/p^2\Z}^\times$. If $a^{p-1}\not\equiv 1\lmod{p^2}$, we can assume that
+If $a^{p-1}\equiv 1\lmod{p^2}$, we have that $a$ has order $p-1$ in $\brb{\Z/p^2\Z}^\times$. If $a^{p-1}\not\equiv 1\lmod{p^2}$, we can assume that
 \be
 a^{p-1} = 1+np
 \ee
-where $\gcd(n,p)=1$. Then we let the preimage of $a$ be $x := a(1+np) = a + anp \in \bb{\Z/p^2\Z}^\times$. % since $\gcd(n,p)=1$.
+where $\gcd(n,p)=1$. Then we let the preimage of $a$ be $x := a(1+np) = a + anp \in \brb{\Z/p^2\Z}^\times$. % since $\gcd(n,p)=1$.
 Then we have for $1\leq k < p-1$
 \be
-x^{k} = a^k\bb{1+np}^k \equiv a^k \lmod{p} \ \ra\ x^k \not\equiv 1\lmod{p} \ \ra\ x^k \not\equiv 1 \lmod{p^2}.
+x^{k} = a^k\brb{1+np}^k \equiv a^k \lmod{p} \ \ra\ x^k \not\equiv 1\lmod{p} \ \ra\ x^k \not\equiv 1 \lmod{p^2}.
 \ee
 
 However,
 \be
-x^{p-1} = a^{p-1}\bb{1+np}^{p-1} = (1+np)^p \equiv 1 \lmod{p^2}.%\equiv (1+np)\bb{1+np(p-1)}\equiv (1+np)(1-np) \equiv 1 \lmod{p^2}.
+x^{p-1} = a^{p-1}\brb{1+np}^{p-1} = (1+np)^p \equiv 1 \lmod{p^2}.%\equiv (1+np)\brb{1+np(p-1)}\equiv (1+np)(1-np) \equiv 1 \lmod{p^2}.
 \ee
 
-Thus in either case, we find an element $h\in \bb{\Z/p^2\Z}^\times$ with order $p-1$. Then $gh$ must has order $p(p-1)$ in $\bb{\Z/p^2\Z}^\times$ since $p$ and $p-1$ are coprime. Thus $gh$ generates $\bb{\Z/p^2\Z}^\times$.
+Thus in either case, we find an element $h\in \brb{\Z/p^2\Z}^\times$ with order $p-1$. Then $gh$ must has order $p(p-1)$ in $\brb{\Z/p^2\Z}^\times$ since $p$ and $p-1$ are coprime. Thus $gh$ generates $\brb{\Z/p^2\Z}^\times$.
 
 
 
@@ -1280,41 +1280,41 @@ Thus in either case, we find an element $h\in \bb{\Z/p^2\Z}^\times$ with order $
 %g^2 = (p+1)^2 \equiv 2p+1 \lmod{p^2},\qquad g^3 \equiv (p+1)(2p+1) \equiv 3p + 1 \lmod{p^2}
 %\ee
 
-%\footnote{and $\bb{\Z/p^2\Z}^\times/\ker\theta\cong \im\theta = \bb{\Z/p\Z}^\times$ by the first isomorphism theorem (Theorem \ref{thm:isomorphism_1_group}) since $\theta$ is surjective. Therefore the quotient group $\bb{\Z/p^2\Z}^\times/\ker\theta$ (a subgroup of $\bb{\Z/p^2\Z}^\times$) is cyclic since $\bb{\Z/p\Z}^\times$ is cyclic (Theorem \ref{thm:multiplicative_group_pz_cyclic}) Then we can find an element $g$ of order $p-1$ in $\bb{\Z/p^2\Z}^\times$.}%has the same size $p-1$ with $\im\theta$
+%\footnote{and $\brb{\Z/p^2\Z}^\times/\ker\theta\cong \im\theta = \brb{\Z/p\Z}^\times$ by the first isomorphism theorem (Theorem \ref{thm:isomorphism_1_group}) since $\theta$ is surjective. Therefore the quotient group $\brb{\Z/p^2\Z}^\times/\ker\theta$ (a subgroup of $\brb{\Z/p^2\Z}^\times$) is cyclic since $\brb{\Z/p\Z}^\times$ is cyclic (Theorem \ref{thm:multiplicative_group_pz_cyclic}) Then we can find an element $g$ of order $p-1$ in $\brb{\Z/p^2\Z}^\times$.}%has the same size $p-1$ with $\im\theta$
 
 
 
-%Also, we can find a generator $g$ of $\bb{\Z/p\Z}^\times$ with order $p-1$. Clearly, $g\in \bb{\Z/p^2\Z}^\times$. Therefore, $\bb{\Z/p^2\Z}^\times$ have an element $g$ of order $p-1$ and an element of $h$ of order $p$. Then $gh$ must has order $p(p-1)$, which
+%Also, we can find a generator $g$ of $\brb{\Z/p\Z}^\times$ with order $p-1$. Clearly, $g\in \brb{\Z/p^2\Z}^\times$. Therefore, $\brb{\Z/p^2\Z}^\times$ have an element $g$ of order $p-1$ and an element of $h$ of order $p$. Then $gh$ must has order $p(p-1)$, which
 
 
 \begin{theorem}\label{thm:multiplicative_group_zpnz_cyclic}%\label{thm:z_prime_power_n_multiplicative_group_cyclic}%
-$\bb{\Z/p^n\Z}^{\times}$ is cyclic for each odd prime number $p$ and positive integer $n$.
+$\brb{\Z/p^n\Z}^{\times}$ is cyclic for each odd prime number $p$ and positive integer $n$.
 \end{theorem}
 
 \begin{example}
 Given $p =3$ and $n=2$, we have
 \be
-\bb{\Z/9\Z}^{\times} = \bra{1,2,4,5,7,8} \cong C_6.%2 \times C_3.
+\brb{\Z/9\Z}^{\times} = \bra{1,2,4,5,7,8} \cong C_6.%2 \times C_3.
 \ee
 
-Indeed, $2$ is the generator of $\bb{\Z/9\Z}^{\times}$ as
+Indeed, $2$ is the generator of $\brb{\Z/9\Z}^{\times}$ as
 \be
 2^2 \equiv 4 \lmod{9},\quad 2^3 \equiv 8 \lmod{9},\quad 2^4 \equiv 7 \lmod{9},\quad 2^5 \equiv 5 \lmod{9}, \quad 2^6 \equiv 1 \lmod{9}.
 \ee
 \end{example}
 
 \begin{proof}[\bf Proof]
-By Lemma \ref{lem:multiplicative_group_zp2z_cyclic} let $g$ be a generator of $\bb{\Z/p^2\Z}$. Then by Lemma \ref{lem:generaor_multiplicative_group_zpnz_iff_generator_multiplicative_group_zpz}, $g$ is a generator of $\bb{\Z/p\Z}^\times$ (thus $g^{p-1} \equiv 1 \lmod{p}$) and $g^{p-1} \not\equiv 1 \lmod{p^2}$. So
+By Lemma \ref{lem:multiplicative_group_zp2z_cyclic} let $g$ be a generator of $\brb{\Z/p^2\Z}$. Then by Lemma \ref{lem:generaor_multiplicative_group_zpnz_iff_generator_multiplicative_group_zpz}, $g$ is a generator of $\brb{\Z/p\Z}^\times$ (thus $g^{p-1} \equiv 1 \lmod{p}$) and $g^{p-1} \not\equiv 1 \lmod{p^2}$. So
 \be
 g^{p-1} = 1 + pz \text{ for some $z$ such that $p\nmid z$}  \ \ra\ \hcf(z,p) = 1.
 \ee
 
 Then for each $k$
 \be
-g^{p^k(p-1)} = \bb{1+pz}^{p^k} = 1 + \sum_{i=1}^{p^k} p^iz^i \binom{p^k}{i} = 1 + \sum_{i=1}^{p^k} \frac{p^iz^i \bb{p^k}!}{i!\bb{p^k-i}!}
+g^{p^k(p-1)} = \brb{1+pz}^{p^k} = 1 + \sum_{i=1}^{p^k} p^iz^i \binom{p^k}{i} = 1 + \sum_{i=1}^{p^k} \frac{p^iz^i \brb{p^k}!}{i!\brb{p^k-i}!}
 \ee
 
-Then by lemma \ref{lem:prime_power_divides_factorial}, the largest $a$ such that $p^a$ divides $i!$, largest $b$ such that $p^b$ divides $\bb{p^{k}-i}!$ and largest $c$ such that $p^c$ divides $\bb{p^k}!$ can be expressed by
+Then by lemma \ref{lem:prime_power_divides_factorial}, the largest $a$ such that $p^a$ divides $i!$, largest $b$ such that $p^b$ divides $\brb{p^{k}-i}!$ and largest $c$ such that $p^c$ divides $\brb{p^k}!$ can be expressed by
 \be
 a = \sum^\infty_{r=1}\floor{\frac{i}{p^r}}, \quad b = \sum^\infty_{r=1}\floor{\frac{p^{k} - i}{p^r}},\quad c = \sum^\infty_{r=1}\floor{\frac{p^{k}}{p^r}}
 \ee
@@ -1325,7 +1325,7 @@ c - (a+b) =  k - r
 \ee
 which implies that the $i$th term is
 \be
-z^i \frac{p^i \bb{p^{k}}!}{i!\bb{p^{k}-i}!} = z^i x p^{i} p^{k-r} = z^i x p^k p^{p^r y -r}.
+z^i \frac{p^i \brb{p^{k}}!}{i!\brb{p^{k}-i}!} = z^i x p^{i} p^{k-r} = z^i x p^k p^{p^r y -r}.
 \ee
 
 But we know that $i=1$ imples that $r=0,y=1$ and thus $p^r y -r = 1$. For $i = 2$, we have $r = 0, y=2$ and thus $p^r y -r = 2$. For $i\geq 3$, it is easy to find
@@ -1343,55 +1343,55 @@ In particular, $g^{p^k(p-1)} \not\equiv 1 \lmod{p^{k+2}}$. Let $k= n-2$, we can 
 g^{p^{n-2}(p-1)} \not\equiv 1 \lmod{p^n}.
 \ee
 
-Thus, by Lemma \ref{lem:generaor_multiplicative_group_zpnz_iff_generator_multiplicative_group_zpz}, we have that $g$ generates $\bb{\Z/p^n\Z}^\times$ and thus $\bb{\Z/p^n\Z}^\times$ is cyclic.
+Thus, by Lemma \ref{lem:generaor_multiplicative_group_zpnz_iff_generator_multiplicative_group_zpz}, we have that $g$ generates $\brb{\Z/p^n\Z}^\times$ and thus $\brb{\Z/p^n\Z}^\times$ is cyclic.
 \end{proof}
 
 
 \begin{remark}
 Theorem \ref{thm:multiplicative_group_zpnz_cyclic} is not true for $p=2$. For instance,
 \be
-\bra{1,3,5,7} = \bb{\Z/2^3\Z}^{\times} \cong \bb{\Z/2\Z}^2.
+\bra{1,3,5,7} = \brb{\Z/2^3\Z}^{\times} \cong \brb{\Z/2\Z}^2.
 \ee
 \end{remark}
 
 \begin{theorem}[multiplicative group of direct product of modular rings]
 Let $n = \prod^k_{i=1}n_i = n_1 n_2 \dots n_k $ where $n_1,\dots,n_k\in \Z^+$ are pairwise coprime. Then we have a group isomorphism
 \be
-\bb{\Z/n\Z}^\times \cong \bb{\Z/n_1\Z}^\times \times \dots \times \bb{\Z/n_k\Z}^\times = \prod^k_{i=1} \bb{\Z/n_i\Z}^\times.
+\brb{\Z/n\Z}^\times \cong \brb{\Z/n_1\Z}^\times \times \dots \times \brb{\Z/n_k\Z}^\times = \prod^k_{i=1} \brb{\Z/n_i\Z}^\times.
 \ee
 \end{theorem}
 
 \begin{remark}
 Combining with Theorem \ref{thm:chinese_remainder_modular_ring}, this theorem implies that
 \be
-\bb{\Z/n_1\Z \times \dots \times \Z/n_k\Z}^\times \cong \bb{\Z/n_1\Z}^\times \times \dots \times \bb{\Z/n_k\Z}^\times.
+\brb{\Z/n_1\Z \times \dots \times \Z/n_k\Z}^\times \cong \brb{\Z/n_1\Z}^\times \times \dots \times \brb{\Z/n_k\Z}^\times.
 \ee
 
 We can apply this theorem to prove that Euler's totient function is multiplicative since multiplicative group of integer modulo $n$ has size $\phi(n)$ (see Theorem \ref{thm:multiplicative_group_znz_size_euler_totient}).
 
-See Table \ref{tab:group_structure_multiplicative_group_modular_ring} in Summary for group $\bb{\Z/n_1\Z}^\times$ of all small $n$.
+See Table \ref{tab:group_structure_multiplicative_group_modular_ring} in Summary for group $\brb{\Z/n_1\Z}^\times$ of all small $n$.
 \end{remark}
 
 \begin{proof}[\bf Proof]
 Consider the mapping $\theta$:
 \be
-\bb{\Z/n\Z}^\times \to \bb{\Z/n_1\Z}^\times \times \dots \times \bb{\Z/n_k\Z}^\times,\quad a \mapsto \bb{a\lmod{n_1},\dots, a\lmod{n_k}}.
+\brb{\Z/n\Z}^\times \to \brb{\Z/n_1\Z}^\times \times \dots \times \brb{\Z/n_k\Z}^\times,\quad a \mapsto \brb{a\lmod{n_1},\dots, a\lmod{n_k}}.
 \ee
 
-Let $a\in \bb{\Z/n\Z}^\times$, then $\hcf(a,n)=1$ which implies that $\hcf(a,n_i) = 1$. Thus, $a\lmod{n_i} \in \bb{\Z/n_i\Z}^\times$ for all $i$ and $\theta$ is well-defined.
+Let $a\in \brb{\Z/n\Z}^\times$, then $\hcf(a,n)=1$ which implies that $\hcf(a,n_i) = 1$. Thus, $a\lmod{n_i} \in \brb{\Z/n_i\Z}^\times$ for all $i$ and $\theta$ is well-defined.
 
-Obviously, $\theta$ is a group homomorphism under multiplication by Theorem \ref{thm:chinese_remainder_modular_ring} since $\bb{\Z/n\Z}^\times$ is the subset of $\Z/n\Z$.
+Obviously, $\theta$ is a group homomorphism under multiplication by Theorem \ref{thm:chinese_remainder_modular_ring} since $\brb{\Z/n\Z}^\times$ is the subset of $\Z/n\Z$.
 
-For any $a_1,a_2\in \bb{\Z/n\Z}^\times$, if $a_1\equiv a_2\lmod{n_i}$ then $(a_1-a_2)\mid n_i$ for all $i$. Thus, $(a_1-a_2)\mid n$ and $a_1\equiv a_2\lmod{n}$ since $n_i$ are coprime. So $\theta$ is injective.
+For any $a_1,a_2\in \brb{\Z/n\Z}^\times$, if $a_1\equiv a_2\lmod{n_i}$ then $(a_1-a_2)\mid n_i$ for all $i$. Thus, $(a_1-a_2)\mid n$ and $a_1\equiv a_2\lmod{n}$ since $n_i$ are coprime. So $\theta$ is injective.
 
-Furthermore, $\forall c_i\in \bb{\Z/n_i\Z}^\times$, we have $\hcf(c_i,n_i) = 1$ thus we can find $a_i$ by Lemma \ref{lem:congruence_equation_soluble_iff_gcd_division} such that $m_i a_i\equiv c_i \lmod{n_i}$ where $m_i = n/n_i$ since $\hcf(n_i,m_i) =1$. Then let
+Furthermore, $\forall c_i\in \brb{\Z/n_i\Z}^\times$, we have $\hcf(c_i,n_i) = 1$ thus we can find $a_i$ by Lemma \ref{lem:congruence_equation_soluble_iff_gcd_division} such that $m_i a_i\equiv c_i \lmod{n_i}$ where $m_i = n/n_i$ since $\hcf(n_i,m_i) =1$. Then let
 \be
 a= \sum^k_{i=1} m_i a_i \ \ra\ a \equiv c_i \lmod{n_i}.
 \ee
 
 Since $\hcf(c_i,n_i)=1$, we have for all $i$,
 \be
-\hcf(a,n_i) = 1 \ \ra\ \hcf(a,n)=1 \ \ra\ a \in \bb{\Z/n\Z}^\times \ \ra\  \theta \text{ is surjective.}
+\hcf(a,n_i) = 1 \ \ra\ \hcf(a,n)=1 \ \ra\ a \in \brb{\Z/n\Z}^\times \ \ra\  \theta \text{ is surjective.}
 \ee
 
 Hence, $\theta$ is bijective and thus a group isomorphism.
@@ -1400,11 +1400,11 @@ Hence, $\theta$ is bijective and thus a group isomorphism.
 \begin{example}
 For $n=360 = 2^3\cdot 3^2 \cdot 5$, we have
 \be
-\bb{\Z/360\Z}^\times \cong \bb{\Z/2^3\Z}^\times \times \bb{\Z/3^2\Z}^\times \times \bb{\Z/5\Z}^\times \cong \bb{C_2 \times C_{2}}\times C_6 \times C_4 \cong C_2 \times C_2 \times C_4 \times C_6.
+\brb{\Z/360\Z}^\times \cong \brb{\Z/2^3\Z}^\times \times \brb{\Z/3^2\Z}^\times \times \brb{\Z/5\Z}^\times \cong \brb{C_2 \times C_{2}}\times C_6 \times C_4 \cong C_2 \times C_2 \times C_4 \times C_6.
 \ee
 \end{example}
 
-%\footnote{need group structure of $\bb{Z/n\Z}^\times$, see wiki for multiplicative group of integers modulo $n$.}
+%\footnote{need group structure of $\brb{Z/n\Z}^\times$, see wiki for multiplicative group of integers modulo $n$.}
 
 
 \section{Principal Ideal Domain, Maximal Ideal and Prime Ideal}
@@ -1533,7 +1533,7 @@ $\Z/p\Z$ is a field with $p$ elements where $p$ is a prime number.
 
 %Thus, $\theta$ also satisfies
 %\be
-%\theta (z_1z_2) = \theta\bb{\underbrace{z_1 + \dots + z_1}_{z_2\text{ times}}} = \theta(z_1) + \dots + \theta(z_1) = g^z_1 \dots g^{z_1} = g^{z_1z_2} =
+%\theta (z_1z_2) = \theta\brb{\underbrace{z_1 + \dots + z_1}_{z_2\text{ times}}} = \theta(z_1) + \dots + \theta(z_1) = g^z_1 \dots g^{z_1} = g^{z_1z_2} =
 %\ee
 
 %Therefore, for any field with $p$ elements ($p$ is prime), $\F_p$, we have $\F_p \cong \Z/p\Z$.
@@ -1667,7 +1667,7 @@ Thus, $\F[X]$ is a ED.
 \item [(i)] $\Z$ is a Euclidean domain with $\phi(n) = |n|$.
 \item [(ii)] $R = \Z[i] = \{a + bi : a, b \in \Z\} \leq \C$ is a Euclidean domain. As with $\Z[\sqrt{-5}]$ we can define a norm via $N(z) = z\bar{z}$ for $z \in R$. Thus $N(a + bi) = a^2 + b^2$. In this case the norm is a Euclidean function. $N$ is multiplicative and so property (i) holds, $N(z_1z_2) = N(z_1)N(z_2) \geq N(z_1)$, since $N(z_2) \geq 1$.
 
-To verify property (ii) take $z_1, z_2 \in R$ with $z_2 \neq 0$. Consider $z_1/z_2 \in \C$. Then in the complex plane it is distance less than $\sqrt{\bb{\frac 12}^2 + \bb{\frac 12}^2} = \sqrt{2}/2$ from the nearest element of $R$.
+To verify property (ii) take $z_1, z_2 \in R$ with $z_2 \neq 0$. Consider $z_1/z_2 \in \C$. Then in the complex plane it is distance less than $\sqrt{\brb{\frac 12}^2 + \brb{\frac 12}^2} = \sqrt{2}/2$ from the nearest element of $R$.
 
 $z_1/z_2 = q + z_3$ with $q \in R$, $z_3 \in \C$ and $|z_3| < 1$. So $z_1 = qz_2 + z_2z_3$. Set $r = z_2z_3$. Thus $z_1 = qz_2 + r$,
 \be
@@ -1709,13 +1709,13 @@ N(r) = |z_2z_3|^2 = |z_2|^2|z_3|^2 < |z_2|^2 = N(z_2).
 \end{center}
 
 
-\item [(iv)] For $R = \Z[\sqrt{-2}]$, with similar arguments, property (i) holds, for any $z_1/z_2 \in \C$, the longest distance to its nearest point of lattice is $\sqrt{\bb{\frac {\sqrt{2}}2}^2 + \bb{\frac 12}^2} = \sqrt{3}/2 < 1$. Thus $\abs{z_3}<1$ also holds. Hence, $\Z[\sqrt{-2}]$ is a Euclidean domain.
+\item [(iv)] For $R = \Z[\sqrt{-2}]$, with similar arguments, property (i) holds, for any $z_1/z_2 \in \C$, the longest distance to its nearest point of lattice is $\sqrt{\brb{\frac {\sqrt{2}}2}^2 + \brb{\frac 12}^2} = \sqrt{3}/2 < 1$. Thus $\abs{z_3}<1$ also holds. Hence, $\Z[\sqrt{-2}]$ is a Euclidean domain.
 
-\item [(v)] For $R = \Z[\sqrt{-3}]$, with similar arguments, property (i) holds, for any $z_1/z_2 \in \C$, the longest distance to its nearest point of lattice is $\sqrt{\bb{\frac {\sqrt{3}}2}^2 + \bb{\frac 12}^2} = 1$. So $\abs{z_3}<1$ doesnt't hold. Hence, we cannot say that $\Z[\sqrt{-3}]$ is a Euclidean domain. Actually, we will see later that $\Z[\sqrt{-3}]$ is not a Euclidean domain since it is not UFD (see Example \ref{exa:sqrtroot_3_5_not_ufd}).
+\item [(v)] For $R = \Z[\sqrt{-3}]$, with similar arguments, property (i) holds, for any $z_1/z_2 \in \C$, the longest distance to its nearest point of lattice is $\sqrt{\brb{\frac {\sqrt{3}}2}^2 + \brb{\frac 12}^2} = 1$. So $\abs{z_3}<1$ doesnt't hold. Hence, we cannot say that $\Z[\sqrt{-3}]$ is a Euclidean domain. Actually, we will see later that $\Z[\sqrt{-3}]$ is not a Euclidean domain since it is not UFD (see Example \ref{exa:sqrtroot_3_5_not_ufd}).
 
 \item [(vi)] Similarly, we will see later that $\Z[\sqrt{-5}]$ is not a Euclidean domain since it is not UFD (see Example \ref{exa:sqrtroot_3_5_not_ufd}).
 
-\item [(vii)] For $R = \Z[\omega]$, $\omega = (1+ \sqrt{-3})/2$. With similar arguments, property (i) holds, for any $z_1/z_2 \in \C$, the longest distance to its nearest point of lattice is $\sqrt{\bb{\frac {\sqrt{3}}4}^2 + \bb{\frac 12 + \frac 14}^2} = \sqrt{3}/2 < 1$. Thus $\abs{z_3}<1$ also holds. Hence, $\Z[\sqrt{-2}]$ is a Euclidean domain.
+\item [(vii)] For $R = \Z[\omega]$, $\omega = (1+ \sqrt{-3})/2$. With similar arguments, property (i) holds, for any $z_1/z_2 \in \C$, the longest distance to its nearest point of lattice is $\sqrt{\brb{\frac {\sqrt{3}}4}^2 + \brb{\frac 12 + \frac 14}^2} = \sqrt{3}/2 < 1$. Thus $\abs{z_3}<1$ also holds. Hence, $\Z[\sqrt{-2}]$ is a Euclidean domain.
 \een
 \end{example}
 
@@ -1730,12 +1730,12 @@ The subring $\Z[\sqrt{2}]$ of $\R$ is a Euclidean domain. Its units are $\pm(1\p
 \begin{proof}[\bf Proof]
 For $a,b \in \Z$, we define a function
 \be
-\phi:\Z[\sqrt{2}] \to \Z^+,\ a+b\sqrt{2} \mapsto \abs{\bb{a+b\sqrt{2}}\bb{a-b\sqrt{2}}} = \abs{a^2 - 2b^2}.
+\phi:\Z[\sqrt{2}] \to \Z^+,\ a+b\sqrt{2} \mapsto \abs{\brb{a+b\sqrt{2}}\brb{a-b\sqrt{2}}} = \abs{a^2 - 2b^2}.
 \ee
 
 Then for $a+b\sqrt{2}, c+ d\sqrt{2} \in \Z[\sqrt{2}]$,
 \beast
-\phi\bb{\bb{a+b\sqrt{2}}\bb{c+d\sqrt{2}}} & = & \phi \bb{ac + 2bd + (ad + bc)\sqrt{2}} = \abs{(ac + 2bd)^2 - 2(ad + bc)^2} \\
+\phi\brb{\brb{a+b\sqrt{2}}\brb{c+d\sqrt{2}}} & = & \phi \brb{ac + 2bd + (ad + bc)\sqrt{2}} = \abs{(ac + 2bd)^2 - 2(ad + bc)^2} \\
 & = & \abs{a^2c^2 + 4b^2 d^2 + 4abcd - 2a^2d^2 - 2b^2c^2 - 4abcd} = \abs{(a^2 - 2b^2)(c^2 - 2d^2)} \\
 & = & \abs{a^2 - 2b^2}\abs{c^2 - 2d^2} = \phi(a+b\sqrt{2})\phi(c+d\sqrt{2}).
 \eeast
@@ -1778,19 +1778,19 @@ First we prove that $1+\sqrt{2}$ is actually the smallest unit bigger than 1.
 
 Let $a,b\in \N$. If the smallest unit bigger than 1 is of the form $a-b\sqrt{2} > 1$, then $a+b\sqrt{2} > 1$. However,
 \be
-1 = \phi(a-b\sqrt{2}) = \abs{\bb{a-b\sqrt{2}}\bb{a+b\sqrt{2}}} > \abs{1} = 1. \text{ (Contradiction.)}
+1 = \phi(a-b\sqrt{2}) = \abs{\brb{a-b\sqrt{2}}\brb{a+b\sqrt{2}}} > \abs{1} = 1. \text{ (Contradiction.)}
 \ee
 
 Similarly, If the smallest unit bigger than 1 is of the form $-a+b\sqrt{2} > 1$, then $a+b\sqrt{2} > 1$. This will lead to the contradiction again.
 
 Thus, it has to be of the form  $a+b\sqrt{2}$. Thus, the smallest unit bigger than 1 is $1+\sqrt{2}$.
 
-Clearly, the power of $1+\sqrt{2}$ are units. If there exists any unit between $\bb{1+\sqrt{2}}^n$ and $\bb{1+\sqrt{2}}^{n+1}$ with integer $n$ (positive or negative), say $u$,
+Clearly, the power of $1+\sqrt{2}$ are units. If there exists any unit between $\brb{1+\sqrt{2}}^n$ and $\brb{1+\sqrt{2}}^{n+1}$ with integer $n$ (positive or negative), say $u$,
 \be
-\bb{1 + \sqrt{2}}^n < u < \bb{1+\sqrt{2}}^{n+1} \ \ra \ 1 < u \bb{1+\sqrt{2}}^{-n} < 1+\sqrt{2}.
+\brb{1 + \sqrt{2}}^n < u < \brb{1+\sqrt{2}}^{n+1} \ \ra \ 1 < u \brb{1+\sqrt{2}}^{-n} < 1+\sqrt{2}.
 \ee
 
-Obviously, $u \bb{1+\sqrt{2}}^{-n}$ is a unit since $u^{-1}$ and $\bb{1+\sqrt{2}}^{n}$ are units. However, $1+\sqrt{2}$ is the smallest unit bigger than 1. This leads to contradiction. Thus, there is no other unit bigger than 1 besides $(1+\sqrt{2})^n$ with $n\in \N$.
+Obviously, $u \brb{1+\sqrt{2}}^{-n}$ is a unit since $u^{-1}$ and $\brb{1+\sqrt{2}}^{n}$ are units. However, $1+\sqrt{2}$ is the smallest unit bigger than 1. This leads to contradiction. Thus, there is no other unit bigger than 1 besides $(1+\sqrt{2})^n$ with $n\in \N$.
 \end{proof}
 
 
@@ -1891,7 +1891,7 @@ $I_j \lhd R$ is an ideal since if $\sum^j_{i=0} a_iX^i \in J$, $\sum^j_{i=0} b_i
 \be
 \sum^j_{i=0} (a_i + b_i)X^i \in J
 \ee
-and if $a \in R$ then $\sum^j_{i=0} aa_iX^i \in J$. $I_j \subseteq I_{j+1}$ since if $\sum^j_{i=0} a_iX^i \in J$ then $X \bb{\sum^j_{i=0} a_iX^i} \in J$.
+and if $a \in R$ then $\sum^j_{i=0} aa_iX^i \in J$. $I_j \subseteq I_{j+1}$ since if $\sum^j_{i=0} a_iX^i \in J$ then $X \brb{\sum^j_{i=0} a_iX^i} \in J$.
 
 The ACC for $R$ implies that there exists $N$ with $I_m = I_N$ for all $m \geq N$ and $I_N$ is finitely generated by the leading coefficients of $f_1(X),\dots , f_k(X)$, say (by Definition \ref{def:ascending_chain_condition} and \ref{def:noetherian_ring}).
 
@@ -1984,7 +1984,7 @@ So we have that $\bsa{a_1} \subseteq \bsa{a_2} \subseteq \bsa{a_3} \subseteq \do
 
 \item [(ii)] Suppose we have $p_1 \dots p_m = q_1 \dots q_n$ with products of irreducibles. Then $p_1$ is prime by Lemma \ref{lem:pid_irreducible_prime} and $p_1 | q_1 \dots q_n$, so $p_1$ divides one of the $q_i$ (by Definition \ref{def:associativity_irreducibility_primeness_integral_domain}), $p_1 | q_1$, say, and so $q_1 = p_1u$. But $q_1$ is irreducible and $p_1$ is not a unit, hence $u$ is a unit (by Definition \ref{def:associativity_irreducibility_primeness_integral_domain}). This is to say $p_1$ and $q_1$ are associates. We have (cancellation in $R$)
 \be
-p_1 \dots p_m = up_1q_2 \dots q_n \ \ra \ p_1 \bb{p_2 \dots p_m - uq_2\dots q_n} = 0 \ \ra \ p_2 \dots p_m = uq_2\dots q_n
+p_1 \dots p_m = up_1q_2 \dots q_n \ \ra \ p_1 \brb{p_2 \dots p_m - uq_2\dots q_n} = 0 \ \ra \ p_2 \dots p_m = uq_2\dots q_n
 \ee
 %\be
 %p_2 \dots p_m = (uq_2)q_3 \dots q_n.
@@ -2056,7 +2056,7 @@ where $p_j$ is irreducible and $p_j$ is not associate to $p_k$ whenever $j \neq 
 
 The claim is that $\prod_j p^{m_j}_j$ is a highest common factor of $a_1,\dots , a_n$ where $m_j = \min_i\{n_{ij}\}$. It is clear that this is a factor of each $a_i$ i.e., $d\mid a_i$, and if $d' \mid a_i$ for each $i$.
 
-If $a_i$ is a unit, we have $a_i = cd'$ for some $c\in R$, then $\bb{a_i^{-1}c}d' =1$ and therefore $d'$ is a unit. If $a_i$ is not a unit, then each irreducible dividing $d'$ is also an irreducible dividing $a_i$ and so must be one of the $p_j$ (by Proposition \ref{pro:irreducible_iff_prime_ufd}). Thus
+If $a_i$ is a unit, we have $a_i = cd'$ for some $c\in R$, then $\brb{a_i^{-1}c}d' =1$ and therefore $d'$ is a unit. If $a_i$ is not a unit, then each irreducible dividing $d'$ is also an irreducible dividing $a_i$ and so must be one of the $p_j$ (by Proposition \ref{pro:irreducible_iff_prime_ufd}). Thus
 \be
 d' = u\prod_j p^{t_j}_j
 \ee
@@ -2246,13 +2246,13 @@ bc(h(X)) = c(g(X)(bh(X))) \ \ra \ b \mid c(g(X)bh(X)) \ \ra \ b\mid uc(g(X))c(bh
 \ee
 by Corollary \ref{cor:content_associate}, where $u$ is a unit. Since $g(X)$ is primitive, we have $b \mid u'c(bh(X))$ where $u'$ is another unit. Thus, we have $b\mid c(bh(X))$ since $u'$ is a unit. Then, let $ab = u'c(bh(X))$ for some $a\in R$,
 \be
-abf(X) = g(X) c(bh(X)) ah_1(X) = u'c(bh(X)) u'^{-1} a g(X)h_1(X) = ab u'^{-1} a g(X)h_1(X) = ab  g(X) \bb{u'^{-1} ah_1(X) }.
+abf(X) = g(X) c(bh(X)) ah_1(X) = u'c(bh(X)) u'^{-1} a g(X)h_1(X) = ab u'^{-1} a g(X)h_1(X) = ab  g(X) \brb{u'^{-1} ah_1(X) }.
 \ee
 
 If $ab = 0$, we have $a=0$ or $b=0$. If $a = 0$, $c(bh(X)) = 0$, $bf(X) = 0$, $b=0$ or $f(X) =0$. If $f(X) = 0$, we have $h(X) = 0$ since $g(X) \neq 0$ ($g(X)$ is primitive). If $b=0$, $bh(X) = 0$ and this is contradiction to Definition \ref{def:field_of_fractions}.(ii).
 
 
-If $ab \neq 0$, we can do the cancellation and have $f(X) = g(X)\bb{u'^{-1} ah_1(X) } = g(X)h_0(X)$ for some $h_0(X) \in R[X]$.
+If $ab \neq 0$, we can do the cancellation and have $f(X) = g(X)\brb{u'^{-1} ah_1(X) } = g(X)h_0(X)$ for some $h_0(X) \in R[X]$.
 \end{proof}
 
 Thus, we can have the following proposition.
@@ -2287,7 +2287,7 @@ f(X) = c(f(X))f_1(X) = p_1 \dots p_m \cdot q_1(X) \dots q_n(X).
 
 The product of these primitive irreducibles $q_1(X) \dots q_n(X)$ is primitive by Lemma \ref{lem:primitive_product} and so the content of $f(X)$ is an associate of the product of the irreducibles in $R$. That is, by Corollary \ref{cor:content_associate} and primitiveness,
 \be
-c(f(X)) = c\bb{p_1 \dots p_m \cdot q_1(X) \dots q_n(X)} = u p_1 \dots p_m \cdot c(q_1(X)) \dots c(q_n(X)) = u' p_1 \dots p_m\quad (\dag)
+c(f(X)) = c\brb{p_1 \dots p_m \cdot q_1(X) \dots q_n(X)} = u p_1 \dots p_m \cdot c(q_1(X)) \dots c(q_n(X)) = u' p_1 \dots p_m\quad (\dag)
 \ee
 where $u$, $u'$ are units in $R$. The essentially unique factorisation of $c(f(X))$ means that $(*)$ and $(\dag)$ are essentially the same. Then
 \be
@@ -2346,7 +2346,7 @@ Let $R$ be a UFD. Then $R[X_1,\dots ,X_n]$ is a UFD.
 \begin{proof}[\bf Proof]
 We assume that $R$ is a UFD and repeated application of Theorem \ref{thm:r_udf_rx_udf} gives that
 \be
-R[X_1],\quad R[X_1,X_2] = (R[X_1])[X_2],\quad R[X_1,X_2,X_3] = \bb{(R[X_1])[X_2]}[X_3]\dots.
+R[X_1],\quad R[X_1,X_2] = (R[X_1])[X_2],\quad R[X_1,X_2,X_3] = \brb{(R[X_1])[X_2]}[X_3]\dots.
 \ee
 Thus, $R[X_1,\dots ,X_n]$ is a UFD.
 \end{proof}
@@ -2462,7 +2462,7 @@ Let us first show that these are actually irreducibles (and primes).
 \item [(a)] If $p = 2 = (1 + i)(1 - i)$, % is of the correct form,
 $1 \pm  i$ are irreducibles of norm 2.
 
-\item [(b)] If $p \equiv 1 \lmod{4}$, we consider the finite field of $p$ elements $\Z/p\Z = \bra{0, 1,\dots , p - 1}$ (see Example \ref{exa:zpz_field}). Then by Proposition \ref{thm:multiplicative_group_pz_cyclic}, the field $\Z/p\Z$ with $p$ elements has a cyclic multiplicative group $\bb{\Z/p\Z}^{\times} = \bb{\Z/p\Z}\bs\bra{0}$ and thus the order of $\bb{\Z/p\Z}^{\times}$ can be divided by 4. A cyclic group $\bsa{g}$ of order $4n$ has a subgroup of order 4, namely $\bsa{ g^n }$, and a unique element of order 2, namely $g^{2n}$. $p - 1$ is the element of order 2 in $\bb{\Z/p\Z} \bs\bra{0}$, the multiplicative group since %$\F_p^* := \F_p\bs\bra{0}$
+\item [(b)] If $p \equiv 1 \lmod{4}$, we consider the finite field of $p$ elements $\Z/p\Z = \bra{0, 1,\dots , p - 1}$ (see Example \ref{exa:zpz_field}). Then by Proposition \ref{thm:multiplicative_group_pz_cyclic}, the field $\Z/p\Z$ with $p$ elements has a cyclic multiplicative group $\brb{\Z/p\Z}^{\times} = \brb{\Z/p\Z}\bs\bra{0}$ and thus the order of $\brb{\Z/p\Z}^{\times}$ can be divided by 4. A cyclic group $\bsa{g}$ of order $4n$ has a subgroup of order 4, namely $\bsa{ g^n }$, and a unique element of order 2, namely $g^{2n}$. $p - 1$ is the element of order 2 in $\brb{\Z/p\Z} \bs\bra{0}$, the multiplicative group since %$\F_p^* := \F_p\bs\bra{0}$
 %field $\F_p$ with $p$ elements has a cyclic multiplicative group $\F_p^* := \F_p\bs\bra{0}$
 \be
 (p-1)^2 = p^2 - 2p + 1 \equiv 1 \lmod{p}
@@ -2616,7 +2616,7 @@ Since $\alpha$ is a root of $f_\alpha(X)$ in $\Q$, we have $f_\alpha(X) = X - \a
 Let $p \in \Z$ be prime and consider $(\Z/p\Z)[X]/\bsa{ \bar{f}_\alpha(X)}$, where $\bar{f}_\alpha(X)$ is the polynomial in $(\Z/p\Z)[X]$ obtained from $f_\alpha(X)$ by taking coefficients modulo $p$.%$\Z[X]/\bsa{p, f_\alpha(X)}$ with $\F_p \cong \Z/p\Z$.
 \beast
 (\Z/p\Z)[X]/\bsa{ \bar{f}_\alpha(X)} & \cong & \Z[X]/\bsa{p, f_\alpha(X)} \quad (\text{the third isomorphism theorem, Theorem \ref{thm:isomorphism_3_ring}})\\
-& \cong & \Z[X]/\bsa{f_\alpha(X)}/\bb{\bsa{p, f_\alpha(X)}/\bsa{f_\alpha(X)}} \quad (\text{the third isomorphism theorem, Theorem \ref{thm:isomorphism_3_ring}})\\
+& \cong & \Z[X]/\bsa{f_\alpha(X)}/\brb{\bsa{p, f_\alpha(X)}/\bsa{f_\alpha(X)}} \quad (\text{the third isomorphism theorem, Theorem \ref{thm:isomorphism_3_ring}})\\
 & \cong & \Z[\alpha]/\bsa{p} \quad (\text{by Proposition \ref{pro:minimal_polynomial_of_algebraic_integer} and the fact that }\bsa{p, f_\alpha(X)}/\bsa{f_\alpha(X)} = \bsa{p})\\%the first isomorphism theorem, Theorem \ref{thm:isomorphism_1_ring}})\\
 & \cong & (\Z/p\Z)[\alpha]. \quad (\text{the third isomorphism theorem, Theorem \ref{thm:isomorphism_3_ring}})
 \eeast
@@ -2694,9 +2694,9 @@ If $R$ is a UFD, then an element $p\in R$ is irreducible if and only if it is pr
 
 \begin{center}
 \begin{longtable}{|ccccccc|ccccccc|}%ccccccc|ccccccc|}%\begin{tabular}
-\caption{group structure of $\bb{\Z/n\Z}^\times$} \label{tab:group_structure_multiplicative_group_modular_ring}\\ %\vspace{-2mm}
+\caption{group structure of $\brb{\Z/n\Z}^\times$} \label{tab:group_structure_multiplicative_group_modular_ring}\\ %\vspace{-2mm}
 \hline
-& $n$ & & $\bb{\Z/n\Z}^\times$ & & $\phi(n)$ & & & $n$ & & $\bb{\Z/n\Z}^\times$ & & $\phi(n)$ & \\ %& & $n$ & & $\bb{\Z/n\Z}^\times$ & & $\phi(n)$ & & & $n$ & & $\bb{\Z/n\Z}^\times$ & & $\phi(n)$ &  \\
+& $n$ & & $\brb{\Z/n\Z}^\times$ & & $\phi(n)$ & & & $n$ & & $\brb{\Z/n\Z}^\times$ & & $\phi(n)$ & \\ %& & $n$ & & $\brb{\Z/n\Z}^\times$ & & $\phi(n)$ & & & $n$ & & $\brb{\Z/n\Z}^\times$ & & $\phi(n)$ &  \\
 \hline
 & 1 & & $C_1$ & & 1 & & & 2 & & $C_1$ & & 1 & \\%&
 & 3 & & $C_2$ & & 2 & & & 4 & & $C_2$ & & 2 &  \\
@@ -2732,14 +2732,14 @@ The identity of addition is $0 = 0 + 0\omega \in R$, thus the inverse of $a+b\om
 
 Also, $(a_1 + b_1\omega)(a_2 + b_2\omega) = a_1a_2 + (a_1b_2 + a_2b_1)\omega + b_1b_2 \omega^2 \in R$. We know that
 \be
-\omega^2 = \bb{\frac{1+\sqrt{-3}}2}^2 = \frac{1+(-3) + 2\sqrt{-3}}4 = \frac {-1+\sqrt{-3}}2 = \omega -1.
+\omega^2 = \brb{\frac{1+\sqrt{-3}}2}^2 = \frac{1+(-3) + 2\sqrt{-3}}4 = \frac {-1+\sqrt{-3}}2 = \omega -1.
 \ee
 
 Thus, $(a_1 + b_1\omega)(a_2 + b_2\omega) = a_1a_2 - b_1b_2 + (a_1b_2 + a_2b_1 + b_1b_2)\omega \in R$.
 
 The multiplicative identity is $1 = 1 + 0\omega \in R$. Also, it can be check that the multiplication is distributive over addition.% $a_1 + b_1\omega,a_2 + b_2\omega, a_3 + b_3\omega \in R$,
 %\be
-%(a_1 + b_1\omega)\bb{a_2 + b_2\omega + a_3 + b_3\omega} = (a_2 + b_2\omega)\bb{a_2 + a_3+ (b_2 + b_3)\omega} =
+%(a_1 + b_1\omega)\brb{a_2 + b_2\omega + a_3 + b_3\omega} = (a_2 + b_2\omega)\brb{a_2 + a_3+ (b_2 + b_3)\omega} =
 %\ee
 
 Thus, $R$ is subring of $\C$.
@@ -2753,7 +2753,7 @@ Thus if $a = 0$, $b\neq 0$, $d = -\frac 1b$, $c = \frac 1b$, the inverse $a+b\om
 
 IF $a\neq 0$, $c = \frac{1+bd}a$,
 \be
-ad + b  \frac{1+bd}a + bd = 0  \ \ra \ \bb{a+b + \frac {b^2}a }d = - \frac ba
+ad + b  \frac{1+bd}a + bd = 0  \ \ra \ \brb{a+b + \frac {b^2}a }d = - \frac ba
 \ee
 
 If $b = 0$, $d = 0$, $c = \frac 1a$, the inverse $a+b\omega = a$ is $\frac 1c = \frac 1c + 0\omega \in F$.
@@ -2767,7 +2767,7 @@ Thus, $F$ is subfield of $\C$.
 
 We can define
 \be
-N\bb{a+b\omega} = N\bb{a+ \frac b2 + \frac{\sqrt{-3}}2b} = (a+\frac b2)^2 + \frac 34 b^2 = a^2 + b^2 + ab \geq 0.
+N\brb{a+b\omega} = N\brb{a+ \frac b2 + \frac{\sqrt{-3}}2b} = (a+\frac b2)^2 + \frac 34 b^2 = a^2 + b^2 + ab \geq 0.
 \ee
 
 Given $r_1 = a_1 + b_1\omega \in R$, if it is a unit, there must exist $r_2 \in R$ (its multiplication inverse) such that $r_1 r_2 = 1$. We have $N(r_1r_2) = N(r_1)N(r_2) = 1$. Since $N(r)$ is of form $a^2 + b^2 + ab \in \Z$, $N(r_1) = N(r_2) = 1$. Thus,
@@ -2879,12 +2879,12 @@ r (rg) = r^2 g = rg.
 
 Thus, $\bsa{r}$ is a ring.
 
-Now let $\phi : R\to \bsa{r}\times \bsa{r'}$ by $\phi(g) = \bb{rg,r'g} = \bb{rg,(1-r)g}$. Then for any $g_1,g_2\in R$,
+Now let $\phi : R\to \bsa{r}\times \bsa{r'}$ by $\phi(g) = \brb{rg,r'g} = \brb{rg,(1-r)g}$. Then for any $g_1,g_2\in R$,
 \be
-\phi(g_1 + g_2) = (r(g_1+g_2), (1-r)(g_1 + g_2)) = \bb{rg_1,(1-r)g_1} + \bb{rg_2,(1-r)g_2} = \phi(g_1) + \phi(g_2),
+\phi(g_1 + g_2) = (r(g_1+g_2), (1-r)(g_1 + g_2)) = \brb{rg_1,(1-r)g_1} + \brb{rg_2,(1-r)g_2} = \phi(g_1) + \phi(g_2),
 \ee
 \be
-\phi(g_1g_2) = \bb{rg_1g_2,(1-r)g_1g_2} = \bb{r^2 g_1g_2, (1-r)^2 g_1g_2} = (rg_1,(1-r)g_1)(rg_2,(1-r)g_2) = \phi(g_1)\phi(g_2).
+\phi(g_1g_2) = \brb{rg_1g_2,(1-r)g_1g_2} = \brb{r^2 g_1g_2, (1-r)^2 g_1g_2} = (rg_1,(1-r)g_1)(rg_2,(1-r)g_2) = \phi(g_1)\phi(g_2).
 \ee
 
 So $\phi$ is a homomorphism. Then
@@ -2933,12 +2933,12 @@ For intersection (multiplication), $A\cap B = B\cap A$ and $A\cap B \in P(S)$. T
 
 For distributivity, $\forall A,B,C \in S$,
 \beast
-\ind_{A\cap (B\triangle C)} & = &  \ind_A \ind_{B\triangle C} = \ind_A \bb{\ind_B + \ind_C \lmod{2}} \\
+\ind_{A\cap (B\triangle C)} & = &  \ind_A \ind_{B\triangle C} = \ind_A \brb{\ind_B + \ind_C \lmod{2}} \\
 & = & \ind_A \ind_B \lmod{2} + \ind_A \ind_C \lmod{2} = \ind_{A\cap B} + \ind_{A\cap C} \lmod{2} = \ind_{(A\cap B) \triangle (A\cap C)}.
 \eeast
 
 %\beast
-%A \cap (B\triangle C) & = & A \cap ((B\cup C) \bs (B \cap C)) = A \cap \bb{(B\cup C) \cap (B \cap C)^c} \\
+%A \cap (B\triangle C) & = & A \cap ((B\cup C) \bs (B \cap C)) = A \cap \brb{(B\cup C) \cap (B \cap C)^c} \\
 %& = & (A\cap (B\cup C) ) \cap (A \cap (B \cap C)^c)
 %\eeast
 
@@ -3255,9 +3255,9 @@ In particular, take $\omega = \frac {-1 + \sqrt{-3}}2$
 
 We have
 \beast
-\bb{\frac {-1 + \sqrt{-3}}2}^2 & = & \frac {-2 - 2\sqrt{-3}}4 = \frac {-1 - \sqrt{3}}2 = (-1) \frac {1 + \sqrt{3}}2 = 1 \cdot \frac {1 + \sqrt{3}}2 \lmod{2\omega}\\
-\bb{\frac {1 + \sqrt{-3}}2}^2 & = & \frac {-2 + 2\sqrt{-3}}4 = \frac {-1 + \sqrt{3}}2 \\
-\bb{\frac {-1 + \sqrt{-3}}2}\bb{\frac {1 + \sqrt{-3}}2} & = & \frac {-3 - 1}4 = -1 = 1 \lmod{2}
+\brb{\frac {-1 + \sqrt{-3}}2}^2 & = & \frac {-2 - 2\sqrt{-3}}4 = \frac {-1 - \sqrt{3}}2 = (-1) \frac {1 + \sqrt{3}}2 = 1 \cdot \frac {1 + \sqrt{3}}2 \lmod{2\omega}\\
+\brb{\frac {1 + \sqrt{-3}}2}^2 & = & \frac {-2 + 2\sqrt{-3}}4 = \frac {-1 + \sqrt{3}}2 \\
+\brb{\frac {-1 + \sqrt{-3}}2}\brb{\frac {1 + \sqrt{-3}}2} & = & \frac {-3 - 1}4 = -1 = 1 \lmod{2}
 \eeast
 
 Thus, $\frac {-1 + \sqrt{-3}}2$ and $\frac {1 + \sqrt{-3}}2$ are multiplicative inverse to each other.
@@ -3415,12 +3415,12 @@ which is not irreducible.
 %\begin{solution}[\bf Solution.]
 %For $a,b \in \Z$, we define a function
 %\be
-%\phi:\Z[\sqrt{2}] \to \Z^+,\ a+b\sqrt{2} \mapsto \abs{\bb{a+b\sqrt{2}}\bb{a-b\sqrt{2}}} = \abs{a^2 - 2b^2}.
+%\phi:\Z[\sqrt{2}] \to \Z^+,\ a+b\sqrt{2} \mapsto \abs{\brb{a+b\sqrt{2}}\brb{a-b\sqrt{2}}} = \abs{a^2 - 2b^2}.
 %\ee
 
 %Then for $a+b\sqrt{2}, c+ d\sqrt{2} \in \Z[\sqrt{2}]$,
 %\beast
-%\phi\bb{\bb{a+b\sqrt{2}}\bb{c+d\sqrt{2}}} & = & \phi \bb{ac + 2bd + (ad + bc)\sqrt{2}} = \abs{(ac + 2bd)^2 - 2(ad + bc)^2} \\
+%\phi\brb{\brb{a+b\sqrt{2}}\brb{c+d\sqrt{2}}} & = & \phi \brb{ac + 2bd + (ad + bc)\sqrt{2}} = \abs{(ac + 2bd)^2 - 2(ad + bc)^2} \\
 %& = & \abs{a^2c^2 + 4b^2 d^2 + 4abcd - 2a^2d^2 - 2b^2c^2 - 4abcd} = \abs{(a^2 - 2b^2)(c^2 - 2d^2)} \\
 %& = & \abs{a^2 - 2b^2}\abs{c^2 - 2d^2} = \phi(a+b\sqrt{2})\phi(c+d\sqrt{2}).
 %\eeast
@@ -3463,19 +3463,19 @@ which is not irreducible.
 
 %Let $a,b\in \N$. If the smallest unit bigger than 1 is of the form $a-b\sqrt{2} > 1$, then $a+b\sqrt{2} > 1$. However,
 %\be
-%1 = \phi(a-b\sqrt{2}) = \abs{\bb{a-b\sqrt{2}}\bb{a+b\sqrt{2}}} > \abs{1} = 1. \text{ (Contradiction.)}
+%1 = \phi(a-b\sqrt{2}) = \abs{\brb{a-b\sqrt{2}}\brb{a+b\sqrt{2}}} > \abs{1} = 1. \text{ (Contradiction.)}
 %\ee
 
 %Similarly, If the smallest unit bigger than 1 is of the form $-a+b\sqrt{2} > 1$, then $a+b\sqrt{2} > 1$. This will lead to the contradiction again.
 
 %Thus, it has to be of the form  $a+b\sqrt{2}$. Thus, the smallest unit bigger than 1 is $1+\sqrt{2}$.
 
-%Clearly, the power of $1+\sqrt{2}$ are units. If there exists any unit between $\bb{1+\sqrt{2}}^n$ and $\bb{1+\sqrt{2}}^{n+1}$ with integer $n$ (positive or negative), say $u$,
+%Clearly, the power of $1+\sqrt{2}$ are units. If there exists any unit between $\brb{1+\sqrt{2}}^n$ and $\brb{1+\sqrt{2}}^{n+1}$ with integer $n$ (positive or negative), say $u$,
 %\be
-%\bb{1 + \sqrt{2}}^n < u < \bb{1+\sqrt{2}}^{n+1} \ \ra \ 1 < u \bb{1+\sqrt{2}}^{-n} < 1+\sqrt{2}.
+%\brb{1 + \sqrt{2}}^n < u < \brb{1+\sqrt{2}}^{n+1} \ \ra \ 1 < u \brb{1+\sqrt{2}}^{-n} < 1+\sqrt{2}.
 %\ee
 
-%Obviously, $u \bb{1+\sqrt{2}}^{-n}$ is a unit since $u^{-1}$ and $\bb{1+\sqrt{2}}^{n}$ are units. However, $1+\sqrt{2}$ is the smallest unit bigger than 1. This leads to contradiction. Thus, there is no other unit bigger than 1 besides $(1+\sqrt{2})^n$ with $n\in \N$.
+%Obviously, $u \brb{1+\sqrt{2}}^{-n}$ is a unit since $u^{-1}$ and $\brb{1+\sqrt{2}}^{n}$ are units. However, $1+\sqrt{2}$ is the smallest unit bigger than 1. This leads to contradiction. Thus, there is no other unit bigger than 1 besides $(1+\sqrt{2})^n$ with $n\in \N$.
 %\end{solution}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
