@@ -26,8 +26,8 @@ r_1\cdot r_2 = r_2\cdot r_1,\ \forall r_1,r_2 \in R.
 \ee
 \end{definition}
 
-\begin{definition}[subring]
-A subset $S$ of $R$ is a subring\index{subring!group} if it is a ring under the restriction of the two operations. In particular, $1_R \in S$. The notation is $S \leq R$.
+\begin{definition}[subring\index{subring!group} ]
+A subset $S$ of $R$ is a subringif it is a ring under the restriction of the two operations. In particular, $1_R \in S$. The notation is $S \leq R$.
 \end{definition}
 
 \begin{definition}[field\index{field}]\label{def:field}
@@ -319,11 +319,11 @@ Examples of principal ideals include $n\Z$ in $\Z$ and $\bsa{X}$ in $\C[X]$, whe
 \subsection{Quotient ring}
 
 \begin{proposition}\label{pro:quotient_ring}
-Let $I \lhd R$ be an ideal. Then the quotient ring\index{quotient ring} $R/I$ has elements consisting of the cosets $r + I$ with the operations
+Let $I \lhd R$ be an ideal. Then the quotient ring\index{quotient ring} $R/I = \bra{r+I:r\in R}$ has elements consisting of the cosets $r + I$ for $r\in R$ with the operations
 \be
-(r_1 + I) + (r_2 + I) = (r_1 + r_2) + I, \quad\quad (r_1 + I)\cdot(r_2 + I) = r_1r_2 + I.
+(r_1 + I) + (r_2 + I) = (r_1 + r_2) + I, \quad\quad (r_1 + I)\cdot(r_2 + I) = r_1r_2 + I
 \ee
-This defines a ring $R/I$.
+for any $r_1,r_2\in R$. This defines a ring $R/I$.
 \end{proposition}
 
 \begin{proof}[\bf Proof]
@@ -417,7 +417,7 @@ We require $\F$ to be a field as we need $b^{-1}_m$.
 \begin{example}\label{exa:x_square_plus_1_isomorphic_c}
 Consider the ideal
 \be
-I = \bra{X^2 + 1} \lhd \R[X].
+I = \bsa{X^2 + 1} \lhd \R[X].
 \ee
 
 For any $f(X) \in \R[X]$, we can write $f(X) = (X^2 + 1)q(X) + r(X)$ with $\deg r(X) \leq 1$. Thus $f(X) + I = r(X) + I$. The elements of $\R[X]/I$ are of the form $a + bX + I$.
@@ -434,7 +434,7 @@ and similarly multiplication is given by ($XI = I$ since $I$ is ideal)
 
 This corresponds to addition and multiplication in $\C$. In fact,
 \beast
-\R[X]/\bra{X^2 + 1} & \cong & \C,\\
+\R[X]/\bsa{X^2 + 1} & \cong & \C,\\
 a + bX + I & \mapsto & a + bi.
 \eeast
 \end{example}
@@ -447,7 +447,7 @@ Let $\theta : R \to S$ be a ring homomorphism. Then $\ker \theta \lhd R$, $\im \
 \end{theorem}
 
 \begin{proof}[\bf Proof]
-Lemma \ref{lem:kernel_ring_ideal} states that $\ker \theta$ is an ideal.
+Lemma \ref{lem:kernel_ring_ideal} states that $\ker \theta$ is an ideal. Therefore, $R/\ker\theta$ is a subring of $R$ by Proposition \ref{pro:quotient_ring}.
 
 Now we show that $\im \theta$ is a subring of $S$,
 \ben
@@ -466,12 +466,19 @@ Then by distributivity of ring $R$,
 Thus, $s_1(s_2 + s_3) = s_1s_2 + s_1 s_3$ and therefore $\im \theta$ is a subring of $R$.
 \een
 
-Let $\Phi: R/I \to \im \theta$, $r + I \mapsto \theta(r)$ and note $I = \ker \theta$. We know that $\Phi$ is well-defined and bijective and an isomorphism of additive groups from first isomorphism theorem of group (Theorem \ref{thm:isomorphism_1_group}). It is left to check that $\Phi$ is a ring homomorphism.
+Let $\Phi: R/I \to \im \theta$, $r + I \mapsto \theta(r)$ and note $I = \ker \theta$. Consider $r_1+ I = r_2+I \in R/I$. We have
+\be
+r_1 - r_2 \in I = \ker\theta \ \ra\ \theta(r_1 - r_2) = 0 \ \ra\ \theta(r_1) = \theta(r_2)
+\ee
+which implies that $\Phi$ is well-defined. It is easy to see that $\Phi$ is bijective and thus it is an isomorphism of abelian additive groups from first isomorphism theorem of group (Theorem \ref{thm:isomorphism_1_group}). Note that it is due to the fact that any subgroup of abelian additive groups is normal ($\ker\theta$ is an ideal (subgroup under addition) and thus normal).
+
+So it is left to check that $\Phi$ is a ring homomorphism. Accordingly, 
 \beast
 \Phi(r_1 + I + r_2 + I) & = & \Phi(r_1 + r_2 + I) = \theta (r_1 +r_2) = \theta (r_1) + \theta(r_2) = \Phi(r_1 + I) + \Phi(r_2 + I)\\
 \Phi((r_1 + I)(r_2 + I)) & = & \Phi(r_1r_2 + I) = \theta(r_1r_2) = \theta(r_1)\theta(r_2) = \Phi(r_1 + I)\Phi(r_2 + I),\\
 \Phi(1_R + I) & = & \theta(1_R) = 1_S.
 \eeast
+
 Thus $\Phi$ is a ring homomorphism.
 \end{proof}
 
@@ -486,7 +493,14 @@ is a ring homomorphism with $\ker \theta = (X^2 + 1)$ (all the polynomials can b
 
 
 \begin{theorem}[second isomorphism theorem\index{isomorphism theorem!ring}]\label{thm:isomorphism_2_ring}
-Let $R$ be a subring of $S$ and $J \lhd S$ an ideal. Then $R \cap J\lhd S$ is an ideal, $(R + J)/J \leq S/J$ and $\{r + J : r \in R\} = (R + J)/J \leq S/J$ and $R/(R \cap J) \cong (R + J)/J$.
+Let $R$ be a subring of $S$ and $J \lhd S$ an ideal. Then $R \cap J\lhd R$ is an ideal,
+\be
+\bra{r + J : r \in R} = (R + J)/J \leq S/J
+\ee
+which means that $(R + J)/J $ is a subring of $S/J$ and 
+\be
+R/(R \cap J) \cong (R + J)/J.
+\ee
 \end{theorem}
 
 \begin{proof}[\bf Proof]
@@ -510,25 +524,12 @@ Thus, $\theta$ is a ring homomorphism. By first isomorphism theorem of ring (The
 such that $R/ \ker \theta \cong \im \theta$, that is, $R/(R \cap J) \cong (R + J)/J \leq S/J$.
 \end{proof}
 
-%\begin{proposition}\label{pro:remark_second_isomorphic_theorem_ring}
-\begin{remark}
-There is a correspondence between additive groups,
-\be
-\left\{\text{additive subgroups of $R$ containing ideal $I$}\right\} \ \longleftrightarrow \ \left\{\text{additive subgroups of $R/I$}\right\}
-\ee
-as in Proposition \ref{pro:remark_second_isomorphism_theorem_group}. This correspondence induces\footnote{This needs to be checked.}
-\be
-\left\{\text{subrings of $R$ containing $I$}\right\} \ \longleftrightarrow \ \left\{\text{subrings of $R/I$}\right\},
-\ee
-\be
-\left\{\text{ideals of $R$ containing $I$}\right\} \ \longleftrightarrow \ \left\{\text{ideals of $R/I$}\right\}.
-\ee
-\end{remark}
+
 
 
 
 \begin{theorem}[third isomorphism theorem\index{isomorphism theorem!ring}]\label{thm:isomorphism_3_ring}
-Let $I$ and $J$ be ideals of $R$, with $I \subset J$. Then $(R/I)/(J/I) \cong R/J$ where $J/I = \{r + I : r \in J\}$.
+Let $I$ and $J$ be ideals of $R$, with $I \subseteq J$. Then $(R/I)/(J/I) \cong R/J$ where $J/I = \{r + I : r \in J\}$.
 \end{theorem}
 
 \begin{proof}[\bf Proof]
@@ -553,7 +554,89 @@ The first isomorphism theorem of ring (Theorem \ref{thm:isomorphism_1_ring}) imp
 That is, $(R/I)/(J/I) \cong R/J$.
 \end{proof}
 
-\begin{definition}\label{def:characteristic_ring}
+
+%\begin{proposition}\label{pro:remark_second_isomorphic_theorem_ring}
+%\begin{remark}
+%\end{remark}
+
+\begin{theorem}[correspondence theorem of rings]\label{thm:correspondence_subring_ideal_containg_normal_subring_ideal_quotient_ring}
+Let $R$ be a ring and $I$ be an ideal of $R$ ($I\lhd R$). Then there is a bijection between the set of all subrings of $R$ containing $I$ and the set of all subrings of $R/I$. That is,
+\be
+\sub(R:I) \cong \sub(R/I).
+\ee
+
+Also, there is a bijection between the set of all ideals of $R$ containing $I$ and the set of all ideals of $R/I$. That is,
+\be
+\bra{\text{ideals of $R$ containing $I$}}\ \longleftrightarrow \ \bra{\text{ideals of $R/I$}} 
+\ee
+
+In other words, for $I\subseteq J\subseteq R$,
+\be
+J\lhd R \ \lra \ (J/I) \lhd (R/I).
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+
+
+There is a one-to-one correspondence with maps $\Phi$ and $\Theta$ between additive groups,
+\beast
+\left\{\text{additive subgroups of $R$ containing ideal $I$}\right\} &  \longleftrightarrow & \left\{\text{additive subgroups of $R/I$}\right\} \\
+\Phi: \ S & \longrightarrow & S/I \\
+\Theta:\ \bra{r\in R:r+I\in T} & \longleftarrow & T 
+\eeast
+as in group correspondence theorem (Theorem \ref{thm:correspondence_subgroup_containg_normal_subgroup_quotient_group}) since additive group is abelian (due to definition of ring $R$) and every subgroup is normal. Note that $r+I$ is the equivalent form of $rI$ under addition.
+
+%This correspondence induces\footnote{This needs to be checked.}%Proposition \ref{pro:remark_second_isomorphism_theorem_group}
+
+First, we want to show that there is one-to-one correspondence between
+\be
+\bra{\text{subrings of $R$ containing ideal $I$}} \ \longleftrightarrow \ \bra{\text{subrings of $R/I$}}
+\ee
+and it suffices to show that $\Phi$ and $\Theta$ maps subrings to subrings between the rings. Also, since $R$ and $R/I$ are both rings (by Proposition \ref{pro:quotient_ring}), distributive over addition and associative property can be easily inherited from $R$ and $R/I$. Thus, we only check the conditions that multiplication is closed and the multiplicative idenity is contained in the corresponding set.
+
+Let $S\in \sub(R:I)$ and $\Phi$ maps $S$ to $S/I = \bra{s+I: s\in S}$. Then for any $s_1+I,s_2+I\in S/I$ with $s_1,s_2\in S$, we have that $s_1s_2\in S$. Thus, 
+\be
+(s_1+I)(s_2+I) = s_1s_2 + I \in S/I \ \ra\ S/I \text{ is closed.}
+\ee
+
+We know that $1_R+I$ is the identity of $R/I$ since $(r+I) (1_R+I) = r+I = (1_R+I)(r+I)$ for any $r+I \in R/I$. Also, $1_R$ is the identity of $S$ since $S$ is a subring of $R$. Thus, $s1_R = s = 1_Rs$ for any $s\in S$. Thus, for any $s+I \in S/I$, 
+\be
+(s+I)(1_R+I) = s1_R + I = s + I = 1_R s + I = (1_R+I)(s+I)
+\ee
+which implies that $1_R+I$ is also the idenity of $S/I$. Thus, $S/I$ is a subring.
+
+Meanwhile, consider the $T \in \sub(R/I)$ and $\Theta$ maps $T$ to $\bra{r\in R: r+I\in T}$. For any $r_1,r_2\in \bra{r\in R: r+I = T}$, we have $r_1+I,r_2+I \in T$ and thus
+ Then
+\be
+r_1r_2 + I = (r_1+I)(r_2+I) \in T \ \ra \ r_1r_2 \in \bra{r\in R: r+I\in T}\ \ra\  \bra{r\in R: r+I\in T}\text{ is closed.}
+\ee
+
+Also, $1_R + I$ is the identity of $R/I$ and $T$ since $T$ is a subring of $R/I$. Thus, $1_R\in \bra{r\in R:r+I \in T}$ as $1_R+I \in T$. 
+
+Second, we want to show that there is one-to-one correspondence between
+\be
+\bra{\text{ideals of $R$ containing  ideal $I$}} \ \longleftrightarrow \ \bra{\text{ideals of $R/I$}}
+\ee
+and it suffices to show that $\Phi$ and $\Theta$ maps ideals to ideals between the rings. Also, since $R$ and $R/I$ are both rings, we conly check the condition that the multiplication of elements of ideal and ring is in the ideal.
+
+Let $I\lhd J\lhd R$ and $\Phi$ maps $J$ to $J/I = \bra{j+I: j\in J}$. Then for any $j+I \in J/I$ and $r+I \in R/I$ with  $j\in J$ and $r\in R$. Since $J$ is an ideal, we have that $jr,rj\in J$. Therefore,
+\be
+(j+I)(r+I) = jr + I \in J/I,\ (r+I)(j+I) = rj + I \in J/I
+\ee
+which implies that $J/I$ is an ideal in $R/I$.
+
+On the other hand, we consider the $T \lhd R/I$ and $\Theta$ maps $T$ to $\bra{r\in R: r+I\in T}$. For any $t\in \bra{r\in R: r+I \in T}$ and $r\in R$, we have $t + I\in T$. Since $T$ is an ideal, we have
+\be
+(t+I)(r+I) = tr+ I \in T,\ (r+I)(t+I) = rt + I \in T \ \ra\ tr, rt \in \bra{r\in R: r+I \in T}
+\ee
+which implies that $\bra{r\in R: r+I \in T}$ is an ideal in $R$. %Therefore, we have proved all the required result.
+\end{proof}
+
+
+\subsection{Characteristic of ring}
+
+\begin{definition}[characteristic of ring\index{characteristic!ring}]\label{def:characteristic_ring}
 Given a ring $R$, there is a unique ring homomorphism
 \be
 \phi: \Z \to R,\ 1 \mapsto  1_R, \ m \mapsto  \underbrace{1 + \dots + 1}_{m \text{ times}}
@@ -561,7 +644,7 @@ Given a ring $R$, there is a unique ring homomorphism
 
 The first isomorphism theorem (Theorem \ref{thm:isomorphism_1_ring}) implies $\Z/ \ker \phi \cong \im \phi \leq R$. $\im \phi$ is the prime subring\index{prime subring}\footnote{need explanation} of $R$. $\ker \phi \lhd \Z$ is an ideal and so is of the form $n\Z$ for some $n$ and $\im \phi \cong \Z/n\Z$.
 
-This $n$ is the characteristic\index{characteristic!ring} of $R$.
+This $n$ is the characteristic of ring $R$.
 \end{definition}
 
 \begin{remark}
@@ -1591,50 +1674,39 @@ $z_1/z_2 = q + z_3$ with $q \in R$, $z_3 \in \C$ and $|z_3| < 1$. So $z_1 = qz_2
 N(r) = |z_2z_3|^2 = |z_2|^2|z_3|^2 < |z_2|^2 = N(z_2).
 \ee
 
-\centertexdraw{
-    \drawdim in
 
-    \arrowheadtype t:F \arrowheadsize l:0.08 w:0.02
+\begin{center}
+\psset{yunit=2.5cm,xunit=2.5cm}
+\begin{pspicture}(0.5,-0.1)(7,1.8)
+\rput[lb](0.4,-0.2){$\Z[i]$}
+\rput[lb](1.8,-0.2){$\Z[\sqrt{-2}]$}
+\rput[lb](3.3,-0.2){$\Z[\sqrt{-3}]$}
+\rput[lb](5,-0.2){$\Z[\omega]$, $\omega = (1+ \sqrt{-3})/2$}
 
-    \def\bdot {\fcir f:0 r:0.04 }
+\pstGeonode[PointSymbol=*,PointName=none,dotscale=1.5](0.5,0.5){A}(2,0.707){B}(3.5,0.866){C}(6,0.866){D}
 
-    \linewd 0.01 \setgray 0
+\psline(0,0)(1,0)(1,1)(0,1)(0,0)
+\psline(0.5,0)(0.5,1)
+\psline(0,0.5)(1,0.5)
+\psline[linestyle=dashed](0.25,0.25)(0.25,0.75)(0.75,0.75)(0.75,0.25)(0.25,0.25)(0.5,0.5)
 
-%\move (0 0.8)\larc r:0.2 sd:0 ed:135
+\psline(1.5,0)(2.5,0)(2.5,1.414)(1.5,1.414)(1.5,0)
+\psline(2,0)(2,1.414)
+\psline(1.5,0.707)(2.5,0.707)
+\psline[linestyle=dashed](1.75,0.3535)(1.75,1.0605)(2.25,1.0605)(2.25,0.3535)(1.75,0.3535)(2,0.707)
 
-\htext (0.4 -0.2){$\Z[i]$}
-\htext (1.8 -0.2){$\Z[\sqrt{-2}]$}
-\htext (3.3 -0.2){$\Z[\sqrt{-3}]$}
-\htext (5 -0.2){$\Z[\omega]$, $\omega = (1+ \sqrt{-3})/2$}
+\psline(3,0)(4,0)(4,1.732)(3,1.732)(3,0)
+\psline(3.5,0)(3.5,1.732)
+\psline(3,0.866)(4,0.866)
+\psline[linestyle=dashed](3.25,0.433)(3.25,1.299)(3.75,1.299)(3.75,0.433)(3.25,0.433)(3.5,0.866)
 
-\move(0 0) \lvec(1 0) \lvec (1 1) \lvec (0 1) \lvec (0 0)
-\move(0.5 0) \lvec(0.5 1)
-\move(0 0.5) \lvec(1 0.5)
-\move(0.5 0.5) \bdot
+\psline(4.5,0)(6.5,0)(7.5,1.732)(5.5,1.732)(4.5,0)
+\psline(5.5,0)(6.5,1.732)
+\psline(5,0.866)(7,0.866)
+\psline[linestyle=dashed](5.25,0.433)(5.75,1.299)(6.75,1.299)(6.25,0.433)(5.25,0.433)(6,0.866)
 
-\move (1.5 0) \lvec(2.5 0) \lvec (2.5 1.414)\lvec (1.5 1.414)\lvec (1.5 0)
-\move(2 0) \lvec(2 1.414)
-\move(1.5 0.707) \lvec(2.5 0.707)
-\move(2 0.707) \bdot
-
-\move(3 0) \lvec(4 0) \lvec (4 1.732) \lvec (3 1.732) \lvec (3 0)
-\move(3.5 0) \lvec(3.5 1.732)
-\move(3 0.866) \lvec(4 0.866)
-\move(3.5 0.866) \bdot
-
-\move(4.5 0) \lvec(6.5 0) \lvec (7.5 1.732) \lvec (5.5 1.732) \lvec (4.5 0)
-\move(5.5 0) \lvec(6.5 1.732)
-\move(5 0.866) \lvec(7 0.866)
-\move(6 0.866) \bdot
-
-
-\lpatt (0.05 0.05)
-\move(0.25 0.25) \lvec(0.25 0.75)\lvec(0.75 0.75)\lvec(0.75 0.25) \lvec(0.25 0.25) \lvec(0.5 0.5)
-\move(1.75 0.3535) \lvec(1.75 1.0605)\lvec(2.25 1.0605)\lvec(2.25 0.3535) \lvec(1.75 0.3535) \lvec(2 0.707)
-\move(3.25 0.433) \lvec(3.25 1.299)\lvec(3.75 1.299)\lvec(3.75 0.433) \lvec(3.25 0.433) \lvec(3.5 0.866)
-\move(5.25 0.433) \lvec(5.75 1.299)\lvec(6.75 1.299)\lvec(6.25 0.433) \lvec(5.25 0.433) \lvec(6 0.866)
-
-}
+\end{pspicture}
+\end{center}
 
 
 \item [(iv)] For $R = \Z[\sqrt{-2}]$, with similar arguments, property (i) holds, for any $z_1/z_2 \in \C$, the longest distance to its nearest point of lattice is $\sqrt{\bb{\frac {\sqrt{2}}2}^2 + \bb{\frac 12}^2} = \sqrt{3}/2 < 1$. Thus $\abs{z_3}<1$ also holds. Hence, $\Z[\sqrt{-2}]$ is a Euclidean domain.
