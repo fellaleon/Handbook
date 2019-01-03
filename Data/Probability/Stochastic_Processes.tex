@@ -29,12 +29,12 @@ We think of $\sF_n$ as `the information available at and before time $n$.'
 \begin{definition}\label{def:sigma_algebra_infinite_discrete}
 We define
 \be
-\sF_\infty = \bigvee_{n\geq 0} \sF_n = \sigma\bb{\bigcup_{n\geq 0} \sF_n}. %= \sigma (\sF_n:n\geq 0)
+\sF_\infty = \bigvee_{n\geq 0} \sF_n = \sigma\brb{\bigcup_{n\geq 0} \sF_n}. %= \sigma (\sF_n:n\geq 0)
 \ee
 \end{definition}
 
 \begin{remark}
-$\sF_\infty\subseteq \sF$\footnote{proof needed.}.%\footnote{We need to check that if $\sF_\infty\subseteq \sF$.}Usually, we set 
+$\sF_\infty\subseteq \sF$\footnote{proof needed.}.%\footnote{We need to check that if $\sF_\infty\subseteq \sF$.}Usually, we set
 \end{remark}
 
 \begin{definition}[filtered probability space, discrete]
@@ -50,7 +50,7 @@ An adapted process is one that cannot `see into the future'.
 \end{remark}
 
 \begin{definition}[natural filtration, discrete]
-Let $(X_n)_{n\geq 0}$ be a stochastic process, and let $\sF^X_n = \sigma\bb{X_k, k \leq n}$. Then $\sF^X_n$ is the natural filtration\index{natural filtration!discrete} of $X$. It is the smallest filtration with respect to which $X$ is adapted.
+Let $(X_n)_{n\geq 0}$ be a stochastic process, and let $\sF^X_n = \sigma\brb{X_k, k \leq n}$. Then $\sF^X_n$ is the natural filtration\index{natural filtration!discrete} of $X$. It is the smallest filtration with respect to which $X$ is adapted.
 \end{definition}
 
 \subsection{Stopping times}
@@ -120,7 +120,7 @@ $S-T$ is not.
 \end{remark}
 
 \begin{proof}[\bf Proof]
-\ben 
+\ben
 \item [(i)] $\bra{S\land T \leq n} = \underbrace{\bra{S\leq n}}_{\in \sF_n}\cup \underbrace{\bra{T\leq n}}_{\in \sF_n} \in \sF_n$ for all $n$.
 \item [(ii)] $\bra{S\vee T \leq n} = \underbrace{\bra{S\leq n}}_{\in \sF_n}\cap \underbrace{\bra{T\leq n}}_{\in \sF_n} \in \sF_n$ for all $n$.
 
@@ -139,17 +139,17 @@ $S-T$ is not.
 
 \item [(v)] If $\inf_n T_n \in [0,\infty)$
 \be
-\bra{\inf_n T_n < k} = \bra{\inf_n T_n \geq k}^c = \bb{\bigcap_n \bra{T_n \geq k}}^c = \bigcup_n \bb{ \bb{\bra{T_n < k}}^c}^c =\bigcup_n \underbrace{\bra{T_n < k}}_{\in \sF_k} \in \sF_k.
+\bra{\inf_n T_n < k} = \bra{\inf_n T_n \geq k}^c = \brb{\bigcap_n \bra{T_n \geq k}}^c = \bigcup_n \brb{ \brb{\bra{T_n < k}}^c}^c =\bigcup_n \underbrace{\bra{T_n < k}}_{\in \sF_k} \in \sF_k.
 \ee
 
 \item [(vi)] By (iv) and (v),
 \be
-\bra{\limsup_n T_n \leq k}= \bra{\inf_{n}\bb{\sup_{m\geq n}T_m} \leq k} \in \sF_k.
+\bra{\limsup_n T_n \leq k}= \bra{\inf_{n}\brb{\sup_{m\geq n}T_m} \leq k} \in \sF_k.
 \ee
 
 \item [(viii)]
 \be
-\bra{\liminf_n T_n \leq k}= \bra{\sup_{n}\bb{\inf_{m\geq n}T_m} \leq k} \in \sF_k.
+\bra{\liminf_n T_n \leq k}= \bra{\sup_{n}\brb{\inf_{m\geq n}T_m} \leq k} \in \sF_k.
 \ee%where $\sup_{m\geq n}T_m$ and $\inf_{m\geq n}T_m$ are stopping time sequences.
 \een%\cite{Klenke_2008}.$P_{193}$
 \end{proof}
@@ -168,11 +168,11 @@ This defines a $\sigma$-algebra $\sF_T$, called the $\sigma$-algebra of measurab
 \item [(i)] Since $\bra{\emptyset \cap \bra{T\leq n}} = \bra{\emptyset} \in \sF_n$, $\emptyset \in \sF_T$.
 \item [(ii)] If $A\in \sF_T$, $A \cap \bra{T\leq n} \in \sF_n$. Since $T$ is stopping time, $\bra{T\leq n}\in \sF_n$. Thus, since $\sF_n$ is $\sigma$-algebra
 \be
-A^c \cap \bra{T\leq n} = \bra{T\leq n} \bs \bb{A \cap \bra{T\leq n}} \in \sF_n.
+A^c \cap \bra{T\leq n} = \bra{T\leq n} \bs \brb{A \cap \bra{T\leq n}} \in \sF_n.
 \ee
 \item [(iii)] For a sequence $A_m \in \sF_T$, we have $A_m \cap \bra{T\leq n}\in \sF_n$ for all $n$. Thus, since $\sF_n$ is $\sigma$-algebra
 \be
-\bb{\bigcup_m A_m} \cap \bra{T\leq n} = \bigcup_m \bb{A_m \cap \bra{T\leq n}} \in \sF_n  \ \ra \ \bigcup_m A_m \in \sF_T.
+\brb{\bigcup_m A_m} \cap \bra{T\leq n} = \bigcup_m \brb{A_m \cap \bra{T\leq n}} \in \sF_n  \ \ra \ \bigcup_m A_m \in \sF_T.
 \ee
 \een
 
@@ -182,8 +182,8 @@ Thus, $\sF_T$ is a $\sigma$-algebra.
 \begin{remark}
 Intuitively $\sF_T$ is the information available at time $T$.%It is easy to check that if $T = n$, then $T$ is a stopping time and $\sF_T = \sF_n$.
 \end{remark}
- 
- 
+
+
 \begin{proposition}
 Let $T$ be stopping time with respect to $(\sF_n)_{n\geq 0}$. Then $T$ is $\sF_T$-measurable.
 \end{proposition}
@@ -197,23 +197,23 @@ It suffices to show that $\bra{T\leq n}\in \sF_T$ for each $n\in [0,\infty)$. Fi
 \bra{T\leq m}(\in \sF_m) & n> m
 \ea
 \right. \ \ra\ \bra{T\leq n}\cap \bra{T\leq m} \in \sF_m.
-\ee 
+\ee
 
 Then by definition of $\sigma$-algebra of stopping time, we have that $\bra{T\leq n}\in \sF_T$.
 \end{proof}
 
 
 \begin{proposition}
-Suppose the stopping time $T(\omega)=n$ for all $\omega \in \Omega$ with fixed $n\in [0,\infty)$. Then $\sF_T = \sF_n$. 
+Suppose the stopping time $T(\omega)=n$ for all $\omega \in \Omega$ with fixed $n\in [0,\infty)$. Then $\sF_T = \sF_n$.
 \end{proposition}
 
 \begin{proof}[\bf Proof]
-Suppose that $A\in \sF_n$ and then $A\in \sF$. Thus, for $m\in [0,\infty)$, 
+Suppose that $A\in \sF_n$ and then $A\in \sF$. Thus, for $m\in [0,\infty)$,
 \be
 A\cap \bra{T\leq m} = \left\{
 \ba{ll}
 A\ (\in \sF_n\subseteq \sF_m) \quad\quad & n\leq m \\
-\emptyset & n>m 
+\emptyset & n>m
 \ea\right. \ \ra\ A\cap \bra{T\leq m} \in \sF_m \ \ra\ A\in \sF_T \ \ra\ \sF_n\subseteq \sF_T.
 \ee
 
@@ -227,7 +227,7 @@ Thus, $\sF_T\subseteq \sF_n$ and therefore $\sF_n= \sF_T$.
 
 
 
- 
+
 \begin{proposition}
 Let $T$ be stopping time and $A\in \sF_T$. Then for $n\in [0,\infty)$,
 \ben
@@ -240,12 +240,12 @@ Let $T$ be stopping time and $A\in \sF_T$. Then for $n\in [0,\infty)$,
 \ben
 \item [(i)] By definition $A\cap \bra{T\leq n} \in \sF_n$. Also, by Proposition \ref{pro:stopping_time_discrete_strictly_smaller}, $\bra{T<n}\in \sF_{n-1}$ and $\bra{T<n}\subseteq \bra{T\leq n}$. Hence
 \be
-A\cap \bra{T<n} = \bb{A\cap \bra{T\leq n}}\cap \bra{T<n} \in \sF_n.
+A\cap \bra{T<n} = \brb{A\cap \bra{T\leq n}}\cap \bra{T<n} \in \sF_n.
 \ee
 
 \item [(ii)] Similarly, $\bra{T=n} \subseteq \bra{T\leq n} \in \sF_n$. Hence
 \be
-A\cap \bra{T=n} = \bb{A\cap \bra{T\leq n}} \cap \bra{T=n} = \bb{A\cap \bra{T\leq n}} \cap \bb{\underbrace{\bra{T\leq n}}_{\in \sF_n} \bs\underbrace{\bra{T<n}}_{\in \sF_n}} \in \sF_n. 
+A\cap \bra{T=n} = \brb{A\cap \bra{T\leq n}} \cap \bra{T=n} = \brb{A\cap \bra{T\leq n}} \cap \brb{\underbrace{\bra{T\leq n}}_{\in \sF_n} \bs\underbrace{\bra{T<n}}_{\in \sF_n}} \in \sF_n.
 \ee
 \een
 \end{proof}
@@ -259,7 +259,7 @@ Let $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ be a filtered probability space. If $
 \begin{proof}[\bf Proof]
 Since $S$ and $T$ are stopping times, then $\bra{S \leq n}\in \sF_n$, $\bra{T \leq n}\in \sF_n$ with $\bra{T\leq n} \subseteq \bra{S\leq n}$ for all $n$. $\forall A \in \sF_S$, we have for all $n$, $A \cap \bra{S \leq n} \in \sF_n$. Then
 \be
-A \cap \bra{T \leq n} = A \cap \bb{\bra{S \leq n} \cap \bra{T \leq n}} = \underbrace{\bb{A \cap \bra{S \leq n}}}_{\in \sF_n} \cap \underbrace{\bra{T \leq n}}_{\in \sF_n} \in \sF_n.
+A \cap \bra{T \leq n} = A \cap \brb{\bra{S \leq n} \cap \bra{T \leq n}} = \underbrace{\brb{A \cap \bra{S \leq n}}}_{\in \sF_n} \cap \underbrace{\bra{T \leq n}}_{\in \sF_n} \in \sF_n.
 \ee
 
 Thus, $A\in \sF_T$.
@@ -277,9 +277,9 @@ Let $S,T$ be two stopping times. Then each of the following events is in $\sF_S$
 
 \begin{proof}[\bf Proof]
 \ben
-\item [(i)] First, $\bra{S<T}\in \sF$ since it can be expressed by 
+\item [(i)] First, $\bra{S<T}\in \sF$ since it can be expressed by
 \be
-\bra{S<T} = \bigcup_{k\in \N} \bb{\underbrace{\bra{S\leq k}}_{\in \sF}\cap \underbrace{\bra{T>k}}_{\in \sF}}.
+\bra{S<T} = \bigcup_{k\in \N} \brb{\underbrace{\bra{S\leq k}}_{\in \sF}\cap \underbrace{\bra{T>k}}_{\in \sF}}.
 \ee
 
 Then for $n\in [0,\infty)$,
@@ -287,11 +287,11 @@ Then for $n\in [0,\infty)$,
 \bra{S<T} \cap \bra{T\leq n} = \bra{S<T\leq n} = \bigcup_{k\in \N,k< n} \bra{S\leq k}\cap \bra{k<T\leq n} \in \sF_n \ \ra \ \bra{S<T}  \in \sF_T.
 \ee
 \be
-\bra{S<T} \cap \bra{S\leq n} = \bra{S<T\leq n}  \cup \bra{S\leq n<T} = \bb{\bigcup_{k\in \N,k< n} \bra{S\leq k}\cap \bra{k<T\leq n}} \cup \bb{\bra{S\leq n}\cap \bra{T\leq n}^c} \in \sF_n \nonumber
+\bra{S<T} \cap \bra{S\leq n} = \bra{S<T\leq n}  \cup \bra{S\leq n<T} = \brb{\bigcup_{k\in \N,k< n} \bra{S\leq k}\cap \bra{k<T\leq n}} \cup \brb{\bra{S\leq n}\cap \bra{T\leq n}^c} \in \sF_n \nonumber
 \ee
 which implies $\bra{S<T}  \in \sF_S$.
 
-\item [(ii)] Similarly, $\bra{S=T}\in \sF$ and 
+\item [(ii)] Similarly, $\bra{S=T}\in \sF$ and
 \be
 \bra{S=T}\cap \bra{T\leq n} = \bra{S=T\leq n} = \bigcup_{k\in \N,k<n} \bra{S= k}\cap \bra{k=T\leq n} \in \sF_n \ \ra \ \bra{S=T}  \in \sF_T.
 \ee
@@ -339,7 +339,7 @@ Let $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ be a filtered probability space. Let 
 \ee
 
 %\be
-%\E \abs{X_{T\land n}} =  \E\bb{\sum^{n-1}_{m=0} \abs{X_m} \ind_{\bra{T = m}} } + \E\bb{\sum^\infty_{m=n} \abs{X_n} \ind_{\bra{T = m}}} \leq \sum^n_{m=0} \E\abs{X_n} < \infty.
+%\E \abs{X_{T\land n}} =  \E\brb{\sum^{n-1}_{m=0} \abs{X_m} \ind_{\bra{T = m}} } + \E\brb{\sum^\infty_{m=n} \abs{X_n} \ind_{\bra{T = m}}} \leq \sum^n_{m=0} \E\abs{X_n} < \infty.
 %\ee
 
 \een
@@ -374,7 +374,7 @@ Additionally, we have two assumptions:
 \begin{definition}[probability generating function of $X_n$]\label{def:probability_generating_function_branching}
 Now let
 \be
-G(z) = \sum^\infty_{k=0} p_kz^k = \E \bb{z^{X_1}}\,\qquad G_n(z) = \E \bb{z^{X_n}},\qquad \text{for }n \geq 1,
+G(z) = \sum^\infty_{k=0} p_kz^k = \E \brb{z^{X_1}}\,\qquad G_n(z) = \E \brb{z^{X_n}},\qquad \text{for }n \geq 1,
 \ee
 so that $G_1 = G$.
 \end{definition}
@@ -385,8 +385,8 @@ Let $(X_n)_{n\geq 0}$ be a branching process. For all $n \geq 1$, \be G_{n+1}(z)
 
 \begin{proof}[\bf Proof]
 Note that $Y^n_1, Y^n_2 , \dots$ are independent of $X_n$, so that by total law of probability (Proposition \ref{pro:conditional_expectation_elementary_event}),
-\beast G_{n+1}(z) & = & \E\bb{z^{X_{n+1}}} = \sum^\infty_{k=0} \E \bb{z^{X_{n+1}} |X_n = k} \pro (X_n = k) = \sum^\infty_{k=0} \E\bb{z^{Y^n_1 + \dots+Y^n_k}|X_n = k}\pro (X_n = k) \\
-& = & \sum^\infty_{k=0} \E\bb{z^{Y^n_1 + \dots+Y^n_k}}\pro (X_n = k) = \sum^\infty_{k=0} (G(z))^k p_k  =  \E\bb{(G(z))^{X_n}} = G_n (G(z)). \eeast
+\beast G_{n+1}(z) & = & \E\brb{z^{X_{n+1}}} = \sum^\infty_{k=0} \E \brb{z^{X_{n+1}} |X_n = k} \pro (X_n = k) = \sum^\infty_{k=0} \E\brb{z^{Y^n_1 + \dots+Y^n_k}|X_n = k}\pro (X_n = k) \\
+& = & \sum^\infty_{k=0} \E\brb{z^{Y^n_1 + \dots+Y^n_k}}\pro (X_n = k) = \sum^\infty_{k=0} (G(z))^k p_k  =  \E\brb{(G(z))^{X_n}} = G_n (G(z)). \eeast
 
 Similary, we have $G_n (G(z)) = G (G_n(z))$.
 \end{proof}
@@ -411,16 +411,16 @@ Differentiating $G_n(z)$ a second time gives
 
 and letting $z \ua 1$ again we have
 
-\be \E (X_n (X_n - 1)) = m^2 \E (X_{n-1} (X_{n-1} - 1)) + \bb{\sigma^2 + m^2 - m} \E (X_{n-1}). \ee
+\be \E (X_n (X_n - 1)) = m^2 \E (X_{n-1} (X_{n-1} - 1)) + \brb{\sigma^2 + m^2 - m} \E (X_{n-1}). \ee
 
 We then have, using the fact that $\E X_n = m^n$, \beast
 \var (X_n) & = & \E (X_n(X_n - 1)) + \E (X_n) - (\E X_n)^2\\
-& = & m^2\E (X_{n-1}(X_{n-1} - 1)) + \bb{\sigma^2 + m^2 - m}\E (X_{n-1}) + m^n - m^{2n} \\
-& = & m^2\bb{\var (X_{n-1}) - \E (X_{n-1}) + (\E X_{n-1})^2} + \bb{\sigma^2 + m^2} m^{n-1} - m^{2n}\\
+& = & m^2\E (X_{n-1}(X_{n-1} - 1)) + \brb{\sigma^2 + m^2 - m}\E (X_{n-1}) + m^n - m^{2n} \\
+& = & m^2\brb{\var (X_{n-1}) - \E (X_{n-1}) + (\E X_{n-1})^2} + \brb{\sigma^2 + m^2} m^{n-1} - m^{2n}\\
 & = & m^2\var (X_{n-1}) + \sigma^2 m^{n-1}. \eeast Iterating this, we see that \beast
-\var (X_n) & = & m^2\var (X_{n-1}) + \sigma^2 m^{n-1} = m^4\var (X_{n-2}) + \sigma^2 \bb{m^{n-1} + m^n} = \dots \\
-& = & m^{2n}\var (X_0) + \sigma^2 \bb{m^{n-1} + \dots + m^{2n-2}}\\
-& = & \sigma^2 \bb{m^{n-1} + \dots + m^{2n-2}},\quad\quad \text{since $\var (X_0) = 0$ because $X_0 = 1$}, \eeast and then the result may be obtained immediately.
+\var (X_n) & = & m^2\var (X_{n-1}) + \sigma^2 m^{n-1} = m^4\var (X_{n-2}) + \sigma^2 \brb{m^{n-1} + m^n} = \dots \\
+& = & m^{2n}\var (X_0) + \sigma^2 \brb{m^{n-1} + \dots + m^{2n-2}}\\
+& = & \sigma^2 \brb{m^{n-1} + \dots + m^{2n-2}},\quad\quad \text{since $\var (X_0) = 0$ because $X_0 = 1$}, \eeast and then the result may be obtained immediately.
 \end{proof}
 
 \begin{definition}[extinction of branching process]
@@ -436,11 +436,11 @@ when $m
 \begin{proof}[\bf Proof]
 Notice that $X_n = 0$ implies that $X_{n+1} = 0$ so that if we let $A_n = \bra{X_n = 0}$, the event that the population is extinct at or before generation $n$, we have $A_n \subseteq A_{n+1}$ and $A = \bigcup^\infty_{n=1}
 A_n$ represents the event that extinction ever occurs. Notice that $\pro(A_n) = G_n(0)$ and by the continuity property of probabilities on increasing events (fundamental property of measure, Lemma
-\ref{lem:measure_increasing_sequence}) we see that the extinction probability is \be q = \pro(A) = \lim_{n\to\infty} \pro (A_n) = \lim_{n\to\infty} G_n(0) = \lim_{n\to\infty} \pro \bb{X_n = 0}. \ee
+\ref{lem:measure_increasing_sequence}) we see that the extinction probability is \be q = \pro(A) = \lim_{n\to\infty} \pro (A_n) = \lim_{n\to\infty} G_n(0) = \lim_{n\to\infty} \pro \brb{X_n = 0}. \ee
 
 The fact that the extinction probability $q$ is well defined follows from the above and since $G$ is continuous and $q = \lim_{n\to \infty}G_n(0)$ we have
 
-\be G\bb{\lim_{n\to\infty} G_n(0)} = \lim_{n\to\infty}G_{n+1}(0) \ee,
+\be G\brb{\lim_{n\to\infty} G_n(0)} = \lim_{n\to\infty}G_{n+1}(0) \ee,
 
 so that $G(q) = q$, that is $q$ is a root of $G(z) = z$, note that 1 is always a root since $G(1) = \sum^\infty_{r=0} p_r = 1$.
 
@@ -500,7 +500,7 @@ $H'(z) = G'(z)-1 = 0$ for some $z$, $r \leq z < 1$. The function $G'$ is strictl
 \begin{definition}[random walk\index{random walk!one-dimensional}]\label{def:random_walk_one_dimensional}
 Let $X_1,X_2,\dots$ be i.i.d. random variables and set
 
-\be S_n = S_0 + \sum^n_{k=1}X_k, \quad n \geq 1 \ee where $S_0$ is a constant then $\bb{S_n}_{n \geq 0}$ is known as a (one-dimensional) random walk.
+\be S_n = S_0 + \sum^n_{k=1}X_k, \quad n \geq 1 \ee where $S_0$ is a constant then $\brb{S_n}_{n \geq 0}$ is known as a (one-dimensional) random walk.
 
 When each $X_i$ just takes the two values +1 and -1 with probabilities $p$ and $q = 1 - p$, respectively, it is a simple random walk\index{random walk!simple}\footnote{It goes also by the title of the Bernoulli walk, Rademacher walk, etc.} and further when $p = q = \frac 12$ it is a simple symmetric
 random walk\index{random walk!simple symmetric} (see Example \ref{exa:random_walk_simple_symmetric_single_boundary}, \ref{exa:random_walk_simple_symmetric_double_boundaries}).
@@ -512,7 +512,7 @@ In the following context, we will consider simple random walks.
 
 At any step of simple random walk construction, a lattice path can go up or down. Therefore, there are $2^n$ paths of length $n$. Consequently, with probability $2^{-n}$, the first $n$ steps of our simple random walk $(S_k)_{k\geq 0}$ are equal to a given path of length $n$ that starts from $(0,0)$, where $S_0 = 0$. That is, all paths that start from $(0,0)$ and have length $n$are equally likely. Therefore, if $\Pi$ is a property of paths of length $n$, then
 \be
-\pro\bb{(S_k)^n_{k=0}\in \Pi} = \frac{\text{\# of paths of length $n$ that start from (0,0) and are in $\Pi$}}{2^n}.
+\pro\brb{(S_k)^n_{k=0}\in \Pi} = \frac{\text{\# of paths of length $n$ that start from (0,0) and are in $\Pi$}}{2^n}.
 \ee
 
 Thus, any probabilistic problem for the simple random walk has a combinatorial variant, and vice versa.
@@ -536,7 +536,7 @@ Let $(S_n)_{n\geq 0}$ be a simple symmetric random walk. Suppose $n,x,y>0$ and $
 \end{theorem}
 
 \begin{proof}[\bf Proof]
-Let $T$ denote the first instant when a given path from $(k,x)$ to $(k+n,y)$ crosses zero. Reflect the pre-$T$ portion of this path to obtain a path that goes from $(k,-x)$ to $(k+n,y)$. 
+Let $T$ denote the first instant when a given path from $(k,x)$ to $(k+n,y)$ crosses zero. Reflect the pre-$T$ portion of this path to obtain a path that goes from $(k,-x)$ to $(k+n,y)$.
 
 \centertexdraw{
 
@@ -551,7 +551,7 @@ Let $T$ denote the first instant when a given path from $(k,x)$ to $(k+n,y)$ cro
 (2 1.2) \bdot \move (2.2 0.9) \bdot \move (2.4 1.2) \bdot \move (2.6 0.9) \bdot \move (2.8 0.6) \bdot \move (3 0.3) \bdot \move (3.2 0) \bdot \move (3.4 -0.3) \bdot \move (3.6 -0.6) \bdot \move (3.8 -0.9) \bdot \move (4 -0.6)
 \bdot \move (4.2 -0.3) \bdot \move (4.4 0) \bdot \move (4.6 0.3) \bdot \move (4.8 0.6) \bdot
 
-%\htext (1.4 -0.15){$T_a$} \htext (3.8 -0.15){$T_0$} \htext (-0.15 1.45){$x$} 
+%\htext (1.4 -0.15){$T_a$} \htext (3.8 -0.15){$T_0$} \htext (-0.15 1.45){$x$}
 \htext (-0.25 -0.6){$-x$}\htext (-0.2 0.5){$x$} \htext (4.9 0.5){$S_n$} \htext (4.8 -0.15){$n$}
 
 \move (0 0.6) \lvec (0.2 0.3) \lvec (0.4 0.6) \lvec (0.6 0.9) \lvec (0.8 0.6) \lvec (1 0.3) \lvec (1.2 0.6) \lvec (1.4 0.9) \lvec (1.6 0.6) \lvec (1.8 0.9) \lvec (2 1.2) \lvec (2.2 0.9) \lvec (2.4 1.2) \lvec (2.6 0.9) \lvec
@@ -573,9 +573,9 @@ This map is an invertible operation, therefore $M$ is equal to the number of pat
 \end{proof}
 
 \begin{corollary}
-Suppose $\bb{S_n}_{n\geq 0}$ is a simple symmetric random walk and $a\in \Z^+$. Then
+Suppose $\brb{S_n}_{n\geq 0}$ is a simple symmetric random walk and $a\in \Z^+$. Then
 \be
-\pro\bb{\max_{0\leq k\leq n}S_k \geq a} = 2\pro\bb{S_n \geq a} = \pro\bb{\abs{S_n}\geq a}.
+\pro\brb{\max_{0\leq k\leq n}S_k \geq a} = 2\pro\brb{S_n \geq a} = \pro\brb{\abs{S_n}\geq a}.
 \ee
 \end{corollary}
 
@@ -597,25 +597,25 @@ T_0 := \inf\bra{k\geq 1:S_k=0}\qquad (\inf \emptyset :=\infty).
 
 Then, the ballot theorem is saying the following
 \be
-\pro\bb{T_0 >n|S_n=x} = \frac xn,\qquad \forall x=1,\dots,n.
+\pro\brb{T_0 >n|S_n=x} = \frac xn,\qquad \forall x=1,\dots,n.
 \ee
 \end{remark}
 
 \begin{proof}[\bf Proof]
-Let $M$ denote the number of paths that go from $(0,0)$ to $(n,x)$ and $S_1,\dots,S_n$. All paths question have the property that they go from $(1,1)$ to $(n,x)$. Therefore, we might as well assume that $x\leq n$ (otherwise $x$ cannot be archived by $n$ steps), whence 
+Let $M$ denote the number of paths that go from $(0,0)$ to $(n,x)$ and $S_1,\dots,S_n$. All paths question have the property that they go from $(1,1)$ to $(n,x)$. Therefore, we might as well assume that $x\leq n$ (otherwise $x$ cannot be archived by $n$ steps), whence
 \beast
 M & = & \#\text{paths from $(1,1)$ to $(n,x)$} - \#\text{paths from $(1,1)$ to $(n,x)$ and cross $y=0$ at some intervening time}\\
 & = & N_{n-1,x-1} - N_{n-1,x+1}.
 \eeast
 
-We have applied the reflection principle (Theorem \ref{thm:reflection_principle_simple_symmetric_random_walk})in the very last step. If $n+x$ is odd then 
+We have applied the reflection principle (Theorem \ref{thm:reflection_principle_simple_symmetric_random_walk})in the very last step. If $n+x$ is odd then
 \be
 N_{n-1,x-1} = N_{n-1,x+1} = N_{n,x} = 0,
 \ee
 and the result follows (as $(x/n)N_{n,x} = 0$). On the other hand, if $n+x$ is even, then by Definition \ref{def:paths_count_simple_symmetric_random_walk},
 \beast
 N_{n-1,x-1} = N_{n-1,x+1} & = & \binom{n-1}{\frac{n+x}2-1} - \binom{n-1}{\frac{n+x}2} = \frac{(n-1)!}{(\frac{n+x}2-1)!(\frac{n-x}2)!} - \frac{(n-1)!}{(\frac{n+x}2)!(\frac{n-x}2-1)!} \\
-& = & \frac {N_{n,x}}n \bb{\frac{n+x}2 - \frac{n-x}2} = \frac xn N_{n,x}.
+& = & \frac {N_{n,x}}n \brb{\frac{n+x}2 - \frac{n-x}2} = \frac xn N_{n,x}.
 \eeast
 \end{proof}
 
@@ -671,7 +671,7 @@ Consier the random walk $S_{k+1}' = S_k+1$ with $S_0' = 0$. If $M$ denotes the n
 \move (-0.25 -0.25)\lvec(0 0)
 \move (-0.25 -0.6) \avec(-0.25 1)
 
-\htext (4.5 0.1){$2n$} 
+\htext (4.5 0.1){$2n$}
 
 %\move (1.75 -0.25)\lvec(2 0)\lvec(3.25 -1.25) \lvec (4 -0.5) \lvec(4.25 -0.75) \lvec (4.5 -0.5)
 
@@ -696,11 +696,11 @@ T_0 :=\inf\bra{k\geq 1:S_k=0}.
 
 Then we have
 \ben
-\item [(i)] $\pro\bb{S_{2n}=0} =  \frac{\binom{2n}{n}}{2^{2n}}$.
-\item [(ii)] $\pro\bb{T_0 = 2n} = \frac{\binom{2n-2}{n-1}}{2^{2n+1}n}$.
-\item [(iii)] $\pro\bb{S_k\geq 0,\forall k\leq 2n-3, S_{2n-2} =0, S_{2n-1}=-1} = \frac{\binom{2n-2}{n-1}}{2^{2n+1}n}$.
+\item [(i)] $\pro\brb{S_{2n}=0} =  \frac{\binom{2n}{n}}{2^{2n}}$.
+\item [(ii)] $\pro\brb{T_0 = 2n} = \frac{\binom{2n-2}{n-1}}{2^{2n+1}n}$.
+\item [(iii)] $\pro\brb{S_k\geq 0,\forall k\leq 2n-3, S_{2n-2} =0, S_{2n-1}=-1} = \frac{\binom{2n-2}{n-1}}{2^{2n+1}n}$.
 \item [(iv)] $\pro(T_0>2n) = \frac{\binom{2n}{n}}{2^{2n}}$.
-\item [(v)] $\pro\bb{S_k\geq 0, \forall k\leq 2n} = \frac{\binom{2n}{n}}{2^{2n}}$.
+\item [(v)] $\pro\brb{S_k\geq 0, \forall k\leq 2n} = \frac{\binom{2n}{n}}{2^{2n}}$.
 \een
 \end{proposition}
 
@@ -708,27 +708,27 @@ Then we have
 %\pro(T_0=2n) = u_{2n} = \frac{\binom{2n}{n}}{2^{2n}},\qquad f_{2n} = \frac{u_{2n-2}}{2n} = \frac{\binom{2n-2}{n-1}}{2^{2n-1}n}
 %\ee
 \ben
-\item [(i)] Because there $N_{2n,0} = 2^{2n}\pro\bb{S_{2n} = 0}$ paths that end up at zero at time $2n$, we have by Definition \ref{def:paths_count_simple_symmetric_random_walk}
+\item [(i)] Because there $N_{2n,0} = 2^{2n}\pro\brb{S_{2n} = 0}$ paths that end up at zero at time $2n$, we have by Definition \ref{def:paths_count_simple_symmetric_random_walk}
 \be
-\pro\bb{S_{2n} = 0} = \frac{\binom{2n}{n}}{2^{2n}}.
+\pro\brb{S_{2n} = 0} = \frac{\binom{2n}{n}}{2^{2n}}.
 \ee
 
 \item [(ii)] To prove this, note that the number of paths that hit zero, for the first time, at time $2n$ is exactly twice the number of paths which satisfying $S_k>0$ for all $k\leq 2n-1$ and $S_{2n}=0$. Then Proposition \ref{pro:random_walk_number_paths_greater_than_zero} implies that
 \be
-\pro\bb{T_0 = 2n} = \frac{2\binom{2n-2}{n-1}}{n} \frac 1{2^{2n}} = \frac{\binom{2n-2}{n-1}}{2^{2n-1}n}.
+\pro\brb{T_0 = 2n} = \frac{2\binom{2n-2}{n-1}}{n} \frac 1{2^{2n}} = \frac{\binom{2n-2}{n-1}}{2^{2n-1}n}.
  \ee
-    
 
-\item [(iii)] By Proposition \ref{pro:random_walk_number_paths_greater_equal_than_zero}, 
+
+\item [(iii)] By Proposition \ref{pro:random_walk_number_paths_greater_equal_than_zero},
 \beast
-\pro\bb{S_k\geq 0,\forall k\leq 2n-3,S_{2n-2}=0,S_{2n-1}=-1} & = & \frac 12 \pro\bb{S_k\geq 0,\forall k\leq 2n-3,S_{2n-2}=0} \\
+\pro\brb{S_k\geq 0,\forall k\leq 2n-3,S_{2n-2}=0,S_{2n-1}=-1} & = & \frac 12 \pro\brb{S_k\geq 0,\forall k\leq 2n-3,S_{2n-2}=0} \\
 & = & \frac 12 \frac {\binom{2n-2}{n-1}}{2^{2n-2}n} = \frac {\binom{2n-2}{n-1}}{2^{2n-1}n}.
 \eeast
 
 
-\item [(iv)] By (ii), we have 
+\item [(iv)] By (ii), we have
 \be
-\pro\bb{T_0 > 2n} = 1 - \sum^{n}_{k=1} \pro\bb{T_0 = 2k} = 1 - \sum^n_{k=1} \frac{\binom{2k-2}{k-1}}{2^{2k-1}k}
+\pro\brb{T_0 > 2n} = 1 - \sum^{n}_{k=1} \pro\brb{T_0 = 2k} = 1 - \sum^n_{k=1} \frac{\binom{2k-2}{k-1}}{2^{2k-1}k}
 \ee
 
 It is easy to check that
@@ -738,16 +738,16 @@ It is easy to check that
 
 Therefore, we have
 \be
-\pro\bb{T_0 > 2n} = 1 - \sum^n_{k=1} \bb{\frac{\binom{2k-2}{k-1}}{2^{2k-2}} - \frac{\binom{2k}{k}}{2^{2k}}}  = \frac{1}{2^{2n}}\binom{2n}{n}.
+\pro\brb{T_0 > 2n} = 1 - \sum^n_{k=1} \brb{\frac{\binom{2k-2}{k-1}}{2^{2k-2}} - \frac{\binom{2k}{k}}{2^{2k}}}  = \frac{1}{2^{2n}}\binom{2n}{n}.
 \ee
 
 
 \item [(v)] $S_{2n}$ can take value $0,2,\dots,2n$. Then by ballot problem (Theorem \ref{thm:ballot_problem})
 \beast
-\pro\bb{S_k \geq 0, \forall k \leq 2n} & = & 2\sum^n_{k=0} \pro\bb{S_{-1} = -1, S_0 = 0,S_m \geq 0, m = 1,\dots,2n-1,S_{2n}=2k}\\
- & = & 2\sum^n_{k=0} \pro\bb{S_{0} = 0, S_m > 0, m = 1,\dots,2n,S_{2n+1}=2k+1}\\
- & = & 2\sum^{n}_{k=0} \frac {2k+1}{2n+1}N_{2n+1,2k+1} \frac 1{2^{2n+1}}= \frac 1{2^{2n}}\sum^{n}_{k=0} \frac {2k+1}{2n+1}\binom{2n+1}{n+k+1} \\ %1 - \pro\bb{\exists k\leq 2n, S_k = -1}
- & = & \frac 1{2^{2n}}\sum^{n}_{k=0} \bb{\binom{2n}{n+k} - \binom{2n}{n+k+1}} = \frac 1{2^{2n}}\binom{2n}{n}.
+\pro\brb{S_k \geq 0, \forall k \leq 2n} & = & 2\sum^n_{k=0} \pro\brb{S_{-1} = -1, S_0 = 0,S_m \geq 0, m = 1,\dots,2n-1,S_{2n}=2k}\\
+ & = & 2\sum^n_{k=0} \pro\brb{S_{0} = 0, S_m > 0, m = 1,\dots,2n,S_{2n+1}=2k+1}\\
+ & = & 2\sum^{n}_{k=0} \frac {2k+1}{2n+1}N_{2n+1,2k+1} \frac 1{2^{2n+1}}= \frac 1{2^{2n}}\sum^{n}_{k=0} \frac {2k+1}{2n+1}\binom{2n+1}{n+k+1} \\ %1 - \pro\brb{\exists k\leq 2n, S_k = -1}
+ & = & \frac 1{2^{2n}}\sum^{n}_{k=0} \brb{\binom{2n}{n+k} - \binom{2n}{n+k+1}} = \frac 1{2^{2n}}\binom{2n}{n}.
 \eeast
 
 Alternatively, we can have that
@@ -757,56 +757,56 @@ Alternatively, we can have that
 
 Thus,
 \beast
-\pro\bb{S_k \geq 0, \forall k \leq 2n} & = & \frac 1{2^{2n}} \#\bra{S_k \geq 0, \forall k \leq 2n} = \frac{2}{2^{2n+1}}\#\bra{S_{0}=0, S_k \geq 1, k =1,\dots, 2n+1}\\
-& = & \frac{1}{2^{2n+1}}\bb{\#\bra{S_{0}=0, S_k \geq 1, k =1,\dots, 2n+1} + \#\bra{S_{0}=0, S_k \leq -1, k =1,\dots, 2n+1}} \\
-& = & \frac{1}{2^{2n+1}}\#\bra{S_{0}=0, S_k \neq 0, k =1,\dots, 2n+1} = \pro\bb{T_0 > 2n} = \frac 1{2^{2n}}\binom{2n}{n}
+\pro\brb{S_k \geq 0, \forall k \leq 2n} & = & \frac 1{2^{2n}} \#\bra{S_k \geq 0, \forall k \leq 2n} = \frac{2}{2^{2n+1}}\#\bra{S_{0}=0, S_k \geq 1, k =1,\dots, 2n+1}\\
+& = & \frac{1}{2^{2n+1}}\brb{\#\bra{S_{0}=0, S_k \geq 1, k =1,\dots, 2n+1} + \#\bra{S_{0}=0, S_k \leq -1, k =1,\dots, 2n+1}} \\
+& = & \frac{1}{2^{2n+1}}\#\bra{S_{0}=0, S_k \neq 0, k =1,\dots, 2n+1} = \pro\brb{T_0 > 2n} = \frac 1{2^{2n}}\binom{2n}{n}
 \eeast
 by (iv).
 \een
 \end{proof}
 
 \begin{proposition}
-Suppose $\bb{S_n}_{n\geq 0}$ is a simple symmetric random. Then if $n$ is odd, $k = 0,1\dots \floor{\frac n2}$,
+Suppose $\brb{S_n}_{n\geq 0}$ is a simple symmetric random. Then if $n$ is odd, $k = 0,1\dots \floor{\frac n2}$,
 \beast
-& &\pro\bb{\max_{0\leq i\leq n}S_i - S_n = n-2k} = \left.\binom{n}{k}\right/ 2^n,\\
-& &\pro\bb{\max_{0\leq i\leq n}S_i - S_n = n-2k-1} = \left.\binom{n}{k}\right/ 2^n = \left.\binom{n}{n-k}\right/ 2^n.
+& &\pro\brb{\max_{0\leq i\leq n}S_i - S_n = n-2k} = \left.\binom{n}{k}\right/ 2^n,\\
+& &\pro\brb{\max_{0\leq i\leq n}S_i - S_n = n-2k-1} = \left.\binom{n}{k}\right/ 2^n = \left.\binom{n}{n-k}\right/ 2^n.
 \eeast
 
 If $n$ is even, $k = 0,1\dots \frac n2-1$,
 \beast
-& & \pro\bb{\max_{0\leq i\leq n}S_i - S_n = 0} = \left.\binom{n}{n/2}\right/ 2^n,\\
-& &\pro\bb{\max_{0\leq i\leq n}S_i - S_n = n-2k} = \left.\binom{n}{k}\right/ 2^n,\\
-& &\pro\bb{\max_{0\leq i\leq n}S_i - S_n = n-2k-1} = \left.\binom{n}{k}\right/ 2^n = \left.\binom{n}{n-k}\right/ 2^n.
+& & \pro\brb{\max_{0\leq i\leq n}S_i - S_n = 0} = \left.\binom{n}{n/2}\right/ 2^n,\\
+& &\pro\brb{\max_{0\leq i\leq n}S_i - S_n = n-2k} = \left.\binom{n}{k}\right/ 2^n,\\
+& &\pro\brb{\max_{0\leq i\leq n}S_i - S_n = n-2k-1} = \left.\binom{n}{k}\right/ 2^n = \left.\binom{n}{n-k}\right/ 2^n.
 \eeast
 
-In particular, the probability that the process reaches the maximum point at time $n$ is 
+In particular, the probability that the process reaches the maximum point at time $n$ is
 \be
-\pro\bb{S_n = \max_{0\leq i\leq n}S_i} = \left\{\ba{ll}\left.\binom{n}{n/2}\right/2^n\quad \quad & n\text{ is even} \\
+\pro\brb{S_n = \max_{0\leq i\leq n}S_i} = \left\{\ba{ll}\left.\binom{n}{n/2}\right/2^n\quad \quad & n\text{ is even} \\
 \left.\binom{n+1}{(n+1)/2}\right/2^{n+1}\quad \quad & n\text{ is odd}
 \ea \right..
-\ee 
+\ee
 \end{proposition}
 
 \begin{proof}[\bf Proof]
-We give the proof by using induction\footnote{other method needed.}. For $n=1$, we have 
+We give the proof by using induction\footnote{other method needed.}. For $n=1$, we have
 \be
-\pro\bb{\max_{0\leq i\leq 1} S_i - S_1 =0} = \pro\bb{\max_{0\leq i\leq 1} S_i - S_1 = 1} = \frac 12 = \left.\binom{1}{1}\right/2^1= \left.\binom{1}{0}\right/2^1.
+\pro\brb{\max_{0\leq i\leq 1} S_i - S_1 =0} = \pro\brb{\max_{0\leq i\leq 1} S_i - S_1 = 1} = \frac 12 = \left.\binom{1}{1}\right/2^1= \left.\binom{1}{0}\right/2^1.
 \ee
 
-For $n=2$, we have 
+For $n=2$, we have
 \beast
-& & \pro\bb{\max_{0\leq i\leq 2} S_i - S_2 =0} = \frac 12 = \left.\binom{2}{1}\right/2^2,\\
-& & \pro\bb{\max_{0\leq i\leq 2} S_i - S_2 =1} = \frac 14 = \left.\binom{2}{0}\right/2^2,\\
-& & \pro\bb{\max_{0\leq i\leq 2} S_i - S_2 =2} = \frac 14 = \left.\binom{2}{0}\right/2^2.
+& & \pro\brb{\max_{0\leq i\leq 2} S_i - S_2 =0} = \frac 12 = \left.\binom{2}{1}\right/2^2,\\
+& & \pro\brb{\max_{0\leq i\leq 2} S_i - S_2 =1} = \frac 14 = \left.\binom{2}{0}\right/2^2,\\
+& & \pro\brb{\max_{0\leq i\leq 2} S_i - S_2 =2} = \frac 14 = \left.\binom{2}{0}\right/2^2.
 \eeast
 
-We can see that the required results hold for these two cases. Also, we let $h_{k,n} = \pro\bb{\max_{0\leq i\leq n} S_i - S_n =k}$ and for $k=0,1,\dots,n-2$
+We can see that the required results hold for these two cases. Also, we let $h_{k,n} = \pro\brb{\max_{0\leq i\leq n} S_i - S_n =k}$ and for $k=0,1,\dots,n-2$
 \beast
 h_{0,n} & = & \frac 12 h_{-1,n-1} + \frac 12 h_{1,n-1}\\
 \vdots & = & \vdots \\
 h_{k,n} & = & \frac 12 h_{k-1,n-1} + \frac 12 h_{k+1,n-1}\\
 \vdots & = & \vdots \\
-h_{n-1,n} & =& h_{n,n} = 2^{-n} 
+h_{n-1,n} & =& h_{n,n} = 2^{-n}
 \eeast
 where $h_{0,n} = h_{-1,n}$.
 
@@ -816,14 +816,14 @@ Now assume the required result holds for $n$. Thus, %for $m=0,1,\dots, \frac n-1
 \be
 h_{n-m,n+1} = \frac 12 h_{n-m-1,n} + \frac 12 h_{n-m+1,n}
 \ee
-and 
+and
 \be
 h_{n,n+1} = h_{n+1,n+1} = 2^{-(n+1)}.
 \ee
 
 If $n$ is even, by the required result for $n$ ($m=2k$ or $m=2k+1$)
 \be
-h_{n-m,n+1} = \frac 12 \frac{\binom{n}{k}}{2^n} + \frac 12 \frac{\binom{n}{k-1}}{2^n} = 2^{-(n+1)}\bb{\binom{n}{k} +\binom{n}{k-1}} = 2^{-(n+1)}\binom{n+1}{k}
+h_{n-m,n+1} = \frac 12 \frac{\binom{n}{k}}{2^n} + \frac 12 \frac{\binom{n}{k-1}}{2^n} = 2^{-(n+1)}\brb{\binom{n}{k} +\binom{n}{k-1}} = 2^{-(n+1)}\binom{n+1}{k}
 \ee
 satisfying the required result. Similarly, we have the required result for odd $n = 2k+1$. In particular, if $m = n$ we have
 \beast
@@ -832,9 +832,9 @@ h_{0,n+1} & = & \frac 12 h_{-1,n} + \frac 12 h_{1,n} = \frac 12 h_{0,n} + \frac 
 \eeast
 as required.
 
-For $n = 2k+1$ is odd, we have that 
+For $n = 2k+1$ is odd, we have that
 \be
-\pro\bb{S_n = \max_{0\leq i\leq n}S_i} = 2^{-n}\binom{n}{k} = 2^{-(n+1)} 2\binom{2k+1}{k} = 2^{-(n+1)} \binom{2k+2}{k+1} = 2^{-(n+1)} \binom{n+1}{(n+1)/2}.
+\pro\brb{S_n = \max_{0\leq i\leq n}S_i} = 2^{-n}\binom{n}{k} = 2^{-(n+1)} 2\binom{2k+1}{k} = 2^{-(n+1)} \binom{2k+2}{k+1} = 2^{-(n+1)} \binom{n+1}{(n+1)/2}.
 \ee
 \end{proof}
 
@@ -842,7 +842,7 @@ For $n = 2k+1$ is odd, we have that
 \subsection{Asymmetric random walks}
 
 \begin{example}[gambler's ruin]\label{exa:randam_walk_simple}
-For the simple random walk, $\bb{S_n}_{n\geq 0}$ may represent the fortune of a gambler after $n$ plays of a game where on each play he either wins \pounds 1, with probability $p$, or loses \pounds 1 with probability $q =
+For the simple random walk, $\brb{S_n}_{n\geq 0}$ may represent the fortune of a gambler after $n$ plays of a game where on each play he either wins \pounds 1, with probability $p$, or loses \pounds 1 with probability $q =
 1-p$, his initial fortune is \pounds $S_0$ and a classical problem is to calculate the probability that his fortune achieves the level $a$, $a > S_0$ , before the time of ruin, that is the time that he goes bankrupt (his
 fortune hits the level 0). If $T_a$ denotes the first time that the random walk hits the level $a$ and $T_0$ the time the random walk first hits the level 0, we would wish to calculate $\pro (T_a < T_0)$, given that his
 fortune starts at $S_0 = r$, $0 < r < a$.
@@ -928,7 +928,7 @@ Note that Definition \ref{def:stochastic_process_continuous} has no extra constr
 \begin{definition}[sample continuous process\index{continuous process!sample}]\label{def:sample_continuous_process}
 A stochastic process $X$ is said to be sample continuous if for fixed $\omega \in \Omega$, the sample path $X_t(\omega)$ is continuous in all $t$ a.s., i.e.
 \be
-\pro\bb{\omega:X_t(\omega)\text{ is continuous for all }t} = 1.
+\pro\brb{\omega:X_t(\omega)\text{ is continuous for all }t} = 1.
 \ee
 \end{definition}
 
@@ -951,7 +951,7 @@ We think of $\sF_t$ as `the information available at and before time $t$.'
 
 \begin{definition}\label{def:sigma_algebra_infinite_continuous}
 We define \be
-\sF_\infty = \bigvee_{t\geq 0} \sF_t = \sigma\bb{\bigcup_{t\geq 0} \sF_t}. %= \sigma (\sF_t:t\geq 0)
+\sF_\infty = \bigvee_{t\geq 0} \sF_t = \sigma\brb{\bigcup_{t\geq 0} \sF_t}. %= \sigma (\sF_t:t\geq 0)
 \ee
 \end{definition}
 
@@ -974,7 +974,7 @@ Also, since $\sF_t \subseteq \sF_s$ for $s>t$, we have that $\sF_t\subseteq \sF_
 %\begin{definition}\label{def:sigma_algebra_infinite_continuous}
 %We define
 %\be
-%\sF_\infty = \bigvee_{n\geq 0} \sF_n = \sigma\bb{\bigcup_{n\geq 0} \sF_n}. %= \sigma (\sF_n:n\geq 0)
+%\sF_\infty = \bigvee_{n\geq 0} \sF_n = \sigma\brb{\bigcup_{n\geq 0} \sF_n}. %= \sigma (\sF_n:n\geq 0)
 %\ee
 %\end{definition}
 
@@ -991,7 +991,7 @@ Let $(\Omega,\sF, (\sF_t)_{t\geq 0},\pro)$ be a filtered probability space. A st
 %\end{remark}
 
 \begin{definition}[natural filtration, discrete]
-Let $(X_t)_{t\geq 0}$ be a stochastic process, and let $\sF^X_t = \sigma\bb{X_s: s \leq t}$. Then $\sF^X_t$ is the natural filtration\index{natural filtration!continuous} of $X$. It is the smallest filtration with respect to which $X$ is adapted.
+Let $(X_t)_{t\geq 0}$ be a stochastic process, and let $\sF^X_t = \sigma\brb{X_s: s \leq t}$. Then $\sF^X_t$ is the natural filtration\index{natural filtration!continuous} of $X$. It is the smallest filtration with respect to which $X$ is adapted.
 \end{definition}
 
 \begin{definition}[indenpendence of processes]\label{def:independence_stochastic_process}
@@ -1003,11 +1003,11 @@ We say that a process $(X_t)_{t \geq 0}$ has independent and stationary incremen
 \end{definition}
 
 \begin{definition}[complete filtration\index{complete!filtration}]\label{def:complete_filtration}
-We say that the filtration $\bb{\sF_t}_{t\geq 0}$ is complete with respect to $\pro$ if
+We say that the filtration $\brb{\sF_t}_{t\geq 0}$ is complete with respect to $\pro$ if
 \ben
 \item [(i)] $\sF$ is complete (see Definition \ref{def:complete_measure_space}).
 \item [(ii)] for any $A\in \sF$ with $\pro(A)=0$, $A\in \sF_0$.	
-\een%If $\sF_t$ is complete (see Definition \ref{def:complete_measure_space}) for all $t\geq 0$, we say that the filtration $\bb{\sF_t}_{t\geq 0}$ is complete.
+\een%If $\sF_t$ is complete (see Definition \ref{def:complete_measure_space}) for all $t\geq 0$, we say that the filtration $\brb{\sF_t}_{t\geq 0}$ is complete.
 \end{definition}
 
 
@@ -1058,7 +1058,7 @@ This is not true in general (if $I$ is not countable \footnote{give an example})
 
 `$\ra$'. If $\bra{T\leq t}\in \sF_t$ for all $t\in [0,\infty)$, then $\bra{T\leq t-\frac 1n} \in \sF_t$, then
 \be
-\bra{T=t} = \bra{T\leq t}\bs \bra{T<t} = \bra{T\leq t} \left\bs \bb{\bigcup_n \bra{T\leq t-\frac 1n}} \right.\in \sF_t.
+\bra{T=t} = \bra{T\leq t}\bs \bra{T<t} = \bra{T\leq t} \left\bs \brb{\bigcup_n \bra{T\leq t-\frac 1n}} \right.\in \sF_t.
 \ee
 \end{proof}
 
@@ -1133,17 +1133,17 @@ In addition, if the continuous filtration $\sF_t$ is right continuous for fixed 
 
 \item [(vi)] If $(\sF_t)_{t\geq 0}$ is right-continuous, $\bra{T_n<t}\in \sF_t$ by Proposition \ref{pro:stopping_time_strictly_smaller_than_t_measurable} and thus
 \be
-\bra{\inf_n T_n < t} = \bra{\inf_n T_n \geq t}^c = \bb{\bigcap_n \bra{T_n \geq t}}^c = \bigcup_n\bb{ \bb{\bra{T_n < t}}^c}^c =\bigcup_n \underbrace{\bra{T_n < t}}_{\in \sF_t} \in \sF_t.
+\bra{\inf_n T_n < t} = \bra{\inf_n T_n \geq t}^c = \brb{\bigcap_n \bra{T_n \geq t}}^c = \bigcup_n\brb{ \brb{\bra{T_n < t}}^c}^c =\bigcup_n \underbrace{\bra{T_n < t}}_{\in \sF_t} \in \sF_t.
 \ee
 
 \item [(vii)]
 \be
-\bra{\limsup_n T_n \leq t}= \bra{\inf_{n}\bb{\sup_{m\geq n}T_m} \leq t} \in \sF_t.
+\bra{\limsup_n T_n \leq t}= \bra{\inf_{n}\brb{\sup_{m\geq n}T_m} \leq t} \in \sF_t.
 \ee
 
 \item [(viii)]
 \be
-\bra{\liminf_n T_n \leq t}= \bra{\sup_{n}\bb{\inf_{m\geq n}T_m} \leq t} \in \sF_t.
+\bra{\liminf_n T_n \leq t}= \bra{\sup_{n}\brb{\inf_{m\geq n}T_m} \leq t} \in \sF_t.
 \ee%where $\sup_{m\geq n}T_m$ and $\inf_{m\geq n}T_m$ are stopping time sequences.
 \een
 \end{proof}
@@ -1165,11 +1165,11 @@ This defines a $\sigma$-algebra $\sF_T$, called the $\sigma$-algebra of measurab
 \item [(i)] Since $\bra{\emptyset \cap \bra{T\leq t}} = \bra{\emptyset} \in \sF_t$, $\emptyset \in \sF_T$.
 \item [(ii)] If $A\in \sF_T$, $A \cap \bra{T\leq t} \in \sF_t$. Since $T$ is stopping time, $\bra{T\leq t}\in \sF_t$. Thus, since $\sF_t$ is $\sigma$-algebra
 \be
-A^c \cap \bra{T\leq t} = \bra{T\leq t} \bs \bb{A \cap \bra{T\leq t}} \in \sF_t.
+A^c \cap \bra{T\leq t} = \bra{T\leq t} \bs \brb{A \cap \bra{T\leq t}} \in \sF_t.
 \ee
 \item [(iii)] For a sequence $A_m \in \sF_T$, we have $A_m \cap \bra{T\leq t}\in \sF_t$ for all $n$. Thus, since $\sF_t$ is $\sigma$-algebra
 \be
-\bb{\bigcup_m A_m} \cap \bra{T\leq t} = \bigcup_m \bb{A_m \cap \bra{T\leq t}} \in \sF_t  \ \ra \ \bigcup_m A_m \in \sF_T.
+\brb{\bigcup_m A_m} \cap \bra{T\leq t} = \bigcup_m \brb{A_m \cap \bra{T\leq t}} \in \sF_t  \ \ra \ \bigcup_m A_m \in \sF_T.
 \ee
 \een
 
@@ -1189,22 +1189,22 @@ It suffices to show that $\bra{T\leq t}\in \sF_T$ for each $t\in [0,\infty)$. Fi
 \bra{T\leq s}(\in \sF_s) & t> s
 \ea
 \right. \ \ra\ \bra{T\leq t}\cap \bra{T\leq s} \in \sF_s.
-\ee 
+\ee
 
 Then by definition of $\sigma$-algebra of stopping time, we have that $\bra{T\leq t}\in \sF_T$.
 \end{proof}
 
 \begin{proposition}
-Suppose the stopping time $T(\omega)=t$ for all $\omega \in \Omega$ with fixed $t\in [0,\infty)$. Then $\sF_T = \sF_t$. 
+Suppose the stopping time $T(\omega)=t$ for all $\omega \in \Omega$ with fixed $t\in [0,\infty)$. Then $\sF_T = \sF_t$.
 \end{proposition}
 
 \begin{proof}[\bf Proof]
-Suppose that $A\in \sF_t$ and then $A\in \sF$. Thus, for $s\in [0,\infty)$, 
+Suppose that $A\in \sF_t$ and then $A\in \sF$. Thus, for $s\in [0,\infty)$,
 \be
 A\cap \bra{T\leq s} = \left\{
 \ba{ll}
 A\ (\in \sF_t\subseteq \sF_s) \quad\quad & t\leq s \\
-\emptyset & t>s 
+\emptyset & t>s
 \ea\right. \ \ra\ A\cap \bra{T\leq s} \in \sF_s \ \ra\ A\in \sF_T \ \ra\ \sF_t\subseteq \sF_T.
 \ee
 
@@ -1229,12 +1229,12 @@ Let $T$ be stopping time and $A\in \sF_T$. Then for $t\in [0,\infty)$,
 \ben
 \item [(i)] By definition $A\cap \bra{T\leq t} \in \sF_t$. Also, by Proposition \ref{pro:stopping_time_strictly_smaller_than_t_measurable}, $\bra{T<t}\in \sF_t$ and $\bra{T<t}\subseteq \bra{T\leq t}$. Hence
 \be
-A\cap \bra{T<t} = \bb{A\cap \bra{T\leq t}}\cap \bra{T<t} \in \sF_t.
+A\cap \bra{T<t} = \brb{A\cap \bra{T\leq t}}\cap \bra{T<t} \in \sF_t.
 \ee
 
 \item [(ii)] Similarly, $\bra{T=t} \subseteq \bra{T\leq t} \in \sF_t$. Hence
 \be
-A\cap \bra{T=t} = \bb{A\cap \bra{T\leq t}} \cap \bra{T=t} = \bb{A\cap \bra{T\leq t}} \cap \bb{\underbrace{\bra{T\leq t}}_{\in \sF_t} \bs\underbrace{\bra{T<t}}_{\in \sF_t}} \in \sF_t. 
+A\cap \bra{T=t} = \brb{A\cap \bra{T\leq t}} \cap \bra{T=t} = \brb{A\cap \bra{T\leq t}} \cap \brb{\underbrace{\bra{T\leq t}}_{\in \sF_t} \bs\underbrace{\bra{T<t}}_{\in \sF_t}} \in \sF_t.
 \ee
 \een
 \end{proof}
@@ -1246,7 +1246,7 @@ Let $S,T$ be two stopping times. If $S\leq T$, then $\sF_S \subseteq \sF_T$.
 \begin{proof}[\bf Proof]
 Since $S$ and $T$ are stopping times, then $\bra{S \leq t}\in \sF_t$, $\bra{T \leq t}\in \sF_t$ with $\bra{T\leq t} \subseteq \bra{S\leq t}$ for all $t$. $\forall A \in \sF_S$, we have for all $t$, $A \cap \bra{S \leq t} \in \sF_t$. Then
 \be
-A \cap \bra{T \leq t} = A \cap \bb{\bra{S \leq t} \cap \bra{T \leq t}} = \underbrace{\bb{A \cap \bra{S \leq t}}}_{\in \sF_t} \cap \underbrace{\bra{T \leq t}}_{\in \sF_t} \in \sF_t \ \ra \ A \in \sF_T.
+A \cap \bra{T \leq t} = A \cap \brb{\bra{S \leq t} \cap \bra{T \leq t}} = \underbrace{\brb{A \cap \bra{S \leq t}}}_{\in \sF_t} \cap \underbrace{\bra{T \leq t}}_{\in \sF_t} \in \sF_t \ \ra \ A \in \sF_T.
 \ee
 \end{proof}
 
@@ -1260,9 +1260,9 @@ Let $S,T$ be two stopping times. Then each of the following events is in $\sF_S$
 
 \begin{proof}[\bf Proof]
 \ben
-\item [(i)] First, $\bra{S<T}\in \sF$ since it can be expressed by 
+\item [(i)] First, $\bra{S<T}\in \sF$ since it can be expressed by
 \be
-\bra{S<T} = \bigcup_{r\in \Q} \bb{\underbrace{\bra{S\leq r}}_{\in \sF}\cap \underbrace{\bra{T>r}}_{\in \sF}}.
+\bra{S<T} = \bigcup_{r\in \Q} \brb{\underbrace{\bra{S\leq r}}_{\in \sF}\cap \underbrace{\bra{T>r}}_{\in \sF}}.
 \ee
 
 Then for $t\in [0,\infty)$,
@@ -1270,11 +1270,11 @@ Then for $t\in [0,\infty)$,
 \bra{S<T} \cap \bra{T\leq t} = \bra{S<T\leq t} = \bigcup_{r\in \Q,r< t} \bra{S\leq r}\cap \bra{r<T\leq t} \in \sF_t \ \ra \ \bra{S<T}  \in \sF_T.
 \ee
 \be
-\bra{S<T} \cap \bra{S\leq t} = \bra{S<T\leq t}  \cup \bra{S\leq t<T} = \bb{\bigcup_{r\in \Q,r< t} \bra{S\leq r}\cap \bra{r<T\leq t}} \cup \bb{\bra{S\leq t}\cap \bra{T\leq t}^c} \in \sF_t \nonumber
+\bra{S<T} \cap \bra{S\leq t} = \bra{S<T\leq t}  \cup \bra{S\leq t<T} = \brb{\bigcup_{r\in \Q,r< t} \bra{S\leq r}\cap \bra{r<T\leq t}} \cup \brb{\bra{S\leq t}\cap \bra{T\leq t}^c} \in \sF_t \nonumber
 \ee
 which implies $\bra{S<T}  \in \sF_S$.
 
-\item [(ii)] Similarly, $\bra{S=T}\in \sF$ and 
+\item [(ii)] Similarly, $\bra{S=T}\in \sF$ and
 \be
 \bra{S=T}\cap \bra{T\leq t} = \bra{S=T\leq t} = \bigcup_{r\in \Q,r< t} \bra{S= r}\cap \bra{r=T\leq t} \in \sF_t \ \ra \ \bra{S=T}  \in \sF_T.
 \ee
@@ -1324,8 +1324,8 @@ If $X$ is a simple function (finite linear combination of indicators), then we c
 $\forall c \in [0,\infty]$, $B = \bra{X \leq c}\in \sB(\ol{\R})$ (this forms a $\pi$-system so we can apply Proposition \ref{pro:pi_system_measurable}), then since $A_i$ are disjoint,
 \beast
 \text{$X$ is $\sF_T$-measurable} & \lra &  \bigcup_{i=1}^n \bra{A_i:c_i \leq c} = X^{-1}(B) \in \sF_T \\
-& \lra & \bb{\bigcup_{i=1}^n \bra{A_i:c_i \leq c} }\cap \bra{T\leq t}  \in \sF_t.\\ %\bigcup_{i=1}^n \bra{A_i\cap \bra{T\leq t} :c_i = c}\\
-& \lra & \bra{X\ind_{\bra{T\leq t}}\leq c} = \bra{\sum^n_{i=1} c_i\ind_{A_i \cap \bra{T\leq t}} \leq c}= \bra{\bb{\bigcup_{i=1}^n \bra{A_i:c_i \leq c} }\cap \bra{T\leq t} } \in \sF_t \\
+& \lra & \brb{\bigcup_{i=1}^n \bra{A_i:c_i \leq c} }\cap \bra{T\leq t}  \in \sF_t.\\ %\bigcup_{i=1}^n \bra{A_i\cap \bra{T\leq t} :c_i = c}\\
+& \lra & \bra{X\ind_{\bra{T\leq t}}\leq c} = \bra{\sum^n_{i=1} c_i\ind_{A_i \cap \bra{T\leq t}} \leq c}= \bra{\brb{\bigcup_{i=1}^n \bra{A_i:c_i \leq c} }\cap \bra{T\leq t} } \in \sF_t \\
 & \lra & X\ind_{\bra{T\leq t}} \text{ is $\sF_t$-measurable.}
 \eeast
 
@@ -1370,7 +1370,7 @@ X_T\ind_{\bra{T< \infty}}\ind_{\bra{T\leq t}} = X_T\ind_{\bra{T \leq t}}\text{ i
 
 We can write $X_T\ind_{\bra{T \leq t}} = X_T\ind_{\bra{T < t}} + X_t\ind_{\bra{T = t}}$. Clearly, the random variable
 \be
-X_t\ind_{\bra{T = t}} = \underbrace{X_t}_{\sF_t\text{-measurable}} \bb{\ind\bra{\underbrace{T\leq t}_{\in \sF_t}} - \ind\bra{\bigcup_n \underbrace{\bra{T\leq t-\frac 1n}}_{\in \sF_{t-\frac 1n}\subseteq \sF_t}}} \ \ra \ X_t \ind_{\bra{T=t}} \text{ is $\sF_t$-measurable}
+X_t\ind_{\bra{T = t}} = \underbrace{X_t}_{\sF_t\text{-measurable}} \brb{\ind\bra{\underbrace{T\leq t}_{\in \sF_t}} - \ind\bra{\bigcup_n \underbrace{\bra{T\leq t-\frac 1n}}_{\in \sF_{t-\frac 1n}\subseteq \sF_t}}} \ \ra \ X_t \ind_{\bra{T=t}} \text{ is $\sF_t$-measurable}
 \ee
 
 It only remains to show that $X_T\ind_{\bra{T < t}}$ is $\sF_t$-measurable. If we let $T_n = 2^{-n}\ceil{2^nT}$, then it is easy to see that $T_n$ is a stopping time that takes values in the set $\sD_n = \bra{k2^{-n} : k \in \N}$. Indeed
@@ -1514,13 +1514,13 @@ time with respect to the filtration $(\sF_t)_{t\geq 0}$.
 
 %\begin{remark}
 
-If we ignore the usual condition for the filtered space and consider a pathwise right-continuous adapted process, we can have that $T_A$ is a stopping time with respect to the filtration $\bb{\sF_{t^+}}_{t\geq 0}$.
+If we ignore the usual condition for the filtered space and consider a pathwise right-continuous adapted process, we can have that $T_A$ is a stopping time with respect to the filtration $\brb{\sF_{t^+}}_{t\geq 0}$.
 \end{proposition}
 
 \begin{proof}[\bf Proof]
 First we show that for all $t$, the event $\bra{T_A < t} \in \sF_t$.
 
-Indeed, for any $\omega \in \Omega' = \bra{X(\omega)\text{ is right-continuous}}$ ($\pro\bb{\Omega'} = 1$), $\forall s<t, s\in \Q$, $X_s(\omega) \in A \ \ra \ T_A(\omega) \leq s <t$, thus $\bra{T_A(\omega)<t} \supseteq \bra{X_s(\omega) \in A}$ and then $\bra{T_A(\omega)<t} \supseteq \bigcup_{s\in \Q,s<t}\bra{X_s(\omega) \in A}$.
+Indeed, for any $\omega \in \Omega' = \bra{X(\omega)\text{ is right-continuous}}$ ($\pro\brb{\Omega'} = 1$), $\forall s<t, s\in \Q$, $X_s(\omega) \in A \ \ra \ T_A(\omega) \leq s <t$, thus $\bra{T_A(\omega)<t} \supseteq \bra{X_s(\omega) \in A}$ and then $\bra{T_A(\omega)<t} \supseteq \bigcup_{s\in \Q,s<t}\bra{X_s(\omega) \in A}$.
 
 Now consider $\bra{T_A(\omega) <t}$, we have that
 \be
@@ -1649,7 +1649,7 @@ If $A$ is a sample-continuous adapted process, $V$ is also sample-continuous (by
 \end{remark}
 
 \begin{proof}[\bf Proof]
-Using the same definition in Lemma \ref{lem:total_variation_function}, we get for each $\omega$, $t_n^- = 2^{-n}\bb{\ceil{2^n t}-1}$,
+Using the same definition in Lemma \ref{lem:total_variation_function}, we get for each $\omega$, $t_n^- = 2^{-n}\brb{\ceil{2^n t}-1}$,
 \beast
 V^n_t(\omega) & = & \sum^{\ceil{2^nt}-1}_{k=0} \abs{A_{(k + 1)2^{-n}}(\omega) - A_{k2^{-n}}(\omega)} \\
 & = & \sum^{2^n t^-_n -1}_{k=0} \abs{A_{(k + 1)2^{-n}}(\omega) - A_{k2^{-n}}(\omega)} + \abs{A_{2^{-n}\ceil{2^n t}}(\omega) - A_{2^{-n}(\ceil{2^n t}-1)}(\omega)}
@@ -1690,7 +1690,7 @@ Also, $\abs{A_{t^+} - A_{t^-}}$ in ($*$) is $\sF_{t^+}$-measurable. If the filtr
 \begin{definition}[law of process]\label{def:law_of_process}
 Recalling the law of random variable $X:\Omega \to \sS$ (Definition \ref{def:r_random_variable_law})\footnote{usually $\sS= \R$},
 \be
-\mu_X((-\infty, x]) = \pro(X \leq x) = \pro\bb{\{\omega:X(\omega) \leq x\}} \ \ra \ \mu_X(A) = \pro\bb{\bra{\omega:X(\omega) \in A}},\quad A\in \sB(\sS).
+\mu_X((-\infty, x]) = \pro(X \leq x) = \pro\brb{\{\omega:X(\omega) \leq x\}} \ \ra \ \mu_X(A) = \pro\brb{\bra{\omega:X(\omega) \in A}},\quad A\in \sB(\sS).
 \ee
 
 Now we can view a stochastic process $X$ indexed by $\R^{++}$ as a random variable with values in the space of functions $W = \bra{f:\R^{++} \to \sS}$ endowed with the $\sigma$-algebra $\sE$ on $W$ that makes the projections $f \mapsto f(t)$ measurable for every $t\in \R^{++}$. The law of the process\index{law!process} $X$ is the measure $\mu$ that is defined as
@@ -1710,7 +1710,7 @@ However the measure $\mu$ is not easy to work with. Instead we consider simpler 
 \begin{definition}[finite dimensional distribution]
 Let $X$ be the stochastic process definited on probability space $(\Omega,\sF,\pro)$ having the state space $(\sS, \sB(\sS))$. Then we consider the probability measure $\mu_J$, where $J \subseteq \R^{++}$ is a finite set, defined as the law of $(X_t)_{t \in J}$ i.e., $\abs{J} = n$, and $J = \bra{t_1,t_2,\dots, t_n}$ ($t_i < \infty$ since $J\subseteq \R^{++}$),
 \be
-\mu_J = \pro\bb{\bb{X_{t_1},\dots,X_{t_n} }\in A},\quad A \in \sB(\sS^n)
+\mu_J = \pro\brb{\brb{X_{t_1},\dots,X_{t_n} }\in A},\quad A \in \sB(\sS^n)
 \ee
 
 The probability measures $(\mu_J)$ are called the finite dimensional distributions\index{finite dimensional distributions!stochastic process} of stochastic process $X$.
@@ -1721,7 +1721,7 @@ Let $X,Y$ be the stochastic processes definited on probability space $(\Omega,\s
 
 Then $X$ and $Y$ have the same finite dimensional distributions if, for any integer $n\geq 1$, real numbers $0\leq t_1< t_2 < \dots t_n< \infty$, and $A\in \sB(\sS^n)$, we have
 \be
-\pro\bb{\bb{X_{t_1},\dots,X_{t_n}}\in A} = \wt{\pro}\bb{\bb{Y_{t_1},\dots,Y_{t_n}}\in A}.
+\pro\brb{\brb{X_{t_1},\dots,X_{t_n}}\in A} = \wt{\pro}\brb{\brb{Y_{t_1},\dots,Y_{t_n}}\in A}.
 \ee
 \end{definition}
 
@@ -1756,7 +1756,7 @@ Note that two versions of the same process have the same finite marginal distrib
 \begin{example}
 Let $X = (X_t)_{t\in [0,1]}$ be the process that is identical to 0 for all $t$. Then obviously the finite marginal distributions will be Dirac measures at 0. Now let $U$ be a uniform random variable on $[0, 1]$. We define $X'_t = \ind_{\bra{U = t}}$. Then clearly the finite marginal distributions of $X'$ are Dirac measures at 0, and hence it is a version of $X$. However it is not continuous and furthermore
 \be
-\pro\bb{X'_t = 0,\ \forall t \in [0, 1]} = 0.
+\pro\brb{X'_t = 0,\ \forall t \in [0, 1]} = 0.
 \ee
 \end{example}
 
@@ -1777,9 +1777,9 @@ Note that, up to indistinguishability, there exists at most one continuous versi
 \end{remark}
 
 \begin{proof}[\bf Proof]
-Since sample continous process is \cadlag\ (by Definition \ref{def:sample_continuous_process}, \ref{def:cadlag_process}), we only check \cadlag\ case. First we have for any $t\in [0,\infty)$, $\pro\bb{X_t(\omega) \neq
-X_t(\omega)} = 0$. Then by Proposition \ref{pro:probability_property}, \be \pro(X_t(\omega) = X_t(\omega),\forall t\in \Q) = 1 - \pro\bb{X_t(\omega) \neq X_t(\omega),\exists t\in \Q} \geq 1 - \underbrace{\sum_{t\in \Q}
-\pro\bb{X_t(\omega) \neq X_t(\omega)} }_{\text{sum of countably many 0}} = 1-0 = 1. \ee
+Since sample continous process is \cadlag\ (by Definition \ref{def:sample_continuous_process}, \ref{def:cadlag_process}), we only check \cadlag\ case. First we have for any $t\in [0,\infty)$, $\pro\brb{X_t(\omega) \neq
+X_t(\omega)} = 0$. Then by Proposition \ref{pro:probability_property}, \be \pro(X_t(\omega) = X_t(\omega),\forall t\in \Q) = 1 - \pro\brb{X_t(\omega) \neq X_t(\omega),\exists t\in \Q} \geq 1 - \underbrace{\sum_{t\in \Q}
+\pro\brb{X_t(\omega) \neq X_t(\omega)} }_{\text{sum of countably many 0}} = 1-0 = 1. \ee
 
 However for any $t\in \R^{++}$, since $X$ and $X'$ are \cadlag, we can find non-negative rational sequence $t_n \da t$, $X_{t_n}(\omega) = X'_{t_n}(\omega)$ for any $t_n$ and
 \be
@@ -1812,13 +1812,13 @@ Let $\sD_n = \{k  2^{-n}: 0 \leq k \leq 2^n\}$ denote the dyadic numbers of $[0,
 
 Then letting $\alpha \in (0, \ve/p)$, Markov's inequality (Theorem \ref{thm:markov_inequality_probability}) gives for $0 \leq k < 2^n$,
 \beast
-\pro\bb{\abs{X_{k2^{-n}} - X_{(k+1)2^{-n}}} \geq 2^{-n\alpha}} & = & \pro\bb{\abs{X_{k2^{-n}} - X_{(k+1)2^{-n}}}^p \geq 2^{-np\alpha }} \leq  \frac{\E\abs{X_{k2^{-n}} - X_{(k+1)2^{-n}}}^p}{2^{-np\alpha}}\\
+\pro\brb{\abs{X_{k2^{-n}} - X_{(k+1)2^{-n}}} \geq 2^{-n\alpha}} & = & \pro\brb{\abs{X_{k2^{-n}} - X_{(k+1)2^{-n}}}^p \geq 2^{-np\alpha }} \leq  \frac{\E\abs{X_{k2^{-n}} - X_{(k+1)2^{-n}}}^p}{2^{-np\alpha}}\\
 & = & \E\bsb{\abs{X_{k2^{-n}} - X_{(k+1)2^{-n}}}^p}2^{np\alpha} \leq c 2^{-n(1+\ve)} 2^{np\alpha}  \leq c2^{-n}2^{-(\ve-p\alpha)n}.
 \eeast
 
 Summing over $\sD_n$ we obtain
 \be
-\pro\bb{\max_{0\leq k<2^n} \abs{X_{k2^{-n}} - X_{(k+1)2^{-n}} } \geq 2^{-n\alpha}} \leq c 2^{-n(\ve-p\alpha)},
+\pro\brb{\max_{0\leq k<2^n} \abs{X_{k2^{-n}} - X_{(k+1)2^{-n}} } \geq 2^{-n\alpha}} \leq c 2^{-n(\ve-p\alpha)},
 \ee
 which is summable. Therefore, the Borel-Cantelli lemma (Lemma \ref{lem:borel_cantelli_1_probability}) shows that for sufficiently large $n$,
 \be
@@ -1863,7 +1863,7 @@ Now defined by $\wt{X}_t(\omega) = \lim_n X_{t_n}(\omega)$, where $(t_n)_{n \geq
 
 It remains to show that $\wt{X}$ is a version of $X$. If $t_n \to t$ for $t_n \in \sD$, then $\liminf_n X_{t_n} = \lim_{n\to \infty}X_{t_n}$. We estimate by Fatou's lemma (Lemma \ref{lem:fatou_probability}),
 \be
-\E\abs{X_t - \wt{X}_t}^p = \E\abs{X_t - \liminf_n X_{t_n}}^p = \E\bb{\liminf_n \abs{X_t - X_{t_n}}^p} \leq \liminf_n \E[\abs{X_t - X_{t_n}}^p],
+\E\abs{X_t - \wt{X}_t}^p = \E\abs{X_t - \liminf_n X_{t_n}}^p = \E\brb{\liminf_n \abs{X_t - X_{t_n}}^p} \leq \liminf_n \E[\abs{X_t - X_{t_n}}^p],
 \ee
 %where $(t_n, n \geq 0)$ is any $D$-valued sequence converging to $t$. But s
 
@@ -1908,10 +1908,10 @@ They are random variables, hence form a process indexed by $T$, if $E^T$ is endo
 
 Thus, we have for any finite subset $(t_1,\dots,t_n)$ of $T$ and sets $A_i \in \sE$,
 \beast
-\pro\bb{X_{t_1}\in A_1,\dots X_{t_n}\in A_n} & = & \pro\bb{\omega:X_{t_1}(\omega)\in A_1,\dots, X_{t_n}(\omega)\in A_n} \\
-& = & \pro\bb{\omega:\phi(\omega)\bb{t_1}\in A_1,\dots, \phi(\omega)\bb{t_n}\in A_n} \\
-& = & \pro\bb{\omega:Y_{t_1}\circ \phi (\omega)\in A_1,\dots, Y_{t_n}\circ \phi(\omega)\in A_n} \\
-& = & \pro\circ \phi^{-1} \bb{Y_{t_1}\in A_1,\dots, Y_{t_n}\in A_n}.\quad\quad (*)
+\pro\brb{X_{t_1}\in A_1,\dots X_{t_n}\in A_n} & = & \pro\brb{\omega:X_{t_1}(\omega)\in A_1,\dots, X_{t_n}(\omega)\in A_n} \\
+& = & \pro\brb{\omega:\phi(\omega)\brb{t_1}\in A_1,\dots, \phi(\omega)\brb{t_n}\in A_n} \\
+& = & \pro\brb{\omega:Y_{t_1}\circ \phi (\omega)\in A_1,\dots, Y_{t_n}\circ \phi(\omega)\in A_n} \\
+& = & \pro\circ \phi^{-1} \brb{Y_{t_1}\in A_1,\dots, Y_{t_n}\in A_n}.\quad\quad (*)
 \eeast
 
 Thus, by Definition \ref{def:same_finite_dimensional_distribution}, $X$ and $Y$ have the same finite dimensional distributions.
@@ -1932,11 +1932,11 @@ A previsible process $H$ is a $\sP$-measurable map $H: \Omega \times (0,\infty) 
 \end{definition}
 
 \begin{proposition}\label{pro:previsible}
-Let $\bb{\sF_t}_{t\geq 0}$ be the filtration satisfying the usual conditions and $X$ be \cadlag\ adapted and $H_t = X_{t^-}$ for \cadlag\ paths, $t > 0$. Then $H$ is previsible.
+Let $\brb{\sF_t}_{t\geq 0}$ be the filtration satisfying the usual conditions and $X$ be \cadlag\ adapted and $H_t = X_{t^-}$ for \cadlag\ paths, $t > 0$. Then $H$ is previsible.
 \end{proposition}
 
 \begin{proof}[\bf Proof]
-For $\Omega' = \bra{\omega :H(\omega) \text{ has \cadlag\ path}}$, we have $\pro\bb{\Omega'} = 1$. Then for any $\omega \in \Omega'$,
+For $\Omega' = \bra{\omega :H(\omega) \text{ has \cadlag\ path}}$, we have $\pro\brb{\Omega'} = 1$. Then for any $\omega \in \Omega'$,
 %$H :\Omega\times (0,\infty) \to \R$ is left-continuous and adapted. That is, since $X$ is \cadlag,
 \be
 \lim_{s\ua t} H_s(\omega) = \lim_{s\ua t} X_{s^-}(\omega) = X_{(t^-)^-}(\omega) = X_{t^-}(\omega) = H_t(\omega).
@@ -1948,7 +1948,7 @@ H_t = X_{t^-}(\omega)\ind_{\bra{\omega\in \Omega'}}+ Y_t(\omega)\ind_{\bra{\omeg
 \ee
 is $\sF_t$-measurable ($X_{t^-}(\omega)\ind_{\bra{\omega\in \Omega'}}$ is $\sF_{t^-}$-measurable and thus $\sF_t$-measurable. Meanwhile, for any $c\in \R$,
 \be
-\pro\bb{\omega:Y_t(\omega)\ind_{\bra{\omega\in \Omega'^c}}\leq c} = 0\text{ or }1 \ \ra \bra{\omega:Y_t(\omega)\ind_{\bra{\omega\in \Omega'^c}}\leq c}\text{ is $\sF_t$-measurable}).
+\pro\brb{\omega:Y_t(\omega)\ind_{\bra{\omega\in \Omega'^c}}\leq c} = 0\text{ or }1 \ \ra \bra{\omega:Y_t(\omega)\ind_{\bra{\omega\in \Omega'^c}}\leq c}\text{ is $\sF_t$-measurable}).
 \ee
 
 Thus, $H$ is (sample) left-continuous and adapted.
@@ -1972,7 +1972,7 @@ So $X_{k2^{-n}}(t)$ is $\sF_{t^-_n}$-measurable. $H$ is also previsible as it is
 \end{proof}
 
 \begin{proposition}
-Let $H$ be a previsible process. Then $H_t$ is $\sF_{t^-}$-measurable for all $t > 0$, where $\sF_{t^-} = \sigma(F_s:s < t) = \sigma\bb{\bigcup_{s<t}\sF_s}$.
+Let $H$ be a previsible process. Then $H_t$ is $\sF_{t^-}$-measurable for all $t > 0$, where $\sF_{t^-} = \sigma(F_s:s < t) = \sigma\brb{\bigcup_{s<t}\sF_s}$.
 \end{proposition}
 
 \begin{proof}[\bf Proof]
@@ -2048,7 +2048,7 @@ X_{k/n}(t) = H_{k/n}(\omega) \ind_{\bra{\omega \in \Omega'}} + Y_t(\omega)\ind_{
 
 %For $H(\omega)$ has continuous path, we simply let $X_{k/n}(\omega) = H_{k/n}(\omega)$. Otherwise, we can construct a \cadlag\ process $X_t$ such that we can have $X_{t^-}(\omega) = H_t(\omega)$ as $X_{t^{-}}$ is $\sF_t$-measurable.
 
-Obviously, we have for any $c\in \R$, $\pro\bb{Y_t(\omega)\ind_{\bra{\omega \in \Omega'^c}} \leq c}=$ 0 or 1. Thus, $\bra{\omega:Y_t(\omega)\ind_{\bra{\omega \in \Omega'^c}} \leq c}$ is $\sF_{k/n}$-measurable (by usual condition of filtered probability space). Therefore, $X_{k/n}(t)$ is $\sF_{k/n}$-measurable and $H^n$ is $\sP$-measurable. Furthermore, we have $H^n \ua H$ which implies that $H$ is $\sP$-measurable.
+Obviously, we have for any $c\in \R$, $\pro\brb{Y_t(\omega)\ind_{\bra{\omega \in \Omega'^c}} \leq c}=$ 0 or 1. Thus, $\bra{\omega:Y_t(\omega)\ind_{\bra{\omega \in \Omega'^c}} \leq c}$ is $\sF_{k/n}$-measurable (by usual condition of filtered probability space). Therefore, $X_{k/n}(t)$ is $\sF_{k/n}$-measurable and $H^n$ is $\sP$-measurable. Furthermore, we have $H^n \ua H$ which implies that $H$ is $\sP$-measurable.
 
 %Now suppose $H$ is any non-negative (sample) left-continuous process, we define $H_n := 2^{-n}\floor{2^n H}$. Thus $H^n$ is bounded and so it is $\sP$-measurable.
 
@@ -2056,7 +2056,7 @@ Obviously, we have for any $c\in \R$, $\pro\bb{Y_t(\omega)\ind_{\bra{\omega \in 
 Then for any (sample) left-continuous process $H$, let $H^m = m \land H \vee (-m)$. Since $H^m$ is $\sP$-measurable and $H$ is the limit of $H^m$, we have $H$ is $\sP$-measurable as well. % $H = H^+ - H^-$, it is also $\sP$-measurable since $H^+,H^-$ are $\sP$-measurable.
 Therefore, we have that any (sample) left-continuous process is $\sP$-measurable and
 \beast
-\sigma \bb{\text{all bounded adapted (sample) left-continuous processes}} \subseteq \sigma \bb{\text{all adapted (sample) left-continuous processes}} \subseteq \sP.
+\sigma \brb{\text{all bounded adapted (sample) left-continuous processes}} \subseteq \sigma \brb{\text{all adapted (sample) left-continuous processes}} \subseteq \sP.
 \eeast
 
 Now we prove the other direction. Define
@@ -2075,12 +2075,12 @@ Now we check that $\sA$ is actually a $d$-system: \ben
 \ee
 \item [(iii)] If $C_n \in \sA$ and $C_n \ua C$, we have $\ind_{C_n}$ is (sample) left-continuous for all $n$ for fixed $\omega$. Then for fixed $\omega \in \Omega$, and $C_0 = \emptyset$,
 \be
-\lim_{t_m \ua t}\ind_C(t_m) = \lim_{t_m \ua t}\lim_{n\to \infty} \ind_{C_n}(t_m) = \lim_{t_m \ua t} \sum^\infty_{n=1} \bb{\ind_{C_n}- \ind_{C_{n-1}}}(t_m)\quad \text{a.s..}
+\lim_{t_m \ua t}\ind_C(t_m) = \lim_{t_m \ua t}\lim_{n\to \infty} \ind_{C_n}(t_m) = \lim_{t_m \ua t} \sum^\infty_{n=1} \brb{\ind_{C_n}- \ind_{C_{n-1}}}(t_m)\quad \text{a.s..}
 \ee
 
-We can consider $\sum^\infty_{n=1}$ as a $\sigma$-finite measure. Threrefore, since $\bb{\ind_{C_n}- \ind_{C_{n-1}}}(t_m) \ua \bb{\ind_{C_n}- \ind_{C_{n-1}}}(t)$ a.s.. Then by monotone convergence theorem (Theorem \ref{thm:monotone_convergence_pointwise}), we can have (by (sample) left-continuity of $C_n$ and $C_{n-1}$)
+We can consider $\sum^\infty_{n=1}$ as a $\sigma$-finite measure. Threrefore, since $\brb{\ind_{C_n}- \ind_{C_{n-1}}}(t_m) \ua \brb{\ind_{C_n}- \ind_{C_{n-1}}}(t)$ a.s.. Then by monotone convergence theorem (Theorem \ref{thm:monotone_convergence_pointwise}), we can have (by (sample) left-continuity of $C_n$ and $C_{n-1}$)
 \be
-\lim_{t_m \ua t} \sum^\infty_{n=1} \bb{\ind_{C_n}- \ind_{C_{n-1}}}(t_m) = \sum^\infty_{n=1} \lim_{t_m \ua t} \bb{\ind_{C_n}- \ind_{C_{n-1}}}(t_m) = \sum^\infty_{n=1} \bb{\ind_{C_n}- \ind_{C_{n-1}}}(t) = \ind_C(t)\quad\text{a.s.}.
+\lim_{t_m \ua t} \sum^\infty_{n=1} \brb{\ind_{C_n}- \ind_{C_{n-1}}}(t_m) = \sum^\infty_{n=1} \lim_{t_m \ua t} \brb{\ind_{C_n}- \ind_{C_{n-1}}}(t_m) = \sum^\infty_{n=1} \brb{\ind_{C_n}- \ind_{C_{n-1}}}(t) = \ind_C(t)\quad\text{a.s.}.
 \ee
 
 Thus, $\ind_C$ is (sample) left-continuous and $C\in \sA$.
@@ -2172,7 +2172,7 @@ Local boundedness is the direct result from Proposition \ref{pro:right_continuou
 
 %Finite variation processes are essentially those for which the standard notion of integral (the one you learn about in measure theory courses) is well-defined. Since finite variation is a pathwise property, we will first establish integrals with respect to deterministic integrants and lift it to stochastic processes in the last part of this section.
 
-%Recall that a function $f: \R \to \R$ is \cadlag or rcll if it is right-continuous and has left limits. For such functions we write $\Delta f(t) := f(t) - f(t^-)$ where $f(t^-) = \lim_{s\ua t} f(s)$. Suppose $a: [0,1)\to \R$ is an increasing \cadlag function. Then there exists a unique Borel measure da on $(0,1)$ such that $da\bb{(s, t]} = a(t) - a(s)$, the Lebesgue-Stieltjes measure with distribution function $a$. Since $da$ is a proper measure, there is no problem in defining, for any non-negative measurable function $h$ and $t \geq 0$.
+%Recall that a function $f: \R \to \R$ is \cadlag or rcll if it is right-continuous and has left limits. For such functions we write $\Delta f(t) := f(t) - f(t^-)$ where $f(t^-) = \lim_{s\ua t} f(s)$. Suppose $a: [0,1)\to \R$ is an increasing \cadlag function. Then there exists a unique Borel measure da on $(0,1)$ such that $da\brb{(s, t]} = a(t) - a(s)$, the Lebesgue-Stieltjes measure with distribution function $a$. Since $da$ is a proper measure, there is no problem in defining, for any non-negative measurable function $h$ and $t \geq 0$.
 %\be
 %(h \cdot a)(t) = \int_{(0,t]} h(s) da(s) .
 %\ee
@@ -2229,7 +2229,7 @@ We know that $dA^+(\omega)$ and $dA^-(\omega)$ are Lebesgue-Stieltjes measure on
 
 Then by Theorem \ref{thm:non_negative_measurable_property}.(i), for $H_s^+ = \max\bra{H_s,0}$ and $H_s^+ = \max\bra{-H_s,0}$,
 \beast
-\abs{(H \cdot A)_t(\omega)} & \leq & \abs{\int_{(0,t]} H_s^+(\omega) dA^+_s(\omega) - \int_{(0,t]} H_s^-(\omega) dA^+_s(\omega) - \bb{\int_{(0,t]} H_s^+(\omega) dA^-_s(\omega) -  \int_{(0,t]} H_s^-(\omega) dA^-_s(\omega)}}\quad (*)\\
+\abs{(H \cdot A)_t(\omega)} & \leq & \abs{\int_{(0,t]} H_s^+(\omega) dA^+_s(\omega) - \int_{(0,t]} H_s^-(\omega) dA^+_s(\omega) - \brb{\int_{(0,t]} H_s^+(\omega) dA^-_s(\omega) -  \int_{(0,t]} H_s^-(\omega) dA^-_s(\omega)}}\quad (*)\\
 & \leq &  \abs{\int_{(0,t]} H_s^+(\omega) dA^+_s(\omega) - \int_{(0,t]} H_s^-(\omega) dA^+_s(\omega)} + \abs{\int_{(0,t]} H_s^+(\omega) dA^-_s(\omega) -  \int_{(0,t]} H_s^-(\omega) dA^-_s(\omega)}\\
 & \leq &  \abs{\int_{(0,t]} H_s^+(\omega) dA^+_s(\omega)} + \abs{\int_{(0,t]} H_s^-(\omega) dA^+_s(\omega)} + \abs{\int_{(0,t]} H_s^+(\omega) dA^-_s(\omega)} + \abs{\int_{(0,t]} H_s^-(\omega) dA^-_s(\omega)}.
 \eeast
@@ -2282,28 +2282,28 @@ Suppose first $H = \ind_{B\times(u,v]}\ind_{\bra{\omega \in \Omega'}}$ where $B 
 \ea\right. \\
 & = &  \ind_{B}\ind_{u<t}(A_{t\land v} -A_{t\land u})\ind_{\bra{\omega \in \Omega'}}
 \eeast
-which is clearly $\sF_t$-measurable. This is true because since $\pro\bb{\omega \in \Omega'^c} = 0$ and $\bra{\bra{\omega \in \Omega'^c}} \in \sF_t$ by definition of usual conditions (Definition \ref{def:usual_conditions_filtration}). Also, $\ind_{B}\ind_{u<t}$ and $(A_{t\land v} -A_{t\land u})$ are $\sF_t$-measurable. Thus, $\bb{\ind_{B\times(u,v]}\ind_{\bra{\omega \in \Omega'}} \cdot A}_t$ is $\sF_t$-measurable. Now let
+which is clearly $\sF_t$-measurable. This is true because since $\pro\brb{\omega \in \Omega'^c} = 0$ and $\bra{\bra{\omega \in \Omega'^c}} \in \sF_t$ by definition of usual conditions (Definition \ref{def:usual_conditions_filtration}). Also, $\ind_{B}\ind_{u<t}$ and $(A_{t\land v} -A_{t\land u})$ are $\sF_t$-measurable. Thus, $\brb{\ind_{B\times(u,v]}\ind_{\bra{\omega \in \Omega'}} \cdot A}_t$ is $\sF_t$-measurable. Now let
 \be
 \Pi = \bra{B \times (u, v]: B \in \sF_u, u < v},\quad \quad \sA = \bra{C \in \sP : (\ind_{C}\ind_{\bra{\omega \in \Omega'}} \cdot A)_t \text{ is $\sF_t$-measurable}} \subseteq \sP
 \ee
-so that $\Pi$ is a $\pi$-system. Clearly, $\Pi \subseteq \sA$ since every set $B\times (u,v]$ in $\Pi$ satisfies $\bb{\ind_{\bra{B\times (u,v]}}\ind_{\bra{\omega \in \Omega'}}\cdot A}_t$ is $\sF_t$-measurable. Also, we have $\sigma(\Pi) = \sP$. Now we show that $\sA$ is a $d$-system. Recall definition of $d$-system (Definition \ref{def:d_system}),
+so that $\Pi$ is a $\pi$-system. Clearly, $\Pi \subseteq \sA$ since every set $B\times (u,v]$ in $\Pi$ satisfies $\brb{\ind_{\bra{B\times (u,v]}}\ind_{\bra{\omega \in \Omega'}}\cdot A}_t$ is $\sF_t$-measurable. Also, we have $\sigma(\Pi) = \sP$. Now we show that $\sA$ is a $d$-system. Recall definition of $d$-system (Definition \ref{def:d_system}),
 
 \ben
 \item [(i)] $(\ind_{\Omega\times (0,\infty)}\ind_{\bra{\omega \in \Omega'}} \cdot A)_t = (A_t - A_0)\ind_{\bra{\omega \in \Omega'}}$ is $\sF_{t}$-measurable since $A$ is adapted and $\bra{\omega \in \Omega'} \in \sF_t$ by definition of usual conditions. Thus, $\Omega \times (0,\infty) \in \sA$.
 \item [(ii)] If $C\subset D\in \sA$, then $(\ind_D\ind_{\bra{\omega \in \Omega'}}\cdot A)_t$ and $(\ind_C\ind_{\bra{\omega \in \Omega'}} \cdot A)_t$ are $\sF_{t}$-measurable. Then
 \be
-\bb{\ind_{D\bs C}\ind_{\bra{\omega \in \Omega'}} \cdot A}_t = \bb{(\ind_D -\ind_C) \cdot A}_t\ind_{\bra{\omega \in \Omega'}} = \underbrace{\bb{\bb{\ind_D \cdot A}_t - \bb{\ind_C\cdot A}_t}}_{\text{by Theorem \ref{thm:non_negative_measurable_property}.(i)}}\ind_{\bra{\omega \in \Omega'}} \quad \text{is $\sF_t$-measurable.}
+\brb{\ind_{D\bs C}\ind_{\bra{\omega \in \Omega'}} \cdot A}_t = \brb{(\ind_D -\ind_C) \cdot A}_t\ind_{\bra{\omega \in \Omega'}} = \underbrace{\brb{\brb{\ind_D \cdot A}_t - \brb{\ind_C\cdot A}_t}}_{\text{by Theorem \ref{thm:non_negative_measurable_property}.(i)}}\ind_{\bra{\omega \in \Omega'}} \quad \text{is $\sF_t$-measurable.}
 \ee
 
 \item [(iii)] If $C_n \in \sA$ with $C_1\subseteq C_2 \subseteq \dots$, $\ind_{C_n} \ua \ind_{\bigcup_n C_n}$. Thus by monotone convergence theorem (Theorem \ref{thm:monotone_convergence_pointwise}),
 \be
-\bb{\ind_{\bigcup_n C_n}\ind_{\bra{\omega \in \Omega'}} \cdot A}_t = \int_{(0,t]} \ind_{\bigcup_n C_n}(s)\ind_{\bra{\omega \in \Omega'}} dA_s = \lim_{n\to \infty} \int_{(0,t]} \ind_{C_n}(s)dA_s \ind_{\bra{\omega \in \Omega'}} = \lim_{n \to \infty}\bb{\ind_{C_n}\cdot A}_t \ind_{\bra{\omega \in \Omega'}}
+\brb{\ind_{\bigcup_n C_n}\ind_{\bra{\omega \in \Omega'}} \cdot A}_t = \int_{(0,t]} \ind_{\bigcup_n C_n}(s)\ind_{\bra{\omega \in \Omega'}} dA_s = \lim_{n\to \infty} \int_{(0,t]} \ind_{C_n}(s)dA_s \ind_{\bra{\omega \in \Omega'}} = \lim_{n \to \infty}\brb{\ind_{C_n}\cdot A}_t \ind_{\bra{\omega \in \Omega'}}
 \ee
 which is $\sF_{t^-}$-measurable as a limit of $\sF_{t^-}$-measurable functions.
 \een
 
 %But $\sA \subseteq \sP = \sigma(\Pi)$ and $\sA$ is a $\lm$-system.
-%[Recall. A $\pi$-system contains , and is stable by intersection. A $\lm$-system (or $d$-system) is stable by taking the difference and countable unions. To see that $\sA$ is $\lm$-system, note that if $C \subseteq D \in \sA$ then $\bb{\bb{\ind_D-\ind_C} \cdot A}_t$ is $\sF_t$-measurable, which gives $D\bs C \in \sA$, and if $C_n \in \sA$ with $C_n \ua C$ then $C \in \sA$ since a limit of measurable functions is measurable.]
+%[Recall. A $\pi$-system contains , and is stable by intersection. A $\lm$-system (or $d$-system) is stable by taking the difference and countable unions. To see that $\sA$ is $\lm$-system, note that if $C \subseteq D \in \sA$ then $\brb{\brb{\ind_D-\ind_C} \cdot A}_t$ is $\sF_t$-measurable, which gives $D\bs C \in \sA$, and if $C_n \in \sA$ with $C_n \ua C$ then $C \in \sA$ since a limit of measurable functions is measurable.]
 
 Hence, $\sA$ is a $d$-system. Then by Dynkin's lemma, $\sigma(\Pi) \subseteq \sA$ since $\Pi \subseteq \sA$. But by definition, $\sigma(\Pi) = \sP$ and $\sA \subseteq \sP$. Thus $\sA = \sP$.
 
@@ -2314,16 +2314,16 @@ H^n\ind_{\bra{\omega \in \Omega'}} := 2^{-n} \floor{2^nH}\ind_{\bra{\omega \in \
 so that by Theorem \ref{thm:non_negative_measurable_property}.(i) and Fubini theorem (Theorem \ref{thm:fubini}),
 \beast
 (H^n\ind_{\bra{\omega \in \Omega'}}  \cdot A)_t & = & \int_{(0,t]} \sum^\infty_{k=1} 2^{-n} k\ \ind_{\bra{H \in \left[2^{-n}k, 2^{-n}(k + 1)\right)}}dA_s \ind_{\bra{\omega \in \Omega'}}  =  \sum^\infty_{k=1} \int_{(0,t]}  2^{-n} k\ \ind_{\bra{H \in \left[2^{-n}k, 2^{-n}(k + 1)\right)}} \ind_{\bra{\omega \in \Omega'}}  dA_s \\
-& = & \sum^\infty_{k=1} \underbrace{\bb{\ind_{\bra{H \in \left[2^{-n}k, 2^{-n}(k + 1)\right)}}\ind_{\bra{\omega \in \Omega'}} \cdot A}_t}_{\text{$\sF_t$-measurable}}\quad \text{is $\sF_t$-measurable as a sum of $\sF_t$-measurable functions.}
+& = & \sum^\infty_{k=1} \underbrace{\brb{\ind_{\bra{H \in \left[2^{-n}k, 2^{-n}(k + 1)\right)}}\ind_{\bra{\omega \in \Omega'}} \cdot A}_t}_{\text{$\sF_t$-measurable}}\quad \text{is $\sF_t$-measurable as a sum of $\sF_t$-measurable functions.}
 \eeast
 % is $\sF_t$-measurable.
 
-We have $(H^n\ind_{\bra{\omega \in \Omega'}}  \cdot A)_t \ua (H\ind_{\bra{\omega \in \Omega'}}  \cdot A)_t$ by monotone convergence theorem (Theorem \ref{thm:monotone_convergence_pointwise} for each $\omega$). Hence, $(H\ind_{\bra{\omega \in \Omega'}}  \cdot A)_t$ is $\sF_t$-measurable as a limit of $\sF_t$-measurable functions. Thus, by ($\dag$), $(H\cdot A) = \bb{H\ind_{\bra{\omega \in \Omega'}} \cdot A}$ is adapted.
+We have $(H^n\ind_{\bra{\omega \in \Omega'}}  \cdot A)_t \ua (H\ind_{\bra{\omega \in \Omega'}}  \cdot A)_t$ by monotone convergence theorem (Theorem \ref{thm:monotone_convergence_pointwise} for each $\omega$). Hence, $(H\ind_{\bra{\omega \in \Omega'}}  \cdot A)_t$ is $\sF_t$-measurable as a limit of $\sF_t$-measurable functions. Thus, by ($\dag$), $(H\cdot A) = \brb{H\ind_{\bra{\omega \in \Omega'}} \cdot A}$ is adapted.
 
 We know that for all $\omega \in \Omega'$,
 \beast
 (H \cdot A)_t(\omega) & = & \int_{(0,t]} H_s^+(\omega) dA^+_s(\omega) - \int_{(0,t]} H_s^-(\omega) dA^+_s(\omega) - \int_{(0,t]} H_s^+(\omega) dA^-_s(\omega) +  \int_{(0,t]} H_s^-(\omega) dA^-_s(\omega)\\
-& = & \underbrace{\bb{\int_{(0,t]} H_s^+(\omega) dA^+_s(\omega) +  \int_{(0,t]} H_s^-(\omega) dA^-_s(\omega)}}_{:= X_1(\omega)}- \underbrace{\bb{\int_{(0,t]} H_s^-(\omega) dA^+_s(\omega) + \int_{(0,t]} H_s^+(\omega) dA^-_s(\omega) }}_{:= X_2(\omega)}
+& = & \underbrace{\brb{\int_{(0,t]} H_s^+(\omega) dA^+_s(\omega) +  \int_{(0,t]} H_s^-(\omega) dA^-_s(\omega)}}_{:= X_1(\omega)}- \underbrace{\brb{\int_{(0,t]} H_s^-(\omega) dA^+_s(\omega) + \int_{(0,t]} H_s^+(\omega) dA^-_s(\omega) }}_{:= X_2(\omega)}
 \eeast
 
 We have proved that each integral is \cadlag\ and non-decreasing. Thus, $X_1(\omega)$ and $X_2(\omega)$ are \cadlag\ and non-decreasing. So by Proposition \ref{pro:cadlag_function_two_increasing_function}, $(H \cdot A)_t(\omega)$ is of finite variation and thus $(H \cdot A)_t$ is of finite variation a.s..
@@ -2367,16 +2367,16 @@ We can ignore the second term since $A$ is continuous.
 \begin{proof}[\bf Proof]
 Since $H$ is bounded on compact time intervals, $(H\cdot A)_t$ is well-defined. Let $H^n_t = H_{2^{-n}\floor{2^n t}}$. Then
 \be
-\bb{H^n \cdot A}_t = \sum^\infty_{k =0} H_{k2^{-n}}\bb{A_{(k+1)2^{-n}\land t} - A_{k2^{-n}\land t}}
+\brb{H^n \cdot A}_t = \sum^\infty_{k =0} H_{k2^{-n}}\brb{A_{(k+1)2^{-n}\land t} - A_{k2^{-n}\land t}}
 \ee
 
 Since $H$ is (sample) left-continuous, we have $H^n_t \to H_t$ a.s. as $n\to \infty$. Fix $T\geq 0$. For $0\leq t\leq T$ we have (we can consider $A$ as the difference between to non-decreasing \cadlag\ process, i.e. $A = A^+ - A^-$ and $dA^+$ and $dA^-$ are Lebesgue-Stieltjes measures by Theorem \ref{thm:existence_radon})
 \be
-\abs{\bb{H^n \cdot A}_t- \bb{H \cdot A}_t }  = \abs{\bb{\bb{H^n - H} \cdot A}_t} \leq \bb{\abs{H^n-H}\cdot (A^+ + A^-)}_t \leq \bb{\abs{H^n-H}\cdot (A^+ + A^-)}_T
+\abs{\brb{H^n \cdot A}_t- \brb{H \cdot A}_t }  = \abs{\brb{\brb{H^n - H} \cdot A}_t} \leq \brb{\abs{H^n-H}\cdot (A^+ + A^-)}_t \leq \brb{\abs{H^n-H}\cdot (A^+ + A^-)}_T
 \ee
-since $\bb{\abs{H^n-H}\cdot (A^+ + A^-)}_t$ is non-decreasing. But we know that $\abs{H^n - H} \leq 2\sup_{t\leq T}\abs{H_t} < \infty$ since $H$ is bounded on compact time intervals. Then we use bounded convergence theorem (Theorem \ref{thm:bounded_convergence_probability} as $dA^+$ and $dA^-$ are Lebesgue-Stieltjes measures), for any $t\geq 0$
+since $\brb{\abs{H^n-H}\cdot (A^+ + A^-)}_t$ is non-decreasing. But we know that $\abs{H^n - H} \leq 2\sup_{t\leq T}\abs{H_t} < \infty$ since $H$ is bounded on compact time intervals. Then we use bounded convergence theorem (Theorem \ref{thm:bounded_convergence_probability} as $dA^+$ and $dA^-$ are Lebesgue-Stieltjes measures), for any $t\geq 0$
 \be
-\abs{\bb{H^n \cdot A}_t- \bb{H \cdot A}_t } \to 0\ \text{ a.s.}.
+\abs{\brb{H^n \cdot A}_t- \brb{H \cdot A}_t } \to 0\ \text{ a.s.}.
 \ee
 as required.
 \end{proof}
@@ -2390,15 +2390,15 @@ H\cdot (K\cdot A) = (HK)\cdot A.
 \end{theorem}
 
 \begin{remark}
-That is, by Proposition \ref{pro:density_function_measure} as $d\bb{\int_{(0,t]}K_s dA_s}$ is a Lebesgue-Stieltjes measure,
+That is, by Proposition \ref{pro:density_function_measure} as $d\brb{\int_{(0,t]}K_s dA_s}$ is a Lebesgue-Stieltjes measure,
 \be
-\int_{(0,t]} H_s d\bb{(K\cdot A)_s} = \int_{(0,t]} H_s K_s d A_s \ \ra \ d\bb{\int_{(0,t]}K_s dA_s} = K_t dA_t.
+\int_{(0,t]} H_s d\brb{(K\cdot A)_s} = \int_{(0,t]} H_s K_s d A_s \ \ra \ d\brb{\int_{(0,t]}K_s dA_s} = K_t dA_t.
 \ee
 %\ben
 %\item [(i)]
-%\item [(ii)] %Since both processes are non-decreasing, we have $\bb{H\cdot (K\cdot A)}_\infty = ((HK)\cdot A)_\infty$. Then monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability}) implies that
+%\item [(ii)] %Since both processes are non-decreasing, we have $\brb{H\cdot (K\cdot A)}_\infty = ((HK)\cdot A)_\infty$. Then monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability}) implies that
 %\be
-%\E\bb{\bb{H\cdot (K\cdot A)}_\infty} = \E\bb{((HK)\cdot A)_\infty}.
+%\E\brb{\brb{H\cdot (K\cdot A)}_\infty} = \E\brb{((HK)\cdot A)_\infty}.
 %\ee
 %\een
 \end{remark}
@@ -2408,7 +2408,7 @@ By Theorem \ref{thm:cadlag_finite_variation_previsible_integral}, $K\cdot A$ and
 
 Therefore, we only consider non-negative $H$ and \cadlag\ adapted non-decreasing (a.s.) $A$. For $\omega \in \Omega'^c$ (see the assumption of Theorem \ref{thm:cadlag_finite_variation_previsible_integral}), we have for any $t\geq 0$, %$A(\omega)$ is not \cadlag
 \be
-\bb{H\cdot (K\cdot A)}_t = \bb{(HK)\cdot A}_t = 0.
+\brb{H\cdot (K\cdot A)}_t = \brb{(HK)\cdot A}_t = 0.
 \ee
 
 For $\omega \in \Omega'$ and any $t\geq 0$, we suppose first
@@ -2421,16 +2421,16 @@ where $B_{H} \in \sF_{u_H},B_{K} \in \sF_{u_K}$. Then
 0 \quad\quad & t\leq u_H\\
 \ind_{B_H} (A_t - A_{u_H}) & u_H < t\leq v_H\\
 \ind_{B_H} (A_{v_H} - A_{u_H})\quad\quad & t > v_H
-\ea\right.  =  \ind_{B_H}\bb{A_{t\land v_H} - A_{t\land u_H}}
+\ea\right.  =  \ind_{B_H}\brb{A_{t\land v_H} - A_{t\land u_H}}
 \ee
 
-Similarly, we have $(K \cdot A)_t = \ind_{B_K}\bb{A_{t\land v_K} - A_{t\land u_K}} $, Thus,
+Similarly, we have $(K \cdot A)_t = \ind_{B_K}\brb{A_{t\land v_K} - A_{t\land u_K}} $, Thus,
 \beast
-(H \cdot (K\cdot A))_t & = & \ind_{B_H} \bb{(K\cdot A)_{t\land v_K} - (K\cdot A)_{t\land u_K}}\\
-& = & \ind_{B_H}\ind_{B_K} \bb{A_{t\land v_H\land v_K} + A_{t\land u_H\land u_K} - A_{t\land u_H \land v_K} - A_{t\land u_K\land v_H}}
-%& = & \ind_{B_H}\ind_{B_K} \bb{A_{t\land v_H\land v_K} + A_{t\land v_H\land v_K} - A_{t\land \bb{\bb{u_H\land u_K}\vee\bb{v_H\land v_K}}} - A_{t\land u_H \land v_K} - A_{t\land u_K\land v_H}} \\
-%& = & \ind_{B_H}\ind_{B_K} \bb{A_{(u_H\vee u_K)\vee (v_H\land v_K) \land t} - A_{(u_H\vee u_K)\land t}}\\%& = & \ind_{B_H}\ind_{B_K}\ind_{\bra{u_H<t}}\ind_{\bra{u_K<t}} \bb{A_{\bb{(u_H\vee u_K)\vee (v_H\land v_K)}\land t} - A_{(u_H\vee u_K)\land t}}\\
-%& = & \bb{\ind_{B_H}\ind_{B_K} \ind_{\left(u_H\vee u_K, (u_H\vee u_K)\vee (v_H\land v_K)\right]} \cdot A}_t = ((HK)\cdot A)_t
+(H \cdot (K\cdot A))_t & = & \ind_{B_H} \brb{(K\cdot A)_{t\land v_K} - (K\cdot A)_{t\land u_K}}\\
+& = & \ind_{B_H}\ind_{B_K} \brb{A_{t\land v_H\land v_K} + A_{t\land u_H\land u_K} - A_{t\land u_H \land v_K} - A_{t\land u_K\land v_H}}
+%& = & \ind_{B_H}\ind_{B_K} \brb{A_{t\land v_H\land v_K} + A_{t\land v_H\land v_K} - A_{t\land \brb{\brb{u_H\land u_K}\vee\brb{v_H\land v_K}}} - A_{t\land u_H \land v_K} - A_{t\land u_K\land v_H}} \\
+%& = & \ind_{B_H}\ind_{B_K} \brb{A_{(u_H\vee u_K)\vee (v_H\land v_K) \land t} - A_{(u_H\vee u_K)\land t}}\\%& = & \ind_{B_H}\ind_{B_K}\ind_{\bra{u_H<t}}\ind_{\bra{u_K<t}} \brb{A_{\brb{(u_H\vee u_K)\vee (v_H\land v_K)}\land t} - A_{(u_H\vee u_K)\land t}}\\
+%& = & \brb{\ind_{B_H}\ind_{B_K} \ind_{\left(u_H\vee u_K, (u_H\vee u_K)\vee (v_H\land v_K)\right]} \cdot A}_t = ((HK)\cdot A)_t
 \eeast
 
 %Wlog, we assume $u_K \leq u_H$. Thus, we have that $A_{t\land v_H\land v_K} + A_{t\land u_H\land u_K} -A_{t\land u_H\land v_K} - A_{t\land v_H\land u_K}$ is
@@ -2438,10 +2438,10 @@ Similarly, we have $(K \cdot A)_t = \ind_{B_K}\bb{A_{t\land v_K} - A_{t\land u_K
 %& & \left\{\ba{ll}
 %A_{t} + A_{t} - A_t-A_t = 0 \quad \quad & t< u_H \land u_K\\%\quad (t< v_H,v_K)\\
 %A_{t\land v_K} + A_{t\land u_K} -A_{t \land v_K} - A_{t \land u_K}  = 0\quad \quad & u_H\land u_K \leq t < u_H\vee u_K\quad (u_K \leq t< u_H, t< v_H)%\\
-%%%A_{t\land v_H\land v_K} + A_{u_K} -A_{u_H\land v_K} - A_{u_K}  \quad \quad & u_H\vee u_K \leq t \quad \quad \bb{ u_K\leq u_H \leq t } %\\%< \bb{u_H\vee u_K} \vee \bb{v_H\land v_K}\\
-%%%\qquad\qquad = A_{t\land v_H\land v_K} -A_{u_H\land v_K}  & \qquad%< u_H \vee \bb{v_H\land v_K}}
-%%%A_{t\land v_H\land v_K} + A_{u_K} -A_{u_H\land v_K} - A_{u_K} \quad \quad & t \geq \bb{ u_H\vee u_K} \vee \bb{v_H\land v_K}\\
-%%% & \qquad\qquad \bb{ t > u_H\geq u_K, t > v_H\land v_K}\\
+%%%A_{t\land v_H\land v_K} + A_{u_K} -A_{u_H\land v_K} - A_{u_K}  \quad \quad & u_H\vee u_K \leq t \quad \quad \brb{ u_K\leq u_H \leq t } %\\%< \brb{u_H\vee u_K} \vee \brb{v_H\land v_K}\\
+%%%\qquad\qquad = A_{t\land v_H\land v_K} -A_{u_H\land v_K}  & \qquad%< u_H \vee \brb{v_H\land v_K}}
+%%%A_{t\land v_H\land v_K} + A_{u_K} -A_{u_H\land v_K} - A_{u_K} \quad \quad & t \geq \brb{ u_H\vee u_K} \vee \brb{v_H\land v_K}\\
+%%% & \qquad\qquad \brb{ t > u_H\geq u_K, t > v_H\land v_K}\\
 %\ea\right.
 %\eeast
 
@@ -2452,8 +2452,8 @@ Similarly, we have $(K \cdot A)_t = \ind_{B_K}\bb{A_{t\land v_K} - A_{t\land u_K
 %\left\{\ba{ll}
 %0\quad \quad & t < u_H\vee u_K \\
 %A_{t\land v_H\land v_K} -A_{u_H\land v_K} \quad\quad  & t \geq u_H \vee u_K
-%%A_{t\land v_H\land v_K} + A_{u_K} -A_{u_H\land v_K} - A_{u_K} \quad \quad & t \geq \bb{ u_H\vee u_K} \vee \bb{v_H\land v_K}\\
-% & \qquad\qquad \bb{ t > u_H\geq u_K, t > v_H\land v_K}\\
+%%A_{t\land v_H\land v_K} + A_{u_K} -A_{u_H\land v_K} - A_{u_K} \quad \quad & t \geq \brb{ u_H\vee u_K} \vee \brb{v_H\land v_K}\\
+% & \qquad\qquad \brb{ t > u_H\geq u_K, t > v_H\land v_K}\\
 %\ea\right.
 %\ee
 
@@ -2463,24 +2463,24 @@ Similarly, we have $(K \cdot A)_t = \ind_{B_K}\bb{A_{t\land v_K} - A_{t\land u_K
 %0\quad \quad & t < u_H\vee u_K \\
 %A_{t} -A_{v_K} \quad\quad  & u_H \vee u_K \leq t < v_H \land v_K\\ \quad (t< v_H)% v_K \leq u_H\quad (v_K < v_H)\\
 %A_{t\land v_H\land v_K} -A_{u_H} \quad\quad  & t \geq u_H \vee u_K, v_K > u_H
-%% & \qquad\qquad \bb{ t > u_H\geq u_K, t > v_H\land v_K}\\
+%% & \qquad\qquad \brb{ t > u_H\geq u_K, t > v_H\land v_K}\\
 %\ea\right.
 %\ee
 
-Since $A_{p\land q} + A_{p\vee q} = A_p + A_q$, we let $A'=  A_{t\land u_H\land u_K} - A_{t\land \bb{u_H\vee u_K}}$. Then
+Since $A_{p\land q} + A_{p\vee q} = A_p + A_q$, we let $A'=  A_{t\land u_H\land u_K} - A_{t\land \brb{u_H\vee u_K}}$. Then
 \beast
 & & A_{t\land v_H\land v_K} + A_{t\land u_H\land u_K} - A_{t\land u_H \land v_K} - A_{t\land u_K\land v_H}\\
-& = & A_{t\land v_H\land v_K} + A_{t\land \bb{u_H\vee u_K}} - A_{t\land u_H \land v_K} - A_{t\land u_K\land v_H}  + A'\\
-& = & A_{\bb{t\land v_H\land v_K} \land \bb{t\land \bb{u_H\vee u_K}} } + A_{\bb{t\land v_H\land v_K} \vee \bb{t\land \bb{u_H\vee u_K}} } - A_{\bb{t\land u_H \land v_K} \land \bb{t\land u_K\land v_H}} - A_{\bb{t\land u_H \land v_K} \vee \bb{t\land u_K\land v_H}} + A'\\
-& = & A_{\bb{\bb{v_H\land v_K} \land \bb{u_H\vee u_K} }\land t} + A_{\bb{\bb{v_H\land v_K} \vee \bb{u_H\vee u_K}}\land t} - A_{\bb{\bb{ u_H \land v_K} \land \bb{ u_K\land v_H}}\land t} - A_{\bb{\bb{ u_H \land v_K} \vee \bb{ u_K\land v_H}}\land t} + A'\\
-& = & A_{\bb{\bb{u_H\land v_K}\vee \bb{v_H\land u_K}}\land t} + A_{\bb{\bb{v_H\land v_K} \vee \bb{u_H\vee u_K}}\land t} - A_{\bb{u_H \land u_K}\land t} - A_{\bb{\bb{ u_H \land v_K} \vee \bb{ u_K\land v_H}}\land t} + A'\\
-& = & A_{\bb{\bb{v_H\land v_K} \vee \bb{u_H\vee u_K}}\land t} - A_{\bb{u_H \land u_K}\land t}  + A' =  A_{\bb{\bb{v_H\land v_K} \vee \bb{u_H\vee u_K}}\land t} - A_{\bb{u_H \vee u_K}\land t}.\quad\quad (*)
+& = & A_{t\land v_H\land v_K} + A_{t\land \brb{u_H\vee u_K}} - A_{t\land u_H \land v_K} - A_{t\land u_K\land v_H}  + A'\\
+& = & A_{\brb{t\land v_H\land v_K} \land \brb{t\land \brb{u_H\vee u_K}} } + A_{\brb{t\land v_H\land v_K} \vee \brb{t\land \brb{u_H\vee u_K}} } - A_{\brb{t\land u_H \land v_K} \land \brb{t\land u_K\land v_H}} - A_{\brb{t\land u_H \land v_K} \vee \brb{t\land u_K\land v_H}} + A'\\
+& = & A_{\brb{\brb{v_H\land v_K} \land \brb{u_H\vee u_K} }\land t} + A_{\brb{\brb{v_H\land v_K} \vee \brb{u_H\vee u_K}}\land t} - A_{\brb{\brb{ u_H \land v_K} \land \brb{ u_K\land v_H}}\land t} - A_{\brb{\brb{ u_H \land v_K} \vee \brb{ u_K\land v_H}}\land t} + A'\\
+& = & A_{\brb{\brb{u_H\land v_K}\vee \brb{v_H\land u_K}}\land t} + A_{\brb{\brb{v_H\land v_K} \vee \brb{u_H\vee u_K}}\land t} - A_{\brb{u_H \land u_K}\land t} - A_{\brb{\brb{ u_H \land v_K} \vee \brb{ u_K\land v_H}}\land t} + A'\\
+& = & A_{\brb{\brb{v_H\land v_K} \vee \brb{u_H\vee u_K}}\land t} - A_{\brb{u_H \land u_K}\land t}  + A' =  A_{\brb{\brb{v_H\land v_K} \vee \brb{u_H\vee u_K}}\land t} - A_{\brb{u_H \vee u_K}\land t}.\quad\quad (*)
 \eeast
 
 Thus,
 \beast
-(H \cdot (K\cdot A))_t & = & \ind_{B_H}\ind_{B_K} \bb{A_{\bb{\bb{v_H\land v_K} \vee \bb{u_H\vee u_K}}\land t} - A_{\bb{u_H \vee u_K}\land t}} \\
-& = & \bb{\ind_{B_H}\ind_{B_K} \ind_{\left(u_H \vee u_K, \bb{v_H\land v_K} \vee \bb{u_H\vee u_K}\right]} \cdot A}_t = \bb{(HK)\cdot A}_t.
+(H \cdot (K\cdot A))_t & = & \ind_{B_H}\ind_{B_K} \brb{A_{\brb{\brb{v_H\land v_K} \vee \brb{u_H\vee u_K}}\land t} - A_{\brb{u_H \vee u_K}\land t}} \\
+& = & \brb{\ind_{B_H}\ind_{B_K} \ind_{\left(u_H \vee u_K, \brb{v_H\land v_K} \vee \brb{u_H\vee u_K}\right]} \cdot A}_t = \brb{(HK)\cdot A}_t.
 \eeast
 
 Similarly, suppose
@@ -2490,24 +2490,24 @@ H = \sum^{m-1}_{i=1}a_i\ind_{B^H_i \times(t_i,t_{i+1}]}(t),\quad  K = \sum^{n-1}
 where $a_i,b_j \in \R^{++}$ and $B^H_i \in \sF_{t_i},B^K_j \in \sF_{s_j}$. Then
 \beast
 & & (H \cdot (K\cdot A))_t \\
-& = & \sum^{m-1}_{i=1} a_i \ind_{B^H_i \times(t_i,t_{i+1}]} \cdot \bb{\sum^{n-1}_{j=1} b_j\ind_{B^K_j\times(s_j,s_{j+1}]} \cdot A}_t  = \sum^{m-1}_{i=1} \sum^{n-1}_{j=1} a_ib_j \ind_{B^H_i \times(t_i,t_{i+1}]} \cdot \bb{\ind_{B^K_j\times(s_j,s_{j+1}]} \cdot A}_t\\
-& = & \sum^{m-1}_{i=1} \sum^{n-1}_{j=1} a_ib_j \bb{\bb{\ind_{B^H_i \times(t_i,t_{i+1}]} \ind_{B^K_j\times(s_j,s_{j+1}]}} \cdot A}_t = \bb{\bb{\sum^{m-1}_{i=1} \sum^{n-1}_{j=1}  a_ib_j \ind_{B^H_i \cap B^K_j} \ind_{\left(t_i\vee s_j,(t_i\vee s_j)\vee (t_{i+1} \land s_{j+1}) \right]}} \cdot A}_t\\
-& = & \bb{(HK)\cdot A}_t.
+& = & \sum^{m-1}_{i=1} a_i \ind_{B^H_i \times(t_i,t_{i+1}]} \cdot \brb{\sum^{n-1}_{j=1} b_j\ind_{B^K_j\times(s_j,s_{j+1}]} \cdot A}_t  = \sum^{m-1}_{i=1} \sum^{n-1}_{j=1} a_ib_j \ind_{B^H_i \times(t_i,t_{i+1}]} \cdot \brb{\ind_{B^K_j\times(s_j,s_{j+1}]} \cdot A}_t\\
+& = & \sum^{m-1}_{i=1} \sum^{n-1}_{j=1} a_ib_j \brb{\brb{\ind_{B^H_i \times(t_i,t_{i+1}]} \ind_{B^K_j\times(s_j,s_{j+1}]}} \cdot A}_t = \brb{\brb{\sum^{m-1}_{i=1} \sum^{n-1}_{j=1}  a_ib_j \ind_{B^H_i \cap B^K_j} \ind_{\left(t_i\vee s_j,(t_i\vee s_j)\vee (t_{i+1} \land s_{j+1}) \right]}} \cdot A}_t\\
+& = & \brb{(HK)\cdot A}_t.
 \eeast
 
 Then for any non-negative uniformly bounded previsible processes $H,K$, we define $H^m = 2^{-m}\floor{2^m H}$, $K^n = 2^{-n}\floor{2^n K}$, we have
 \be
-\bb{H^m \cdot \bb{K^n\cdot A}}_t = \bb{\bb{H^m K^n}\cdot A}_t
+\brb{H^m \cdot \brb{K^n\cdot A}}_t = \brb{\brb{H^m K^n}\cdot A}_t
 \ee
 
 By monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability} as $dA$, $d(K^n\cdot A)$ and $d(K\cdot A)$ are Lebesgue-Stieltjes measures),
 \be
-(K^n \cdot A)_t \ua (K\cdot A)_t, \quad \bb{H^m\cdot (K\cdot A)}_t \ua \bb{H\cdot (K\cdot A)}_t,\quad\bb{\bb{H^m K^n}\cdot A}_t \ua \bb{\bb{H K}\cdot A}_t
+(K^n \cdot A)_t \ua (K\cdot A)_t, \quad \brb{H^m\cdot (K\cdot A)}_t \ua \brb{H\cdot (K\cdot A)}_t,\quad\brb{\brb{H^m K^n}\cdot A}_t \ua \brb{\brb{H K}\cdot A}_t
 \ee
 
-We can see that there is an indicator function $\ind_{C_n} \ua 1$ such that $(K^n \cdot A)_t(\cdot) = (K \cdot A)_t\bb{\ind_{C_n}}$. Then we have by Proposition \ref{pro:density_function_measure},
+We can see that there is an indicator function $\ind_{C_n} \ua 1$ such that $(K^n \cdot A)_t(\cdot) = (K \cdot A)_t\brb{\ind_{C_n}}$. Then we have by Proposition \ref{pro:density_function_measure},
 \be
-H^m \cdot (K^n \cdot A)_t = (K^n \cdot A)_t(H^m) = (K \cdot A)_t\bb{\ind_{C_n}H^m}.
+H^m \cdot (K^n \cdot A)_t = (K^n \cdot A)_t(H^m) = (K \cdot A)_t\brb{\ind_{C_n}H^m}.
 \ee
 
 Since $\ind_{C_n}H^m \ua H^m$, by monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability} as $d(K\cdot A)$ is Lebesgue-Stieltjes measure),
@@ -2522,7 +2522,7 @@ H^m \cdot (K^n \cdot A)_t \ua H^m \cdot (K \cdot A)_t.
 
 Combining these, we have
 \be
-\bb{H\cdot (K\cdot A)}_t =  \bb{(HK)\cdot A}_t.
+\brb{H\cdot (K\cdot A)}_t =  \brb{(HK)\cdot A}_t.
 \ee
 
 Since both processes are \cadlag, they are (pathwise) the same, i.e., $H\cdot (K\cdot A) = (HK)\cdot A$.
@@ -2543,19 +2543,19 @@ Let $V$ be the finite variation process of $A$, we can have (since $H,K$ are loc
 
 Thus, we can use Theorem \ref{thm:cadlag_finite_variation_previsible_integral} and see that $H\cdot (K\cdot A)$ and $(HK)\cdot A$ are well-defined. Let $T_n = S_n \land S_n'$, we have by Theorem \ref{thm:bounded_on_compact_previsible_finite_variation_integral}, for all $t\geq 0$,
 \be
-\bb{H\ind_{(0,T_n]}\cdot (K\ind_{(0,T_n]}\cdot A)}_t = \bb{(H\ind_{(0,T_n]}K\ind_{(0,T_n]})\cdot A}_t
+\brb{H\ind_{(0,T_n]}\cdot (K\ind_{(0,T_n]}\cdot A)}_t = \brb{(H\ind_{(0,T_n]}K\ind_{(0,T_n]})\cdot A}_t
 \ee
 
-But $\bb{(H\ind_{(0,T_n]}\ind_{(0,T_n]})\cdot A}_t \to \bb{(HK)\cdot A}_t$ a.s., as $n\to \infty$. Similarly,
+But $\brb{(H\ind_{(0,T_n]}\ind_{(0,T_n]})\cdot A}_t \to \brb{(HK)\cdot A}_t$ a.s., as $n\to \infty$. Similarly,
 \be
-\bb{H\ind_{(0,T_n]}\cdot (K\ind_{(0,T_n]}\cdot A)}_t = \bb{H\ind_{(0,T_n]}\cdot (K\cdot A)^{T_n}}_t = \bb{H\cdot (K\cdot A)}_t^{T_n} \to \bb{H\cdot (K\cdot A)}_t\quad \text{a.s.}
+\brb{H\ind_{(0,T_n]}\cdot (K\ind_{(0,T_n]}\cdot A)}_t = \brb{H\ind_{(0,T_n]}\cdot (K\cdot A)^{T_n}}_t = \brb{H\cdot (K\cdot A)}_t^{T_n} \to \brb{H\cdot (K\cdot A)}_t\quad \text{a.s.}
 \ee
 
 %(by using the same trick in proof of Theorem \ref{thm:bounded_on_compact_previsible_finite_variation_integral}).
 
 Thus, we have
 \be
-\bb{H\cdot (K\cdot A)}_t = \bb{(HK)\cdot A}_t\quad \text{a.s.}.
+\brb{H\cdot (K\cdot A)}_t = \brb{(HK)\cdot A}_t\quad \text{a.s.}.
 \ee
 
 But both processes are \cadlag, we have these two processes are indistinguishable. That is,
@@ -2573,7 +2573,7 @@ Recalling uniform convergence on compacts (Definition \ref{def:uniform_convergen
 \begin{definition}[uniform convergence on compacts almost surely\index{uniform convergence on compacts!stochastic process, almost surely}]\label{def:ucas_convergence_process}
 Let $(\Omega,\sF,(\sF_t)_{t\geq 0},\pro)$ be a filtered probability space. For a sequence of jointly measurable ($\sF\otimes \sB(\R)$-measurable) stochastic processes $(X^n)_{n\in \N}$ we say that $X^n$ uniformly converges on compacts a.s. to the process $X$ if
 \be
-\forall \ve > 0, \forall t \geq 0,\quad \pro\bb{\sup_{s\leq t} \abs{X^n_s - X_s} \to 0} =1 \quad \text{ as }n \to\infty.
+\forall \ve > 0, \forall t \geq 0,\quad \pro\brb{\sup_{s\leq t} \abs{X^n_s - X_s} \to 0} =1 \quad \text{ as }n \to\infty.
 \ee
 
 $X^n$ is said to converge u.c.a.s. to $X$ and it is denoted by $X^n \xrightarrow{ucas}X$, or $X^n \to X$ u.c.a.s..
@@ -2582,7 +2582,7 @@ $X^n$ is said to converge u.c.a.s. to $X$ and it is denoted by $X^n \xrightarrow
 \begin{definition}[uniform convergence on compacts in probability\index{uniform convergence on compacts!stochastic process, in probability}]\label{def:ucp_convergence_process}
 Let $(\Omega,\sF,(\sF_t)_{t\geq 0},\pro)$ be a filtered probability space. For a sequence of jointly measurable ($\sF\otimes \sB(\R)$-measurable) stochastic processes $(X^n)_{n\in \N}$ we say that $X^n$ converge to the process $X$ in the ucp topology (uniform convergence on compacts in probability, u.c.p.) if
 \be
-\forall \ve > 0, \forall t \geq 0,\quad \pro\bb{\sup_{s\leq t} \abs{X^n_s - X_s} > \ve} \to 0 \quad \text{ as }n \to\infty.
+\forall \ve > 0, \forall t \geq 0,\quad \pro\brb{\sup_{s\leq t} \abs{X^n_s - X_s} > \ve} \to 0 \quad \text{ as }n \to\infty.
 \ee
 
 $X^n$ is said to converge u.c.p. to $X$ and it is denoted by $X^n \xrightarrow{ucp}X$, or $X^n \to X$ u.c.p..
@@ -2616,30 +2616,30 @@ For some stochastic process $X$, we can have (by definitions and Theorem \ref{th
 \ben
 \item [(i)] Suppose $X^n \to 0$ u.c.a.s.. That is,
 \be
-\pro\bb{\sup_{0\leq s\leq t}|X^n_s| \to 0 } = 1\quad \text{as }n\to \infty.
+\pro\brb{\sup_{0\leq s\leq t}|X^n_s| \to 0 } = 1\quad \text{as }n\to \infty.
 \ee
 
 Then for each $\ve > 0$ and $t\geq 0$,
 \be
-\pro\bb{\sup_{0\leq s\leq t}|X^n_s| \leq \ve} \geq \underbrace{\pro \bb{\bigcap_{m\geq n} \bra{\sup_{0\leq s\leq t}|X^n_s| \leq \ve}} \ua \pro\bb{\sup_{0\leq s\leq t}|X^n_s| \leq \ve \text{ ev.}}}_{\text{Lemma }\ref{lem:measure_increasing_sequence}} \geq \pro\bb{\sup_{0\leq s\leq t}|X^n_s| \to 0},
+\pro\brb{\sup_{0\leq s\leq t}|X^n_s| \leq \ve} \geq \underbrace{\pro \brb{\bigcap_{m\geq n} \bra{\sup_{0\leq s\leq t}|X^n_s| \leq \ve}} \ua \pro\brb{\sup_{0\leq s\leq t}|X^n_s| \leq \ve \text{ ev.}}}_{\text{Lemma }\ref{lem:measure_increasing_sequence}} \geq \pro\brb{\sup_{0\leq s\leq t}|X^n_s| \to 0},
 \ee
 
 \be
-\pro\bb{\sup_{0\leq s\leq t}|X^n_s| > \ve} = 1 - \pro\bb{\sup_{0\leq s\leq t}|X^n_s| \leq \ve} \leq 1 - \pro\bb{\sup_{0\leq s\leq t}|X^n_s| \to 0} = 0.
+\pro\brb{\sup_{0\leq s\leq t}|X^n_s| > \ve} = 1 - \pro\brb{\sup_{0\leq s\leq t}|X^n_s| \leq \ve} \leq 1 - \pro\brb{\sup_{0\leq s\leq t}|X^n_s| \to 0} = 0.
 \ee
-Hence $\pro\bb{\sup_{0\leq s\leq t}|X^n_s| > \ve} \to 0$ and $X^n \to 0$ u.c.a.s..
+Hence $\pro\brb{\sup_{0\leq s\leq t}|X^n_s| > \ve} \to 0$ and $X^n \to 0$ u.c.a.s..
 
-\item [(ii)] Suppose $X^n \to 0$ u.c.p., then $\forall \ve>0$, $\pro\bb{\sup_{0\leq s\leq t}|X^n_s| > \ve} \to 0$ i.e.
+\item [(ii)] Suppose $X^n \to 0$ u.c.p., then $\forall \ve>0$, $\pro\brb{\sup_{0\leq s\leq t}|X^n_s| > \ve} \to 0$ i.e.
 \be
-\forall \ve>0,\ \delta >0, \ \exists N,\ \forall n\geq N,\quad \pro\bb{\sup_{0\leq s\leq t}|X^n_s| > \ve} < \delta.
+\forall \ve>0,\ \delta >0, \ \exists N,\ \forall n\geq N,\quad \pro\brb{\sup_{0\leq s\leq t}|X^n_s| > \ve} < \delta.
 \ee
 so we can find a subsequence ($n_k$) such that $\ve_k = 1/k$ and $\delta_k = 2^{-k}$,
 \be
-\pro\bb{\sup_{0\leq s\leq t}\abs{X^{n_k}_s} > 1/k} < 2^{-k} \ \ra \ \sum_{k=1}^\infty \pro\bb{\sup_{0\leq s\leq t}\abs{X^{n_k}_s} > 1/k} < \sum_k 2^{-k} = 1 < \infty.
+\pro\brb{\sup_{0\leq s\leq t}\abs{X^{n_k}_s} > 1/k} < 2^{-k} \ \ra \ \sum_{k=1}^\infty \pro\brb{\sup_{0\leq s\leq t}\abs{X^{n_k}_s} > 1/k} < \sum_k 2^{-k} = 1 < \infty.
 \ee
 So, by the first Borel-Cantelli lemma (Lemma \ref{lem:borel_cantelli_1_probability}),
 \be
-0 = \pro\bb{\sup_{0\leq s\leq t}\abs{X^{n_k}_s} > 1/k \text{ i.o.}} = \pro\bb{\bra{\sup_{0\leq s\leq t}\abs{X^{n_k}_s} \leq 1/k \text{ ev.}}^c} = \pro\bb{\bra{\sup_{0\leq s\leq t}\abs{X^{n_k}_s} \to 0}^c} \ \ra\ \sup_{0\leq s\leq t}\abs{X^{n_k}_s} \to 0\text{ a.s.}\nonumber
+0 = \pro\brb{\sup_{0\leq s\leq t}\abs{X^{n_k}_s} > 1/k \text{ i.o.}} = \pro\brb{\bra{\sup_{0\leq s\leq t}\abs{X^{n_k}_s} \leq 1/k \text{ ev.}}^c} = \pro\brb{\bra{\sup_{0\leq s\leq t}\abs{X^{n_k}_s} \to 0}^c} \ \ra\ \sup_{0\leq s\leq t}\abs{X^{n_k}_s} \to 0\text{ a.s.}\nonumber
 \ee
 which means that $X^{n_k} \to 0$ u.c.a.s.
 \een
@@ -2650,27 +2650,27 @@ which means that $X^{n_k} \to 0$ u.c.a.s.
 \begin{proposition}\label{pro:convergence_ucp_unique_in_sense_of_indistingushability}
 Let $X^n$ be a sequence of stochastic processes and $X,Y$ be two stochastic processes.
 
-If $X^n\to X$ u.c.p. and $X^n\to Y$ u.c.p., then the stochastic processes $X$ and $Y$ are identical in the sense of indistinguishability. That is, $\pro\bb{X_t(\omega) = Y_t(\omega), \forall t} = 1$.
+If $X^n\to X$ u.c.p. and $X^n\to Y$ u.c.p., then the stochastic processes $X$ and $Y$ are identical in the sense of indistinguishability. That is, $\pro\brb{X_t(\omega) = Y_t(\omega), \forall t} = 1$.
 \end{proposition}
 
 \begin{proof}[\bf Proof]
 By definition of u.c.p., we have for fixed $t$
 \be
-\pro\bb{\sup_{0\leq s\leq t}\abs{X^n_s -X_s} > \ve} \to 0,\qquad \pro\bb{\sup_{0\leq s\leq t}\abs{X^n_s -Y_s} > \ve} \to 0.
+\pro\brb{\sup_{0\leq s\leq t}\abs{X^n_s -X_s} > \ve} \to 0,\qquad \pro\brb{\sup_{0\leq s\leq t}\abs{X^n_s -Y_s} > \ve} \to 0.
 \ee
 
 Then for any $\ve >0$,
 \beast
-& & \pro\bb{\sup_{0\leq s\leq t}\abs{X_s -Y_s} > \ve} \\
-& \leq & \pro\bb{\sup_{0\leq s\leq t}\abs{X^n_s -X_s} + \sup_{0\leq s\leq t}\abs{X^n_s -Y_s} > \ve} \\
-& \leq & \pro\bb{\sup_{0\leq s\leq t}\abs{X^n_s -X_s}>\ve/2, \sup_{0\leq s\leq t}\abs{X^n_s -Y_s} > \ve/2} + \pro\bb{\sup_{0\leq s\leq t}\abs{X^n_s -X_s}>\ve/2, \sup_{0\leq s\leq t}\abs{X^n_s -Y_s} \leq \ve/2} \\
-& & \qquad + \pro\bb{\sup_{0\leq s\leq t}\abs{X^n_s -X_s}\leq \ve/2, \sup_{0\leq s\leq t}\abs{X^n_s -Y_s} > \ve/2} \\
-& \leq & \pro\bb{\sup_{0\leq s\leq t}\abs{X^n_s -X_s}>\ve/2} + \pro\bb{\sup_{0\leq s\leq t}\abs{X^n_s -Y_s} > \ve/2} \to 0 + 0 = 0.
+& & \pro\brb{\sup_{0\leq s\leq t}\abs{X_s -Y_s} > \ve} \\
+& \leq & \pro\brb{\sup_{0\leq s\leq t}\abs{X^n_s -X_s} + \sup_{0\leq s\leq t}\abs{X^n_s -Y_s} > \ve} \\
+& \leq & \pro\brb{\sup_{0\leq s\leq t}\abs{X^n_s -X_s}>\ve/2, \sup_{0\leq s\leq t}\abs{X^n_s -Y_s} > \ve/2} + \pro\brb{\sup_{0\leq s\leq t}\abs{X^n_s -X_s}>\ve/2, \sup_{0\leq s\leq t}\abs{X^n_s -Y_s} \leq \ve/2} \\
+& & \qquad + \pro\brb{\sup_{0\leq s\leq t}\abs{X^n_s -X_s}\leq \ve/2, \sup_{0\leq s\leq t}\abs{X^n_s -Y_s} > \ve/2} \\
+& \leq & \pro\brb{\sup_{0\leq s\leq t}\abs{X^n_s -X_s}>\ve/2} + \pro\brb{\sup_{0\leq s\leq t}\abs{X^n_s -Y_s} > \ve/2} \to 0 + 0 = 0.
 \eeast
 
-Therefore, 
+Therefore,
 \be
-\pro\bb{\sup_{0\leq s\leq t}\abs{X_s -Y_s} > \ve} = 0 \ \ra\ \pro\bb{\sup_{0\leq s\leq t}\abs{X_s -Y_s} = 0} = 1\ \ra\ \pro\bb{X_t = Y_t, \forall t} = 1,
+\pro\brb{\sup_{0\leq s\leq t}\abs{X_s -Y_s} > \ve} = 0 \ \ra\ \pro\brb{\sup_{0\leq s\leq t}\abs{X_s -Y_s} = 0} = 1\ \ra\ \pro\brb{X_t = Y_t, \forall t} = 1,
 \ee
 as required.
 \end{proof}
@@ -2679,14 +2679,14 @@ as required.
 
 %We now assume the filtered probability space satisfies usual conditions. Then for any $t\geq 0$, We now define the following pseudometric (see Definition \ref{def:pseudometric}) for locally bounded deterministic processes (in other words, locally bounded functions\footnote{need definitions for real-valued and metric space}) $f$ and $g$,
 %\be
-%d_t\bb{f,g} = \sup_{0\leq s\leq t}\abs{f_s - g_s}.
+%d_t\brb{f,g} = \sup_{0\leq s\leq t}\abs{f_s - g_s}.
 %\ee
 
 %Note that it is well-defined as $f$ and $g$ are locally bounded.
 
 %Therefore, letting $\Omega' = \bra{\omega:\sup_{0\leq s\leq t}\abs{X_s(\omega) - Y_s(\omega)}\text{ is well-defined}}$, we can redefine pseudometric by
 %\be
-%d_t\bb{X,Y} = \left\{\ba{ll}
+%d_t\brb{X,Y} = \left\{\ba{ll}
 %\sup_{0\leq s\leq t}\abs{X_s - Y_s}\quad\quad & \omega \in \Omega'\\
 %0 & \omega \in \Omega'^c
 %\ea\right.
@@ -2694,23 +2694,23 @@ as required.
 
 %Then we define another pseudometric by $d_t$,
 %\be
-%d\bb{X,Y} = \sum^\infty_{k=1} 2^{-k}\land d_k\bb{X,Y}.
+%d\brb{X,Y} = \sum^\infty_{k=1} 2^{-k}\land d_k\brb{X,Y}.
 %\ee
 
 %Thus, for a sequence of stochastic processes $X^n$ and a stochastic process $X$, by bounded convergence theorem (Theorem \ref{thm:bounded_convergence_probability})
 %\be
-%d(X^n,X) \xrightarrow{p} 0 \ \ra \ \E\bb{d(X^n,X)} \to 0%\pro\bb{d(X^n,X)\geq \ve} \to 0
+%d(X^n,X) \xrightarrow{p} 0 \ \ra \ \E\brb{d(X^n,X)} \to 0%\pro\brb{d(X^n,X)\geq \ve} \to 0
 %\ee
-%as $d(X^n,X) \leq 1$. Hence, for any $k\in \Z^+$, $\E\bb{d_k(X^n,X)} \to 0$. Then by Markov's inequality (Theorem \ref{thm:markov_inequality_probability}), for any $\ve >0$,
+%as $d(X^n,X) \leq 1$. Hence, for any $k\in \Z^+$, $\E\brb{d_k(X^n,X)} \to 0$. Then by Markov's inequality (Theorem \ref{thm:markov_inequality_probability}), for any $\ve >0$,
 %\be
-%\pro\bb{\sup_{0\leq s\leq k} \abs{X^n_s - X_s}\geq \ve} \leq \frac 1{\ve}\E\bb{d_k(X^n,X)} \to 0
+%\pro\brb{\sup_{0\leq s\leq k} \abs{X^n_s - X_s}\geq \ve} \leq \frac 1{\ve}\E\brb{d_k(X^n,X)} \to 0
 %\ee
 %which implies that $X^n\to X$ u.c.p.. Therefore, we can see that $d(X^n,X) \xrightarrow{p} 0$ is the sufficient condition for $X^n\to X$ u.c.p.. So we define
 %\be
-%d^{\text{ucp}}(X,Y) = \E\bb{d(X,Y)} = \sum^\infty_{k=1} \E\bb{2^{-k}\land d_k\bb{X,Y}}.
+%d^{\text{ucp}}(X,Y) = \E\brb{d(X,Y)} = \sum^\infty_{k=1} \E\brb{2^{-k}\land d_k\brb{X,Y}}.
 %\ee
 
-%Note that we can exchange the expectation and summation by Fubini theorem (Theorem \ref{thm:fubini}) as $2^{-k}\land d_k\bb{X,Y}$ are non-negative.
+%Note that we can exchange the expectation and summation by Fubini theorem (Theorem \ref{thm:fubini}) as $2^{-k}\land d_k\brb{X,Y}$ are non-negative.
 
 \begin{theorem}[completeness under u.c.p. convergence\label{complete!under u.c.p convergence}]\label{thm:complete_cadlag_continuous_under_ucp_convergence}
 Suppose that $(\Omega,\sF,(\sF_t)_{t\geq 0}, \pro)$ is the filtered probability space satisfying usual conditions. The space of \cadlag\ (respectively, (sample) continuous) adapted process is complete under u.c.p. convergence.
@@ -2734,25 +2734,25 @@ as they are locally bounded by Proposition \ref{pro:right_continuous_adapted_pro
 
 Let $X^n$ be a Cauchy sequence under u.c.p. convergence, so that for any $t\in \R^{++}$ and $\ve >0$,
 \be
-\pro\bb{\sup_{0\leq s\leq t}\abs{X^m_s - X^n_s} > \ve} \to 0\quad \text{as }m,n\to \infty. %d^{\text{ucp}}\bb{X^m,X^n} \to 0 \quad \text{as }m,n\to \infty.
+\pro\brb{\sup_{0\leq s\leq t}\abs{X^m_s - X^n_s} > \ve} \to 0\quad \text{as }m,n\to \infty. %d^{\text{ucp}}\brb{X^m,X^n} \to 0 \quad \text{as }m,n\to \infty.
 \ee
 
 This is equal to the statement
 \be
-\forall \ve>0,\ \delta>0, \ \exists N, \ \forall n\geq N,\ \forall m\geq 0,\quad \pro\bb{\sup_{0\leq s\leq t}\abs{X^{m+n}_s - X^n_s} > \ve} < \delta
+\forall \ve>0,\ \delta>0, \ \exists N, \ \forall n\geq N,\ \forall m\geq 0,\quad \pro\brb{\sup_{0\leq s\leq t}\abs{X^{m+n}_s - X^n_s} > \ve} < \delta
 \ee
 which means $X^{n+m} - X^n \to 0$ u.c.p.. Then by Theorem \ref{thm:convergence_ucp_ucas}, we have a subsequence $(n_k)_{k\in \N}$ such that $X^{n_k+m}-X^{n_k} \to 0$ u.c.a.s. for any $m\geq 0$. Thus, let $n_k+m = n_{k+1}$, we can see that
 \be
-\pro\bb{\sup_{0\leq s\leq t}\abs{X^{n_{k+1}}_s - X^{n_k}_s} \to 0} = 1
+\pro\brb{\sup_{0\leq s\leq t}\abs{X^{n_{k+1}}_s - X^{n_k}_s} \to 0} = 1
 \ee
 which means $X^{n_k}$ is also a Cauchy sequence under uniform convergence on compacts a.s.. %
-%$d^{\text{ucp}}\bb{X^{n_k},X^{m}} \leq 2^{-k}$ for all $m\geq n_k$. In this case, we have
+%$d^{\text{ucp}}\brb{X^{n_k},X^{m}} \leq 2^{-k}$ for all $m\geq n_k$. In this case, we have
 %\be
-%\sum^\infty_{k=1}\E\bb{d\bb{X^{n_k},X^{n_{k+1}}}} = \sum^\infty_{k=1}d^{\text{ucp}}\bb{X^{n_k},X^{n_{k+1}}} \leq 1. %= \E\bb{\sum^\infty_{k=1} d\bb{X^{n_k},X^{n_{k+1}}}} \leq 1.
+%\sum^\infty_{k=1}\E\brb{d\brb{X^{n_k},X^{n_{k+1}}}} = \sum^\infty_{k=1}d^{\text{ucp}}\brb{X^{n_k},X^{n_{k+1}}} \leq 1. %= \E\brb{\sum^\infty_{k=1} d\brb{X^{n_k},X^{n_{k+1}}}} \leq 1.
 %\ee
-%Thus, this imples that $d\bb{X^{n_k},X^{n_{k+1}}} \to 0$ a.s.\footnote{need theorem here}. Thus, we will have, for all $n\in \Z^+$ and all $t\in \R^{++}$,
+%Thus, this imples that $d\brb{X^{n_k},X^{n_{k+1}}} \to 0$ a.s.\footnote{need theorem here}. Thus, we will have, for all $n\in \Z^+$ and all $t\in \R^{++}$,
 %\be
-%\sup_{0\leq s\leq n}\abs{X^{n_k}_s - X^{n_{k+1}}_s} \stackrel{\text{a.s.}}{=} d_n\bb{X^{n_k},X^{n_{k+1}}} \to 0\text{ a.s.} \ \ra \ \sup_{0\leq s\leq t}\abs{X^{n_k}_s - X^{n_{k+1}}_s} \to 0\text{ a.s.}.
+%\sup_{0\leq s\leq n}\abs{X^{n_k}_s - X^{n_{k+1}}_s} \stackrel{\text{a.s.}}{=} d_n\brb{X^{n_k},X^{n_{k+1}}} \to 0\text{ a.s.} \ \ra \ \sup_{0\leq s\leq t}\abs{X^{n_k}_s - X^{n_{k+1}}_s} \to 0\text{ a.s.}.
 %\ee
 %which implies that $X^{n_k}$ is a Cauchy sequence under uniform convergence on compacts a.s..
 Thus, for any $t\in \R^{++}$, we have that
@@ -2776,19 +2776,19 @@ So $X$ is \cadlag\ and $X^{n_k}_- \to X_-$ under uniform convergence on compacts
 
 To complete the proof, it just remains to show that the original sequence $X^n$ does indeed converge ucp to $X$. We already have that $X^{n_k}$ converges to $X$ under uniform convergence on compacts a.s. (i.e. the sample paths of $X^{n_k}$ almost surely converge to those of $X$ uniformly on compacts). Thus, it is obvious that $X^{n_k}$ converges to $X$ u.c.p., i.e., for any $t\in \R^{++}$ and $\ve >0$,
 \be
-\lim_{k\to\infty} \pro\bb{\sup_{0\leq s\leq t} \abs{X^{n_k}_s - X_s}> \ve} = 0\quad (*)
+\lim_{k\to\infty} \pro\brb{\sup_{0\leq s\leq t} \abs{X^{n_k}_s - X_s}> \ve} = 0\quad (*)
 \ee
 
 %Then since $d^{\text{ucp}}$ is a pseudometric, we have
 %\be
-%\lim_{n\to\infty}d^{\text{ucp}}(X^n,X) = \limsup_{n\to\infty}d^{\text{ucp}}(X^n,X) \leq \limsup_{k,n\to\infty}\bb{d^{\text{ucp}}(X^n,X^{n_k})+ d^{\text{ucp}}(X^{n_k},X)} = 0,
+%\lim_{n\to\infty}d^{\text{ucp}}(X^n,X) = \limsup_{n\to\infty}d^{\text{ucp}}(X^n,X) \leq \limsup_{k,n\to\infty}\brb{d^{\text{ucp}}(X^n,X^{n_k})+ d^{\text{ucp}}(X^{n_k},X)} = 0,
 %\ee
 %as required. %we have $X^{n_k}$ is Cauchy sequen
 
 Then by the assumption that $X^n$ is a Cauchy sequence under u.c.p convergence and ($*$), we have
 \beast
-\pro\bb{\sup_{0\leq s\leq t}\abs{X^{n}_s - X_s} > \ve} & \leq & \pro\bb{\sup_{0\leq s\leq t}\abs{X^{n}_s - X^{n_k}_s} + \sup_{0\leq s\leq t}\abs{X^{n_k}_s - X_s} > \ve}\\
-& \leq & \pro\bb{\sup_{0\leq s\leq t}\abs{X^{n}_s - X^{n_k}_s} > \ve/2} + \pro\bb{\sup_{0\leq s\leq t}\abs{X^{n_k}_s - X_s} > \ve/2} \to 0 + 0 = 0
+\pro\brb{\sup_{0\leq s\leq t}\abs{X^{n}_s - X_s} > \ve} & \leq & \pro\brb{\sup_{0\leq s\leq t}\abs{X^{n}_s - X^{n_k}_s} + \sup_{0\leq s\leq t}\abs{X^{n_k}_s - X_s} > \ve}\\
+& \leq & \pro\brb{\sup_{0\leq s\leq t}\abs{X^{n}_s - X^{n_k}_s} > \ve/2} + \pro\brb{\sup_{0\leq s\leq t}\abs{X^{n_k}_s - X_s} > \ve/2} \to 0 + 0 = 0
 \eeast
 which means $X^n \to X$ u.c.p..
 
