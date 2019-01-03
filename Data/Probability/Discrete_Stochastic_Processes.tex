@@ -27,7 +27,7 @@ We think of $\sF_n$ as `the information available at and before time $n$.'
 \begin{definition}\label{def:sigma_algebra_infinite_discrete}
 We define
 \be
-\sF_\infty = \bigvee_{n\geq 0} \sF_n = \sigma\bb{\bigcup_{n\geq 0} \sF_n}. %= \sigma (\sF_n:n\geq 0)
+\sF_\infty = \bigvee_{n\geq 0} \sF_n = \sigma\brb{\bigcup_{n\geq 0} \sF_n}. %= \sigma (\sF_n:n\geq 0)
 \ee
 \end{definition}
 
@@ -48,7 +48,7 @@ An adapted process is one that cannot `see into the future'.
 \end{remark}
 
 \begin{definition}[natural filtration, discrete]
-Let $(X_n)_{n\geq 0}$ be a stochastic process, and let $\sF^X_n = \sigma\bb{X_k, k \leq n}$. Then $\sF^X_n$ is the natural filtration\index{natural filtration!discrete} of $X$. It is the smallest filtration with respect to which $X$ is adapted.
+Let $(X_n)_{n\geq 0}$ be a stochastic process, and let $\sF^X_n = \sigma\brb{X_k, k \leq n}$. Then $\sF^X_n$ is the natural filtration\index{natural filtration!discrete} of $X$. It is the smallest filtration with respect to which $X$ is adapted.
 \end{definition}
 
 \section{Stopping times}
@@ -137,17 +137,17 @@ $S-T$ is not.
 
 \item [(v)] If $\inf_n T_n \in [0,\infty)$
 \be
-\bra{\inf_n T_n < k} = \bra{\inf_n T_n \geq k}^c = \bb{\bigcap_n \bra{T_n \geq k}}^c = \bigcup_n \bb{ \bb{\bra{T_n < k}}^c}^c =\bigcup_n \underbrace{\bra{T_n < k}}_{\in \sF_k} \in \sF_k.
+\bra{\inf_n T_n < k} = \bra{\inf_n T_n \geq k}^c = \brb{\bigcap_n \bra{T_n \geq k}}^c = \bigcup_n \brb{ \brb{\bra{T_n < k}}^c}^c =\bigcup_n \underbrace{\bra{T_n < k}}_{\in \sF_k} \in \sF_k.
 \ee
 
 \item [(vi)] By (iv) and (v),
 \be
-\bra{\limsup_n T_n \leq k}= \bra{\inf_{n}\bb{\sup_{m\geq n}T_m} \leq k} \in \sF_k.
+\bra{\limsup_n T_n \leq k}= \bra{\inf_{n}\brb{\sup_{m\geq n}T_m} \leq k} \in \sF_k.
 \ee
 
 \item [(viii)]
 \be
-\bra{\liminf_n T_n \leq k}= \bra{\sup_{n}\bb{\inf_{m\geq n}T_m} \leq k} \in \sF_k.
+\bra{\liminf_n T_n \leq k}= \bra{\sup_{n}\brb{\inf_{m\geq n}T_m} \leq k} \in \sF_k.
 \ee%where $\sup_{m\geq n}T_m$ and $\inf_{m\geq n}T_m$ are stopping time sequences.
 \een%\cite{Klenke_2008}.$P_{193}$
 \end{proof}
@@ -166,11 +166,11 @@ This defines a $\sigma$-algebra $\sF_T$, called the $\sigma$-algebra of measurab
 \item [(i)] Since $\bra{\emptyset \cap \bra{T\leq n}} = \bra{\emptyset} \in \sF_n$, $\emptyset \in \sF_T$.
 \item [(ii)] If $A\in \sF_T$, $A \cap \bra{T\leq n} \in \sF_n$. Since $T$ is stopping time, $\bra{T\leq n}\in \sF_n$. Thus, since $\sF_n$ is $\sigma$-algebra
 \be
-A^c \cap \bra{T\leq n} = \bra{T\leq n} \bs \bb{A \cap \bra{T\leq n}} \in \sF_n.
+A^c \cap \bra{T\leq n} = \bra{T\leq n} \bs \brb{A \cap \bra{T\leq n}} \in \sF_n.
 \ee
 \item [(iii)] For a sequence $A_m \in \sF_T$, we have $A_m \cap \bra{T\leq n}\in \sF_n$ for all $n$. Thus, since $\sF_n$ is $\sigma$-algebra
 \be
-\bb{\bigcup_m A_m} \cap \bra{T\leq n} = \bigcup_m \bb{A_m \cap \bra{T\leq n}} \in \sF_n  \ \ra \ \bigcup_m A_m \in \sF_T.
+\brb{\bigcup_m A_m} \cap \bra{T\leq n} = \bigcup_m \brb{A_m \cap \bra{T\leq n}} \in \sF_n  \ \ra \ \bigcup_m A_m \in \sF_T.
 \ee
 \een
 
@@ -238,12 +238,12 @@ Let $T$ be stopping time and $A\in \sF_T$. Then for $n\in [0,\infty)$,
 \ben
 \item [(i)] By definition $A\cap \bra{T\leq n} \in \sF_n$. Also, by Proposition \ref{pro:stopping_time_discrete_strictly_smaller}, $\bra{T<n}\in \sF_{n-1}$ and $\bra{T<n}\subseteq \bra{T\leq n}$. Hence
 \be
-A\cap \bra{T<n} = \bb{A\cap \bra{T\leq n}}\cap \bra{T<n} \in \sF_n.
+A\cap \bra{T<n} = \brb{A\cap \bra{T\leq n}}\cap \bra{T<n} \in \sF_n.
 \ee
 
 \item [(ii)] Similarly, $\bra{T=n} \subseteq \bra{T\leq n} \in \sF_n$. Hence
 \be
-A\cap \bra{T=n} = \bb{A\cap \bra{T\leq n}} \cap \bra{T=n} = \bb{A\cap \bra{T\leq n}} \cap \bb{\underbrace{\bra{T\leq n}}_{\in \sF_n} \bs\underbrace{\bra{T<n}}_{\in \sF_n}} \in \sF_n.
+A\cap \bra{T=n} = \brb{A\cap \bra{T\leq n}} \cap \bra{T=n} = \brb{A\cap \bra{T\leq n}} \cap \brb{\underbrace{\bra{T\leq n}}_{\in \sF_n} \bs\underbrace{\bra{T<n}}_{\in \sF_n}} \in \sF_n.
 \ee
 \een
 \end{proof}
@@ -257,7 +257,7 @@ Let $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ be a filtered probability space. If $
 \begin{proof}[\bf Proof]
 Since $S$ and $T$ are stopping times, then $\bra{S \leq n}\in \sF_n$, $\bra{T \leq n}\in \sF_n$ with $\bra{T\leq n} \subseteq \bra{S\leq n}$ for all $n$. $\forall A \in \sF_S$, we have for all $n$, $A \cap \bra{S \leq n} \in \sF_n$. Then
 \be
-A \cap \bra{T \leq n} = A \cap \bb{\bra{S \leq n} \cap \bra{T \leq n}} = \underbrace{\bb{A \cap \bra{S \leq n}}}_{\in \sF_n} \cap \underbrace{\bra{T \leq n}}_{\in \sF_n} \in \sF_n.
+A \cap \bra{T \leq n} = A \cap \brb{\bra{S \leq n} \cap \bra{T \leq n}} = \underbrace{\brb{A \cap \bra{S \leq n}}}_{\in \sF_n} \cap \underbrace{\bra{T \leq n}}_{\in \sF_n} \in \sF_n.
 \ee
 
 Thus, $A\in \sF_T$.
@@ -277,7 +277,7 @@ Let $S,T$ be two stopping times. Then each of the following events is in $\sF_S$
 \ben
 \item [(i)] First, $\bra{S<T}\in \sF$ since it can be expressed by
 \be
-\bra{S<T} = \bigcup_{k\in \N} \bb{\underbrace{\bra{S\leq k}}_{\in \sF}\cap \underbrace{\bra{T>k}}_{\in \sF}}.
+\bra{S<T} = \bigcup_{k\in \N} \brb{\underbrace{\bra{S\leq k}}_{\in \sF}\cap \underbrace{\bra{T>k}}_{\in \sF}}.
 \ee
 
 Then for $n\in [0,\infty)$,
@@ -285,7 +285,7 @@ Then for $n\in [0,\infty)$,
 \bra{S<T} \cap \bra{T\leq n} = \bra{S<T\leq n} = \bigcup_{k\in \N,k< n} \bra{S\leq k}\cap \bra{k<T\leq n} \in \sF_n \ \ra \ \bra{S<T}  \in \sF_T.
 \ee
 \be
-\bra{S<T} \cap \bra{S\leq n} = \bra{S<T\leq n}  \cup \bra{S\leq n<T} = \bb{\bigcup_{k\in \N,k< n} \bra{S\leq k}\cap \bra{k<T\leq n}} \cup \bb{\bra{S\leq n}\cap \bra{T\leq n}^c} \in \sF_n \nonumber
+\bra{S<T} \cap \bra{S\leq n} = \bra{S<T\leq n}  \cup \bra{S\leq n<T} = \brb{\bigcup_{k\in \N,k< n} \bra{S\leq k}\cap \bra{k<T\leq n}} \cup \brb{\bra{S\leq n}\cap \bra{T\leq n}^c} \in \sF_n \nonumber
 \ee
 which implies $\bra{S<T}  \in \sF_S$.
 
@@ -337,7 +337,7 @@ Let $(\Omega,\sF, (\sF_n)_{n\geq 0},\pro)$ be a filtered probability space. Let 
 \ee
 
 %\be
-%\E \abs{X_{T\land n}} =  \E\bb{\sum^{n-1}_{m=0} \abs{X_m} \ind_{\bra{T = m}} } + \E\bb{\sum^\infty_{m=n} \abs{X_n} \ind_{\bra{T = m}}} \leq \sum^n_{m=0} \E\abs{X_n} < \infty.
+%\E \abs{X_{T\land n}} =  \E\brb{\sum^{n-1}_{m=0} \abs{X_m} \ind_{\bra{T = m}} } + \E\brb{\sum^\infty_{m=n} \abs{X_n} \ind_{\bra{T = m}}} \leq \sum^n_{m=0} \E\abs{X_n} < \infty.
 %\ee
 
 \een
@@ -372,7 +372,7 @@ Additionally, we have two assumptions:
 \begin{definition}[probability generating function of $X_n$]\label{def:probability_generating_function_branching}
 Now let
 \be
-G(z) = \sum^\infty_{k=0} p_kz^k = \E \bb{z^{X_1}}\,\qquad G_n(z) = \E \bb{z^{X_n}},\qquad \text{for }n \geq 1,
+G(z) = \sum^\infty_{k=0} p_kz^k = \E \brb{z^{X_1}}\,\qquad G_n(z) = \E \brb{z^{X_n}},\qquad \text{for }n \geq 1,
 \ee
 so that $G_1 = G$.
 \end{definition}
@@ -383,8 +383,8 @@ Let $(X_n)_{n\geq 0}$ be a branching process. For all $n \geq 1$, \be G_{n+1}(z)
 
 \begin{proof}[\bf Proof]
 Note that $Y^n_1, Y^n_2 , \dots$ are independent of $X_n$, so that by total law of probability (Proposition \ref{pro:conditional_expectation_elementary_event}),
-\beast G_{n+1}(z) & = & \E\bb{z^{X_{n+1}}} = \sum^\infty_{k=0} \E \bb{z^{X_{n+1}} |X_n = k} \pro (X_n = k) = \sum^\infty_{k=0} \E\bb{z^{Y^n_1 + \dots+Y^n_k}|X_n = k}\pro (X_n = k) \\
-& = & \sum^\infty_{k=0} \E\bb{z^{Y^n_1 + \dots+Y^n_k}}\pro (X_n = k) = \sum^\infty_{k=0} (G(z))^k p_k  =  \E\bb{(G(z))^{X_n}} = G_n (G(z)). \eeast
+\beast G_{n+1}(z) & = & \E\brb{z^{X_{n+1}}} = \sum^\infty_{k=0} \E \brb{z^{X_{n+1}} |X_n = k} \pro (X_n = k) = \sum^\infty_{k=0} \E\brb{z^{Y^n_1 + \dots+Y^n_k}|X_n = k}\pro (X_n = k) \\
+& = & \sum^\infty_{k=0} \E\brb{z^{Y^n_1 + \dots+Y^n_k}}\pro (X_n = k) = \sum^\infty_{k=0} (G(z))^k p_k  =  \E\brb{(G(z))^{X_n}} = G_n (G(z)). \eeast
 
 Similary, we have $G_n (G(z)) = G (G_n(z))$.
 \end{proof}
@@ -409,16 +409,16 @@ Differentiating $G_n(z)$ a second time gives
 
 and letting $z \ua 1$ again we have
 
-\be \E (X_n (X_n - 1)) = m^2 \E (X_{n-1} (X_{n-1} - 1)) + \bb{\sigma^2 + m^2 - m} \E (X_{n-1}). \ee
+\be \E (X_n (X_n - 1)) = m^2 \E (X_{n-1} (X_{n-1} - 1)) + \brb{\sigma^2 + m^2 - m} \E (X_{n-1}). \ee
 
 We then have, using the fact that $\E X_n = m^n$, \beast
 \var (X_n) & = & \E (X_n(X_n - 1)) + \E (X_n) - (\E X_n)^2\\
-& = & m^2\E (X_{n-1}(X_{n-1} - 1)) + \bb{\sigma^2 + m^2 - m}\E (X_{n-1}) + m^n - m^{2n} \\
-& = & m^2\bb{\var (X_{n-1}) - \E (X_{n-1}) + (\E X_{n-1})^2} + \bb{\sigma^2 + m^2} m^{n-1} - m^{2n}\\
+& = & m^2\E (X_{n-1}(X_{n-1} - 1)) + \brb{\sigma^2 + m^2 - m}\E (X_{n-1}) + m^n - m^{2n} \\
+& = & m^2\brb{\var (X_{n-1}) - \E (X_{n-1}) + (\E X_{n-1})^2} + \brb{\sigma^2 + m^2} m^{n-1} - m^{2n}\\
 & = & m^2\var (X_{n-1}) + \sigma^2 m^{n-1}. \eeast Iterating this, we see that \beast
-\var (X_n) & = & m^2\var (X_{n-1}) + \sigma^2 m^{n-1} = m^4\var (X_{n-2}) + \sigma^2 \bb{m^{n-1} + m^n} = \dots \\
-& = & m^{2n}\var (X_0) + \sigma^2 \bb{m^{n-1} + \dots + m^{2n-2}}\\
-& = & \sigma^2 \bb{m^{n-1} + \dots + m^{2n-2}},\quad\quad \text{since $\var (X_0) = 0$ because $X_0 = 1$}, \eeast and then the result may be obtained immediately.
+\var (X_n) & = & m^2\var (X_{n-1}) + \sigma^2 m^{n-1} = m^4\var (X_{n-2}) + \sigma^2 \brb{m^{n-1} + m^n} = \dots \\
+& = & m^{2n}\var (X_0) + \sigma^2 \brb{m^{n-1} + \dots + m^{2n-2}}\\
+& = & \sigma^2 \brb{m^{n-1} + \dots + m^{2n-2}},\quad\quad \text{since $\var (X_0) = 0$ because $X_0 = 1$}, \eeast and then the result may be obtained immediately.
 \end{proof}
 
 \begin{definition}[extinction of branching process]
@@ -434,11 +434,11 @@ when $m
 \begin{proof}[\bf Proof]
 Notice that $X_n = 0$ implies that $X_{n+1} = 0$ so that if we let $A_n = \bra{X_n = 0}$, the event that the population is extinct at or before generation $n$, we have $A_n \subseteq A_{n+1}$ and $A = \bigcup^\infty_{n=1}
 A_n$ represents the event that extinction ever occurs. Notice that $\pro(A_n) = G_n(0)$ and by the continuity property of probabilities on increasing events (fundamental property of measure, Lemma
-\ref{lem:measure_increasing_sequence}) we see that the extinction probability is \be q = \pro(A) = \lim_{n\to\infty} \pro (A_n) = \lim_{n\to\infty} G_n(0) = \lim_{n\to\infty} \pro \bb{X_n = 0}. \ee
+\ref{lem:measure_increasing_sequence}) we see that the extinction probability is \be q = \pro(A) = \lim_{n\to\infty} \pro (A_n) = \lim_{n\to\infty} G_n(0) = \lim_{n\to\infty} \pro \brb{X_n = 0}. \ee
 
 The fact that the extinction probability $q$ is well defined follows from the above and since $G$ is continuous and $q = \lim_{n\to \infty}G_n(0)$ we have
 
-\be G\bb{\lim_{n\to\infty} G_n(0)} = \lim_{n\to\infty}G_{n+1}(0) \ee,
+\be G\brb{\lim_{n\to\infty} G_n(0)} = \lim_{n\to\infty}G_{n+1}(0) \ee,
 
 so that $G(q) = q$, that is $q$ is a root of $G(z) = z$, note that 1 is always a root since $G(1) = \sum^\infty_{r=0} p_r = 1$.
 
@@ -537,7 +537,7 @@ $H'(z) = G'(z)-1 = 0$ for some $z$, $r \leq z < 1$. The function $G'$ is strictl
 \begin{definition}[random walk\index{random walk!one-dimensional}]\label{def:random_walk_one_dimensional}
 Let $X_1,X_2,\dots$ be i.i.d. random variables and set
 
-\be S_n = S_0 + \sum^n_{k=1}X_k, \quad n \geq 1 \ee where $S_0$ is a constant then $\bb{S_n}_{n \geq 0}$ is known as a (one-dimensional) random walk.
+\be S_n = S_0 + \sum^n_{k=1}X_k, \quad n \geq 1 \ee where $S_0$ is a constant then $\brb{S_n}_{n \geq 0}$ is known as a (one-dimensional) random walk.
 
 When each $X_i$ just takes the two values +1 and -1 with probabilities $p$ and $q = 1 - p$, respectively, it is a simple random walk\index{random walk!simple}\footnote{It goes also by the title of the Bernoulli walk, Rademacher walk, etc.} and further when $p = q = \frac 12$ it is a simple symmetric
 random walk\index{random walk!simple symmetric} (see Example \ref{exa:random_walk_simple_symmetric_single_boundary}, \ref{exa:random_walk_simple_symmetric_double_boundaries}).
@@ -549,7 +549,7 @@ In the following context, we will consider simple random walks.
 
 At any step of simple random walk construction, a lattice path can go up or down. Therefore, there are $2^n$ paths of length $n$. Consequently, with probability $2^{-n}$, the first $n$ steps of our simple random walk $(S_k)_{k\geq 0}$ are equal to a given path of length $n$ that starts from $(0,0)$, where $S_0 = 0$. That is, all paths that start from $(0,0)$ and have length $n$are equally likely. Therefore, if $\Pi$ is a property of paths of length $n$, then
 \be
-\pro\bb{(S_k)^n_{k=0}\in \Pi} = \frac{\text{\# of paths of length $n$ that start from (0,0) and are in $\Pi$}}{2^n}.
+\pro\brb{(S_k)^n_{k=0}\in \Pi} = \frac{\text{\# of paths of length $n$ that start from (0,0) and are in $\Pi$}}{2^n}.
 \ee
 
 Thus, any probabilistic problem for the simple random walk has a combinatorial variant, and vice versa.
@@ -625,9 +625,9 @@ This map is an invertible operation, therefore $M$ is equal to the number of pat
 \end{proof}
 
 \begin{corollary}
-Suppose $\bb{S_n}_{n\geq 0}$ is a simple symmetric random walk and $a\in \Z^+$. Then
+Suppose $\brb{S_n}_{n\geq 0}$ is a simple symmetric random walk and $a\in \Z^+$. Then
 \be
-\pro\bb{\max_{0\leq k\leq n}S_k \geq a} = 2\pro\bb{S_n \geq a} = \pro\bb{\abs{S_n}\geq a}.
+\pro\brb{\max_{0\leq k\leq n}S_k \geq a} = 2\pro\brb{S_n \geq a} = \pro\brb{\abs{S_n}\geq a}.
 \ee
 \end{corollary}
 
@@ -649,7 +649,7 @@ T_0 := \inf\bra{k\geq 1:S_k=0}\qquad (\inf \emptyset :=\infty).
 
 Then, the ballot theorem is saying the following
 \be
-\pro\bb{T_0 >n|S_n=x} = \frac xn,\qquad \forall x=1,\dots,n.
+\pro\brb{T_0 >n|S_n=x} = \frac xn,\qquad \forall x=1,\dots,n.
 \ee
 \end{remark}
 
@@ -667,7 +667,7 @@ N_{n-1,x-1} = N_{n-1,x+1} = N_{n,x} = 0,
 and the result follows (as $(x/n)N_{n,x} = 0$). On the other hand, if $n+x$ is even, then by Definition \ref{def:paths_count_simple_symmetric_random_walk},
 \beast
 N_{n-1,x-1} = N_{n-1,x+1} & = & \binom{n-1}{\frac{n+x}2-1} - \binom{n-1}{\frac{n+x}2} = \frac{(n-1)!}{(\frac{n+x}2-1)!(\frac{n-x}2)!} - \frac{(n-1)!}{(\frac{n+x}2)!(\frac{n-x}2-1)!} \\
-& = & \frac {N_{n,x}}n \bb{\frac{n+x}2 - \frac{n-x}2} = \frac xn N_{n,x}.
+& = & \frac {N_{n,x}}n \brb{\frac{n+x}2 - \frac{n-x}2} = \frac xn N_{n,x}.
 \eeast
 \end{proof}
 
@@ -761,11 +761,11 @@ T_0 :=\inf\bra{k\geq 1:S_k=0}.
 
 Then we have
 \ben
-\item [(i)] $\pro\bb{S_{2n}=0} =  \frac{\binom{2n}{n}}{2^{2n}}$.
-\item [(ii)] $\pro\bb{T_0 = 2n} = \frac{\binom{2n-2}{n-1}}{2^{2n+1}n}$.
-\item [(iii)] $\pro\bb{S_k\geq 0,\forall k\leq 2n-3, S_{2n-2} =0, S_{2n-1}=-1} = \frac{\binom{2n-2}{n-1}}{2^{2n+1}n}$.
+\item [(i)] $\pro\brb{S_{2n}=0} =  \frac{\binom{2n}{n}}{2^{2n}}$.
+\item [(ii)] $\pro\brb{T_0 = 2n} = \frac{\binom{2n-2}{n-1}}{2^{2n+1}n}$.
+\item [(iii)] $\pro\brb{S_k\geq 0,\forall k\leq 2n-3, S_{2n-2} =0, S_{2n-1}=-1} = \frac{\binom{2n-2}{n-1}}{2^{2n+1}n}$.
 \item [(iv)] $\pro(T_0>2n) = \frac{\binom{2n}{n}}{2^{2n}}$.
-\item [(v)] $\pro\bb{S_k\geq 0, \forall k\leq 2n} = \frac{\binom{2n}{n}}{2^{2n}}$.
+\item [(v)] $\pro\brb{S_k\geq 0, \forall k\leq 2n} = \frac{\binom{2n}{n}}{2^{2n}}$.
 \een
 \end{proposition}
 
@@ -773,27 +773,27 @@ Then we have
 %\pro(T_0=2n) = u_{2n} = \frac{\binom{2n}{n}}{2^{2n}},\qquad f_{2n} = \frac{u_{2n-2}}{2n} = \frac{\binom{2n-2}{n-1}}{2^{2n-1}n}
 %\ee
 \ben
-\item [(i)] Because there $N_{2n,0} = 2^{2n}\pro\bb{S_{2n} = 0}$ paths that end up at zero at time $2n$, we have by Definition \ref{def:paths_count_simple_symmetric_random_walk}
+\item [(i)] Because there $N_{2n,0} = 2^{2n}\pro\brb{S_{2n} = 0}$ paths that end up at zero at time $2n$, we have by Definition \ref{def:paths_count_simple_symmetric_random_walk}
 \be
-\pro\bb{S_{2n} = 0} = \frac{\binom{2n}{n}}{2^{2n}}.
+\pro\brb{S_{2n} = 0} = \frac{\binom{2n}{n}}{2^{2n}}.
 \ee
 
 \item [(ii)] To prove this, note that the number of paths that hit zero, for the first time, at time $2n$ is exactly twice the number of paths which satisfying $S_k>0$ for all $k\leq 2n-1$ and $S_{2n}=0$. Then Proposition \ref{pro:random_walk_number_paths_greater_than_zero} implies that
 \be
-\pro\bb{T_0 = 2n} = \frac{2\binom{2n-2}{n-1}}{n} \frac 1{2^{2n}} = \frac{\binom{2n-2}{n-1}}{2^{2n-1}n}.
+\pro\brb{T_0 = 2n} = \frac{2\binom{2n-2}{n-1}}{n} \frac 1{2^{2n}} = \frac{\binom{2n-2}{n-1}}{2^{2n-1}n}.
  \ee
 
 
 \item [(iii)] By Proposition \ref{pro:random_walk_number_paths_greater_equal_than_zero},
 \beast
-\pro\bb{S_k\geq 0,\forall k\leq 2n-3,S_{2n-2}=0,S_{2n-1}=-1} & = & \frac 12 \pro\bb{S_k\geq 0,\forall k\leq 2n-3,S_{2n-2}=0} \\
+\pro\brb{S_k\geq 0,\forall k\leq 2n-3,S_{2n-2}=0,S_{2n-1}=-1} & = & \frac 12 \pro\brb{S_k\geq 0,\forall k\leq 2n-3,S_{2n-2}=0} \\
 & = & \frac 12 \frac {\binom{2n-2}{n-1}}{2^{2n-2}n} = \frac {\binom{2n-2}{n-1}}{2^{2n-1}n}.
 \eeast
 
 
 \item [(iv)] By (ii), we have
 \be
-\pro\bb{T_0 > 2n} = 1 - \sum^{n}_{k=1} \pro\bb{T_0 = 2k} = 1 - \sum^n_{k=1} \frac{\binom{2k-2}{k-1}}{2^{2k-1}k}
+\pro\brb{T_0 > 2n} = 1 - \sum^{n}_{k=1} \pro\brb{T_0 = 2k} = 1 - \sum^n_{k=1} \frac{\binom{2k-2}{k-1}}{2^{2k-1}k}
 \ee
 
 It is easy to check that
@@ -803,16 +803,16 @@ It is easy to check that
 
 Therefore, we have
 \be
-\pro\bb{T_0 > 2n} = 1 - \sum^n_{k=1} \bb{\frac{\binom{2k-2}{k-1}}{2^{2k-2}} - \frac{\binom{2k}{k}}{2^{2k}}}  = \frac{1}{2^{2n}}\binom{2n}{n}.
+\pro\brb{T_0 > 2n} = 1 - \sum^n_{k=1} \brb{\frac{\binom{2k-2}{k-1}}{2^{2k-2}} - \frac{\binom{2k}{k}}{2^{2k}}}  = \frac{1}{2^{2n}}\binom{2n}{n}.
 \ee
 
 
 \item [(v)] $S_{2n}$ can take value $0,2,\dots,2n$. Then by ballot problem (Theorem \ref{thm:ballot_problem})
 \beast
-\pro\bb{S_k \geq 0, \forall k \leq 2n} & = & 2\sum^n_{k=0} \pro\bb{S_{-1} = -1, S_0 = 0,S_m \geq 0, m = 1,\dots,2n-1,S_{2n}=2k}\\
- & = & 2\sum^n_{k=0} \pro\bb{S_{0} = 0, S_m > 0, m = 1,\dots,2n,S_{2n+1}=2k+1}\\
- & = & 2\sum^{n}_{k=0} \frac {2k+1}{2n+1}N_{2n+1,2k+1} \frac 1{2^{2n+1}}= \frac 1{2^{2n}}\sum^{n}_{k=0} \frac {2k+1}{2n+1}\binom{2n+1}{n+k+1} \\ %1 - \pro\bb{\exists k\leq 2n, S_k = -1}
- & = & \frac 1{2^{2n}}\sum^{n}_{k=0} \bb{\binom{2n}{n+k} - \binom{2n}{n+k+1}} = \frac 1{2^{2n}}\binom{2n}{n}.
+\pro\brb{S_k \geq 0, \forall k \leq 2n} & = & 2\sum^n_{k=0} \pro\brb{S_{-1} = -1, S_0 = 0,S_m \geq 0, m = 1,\dots,2n-1,S_{2n}=2k}\\
+ & = & 2\sum^n_{k=0} \pro\brb{S_{0} = 0, S_m > 0, m = 1,\dots,2n,S_{2n+1}=2k+1}\\
+ & = & 2\sum^{n}_{k=0} \frac {2k+1}{2n+1}N_{2n+1,2k+1} \frac 1{2^{2n+1}}= \frac 1{2^{2n}}\sum^{n}_{k=0} \frac {2k+1}{2n+1}\binom{2n+1}{n+k+1} \\ %1 - \pro\brb{\exists k\leq 2n, S_k = -1}
+ & = & \frac 1{2^{2n}}\sum^{n}_{k=0} \brb{\binom{2n}{n+k} - \binom{2n}{n+k+1}} = \frac 1{2^{2n}}\binom{2n}{n}.
 \eeast
 
 Alternatively, we can have that
@@ -822,31 +822,31 @@ Alternatively, we can have that
 
 Thus,
 \beast
-\pro\bb{S_k \geq 0, \forall k \leq 2n} & = & \frac 1{2^{2n}} \#\bra{S_k \geq 0, \forall k \leq 2n} = \frac{2}{2^{2n+1}}\#\bra{S_{0}=0, S_k \geq 1, k =1,\dots, 2n+1}\\
-& = & \frac{1}{2^{2n+1}}\bb{\#\bra{S_{0}=0, S_k \geq 1, k =1,\dots, 2n+1} + \#\bra{S_{0}=0, S_k \leq -1, k =1,\dots, 2n+1}} \\
-& = & \frac{1}{2^{2n+1}}\#\bra{S_{0}=0, S_k \neq 0, k =1,\dots, 2n+1} = \pro\bb{T_0 > 2n} = \frac 1{2^{2n}}\binom{2n}{n}
+\pro\brb{S_k \geq 0, \forall k \leq 2n} & = & \frac 1{2^{2n}} \#\bra{S_k \geq 0, \forall k \leq 2n} = \frac{2}{2^{2n+1}}\#\bra{S_{0}=0, S_k \geq 1, k =1,\dots, 2n+1}\\
+& = & \frac{1}{2^{2n+1}}\brb{\#\bra{S_{0}=0, S_k \geq 1, k =1,\dots, 2n+1} + \#\bra{S_{0}=0, S_k \leq -1, k =1,\dots, 2n+1}} \\
+& = & \frac{1}{2^{2n+1}}\#\bra{S_{0}=0, S_k \neq 0, k =1,\dots, 2n+1} = \pro\brb{T_0 > 2n} = \frac 1{2^{2n}}\binom{2n}{n}
 \eeast
 by (iv).
 \een
 \end{proof}
 
 \begin{proposition}
-Suppose $\bb{S_n}_{n\geq 0}$ is a simple symmetric random. Then if $n$ is odd, $k = 0,1\dots \floor{\frac n2}$,
+Suppose $\brb{S_n}_{n\geq 0}$ is a simple symmetric random. Then if $n$ is odd, $k = 0,1\dots \floor{\frac n2}$,
 \beast
-& &\pro\bb{\max_{0\leq i\leq n}S_i - S_n = n-2k} = \left.\binom{n}{k}\right/ 2^n,\\
-& &\pro\bb{\max_{0\leq i\leq n}S_i - S_n = n-2k-1} = \left.\binom{n}{k}\right/ 2^n = \left.\binom{n}{n-k}\right/ 2^n.
+& &\pro\brb{\max_{0\leq i\leq n}S_i - S_n = n-2k} = \left.\binom{n}{k}\right/ 2^n,\\
+& &\pro\brb{\max_{0\leq i\leq n}S_i - S_n = n-2k-1} = \left.\binom{n}{k}\right/ 2^n = \left.\binom{n}{n-k}\right/ 2^n.
 \eeast
 
 If $n$ is even, $k = 0,1\dots \frac n2-1$,
 \beast
-& & \pro\bb{\max_{0\leq i\leq n}S_i - S_n = 0} = \left.\binom{n}{n/2}\right/ 2^n,\\
-& &\pro\bb{\max_{0\leq i\leq n}S_i - S_n = n-2k} = \left.\binom{n}{k}\right/ 2^n,\\
-& &\pro\bb{\max_{0\leq i\leq n}S_i - S_n = n-2k-1} = \left.\binom{n}{k}\right/ 2^n = \left.\binom{n}{n-k}\right/ 2^n.
+& & \pro\brb{\max_{0\leq i\leq n}S_i - S_n = 0} = \left.\binom{n}{n/2}\right/ 2^n,\\
+& &\pro\brb{\max_{0\leq i\leq n}S_i - S_n = n-2k} = \left.\binom{n}{k}\right/ 2^n,\\
+& &\pro\brb{\max_{0\leq i\leq n}S_i - S_n = n-2k-1} = \left.\binom{n}{k}\right/ 2^n = \left.\binom{n}{n-k}\right/ 2^n.
 \eeast
 
 In particular, the probability that the process reaches the maximum point at time $n$ is
 \be
-\pro\bb{S_n = \max_{0\leq i\leq n}S_i} = \left\{\ba{ll}\left.\binom{n}{n/2}\right/2^n\quad \quad & n\text{ is even} \\
+\pro\brb{S_n = \max_{0\leq i\leq n}S_i} = \left\{\ba{ll}\left.\binom{n}{n/2}\right/2^n\quad \quad & n\text{ is even} \\
 \left.\binom{n+1}{(n+1)/2}\right/2^{n+1}\quad \quad & n\text{ is odd}
 \ea \right..
 \ee
@@ -855,17 +855,17 @@ In particular, the probability that the process reaches the maximum point at tim
 \begin{proof}[\bf Proof]
 We give the proof by using induction\footnote{other method needed.}. For $n=1$, we have
 \be
-\pro\bb{\max_{0\leq i\leq 1} S_i - S_1 =0} = \pro\bb{\max_{0\leq i\leq 1} S_i - S_1 = 1} = \frac 12 = \left.\binom{1}{1}\right/2^1= \left.\binom{1}{0}\right/2^1.
+\pro\brb{\max_{0\leq i\leq 1} S_i - S_1 =0} = \pro\brb{\max_{0\leq i\leq 1} S_i - S_1 = 1} = \frac 12 = \left.\binom{1}{1}\right/2^1= \left.\binom{1}{0}\right/2^1.
 \ee
 
 For $n=2$, we have
 \beast
-& & \pro\bb{\max_{0\leq i\leq 2} S_i - S_2 =0} = \frac 12 = \left.\binom{2}{1}\right/2^2,\\
-& & \pro\bb{\max_{0\leq i\leq 2} S_i - S_2 =1} = \frac 14 = \left.\binom{2}{0}\right/2^2,\\
-& & \pro\bb{\max_{0\leq i\leq 2} S_i - S_2 =2} = \frac 14 = \left.\binom{2}{0}\right/2^2.
+& & \pro\brb{\max_{0\leq i\leq 2} S_i - S_2 =0} = \frac 12 = \left.\binom{2}{1}\right/2^2,\\
+& & \pro\brb{\max_{0\leq i\leq 2} S_i - S_2 =1} = \frac 14 = \left.\binom{2}{0}\right/2^2,\\
+& & \pro\brb{\max_{0\leq i\leq 2} S_i - S_2 =2} = \frac 14 = \left.\binom{2}{0}\right/2^2.
 \eeast
 
-We can see that the required results hold for these two cases. Also, we let $h_{k,n} = \pro\bb{\max_{0\leq i\leq n} S_i - S_n =k}$ and for $k=0,1,\dots,n-2$
+We can see that the required results hold for these two cases. Also, we let $h_{k,n} = \pro\brb{\max_{0\leq i\leq n} S_i - S_n =k}$ and for $k=0,1,\dots,n-2$
 \beast
 h_{0,n} & = & \frac 12 h_{-1,n-1} + \frac 12 h_{1,n-1}\\
 \vdots & = & \vdots \\
@@ -888,7 +888,7 @@ h_{n,n+1} = h_{n+1,n+1} = 2^{-(n+1)}.
 
 If $n$ is even, by the required result for $n$ ($m=2k$ or $m=2k+1$)
 \be
-h_{n-m,n+1} = \frac 12 \frac{\binom{n}{k}}{2^n} + \frac 12 \frac{\binom{n}{k-1}}{2^n} = 2^{-(n+1)}\bb{\binom{n}{k} +\binom{n}{k-1}} = 2^{-(n+1)}\binom{n+1}{k}
+h_{n-m,n+1} = \frac 12 \frac{\binom{n}{k}}{2^n} + \frac 12 \frac{\binom{n}{k-1}}{2^n} = 2^{-(n+1)}\brb{\binom{n}{k} +\binom{n}{k-1}} = 2^{-(n+1)}\binom{n+1}{k}
 \ee
 satisfying the required result. Similarly, we have the required result for odd $n = 2k+1$. In particular, if $m = n$ we have
 \beast
@@ -899,7 +899,7 @@ as required.
 
 For $n = 2k+1$ is odd, we have that
 \be
-\pro\bb{S_n = \max_{0\leq i\leq n}S_i} = 2^{-n}\binom{n}{k} = 2^{-(n+1)} 2\binom{2k+1}{k} = 2^{-(n+1)} \binom{2k+2}{k+1} = 2^{-(n+1)} \binom{n+1}{(n+1)/2}.
+\pro\brb{S_n = \max_{0\leq i\leq n}S_i} = 2^{-n}\binom{n}{k} = 2^{-(n+1)} 2\binom{2k+1}{k} = 2^{-(n+1)} \binom{2k+2}{k+1} = 2^{-(n+1)} \binom{n+1}{(n+1)/2}.
 \ee
 \end{proof}
 
@@ -907,7 +907,7 @@ For $n = 2k+1$ is odd, we have that
 \subsection{Asymmetric random walks}
 
 \begin{example}[gambler's ruin]\label{exa:randam_walk_simple}
-For the simple random walk, $\bb{S_n}_{n\geq 0}$ may represent the fortune of a gambler after $n$ plays of a game where on each play he either wins \pounds 1, with probability $p$, or loses \pounds 1 with probability $q =
+For the simple random walk, $\brb{S_n}_{n\geq 0}$ may represent the fortune of a gambler after $n$ plays of a game where on each play he either wins \pounds 1, with probability $p$, or loses \pounds 1 with probability $q =
 1-p$, his initial fortune is \pounds $S_0$ and a classical problem is to calculate the probability that his fortune achieves the level $a$, $a > S_0$ , before the time of ruin, that is the time that he goes bankrupt (his
 fortune hits the level 0). If $T_a$ denotes the first time that the random walk hits the level $a$ and $T_0$ the time the random walk first hits the level 0, we would wish to calculate $\pro (T_a < T_0)$, given that his
 fortune starts at $S_0 = r$, $0 < r < a$.
