@@ -88,7 +88,7 @@ If it has no increasing order, we have that the number is 0 for $n=k\leq 4$, 2 f
 \subsection{Young tableaux}
 
 \begin{definition}[partition]
-For a natural number $n$, we say $\lm$ is a partition of $n$ and write $\lm\vdash n$, if $\lm$ is a sequence $\bb{\lm_1,\lm_2,\dots,\lm_k}$ of positive integers satisfying
+For a natural number $n$, we say $\lm$ is a partition of $n$ and write $\lm\vdash n$, if $\lm$ is a sequence $\brb{\lm_1,\lm_2,\dots,\lm_k}$ of positive integers satisfying
 \be
 \sum^k_{i=1} \lm_i = n,\qquad \lm_1 \geq \lm_2\geq \dots \geq \lm_k.
 \ee
@@ -409,7 +409,7 @@ Let $\lm$ be a partition and $X_i,Y_i$ for $0\leq i\leq m$ be its outer corners 
 \begin{proof}[\bf Proof]
 This is due to the fact that in every row or column of the diagram in which a labelled cell appears, we have exactly one cell labelled with an $X$ and exactly one labelled with a $Y$. Thus every row-coordinate and every column-coordinate will cancel in the sum $\sum^m_{i=0}(x_i-y_i)$. In more detail we have (by Definition \ref{def:outer_inner_corner_young_tableaux})
 \be
-\sum^m_{i=0}(x_i-y_i) = \sum^m_{i=0}\bb{(\beta_i-\alpha_i) - (\beta_i-\alpha_{i+1})} = -\alpha_0 + \alpha_{m+1} = 0.
+\sum^m_{i=0}(x_i-y_i) = \sum^m_{i=0}\brb{(\beta_i-\alpha_i) - (\beta_i-\alpha_{i+1})} = -\alpha_0 + \alpha_{m+1} = 0.
 \ee
 \end{proof}
 
@@ -429,7 +429,7 @@ For example, in Example \ref{exa:young_diagram_4432}, $h_{\lm}((2,3)) = 3$.
 \begin{definition}\label{def:east_north_young_diagram_hook_length}
 Let $\lm$ be a partition and $c$ is one of Young diagram cells. Then $E(c)$ is the cell at the east end of the row containing $c$ and $N(c)$ is the cell at the north end of the column containing $c$. It is obvious that the hook length is
 \be
-h_{\lm}(c) = \ct\bb{E(c)} - \ct\bb{N(c)} + 1.\qquad (*)
+h_{\lm}(c) = \ct\brb{E(c)} - \ct\brb{N(c)} + 1.\qquad (*)
 \ee
 \end{definition}
 
@@ -548,7 +548,7 @@ or, more simply,
 The proof will proceed in the following three steps. We let $m$ be number of corners of $\lm$, and define certain numbers $x_i,y_i$ for $0\leq i\leq m$, depending on $\lm$. We then prove
 \beast
 \sum_{\mu\to \lm} \frac{\prod_{s\in\lm } h_{\lm}(s)}{\prod_{s\in\mu} h_{\mu}(s)}  & = & - \sum^m_{i=1} \frac{\prod^m_{j=0} (x_i-y_j)}{\prod^m_{j=1,j\neq i} (x_i-x_j)}\qquad \quad(*) \\
-& = & -\frac 12\sum^m_{i=0} \bb{x_i^2- y_i^2} \qquad\qquad\qquad (\dag)\\
+& = & -\frac 12\sum^m_{i=0} \brb{x_i^2- y_i^2} \qquad\qquad\qquad (\dag)\\
 & = & n. \qquad \qquad\qquad \qquad \qquad\qquad \ \ (\ddag)
 \eeast
 
@@ -561,27 +561,27 @@ We first note that every cell not in the row or column of $X_i$ for $1\leq i\leq
 
 In fact, there will be even more cancellation. A `generic' cell of $\lm$ in the row $X_i$ will have the same hook-length as the cell immediately to its left, considered as a cell of $\mu^{(i)}$. We can say most pairs of cells of the form
 \be
-\bb{\alpha_i ,b}\in \lm,\quad \bb{\alpha_i ,b-1}\in \mu^{(i)},\qquad b\neq \beta_j+1,\ 0\leq j< i
+\brb{\alpha_i ,b}\in \lm,\quad \brb{\alpha_i ,b-1}\in \mu^{(i)},\qquad b\neq \beta_j+1,\ 0\leq j< i
 \ee
 will have equal (and thus cancelling) hook-lengths. The cells for which this won't work will be those beneath outer corners of $\lm$. To be precise, we label the cells of $\lm$ in the row of $X_i$ which do not cancel as
 \be
-L_j = \bb{\alpha_i, \beta_j +1},\qquad 0\leq j< i.
+L_j = \brb{\alpha_i, \beta_j +1},\qquad 0\leq j< i.
 \ee
 
 We label the corresponding non-cancelling cells of $\mu^{(i)}$ in the row of $X_i$ as
 \be
-M_j = \bb{\alpha_i,\beta_j},\qquad 1\leq j<i.
+M_j = \brb{\alpha_i,\beta_j},\qquad 1\leq j<i.
 \ee
 
 Note that we do not need to worry about the cell $X_i$ itself, as it has a hook-length of 1 in $\lm$ and does not exist in $\mu^{(i)}$.
 
 The cells in the column of $X_i$ are similarly described. We label the non-cancelling cells in $\lm$ as
 \be
-L_j = \bb{\alpha_{j+1}+1,\beta_i},\qquad i\leq j\leq m
+L_j = \brb{\alpha_{j+1}+1,\beta_i},\qquad i\leq j\leq m
 \ee
 and the corresponding cells in $\mu^{(i)}$ as
 \be
-M_j = \bb{\alpha_j,\beta_i},\qquad i<j\leq m.
+M_j = \brb{\alpha_j,\beta_i},\qquad i<j\leq m.
 \ee
 
 This cancellation is illustrated in the following figure.
@@ -733,7 +733,7 @@ h_{\lm}(L_j) = \ct(E(L_j)) - \ct(N(L_j)) + 1 = \ct(X_j) - \ct(N(L_j)) + 1 = x_j 
 
 Similarly, for $1<j<i$,
 \beast
-h_{\mu^{(i)}}(M_j)& = & \ct(E(M_j))  - \ct(N(M_j)) +1 = \bb{\ct(E(M_j))+1 } - \ct(N(M_j)) \\
+h_{\mu^{(i)}}(M_j)& = & \ct(E(M_j))  - \ct(N(M_j)) +1 = \brb{\ct(E(M_j))+1 } - \ct(N(M_j)) \\
 &  = & \ct(X_i) - \ct(X_j) = x_i - x_j.
 \eeast
 
@@ -754,7 +754,7 @@ Therefore, we have
 
 Proof of ($\dag$). We wish to show
 \be
-- \sum^m_{i=1} \frac{\prod^m_{j=0} (x_i-y_j)}{\prod^m_{j=1,j\neq i} (x_i-x_j)} = -\frac 12 \sum^m_{i=0} \bb{x_i^2 - y_i^2}.
+- \sum^m_{i=1} \frac{\prod^m_{j=0} (x_i-y_j)}{\prod^m_{j=1,j\neq i} (x_i-x_j)} = -\frac 12 \sum^m_{i=0} \brb{x_i^2 - y_i^2}.
 \ee
 
 Then we can use Lagrange interpolation\footnote{details needed.} to find the left hand side of the above equation. We consider the polynomial of $t$
@@ -793,7 +793,7 @@ Therefore, the polynomial $Q(t)+P(t)$ has leading term $t^{m+1}$ and has a zero 
 \beast
 Q(t) + P(t) & = & (t-\alpha) \prod^m_{k=1} (t-x_k) \\
 \ra \ P(t) & = & (t-\alpha) \prod^m_{k=1} (t-x_k)  - \prod^m_{j=0} (t-y_j) \\
-& = & \bb{-\alpha - \sum^m_{i=1}x_i + \sum^m_{i=0}y_i }t^m + \bb{\alpha\sum^m_{i=1}x_i + \sum_{1\leq i\leq j\leq m}x_ix_j - \sum_{0\leq i\leq j\leq m}y_iy_j }t^{m-1}+ \dots
+& = & \brb{-\alpha - \sum^m_{i=1}x_i + \sum^m_{i=0}y_i }t^m + \brb{\alpha\sum^m_{i=1}x_i + \sum_{1\leq i\leq j\leq m}x_ix_j - \sum_{0\leq i\leq j\leq m}y_iy_j }t^{m-1}+ \dots
 \eeast
 
 Since $P(t)$ has degree $m-1$, the coefficient of $t^m$ must be 0. Since $x_0 = 0$, we have
@@ -802,20 +802,20 @@ Since $P(t)$ has degree $m-1$, the coefficient of $t^m$ must be 0. Since $x_0 = 
 \ee
 by Proposition \ref{pro:content_outer_inner_corner_young_diagram} as $x_0 = 0$. Then using again $x_0 =0$, the coefficient of $t^{m-1}$ in $P(t)$ can be written as
 \be
-\sum_{0\leq i\leq j\leq m}\bb{x_ix_j - y_iy_j}.
+\sum_{0\leq i\leq j\leq m}\brb{x_ix_j - y_iy_j}.
 \ee
 
 Finally, we have
 \be
-\sum_{0\leq i\leq j\leq m}\bb{x_ix_j - y_iy_j} = \frac 12\bb{\bb{\sum^m_{i=0}x_i}^2 -\bb{\sum^m_{i=0}y_i}^2 - \sum^m_{i=0}\bb{x_i^2 - y_i^2}} = - \frac 12 \sum^m_{i=0}\bb{x_i^2 - y_i^2}
+\sum_{0\leq i\leq j\leq m}\brb{x_ix_j - y_iy_j} = \frac 12\brb{\brb{\sum^m_{i=0}x_i}^2 -\brb{\sum^m_{i=0}y_i}^2 - \sum^m_{i=0}\brb{x_i^2 - y_i^2}} = - \frac 12 \sum^m_{i=0}\brb{x_i^2 - y_i^2}
 \ee
 where the second equality follows from another application of Proposition \ref{pro:content_outer_inner_corner_young_diagram}.
 
 Proof of ($\ddag$). Expanding the $x_i$ and $y_i$ in terms of the coordinates gives
 \beast
-- \frac 12 \sum^m_{i=0}\bb{x_i^2 - y_i^2} & = & - \frac 12 \sum^m_{i=0}\bb{\bb{\beta_i-\alpha_i}^2 - \bb{\beta_i - \alpha_{i+1}}^2} \\
-& = & \frac 12\bb{\alpha_{m+1}^2 - \alpha_0^2}  - \frac 12 \sum^m_{i=0}\bb{-2\alpha_i\beta_i + 2\alpha_{i+1}\beta_i} \\
-& = & \sum^m_{i=1} \beta_i\bb{\alpha_i - \alpha_{i+1}}.
+- \frac 12 \sum^m_{i=0}\brb{x_i^2 - y_i^2} & = & - \frac 12 \sum^m_{i=0}\brb{\brb{\beta_i-\alpha_i}^2 - \brb{\beta_i - \alpha_{i+1}}^2} \\
+& = & \frac 12\brb{\alpha_{m+1}^2 - \alpha_0^2}  - \frac 12 \sum^m_{i=0}\brb{-2\alpha_i\beta_i + 2\alpha_{i+1}\beta_i} \\
+& = & \sum^m_{i=1} \beta_i\brb{\alpha_i - \alpha_{i+1}}.
 \eeast
 
 By considering the diagram of $\lm$ as the disjoint union of rectangles of width $\beta_i$ and the height $(\alpha_i - \alpha_{i+1})$, we see that this sum is equal to $n$.
@@ -918,7 +918,7 @@ By considering the diagram of $\lm$ as the disjoint union of rectangles of width
 \begin{example}
 For $2\times 3$ tableaux (i.e., tableaux (3,3)), we have that
 \be
-f_{\lm} = \frac{n!}{h\bb{(1,1)}h\bb{(1,2)}h\bb{(1,3)}h\bb{(2,1)}h\bb{(2,2)}h\bb{(2,3)}} = \frac{6!}{4\cdot 3\cdot 2 \cdot 3\cdot 2\cdot 1} = 5
+f_{\lm} = \frac{n!}{h\brb{(1,1)}h\brb{(1,2)}h\brb{(1,3)}h\brb{(2,1)}h\brb{(2,2)}h\brb{(2,3)}} = \frac{6!}{4\cdot 3\cdot 2 \cdot 3\cdot 2\cdot 1} = 5
 \ee
 which can be easily verified by the example in Definition \ref{def:standard_tableaux}.
 \end{example}
@@ -933,7 +933,7 @@ The number of standard rectangle table with $m$ rows and $n$ columns is
 \begin{remark}
 For $m=2$ and $n=3$, we can easily have the consistent result
 \be
-\frac{(2\times 3)!}{\bb{1\cdot 2 \cdot 3} \cdot \bb{2 \cdot 3 \cdot 4 }} = 5.
+\frac{(2\times 3)!}{\brb{1\cdot 2 \cdot 3} \cdot \brb{2 \cdot 3 \cdot 4 }} = 5.
 \ee
 \end{remark}
 
