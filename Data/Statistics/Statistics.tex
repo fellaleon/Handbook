@@ -24,7 +24,7 @@ A trivial estimator $\wh{\theta} = \theta_0$ for some constant $\theta_0$ has va
 \begin{example}
 The most popular estimators are the estimators of normal random variable $X_1,\dots,X_n\sim \sN(\mu,\sigma^2)$.
 \be
-\wh{\mu} = \frac 1n\sum^n_{i=1} X_i = \ol{X},\qquad \wh{\sigma}^2 = \frac 1{n-1} \sum^n_{i=1} \bb{X_i - \ol{X}}^2.
+\wh{\mu} = \frac 1n\sum^n_{i=1} X_i = \ol{X},\qquad \wh{\sigma}^2 = \frac 1{n-1} \sum^n_{i=1} \brb{X_i - \ol{X}}^2.
 \ee
 
 Note that both of above estimators are unbiased.
@@ -66,7 +66,7 @@ Note that $0\leq \sI(\theta) <\infty$.
 \begin{example}
 Let $X$ random variable with density function $f(x|\theta) = \theta x^{\theta -1}$ within $(0,1)$ where $\theta >0$. Thus, $X \sim \betad(\theta,1)$. Then its Fisher information is
 \beast
-\sI_X(\theta) & = & \E\bsb{\left.\bb{\fp{\log \theta X^{\theta-1}}{\theta} }^2\right|\theta} = \E\bsb{\left.\bb{\fp{}{\theta}\bb{\log \theta + \bb{\theta-1}\log X }}^2\right|\theta} = \E\bb{\frac 1{\theta} + \log X }^2.
+\sI_X(\theta) & = & \E\bsb{\left.\brb{\fp{\log \theta X^{\theta-1}}{\theta} }^2\right|\theta} = \E\bsb{\left.\brb{\fp{}{\theta}\brb{\log \theta + \brb{\theta-1}\log X }}^2\right|\theta} = \E\brb{\frac 1{\theta} + \log X }^2.
 \eeast
 
 Let $Y := -\log X$ and thus $e^{-Y} = X$. Then density function of $Y$ is
@@ -75,7 +75,7 @@ f(y|\theta) = \theta e^{-(\theta-1)y} e^{-y} = \theta e^{-\theta y}
 \ee
 which is an exponential whose mean and variance are $1/\theta$ and $1/\theta^2$. So
 \be
-\sI_X(\theta) =  \E\bb{\frac 1{\theta} - Y }^2 = \frac 1{\theta^2} - \frac 2{\theta}\E Y + \E Y^2 =  \frac 1{\theta^2} -  \frac 2{\theta^2} +  \frac 2{\theta^2} = \frac 1{\theta^2}.
+\sI_X(\theta) =  \E\brb{\frac 1{\theta} - Y }^2 = \frac 1{\theta^2} - \frac 2{\theta}\E Y + \E Y^2 =  \frac 1{\theta^2} -  \frac 2{\theta^2} +  \frac 2{\theta^2} = \frac 1{\theta^2}.
 \ee
 \end{example}
 
@@ -93,8 +93,8 @@ Let $X\sim \berd(p)$. Then its Fisher information is
 \begin{proof}[\bf Proof]
 By definition, we have
 \beast
-\sI_X(p) & = & -\E\bb{\left.\frac{\partial^2}{\partial p^2} \log\bb{p^X(1-p)^{1-X}} \right|p} = -\E\bb{\left.\frac{\partial^2}{\partial p^2} X\log p + (1-X)\log(1-p) \right|p} \\
-& = & \E\bb{\left. \frac X{p^2} + \frac{1-X}{(1-p)^2}\right|p} = \frac{p}{p^2} + \frac{1-p}{(1-p)^2} = \frac 1{p(1-p)}.
+\sI_X(p) & = & -\E\brb{\left.\frac{\partial^2}{\partial p^2} \log\brb{p^X(1-p)^{1-X}} \right|p} = -\E\brb{\left.\frac{\partial^2}{\partial p^2} X\log p + (1-X)\log(1-p) \right|p} \\
+& = & \E\brb{\left. \frac X{p^2} + \frac{1-X}{(1-p)^2}\right|p} = \frac{p}{p^2} + \frac{1-p}{(1-p)^2} = \frac 1{p(1-p)}.
 \eeast
 \end{proof}
 
@@ -114,14 +114,14 @@ The function $\fp{}{\theta}\log f(X|\theta)$ is called the score function $S(\th
 \begin{proof}[\bf Proof]
 By the definition of expectation, we have
 \beast
-\E\bsb{\left.\fp{}{\theta}\log f(X|\theta)\right|\theta} & = & \int \bb{\fp{}{\theta}\log f(X|\theta)}f(x|\theta) dx = \int \frac{\fp{}{\theta} f(X|\theta)}{f(x|\theta)}f(x|\theta) dx \\
+\E\bsb{\left.\fp{}{\theta}\log f(X|\theta)\right|\theta} & = & \int \brb{\fp{}{\theta}\log f(X|\theta)}f(x|\theta) dx = \int \frac{\fp{}{\theta} f(X|\theta)}{f(x|\theta)}f(x|\theta) dx \\
 & = & \int \fp{}{\theta} f(X|\theta) dx = \fp{}{\theta} \int  f(X|\theta) dx = \fp{1}{\theta}= 0
 \eeast
 as required.
 \end{proof}
 
 \begin{proposition}
-Let $X = \bb{X_1,\dots,X_n}$ be independent random variables with density function $f_i(x|\theta)$ and their Fisher information are well-defined. Then
+Let $X = \brb{X_1,\dots,X_n}$ be independent random variables with density function $f_i(x|\theta)$ and their Fisher information are well-defined. Then
 \be
 \sI_X(\theta) = \sI_{X_1}(\theta) + \dots + \sI_{X_n}(\theta).
 \ee
@@ -136,8 +136,8 @@ f(X|\theta) = \prod^n_{i=1} f_i(X_i|\theta) \ \ra\ \fp{}{\theta} \log f(X|\theta
 \ee
 by Theorem \ref{thm:characteristic_function_independence}. Then the random variables in the sum are independent by Theorem \ref{thm:random_variable_function_indenpence}. Thus by Proposition \ref{pro:expectation_of_independent_product},
 \beast
-\sI_X(\theta) & = & \E\bb{\left. \bb{\fp{}{\theta} \log f(X|\theta)}^2 \right|\theta} = \E\bb{\left. \bb{ \sum^n_{i=1}\fp{}{\theta} \log f_i(X_i|\theta) }^2 \right|\theta} \\
-& = & \sum^n_{i=1} \E\bb{\left. \bb{ \fp{}{\theta} \log f_i(X_i|\theta) }^2 \right|\theta} = \sum^n_{i=1} \sI_{X_i}(\theta).
+\sI_X(\theta) & = & \E\brb{\left. \brb{\fp{}{\theta} \log f(X|\theta)}^2 \right|\theta} = \E\brb{\left. \brb{ \sum^n_{i=1}\fp{}{\theta} \log f_i(X_i|\theta) }^2 \right|\theta} \\
+& = & \sum^n_{i=1} \E\brb{\left. \brb{ \fp{}{\theta} \log f_i(X_i|\theta) }^2 \right|\theta} = \sum^n_{i=1} \sI_{X_i}(\theta).
 \eeast
 \end{proof}
 
@@ -152,7 +152,7 @@ Let $f$ be probability density function and the Fisher information is well-defin
 
 Then the Fisher information can be expressed by
 \be
-\sI(\theta )=\E\bsb{\left.\bb{\frac {\partial \log f(X|\theta )}{\partial \theta }}^{2}\right|\theta } = - \E\bsb{\left.\frac {\partial^2 \log f(X;\theta ) }{\partial \theta^2 }\right|\theta }.
+\sI(\theta )=\E\bsb{\left.\brb{\frac {\partial \log f(X|\theta )}{\partial \theta }}^{2}\right|\theta } = - \E\bsb{\left.\frac {\partial^2 \log f(X;\theta ) }{\partial \theta^2 }\right|\theta }.
 \ee
 \end{proposition}
 
@@ -160,15 +160,15 @@ Then the Fisher information can be expressed by
 \begin{proof}[\bf Proof]
 Since $1 = \int f(x|\theta) dx$, we can take differentiation on both sides,
 \be
-0 = \fp{}{\theta}\int f(x|\theta) dx = \int \fp{}{\theta} f(x|\theta) dx = \int \frac{ \fp{f(x|\theta)}{\theta}}{f(x|\theta)} f(x|\theta) dx = \int \bb{ \fp{}{\theta}\log f(x|\theta)} f(x|\theta) dx
+0 = \fp{}{\theta}\int f(x|\theta) dx = \int \fp{}{\theta} f(x|\theta) dx = \int \frac{ \fp{f(x|\theta)}{\theta}}{f(x|\theta)} f(x|\theta) dx = \int \brb{ \fp{}{\theta}\log f(x|\theta)} f(x|\theta) dx
 \ee
 
 Taking differentiation again,
 \beast
-0 & = & \fp{}{\theta} \int \bb{ \fp{}{\theta}\log f(x|\theta)} f(x|\theta) dx = \int \fp{}{\theta}\bsb{\bb{ \fp{}{\theta}\log f(x|\theta)} f(x|\theta)} dx \\
-& = & \int \frac{\partial^2}{\partial \theta^2}\bb{\log f(x|\theta)} f(x|\theta) dx + \int \bb{\fp{}{\theta}\log f(x|\theta)} \fp{}{\theta} f(x|\theta) dx \\
-& = & \int \frac{\partial^2}{\partial \theta^2}\bb{\log f(x|\theta)} f(x|\theta) dx + \int \bb{\fp{}{\theta}\log f(x|\theta)}^2 f(x|\theta) dx \\
-& = & \int \frac{\partial^2}{\partial \theta^2}\bb{\log f(x|\theta)} f(x|\theta) dx + \sI_X(\theta)
+0 & = & \fp{}{\theta} \int \brb{ \fp{}{\theta}\log f(x|\theta)} f(x|\theta) dx = \int \fp{}{\theta}\bsb{\brb{ \fp{}{\theta}\log f(x|\theta)} f(x|\theta)} dx \\
+& = & \int \frac{\partial^2}{\partial \theta^2}\brb{\log f(x|\theta)} f(x|\theta) dx + \int \brb{\fp{}{\theta}\log f(x|\theta)} \fp{}{\theta} f(x|\theta) dx \\
+& = & \int \frac{\partial^2}{\partial \theta^2}\brb{\log f(x|\theta)} f(x|\theta) dx + \int \brb{\fp{}{\theta}\log f(x|\theta)}^2 f(x|\theta) dx \\
+& = & \int \frac{\partial^2}{\partial \theta^2}\brb{\log f(x|\theta)} f(x|\theta) dx + \sI_X(\theta)
 \eeast
 as required.
 \end{proof}
@@ -188,17 +188,17 @@ Also, by Proposition \ref{pro:moments_poisson}, $\E X  = \lm$ and $\var X = \lm$
 \ben
 \item [(i)] Using Definition \ref{def:fisher_information},
 \beast
-\sI_X(\lm) = \E\bsb{\left.\bb{\fp{}{\lm}\log f(x|\lm) }^2\right|\lm} = \E\bb{\frac{X}{\lm}  -1}^2 = \var\bb{\frac{X}{\lm}} = \frac 1{\lm^2}\var X = \frac 1{\lm}.
+\sI_X(\lm) = \E\bsb{\left.\brb{\fp{}{\lm}\log f(x|\lm) }^2\right|\lm} = \E\brb{\frac{X}{\lm}  -1}^2 = \var\brb{\frac{X}{\lm}} = \frac 1{\lm^2}\var X = \frac 1{\lm}.
 \eeast
 
 \item [(ii)] By Proposition \ref{pro:fisher_information_variance_expression},
 \beast
-\sI_X(\lm) = \var\bsb{\left.\fp{}{\lm}\log f(x|\lm) \right|\lm} = \var\bb{\frac{X}{\lm}  -1} = \var\bb{\frac{X}{\lm}} = \frac 1{\lm}.
+\sI_X(\lm) = \var\bsb{\left.\fp{}{\lm}\log f(x|\lm) \right|\lm} = \var\brb{\frac{X}{\lm}  -1} = \var\brb{\frac{X}{\lm}} = \frac 1{\lm}.
 \eeast
 
 \item [(iii)] By Proposition \ref{pro:fisher_information_second_order_derivative_expression},
 \beast
-\sI_X(\lm) = \E\bsb{\left.-\fpp{}{\lm}\log f(x|\lm)\right|\lm} = \E\bb{\frac{X}{\lm^2}} = \frac 1{\lm^2} \E X = \frac 1{\lm}.
+\sI_X(\lm) = \E\bsb{\left.-\fpp{}{\lm}\log f(x|\lm)\right|\lm} = \E\brb{\frac{X}{\lm^2}} = \frac 1{\lm^2} \E X = \frac 1{\lm}.
 \eeast
 \een
 \end{example}
@@ -211,7 +211,7 @@ Also, by Proposition \ref{pro:moments_poisson}, $\E X  = \lm$ and $\var X = \lm$
 \begin{definition}[Fisher information matrix\index{Fisher information matrix}]\label{def:fisher_information_matrix}
 Let $X$ be a random variable with $n$ parameters. Then the Fisher information matrix of $X$ is defined by
 \be
-\bsb{\sI_X(\theta)}_{i,j} : = \E\bb{\left. \bb{\fp{\log f(X|\theta)}{\theta_i}}\bb{\fp{\log f(X|\theta)}{\theta_j}}\right|\theta}
+\bsb{\sI_X(\theta)}_{i,j} : = \E\brb{\left. \brb{\fp{\log f(X|\theta)}{\theta_i}}\brb{\fp{\log f(X|\theta)}{\theta_j}}\right|\theta}
 \ee
 for $1\leq i,j\leq n$.
 \end{definition}
@@ -232,7 +232,7 @@ Let $X\sim \sN(\mu,\sigma^2)$. Then the Fisher information matrix is
 \begin{proof}[\bf Proof]
 By definition, we have
 \be
-f_X(x|\theta) = \frac 1{\sqrt{2\pi\sigma^2}}\exp\bb{-\frac{(x-\mu)^2}{2\sigma^2}} \ \ra\ \log f(X|\theta) = -\frac 12 \log(2\pi \sigma^2) - \frac{(x-\mu)^2}{2\sigma^2}.
+f_X(x|\theta) = \frac 1{\sqrt{2\pi\sigma^2}}\exp\brb{-\frac{(x-\mu)^2}{2\sigma^2}} \ \ra\ \log f(X|\theta) = -\frac 12 \log(2\pi \sigma^2) - \frac{(x-\mu)^2}{2\sigma^2}.
 \ee
 
 Thus,
@@ -241,8 +241,8 @@ Thus,
 \ee
 
 %\beast
-%\sI_X(p) & = & -\E\bb{\left.\frac{\partial^2}{\partial p^2} \log\bb{p^X(1-p)^{1-X}} \right|p} = -\E\bb{\left.\frac{\partial^2}{\partial p^2} X\log p + (1-X)\log(1-p) \right|p} \\
-%& = & \E\bb{\left. \frac X{p^2} + \frac{1-X}{(1-p)^2}\right|p} = \frac{p}{p^2} + \frac{1-p}{(1-p)^2} = \frac 1{p(1-p)}.
+%\sI_X(p) & = & -\E\brb{\left.\frac{\partial^2}{\partial p^2} \log\brb{p^X(1-p)^{1-X}} \right|p} = -\E\brb{\left.\frac{\partial^2}{\partial p^2} X\log p + (1-X)\log(1-p) \right|p} \\
+%& = & \E\brb{\left. \frac X{p^2} + \frac{1-X}{(1-p)^2}\right|p} = \frac{p}{p^2} + \frac{1-p}{(1-p)^2} = \frac 1{p(1-p)}.
 %\eeast
 
 Then by the properties of normal distribution,
@@ -251,11 +251,11 @@ Then by the properties of normal distribution,
 \ee
 
 \be
-\sI_X(\theta)_{1,2} = \sI_X(\theta)_{2,1} = \frac 1{\sigma^2} \E\bb{(X - \mu)\bb{-\frac 1{2\sigma^2} + \frac{(X-\mu)^2}{2\sigma^4}} } = 0.
+\sI_X(\theta)_{1,2} = \sI_X(\theta)_{2,1} = \frac 1{\sigma^2} \E\brb{(X - \mu)\brb{-\frac 1{2\sigma^2} + \frac{(X-\mu)^2}{2\sigma^4}} } = 0.
 \ee
 
 \be
-\sI_X(\theta)_{2,2} = \E\bb{\frac 1{2\sigma^2} - \frac{(X-\mu)^2}{2\sigma^4}}^2 = \frac 1{4\sigma^4} - \frac {\sigma^2}{2\sigma^6} + \frac {3\sigma^4}{4\sigma^8} = \frac 1{2\sigma^4} .
+\sI_X(\theta)_{2,2} = \E\brb{\frac 1{2\sigma^2} - \frac{(X-\mu)^2}{2\sigma^4}}^2 = \frac 1{4\sigma^4} - \frac {\sigma^2}{2\sigma^6} + \frac {3\sigma^4}{4\sigma^8} = \frac 1{2\sigma^4} .
 \ee
 \end{proof}
 
@@ -269,50 +269,50 @@ Let $X\sim \sC(\mu,d)$. Then the Fisher information matrix is
 \begin{proof}[\bf Proof]
 By definition, we have
 \be
-f_X(x|\theta) = \frac{d}{\pi\bb{d^2 + (x-\mu)^2}}.
+f_X(x|\theta) = \frac{d}{\pi\brb{d^2 + (x-\mu)^2}}.
 \ee
 
 Then
 \be
-\fp{}{\mu} \log f(X|\theta) = \frac{\fp{f(X|\theta)}{\mu}}{f(X|\theta)} = \frac{\frac{2d(X-\mu)}{\pi\bb{d^2 + (X-\mu)^2}}}{\frac{d}{\pi\bb{d^2 + (X-\mu)^2}}} = \frac{2(X-\mu)}{d^2 + (X-\mu)^2}.
+\fp{}{\mu} \log f(X|\theta) = \frac{\fp{f(X|\theta)}{\mu}}{f(X|\theta)} = \frac{\frac{2d(X-\mu)}{\pi\brb{d^2 + (X-\mu)^2}}}{\frac{d}{\pi\brb{d^2 + (X-\mu)^2}}} = \frac{2(X-\mu)}{d^2 + (X-\mu)^2}.
 \ee
 
 \be
-\fp{}{d} \log f(X|\theta) = \frac{\fp{f(X|\theta)}{d}}{f(X|\theta)} = \frac{\frac{d^2 + (X-\mu)^2 - 2d^2}{\pi\bb{d^2 + (X-\mu)^2}}}{\frac{d}{\pi\bb{d^2 + (X-\mu)^2}}} = \frac{(X-\mu)^2 - d^2}{d\bb{d^2 + (X-\mu)^2}}.
+\fp{}{d} \log f(X|\theta) = \frac{\fp{f(X|\theta)}{d}}{f(X|\theta)} = \frac{\frac{d^2 + (X-\mu)^2 - 2d^2}{\pi\brb{d^2 + (X-\mu)^2}}}{\frac{d}{\pi\brb{d^2 + (X-\mu)^2}}} = \frac{(X-\mu)^2 - d^2}{d\brb{d^2 + (X-\mu)^2}}.
 \ee
 
 Therefore,
 \beast
-\sI(\theta)_{1,1} & = & \E\bb{\frac{2(X-\mu)}{d^2 + (X-\mu)^2}}^2 = 4\int^\infty_{-\infty} \frac{u^2}{\bb{d^2 + u^2}^2} \frac{d}{\pi(d^2+ u^2)} du  = \frac{4d}{\pi}\int^\infty_{-\infty} \frac{u^2}{\bb{d^2 + u^2}^3} du \qquad (*) \\
-& = & \frac{8d}{\pi}\int^\infty_0 \frac{u^2}{\bb{d^2 + u^2}^3} du.
+\sI(\theta)_{1,1} & = & \E\brb{\frac{2(X-\mu)}{d^2 + (X-\mu)^2}}^2 = 4\int^\infty_{-\infty} \frac{u^2}{\brb{d^2 + u^2}^2} \frac{d}{\pi(d^2+ u^2)} du  = \frac{4d}{\pi}\int^\infty_{-\infty} \frac{u^2}{\brb{d^2 + u^2}^3} du \qquad (*) \\
+& = & \frac{8d}{\pi}\int^\infty_0 \frac{u^2}{\brb{d^2 + u^2}^3} du.
 \eeast
 
-Let $x = 1/(d^2 + u^2)$, then $u = \bb{1/x - d^2}^{1/2}$ and
+Let $x = 1/(d^2 + u^2)$, then $u = \brb{1/x - d^2}^{1/2}$ and
 \be
-du = \frac{\frac 12 \bb{-\frac 1{x^2}}}{\sqrt{1/x - d^2 }} dx.
+du = \frac{\frac 12 \brb{-\frac 1{x^2}}}{\sqrt{1/x - d^2 }} dx.
 \ee
 
 Thus,
 \beast
-\sI(\theta)_{1,1} & = & \frac{4d}{\pi} \int^{1/d^2}_0 \bb{\frac 1x  -d^2}x^3 \frac 1{x^2}\bb{\frac 1x - d^2}^{-1/2} dx = \frac{4d}{\pi} \int^{1/d^2}_0 x^{1/2}\bb{1- xd^2}^{1/2} dx \\
-& = & \frac{4d}{\pi} \int^{1}_0 \frac 1d y^{1/2}\bb{1- y}^{1/2} d\frac y{d^2} = \frac{4}{\pi d^2} \int^1_0 y^{1/2}(1-y)^{1/2} dy \\
-& = & \frac{4}{\pi d^2} B\bb{\frac 32,\frac 32} = \frac{4}{\pi d^2}\frac{\Gamma(3/2)\Gamma(3/2)}{\Gamma(3)} = \frac{4}{\pi d^2} \frac{\bb{\frac 12 \sqrt{\pi}}^2}{2!} = \frac{1}{2d^2}.
+\sI(\theta)_{1,1} & = & \frac{4d}{\pi} \int^{1/d^2}_0 \brb{\frac 1x  -d^2}x^3 \frac 1{x^2}\brb{\frac 1x - d^2}^{-1/2} dx = \frac{4d}{\pi} \int^{1/d^2}_0 x^{1/2}\brb{1- xd^2}^{1/2} dx \\
+& = & \frac{4d}{\pi} \int^{1}_0 \frac 1d y^{1/2}\brb{1- y}^{1/2} d\frac y{d^2} = \frac{4}{\pi d^2} \int^1_0 y^{1/2}(1-y)^{1/2} dy \\
+& = & \frac{4}{\pi d^2} B\brb{\frac 32,\frac 32} = \frac{4}{\pi d^2}\frac{\Gamma(3/2)\Gamma(3/2)}{\Gamma(3)} = \frac{4}{\pi d^2} \frac{\brb{\frac 12 \sqrt{\pi}}^2}{2!} = \frac{1}{2d^2}.
 \eeast
 
 Additionally,
 \beast
-\sI(\theta)_{1,2} = \sI(\theta)_{2,1}  & = & \E\bsb{\frac{2(X-\mu)}{d^2 + (X-\mu)^2}\frac{(X-\mu)^2 - d^2}{d\bb{d^2 + (X-\mu)^2}}} = 2\int^\infty_{-\infty} \frac{u(u^2 -d^2)}{\bb{d^2 + u^2}^2} \frac{d}{\pi(d^2+ u^2)} du \\
-& = & \frac{2d}{\pi}\int^\infty_{-\infty} \frac{u^3 -u d^2}{\bb{d^2 + u^2}^3}  du = 0
+\sI(\theta)_{1,2} = \sI(\theta)_{2,1}  & = & \E\bsb{\frac{2(X-\mu)}{d^2 + (X-\mu)^2}\frac{(X-\mu)^2 - d^2}{d\brb{d^2 + (X-\mu)^2}}} = 2\int^\infty_{-\infty} \frac{u(u^2 -d^2)}{\brb{d^2 + u^2}^2} \frac{d}{\pi(d^2+ u^2)} du \\
+& = & \frac{2d}{\pi}\int^\infty_{-\infty} \frac{u^3 -u d^2}{\brb{d^2 + u^2}^3}  du = 0
 \eeast
 as the integrand is odd function. Finally,
 \beast
-\sI(\theta)_{2,2} & = & \E\bb{\frac{(X-\mu)^2 - d^2}{d\bb{d^2 + (X-\mu)^2}}}^2 = \int^\infty_{-\infty} \frac{\bb{u^2 + d^2}^2 - 4u^2d^2 }{d^2\bb{d^2 + u^2}^2} \frac{d}{\pi(d^2+ u^2)} du \\
-&  = & \frac{2}{\pi d} \int^\infty_0 \frac{1}{d^2 + u^2} du -  \frac{8d}{\pi }  \int^\infty_0 \frac{u^2}{\bb{d^2 + u^2}^3} du = \frac{2}{\pi d^2} \int^\infty_0 \frac{1}{1 + (u/d)^2} d(u/d) - \frac 1{2d^2} \\
+\sI(\theta)_{2,2} & = & \E\brb{\frac{(X-\mu)^2 - d^2}{d\brb{d^2 + (X-\mu)^2}}}^2 = \int^\infty_{-\infty} \frac{\brb{u^2 + d^2}^2 - 4u^2d^2 }{d^2\brb{d^2 + u^2}^2} \frac{d}{\pi(d^2+ u^2)} du \\
+&  = & \frac{2}{\pi d} \int^\infty_0 \frac{1}{d^2 + u^2} du -  \frac{8d}{\pi }  \int^\infty_0 \frac{u^2}{\brb{d^2 + u^2}^3} du = \frac{2}{\pi d^2} \int^\infty_0 \frac{1}{1 + (u/d)^2} d(u/d) - \frac 1{2d^2} \\
 & = & \frac{2}{\pi d^2} \frac {\pi}2  - \frac 1{2d^2} =  \frac 1{2d^2}
 \eeast
 as required. Note that the integral $(*)$ can also be solved by Cauchy residue theorem\footnote{theorem needed.} as
 \be
-\int^\infty_{-\infty} \frac{u^2}{(d^2 + u^2)^3} du = 2\pi i \res\bsb{\frac{u^2}{(d^2 + u^2)^3}, +id} = \frac{2\pi i}{(3-1)!}\lim_{u\to id} \frac{d^2}{du^2}\bb{\frac {u^2}{\bb{u + id}^3}} = \frac{\pi}{8d^3}.
+\int^\infty_{-\infty} \frac{u^2}{(d^2 + u^2)^3} du = 2\pi i \res\bsb{\frac{u^2}{(d^2 + u^2)^3}, +id} = \frac{2\pi i}{(3-1)!}\lim_{u\to id} \frac{d^2}{du^2}\brb{\frac {u^2}{\brb{u + id}^3}} = \frac{\pi}{8d^3}.
 \ee
 \end{proof}
 
@@ -337,7 +337,7 @@ L(\theta|X_1,\dots,X_n) = \prod^n_{i=1} f(X_i|\theta)
 
 Also, the log-likelihood function is
 \be
-\sL\bb{\theta|X_1,\dots,X_n} = \log L(\theta|X_1,\dots,X_n) = \sum^n_{i=1} \log f(X_i|\theta).
+\sL\brb{\theta|X_1,\dots,X_n} = \log L(\theta|X_1,\dots,X_n) = \sum^n_{i=1} \log f(X_i|\theta).
 \ee
 \end{definition}
 
@@ -352,7 +352,7 @@ L(p|X_1,\dots,X_n) = p^{\sum^n_{i=1}X_i} (1-p)^{n - \sum^n_{i=1}X_i}
 
 Then taking the differentiation of $L$ with respect to $p$, we have
 \be
-\fp{L(p|X_1,\dots,X_n)}{p} = 0 \ \ra\ 0 =\bb{(1-p) \sum^n_{i=1}X_i  - p\bb{n - \sum^n_{i=1}X_i} } p^{\sum^n_{i=1}X_i-1} (1-p)^{n - \sum^n_{i=1}X_i-1}
+\fp{L(p|X_1,\dots,X_n)}{p} = 0 \ \ra\ 0 =\brb{(1-p) \sum^n_{i=1}X_i  - p\brb{n - \sum^n_{i=1}X_i} } p^{\sum^n_{i=1}X_i-1} (1-p)^{n - \sum^n_{i=1}X_i-1}
 \ee
 
 Therefore, we have
@@ -367,9 +367,9 @@ Given the observations $X_i\in (0,\infty)$, $i=1,\dots,n$, the maximum likelihoo
 \end{example}
 
 \begin{proof}[\bf Proof]
-We have the likelihood function is 
-\be 
-L\bb{\theta|X_1,\dots,X_n} = \prod^n_{i = 1} \frac 1{\theta} \ind_{[0,\theta]}(X_i) = \frac 1{\theta^n} \ind_{[0,\theta]}\bb{\max_{1\leq i\leq n}X_i} \ind_{[0,\theta]}\bb{\min_{1\leq
+We have the likelihood function is
+\be
+L\brb{\theta|X_1,\dots,X_n} = \prod^n_{i = 1} \frac 1{\theta} \ind_{[0,\theta]}(X_i) = \frac 1{\theta^n} \ind_{[0,\theta]}\brb{\max_{1\leq i\leq n}X_i} \ind_{[0,\theta]}\brb{\min_{1\leq
 i\leq n}X_i}.
 \ee
 
@@ -400,7 +400,7 @@ So the likelihood function is 0 for $\theta < \max_{1\leq i\leq n}X_i$ and posit
 %\subsection{Estimation of exponential distribution}
 
 \begin{example}[MLE for exponential distribution]
-Given the observations $X_i\in (0,\infty)$, $i=1,\dots,n$, the maximum likelihood estimation of exponential distribution $\sE(\lm)$ is \be \wh{\lm} = \bb{\frac 1n \sum^n_{i = 1} X_i}^{-1} := 1/\ol{X}.\ee%Furthermore, $\wh{\mu}$ is an unbiased estimator, while $\wh{\sigma^2}$ is a biased one.
+Given the observations $X_i\in (0,\infty)$, $i=1,\dots,n$, the maximum likelihood estimation of exponential distribution $\sE(\lm)$ is \be \wh{\lm} = \brb{\frac 1n \sum^n_{i = 1} X_i}^{-1} := 1/\ol{X}.\ee%Furthermore, $\wh{\mu}$ is an unbiased estimator, while $\wh{\sigma^2}$ is a biased one.
 \end{example}
 
 \begin{remark}
@@ -408,10 +408,10 @@ Although $\wh{\lm}$ is not an unbiased estimator of $\lm$, $\ol{X}$ is an unbias
 \end{remark}
 
 \begin{proof}[\bf Proof]
-We have the likelihood function is \be \sL\bb{\lm|X_1,\dots,X_n} = \sum^n_{i = 1} \log \lm - \lm X_i. \ee
+We have the likelihood function is \be \sL\brb{\lm|X_1,\dots,X_n} = \sum^n_{i = 1} \log \lm - \lm X_i. \ee
 
-Thus, taking the differentiation with respect to $\lm$, we have \be \left.\fp{\sL}{\lm}\right|_{\wh{\lm}} = 0 \ \ra \ \sum^n_{i = 1} \frac 1{\wh{\lm}} - X_i = 0 \ \ra\ \wh{\lm} = \bb{\frac 1n \sum^n_{i = 1} X_i}^{-1} :=
-1/\ol{X}. \ee %By Theorem \ref{thm:normal_rv_sample_mean_variance}, we know that \be \wh{\mu} \sim \sN\bb{\mu, \frac 1n \sigma^2},\qquad \wh{\sigma^2} \sim \frac 1n \sigma^2 \chi^2_{n-1}. \ee %Thus, we have \be \E\wh{\lm} = \mu,\quad \E\wh{\sigma^2} = \frac {n-1}n\sigma^2 < \sigma^2 \ee which implies that $\wh{\mu}$ is an unbiased estimator and $\wh{\sigma^2}$ is a biased one.
+Thus, taking the differentiation with respect to $\lm$, we have \be \left.\fp{\sL}{\lm}\right|_{\wh{\lm}} = 0 \ \ra \ \sum^n_{i = 1} \frac 1{\wh{\lm}} - X_i = 0 \ \ra\ \wh{\lm} = \brb{\frac 1n \sum^n_{i = 1} X_i}^{-1} :=
+1/\ol{X}. \ee %By Theorem \ref{thm:normal_rv_sample_mean_variance}, we know that \be \wh{\mu} \sim \sN\brb{\mu, \frac 1n \sigma^2},\qquad \wh{\sigma^2} \sim \frac 1n \sigma^2 \chi^2_{n-1}. \ee %Thus, we have \be \E\wh{\lm} = \mu,\quad \E\wh{\sigma^2} = \frac {n-1}n\sigma^2 < \sigma^2 \ee which implies that $\wh{\mu}$ is an unbiased estimator and $\wh{\sigma^2}$ is a biased one.
 
 Recall the mean of exponential random variable (Proposition \ref{pro:moments_exponential}), we have that $\ol{X}$ is an unbiased estimator of $1/\lm$.
 \end{proof}
@@ -422,21 +422,21 @@ Now we try to estimate the parameters of Gaussian distribution by its samples.
 
 \begin{example}[MLE for normal distribution]
 Given the observations $X_i\in \R$, $i=1,\dots,n$, the maximum likelihood estimation of Gaussian distribution $\sN(\mu,\sigma^2)$ is \be \wh{\mu} = \frac 1n \sum^n_{i = 1} X_i := \ol{X},\qquad \wh{\sigma^2} =   \frac
-1n\sum^n_{i=1} \bb{X_i- \ol{X}}^2.\ee
+1n\sum^n_{i=1} \brb{X_i- \ol{X}}^2.\ee
 
 Furthermore, $\wh{\mu}$ is an unbiased estimator, while $\wh{\sigma^2}$ is a biased one.
 \end{example}
 
 \begin{proof}[\bf Proof]
-We have the likelihood function is \be \sL\bb{\mu,\sigma^2|X_1,\dots,X_n} = \sum^n_{i = 1} -\frac 12\log (2\pi\sigma^2) - \frac 1{2\sigma^2}\bb{X_i-\mu}^2. \ee
+We have the likelihood function is \be \sL\brb{\mu,\sigma^2|X_1,\dots,X_n} = \sum^n_{i = 1} -\frac 12\log (2\pi\sigma^2) - \frac 1{2\sigma^2}\brb{X_i-\mu}^2. \ee
 
 Thus, taking the differentiation with respect to $\mu$ and $\sigma^2$, we have\footnote{It is straightforward to check this stationary point is indeed a maximum by examining the Hessian matrix.} \be
 \left.\fp{\sL}{\mu}\right|_{\wh{\mu},\wh{\sigma^2}} = 0 \ \ra \ \sum^n_{i = 1} (X_i - \wh{\mu}) = 0 \ \ra\ \wh{\mu} = \frac 1n \sum^n_{i = 1} X_i := \ol{X}. \ee
 
-\be \left.\fp{\sL}{\sigma^2}\right|_{\wh{\mu},\wh{\sigma^2}} = 0 \ \ra \ 0 = \sum^n_{i = 1} -\frac 1{2\wh{\sigma^2}} + \frac 1{2\wh{\sigma^2}^2}\bb{X_i- \ol{X}}^2 \ \ra\ \wh{\sigma^2} = \frac 1n\sum^n_{i=1} \bb{X_i-
+\be \left.\fp{\sL}{\sigma^2}\right|_{\wh{\mu},\wh{\sigma^2}} = 0 \ \ra \ 0 = \sum^n_{i = 1} -\frac 1{2\wh{\sigma^2}} + \frac 1{2\wh{\sigma^2}^2}\brb{X_i- \ol{X}}^2 \ \ra\ \wh{\sigma^2} = \frac 1n\sum^n_{i=1} \brb{X_i-
 \ol{X}}^2.  \ee
 
-By Theorem \ref{thm:normal_rv_sample_mean_variance}, we know that \be \wh{\mu} \sim \sN\bb{\mu, \frac 1n \sigma^2},\qquad \wh{\sigma^2} \sim \frac 1n \sigma^2 \chi^2_{n-1}. \ee
+By Theorem \ref{thm:normal_rv_sample_mean_variance}, we know that \be \wh{\mu} \sim \sN\brb{\mu, \frac 1n \sigma^2},\qquad \wh{\sigma^2} \sim \frac 1n \sigma^2 \chi^2_{n-1}. \ee
 
 Thus, we have \be \E\wh{\mu} = \mu,\quad \E\wh{\sigma^2} = \frac {n-1}n\sigma^2 < \sigma^2 \ee which implies that $\wh{\mu}$ is an unbiased estimator and $\wh{\sigma^2}$ is a biased one.
 \end{proof}
@@ -444,8 +444,8 @@ Thus, we have \be \E\wh{\mu} = \mu,\quad \E\wh{\sigma^2} = \frac {n-1}n\sigma^2 
 %\subsection{Estimation of gamma distribution}
 
 \begin{example}[MLE for gamma distribution]
-Given the observations $X_i\in (0,\infty)$, $i=1,\dots,n$, the maximum likelihood estimation of gamma distribution $\Gamma(k,\lm)$ is \be \wh{\lm} = \bb{\frac 1{kn} \sum^n_{i = 1} X_i}^{-1}, \qquad \log \wh{k}
--\psi\bb{\wh{k}}  =  \log\bb{\frac 1n\sum^n_{i = 1} X_i} - \frac 1n \sum^n_{i=1}
+Given the observations $X_i\in (0,\infty)$, $i=1,\dots,n$, the maximum likelihood estimation of gamma distribution $\Gamma(k,\lm)$ is \be \wh{\lm} = \brb{\frac 1{kn} \sum^n_{i = 1} X_i}^{-1}, \qquad \log \wh{k}
+-\psi\brb{\wh{k}}  =  \log\brb{\frac 1n\sum^n_{i = 1} X_i} - \frac 1n \sum^n_{i=1}
 \log X_i.\ee
 where $\psi(x) = \frac{d}{dx}\ln\Gamma(x) = \frac{\Gamma'(x)}{\Gamma(x)}$ is the digamma function\footnote{definition needed.}.%Furthermore, $\wh{\mu}$ is an unbiased estimator, while $\wh{\sigma^2}$ is a biased one.
 \end{example}
@@ -454,11 +454,11 @@ where $\psi(x) = \frac{d}{dx}\ln\Gamma(x) = \frac{\Gamma'(x)}{\Gamma(x)}$ is the
 There is no closed-form solution for $k$. The function is numerically very well behaved, so if a numerical solution is desired, it can be found using, for example, Newton's method\footnote{method needed.}. An initial value
 of $k$ can be found either using the method of moments, or using the approximation
 
-\be \log\wh{k} - \psi\bb{\wh{k}} \approx \frac{1}{2\wh{k}}\bb{1 + \frac{1}{6\wh{k} + 1}}.\ee
+\be \log\wh{k} - \psi\brb{\wh{k}} \approx \frac{1}{2\wh{k}}\brb{1 + \frac{1}{6\wh{k} + 1}}.\ee
 
 If we let
 \be
-s = \log\bb{\frac{1}{n}\sum_{i=1}^n X_i} - \frac{1}{n}\sum_{i=1}^n\log X_i,
+s = \log\brb{\frac{1}{n}\sum_{i=1}^n X_i} - \frac{1}{n}\sum_{i=1}^n\log X_i,
 \ee
 then $\wh{k}$ is approximately \be \wh{k} \approx \frac{3 - s + \sqrt{(s - 3)^2 + 24s}}{12s} \ee which is within 1.5\% of the correct value.%Although $\wh{\lm}$ is not an unbiased estimator of $\lm$, $\ol{X}$ is an unbiased estimator of $1/\lm$.% = \beta, where \beta is the scale parameter defined in the 'Alternative parameterization' section above.
 \end{remark}
@@ -466,24 +466,24 @@ then $\wh{k}$ is approximately \be \wh{k} \approx \frac{3 - s + \sqrt{(s - 3)^2 
 \begin{proof}[\bf Proof]
 We have the likelihood function is
 \be
-\sL\bb{k,\lm|X_1,\dots,X_n} = \sum^n_{i = 1} - \log \bb{\Gamma(k)} + k\log \lm + (k-1)\log X_i - \lm X_i.
+\sL\brb{k,\lm|X_1,\dots,X_n} = \sum^n_{i = 1} - \log \brb{\Gamma(k)} + k\log \lm + (k-1)\log X_i - \lm X_i.
 \ee
 
 Thus, taking the differentiation with respect to $k$ and $\lm$, we have
 \be
-\left.\fp{\sL}{\lm}\right|_{\wh{k},\wh{\lm}} = 0 \ \ra \ \sum^n_{i = 1} \frac k{\wh{\lm}} - X_i = 0 \ \ra\ \wh{\lm} = \bb{\frac 1{kn} \sum^n_{i = 1} X_i}^{-1},
+\left.\fp{\sL}{\lm}\right|_{\wh{k},\wh{\lm}} = 0 \ \ra \ \sum^n_{i = 1} \frac k{\wh{\lm}} - X_i = 0 \ \ra\ \wh{\lm} = \brb{\frac 1{kn} \sum^n_{i = 1} X_i}^{-1},
 \ee
 
 \be
-\left.\fp{\sL}{k}\right|_{\wh{k},\wh{\lm}} = 0 \ \ra \ \sum^n_{i = 1} -\psi\bb{\wh{k}} + \log \wh{\lm} + \log X_i = 0 \ \ra\ \log \wh{k} -\psi\bb{\wh{k}}  =  \log\bb{\frac 1n\sum^n_{i = 1} X_i} - \frac 1n \sum^n_{i=1} \log X_i.
-\ee                       %By Theorem \ref{thm:normal_rv_sample_mean_variance}, we know that \be \wh{\mu} \sim \sN\bb{\mu, \frac 1n \sigma^2},\qquad \wh{\sigma^2} \sim \frac 1n \sigma^2 \chi^2_{n-1}. \ee %Thus, we have \be \E\wh{\lm} = \mu,\quad \E\wh{\sigma^2} = \frac {n-1}n\sigma^2 < \sigma^2 \ee which implies that $\wh{\mu}$ is an unbiased estimator and $\wh{\sigma^2}$ is a biased one.
+\left.\fp{\sL}{k}\right|_{\wh{k},\wh{\lm}} = 0 \ \ra \ \sum^n_{i = 1} -\psi\brb{\wh{k}} + \log \wh{\lm} + \log X_i = 0 \ \ra\ \log \wh{k} -\psi\brb{\wh{k}}  =  \log\brb{\frac 1n\sum^n_{i = 1} X_i} - \frac 1n \sum^n_{i=1} \log X_i.
+\ee                       %By Theorem \ref{thm:normal_rv_sample_mean_variance}, we know that \be \wh{\mu} \sim \sN\brb{\mu, \frac 1n \sigma^2},\qquad \wh{\sigma^2} \sim \frac 1n \sigma^2 \chi^2_{n-1}. \ee %Thus, we have \be \E\wh{\lm} = \mu,\quad \E\wh{\sigma^2} = \frac {n-1}n\sigma^2 < \sigma^2 \ee which implies that $\wh{\mu}$ is an unbiased estimator and $\wh{\sigma^2}$ is a biased one.
 \end{proof}
 
 
 \begin{example}
 Let $X_1,\dots,X_n$ are i.i.d. with density function $f(x|\theta) = \theta x^{\theta -1}$ within $(0,1)$ where $\theta >0$. Thus, $X_i \sim \betad(\theta,1)$. Then its log-likelihood function
 \be
-\sL(\theta|X_1,\dots,X_n) = n \log \theta + \bb{\theta-1}\sum^n_{i=1}\log X_i .
+\sL(\theta|X_1,\dots,X_n) = n \log \theta + \brb{\theta-1}\sum^n_{i=1}\log X_i .
 \ee
 
 Taking differentiation we have
@@ -495,13 +495,13 @@ Let $Y_i := -\log X_i$ and thus $e^{-Y_i} = X_i$. Then density function of $Y_i$
 \be
 f(y|\theta) = \theta e^{-(\theta-1)y} e^{-y} = \theta e^{-\theta y}
 \ee
-which is an exponential whose mean and variance are $1/\theta$ and $1/\theta^2$. Thus, $- \sum^n_{i=1}\log X_i$ is a gamma distributed random variable $\Gamma\bb{n,\theta}$. So $\bb{-\sum^n_{i=1}\log X_i}^{-1}$ is inverse gamma distributed ($\Gamma^{-1}(n,\theta)$). Then by Proposition \ref{pro:moments_inverse_gamma},
+which is an exponential whose mean and variance are $1/\theta$ and $1/\theta^2$. Thus, $- \sum^n_{i=1}\log X_i$ is a gamma distributed random variable $\Gamma\brb{n,\theta}$. So $\brb{-\sum^n_{i=1}\log X_i}^{-1}$ is inverse gamma distributed ($\Gamma^{-1}(n,\theta)$). Then by Proposition \ref{pro:moments_inverse_gamma},
 \be
-\E\wh{\theta} = n\E\bb{- \frac{1}{\sum^n_{i=1}\log X_i}} = n\frac{\theta}{n-1} = \frac{n\theta}{n-1}
+\E\wh{\theta} = n\E\brb{- \frac{1}{\sum^n_{i=1}\log X_i}} = n\frac{\theta}{n-1} = \frac{n\theta}{n-1}
 \ee
 and
 \be
-\var\wh{\theta} = n^2\var\bb{- \frac{1}{\sum^n_{i=1}\log X_i}} = n^2\frac{\theta^2}{(n-1)^2(n-2)} = \frac{n^2\theta^2}{(n-1)^2(n-2)}.
+\var\wh{\theta} = n^2\var\brb{- \frac{1}{\sum^n_{i=1}\log X_i}} = n^2\frac{\theta^2}{(n-1)^2(n-2)} = \frac{n^2\theta^2}{(n-1)^2(n-2)}.
 \ee
 
 \end{example}
@@ -518,9 +518,9 @@ and
 
 \subsection{Linear model}
 
-We assume $Y_1,\dots,Y_n$ are independent with each $Y_i\sim \sN(\mu_i,\sigma^2)$ and $\mu_i = X_i \cdot \beta$ where $X_i = \bb{X_{i1},\dots,X_{im}}$ ($i = 1,\dots,n$) is a known vector explanatory variables and $\beta \in \R^m$ is an unknown parameter with $m< n$.
+We assume $Y_1,\dots,Y_n$ are independent with each $Y_i\sim \sN(\mu_i,\sigma^2)$ and $\mu_i = X_i \cdot \beta$ where $X_i = \brb{X_{i1},\dots,X_{im}}$ ($i = 1,\dots,n$) is a known vector explanatory variables and $\beta \in \R^m$ is an unknown parameter with $m< n$.
 
-Usually, we assume that $X^TX$ has rank $m<n$ ($\rank(X^TX) = \rank(X)$ by Proposition \ref{pro:rank_equalities}.(i)) with $X\in M_{n,m}(\F)$. However, this can be extended to $r<m$ such that $X^TX$ is not of full rank. In this case, we take g-inverse $\bb{X^TX}^-$ to replace $\bb{X^TX}^{-1}$ in the corresponding theorems.
+Usually, we assume that $X^TX$ has rank $m<n$ ($\rank(X^TX) = \rank(X)$ by Proposition \ref{pro:rank_equalities}.(i)) with $X\in M_{n,m}(\F)$. However, this can be extended to $r<m$ such that $X^TX$ is not of full rank. In this case, we take g-inverse $\brb{X^TX}^-$ to replace $\brb{X^TX}^{-1}$ in the corresponding theorems.
 
 This is usually written in vector notation as $Y = X\beta + \ve$ where
 \be
@@ -589,26 +589,26 @@ hypotheses, these conditions are equivalent.%\footnote{see wiki for alternative 
 \begin{proof}[\bf Proof]
 Fix $i\in \bra{1,\dots,k}$. If $\lm$ is an eigenvalue of $A_i$ with eigenvector $x$, then $\lm x = A_i x = A_i^2 x = \lm^2 x$, so $\lm = 0$ or $\lm =1$. So $A_i$ is a projection matrix\footnote{definition needed}. Then we can find an orthogonal matrix $Q$ such that $Q^T A_i Q = D_i$ (by Theorem \ref{thm:spectral_hermitian_matrices} as $A_i$ is symmetric), a diagonal matrix such that the first $r_i$ diagonal entries of $D_i$ are 1 and the rest 0.
 
-Set $Z = Q^T Y$. Then $Z\sim \sN\bb{0,\sigma^2 I}$ by Theorem \ref{thm:multivariate_gaussian_rv_property}, so
+Set $Z = Q^T Y$. Then $Z\sim \sN\brb{0,\sigma^2 I}$ by Theorem \ref{thm:multivariate_gaussian_rv_property}, so
 \be
 Y^T A_i Y = Z^TQ^T A_i Q Z = Z^TD_i Z \sim \sigma^2\chi^2_{r_i}.
 \ee
 
-Let $M(\theta_1,\dots,\theta_k)$ be the moment generating function of $\frac 1{\sigma^2}\bb{Y^TA_1Y,\dots,Y^TA_k Y}^T$ and let $M_i(\theta_i)$ denote the moment generating function of $\frac 1{\sigma^2}Y^TA_iY$. Note that for $\abs{\theta_1},\dots,\abs{\theta_k}$ sufficiently small, the matrix $I - 2\theta_1 A_1 - \dots - 2\theta_kA_k$ and each matrix $I - 2\theta_iA_i$ are positive definite\footnote{details needed. Note the second last line of the following equations need more details, e.g. the reason to omit the higher order products}. For such $\abs{\theta_1},\dots,\abs{\theta_k}$,
+Let $M(\theta_1,\dots,\theta_k)$ be the moment generating function of $\frac 1{\sigma^2}\brb{Y^TA_1Y,\dots,Y^TA_k Y}^T$ and let $M_i(\theta_i)$ denote the moment generating function of $\frac 1{\sigma^2}Y^TA_iY$. Note that for $\abs{\theta_1},\dots,\abs{\theta_k}$ sufficiently small, the matrix $I - 2\theta_1 A_1 - \dots - 2\theta_kA_k$ and each matrix $I - 2\theta_iA_i$ are positive definite\footnote{details needed. Note the second last line of the following equations need more details, e.g. the reason to omit the higher order products}. For such $\abs{\theta_1},\dots,\abs{\theta_k}$,
 \beast
-M(\theta_1,\dots,\theta_k) & = & \int_{\R^n}\frac 1{(2\pi\sigma^2)^{n/2}}\exp\bb{-\frac 1{2\sigma^2}Y^T Y}\exp\bb{\theta_1 \frac{Y^TA_1Y}{\sigma^2} + \dots + \theta_k \frac{Y^TA_kY}{\sigma^2}} dY \\
-& = & \int_{\R^n}\frac 1{(2\pi\sigma^2)^{n/2}}\exp\bb{-\frac 1{2\sigma^2}Y^T \bb{I - 2\theta_1 A_1 - \dots - 2\theta_k A_k} Y} dY \\
-& = & \det\bb{\bb{I - 2\theta_1 A_1 - \dots - 2\theta_k A_k}^{-1}}^{1/2} \quad (\text{see Definition \ref{def:non_degenerate_multivariate_gaussian}})\\
-& = & \det\bb{I - 2\theta_1 A_1 - \dots - 2\theta_k A_k}^{-1/2} \quad (\text{by Corollary \ref{cor:determinant_inverse}})\\
+M(\theta_1,\dots,\theta_k) & = & \int_{\R^n}\frac 1{(2\pi\sigma^2)^{n/2}}\exp\brb{-\frac 1{2\sigma^2}Y^T Y}\exp\brb{\theta_1 \frac{Y^TA_1Y}{\sigma^2} + \dots + \theta_k \frac{Y^TA_kY}{\sigma^2}} dY \\
+& = & \int_{\R^n}\frac 1{(2\pi\sigma^2)^{n/2}}\exp\brb{-\frac 1{2\sigma^2}Y^T \brb{I - 2\theta_1 A_1 - \dots - 2\theta_k A_k} Y} dY \\
+& = & \det\brb{\brb{I - 2\theta_1 A_1 - \dots - 2\theta_k A_k}^{-1}}^{1/2} \quad (\text{see Definition \ref{def:non_degenerate_multivariate_gaussian}})\\
+& = & \det\brb{I - 2\theta_1 A_1 - \dots - 2\theta_k A_k}^{-1/2} \quad (\text{by Corollary \ref{cor:determinant_inverse}})\\
 & & \qquad\qquad (\text{$I - 2\theta_1 A_1 - \dots - 2\theta_k A_k$ is invertible with $\abs{\theta_1},\dots,\abs{\theta_k}$ are sufficiently small \footnote{theorem needed}})\\
-& = & \det\bb{\bb{I - 2\theta_1 A_1}\dots \bb{I - 2\theta_k A_k}}^{-1/2} \quad (\text{by assumption}) \\
-& = & \det\bb{I - 2\theta_1 A_1}^{-1/2} \dots\det \bb{I - 2\theta_k A_k}^{-1/2} \quad (\text{by Theorem \ref{thm:determinant_product}}) \\
+& = & \det\brb{\brb{I - 2\theta_1 A_1}\dots \brb{I - 2\theta_k A_k}}^{-1/2} \quad (\text{by assumption}) \\
+& = & \det\brb{I - 2\theta_1 A_1}^{-1/2} \dots\det \brb{I - 2\theta_k A_k}^{-1/2} \quad (\text{by Theorem \ref{thm:determinant_product}}) \\
 & = & M_1(\theta_1)\dots M_k(\theta_k).
 \eeast
 
 Observe also that by Theorem \ref{thm:determinant_product}
 \be
-\det\bb{I-2\theta_i A_i}^{-1/2} = \det\bb{Q^T(I - 2\theta_i A_i)Q}^{-1/2} = \det \bb{I - 2\theta_i D_i}^{-1/2} = (1-2\theta_i)^{-r_i/2}
+\det\brb{I-2\theta_i A_i}^{-1/2} = \det\brb{Q^T(I - 2\theta_i A_i)Q}^{-1/2} = \det \brb{I - 2\theta_i D_i}^{-1/2} = (1-2\theta_i)^{-r_i/2}
 \ee
 which is the moment generating function of a $\chi^2_{r_i}$ distribution for $\theta_i < \frac 12$ (see Proposition \ref{pro:mgf_chi_squared}). Hence, by Proposition \ref{pro:independent_mgf}, we have $\bra{\frac 1{\sigma^2}Y^T A_1Y, \dots, \frac 1{\sigma^2}Y^TA_kY}$ are independent random variables, so $\bra{Y^TA_1Y, \dots, Y^TA_kY}$ are as well.
 \end{proof}
@@ -625,7 +625,7 @@ Suppose that $Y\sim \sN(0,\sigma^2 I)$ is a standard multivariate Gaussian rando
 \begin{proof}[\bf Proof]
 (i) $\ra$ (ii). Since $\sum^k_{i=1}A_i = I$, we have
 \be
-Y^T Y = Y^T \bb{\sum^k_{i=1}A_i} Y = \sum^k_{i=1} Y^T A_i Y.
+Y^T Y = Y^T \brb{\sum^k_{i=1}A_i} Y = \sum^k_{i=1} Y^T A_i Y.
 \ee
 
 Let $B_i = \sum_{i\neq j}A_j = I - A_i$. Thus, by Proposition \ref{pro:matrix_rank_inequalities_sum}.(i) we have
@@ -651,12 +651,12 @@ Thus, we know that we can have that $P_i^{-1} A_i P_i$ has the form of (as we ca
 
 Thus,
 \be
-P_i^{-1}B_i P_i = P_i^{-1}\bb{I - A_i}P_i = I - P_i^{-1} A_i P_i
+P_i^{-1}B_i P_i = P_i^{-1}\brb{I - A_i}P_i = I - P_i^{-1} A_i P_i
 \ee
 
 Thus, the last $n-r_i$ diagonal elements are all +1. Since the rank of $B_i$ is $n-r_i$, the other diagonal elements of $P_i^{-1}B_i P_i$ are all zeros. Therefore, we can see that $\lm_1=\lm_2 = \dots = \lm_{r_i} =1$. Therefore, eigenvalues of $A_i$ should be $r_i$ of +1 and $n-r_i$ of zeros. Therefore,
 \be
-A_i^2 = \bb{P_i^{-1}\bepm I_{r_i} & 0 \\ 0 & 0 \eepm P_i}^2 = P_i^{-1}\bepm I_{r_i} & 0 \\ 0 & 0 \eepm^2 P_i = P_i^{-1}\bepm I_{r_i} & 0 \\ 0 & 0 \eepm P_i = A_i.
+A_i^2 = \brb{P_i^{-1}\bepm I_{r_i} & 0 \\ 0 & 0 \eepm P_i}^2 = P_i^{-1}\bepm I_{r_i} & 0 \\ 0 & 0 \eepm^2 P_i = P_i^{-1}\bepm I_{r_i} & 0 \\ 0 & 0 \eepm P_i = A_i.
 \ee
 
 (i) $\ra$ (iii). Let $A_i = B_iC_i$ be a rank factorization\footnote{theorem needed.} with $B_i \in M_{n,r}(\R)$ and $C_i \in M_{r,n}(\R)$, $i=1,\dots,k$. Then
@@ -666,7 +666,7 @@ I = \sum^k_{i=1}A_i = \sum^k_{i=1}B_iC_i = \bepm B_1 & \dots & B_k \eepm \bepm C
 
 Since $\sum^k_{i=1}\rank(A_i) = n$, then $B = \bepm B_1 & \dots & B_k \eepm$ and $C = \bepm C_1 \\ \vdots \\ C_k\eepm$ are square matrices. Then by Proposition \ref{pro:matrix_rank_inequalities_sum}.(i)
 \be
-\rank\bb{I} \leq \min\bra{\rank(B),\rank(C)} \qquad \ra \quad r(B) = r(C) = n
+\rank\brb{I} \leq \min\bra{\rank(B),\rank(C)} \qquad \ra \quad r(B) = r(C) = n
 \ee
 which means that $B$ and $C$ are of full rank and thus invertible. Thus
 \be
@@ -680,14 +680,14 @@ A_i A_j = B_iC_i B_jC_j = 0.
 
 (iii) $\ra$ (ii). Since $\sum^k_{i=1}A_i = I$, then
 \be
-A_j \bb{\sum^k_{i=1}A_i} = A_j, \qquad j=1,\dots,k.
+A_j \brb{\sum^k_{i=1}A_i} = A_j, \qquad j=1,\dots,k.
 \ee
 
 It follows that $A_j^2 = A_j$.
 
 (ii) $\ra$ (i). Since $A_i$ is idempotent, $\rank(A_i) = \tr(A_i)$ as (idempotent only have eigenvalues of +1 and 0). Then
 \be
-\sum^k_{i=1}\rank(A_i) = \sum^k_{i=1}\tr(A_i) = \tr\bb{\sum^k_{i=1}A_i} = \tr(I) = n.
+\sum^k_{i=1}\rank(A_i) = \sum^k_{i=1}\tr(A_i) = \tr\brb{\sum^k_{i=1}A_i} = \tr(I) = n.
 \ee
 \end{proof}
 
@@ -696,9 +696,9 @@ It follows that $A_j^2 = A_j$.
 We can now state the joint distribution of $\wh{\beta}$ and $\wh{\sigma^2}$ of linear model.
 
 \begin{theorem}\label{thm:estimator_linear_model_mle}
-For $Y\in \R^n$ and $X\in M_{n,m}(\R)$ with $m<n$ and $\rank(X) = m$, if $Y = X\beta + \ve$ with $\beta\in \R^m$ and $\ve\sim \sN\bb{0,\sigma^2 I_n}$, then
+For $Y\in \R^n$ and $X\in M_{n,m}(\R)$ with $m<n$ and $\rank(X) = m$, if $Y = X\beta + \ve$ with $\beta\in \R^m$ and $\ve\sim \sN\brb{0,\sigma^2 I_n}$, then
 \ben
-\item [(i)] the MLE $\R^m$ estimator $\wh{\beta}\sim \sN\bb{\beta,\sigma^2 \bb{X^TX}^{-1}}$.
+\item [(i)] the MLE $\R^m$ estimator $\wh{\beta}\sim \sN\brb{\beta,\sigma^2 \brb{X^TX}^{-1}}$.
 \item [(ii)] the MLE estimator $\wh{\sigma^2} \sim \frac 1n\sigma^2 \chi^2_{n-m}$.
 \item [(iii)] $\wh{\beta}$ and $\wh{\sigma^2}$ are independent.
 \een
@@ -708,24 +708,24 @@ For $Y\in \R^n$ and $X\in M_{n,m}(\R)$ with $m<n$ and $\rank(X) = m$, if $Y = X\
 \ben
 \item [(i)] For Gaussian random variable $\ve$, we have that the log-likelihood for the unknown parameter $\theta = \bepm \beta \\ \sigma^2 \eepm$ is
 \be
-\ell\bb{\beta,\sigma^2} = -\frac 12 n\log \sigma^2 - \frac 1{2\sigma^2} \sum^n_{i=1}(Y_i - X_i \beta)^2 = -\frac 12 n\log \sigma^2 - \frac 1{2\sigma^2} \sum^n_{i=1}\bb{Y_i - \sum^m_{j=1}X_{ij} \beta_j}^2.
+\ell\brb{\beta,\sigma^2} = -\frac 12 n\log \sigma^2 - \frac 1{2\sigma^2} \sum^n_{i=1}(Y_i - X_i \beta)^2 = -\frac 12 n\log \sigma^2 - \frac 1{2\sigma^2} \sum^n_{i=1}\brb{Y_i - \sum^m_{j=1}X_{ij} \beta_j}^2.
 \ee
 
-A MLE $\bb{\wh{\beta}, \wh{\sigma^2}}$ satisfies
+A MLE $\brb{\wh{\beta}, \wh{\sigma^2}}$ satisfies
 \be
-0 = \left.\fp{\ell}{\beta_j}\right|_{\wh{\beta}, \wh{\sigma^2}} = \frac 1{\wh{\sigma^2}} \sum^n_{i=1} X_{ij}\bb{Y_i - \sum^m_{k=1}X_{ik} \wh{\beta}_k}.
+0 = \left.\fp{\ell}{\beta_j}\right|_{\wh{\beta}, \wh{\sigma^2}} = \frac 1{\wh{\sigma^2}} \sum^n_{i=1} X_{ij}\brb{Y_i - \sum^m_{k=1}X_{ik} \wh{\beta}_k}.
 \ee
 
-So $\bb{X^T Y}_j = \bb{X^TX \wh{\beta}}_j$ since $X_i \wh{\beta} = \bb{X\wh{\beta}}_i$. By assumption, $X^TX$ is positive definite and thus invertible\footnote{details needed}, so we deduce
+So $\brb{X^T Y}_j = \brb{X^TX \wh{\beta}}_j$ since $X_i \wh{\beta} = \brb{X\wh{\beta}}_i$. By assumption, $X^TX$ is positive definite and thus invertible\footnote{details needed}, so we deduce
 \be
-\wh{\beta} = \bb{X^T X}^{-1} X^T Y.
+\wh{\beta} = \brb{X^T X}^{-1} X^T Y.
 \ee
 
 Thus, $\wh{\beta}$ is a linear transformation of $Y$, but we know that $Y\sim \sN(X\beta,\sigma^2 I)$, hence by Theorem \ref{thm:multivariate_gaussian_rv_property},
 \beast
-\wh{\beta} & \sim & \sN \bb{\bb{X^T X}^{-1} X^TX\beta, \bb{X^T X}^{-1} X^T \sigma^2 I \bb{\bb{X^T X}^{-1} X^T}^T} \\
-& \sim & \sN\bb{\beta, \sigma^2 \bb{X^T X}^{-1} X^T X \bb{X^T X}^{-T}}\\
-& \sim & \sN\bb{\beta,\sigma^2 \bb{X^TX}^{-1}}.
+\wh{\beta} & \sim & \sN \brb{\brb{X^T X}^{-1} X^TX\beta, \brb{X^T X}^{-1} X^T \sigma^2 I \brb{\brb{X^T X}^{-1} X^T}^T} \\
+& \sim & \sN\brb{\beta, \sigma^2 \brb{X^T X}^{-1} X^T X \brb{X^T X}^{-T}}\\
+& \sim & \sN\brb{\beta,\sigma^2 \brb{X^TX}^{-1}}.
 \eeast
 
 \item [(ii)] Moreover,
@@ -739,12 +739,12 @@ where $\dabs{\cdot}$ is Euclidean norm. So
 
 Observe that the fitted values $\wh{Y} = X\wh{\beta}$ can be written as $\wh{Y} = PY$, where
 \be
-P = X\bb{X^T X}^{-1}X^T \ \ra \ P^2 = P,\quad P^T = P,
+P = X\brb{X^T X}^{-1}X^T \ \ra \ P^2 = P,\quad P^T = P,
 \ee
 so $P$ is an orthogonal projection\footnote{definition needed} onto the subspace of $\R^n$ spanned by the columns of $X$. We can write
 \beast
-\wh{\sigma^2} & = & \frac 1n\dabs{Y-X\wh{\beta}}^2 = \frac 1n\dabs{Y-X\bb{X^T X}^{-1} X^T Y}^2 = \frac 1n\dabs{Y - PY}^2\\
-& = & \frac 1n Y^T \bb{I - P^T}(I-P)Y = \frac 1n Y^T(I-P)Y.
+\wh{\sigma^2} & = & \frac 1n\dabs{Y-X\wh{\beta}}^2 = \frac 1n\dabs{Y-X\brb{X^T X}^{-1} X^T Y}^2 = \frac 1n\dabs{Y - PY}^2\\
+& = & \frac 1n Y^T \brb{I - P^T}(I-P)Y = \frac 1n Y^T(I-P)Y.
 \eeast
 
 We note that $I = P + (I-P)$ and $\lm$ is an eigenvalue of $P$ with eigenvector $Z$, then
@@ -754,7 +754,7 @@ We note that $I = P + (I-P)$ and $\lm$ is an eigenvalue of $P$ with eigenvector 
 
 Hence, $\rank(P) = \tr P$\footnote{Theorem needed here. Any projection $P = P^2$ on a vector space of dimension $d$ over a field is a diagonalizable matrix, since its minimal polynomial is $x^2 - x$, which splits into distinct linear factors. Or we can use the theorem that real symmetric matrices are diagonalizable by orthogonal matrices} and by Proposition \ref{pro:trace_change_order},
 \be
-\tr P = \tr\bb{X\bb{X^T X}^{-1}X^T} = \tr\bb{X^TX\bb{X^T X}^{-1}} = \tr I_m = m.
+\tr P = \tr\brb{X\brb{X^T X}^{-1}X^T} = \tr\brb{X^TX\brb{X^T X}^{-1}} = \tr I_m = m.
 \ee
 
 Similarly, the eigenvalues of $I-P$ are 0 or 1 only, so
@@ -764,7 +764,7 @@ Similarly, the eigenvalues of $I-P$ are 0 or 1 only, so
 
 Note that
 \beast
-\bb{Y-X\beta}^T (I-P)(Y-X\beta) & = & Y^T(I-P)Y - \beta^TX^T(I-P) Y - Y^T(I-P)X\beta + \beta^TX^T(I-P)X\beta \\
+\brb{Y-X\beta}^T (I-P)(Y-X\beta) & = & Y^T(I-P)Y - \beta^TX^T(I-P) Y - Y^T(I-P)X\beta + \beta^TX^T(I-P)X\beta \\
 & = & Y^T(I-P)Y.
 \eeast
 
@@ -790,12 +790,12 @@ L^TL = \bepm I_{n-m} & 0 \eepm Q^TQ\bepm I_{n-m}\\ 0 \eepm = I_{n-m}.
 
 Also note that if $B = (X^TX)^{-1}X^T$ (which is an $m\times n$ matrix), then
 \be
-BL = BLL^TL = (X^TX)^{-1}X^T \bb{I - P}L = (X^TX)^{-1}X^T \bb{I - X\bb{X^T X}^{-1}X^T}L = 0.
+BL = BLL^TL = (X^TX)^{-1}X^T \brb{I - P}L = (X^TX)^{-1}X^T \brb{I - X\brb{X^T X}^{-1}X^T}L = 0.
 \ee
 
 So it follows that $\bepm B \\ L^T \eepm Y$ is a linear transformation of $Y$, hence is normally distributed with covariance matrix (by Theorem \ref{thm:multivariate_gaussian_rv_property}.(i))
 \be
-\sigma^2 \bepm B\\ L^T \eepm \bepm B^T & L\eepm = \sigma^2 \bepm \bb{X^TX}^{-1} & 0 \\ 0 & I_{n-m}\eepm.
+\sigma^2 \bepm B\\ L^T \eepm \bepm B^T & L\eepm = \sigma^2 \bepm \brb{X^TX}^{-1} & 0 \\ 0 & I_{n-m}\eepm.
 \ee
 
 Thus, $\wh{\beta} = BY$ and
@@ -813,7 +813,7 @@ are independent by Theorem \ref{thm:multivariate_gaussian_rv_property}.(v) and T
 \begin{theorem}[estimator of OLS]
 The estimator $\wh{\beta}$ to minimize the sum of squared error is
 \be
-\wh{\beta} = \argmin_{\beta}\bb{Y-X\beta}^T \bb{Y-X\beta}  = (X^TX)^{-1}X^T Y.
+\wh{\beta} = \argmin_{\beta}\brb{Y-X\beta}^T \brb{Y-X\beta}  = (X^TX)^{-1}X^T Y.
 \ee
 \end{theorem}
 
@@ -822,24 +822,24 @@ The estimator $\wh{\beta}$ to minimize the sum of squared error is
 \end{proof}
 
 \begin{proposition}
-The minimum of $\bb{Y-X\beta}^T \bb{Y-X\beta}$ is attained at OLS estimator $\wh{\beta}$.
+The minimum of $\brb{Y-X\beta}^T \brb{Y-X\beta}$ is attained at OLS estimator $\wh{\beta}$.
 \end{proposition}
 
 
 \begin{proof}[\bf Proof]
 We have
 \beast
-\bb{Y-X\beta}^T \bb{Y-X\beta} & = & \bb{Y-X\wh{\beta} + X\wh{\beta} - X\beta}^T \bb{Y-X\wh{\beta} + X\wh{\beta} - X\beta} \\
-& = & \bb{Y-X\wh{\beta} }^T \bb{Y-X\wh{\beta}}+ \bb{\wh{\beta} - \beta}^T X^T X\bb{\wh{\beta} - \beta}
+\brb{Y-X\beta}^T \brb{Y-X\beta} & = & \brb{Y-X\wh{\beta} + X\wh{\beta} - X\beta}^T \brb{Y-X\wh{\beta} + X\wh{\beta} - X\beta} \\
+& = & \brb{Y-X\wh{\beta} }^T \brb{Y-X\wh{\beta}}+ \brb{\wh{\beta} - \beta}^T X^T X\brb{\wh{\beta} - \beta}
 \eeast
 since
 \be
-X^T\bb{Y - X\wh{\beta}} = X^T\bb{Y - X(X^TX)^{-1}X^T Y} = \bb{X^T - X^TX(X^TX)^{-1}X^T}Y = 0.
+X^T\brb{Y - X\wh{\beta}} = X^T\brb{Y - X(X^TX)^{-1}X^T Y} = \brb{X^T - X^TX(X^TX)^{-1}X^T}Y = 0.
 \ee
 
 It follows that
 \be
-\bb{Y-X\beta}^T \bb{Y-X\beta} \geq \bb{Y-X\wh{\beta} }^T \bb{Y-X\wh{\beta}}
+\brb{Y-X\beta}^T \brb{Y-X\beta} \geq \brb{Y-X\wh{\beta} }^T \brb{Y-X\wh{\beta}}
 \ee
 as claimed.
 \end{proof}
@@ -849,14 +849,14 @@ Suppose four objects are to be weighted using an ordinary chemical balance (with
 
 Let $\beta_1,\beta_2,\beta_3,\beta_4$ be the true weights of the objects. Define $x_{ij} =1$ or $-1$ depending upon whether we put the $j$th object in the right pan or in the left pan in the $i$th weighing. Let $Y_i$ denote the weight needed to achieve balance in the $i$th weighing. If the sign of $Y_i$ is positive, then the weight is required in the left pan, otherwise in the right pan.
 
-Then we have the model $\E Y = X\beta$ where $X = \bb{x_{ij}}$ is real, $Y$ is the $4\times 1$ vector with components $Y_i$, and $\beta$ is the $4\times 1$ vector with components $\beta_i$. As usual, we make the assumption that the $Y_i$s are uncorrelated with common variance $\sigma^2$. The dispersion matrix of $\wh{\beta}$ is $\sigma^2 \bb{X^TX}^{-1}$, assuming $X^TX$ to be nonsingular.
+Then we have the model $\E Y = X\beta$ where $X = \brb{x_{ij}}$ is real, $Y$ is the $4\times 1$ vector with components $Y_i$, and $\beta$ is the $4\times 1$ vector with components $\beta_i$. As usual, we make the assumption that the $Y_i$s are uncorrelated with common variance $\sigma^2$. The dispersion matrix of $\wh{\beta}$ is $\sigma^2 \brb{X^TX}^{-1}$, assuming $X^TX$ to be nonsingular.
 
 Thus to get more precision we must make the matrix $X^TX$ `large'. One measure of largeness of a positive semi-definite matrix is the determinant. This is the D-optimality criterion\footnote{details needed.}. %, which we will encounter again in the context of block designs)
 The matrix
 \be
 X = \bepm 1 & 1 & 1 & 1 \\ 1 & -1 & 1& -1 \\ 1 & 1 & -1 & -1 \\ 1 & -1 & -1 & 1 \eepm
 \ee
-satisfies $\det\bb{X^TX} = 4^4$, and by Corollary \ref{cor:positive_definite_determinant_smaller_than_n_power_n}, this is the maximum determinant possible. Note that the matrix $X$ is a Hadamard matrix (see Definition \ref{def:hadamard_matrix}). That is for $H_2 = \bepm 1 & 1 \\ 1 & -1 \eepm$,
+satisfies $\det\brb{X^TX} = 4^4$, and by Corollary \ref{cor:positive_definite_determinant_smaller_than_n_power_n}, this is the maximum determinant possible. Note that the matrix $X$ is a Hadamard matrix (see Definition \ref{def:hadamard_matrix}). That is for $H_2 = \bepm 1 & 1 \\ 1 & -1 \eepm$,
 \be
 X = H_2 \otimes H_2.
 \ee
@@ -876,7 +876,7 @@ Suppose we estimate the linear model parameters with OLS. Then the residual sum 
 RSS & = & (Y-\wh{Y})^T(Y-\wh{Y}) = (Y-X\wh{\beta})^T(Y-X\wh{\beta}) \\
 & = & Y^TY - 2\wh{\beta}^TX^T Y + \wh{\beta}^T X^T X \wh{\beta} \\
 & = & Y^TY - 2Y^T X (X^TX)^{-1} X^T Y + Y^T X (X^TX)^{-1} X^T X (X^TX)^{-1}X^T Y \\
-& = & Y^TY - Y^T X (X^TX)^{-1} X^T Y = Y^T \bb{I - P}Y.
+& = & Y^TY - Y^T X (X^TX)^{-1} X^T Y = Y^T \brb{I - P}Y.
 \eeast
 
 The total sum of squares (TSS\index{total sum of squares, TSS}) is defined to be
@@ -910,7 +910,7 @@ TSS & = & (Y-\ol{Y}\onevec_{n\times 1})^T(Y-\ol{Y}\onevec_{n\times 1}) = (Y-\wh{
 
 In particular,
 \be
-(Y-\wh{Y})^T\wh{Y} = Y^T(I-X(X^TX)^{-1}X^T)X(X^TX)^{-1}X^TY = Y^T\bb{X(X^TX)^{-1}X^T - X(X^TX)^{-1}X^T}Y = 0.
+(Y-\wh{Y})^T\wh{Y} = Y^T(I-X(X^TX)^{-1}X^T)X(X^TX)^{-1}X^TY = Y^T\brb{X(X^TX)^{-1}X^T - X(X^TX)^{-1}X^T}Y = 0.
 \ee
 
 Thus, $TSS = RSS + ESS$ iff $\ol{Y}(Y- \wh{Y})^T\onevec_{n\times 1} = 0$.
@@ -923,15 +923,15 @@ With the linear model setup $Y = X\beta +\ve$, we have $TSS = RSS + ESS$ if $X$ 
 \begin{proof}[\bf Proof]
 According to Proposition \ref{pro:tss_equals_rss_ess_iff_mean_times_est_error_zero}, it suffices to show that
 \be
-0 = \onevec_{1\times n}(Y- \wh{Y}) = \onevec_{1\times n} \bb{I - X(X^TX)^{-1}X^T}Y.
+0 = \onevec_{1\times n}(Y- \wh{Y}) = \onevec_{1\times n} \brb{I - X(X^TX)^{-1}X^T}Y.
 \ee
 
-If $X$ has a non-zero constant column, it is equivalent to consider $X = \bb{\onevec_{n\times 1},Z_{n\times (n-1)}}$ with $\rank(Z) = n-1$. Therefore,
+If $X$ has a non-zero constant column, it is equivalent to consider $X = \brb{\onevec_{n\times 1},Z_{n\times (n-1)}}$ with $\rank(Z) = n-1$. Therefore,
 \be
 X^TX = \bepm \onevec_{1\times n} \\ Z^T \eepm \bepm \onevec_{n\times 1} & Z\eepm = \bepm n & \onevec_{1\times n} Z \\ Z^T\onevec_{n\times 1} & Z^TZ \eepm.
 \ee
 
-Then by Schur's theorem (Theorem \ref{thm:schur_inverse_a}), Schur complement of $n$ in $X^TX$ is $W = (X^TX)/\bb{n}$. Thus,
+Then by Schur's theorem (Theorem \ref{thm:schur_inverse_a}), Schur complement of $n$ in $X^TX$ is $W = (X^TX)/\brb{n}$. Thus,
 \be
 (X^TX)^{-1} = \bepm \frac 1n + \frac 1{n^2}\onevec_{1\times n}Z W^{-1}Z^T\onevec_{n\times 1} & \ - \frac 1n \onevec_{1\times n}ZW^{-1}\ \\ - \frac 1n W^{-1}Z^T\onevec_{n\times 1} & W^{-1} \eepm
 \ee
@@ -945,8 +945,8 @@ X(X^TX)^{-1}X^T & = &  \bepm \onevec_{n\times 1} & Z\eepm \bepm \frac 1n + \frac
 
 Then,
 \beast
-& & \onevec_{1\times n} \bb{I - X(X^TX)^{-1}X^T} \\
-& = & \onevec_{1\times n}\bb{I - \frac 1n \onevec_{n\times n} - \frac 1{n^2} \onevec_{n\times n}Z W^{-1}Z^T\onevec_{n\times n} + \frac 1n Z W^{-1}Z^T\onevec_{n\times n }  + \frac 1n \onevec_{n\times n}ZW^{-1} Z^T -  Z W^{-1}Z^T} \\
+& & \onevec_{1\times n} \brb{I - X(X^TX)^{-1}X^T} \\
+& = & \onevec_{1\times n}\brb{I - \frac 1n \onevec_{n\times n} - \frac 1{n^2} \onevec_{n\times n}Z W^{-1}Z^T\onevec_{n\times n} + \frac 1n Z W^{-1}Z^T\onevec_{n\times n }  + \frac 1n \onevec_{n\times n}ZW^{-1} Z^T -  Z W^{-1}Z^T} \\
 & = & \onevec_{1\times n} - \frac 1n n\onevec_{1\times n} - \frac 1{n^2}n \onevec_{1\times n} Z W^{-1}Z^T\onevec_{n\times n} + \frac 1n \onevec_{1\times n} Z W^{-1}Z^T\onevec_{n\times n }  + \frac 1n n \onevec_{1\times n} ZW^{-1} Z^T - \onevec_{1\times n} Z W^{-1}Z^T \\
 & = & 0.
 \eeast
@@ -971,7 +971,7 @@ Note that the larger $R^2$, the better the linear model fits.
 \begin{theorem}\label{thm:estimators_ordinary_least_square}
 The estimators $\wh{\beta} = (X^TX)^{-1}X^TY$ and $s^2 = \wh{\sigma^2} = \frac{RSS}{n-m} = \frac 1{n-m}(Y-X\wh{\beta})^T(Y-X\wh{\beta})$ are independently distributed with
 \be
-\wh{\beta} \sim \sN\bb{\beta, \sigma^2\bb{X^TX}^{-1}},\qquad \wh{\sigma^2} \sim \frac{\sigma^2}{n-m} \chi^2_{n-m}.
+\wh{\beta} \sim \sN\brb{\beta, \sigma^2\brb{X^TX}^{-1}},\qquad \wh{\sigma^2} \sim \frac{\sigma^2}{n-m} \chi^2_{n-m}.
 \ee
 \end{theorem}
 
@@ -1000,12 +1000,12 @@ Usually, $\beta_i^0$ is taken to be 0. Thus, if the null hypothesis is rejected,
 \begin{proof}[\bf Proof]
 By Theorem \ref{thm:estimators_ordinary_least_square},
 \be
-\bb{\wh{\beta}_i - \beta_i}/\bb{\sigma \sqrt{\xi_{ii}}} \sim \sN(0,1),\qquad s^2/\sigma^2 \sim \chi^2_{n-m}/\bb{n-m}.
+\brb{\wh{\beta}_i - \beta_i}/\brb{\sigma \sqrt{\xi_{ii}}} \sim \sN(0,1),\qquad s^2/\sigma^2 \sim \chi^2_{n-m}/\brb{n-m}.
 \ee
 
 Then by Proposition \ref{pro:normal_chi_square_t} as these two random variables are independent,
 \be
-\frac{\bb{\wh{\beta}_i - \beta_i}/\bb{\sigma \sqrt{\xi_{ii}}} }{s/\sigma} \sim T\bb{n-m}\ \ra \ \frac{\wh{\beta}_i - \beta_i}{ s\sqrt{\xi_{ii}}} \sim T\bb{n-m}
+\frac{\brb{\wh{\beta}_i - \beta_i}/\brb{\sigma \sqrt{\xi_{ii}}} }{s/\sigma} \sim T\brb{n-m}\ \ra \ \frac{\wh{\beta}_i - \beta_i}{ s\sqrt{\xi_{ii}}} \sim T\brb{n-m}
 \ee
 \end{proof}
 
@@ -1014,9 +1014,9 @@ Then by Proposition \ref{pro:normal_chi_square_t} as these two random variables 
 \begin{theorem}[estimator of OLS with constraints]
 The estimator $\wt{\beta}$ to minimize the sum of squared error with constraint $R\beta =Z$ where  $\rank(X)=m$, $R\in M_{k,m}(\F)$ with $\rank(R) = k$ and $Z \in M_{k,1}(\F)$ is
 \beast
-\wt{\beta} & = & \argmin_{\beta}\bb{Y-X\beta}^T \bb{Y-X\beta} \\
-& = & (X^TX)^{-1}X^T Y - (X^TX)^{-1}R^T\bb{R(X^TX)^{-1}R^T}^{-1}\bb{R(X^TX)^{-1}X^T Y-Z} \\
-& = &  \wh{\beta} - (X^TX)^{-1}R^T\bb{R(X^TX)^{-1}R^T}^{-1}\bb{R \wh{\beta}-Z}.
+\wt{\beta} & = & \argmin_{\beta}\brb{Y-X\beta}^T \brb{Y-X\beta} \\
+& = & (X^TX)^{-1}X^T Y - (X^TX)^{-1}R^T\brb{R(X^TX)^{-1}R^T}^{-1}\brb{R(X^TX)^{-1}X^T Y-Z} \\
+& = &  \wh{\beta} - (X^TX)^{-1}R^T\brb{R(X^TX)^{-1}R^T}^{-1}\brb{R \wh{\beta}-Z}.
 \eeast
 \end{theorem}
 
@@ -1025,10 +1025,10 @@ The estimator $\wt{\beta}$ to minimize the sum of squared error with constraint 
 \end{proof}
 
 \begin{proposition}
-The minimum of $\bb{Y-X\beta}^T \bb{Y-X\beta}$ with constraint  $R\beta =Z$ where $\rank(X)=m$, $R\in M_{k,m}(\F)$ with $\rank(R) = k$ and $Z \in M_{k,1}(\F)$ is attained at OLS estimator
+The minimum of $\brb{Y-X\beta}^T \brb{Y-X\beta}$ with constraint  $R\beta =Z$ where $\rank(X)=m$, $R\in M_{k,m}(\F)$ with $\rank(R) = k$ and $Z \in M_{k,1}(\F)$ is attained at OLS estimator
 \beast
-\wt{\beta} & = & (X^TX)^{-1}X^T Y - (X^TX)^{-1}R^T\bb{R(X^TX)^{-1}R^T}^{-1}\bb{R(X^TX)^{-1}X^T Y-Z}\\
-& = & \wh{\beta} - (X^TX)^{-1}R^T\bb{R(X^TX)^{-1}R^T}^{-1}\bb{R \wh{\beta}-Z}.
+\wt{\beta} & = & (X^TX)^{-1}X^T Y - (X^TX)^{-1}R^T\brb{R(X^TX)^{-1}R^T}^{-1}\brb{R(X^TX)^{-1}X^T Y-Z}\\
+& = & \wh{\beta} - (X^TX)^{-1}R^T\brb{R(X^TX)^{-1}R^T}^{-1}\brb{R \wh{\beta}-Z}.
 \eeast
 \end{proposition}
 
@@ -1041,13 +1041,13 @@ R(X^TX)^{-1}R^T = WX^TX (X^TX)^{-1} X^TX W^T = WX^TXW^T = SS^T.
 
 For some $V$, $RV = Z$, we have
 \beast
-R(X^TX)^{-1}R^T \bb{R(X^TX)^{-1}R^T}^{-1}Z & = &  R(X^TX)^{-1}R^T \bb{R(X^TX)^{-1}R^T}^{-1}RV \\
-& = & SS^T \bb{SS^T}^{-1}SXV  = SXV = RV = Z.
+R(X^TX)^{-1}R^T \brb{R(X^TX)^{-1}R^T}^{-1}Z & = &  R(X^TX)^{-1}R^T \brb{R(X^TX)^{-1}R^T}^{-1}RV \\
+& = & SS^T \brb{SS^T}^{-1}SXV  = SXV = RV = Z.
 \eeast
 
 Similarly,
 \beast
-R(X^TX)^{-1}R^T \bb{R(X^TX)^{-1}R^T}^{-1}R\wh{\beta} & = & SS^T (SS^T)^{-1} WX^TX (X^TX)^{-1}X^TY \\
+R(X^TX)^{-1}R^T \brb{R(X^TX)^{-1}R^T}^{-1}R\wh{\beta} & = & SS^T (SS^T)^{-1} WX^TX (X^TX)^{-1}X^TY \\
 & = & WX^TY = SY
 \eeast
 and
@@ -1059,25 +1059,25 @@ Then we can have that $R\wt{\beta} = Z$.
 
 Thus, we have
 \beast
-\bb{Y-X\beta}^T \bb{Y-X\beta} & = & \bb{Y-X\wt{\beta} + X\wt{\beta} - X\beta}^T \bb{Y-X\wt{\beta} + X\wt{\beta} - X\beta} \\
-& = & \bb{Y-X\wt{\beta} }^T \bb{Y-X\wt{\beta}}+ \bb{\wt{\beta} - \beta}^T X^T X\bb{\wt{\beta} - \beta}
+\brb{Y-X\beta}^T \brb{Y-X\beta} & = & \brb{Y-X\wt{\beta} + X\wt{\beta} - X\beta}^T \brb{Y-X\wt{\beta} + X\wt{\beta} - X\beta} \\
+& = & \brb{Y-X\wt{\beta} }^T \brb{Y-X\wt{\beta}}+ \brb{\wt{\beta} - \beta}^T X^T X\brb{\wt{\beta} - \beta}
 \eeast
 since we can show that $(\wt{\beta} -\beta)^T X^T(Y-X\wt{\beta}) = 0$ as follows. We have
 \beast
-X^TX\wt{\beta} & = & X^TX \wh{\beta} - X^TX(X^TX)^{-1} R^T(R(X^X)^{-1}R^T)^{-1}\bb{R\wh{\beta}-Z} \\
-& = & X^TY - X^TX(X^TX)^{-1} R^T(R(X^X)^{-1}R^T)^{-1}\bb{R\wh{\beta}-Z} \\
-& = & X^TY - R^T(R(X^X)^{-1}R^T)^{-1}\bb{R\wh{\beta}-Z} .
+X^TX\wt{\beta} & = & X^TX \wh{\beta} - X^TX(X^TX)^{-1} R^T(R(X^X)^{-1}R^T)^{-1}\brb{R\wh{\beta}-Z} \\
+& = & X^TY - X^TX(X^TX)^{-1} R^T(R(X^X)^{-1}R^T)^{-1}\brb{R\wh{\beta}-Z} \\
+& = & X^TY - R^T(R(X^X)^{-1}R^T)^{-1}\brb{R\wh{\beta}-Z} .
 \eeast
 
-Thus, $X^T(Y-X\wt{\beta}) = R^T(R(X^X)^{-1}R^T)^{-1}\bb{R\wh{\beta}-Z}$. Also, since $R\wt{\beta} = R\beta = 0$,
+Thus, $X^T(Y-X\wt{\beta}) = R^T(R(X^X)^{-1}R^T)^{-1}\brb{R\wh{\beta}-Z}$. Also, since $R\wt{\beta} = R\beta = 0$,
 \beast
-(\wt{\beta} -\beta)^T X^T(Y-X\wt{\beta}) & = & (\wt{\beta} -\beta)^T R^T(R(X^X)^{-1}R^T)^{-1}\bb{R\wh{\beta}-Z} \\
-& = &  \bb{R(\wt{\beta} -\beta)}^T(R(X^X)^{-1}R^T)^{-1}\bb{R\wh{\beta}-Z}  = 0.
+(\wt{\beta} -\beta)^T X^T(Y-X\wt{\beta}) & = & (\wt{\beta} -\beta)^T R^T(R(X^X)^{-1}R^T)^{-1}\brb{R\wh{\beta}-Z} \\
+& = &  \brb{R(\wt{\beta} -\beta)}^T(R(X^X)^{-1}R^T)^{-1}\brb{R\wh{\beta}-Z}  = 0.
 \eeast
 
 It follows that
 \be
-\bb{Y-X\beta}^T \bb{Y-X\beta} \geq \bb{Y-X\wt{\beta} }^T \bb{Y-X\wt{\beta}}
+\brb{Y-X\beta}^T \brb{Y-X\beta} \geq \brb{Y-X\wt{\beta} }^T \brb{Y-X\wt{\beta}}
 \ee
 as claimed.
 \end{proof}
@@ -1090,7 +1090,7 @@ H_0:\ R\beta = Z\quad \text{against}\quad H_1:\ R\beta \neq Z
 \ee
 where $R\in M_{k,m}(\F)$ with $\rank(R) = k$ and $Z \in M_{k,1}(\F)$. Note that it is natural that $\sR(R^T) \subseteq \sR(X^T)$ as $X$ is full rank ($\rank(X) = m$)\footnote{We will discuss the case that $X$ is not full rank later, which needs $\sR(R^T) \subseteq \sR(X^T)$ indeed.}. Then OLS $F$-statistic for testing this null hypothesis is given by Wald form
 \be
-F = (R\wh{\beta} - Z)^T \bb{s^2 R(X^TX)^{-1}R^T}^{-1}(R\wh{\beta} - Z)/k.
+F = (R\wh{\beta} - Z)^T \brb{s^2 R(X^TX)^{-1}R^T}^{-1}(R\wh{\beta} - Z)/k.
 \ee
 where
 \be
@@ -1102,7 +1102,7 @@ F = \frac{(RSS_H - RSS)/k}{RSS/(n-m)}.
 \ee
 where
 \be
-\wt{\beta} = \wh{\beta} - (X^TX)^{-1}R^T\bb{R(X^TX)^{-1}R^T}^{-1}\bb{R\wh{\beta}-Z}
+\wt{\beta} = \wh{\beta} - (X^TX)^{-1}R^T\brb{R(X^TX)^{-1}R^T}^{-1}\brb{R\wh{\beta}-Z}
 \ee
 is estimator of OLS with constraints and
 \be
@@ -1118,17 +1118,17 @@ F \sim F(k,n-m).
 \begin{proof}[\bf Proof]
 By Theorem \ref{thm:estimators_ordinary_least_square} and Theorem  \ref{thm:multivariate_gaussian_rv_property}.(i), we have that
 \be
-R\wh{\beta} \sim \sN\bb{R\beta, \sigma^2R(X^TX)^{-1}R^T} \sim  \sN\bb{Z, \sigma^2R(X^TX)^{-1}R^T}
+R\wh{\beta} \sim \sN\brb{R\beta, \sigma^2R(X^TX)^{-1}R^T} \sim  \sN\brb{Z, \sigma^2R(X^TX)^{-1}R^T}
 \ee
 under hull hypothesis. Then by Proposition \ref{pro:multivariate_normal_convert_to_chi_square},
 \be
-L = (R\wh{\beta}-Z)^T \bb{\sigma^2R(X^TX)^{-1}R^T}^{-1}(R\wh{\beta}-Z) \sim \chi^2_k.
+L = (R\wh{\beta}-Z)^T \brb{\sigma^2R(X^TX)^{-1}R^T}^{-1}(R\wh{\beta}-Z) \sim \chi^2_k.
 \ee
 
 Also, $s^2 = RSS/(n-m) \sim \frac{\sigma^2}{n-m}\chi^2_{n-m}$ and $\wh{\beta}$ are independnent by Theorem \ref{thm:estimators_ordinary_least_square}, Thus, $L$ and $s^2$ are independent.
 \beast
-F & = & (R\wh{\beta} - Z)^T \bb{s^2 R(X^TX)^{-1}R^T}^{-1}(R\wh{\beta} - Z)/k  \\
-& = & \frac 1{s^2} (R\wh{\beta} - Z)^T \bb{\sigma^2 R(X^TX)^{-1}R^T}^{-1}(R\wh{\beta} - Z)/k  = \frac{L/k}{s^2} \sim F(k,n-m).
+F & = & (R\wh{\beta} - Z)^T \brb{s^2 R(X^TX)^{-1}R^T}^{-1}(R\wh{\beta} - Z)/k  \\
+& = & \frac 1{s^2} (R\wh{\beta} - Z)^T \brb{\sigma^2 R(X^TX)^{-1}R^T}^{-1}(R\wh{\beta} - Z)/k  = \frac{L/k}{s^2} \sim F(k,n-m).
 \eeast
 
 We can let $R = WX^TX$, then
@@ -1139,9 +1139,9 @@ We can let $R = WX^TX$, then
 \beast
 RSS_H - RSS & = & 2Y^TX(\wh{\beta} - \wt{\beta}) + \wt{\beta}^T X^TX\wt{\beta} -  \wh{\beta}^T X^TX\wh{\beta} \\
 & = & 2 Y^TX W^T(WX^TXW^T)^{-1}(R\wh{\beta} - Z) - 2\wh{\beta}^TX^TXW^T(WX^TXW^T)^{-1}(R\wh{\beta} - Z) \\
-& & \qquad + \bb{W^T(WX^TXW^T)^{-1}(R\wh{\beta} - Z)}^T \ X^TX\ W^T(WX^TXW^T)^{-1}(R\wh{\beta} - Z)\\
-& = & \bb{(R\wh{\beta} - Z)}^T (WX^TXW^T)^{-1} W X^TX W^T(WX^TXW^T)^{-1}(R\wh{\beta} - Z)\\
-& = & (R\wh{\beta} - Z)^T \bb{R(X^TX)^{-1}R^T}^{-1}(R\wh{\beta} - Z)
+& & \qquad + \brb{W^T(WX^TXW^T)^{-1}(R\wh{\beta} - Z)}^T \ X^TX\ W^T(WX^TXW^T)^{-1}(R\wh{\beta} - Z)\\
+& = & \brb{(R\wh{\beta} - Z)}^T (WX^TXW^T)^{-1} W X^TX W^T(WX^TXW^T)^{-1}(R\wh{\beta} - Z)\\
+& = & (R\wh{\beta} - Z)^T \brb{R(X^TX)^{-1}R^T}^{-1}(R\wh{\beta} - Z)
 \eeast
 which is the required result.\footnote{See the alternative proof in \cite{Bapat_2012}.$P_{90}$}
 \end{proof}
@@ -1171,15 +1171,15 @@ Then we calculate the following
 \hline
 Source& & degrees of freedom & & Sum of squares & & Mean sum of squares & & $F$-statistic\\
 \hline
-treatments & & $k-1$ & &  $SSA = \sum^k_{i=1} n_i \bb{\ol{Y}_{i\cdot} - \ol{Y}_{\cdot\cdot}}^2$ & &   $MSA = SSA/(k-1)$ & &   \\
-error & &  $n-k$ & &  $SSE = \sum^k_{i=1} \sum^{n_i}_{j=1}\bb{Y_{ij} - \ol{Y}_{i\cdot}}^2$ & &  $MSE = SSE/(n-k)$ & &  $MSA/MSE$ \\
-total & &  $n-1$ & &  $SST = \sum^k_{i=1} \sum^{n_i}_{j=1} \bb{Y_{ij} - \ol{Y}_{\cdot\cdot}}^2$ & & & &  \\
+treatments & & $k-1$ & &  $SSA = \sum^k_{i=1} n_i \brb{\ol{Y}_{i\cdot} - \ol{Y}_{\cdot\cdot}}^2$ & &   $MSA = SSA/(k-1)$ & &   \\
+error & &  $n-k$ & &  $SSE = \sum^k_{i=1} \sum^{n_i}_{j=1}\brb{Y_{ij} - \ol{Y}_{i\cdot}}^2$ & &  $MSE = SSE/(n-k)$ & &  $MSA/MSE$ \\
+total & &  $n-1$ & &  $SST = \sum^k_{i=1} \sum^{n_i}_{j=1} \brb{Y_{ij} - \ol{Y}_{\cdot\cdot}}^2$ & & & &  \\
 \hline
 \end{tabular}%\end{table}
 \end{center}
 and have that
 \be
-\frac{MSA}{MSE} = \frac{\sum^k_{i=1} n_i \bb{\ol{Y}_{i\cdot} - \ol{Y}_{\cdot\cdot}}^2/(k-1)}{\sum^k_{i=1}\sum^{n_i}_{j=1}\bb{Y_{ij} - \ol{Y}_{i\cdot}}^2/(n-k)} \sim F(k-1,n-k).
+\frac{MSA}{MSE} = \frac{\sum^k_{i=1} n_i \brb{\ol{Y}_{i\cdot} - \ol{Y}_{\cdot\cdot}}^2/(k-1)}{\sum^k_{i=1}\sum^{n_i}_{j=1}\brb{Y_{ij} - \ol{Y}_{i\cdot}}^2/(n-k)} \sim F(k-1,n-k).
 \ee
 under $H_0$. Note that we use $SST$, $SSE$ and $SSA$ for total sum of squares, error sum of squares and treatment sum of squares, respectively.
 \end{theorem}
@@ -1191,23 +1191,23 @@ z_{ij} = \frac{Y_{ij}-\mu -\alpha}{\sigma}
 \ee
 which is standard normal if $H_0$ is true and where $\alpha$ denotes the common value of $\alpha_1,\dots,\alpha_k$. Let $z$ be the vector
 \be
-\bb{z_{11},\dots,z_{1n_1},z_{21},\dots,z_{2n_2},\dots,z_{k1},\dots,z_{kn_k}}^T.
+\brb{z_{11},\dots,z_{1n_1},z_{21},\dots,z_{2n_2},\dots,z_{k1},\dots,z_{kn_k}}^T.
 \ee
 
 Then
 \beast
-\sum^k_{i=1}\sum^{n_i}_{j=1} z_{ij}^2 & = & \sum^k_{i=1}\sum^{n_i}_{j=1} \bb{z_{ij} - \ol{z}_{i\cdot} +  \ol{z}_{i\cdot}  - \ol{z}_{\cdot\cdot} +  \ol{z}_{\cdot\cdot} }^2 \\
-& = & \sum^k_{i=1}\sum^{n_i}_{j=1} \bb{z_{ij} - \ol{z}_{i\cdot}}^2 + \sum^k_{i=1} n_i\bb{ \ol{z}_{i\cdot}  - \ol{z}_{\cdot\cdot}}^2  +  n\ol{z}_{\cdot\cdot}^2 \qquad (*)
+\sum^k_{i=1}\sum^{n_i}_{j=1} z_{ij}^2 & = & \sum^k_{i=1}\sum^{n_i}_{j=1} \brb{z_{ij} - \ol{z}_{i\cdot} +  \ol{z}_{i\cdot}  - \ol{z}_{\cdot\cdot} +  \ol{z}_{\cdot\cdot} }^2 \\
+& = & \sum^k_{i=1}\sum^{n_i}_{j=1} \brb{z_{ij} - \ol{z}_{i\cdot}}^2 + \sum^k_{i=1} n_i\brb{ \ol{z}_{i\cdot}  - \ol{z}_{\cdot\cdot}}^2  +  n\ol{z}_{\cdot\cdot}^2 \qquad (*)
 \eeast
 since the cross-product terms equal zero. That is,
 \be
-\sum^k_{i=1}\sum^{n_i}_{j=1} \bb{z_{ij} - \ol{z}_{i\cdot}}\bb{ \ol{z}_{i\cdot}  - \ol{z}_{\cdot\cdot}} = \sum^k_{i=1} \bb{ \ol{z}_{i\cdot}  - \ol{z}_{\cdot\cdot}}\sum^{n_i}_{j=1}\bb{z_{ij} - \ol{z}_{i\cdot}} = 0,
+\sum^k_{i=1}\sum^{n_i}_{j=1} \brb{z_{ij} - \ol{z}_{i\cdot}}\brb{ \ol{z}_{i\cdot}  - \ol{z}_{\cdot\cdot}} = \sum^k_{i=1} \brb{ \ol{z}_{i\cdot}  - \ol{z}_{\cdot\cdot}}\sum^{n_i}_{j=1}\brb{z_{ij} - \ol{z}_{i\cdot}} = 0,
 \ee
 \be
-\ol{z}_{\cdot\cdot} \sum^k_{i=1}\sum^{n_i}_{j=1} \bb{z_{ij} - \ol{z}_{i\cdot}} = \ol{z}_{\cdot\cdot} \sum^k_{i=1} 0 = 0
+\ol{z}_{\cdot\cdot} \sum^k_{i=1}\sum^{n_i}_{j=1} \brb{z_{ij} - \ol{z}_{i\cdot}} = \ol{z}_{\cdot\cdot} \sum^k_{i=1} 0 = 0
 \ee
 \be
-\ol{z}_{\cdot\cdot} \sum^k_{i=1}\sum^{n_i}_{j=1} \bb{ \ol{z}_{i\cdot}  - \ol{z}_{\cdot\cdot}} = \ol{z}_{\cdot\cdot} \sum^k_{i=1} \bb{ \ol{z}_{i\cdot}  - \ol{z}_{\cdot\cdot}}\sum^{n_i}_{j=1} 1 = \ol{z}_{\cdot\cdot} \sum^k_{i=1} n_i\bb{ \ol{z}_{i\cdot}  - \ol{z}_{\cdot\cdot}} = 0.
+\ol{z}_{\cdot\cdot} \sum^k_{i=1}\sum^{n_i}_{j=1} \brb{ \ol{z}_{i\cdot}  - \ol{z}_{\cdot\cdot}} = \ol{z}_{\cdot\cdot} \sum^k_{i=1} \brb{ \ol{z}_{i\cdot}  - \ol{z}_{\cdot\cdot}}\sum^{n_i}_{j=1} 1 = \ol{z}_{\cdot\cdot} \sum^k_{i=1} n_i\brb{ \ol{z}_{i\cdot}  - \ol{z}_{\cdot\cdot}} = 0.
 \ee
 
 Let $A_1,A_2,A_3\in M_n(\F)$ be symmetric matrices such that the quadratic forms
@@ -1239,7 +1239,7 @@ are linearly independent vectors in $\sN(A_2)$.\footnote{details needed.} Thus, 
 
 Combining this observation and $(\dag)$, we see that $\rank(A_2) = k-1$. Hence $\sum^3_{i=1}\rank(A_i) = n$. We conclude by Cochran's theorem (Theorem \ref{thm:cochran_independent_chi_square} and Theorem \ref{thm:cochran_equivalence}) that $z^TA_1z$, $z^TA_2z$ are independent chi-square variables. It remains to find the degrees of freedom. These are $\rank(A_1)$, $\rank(A_2)$ respectively, which we have already seen to be $n-k$ and $k-1$, respectively. Therefore, under $H_0$, by Proposition \ref{pro:independent_chi_square_ratio_implies_f},
 \be
-\frac{\sum^k_{i=1} n_i \bb{\ol{z}_{i\cdot} - \ol{z}_{\cdot\cdot}}^2/(k-1)}{\sum^k_{i=1}\sum^{n_i}_{j=1}\bb{z_{ij} - \ol{z}_{i\cdot}}^2/(n-k)} \sim F(k-1,n-k).
+\frac{\sum^k_{i=1} n_i \brb{\ol{z}_{i\cdot} - \ol{z}_{\cdot\cdot}}^2/(k-1)}{\sum^k_{i=1}\sum^{n_i}_{j=1}\brb{z_{ij} - \ol{z}_{i\cdot}}^2/(n-k)} \sim F(k-1,n-k).
 \ee
 
 In terms of $Y_{ij}$ we write this as the required result.
@@ -1264,37 +1264,37 @@ In terms of $Y_{ij}$ we write this as the required result.
 
 Let $X_1,\dots,X_n$ be i.i.d. Gaussian random variables with variance $\sigma^2$. Then by Theorem \ref{thm:normal_rv_sample_mean_variance}, we know that
 \be
-(n-1)\wh{\sigma}^2 := \sum^n_{i=1}\bb{X_i - \ol{X}}^2 \sim \sigma^2 \chi^2_{n-1},\qquad \ol{X} = \frac 1n\sum^n_{i=1} X_i.
+(n-1)\wh{\sigma}^2 := \sum^n_{i=1}\brb{X_i - \ol{X}}^2 \sim \sigma^2 \chi^2_{n-1},\qquad \ol{X} = \frac 1n\sum^n_{i=1} X_i.
 \ee
 
 Note that $\wh{\sigma}^2$ is an unbiased estimator of $\sigma^2$. Define
 \be
-\chi^2_n\bb{\alpha} = F^{-1}_X\bb{1-\alpha} ,\quad X\sim \chi^2_n.
+\chi^2_n\brb{\alpha} = F^{-1}_X\brb{1-\alpha} ,\quad X\sim \chi^2_n.
 \ee
 
 Therefore, the two-sided critical values of confidence level $1-\alpha$ is
 \be
-\chi^2_{n-1}\bb{1-\alpha/2} = \frac{(n-1)\wh{\sigma}^2}{\sigma^2} \leq \chi^2_{n-1}\bb{\alpha/2}  .
+\chi^2_{n-1}\brb{1-\alpha/2} = \frac{(n-1)\wh{\sigma}^2}{\sigma^2} \leq \chi^2_{n-1}\brb{\alpha/2}  .
 \ee
 
-If $\alpha = 0.05$ and $n= 27$, we have $\chi^2_{n-1}\bb{0.975} = 13.844$ and $\chi^2_{n-1}\bb{0.025} = 41.923$. Thus,
+If $\alpha = 0.05$ and $n= 27$, we have $\chi^2_{n-1}\brb{0.975} = 13.844$ and $\chi^2_{n-1}\brb{0.025} = 41.923$. Thus,
 \be
-13.844/26 = 0.532 \leq \bb{\frac{\wh{\sigma}}{\sigma}}^2 \leq 1.612 = 41.923/26.
+13.844/26 = 0.532 \leq \brb{\frac{\wh{\sigma}}{\sigma}}^2 \leq 1.612 = 41.923/26.
 \ee
 
 For large $n$, we have\footnote{theorem needed.}
 \be
-\chi^2_{k}(\alpha) = \frac 12 \bb{z_{\alpha} + \sqrt{2k-1}}^2.
+\chi^2_{k}(\alpha) = \frac 12 \brb{z_{\alpha} + \sqrt{2k-1}}^2.
 \ee
 where $z_{\alpha}$ is the critical value of standard gaussian random variable of confidence level $1-\alpha$.
 
 If $\alpha = 0.05$ and $n = 10000$, we have that $z_{0.975} = -1.96$ and $z_{0.025} = 1.96$. Then
 \be
-\frac {\bb{z_{0.975} + \sqrt{2n-3}}^2}{2(n-1)} \leq \bb{\frac{\wh{\sigma}}{\sigma}}^2 \leq \frac {\bb{z_{0.025} + \sqrt{2n-3}}^2}{2(n-1)}
+\frac {\brb{z_{0.975} + \sqrt{2n-3}}^2}{2(n-1)} \leq \brb{\frac{\wh{\sigma}}{\sigma}}^2 \leq \frac {\brb{z_{0.025} + \sqrt{2n-3}}^2}{2(n-1)}
 \ee
 which implies that
 \be
-0.9724 \leq \bb{\frac{\wh{\sigma}}{\sigma}}^2 \leq 1.0279 \ \ra\ 0.9861 \leq \frac{\wh{\sigma}}{\sigma} \leq 1.0138.
+0.9724 \leq \brb{\frac{\wh{\sigma}}{\sigma}}^2 \leq 1.0279 \ \ra\ 0.9861 \leq \frac{\wh{\sigma}}{\sigma} \leq 1.0138.
 \ee
 
 \section{Other Theorems}
@@ -1311,28 +1311,28 @@ The principal components transformation can be associated with singular value de
 \begin{definition}[principal components\index{principal components}]\label{def:principal_components_svd}
 Let $X$ be $n\times d$ real matrix having $n$ observations of $d$ dimensional variables with column-wise zero mean (the sample mean of each column has been shifted to zero).
 
-The transformation is defined by a set of $d$-dimensional vectors of weights or loadings $V = \bb{v_1,\dots,v_m}$ where $V$ is $d\times m$ and $m\leq d$. Then we can define the principal components by
+The transformation is defined by a set of $d$-dimensional vectors of weights or loadings $V = \brb{v_1,\dots,v_m}$ where $V$ is $d\times m$ and $m\leq d$. Then we can define the principal components by
 \be
-T = XV, \qquad T = \bb{T_1,\dots,T_m}
+T = XV, \qquad T = \brb{T_1,\dots,T_m}
 \ee
 where $T$ is $n\times m$. In order to maximize variance, the first loading vector $v_1$ has to satisfy
 \beast
-v_1 & = & \underset{\dabs{v}=1}{\arg\max} \sum_{k=1}^n(T_1)_k^2= \underset{\dabs{v}=1}{\arg\max} \bb{T_1^T T_1} = \underset{\dabs{v}=1}{\arg\max} \bb{\bb{Xv}^T Xv} \\
-& = & \underset{\dabs{v}=1}{\arg\max} \bb{v^T X^T Xv} = \underset{v\neq 0, x\in \R^d}{\arg\max} \frac{v^T X^T Xv}{v^Tv}% = {\arg\max}_{v\neq 0,v\in\R^d}
+v_1 & = & \underset{\dabs{v}=1}{\arg\max} \sum_{k=1}^n(T_1)_k^2= \underset{\dabs{v}=1}{\arg\max} \brb{T_1^T T_1} = \underset{\dabs{v}=1}{\arg\max} \brb{\brb{Xv}^T Xv} \\
+& = & \underset{\dabs{v}=1}{\arg\max} \brb{v^T X^T Xv} = \underset{v\neq 0, x\in \R^d}{\arg\max} \frac{v^T X^T Xv}{v^Tv}% = {\arg\max}_{v\neq 0,v\in\R^d}
 \eeast
 by Proposition \ref{pro:hermitian_max_largest_eigenvalue} as $\underset{v\neq 0, x\in \R^d}{\max} \frac{v^T Av}{v^Tv} = \lm_1$ where $\lm_1$ is he largest eigenvalue of symmetric matrix $A$. Thus, $v_1$ is eigenvector of $X^TX$ corresponding to $\lm_1$. Furthermore, let
 \be
-\wh{T}_i = T - X \wh{V}_i,\qquad \wh{V}_i = \bb{v_1,\dots,v_{i-1},0,\dots,0}
+\wh{T}_i = T - X \wh{V}_i,\qquad \wh{V}_i = \brb{v_1,\dots,v_{i-1},0,\dots,0}
 \ee
-and thus $\wh{X}_i V = XV - X \wh{V}_i$. Then %,\qquad \wh{V}_i = \bb{v_1,\dots,v_{i-1},0,\dots,0}
+and thus $\wh{X}_i V = XV - X \wh{V}_i$. Then %,\qquad \wh{V}_i = \brb{v_1,\dots,v_{i-1},0,\dots,0}
 \be
 \wh{X}_i = X - X \wh{V}_iV^T = X - X\sum^{i-1}_{k=1} v_k v_k^T
 \ee
 
 Thus, to find the $i$th principal component, we have
 \beast
-v_i & = & \underset{\dabs{v}=1}{\arg\max} \sum_{k=1}^n(T_i)_k^2 = \underset{\dabs{v}=1}{\arg\max} \bb{T_i^T T_i} = \underset{\dabs{v}=1}{\arg\max} \bb{\bb{\wh{X}_iv}^T \wh{X}_iv} \\
-& = & \underset{\dabs{v}=1}{\arg\max} \bb{v^T \wh{X}_i^T \wh{X}_i v} = \underset{v\neq 0, x\in \R^d}{\arg\max} \frac{v^T \wh{X}_i^T \wh{X}_i v}{v^Tv}.% = {\arg\max}_{v\neq 0,v\in\R^d}
+v_i & = & \underset{\dabs{v}=1}{\arg\max} \sum_{k=1}^n(T_i)_k^2 = \underset{\dabs{v}=1}{\arg\max} \brb{T_i^T T_i} = \underset{\dabs{v}=1}{\arg\max} \brb{\brb{\wh{X}_iv}^T \wh{X}_iv} \\
+& = & \underset{\dabs{v}=1}{\arg\max} \brb{v^T \wh{X}_i^T \wh{X}_i v} = \underset{v\neq 0, x\in \R^d}{\arg\max} \frac{v^T \wh{X}_i^T \wh{X}_i v}{v^Tv}.% = {\arg\max}_{v\neq 0,v\in\R^d}
 \eeast
 
 Then this gives $T_i = X v_i$, $i = 1,\dots,m$.
@@ -1353,7 +1353,7 @@ since $W^T = W^{-1}$. If components of $T$ are correlated, we can apply Cholesky
 \be
 S = LL^T
 \ee
-where $L$ is a real lower triangular matrix. Then we can simulate $d\times 1$ independent standard random variables vector $Z$ and let $T^s = (LZ)^T = Z^T L^T$ such that $\E((T^s)^TT^s) = \E\bb{LZZ^TL^T}= L I L^T = LL^T = S$. Then the simulated observation is
+where $L$ is a real lower triangular matrix. Then we can simulate $d\times 1$ independent standard random variables vector $Z$ and let $T^s = (LZ)^T = Z^T L^T$ such that $\E((T^s)^TT^s) = \E\brb{LZZ^TL^T}= L I L^T = LL^T = S$. Then the simulated observation is
 \be % where $T^s$ is $1\times d$
 X^s = (LZ)^T W^T = (WLZ)^T.
 \ee
