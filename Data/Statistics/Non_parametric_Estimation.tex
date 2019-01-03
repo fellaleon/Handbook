@@ -179,18 +179,18 @@ Obviously, we have $\frac{e^{s/N}-1}{s/N} \to 1$ as $N\to \infty$, so
 
 Conversely, by Theorem \ref{thm:levy_continuity_laplace} (Laplace form of continuity theorem) we have function $F_N(x)\to F(x)= \int^x_0 f(y)dy$ at every point $x\in [0,\infty)$ where $F$ is continuous\footnote{Note that we can scale $f_N$ to make the density function}. In particular, we know that
 \be
-F_N(x) = \int^x_{0}f_N(x)dx = \frac 1N\sum^{\floor{xN}}_{k=1} u_k  + u_{\floor{xN}+1}\bb{x - \frac{\floor{xN}}{N}}
+F_N(x) = \int^x_{0}f_N(x)dx = \frac 1N\sum^{\floor{xN}}_{k=1} u_k  + u_{\floor{xN}+1}\brb{x - \frac{\floor{xN}}{N}}
 \ee
 
 Now select a perturbation $\Delta x>0$ (as $F_N(x)$ and $F(x)$ are both right-continuous), we have that
 \beast
-F_N(x+\Delta x) - F_N(x) = \frac 1N\sum^{\floor{(x+\Delta x)N}}_{k=1} u_k  + u_{\floor{(x+\Delta x)N}+1}\bb{x+\Delta - \frac{\floor{(x+\Delta x)N}}{N}} -  \frac 1N\sum^{\floor{xN}}_{k=1} u_k -  u_{\floor{xN}+1}\bb{x - \frac{\floor{xN}}{N}}.
+F_N(x+\Delta x) - F_N(x) = \frac 1N\sum^{\floor{(x+\Delta x)N}}_{k=1} u_k  + u_{\floor{(x+\Delta x)N}+1}\brb{x+\Delta - \frac{\floor{(x+\Delta x)N}}{N}} -  \frac 1N\sum^{\floor{xN}}_{k=1} u_k -  u_{\floor{xN}+1}\brb{x - \frac{\floor{xN}}{N}}.
 \eeast
 
 If the perturbation is sufficient small, we have that $\floor{(x+\Delta x)N} = \floor{xN}$ and then
 \beast
-F_N(x+\Delta x) - F_N(x) & = & u_{\floor{(x+\Delta x)N}+1}\bb{x+\Delta x - \frac{\floor{(x+\Delta x)N}}{N}}  - u_{\floor{xN}+1}\bb{x - \frac{\floor{xN}}{N}} \\
-& = & u_{\floor{xN}+1} \bb{x+\Delta x - \frac{\floor{xN}}{N}  - x+\frac{\floor{xN}}{N}} = u_{\floor{xN}+1}\Delta x = u_{k}\Delta x
+F_N(x+\Delta x) - F_N(x) & = & u_{\floor{(x+\Delta x)N}+1}\brb{x+\Delta x - \frac{\floor{(x+\Delta x)N}}{N}}  - u_{\floor{xN}+1}\brb{x - \frac{\floor{xN}}{N}} \\
+& = & u_{\floor{xN}+1} \brb{x+\Delta x - \frac{\floor{xN}}{N}  - x+\frac{\floor{xN}}{N}} = u_{\floor{xN}+1}\Delta x = u_{k}\Delta x
 \eeast
 which converges to $F(x+\Delta x) - F(x)$ where $xN< k \leq xN+1$. Therefore, for $xN< k \leq xN+1$,
 \be
@@ -205,11 +205,11 @@ Suppose that cumulative distribution function $F(x)$ is continuous and $F_N(x)$ 
 
 Then for every fixed $z \geq 0$ as $n\to \infty$,
 \be
-\pro\bb{D_N \leq z\left/\sqrt{N}\right.} \to L(z)
+\pro\brb{D_N \leq z\left/\sqrt{N}\right.} \to L(z)
 \ee
 where $L(x)$ is the cumulative distribution function which for $x>0$ is given by either of the following equivalent relations
 \be
-L(x) = 1 - 2\sum^\infty_{k=1}(-1)^{k-1} \exp\bb{-2k^2x^2} = \frac{\sqrt{2\pi}}{x} \sum^\infty_{k=1}\exp\bb{-\frac{(2k-1)^2\pi^2}{8x^2}}.\qquad (*)
+L(x) = 1 - 2\sum^\infty_{k=1}(-1)^{k-1} \exp\brb{-2k^2x^2} = \frac{\sqrt{2\pi}}{x} \sum^\infty_{k=1}\exp\brb{-\frac{(2k-1)^2\pi^2}{8x^2}}.\qquad (*)
 \ee
 
 For $x=\infty$, we have that $L(x) = 1$. For $x\leq 0$, $L(x) = 0$. %If $x= 0$, $L(x) = 0$. For $x<0$ we have, of course $L(x) = 0$.
@@ -289,7 +289,7 @@ Y_{k+d} \leq x_k < Y_{k+d+1}.
 
 In other words, there are exactly $k+d$ among the $N$ random variable $X_i$ are equal to or smaller than $x_k$. Denote this event by $A_k(d)$. Then the inequality
 \be
-\sup_x \bb{F_N(x) - F(x)} > \frac dN
+\sup_x \brb{F_N(x) - F(x)} > \frac dN
 \ee
 takes place for some $x$ if and only if at least one among the events $A_1(d),\dots,A_N(d)$ occurs.
 
@@ -320,7 +320,7 @@ Y_{k-d} \leq x_k < Y_{k-d+1}.
 
 In other words, there are exactly $k-d$ among the $N$ random variable $X_i$ are equal to or smaller than $x_k$. Denote this event by $A_k(-d)$. Then the inequality
 \be
-\inf_x \bb{F_N(x)-F(x)} = -\sup_x \bb{F(x) - F_N(x)} < -\frac dN
+\inf_x \brb{F_N(x)-F(x)} = -\sup_x \brb{F(x) - F_N(x)} < -\frac dN
 \ee
 takes place for some $x$ if and only if at least one among the events $A_1(-d),\dots,A_N(-d)$ occurs.
 
@@ -342,98 +342,98 @@ V_r & = & A_1^c(d)A_1^c(-d)\dots A_{r-1}^c(d)A_{r-1}^c(-d)A_r^c(-d)
 
 %Also, we can see by definition of $A_k(\pm d)$ that if $A_k(d)$ or $A_k(-d)$ happens, $A_i(d)$ or $A_i(-d)$ cannot happen for all $i=1,\dots,k-1$. That is,
 %\be
-%\pro\bb{A_i(\pm d)|A_k(\pm d)} = 0
+%\pro\brb{A_i(\pm d)|A_k(\pm d)} = 0
 %\ee
 
 These events are mutually exclusive and therefore
 \be
-\pro\bb{D_N > \frac dN}= \sum^N_{r=1} \pro\bb{U_r} + \sum^N_{r=1} \pro\bb{V_r}.
+\pro\brb{D_N > \frac dN}= \sum^N_{r=1} \pro\brb{U_r} + \sum^N_{r=1} \pro\brb{V_r}.
 \ee
 
 From the definitions of $U_r$ and $V_r$ and total law of probability (Theorem \ref{thm:law_total_probability}), we have
 \beast
-\pro\bb{A_k(d)} & = & \sum^k_{r=1} \pro\bb{U_r} \pro\bb{A_k(d)|U_r} + \sum^k_{r=1} \pro\bb{V_r} \pro\bb{A_k(d)|V_r} \\
-& = & \sum^k_{r=1} \pro\bb{U_r} \pro\bb{A_k(d)|A_r(d)\cap U_r} + \sum^k_{r=1} \pro\bb{V_r} \pro\bb{A_k(d)|A_r(-d)\cap V_r}\\
-& = & \sum^k_{r=1} \pro\bb{U_r} \pro\bb{A_k(d)|A_r(d)} + \sum^k_{r=1} \pro\bb{V_r} \pro\bb{A_k(d)|A_r(-d)}
+\pro\brb{A_k(d)} & = & \sum^k_{r=1} \pro\brb{U_r} \pro\brb{A_k(d)|U_r} + \sum^k_{r=1} \pro\brb{V_r} \pro\brb{A_k(d)|V_r} \\
+& = & \sum^k_{r=1} \pro\brb{U_r} \pro\brb{A_k(d)|A_r(d)\cap U_r} + \sum^k_{r=1} \pro\brb{V_r} \pro\brb{A_k(d)|A_r(-d)\cap V_r}\\
+& = & \sum^k_{r=1} \pro\brb{U_r} \pro\brb{A_k(d)|A_r(d)} + \sum^k_{r=1} \pro\brb{V_r} \pro\brb{A_k(d)|A_r(-d)}
 \eeast
 as $A_r(d)$ or $A_r(-d)$ happens if and only if $U_r$ or $V_r$ happens. That is,
 \be
-A_r(d) = A_r(d)\cap \bb{U_1\cup V_1 \cup \dots \cup U_N\cup V_N} = A_r(d)\cap U_r.
+A_r(d) = A_r(d)\cap \brb{U_1\cup V_1 \cup \dots \cup U_N\cup V_N} = A_r(d)\cap U_r.
 \ee
 
 Similarly,
 \be
-\pro\bb{A_k(-d)} = \sum^k_{r=1} \pro\bb{U_r} \pro\bb{A_k(-d)|A_r(d)} + \sum^k_{r=1} \pro\bb{V_r} \pro\bb{A_k(-d)|A_r(-d)}.
+\pro\brb{A_k(-d)} = \sum^k_{r=1} \pro\brb{U_r} \pro\brb{A_k(-d)|A_r(d)} + \sum^k_{r=1} \pro\brb{V_r} \pro\brb{A_k(-d)|A_r(-d)}.
 \ee
 
-This is a system of $2N$ linear equations for the $2N$ unknowns $\pro\bb{U_r}$ and $\pro\bb{V_r}$ and we proceed to solve it by the method of generating functions.
+This is a system of $2N$ linear equations for the $2N$ unknowns $\pro\brb{U_r}$ and $\pro\brb{V_r}$ and we proceed to solve it by the method of generating functions.
 
 
 By definition of $x_k$ we have
 \be
-\pro\bb{X_i\leq x_k} = F(x_k) = \frac kN.
+\pro\brb{X_i\leq x_k} = F(x_k) = \frac kN.
 \ee
 
 Since $A_k(d)$ represents the case that there are exactly $k+d$ among the $N$ random variables $X_i$ are equal to or smaller than $x_k$, we can have %binomial distribution (see Definition \ref{def:binomial_rv})
 \be
-\pro\bb{A_k(d)} = \binom{N}{k+d}\bb{\frac kN}^{k+d}\bb{1-\frac kN}^{N-k-d}.
+\pro\brb{A_k(d)} = \binom{N}{k+d}\brb{\frac kN}^{k+d}\brb{1-\frac kN}^{N-k-d}.
 \ee
 
-Similarly, for $r\leq k$, the event $A_k(d)A_r(d)$ represents the case that there are exactly $k-r$ among $N$ random variables $X_i$ are equal to or smaller than $x_k$ and bigger than $x_r$ ($\pro\bb{x_r < X_i \leq x_k} = \frac {k-r}N$). That is,
+Similarly, for $r\leq k$, the event $A_k(d)A_r(d)$ represents the case that there are exactly $k-r$ among $N$ random variables $X_i$ are equal to or smaller than $x_k$ and bigger than $x_r$ ($\pro\brb{x_r < X_i \leq x_k} = \frac {k-r}N$). That is,
 \be
-\pro\bb{A_k(d)A_r(d)} = \frac{N!}{(r+d)!(k-r)!(N-k-d)!}\bb{\frac {r}N}^{r+d}\bb{\frac {k-r}N}^{k-r}\bb{\frac {N-k}N}^{N-k-d}.
+\pro\brb{A_k(d)A_r(d)} = \frac{N!}{(r+d)!(k-r)!(N-k-d)!}\brb{\frac {r}N}^{r+d}\brb{\frac {k-r}N}^{k-r}\brb{\frac {N-k}N}^{N-k-d}.
 \ee
 
 %given there are exactly $r+d$ among $N$ random variable $X_i$ are equal to or smaller than $x_r$, we want to consider the left $k-r$ random variables equal to or smaller than $x_k$ in the left $N-r-d$ random variables
 
 Thus,
 \beast
-\pro\bb{A_k(d)|A_r(d)} & = & \frac{\pro\bb{A_k(d)A_r(d)}}{\pro\bb{A_r(d)}} = \frac{(r+d)!(N-r-d)!r^{r+d}\bb{k-r}^{k-r}\bb{N-k}^{N-k-d}}{(r+d)!(k-r)!(N-k-d)!r^{r+d}\bb{N-r}^{N-r-d}}\\
-& = &  \binom{N-r-d}{k-r}\bb{\frac {k-r}{N-r}}^{k-r}\bb{\frac {N-k}{N-r}}^{N-k-d}.
+\pro\brb{A_k(d)|A_r(d)} & = & \frac{\pro\brb{A_k(d)A_r(d)}}{\pro\brb{A_r(d)}} = \frac{(r+d)!(N-r-d)!r^{r+d}\brb{k-r}^{k-r}\brb{N-k}^{N-k-d}}{(r+d)!(k-r)!(N-k-d)!r^{r+d}\brb{N-r}^{N-r-d}}\\
+& = &  \binom{N-r-d}{k-r}\brb{\frac {k-r}{N-r}}^{k-r}\brb{\frac {N-k}{N-r}}^{N-k-d}.
 \eeast
 
 %\beast
-%\pro\bb{A_k(d)|A_r(d)} & = & \frac{\binom{N}{k+d}\bb{\frac kN}^{k+d}\bb{1-\frac kN}^{N-k-d}}{\binom{N}{r+d}\bb{\frac rN}^{r+d}\bb{1-\frac rN}^{N - r-d}} = \frac{\binom{N}{k+d}k^{k+d}\bb{N-k}^{N-k-d}}{\binom{N}{r+d}r^{r+d}\bb{N- r}^{N - r-d}} \\ %= \frac{\binom{N}{k+d}}{\binom{N}{r+d}} \bb{\frac {k-r}{N-r}}^{k-r}\bb{\frac {N-k}{N-r}}^{r-k}\bb{\frac{k(N-r)}{(k-r)N}}^{k-r}\bb{\frac {N-r}{N}}^{r-k}
+%\pro\brb{A_k(d)|A_r(d)} & = & \frac{\binom{N}{k+d}\brb{\frac kN}^{k+d}\brb{1-\frac kN}^{N-k-d}}{\binom{N}{r+d}\brb{\frac rN}^{r+d}\brb{1-\frac rN}^{N - r-d}} = \frac{\binom{N}{k+d}k^{k+d}\brb{N-k}^{N-k-d}}{\binom{N}{r+d}r^{r+d}\brb{N- r}^{N - r-d}} \\ %= \frac{\binom{N}{k+d}}{\binom{N}{r+d}} \brb{\frac {k-r}{N-r}}^{k-r}\brb{\frac {N-k}{N-r}}^{r-k}\brb{\frac{k(N-r)}{(k-r)N}}^{k-r}\brb{\frac {N-r}{N}}^{r-k}
 %& = &
 %\eeast
 
 Similarly, we have
 \be
-\pro\bb{A_k(d)A_r(-d)} = \frac{N!}{(r-d)!(k-r+2d)!(N-k-d)!}\bb{\frac {r}N}^{r-d}\bb{\frac {k-r}N}^{k-r+2d}\bb{\frac {N-k}N}^{N-k-d}.
+\pro\brb{A_k(d)A_r(-d)} = \frac{N!}{(r-d)!(k-r+2d)!(N-k-d)!}\brb{\frac {r}N}^{r-d}\brb{\frac {k-r}N}^{k-r+2d}\brb{\frac {N-k}N}^{N-k-d}.
 \ee
 
 \beast
-\pro\bb{A_k(d)|A_r(-d)} & = &  \frac{\pro\bb{A_k(d)A_r(-d)}}{\pro\bb{A_r(-d)}} = \frac{(r-d)!(N-r+d)!r^{r-d}\bb{k-r}^{k-r+2d}\bb{N-k}^{N-k-d}}{(r-d)!(k-r+2d)!(N-k-d)!r^{r-d}\bb{N-r}^{N-r+d}}\\
-& = &  \binom{N-r+d}{k-r+2d}\bb{\frac {k-r}{N-r}}^{k-r+2d}\bb{\frac {N-k}{N-r}}^{N-k-d}.
+\pro\brb{A_k(d)|A_r(-d)} & = &  \frac{\pro\brb{A_k(d)A_r(-d)}}{\pro\brb{A_r(-d)}} = \frac{(r-d)!(N-r+d)!r^{r-d}\brb{k-r}^{k-r+2d}\brb{N-k}^{N-k-d}}{(r-d)!(k-r+2d)!(N-k-d)!r^{r-d}\brb{N-r}^{N-r+d}}\\
+& = &  \binom{N-r+d}{k-r+2d}\brb{\frac {k-r}{N-r}}^{k-r+2d}\brb{\frac {N-k}{N-r}}^{N-k-d}.
 \eeast
 
 \be
-\pro\bb{A_k(-d)A_r(d)} = \frac{N!}{(r+d)!(k-r-2d)!(N-k+d)!}\bb{\frac {r}N}^{r+d}\bb{\frac {k-r}N}^{k-r-2d}\bb{\frac {N-k}N}^{N-k+d}.
+\pro\brb{A_k(-d)A_r(d)} = \frac{N!}{(r+d)!(k-r-2d)!(N-k+d)!}\brb{\frac {r}N}^{r+d}\brb{\frac {k-r}N}^{k-r-2d}\brb{\frac {N-k}N}^{N-k+d}.
 \ee
 
 \beast
-\pro\bb{A_k(-d)|A_r(d)} & = &  \frac{\pro\bb{A_k(-d)A_r(d)}}{\pro\bb{A_r(d)}} = \frac{(r+d)!(N-r-d)!r^{r+d}\bb{k-r}^{k-r-2d}\bb{N-k}^{N-k+d}}{(r+d)!(k-r-2d)!(N-k+d)!r^{r+d}\bb{N-r}^{N-r-d}}\\
-& = &  \binom{N-r-d}{k-r-2d}\bb{\frac {k-r}{N-r}}^{k-r-2d}\bb{\frac {N-k}{N-r}}^{N-k+d}.
+\pro\brb{A_k(-d)|A_r(d)} & = &  \frac{\pro\brb{A_k(-d)A_r(d)}}{\pro\brb{A_r(d)}} = \frac{(r+d)!(N-r-d)!r^{r+d}\brb{k-r}^{k-r-2d}\brb{N-k}^{N-k+d}}{(r+d)!(k-r-2d)!(N-k+d)!r^{r+d}\brb{N-r}^{N-r-d}}\\
+& = &  \binom{N-r-d}{k-r-2d}\brb{\frac {k-r}{N-r}}^{k-r-2d}\brb{\frac {N-k}{N-r}}^{N-k+d}.
 \eeast
 
-Note that this result is equal to the result if we substitute $d$ with $-d$ in $\pro\bb{A_k(d)|A_r(-d)}$.
+Note that this result is equal to the result if we substitute $d$ with $-d$ in $\pro\brb{A_k(d)|A_r(-d)}$.
 
 Also,
 \be
-\pro\bb{A_k(-d)A_r(-d)} = \frac{N!}{(r-d)!(k-r)!(N-k+d)!}\bb{\frac {r}N}^{r-d}\bb{\frac {k-r}N}^{k-r}\bb{\frac {N-k}N}^{N-k+d}.
+\pro\brb{A_k(-d)A_r(-d)} = \frac{N!}{(r-d)!(k-r)!(N-k+d)!}\brb{\frac {r}N}^{r-d}\brb{\frac {k-r}N}^{k-r}\brb{\frac {N-k}N}^{N-k+d}.
 \ee
 
 \beast
-\pro\bb{A_k(-d)|A_r(-d)} & = &  \frac{\pro\bb{A_k(-d)A_r(-d)}}{\pro\bb{A_r(-d)}} = \frac{(r-d)!(N-r+d)!r^{r-d}\bb{k-r}^{k-r}\bb{N-k}^{N-k+d}}{(r-d)!(k-r)!(N-k+d)!r^{r-d}\bb{N-r}^{N-r+d}}\\
-& = &  \binom{N-r+d}{k-r}\bb{\frac {k-r}{N-r}}^{k-r}\bb{\frac {N-k}{N-r}}^{N-k+d}.
+\pro\brb{A_k(-d)|A_r(-d)} & = &  \frac{\pro\brb{A_k(-d)A_r(-d)}}{\pro\brb{A_r(-d)}} = \frac{(r-d)!(N-r+d)!r^{r-d}\brb{k-r}^{k-r}\brb{N-k}^{N-k+d}}{(r-d)!(k-r)!(N-k+d)!r^{r-d}\brb{N-r}^{N-r+d}}\\
+& = &  \binom{N-r+d}{k-r}\brb{\frac {k-r}{N-r}}^{k-r}\brb{\frac {N-k}{N-r}}^{N-k+d}.
 \eeast
 
-Note that this result is equal to the result if we substitute $d$ with $-d$ in $\pro\bb{A_k(d)|A_r(d)}$.
+Note that this result is equal to the result if we substitute $d$ with $-d$ in $\pro\brb{A_k(d)|A_r(d)}$.
 
 Thus, we can see the following results hold for either positive or negative $d$:
 \beast
-\pro\bb{A_k(d)|A_r(d)} & = & \binom{N-r-d}{k-r}\bb{\frac {k-r}{N-r}}^{k-r}\bb{\frac {N-k}{N-r}}^{N-k-d},\\
-\pro\bb{A_k(d)|A_r(-d)} & = &  \binom{N-r+d}{k-r+2d}\bb{\frac {k-r}{N-r}}^{k-r+2d}\bb{\frac {N-k}{N-r}}^{N-k-d}.
+\pro\brb{A_k(d)|A_r(d)} & = & \binom{N-r-d}{k-r}\brb{\frac {k-r}{N-r}}^{k-r}\brb{\frac {N-k}{N-r}}^{N-k-d},\\
+\pro\brb{A_k(d)|A_r(-d)} & = &  \binom{N-r+d}{k-r+2d}\brb{\frac {k-r}{N-r}}^{k-r+2d}\brb{\frac {N-k}{N-r}}^{N-k-d}.
 \eeast
 
 They can be written in a more convenient form in terms of the quantities
@@ -443,9 +443,9 @@ p_k(c) = \frac{k^{k+d}}{(k+d)!}e^{-k}.
 
 In fact,
 \beast
-\pro\bb{A_k(d)} & = & \frac{k^{k+d}(N-k)^{N-k-d}N!}{(k+d)!(N-k-d)!N^N}  = \frac{p_k(d)p_{N-k}(-d)}{p_N(0)},\\
-\pro\bb{A_k(d)|A_r(d)} & = & \frac{(N-r-d)!}{(k-r)!(N-k-d)!}\bb{\frac {k-r}{N-r}}^{k-r}\bb{\frac {N-k}{N-r}}^{N-k-d} = \frac{p_{k-r}(0)p_{N-k}(-d)}{p_{N-r}(-d)},\\
-\pro\bb{A_k(d)|A_r(-d)} & = & \frac{(N-r+d)!}{(k-r+2d)!(N-k-d)!} \bb{\frac {k-r}{N-r}}^{k-r+2d}\bb{\frac {N-k}{N-r}}^{N-k-d} = \frac{p_{k-r}(2d)p_{N-k}(-d)}{p_{N-r}(d)}.
+\pro\brb{A_k(d)} & = & \frac{k^{k+d}(N-k)^{N-k-d}N!}{(k+d)!(N-k-d)!N^N}  = \frac{p_k(d)p_{N-k}(-d)}{p_N(0)},\\
+\pro\brb{A_k(d)|A_r(d)} & = & \frac{(N-r-d)!}{(k-r)!(N-k-d)!}\brb{\frac {k-r}{N-r}}^{k-r}\brb{\frac {N-k}{N-r}}^{N-k-d} = \frac{p_{k-r}(0)p_{N-k}(-d)}{p_{N-r}(-d)},\\
+\pro\brb{A_k(d)|A_r(-d)} & = & \frac{(N-r+d)!}{(k-r+2d)!(N-k-d)!} \brb{\frac {k-r}{N-r}}^{k-r+2d}\brb{\frac {N-k}{N-r}}^{N-k-d} = \frac{p_{k-r}(2d)p_{N-k}(-d)}{p_{N-r}(d)}.
 \eeast
 
 If these expressions are introduction into the equation, the second factor in the numerator $p_{N-k}(-d)$ cancels. A further simplication is achieved on introducing new sets of unknowns
@@ -468,9 +468,9 @@ We put
 
 Again, the $\zeta_k$ and $\eta_k$ are defined for all $k$ (also $k\geq N$). Then we have
 \be
-\sum^N_{r=1}\pro\bb{U_r} = \zeta_N,\qquad \sum^N_{r=1}\pro\bb{V_r} = \eta_N,
+\sum^N_{r=1}\pro\brb{U_r} = \zeta_N,\qquad \sum^N_{r=1}\pro\brb{V_r} = \eta_N,
 \ee
-and hence $\pro\bb{D_N > d/N} = \zeta_N + \eta_N$. We put\footnote{Note that the factor $N^{-1/2}$ serves to simplify formulas.}
+and hence $\pro\brb{D_N > d/N} = \zeta_N + \eta_N$. We put\footnote{Note that the factor $N^{-1/2}$ serves to simplify formulas.}
 \be
 u(\lm) = \sum^\infty_{k=1}u_k \lm^k,\qquad  v(\lm) = \sum^\infty_{k=1}v_k \lm^k,\qquad w(\lm,d) = N^{-1/2} \sum^\infty_{k=1} p_k(d)\lm^k.
 \ee
@@ -479,21 +479,21 @@ Then obviously from ($**$)
 \beast
 w(\lm,d) & = & N^{-1/2} \sum^\infty_{k=1} \sum^k_{r=1}u_r p_{k-r}(0)\lm^k + N^{-1/2} \sum^\infty_{k=1}\sum^k_{r=1}v_r p_{k-r}(2d)\lm^k \\
 & = & \sum^\infty_{r=1} u_r \lm^r N^{-1/2} \sum^\infty_{k=r} p_{k-r}(0)\lm^{k-r} +  \sum^\infty_{r=1} v_r \lm^rN^{-1/2}\sum^\infty_{k=r} p_{k-r}(2d)\lm^{k-r} \\
-& = & u(\lm) \bb{N^{-1/2}+w(\lm,0)} + v(\lm) w(\lm, 2d).
+& = & u(\lm) \brb{N^{-1/2}+w(\lm,0)} + v(\lm) w(\lm, 2d).
 \eeast
 
 Similarly,
 \be
-w(\lm,-d) = u(\lm)w(\lm,-2d) + v(\lm)\bb{N^{-1/2} + w(\lm,0)}.
+w(\lm,-d) = u(\lm)w(\lm,-2d) + v(\lm)\brb{N^{-1/2} + w(\lm,0)}.
 \ee
 
 Therefore,
 \be
-u(\lm) = \frac{w(\lm,d)\bb{N^{-1/2} + w(\lm,0)}-w(\lm,2d)w(\lm,-d)}{\bb{N^{-1/2} + w(\lm,0)}^2 - w(\lm,2d)w(\lm,-2d)},
+u(\lm) = \frac{w(\lm,d)\brb{N^{-1/2} + w(\lm,0)}-w(\lm,2d)w(\lm,-d)}{\brb{N^{-1/2} + w(\lm,0)}^2 - w(\lm,2d)w(\lm,-2d)},
 \ee
 
 \be
-v(\lm) = \frac{w(\lm,d)\bb{N^{-1/2} + w(\lm,0)}-w(\lm,d)w(\lm,-2d)}{\bb{N^{-1/2} + w(\lm,0)}^2 - w(\lm,2d)w(\lm,-2d)}.
+v(\lm) = \frac{w(\lm,d)\brb{N^{-1/2} + w(\lm,0)}-w(\lm,d)w(\lm,-2d)}{\brb{N^{-1/2} + w(\lm,0)}^2 - w(\lm,2d)w(\lm,-2d)}.
 \ee
 
 Furthermore, we have
@@ -509,60 +509,60 @@ Furthermore, we have
 
 We now pass to a study of the limiting form of these generating functions as $N\to\infty$ and $d \to \infty$. Consider a fixed $x>0$ and suppose that $k/N \to x$.
 
-By Stirling formula (Theorem \ref{thm:stirling_formula}) $n! = \sqrt{2\pi} n^{n+1/2}\exp\bb{\sO\bb{\frac 1n}-n}$ ($d = zN^{1/2}$), with $\frac kN \to x$ and $N\to \infty$
+By Stirling formula (Theorem \ref{thm:stirling_formula}) $n! = \sqrt{2\pi} n^{n+1/2}\exp\brb{\sO\brb{\frac 1n}-n}$ ($d = zN^{1/2}$), with $\frac kN \to x$ and $N\to \infty$
 \beast
 & & \lim_{N\to \infty} \lim_{k\to xN} N^{1/2} p_k(d) \\
-& = & \lim_{N\to \infty} \lim_{k\to xN} N^{1/2}\frac{k^{k+d}}{(k+d)!}e^{-k} \lim_{N\to \infty} \lim_{k\to xN} N^{1/2}\frac{k^{k+d}}{\sqrt{2\pi} (k+d)^{k+d+1/2}\exp\bb{\sO\bb{\frac 1{k+d}}-k-d} }e^{-k} \\
-& = & \lim_{N\to \infty} \lim_{k\to xN} N^{1/2}\frac{k^{k+zN^{1/2}}}{\sqrt{2\pi} (k+zN^{1/2})^{k+zN^{1/2}+1/2}\exp\bb{\sO\bb{\frac 1{k+zN^{1/2}}}-k-zN^{1/2}} }e^{-k} \\
-& = & \lim_{N\to \infty}  N^{1/2}\frac{(xN)^{xN+zN^{1/2}}}{\sqrt{2\pi} (xN+zN^{1/2})^{xN+zN^{1/2}+1/2}\exp\bb{-xN-zN^{1/2}} }e^{-xN} \quad (\text{by continuity of the function})\\
-& = & \lim_{N\to \infty} \frac 1{\sqrt{2\pi x}} \exp\bb{zN^{1/2}} \bb{1+\frac{z}{xN^{1/2}}}^{-xN-zN^{1/2}-1/2} = \lim_{N\to \infty} \frac 1{\sqrt{2\pi x}} \exp\bb{zN^{1/2}} \bb{1+\frac{z}{xN^{1/2}}}^{-xN-zN^{1/2}}
+& = & \lim_{N\to \infty} \lim_{k\to xN} N^{1/2}\frac{k^{k+d}}{(k+d)!}e^{-k} \lim_{N\to \infty} \lim_{k\to xN} N^{1/2}\frac{k^{k+d}}{\sqrt{2\pi} (k+d)^{k+d+1/2}\exp\brb{\sO\brb{\frac 1{k+d}}-k-d} }e^{-k} \\
+& = & \lim_{N\to \infty} \lim_{k\to xN} N^{1/2}\frac{k^{k+zN^{1/2}}}{\sqrt{2\pi} (k+zN^{1/2})^{k+zN^{1/2}+1/2}\exp\brb{\sO\brb{\frac 1{k+zN^{1/2}}}-k-zN^{1/2}} }e^{-k} \\
+& = & \lim_{N\to \infty}  N^{1/2}\frac{(xN)^{xN+zN^{1/2}}}{\sqrt{2\pi} (xN+zN^{1/2})^{xN+zN^{1/2}+1/2}\exp\brb{-xN-zN^{1/2}} }e^{-xN} \quad (\text{by continuity of the function})\\
+& = & \lim_{N\to \infty} \frac 1{\sqrt{2\pi x}} \exp\brb{zN^{1/2}} \brb{1+\frac{z}{xN^{1/2}}}^{-xN-zN^{1/2}-1/2} = \lim_{N\to \infty} \frac 1{\sqrt{2\pi x}} \exp\brb{zN^{1/2}} \brb{1+\frac{z}{xN^{1/2}}}^{-xN-zN^{1/2}}
 \eeast
 
 and Proposition \ref{pro:exponential_limit_quadratic_power}, we have
 \be
-\lim_{N\to \infty} \lim_{k\to xN} N^{1/2} p_k(d) = \frac 1{\sqrt{2\pi x}} \exp\bb{-\frac{z^2}{2x}} := f(x).
+\lim_{N\to \infty} \lim_{k\to xN} N^{1/2} p_k(d) = \frac 1{\sqrt{2\pi x}} \exp\brb{-\frac{z^2}{2x}} := f(x).
 \ee
 
 Note that $f(x)$ here is not a density function as its integral is not 1. However, we can apply dominated convergence theorem for Laplace transform in Lemma \ref{lem:generating_function_convergence}($N^{1/2}p_k(d)$ is treated as $u_k$ in the Lemma \ref{lem:generating_function_convergence}) if its Laplace transform is finite. Then we have that for $\lm = \exp(-s/N)$
 \be
-w(e^{-s/N},d) = w\bb{e^{-s/N},zN^{1/2}} \to \int^\infty_0 e^{-sx}f(x)dx = \frac 1{\sqrt{2\pi }} \int^\infty_0 x^{-1/2}\exp\bb{-xs - \frac{z^2}{2x}} dx
+w(e^{-s/N},d) = w\brb{e^{-s/N},zN^{1/2}} \to \int^\infty_0 e^{-sx}f(x)dx = \frac 1{\sqrt{2\pi }} \int^\infty_0 x^{-1/2}\exp\brb{-xs - \frac{z^2}{2x}} dx
 \ee
 where $s=\lm/(2\mu^2)$ and $z^2 = \lm$ for an inverse Gaussian distributed random variable $X$ (see Definition and theorem for $\E X$). Thus, the integral is
 \be
-w(e^{-s/N},d)  = w(e^{-s/N},zN^{1/2})  \to \exp\bb{-\lm/\mu} \lm^{-1/2} \E X = \exp\bb{-\lm/\mu}  \lm^{-1/2} \mu = \frac 1{\sqrt{2s}}\exp\bb{-\sqrt{2sz^2}}.
+w(e^{-s/N},d)  = w(e^{-s/N},zN^{1/2})  \to \exp\brb{-\lm/\mu} \lm^{-1/2} \E X = \exp\brb{-\lm/\mu}  \lm^{-1/2} \mu = \frac 1{\sqrt{2s}}\exp\brb{-\sqrt{2sz^2}}.
 \ee
 
 Thus, letting $\lm = -s/N$, we have
 \beast
-\lim_{N\to\infty} u(e^{-s/N}) & = & \lim_{N\to\infty} \frac{w(\lm,d)\bb{N^{-1/2} + w(\lm,0)}-w(\lm,2d)w(\lm,-d)}{\bb{N^{-1/2} + w(\lm,0)}^2 - w(\lm,2d)w(\lm,-2d)} \\
-& = &  \frac{\frac 1{2s}\exp\bb{-\sqrt{2sz^2}}-\frac 1{2s}\exp\bb{-3\sqrt{2sz^2}}}{\frac 1{2s} -\frac 1{2s}\exp\bb{-4\sqrt{2sz^2}} } =\frac{\exp\bb{-\sqrt{2sz^2}}}{1+ \exp\bb{-\sqrt{8sz^2}}}.
+\lim_{N\to\infty} u(e^{-s/N}) & = & \lim_{N\to\infty} \frac{w(\lm,d)\brb{N^{-1/2} + w(\lm,0)}-w(\lm,2d)w(\lm,-d)}{\brb{N^{-1/2} + w(\lm,0)}^2 - w(\lm,2d)w(\lm,-2d)} \\
+& = &  \frac{\frac 1{2s}\exp\brb{-\sqrt{2sz^2}}-\frac 1{2s}\exp\brb{-3\sqrt{2sz^2}}}{\frac 1{2s} -\frac 1{2s}\exp\brb{-4\sqrt{2sz^2}} } =\frac{\exp\brb{-\sqrt{2sz^2}}}{1+ \exp\brb{-\sqrt{8sz^2}}}.
 \eeast
 
 Similarly, we have
 \be
-\lim_{N\to\infty} v(e^{-s/N}) = \frac{\exp\bb{-\sqrt{2sz^2}}}{1+ \exp\bb{-\sqrt{8sz^2}}}.
+\lim_{N\to\infty} v(e^{-s/N}) = \frac{\exp\brb{-\sqrt{2sz^2}}}{1+ \exp\brb{-\sqrt{8sz^2}}}.
 \ee
 
 Thus, by the fact $p_N(0) \to (2\pi N)^{-1/2}$ (Stirling formula) we have
 \beast
-\lim_{N\to\infty} N^{-1} \zeta(e^{-s/N}) = \lim_{N\to\infty} N^{-1} \eta(e^{-s/N}) & = & \lim_{N\to\infty}  N^{-1}\sqrt{2\pi N}N^{1/2}\frac{\exp\bb{-\sqrt{2sz^2}}}{1+ \exp\bb{-\sqrt{8sz^2}}}\frac 1{\sqrt{2s}}\exp\bb{-\sqrt{2sz^2}} \\
-& = & \bb{\frac{\pi}{s}}^{1/2} \frac{\exp\bb{-\sqrt{8sz^2}}}{1+ \exp\bb{-\sqrt{8sz^2}}} := \vp(s).
+\lim_{N\to\infty} N^{-1} \zeta(e^{-s/N}) = \lim_{N\to\infty} N^{-1} \eta(e^{-s/N}) & = & \lim_{N\to\infty}  N^{-1}\sqrt{2\pi N}N^{1/2}\frac{\exp\brb{-\sqrt{2sz^2}}}{1+ \exp\brb{-\sqrt{8sz^2}}}\frac 1{\sqrt{2s}}\exp\brb{-\sqrt{2sz^2}} \\
+& = & \brb{\frac{\pi}{s}}^{1/2} \frac{\exp\brb{-\sqrt{8sz^2}}}{1+ \exp\brb{-\sqrt{8sz^2}}} := \vp(s).
 \eeast
 
 Then $\vp(s)$ can be expanded into a geometric series
 \be
-\vp(s) = \bb{\frac{\pi}{s}}^{1/2} \sum^\infty_{k=1} (-1)^{k-1} \exp\bb{-\sqrt{8sk^2z^2}}.
+\vp(s) = \brb{\frac{\pi}{s}}^{1/2} \sum^\infty_{k=1} (-1)^{k-1} \exp\brb{-\sqrt{8sk^2z^2}}.
 \ee
 
 Then it is easy to check that $\vp(s)$ is the Laplace transform of
 \be
-f(x) = \frac 1{\sqrt{x}}\sum^\infty_{k=1} (-1)^{k-1}\exp\bb{-2k^2 z^2/x}
+f(x) = \frac 1{\sqrt{x}}\sum^\infty_{k=1} (-1)^{k-1}\exp\brb{-2k^2 z^2/x}
 \ee
 as we can use generalized inverse Gaussian distributed $Y$ (see Definition \ref{def:generalized_inverse_gaussian_rv}) with $s=a/2$, $2k^2 z^2 = b/2$ and $p=1/2$
 \beast
-\int^\infty_0 x^{-1/2}\exp\bb{-sx}\exp\bb{-2k^2 z^2/x}dx & = & \frac{2K_p(\sqrt{ab})}{(a/b)^{p/2}} = \frac 2{s^{1/4}} \bb{2k^2z^2}^{1/4} K_{1/2}(\sqrt{8sk^2z^2}) \\
-& = & \frac 2{s^{1/4}} \bb{2k^2z^2}^{1/4} \sqrt{\frac{\pi}{2\sqrt{8sk^2z^2}}} \exp\bb{-\sqrt{8sk^2z^2}} \\
-& = & \sqrt{\frac {\pi}s} \exp\bb{-\sqrt{8sk^2z^2}}
+\int^\infty_0 x^{-1/2}\exp\brb{-sx}\exp\brb{-2k^2 z^2/x}dx & = & \frac{2K_p(\sqrt{ab})}{(a/b)^{p/2}} = \frac 2{s^{1/4}} \brb{2k^2z^2}^{1/4} K_{1/2}(\sqrt{8sk^2z^2}) \\
+& = & \frac 2{s^{1/4}} \brb{2k^2z^2}^{1/4} \sqrt{\frac{\pi}{2\sqrt{8sk^2z^2}}} \exp\brb{-\sqrt{8sk^2z^2}} \\
+& = & \sqrt{\frac {\pi}s} \exp\brb{-\sqrt{8sk^2z^2}}
 \eeast
 by the proposition of Bessel modified function of second kind. Note that $f(x)$ is uniquely determined by Theorem \ref{thm:laplace_uniquely_determine_law}.
 
@@ -573,13 +573,13 @@ Finally, we can see that $f(x)$ is alternative decreasing series, thus it is con
 
 Then by setting $x=1$, $\zeta_k$ and $\eta_k$ can achieve $\zeta_N$ and $\eta_N$,
 \be
-\lim_{N\to\infty}\zeta_N  = \lim_{N\to\infty}\eta_N = f(1) = \sum^\infty_{k=1} (-1)^{k-1}\exp\bb{-2k^2 z^2}.
+\lim_{N\to\infty}\zeta_N  = \lim_{N\to\infty}\eta_N = f(1) = \sum^\infty_{k=1} (-1)^{k-1}\exp\brb{-2k^2 z^2}.
 \ee
 
 Therefore, we have
 \beast
-\pro\bb{D_N \leq \frac dN} & = & \pro\bb{D_N \leq zN^{-1/2}} = 1 - \pro\bb{D_N > zN^{-1/2}} \\
-& = & 1 - \zeta_N - \eta_N = 1 - 2 \sum^\infty_{k=1} (-1)^{k-1}\exp\bb{-2k^2 z^2}.
+\pro\brb{D_N \leq \frac dN} & = & \pro\brb{D_N \leq zN^{-1/2}} = 1 - \pro\brb{D_N > zN^{-1/2}} \\
+& = & 1 - \zeta_N - \eta_N = 1 - 2 \sum^\infty_{k=1} (-1)^{k-1}\exp\brb{-2k^2 z^2}.
 \eeast
 
 
@@ -587,21 +587,21 @@ Therefore, we have
 
 Now we proof the equation ($*$). Applying theta function transform (Theorem \ref{thm:jacobi_theta_function_transform}) with \be z = \frac 12,\quad \tau = \frac {2ix^2}{\pi}, \ee we have that \beast 1 - 2 \sum_{k=1}^\infty
 (-1)^{k-1}
-\exp\bb{-2k^2x^2} & = & 1 + 2 \sum_{k=1}^\infty \exp\bb{\pi i k^2 \tau} \cos(2\pi k z) \\
-& = & \vartheta \bb{z, \tau} = (-i \tau)^{-1/2} \exp\bb{-\frac{\pi}{\tau} i z^2 } \vartheta \bb{\frac{z}{\tau}, \frac{-1}{\tau}} \\
-& = & \frac {\sqrt{\pi}}{\sqrt{2}x} \exp\bb{-\frac{\pi^2 }{8 x^2 } } \sum^\infty_{k=-\infty} \exp\bb{- \bb{\frac{k^2\pi^2}{2x^2}}} \exp\bb{\frac{k\pi^2}{2x^2}} \qquad (\text{by Definition \ref{def:jacobi_theta_function}})\\
-& = & \frac {\sqrt{\pi}}{\sqrt{2}x} \sum^\infty_{k=-\infty} \exp\bb{- \frac{(2k-1)^2\pi^2}{8x^2}} = \frac {\sqrt{2\pi}}{x} \sum^\infty_{k=1} \exp\bb{- \frac{(2k-1)^2\pi^2}{8x^2}} \eeast as required.
+\exp\brb{-2k^2x^2} & = & 1 + 2 \sum_{k=1}^\infty \exp\brb{\pi i k^2 \tau} \cos(2\pi k z) \\
+& = & \vartheta \brb{z, \tau} = (-i \tau)^{-1/2} \exp\brb{-\frac{\pi}{\tau} i z^2 } \vartheta \brb{\frac{z}{\tau}, \frac{-1}{\tau}} \\
+& = & \frac {\sqrt{\pi}}{\sqrt{2}x} \exp\brb{-\frac{\pi^2 }{8 x^2 } } \sum^\infty_{k=-\infty} \exp\brb{- \brb{\frac{k^2\pi^2}{2x^2}}} \exp\brb{\frac{k\pi^2}{2x^2}} \qquad (\text{by Definition \ref{def:jacobi_theta_function}})\\
+& = & \frac {\sqrt{\pi}}{\sqrt{2}x} \sum^\infty_{k=-\infty} \exp\brb{- \frac{(2k-1)^2\pi^2}{8x^2}} = \frac {\sqrt{2\pi}}{x} \sum^\infty_{k=1} \exp\brb{- \frac{(2k-1)^2\pi^2}{8x^2}} \eeast as required.
 \end{proof}
 
 As a byproduct of the above theorem, we obtain the following theorems.
 \begin{theorem}
 \be
-D_N^+ := \sup_{x}\bb{F_N(x) - F(x)}.
+D_N^+ := \sup_{x}\brb{F_N(x) - F(x)}.
 \ee
 
 Then
 \be
-\pro\bb{D_N^+ \leq zN^{-1/2}} \to 1 - \exp\bb{-2z^2}\qquad\text{as }N\to \infty.
+\pro\brb{D_N^+ \leq zN^{-1/2}} \to 1 - \exp\brb{-2z^2}\qquad\text{as }N\to \infty.
 \ee
 \end{theorem}
 
@@ -615,12 +615,12 @@ U_r = A_1^c(d)A_2^c(d)\dots A_{r-1}^c(d)A_r(d)
 \ee
 and no analogue to the event $V_r$ will be used. Thus, we have
 \be
-\pro\bb{A_k(d)} = \sum^k_{r=1} \pro(U_r)\pro\bb{A_k(d)|A_r(d)}.
+\pro\brb{A_k(d)} = \sum^k_{r=1} \pro(U_r)\pro\brb{A_k(d)|A_r(d)}.
 \ee
 
 Recalling
 \be
-p_k(d) = \frac{k^{k+d}}{(k+d)!}e^{-k},\qquad  \pro\bb{A_k(d)} = \frac{p_k(d)p_{N-k}(-d)}{p_N(0)},\qquad \pro\bb{A_k(d)|A_r(d)} = \frac{p_{k-r}(0)p_{N-k}(-d)}{p_{N-r}(-d)}
+p_k(d) = \frac{k^{k+d}}{(k+d)!}e^{-k},\qquad  \pro\brb{A_k(d)} = \frac{p_k(d)p_{N-k}(-d)}{p_N(0)},\qquad \pro\brb{A_k(d)|A_r(d)} = \frac{p_{k-r}(0)p_{N-k}(-d)}{p_{N-r}(-d)}
 \ee
 and
 \be
@@ -638,17 +638,17 @@ u(\lm) = \sum^{\infty}_{k=1}u_k \lm^k,\qquad w(\lm,d) = N^{-1/2}\sum^\infty_{k=1
 \ee
 we have
 \be
-w(\lm,d) = u(\lm)\bb{N^{-1/2} + w(\lm,0)}.
+w(\lm,d) = u(\lm)\brb{N^{-1/2} + w(\lm,0)}.
 \ee
 
 In the proof of Theorem \ref{thm:kolmogorov_smirnov_limit_difference_between_empirical_theoretical}, we have
 \be
-w(e^{-s/N},d) \to \frac 1{\sqrt{2s}}\exp\bb{-\sqrt{2sz^2}},\quad \text{as }N\to\infty.
+w(e^{-s/N},d) \to \frac 1{\sqrt{2s}}\exp\brb{-\sqrt{2sz^2}},\quad \text{as }N\to\infty.
 \ee
 
 Therefore,
 \be
-\lim_{N\to \infty} u(e^{-s/N}) = \lim_{N\to \infty} \frac{w(e^{-s/N},d)}{N^{-1/2} + w(e^{-s/N},0)} = \exp\bb{-\sqrt{2sz^2}}.
+\lim_{N\to \infty} u(e^{-s/N}) = \lim_{N\to \infty} \frac{w(e^{-s/N},d)}{N^{-1/2} + w(e^{-s/N},0)} = \exp\brb{-\sqrt{2sz^2}}.
 \ee
 
 Recalling the result in Theorem \ref{thm:kolmogorov_smirnov_limit_difference_between_empirical_theoretical}, we have
@@ -659,17 +659,17 @@ Recalling the result in Theorem \ref{thm:kolmogorov_smirnov_limit_difference_bet
 Therefore, since $p_N(0) \to (2\pi N)^{-1/2}$ (Stirling formula)
 \beast
 \lim_{N\to \infty}N^{-1}\zeta(e^{-s/N}) & = & \lim_{N\to \infty}N^{-1}N^{1/2}\frac 1{p_N(0)}u(\lm)w(\lm,-d) \\
-& = & \sqrt{2\pi} \exp\bb{-\sqrt{2sz^2}} \frac 1{\sqrt{2s}}\exp\bb{-\sqrt{2sz^2}} \\
-& = &  \bb{\frac{\pi}{s}}^{1/2} \exp\bb{-\sqrt{8sz^2}}
+& = & \sqrt{2\pi} \exp\brb{-\sqrt{2sz^2}} \frac 1{\sqrt{2s}}\exp\brb{-\sqrt{2sz^2}} \\
+& = &  \brb{\frac{\pi}{s}}^{1/2} \exp\brb{-\sqrt{8sz^2}}
 \eeast
 which is the Laplace transform of
 \be
-f(x) = \frac 1{\sqrt{x}} \exp\bb{-2z^2/x}.
+f(x) = \frac 1{\sqrt{x}} \exp\brb{-2z^2/x}.
 \ee
 
 Then by Lemma \ref{lem:generating_function_convergence} and letting $x=1$, we have that
 \be
-\lim_{N\to\infty} \zeta_N = f(1) = \exp\bb{-2z^2}
+\lim_{N\to\infty} \zeta_N = f(1) = \exp\brb{-2z^2}
 \ee
 which implies the required results.
 \end{proof}
@@ -678,7 +678,7 @@ which implies the required results.
 \begin{theorem}
 Let $A_N$ be the number of points $x$ where the step-polygon $F_N(x)$ leaves the strip $F(x) \pm zN^{-1/2}$. The expected value of the random variable $A_N$ satisfies the asymptotic relation
 \be
-\E A_N \sim 2(2\pi N)^{1/2} \bb{1-\Phi(2z)}
+\E A_N \sim 2(2\pi N)^{1/2} \brb{1-\Phi(2z)}
 \ee
 where $\Phi(z)$ is the normalized Gaussian distribution function.
 \end{theorem}
@@ -695,45 +695,45 @@ A_N = \sum_{x\in \text{intervals}}\ind_{\bra{F_N(x) - F(x)> \frac dN}} + \sum_{x
 
 Thus,
 \be
-\E A_N = \sum^N_{k=1} \pro\bb{A_k(d)} + \sum^N_{k=1} \pro\bb{A_k(-d)}.
+\E A_N = \sum^N_{k=1} \pro\brb{A_k(d)} + \sum^N_{k=1} \pro\brb{A_k(-d)}.
 \ee
 
 Since (the result in the proof of Theorem \ref{thm:kolmogorov_smirnov_limit_difference_between_empirical_theoretical})
 \be
-\pro\bb{A_k(d)} = \frac{p_k(d)p_{N-k}(-d)}{p_N(0)},\qquad \lim_{N\to \infty}  \lim_{k\to xN} N^{1/2} p_k(d) = \frac 1{\sqrt{2\pi x}}\exp\bb{-\frac {z^2}{2x}},
+\pro\brb{A_k(d)} = \frac{p_k(d)p_{N-k}(-d)}{p_N(0)},\qquad \lim_{N\to \infty}  \lim_{k\to xN} N^{1/2} p_k(d) = \frac 1{\sqrt{2\pi x}}\exp\brb{-\frac {z^2}{2x}},
 \ee
 we have
 \beast
-\lim_{N\to\infty}\lim_{k\to xN} N^{-1/2}\pro\bb{A_k(d)} & = & \sqrt{2\pi} \frac 1{\sqrt{2\pi x}\sqrt{2\pi(1-x)}} \exp\bb{-\frac{z^2}{2x}}\exp\bb{-\frac{z^2}{2(1-x)}} \\
-& = & \frac 1{\sqrt{2\pi x(1-x)}} \exp\bb{-\frac{z^2}{2x(1-x)}}.
+\lim_{N\to\infty}\lim_{k\to xN} N^{-1/2}\pro\brb{A_k(d)} & = & \sqrt{2\pi} \frac 1{\sqrt{2\pi x}\sqrt{2\pi(1-x)}} \exp\brb{-\frac{z^2}{2x}}\exp\brb{-\frac{z^2}{2(1-x)}} \\
+& = & \frac 1{\sqrt{2\pi x(1-x)}} \exp\brb{-\frac{z^2}{2x(1-x)}}.
 \eeast
 
 Thus, by Lemma \ref{lem:generating_function_convergence}\footnote{as we can put $u_k=0$ for all $k> N$ which implies $\sum^\infty_{k=1}u_k <\infty$}, we let $s=0$ and get
 \be
-\lim_{N\to \infty}N^{-1/2}\sum^N_{k=1}\pro\bb{A_k(d)} =\int^1_0 \frac 1{\sqrt{2\pi x(1-x)}} \exp\bb{-\frac{z^2}{2x(1-x)}}dx
+\lim_{N\to \infty}N^{-1/2}\sum^N_{k=1}\pro\brb{A_k(d)} =\int^1_0 \frac 1{\sqrt{2\pi x(1-x)}} \exp\brb{-\frac{z^2}{2x(1-x)}}dx
 \ee
 
-Call the right hand $R$. After the substitution $x = \sin^2\bb{\phi/2}$ we find\footnote{Note that we can change the order of differentiation and integral according to Theorem \ref{thm:differentiation_under_integral_sign}.}
+Call the right hand $R$. After the substitution $x = \sin^2\brb{\phi/2}$ we find\footnote{Note that we can change the order of differentiation and integral according to Theorem \ref{thm:differentiation_under_integral_sign}.}
 \beast
-\frac{dR}{dz} & = & -z(2\pi)^{-1/2} \int^1_0 \bb{x(1-x)}^{-3/2}\exp\bb{-\frac{z^2}{2x(1-x)}}dx \\
-& = & -z(2\pi)^{-1/2} \int^{\pi}_0 \bb{\sin(\phi/2)\cos(\phi/2)}^{-3}\exp\bb{-\frac{z^2}{2\sin^2(\phi/2)\cos^2(\phi/2)}}\sin(\phi/2)\cos(\phi/2)d\phi \\
-& = & -4z(2\pi)^{-1/2} \int^{\pi}_0 \frac 1{\sin^2\phi} \exp\bb{-\frac{2z^2}{\sin^2\phi}} d\phi = 4z(2\pi)^{-1/2} \exp\bb{-2z^2}\int^{\pi}_0 \exp\bb{- 2z^2\cot^2\phi} d\cot\phi\\
-& = & 4z(2\pi)^{-1/2} \exp\bb{-2z^2}\int^{-\infty}_{\infty} \exp\bb{- 2z^2t} dt = -4z \exp\bb{-2z^2} \frac{1}{2z} = -2\exp\bb{-2z^2}.
+\frac{dR}{dz} & = & -z(2\pi)^{-1/2} \int^1_0 \brb{x(1-x)}^{-3/2}\exp\brb{-\frac{z^2}{2x(1-x)}}dx \\
+& = & -z(2\pi)^{-1/2} \int^{\pi}_0 \brb{\sin(\phi/2)\cos(\phi/2)}^{-3}\exp\brb{-\frac{z^2}{2\sin^2(\phi/2)\cos^2(\phi/2)}}\sin(\phi/2)\cos(\phi/2)d\phi \\
+& = & -4z(2\pi)^{-1/2} \int^{\pi}_0 \frac 1{\sin^2\phi} \exp\brb{-\frac{2z^2}{\sin^2\phi}} d\phi = 4z(2\pi)^{-1/2} \exp\brb{-2z^2}\int^{\pi}_0 \exp\brb{- 2z^2\cot^2\phi} d\cot\phi\\
+& = & 4z(2\pi)^{-1/2} \exp\brb{-2z^2}\int^{-\infty}_{\infty} \exp\brb{- 2z^2t} dt = -4z \exp\brb{-2z^2} \frac{1}{2z} = -2\exp\brb{-2z^2}.
 \eeast
 
 Since $R\to 0$ as $z\to \infty$ we conclude that
 \be
-R = 2\int^\infty_z \exp\bb{-2y^2} dy = (2\pi)^{1/2}\bb{1-\Phi(2z)}.
+R = 2\int^\infty_z \exp\brb{-2y^2} dy = (2\pi)^{1/2}\brb{1-\Phi(2z)}.
 \ee
 
 The same asymptotic estimate holds for the other sum
 \be
-\lim_{N\to \infty}N^{-1/2}\sum^N_{k=1}\pro\bb{A_k(-d)}.
+\lim_{N\to \infty}N^{-1/2}\sum^N_{k=1}\pro\brb{A_k(-d)}.
 \ee
 
 Thus, we have
 \be
-\E A_N \sim 2(2\pi N)^{1/2} \bb{1-\Phi(2z)}.
+\E A_N \sim 2(2\pi N)^{1/2} \brb{1-\Phi(2z)}.
 \ee
 \end{proof}
 
