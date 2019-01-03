@@ -37,14 +37,14 @@
 \begin{corollary}\label{cor:fourier_series_linear}
 Assume $x\in [-L,L]$. Then
 \be
-x  = 2L\sum^\infty_{n=1} \frac {(-1)^{n-1}}{n\pi}\sin \bb{\frac{n\pi x}{L}}.
+x  = 2L\sum^\infty_{n=1} \frac {(-1)^{n-1}}{n\pi}\sin \brb{\frac{n\pi x}{L}}.
 \ee
 \end{corollary}
 
 \begin{proof}[\bf Proof]
 Since $x$ is an odd function, we have\footnote{need theorem here}, $a_n = 0$ and
 \be
-b_n = \frac 2L \int^L_0 x\sin\bb{\frac{n\pi x}{L}}dx = \frac {2L}{Ln\pi} \left.x\cos\bb{\frac{n\pi x}{L}}\right|^0_L = \frac{2L(-1)^{n-1}}{n\pi},
+b_n = \frac 2L \int^L_0 x\sin\brb{\frac{n\pi x}{L}}dx = \frac {2L}{Ln\pi} \left.x\cos\brb{\frac{n\pi x}{L}}\right|^0_L = \frac{2L(-1)^{n-1}}{n\pi},
 \ee
 as required.
 \end{proof}
@@ -52,17 +52,17 @@ as required.
 \begin{corollary}\label{cor:fourier_series_cube}
 Assume $x\in [-L,L]$. Then
 \be
-x^3  = 2L^3\sum^\infty_{n=1} (-1)^{n-1} \bb{\frac 1{n\pi} - \frac{6}{n^3\pi^3}}\sin \bb{\frac{n\pi x}{L}} = L^2 x - 12L^3\sum^\infty_{n=1} \frac{(-1)^{n-1} }{n^3\pi^3}\sin \bb{\frac{n\pi x}{L}}
+x^3  = 2L^3\sum^\infty_{n=1} (-1)^{n-1} \brb{\frac 1{n\pi} - \frac{6}{n^3\pi^3}}\sin \brb{\frac{n\pi x}{L}} = L^2 x - 12L^3\sum^\infty_{n=1} \frac{(-1)^{n-1} }{n^3\pi^3}\sin \brb{\frac{n\pi x}{L}}
 \ee
 \end{corollary}
 
 \begin{proof}[\bf Proof]
 Since $x^3$ is an odd function, we have\footnote{need theorem here}, $a_n = 0$ and
 \beast
-b_n & = & \frac 2L \int^L_0 x^3\sin\bb{\frac{n\pi x}{L}}dx = \frac {2L}{Ln\pi} \bb{\left.x^3\cos\bb{\frac{n\pi x}{L}}\right|^0_L + \int^L_0 3x^2\cos\bb{\frac{n\pi x}{L}}dx} \\
-& = & \frac {2}{n\pi} \bb{L^3(-1)^{n-1} + \frac{3L}{n\pi}\bb{\left.x^2\sin\bb{\frac{n\pi x}{L}}\right|^0_L  - \int^L_0 2x \sin\bb{\frac{n\pi x}{L}}dx}} \\
-& = & \frac {2}{n\pi} \bb{L^3(-1)^{n-1} - \frac{6L^2}{n^2\pi^2}\bb{\left.x\cos\bb{\frac{n\pi x}{L}}\right|^0_L}} = \frac {2}{n\pi} \bb{L^3(-1)^{n-1} + \frac{6L^2}{n^2\pi^2}L(-1)^n} \\
-& = & 2L^3(-1)^{n-1} \bb{\frac 1{n\pi} - \frac{6}{n^3\pi^3}}.
+b_n & = & \frac 2L \int^L_0 x^3\sin\brb{\frac{n\pi x}{L}}dx = \frac {2L}{Ln\pi} \brb{\left.x^3\cos\brb{\frac{n\pi x}{L}}\right|^0_L + \int^L_0 3x^2\cos\brb{\frac{n\pi x}{L}}dx} \\
+& = & \frac {2}{n\pi} \brb{L^3(-1)^{n-1} + \frac{3L}{n\pi}\brb{\left.x^2\sin\brb{\frac{n\pi x}{L}}\right|^0_L  - \int^L_0 2x \sin\brb{\frac{n\pi x}{L}}dx}} \\
+& = & \frac {2}{n\pi} \brb{L^3(-1)^{n-1} - \frac{6L^2}{n^2\pi^2}\brb{\left.x\cos\brb{\frac{n\pi x}{L}}\right|^0_L}} = \frac {2}{n\pi} \brb{L^3(-1)^{n-1} + \frac{6L^2}{n^2\pi^2}L(-1)^n} \\
+& = & 2L^3(-1)^{n-1} \brb{\frac 1{n\pi} - \frac{6}{n^3\pi^3}}.
 \eeast
 as required. The second equation is obtained by Corollary \ref{cor:fourier_series_linear}.
 \end{proof}
@@ -70,16 +70,16 @@ as required. The second equation is obtained by Corollary \ref{cor:fourier_serie
 \begin{corollary}\label{cor:fourier_series_power_5}
 Assume $x\in [-L,L]$. Then
 \be
-x^5  = 2L^5\sum^\infty_{n=1} (-1)^{n-1} \bb{\frac{1}{n\pi}-\frac{20}{n^3\pi^3} + \frac{120}{n^5\pi^5}}  \sin \bb{\frac{n\pi x}{L}} = \frac {10}3L^2 x^3 -\frac 73 L^4 x + 240L^5\sum^\infty_{n=1} \frac{(-1)^{n-1} }{n^5\pi^5}\sin \bb{\frac{n\pi x}{L}}
+x^5  = 2L^5\sum^\infty_{n=1} (-1)^{n-1} \brb{\frac{1}{n\pi}-\frac{20}{n^3\pi^3} + \frac{120}{n^5\pi^5}}  \sin \brb{\frac{n\pi x}{L}} = \frac {10}3L^2 x^3 -\frac 73 L^4 x + 240L^5\sum^\infty_{n=1} \frac{(-1)^{n-1} }{n^5\pi^5}\sin \brb{\frac{n\pi x}{L}}
 \ee
 \end{corollary}
 
 \begin{proof}[\bf Proof]
 Since $x^5$ is an odd function, we have\footnote{need theorem here}, $a_n = 0$ and
 \beast
-b_n & = & \frac 2L \int^L_0 x^5\sin\bb{\frac{n\pi x}{L}}dx = \frac {2L}{Ln\pi} \bb{\left.x^5\cos\bb{\frac{n\pi x}{L}}\right|^0_L + \int^L_0 5x^4\cos\bb{\frac{n\pi x}{L}}dx} \\
-& = & \frac {2}{n\pi} \bb{L^5(-1)^{n-1} - \frac{20L}{n\pi}\int^L_0 x^3 \sin\bb{\frac{n\pi x}{L}}dx} = \frac {2}{n\pi} \bb{L^5(-1)^{n-1} - \frac{20L^2}{n^2\pi^2}\bb{\left.x^3\cos\bb{\frac{n\pi x}{L}}\right|^0_L+ \int^L_0 3x^2\cos\bb{\frac{n\pi x}{L}}dx}} \\
-& = & \frac {2}{n\pi} \bb{L^5(-1)^{n-1}\bb{1-\frac{20}{n^2\pi^2}} + \frac{60L^3}{n^3\pi^3}\int^L_0 2x\sin\bb{\frac{n\pi x}{L}}dx} = \frac {2L^5(-1)^{n-1}}{n\pi} \bb{1-\frac{20}{n^2\pi^2} + \frac{120}{n^4\pi^4}}
+b_n & = & \frac 2L \int^L_0 x^5\sin\brb{\frac{n\pi x}{L}}dx = \frac {2L}{Ln\pi} \brb{\left.x^5\cos\brb{\frac{n\pi x}{L}}\right|^0_L + \int^L_0 5x^4\cos\brb{\frac{n\pi x}{L}}dx} \\
+& = & \frac {2}{n\pi} \brb{L^5(-1)^{n-1} - \frac{20L}{n\pi}\int^L_0 x^3 \sin\brb{\frac{n\pi x}{L}}dx} = \frac {2}{n\pi} \brb{L^5(-1)^{n-1} - \frac{20L^2}{n^2\pi^2}\brb{\left.x^3\cos\brb{\frac{n\pi x}{L}}\right|^0_L+ \int^L_0 3x^2\cos\brb{\frac{n\pi x}{L}}dx}} \\
+& = & \frac {2}{n\pi} \brb{L^5(-1)^{n-1}\brb{1-\frac{20}{n^2\pi^2}} + \frac{60L^3}{n^3\pi^3}\int^L_0 2x\sin\brb{\frac{n\pi x}{L}}dx} = \frac {2L^5(-1)^{n-1}}{n\pi} \brb{1-\frac{20}{n^2\pi^2} + \frac{120}{n^4\pi^4}}
 \eeast
 as required. The second equation is obtained by Corollary \ref{cor:fourier_series_linear} and Corollary \ref{cor:fourier_series_cube}.
 \end{proof}
@@ -93,7 +93,7 @@ as required. The second equation is obtained by Corollary \ref{cor:fourier_serie
 %\end{proposition}
 
 %\begin{proof}[\bf Proof]
-%\footnote{this can be calculated by $a_n = \frac 2L\int^L_0 1\sin \bb{\frac{n\pi x}{L}} dx$}
+%\footnote{this can be calculated by $a_n = \frac 2L\int^L_0 1\sin \brb{\frac{n\pi x}{L}} dx$}
 %\end{proof}
 
 \begin{proposition}\label{pro:alternative_odd_series}
@@ -161,7 +161,7 @@ by Proposition \ref{pro:sum_inverse_even_power}. We can apply the similar method
 \begin{definition}[Fourier transform, unitary ordinary frequency\index{Fourier transform!unitary ordinary frequency}]\label{def:fourier_transform_unitary_ordinary_frequency}
 The Fourier transform $\wh{f}$ of an integrable function $f : \R \to \C$\footnote{Kaiser 1994, p. 29, Rahman 2011, p. 11} is
 \be
-\wh{f}(\xi) = \int_{-\infty}^\infty f(x)\ \exp\bb{- 2\pi i x \xi}dx, \qquad  \forall \xi \in \R.
+\wh{f}(\xi) = \int_{-\infty}^\infty f(x)\ \exp\brb{- 2\pi i x \xi}dx, \qquad  \forall \xi \in \R.
 \ee
 \end{definition}
 
@@ -174,7 +174,7 @@ There are other version of Fourier transform, i.e., Definition \ref{def:fourier_
 \begin{theorem}[Fourier inversion theorem\index{Fourier inverse transform!unitary ordinary frequency}]
 Under suitable conditions\footnote{details needed.}, $f$ is determined by $\wh{f}$ via the inverse transform:
 \be
-f(x) = \int_{-\infty}^\infty \wh{f}(\xi) \exp\bb{2 \pi i \xi x}\,d\xi,  \qquad \forall x\in \R.
+f(x) = \int_{-\infty}^\infty \wh{f}(\xi) \exp\brb{2 \pi i \xi x}\,d\xi,  \qquad \forall x\in \R.
 \ee
 \end{theorem}
 
@@ -189,9 +189,9 @@ The statement that $f$ can be reconstructed from $\wh{f}$ is known as the Fourie
 \subsection{Fourier transform of functions}
 
 \begin{proposition}\label{pro:fourier_transform_exponential_minus_quadratic}
-For $f(x) = \exp\bb{-a x^2}$ with $\Re(a) >0$
+For $f(x) = \exp\brb{-a x^2}$ with $\Re(a) >0$
 \be
-\wh{f}(\xi) = \sqrt{\frac{\pi}a} \exp\bb{-\frac{\pi^2 \xi^2}a},\qquad \wh{f}(\omega) = \frac{1}{\sqrt{2 a}} \exp\bb{-\frac{\omega^2}{4a}},\qquad \wh{f}(\nu) = \sqrt{\frac{\pi}{a}}\cdot \exp\bb{-\frac{\nu^2}{4 a}}.
+\wh{f}(\xi) = \sqrt{\frac{\pi}a} \exp\brb{-\frac{\pi^2 \xi^2}a},\qquad \wh{f}(\omega) = \frac{1}{\sqrt{2 a}} \exp\brb{-\frac{\omega^2}{4a}},\qquad \wh{f}(\nu) = \sqrt{\frac{\pi}{a}}\cdot \exp\brb{-\frac{\nu^2}{4 a}}.
 \ee
 \end{proposition}
 
@@ -201,7 +201,7 @@ For $f(x) = \exp\bb{-a x^2}$ with $\Re(a) >0$
 
 
 \begin{proposition}\label{pro:fourier_transform_exponential_absolute}
-For $f(x) = \exp\bb{-a \abs{x}}$ with $a>0$,
+For $f(x) = \exp\brb{-a \abs{x}}$ with $a>0$,
 \be
 \wh{f}(\xi) = \frac{2 a}{a^2 + 4 \pi^2 \xi^2} ,\qquad \wh{f}(\omega) = \sqrt{\frac{2}{\pi}} \cdot \frac{a}{a^2 + \omega^2},\qquad \wh{f}(\nu) = \frac{2a}{a^2 + \nu^2}.
 \ee
@@ -223,7 +223,7 @@ That is, the Fourier transform of a decaying exponential function is a Lorentzia
 \begin{theorem}[Poisson summation formula\index{Poisson summation formula}]\label{thm:poisson_summation_formula}
 For function $f(x)$\footnote{condition needed},
 \be
-\sum_{n=-\infty}^{\infty} f(x + ny) = \sum_{k=-\infty}^{\infty} \frac{1}{y}\cdot \wh{f}\left(\frac{k}{y}\right)\ \exp\bb{\frac{2\pi i kx} y}.
+\sum_{n=-\infty}^{\infty} f(x + ny) = \sum_{k=-\infty}^{\infty} \frac{1}{y}\cdot \wh{f}\left(\frac{k}{y}\right)\ \exp\brb{\frac{2\pi i kx} y}.
 \ee
 where
 \be
