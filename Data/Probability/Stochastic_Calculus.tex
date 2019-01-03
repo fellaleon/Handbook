@@ -13,7 +13,7 @@ In this section we establish the stochastic integral with respect to continuous 
 %\ee
 %where here and in the rest of the course, for a random variable $X$:
 %\be
-%\dabs{X}_2 := \E\bb{\abs{X}^2}^{1/2}.
+%\dabs{X}_2 := \E\brb{\abs{X}^2}^{1/2}.
 %\ee
 
 
@@ -31,7 +31,7 @@ In this section we establish the stochastic integral with respect to continuous 
 %\begin{theorem}
 %For $X \in \sM^2$,
 %\be
-%\E\bb{\sup_{t\geq0} \abs{X_t}^2} \leq 4\E\bb{X^2_\infty}.
+%\E\brb{\sup_{t\geq0} \abs{X_t}^2} \leq 4\E\brb{X^2_\infty}.
 %\ee
 
 %\end{theorem}
@@ -66,8 +66,8 @@ H_1(\omega,t) = \sum^{m-1}_{i=0} X_i(\omega) \ind_{(t_i,t_{i+1}]}(t),\ H_2 = \su
 with $0 = t_0 <\dots< t_m < \infty$ and $0 = s_0 <\dots< s_n < \infty$, $X_i$ and $Y_j$ are bounded $\sF_{t_i},\sF_{s_j}$-measurable, respectively. Then we resort $t_i$ and $s_j$ with increasing order and form a new sequence $0=r_0 < \dots r_l < \infty$. Then,
 \beast
 (H_1 + H_2)(\omega,t) & = & \sum^{m-1}_{i=0} X_i(\omega) \sum^{l-1}_{k=0} \ind_{(r_k,r_{k+1}]\subseteq (t_i,t_{i+1}] }(t)  + \sum^{n-1}_{j=0} Y_j(\omega) \sum^{l-1}_{k=0} \ind_{(r_k,r_{k+1}]\subseteq (s_j,s_{j+1}]}(t) \\
-& = & \sum^{l-1}_{k=0} \bb{\sum^{m-1}_{i=0} X_i(\omega) \ind_{\bra{t_i \leq r_k ,t_{i+1} \geq r_{k+1}}} + \sum^{n-1}_{j=0} Y_j(\omega) \ind_{\bra{s_j\leq r_k,s_{j+1}\geq r_{k+1}}}} \ind_{(r_k,r_{k+1}]}(t) \\
-& = & \sum^{l-1}_{k=0} \bb{\sum^{m-1}_{i=0} \underbrace{X_i(\omega) \ind_{\bra{t_i\leq r_k}}}_{\text{$\sF_{r_k}$-measurable}} \ind_{\bra{t_{i+1}\geq r_{k+1}}} + \sum^{n-1}_{j=0} \underbrace{Y_j(\omega) \ind_{\bra{s_j\leq r_k}}}_{\text{$\sF_{r_k}$-measurable}} \ind_{\bra{s_{j+1}\geq r_{k+1}}}} \ind_{(r_k,r_{k+1}]}(t)
+& = & \sum^{l-1}_{k=0} \brb{\sum^{m-1}_{i=0} X_i(\omega) \ind_{\bra{t_i \leq r_k ,t_{i+1} \geq r_{k+1}}} + \sum^{n-1}_{j=0} Y_j(\omega) \ind_{\bra{s_j\leq r_k,s_{j+1}\geq r_{k+1}}}} \ind_{(r_k,r_{k+1}]}(t) \\
+& = & \sum^{l-1}_{k=0} \brb{\sum^{m-1}_{i=0} \underbrace{X_i(\omega) \ind_{\bra{t_i\leq r_k}}}_{\text{$\sF_{r_k}$-measurable}} \ind_{\bra{t_{i+1}\geq r_{k+1}}} + \sum^{n-1}_{j=0} \underbrace{Y_j(\omega) \ind_{\bra{s_j\leq r_k}}}_{\text{$\sF_{r_k}$-measurable}} \ind_{\bra{s_{j+1}\geq r_{k+1}}}} \ind_{(r_k,r_{k+1}]}(t)
 \eeast
 
 Thus, $(H_1 + H_2)(\omega,t) \in \sS$. For any $\lm \in \R$,
@@ -115,9 +115,9 @@ Thus, $H^m$ is $\sP$-measurable. Since $H^m \ua H$, we have non-negative $H$ is 
 
 
 \begin{definition}[essential supremum\index{essential supremum!stochastic process}]\label{def:essential_supremum_stochastic_process}
-Given a stochastic process $(X_t)_{t\geq 0}$, we denote $\dabs{X}_\infty = \esssup\bb{X}$ the essential supremum
+Given a stochastic process $(X_t)_{t\geq 0}$, we denote $\dabs{X}_\infty = \esssup\brb{X}$ the essential supremum
 \footnote{It's been confusing with the essential supremum of a family of random variables (as it is a random variable). The essential supremum should be defined in a norm framework. Further checking needed.} of $X$ (see essential supremum of function, Definition \ref{def:essential_sup}). It
-is the smallest $\lm > 0$ such that $\sup_{t\geq0} \abs{X(t, \omega)} \leq \lm$ almost surely, i.e., \be \dabs{X}_\infty := \esssup\bb{X} = \inf\bra{\lm : \sup_{t\geq 0}|X(t,\omega)| \leq \lm \text{
+is the smallest $\lm > 0$ such that $\sup_{t\geq0} \abs{X(t, \omega)} \leq \lm$ almost surely, i.e., \be \dabs{X}_\infty := \esssup\brb{X} = \inf\bra{\lm : \sup_{t\geq 0}|X(t,\omega)| \leq \lm \text{
 a.s.}}. \ee
 \end{definition}
 
@@ -152,14 +152,14 @@ It is well-defined since $X_\infty$ exists by Theorem \ref{thm:martingale_bounde
 \end{remark}
 
 \begin{theorem}
-The function $\dabs{\cdot}$ on $\sM^2$ defines indeed a norm. That is, $\bb{\sM^2,\dabs{\cdot}}$ is a normed space\footnote{definition needed.}.
+The function $\dabs{\cdot}$ on $\sM^2$ defines indeed a norm. That is, $\brb{\sM^2,\dabs{\cdot}}$ is a normed space\footnote{definition needed.}.
 \end{theorem}
 
 \begin{proof}[\bf Proof]
 The only point which demands justification is the requirement that if $\dabs{M} = 0$, then $M$ is indistinguishable from 0.
 
 If $\dabs{M} = 0$, then $\E M^2_\infty = 0$ by definition. % so $M_\infty = 0$ a.s. by Theorem \ref{thm:non_negative_measurable_property}.
-By $\sL^p$ martingale convergence theorem (Theorem \ref{thm:martingale_bounded_lp_as_lp_closed_continuous}), \be M_t = \E\bb{M_\infty|\sF_t} \ \text{ a.s..} \ee
+By $\sL^p$ martingale convergence theorem (Theorem \ref{thm:martingale_bounded_lp_as_lp_closed_continuous}), \be M_t = \E\brb{M_\infty|\sF_t} \ \text{ a.s..} \ee
 
 Therefore, we have for all $t$, $\E M_t^2 \leq \E M_\infty^2 = 0$ by Corollary \ref{cor:conditional_expectation_norm_smaller}. Thus, $M_t = 0$ a.s. for all $t$. Since $M$ is \cadlag, it is indistinguishable from 0 by
 Proposition \ref{pro:continuous_cadlag_version_indistinguishable}.
@@ -173,7 +173,7 @@ Let $(\sF_t)_{t\geq 0}$ be the filtration satisfying usual conditions. Then
 \item [(i)] $(\sC^2, \tabs{\cdot})$ is complete.
 \item [(ii)] $\sM^2 =\sM\cap \sC^2$.
 \item [(iii)] $(\sM^2, \dabs{\cdot})$ is a Hilbert space\footnote{need definition} with $\sM^2_c =\sM_c \cap \sM^2$ as a closed subspace.
-\item [(iv)] $I:\sM^2 \to \sL^2(\Omega,\sF_\infty,\pro),X \mapsto X_\infty$ is an isometry ($\bb{\sM^2,\dabs{\cdot}} \to \bb{\sL^2(\Omega,\sF_\infty,\pro), \dabs{\cdot}_2}$). \een
+\item [(iv)] $I:\sM^2 \to \sL^2(\Omega,\sF_\infty,\pro),X \mapsto X_\infty$ is an isometry ($\brb{\sM^2,\dabs{\cdot}} \to \brb{\sL^2(\Omega,\sF_\infty,\pro), \dabs{\cdot}_2}$). \een
 
 \begin{center}
 \psset{yunit=1cm,xunit=1cm}
@@ -222,7 +222,7 @@ By Definition \ref{def:essential_supremum_stochastic_process},%{def:essential_su
 
 Thus, $\forall \ve >0$, we can find $k\in \N$ such that $\sup_{t\geq0} \abs{X^{n_{k+1}}_t (\omega) - X^{n_k}_t (\omega)} < \ve$ a.s., then
 \be
-\dabs{X^{n_{k+1}} (\omega) - X^{n_k} (\omega)}_\infty < \ve \ \ra \ \bb{X^{n_k}}_{k\in \N}\text{ is Cauchy sequence on }\bb{\sC^2,\dabs{\cdot}_\infty}
+\dabs{X^{n_{k+1}} (\omega) - X^{n_k} (\omega)}_\infty < \ve \ \ra \ \brb{X^{n_k}}_{k\in \N}\text{ is Cauchy sequence on }\brb{\sC^2,\dabs{\cdot}_\infty}
 \ee
 
 %Therefore, $(X^{n_k})_{k\in \N}$ is a convergent sequence on $(\sC^2,\dabs{\cdot}_\infty)$.
@@ -256,20 +256,20 @@ X_t(\omega) = \left\{\ba{ll}
 \ea\right. \ = X^{n_k}_t(\omega)\ind_{\bra{\omega\in \Omega'}}.
 \ee
 
-We know $X^{n_k}_t$ is adapted and $\ind_{\bra{\omega\in \Omega'}}$ is $\sF_t$-measurable (since $\bb{\sF_t}_{t\geq 0}$ satisfies the usual conditions and $\pro(\Omega') =1$). Thus, $X_t$ is $\sF_t$-measurable and $X$ is adapted. Now we have
+We know $X^{n_k}_t$ is adapted and $\ind_{\bra{\omega\in \Omega'}}$ is $\sF_t$-measurable (since $\brb{\sF_t}_{t\geq 0}$ satisfies the usual conditions and $\pro(\Omega') =1$). Thus, $X_t$ is $\sF_t$-measurable and $X$ is adapted. Now we have
 \beast
-\tabs{X^n - X}^2 & = & \dabs{\sup_{t\geq 0}\abs{X^n_t - X_t}}^2_2 = \E\bb{\bb{\sup_{t\geq0} \abs{X^n_t - X_t}}^2} = \E\bb{\sup_{t\geq0} \abs{X^n_t - X_t}^2}\\
-& \leq & \E\bb{\lim_{k\to \infty}\sup_{t\geq0} \bra{\abs{X^n_t - X^{n_k}_t}^2 + \abs{X_t - X^{n_k}_t}^2 + 2\abs{X^n_t - X^{n_k}_t}\abs{X_t - X^{n_k}_t}}}\\
-& \leq & \E\bb{\lim_{k\to \infty}\sup_{t\geq0} \abs{X^n_t - X^{n_k}_t}^2 + \lim_{k\to \infty}\sup_{t\geq0} \abs{X_t - X^{n_k}_t}^2 + 2\lim_{k\to \infty}\sup_{t\geq0} \abs{X^n_t - X^{n_k}_t}\sup_{t\geq0}\abs{X_t - X^{n_k}_t} }\\
-& = & \E\bb{\lim_{k\to \infty}\sup_{t\geq0} \abs{X^n_t - X^{n_k}_t}^2 + 0 + 0 } = \E\bb{\liminf_{k\to \infty}\bra{\sup_{t\geq0} \abs{X^n_t - X^{n_k}_t}^2 }} \\
-& \leq & \liminf_{k\to\infty} \E\bb{\bb{\sup_{t\geq0} \abs{X^n_t - X^{n_k}_t}}^2}\quad\quad\text{(by Fatou's lemma, Theorem \ref{lem:fatou_probability})}\\
+\tabs{X^n - X}^2 & = & \dabs{\sup_{t\geq 0}\abs{X^n_t - X_t}}^2_2 = \E\brb{\brb{\sup_{t\geq0} \abs{X^n_t - X_t}}^2} = \E\brb{\sup_{t\geq0} \abs{X^n_t - X_t}^2}\\
+& \leq & \E\brb{\lim_{k\to \infty}\sup_{t\geq0} \bra{\abs{X^n_t - X^{n_k}_t}^2 + \abs{X_t - X^{n_k}_t}^2 + 2\abs{X^n_t - X^{n_k}_t}\abs{X_t - X^{n_k}_t}}}\\
+& \leq & \E\brb{\lim_{k\to \infty}\sup_{t\geq0} \abs{X^n_t - X^{n_k}_t}^2 + \lim_{k\to \infty}\sup_{t\geq0} \abs{X_t - X^{n_k}_t}^2 + 2\lim_{k\to \infty}\sup_{t\geq0} \abs{X^n_t - X^{n_k}_t}\sup_{t\geq0}\abs{X_t - X^{n_k}_t} }\\
+& = & \E\brb{\lim_{k\to \infty}\sup_{t\geq0} \abs{X^n_t - X^{n_k}_t}^2 + 0 + 0 } = \E\brb{\liminf_{k\to \infty}\bra{\sup_{t\geq0} \abs{X^n_t - X^{n_k}_t}^2 }} \\
+& \leq & \liminf_{k\to\infty} \E\brb{\brb{\sup_{t\geq0} \abs{X^n_t - X^{n_k}_t}}^2}\quad\quad\text{(by Fatou's lemma, Theorem \ref{lem:fatou_probability})}\\
 & = & \liminf_{k\to\infty} \tabs{X^n - X^{n_k}}^2 \to 0\quad\text{ as }n \to\infty
 \eeast
-since $(X^n)_{n\in \N}$ is a Cauchy sequence in $\bb{\sC^2,\tabs{\cdot}}$. Hence, $X^n \to X$ in $\tabs{\cdot}$ and thus $(\sC^2, \tabs{\cdot})$ is complete.
+since $(X^n)_{n\in \N}$ is a Cauchy sequence in $\brb{\sC^2,\tabs{\cdot}}$. Hence, $X^n \to X$ in $\tabs{\cdot}$ and thus $(\sC^2, \tabs{\cdot})$ is complete.
 
 \item [(ii)] For $X \in \sC^2 \cap \sM$ we have
 \be
-\sup_{t\geq 0}\dabs{X_t}_2 = \sup_{t\geq 0}\bb{\E\abs{X_t^2}}^{1/2} \leq  \bb{\E\bb{\sup_{t\geq 0} \abs{X_t}^2}}^{1/2} = \dabs{\sup_{t\geq0} \abs{X_t}}_2 = \tabs{X} < \infty
+\sup_{t\geq 0}\dabs{X_t}_2 = \sup_{t\geq 0}\brb{\E\abs{X_t^2}}^{1/2} \leq  \brb{\E\brb{\sup_{t\geq 0} \abs{X_t}^2}}^{1/2} = \dabs{\sup_{t\geq0} \abs{X_t}}_2 = \tabs{X} < \infty
 \ee
 and so $X$ is bounded in $\sL^2 (\Omega,\sF,\pro)$ and thus $X \in \sM^2$.
 
@@ -288,7 +288,7 @@ If $X^n \in \sM^2$ and $\tabs{X^n - X} \to 0$ as $n \to \infty$ for some $X$, th
 Since $X$ is bounded in $\sL^2(\Omega,\sF,\pro)$, we have $X$ is UI and thus bounded in $\sL^1(\Omega,\sF,\pro)$ (by Proposition \ref{pro:bounded_lp_implies_ui}). So $X_t$ is integrable for any $t\geq 0$. By Minkowski inequality (Theorem \ref{thm:minkowski_inequality_expectation}) and Corollary \ref{cor:conditional_expectation_norm_smaller}, % Jensen's inequality for conditional expectations (Theorem \ref{thm:jensen_inequality_conditional_expectation}),
 ($\E(X_t|\sF_s) = X_s$ a.s.)
 \beast
-\dabs{\E(X_t|\sF_s) - X_s}_2 & = & \dabs{\E(X_t|\sF_s) - X_s - \bb{\E(X^n_t|\sF_s) - X^n_s}}_2 \leq \dabs{\E(X^n_t -X_t |\sF_s)}_2 + \dabs{X^n_s - X_s}_2\\
+\dabs{\E(X_t|\sF_s) - X_s}_2 & = & \dabs{\E(X_t|\sF_s) - X_s - \brb{\E(X^n_t|\sF_s) - X^n_s}}_2 \leq \dabs{\E(X^n_t -X_t |\sF_s)}_2 + \dabs{X^n_s - X_s}_2\\
 & \leq & \dabs{X^n_t- X_t }_2 +  \dabs{X^n_s - X_s}_2 \leq 2\sup_{t\geq 0} \dabs{X^n_t- X_t }_2 \leq 2\tabs{X^n - X} \to 0
 \eeast
 as $n \to \infty$ and so $\E(X_t|\sF_s) - X_s = 0$ a.s. and $X$ is a martingale. Thus, $X \in \sM^2$. By the similar argument $\sM^2_c$ is closed in $(\sM^2, \dabs{\cdot})$.%, where continuity of $t \to X_t(\omega)$ follows by uniform convergence in $t$.
@@ -298,21 +298,21 @@ as $n \to \infty$ and so $\E(X_t|\sF_s) - X_s = 0$ a.s. and $X$ is a martingale.
 \end{proof}
 
 \begin{lemma}\label{lem:stopped_l2_continuous_martingale_convergence}
-Let $M^n \to M$ in $\bb{\sM_c^2,\dabs{\cdot}}$ and $T$ be a stopping time. Then $\bb{M^n}^T \to M^T$ in $\bb{\sM_c^2,\dabs{\cdot}}$.
+Let $M^n \to M$ in $\brb{\sM_c^2,\dabs{\cdot}}$ and $T$ be a stopping time. Then $\brb{M^n}^T \to M^T$ in $\brb{\sM_c^2,\dabs{\cdot}}$.
 \end{lemma}
 
 \begin{proof}[\bf Proof]
-If $M^n \to M$ in $\bb{\sM_c^2,\dabs{\cdot}}$, we have $M^n,M \in \sM_c^2$ and
+If $M^n \to M$ in $\brb{\sM_c^2,\dabs{\cdot}}$, we have $M^n,M \in \sM_c^2$ and
 \be
 \dabs{M^n-M} \to 0 \ \lra \ \dabs{M^n_\infty-M_\infty}_2 \to 0.
 \ee
 
-Thus, $\bb{M^n}^T,M^T\in \sM^2_c$ by Theorem \ref{thm:optional_stopping_bounded_stopping_time_continuous} and
+Thus, $\brb{M^n}^T,M^T\in \sM^2_c$ by Theorem \ref{thm:optional_stopping_bounded_stopping_time_continuous} and
 \beast
-\dabs{\bb{M^n}^T - M^T} & = & \dabs{\bb{M^n - M}^T} = \dabs{\bb{M^n_\infty - M_\infty}^T}_2 = \dabs{M^n_T - M_T}_2 \leq \dabs{\sup_{0\leq t\leq T}\abs{ M^n_t - M_t}}_2 \\
-& \leq & \dabs{\sup_{t\geq 0}\abs{ (M^n - M)_t}}_2 \leq 2 \dabs{\bb{M^n - M}_\infty}_2 = 2 \dabs{M^n_\infty - M_\infty}_2 \to 0.
+\dabs{\brb{M^n}^T - M^T} & = & \dabs{\brb{M^n - M}^T} = \dabs{\brb{M^n_\infty - M_\infty}^T}_2 = \dabs{M^n_T - M_T}_2 \leq \dabs{\sup_{0\leq t\leq T}\abs{ M^n_t - M_t}}_2 \\
+& \leq & \dabs{\sup_{t\geq 0}\abs{ (M^n - M)_t}}_2 \leq 2 \dabs{\brb{M^n - M}_\infty}_2 = 2 \dabs{M^n_\infty - M_\infty}_2 \to 0.
 \eeast
-by Corollary \ref{cor:doob_lp_inequality_continuous_infinity}. Thus, $\bb{M^n}^T \to M^T$ in $\bb{\sM_c^2,\dabs{\cdot}}$.
+by Corollary \ref{cor:doob_lp_inequality_continuous_infinity}. Thus, $\brb{M^n}^T \to M^T$ in $\brb{\sM_c^2,\dabs{\cdot}}$.
 \end{proof}
 
 
@@ -325,7 +325,7 @@ We now define the stochastic integral for simple processes.
 \begin{definition}\label{def:stochastic_integral_with_simple_process_integrands}
 For $H = \sum^{n-1}_{k=0} Z_k \ind_{(t_k,t_{k+1}]}\in \sS$ and $M \in \sM^2$ set
 \be
-(H \cdot M)_t = \sum^{n-1}_{k=0} Z_k\bb{M_{t_{k+1}\land t} -M_{t_k\land t}}.\quad \quad ((H\cdot M)_0)
+(H \cdot M)_t = \sum^{n-1}_{k=0} Z_k\brb{M_{t_{k+1}\land t} -M_{t_k\land t}}.\quad \quad ((H\cdot M)_0)
 \ee
 \end{definition}
 
@@ -334,7 +334,7 @@ Let $H \in \sS$ and $M \in \sM^2$. Let $T$ be a stopping time. Then
 \ben
 \item [(i)] $H \cdot M^T = (H \cdot M)^T$.
 \item [(ii)] $H \cdot M \in \sM^2$. (If $M \in \sM^2_c$, then $H \cdot M \in \sM^2_c$.)
-\item [(iii)] $\E\bb{\bb{H \cdot M}^2_\infty} \leq \dabs{H}^2_\infty \E\bb{\bb{M_\infty -M_0)^2}}$.
+\item [(iii)] $\E\brb{\brb{H \cdot M}^2_\infty} \leq \dabs{H}^2_\infty \E\brb{\brb{M_\infty -M_0)^2}}$.
 \een
 \end{proposition}
 
@@ -342,31 +342,31 @@ Let $H \in \sS$ and $M \in \sM^2$. Let $T$ be a stopping time. Then
 \ben
 \item [(i)] For all $t \geq 0$ we have
 \be
-\bb{H \cdot M^T}_t = \sum^{n-1}_{k=0} Z_k\bb{M^T_{t_{k+1}\land t} - M^T_{t_k\land t}} = \sum^{n-1}_{k=0} Z_k \bb{M_{t_{k+1}\land t\land T} -M_{t_k\land t\land T}} = (H \cdot M)_{t\land T} = (H \cdot M)^T_t.
+\brb{H \cdot M^T}_t = \sum^{n-1}_{k=0} Z_k\brb{M^T_{t_{k+1}\land t} - M^T_{t_k\land t}} = \sum^{n-1}_{k=0} Z_k \brb{M_{t_{k+1}\land t\land T} -M_{t_k\land t\land T}} = (H \cdot M)_{t\land T} = (H \cdot M)^T_t.
 \ee
 
 \item [(ii)] For $t_k \leq s \leq t < t_{k+1}$, $(H \cdot M)_t - (H \cdot M)_s = Z_k(M_t -M_s)$, so that (by Proposition \ref{pro:conditional_expectation_tower_independence}.(iv) since $Z_k$ is $\sF_s$-measurable)
 \be
-\E\bb{(H \cdot M)_t - (H \cdot M)_s|\sF_s} \stackrel{\text{a.s.}}{=} Z_k \E(M_t -M_s|\sF_s) \stackrel{\text{a.s.}}{=} 0 .
+\E\brb{(H \cdot M)_t - (H \cdot M)_s|\sF_s} \stackrel{\text{a.s.}}{=} Z_k \E(M_t -M_s|\sF_s) \stackrel{\text{a.s.}}{=} 0 .
 \ee
 
 This extends easily to general $s \leq t$ and hence $H \cdot M$ is a martingale.
 
 To show it is bounded in $\sL^2(\Omega,\sF,\pro)$, note that if $j < k$ we have the following ``orthogonality relation" (by Proposition \ref{pro:conditional_expectation_basic_property}.(i) and Proposition \ref{pro:conditional_expectation_tower_independence}.(iv)).
 \be
-\E\bb{Z_j(M_{t_j+1} -M_{t_j} )Z_k(M_{t_{k+1}} -M_{t_k})} = \E \bb{\underbrace{Z_j(M_{t_j+1} -M_{t_j})Z_k}_{\text{$\sF_{t_k}$-measurable}} \E\bb{M_{t_{k+1}} -M_{t_k} |\sF_{t_k}}} = 0.
+\E\brb{Z_j(M_{t_j+1} -M_{t_j} )Z_k(M_{t_{k+1}} -M_{t_k})} = \E \brb{\underbrace{Z_j(M_{t_j+1} -M_{t_j})Z_k}_{\text{$\sF_{t_k}$-measurable}} \E\brb{M_{t_{k+1}} -M_{t_k} |\sF_{t_k}}} = 0.
 \ee
 
 Thus let $t \geq 0$ and assume that $t_n \leq t$ for simplicity. To compute $\E((H \cdot M)^2_t)$, we expand the square and use the above orthogonality relation.
 \beast
-\E\bb{(H \cdot M)^2_t} & = & \E\bb{\bb{\sum^{n-1}_{k=0} Z_k(M_{t_{k+1}}-M_{t_k})}^2} = \sum^{n-1}_{k=0} \E\bb{Z^2_k (M_{t_{k+1}}-M_{t_k})^2}\quad\quad (*)\\
-& \leq & \dabs{H}^2_\infty \sum^{n-1}_{k=0} \E\bb{(M_{t_{k+1}}-M_{t_k} )^2} = \dabs{H}^2_\infty \E\bb{(M_{t_n} -M_0)^2}.
+\E\brb{(H \cdot M)^2_t} & = & \E\brb{\brb{\sum^{n-1}_{k=0} Z_k(M_{t_{k+1}}-M_{t_k})}^2} = \sum^{n-1}_{k=0} \E\brb{Z^2_k (M_{t_{k+1}}-M_{t_k})^2}\quad\quad (*)\\
+& \leq & \dabs{H}^2_\infty \sum^{n-1}_{k=0} \E\brb{(M_{t_{k+1}}-M_{t_k} )^2} = \dabs{H}^2_\infty \E\brb{(M_{t_n} -M_0)^2}.
 \eeast
 (On two occasions, we used the trick (Lemma \ref{lem:sl2_martingale_trick})).
 
 Similarly, if $t_j \leq t < t_{j+1}$ then the same calculation gives:
 \be
-\E\bb{(H \cdot M)^2_t} \leq \dabs{H}^2_\infty \E\bb{(M_t -M_0)^2}.
+\E\brb{(H \cdot M)^2_t} \leq \dabs{H}^2_\infty \E\brb{(M_t -M_0)^2}.
 \ee
 
 But note that since $M \in \sM$, then $(M -M_0)^2$ is a submartingale (by Proposition \ref{pro:convex_implies_submartingale}). So if $s \geq t$ then
@@ -376,16 +376,16 @@ But note that since $M \in \sM$, then $(M -M_0)^2$ is a submartingale (by Propos
 
 Therefore, for either case ($t_n \leq t$ or $t_j \leq t < t_{j+1}$), we have,
 \be
-\E\bb{(H \cdot M)^2_t} \leq \dabs{H}^2_\infty \E\bb{(M_t -M_0)^2}.
+\E\brb{(H \cdot M)^2_t} \leq \dabs{H}^2_\infty \E\brb{(M_t -M_0)^2}.
 \ee
 
 Since $M \in \sM^2$, then the convergence of $M_s$ to $M_\infty$ holds in $\sL^2(\Omega,\sF,\pro)$ and a.s. as $s \to \infty$ (by Theorem \ref{thm:martingale_bounded_lp_as_lp_closed_continuous}), hence we deduce $E((M_t -M_0)^2) \leq \E((M_\infty -M_0)^2)$ by letting $s \to \infty$. Thus for all $t \geq 0$,
 \be
-\E\bb{(H \cdot M)^2_t } \leq \dabs{H}^2_\infty \E\bb{(M_\infty -M_0)^2}\quad \quad (*)
+\E\brb{(H \cdot M)^2_t } \leq \dabs{H}^2_\infty \E\brb{(M_\infty -M_0)^2}\quad \quad (*)
 \ee
 and
 \be
-\sup_{t\geq 0}\dabs{(H \cdot M)_t }_2 = \sup_{t\geq 0}\bb{\E\bb{(H \cdot M)^2_t}}^{1/2} \leq \underbrace{\dabs{H}_\infty}_{\text{bounded}} \underbrace{\bb{\E\bb{(M_\infty -M_0)^2}}^{1/2}}_{M_\infty \in \sL^2(\Omega,\sF,\pro)} < \infty.
+\sup_{t\geq 0}\dabs{(H \cdot M)_t }_2 = \sup_{t\geq 0}\brb{\E\brb{(H \cdot M)^2_t}}^{1/2} \leq \underbrace{\dabs{H}_\infty}_{\text{bounded}} \underbrace{\brb{\E\brb{(M_\infty -M_0)^2}}^{1/2}}_{M_\infty \in \sL^2(\Omega,\sF,\pro)} < \infty.
 \ee
 
 Thus, by Definition \ref{def:bounded_in_slp_probability}, $(H \cdot M)$ is bounded in $\sL^2(\Omega,\sF,\pro)$.
@@ -396,7 +396,7 @@ Thus $H \cdot M \in \sM^2$.
 
 \item [(iii)] Since $(H \cdot M) \in \sM^2$ from (ii), we have $(H \cdot M)_t \to (H \cdot M)_\infty$ a.s. and in $\sL^2(\Omega,\sF,\pro)$. Thus, by ($*$)
 \be
-\dabs{H}^2_\infty \E\bb{\bb{M_\infty -M_0}^2} \geq \lim_{t\to \infty} \E\bb{\bb{H \cdot M}^2_t } = \E\bb{\bb{H \cdot M}^2_\infty}.
+\dabs{H}^2_\infty \E\brb{\brb{M_\infty -M_0}^2} \geq \lim_{t\to \infty} \E\brb{\brb{H \cdot M}^2_t } = \E\brb{\brb{H \cdot M}^2_\infty}.
 \ee%Letting $t \to \infty$ in the above inequality (which we may since we now know  we obtain the desired (iii).
 \een
 \end{proof}
@@ -413,18 +413,18 @@ $\tabs{(X^n)^{T_k}} \to 0$ as $n\to\infty$ for all $k$, then $X^n \to 0$ u.c.p..
 \begin{proof}[\bf Proof]
 First we have by definition
 \be
-\tabs{\bb{X^n}^{T_k}} \to 0 \ \text{ as }n\to \infty,\ \forall k \ \ra \ \E\bb{\sup_{0\leq t\leq T_k}\abs{X^n_t}^2} \to 0 \ \text{ as }n\to \infty,\ \forall k.
+\tabs{\brb{X^n}^{T_k}} \to 0 \ \text{ as }n\to \infty,\ \forall k \ \ra \ \E\brb{\sup_{0\leq t\leq T_k}\abs{X^n_t}^2} \to 0 \ \text{ as }n\to \infty,\ \forall k.
 \ee
 
 Now fix $T< \infty$, detetministic. Then given $\ve >0$, by Chebyshev inequality (Theomem \ref{thm:chebyshev_inequality_probability})
 \beast
-\pro\bb{\sup_{0\leq t\leq T}\abs{X_t^n} > \ve} & \leq & \pro\bb{\sup_{0\leq t\leq T_k}\abs{X_t^n} >\ve} + \pro\bb{T_k\leq T} \\
-& \leq & \left.\E\bb{\sup_{0\leq t\leq T_k}\abs{X^n_t}^2}\right/\ve^2 + \pro\bb{T_k\leq T} \to \pro\bb{T_k\leq T}\ \text{ as }n\to \infty.
+\pro\brb{\sup_{0\leq t\leq T}\abs{X_t^n} > \ve} & \leq & \pro\brb{\sup_{0\leq t\leq T_k}\abs{X_t^n} >\ve} + \pro\brb{T_k\leq T} \\
+& \leq & \left.\E\brb{\sup_{0\leq t\leq T_k}\abs{X^n_t}^2}\right/\ve^2 + \pro\brb{T_k\leq T} \to \pro\brb{T_k\leq T}\ \text{ as }n\to \infty.
 \eeast
 
-But $T_k \ua \infty$ a.s. and $\pro\bb{T_k \leq T} \to 0$ as $k\to \infty$. Hence,
+But $T_k \ua \infty$ a.s. and $\pro\brb{T_k \leq T} \to 0$ as $k\to \infty$. Hence,
 \be
-\pro\bb{\sup_{0\leq t\leq T}\abs{X_t^n} > \ve} \ \text{ as }n\to \infty,
+\pro\brb{\sup_{0\leq t\leq T}\abs{X_t^n} > \ve} \ \text{ as }n\to \infty,
 \ee
 for any $T<\infty$ and any $\ve >0$, i.e., $X^n \to 0$ u.c.p. by Definition \ref{def:ucp_convergence_process}.
 \end{proof}
@@ -433,7 +433,7 @@ for any $T<\infty$ and any $\ve >0$, i.e., $X^n \to 0$ u.c.p. by Definition \ref
 \begin{theorem}[quadratic variation process\index{quadratic variation process}]\label{thm:quadratic_variation_process_uniqueness_existence}
 For each $M \in \sM_{c,loc}$ there exists a unique (up to indistinguishability) (pathwise) continuous adapted (pathwise) non-decreasing process $\bsb{M}$ such that $M^2-\bsb{M} \in \sM_{c,loc}$ and such that $\bsb{M}_0 = 0$ a.s.. Moreover, for
 \be
-\bsb{M}^n_t := \sum^{\floor{2^nt} -1}_{k=0} \bb{M_{(k+1)2^{-n}} -M_{k2^{-n}}}^2,\quad [M]^n_0 = 0, \quad\quad (*)
+\bsb{M}^n_t := \sum^{\floor{2^nt} -1}_{k=0} \brb{M_{(k+1)2^{-n}} -M_{k2^{-n}}}^2,\quad [M]^n_0 = 0, \quad\quad (*)
 \ee
 we have $\bsb{M}^n \to \bsb{M}$ u.c.p. as $n\to \infty$. We call $\bsb{M}$ the quadratic variation process of $M$.
 \end{theorem}
@@ -455,7 +455,7 @@ but it coincides with $[M]$ when $M$ is continuous.
 
 \item [(vi)] Sometimes $[M]^n_t$ is defined by (e.g., Rogers-William\cite{Rogers_1994}.I11)
 \be
-\bsb{M}^n_t := \sum^{\floor{2^nt} -1}_{k=0} \bb{M_{(k+1)2^{-n}} -M_{k2^{-n}}}^2 + \bb{M_{t} -M_{\floor{2^nt}2^{-n}}}^2
+\bsb{M}^n_t := \sum^{\floor{2^nt} -1}_{k=0} \brb{M_{(k+1)2^{-n}} -M_{k2^{-n}}}^2 + \brb{M_{t} -M_{\floor{2^nt}2^{-n}}}^2
 \ee
 which is a (sample) continuous adapted process. Then we can have that if $\bsb{M}_n \to \bsb{M}$ u.c.p., $\bsb{M}$ must be (sample) continuous adapted process as well by Theorem \ref{thm:complete_cadlag_continuous_under_ucp_convergence}. Again, this a weaker conclusion comparing to the current theorem.%\item [(v)] For standard Brownian motion, we have a stronger version. By Theorem \ref{thm:brownian_motion_quadratic_variation_ucas}, we know that $[B]^n_t \to t$ u.c.a.s. which implies that $[B]^n_t \to t$ u.c.p.. Since the quadratic variation is unique, we can have that $(t)_{t\geq 0}$ is the quadratic variation of $(B_t)_{t\geq 0}$.
 \een
@@ -478,46 +478,46 @@ H^n_t =\sum^{\floor{2^n T}-1}_{k=0} M_{k2^{-n}} \ind_{(k2^{-n},(k+1)2^{-n}]}(t).
 
 Then $H^n \in \sS$ for all $n \in \N$ since $M_{k2^{-n}}$ is $\sF_{k2^{-n}}$-measurable. Hence $X^n$ defined by
 \be
-X^n_t = (H^n \cdot M)_t = \sum^{\floor{2^nT}-1}_{k=0} M_{k2^{-n}} \bb{M_{(k+1)2^{-n}\land t} -M_{k2^{-n}\land t} }.
+X^n_t = (H^n \cdot M)_t = \sum^{\floor{2^nT}-1}_{k=0} M_{k2^{-n}} \brb{M_{(k+1)2^{-n}\land t} -M_{k2^{-n}\land t} }.
 \ee
 
 Then $X^n\in \sM^2_c$ by Proposition \ref{pro:ito_integral_simple_process_property}.(ii) and the continuity of $M$.
 
 %Recall that $\dabs{X^n} = \dabs{X^n_\infty}_2 = \dabs{X^n_T}_2$ since $X^n_t$ is constant for $t \geq T$. For $n,m \geq 0$ we have by linearity of the %tochastic integral,
 %\be
-%X^n - X^m = H^n \cdot M - H^m \cdot M = (H^n - H^m) \cdot M \ \ra \ \dabs{X^n - X^m}^2 = \dabs{\bb{(H^n - H^m) \cdot M}_\infty}_2^2
+%X^n - X^m = H^n \cdot M - H^m \cdot M = (H^n - H^m) \cdot M \ \ra \ \dabs{X^n - X^m}^2 = \dabs{\brb{(H^n - H^m) \cdot M}_\infty}_2^2
 %\ee
 %hence letting $H = H^n - H^m$ for ease of notations%\be%\ee
 
 Wlog we assume $m\geq n$. Therefore, computing this as in Proposition \ref{pro:ito_integral_simple_process_property} and letting $t\to \infty$,
 \beast
 & & X^n - X^m\\
-& = & \sum^{\floor{2^mT}-1}_{k=0} M_{k2^{-m}}\bb{M_{(k+1)2^{-m}} -M_{k2^{-m}}} - \sum^{\floor{2^nT}-1}_{k=0} M_{k2^{-n}} \bb{M_{(k+1)2^{-n}} -M_{k2^{-n}}} \\
-& = & \sum^{\floor{2^mT}-1}_{k=0} M_{k2^{-m}}\bb{M_{(k+1)2^{-m}} -M_{k2^{-m}}} - \sum^{2^{m-n}(\floor{2^nT}-1)}_{k=0,\text{ step}=2^{m-n}} M_{k2^{-m}} \bb{M_{(k+2^{m-n})2^{-m}} -M_{k2^{-m}}} \\
-& = & \sum^{2^{m-n}(\floor{2^nT}-1)}_{k=0} \underbrace{\bb{M_{k2^{-m}} - M_{2^{-n}\floor{k 2^{-m+n}}}}}_{\sF_{k2^{-m}}\text{-measurable}}\bb{M_{(k+1)2^{-m}} -M_{k2^{-m}}} + \sum^{\floor{2^mT}-1}_{k=2^{m-n}(\floor{2^nT}-1)+1} M_{k2^{-m}} \bb{M_{(k+1)2^{-m}} -M_{k2^{-m}}}.
+& = & \sum^{\floor{2^mT}-1}_{k=0} M_{k2^{-m}}\brb{M_{(k+1)2^{-m}} -M_{k2^{-m}}} - \sum^{\floor{2^nT}-1}_{k=0} M_{k2^{-n}} \brb{M_{(k+1)2^{-n}} -M_{k2^{-n}}} \\
+& = & \sum^{\floor{2^mT}-1}_{k=0} M_{k2^{-m}}\brb{M_{(k+1)2^{-m}} -M_{k2^{-m}}} - \sum^{2^{m-n}(\floor{2^nT}-1)}_{k=0,\text{ step}=2^{m-n}} M_{k2^{-m}} \brb{M_{(k+2^{m-n})2^{-m}} -M_{k2^{-m}}} \\
+& = & \sum^{2^{m-n}(\floor{2^nT}-1)}_{k=0} \underbrace{\brb{M_{k2^{-m}} - M_{2^{-n}\floor{k 2^{-m+n}}}}}_{\sF_{k2^{-m}}\text{-measurable}}\brb{M_{(k+1)2^{-m}} -M_{k2^{-m}}} + \sum^{\floor{2^mT}-1}_{k=2^{m-n}(\floor{2^nT}-1)+1} M_{k2^{-m}} \brb{M_{(k+1)2^{-m}} -M_{k2^{-m}}}.
 \eeast
 
 Thus, we can find $N\in \N$ such that $\forall m,n \geq N$, $2^{m-n}(\floor{2^nT}-1) = \floor{2^mT}-1$ since $2^{-n}(\floor{2^nT}-1) \ua 2^{-m}(\floor{2^m T}-1)$. So if $m, n$ are sufficiently large, we can ignore the second summation. Thus, we have
 \beast
-\dabs{X^n - X^m}^2 & = & \dabs{\sum^{\floor{2^mT}-1}_{k=0} \bb{M_{k2^{-m}} - M_{2^{-n}\floor{k 2^{-m+n}}}}\bb{M_{(k+1)2^{-m}} -M_{k2^{-m}}}}^2_2\\
-& = & \E{\bb{\sum^{\floor{2^mT}-1}_{k=0} \bb{M_{k2^{-m}} - M_{2^{-n}\floor{k 2^{-m+n}}}}\bb{M_{(k+1)2^{-m}} -M_{k2^{-m}}}}^2}\\
-& \leq & \E\bb{\sup_{0\leq k < \floor{2^mT}}\abs{M_{k2^{-m}} - M_{2^{-n}\floor{k 2^{-m+n}}}}^2 \bb{\sum^{\floor{2^mT}-1}_{k=0} \bb{M_{(k+1)2^{-m}} -M_{k2^{-m}}}}^2}\\
-& \leq & \bb{\E\bb{\sup_{0\leq k < \floor{2^mT}}\abs{M_{k2^{-m}} - M_{2^{-n}\floor{k 2^{-m+n}}}}^2}}^{1/2} \bb{\E \bb{\sum^{\floor{2^mT}-1}_{k=0} \bb{M_{(k+1)2^{-m}} -M_{k2^{-m}}}}^2}^{1/2}
+\dabs{X^n - X^m}^2 & = & \dabs{\sum^{\floor{2^mT}-1}_{k=0} \brb{M_{k2^{-m}} - M_{2^{-n}\floor{k 2^{-m+n}}}}\brb{M_{(k+1)2^{-m}} -M_{k2^{-m}}}}^2_2\\
+& = & \E{\brb{\sum^{\floor{2^mT}-1}_{k=0} \brb{M_{k2^{-m}} - M_{2^{-n}\floor{k 2^{-m+n}}}}\brb{M_{(k+1)2^{-m}} -M_{k2^{-m}}}}^2}\\
+& \leq & \E\brb{\sup_{0\leq k < \floor{2^mT}}\abs{M_{k2^{-m}} - M_{2^{-n}\floor{k 2^{-m+n}}}}^2 \brb{\sum^{\floor{2^mT}-1}_{k=0} \brb{M_{(k+1)2^{-m}} -M_{k2^{-m}}}}^2}\\
+& \leq & \brb{\E\brb{\sup_{0\leq k < \floor{2^mT}}\abs{M_{k2^{-m}} - M_{2^{-n}\floor{k 2^{-m+n}}}}^2}}^{1/2} \brb{\E \brb{\sum^{\floor{2^mT}-1}_{k=0} \brb{M_{(k+1)2^{-m}} -M_{k2^{-m}}}}^2}^{1/2}
 \eeast
 by Cauchy-Schwarz inequality (Theorem \ref{thm:cauchy_schwarz_inequality_probability}). The first term tends to 0 since $M_{k2^{-m}} - M_{2^{-n}\floor{k 2^{-m+n}}} \to 0$ as $m,n \to \infty$. The second term is bounded by Lemma \ref{lem:martingale_quadratic_sum_square_bounded} since $M$ is bounded. Thus, $\dabs{X^n - X^m} \to 0$, i.e., $X^n$ is a Cauchy sequence in $(\sM^2_c,\dabs{\cdot})$. Thus, by Proposition \ref{pro:cadlag_triple_norm_complete}.(iii), $X^n$ converges to a limit $Y = (Y_t)_{t \geq 0} \in \sM^2_c$.
 
 %\beast
-%& = & \E\bsb{\sum^{\floor{2^mT}-1}_{k=0} \bb{H_{k2^{-m}} }\bb{M_{(k+1)2^{-m}} -M_{k2^{-m}}}}\\
-%& \leq & \E\bb{\sup_{0\leq t\leq T} \abs{H_t}^2 \sum^{\floor{2^nT}-1}_{k=0} \bb{M_{(k+1)2^{-n}} -M_{k2^{-n}}}^2}
+%& = & \E\bsb{\sum^{\floor{2^mT}-1}_{k=0} \brb{H_{k2^{-m}} }\brb{M_{(k+1)2^{-m}} -M_{k2^{-m}}}}\\
+%& \leq & \E\brb{\sup_{0\leq t\leq T} \abs{H_t}^2 \sum^{\floor{2^nT}-1}_{k=0} \brb{M_{(k+1)2^{-n}} -M_{k2^{-n}}}^2}
 %\eeast
 %\beast
-%\dabs{X^n - X^m}^2 & = & \E\bsb{\bb{\sum^{\floor{2^nT}-1}_{k=0} H_{k2^{-n}}\bb{M_{(k+1)2^{-n}} -M_{k2^{-n}}}}^2} = \E\bsb{\sum^{\floor{2^nT}-1}_{k=0} H_{k2^{-n}}^2\bb{M_{(k+1)2^{-n}} -M_{k2^{-n}}}^2}\\
-%& \leq & \E\bb{\sup_{0\leq t\leq T} \abs{H_t}^2 \sum^{\floor{2^nT}-1}_{k=0} \bb{M_{(k+1)2^{-n}} -M_{k2^{-n}}}^2}
+%\dabs{X^n - X^m}^2 & = & \E\bsb{\brb{\sum^{\floor{2^nT}-1}_{k=0} H_{k2^{-n}}\brb{M_{(k+1)2^{-n}} -M_{k2^{-n}}}}^2} = \E\bsb{\sum^{\floor{2^nT}-1}_{k=0} H_{k2^{-n}}^2\brb{M_{(k+1)2^{-n}} -M_{k2^{-n}}}^2}\\
+%& \leq & \E\brb{\sup_{0\leq t\leq T} \abs{H_t}^2 \sum^{\floor{2^nT}-1}_{k=0} \brb{M_{(k+1)2^{-n}} -M_{k2^{-n}}}^2}
 %\eeast
 
 %Recalling that $H = H^n - H^m$ where both $H^n$ and $H^m$ are dyadic approximations of $M$, so that the first term in the above expectation tends to 0 almost surely as $n,m \to \infty$ (by uniform continuity of $M$ on $[0, T]$), and that moreover the expectation of the second term is bounded by (\ref{equ:martingale_quadratic}), it is tempting to conclude that the left-hand side of the above inequality also tends to 0. This turns out to be true be requires stronger arguments than what we just sketched. In fact, we will deal with both terms separately. by the Cauchy-Schwartz inequality,
 %\be\label{equ:local_martingale_cauchy_convergence}
-%\dabs{X^n-X^m}^2 \leq \E\bsb{\sup_{0\leq t\leq T} \abs{H^n_t - H^m_t}^4}^{1/2} \E\bsb{\bb{\sum^{\floor{2^nT}-1}_{k=0} (M_{(k+1)2^{-n}} -M_{k2^{-n}}}^2}^{1/2}.
+%\dabs{X^n-X^m}^2 \leq \E\bsb{\sup_{0\leq t\leq T} \abs{H^n_t - H^m_t}^4}^{1/2} \E\bsb{\brb{\sum^{\floor{2^nT}-1}_{k=0} (M_{(k+1)2^{-n}} -M_{k2^{-n}}}^2}^{1/2}.
 %\ee
 
 %The first term tends to 0 by the above discussion and Lebesgue's convergence theorem since $M$ is bounded, and the second term is bounded because of the following lemma.
@@ -526,11 +526,11 @@ by Cauchy-Schwarz inequality (Theorem \ref{thm:cauchy_schwarz_inequality_probabi
 
 Now, for any $n$ and $1 \leq k \leq \floor{2^nT}$, by definition of $X^n_t$,
 \beast
-(M_{k2^{-n}})^2 - 2X^n_{k2^{-n}} & = & \sum^{k-1}_{j=0} \bb{M^2_{(j+1)2^{-n}} -M^2_{j2^{-n}}} - 2\sum^{k-1}_{j=0} M_{j2^{-n}}(M_{(j+1)2^{-n}} -M_{j2^{-n}})\\
+(M_{k2^{-n}})^2 - 2X^n_{k2^{-n}} & = & \sum^{k-1}_{j=0} \brb{M^2_{(j+1)2^{-n}} -M^2_{j2^{-n}}} - 2\sum^{k-1}_{j=0} M_{j2^{-n}}(M_{(j+1)2^{-n}} -M_{j2^{-n}})\\
 & = & \sum^{k-1}_{j=0} (M_{(j+1)2^{-n}} -M_{j2^{-n}})^2 = [M]^n_{k2^{-n}}.\quad\quad(\dag)
 \eeast
 
-Hence, $M^2_t - 2X^n_t$ is increasing along the sequence of times $\bb{k2^{-n}, 1 \leq k \leq \floor{2^nT}}$. Passing to the limit $n \to\infty$, since $M_t , X^n_t \in \sM_c^2$, by right-continuuos of $M_t$ and $X^n_t$, $M^2_t - 2X^n_t$ must be a.s. increasing. Define % and $M^2_0 - 2X_0^n = 0$ a.s..
+Hence, $M^2_t - 2X^n_t$ is increasing along the sequence of times $\brb{k2^{-n}, 1 \leq k \leq \floor{2^nT}}$. Passing to the limit $n \to\infty$, since $M_t , X^n_t \in \sM_c^2$, by right-continuuos of $M_t$ and $X^n_t$, $M^2_t - 2X^n_t$ must be a.s. increasing. Define % and $M^2_0 - 2X_0^n = 0$ a.s..
 \be
 \Omega'= \bra{\omega: M^2(\omega) - 2Y(\omega)\text{ is increasing}} = \bra{\omega: M^2(\omega)- 2X^n(\omega)\text{ is increasing}} \bigcap \bra{\omega:Y(\omega) \text{ exists}}
 \ee
@@ -540,7 +540,7 @@ Obviously, we have $\pro(\Omega') = 1$. Thus, for $t \in [0, T]$, set
 [M]_t := \left\{\ba{ll}
 M^2_t - 2Y_t \quad\quad & \omega \in \Omega', \\
 0 & \omega \in \Omega'^c
-\ea\right.\ = \ \bb{M^2_t - 2Y_t}\ind_{\bra{\omega\in \Omega'}}.
+\ea\right.\ = \ \brb{M^2_t - 2Y_t}\ind_{\bra{\omega\in \Omega'}}.
 \ee
 
 Therefore, $[M]$ is pathwise continuous increasing (even on the set $\Omega'^c$ which gives $[M] =0$). For integrability, for any $t\in [0,T]$,
@@ -548,11 +548,11 @@ Therefore, $[M]$ is pathwise continuous increasing (even on the set $\Omega'^c$ 
 \E\abs{M^2 - [M]_t} = 2\E \abs{Y_t} < \infty \quad \text{as }Y_t \in \sM^2_c.
 \ee
 
-Since the filtration satisfies the usual conditions, $\bb{M^2_t - 2Y_t}\ind_{\bra{\omega\in \Omega'}}$ is $\sF_t$-measurable and thus $[M]$ is adapted. Note that $Y\in \sM_c^2$ implies the adaptedness. Also,  for any $s\leq t$ and $\forall A\in \sF_s$, ($M^2_t - [M]_t = 2Y_t$ a.s. for any $t$),
+Since the filtration satisfies the usual conditions, $\brb{M^2_t - 2Y_t}\ind_{\bra{\omega\in \Omega'}}$ is $\sF_t$-measurable and thus $[M]$ is adapted. Note that $Y\in \sM_c^2$ implies the adaptedness. Also,  for any $s\leq t$ and $\forall A\in \sF_s$, ($M^2_t - [M]_t = 2Y_t$ a.s. for any $t$),
 \be
-\E\bb{\bb{M^2_t-[M]_t}\ind_A} = \E\bb{2Y_t\ind_A} = \E\bb{\ind_A\E\bb{2Y_t|\sF_s}} = \E\bb{\ind A 2Y_s} = \E\bb{\bb{M^2_s-[M]_s}\ind_A}.
+\E\brb{\brb{M^2_t-[M]_t}\ind_A} = \E\brb{2Y_t\ind_A} = \E\brb{\ind_A\E\brb{2Y_t|\sF_s}} = \E\brb{\ind A 2Y_s} = \E\brb{\brb{M^2_s-[M]_s}\ind_A}.
 \ee
-since $Y \in \sM^2_c$. Thus, we have $\E\bb{M^2_t - [M]_t|\sF_s} = M^2_s-[M]_s$ a.s.. Hence, $[M]$ is a pathwise continuous increasing process and $M^2 - [M]$ is a martingale on $[0, T]$.
+since $Y \in \sM^2_c$. Thus, we have $\E\brb{M^2_t - [M]_t|\sF_s} = M^2_s-[M]_s$ a.s.. Hence, $[M]$ is a pathwise continuous increasing process and $M^2 - [M]$ is a martingale on $[0, T]$.
 
 We now extend the definition of $[M]_t$ to $t \in [0,\infty)$ by applying the foregoing for all $T \in \N$. Note that the process $[M]$ obtained with $T$ is the restriction to $[0, T]$ of $[M]$ defined with $T+1$.
 
@@ -573,10 +573,10 @@ Thus, $\forall t\geq 0$, since $X^n,M \in \sM^2_c$, we have $X^n$ and $M^2$ are 
 \ee
 by Theorem \ref{thm:martingale_bounded_lp_as_lp_closed_continuous}.,%\ref{thm:convergence_in_probability},
 %\be
-%\dabs{\sup_{0\leq s\leq t}\abs{X^n_{2^{-n}\floor{2^ns}} - X^n_s} + \sup_{0\leq s\leq t}\abs{M^2_{2^{-n}\floor{2^ns}} - M^2_s} }_2 \to 0 %\pro\bb{\sup_{0\leq s\leq t}\abs{X^n_{2^{-n}\floor{2^ns}} - X^n_s} + \sup_{0\leq s\leq t}\abs{M^2_{2^{-n}\floor{2^ns}} - M^2_s} > \ve } \to 0.
+%\dabs{\sup_{0\leq s\leq t}\abs{X^n_{2^{-n}\floor{2^ns}} - X^n_s} + \sup_{0\leq s\leq t}\abs{M^2_{2^{-n}\floor{2^ns}} - M^2_s} }_2 \to 0 %\pro\brb{\sup_{0\leq s\leq t}\abs{X^n_{2^{-n}\floor{2^ns}} - X^n_s} + \sup_{0\leq s\leq t}\abs{M^2_{2^{-n}\floor{2^ns}} - M^2_s} > \ve } \to 0.
 %\ee
 
-Note that $X^n \to Y$ in $\bb{\sM^2_c,\dabs{\cdot}}$, equivalently, $X^n \to Y$ in $\bb{\sM^2_c,\dabs{\cdot}}$, i.e.,
+Note that $X^n \to Y$ in $\brb{\sM^2_c,\dabs{\cdot}}$, equivalently, $X^n \to Y$ in $\brb{\sM^2_c,\dabs{\cdot}}$, i.e.,
 \be
 \dabs{\sup_{0\leq s\leq t}\abs{X^n_s-Y_s}}_2 = \tabs{X^n-Y} \to 0.
 \ee
@@ -584,41 +584,41 @@ Note that $X^n \to Y$ in $\bb{\sM^2_c,\dabs{\cdot}}$, equivalently, $X^n \to Y$ 
 
 By Markov inequality (Theorem \ref{thm:markov_inequality_probability}), Proposition \ref{pro:lp-norm_monotonicity} and H\"older's inequality (Theorem \ref{thm:holder_inequality_expectation}),
 \beast
-\pro\bb{\sup_{s\leq t} \abs{[M]^n_s - [M]_s} > \ve } & \leq & \frac{\E\bb{\sup_{s\leq t} \abs{M^2_{2^{-n}\floor{2^n s}} - 2X^n_{2^{-n}\floor{2^n s}} - \bb{M^2_s - 2Y_s}}} }{\ve}\\
-& \leq & \frac{\dabs{\sup_{s\leq t} \abs{M^2_{2^{-n}\floor{2^n s}} - 2X^n_{2^{-n}\floor{2^n s}} - \bb{M^2_s - 2Y_s}}}_2 }{\ve}\\
+\pro\brb{\sup_{s\leq t} \abs{[M]^n_s - [M]_s} > \ve } & \leq & \frac{\E\brb{\sup_{s\leq t} \abs{M^2_{2^{-n}\floor{2^n s}} - 2X^n_{2^{-n}\floor{2^n s}} - \brb{M^2_s - 2Y_s}}} }{\ve}\\
+& \leq & \frac{\dabs{\sup_{s\leq t} \abs{M^2_{2^{-n}\floor{2^n s}} - 2X^n_{2^{-n}\floor{2^n s}} - \brb{M^2_s - 2Y_s}}}_2 }{\ve}\\
 & \leq & \frac{\dabs{\sup_{s\leq t} \abs{X^n_{2^{-n}\floor{2^ns}} - X^n_s} + \sup_{s\leq t}\abs{M^2_{2^{-n}\floor{2^ns}} - M^2_s} + \sup_{s\leq t} \abs{X^n_s - Y_s}}_2}{\ve}\\
 & \leq & \frac{\dabs{\sup_{s\leq t} \abs{X^n_{2^{-n}\floor{2^ns}} - X^n_s}}_2 + \dabs{\sup_{s\leq t}\abs{M^2_{2^{-n}\floor{2^ns}} - M^2_s}}_2 + \dabs{\sup_{s\leq t} \abs{X^n_s - Y_s}}_2}{\ve} \to 0 .
 \eeast
 
 
 %\beast
-%\pro\bb{\sup_{s\leq t} \abs{X^n_s - Y_s} \geq \ve } & \leq & \frac{\E\bb{\sup_{s\leq t} \abs{X^n_s - Y_s} }}{\ve} \leq \frac{\bb{\E\bb{\sup_{s\leq t} \abs{X^n_s - Y_s} }^2}^{1/2}}{\ve} \\
+%\pro\brb{\sup_{s\leq t} \abs{X^n_s - Y_s} \geq \ve } & \leq & \frac{\E\brb{\sup_{s\leq t} \abs{X^n_s - Y_s} }}{\ve} \leq \frac{\brb{\E\brb{\sup_{s\leq t} \abs{X^n_s - Y_s} }^2}^{1/2}}{\ve} \\
 %& = &\frac{\dabs{\sup_{s\leq t} \abs{X^n_s - Y_s}}_2}{\ve}  \leq  \frac{\dabs{\sup_{t\geq 0}\abs{X^n_t- Y_t}}_2}{\ve} = \frac{\tabs{X^n-Y}}{\ve} \to 0.
 %\eeast
 
 %Hence, we have (by Proposition \ref{pro:probability_property}.(vii))
 %\beast
-%& & \pro\bb{\sup_{s\leq t} \abs{[M]^n_s - [M]_s} > \ve } \\
-%& = & \pro\bb{\sup_{s\leq t} \abs{M^2_{2^{-n}\floor{2^n s}} - 2X^n_{2^{-n}\floor{2^n s}} - \bb{M^2_s - 2Y_s}} > \ve}\\
-%& \leq & \pro\bb{\sup_{s\leq t} \abs{X^n_{2^{-n}\floor{2^ns}} - X^n_s} + \sup_{s\leq t}\abs{M^2_{2^{-n}\floor{2^ns}} - M^2_s} + \sup_{s\leq t} \abs{X^n_s - Y_s} > \ve}\\
-%& = & \pro\bb{\bigcup_{q>0,q\in \Q} \bra{\sup_{s\leq t} \abs{X^n_s - Y_s} > q} \cap \bra{\sup_{s\leq t} \abs{X^n_{2^{-n}\floor{2^ns}} - X^n_s} + \sup_{s\leq t}\abs{M^2_{2^{-n}\floor{2^ns}} - M^2_s} > \ve - q}}\\
-%& \leq & \sum_{q>0,q\in \Q}\pro\bb{ \bra{\sup_{s\leq t} \abs{X^n_s - Y_s} > q} \cap \bra{\sup_{s\leq t} \abs{X^n_{2^{-n}\floor{2^ns}} - X^n_s} + \sup_{s\leq t}\abs{M^2_{2^{-n}\floor{2^ns}} - M^2_s} > \ve - q}}\\
-%& \leq & \sum_{q>0,q\in \Q}\pro\bb{\sup_{s\leq t} \abs{X^n_s - Y_s} > q} + \pro\bb{\sup_{s\leq t} \abs{X^n_{2^{-n}\floor{2^ns}} - X^n_s} + \sup_{s\leq t}\abs{M^2_{2^{-n}\floor{2^ns}} - M^2_s} > \ve - q}\\
+%& & \pro\brb{\sup_{s\leq t} \abs{[M]^n_s - [M]_s} > \ve } \\
+%& = & \pro\brb{\sup_{s\leq t} \abs{M^2_{2^{-n}\floor{2^n s}} - 2X^n_{2^{-n}\floor{2^n s}} - \brb{M^2_s - 2Y_s}} > \ve}\\
+%& \leq & \pro\brb{\sup_{s\leq t} \abs{X^n_{2^{-n}\floor{2^ns}} - X^n_s} + \sup_{s\leq t}\abs{M^2_{2^{-n}\floor{2^ns}} - M^2_s} + \sup_{s\leq t} \abs{X^n_s - Y_s} > \ve}\\
+%& = & \pro\brb{\bigcup_{q>0,q\in \Q} \bra{\sup_{s\leq t} \abs{X^n_s - Y_s} > q} \cap \bra{\sup_{s\leq t} \abs{X^n_{2^{-n}\floor{2^ns}} - X^n_s} + \sup_{s\leq t}\abs{M^2_{2^{-n}\floor{2^ns}} - M^2_s} > \ve - q}}\\
+%& \leq & \sum_{q>0,q\in \Q}\pro\brb{ \bra{\sup_{s\leq t} \abs{X^n_s - Y_s} > q} \cap \bra{\sup_{s\leq t} \abs{X^n_{2^{-n}\floor{2^ns}} - X^n_s} + \sup_{s\leq t}\abs{M^2_{2^{-n}\floor{2^ns}} - M^2_s} > \ve - q}}\\
+%& \leq & \sum_{q>0,q\in \Q}\pro\brb{\sup_{s\leq t} \abs{X^n_s - Y_s} > q} + \pro\brb{\sup_{s\leq t} \abs{X^n_{2^{-n}\floor{2^ns}} - X^n_s} + \sup_{s\leq t}\abs{M^2_{2^{-n}\floor{2^ns}} - M^2_s} > \ve - q}\\
 %& \to & \sum_{q>0,q\in \Q} 0 + 0 = 0.
 %\eeast
 
 Thus $[M]^n \xrightarrow{ucp} [M]$. For $[M]_0$, let $t=0$, for any $\ve>0$,
 \be
-\pro\bb{\abs{[M]_0}>\ve} =\pro\bb{\abs{[M]^n_0 - [M]_0}>\ve} = \pro\bb{\sup_{0\leq s \leq 0}\abs{[M]^n_s - [M]_s}>\ve} \to 0\ \text{ as }n\to \infty.
+\pro\brb{\abs{[M]_0}>\ve} =\pro\brb{\abs{[M]^n_0 - [M]_0}>\ve} = \pro\brb{\sup_{0\leq s \leq 0}\abs{[M]^n_s - [M]_s}>\ve} \to 0\ \text{ as }n\to \infty.
 \ee
 
-Thus, $\pro\bb{\abs{[M]_0}>\ve}= 0$ and thus
+Thus, $\pro\brb{\abs{[M]_0}>\ve}= 0$ and thus
 \be
-\pro\bb{[M]_0 \neq 0} = \pro\bb{\abs{[M]_0} > 0} = \pro\bb{\bigcup_{n\in \N}\bra{\abs{[M]_0}>\frac 1n}} \leq \sum_{n\in \N}\pro\bb{\abs{[M]_0}>\frac 1n}= \sum_{n\in \N} 0 = 0.
+\pro\brb{[M]_0 \neq 0} = \pro\brb{\abs{[M]_0} > 0} = \pro\brb{\bigcup_{n\in \N}\bra{\abs{[M]_0}>\frac 1n}} \leq \sum_{n\in \N}\pro\brb{\abs{[M]_0}>\frac 1n}= \sum_{n\in \N} 0 = 0.
 \ee
 
 So we have $[M_0] = 0$ a.s. and the theorem is proved when $M$ is bounded.
-%Now, note that $M^2_{2^{-n}\floor{t2^n}}$ converges to $M^2$ u.c.p. by uniform continuity, and convergence of $X^n$ towards $X$ also holds in the u.c.p. sense since it holds in the stronger $\bb{\sM^2_c , \dabs{\cdot}}$ sense.
+%Now, note that $M^2_{2^{-n}\floor{t2^n}}$ converges to $M^2$ u.c.p. by uniform continuity, and convergence of $X^n$ towards $X$ also holds in the u.c.p. sense since it holds in the stronger $\brb{\sM^2_c , \dabs{\cdot}}$ sense.
 
 
 Now we turn to the general case $M \in \sM_{c,loc}$. Define\footnote{should say $M_0 = 0$ a.s.}
@@ -636,15 +636,15 @@ A_{t\land T_n} = A^{T_n}_t = \bsb{M^{T_{n+1}}}^{T_n}_t\ \text{ and }\ A^n_t = \b
 
 Define $[M]_t = A_t$. By construction, for any $t\geq 0$,
 \be
-\bb{M^2_{t} - [M]_t}^{T_n} = M^2_{t\land T_n} - [M]_t^{T_n} = \bb{M^{T_n}_t}^2 - A_{t\land T_n} = \bb{M^{T_n}_t}^2 - [M^{T_{n}}]_t \in \sM_c
+\brb{M^2_{t} - [M]_t}^{T_n} = M^2_{t\land T_n} - [M]_t^{T_n} = \brb{M^{T_n}_t}^2 - A_{t\land T_n} = \brb{M^{T_n}_t}^2 - [M^{T_{n}}]_t \in \sM_c
 \ee
-since $M^{T_n}$ is bounded martingale. Thus, we know that $T_n$ also reduces $\bb{M^2_{t} - [M]_t}_{t\geq 0}$ and it is a local martingale. that is $\bb{M^2_t - A_t}_{t\geq0} \in \sM_{c,loc}$, as required.
+since $M^{T_n}$ is bounded martingale. Thus, we know that $T_n$ also reduces $\brb{M^2_{t} - [M]_t}_{t\geq 0}$ and it is a local martingale. that is $\brb{M^2_t - A_t}_{t\geq0} \in \sM_{c,loc}$, as required.
 
 It remains to show that $[M]$ is the u.c.p. limit of its dyadic approximations. Let $[M]^{m}$ be the dyadic approximation at stage $m$. Note that for fixed $n\geq 0$, we have $\bsb{M^{T_n}}^m \to \bsb{M^{T_n}}$ u.c.p. as $m \to\infty$ by the bounded case. Since for all fixed $t \geq 0$, $\pro(T_n \leq t) \to 0$ as $n \to \infty$, we obtain that $\forall \ve>0, \forall t\geq 0$,
 \beast
-\pro\bb{\sup_{s\leq t} \abs{\bsb{M}^m_s - \bsb{M}_s} > \ve} & = & \pro\bb{\bra{\sup_{s\leq t} \abs{\bsb{M}^m_s - \bsb{M}_s} > \ve,\ T_n \leq t}\bigcup \bra{\sup_{s\leq t} \abs{\bsb{M}^m_s - \bsb{M}_s} > \ve,\ T_n > t}} \\
-& = & \pro\bb{\bra{\sup_{s\leq t} \abs{\bsb{M}^m_s - \bsb{M}_s} > \ve,\ T_n \leq t}\bigcup \bra{\sup_{s\leq t} \abs{\bsb{M^{T_n}}^m_s - \bsb{M^{T_n}}_s} > \ve,\ T_n > t}} \\
-& \leq & \pro\bb{T_n \leq t} + \pro\bb{\sup_{s\leq t} \abs{\bsb{M^{T_n}}^m_s - \bsb{M^{T_n}}_s} > \ve} \to 0 + 0 = 0.
+\pro\brb{\sup_{s\leq t} \abs{\bsb{M}^m_s - \bsb{M}_s} > \ve} & = & \pro\brb{\bra{\sup_{s\leq t} \abs{\bsb{M}^m_s - \bsb{M}_s} > \ve,\ T_n \leq t}\bigcup \bra{\sup_{s\leq t} \abs{\bsb{M}^m_s - \bsb{M}_s} > \ve,\ T_n > t}} \\
+& = & \pro\brb{\bra{\sup_{s\leq t} \abs{\bsb{M}^m_s - \bsb{M}_s} > \ve,\ T_n \leq t}\bigcup \bra{\sup_{s\leq t} \abs{\bsb{M^{T_n}}^m_s - \bsb{M^{T_n}}_s} > \ve,\ T_n > t}} \\
+& \leq & \pro\brb{T_n \leq t} + \pro\brb{\sup_{s\leq t} \abs{\bsb{M^{T_n}}^m_s - \bsb{M^{T_n}}_s} > \ve} \to 0 + 0 = 0.
 \eeast
 
 Thus, $[M]^m \xrightarrow{ucp} [M]$ as $m \to \infty$.
@@ -657,13 +657,13 @@ Let $B$ be a standard Brownian motion and $[B]$ be its quadratic variation proce
 \end{corollary}
 
 \begin{proof}[\bf Proof]
-First we have $\bb{[B]^n_t}_{t\geq 0} \to \bb{t}_{t\geq 0}$ u.c.a.s. by Theorem \ref{thm:brownian_motion_quadratic_variation_ucas}. Then by Theorem \ref{thm:convergence_ucp_ucas}, we have that the sequence of stochastic processes $\bb{[B]^n_t}_{t\geq 0} \to \bb{t}_{t\geq 0}$ u.c.p.
+First we have $\brb{[B]^n_t}_{t\geq 0} \to \brb{t}_{t\geq 0}$ u.c.a.s. by Theorem \ref{thm:brownian_motion_quadratic_variation_ucas}. Then by Theorem \ref{thm:convergence_ucp_ucas}, we have that the sequence of stochastic processes $\brb{[B]^n_t}_{t\geq 0} \to \brb{t}_{t\geq 0}$ u.c.p.
 
 Also we know that $[B]^n \to [B]$ u.c.p. by Theorem \ref{thm:quadratic_variation_process_uniqueness_existence} for some pathwise continuous adapted non-decreasing stochastic process $[B]$. Therefore, by Proposition \ref{pro:convergence_ucp_unique_in_sense_of_indistingushability}, we have
 \be
-\pro\bb{[B]_t = t, \forall t} = 1
+\pro\brb{[B]_t = t, \forall t} = 1
 \ee
-which means that $\bb{[B]_t}_{t\geq 0}$ is an indistinguishable version of $(t)_{t\geq 0}$.
+which means that $\brb{[B]_t}_{t\geq 0}$ is an indistinguishable version of $(t)_{t\geq 0}$.
 \end{proof}
 
 
@@ -675,24 +675,24 @@ Let $T$ be a stopping time and $M \in \sM_{c,loc}$. Then $\bsb{M^T} = [M]^T$ (up
 \begin{proof}[\bf Proof]
 By Proposition \ref{pro:stopped_local_martingale_implies_local_martingale}, $M^T \in \sM_{c,loc}$. Thus, by Theorem \ref{thm:quadratic_variation_process_uniqueness_existence},
 \be
-M^2 - [M],\  \bb{M^T}^2 - \bsb{M^T} \in \sM_{c,loc} \ \ra \ \bb{M^2 - [M]}^T = \bb{M^T}^2 - [M]^T \in \sM_{c,loc}
+M^2 - [M],\  \brb{M^T}^2 - \bsb{M^T} \in \sM_{c,loc} \ \ra \ \brb{M^2 - [M]}^T = \brb{M^T}^2 - [M]^T \in \sM_{c,loc}
 \ee
 
-For $M^T\in \sM_{c,loc}$, there exists unique continuous non-decreasing process $A$ such that $\bb{M^T}^2 - A \in \sM_{c,loc}$. Thus,
+For $M^T\in \sM_{c,loc}$, there exists unique continuous non-decreasing process $A$ such that $\brb{M^T}^2 - A \in \sM_{c,loc}$. Thus,
 \be
 A = \bsb{M^T} = [M]^T
 \ee
 in the sence of indistinguishability.%Thus, there exists two sequences of stopping times $T_n \ua \infty$ a.s. and $S_n \ua \infty$ a.s. such that
 %\be
-%\bb{\bb{M^2 - [M]}^T}^{T_n},\ \bb{\bb{M^T}^2 - \bsb{M^T}}^{S_n} \in \sM_{c}.
+%\brb{\brb{M^2 - [M]}^T}^{T_n},\ \brb{\brb{M^T}^2 - \bsb{M^T}}^{S_n} \in \sM_{c}.
 %\ee
 %So we have
 %\be
-%\bb{\bb{M^2 - [M]}^T}^{T_n\land S_n},\ \bb{\bb{M^T}^2 - \bsb{M^T}}^{T_n\land S_n} \in \sM_{c}
+%\brb{\brb{M^2 - [M]}^T}^{T_n\land S_n},\ \brb{\brb{M^T}^2 - \bsb{M^T}}^{T_n\land S_n} \in \sM_{c}
 %\ee
 %Thus,
 %\be
-%\bb{M^{T\land T_n\land S_n}}^2 - [M]^{T\land T_n\land S_n}= \E\bb{\bb{\bb{M^2 - [M]}^T}^{T_n\land S_n}} = M_0^2 = \E\bb{\bb{\bb{M^T}^2 - \bsb{M^T}}^{T_n\land S_n}}
+%\brb{M^{T\land T_n\land S_n}}^2 - [M]^{T\land T_n\land S_n}= \E\brb{\brb{\brb{M^2 - [M]}^T}^{T_n\land S_n}} = M_0^2 = \E\brb{\brb{\brb{M^T}^2 - \bsb{M^T}}^{T_n\land S_n}}
 %\ee
 \end{proof}
 
@@ -705,11 +705,11 @@ If $M \in \sM^2_c$ and $M_0 = 0$ a.s.. Then $\E([M]_\infty) = \E(M_\infty^2)$ an
 \begin{proof}[\bf Proof]
 First we have $M \in \sM_{c,loc}$ and let $S_n = \inf\bra{t \geq 0: \abs{M}_t \geq n}$. Then by Proposition \ref{pro:debut_time_closed_set_stopping_time}, $S_n$ is a stopping time and $[M]_{t\land S_n} \leq n$. Also, with the similar argument in Proposition \ref{pro:continuous_local_martingale_stopping_time}, we have $S_n\ua \infty$ a.s. and $(S_n)_{n\geq 0}$ reduces $M$. Thus, $M^{S_n}$ is bounded martingale and thus $M^2_{t\land S_n} - [M^{S_n}]_t \in \sM_c$ by Theorem \ref{thm:quadratic_variation_process_uniqueness_existence}. Thus as $M_0=0$ a.s. and $[M]_0 = 0$ a.s., for all $t\geq 0$,
 \be
-0 = \E\bb{M^2_0 - [M]_0} = \E\bb{M^2_{S_n\land 0} - [M]_{0\land S_n}} \underbrace{= \E\bb{\bb{M^{S_n}}^2_0 - \bsb{M^{S_n}}_0} }_{\text{Proposition \ref{pro:local_martingale_quadratic_variation_stoppting_time_in_out}}} = \E\bb{\bb{M^{S_n}}^2_t - \bsb{M^{S_n}}_t} = \E\bb{M^2_{S_n\land t} - [M]_{t\land S_n}} \nonumber
+0 = \E\brb{M^2_0 - [M]_0} = \E\brb{M^2_{S_n\land 0} - [M]_{0\land S_n}} \underbrace{= \E\brb{\brb{M^{S_n}}^2_0 - \bsb{M^{S_n}}_0} }_{\text{Proposition \ref{pro:local_martingale_quadratic_variation_stoppting_time_in_out}}} = \E\brb{\brb{M^{S_n}}^2_t - \bsb{M^{S_n}}_t} = \E\brb{M^2_{S_n\land t} - [M]_{t\land S_n}} \nonumber
 \ee
 which gives that
 \be
-\E\bb{[M]_{t\land S_n}} = \E(M^2_{t\land S_n}) \quad\text{ for all }t \geq 0 .\quad \quad (*)
+\E\brb{[M]_{t\land S_n}} = \E(M^2_{t\land S_n}) \quad\text{ for all }t \geq 0 .\quad \quad (*)
 \ee
 
 % Thus, by Theorem \ref{thm:quadratic_variation_process_uniqueness_existence}, $M^2 - [M]$ is local martingale and the stopped local martingale satisfies
@@ -720,13 +720,13 @@ which gives that
 
 Since $M\in \sM^2_c$, $M_\infty$ exists and $M_t \to M_\infty$ a.s. by Theorem \ref{thm:martingale_bounded_lp_as_lp_closed_continuous}. We take the limit $t \to\infty$ ($t\land S_n \ua \infty$ a.s.) using monotone convergence theorem (Theorem \ref{thm:monotone_convergence_probability}) on the left and dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}) on the right, and then $n \to \infty$ by the same arguments to get
 \be
-\E\bb{[M]_\infty} = \E\bb{M^2_\infty} < \infty.\quad\quad (\dag)
+\E\brb{[M]_\infty} = \E\brb{M^2_\infty} < \infty.\quad\quad (\dag)
 \ee
 
 Hence, $\abs{M^2_t - [M]_t}$ is dominated by $\sup_{t\geq0 }M^2_t + [M]_\infty$ which is integrable. Thus by Corollary \ref{cor:local_martingale_dominated_martingale}, $M^2 - [M]$ is a true martingale. Also,
 \beast
-\E\bb{\sup_{t\geq0} \abs{M^2_t - [M]_t}} & \leq & \E\bb{\sup_{t\geq0} M_t^2 + \sup_{t\geq 0}[M]_t} \leq  \E\bb{\sup_{t\geq0} M_t^2} + \E\bb{[M]_\infty} \\
-& \leq & 4\E\bb{M^2_\infty} + \E\bb{M^2_\infty} = 5\E\bb{M^2_\infty} < \infty .
+\E\brb{\sup_{t\geq0} \abs{M^2_t - [M]_t}} & \leq & \E\brb{\sup_{t\geq0} M_t^2 + \sup_{t\geq 0}[M]_t} \leq  \E\brb{\sup_{t\geq0} M_t^2} + \E\brb{[M]_\infty} \\
+& \leq & 4\E\brb{M^2_\infty} + \E\brb{M^2_\infty} = 5\E\brb{M^2_\infty} < \infty .
 \eeast
 by Corollary \ref{cor:doob_lp_inequality_continuous_infinity}. Then $M^2_t - [M]_t$ is uniformly integrable by Definition \ref{def:uniformly_integrable_probability}.
 \end{proof}
@@ -744,22 +744,22 @@ If $M \in \sM_{c,loc}$ with $M_0 = 0$ a.s.. Then $M \in \sM^2_c$ if and only if 
 
 ($\la$). With the same argument, we have $(*)$ in Theorem \ref{thm:continuous_m2_martingale_implies_ui}. By Fatou lemma (Lemma \ref{lem:fatou_probability}),
 \be
-\E(M^2_t) = \E\bb{\lim_{n\to\infty} M^2_{t\land S_n}} = \E\bb{\liminf_{n}M^2_{t\land S_n}} \leq \liminf_{n}\E\bb{M^2_{t\land S_n}} = \liminf_n \E\bb{[M]_{t\land S_n}} \leq \E\bb{[M]_{t}}.
+\E(M^2_t) = \E\brb{\lim_{n\to\infty} M^2_{t\land S_n}} = \E\brb{\liminf_{n}M^2_{t\land S_n}} \leq \liminf_{n}\E\brb{M^2_{t\land S_n}} = \liminf_n \E\brb{[M]_{t\land S_n}} \leq \E\brb{[M]_{t}}.
 \ee
 
 Thus, since $[M]$ is non-decreasing,
 \be
-\sup_{0\leq s\leq t}\E(M^2_s) \leq \E\bb{[M]_t} \leq \E\bb{[M]_\infty} < \infty.
+\sup_{0\leq s\leq t}\E(M^2_s) \leq \E\brb{[M]_t} \leq \E\brb{[M]_\infty} < \infty.
 \ee
 
 Thus, for any stopping time $S\leq t$, the stopped local martingale $M^S$, $\forall t\geq 0$, % and by H\"older's inequality (Theorem \ref{thm:holder_inequality_expectation}),
 \be
-\dabs{M^2_{S\land t}}_2 \leq \bb{\sup_{0\leq s\leq t}\E\bb{M^2_s}}^{1/2} < \infty. %\E\bb{\abs{M^S_t}} \leq
+\dabs{M^2_{S\land t}}_2 \leq \brb{\sup_{0\leq s\leq t}\E\brb{M^2_s}}^{1/2} < \infty. %\E\brb{\abs{M^S_t}} \leq
 \ee
 
-Thus, $M^S_t$ is bounded in $\sL^2(\Omega,\sF,\pro)$ and thus UI (by Proposition \ref{pro:bounded_lp_implies_ui}). Thus, $M$ is, in fact, a true martingale (by Proposition \ref{pro:martingale_local_martingale_equivalent}). Also, $\sup_{0\leq s\leq t}\E(M^2_s)  \leq \E\bb{[M]_\infty}$ implies that
+Thus, $M^S_t$ is bounded in $\sL^2(\Omega,\sF,\pro)$ and thus UI (by Proposition \ref{pro:bounded_lp_implies_ui}). Thus, $M$ is, in fact, a true martingale (by Proposition \ref{pro:martingale_local_martingale_equivalent}). Also, $\sup_{0\leq s\leq t}\E(M^2_s)  \leq \E\brb{[M]_\infty}$ implies that
 \be
-\sup_{t\geq 0}\E(M^2_t) \leq \E\bb{[M]_\infty} < \infty.
+\sup_{t\geq 0}\E(M^2_t) \leq \E\brb{[M]_\infty} < \infty.
 \ee
 
 Thus, $M$ is bounded in $\sL^2(\Omega,\sF,\pro)$ and $M \in \sM_c^2$.
@@ -787,13 +787,13 @@ This is direct result from Theorem \ref{thm:cadlag_finite_variation_previsible_i
 %\end{definition}
 %
 %\begin{proposition}\label{pro:continuous_m2_martingale_implies_ui_covariation}
-%Let $M,N \in \sM_c^2$. Then $\bb{M^2_tN^2_t - M_0^2N^2_0 - [M,N]}_{t\geq 0}$ is a uniformly integrable martingale.
+%Let $M,N \in \sM_c^2$. Then $\brb{M^2_tN^2_t - M_0^2N^2_0 - [M,N]}_{t\geq 0}$ is a uniformly integrable martingale.
 %\end{proposition}
 %
 %\begin{proof}[\bf Proof]
-%Let $X_t = \frac 14\bb{M_t + N_t - M_0 - N_0}$ and $Y_t = \frac 14\bb{M_t - N_t - M_0 + N_0}$ and obviously $X,Y\in \sM^2_c$ with $X_0 = Y_0 = 0$ a.s.. Thus, using Theorem \ref{thm:continuous_m2_martingale_implies_ui}, we
-%have $X^2 - [X]$ and $Y^2 -[Y]$ are uniformly integrable martingales. Hence, $Z := X^2 - Y^2 - [X]+[Y]$ is also a uniformly integrable martingale, which is actually \be Z_t = \bb{\frac 14\bb{M_t - M_0 + N_t  - N_0}}^2 -
-%\bb{\frac 14\bb{M_t - M_0 - (N_t - N_0)}}^2 - [M_t-M_0, N_t - N_0] \ee
+%Let $X_t = \frac 14\brb{M_t + N_t - M_0 - N_0}$ and $Y_t = \frac 14\brb{M_t - N_t - M_0 + N_0}$ and obviously $X,Y\in \sM^2_c$ with $X_0 = Y_0 = 0$ a.s.. Thus, using Theorem \ref{thm:continuous_m2_martingale_implies_ui}, we
+%have $X^2 - [X]$ and $Y^2 -[Y]$ are uniformly integrable martingales. Hence, $Z := X^2 - Y^2 - [X]+[Y]$ is also a uniformly integrable martingale, which is actually \be Z_t = \brb{\frac 14\brb{M_t - M_0 + N_t  - N_0}}^2 -
+%\brb{\frac 14\brb{M_t - M_0 - (N_t - N_0)}}^2 - [M_t-M_0, N_t - N_0] \ee
 %
 %\end{proof}
 
@@ -827,53 +827,53 @@ Moreover $\sA$ contains the $\pi$-system $\bra{B \times(s, t] : B \in \sF_s, s \
 \begin{definition}
 Given $M \in \sM^2_c$, define a measure $\mu$ on $\sP$ by
 \be
-\mu \bb{A \times (s, t]} =\E\bb{\ind_A \bb{[M]_t - [M]_s}} \quad\text{ for all }s < t, A \in \sF_s.
+\mu \brb{A \times (s, t]} =\E\brb{\ind_A \brb{[M]_t - [M]_s}} \quad\text{ for all }s < t, A \in \sF_s.
 \ee
 
 Since $\sP$ is generated by the $\pi$-system of events of this form, this uniquely specifies $\mu$. Alternatively, write
 \be
-\mu \bb{d\omega \otimes dt} = d[M](\omega, dt) \pro(d\omega) ,
+\mu \brb{d\omega \otimes dt} = d[M](\omega, dt) \pro(d\omega) ,
 \ee
 where for a fixed $\omega$, $d[M](\omega, \cdot)$ is the Lebesgue-Stieltjes measure associated to the non-decreasing function $[M](\omega)$ (by Theorem \ref{thm:quadratic_variation_process_uniqueness_existence} and Theorem \ref{thm:existence_radon}). Thus, for a previsible process $H \geq 0$,
 \be
-\int_{\Omega \times(0,\infty)} H d\mu  = \E\bb{\int^\infty_0 H_s d[M]_s}.
+\int_{\Omega \times(0,\infty)} H d\mu  = \E\brb{\int^\infty_0 H_s d[M]_s}.
 \ee
 \end{definition}
 
 \begin{definition}\label{def:l2m_measure}
-Given $M \in \sM^2_c$, we set $\sL^2(M) = \sL^2\bb{\Omega \times (0,\infty),\sP, \mu}$ and write
+Given $M \in \sM^2_c$, we set $\sL^2(M) = \sL^2\brb{\Omega \times (0,\infty),\sP, \mu}$ and write
 \be
-\dabs{H}^2_M = \dabs{H}^2_{\sL^2(M)} = \E\bb{\int^\infty_0 H^2_s d[M]_s} = \mu(H^2),
+\dabs{H}^2_M = \dabs{H}^2_{\sL^2(M)} = \E\brb{\int^\infty_0 H^2_s d[M]_s} = \mu(H^2),
 \ee
 so that $\sL^2(M)$ is the space of previsible processes $H$ such that $\dabs{H}^2_M < \infty$.
 \end{definition}
 
 \begin{remark}
 \ben
-\item [(i)] Note that the simple processes $\sS \subseteq \sL^2(M)$ for all $M \in \sM^2_c$. \item [(ii)] Recall that if $M \in \sM^2_c$ we defined $\dabs{M}^2 = \E(M^2_\infty)$.%might be wrong\item [(iii)] Thus, the measure $\mu\bb{\Omega \times (0,\infty)} = \dabs{1}^2_M < \infty$ since $1\in \sS\subseteq \sL^2(M)$.
+\item [(i)] Note that the simple processes $\sS \subseteq \sL^2(M)$ for all $M \in \sM^2_c$. \item [(ii)] Recall that if $M \in \sM^2_c$ we defined $\dabs{M}^2 = \E(M^2_\infty)$.%might be wrong\item [(iii)] Thus, the measure $\mu\brb{\Omega \times (0,\infty)} = \dabs{1}^2_M < \infty$ since $1\in \sS\subseteq \sL^2(M)$.
 \een
 \end{remark}
 
 \begin{theorem}[It\^o isometry]\label{thm:ito_isometry}
 For every $M \in \sM^2_c$ there exists a unique isometry $I: (\sL^2(M), \dabs{\cdot}_M) \to (\sM^2_c , \dabs{\cdot})$ such that $I(H) = H \cdot M$ for all $H \in \sS$.
 
-Also, $I(H)\in \sM_c^2$ for all $H\in \sL^2(M)$ and $I(H)_0 = 0$ a.s. with \be \dabs{I(H)}^2 = \dabs{H}^2_M\quad \bb{\text{or}\quad\dabs{H\cdot M}^2 = \dabs{H}^2_M, \quad \text{see Definition
+Also, $I(H)\in \sM_c^2$ for all $H\in \sL^2(M)$ and $I(H)_0 = 0$ a.s. with \be \dabs{I(H)}^2 = \dabs{H}^2_M\quad \brb{\text{or}\quad\dabs{H\cdot M}^2 = \dabs{H}^2_M, \quad \text{see Definition
 \ref{def:ito_stochastic_integral}}}. \ee
 
-Alternatively, this can be expressed by (see Definitions \ref{def:l2m_measure}, \ref{def:ito_stochastic_integral}) \be \E\bsb{\bb{\int^\infty_0 H_s dM_s}^2} = \E\bb{\int^\infty_0 H_s^2 d[M_s]} \ee
+Alternatively, this can be expressed by (see Definitions \ref{def:l2m_measure}, \ref{def:ito_stochastic_integral}) \be \E\bsb{\brb{\int^\infty_0 H_s dM_s}^2} = \E\brb{\int^\infty_0 H_s^2 d[M_s]} \ee
 \end{theorem}
 
 \begin{proof}[\bf Proof]
 Let $H = \sum^{n-1}_{k=0} Z_k \ind_{(t_k,t_{k+1}]} \in \sS$. By Proposition \ref{pro:ito_integral_simple_process_property}, $H \cdot M \in \sM^2_c$ with
 \be
-\dabs{H \cdot M}^2 = \dabs{(H\cdot M)_\infty}_2^2=  \sum^{n-1}_{k=0} \E\bb{Z^2_k (M_{t_{k+1}}-M_{t_k})^2 } \quad\quad (\text{by ($*$) in Proposition \ref{pro:ito_integral_simple_process_property}})
+\dabs{H \cdot M}^2 = \dabs{(H\cdot M)_\infty}_2^2=  \sum^{n-1}_{k=0} \E\brb{Z^2_k (M_{t_{k+1}}-M_{t_k})^2 } \quad\quad (\text{by ($*$) in Proposition \ref{pro:ito_integral_simple_process_property}})
 \ee
 
-But $M^2 - [M]$ is a martingale since $M\in \sM_c^2$ by Theorem \ref{thm:continuous_m2_martingale_implies_ui}. Thus, \be \E\bb{Z^2_k (M_{t_{k+1}}-M_{t_k})^2} = \E\bb{Z^2_k \E\bb{(M_{t_{k+1}}-M_{t_k})^2|\sF_{t_k}}} =
-\E\bb{Z^2_k\E\bb{M^2_{t_{k+1}} -M^2_{t_k} |\sF_{t_k}}} = \E\bb{Z^2_k ([M]_{t_{k+1}} - [M]_{t_k})},\nonumber \ee and so by Theorem \ref{thm:lebesgue_integrable_function_property}.(i) (or Fubini theorem (Theorem
+But $M^2 - [M]$ is a martingale since $M\in \sM_c^2$ by Theorem \ref{thm:continuous_m2_martingale_implies_ui}. Thus, \be \E\brb{Z^2_k (M_{t_{k+1}}-M_{t_k})^2} = \E\brb{Z^2_k \E\brb{(M_{t_{k+1}}-M_{t_k})^2|\sF_{t_k}}} =
+\E\brb{Z^2_k\E\brb{M^2_{t_{k+1}} -M^2_{t_k} |\sF_{t_k}}} = \E\brb{Z^2_k ([M]_{t_{k+1}} - [M]_{t_k})},\nonumber \ee and so by Theorem \ref{thm:lebesgue_integrable_function_property}.(i) (or Fubini theorem (Theorem
 \ref{thm:fubini}) if we consider summatio as a $\sigma$-finite integral), \bea
-\dabs{H \cdot M}^2 & = & \sum^{n-1}_{k=0} \E\bb{Z^2_k ([M]_{t_{k+1}} - [M]_{t_k})} = \sum^{n-1}_{k=0} \E\bb{\int^\infty_0 Z^2_k\ind_{(t_k,t_{k+1}]} d[M]_s}\nonumber \\
-& = &  \E\bb{\int^\infty_0 \sum^{n-1}_{k=0} Z^2_k\ind_{(t_k,t_{k+1}]} d[M]_s} = \E\bb{\int^\infty_0 H^2_s d[M]_s} = \dabs{H}^2_M. \label{equ:isometry_simple_processes}\eea which gives that $\dabs{H \cdot M} = \dabs{H}_M$.
+\dabs{H \cdot M}^2 & = & \sum^{n-1}_{k=0} \E\brb{Z^2_k ([M]_{t_{k+1}} - [M]_{t_k})} = \sum^{n-1}_{k=0} \E\brb{\int^\infty_0 Z^2_k\ind_{(t_k,t_{k+1}]} d[M]_s}\nonumber \\
+& = &  \E\brb{\int^\infty_0 \sum^{n-1}_{k=0} Z^2_k\ind_{(t_k,t_{k+1}]} d[M]_s} = \E\brb{\int^\infty_0 H^2_s d[M]_s} = \dabs{H}^2_M. \label{equ:isometry_simple_processes}\eea which gives that $\dabs{H \cdot M} = \dabs{H}_M$.
 
 Now let $H \in \sL^2(M)$. We have thus defined a function $I$ from $\sS$ to $\sM^2_c$, which is an isometry, say $I(H) = H\cdot M$.
 
@@ -885,12 +885,12 @@ Indeed, let $H \in \sL^2(M)$. Then there exists a sequence of simple processes $
 \ee
 
 Thus $I(H^n)$ is a Cauchy sequence in $(\sM^2_c , \dabs{\cdot})$, which is complete (by Theorem \ref{pro:cadlag_triple_norm_complete}.(iii)). Therefore, $I(H^n)$ converges to some limit which we may denote by $I(H) \in
-\sM^2_c$. That is, $\dabs{I(H^n) - I(H)} \to 0$ i.e., $\dabs{I(H^n)_\infty - I(H)_\infty}_2 \to 0$ since $I(H^n)_\infty - I(H)_\infty \in \sL^2\bb{\Omega,\sF,\pro}$ by Theorem
+\sM^2_c$. That is, $\dabs{I(H^n) - I(H)} \to 0$ i.e., $\dabs{I(H^n)_\infty - I(H)_\infty}_2 \to 0$ since $I(H^n)_\infty - I(H)_\infty \in \sL^2\brb{\Omega,\sF,\pro}$ by Theorem
 \ref{thm:martingale_bounded_lp_as_lp_closed_continuous}.
 
 %This actually implies that $\E\abs{I(H^n)_\infty - I(H)_\infty} = \dabs{I(H^n)_\infty - I(H)_\infty}_1 \to 0$ by Proposition \ref{pro:lp-norm_monotonicity}. Then by Lemma \ref{lem:scheffe_probability}, we have
 
-It is easy to check that $I(H)$ does not depend on the sequence $H^n$ chosen to approximate $H$. if $H^n \to H$ and $K^n \to H$ in $\sL^2(M)$ ($H^n,K^n \in \sS$), then by linearity of $\sS$ and Minkowski's inequality (Theorem \ref{thm:minkowski_inequality_measure} as $\dabs{H}_M = \bb{\mu\bb{H^2}}^{1/2}$),
+It is easy to check that $I(H)$ does not depend on the sequence $H^n$ chosen to approximate $H$. if $H^n \to H$ and $K^n \to H$ in $\sL^2(M)$ ($H^n,K^n \in \sS$), then by linearity of $\sS$ and Minkowski's inequality (Theorem \ref{thm:minkowski_inequality_measure} as $\dabs{H}_M = \brb{\mu\brb{H^2}}^{1/2}$),
 \be
 \dabs{I(H^n) - I(K^n)} = \dabs{I(H^n - K^n)} = \dabs{H^n - K^n}_M \leq \dabs{H^n - H}_M + \dabs{K^n- H}_M + \dabs{H-H}_M \to 0
 \ee
@@ -905,15 +905,15 @@ In particular, by the argument above, for $H^n \to H$ with $H^n \in \sS$, the fa
 \dabs{\abs{H^n \cdot M - I(H)}_0}_2 \leq \dabs{\sup_{t\geq 0}\abs{H^n \cdot M - I(H)}_t}_2 = \tabs{H^n \cdot M - I(H)} \leq 2\dabs{H^n \cdot M - I(H)}  \to 0
 \ee
 
-But $\bb{H^n\cdot M}_0 = 0$ by Definition \ref{def:stochastic_integral_with_simple_process_integrands}. Thus, $\dabs{I(H)_0}_2 = 0$, then $I(H)_0 = 0$ a.s..
+But $\brb{H^n\cdot M}_0 = 0$ by Definition \ref{def:stochastic_integral_with_simple_process_integrands}. Thus, $\dabs{I(H)_0}_2 = 0$, then $I(H)_0 = 0$ a.s..
 
-Finally, we have% by Minkowski inequality (Theorem \ref{thm:minkowski_inequality_expectation} as $I(H^n)_\infty - I(H)_\infty \in \sL^2\bb{\Omega,\sF,\pro}$)
+Finally, we have% by Minkowski inequality (Theorem \ref{thm:minkowski_inequality_expectation} as $I(H^n)_\infty - I(H)_\infty \in \sL^2\brb{\Omega,\sF,\pro}$)
 \beast \dabs{I(H)}^2 & = & \dabs{I(H) - I(H^n) + I(H^n)}^2 = \dabs{I(H)_\infty - I(H^n)_\infty + I(H^n)_\infty}_2^2 \\
-& = & \E\bb{I(H)_\infty - I(H^n)_\infty + I(H^n)_\infty}^2 = \E\bb{I(H)_\infty - I(H^n)_\infty}^2 + \E I(H^n)_\infty^2 + 2\E\bb{\bb{I(H)_\infty - I(H^n)_\infty}I(H^n)_\infty}\\
-& = & \dabs{I(H) - I(H^n)}^2 + \dabs{I(H^n)}^2 + 2\E\bb{\bb{I(H)_\infty - I(H^n)_\infty}I(H^n)_\infty}
+& = & \E\brb{I(H)_\infty - I(H^n)_\infty + I(H^n)_\infty}^2 = \E\brb{I(H)_\infty - I(H^n)_\infty}^2 + \E I(H^n)_\infty^2 + 2\E\brb{\brb{I(H)_\infty - I(H^n)_\infty}I(H^n)_\infty}\\
+& = & \dabs{I(H) - I(H^n)}^2 + \dabs{I(H^n)}^2 + 2\E\brb{\brb{I(H)_\infty - I(H^n)_\infty}I(H^n)_\infty}
 \eeast
 
-We know that $\dabs{I(H) - I(H^n)}^2 \to 0$ and thus $\E\bb{\bb{I(H)_\infty - I(H^n)_\infty}I(H^n)_\infty} \to 0$ by Cauchy-Schwarz inequality (Theorem \ref{thm:cauchy_schwarz_inequality_probability}).
+We know that $\dabs{I(H) - I(H^n)}^2 \to 0$ and thus $\E\brb{\brb{I(H)_\infty - I(H^n)_\infty}I(H^n)_\infty} \to 0$ by Cauchy-Schwarz inequality (Theorem \ref{thm:cauchy_schwarz_inequality_probability}).
 %we have \beast \dabs{I(H)}^2 = \dabs{I(H)_\infty}_2^2 & = & \dabs{I(H)_\infty -
 %I(H^n)_\infty + I(H^n)_\infty}_2 \\
 %& \leq & \dabs{I(H)_\infty - I(H^n)_\infty}_2 + \dabs{I(H^n)_\infty}_2 \to \dabs{I(H^n)_\infty}_2 = \dabs{I(H^n)}. \eeast
@@ -921,10 +921,10 @@ We know that $\dabs{I(H) - I(H^n)}^2 \to 0$ and thus $\E\bb{\bb{I(H)_\infty - I(
 % - \dabs{H}_M} = \abs{\dabs{I(H)} - \dabs{I(H^n)} + \dabs{H^n}_M - \dabs{H}_M} \ee
 Thus, $\dabs{I(H)}^2 = \lim_{n\to\infty}\dabs{I(H^n)}^2 = \lim_{n\to\infty}\dabs{H^n}_M^2$ by (\ref{equ:isometry_simple_processes}).
 
-We know that $H^n \to H$ in $\sL^2(M)$, i.e., $\dabs{H^n-H}_M \to 0 \ \lra \ \mu\bb{H^n - H}^2 \to 0$. Therefore, \be \dabs{H^n}_M^2 = \dabs{H^n-H+H}^2_M = \mu\bb{H^n-H+H}^2 = \mu\bb{H^n - H}^2 + \mu H^2 + 2\mu\bb{\bb{H^n -
+We know that $H^n \to H$ in $\sL^2(M)$, i.e., $\dabs{H^n-H}_M \to 0 \ \lra \ \mu\brb{H^n - H}^2 \to 0$. Therefore, \be \dabs{H^n}_M^2 = \dabs{H^n-H+H}^2_M = \mu\brb{H^n-H+H}^2 = \mu\brb{H^n - H}^2 + \mu H^2 + 2\mu\brb{\brb{H^n -
 H}H}.\ee
 
-Since $\mu\bb{H^n - H}^2 \to 0$ we have $\mu\bb{\bb{H^n - H}H} \to 0$ by Cauchy-Schwarz inequality (Theorem \ref{thm:cauchy_schwarz_inequality_probability}). Hence, $\dabs{H^n}^2_M \to \mu H^2 = \dabs{H}^2_M$ which implies
+Since $\mu\brb{H^n - H}^2 \to 0$ we have $\mu\brb{\brb{H^n - H}H} \to 0$ by Cauchy-Schwarz inequality (Theorem \ref{thm:cauchy_schwarz_inequality_probability}). Hence, $\dabs{H^n}^2_M \to \mu H^2 = \dabs{H}^2_M$ which implies
 that $\dabs{I(H)}^2 = \lim_{n\to\infty}\dabs{H^n}_M^2 = \dabs{H}^2_M$.
 \end{proof}
 
@@ -937,11 +937,11 @@ respect to $M$. Note that from Theorem \ref{thm:ito_isometry}, $(H \cdot M)_t\in
 \begin{remark}
 By Theorem \ref{thm:ito_isometry}, this is consistent with our previous definition of $H\cdot M$ for $H \in \sS$.
 
-For $M = B$, the isometry becomes \be \dabs{H\cdot B}^2 = \dabs{\bb{H \cdot B}_\infty}^2_2 = \E\bsb{\bb{\int^\infty_0 H_s d B_s}^2} = \E\bb{\int^\infty_0 H_s^2 ds}. \ee
+For $M = B$, the isometry becomes \be \dabs{H\cdot B}^2 = \dabs{\brb{H \cdot B}_\infty}^2_2 = \E\bsb{\brb{\int^\infty_0 H_s d B_s}^2} = \E\brb{\int^\infty_0 H_s^2 ds}. \ee
 \end{remark}
 
 \begin{corollary}\label{cor:ito_isometry_inner_product}
-Let $M\in \sM_c^2$ and $X,Y \in \sL^2(M)$. Then we have \be \E\bb{\int^\infty_0 X_s dM_s \int^\infty_0 Y_s dM_s }  = \E\bb{\int^\infty_0 X_s Y_s d[M]_s}.\ee
+Let $M\in \sM_c^2$ and $X,Y \in \sL^2(M)$. Then we have \be \E\brb{\int^\infty_0 X_s dM_s \int^\infty_0 Y_s dM_s }  = \E\brb{\int^\infty_0 X_s Y_s d[M]_s}.\ee
 \end{corollary}
 
 \begin{proof}[\bf Proof]
@@ -961,40 +961,40 @@ Let $H \in \sL^2(M)$ and $H$ is previsible.
 
 We see that $\ind_{(0,T]}(t)$ is left-continuous and hence previsible (Theorem \ref{thm:previsible_sigma_algebra_contains_all_adapted_left_continuous_process}) and thus $H\ind_{(0,T]}$ is previsible. Also,
 \be
-\dabs{H\ind_{(0,T]}}_M = \mu\bb{H^2\ind_{(0,T]}} \leq \mu\bb{H^2} = \dabs{H}_M < \infty.
+\dabs{H\ind_{(0,T]}}_M = \mu\brb{H^2\ind_{(0,T]}} \leq \mu\brb{H^2} = \dabs{H}_M < \infty.
 \ee
 
 Thus, $H\ind_{(0,T]} \in \sL^2(M)$.% (to see that it is previsible, note that ).
 
 By Proposition \ref{pro:local_martingale_quadratic_variation_stoppting_time_in_out}, $\bsb{M^T} = [M]^T$ (in the sense of distinguishability), %To see that $H \in \sL^2(M^T)$, note that $[M^T] = [M]^T$ by the discrete approximation in the definition of quadratic variation, and thus
 \be
-\E\bb{\int^\infty_0 H^2_s d\bsb{M^T}_s} = \E\bb{\int^\infty_0 H^2_s d\bsb{M}^T_s}  = \E\bb{\int^T_0 H^2_s d[M]_s} = \mu\bb{H\ind_{(0,T]}} \leq \mu\bb{H} = \E\int^\infty_0 H^2_s d[M]_s < \infty.\nonumber
+\E\brb{\int^\infty_0 H^2_s d\bsb{M^T}_s} = \E\brb{\int^\infty_0 H^2_s d\bsb{M}^T_s}  = \E\brb{\int^T_0 H^2_s d[M]_s} = \mu\brb{H\ind_{(0,T]}} \leq \mu\brb{H} = \E\int^\infty_0 H^2_s d[M]_s < \infty.\nonumber
 \ee
 
 Thus, $H \in \sL^2(M^T)$.
 
 \hspace{-5mm}{\bf Step 1}. Take $M \in \sM^2_c$ and suppose first that $H =\sum^{n-1}_{k=0} Z_k \ind_{(t_k,t_{k+1}]}  \in \sS$. If $T$ takes only finitely many values, $H \ind_{(0,T ]} \in \sS$ and
 \be
-(H \cdot M)^T_t = \sum^{n-1}_{k=0} Z_k \bb{M_{t_{k+1}\land t\land T} - M_{t_k\land t\land T}} = \sum^{n-1}_{k=0} Z_k\ind_{(0,T]} \bb{M_{t_{k+1}\land t} - M_{t_k\land t}} = (H \ind_{(0,T ]}) \cdot M.
+(H \cdot M)^T_t = \sum^{n-1}_{k=0} Z_k \brb{M_{t_{k+1}\land t\land T} - M_{t_k\land t\land T}} = \sum^{n-1}_{k=0} Z_k\ind_{(0,T]} \brb{M_{t_{k+1}\land t} - M_{t_k\land t}} = (H \ind_{(0,T ]}) \cdot M.
 \ee
 
-For general $T$, set $T_n = \bb{2^{-n}\floor{2^nT}} \land n$ which is a stopping time (see proof of Proposition \ref{pro:cadlag_adapted_process_property}) that takes only finitely many values
+For general $T$, set $T_n = \brb{2^{-n}\floor{2^nT}} \land n$ which is a stopping time (see proof of Proposition \ref{pro:cadlag_adapted_process_property}) that takes only finitely many values
 \be
-(H \cdot M)^{T_n}_t = \bb{H \ind_{(0,T_n]}} \cdot M.\quad\quad (*)
+(H \cdot M)^{T_n}_t = \brb{H \ind_{(0,T_n]}} \cdot M.\quad\quad (*)
 \ee
 
 Then $T_n \ua T$ as $n \to\infty$, this gives that $\ind_{(0,T_n]} \ua \ind_{(0,T]}$ and
 \be
-\dabs{H \ind_{(0,T_n]} - H \ind_{(0,T ]}}^2_M = \E\bb{\int^\infty_0 H^2_t (\ind_{(0,T_n]} - \ind_{(0,T]})^2(t) d[M]_t} = \mu\bb{H^2 \ind_{(T_n,T]}} = \mu\bb{H^2 \ind_{(0,T]}} -\mu\bb{H^2 \ind_{(0,T_n]}} \to 0\nonumber
+\dabs{H \ind_{(0,T_n]} - H \ind_{(0,T ]}}^2_M = \E\brb{\int^\infty_0 H^2_t (\ind_{(0,T_n]} - \ind_{(0,T]})^2(t) d[M]_t} = \mu\brb{H^2 \ind_{(T_n,T]}} = \mu\brb{H^2 \ind_{(0,T]}} -\mu\brb{H^2 \ind_{(0,T_n]}} \to 0\nonumber
 \ee
 as $n \to \infty$, by dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}), and so
 \be
-H \ind_{(0,T_n]} \cdot M \to H \ind_{(0,T]} \cdot M \ \text{ in $\sM^2_c$ by Theorem \ref{thm:ito_isometry}} \ \lra \ \dabs{\bb{H \ind_{(0,T_n]}} \cdot M - \bb{H \ind_{(0,T]}} \cdot M} \to 0. \quad (\dag)
+H \ind_{(0,T_n]} \cdot M \to H \ind_{(0,T]} \cdot M \ \text{ in $\sM^2_c$ by Theorem \ref{thm:ito_isometry}} \ \lra \ \dabs{\brb{H \ind_{(0,T_n]}} \cdot M - \brb{H \ind_{(0,T]}} \cdot M} \to 0. \quad (\dag)
 \ee
 
 By Proposition \ref{pro:ito_integral_simple_process_property}, $H\cdot M \in \sM^2_c$, thus $(H\cdot M)^{T_n}_t \to  (H\cdot M)^T_t$ a.s. for any $t\geq 0$ by continuity. Thus,
 \be
-\bb{(H\cdot M)^{T_n}_t - (H\cdot M)^T_t}^2 \to 0\ \text{ a.s.} \ \ra \ \E\bb{\bb{(H\cdot M)^{T_n}_t - (H\cdot M)^T_t}^2} \to 0 \ \ra \ \dabs{(H\cdot M)^{T_n}_t - (H\cdot M)^T_t}_2 \to 0\nonumber
+\brb{(H\cdot M)^{T_n}_t - (H\cdot M)^T_t}^2 \to 0\ \text{ a.s.} \ \ra \ \E\brb{\brb{(H\cdot M)^{T_n}_t - (H\cdot M)^T_t}^2} \to 0 \ \ra \ \dabs{(H\cdot M)^{T_n}_t - (H\cdot M)^T_t}_2 \to 0\nonumber
 \ee
 by dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probability}). Then for any $t\geq 0$, %Then by Theorem \ref{thm:doob_lp_inequality_discrete}, $(H\cdot M)_{T_n} \to  (H\cdot M)_T$ a.s. and in $\sL^2(\Omega,\sF,\pro)$. Thus, by $(\dag)$ in proof of Proposition \ref{pro:cadlag_triple_norm_complete},
 \be%\leq \tabs{(H\cdot M)^{T_n} -  (H\cdot M)^T} = \dabs{\sup_{t\geq 0}\abs{(H\cdot M)^{T_n}_t -  (H\cdot M)^T_t}}_2
@@ -1003,8 +1003,8 @@ by dominated convergence theorem (Theorem \ref{thm:dominated_convergence_probabi
 
 Hence, as $H\cdot M\in \sM^2_c$ and $(H\cdot M)^T \in \sM^2_c$,
 \beast
-\dabs{(H\cdot M)^T - (H \ind_{(0,T ]}) \cdot M} & \leq &  \dabs{(H\cdot M)^{T_n} - (H\cdot M)^T} + \dabs{(H\cdot M)^{T_n}  - \bb{H \ind_{(0,T]} \cdot M}} \\
-& = &\dabs{(H\cdot M)^{T_n} - (H\cdot M)^T} + \dabs{ \bb{H \ind_{(0,T_n]}} \cdot M  - \bb{H \ind_{(0,T]}} \cdot M}  \quad\quad (\text{by }(*))\\
+\dabs{(H\cdot M)^T - (H \ind_{(0,T ]}) \cdot M} & \leq &  \dabs{(H\cdot M)^{T_n} - (H\cdot M)^T} + \dabs{(H\cdot M)^{T_n}  - \brb{H \ind_{(0,T]} \cdot M}} \\
+& = &\dabs{(H\cdot M)^{T_n} - (H\cdot M)^T} + \dabs{ \brb{H \ind_{(0,T_n]}} \cdot M  - \brb{H \ind_{(0,T]}} \cdot M}  \quad\quad (\text{by }(*))\\
 & \to & 0 + 0 = 0.\quad\quad (\text{by }(\dag))
 \eeast
 
@@ -1019,9 +1019,9 @@ On the other hand we already know $(H \cdot M)^T = H \cdot (M^T)$ by Proposition
 
 Also,
 \be
-\dabs{H^n \ind_{(0,T]} - H \ind_{(0,T]}}^2_M = \E\bb{\int^T_0 (H^n - H)^2_s d[M]_s} \leq \E\bb{\int^\infty_0 (H^n - H)^2_s d[M]_s} = \dabs{H^n - H}^2_M \to 0
+\dabs{H^n \ind_{(0,T]} - H \ind_{(0,T]}}^2_M = \E\brb{\int^T_0 (H^n - H)^2_s d[M]_s} \leq \E\brb{\int^\infty_0 (H^n - H)^2_s d[M]_s} = \dabs{H^n - H}^2_M \to 0
 \ee
-as $n \to \infty$, so $\bb{H^n\ind_{(0,T]}}\cdot M \to \bb{H \ind_{(0,T]}}\cdot M$ in $\sM^2_c$ by the isometry property of Theorem \ref{thm:ito_isometry}. That is,
+as $n \to \infty$, so $\brb{H^n\ind_{(0,T]}}\cdot M \to \brb{H \ind_{(0,T]}}\cdot M$ in $\sM^2_c$ by the isometry property of Theorem \ref{thm:ito_isometry}. That is,
 \be
 \dabs{(H^n\ind_{(0,T]})\cdot M - (H \ind_{(0,T]})\cdot M} \to 0.
 \ee
@@ -1031,9 +1031,9 @@ Then since $(H^n \cdot M)^T = (H^n\ind_{(0,T]})\cdot M $,
 \dabs{(H \cdot M)^T - (H \ind_{(0,T]})\cdot M} \leq \dabs{(H^n\ind_{(0,T]})\cdot M - (H \ind_{(0,T]})\cdot M} + \dabs{(H^n \cdot M)^T - (H \cdot M)^T} \to 0
 \ee
 
-So we get $(H \cdot M)^T = \bb{H \ind_{(0,T ]}} \cdot M$. Moreover, by Proposition \ref{pro:local_martingale_quadratic_variation_stoppting_time_in_out},
+So we get $(H \cdot M)^T = \brb{H \ind_{(0,T ]}} \cdot M$. Moreover, by Proposition \ref{pro:local_martingale_quadratic_variation_stoppting_time_in_out},
 \be
-\dabs{H^n - H}^2_{M^T} = \E\bb{\int^\infty_0\bb{H^n - H}^2_s d\bsb{M^T}_s} = \E\bb{\int^T_0 (H^n - H)^2_s d[M]_s} \leq \dabs{H^n - H}_M \to 0,
+\dabs{H^n - H}^2_{M^T} = \E\brb{\int^\infty_0\brb{H^n - H}^2_s d\bsb{M^T}_s} = \E\brb{\int^T_0 (H^n - H)^2_s d[M]_s} \leq \dabs{H^n - H}_M \to 0,
 \ee
 so $H^n \cdot (M^T ) \to H \cdot (M^T )$ in $\sM^2_c$. That is,
 \be
@@ -1059,11 +1059,11 @@ Proposition \ref{pro:ito_integral_stopping_time} allows us to make a final exten
 \begin{definition}[It\^o integral for locally bounded previsible processes]\label{def:ito_integral_previsible_locally_bounded}
 Let $H$ be a locally bounded previsible process reduced by $(S_n)_{n\in \N}$ and $M \in \sM_{c,loc}$. Choose stopping times $S'_n = \inf\bra{t \geq 0 : \abs{M_t} \geq n}\ua \infty$ (see Proposition \ref{pro:continuous_local_martingale_stopping_time}), and note that $M^{S'_n} \in \sM^2_c$ for all $n \in \N$ (since $M^{S'_n}$ is bounded). Set $T_n = S_n \land S'_n$ and define
 \be
-(H \cdot M)_t \quad \text{s.t. }\quad (H \cdot M)^{T_n}_t = \bb{H \ind_{(0,T_n]} \cdot M^{T_n}}_t \quad\text{ for all }t.
+(H \cdot M)_t \quad \text{s.t. }\quad (H \cdot M)^{T_n}_t = \brb{H \ind_{(0,T_n]} \cdot M^{T_n}}_t \quad\text{ for all }t.
 \ee
 with $(H \cdot M)_0 =0$ a.s. by Definition \ref{def:ito_stochastic_integral}.
 
-By Theorem \ref{thm:ito_isometry}, we have $\bb{H \ind_{(0,T_n]} \cdot M^{T_n}}\in \sM^2_c$. Thus, we have $H \cdot M \in \sM_{c,loc}$ by definition of local martingale. The (sample) continuity is given by let $T_n \ua \infty$, as $\bb{H \cdot M }^{T_n}_t = (H \cdot M)_t$ for all $t\leq T_n$.
+By Theorem \ref{thm:ito_isometry}, we have $\brb{H \ind_{(0,T_n]} \cdot M^{T_n}}\in \sM^2_c$. Thus, we have $H \cdot M \in \sM_{c,loc}$ by definition of local martingale. The (sample) continuity is given by let $T_n \ua \infty$, as $\brb{H \cdot M }^{T_n}_t = (H \cdot M)_t$ for all $t\leq T_n$.
 \end{definition}
 
 
@@ -1072,7 +1072,7 @@ By Theorem \ref{thm:ito_isometry}, we have $\bb{H \ind_{(0,T_n]} \cdot M^{T_n}}\
 \item [(i)] The stochastic integral in the right-hand side of definition \ref{def:ito_integral_previsible_locally_bounded} is well-defined. indeed, every
 bounded previsible process is in $\sL^2(M)$ whenever $M \in \sM^2_c$. That is, if $\sup_{t\geq 0}\abs{H} \leq K$ where $K$ is non-random,
 \be
-\dabs{H}_M = \E\bb{\int^\infty_0 H^2_s d[M]_s} \leq K^2\E\bb{\int^\infty_0 d[M]_s} = \E\bb{[M]_\infty} < \infty
+\dabs{H}_M = \E\brb{\int^\infty_0 H^2_s d[M]_s} \leq K^2\E\brb{\int^\infty_0 d[M]_s} = \E\brb{[M]_\infty} < \infty
 \ee
 by Theorem \ref{thm:martingale_l2_iff_quadratic_variation_infinity_non_infinity}.
 
@@ -1105,17 +1105,17 @@ As $n \to \infty$, the left-hand side is $(H\ind_{(0,T_n]} \cdot M^{T_n})^T = (H
 \ee
 by (sample) continuity of $(H \cdot M)^{T}$ (by Proposition \ref{pro:stopped_local_martingale_implies_local_martingale}). For the right-hand side, since the sequence $(T_n)$ also reduce $M$ and imply that $H\ind_{(0,T]}\ind_{(0,T_n]}$ is bounded. Thus, $H\ind_{(0,T]} \cdot M$ is also a (sample) continuous local martingale such that
 \be
-\bb{H\ind_{(0,T]} \cdot M}^{T_n} = H\ind_{(0,T]}\ind_{(0,T_n]} \cdot M^{T_n}
+\brb{H\ind_{(0,T]} \cdot M}^{T_n} = H\ind_{(0,T]}\ind_{(0,T_n]} \cdot M^{T_n}
 \ee
 
 Thus, for any $t$, we have by continuity of $H\ind_{(0,T]} \cdot M$,
 \be
-\bb{H\ind_{(0,T]} \cdot M}^{T_n}_t \to \bb{H\ind_{(0,T]} \cdot M}_t \quad \text{a.s.}
+\brb{H\ind_{(0,T]} \cdot M}^{T_n}_t \to \brb{H\ind_{(0,T]} \cdot M}_t \quad \text{a.s.}
 \ee
 
 Combining these equation together, we have
 \be
-\bb{H\ind_{(0,T]} \cdot M}_t = (H \cdot M)^{T}_t\quad \text{a.s.}.
+\brb{H\ind_{(0,T]} \cdot M}_t = (H \cdot M)^{T}_t\quad \text{a.s.}.
 \ee
 
 Then by Proposition \ref{pro:continuous_cadlag_version_indistinguishable}, $H\ind_{(0,T]} \cdot M = (H \cdot M)^{T}$ in the sense of indistinguishability.
@@ -1126,22 +1126,22 @@ Then by Proposition \ref{pro:continuous_cadlag_version_indistinguishable}, $H\in
 
 By Proposition \ref{pro:ito_integral_stopping_time}, we know that
 \be
-(H\ind_{(0,T_n]} \cdot M^{T_n})^T = H\ind_{(0,T_n]} \cdot \bb{M^{T_n\land T}} = H\ind_{(0,T_n]} \cdot \bb{M^T}^{T_n}
+(H\ind_{(0,T_n]} \cdot M^{T_n})^T = H\ind_{(0,T_n]} \cdot \brb{M^{T_n\land T}} = H\ind_{(0,T_n]} \cdot \brb{M^T}^{T_n}
 \ee
 
 For the right-hand side, since the sequence $(T_n)$ also reduce $M^T$ (which is also a continuous local martingale by Proposition \ref{pro:stopped_local_martingale_implies_local_martingale}) and imply that $H\ind_{(0,T_n]}$ is bounded. Thus, $H \cdot M^T$ is also a (sample) continuous local martingale such that
 \be
-\bb{H \cdot M^T}^{T_n} = H\ind_{(0,T_n]} \cdot \bb{M^T}^{T_n}
+\brb{H \cdot M^T}^{T_n} = H\ind_{(0,T_n]} \cdot \brb{M^T}^{T_n}
 \ee
 
 Thus, for any $t$, we have by continuity of $H \cdot M^T$,
 \be
-\bb{H \cdot M^T}^{T_n}_t \to \bb{H \cdot M^T}_t \quad \text{a.s.}
+\brb{H \cdot M^T}^{T_n}_t \to \brb{H \cdot M^T}_t \quad \text{a.s.}
 \ee
 
 Combining these equation together, we have
 \be
-\bb{H\ind_{(0,T]} \cdot M}_t = \bb{H \cdot M^T}_t\quad \text{a.s.}.
+\brb{H\ind_{(0,T]} \cdot M}_t = \brb{H \cdot M^T}_t\quad \text{a.s.}.
 \ee
 
 Then by Proposition \ref{pro:continuous_cadlag_version_indistinguishable}, $H\ind_{(0,T]} \cdot M = H \cdot M^{T}$ in the sense of indistinguishability.
@@ -1169,9 +1169,9 @@ By Propostion \ref{pro:ito_integral_stopping_time_locally_bounded},
 \ee
 which implies that $H\cdot M$ is a continuous local martingale. To compute the quadratic variation, assume first that $M \in \sM^2_c$ and that $H$ is uniformly bounded in time (and thus $\subseteq \sL^2(M)$). For any stopping time $T$, we have by Proposition \ref{pro:ito_integral_stopping_time_locally_bounded} and the isometry property of Theorem \ref{thm:ito_isometry}):
 \beast
-\E\bb{(H \cdot M)^2_T} & = & \E\bb{(H \cdot M)^2_{T\land \infty}} =  \E\bb{(H \ind_{(0,T]} \cdot M)^2_\infty} = \dabs{H \ind_{(0,T]} \cdot M}^2 = \dabs{H \ind_{(0,T]}}^2_M\\
-& = & \E\bb{\int^\infty_0 H_s^2\ind_{(0,T]}(s)d[M]_s} = \E\bb{\int^T_0 H_s^2d[M]_s}  = \E\bb{(H^2 \cdot [M])_T}.
-\eeast%\E\bb{(H^2 \ind_{(0,T]} \cdot [M])_\infty }
+\E\brb{(H \cdot M)^2_T} & = & \E\brb{(H \cdot M)^2_{T\land \infty}} =  \E\brb{(H \ind_{(0,T]} \cdot M)^2_\infty} = \dabs{H \ind_{(0,T]} \cdot M}^2 = \dabs{H \ind_{(0,T]}}^2_M\\
+& = & \E\brb{\int^\infty_0 H_s^2\ind_{(0,T]}(s)d[M]_s} = \E\brb{\int^T_0 H_s^2d[M]_s}  = \E\brb{(H^2 \cdot [M])_T}.
+\eeast%\E\brb{(H^2 \ind_{(0,T]} \cdot [M])_\infty }
 
 By the optional stopping theorem (Theorem \ref{thm:optional_stopping_bounded_stopping_time_continuous}), we conclude that $(H \cdot M)^2 - H^2 \cdot [M]$ is a martingale (thus a local martingale). Moreover, since $H$ is uniformly bounded and $[M]$ (pathwise) continuous, we can also show that $H^2 \cdot [M]$ is adapted, (sample) continuous and non-decreasing (by Corollary \ref{cor:locally_bounded_previsible_quadratic_variation_integral}). Therefore, by Theorem \ref{thm:quadratic_variation_process_uniqueness_existence}, we have $[H \cdot M] = H^2 \cdot [M]$ in the sense of indistinguishable.
 
@@ -1180,9 +1180,9 @@ In the general case, for any $t\geq 0$, %note that as a consequence of (i) and o
 \beast%\stackrel{\text{a.s.}}{=}
 [H \cdot M]_t & \stackrel{\text{a.s.}}{=} & \lim_{n\to\infty} [H \cdot M]^{T_n}_t \quad\quad (\text{by continuity of quadratic variation and $T_n \ua \infty$ a.s.})\\
 & = & \lim_{n\to\infty} [(H \cdot M)^{T_n}]_t \quad\quad (\text{by Proposition \ref{pro:local_martingale_quadratic_variation_stoppting_time_in_out}})\\
-& = & \lim_{n\to\infty} [H\ind_{(0,T_n]} \cdot M^{T_n}]_t = \lim_{n\to\infty} \bb{H^2\ind_{(0,T_n]} \cdot [M]^{T_n}}_t\quad\text{(by the case of uniformly bounded $H$ and $M\in \sM^2_c$)}\\
+& = & \lim_{n\to\infty} [H\ind_{(0,T_n]} \cdot M^{T_n}]_t = \lim_{n\to\infty} \brb{H^2\ind_{(0,T_n]} \cdot [M]^{T_n}}_t\quad\text{(by the case of uniformly bounded $H$ and $M\in \sM^2_c$)}\\
 & = & \lim_{n\to\infty} \int^t_0 H^2_s\ind_{T_n}(s) d[M]_s = \int^t_0 H^2_s \lim_{n\to \infty}\ind_{T_n}(s) d[M]_s \quad \text{(by monotone convergence theorem, Theorem \ref{thm:monotone_convergence_probability})}\\
-& = &  \int^t_0 H^2_s d[M]_s =\bb{H^2 \cdot [M] }_t.
+& = &  \int^t_0 H^2_s d[M]_s =\brb{H^2 \cdot [M] }_t.
 \eeast
 
 Thus, $[H\cdot M]$ is a version of $H^2 \cdot [M]$. But we know that both processes are (sample) continuous (Corollary \ref{cor:locally_bounded_previsible_quadratic_variation_integral} gives the properties of $H^2 \cdot [M]$. Actually, $[H \cdot M]$ is pathwise continuous by Theorem \ref{thm:quadratic_variation_process_uniqueness_existence}). Thus, by Proposition \ref{pro:continuous_cadlag_version_indistinguishable}, $[H \cdot M] = H^2 \cdot [M]$ in the sense of indistinguishability.
@@ -1201,7 +1201,7 @@ H \cdot (K \cdot M) = (HK) \cdot M.
 \begin{remark}
 We view this result as a stochastic chain rule, since it is telling us that:
 \be
-d\bb{\int^t_0 K_sdM_s} = K_tdM_t.
+d\brb{\int^t_0 K_sdM_s} = K_tdM_t.
 \ee
 This is a rule that is extremely useful in the practice of computing stochastic integrals. e.g.,
 \be
@@ -1218,21 +1218,21 @@ H = \sum^{m-1}_{i=1} X_i\ind_{(t_i,t_{i+1}]}(t),\quad K = \sum^{n-1}_{j=1} Y_j\i
 \ee
 where $t_i< t_{i+1}$, $s_j <s_{j+1}$ and $X_i \in \sF_{t_k}, Y_j \in \sF_{s_j}$. Then for any $t\geq 0$ (using ($*$) in proof of Theorem \ref{thm:bounded_on_compact_previsible_finite_variation_integral} and linearity)
 %\beast
-%\bb{H\cdot (K\cdot M)}_t & = & H\cdot \bb{\sum^{n-1}_{j=1} Y_j \bb{M_{s_{j+1}\land t} -M_{s_j\land t}}} \\
-%& = & \sum^{m-1}_{i=1} \sum^{n-1}_{j=1} X_i Y_j \bb{M_{\bb{(s_{j+1}\land t)\land t_{k+1}} \vee \bb{(s_j\land t)\vee t_k}} -M_{(s_j\land t)\vee t_k}}\\
-%& = & \sum^{m-1}_{i=1} \sum^{n-1}_{j=1} X_i Y_j \bb{M_{\bb{(s_{j+1}\land t_{k+1})\land t} \vee (s_j\land t)\vee t_k} -M_{(s_j\land t)\vee t_k}}\\
-%& = & \sum^{m-1}_{i=1} \sum^{n-1}_{j=1} X_i Y_j \bb{M_{\bb{\bb{(s_{j+1}\land t_{k+1})\vee s_j} \land t }\vee t_k} -M_{(s_j \vee t_k) \land (t \vee t_k)}}\\
-%& = & \sum^{m-1}_{i=1} \sum^{n-1}_{j=1} X_i Y_j \bb{M_{\bb{(s_{j+1}\land t_{k+1})\vee (s_j \vee t_k)} \land \bb{t \vee t_k}} -M_{(s_j \vee t_k) \land (t \vee t_k)}}
+%\brb{H\cdot (K\cdot M)}_t & = & H\cdot \brb{\sum^{n-1}_{j=1} Y_j \brb{M_{s_{j+1}\land t} -M_{s_j\land t}}} \\
+%& = & \sum^{m-1}_{i=1} \sum^{n-1}_{j=1} X_i Y_j \brb{M_{\brb{(s_{j+1}\land t)\land t_{k+1}} \vee \brb{(s_j\land t)\vee t_k}} -M_{(s_j\land t)\vee t_k}}\\
+%& = & \sum^{m-1}_{i=1} \sum^{n-1}_{j=1} X_i Y_j \brb{M_{\brb{(s_{j+1}\land t_{k+1})\land t} \vee (s_j\land t)\vee t_k} -M_{(s_j\land t)\vee t_k}}\\
+%& = & \sum^{m-1}_{i=1} \sum^{n-1}_{j=1} X_i Y_j \brb{M_{\brb{\brb{(s_{j+1}\land t_{k+1})\vee s_j} \land t }\vee t_k} -M_{(s_j \vee t_k) \land (t \vee t_k)}}\\
+%& = & \sum^{m-1}_{i=1} \sum^{n-1}_{j=1} X_i Y_j \brb{M_{\brb{(s_{j+1}\land t_{k+1})\vee (s_j \vee t_k)} \land \brb{t \vee t_k}} -M_{(s_j \vee t_k) \land (t \vee t_k)}}
 %\eeast
 
 %If $t_k \leq t < t_{k+1}$, we have
 
 \be
-\bb{H\cdot (K\cdot M)}_t %= \sum^{m-1}_{i=1} \sum^{n-1}_{j=1} X_i Y_j \bb{M_{\bb{(s_{j+1}\land t_{k+1})\vee (s_j \vee t_k)} \land t} -M_{(s_j \vee t_k) \land t}}
-= \bb{HK\cdot (M)}_t.
+\brb{H\cdot (K\cdot M)}_t %= \sum^{m-1}_{i=1} \sum^{n-1}_{j=1} X_i Y_j \brb{M_{\brb{(s_{j+1}\land t_{k+1})\vee (s_j \vee t_k)} \land t} -M_{(s_j \vee t_k) \land t}}
+= \brb{HK\cdot (M)}_t.
 \ee
 
-Thus, for any $t\geq 0$, we have $\bb{H\cdot (K\cdot M)}_t = (HK \cdot M)_t$. Since both processes is in $\sM^2_c$ (by Proposition \ref{pro:ito_integral_simple_process_property}), we have $H\cdot (K\cdot M) = HK \cdot M$ is the sense of indistinguishability.
+Thus, for any $t\geq 0$, we have $\brb{H\cdot (K\cdot M)}_t = (HK \cdot M)_t$. Since both processes is in $\sM^2_c$ (by Proposition \ref{pro:ito_integral_simple_process_property}), we have $H\cdot (K\cdot M) = HK \cdot M$ is the sense of indistinguishability.
 
 For $H,K$ uniformly bounded (and thus in $\sL^2(M)$) for $M \in \sM^2_c$, there exist $H^n,K^n \in \sS$, $n \in \N$ such that $H^n \to H$ and $K^n \to K$ in $\sL^2(M)$, i.e.,
 \be
@@ -1244,28 +1244,28 @@ Furthermore, we may also assume that $\dabs{H^n}_\infty$ and $\dabs{K^n}_\infty$
 %(indeed, truncating $K^n$ at $\dabs{K}_\infty+1$ can only improve the $\sL^2$ difference between $K^n$ and $K$).
 By Theorem \ref{thm:bounded_on_compact_previsible_finite_variation_integral}, we have for any $t\geq 0$,
 \be
-\bb{H^2\cdot (K^2\cdot [M])}_t = \bb{(HK)^2\cdot [M]}_t.
+\brb{H^2\cdot (K^2\cdot [M])}_t = \brb{(HK)^2\cdot [M]}_t.
 \ee
 
-%Both processes are (pathwise) non-decreasing by Corollary \ref{cor:locally_bounded_previsible_quadratic_variation_integral}. Thus, $\bb{H^2\cdot (K^2\cdot [M])}_\infty$ and $\bb{(H^2K^2)\cdot [M]}_\infty$ are well-defined and coincided. That is
+%Both processes are (pathwise) non-decreasing by Corollary \ref{cor:locally_bounded_previsible_quadratic_variation_integral}. Thus, $\brb{H^2\cdot (K^2\cdot [M])}_\infty$ and $\brb{(H^2K^2)\cdot [M]}_\infty$ are well-defined and coincided. That is
 
 
-Note that $H,K\in \sL^2(M)$ for $M\in \sM^2_c$ thus $(K^2\cdot M) \in \sM^2_c$ by Theorem \ref{thm:ito_isometry}. Thus, $K^2\cdot M$ converges to $(K^2\cdot M)_\infty$ a.s. in $\sL^2(\Omega,\sF,\pro)$ and therefore $\E\bb{(K^2\cdot M)_\infty} < \infty$. Then
+Note that $H,K\in \sL^2(M)$ for $M\in \sM^2_c$ thus $(K^2\cdot M) \in \sM^2_c$ by Theorem \ref{thm:ito_isometry}. Thus, $K^2\cdot M$ converges to $(K^2\cdot M)_\infty$ a.s. in $\sL^2(\Omega,\sF,\pro)$ and therefore $\E\brb{(K^2\cdot M)_\infty} < \infty$. Then
 \be
-\E\bb{(H^2 \cdot [K^2 \cdot M])_\infty} = \E\bb{\int^\infty_0 H^2_s d[K^2\cdot M]_s} \leq \E\bb{\sup_{t\geq 0} H_t^2 [K^2\cdot M]_\infty} < \infty
+\E\brb{(H^2 \cdot [K^2 \cdot M])_\infty} = \E\brb{\int^\infty_0 H^2_s d[K^2\cdot M]_s} \leq \E\brb{\sup_{t\geq 0} H_t^2 [K^2\cdot M]_\infty} < \infty
 \ee
-since $H$ is uniformly bounded (i.e., $\sup_{t\geq 0} H_t^2$). Therefore, $(H^2 \cdot [K^2 \cdot M])_\infty$ is finite a.s.. Similarly, $\bb{(HK)^2\cdot [M]}_\infty$ is well-defined and finite a.s.. Thus, since $\bb{H^2\cdot (K^2\cdot [M])} = \bb{(HK)^2\cdot [M]}$, % and both
+since $H$ is uniformly bounded (i.e., $\sup_{t\geq 0} H_t^2$). Therefore, $(H^2 \cdot [K^2 \cdot M])_\infty$ is finite a.s.. Similarly, $\brb{(HK)^2\cdot [M]}_\infty$ is well-defined and finite a.s.. Thus, since $\brb{H^2\cdot (K^2\cdot [M])} = \brb{(HK)^2\cdot [M]}$, % and both
 \be
-\bb{H^2\cdot (K^2\cdot [M])}_\infty =\bb{(HK)^2\cdot [M]}_\infty\quad \text{a.s.}.\quad \quad (*)
+\brb{H^2\cdot (K^2\cdot [M])}_\infty =\brb{(HK)^2\cdot [M]}_\infty\quad \text{a.s.}.\quad \quad (*)
 \ee
 
-%Since $\bb{H^2\cdot (K^2\cdot [M])}$ and $\bb{(HK)^2\cdot [M]}$ are is well-defined and thus $\E\bb{(H^2 \cdot [K \cdot M])_\infty}$ is also well-defined.
+%Since $\brb{H^2\cdot (K^2\cdot [M])}$ and $\brb{(HK)^2\cdot [M]}$ are is well-defined and thus $\E\brb{(H^2 \cdot [K \cdot M])_\infty}$ is also well-defined.
 
 We first prove an upper bound on $\dabs{H}_{\sL^2(K\cdot M)}$:
 \beast
-\dabs{H}^2_{\sL^2(K\cdot M)} & = & \E\bb{\int^\infty_0 H_s^2 d[K\cdot M]_s} = \E\bb{(H^2 \cdot [K \cdot M])_\infty} \\
-& = & \E\bb{(H^2 \cdot (K^2 \cdot [M]))_\infty} \quad\quad \text{(by Theorem \ref{thm:stochastic_integral_local_martingale_quadratic_variation})}\\
-& \stackrel{(*)}{=} & \E\bb{((H K)^2 \cdot [M])_\infty} = \E\bb{\int^\infty_0 (H_sK_s)^2 d[M]_s} =  \dabs{H K}^2_{\sL^2(M)} \\
+\dabs{H}^2_{\sL^2(K\cdot M)} & = & \E\brb{\int^\infty_0 H_s^2 d[K\cdot M]_s} = \E\brb{(H^2 \cdot [K \cdot M])_\infty} \\
+& = & \E\brb{(H^2 \cdot (K^2 \cdot [M]))_\infty} \quad\quad \text{(by Theorem \ref{thm:stochastic_integral_local_martingale_quadratic_variation})}\\
+& \stackrel{(*)}{=} & \E\brb{((H K)^2 \cdot [M])_\infty} = \E\brb{\int^\infty_0 (H_sK_s)^2 d[M]_s} =  \dabs{H K}^2_{\sL^2(M)} \\
 & \leq & \min\bra{\dabs{H}^2_\infty \dabs{K}^2_{\sL^2(M)}, \dabs{H}^2_{\sL^2(M)}\dabs{K}^2_\infty} < \infty
 \eeast
 where $H$ and $K$ are uniformly bounded ($\dabs{H}_\infty \leq \sup_{t\geq 0}\abs{H_t} < \infty$). %where $*$ holds by Problem 1.20, since $[M]$ is non-decreasing and thus of finite variation.
@@ -1286,21 +1286,21 @@ So $H^n \cdot (K^n \cdot M) \to H \cdot (K \cdot M)$ in $\sM^2_c$. Similarly,
 & \leq & \dabs{K^n}_\infty \dabs{H^n - H}_{\sL^2( M)} + \dabs{H}_\infty\dabs{K^n-K}_{\sL^2(M)}.
 \eeast
 
-So $(H^n K^n) \cdot M \to (H K) \cdot M$ in $\bb{\sM^2_c,\dabs{\cdot}}$. Thus, $H \cdot (K \cdot M) = (H K) \cdot M$ ($\dag$) in the sense of distinguishability.
+So $(H^n K^n) \cdot M \to (H K) \cdot M$ in $\brb{\sM^2_c,\dabs{\cdot}}$. Thus, $H \cdot (K \cdot M) = (H K) \cdot M$ ($\dag$) in the sense of distinguishability.
 
 For more general case, for locally bounded previsible $H,K$ and $M\in \sM_{c,loc}$. we can find a sequence of stopping times $(T_n)_{n\in \N}$ such that $T_n$ reduce $H,K$ and $M$ (use the same $T_n$ as before such that $M^{T_n}$ is a bounded martingale). We can see that $(H\cdot (K\cdot M))$ and $(H K) \cdot M$ are both (sample) continuous local martingales. Thus, by Proposition \ref{pro:ito_integral_stopping_time_locally_bounded},
 \beast
-(H\cdot (K\cdot M))^{T_n} & = & (H\cdot (K\cdot M))^{T_n\land T_n} = H\ind_{(0,T_n]} \cdot \bb{K\cdot M}^{T_n} =  H\ind_{(0,T_n]} \cdot \bb{K\cdot M}^{T_n\land T_n}\\
-& = & H\ind_{(0,T_n]} \cdot \bb{K\ind_{(0,T_n]}\cdot M^{T_n}} \stackrel{(\dag)}{=} H\ind_{(0,T_n]}{K\ind_{(0,T_n]}}\cdot M^{T_n} = \bb{HK\ind_{(0,T_n]}}\cdot M^{T_n}\\
-& = & \bb{\bb{HK}\cdot M}^{T_n\land T_n} = \bb{\bb{HK}\cdot M}^{T_n}.
+(H\cdot (K\cdot M))^{T_n} & = & (H\cdot (K\cdot M))^{T_n\land T_n} = H\ind_{(0,T_n]} \cdot \brb{K\cdot M}^{T_n} =  H\ind_{(0,T_n]} \cdot \brb{K\cdot M}^{T_n\land T_n}\\
+& = & H\ind_{(0,T_n]} \cdot \brb{K\ind_{(0,T_n]}\cdot M^{T_n}} \stackrel{(\dag)}{=} H\ind_{(0,T_n]}{K\ind_{(0,T_n]}}\cdot M^{T_n} = \brb{HK\ind_{(0,T_n]}}\cdot M^{T_n}\\
+& = & \brb{\brb{HK}\cdot M}^{T_n\land T_n} = \brb{\brb{HK}\cdot M}^{T_n}.
 \eeast
 
 Thus, for any $t\geq 0$, by (sample) continuity of $(H\cdot (K\cdot M))$ and $(H K) \cdot M$,
 \be
-(H\cdot (K\cdot M))^{T_n}_t \to (H\cdot (K\cdot M))_t\ \text{ a.s.},\quad \bb{\bb{HK}\cdot M}^{T_n}_t \to \bb{\bb{HK}\cdot M}_t\ \text{ a.s.}.
+(H\cdot (K\cdot M))^{T_n}_t \to (H\cdot (K\cdot M))_t\ \text{ a.s.},\quad \brb{\brb{HK}\cdot M}^{T_n}_t \to \brb{\brb{HK}\cdot M}_t\ \text{ a.s.}.
 \ee
 
-Thus, $(H\cdot (K\cdot M))_t = \bb{\bb{HK}\cdot M}_t$ a.s.. Since both local martingales are continuous, we have $H\cdot (K\cdot M) = (HK)\cdot M$ in the sense of distinguishability.
+Thus, $(H\cdot (K\cdot M))_t = \brb{\brb{HK}\cdot M}_t$ a.s.. Since both local martingales are continuous, we have $H\cdot (K\cdot M) = (HK)\cdot M$ in the sense of distinguishability.
 \end{proof}
 
 
@@ -1323,12 +1323,12 @@ Let $M,N \in \sM_{c,loc}$. Then we have:
 \item [(i)] $[M,N]$ is the unique (up to indistinguishability) (pathwise) continuous adapted process with finite variation such that $M N - [M,N]$ is a continuous local martingale. Also, $[M,N]_0 = 0$ a.s.% .
 \item [(ii)] For $n \geq 1$ and for all $t \geq 0$, let
 \be
-[M,N]^n_t := \sum^{\floor{2^n t}-1}_{k=0} \bb{M_{(k+1)2^{-n}} -M_{k2^{-n}}}\bb{N_{(k+1)2^{-n}} - N_{k2^{-n}}}.
+[M,N]^n_t := \sum^{\floor{2^n t}-1}_{k=0} \brb{M_{(k+1)2^{-n}} -M_{k2^{-n}}}\brb{N_{(k+1)2^{-n}} - N_{k2^{-n}}}.
 \ee
 
 Then $[M,N]^n \to [M,N]$ u.c.p. as $n \to \infty$.
 
-\item [(iii)] For $M,N \in \sM^2_c$ with $M_0 = N_0 =0$ a.s., $M N - [M,N]$ is a $\sL^2$-bounded martingale. More generally, for $M,N\in\sM^2_c$, $\bb{M_tN_t - M_0N_0 - [M,N]_t}_{t\geq 0}$ is a UI martingale.%\footnote{need to check the case $M_0,N_0\neq 0$.}
+\item [(iii)] For $M,N \in \sM^2_c$ with $M_0 = N_0 =0$ a.s., $M N - [M,N]$ is a $\sL^2$-bounded martingale. More generally, for $M,N\in\sM^2_c$, $\brb{M_tN_t - M_0N_0 - [M,N]_t}_{t\geq 0}$ is a UI martingale.%\footnote{need to check the case $M_0,N_0\neq 0$.}
 \item [(iv)] $[M,N]$ is a symmetric bilinear form.
 \item [(v)] For any stopping time $T$, $\bsb{M^T,N^T} = [M,N]^T$.
 \een
@@ -1340,11 +1340,11 @@ Of course, $[M,M] = [M]$.
 
 \begin{proof}[\bf Proof]
 \ben
-\item [(i)] First, we know that $M+N,M-N\in \sM_{c,loc}$ by Proposition \ref{pro:function_of_local_martingales_is_still_local_martingale}. Then exist unique $[M+N]$ and $[M-N]$ such that $(M+N)^2 - [M-N],(M+N)^2 - [M-N]\in \sM_{c,loc}$. Therefore, there exist unique $[M+N]-[M-N]$ such that $(M+N)^2-(M-N)^2 - \bb{[M+N]-[M-N]} \in \sM_{c,loc}$.
+\item [(i)] First, we know that $M+N,M-N\in \sM_{c,loc}$ by Proposition \ref{pro:function_of_local_martingales_is_still_local_martingale}. Then exist unique $[M+N]$ and $[M-N]$ such that $(M+N)^2 - [M-N],(M+N)^2 - [M-N]\in \sM_{c,loc}$. Therefore, there exist unique $[M+N]-[M-N]$ such that $(M+N)^2-(M-N)^2 - \brb{[M+N]-[M-N]} \in \sM_{c,loc}$.
 
-We know that $M N = \frac 14\bb{(M+N)^2-(M-N)^2}$, so
+We know that $M N = \frac 14\brb{(M+N)^2-(M-N)^2}$, so
 \be
-MN -[M,N] = \frac 14\bb{(M+N)^2 - [M+N]} - \frac 14\bb{(M-N)^2 - [M-N]}.
+MN -[M,N] = \frac 14\brb{(M+N)^2 - [M+N]} - \frac 14\brb{(M-N)^2 - [M-N]}.
 \ee
 
 Thus, both terms are continuous local martingales from Theorem \ref{thm:quadratic_variation_process_uniqueness_existence}. Then $MN -[M,N]\in \sM_{c,loc}$ by Proposition \ref{pro:function_of_local_martingales_is_still_local_martingale}. %
@@ -1353,54 +1353,54 @@ Since such $[M+N]-[M-N]$ is unique, we have that $[M,N]$ is unique. %Thus, there
 
 Also, since $[M+N]$ and $[M-N]$ are (pathwise) continuous adapted processes, we have $[M,N]$ is also (pathwise) continuous adapted. Furthermore, since $[M+N]$ and $[M-N]$ are (pathwise) non-decreasing, we have that $[M,N]$ is (pathwise) continuous process with (pathwise) finite variation process by Proposition \ref{pro:cadlag_function_two_increasing_function}.
 
-By definition of $[M,N]$, it is obvious that $[M,N]_0 = \frac 14 \bb{[M+N]_0 - [M-N]_0} = 0$ a.s..
+By definition of $[M,N]$, it is obvious that $[M,N]_0 = \frac 14 \brb{[M+N]_0 - [M-N]_0} = 0$ a.s..
 
 %and non-decreasing processes
 %there exists two sequences of stopping times $S_n$ and $S_n$ such that $S_n \ua \infty$ a.s., $S_n' \ua \infty$ a.s. and
 %\be
-%\bb{\frac 14\bb{(M+N)^2 - [M+N]}}^{S_n} \in \sM_c,\quad \bb{\frac 14\bb{(M-N)^2 - [M-N]}}^{S'_n} \in \sM_c.
+%\brb{\frac 14\brb{(M+N)^2 - [M+N]}}^{S_n} \in \sM_c,\quad \brb{\frac 14\brb{(M-N)^2 - [M-N]}}^{S'_n} \in \sM_c.
 %\ee
 %Now define $T_n = S_n\land S_n'$, so we have $T_n$ is also a sequence of stopping times and $T_n \ua \infty$ a.s.. Therefore,
 %\beast
-%\bb{MN -[M,N]}^{T_n} & = & \bb{\frac 14\bb{(M+N)^2 - [M+N]}}^{T_n} + \bb{\frac 14\bb{(M-N)^2 - [M-N]}}^{T_n} \\
-%& = & \bb{\bb{\frac 14\bb{(M+N)^2 - [M+N]}}^{S_n}}^{S_n'} + \bb{\bb{\frac 14\bb{(M-N)^2 - [M-N]}}^{S'_n}}^{S_n} \in \sM_c
+%\brb{MN -[M,N]}^{T_n} & = & \brb{\frac 14\brb{(M+N)^2 - [M+N]}}^{T_n} + \brb{\frac 14\brb{(M-N)^2 - [M-N]}}^{T_n} \\
+%& = & \brb{\brb{\frac 14\brb{(M+N)^2 - [M+N]}}^{S_n}}^{S_n'} + \brb{\brb{\frac 14\brb{(M-N)^2 - [M-N]}}^{S'_n}}^{S_n} \in \sM_c
 %\eeast
 %since any stopped martingale is still a martingale (Theorem \ref{thm:optional_stopping_bounded_stopping_time_continuous}). Thus, $MN -[M,N] \in \sM_{c,loc}$.
 %It is thus obvious that $MN -[M,N]$ is a continuous local martingale. Moreover, finite variation is an obvious consequence of the definition and uniqueness follows easily from
 
 \item [(ii)] By Proposition \ref{pro:function_of_local_martingales_is_still_local_martingale}, $M+N, M-N\in \sM_{c,loc}$, thus
 \beast
-[M,N]^n_t & = & \sum^{\floor{2^n t}-1}_{k=0} \bb{M_{(k+1)2^{-n}} -M_{k2^{-n}}}\bb{N_{(k+1)2^{-n}} - N_{k2^{-n}}}\\
+[M,N]^n_t & = & \sum^{\floor{2^n t}-1}_{k=0} \brb{M_{(k+1)2^{-n}} -M_{k2^{-n}}}\brb{N_{(k+1)2^{-n}} - N_{k2^{-n}}}\\
 & = & \sum^{\floor{2^n t}-1}_{k=0} M_{(k+1)2^{-n}}N_{(k+1)2^{-n}} - M_{(k+1)2^{-n}}N_{k2^{-n}} - M_{k2^{-n}}N_{(k+1)2^{-n}} + M_{k2^{-n}} N_{k2^{-n}}\\
-& = & \frac 14 \sum^{\floor{2^n t}-1}_{k=0} \bb{M_{(k+1)2^{-n}} + N_{(k+1)2^{-n}}- M_{k2^{-n}} - N_{k2^{-n}}}^2 - \bb{M_{(k+1)2^{-n}} - N_{(k+1)2^{-n}} - M_{k2^{-n}} + N_{k2^{-n}}}^2 \\%\sum^{\floor{2^n t}-1}_{k=0} \bb{M_{(k+1)2^{-n}} - M_{k2^{-n}}}^2 - \sum^{\floor{2^n t}-1}_{k=0} \bb{N_{(k+1)2^{-n}} - N_{k2^{-n}}}^2\\
-& = & \frac 14 \bb{[M+N]^n_t - [M-N]^n_t}.
+& = & \frac 14 \sum^{\floor{2^n t}-1}_{k=0} \brb{M_{(k+1)2^{-n}} + N_{(k+1)2^{-n}}- M_{k2^{-n}} - N_{k2^{-n}}}^2 - \brb{M_{(k+1)2^{-n}} - N_{(k+1)2^{-n}} - M_{k2^{-n}} + N_{k2^{-n}}}^2 \\%\sum^{\floor{2^n t}-1}_{k=0} \brb{M_{(k+1)2^{-n}} - M_{k2^{-n}}}^2 - \sum^{\floor{2^n t}-1}_{k=0} \brb{N_{(k+1)2^{-n}} - N_{k2^{-n}}}^2\\
+& = & \frac 14 \brb{[M+N]^n_t - [M-N]^n_t}.
 \eeast
 
 By Theorem \ref{thm:quadratic_variation_process_uniqueness_existence}, we have $[M+N]^n \xrightarrow{ucp} [M+N]$, $[M-N]^n \xrightarrow{ucp} [M-N]$, i.e., $\forall \ve > 0, \forall t \geq 0$,
 \beast
-\pro\bb{\sup_{s\leq t} \abs{[M+N]^n_s - [M+N]_s} > \ve} \to 0,\quad \pro\bb{\sup_{s\leq t} \abs{[M-N]^n_s - [M-N]_s} > \ve} \to 0 \quad \text{as }n\to \infty.
+\pro\brb{\sup_{s\leq t} \abs{[M+N]^n_s - [M+N]_s} > \ve} \to 0,\quad \pro\brb{\sup_{s\leq t} \abs{[M-N]^n_s - [M-N]_s} > \ve} \to 0 \quad \text{as }n\to \infty.
 \eeast
 
 Thus, we have $\forall \ve > 0, \forall t \geq 0$,
 \beast
-\pro\bb{\sup_{s\leq t} \abs{[M,N]^n_s - [M,N]_s} > \ve} & = & \pro\bb{\sup_{s\leq t} \abs{\frac 14 \bb{[M+N]^n_s - [M-N]^n_s} - \frac 14 \bb{[M+N]_s - [M-N]_s}} > \ve}\\
-& = & \pro\bb{\frac 14 \sup_{s\leq t} \abs{ [M+N]^n_s - [M+N]_s} + \frac 14  \sup_{s\leq t}\abs{ [M-N]^n_s  - [M-N]_s} > \ve}\\
-& \leq & \pro\bb{\sup_{s\leq t} \abs{[M+N]^n_s - [M+N]_s} + \sup_{s\leq t}\abs{ [M-N]^n_s  - [M-N]_s} > \ve}
+\pro\brb{\sup_{s\leq t} \abs{[M,N]^n_s - [M,N]_s} > \ve} & = & \pro\brb{\sup_{s\leq t} \abs{\frac 14 \brb{[M+N]^n_s - [M-N]^n_s} - \frac 14 \brb{[M+N]_s - [M-N]_s}} > \ve}\\
+& = & \pro\brb{\frac 14 \sup_{s\leq t} \abs{ [M+N]^n_s - [M+N]_s} + \frac 14  \sup_{s\leq t}\abs{ [M-N]^n_s  - [M-N]_s} > \ve}\\
+& \leq & \pro\brb{\sup_{s\leq t} \abs{[M+N]^n_s - [M+N]_s} + \sup_{s\leq t}\abs{ [M-N]^n_s  - [M-N]_s} > \ve}
 \eeast
 
-However, $\pro\bb{\sup_{s\leq t} \abs{[M+N]^n_s - [M+N]_s} + \sup_{s\leq t}\abs{ [M-N]^n_s  - [M-N]_s} > \ve}$ is
+However, $\pro\brb{\sup_{s\leq t} \abs{[M+N]^n_s - [M+N]_s} + \sup_{s\leq t}\abs{ [M-N]^n_s  - [M-N]_s} > \ve}$ is
 \beast
-& &\pro\bb{\bigcup_{q\leq \ve, q\in \Q^+} \bra{\sup_{s\leq t} \abs{[M+N]^n_s - [M+N]_s} > q} \cap \bra{\sup_{s\leq t}\abs{ [M-N]^n_s  - [M-N]_s } > \ve -q}}\\
-& \leq & \sum_{q\leq \ve, q\in \Q^+}  \pro\bb{\bra{\sup_{s\leq t} \abs{[M+N]^n_s - [M+N]_s} > q} \cap \bra{\sup_{s\leq t}\abs{ [M-N]^n_s  - [M-N]_s } > \ve -q}}\\
-& \leq & \sum_{q\leq \ve, q\in \Q^+}  \pro\bb{\sup_{s\leq t} \abs{[M+N]^n_s - [M+N]_s} > q} + \pro\bb{\sup_{s\leq t}\abs{ [M-N]^n_s  - [M-N]_s } > \ve -q} \to 0
+& &\pro\brb{\bigcup_{q\leq \ve, q\in \Q^+} \bra{\sup_{s\leq t} \abs{[M+N]^n_s - [M+N]_s} > q} \cap \bra{\sup_{s\leq t}\abs{ [M-N]^n_s  - [M-N]_s } > \ve -q}}\\
+& \leq & \sum_{q\leq \ve, q\in \Q^+}  \pro\brb{\bra{\sup_{s\leq t} \abs{[M+N]^n_s - [M+N]_s} > q} \cap \bra{\sup_{s\leq t}\abs{ [M-N]^n_s  - [M-N]_s } > \ve -q}}\\
+& \leq & \sum_{q\leq \ve, q\in \Q^+}  \pro\brb{\sup_{s\leq t} \abs{[M+N]^n_s - [M+N]_s} > q} + \pro\brb{\sup_{s\leq t}\abs{ [M-N]^n_s  - [M-N]_s } > \ve -q} \to 0
 \eeast
 as countably many sum of zeros. Thus, $[M,N]^n \to [M,N]$ u.c.p. as $n \to \infty$.
 
 \item [(iii)] For $M_0 = N_0 = 0$ a.s., since $M,N\in \sM^2_c$, then $M+N,M-N\in \sM^2_c$, $(M+N)^2 - [M+N]$ and $(M-N)^2 - [M-N]$ are UI martingale by Theorem \ref{thm:continuous_m2_martingale_implies_ui}. Then
 
 \be
-MN - [M,N] = \frac 14 \bb{(M+N)^2 - [M+N] + (M-N)^2 - [M-N]} \quad \text{ is also a UI martingale} \ee since $\bb{(M+N)^2 - [M+N]}_t \to \bb{(M+N)^2 - [M+N]}_\infty$ and $\bb{(M-N)^2 - [M-N]}_t \to \bb{(M-N)^2 -
-[M-N]}_\infty$ a.s. and in $\sL^1(\Omega,\sF,\pro)$ by Theorem \ref{thm:martingale_ui_as_l1_closed_continuous}. Thus, \be \bb{MN - [M,N]}_t \to \bb{(M+N)^2 - [M+N]}_\infty + \bb{(M-N)^2 - [M-N]}_\infty \quad \text{a.s. and
+MN - [M,N] = \frac 14 \brb{(M+N)^2 - [M+N] + (M-N)^2 - [M-N]} \quad \text{ is also a UI martingale} \ee since $\brb{(M+N)^2 - [M+N]}_t \to \brb{(M+N)^2 - [M+N]}_\infty$ and $\brb{(M-N)^2 - [M-N]}_t \to \brb{(M-N)^2 -
+[M-N]}_\infty$ a.s. and in $\sL^1(\Omega,\sF,\pro)$ by Theorem \ref{thm:martingale_ui_as_l1_closed_continuous}. Thus, \be \brb{MN - [M,N]}_t \to \brb{(M+N)^2 - [M+N]}_\infty + \brb{(M-N)^2 - [M-N]}_\infty \quad \text{a.s. and
 in }\sL^1(\Omega,\sF,\pro).
 \ee
 
@@ -1410,10 +1410,10 @@ Then by Theorem \ref{thm:martingale_ui_as_l1_closed_continuous} again, we have $
 %\ee
 %By (i), we have $MN -[M,N] \in \sM_{c,loc}$. follow form polarizing the sum just by definition and applying Theorems \ref{thm:quadratic_variation_process_uniqueness_existence} and
 
-Thus, we have $Z := (M-M_0)(N-N_0) - [M-M_0,N-N_0]\in \sM^2_c$ and there is a UI martingale. Since \be Z = MN - M_0N_0 - [M,N]- \bb{(M-M_0)N_0 + M_0(N - N_0) + \underbrace{[M_0,N_0] - [M_0,N] - [M,N_0]}_{=0\text{ by
+Thus, we have $Z := (M-M_0)(N-N_0) - [M-M_0,N-N_0]\in \sM^2_c$ and there is a UI martingale. Since \be Z = MN - M_0N_0 - [M,N]- \brb{(M-M_0)N_0 + M_0(N - N_0) + \underbrace{[M_0,N_0] - [M_0,N] - [M,N_0]}_{=0\text{ by
 definition}}} \ee
 
-It's easy to show that $(M-M_0)N_0$ and $M_0(N - N_0)$ are UI martingales as we can see the facts that for any $s<t$, $\E\bb{(M-M_0)N_0|\sF_s} = N_0 \E\bb{M_t-M_0 |\sF_s} = N_0 \bb{M_s - N_0}$ a.s. and $(M_t-M_0)N_0 \to
+It's easy to show that $(M-M_0)N_0$ and $M_0(N - N_0)$ are UI martingales as we can see the facts that for any $s<t$, $\E\brb{(M-M_0)N_0|\sF_s} = N_0 \E\brb{M_t-M_0 |\sF_s} = N_0 \brb{M_s - N_0}$ a.s. and $(M_t-M_0)N_0 \to
 (M_\infty - M_0)N_0$ a.s. and in $\sL^1$ by Theorem \ref{thm:martingale_ui_as_l1_closed_continuous}, \ref{thm:martingale_bounded_lp_as_lp_closed_continuous} and Cauchy-Schwarz inequality (Theorem
 \ref{thm:cauchy_schwarz_inequality_probability}).
 
@@ -1421,7 +1421,7 @@ Thus, we can have that $MN - M_0N_0 - [M,N]$ is a UI martingale.
 
 \item [(iv)] Since $MN = NM$ by uniqueness in (i) we have $[M,N] = [N,M]$ (symmetry). Now $M_1,M_2,N_1,N_2 \in \sM_{c,loc}$ and $\lm_1,\lm_2,\mu_1,\mu_2\in \R$. Then
 \be
-\bb{\lm_1 M_1 +\lm_2 M_2}\bb{\mu_1N_1 + \mu_2N_2} = \lm_1\mu_1 M_1N_1 + \lm_1\mu_2 M_1N_2 + \lm_2\mu_1 M_2N_1 + \lm_2\mu_2 M_2N_2
+\brb{\lm_1 M_1 +\lm_2 M_2}\brb{\mu_1N_1 + \mu_2N_2} = \lm_1\mu_1 M_1N_1 + \lm_1\mu_2 M_1N_2 + \lm_2\mu_1 M_2N_1 + \lm_2\mu_2 M_2N_2
 \ee
 implies that (by uniqueness in (i)),
 \be
@@ -1431,7 +1431,7 @@ which is the bilinearity.% also follows from (i).
 
 \item [(v)] By definition and Proposition \ref{pro:local_martingale_quadratic_variation_stoppting_time_in_out},
 \be
-\bsb{M^T,N^T} = \frac 14\bb{\bsb{M^T+N^T} - \bsb{M^T- N^T}} = \frac 14 \bb{\bsb{M+N}^T - \bsb{M- N}^T} = [M,N]^T.
+\bsb{M^T,N^T} = \frac 14\brb{\bsb{M^T+N^T} - \bsb{M^T- N^T}} = \frac 14 \brb{\bsb{M+N}^T - \bsb{M- N}^T} = [M,N]^T.
 \ee
 
 
@@ -1448,15 +1448,15 @@ Let $M,N \in \sM_{c,loc}$ and $H$ be a locally bounded previsible process. Then
 \begin{proof}[\bf Proof]
 We may assume by localization that $M,N \in \sM^2_c$ and that $H$ is uniformly bounded in time.
 
-If $H$ is of the form $Z\ind_{(s,t]}$ with $Z$ bounded $\sF_s$-measurable ($H\in \sL^2(M) \ \ra \ (H\cdot M) \in \sM_c^2$), we have ($(H\cdot M)_\infty$ and $N_\infty$ are well-defined since $(H\cdot M),N\in \sM^2_c$. % Also, $N_t = \E\bb{N_\infty|\sF_t}$ since $N\in \sM^2_c$ by Theorem \ref{thm:martingale_bounded_lp_as_lp_closed_continuous})
+If $H$ is of the form $Z\ind_{(s,t]}$ with $Z$ bounded $\sF_s$-measurable ($H\in \sL^2(M) \ \ra \ (H\cdot M) \in \sM_c^2$), we have ($(H\cdot M)_\infty$ and $N_\infty$ are well-defined since $(H\cdot M),N\in \sM^2_c$. % Also, $N_t = \E\brb{N_\infty|\sF_t}$ since $N\in \sM^2_c$ by Theorem \ref{thm:martingale_bounded_lp_as_lp_closed_continuous})
 
 Then by tower property (Proposition \ref{pro:conditional_expectation_tower_independence}) we have
 
 \beast
-\E \bb{(H\cdot M)_\infty N_\infty} & = & \E\bb{Z(M_t - M_s)N_\infty} = \E\bb{Z M_t\E(N_\infty |\sF_t)} - \E\bb{ZM_s\E(N_\infty |\sF_s)}\\
-& = & \E\bb{Z\E(M_tN_t -M_sN_s|\sF_s)} \quad\quad \text{(by Theorem \ref{thm:martingale_bounded_lp_as_lp_closed_continuous})}\\
-& = & \E\bb{Z\E([M,N]_t - [M,N]_s|\sF_s)} \quad\quad \text{(by Proposition \ref{pro:local_martingale_covariance_property}.(iii))}\\
-& = & \E\bb{Z([M,N]_t - [M,N]_s)} = \E\bb{H\cdot [M,N]_\infty} \quad\quad (*)
+\E \brb{(H\cdot M)_\infty N_\infty} & = & \E\brb{Z(M_t - M_s)N_\infty} = \E\brb{Z M_t\E(N_\infty |\sF_t)} - \E\brb{ZM_s\E(N_\infty |\sF_s)}\\
+& = & \E\brb{Z\E(M_tN_t -M_sN_s|\sF_s)} \quad\quad \text{(by Theorem \ref{thm:martingale_bounded_lp_as_lp_closed_continuous})}\\
+& = & \E\brb{Z\E([M,N]_t - [M,N]_s|\sF_s)} \quad\quad \text{(by Proposition \ref{pro:local_martingale_covariance_property}.(iii))}\\
+& = & \E\brb{Z([M,N]_t - [M,N]_s)} = \E\brb{H\cdot [M,N]_\infty} \quad\quad (*)
 \eeast
 
 Note that $[M,N]_\infty$ is well-defined since $\E([M+N]_\infty) < \infty$ and $\E([M-N]_\infty) < \infty$ (This is true by Theorem \ref{thm:martingale_l2_iff_quadratic_variation_infinity_non_infinity} since $M+N,M-N\in \sM_c^2$). Note that $(*)$ also holds for any $H\in \sS$ by linearity.
@@ -1468,7 +1468,7 @@ H^n \cdot [M,N]_\infty \to H\cdot [M,N]_\infty
 \ee
 by dominated convergence theorem (Theorem) since $H^n$ is bounded and $[M,N]$ is of finite variation. Also,
 \be
-H^n\cdot M \to H\cdot M \ \text{ in }\bb{\sM^2_c,\dabs{\cdot}}
+H^n\cdot M \to H\cdot M \ \text{ in }\brb{\sM^2_c,\dabs{\cdot}}
 \ee
 by isometry theorem (Theorem \ref{thm:ito_isometry}). Then
 \be
@@ -1481,14 +1481,14 @@ by Theorem \ref{thm:martingale_bounded_lp_as_lp_closed_discrete}. Thus, we have
 
 %If we can consider $H$ is bounded and $$, then
 
-For any bounded stopping time $T$, we have that $H^T$ is uniformly bounded (and thus $H^T\in \sL^2(M)$) and $M^T,N^T\in \sM^2_c$, which also satisfy $(*)$. That is, $\E \bb{(H^T\cdot M^T)_\infty N^T_\infty} = \E\bb{H^T\cdot [M,N]^T_\infty}$ which implies that
+For any bounded stopping time $T$, we have that $H^T$ is uniformly bounded (and thus $H^T\in \sL^2(M)$) and $M^T,N^T\in \sM^2_c$, which also satisfy $(*)$. That is, $\E \brb{(H^T\cdot M^T)_\infty N^T_\infty} = \E\brb{H^T\cdot [M,N]^T_\infty}$ which implies that
 \be
-\E\bb{(H \cdot M)_TN_T} = \E\bb{(H \cdot [M,N])_T}\quad\quad (\dag)% = \E((H \cdot M)_0N_0 - (H \cdot [M,N])_0 )
+\E\brb{(H \cdot M)_TN_T} = \E\brb{(H \cdot [M,N])_T}\quad\quad (\dag)% = \E((H \cdot M)_0N_0 - (H \cdot [M,N])_0 )
 \ee
 
 But we know that $(H\cdot M)_0 = 0$ a.s. (by Definition \ref{def:ito_stochastic_integral}) and $[M,N]_0 = 0$ a.s. (by Proposition \ref{pro:local_martingale_covariance_property}.(i)). Thus,
 \be
-\E\bb{(H \cdot M)_TN_T - (H \cdot [M,N])_T} = 0 = \E\bb{(H \cdot M)_0N_0 - (H \cdot [M,N])_0}
+\E\brb{(H \cdot M)_TN_T - (H \cdot [M,N])_T} = 0 = \E\brb{(H \cdot M)_0N_0 - (H \cdot [M,N])_0}
 \ee
 
 Then by optional stopping theorem (Theorem \ref{thm:optional_stopping_bounded_stopping_time_continuous}), $(H \cdot M)N - H \cdot [M,N]$ is a martingale. That is,
@@ -1508,7 +1508,7 @@ in the sense of indistinguishability.
 
 %and by considering the stopped processes $H^T$, $M^T$ and $N^T$ it suffices to prove that $\E((H \cdot M)_\infty N_\infty) = \E((H \cdot [M,N])_\infty)$. If $H$ is of the form $Z\ind_{(s,t]}$ with $Z$ bounded $\sF_s$ measurable, then this identity becomes
 %\be
-%\E \bb{Z(M_t -M_s)N_\infty} = \E\bb{Z([M,N]_t - [M,N]_s)}.
+%\E \brb{Z(M_t -M_s)N_\infty} = \E\brb{Z([M,N]_t - [M,N]_s)}.
 %\ee
 
 %However, note that since $MN - [M,N]$ is a martingale, we have:
@@ -1517,22 +1517,22 @@ in the sense of indistinguishability.
 
 Now Let $H$ be a locally bounded process and $M,N\in \sM_{c,loc}$. Let $T_n$ be the sequence of stopping times reducing $H,M,N$. That is, $T_n \ua \infty$ a.s. and $H\ind_{(0,T_n]}$ is uniformly bounded a.s. and $M^{T_n},N^{T_n} \in \sM^2_c$. Then for any $t\geq 0$
 \be
-\bb{\bb{H\ind_{(0,T_n]} \cdot M^{T_n}}N^{T_n}}_t = \bb{H\ind_{(0,T_n]} \cdot \bsb{M^{T_n},N^{T_n}}}_t \ \text{ a.s.}
+\brb{\brb{H\ind_{(0,T_n]} \cdot M^{T_n}}N^{T_n}}_t = \brb{H\ind_{(0,T_n]} \cdot \bsb{M^{T_n},N^{T_n}}}_t \ \text{ a.s.}
 \ee
 
 By Proposition \ref{pro:ito_integral_stopping_time_locally_bounded}, we have
 \beast
-\bb{\bb{H\ind_{(0,T_n]} \cdot M^{T_n}}N^{T_n}}_t = \bb{\bb{H \cdot M^{T_n}}^{T_n} N^{T_n}}_t = \bb{\bb{H \cdot M}^{T_n\land T_n} N^{T_n}}_t = \bb{\bb{H \cdot M} N}_t^{T_n} \to \bb{\bb{H \cdot M} N}_t\ \text{ a.s.}
+\brb{\brb{H\ind_{(0,T_n]} \cdot M^{T_n}}N^{T_n}}_t = \brb{\brb{H \cdot M^{T_n}}^{T_n} N^{T_n}}_t = \brb{\brb{H \cdot M}^{T_n\land T_n} N^{T_n}}_t = \brb{\brb{H \cdot M} N}_t^{T_n} \to \brb{\brb{H \cdot M} N}_t\ \text{ a.s.}
 \eeast
 
 Also,
 \be
-\bb{H\ind_{(0,T_n]} \cdot \bsb{M^{T_n},N^{T_n}}}_t = \bb{H\ind_{(0,T_n]} \cdot \bsb{M,N}^{T_n}}_t = \bb{H \cdot \bsb{M,N}}_t^{T_n} \to \bb{H \cdot \bsb{M,N}}_t\ \text{ a.s.}
+\brb{H\ind_{(0,T_n]} \cdot \bsb{M^{T_n},N^{T_n}}}_t = \brb{H\ind_{(0,T_n]} \cdot \bsb{M,N}^{T_n}}_t = \brb{H \cdot \bsb{M,N}}_t^{T_n} \to \brb{H \cdot \bsb{M,N}}_t\ \text{ a.s.}
 \ee
 
 Thus, we have
 \be
-\bb{\bb{H \cdot M} N}_t = \bb{H \cdot \bsb{M,N}}_t\ \text{ a.s.} \ \ra \ \bb{H \cdot M} N = H \cdot \bsb{M,N}
+\brb{\brb{H \cdot M} N}_t = \brb{H \cdot \bsb{M,N}}_t\ \text{ a.s.} \ \ra \ \brb{H \cdot M} N = H \cdot \bsb{M,N}
 \ee
 in the sence of indistinguishability since both process are (sample) continuous.
 \end{proof}
@@ -1553,12 +1553,12 @@ Let $M,N \in \sM_{c,loc}$ and $H,K$ be a locally bounded previsible processes. T
 \begin{proof}[\bf Proof]
 First we have $K\cdot N\in \sM_{c,loc}$ by Definition \ref{def:ito_integral_previsible_locally_bounded}. Then by Theorem \ref{thm:kunita_watanabe_identity} and symmetry of covariation (Proposition \ref{pro:local_martingale_covariance_property}.(iv)),
 \be
-[H\cdot M,K\cdot N] = H\cdot [M,K\cdot N] = H\cdot [K\cdot N,M] = H\cdot \bb{K \cdot [N,M]} = H\cdot \bb{K \cdot [M,N]}.
+[H\cdot M,K\cdot N] = H\cdot [M,K\cdot N] = H\cdot [K\cdot N,M] = H\cdot \brb{K \cdot [N,M]} = H\cdot \brb{K \cdot [M,N]}.
 \ee
 
 Then by Theorem \ref{thm:locally_bounded_previsible_finite_variation_integral},
 \be
-H\cdot \bb{K \cdot [M,N]} = (HK)\cdot [M,N].
+H\cdot \brb{K \cdot [M,N]} = (HK)\cdot [M,N].
 \ee
 as required.
 \end{proof}
@@ -1591,7 +1591,7 @@ Let $X$ be a continuous semimartingale and we define that
 By definition, we have for any $t\geq 0$,
 \beast
 [X]^n_t & = & \sum^{\floor{2^nt}-1}_{k=0} (X_{(k+1)2^{-n}} - X_{k2^{-n}})^2 = \sum^{\floor{2^nt}-1}_{k=0} (M_{(k+1)2^{-n}} + A_{(k+1)2^{-n}}  - M_{k2^{-n}}- A_{k2^{-n}} )^2 \\
-& = & [M]^n_t + [A]^n_t + 2\sum^{\floor{2^nt}-1}_{k=0} \bb{M_{(k+1)2^{-n}} - M_{k2^{-n}}}\bb{A_{(k+1)2^{-n}}  - A_{k2^{-n}}} := [M]^n_t + [A]^n_t + 2W^n_t.
+& = & [M]^n_t + [A]^n_t + 2\sum^{\floor{2^nt}-1}_{k=0} \brb{M_{(k+1)2^{-n}} - M_{k2^{-n}}}\brb{A_{(k+1)2^{-n}}  - A_{k2^{-n}}} := [M]^n_t + [A]^n_t + 2W^n_t.
 \eeast
 
 Since $M$ and $A$ are (sample) continuous, then they are uniformly continuous on a compact set $[0,t]$\footnote{need theorem here} a.s.. Thus, we have
@@ -1600,26 +1600,26 @@ Since $M$ and $A$ are (sample) continuous, then they are uniformly continuous on
 \ee
 as $n\to \infty$. However, we know that
 \be
-\abs{\sum^{\floor{2^nt}-1}_{k=0} \bb{A_{(k+1)2^{-n}}  - A_{k2^{-n}}} }=\abs{ A_{2^{-n}\floor{2^nt}} }< \infty\ \text{ a.s.}
+\abs{\sum^{\floor{2^nt}-1}_{k=0} \brb{A_{(k+1)2^{-n}}  - A_{k2^{-n}}} }=\abs{ A_{2^{-n}\floor{2^nt}} }< \infty\ \text{ a.s.}
 \ee
 since $A$ is (sample) continuous on $[0,t]$ (by Theorem \ref{thm:continuous_on_bounded_set_is_bounded}). Then we have
 \beast
-\sup_{0\leq s\leq t}\abs{[A]^n_s + 2W^n_s} & \leq & \bb{\sup_{0\leq s\leq t}\abs{A_{2^{-n}\floor{2^n s}} - A_{s}} + 2\sup_{0\leq s\leq t}\abs{M_{2^{-n}\floor{2^n s}} - M_{s}} }\sup_{0\leq s\leq t}\abs{\sum^{\floor{2^ns}-1}_{k=0} \bb{A_{(k+1)2^{-n}}  - A_{k2^{-n}}}}\\
-& \leq & \bb{\sup_{0\leq s\leq t}\abs{A_{2^{-n}\floor{2^n s}} - A_{s}} + 2\sup_{0\leq s\leq t}\abs{M_{2^{-n}\floor{2^n s}} - M_{s}} }\sup_{0\leq s\leq t}\abs{ A_{2^{-n}\floor{2^ns}} } \to 0 \ \text{ a.s..}
+\sup_{0\leq s\leq t}\abs{[A]^n_s + 2W^n_s} & \leq & \brb{\sup_{0\leq s\leq t}\abs{A_{2^{-n}\floor{2^n s}} - A_{s}} + 2\sup_{0\leq s\leq t}\abs{M_{2^{-n}\floor{2^n s}} - M_{s}} }\sup_{0\leq s\leq t}\abs{\sum^{\floor{2^ns}-1}_{k=0} \brb{A_{(k+1)2^{-n}}  - A_{k2^{-n}}}}\\
+& \leq & \brb{\sup_{0\leq s\leq t}\abs{A_{2^{-n}\floor{2^n s}} - A_{s}} + 2\sup_{0\leq s\leq t}\abs{M_{2^{-n}\floor{2^n s}} - M_{s}} }\sup_{0\leq s\leq t}\abs{ A_{2^{-n}\floor{2^ns}} } \to 0 \ \text{ a.s..}
 \eeast
 
 Then by Markov inequality (Theorem \ref{thm:markov_inequality_probability}), we have $\forall \ve >0$, $\forall t\geq 0$,
 \be
-\pro\bb{\sup_{0\leq s\leq t}\abs{[A]^n_s + 2W^n_s} > \ve} \leq \left. \E\bb{\sup_{0\leq s\leq t}\abs{[A]^n_s + 2W^n_s}}\right/ \ve \to 0.
+\pro\brb{\sup_{0\leq s\leq t}\abs{[A]^n_s + 2W^n_s} > \ve} \leq \left. \E\brb{\sup_{0\leq s\leq t}\abs{[A]^n_s + 2W^n_s}}\right/ \ve \to 0.
 \ee
 
 Thus, we have $[A]^n + 2W^n \to 0$ u.c.p.. By Theorem \ref{thm:quadratic_variation_process_uniqueness_existence}, we also have $[M]^n \to [M]$ u.c.p.. Thus, can have $[X]^n = [M]^n + [A]^n + 2W^n \to [M]$ u.c.p.. since
 \beast
-\pro\bb{\sup_{0\leq s\leq t}\abs{[M^n_s] + [A]^n_s + 2W^n_s} > \ve} & \leq & \pro\bb{\sup_{0\leq s\leq t}\abs{[M^n_s]} + \sup_{0\leq s\leq t}\abs{[A]^n_s + 2W^n_s} > \ve}\\
-%& \leq & \pro\bb{\sup_{0\leq s\leq t}\abs{[M^n_s]} + \sup_{0\leq s\leq t}\abs{[A]^n_s + 2W^n_s} > \ve}\\
-& \leq & \pro\bb{\sup_{0\leq s\leq t}\abs{[M^n_s]} > \ve/2} + \pro\bb{\sup_{0\leq s\leq t}\abs{[A]^n_s + 2W^n_s} > \ve/2} \to 0+0 = 0.
-%& = & \pro\bb{\bigcup_{q\in \Q^+,q \leq \ve} \bra{\sup_{0\leq s\leq t}\abs{[M^n_s]} > q} \cap \bra{\sup_{0\leq s\leq t}\abs{[A]^n_s + 2W^n_s} > \ve-q}}\\
-%& \leq & \sum_{q\in \Q^+,q \leq \ve} \pro\bb{\sup_{0\leq s\leq t}\abs{[M^n_s]} > q} + \pro\bb{\sup_{0\leq s\leq t}\abs{[A]^n_s + 2W^n_s} > \ve-q} \to 0
+\pro\brb{\sup_{0\leq s\leq t}\abs{[M^n_s] + [A]^n_s + 2W^n_s} > \ve} & \leq & \pro\brb{\sup_{0\leq s\leq t}\abs{[M^n_s]} + \sup_{0\leq s\leq t}\abs{[A]^n_s + 2W^n_s} > \ve}\\
+%& \leq & \pro\brb{\sup_{0\leq s\leq t}\abs{[M^n_s]} + \sup_{0\leq s\leq t}\abs{[A]^n_s + 2W^n_s} > \ve}\\
+& \leq & \pro\brb{\sup_{0\leq s\leq t}\abs{[M^n_s]} > \ve/2} + \pro\brb{\sup_{0\leq s\leq t}\abs{[A]^n_s + 2W^n_s} > \ve/2} \to 0+0 = 0.
+%& = & \pro\brb{\bigcup_{q\in \Q^+,q \leq \ve} \bra{\sup_{0\leq s\leq t}\abs{[M^n_s]} > q} \cap \bra{\sup_{0\leq s\leq t}\abs{[A]^n_s + 2W^n_s} > \ve-q}}\\
+%& \leq & \sum_{q\in \Q^+,q \leq \ve} \pro\brb{\sup_{0\leq s\leq t}\abs{[M^n_s]} > q} + \pro\brb{\sup_{0\leq s\leq t}\abs{[A]^n_s + 2W^n_s} > \ve-q} \to 0
 \eeast
 %as a sum of countably many zeros.
 
@@ -1646,7 +1646,7 @@ Let $M$, $N$ be continuous local martingales in a common filtration $(\sF_t)_{t 
 \begin{proof}[\bf Proof]
 For any bounded stopping time $T$ and a sequence stopping times $T_n\ua \infty$ a.s. which reduce both $M$ and $N$. We have (since $M$ and $N$ are independent and $M^{T_n}_T$ and $N^{T_n}_T$ are independent) by Proposition \ref{pro:expectation_of_independent_product}
 \be
-\E\bb{(MN)^{T_n}_T} = \E\bb{M^{T_n}_TN^{T_n}_T} = \E\bb{M^{T_n}_T}\E\bb{N^{T_n}_T} \stackrel{\text{a.s.}}{=} M^{T_n}_0N^{T_n}_0  = \bb{MN}^{T_n}_0. %= \ \text{ a.s..}
+\E\brb{(MN)^{T_n}_T} = \E\brb{M^{T_n}_TN^{T_n}_T} = \E\brb{M^{T_n}_T}\E\brb{N^{T_n}_T} \stackrel{\text{a.s.}}{=} M^{T_n}_0N^{T_n}_0  = \brb{MN}^{T_n}_0. %= \ \text{ a.s..}
 \ee
 
 Thus, $(MN)^{T_n}$ is martingale and therefore $MN$ is a continuous local martingale. But $[M,N]$ is the unique process gives that $MN- [M,N] \in \sM_{c,loc}$ by Proposition \ref{pro:local_martingale_covariance_property}. Thus, $[M,N]_t = 0$ a.s. for all $t$. That is, $[M,N] = 0$ in the sence of distinguishability since $[M,N]$ is (pathwise) continuous by Proposition \ref{pro:continuous_cadlag_version_indistinguishable}.
@@ -1657,7 +1657,7 @@ In particular, if $B = (B^1,\dots,B^2)$ is a $2$-dimensional Brownian motion, th
 
 However, the converse does not hold. By polarization,
 \be
-\bsb{B^T, B- B^T} = \frac 12 \bb{[B_t] - \bsb{2B^T - B}_t} = 0
+\bsb{B^T, B- B^T} = \frac 12 \brb{[B_t] - \bsb{2B^T - B}_t} = 0
 \ee
 as the by the reflection principle\footnote{need theorem}, $2B^T - B$ is another Brownian motion.
 
@@ -1679,10 +1679,10 @@ Let $X,Y$ be two continuous semimartingales and we define that
 \begin{proof}[\bf Proof]
 By Proposition \ref{pro:function_of_local_martingales_is_still_local_martingale}, $M+N, M-N\in \sM_{c,loc}$, thus
 \beast
-[X,Y]^n_t & = & \sum^{\floor{2^n t}-1}_{k=0} \bb{X_{(k+1)2^{-n}} -X_{k2^{-n}}}\bb{Y_{(k+1)2^{-n}} - Y_{k2^{-n}}}\\
+[X,Y]^n_t & = & \sum^{\floor{2^n t}-1}_{k=0} \brb{X_{(k+1)2^{-n}} -X_{k2^{-n}}}\brb{Y_{(k+1)2^{-n}} - Y_{k2^{-n}}}\\
 & = & \sum^{\floor{2^n t}-1}_{k=0} X_{(k+1)2^{-n}}Y_{(k+1)2^{-n}} - X_{(k+1)2^{-n}}Y_{k2^{-n}} - X_{k2^{-n}}Y_{(k+1)2^{-n}} + X_{k2^{-n}} Y_{k2^{-n}}\\
-& = & \frac 14 \sum^{\floor{2^n t}-1}_{k=0} \bb{X_{(k+1)2^{-n}} + Y_{(k+1)2^{-n}}- X_{k2^{-n}} - Y_{k2^{-n}}}^2 - \bb{X_{(k+1)2^{-n}} - Y_{(k+1)2^{-n}} - X_{k2^{-n}} + Y_{k2^{-n}}}^2 \\%\sum^{\floor{2^n t}-1}_{k=0} \bb{M_{(k+1)2^{-n}} - M_{k2^{-n}}}^2 - \sum^{\floor{2^n t}-1}_{k=0} \bb{N_{(k+1)2^{-n}} - N_{k2^{-n}}}^2\\
-& = & \frac 14 \bb{[X+Y]^n_t - [X-Y]^n_t}.
+& = & \frac 14 \sum^{\floor{2^n t}-1}_{k=0} \brb{X_{(k+1)2^{-n}} + Y_{(k+1)2^{-n}}- X_{k2^{-n}} - Y_{k2^{-n}}}^2 - \brb{X_{(k+1)2^{-n}} - Y_{(k+1)2^{-n}} - X_{k2^{-n}} + Y_{k2^{-n}}}^2 \\%\sum^{\floor{2^n t}-1}_{k=0} \brb{M_{(k+1)2^{-n}} - M_{k2^{-n}}}^2 - \sum^{\floor{2^n t}-1}_{k=0} \brb{N_{(k+1)2^{-n}} - N_{k2^{-n}}}^2\\
+& = & \frac 14 \brb{[X+Y]^n_t - [X-Y]^n_t}.
 \eeast
 
 Then by Proposition \ref{pro:quadratic_variation_continuous_semimartingale_convergence_ucp}, we have
@@ -1690,7 +1690,7 @@ Then by Proposition \ref{pro:quadratic_variation_continuous_semimartingale_conve
 [X+Y]^n \to [X+Y]\ \text{ u.c.p},\quad [X-Y]^n \to [X-Y]\ \text{ u.c.p}.
 \ee
 
-Let $M,N$ be the respective local martingale parts of $X,Y$. Thus, $[X,Y]^n \to \frac 14\bb{[X+Y] - [X-Y]}$ u.c.p. So \be [X,Y]^n \to \frac 14\bb{[X+Y] - [X-Y]} = \frac 14\bb{[M+N] - [M-N]} = [M,N] = [X,Y] \ \text{ u.c.p}
+Let $M,N$ be the respective local martingale parts of $X,Y$. Thus, $[X,Y]^n \to \frac 14\brb{[X+Y] - [X-Y]}$ u.c.p. So \be [X,Y]^n \to \frac 14\brb{[X+Y] - [X-Y]} = \frac 14\brb{[M+N] - [M-N]} = [M,N] = [X,Y] \ \text{ u.c.p}
 \ee by Definition \ref{def:semimartingale_covariation_continuous}.
 \end{proof}
 
@@ -1773,14 +1773,14 @@ First let $H$ bounded uniformly and $H^n_t = H_{2^{-n}\floor{2^nt}}$. Then $H^n_
 
 where, since $M$ is (sample) continuous (and therefore almost surely uniformly continuous on any compact interval), $M_t -M_{2^{-n}\floor{2^nt}} \to 0$ u.c.p as $n \to \infty$. We can thus ignore the second term on the right. Now
 \be
-\dabs{H^n - H^k}_M = \E\bb{\int^\infty_0 (H^n_t - H_t)^2 d[M]_t} \to 0 \quad\text{ as }n \to \infty
+\dabs{H^n - H^k}_M = \E\brb{\int^\infty_0 (H^n_t - H_t)^2 d[M]_t} \to 0 \quad\text{ as }n \to \infty
 \ee
 
 by bounded convergence theorem (Theorem \ref{thm:bounded_convergence_probability}) and the fact that $H^n_t \to H_t$ for every $t$ as $n \to\infty$. By the isometry property (Theorem \ref{thm:ito_isometry}), $H^n \cdot M \to H \cdot M$ in $\sM^2_c$. Using Doob's inequality (Corollary \ref{cor:doob_lp_inequality_continuous_infinity}), it is easy to see that this implies u.c.p. convergence. That is, for any $\ve >0$ and $t\geq 0$
 
 \beast
-\pro\bb{\sup_{0\leq s\leq t}\abs{\bb{H^n\cdot M}_s -\bb{H\cdot M}_s} > \ve} & \leq & \frac{\dabs{\sup_{0\leq s\leq t}\abs{\bb{H^n\cdot M}_s -\bb{H\cdot M}_s}}_2}{\ve} \leq \frac{\dabs{\sup_{t\geq 0}\abs{\bb{H^n\cdot M}_t -\bb{H\cdot M}_t}}_2}{\ve} \\
-& \leq & \frac{4\dabs{\bb{H^n\cdot M}_\infty -\bb{H\cdot M}_\infty}_2}{\ve} = \frac{4\dabs{H^n\cdot M -H\cdot M}}{\ve} \to 0
+\pro\brb{\sup_{0\leq s\leq t}\abs{\brb{H^n\cdot M}_s -\brb{H\cdot M}_s} > \ve} & \leq & \frac{\dabs{\sup_{0\leq s\leq t}\abs{\brb{H^n\cdot M}_s -\brb{H\cdot M}_s}}_2}{\ve} \leq \frac{\dabs{\sup_{t\geq 0}\abs{\brb{H^n\cdot M}_t -\brb{H\cdot M}_t}}_2}{\ve} \\
+& \leq & \frac{4\dabs{\brb{H^n\cdot M}_\infty -\brb{H\cdot M}_\infty}_2}{\ve} = \frac{4\dabs{H^n\cdot M -H\cdot M}}{\ve} \to 0
 \eeast
 
 Now let $H$ be locally bounded and $M$ be local martingale. Suppose $T_m$ reduce both processes with $T_m \ua \infty$. Thus,
@@ -1789,7 +1789,7 @@ Now let $H$ be locally bounded and $M$ be local martingale. Suppose $T_m$ reduce
 \ee
 %and then by Doob's inequality (Theorem \ref{thm:doob_lp_inequality_continuous})
 %\beast
-%& & \pro\bb{\sup_{0\leq s\leq t}\abs{\sum^{\floor{2^ns}-1}_{k=0} H^{T_n}_{k2^{-n}} (M^{T_n}_{(k+1)2^{-n}} -M^{T_n}_{k2^{-n}}) - \sum^{\floor{2^ns}-1}_{k=0} H_{k2^{-n}} (M_{(k+1)2^{-n}} -M_{k2^{-n}})} > \ve} \\
+%& & \pro\brb{\sup_{0\leq s\leq t}\abs{\sum^{\floor{2^ns}-1}_{k=0} H^{T_n}_{k2^{-n}} (M^{T_n}_{(k+1)2^{-n}} -M^{T_n}_{k2^{-n}}) - \sum^{\floor{2^ns}-1}_{k=0} H_{k2^{-n}} (M_{(k+1)2^{-n}} -M_{k2^{-n}})} > \ve} \\
 %& \leq & \frac{\dabs{\sup_{0\leq s\leq t}\abs{\sum^{\floor{2^ns}-1}_{k=0} H^{T_n}_{k2^{-n}} (M^{T_n}_{(k+1)2^{-n}} -M^{T_n}_{k2^{-n}}) - \sum^{\floor{2^ns}-1}_{k=0} H_{k2^{-n}} (M_{(k+1)2^{-n}} -M_{k2^{-n}})}}_2}{\ve}
 %\eeast
 which gives that (since there countably many intervals for fixed $n$ as $k2^{-n}\in \Q^+$)%as the supremum can be achieved by a rational sequence $t_n$)
@@ -1798,21 +1798,21 @@ which gives that (since there countably many intervals for fixed $n$ as $k2^{-n}
 \ee
 %and then almost surely convergence implies convergence in probability (Theorem \ref{thm:convergence_in_probability})
 %\be
-%\pro\bb{\sup_{0\leq s\leq t}\abs{\sum^{\floor{2^ns}-1}_{k=0} H^{T_m}_{k2^{-n}} (M^{T_m}_{(k+1)2^{-n}} -M^{T_m}_{k2^{-n}}) - \sum^{\floor{2^ns}-1}_{k=0} H_{k2^{-n}} (M_{(k+1)2^{-n}} -M_{k2^{-n}})} > \ve} \to 0
+%\pro\brb{\sup_{0\leq s\leq t}\abs{\sum^{\floor{2^ns}-1}_{k=0} H^{T_m}_{k2^{-n}} (M^{T_m}_{(k+1)2^{-n}} -M^{T_m}_{k2^{-n}}) - \sum^{\floor{2^ns}-1}_{k=0} H_{k2^{-n}} (M_{(k+1)2^{-n}} -M_{k2^{-n}})} > \ve} \to 0
 %\ee
 as $m \to \infty$. Also, $(H^{T_n}\cdot M^{T_n})_t \to (H\cdot M)_t$ a.s. gives that $\sup_{0\leq s\leq t}\abs{(H^{T_m}\cdot M^{T_m})_s - (H\cdot M)_s} \to 0$ a.s. as $m \to \infty$. Then
 \be
-\sup_{0\leq s\leq t}\abs{\sum^{\floor{2^ns}-1}_{k=0} H^{T_m}_{k2^{-n}} (M^{T_m}_{(k+1)2^{-n}} -M^{T_m}_{k2^{-n}}) - \sum^{\floor{2^ns}-1}_{k=0} H_{k2^{-n}} (M_{(k+1)2^{-n}} -M_{k2^{-n}}) + \bb{(H^{T_m}\cdot M^{T_m})_s - (H\cdot M)_s} } \to 0 \ \text{ a.s.}.
+\sup_{0\leq s\leq t}\abs{\sum^{\floor{2^ns}-1}_{k=0} H^{T_m}_{k2^{-n}} (M^{T_m}_{(k+1)2^{-n}} -M^{T_m}_{k2^{-n}}) - \sum^{\floor{2^ns}-1}_{k=0} H_{k2^{-n}} (M_{(k+1)2^{-n}} -M_{k2^{-n}}) + \brb{(H^{T_m}\cdot M^{T_m})_s - (H\cdot M)_s} } \to 0 \ \text{ a.s.}.
 \ee
 as $m \to \infty$. Thus, we have
 \beast
-& &\pro\bb{\sup_{0\leq s\leq t}\abs{\sum^{\floor{2^ns}-1}_{k=0} H_{k2^{-n}} (M_{(k+1)2^{-n}} -M_{k2^{-n}} - (H\cdot M)_s} > \ve} \\
-& \leq & \pro \bb{\sup_{0\leq s\leq t} \abs{\sum^{\floor{2^ns}-1}_{k=0} H^{T_m}_{k2^{-n}} (M^{T_m}_{(k+1)2^{-n}} -M^{T_m}_{k2^{-n}}) - \bb{ H_{k2^{-n}} (M_{(k+1)2^{-n}} -M_{k2^{-n}})} + (H^{T_m}\cdot M^{T_m})_s - (H\cdot M)_s } > \ve/2 }\\
-& & \qquad\qquad\qquad\qquad + \pro\bb{\sup_{0\leq s\leq t}\abs{\sum^{\floor{2^ns}-1}_{k=0}  H^{T_m}_{k2^{-n}} (M^{T_m}_{(k+1)2^{-n}} -M^{T_m}_{k2^{-n}}) + (H^{T_m}\cdot M^{T_m})_s} > \ve/2}\\
+& &\pro\brb{\sup_{0\leq s\leq t}\abs{\sum^{\floor{2^ns}-1}_{k=0} H_{k2^{-n}} (M_{(k+1)2^{-n}} -M_{k2^{-n}} - (H\cdot M)_s} > \ve} \\
+& \leq & \pro \brb{\sup_{0\leq s\leq t} \abs{\sum^{\floor{2^ns}-1}_{k=0} H^{T_m}_{k2^{-n}} (M^{T_m}_{(k+1)2^{-n}} -M^{T_m}_{k2^{-n}}) - \brb{ H_{k2^{-n}} (M_{(k+1)2^{-n}} -M_{k2^{-n}})} + (H^{T_m}\cdot M^{T_m})_s - (H\cdot M)_s } > \ve/2 }\\
+& & \qquad\qquad\qquad\qquad + \pro\brb{\sup_{0\leq s\leq t}\abs{\sum^{\floor{2^ns}-1}_{k=0}  H^{T_m}_{k2^{-n}} (M^{T_m}_{(k+1)2^{-n}} -M^{T_m}_{k2^{-n}}) + (H^{T_m}\cdot M^{T_m})_s} > \ve/2}\\
 & \to & 0 + 0 = 0
-%& \leq & \sum_{\substack{q\in \Q^+\\ q\leq \ve}}\pro \bb{\lim_{m\to \infty}\sup_{0\leq s\leq t} \abs{\sum^{\floor{2^ns}-1}_{k=0} H^{T_m}_{k2^{-n}} (M^{T_m}_{(k+1)2^{-n}} -M^{T_m}_{k2^{-n}}) - \bb{ H_{k2^{-n}} (M_{(k+1)2^{-n}} -M_{k2^{-n}})} + (H^{T_m}\cdot M^{T_m})_s - (H\cdot M)_s }> q }\\
-%& & \qquad\qquad\qquad\qquad + \sum_{\substack{q\in \Q^+\\ q\leq \ve}} \pro\bb{\sup_{0\leq s\leq t}\abs{\sum^{\floor{2^ns}-1}_{k=0}  H^{T_m}_{k2^{-n}} (M^{T_m}_{(k+1)2^{-n}} -M^{T_m}_{k2^{-n}}) + (H^{T_m}\cdot M^{T_m})_s} > \ve -q}\\
-%& = & 0 + \pro\bb{\sup_{0\leq s\leq t}\abs{\sum^{\floor{2^ns}-1}_{k=0}  H^{T_m}_{k2^{-n}} (M^{T_m}_{(k+1)2^{-n}} -M^{T_m}_{k2^{-n}}) + (H^{T_m}\cdot M^{T_m})_s} > \ve -q} \to 0 + 0 = 0%& = & \pro\bb{\sup_{0\leq s\leq t} \abs{\sum^{\floor{2^ns}-1}_{k=0} H^{T_m}_{k2^{-n}} (M^{T_m}_{(k+1)2^{-n}} -M^{T_m}_{k2^{-n}})}}
+%& \leq & \sum_{\substack{q\in \Q^+\\ q\leq \ve}}\pro \brb{\lim_{m\to \infty}\sup_{0\leq s\leq t} \abs{\sum^{\floor{2^ns}-1}_{k=0} H^{T_m}_{k2^{-n}} (M^{T_m}_{(k+1)2^{-n}} -M^{T_m}_{k2^{-n}}) - \brb{ H_{k2^{-n}} (M_{(k+1)2^{-n}} -M_{k2^{-n}})} + (H^{T_m}\cdot M^{T_m})_s - (H\cdot M)_s }> q }\\
+%& & \qquad\qquad\qquad\qquad + \sum_{\substack{q\in \Q^+\\ q\leq \ve}} \pro\brb{\sup_{0\leq s\leq t}\abs{\sum^{\floor{2^ns}-1}_{k=0}  H^{T_m}_{k2^{-n}} (M^{T_m}_{(k+1)2^{-n}} -M^{T_m}_{k2^{-n}}) + (H^{T_m}\cdot M^{T_m})_s} > \ve -q}\\
+%& = & 0 + \pro\brb{\sup_{0\leq s\leq t}\abs{\sum^{\floor{2^ns}-1}_{k=0}  H^{T_m}_{k2^{-n}} (M^{T_m}_{(k+1)2^{-n}} -M^{T_m}_{k2^{-n}}) + (H^{T_m}\cdot M^{T_m})_s} > \ve -q} \to 0 + 0 = 0%& = & \pro\brb{\sup_{0\leq s\leq t} \abs{\sum^{\floor{2^ns}-1}_{k=0} H^{T_m}_{k2^{-n}} (M^{T_m}_{(k+1)2^{-n}} -M^{T_m}_{k2^{-n}})}}
 \eeast
 %as it is sum of countably many zeros.
 
@@ -1889,8 +1889,8 @@ f(X_t) = f(X_0) + \sum^{d}_{i=1} \int^t_0 \fp{f(X_s)}{X^i} dX^i_s + \frac 12 \su
 
 \item [(ii)] Intuitive proof by Taylor expansion for $d = 1$:
 \beast
-f(X_t) & = & f(X_0) + \sum^{\floor{2^n t}-1}_{k=0} \bb{f(X_{(k+1)2^{-n}}) - f(X_{k2^{-n}}} + \bb{f(X_t) - f(X_{\floor{2^nt}2^{-n}}}\\
-& = & f(X_0) + \sum^{\floor{2^n t}-1}_{k=0} f'(X_{k2^{-n}})\bb{X_{(k+1)2^{-n}} - X_{k2^{-n}}} + \frac 12 \sum^{\floor{2^n t}-1}_{k=0} f''0(X_{k2^{-n}}) \bb{X_{(k+1)2^{-n}} - X_{k2^{-n}}}^2 + \text{error} \\% terms}\\
+f(X_t) & = & f(X_0) + \sum^{\floor{2^n t}-1}_{k=0} \brb{f(X_{(k+1)2^{-n}}) - f(X_{k2^{-n}}} + \brb{f(X_t) - f(X_{\floor{2^nt}2^{-n}}}\\
+& = & f(X_0) + \sum^{\floor{2^n t}-1}_{k=0} f'(X_{k2^{-n}})\brb{X_{(k+1)2^{-n}} - X_{k2^{-n}}} + \frac 12 \sum^{\floor{2^n t}-1}_{k=0} f''0(X_{k2^{-n}}) \brb{X_{(k+1)2^{-n}} - X_{k2^{-n}}}^2 + \text{error} \\% terms}\\
 & \stackrel{\text{u.c.p.}}{\to} & f(X_0) + \int^t_0 f'(X_s)dX_s + \frac 12 \int^t_0 f''(X_s) d[X]_s.
 \eeast
 \een
@@ -1940,8 +1940,8 @@ f(X_t) = X_t = X_0 + X_t - X_0 = X_0 + \int^t_0 1 dX_s = f(X_0) + \int^t_0 \fp{f
 
 {\bf Proof of (ii)}. For any $a,b\in \R$ and $f,g\in \sA$, we have for $f,g$ ($*$) holds. Thus, $af + bg \in C^2(\R)$ and
 \beast
-(af+bg)(X_t) = af(X_t) + bg(X_t) & = & a\bb{f(X_0) + \sum^{d}_{i=1} \int^t_0 \fp{f(X_s)}{X^i} dX^i_s + \frac 12 \sum^d_{i,j=1} \int^t_0 \frac{\partial^2f(X_s)}{\partial X^i\partial X^j}  d[X^i,X^j]_s} \\
-& & \quad +  b\bb{g(X_0) + \sum^{d}_{i=1} \int^t_0 \fp{g(X_s)}{X^i} dX^i_s + \frac 12 \sum^d_{i,j=1} \int^t_0 \frac{\partial^2g(X_s)}{\partial X^i\partial X^j}  d[X^i,X^j]_s}\\
+(af+bg)(X_t) = af(X_t) + bg(X_t) & = & a\brb{f(X_0) + \sum^{d}_{i=1} \int^t_0 \fp{f(X_s)}{X^i} dX^i_s + \frac 12 \sum^d_{i,j=1} \int^t_0 \frac{\partial^2f(X_s)}{\partial X^i\partial X^j}  d[X^i,X^j]_s} \\
+& & \quad +  b\brb{g(X_0) + \sum^{d}_{i=1} \int^t_0 \fp{g(X_s)}{X^i} dX^i_s + \frac 12 \sum^d_{i,j=1} \int^t_0 \frac{\partial^2g(X_s)}{\partial X^i\partial X^j}  d[X^i,X^j]_s}\\
 & = & (af+bg)(X_0) + \sum^{d}_{i=1} \int^t_0 \fp{(af+bg)(X_s)}{X^i} dX^i_s + \frac 12 \sum^d_{i,j=1} \int^t_0 \frac{\partial^2(af+bg)(X_s)}{\partial X^i\partial X^j}  d[X^i,X^j]_s
 \eeast
 as required.
@@ -1971,8 +1971,8 @@ Also, we have the covariation of two semimartingale is just the covariation of t
 by applying Kunita-Watanabe identity (Proposition \ref{pro:kunita_watanabe_identity_2_locally_bounded_previsible_process}). %this a second time for $G$ leads to
 Substituting these into ($\dag$), we obtain It\^o's formula for $fg$,
 \beast
-(fg)(X_t) & = & (fg)(X_0) + \int^t_0 \bb{f(X_s)g'(X_s) + f(X_s)g'(X_s) } dX_s \\
-& & \qquad + \frac 12 \int^t_0 \bb{f(X_s) g''(X_s) + 2f'(X_s)g'(X_s) + f''(X_s)g(X_s)} d[X]_s\\
+(fg)(X_t) & = & (fg)(X_0) + \int^t_0 \brb{f(X_s)g'(X_s) + f(X_s)g'(X_s) } dX_s \\
+& & \qquad + \frac 12 \int^t_0 \brb{f(X_s) g''(X_s) + 2f'(X_s)g'(X_s) + f''(X_s)g(X_s)} d[X]_s\\
 & = & (fg)(X_0) + \int^t_0 (fg)'(X_s) dX_s + \frac 12 \int^t_0 (fg)''(X_s) d[X]_s.
 \eeast
 
@@ -1984,22 +1984,22 @@ Substituting these into ($\dag$), we obtain It\^o's formula for $fg$,
 \beast
 & & \abs{\int^{t\land T_r}_0 (f'_n (X_s) - f'(X_s)) dA_s + \frac 12 \int^{t\land T_r}_0 (f''_n(X_s) -f''(X_s))d[M]_s} \\
 & \leq & \int^{t\land T_r}_0 \abs{f'_n (X_s) - f'(X_s)}dV_s + \frac 12\int^{t\land T_r}_0 \abs{f''_n(X_s) - f''(X_s)}d[M]_s  \\
-& \leq & \Delta_{n,r}\bb{V_{t\land T_r} + \frac 12 [M]_{t\land T_r}} \leq r\Delta_{n,r} \to 0\text{ as $n\to\infty$} \text{ a.s.} \quad (\text{as $Y_t$ is continuous})\\
+& \leq & \Delta_{n,r}\brb{V_{t\land T_r} + \frac 12 [M]_{t\land T_r}} \leq r\Delta_{n,r} \to 0\text{ as $n\to\infty$} \text{ a.s.} \quad (\text{as $Y_t$ is continuous})\\
 & \ra & \int^{t\land T_r}_0 f'_n (X_s) dA_s + \frac 12 \int^{t\land T_r}_0 f''_n(X_s) d[M]_s \to \int^{t\land T_r}_0 f'(X_s) dA_s + \frac 12\int^{t\land T_r}_0 f''(X_s) d[M]_s  \text{ a.s.}.
 \eeast
 
 Moreover, by Proposition \ref{pro:local_martingale_quadratic_variation_stoppting_time_in_out}, $\E\bsb{M^{T_r}}_\infty = \E\bsb{M}^{T_r}_\infty = \E\bsb{M}_{T_r}$ is bounded by $(r + \ve)$ and thus
 $M^{T_r} \in \sM^2_c$ by Theorem \ref{thm:martingale_l2_iff_quadratic_variation_infinity_non_infinity}.
 
-%Since $f_n\in \sA$, we know that $f_n'(X_t)$ is locally bounded previsible process as it is continuous and $f_n'(X_t)\ind_{(0,T_r]}$ is bounded (it is true since $\abs{X_{T_r\land t}}$ is bounded by $r$ and $f_n'(X_{T_r \land t})$ is bounded by Theorem \ref{thm:continuous_on_bounded_set_is_bounded}). Therefore, $\bb{f'_n (X)\ind_{(0,T_r]} \cdot M^{T_r}} = \bb{f'_n (X) \cdot M}^{T_r} \in \sM_c^2$ by Theorem \ref{thm:ito_isometry}. Then
+%Since $f_n\in \sA$, we know that $f_n'(X_t)$ is locally bounded previsible process as it is continuous and $f_n'(X_t)\ind_{(0,T_r]}$ is bounded (it is true since $\abs{X_{T_r\land t}}$ is bounded by $r$ and $f_n'(X_{T_r \land t})$ is bounded by Theorem \ref{thm:continuous_on_bounded_set_is_bounded}). Therefore, $\brb{f'_n (X)\ind_{(0,T_r]} \cdot M^{T_r}} = \brb{f'_n (X) \cdot M}^{T_r} \in \sM_c^2$ by Theorem \ref{thm:ito_isometry}. Then
 
 Since $f_n \to f$ in $C^2(B_r)$, we know that $f_n'(X^{T_r})$ and $f'(X^{T_r})$ are bounded by Theorem \ref{thm:continuous_on_bounded_set_is_bounded}). Thus,
 $f'_n (X^{T_r}) \cdot M^{T_r}$ and $f' (X^{T_r}) \cdot M^{T_r}$ are well-defined and are in $\sM_c^2$ by Theorem \ref{thm:ito_isometry}. Then by Proposition \ref{pro:ito_integral_stopping_time_locally_bounded},
 \beast
-\dabs{f'_n (X^{T_r}) \cdot M^{T_r} - f'(X^{T_r}) \cdot M^{T_r}}^2 & = & \dabs{\bb{f'_n (X) \cdot M}^{T_r} - \bb{f'(X) \cdot M}^{T_r}}^2 = \dabs{f'_n(X_s) - f'(X_s)}^2_{\sL(M^{T_r})} \\
-& = & \E\bb{\int^{T_r}_0 \bb{f'_n(X_s) - f'(X_s)}^2 d[M]_s} \leq \Delta^2_{n,r}\E\bb{[M]_{T_r}} \leq r\Delta^2_{n,r} \to 0
+\dabs{f'_n (X^{T_r}) \cdot M^{T_r} - f'(X^{T_r}) \cdot M^{T_r}}^2 & = & \dabs{\brb{f'_n (X) \cdot M}^{T_r} - \brb{f'(X) \cdot M}^{T_r}}^2 = \dabs{f'_n(X_s) - f'(X_s)}^2_{\sL(M^{T_r})} \\
+& = & \E\brb{\int^{T_r}_0 \brb{f'_n(X_s) - f'(X_s)}^2 d[M]_s} \leq \Delta^2_{n,r}\E\brb{[M]_{T_r}} \leq r\Delta^2_{n,r} \to 0
 \eeast
-as $n\to\infty$ and so $\bb{f'_n(X) \cdot M}^{T_r} \to \bb{f'(X) \cdot M}^{T_r}$ in $\sM^2_c$ and
+as $n\to\infty$ and so $\brb{f'_n(X) \cdot M}^{T_r} \to \brb{f'(X) \cdot M}^{T_r}$ in $\sM^2_c$ and
 \be
 \int^{t\land T_r}_0 f'_n(X_s) dM_s \to \int^{t\land T_r}_0 f'(X_s) dM_s \text{ a.s.}
 \ee
@@ -2056,7 +2056,7 @@ Let $(B_t)_{t \geq 0}$ be an $(\sF_t)$-Brownian motion in $d \geq 1$ dimensions.
 \item [(ii)] Let $d \geq 1$ and $u = (u_1,\dots, u_d) \in \C^d$. %\footnote{If $x, y \in \C^d$, we note $\inner{x}{y} = \sum^d_{i=1} x_i\overline{y}_i$ their complex scalar product.}.
 Assume that $\E\abs{\exp(\inner{u}{B_0})} < \infty$, the process defined by
 \be
-M_t = \exp\bb{\bsa{u,B_t} - t\abs{u}^2/2}
+M_t = \exp\brb{\bsa{u,B_t} - t\abs{u}^2/2}
 \ee
 is also a ($\sF_{t}$)-martingale for every $u \in \C^d$, where $\abs{u}^2$ is a notation for $\sum^d_{i=1} u_i\ol{u_i}$.
 \een
@@ -2079,7 +2079,7 @@ Thus, $M_t = B_t^2 -t = B_0^2 + 2\int^t_0 B_s dB_s$\footnote{Note that here $\in
 
 It thus suffices to show that it is a true martingale, which can be proved for instance by observing that the quadratic variation is (by Theorem \ref{thm:stochastic_integral_local_martingale_quadratic_variation}), %(by Kunita Watanabe identity (Proposition \ref{pro:kunita_watanabe_identity_semimartingale}),
 \be
-[M]_t = [2B\cdot B]_t = \bb{4B^2 \cdot [B]}_t = 4\int^t_0 B^2_s ds
+[M]_t = [2B\cdot B]_t = \brb{4B^2 \cdot [B]}_t = 4\int^t_0 B^2_s ds
 \ee
 which has finite expectation for all $t > 0$ by Fubini's theorem (Theorem \ref{thm:fubini}) as two measures are finite. By Theorem \ref{thm:martingale_l2_iff_quadratic_variation_infinity_non_infinity}, $(M_{s\land t})_{s \geq 0}$ is a martingale bounded in $\sL^2(\Omega,\sF,\pro)$ and thus it is UI martingale by Proposition \ref{pro:bounded_lp_implies_ui}.
 
@@ -2094,41 +2094,41 @@ as constant $t$ is also a stopping time for $s\geq t$ and $0$ is also a stopping
 
 \item [(ii)] To show that $M$ is a martingale, consider $X^{d+1} = t$ which is a continuous semi-martingale. Let $f:\R^{d+1} \to \C$,
 \be
-f(x_1,\dots, x_d, x_{d+1}) = \exp\bb{\sum^d_{i=1} u_ix_i - u^2x_{d+1}/2}.
+f(x_1,\dots, x_d, x_{d+1}) = \exp\brb{\sum^d_{i=1} u_ix_i - u^2x_{d+1}/2}.
 \ee
 
 So $f \in C^2(\R^{d+1})$ and we may apply It\^o's formula (Theorem \ref{thm:ito_formula_sample_continuous_semimartingale}) and obtain: \beast
-M_t & = & M_0 + \int^t_0 \sum^d_{i=1} u_i \exp\bb{\inner{u}{B_s} - su^2/2}dB^i_s - \int^t_0 \frac 12 u^2 \exp\bb{\inner{u}{B_s} - su^2/2}dt\\
-& & \qquad + \int^t_0 \sum^d_{i=1}\sum^d_{j=1} u_iu_j \exp\bb{\inner{u}{B_s} - su^2/2}d[B^i,B^j]_s\\
-& = & M_0 + \int^t_0 \sum^d_{i=1} u_i \exp\bb{\inner{u}{B_s} - su^2/2}dB^i_s
+M_t & = & M_0 + \int^t_0 \sum^d_{i=1} u_i \exp\brb{\inner{u}{B_s} - su^2/2}dB^i_s - \int^t_0 \frac 12 u^2 \exp\brb{\inner{u}{B_s} - su^2/2}dt\\
+& & \qquad + \int^t_0 \sum^d_{i=1}\sum^d_{j=1} u_iu_j \exp\brb{\inner{u}{B_s} - su^2/2}d[B^i,B^j]_s\\
+& = & M_0 + \int^t_0 \sum^d_{i=1} u_i \exp\brb{\inner{u}{B_s} - su^2/2}dB^i_s
 \eeast
-since $d[B^i,B^j]_t = \delta_{i,j}dt$ and $[B^i, t] = 0$ for all $1 \leq i, j \leq d$ (by Proposition \ref{pro:independent_local_martingale_covariation}), so that the finite variations term cancel. It thus suffices to show that $\int^t_0 u_i \exp\bb{\inner{u}{B_s}-su^2/2}dB^i_s$ is a true martingale \footnote{Note $B$ in the integrand is a standard Brownian motion.}.
+since $d[B^i,B^j]_t = \delta_{i,j}dt$ and $[B^i, t] = 0$ for all $1 \leq i, j \leq d$ (by Proposition \ref{pro:independent_local_martingale_covariation}), so that the finite variations term cancel. It thus suffices to show that $\int^t_0 u_i \exp\brb{\inner{u}{B_s}-su^2/2}dB^i_s$ is a true martingale \footnote{Note $B$ in the integrand is a standard Brownian motion.}.
 
-Obviously, the stochastic integral is a local martingale as $u_i \exp\bb{\inner{u}{B_s}-su^2/2}$ is continuous (thus locally bounded and previsible). Let $u_i = a_i + b_i i$, then we have
+Obviously, the stochastic integral is a local martingale as $u_i \exp\brb{\inner{u}{B_s}-su^2/2}$ is continuous (thus locally bounded and previsible). Let $u_i = a_i + b_i i$, then we have
 \beast
-\int^t_0 u_i \exp\bb{\inner{u}{B_s}-su^2/2}dB^i_s & = & \int^t_0 (a_i + b_i i) \exp\bb{\sum^d_{j=1}(a_j + b_j i)B^j_s-\frac s2 \sum^d_{j=1}\bb{a_j^2 + b_j^2}}dB^i_s\\
-& = & \underbrace{\int^t_0 \bb{a_i\cos(b_iB^i_s) - b_i\sin (b_i B^i_s)} \exp\bb{\sum^d_{j=1}a_j B^j_s-\frac s2 \sum^d_{j=1}\bb{a_j^2 + b_j^2}}dB^i_s}_{=\Re M}\\
-& & \qquad + i \underbrace{\int^t_0 \bb{a_i\sin(b_iB^i_s) + b_i\cos (b_i B^i_s)} \exp\bb{\sum^d_{j=1}a_j B^j_s-\frac s2 \sum^d_{j=1}\bb{a_j^2 + b_j^2}}dB^i_s}_{=\Im M}
+\int^t_0 u_i \exp\brb{\inner{u}{B_s}-su^2/2}dB^i_s & = & \int^t_0 (a_i + b_i i) \exp\brb{\sum^d_{j=1}(a_j + b_j i)B^j_s-\frac s2 \sum^d_{j=1}\brb{a_j^2 + b_j^2}}dB^i_s\\
+& = & \underbrace{\int^t_0 \brb{a_i\cos(b_iB^i_s) - b_i\sin (b_i B^i_s)} \exp\brb{\sum^d_{j=1}a_j B^j_s-\frac s2 \sum^d_{j=1}\brb{a_j^2 + b_j^2}}dB^i_s}_{=\Re M}\\
+& & \qquad + i \underbrace{\int^t_0 \brb{a_i\sin(b_iB^i_s) + b_i\cos (b_i B^i_s)} \exp\brb{\sum^d_{j=1}a_j B^j_s-\frac s2 \sum^d_{j=1}\brb{a_j^2 + b_j^2}}dB^i_s}_{=\Im M}
 \eeast
 
 We take the quadratic variation of the real and imaginary parts,
 \be
-\bsb{\Re M}_t = \int^t_0 \bb{a_i\cos(b_iB^i_s) - b_i\sin (b_i B^i_s)}^2 \exp\bb{\sum^d_{j=1}2a_j B^j_s-s \sum^d_{j=1}\bb{a_j^2 + b_j^2}}ds
+\bsb{\Re M}_t = \int^t_0 \brb{a_i\cos(b_iB^i_s) - b_i\sin (b_i B^i_s)}^2 \exp\brb{\sum^d_{j=1}2a_j B^j_s-s \sum^d_{j=1}\brb{a_j^2 + b_j^2}}ds
 \ee
 \be
-\bsb{\Im M}_t = \int^t_0 \bb{a_i\sin(b_iB^i_s) + b_i\cos(b_i B^i_s)}^2 \exp\bb{\sum^d_{j=1}2a_j B^j_s-s \sum^d_{j=1}\bb{a_j^2 + b_j^2}}ds
+\bsb{\Im M}_t = \int^t_0 \brb{a_i\sin(b_iB^i_s) + b_i\cos(b_i B^i_s)}^2 \exp\brb{\sum^d_{j=1}2a_j B^j_s-s \sum^d_{j=1}\brb{a_j^2 + b_j^2}}ds
 \ee
 
 Thus,
 \be
-\bsb{\Re M}_t + \bsb{\Im M}_t = \bb{a_i^2 + b_i^2} \exp\bb{-s \sum^d_{j=1}\bb{a_j^2 + b_j^2}}\int^t_0  \exp\bb{\sum^d_{j=1}2a_j B^j_s}ds
+\bsb{\Re M}_t + \bsb{\Im M}_t = \brb{a_i^2 + b_i^2} \exp\brb{-s \sum^d_{j=1}\brb{a_j^2 + b_j^2}}\int^t_0  \exp\brb{\sum^d_{j=1}2a_j B^j_s}ds
 \ee
 so by Fubini's theorem (Theorem \ref{thm:fubini}) and Proposition \ref{pro:mgf_gaussian}
 \be
-\int^t_0 \E\bb{ \exp\bb{\sum^d_{j=1}2a_j B^j_s}}ds = \int^t_0 \exp\bb{s\sum^d_{j=1} 2a_j^2} ds < \infty%\E\bb{\exp\bb{\bsa{2a ,B_0}}} ds < \infty
+\int^t_0 \E\brb{ \exp\brb{\sum^d_{j=1}2a_j B^j_s}}ds = \int^t_0 \exp\brb{s\sum^d_{j=1} 2a_j^2} ds < \infty%\E\brb{\exp\brb{\bsa{2a ,B_0}}} ds < \infty
 \ee
 where $a= (a^1,\dots,a^d)^T$. %\be
-%\int^t_0 \E\bb{\exp\bb{\sum^d_{i=1} 2r_iB^i_s - s\inner{u}{\overline{u}}^2}}ds < \infty
+%\int^t_0 \E\brb{\exp\brb{\sum^d_{i=1} 2r_iB^i_s - s\inner{u}{\overline{u}}^2}}ds < \infty
 %\eewhere $r_i$ is the complex modulus of $u_i$ and $\inner{u}{\overline{u}^2} = \sum^d_{i=1} r^2_i$. the above inequality follows instantly from the independence of the coordinates and the fact that $\E[\exp(rB_t)] = \exp(tr^2/2)$.
 Then use the same trick as in (i), we have that $M$ is a true martingale.%\qcutline
 \een
@@ -2139,7 +2139,7 @@ Another family of martingales is provided by the result below. This is the first
 \begin{theorem}\label{thm:brownian_motion_integral_martingale_ito}
 Let $(B_t)_{t \geq 0}$ be a ($\sF_t$)-Brownian motion. Let $f(t, x) : \R^{++} \times \R^d \to \C$ be continuously differentiable in the variable $t$ and twice continuously differentiable in $x$. Then,
 \be
-M_t = f(t,B_t) - f(0,B_0) - \int^t_0 \bb{\fp{}{t} +\frac 12 \Delta} f(s,B_s)ds ,\quad\quad  t \geq 0
+M_t = f(t,B_t) - f(0,B_0) - \int^t_0 \brb{\fp{}{t} +\frac 12 \Delta} f(s,B_s)ds ,\quad\quad  t \geq 0
 \ee
 is a ($\sF_t$)-local martingale, where $\Delta = \sum^d_{i=1} \frac{\partial^2}{\partial x^2_i}$ is the Laplacian operator acting on the spatial coordinate of $f$. If moreover, the first derivatives are uniformly bounded on every compact interval, i.e., for all $T > 0$,
 \be
@@ -2169,7 +2169,7 @@ As we will see in a few moments, martingales are very useful to understand (and 
 observation.
 
 \begin{theorem}[exponential martingale]\label{thm:exponential_martingale}
-Let $M \in \sM_{c,loc}$ with $M_0 = 0$ a.s.. Then $Z_t = \exp\bb{M_t - \frac 12 [M]_t}$ defines a continuous local martingale, i.e. $Z\in \sM_{c,loc}$. We call $Z$ the exponential (local) martingale
+Let $M \in \sM_{c,loc}$ with $M_0 = 0$ a.s.. Then $Z_t = \exp\brb{M_t - \frac 12 [M]_t}$ defines a continuous local martingale, i.e. $Z\in \sM_{c,loc}$. We call $Z$ the exponential (local) martingale
 of $M$, $\sE(M)$.
 \end{theorem}
 
@@ -2177,7 +2177,7 @@ of $M$, $\sE(M)$.
 The function $f(x, y) = \exp(x-y/2)$ is $C^2(\R^2)$ and $M_t$ and $[M]_t$ are both semimartingales (with $[[M]]_t =0$ as $[M]_t$ is finite variation process, see Remark \ref{rem:quadratic_variation_process_finite_variation}.(iv)). By It\^o's formula (Theorem \ref{thm:ito_formula_sample_continuous_semimartingale}),%f(M_0,[M]_0)
 \beast
 dZ_t & = & df(M_t,[M]_t) = \fp{f(M_t,[M]_t)}{M_t}dM_t + \fp{f(M_t,[M]_t)}{[M]_t}d[M]_t + \frac 12 \frac{\partial^2 f(M_t,[M]_t)}{\partial M_t^2} d[M]_t\\
-& = & Z_t \bb{dM_t - \frac 12 d[M]_t} + \frac 12 Z_t d[M]_t = Z_t dM_t. \eeast
+& = & Z_t \brb{dM_t - \frac 12 d[M]_t} + \frac 12 Z_t d[M]_t = Z_t dM_t. \eeast
 
 We know that $Z_t$ is locally bounded and previsible since $Z_t$ is continuous by Proposition \ref{pro:continuous_adapted_process_is_locally_bounded_previsible}. Thus, $(Z\cdot M)$ is a local
 martingale by Definition \ref{def:ito_integral_previsible_locally_bounded}. That is, $Z_t = Z_0 + \int^t_0 Z_sdM_s$ is a local martingale.
@@ -2195,9 +2195,9 @@ Let $X^1,\dots,X^d \in \sM_{c,loc}$. The two following statements are equivalent
 \begin{proof}[\bf Proof]
 It is easy to show that (ii) implies (i).
 
-For the inverse, it suffices to show that, for $0 \leq s \leq t$, $X_t - X_s \sim \sN\bb{0, (t - s)I}$ and the increment is independent of $\sF_s$. By uniqueness of characteristic functions and Theorem \ref{thm:sigma_algebra_random_variable_independence_by_conditional_expectation}, this is equivalent to showing that for all $s \leq t$ and for all $\theta \in \R^d$,
+For the inverse, it suffices to show that, for $0 \leq s \leq t$, $X_t - X_s \sim \sN\brb{0, (t - s)I}$ and the increment is independent of $\sF_s$. By uniqueness of characteristic functions and Theorem \ref{thm:sigma_algebra_random_variable_independence_by_conditional_expectation}, this is equivalent to showing that for all $s \leq t$ and for all $\theta \in \R^d$,
 \be%\label{equ:characteristic_function_of_brownian_motion}
-\E\bb{\exp(i\inner{\theta}{X_t - X_s})|\sF_s} = \exp\bb{-\frac 12 \dabs{\theta}^2(t - s)}.\quad (*)
+\E\brb{\exp(i\inner{\theta}{X_t - X_s})|\sF_s} = \exp\brb{-\frac 12 \dabs{\theta}^2(t - s)}.\quad (*)
 \ee
 
 Here $\inner{\cdot}{\cdot}$ is the usual inner product (or scalar product\footnote{need definition here}) on $\R^d$ and $\dabs{\theta}$ is the Euclidean norm\footnote{need definition}). Fix $\theta\in \R^d$ and set
@@ -2207,12 +2207,12 @@ Y_t = \inner{\theta}{X_t} = \theta_1X^1_t +\dots+ \theta_dX^d_t.
 
 Then $Y$ is a local martingale, and by the assumptions and the bilinearity of the covariation, $[Y ] = \sum^d_{i=1} \theta^2_i t = t\dabs{\theta}^2$. Define also
 \be
-Z_t = \exp\bb{iY_t + \frac 12 [Y]_t} = \exp\bb{i\inner{\theta}{X_t} + \frac 12 \dabs{\theta}^2t}.
+Z_t = \exp\brb{iY_t + \frac 12 [Y]_t} = \exp\brb{i\inner{\theta}{X_t} + \frac 12 \dabs{\theta}^2t}.
 \ee
 
 $Z$ is is the exponential martingale associated with $iY_t$ which is a local martingale, so $Z \in \sM_{c,loc}$ by Theorem \ref{thm:exponential_martingale}. Moreover, $Z$ is bounded on $[0, t]$ for all $t \geq 0$ (since $[Y ]_t = \dabs{\theta}^2 t$) and so is a true martingale by Proposition \ref{pro:martingale_local_martingale_equivalent}. Hence, $\E(Z_t|\sF_s) = Z_s$ a.s., or equivalently.
 \be
-\E\bb{\left.\frac{Z_t}{Z_s}\right|\sF_s} = 1,\quad\text{a.s.}
+\E\brb{\left.\frac{Z_t}{Z_s}\right|\sF_s} = 1,\quad\text{a.s.}
 \ee
 
 Then ($*$) follows directly.
@@ -2224,7 +2224,7 @@ Let $M \in \sM_{c,loc}$ with $M_0 = 0$ and $[M]_\infty = \infty$ a.s..
 
 Set $\tau_s = \inf\bra{t \geq 0 : [M]_t > s}$ for fixed $s$ and $B_s = M_{\tau_s}$.
 
-Then $\tau_s$ is an $\bb{\sF_t}_{t\geq0}$-stopping time. If $\sG_s = \sF_{\tau_s}$ then $(\sG_s)_{s\geq0}$ is a filtration and $B$ is a $(\sG_t)_{t\geq0}$-Brownian motion. Moreover $M_t =
+Then $\tau_s$ is an $\brb{\sF_t}_{t\geq0}$-stopping time. If $\sG_s = \sF_{\tau_s}$ then $(\sG_s)_{s\geq0}$ is a filtration and $B$ is a $(\sG_t)_{t\geq0}$-Brownian motion. Moreover $M_t =
 B_{[M]_t}$.
 \end{theorem}
 
@@ -2233,15 +2233,15 @@ So any continuous local martingale is a (stochastic) time-change of Brownian mot
 \end{remark}
 
 \begin{proof}[\bf Proof]
-For all $t\geq 0$, since $\tau_t$ is a stopping time with respect to $\bb{\sF_t}_{t\geq 0}$, $\bb{\sG_t}_{t\geq 0} := \bb{\sF_{\tau_t}}_{t\geq 0}$ is a filtration by Definition \ref{def:sigma_algebra_stopping_time_continuous}
+For all $t\geq 0$, since $\tau_t$ is a stopping time with respect to $\brb{\sF_t}_{t\geq 0}$, $\brb{\sG_t}_{t\geq 0} := \brb{\sF_{\tau_t}}_{t\geq 0}$ is a filtration by Definition \ref{def:sigma_algebra_stopping_time_continuous}
 and Proposition \ref{pro:stopping_time_property_continuous}. Recalling Proposition \ref{pro:random_variable_stopping_time_measurable}, for stopping time $\tau_t$, we have that $B_t$ is $\sG_t$-measurable ($\sF_{\tau_t}$-measurable)
 if and only if $B_t\ind_{\bra{\tau_t \leq u}}$ is $\sF_u$-measurable for all $u$. It is easy to see that $B_t\ind_{\bra{\tau_t \leq u}} = M_{\tau_t} \ind_{\bra{\tau_t \leq u}}$ is $\sF_u$-measurable.
 
-Therefore, we can have that $B$ is adapted to $\bb{\sG_t}_{t\geq 0}$.
+Therefore, we can have that $B$ is adapted to $\brb{\sG_t}_{t\geq 0}$.
 
 Now we want to prove that $B$ is (sample) continuous.
 
-Since $[M]$ is (pathwise) continuous and non-decreasing and adapted (see Theorem \ref{thm:quadratic_variation_process_uniqueness_existence}), $\tau_s$ is an $\bb{\sF_t}_{t\geq0}$-stopping time as $\forall t\geq 0$,
+Since $[M]$ is (pathwise) continuous and non-decreasing and adapted (see Theorem \ref{thm:quadratic_variation_process_uniqueness_existence}), $\tau_s$ is an $\brb{\sF_t}_{t\geq0}$-stopping time as $\forall t\geq 0$,
 \be
 \bra{\tau_s \leq t} = \bra{[M]_{t} > s} \in \sF_t.
 \ee
@@ -2252,7 +2252,7 @@ Also, since $[M]_\infty = \infty$ a.s., i.e. $\forall s>0$, $\exists t\geq 0$ su
 Since $\tau_s$ is finite a.s. and non-decreasing, we have that $\tau_{s^-}$ exists a.s.. Also, we have that %$\tau$ is (sample) right- {pro:right_continuous_open_set_stopping_time}
 \beast
 \tau_{s^+} & = & \lim_{\Delta \da 0} \inf\bra{t\geq 0:[M]_t > s+\Delta} = \lim_{\Delta \da 0} \max\bra{t\geq 0:[M]_t = s+\Delta}\qquad \text{continuity of $[M]$}\\
-& = & \lim_{\Delta \da 0} \bb{\underbrace{\max\bra{t\geq 0:[M]_t = s}}_{=\tau_s} + \max\bra{t\geq 0:[M]_{t+\tau} - s = \Delta}}       \\%& = & \lim_{\Delta \da 0}\bb{ \tau_s + \inf\bra{t\geq 0: [M]_{t+\tau_s} - [M]_{\tau_s} \geq \Delta}} \\ & = &  \tau_s + \lim_{\Delta \da 0}\inf\bra{t\geq 0: [M]_{t+\tau_s} - [M]_{\tau_s} \geq \Delta}  = \tau_s + 0 = \tau_s
+& = & \lim_{\Delta \da 0} \brb{\underbrace{\max\bra{t\geq 0:[M]_t = s}}_{=\tau_s} + \max\bra{t\geq 0:[M]_{t+\tau} - s = \Delta}}       \\%& = & \lim_{\Delta \da 0}\brb{ \tau_s + \inf\bra{t\geq 0: [M]_{t+\tau_s} - [M]_{\tau_s} \geq \Delta}} \\ & = &  \tau_s + \lim_{\Delta \da 0}\inf\bra{t\geq 0: [M]_{t+\tau_s} - [M]_{\tau_s} \geq \Delta}  = \tau_s + 0 = \tau_s
 & = & \tau_s + \lim_{\Delta \da 0} \max\bra{t\geq 0:[M]_{t+\tau_s} - s = \Delta}
 \eeast
 
@@ -2263,23 +2263,23 @@ To show $B_{s^-} = B_s$ for all $s > 0$ a.s., or equivalently $M_{\tau_{s^-}} = 
 \be
 \tau_{s^-} = \inf\bra{t \geq 0 : [M]_t = s}
 \ee
-and note that $\tau_{s^-}$ is also a stopping time with respect to $\bb{\sF_t}_{t\geq 0}$ (by Proposition \ref{pro:debut_time_closed_set_stopping_time}).
+and note that $\tau_{s^-}$ is also a stopping time with respect to $\brb{\sF_t}_{t\geq 0}$ (by Proposition \ref{pro:debut_time_closed_set_stopping_time}).
 
 Let $s > 0$. We need to show that $M$ is constant between $\tau_{s^-}$ and $\tau_s$ whenever $\tau_{s^-} < \tau_s$. %, i.e. whenever $[M]$ is constant.
 
 Since $\E\bsb{M^{\tau_s}}_\infty < \infty$ and $M^{\tau_s}_0 = M_0 = 0$ a.s., we have that $M^{\tau_s} \in \sM_c^2$ by Theorem \ref{thm:martingale_l2_iff_quadratic_variation_infinity_non_infinity}.
-Therefore, by Theorem \ref{thm:continuous_m2_martingale_implies_ui}, $\bb{M^2 - [M]}^{\tau_u}$ (for $u>s$) is uniformly integrable.
+Therefore, by Theorem \ref{thm:continuous_m2_martingale_implies_ui}, $\brb{M^2 - [M]}^{\tau_u}$ (for $u>s$) is uniformly integrable.
 
 Hence, by optional stopping theorem (the uniformly integrable version, see (\ref{thm:optional_stopping_ui_continuous})), we get:
 \be
-\E\bb{\left.M^2_{\tau_s} - [M]_{\tau_s} \right|\sF_{\tau_{s^-}}} = M^2_{\tau_{s^-}} - [M]_{\tau_{s^-}}\quad \text{a.s..}
+\E\brb{\left.M^2_{\tau_s} - [M]_{\tau_s} \right|\sF_{\tau_{s^-}}} = M^2_{\tau_{s^-}} - [M]_{\tau_{s^-}}\quad \text{a.s..}
 \ee
 
 By the definition of $\tau_s$ and $\tau_{s^-}$, we have for any $\tau\in [\tau_{s^-}, \tau_s]$, $[M]_{\tau_s} = [M]_{\tau} = [M]_{\tau_{s^-}} = s$
 and the fact that $M^{\tau_u}$ is a martingale. %. note that $M^{\tau_u}_{\tau} = M_{\tau}$),
 we obtain
 \be
-0 =[M]_{\tau} - [M]_{\tau_{s^-}} = \E\bb{\left.M^2_{\tau} -M^2_{\tau_{s^-}} \right|\sF_{\tau_{s^-}}} = \E\bb{\left.\bb{M_{\tau} -M_{\tau_{s^-}}}^2\right|\sF_{\tau_{s^-}} } \ \ra \ \E\bb{M_{\tau} -M_{\tau_{s^-}}}^2 = 0.
+0 =[M]_{\tau} - [M]_{\tau_{s^-}} = \E\brb{\left.M^2_{\tau} -M^2_{\tau_{s^-}} \right|\sF_{\tau_{s^-}}} = \E\brb{\left.\brb{M_{\tau} -M_{\tau_{s^-}}}^2\right|\sF_{\tau_{s^-}} } \ \ra \ \E\brb{M_{\tau} -M_{\tau_{s^-}}}^2 = 0.
 \ee
 
 So by Proposition \ref{pro:expectation_property}.(ii), $M$ is a.s. constant between $\tau_{s^-}$ and $\tau_s$. This is implied by the continuity of $M$,
@@ -2291,7 +2291,7 @@ which is an intersection of countable events with probability 1. Thus, we can ha
 Note that if $T_r = \inf\bra{t>0: M_t \neq M_r}$ and $S_r = \inf\bra{t>0: [M]_t \neq [M]_r}$ then the previous argument says that for all fixed $r>0$, $T_r = S_r$ a.s..
 But observe that $T_r$ and $S_r$ are both \cadlag. Thus applying Proposition \ref{pro:continuous_cadlag_version_indistinguishable}, we have that
 \beast
-\pro\bb{T_r = S_r, \forall r\geq 0} = 1 & \ra & \pro\bb{\text{$M$ and $[M]$ are constant on the same intervals}} = 1 \\
+\pro\brb{T_r = S_r, \forall r\geq 0} = 1 & \ra & \pro\brb{\text{$M$ and $[M]$ are constant on the same intervals}} = 1 \\
 & \ra &  \text{$B$ is (sample) continuous.}
 \eeast
 
@@ -2303,31 +2303,31 @@ But observe that $T_r$ and $S_r$ are both \cadlag. Thus applying Proposition \re
 %\ee
 
 %Thus by Theorem
-%\ref{thm:continuous_m2_martingale_implies_ui}, $M_{\tau_s} \in \sM^2_c$ since $\E\bb{[M^{\tau_s}]_\infty} < \infty$. In particular, $(M_{t\land \tau_s}, s \geq 0)$ is uniformly integrable by Doob's
+%\ref{thm:continuous_m2_martingale_implies_ui}, $M_{\tau_s} \in \sM^2_c$ since $\E\brb{[M^{\tau_s}]_\infty} < \infty$. In particular, $(M_{t\land \tau_s}, s \geq 0)$ is uniformly integrable by Doob's
 %inequality. In particular, we get that $M_{\tau_r} \in \sL^2(\pro)$ for $r \leq s$ (and $s$ was arbitrary). Applying the uniformly integrable version of the optional stopping theorem (see
 %(\ref{thm:optional_stopping_ui_continuous})) a first time, we obtain \be \E(M_{\tau_s}|\sF_{\tau_r}) = M_{\tau_r} \ee a.s. and thus $B$ is a $\sG$-martingale. Furthermore, since $M^{\tau_s} \in
-%\sM^2_c$, by Theorem \ref{thm:continuous_m2_martingale_implies_ui}, $\bb{M^2 - [M]}^{\tau_s}$ is also a uniformly integrable martingale. By (\ref{thm:optional_stopping_ui_continuous}) again, for $r
-%\leq s$, \be \E(B^2_s - s|\sG_r) = \E\bb{(M^2 - [M])_{\tau_s} |\sF_{\tau_r}} = M^2_{\tau_r} - [M]_{\tau_r} = B^2_r - r . \ee
+%\sM^2_c$, by Theorem \ref{thm:continuous_m2_martingale_implies_ui}, $\brb{M^2 - [M]}^{\tau_s}$ is also a uniformly integrable martingale. By (\ref{thm:optional_stopping_ui_continuous}) again, for $r
+%\leq s$, \be \E(B^2_s - s|\sG_r) = \E\brb{(M^2 - [M])_{\tau_s} |\sF_{\tau_r}} = M^2_{\tau_r} - [M]_{\tau_r} = B^2_r - r . \ee
 %
 %Hence, $B \in \sM_c$ with $[B]_s = s$ and so, by L\'evy's characterization, $B$ is a $(\sG_t)_{t\geq0}$-Brownian motion.
 
-Again, for $s\leq t\leq u$, we have that $M^{\tau_u}$ is a martingale with respect to $\bb{\sF_t}_{t\geq 0}$ and $\bb{M^2 - [M]}^{\tau_u}$ (for $u>s$) is uniformly integrable.
+Again, for $s\leq t\leq u$, we have that $M^{\tau_u}$ is a martingale with respect to $\brb{\sF_t}_{t\geq 0}$ and $\brb{M^2 - [M]}^{\tau_u}$ (for $u>s$) is uniformly integrable.
 Thus, by optional stopping theorem (the uniformly integrable version, see (\ref{thm:optional_stopping_ui_continuous})), we have
 \beast
-\E\bb{\left.M^2_{\tau_t} - [M]_{\tau_t} \right|\sF_{\tau_{s}}} = M^2_{\tau_{s}} - [M]_{\tau_{s}}\quad \text{a.s..}
+\E\brb{\left.M^2_{\tau_t} - [M]_{\tau_t} \right|\sF_{\tau_{s}}} = M^2_{\tau_{s}} - [M]_{\tau_{s}}\quad \text{a.s..}
 \eeast
 
-Recalling the definition of $B$ and $\bb{\sG_t}_{t \geq 0}$, we have
+Recalling the definition of $B$ and $\brb{\sG_t}_{t \geq 0}$, we have
 \be
-\E\bb{\left. B^2_{t} - t\right|\sG_s} = B_s - s\quad \text{a.s..}
+\E\brb{\left. B^2_{t} - t\right|\sG_s} = B_s - s\quad \text{a.s..}
 \ee
 
 Also,
 \be
-\E\bb{B_t|\sG_s} = \E\bb{M_{\tau_t}|\sF_{\tau_s}} = \E\bb{M^{\tau_u}_{\tau_t}|\sF_{\tau_s}} \stackrel{\text{a.s.}}{=} M^{\tau_u}_{\tau_s} = M_{\tau_s} = B_s.
+\E\brb{B_t|\sG_s} = \E\brb{M_{\tau_t}|\sF_{\tau_s}} = \E\brb{M^{\tau_u}_{\tau_t}|\sF_{\tau_s}} \stackrel{\text{a.s.}}{=} M^{\tau_u}_{\tau_s} = M_{\tau_s} = B_s.
 \ee
 
-Hence, $B \in \sM_c$ with $[B]_t = t$ and so, by \levy's characterization of Brownian motion (Theorem \ref{thm:levy_characterization_brownian_motion}), $B$ is a $\bb{\sG_t}_{t\geq 0}$-Brownian motion.
+Hence, $B \in \sM_c$ with $[B]_t = t$ and so, by \levy's characterization of Brownian motion (Theorem \ref{thm:levy_characterization_brownian_motion}), $B$ is a $\brb{\sG_t}_{t\geq 0}$-Brownian motion.
 \end{proof}
 
 %\begin{proof}[\bf Proof]
@@ -2385,7 +2385,7 @@ See Revuz-Yor (Chapter V, Theorem (1.10)) for a proof.\footnote{proof needed.}
 %\end{remark}
 %
 %\begin{example}
-%Let $B$ be a Brownian motion and let $h$ be a deterministic function in $\sL^2(\R^+, B, \lm)$ with Lebesgue measure $\lm$. Set $X = \int^\infty_0 h_s dB_s$. Then $X \sim \sN\bb{0, \dabs{h}^2_2}$.
+%Let $B$ be a Brownian motion and let $h$ be a deterministic function in $\sL^2(\R^+, B, \lm)$ with Lebesgue measure $\lm$. Set $X = \int^\infty_0 h_s dB_s$. Then $X \sim \sN\brb{0, \dabs{h}^2_2}$.
 %\end{example}
 %
 %\begin{proof}[\bf Proof]
@@ -2394,7 +2394,7 @@ See Revuz-Yor (Chapter V, Theorem (1.10)) for a proof.\footnote{proof needed.}
 %
 %\begin{theorem}
 %Let $M$ be a continuous local martingale. Then \ben
-%\item [(i)] $\pro\bb{\lim_{t\to\infty} \abs{M}_t = \infty} = 0$
+%\item [(i)] $\pro\brb{\lim_{t\to\infty} \abs{M}_t = \infty} = 0$
 %\item [(ii)] $\bra{\omega:\lim_{t\to\infty} M_t \text{ exists and is finite}} = \bra{\omega:[M]_\infty< \infty}$  up to null events.
 %\item [(iii)] $\bra{[M]_\infty = \infty} = \bra{\limsup_{t\to\infty} M_t = +\infty \text{ and }\liminf_{t\to\infty} M_t = -\infty}$ up to null events. \een
 %\end{theorem}
@@ -2406,14 +2406,14 @@ We start by the following inequality which will be useful in the proof of Girsan
 \begin{proposition}[exponential martingale inequality]\label{pro:exponential_martingale_inequality}
 Let $M \in \sM_{c,loc}$ with $M_0 = 0$. Then for all $x > 0$, $u > 0$,
 \be
-\pro\bb{\sup_{t\geq0} M_t \geq x , [M]_\infty \leq u} \leq \exp\bb{-x^2/(2u)}.
+\pro\brb{\sup_{t\geq0} M_t \geq x , [M]_\infty \leq u} \leq \exp\brb{-x^2/(2u)}.
 \ee
 \end{proposition}
 %
 \begin{proof}[\bf Proof]
 Fix $x > 0$ and set $T = \inf\bra{t \geq 0 : M_t \geq x}$. Fix $\theta > 0$ and set
 \be
-Z_t = \exp\bb{\theta M^T_t - \frac 12\theta^2[M]^T_t}.
+Z_t = \exp\brb{\theta M^T_t - \frac 12\theta^2[M]^T_t}.
 \ee
 
 Then $Z \in\sM_{c,loc}$ and $\abs{Z} \leq e^{\theta x}$. Hence, $Z \in \sM^2_c$ and UI as it is bounded. Thus, % Since $Z_T_t = Z_t$,
@@ -2422,8 +2422,8 @@ Then $Z \in\sM_{c,loc}$ and $\abs{Z} \leq e^{\theta x}$. Hence, $Z \in \sM^2_c$ 
 \ee
 by optional stopping theorem (UI version, Theorem \ref{thm:optional_stopping_ui_continuous}). For $u > 0$ and $\theta >0$, we get by Markov's inequality (Theorem \ref{thm:markov_inequality_probability})
 \beast
-\pro\bb{\sup_{t\geq 0} M_t \geq x , [M]_\infty \leq u} & = & \pro\bb{\sup_{t\geq 0} e^{\theta M_t} \geq e^{\theta x} , e^{-\frac 12 \theta^2 [M]_\infty} \geq e^{-\frac 12 \theta^2 u}} \leq  \pro\bb{\sup_{t\geq 0} e^{\theta M_t} \geq e^{\theta x} , e^{-\frac 12 \theta^2 [M]^T_\infty} \geq e^{-\frac 12 \theta^2 u}} \\
-& \leq & \pro\bb{Z_\infty \geq e^{\theta x-\frac 12\theta^2u}} \leq \bb{ e^{\theta x-\frac 12\theta^2u}}^{-1}\E Z_\infty = e^{-\theta x+\frac 12 \theta^2u}.
+\pro\brb{\sup_{t\geq 0} M_t \geq x , [M]_\infty \leq u} & = & \pro\brb{\sup_{t\geq 0} e^{\theta M_t} \geq e^{\theta x} , e^{-\frac 12 \theta^2 [M]_\infty} \geq e^{-\frac 12 \theta^2 u}} \leq  \pro\brb{\sup_{t\geq 0} e^{\theta M_t} \geq e^{\theta x} , e^{-\frac 12 \theta^2 [M]^T_\infty} \geq e^{-\frac 12 \theta^2 u}} \\
+& \leq & \pro\brb{Z_\infty \geq e^{\theta x-\frac 12\theta^2u}} \leq \brb{ e^{\theta x-\frac 12\theta^2u}}^{-1}\E Z_\infty = e^{-\theta x+\frac 12 \theta^2u}.
 \eeast
 
 Optimizing in $\theta$  gives $\theta = x/u$ and the result follows. (It is also possible to use the Dubins-Schwarz theorem, as a calculus argument shows that $\pro(\abs{Z} > \lm) \leq e^{-\lm^2/2}$ for all $\lm \geq 0$, when $Z$ is a standard Gaussian random variable)\footnote{check needed.}.
@@ -2431,7 +2431,7 @@ Optimizing in $\theta$  gives $\theta = x/u$ and the result follows. (It is also
 
 
 \begin{proposition}\label{pro:exponential_ui_martingale}
-Let $M \in \sM_{c,loc}$ with $M_0 = 0$ a.s. and suppose that $[M]$ is uniformly bounded a.s., i.e. $\E[M]_\infty < \infty$. Then $\sE(M) = \exp\bb{M_t - \frac 12 [M]_t}$ is a UI martingale.
+Let $M \in \sM_{c,loc}$ with $M_0 = 0$ a.s. and suppose that $[M]$ is uniformly bounded a.s., i.e. $\E[M]_\infty < \infty$. Then $\sE(M) = \exp\brb{M_t - \frac 12 [M]_t}$ is a UI martingale.
 \end{proposition}
 
 \begin{proof}[\bf Proof]
@@ -2439,12 +2439,12 @@ First, we know that $\sE(M)$ is a local martingale by Theorem \ref{thm:exponenti
 
 Since $[M]$ is a.s. uniformly bounded, there exists $C$ be such that $[M]_\infty \leq C$ a.s. By the exponential martingale inequality, for all $x > 0$
 \be
-\pro\bb{\sup_{t\geq0} M_t \geq x} = \pro\bb{\sup_{t\geq0} M_t \geq x, [M]_\infty \leq C} \leq e^{-x^2/(2C)}.
+\pro\brb{\sup_{t\geq0} M_t \geq x} = \pro\brb{\sup_{t\geq0} M_t \geq x, [M]_\infty \leq C} \leq e^{-x^2/(2C)}.
 \ee
 
-Now, $\sup_{t\geq0} \sE(M)_t \leq \exp\bb{\sup_{t\geq0} M_t}$ and by Theorem \ref{thm:non_negative_measurable_property},
+Now, $\sup_{t\geq0} \sE(M)_t \leq \exp\brb{\sup_{t\geq0} M_t}$ and by Theorem \ref{thm:non_negative_measurable_property},
 \be
-\E\bb{\sup_{t\geq0} \sE(M)_t} \leq \E\bb{\exp\bb{\sup_{t\geq0}M_t}} = \int^\infty_0 \pro\bb{\sup_{t\geq0} M_t\geq \log \lm}d\lm \leq 1+ \int^\infty_1 e^{-(\log \lm)^2/(2C)} d\lm < \infty.
+\E\brb{\sup_{t\geq0} \sE(M)_t} \leq \E\brb{\exp\brb{\sup_{t\geq0}M_t}} = \int^\infty_0 \pro\brb{\sup_{t\geq0} M_t\geq \log \lm}d\lm \leq 1+ \int^\infty_1 e^{-(\log \lm)^2/(2C)} d\lm < \infty.
 \ee
 
 Thus, $\sE(M)$ is a UI martingale by Corollary \ref{cor:local_martingale_expected_sup_martingale}. %is UI by Proposition \ref{pro:expected_sup_bounded_implies_ui}. Furthermore, by Proposition \ref{pro:martingale_local_martingale_equivalent}, $\sE(M)$ is a martingale.
@@ -2477,7 +2477,7 @@ In order to see where Girsanov's theorem comes from, we consider the following.%
 \begin{example}
 Let $\sigma > 0$ and $b \neq 0$, and let $X_t = \sigma B_t + bt$. Then we claim that the law of $X$ is absolutely continuous with respect to the law of Brownian motion $Y_t = \sigma B_t$ with speed $\sigma$ (but without drift), so long as we restrict ourselves to events of $\sF_t$ for some fixed $t > 0$. Indeed, if $n \geq 1$ and $0 = t_0 < t_1 <\dots t_n = t$ and $x_0 = 0$, $x_1,\dots, x_n \in\R$, then we have:
 \be
-\pro(X_{t_1} = x_1,\dots,X_{t_n} = x_n) = C \exp\bb{- \sum^{n-1}_{i=0} \frac{(x_{i+1} - x_i - b(t_{i+1} - t_i))^2}{2\sigma^2(t_{i+1} - t_i)} }\prod^n_{i=1} dx_i
+\pro(X_{t_1} = x_1,\dots,X_{t_n} = x_n) = C \exp\brb{- \sum^{n-1}_{i=0} \frac{(x_{i+1} - x_i - b(t_{i+1} - t_i))^2}{2\sigma^2(t_{i+1} - t_i)} }\prod^n_{i=1} dx_i
 \ee
 
 where $C$ is a factor depending on $t_1,\dots, t_n$ and $\sigma$, whose value is of no interest to us. It follows that
@@ -2494,7 +2494,7 @@ Z & = & \sum^{n-1}_{i=0} \frac{(x_{i+1} - x_i - b(t_{i+1} - t_i))^2}{2\sigma^2(t
 - which is precisely what defines the SDE's developed in the next chapter\footnote{link needed} - then a similar calculation holds and Girsanov's theorem will hold.)
 Thus if $\Q$ is the law of $X$, and $\pro$ the law of $Y$,
 \be
-\left.\frac{d\Q}{d\pro}\right|_{\sF_t} = \exp\bb{\int^t_0 \frac b{\sigma} dB_s - \int^t_0 \frac{b^2}{2\sigma^2} ds} = \sE(b\sigma^{-2}Y)_t.
+\left.\frac{d\Q}{d\pro}\right|_{\sF_t} = \exp\brb{\int^t_0 \frac b{\sigma} dB_s - \int^t_0 \frac{b^2}{2\sigma^2} ds} = \sE(b\sigma^{-2}Y)_t.
 \ee
 
 So we have written the density of $X$ with respect to $Y$ as an exponential martingale. The point of view of Girsanov's theorem is a slightly different perspective, essentially the other side of the same coin.
@@ -2505,7 +2505,7 @@ We will consider changes of measures given by a suitable exponential martingale,
 \begin{theorem}[Girsanov's theorem]\label{thm:girsanov}
 Let $M \in \sM_{c,loc}(\pro)$ with $M_0 = 0$. Suppose that $Z = \sE(M)$ is a UI martingale. We can define a new probability measure $\Q \ll \pro$ on $(\Omega,\sF)$ by
 \be
-\Q(A) = \E^{\pro}\bb{Z_\infty \ind_A}, \quad A \in \sF.
+\Q(A) = \E^{\pro}\brb{Z_\infty \ind_A}, \quad A \in \sF.
 \ee
 
 Then for every $X \in \sM_{c,loc}(\pro)$, $X - [X,M] \in \sM_{c,loc}(\Q)$. Moreover the quadratic variations of $X$ under $\pro$ and of $X - [X,M]$ under $\Q$ are identical $\pro$ and $\Q$ almost surely.
@@ -2525,7 +2525,7 @@ T_n = \inf\bra{t \geq 0 :\abs{X_t - [X,M]_t}\geq n}.
 First, we can have that $X - [X,M]$ is continuous (by definition of covariation). Second, using the same proof in Proposition \ref{pro:continuous_local_martingale_stopping_time},
 we have $\pro(T_n \ua\infty) = 1$ i.e., $T_n\ua \infty$ a.s.. Then
 \be
-\Q(T_n \ua\infty) = \E^{\pro}\bb{Z_\infty\ind_{T_n \ua\infty}} = \E^{\pro}(Z_\infty) = 1.
+\Q(T_n \ua\infty) = \E^{\pro}\brb{Z_\infty\ind_{T_n \ua\infty}} = \E^{\pro}(Z_\infty) = 1.
 \ee
 
 So to show that $Y := X - [X,M] \in \sM_{c,loc}(\Q)$\footnote{Note that $Y$ is of course a semimartingale as $[X,M]$ is non-decreasing thus a finite variation process}, it suffices to show that
@@ -2545,8 +2545,8 @@ with $S_n\ua \infty$ $\pro$-a.s. and $\Q$-a.s..
 
 By the integration by parts formula (Theorem \ref{thm:integration_by_parts_semimartingale}) and the Kunita-Watanabe identity (Theorem \ref{thm:kunita_watanabe_identity})\footnote{Note that the equalities are in sense of indistinguishablity},
 \beast
-d\bb{Z_t Y_t^{S_n}} & = & Y_t^{S_n} d Z_t + Z_t dY_t^{S_n} + d\bsb{Z_t, Y_t^{S_n}} \\
-& = &  \underbrace{Y_t^{S_n} Z_t dM_t}_{\text{definition of $Z$}} + Z_t\bb{dX_t^{S_n} - d\bsb{X_t^{S_n},M_t}} + Z_t d\bsb{M_t,X_t^{S_n}} \\
+d\brb{Z_t Y_t^{S_n}} & = & Y_t^{S_n} d Z_t + Z_t dY_t^{S_n} + d\bsb{Z_t, Y_t^{S_n}} \\
+& = &  \underbrace{Y_t^{S_n} Z_t dM_t}_{\text{definition of $Z$}} + Z_t\brb{dX_t^{S_n} - d\bsb{X_t^{S_n},M_t}} + Z_t d\bsb{M_t,X_t^{S_n}} \\
 & = & Y_t^{S_n}Z_t dM_t + Z_t dX_t^{S_n}.
 \eeast
 
@@ -2569,10 +2569,10 @@ So since $Y^{S_n}$ is bounded, $\bra{Z_T Y^{S_n}_T :\forall T \text{ is a stoppi
 
 But then for $s \leq t$, if $A \in \sF_s$,
 \beast
-\E^{\Q}\bb{\bb{Y_t^{S_n} - Y_s^{S_n}}\ind_A} & = & \E^{\pro}\bb{Z_\infty\bb{Y_t^{S_n} - Y_s^{S_n}}\ind_A} \\
-& = & \E^{\pro}\bb{\ind_A\bb{\E^{\pro}\bb{Z_\infty Y_t^{S_n} |\sF_t} -  \E^{\pro}(Z_\infty Y_s^{S_n}|\sF_s)}} \quad \text{(tower property)}\\
-& = & \E^{\pro}\bb{\ind_A\bb{Y_t^{S_n} \E^{\pro}\bb{Z_\infty |\sF_t} - Y_s^{S_n} \E^{\pro}(Z_\infty|\sF_s)}} \quad \text{(by definition of stopping time)} \\
-& = & \E\bb{\ind_A\bb{Z_tY_t^{S_n} - Z_sY_s^{S_n}}} = 0\qquad\qquad (Z Y \in \sM_c(\pro)).
+\E^{\Q}\brb{\brb{Y_t^{S_n} - Y_s^{S_n}}\ind_A} & = & \E^{\pro}\brb{Z_\infty\brb{Y_t^{S_n} - Y_s^{S_n}}\ind_A} \\
+& = & \E^{\pro}\brb{\ind_A\brb{\E^{\pro}\brb{Z_\infty Y_t^{S_n} |\sF_t} -  \E^{\pro}(Z_\infty Y_s^{S_n}|\sF_s)}} \quad \text{(tower property)}\\
+& = & \E^{\pro}\brb{\ind_A\brb{Y_t^{S_n} \E^{\pro}\brb{Z_\infty |\sF_t} - Y_s^{S_n} \E^{\pro}(Z_\infty|\sF_s)}} \quad \text{(by definition of stopping time)} \\
+& = & \E\brb{\ind_A\brb{Z_tY_t^{S_n} - Z_sY_s^{S_n}}} = 0\qquad\qquad (Z Y \in \sM_c(\pro)).
 \eeast
 
 Therefore, $Y \in \sM_c(\Q)$ as required by definition of conditional expectation (Theorem \ref{thm:conditional_expectation_existence_uniqueness}).
@@ -2592,7 +2592,7 @@ and hence the quadratic variation $[Y]$ under $\Q$ has the same value as under $
 
 
 \begin{corollary}\label{cor:brownian_motion_change_measure}
-Let $B$ be a standard Brownian motion under $\pro$ and $M \in \sM_{c,loc}$ such that $M_0 = 0$. Suppose $Z = \sE(M)$ is a UI martingale and $\Q(A) = \E^{\pro}\bb{Z_\infty \ind_A}$ for all $A \in \sF$.
+Let $B$ be a standard Brownian motion under $\pro$ and $M \in \sM_{c,loc}$ such that $M_0 = 0$. Suppose $Z = \sE(M)$ is a UI martingale and $\Q(A) = \E^{\pro}\brb{Z_\infty \ind_A}$ for all $A \in \sF$.
 Then $\wt{B} := B - [B,M]$ is a $\Q$-standard Brownian motion.
 \end{corollary}
 
@@ -2608,10 +2608,10 @@ the new measure. So the old process (which was just Brownian motion) becomes und
 
 
 \begin{definition}[Cameron-Martin space\index{Cameron-Martin space}]\label{def:cameron_martin_space}
-Let $(W,\sW,\W)$ be the Wiener space (see Definition \ref{def:wiener_measure})\footnote{Recall that $W = C\bb{[0,\infty),\R}, \sW = \sigma(X_t : t \geq 0)$ where $X_t: W\to\R$ with $X_t(w) = w(t)$.
+Let $(W,\sW,\W)$ be the Wiener space (see Definition \ref{def:wiener_measure})\footnote{Recall that $W = C\brb{[0,\infty),\R}, \sW = \sigma(X_t : t \geq 0)$ where $X_t: W\to\R$ with $X_t(w) = w(t)$.
 The Wiener measure $\W$ is the unique probability measure on $(W,\sW)$ such that $(X_t)_{t\geq0}$ is a Brownian motion started from 0.}). We define the Cameron-Martin space
 \be
-H = \bra{ h \in W : h(t) = \int^t_0 \phi(s) ds \ \text{ for some }\phi^2 \in \sL^2\bb{[0,\infty)}}.
+H = \bra{ h \in W : h(t) = \int^t_0 \phi(s) ds \ \text{ for some }\phi^2 \in \sL^2\brb{[0,\infty)}}.
 \ee
 
 For $h \in H$, write $\dot{h} = \phi$ the derivative of $h$.
@@ -2619,14 +2619,14 @@ For $h \in H$, write $\dot{h} = \phi$ the derivative of $h$.
 
 
 \begin{theorem}[Girsanov, Cameron-Martin theorem\index{Girsanov, Cameron-Martin theorem}]\label{thm:girsanov_cameron_martin}
-Let $(W,\sW,\W)$ be the Wiener space. Fix $h \in H$ and set $\W^h$ to be the law on $(W,\sW)$ of $\bb{B_t + h(t)}_{t \geq 0}$ where $B_t$ is a Brownian motion. that is, for all $A \in \sW$,
+Let $(W,\sW,\W)$ be the Wiener space. Fix $h \in H$ and set $\W^h$ to be the law on $(W,\sW)$ of $\brb{B_t + h(t)}_{t \geq 0}$ where $B_t$ is a Brownian motion. that is, for all $A \in \sW$,
 \be
-\W^h(A) := \W\bb{\bra{w \in W : w + h \in A}}.
+\W^h(A) := \W\brb{\bra{w \in W : w + h \in A}}.
 \ee
 
 Then $\W^h$ is a probability measure on $(W,\sW)$ and $\W^h \ll \W$ with Radon-Nikodym density\index{Radon-Nikodym density}
 \be
-\left.\frac{d\W^h}{d\W}\right|_{\sW} = \exp\bb{\int^\infty_0 \dot{h}(s)dX_s - \frac 12 \int^\infty_0 \dot{h}(s)^2 ds}.
+\left.\frac{d\W^h}{d\W}\right|_{\sW} = \exp\brb{\int^\infty_0 \dot{h}(s)dX_s - \frac 12 \int^\infty_0 \dot{h}(s)^2 ds}.
 \ee
 \end{theorem}
 
@@ -2637,7 +2637,7 @@ motion.
 
 \begin{proof}[\bf Proof]
 Let $X$ be canonical process as $X(w) = w$ for $w\in W$, then it is a standard Brownian motion under $\W$ by Proposition \ref{pro:canoncial_process_brownian_motion_wiener_space}.
-Let $\sW_t = \sigma(X_s: s \leq t)$ and $M_t = \int^t_0 \phi(s)dX_s$. Then $M \in \sM^2_c\bb{W,\sW,(\sW_t)_{t\geq0},\W}$ by Definition \ref{def:ito_stochastic_integral}
+Let $\sW_t = \sigma(X_s: s \leq t)$ and $M_t = \int^t_0 \phi(s)dX_s$. Then $M \in \sM^2_c\brb{W,\sW,(\sW_t)_{t\geq0},\W}$ by Definition \ref{def:ito_stochastic_integral}
 and by Theorem \ref{thm:martingale_l2_iff_quadratic_variation_infinity_non_infinity}, we have
 \be
 [M]_\infty := C < \infty, \quad \text{a.s..}%= \int^\infty_0 \phi^2(s) ds = :C < \infty .
@@ -2645,23 +2645,23 @@ and by Theorem \ref{thm:martingale_l2_iff_quadratic_variation_infinity_non_infin
 
 Also, by Theorem \ref{thm:stochastic_integral_local_martingale_quadratic_variation}, we have
 \be
-[M]_\infty = [\phi \cdot X]_\infty = \bb{\phi^2 \cdot [X]}_\infty = \int^\infty_0 \phi^2(t) dt
+[M]_\infty = [\phi \cdot X]_\infty = \brb{\phi^2 \cdot [X]}_\infty = \int^\infty_0 \phi^2(t) dt
 \ee
 in the sense of indistinguishability. By Proposition \ref{pro:exponential_ui_martingale}, $\sE(M)$ is a UI martingale, so we can define a new probability measure $\Q \ll \W$ on $(W,\sW)$ by
 \be
-\frac{d\Q}{d\W}(w) = \exp\bb{M_\infty(w)- \frac 12 [M]_\infty(w)} =\exp\bb{\int^\infty_0 \phi(s)dX_s(w)- \frac 12\int^\infty_0 \phi^2(s)ds }
+\frac{d\Q}{d\W}(w) = \exp\brb{M_\infty(w)- \frac 12 [M]_\infty(w)} =\exp\brb{\int^\infty_0 \phi(s)dX_s(w)- \frac 12\int^\infty_0 \phi^2(s)ds }
 \ee
 and $\wt{X} = X - [X,M] \in \sM_{c,loc}(\Q)$ by Girsanov's theorem (Theorem \ref{thm:girsanov}). Since $X$ is a $\W$-Brownian motion and $\sE(M)$ is a UI martingale,
 by Corollary \ref{cor:brownian_motion_change_measure}, $\wt{X}$ is a $\Q$-Brownian motion. But by the Kunita-Watanabe identity (Theorem \ref{thm:kunita_watanabe_identity}),
 \be
-[X,M]_t = [X, \phi \cdot X]_t = \bb{\phi \cdot [X,X]}_t = \int^t_0 \phi(s) ds = h(t).
+[X,M]_t = [X, \phi \cdot X]_t = \brb{\phi \cdot [X,X]}_t = \int^t_0 \phi(s) ds = h(t).
 \ee
 
 Hence we get that $\wt{X} (w) = X(w) - h = w - h$. Hence, under $\Q$, $X = \wt{X} + h$, where $\wt{X}$ is a $\Q$-Brownian motion. Therefore, for all $A\in \sW$, %$\W^h = \Q$ since%on $\sF_\infty = \sW$:
 \beast
-\Q(A) & = & \Q\bb{w: w \in A} = \Q\bb{w: X(w) \in A} = \Q\bb{w: \wt{X} (w) + h \in A} \\
-& = & \W\bb{w:X(w) + h \in A} \qquad (\text{since Brownian motions under different measure have the same distribution}) \\
-& = & \W\bb{w:w + h \in A} = \W^h(A) \eeast
+\Q(A) & = & \Q\brb{w: w \in A} = \Q\brb{w: X(w) \in A} = \Q\brb{w: \wt{X} (w) + h \in A} \\
+& = & \W\brb{w:X(w) + h \in A} \qquad (\text{since Brownian motions under different measure have the same distribution}) \\
+& = & \W\brb{w:w + h \in A} = \W^h(A) \eeast
 which implies that $\W^h = \Q$ by uniqueness of existence (Theorem \ref{thm:uniqueness_of_extension_measure}), as required.
 \end{proof}
 
@@ -2670,43 +2670,43 @@ One of the most important applications of Girsanov's theorem is to the study of 
 following corollary.
 
 \begin{corollary}\label{cor:girsanov_drift_brownian_motion}
-Let $\mu \neq 0$ and let $\W^\mu$ be the law of $\bb{X_t + \mu t}_{t \geq 0}$ under $\W$. Then for all $t > 0$, and for any $A \in \sF_t = \sigma(X_t)$,
+Let $\mu \neq 0$ and let $\W^\mu$ be the law of $\brb{X_t + \mu t}_{t \geq 0}$ under $\W$. Then for all $t > 0$, and for any $A \in \sF_t = \sigma(X_t)$,
 \be
-\W^\mu (A) = \E^\W \bb{\ind_A \exp\bb{\mu X_t - \frac 12 \mu^2 t}}.
+\W^\mu (A) = \E^\W \brb{\ind_A \exp\brb{\mu X_t - \frac 12 \mu^2 t}}.
 \ee
 \end{corollary}
 
 \begin{remark}
 This allows us to compute functionals of Brownian motion with drift in terms of Brownian motion without drift - a very powerful technique (see Proposition \ref{pro:density_bm_drift_maximum_minimum}).
 
-By Theorem \ref{thm:density_function_probability}, we have that for any $A\in \sF_t $, let $g(x) = \exp\bb{\mu x - \frac 12 \mu^2 t}$
+By Theorem \ref{thm:density_function_probability}, we have that for any $A\in \sF_t $, let $g(x) = \exp\brb{\mu x - \frac 12 \mu^2 t}$
 \be
-\W\bb{X_t + \mu t \in A} = \W^\mu (A) = \E^\W \bb{\ind_A g(X_t)} = \int_{A} g(x) f_{X_t}(x)dx %\exp\bb{\frac{\mu X_t}{\sigma^2} - \frac {\mu^2 t}{2\sigma^2}} \E\bb{} dw
+\W\brb{X_t + \mu t \in A} = \W^\mu (A) = \E^\W \brb{\ind_A g(X_t)} = \int_{A} g(x) f_{X_t}(x)dx %\exp\brb{\frac{\mu X_t}{\sigma^2} - \frac {\mu^2 t}{2\sigma^2}} \E\brb{} dw
 \ee
 where $f(x) = f_{X_t}(x)$ is transition density of standard Brownian motion. Thus, the transition density of $X_t + \mu t$ is
 \be
-\exp\bb{\mu x - \frac 12 \mu^2 t} f(x).
+\exp\brb{\mu x - \frac 12 \mu^2 t} f(x).
 \ee%You will see some applications of this result in Example Sheet 3.
 
-Set $\sigma >0$. Then the law of $\bb{\sigma X_t + \mu t}_{t \geq 0}$ under $\W$ can be obtained by substituting $X_t$ and $\mu$ with $X_t/\sigma$ and $\mu/\sigma$,
+Set $\sigma >0$. Then the law of $\brb{\sigma X_t + \mu t}_{t \geq 0}$ under $\W$ can be obtained by substituting $X_t$ and $\mu$ with $X_t/\sigma$ and $\mu/\sigma$,
 \be
-\frac 1{\sigma}\exp\bb{\frac{\mu x}{\sigma^2} - \frac {\mu^2 t}{\sigma^2}} f\bb{\frac x{\sigma}}.
+\frac 1{\sigma}\exp\brb{\frac{\mu x}{\sigma^2} - \frac {\mu^2 t}{\sigma^2}} f\brb{\frac x{\sigma}}.
 \ee
 \end{remark}
 
-\begin{proof}[\bf Proof]         %\sigma\bb{X_s:s\leq t}$,
-First, let $\bb{X_t}_{t\geq 0}$ be canonical process as $X(w) = w$ for $w\in W$, then it is a standard Brownian motion under $\W$ by Proposition \ref{pro:canoncial_process_brownian_motion_wiener_space}.
+\begin{proof}[\bf Proof]         %\sigma\brb{X_s:s\leq t}$,
+First, let $\brb{X_t}_{t\geq 0}$ be canonical process as $X(w) = w$ for $w\in W$, then it is a standard Brownian motion under $\W$ by Proposition \ref{pro:canoncial_process_brownian_motion_wiener_space}.
 Set $\sW_t := \sigma(X_s: s \leq t)$ and $h(s) = \mu s\ind_{s\leq t} \in H$.
-Thus, by Theorem \ref{thm:girsanov_cameron_martin} we can define UI martingale $Z$ such that %\footnote{$\bb{X_t}_{t\geq 0}$ is also a martingale by Theorem \ref{thm:optional_stopping_bounded_stopping_time_continuous} as $t$ is a stopping time.}
+Thus, by Theorem \ref{thm:girsanov_cameron_martin} we can define UI martingale $Z$ such that %\footnote{$\brb{X_t}_{t\geq 0}$ is also a martingale by Theorem \ref{thm:optional_stopping_bounded_stopping_time_continuous} as $t$ is a stopping time.}
 \be
-Z_\infty = \exp\bb{\int^{\infty}_0 \dot{h}(s)dX_s - \frac 12 \int^{\infty}_0 \dot{h}(s)^2 ds} = \exp\bb{\mu X_t - \frac 12 \mu^2 t}.
+Z_\infty = \exp\brb{\int^{\infty}_0 \dot{h}(s)dX_s - \frac 12 \int^{\infty}_0 \dot{h}(s)^2 ds} = \exp\brb{\mu X_t - \frac 12 \mu^2 t}.
 \ee
 
-%such that $Z_\infty = \exp\bb{\mu X_{t} - \frac 12 \mu^2 t}$ and
+%such that $Z_\infty = \exp\brb{\mu X_{t} - \frac 12 \mu^2 t}$ and
 
 Thus, for any $A\in \sF_t = \sigma(X_t) \subseteq \sW_t$,
 \be
-\W^\mu \bb{A} = \E^{\W}\bb{Z_\infty \ind_A} = \E^{\W}\bb{\ind_A \exp\bb{\mu X_{t} - \frac 12 \mu^2 t}}
+\W^\mu \brb{A} = \E^{\W}\brb{Z_\infty \ind_A} = \E^{\W}\brb{\ind_A \exp\brb{\mu X_{t} - \frac 12 \mu^2 t}}
 \ee
 as required.
 \end{proof}
@@ -2727,7 +2727,7 @@ see \cite{Karatzas_Shreve_1991,Revuz_Yor_1999}.
 %\begin{theorem}[\levy\ theorem\footnote{check needed.}]
 %Let $B$ be a standard Brownian motion and $S_t = \sup_{0\leq s\leq t}B_s$. Then
 %\be
-%\bb{S_t-B_t,S_t} \sim \bb{\abs{B_t},L(B_t)}
+%\brb{S_t-B_t,S_t} \sim \brb{\abs{B_t},L(B_t)}
 %\ee
 %where $L(\cdot)$ is the local time of the stochastic process.
 %\end{theorem}
@@ -2756,7 +2756,7 @@ Note that the means of $(H^n \cdot B)_T$ are all zeros and the variances are bou
 
 Clearly, $B_t^T \in \sM_c^2$. Then we can find a sequence of Gaussian random variables $(H^n\cdot B^T) := X^n$ such that $X^n$ is a Cauchy sequence in $(\sM^2_c , \dabs{\cdot})$, which is complete (by Theorem \ref{pro:cadlag_triple_norm_complete}.(iii)). Therefore,
 \be
-X^n \to \bb{\int^t_0 sdB_s^T}_{t\geq 0} \quad \text{in }(\sM_c^2,\dabs{\cdot}).
+X^n \to \brb{\int^t_0 sdB_s^T}_{t\geq 0} \quad \text{in }(\sM_c^2,\dabs{\cdot}).
 \ee
 
 Recall Definition
@@ -2766,10 +2766,10 @@ Recall Definition
 Thus, by Proposition \ref{pro:convergence_slp_implies_probability}, we have $X^n_T \stackrel{d}{\to} \int^T_0 t dB_t$. Since the sequence of Gaussian random variables with bounded means (which are zeros) and variances
 converges to $\int^T_0 t dB_t := Y_T$, we can say $\int^T_0 t dB_t$ is also Gaussian by Proposition \ref{pro:gaussian_sequence_converges_to_gaussian}.
 
-Thus, the means in sequence are all zeros, thus $\E\bb{\int^T_0 t dB_t} = 0$. Furthermore, since $B_t^T \in \sM_c^2$, $Y_T = \int^T_0 t dB_t \in \sM_c^2$ by Definition \ref{def:ito_stochastic_integral}.
-Then by Theorem \ref{thm:continuous_m2_martingale_implies_ui} ($(Y^T)^2 - [Y^T]$ is UI martingale) and Theorem \ref{thm:stochastic_integral_local_martingale_quadratic_variation}\footnote{Alternatively, we can use It\^o isometry (Theorem \ref{thm:ito_isometry}) to get $\E\bb{\int^T_0 t dB_t}^2 = \E\bb{\int^T_0 t^2 d[B_t]} = \int^T_0 t^2 dt$ directly.}, we have %by It^o formula (Theorem \ref{thm:ito_formula_sample_continuous_semimartingale}) we have
+Thus, the means in sequence are all zeros, thus $\E\brb{\int^T_0 t dB_t} = 0$. Furthermore, since $B_t^T \in \sM_c^2$, $Y_T = \int^T_0 t dB_t \in \sM_c^2$ by Definition \ref{def:ito_stochastic_integral}.
+Then by Theorem \ref{thm:continuous_m2_martingale_implies_ui} ($(Y^T)^2 - [Y^T]$ is UI martingale) and Theorem \ref{thm:stochastic_integral_local_martingale_quadratic_variation}\footnote{Alternatively, we can use It\^o isometry (Theorem \ref{thm:ito_isometry}) to get $\E\brb{\int^T_0 t dB_t}^2 = \E\brb{\int^T_0 t^2 d[B_t]} = \int^T_0 t^2 dt$ directly.}, we have %by It^o formula (Theorem \ref{thm:ito_formula_sample_continuous_semimartingale}) we have
 \be
-\var(Y_T) = \var\bb{\int^T_0 t dB_t} = \E\bb{\int^T_0 t dB_t}^2 = \bsb{\int^T_0 t dB_t} =  \int^T_0 t^2 d[B_t] = \int^T_0 t^2 dt = \frac {T^3}3.
+\var(Y_T) = \var\brb{\int^T_0 t dB_t} = \E\brb{\int^T_0 t dB_t}^2 = \bsb{\int^T_0 t dB_t} =  \int^T_0 t^2 d[B_t] = \int^T_0 t^2 dt = \frac {T^3}3.
 \ee
 
 By Theorem \ref{thm:integration_by_parts_semimartingale}, we have
@@ -2779,12 +2779,12 @@ Z_T:=\int^T_0 B_t dt = TB_T - \int^T_0 t dB_t = \int^T_0 (T-t) dB_t.
 
 Clearly, $Z_T$ is again a Gaussian with mean zero and $(Z^T)^2-[Z^T]$ is a UI martingale. Similarly,
 \be
-\var(Z_T) = \E\bb{\int^T_0 (T-t) dB_t}^2 = \bsb{\int^T_0 (T-t) dB_t} =  \int^T_0 (T-t)^2 d[B_t] = \int^T_0 (T-t)^2 dt = \frac {T^3}3.
+\var(Z_T) = \E\brb{\int^T_0 (T-t) dB_t}^2 = \bsb{\int^T_0 (T-t) dB_t} =  \int^T_0 (T-t)^2 d[B_t] = \int^T_0 (T-t)^2 dt = \frac {T^3}3.
 \ee
 
 We can see that $TB_T = Y_T + Z_T$. Thus, by Proposition \ref{pro:covariance_property}.(ix), we have%Theorem \ref{thm:multivariate_gaussian_rv_property}.(ii)
 \be
-T^3 = \var\bb{TB_T} = \var(Y_T + Z_T) = \var(Y_T) + \var(Z_T) + 2\cov(Y_T,Z_T) = \frac {2T^3}3 + 2\cov(Y_T,Z_T) \ \ra \ \rho = \frac 12,
+T^3 = \var\brb{TB_T} = \var(Y_T + Z_T) = \var(Y_T) + \var(Z_T) + 2\cov(Y_T,Z_T) = \frac {2T^3}3 + 2\cov(Y_T,Z_T) \ \ra \ \rho = \frac 12,
 \ee
 where $\rho$ is the correlation of $Y_T$ and $Z_T$.
 \end{solution}
