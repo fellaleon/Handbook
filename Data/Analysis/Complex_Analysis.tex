@@ -77,7 +77,7 @@ Naturally, the $x$ and $y$ axis of $\R^2$ are called the real axis and imaginary
 \end{remark}
 
 \begin{definition}[equivalence of complex numbers]
-For two complex numbers $z_1 = x_1+iy_1$ and $z_2 = x_2+ iy_2$, we say $z_1 =z_2$ if 
+For two complex numbers $z_1 = x_1+iy_1$ and $z_2 = x_2+ iy_2$, we say $z_1 =z_2$ if
 \be
 x_1=x_2,\quad y_1 = y_2.
 \ee
@@ -199,7 +199,7 @@ Furthermore, for any $z_1,z_2\in \C$,
 
 In addition, for $z_2\neq 0$,
 \be
-\ol{\bb{\frac {z_1}{z_2}}} = \ol{z_1}/\ol{z_2}.
+\ol{\brb{\frac {z_1}{z_2}}} = \ol{z_1}/\ol{z_2}.
 \ee
 \end{proposition}
 
@@ -216,7 +216,7 @@ Also,
 & = & (x_1-iy_1)(x_2-iy_2) = \ol{z_1}\cdot \ol{z_2},
 \eeast
 \beast
-\ol{\bb{\frac{z_1}{z_2}}} & = & \ol{\bb{\frac{x_1x_2 + y_1y_2 + i(-x_1y_2 + x_2y_1)}{x_2^2 + y_2^2} }} = \frac{x_1x_2 + y_1y_2 - i(-x_1y_2 + x_2y_1)}{x_2^2 + y_2^2}\\
+\ol{\brb{\frac{z_1}{z_2}}} & = & \ol{\brb{\frac{x_1x_2 + y_1y_2 + i(-x_1y_2 + x_2y_1)}{x_2^2 + y_2^2} }} = \frac{x_1x_2 + y_1y_2 - i(-x_1y_2 + x_2y_1)}{x_2^2 + y_2^2}\\
 & = & \frac{x_1x_2 + (-y_1)(-y_2) + i(-x_1(-y_2) + x_2(-y_1))}{x_2^2 + y_2^2} = \frac{x_1-iy_1}{x_2-iy_2} = \ol{z_1} / \ol{z_2}
 \eeast
 as required.
@@ -255,38 +255,38 @@ For $z_1 =x_1+iy_1$ and $z_2 = x_2 + iy_2$,
 \ee
 %\beast
 %\abs{z_1z_2}^2 & = &  \abs{(x_1x_2 - y_1y_2)+ i(x_1y_2 + x_2y_1)}^2 = (x_1x_2 - y_1y_2)^2 + (x_1y_2 + x_2y_1)^2 \\
-%& = & x_1^2 x_2^2 + y_1^2y_2^2 + x_1^2y_2^2 + x_2^2 y_1^2 = \bb{x_1^2 + y_1^2}\bb{x_2^2 + y_2^2} = \abs{z_1}^2\abs{z_2}^2
+%& = & x_1^2 x_2^2 + y_1^2y_2^2 + x_1^2y_2^2 + x_2^2 y_1^2 = \brb{x_1^2 + y_1^2}\brb{x_2^2 + y_2^2} = \abs{z_1}^2\abs{z_2}^2
 %\eeast
 
 For $z_3 \neq 0$,
 \beast
-\abs{\frac{z_1}{z_3}}^2 = \frac{z_1}{z_3}\ol{\bb{\frac{z_1}{z_3}}} = \frac{z_1}{z_3}\frac{\ol{z_1}}{\ol{z_3}} = \frac{z_1\ol{z_1}}{z_3\ol{z_3}} = \frac{\abs{z_1}^2}{\abs{z_3}^2}.
+\abs{\frac{z_1}{z_3}}^2 = \frac{z_1}{z_3}\ol{\brb{\frac{z_1}{z_3}}} = \frac{z_1}{z_3}\frac{\ol{z_1}}{\ol{z_3}} = \frac{z_1\ol{z_1}}{z_3\ol{z_3}} = \frac{\abs{z_1}^2}{\abs{z_3}^2}.
 \eeast
 \end{proof}
 
 \begin{proposition}[parallelogram law]\label{pro:complex_modulus_parallelogram_law}
 For all $z_1,z_2\in \C$,
 \beast
-\abs{z_1+z_2}^2 = \abs{z_1}^2 + 2\Re \bb{z_1\ol{z_2}} + \abs{z_2}^2,\\
-\abs{z_1-z_2}^2 = \abs{z_1}^2 - 2\Re \bb{z_1\ol{z_2}} + \abs{z_2}^2.
+\abs{z_1+z_2}^2 = \abs{z_1}^2 + 2\Re \brb{z_1\ol{z_2}} + \abs{z_2}^2,\\
+\abs{z_1-z_2}^2 = \abs{z_1}^2 - 2\Re \brb{z_1\ol{z_2}} + \abs{z_2}^2.
 \eeast
 
 Thus, we have
 \be
-\abs{z_1+z_2}^2 + \abs{z_1- z_2}^2 = 2\bb{\abs{z_1}^2 + \abs{z_2}^2}.
+\abs{z_1+z_2}^2 + \abs{z_1- z_2}^2 = 2\brb{\abs{z_1}^2 + \abs{z_2}^2}.
 \ee
 \end{proposition}
 
 \begin{proof}[\bf Proof]
 By definition of modulus, we have
 \beast
-\abs{z_1+z_2}^2 & = & \bb{z_1 + z_2} \ol{ \bb{z_1 + z_2}} = \bb{z_1 + z_2} \bb{\ol{ z_1} + \ol{z_2}} = z_1 \ol{z_1} + z_1\ol{z_2} + z_2 \ol{z_1} + z_2\ol{z_2} \\
-& = &  z_1 \ol{z_1} + z_1\ol{z_2} + \ol{z_1 \ol{z_2}} + z_2\ol{z_2} =  \abs{z_1}^2 + 2\Re\bb{z_1\ol{z_2}} + \abs{z_2}^2 
+\abs{z_1+z_2}^2 & = & \brb{z_1 + z_2} \ol{ \brb{z_1 + z_2}} = \brb{z_1 + z_2} \brb{\ol{ z_1} + \ol{z_2}} = z_1 \ol{z_1} + z_1\ol{z_2} + z_2 \ol{z_1} + z_2\ol{z_2} \\
+& = &  z_1 \ol{z_1} + z_1\ol{z_2} + \ol{z_1 \ol{z_2}} + z_2\ol{z_2} =  \abs{z_1}^2 + 2\Re\brb{z_1\ol{z_2}} + \abs{z_2}^2
 \eeast
-and 
+and
 \beast
-\abs{z_1-z_2}^2 & = & \bb{z_1 - z_2} \ol{ \bb{z_1 - z_2}} = \bb{z_1 - z_2} \bb{\ol{ z_1} - \ol{z_2}} = z_1 \ol{z_1} - z_1\ol{z_2} - z_2 \ol{z_1} + z_2\ol{z_2} \\
-& = &  z_1 \ol{z_1} - z_1\ol{z_2} - \ol{z_1 \ol{z_2}} + z_2\ol{z_2} =  \abs{z_1}^2 - 2\Re\bb{z_1\ol{z_2}} + \abs{z_2}^2 
+\abs{z_1-z_2}^2 & = & \brb{z_1 - z_2} \ol{ \brb{z_1 - z_2}} = \brb{z_1 - z_2} \brb{\ol{ z_1} - \ol{z_2}} = z_1 \ol{z_1} - z_1\ol{z_2} - z_2 \ol{z_1} + z_2\ol{z_2} \\
+& = &  z_1 \ol{z_1} - z_1\ol{z_2} - \ol{z_1 \ol{z_2}} + z_2\ol{z_2} =  \abs{z_1}^2 - 2\Re\brb{z_1\ol{z_2}} + \abs{z_2}^2
 \eeast
 
 Then we get the required result by adding the above two.
@@ -318,21 +318,21 @@ where $\abs{\cdot}$ is the modulus of complex numbers.
 \ben
 \item [(i)] {\bf Approach 1.} Let $z_1 = x_1+iy_1$ and $z_2 = x_2 + iy_2$. Since $ab \leq \frac{a^2+b^2}2$ for any $a,b\in \R$, we have
 \beast
-2x_1x_2y_1y_2 \leq x_1^2 y_2^2 + x_2^2 y_1^2 \ \ra\ \bb{x_1x_2 + y_1y_2}^2 \leq \bb{x_1^2+ y_1^2}\bb{x_2^2 + y_2^2} \ \ra\ x_1x_2 + y_1y_2 \leq \sqrt{x_1^2+ y_1^2}\sqrt{x_2^2 + y_2^2}.
+2x_1x_2y_1y_2 \leq x_1^2 y_2^2 + x_2^2 y_1^2 \ \ra\ \brb{x_1x_2 + y_1y_2}^2 \leq \brb{x_1^2+ y_1^2}\brb{x_2^2 + y_2^2} \ \ra\ x_1x_2 + y_1y_2 \leq \sqrt{x_1^2+ y_1^2}\sqrt{x_2^2 + y_2^2}.
 \eeast
 
 Therefore,
 \beast
 \abs{z_1+z_2}^2 & = & (x_1+x_2)^2+ (y_1+y_2)^2 = x_1^2+ x_2^2 + y_1^2+ y_2^2 + 2x_1x_2 + 2y_1y_2 \\
-&\leq & x_1^2+ x_2^2 + y_1^2+ y_2^2 + 2\sqrt{x_1^2+ y_1^2}\sqrt{x_2^2 + y_2^2} = \bb{\sqrt{x_1^2+ y_1^2} + \sqrt{x_2^2 + y_2^2}}^2\\
-& = & \bb{\abs{z_1} + \abs{z_2}}^2
+&\leq & x_1^2+ x_2^2 + y_1^2+ y_2^2 + 2\sqrt{x_1^2+ y_1^2}\sqrt{x_2^2 + y_2^2} = \brb{\sqrt{x_1^2+ y_1^2} + \sqrt{x_2^2 + y_2^2}}^2\\
+& = & \brb{\abs{z_1} + \abs{z_2}}^2
 \eeast
 which implies the required result.
 
 {\bf Approach 2.} Apply basic properties of modulus, we have
 \beast
-\abs{z_1+z_2}^2 & = &  \abs{z_1}^2 + 2\Re\bb{z_1\ol{z_2}} + \abs{z_2}^2 \leq \abs{z_1}^2 + 2\abs{\Re\bb{z_1\ol{z_2}}} + \abs{z_2}^2 \\
-& \leq & \abs{z_1}^2 + 2\abs{z_1\ol{z_2}} + \abs{z_2}^2 = \abs{z_1}^2 + 2\abs{z_1}\abs{z_2} + \abs{z_2}^2 = \bb{\abs{z_1}+\abs{z_2}}^2
+\abs{z_1+z_2}^2 & = &  \abs{z_1}^2 + 2\Re\brb{z_1\ol{z_2}} + \abs{z_2}^2 \leq \abs{z_1}^2 + 2\abs{\Re\brb{z_1\ol{z_2}}} + \abs{z_2}^2 \\
+& \leq & \abs{z_1}^2 + 2\abs{z_1\ol{z_2}} + \abs{z_2}^2 = \abs{z_1}^2 + 2\abs{z_1}\abs{z_2} + \abs{z_2}^2 = \brb{\abs{z_1}+\abs{z_2}}^2
 \eeast
 
 \item [(ii)] By (i), we have
@@ -448,7 +448,7 @@ z_n = \frac 1{n^3} + i
 \ee
 converges to $i$ since
 \be
-\lim_{n\to \infty} \bb{\frac 1{n^3} + i} = \lim_{n\to \infty} \frac 1{n^3} + i \lim_{n\to \infty} 1 = 0 + i\cdot 1 = i.
+\lim_{n\to \infty} \brb{\frac 1{n^3} + i} = \lim_{n\to \infty} \frac 1{n^3} + i \lim_{n\to \infty} 1 = 0 + i\cdot 1 = i.
 \ee
 \end{example}
 
@@ -495,7 +495,7 @@ Hence we have $|z-w|<2\ve$. If $z\neq w$, just take $\ve=\frac{|z-w|}{3}$, then 
 |z_n - c| = |c-c| = 0 < \ve, \ \forall n \geq N(\ve).
 \ee
 
-%\item [(iv)] We know that given $\ve > 0$, $\exists N_1(\ve),N_2(\ve)$ such that $|a_n - a| < \ve\ \forall n \geq N_1(\ve),\ |b_n - b| < \ve\ \forall n \geq N_2(\ve)$. Thus if $n \geq N(\ve) = \max\bra{N_1\bb{\frac{\ve}2}, N_2\bb{\frac{\ve}2}}$, we have
+%\item [(iv)] We know that given $\ve > 0$, $\exists N_1(\ve),N_2(\ve)$ such that $|a_n - a| < \ve\ \forall n \geq N_1(\ve),\ |b_n - b| < \ve\ \forall n \geq N_2(\ve)$. Thus if $n \geq N(\ve) = \max\bra{N_1\brb{\frac{\ve}2}, N_2\brb{\frac{\ve}2}}$, we have
 %\be
 %|(a_n + b_n) - (a - b)| = |(a_n - a) + (b_n - b)| \leq |a_n - a| + |b_n -b| < \frac{\ve}{2} + \frac{\ve}{2}
 %\ee
@@ -516,7 +516,7 @@ We have $|z_n|\leq |z_n-z|+|z|\leq 1+|z|,\forall n\geq N_1(1) \ (\ve=1)$. Thus, 
 |z_nw_n-zw| \leq (1+|z|)\ve + |w|\ve = \ve(|z|+|w|+1), \ \forall n\geq \max\{N_1(1),N_1(\ve), N_2(\ve)\}.
 \ee
 
-\item [(vi)] Again, given $\ve > 0$, $\exists N_1(\ve)$ such that $|z_n - z| < \ve$. Thus if $n \geq N(\ve) = \max\bra{N_1\bb{\frac{|z|}{2}}, N_1\bb{\frac{\ve|z|^2}{2}}}$, then
+\item [(vi)] Again, given $\ve > 0$, $\exists N_1(\ve)$ such that $|z_n - z| < \ve$. Thus if $n \geq N(\ve) = \max\bra{N_1\brb{\frac{|z|}{2}}, N_1\brb{\frac{\ve|z|^2}{2}}}$, then
 \be
 \abs{\frac{1}{z_n} - \frac{1}{z}} = \abs{\frac{z - z_n}{zz_n}} = \frac{|z-z_n|}{|z||z_n|} <\frac{2|z_n - z|}{|z|^2} <\frac{\ve |z|^2}{2} \cdot \frac{2}{|z|^2} = \ve.
 \ee
@@ -557,7 +557,7 @@ Therefore, we can find $n\geq \frac {1-\ve}{\delta\ve}$ such that $\abs{z^n-0}<\
 
 \item [(ii)] If $\abs{z} >1$, we assume $\abs{z} = 1+\delta$ with $\delta >0$. Then
 \be
-\abs{z^n} = \abs{z}^n = \bb{1+\delta}^n > 1+ n\delta.
+\abs{z^n} = \abs{z}^n = \brb{1+\delta}^n > 1+ n\delta.
 \ee
 
 So for any $M>1$ we can find $n \geq \frac{M-1}{\delta}$ such that $\abs{z^n} > M$. This implies that $\lim_{n\to \infty}z^n = \infty$.
@@ -569,7 +569,7 @@ So for any $M>1$ we can find $n \geq \frac{M-1}{\delta}$ such that $\abs{z^n} > 
 
 Then we have for any $n\geq N$,
 \be
-\abs{z^{n+1} - zw} = \abs{z\bb{z^n -w}} = \abs{z}\abs{z^n-w} < \abs{z}\ve = \ve .
+\abs{z^{n+1} - zw} = \abs{z\brb{z^n -w}} = \abs{z}\abs{z^n-w} < \abs{z}\ve = \ve .
 \ee
 
 This means $zw$ is also the limit of $z^n$. Since the limit is unique, we have $w =0$. By Lemma \ref{lem:basic_convergence_complex}, %{lem:sequence_limit_implies_absolute_sequence_absolute_limit_complex}, %But $w\neq zw$ since $z\neq 1$
@@ -712,7 +712,7 @@ The interior of $A$, denoted by $\inter{A}$, consists of all its interior points
 \end{definition}
 
 \begin{definition}[open set]
-A set $A\subseteq X$ where $X\subseteq \C$ is said to be open in $X$ if every point in that set is an interior point of $A$. That is, for any $z\in A$, there exists $r>0$ such that $D_r(z)\subseteq A$. 
+A set $A\subseteq X$ where $X\subseteq \C$ is said to be open in $X$ if every point in that set is an interior point of $A$. That is, for any $z\in A$, there exists $r>0$ such that $D_r(z)\subseteq A$.
 \end{definition}
 
 \begin{remark}
@@ -783,7 +783,7 @@ The boundary of a set $A\subseteq X$ where $X\subseteq \C$ is equal to its closu
 \begin{definition}[diameter]
 Let $A$ be a subset of $\C$. Then its diameter by
 \be
-\diam\bb{A} := \sup_{z,w\in A}\abs{z-w}.
+\diam\brb{A} := \sup_{z,w\in A}\abs{z-w}.
 \ee
 \end{definition}
 
@@ -896,7 +896,7 @@ then $\bra{U_1,U_2,\dots}$ is an open cover of $D$ for which there is no finite 
 %\end{remark}
 
 %\begin{theorem}
-%The complex set $X\subseteq \C$ is compact if and only if every sequence $\bb{z_n}\subseteq X$ has a subsequence that converges to a point in $X$.
+%The complex set $X\subseteq \C$ is compact if and only if every sequence $\brb{z_n}\subseteq X$ has a subsequence that converges to a point in $X$.
 %\end{theorem}
 
 %\begin{proof}[\bf Proof]
@@ -924,27 +924,27 @@ Actually this is the complex version of Heine-Borel theorem.
 \ben
 \item [(i)] $\ra$ (ii). Suppose $X$ is closed and bounded and consider any sequence $(z_n)$ in $X$. Since $X$ is bounded, we have that $(z_n)$ has a convergent subsequence by Bolzano-Weierstrass theorem (Theorem \ref{thm:bolzano_weierstrass_complex}). Since $X$ is closed, we have that the limit of this sequence is in $X$.
 
-\item [(ii)] $\ra$ (iii). Suppose that every sequence in $X$ contains a convergent subsequence with limit in $X$. 
+\item [(ii)] $\ra$ (iii). Suppose that every sequence in $X$ contains a convergent subsequence with limit in $X$.
 
 Consider an open cover $\bra{U_\alpha}_{\alpha\in \sA}$ of $X$ such that $X\subseteq \bigcup_{\alpha\in\sA} U_{\alpha}$. For any $z\in X$, we want to show that there exists $\ve>0$ such that $D_\ve(z) \subseteq U_\alpha$ for some $\alpha\in \sA$.
 
 Suppose not, then for every $\ve>0$, in particular for $\ve = \frac 1n$ with $n\in \Z^+$, there is a point $z_n\in X$ such that for every $\alpha\in \sA$ we have that $D_{\frac 1n}(z_n) \not\subseteq U_\alpha$. Consider the sequence $(z_n)$, by the assumption there is a convergent subsequence $(z_{n_k})$ converging to $z^*$. Since $\bra{U_{\alpha}}_{\alpha\in \sA}$ is a cover we know that there is $\alpha^* \in \sA$ such that $z^* \in U_{\alpha^*}$. Since $U_{\alpha^*}$ is open then there is $\delta >0$ such that $D_{\delta}(z^*) \subseteq U_{\alpha^*}$. But since $(z_{n_k})\to z^*$ there is $N\in \N$ such that $\abs{z^* - z_{n_k}} < \delta/2$ whenever $n_k\geq N$.
-    
+
 Then pick $n_k\geq N$ and $n_k > 2/\delta$. Then for any $w\in D_{\delta/2}(z_{n_k})$ we have
 \be
 \abs{z^* - w} = \abs{z^* - z_{n_k} + z_{n_k} - w} \leq \abs{z^* - z_{n_k}} + \abs{z_{n_k} - w} < \frac {\delta}2 + \frac{\delta}2 = \delta.
 \ee
-    
+
 Therefore,
 \be
 D_{1/n_k}(z_{n_k}) \subseteq D_{\delta/2} (z_{n_k}) \subseteq D_\delta(z^*) \subseteq U_{\alpha^*}
-\ee 
-which contradicts the fact that $D_{1/n}(z_n) \not\subseteq U_{\alpha}$ for every $\alpha\in \sA$. 
-    
+\ee
+which contradicts the fact that $D_{1/n}(z_n) \not\subseteq U_{\alpha}$ for every $\alpha\in \sA$.
+
 Now for any $z\in X$ we can find $\ve= \ve(z)>0$ such that $D_z := D_\ve(z) \subseteq U_{\alpha}$ for some $\alpha\in \sA$. Obviously, $\bra{D_z}_{z\in X}$ is an open cover of $X$. Suppose we know how to extract a finite subcover $\bra{D_{z_1},\dots,D_{z_M}}$ of $X$, then since each $D_{z_i}$ is contained in some $U_{\alpha_i}$ we can conclude that $\bra{U_{\alpha_1},\dots,U_{\alpha_M}}$ is also a finite subcover. So it is enough to show that $\bra{D_{z}}_{z\in X}$ has a finite subcover of $X$.
-    
-For any $z_0\in X$. If $D_{z_0}$ covers $X$ we are done, otherwise there is $z_1\in X\bs D_{z_0}$. If $\bra{D_{z_0},D_{z_1}}$ covers $X$ we are done, otherwise there is $z_2\in X\bs\bb{D_{z_0}\cup D_{z_1}}$. If we continue this process we either obtain a finite subcover or a sequence $(z_i)_{i\in \N}$. Observe that for any $i\in \N$, there exists $\ve = \ve(z_i)>0$ such that $\abs{z_i - z_j}>\ve$ for any $j>i$. So the sequence $(z_i)$ cannot have a convergent subsequence which is a contraction to the assumption. Therefore, the process must end at some point and we should have a finite subcover of $X$.
-    
+
+For any $z_0\in X$. If $D_{z_0}$ covers $X$ we are done, otherwise there is $z_1\in X\bs D_{z_0}$. If $\bra{D_{z_0},D_{z_1}}$ covers $X$ we are done, otherwise there is $z_2\in X\bs\brb{D_{z_0}\cup D_{z_1}}$. If we continue this process we either obtain a finite subcover or a sequence $(z_i)_{i\in \N}$. Observe that for any $i\in \N$, there exists $\ve = \ve(z_i)>0$ such that $\abs{z_i - z_j}>\ve$ for any $j>i$. So the sequence $(z_i)$ cannot have a convergent subsequence which is a contraction to the assumption. Therefore, the process must end at some point and we should have a finite subcover of $X$.
+
 \item [(iii)] $\ra$ (i). Suppose $X$ is compact. Consider the collection
 \be
 \sC = \bra{D_n(0),n\in \N}.
@@ -952,7 +952,7 @@ For any $z_0\in X$. If $D_{z_0}$ covers $X$ we are done, otherwise there is $z_1
 
 Clearly $\sC$ is an open cover of $X$ (in fact of whole $\C$). Therefore, since $X$ is compact, there is a finite subcover
 \be
-\sC_f= \bra{D_{n_1}(0),\dots,D_{n_M}(0)} 
+\sC_f= \bra{D_{n_1}(0),\dots,D_{n_M}(0)}
 \ee
 of $X$. Without loss of generality, we may assume that $n_1<n_2 < \dots < n_M$ then clearly $X \subseteq D_{n_M}(0)$, i.e., $X$ is bounded.
 
@@ -960,7 +960,7 @@ Now we want to prove that $X$ is closed we can prove instead that $\C\bs X$ is o
 \be
 D_w := D_{\frac 12 \abs{w-z}}(w)
 \ee
-and the collection 
+and the collection
 \be
 \sC := \bra{D_w : w\in X}.
 \ee
@@ -975,7 +975,7 @@ Then we observe that since $\frac 12 \abs{z - w_i} \geq \ve$, $z$ is at least fa
 \abs{z-w} = \abs{z-w_i + w_i - w} \geq \abs{z - w_i} - \abs{w -w_i} > \abs{z - w_i} - \frac 12 \abs{z-w_i} = \frac 12 \abs{z-w_i} \geq \ve.
 \ee
 
-Therefore, $D_{\ve}(z) \cap D_{w_i}= \emptyset$ and 
+Therefore, $D_{\ve}(z) \cap D_{w_i}= \emptyset$ and
 \be
 D_{\ve}(z) \subseteq \C\left\bs \bigcup_{i=1}^M D_{w_i}\right. \subseteq \C \bs X
 \ee
@@ -994,7 +994,7 @@ Let $\sC = \bra{U_{\alpha}:\alpha \in \sA}$ be any open cover of $A$. Since $A$ 
 \be
 \bra{U_1,U_2,\dots, U_n, \C\bs A}
 \ee
-with 
+with
 \be
 A \subseteq B\subseteq \bra{\C\bs A} \cup \bigcup^n_{i=1}U_i  \ \ra\ A \subseteq \bigcup^n_{i=1}U_i.
 \ee
@@ -1046,15 +1046,15 @@ The result is straight forward by apply triangle inequality.
 \subsection{Series and partial sum}
 
 \begin{definition}[complex series\index{series!complex}]\label{def:series_complex}
-Complex series is the sum of the terms of an infinite sequence $\bb{a_n}_{n\in \N}$ where $a_n\in \C$. It is denoted by 
+Complex series is the sum of the terms of an infinite sequence $\brb{a_n}_{n\in \N}$ where $a_n\in \C$. It is denoted by
 \be
 \sum^\infty_{n=1}a_n.
-\ee 
+\ee
 \end{definition}
 
 
 \begin{definition}[partial sum of complex series\index{partial sum!complex series}]\label{def:partial_sum_convergence_divergence_complex}
-Let $\bb{a_n}_{n\in\N}\in \C$ be a sequence. We define the partial sum of this sequence by
+Let $\brb{a_n}_{n\in\N}\in \C$ be a sequence. We define the partial sum of this sequence by
 \be
 \sum^N_{n=1}a_n.
 \ee
@@ -1074,7 +1074,7 @@ If $S_N$ does not converge, we say that $\sum^\infty_{n=1}a_n$ diverges\index{di
 
 
 \begin{lemma}[term test\index{term test!complex}]\label{lem:complex_series_sum_convergence_imples_sequence_zero}%{lem:sum_convergence_imples_sequence_zero}
-Let $(a_n) \in \C$. If the series $\sum^\infty_{n=1}a_n$ converges, then 
+Let $(a_n) \in \C$. If the series $\sum^\infty_{n=1}a_n$ converges, then
 \be
 \lim_{n\to\infty}a_n=0.
 \ee
@@ -1100,7 +1100,7 @@ For complex sequence $(a_n)$, if $\sum_{n=1}^{\infty} a_n$ is absolutely converg
 \end{theorem}
 
 \begin{proof}[{\bf Proof}]
-Suppose that $\sum \abs{a_{k}}$, $a_{k}\in \C$ is convergent. Then equivalently, $\sum \bb{\Re(a_{k})^{2}+\Im(a_{k})^{2}}^{1/2}$ is convergent, which implies that $\sum \abs{\Re (a_{k})} $ and $\sum \abs{\Im (a_{k})}$ converge by termwise comparison of non-negative terms. 
+Suppose that $\sum \abs{a_{k}}$, $a_{k}\in \C$ is convergent. Then equivalently, $\sum \brb{\Re(a_{k})^{2}+\Im(a_{k})^{2}}^{1/2}$ is convergent, which implies that $\sum \abs{\Re (a_{k})} $ and $\sum \abs{\Im (a_{k})}$ converge by termwise comparison of non-negative terms.
 
 It suffices to show that the convergence of these series implies the convergence of $\sum \Re(a_{k})$ and $\sum \Im(a_{k})$, for then, the convergence of $\sum a_{k}=\sum \Re(a_{k})+i\sum \Im (a_{k})$ would follow, by the definition of the convergence of complex-valued series. Thus, it suffices to show that we need only prove that convergence of $\sum |a_{k}|$, $a_{k}\in \R$ implies the convergence of $\sum a_{k}$. This is due to Theorem \ref{thm:absolutely_convergence_implies_convergence_real}.
 \end{proof}
@@ -1134,7 +1134,7 @@ since $T_n$ is Cauchy sequence $\lra$ $T_n$ converges. Hence, $S_n$ is Cauchy, w
 \end{proof}
 
 
-%Alternative proof of Theorem \ref{thm:absolutely_convergenct_implies_convergence}]%\footnote{proof needed. There is an alternative `quick' proof of this using Cauchy sequences. 
+%Alternative proof of Theorem \ref{thm:absolutely_convergenct_implies_convergence}]%\footnote{proof needed. There is an alternative `quick' proof of this using Cauchy sequences.
 
 %\begin{proof}[\bf Alternative proof]
 %With $S_n = \sum^n_{i=1}a_i,\ T_n = \sum^n_{i=1}\abs{a_i}$ and $m\geq 0$, we have $\exists N$ such that by Proposition \ref{pro:triangle_inequality_complex}
@@ -1334,29 +1334,29 @@ S_n = \sum^n_{k=1} a_kb_k,\qquad B_n = \sum^n_{k=1} b_k.
 
 Then from summation by parts, we have
 \beast
-S_n & = & \sum^n_{k=1} a_kb_k = a_{n+1}\sum^n_{k=1}b_k + \sum^n_{i=1}b_i\bb{a_i-a_{n+1}} = a_{n+1}B_n + \sum^n_{i=1}b_i\sum^n_{k=i}\bb{a_k-a_{k+1}} \\
-& = & a_{n+1}B_n + \sum^n_{k=1}\bb{a_k-a_{k+1}} \sum^k_{i=1} b_i = a_{n+1}B_n + \sum^n_{k=1}B_k\bb{a_k-a_{k+1}}  .
+S_n & = & \sum^n_{k=1} a_kb_k = a_{n+1}\sum^n_{k=1}b_k + \sum^n_{i=1}b_i\brb{a_i-a_{n+1}} = a_{n+1}B_n + \sum^n_{i=1}b_i\sum^n_{k=i}\brb{a_k-a_{k+1}} \\
+& = & a_{n+1}B_n + \sum^n_{k=1}\brb{a_k-a_{k+1}} \sum^k_{i=1} b_i = a_{n+1}B_n + \sum^n_{k=1}B_k\brb{a_k-a_{k+1}}  .
 \eeast
 
 Since $B_n$ is bounded by $M$ and $a_n\to 0$, the first of these terms approaches to zero, $a_{n+1}B_n \to 0$ as $n\to \infty$.
 
 On the other hand, since the sequence $a_n$ is decreasing, $a_k-a_{k+1}$ is non-negative for all $k$, so
 \be
-\abs{B_k\bb{a_k-a_{k+1}}} \leq M(a_k-a_{k+1}).
+\abs{B_k\brb{a_k-a_{k+1}}} \leq M(a_k-a_{k+1}).
 \ee
 
 But
 \be
-\sum^n_{k=1}M\bb{a_k-a_{k+1}} = M\sum^n_{k=1}\bb{a_k-a_{k+1}}
+\sum^n_{k=1}M\brb{a_k-a_{k+1}} = M\sum^n_{k=1}\brb{a_k-a_{k+1}}
 \ee
-is a telescoping series that equals $M\bb{a_1 - a_{n+1}}$ ana therefore approaches $Ma_1$ as $n\to\infty$. Thus,
+is a telescoping series that equals $M\brb{a_1 - a_{n+1}}$ ana therefore approaches $Ma_1$ as $n\to\infty$. Thus,
 \be
-\sum^\infty M\bb{a_1 - a_{n+1}} \quad \text{converges.}
+\sum^\infty M\brb{a_1 - a_{n+1}} \quad \text{converges.}
 \ee
 
 Thus, by the comparison test (Theorem \ref{thm:comparison_test}),
 \be
-\sum^{\infty}_{k=1}\abs{B_k\bb{a_k-a_{k+1}}} \quad \text{converges} \quad \ra \quad \sum^{\infty}_{k=1}B_k\bb{a_k-a_{k+1}} \quad \text{converges}
+\sum^{\infty}_{k=1}\abs{B_k\brb{a_k-a_{k+1}}} \quad \text{converges} \quad \ra \quad \sum^{\infty}_{k=1}B_k\brb{a_k-a_{k+1}} \quad \text{converges}
 \ee
 by Theorem \ref{thm:absolutely_convergence_implies_convergence_complex}. Thus, $S_n$ converges.
 \end{proof}
@@ -1371,7 +1371,7 @@ b_n = (-1)^n \ \ra\ \abs{\sum^N_{n=1}b_n} \leq 1.
 \begin{example}
 If $a_n = \frac 1n$, $b_n = z^n$ where $z = re^{ix}$ with $x\in \R$, $\abs{z}\leq 1$ and $z\neq 1$, then (i) and (ii) are obvious. In addition,
 \be
-\abs{\sum^N_{n=1} b_n} = \abs{\sum^N_{n=1} \bb{re^{ix}}^n} =  \abs{\frac{1 - \bb{re^{ix}}^{n+1}}{1 - re^{ix}}} \leq \frac{1 +\abs{ \bb{re^{ix}}^{n+1}}}{\abs{1 - re^{ix}}} \leq \frac{2}{\abs{1 - re^{ix}}} := M.
+\abs{\sum^N_{n=1} b_n} = \abs{\sum^N_{n=1} \brb{re^{ix}}^n} =  \abs{\frac{1 - \brb{re^{ix}}^{n+1}}{1 - re^{ix}}} \leq \frac{1 +\abs{ \brb{re^{ix}}^{n+1}}}{\abs{1 - re^{ix}}} \leq \frac{2}{\abs{1 - re^{ix}}} := M.
 \ee
 
 Therefore,
@@ -1416,9 +1416,9 @@ by rearrangement, hence
 C_{n}=\sum _{{k=0}}^{n}a_{{n-k}}(B_{i}-B)+A_{n}B.\qquad (*)
 \ee
 
-Then given any $\ve > 0$. Since 
+Then given any $\ve > 0$. Since
 \be
-\sum _{{k\in {{\mathbb N}}}}|a_{k}|<\infty 
+\sum _{{k\in {{\mathbb N}}}}|a_{k}|<\infty
 \ee
 by absolute convergence, and since $B_n$ converges to $B$ as $n \to \infty$, there exists an integer $N$ such that, for all integers $n \geq N$,
 \be
@@ -1427,7 +1427,7 @@ by absolute convergence, and since $B_n$ converges to $B$ as $n \to \infty$, the
 (this is the only place where the absolute convergence is used). Since the series of the $(a_n)$ converges, the individual an must converge to 0 by the term test. Hence there exists an integer $M$ such that, for all integers $n \geq M$,
 \be
 |a_{n}|\leq {\frac {\varepsilon }{3N(\sup _{{k\in \{0,\dots ,N-1\}}}|B_{k}-B|+1)}}.\qquad (\dag\dag)
-\ee        
+\ee
 
 Also, since $A_n$ converges to $A$ as $n \to \infty$, there exists an integer $L$ such that, for all integers $n \geq L$,
 \be
@@ -1453,7 +1453,7 @@ which are only conditionally convergent (the divergence of the series of the abs
 \be
 c_{n}=\sum _{{k=0}}^{n}{\frac {(-1)^{k}}{{\sqrt {k+1}}}}\cdot {\frac {(-1)^{{n-k}}}{{\sqrt {n-k+1}}}}=(-1)^{n}\sum _{{k=0}}^{n}{\frac {1}{{\sqrt {(k+1)(n-k+1)}}}}
 \ee
-for every integer $n \geq 0$. Since for every $k \in \bra{0, 1, \dots, n}$ we have the inequalities 
+for every integer $n \geq 0$. Since for every $k \in \bra{0, 1, \dots, n}$ we have the inequalities
 \be
 k + 1 \leq n + 1,\qquad n - k + 1 \leq n + 1,
 \ee
@@ -1496,8 +1496,8 @@ Let $z\in \C$. Then $\Re z$, $\Im z$, $\ol{z}$ and $\abs{z}$ are continuous at a
 \begin{proof}[\bf Proof]
 Let any $z_0 \in\C$ and $z_n \to z_0$. Then
 \beast
-\abs{\Re z_n - \Re z_0} & = & \abs{\Re\bb{z_n - z_0}} \leq \abs{z_n - z_0} \to 0,\\
-\abs{\Im z_n - \Im z_0} & = & \abs{\Im\bb{z_n - z_0}} \leq \abs{z_n - z_0} \to 0.
+\abs{\Re z_n - \Re z_0} & = & \abs{\Re\brb{z_n - z_0}} \leq \abs{z_n - z_0} \to 0,\\
+\abs{\Im z_n - \Im z_0} & = & \abs{\Im\brb{z_n - z_0}} \leq \abs{z_n - z_0} \to 0.
 \eeast
 
 Also, $\abs{\ol{z_n} - \ol{z_0}} = \abs{\ol{z_n - z_0}} = \abs{z_n - z_0} \to 0$. Furthermore, by Proposition\footnote{triangle inequality}
@@ -1516,15 +1516,15 @@ A complex function $f= u+ iv$ is continuous at a point $z_0$ if and only if both
 \abs{u(z_n) - u(z_0)} \to 0,\qquad \abs{v(z_n) - v(z_0)} \to 0.
 \ee
 
-Then by triangle inequality, 
+Then by triangle inequality,
 \be
-\abs{f(z_n) - f(z_0)} = \abs{u(z_n) - u(z_0) + i\bb{v(z_n) - v(z_0)}} \leq \abs{u(z_n) - u(z_0)} + \abs{v(z_n) - v(z_0)} \to 0
+\abs{f(z_n) - f(z_0)} = \abs{u(z_n) - u(z_0) + i\brb{v(z_n) - v(z_0)}} \leq \abs{u(z_n) - u(z_0)} + \abs{v(z_n) - v(z_0)} \to 0
 \ee
 which implies that $f$ is continuous at point $z_0$.
 
 ($\ra$). If $f$ is continuous at $z_0$, then we can find $(z_n)$ such that $\abs{z_n - z_0} \to 0$, $\abs{f(z_n) - f(z_0)} \to 0$. Then for real part
 \be
-\abs{u(z_n) - u(z_0)} = \abs{\Re\bb{f(z_n) - f(z)}} \leq \abs{f(z_n) - f(z_0)} \to 0
+\abs{u(z_n) - u(z_0)} = \abs{\Re\brb{f(z_n) - f(z)}} \leq \abs{f(z_n) - f(z_0)} \to 0
 \ee
 which implies that $u$ is continuous at point $z_0$. Similar for $v$.
 \end{proof}
@@ -1665,7 +1665,7 @@ Let $f$ be a complex function that is defined at all points in some open disc of
 exists. Also, the derivative of $f$ at $z_0$ is written $f'(z_0)$ (or $\fd{}{z}f(z_0)$) and is defined by the equation
 \be
 f'(z_0) = \lim_{z\to z_0} \frac{f(z)-f(z_0)}{z-z_0}.
-\ee%provided that the limit exists.  
+\ee%provided that the limit exists.
 
 If we write $\Delta z = z-z_0$, then the definition can be expressed in the form
 \be
@@ -1676,7 +1676,7 @@ Note that the value of the limit must be independent of the manner in which $\De
 \end{definition}
 
 \begin{remark}
-The definition of derivative for complex functions is formally the same as the real functions and is the natural extension from real variables to complex variables (see Definition \ref{def:differentiable_function_real}). 
+The definition of derivative for complex functions is formally the same as the real functions and is the natural extension from real variables to complex variables (see Definition \ref{def:differentiable_function_real}).
 \end{remark}
 
 \begin{example}
@@ -1705,13 +1705,13 @@ However, the function $f(z) = \ol{z} = x - iy$ is nowhere differentiable.
 To show this, we choose two approaches to the point $z_0 = x_0 + iy_0$ and compute limits of the difference quotients. First, we approach $z_0 = x_0 + iy_0$ along a line parallel to the $x$ axis by forcing $z$ to be the form $z = x+iy_0$,
 \beast
 \lim_{z\to z_0} \frac{f(z)-f(z_0)}{z-z_0} & = & \lim_{(x,iy_0)\to (x_0,iy_0)}\frac{f(x+iy_0)-f(x_0+iy_0)}{x+iy_0-(x_0+iy_0)} = \lim_{(x,iy_0)\to (x_0,iy_0)}\frac{x-iy_0-(x_0-iy_0)}{x+iy_0-(x_0+iy_0)} \\
-& = & \lim_{(x,iy_0)\to (x_0,iy_0)}\frac{x-x_0}{x-x_0} = 1. 
+& = & \lim_{(x,iy_0)\to (x_0,iy_0)}\frac{x-x_0}{x-x_0} = 1.
 \eeast
 
 Second, we approach $z_0$ along a line parallel to the $y$ axis by forcing $z$ to be of the form $z = x_0 + iy$,
 \beast
 \lim_{z\to z_0} \frac{f(z)-f(z_0)}{z-z_0} & = & \lim_{(x_0,iy)\to (x_0,iy_0)}\frac{f(x_0+iy)-f(x_0+iy_0)}{x_0+iy-(x_0+iy_0)} = \lim_{(x_0,iy)\to (x_0,iy_0)}\frac{x_0-iy-(x_0-iy_0)}{x_0+iy-(x_0+iy_0)} \\
-& = & \lim_{(x_0,iy)\to (x_0,iy_0)}\frac{-i(y-y_0)}{i(y-y_0)} = -1. 
+& = & \lim_{(x_0,iy)\to (x_0,iy_0)}\frac{-i(y-y_0)}{i(y-y_0)} = -1.
 \eeast
 
 Since the limits along the two approaches are different, there is no computable limit for the right side of the definition of derivative. Therefore, $f(z) = \ol{z}$ is not differentiable at the point $z_0$. Since $z_0$ was arbitrary, $f(z)$ is nowhere differentiable.
@@ -1721,7 +1721,7 @@ Since the limits along the two approaches are different, there is no computable 
 The function $f(z) = \abs{z}^2$ is differentiable at 0 but nowhere else.
 \beast
 \frac{f(z) - f(z_0)}{z - z_0} & = & \frac{\abs{z}^2 - \abs{z_0}^2}{z-z_0} = \frac{z\ol{z} - z_0\ol{z_0}}{z-z_0} = \frac{z\ol{z} - z_0 \ol{z} + z_0\ol{z} - z_0\ol{z_0}}{z-z_0} \\
-& = & \frac{\ol{z}\bb{z-z_0} + z_0\bb{\ol{z} - \ol{z_0}}}{z-z_0} = \ol{z} + z_0 \frac{\ol{z} - \ol{z_0}}{z-z_0}
+& = & \frac{\ol{z}\brb{z-z_0} + z_0\brb{\ol{z} - \ol{z_0}}}{z-z_0} = \ol{z} + z_0 \frac{\ol{z} - \ol{z_0}}{z-z_0}
 \eeast
 
 Obviously, if $z_0 = 0$ we have
@@ -1734,7 +1734,7 @@ Otherwise,
 \lim_{z\to z_0} \frac{f(z) - f(z_0)}{z - z_0} = \lim_{z\to z_0}\ol{z} + z_0 \lim_{z\to z_0}\frac{\ol{z} - \ol{z_0}}{z-z_0} = \left\{\ba{ll}
 \ol{z_0} + z_0 \quad\quad & \text{horizontally}\\
 \ol{z_0} - z_0 \quad\quad & \text{vertically}\\
-\ea\right. 
+\ea\right.
 \ee
 by the same argument as for $z\mapsto \ol{z}$.
 \end{example}
@@ -1746,40 +1746,40 @@ For $f(z) = e^z$ with any $z\in \C$, we have $f'(z) = e^z$.
 \lim_{z\to z_0} \frac{f(z) - f(z_0)}{z - z_0} & = & \lim_{z\to z_0} \frac{e^z - e^{z_0}}{z - z_0} = e^{z_0} \lim_{z\to z_0} \frac{e^{z-z_0}-1}{z-z_0} = e^{z_0} \lim_{z\to 0} \frac{e^{z}-1}{z}
 \eeast
 
-Write $z =x + iy$ and by Proposition \ref{pro:exponential_of_sum_is_product_of_exponential_complex} and Euler's formula (Theorem \ref{thm:euler_formula_exponential}), we have $e^z = e^x \bb{\cos y + i\sin y}$. Then
+Write $z =x + iy$ and by Proposition \ref{pro:exponential_of_sum_is_product_of_exponential_complex} and Euler's formula (Theorem \ref{thm:euler_formula_exponential}), we have $e^z = e^x \brb{\cos y + i\sin y}$. Then
 \beast
-\frac{e^{z}-1}{z} & = & \frac{e^x\cos y - 1 + ie^x \sin y}{x+ iy} = \frac{\bb{e^x\cos y - 1 + ie^x \sin y}\bb{x- iy}}{x^2+ y^2}\\
-& = & \frac{x\bb{e^x\cos y - 1} + y e^x \sin y}{x^2+ y^2} + i\frac{x e^x\sin y - y\bb{e^x\cos y - 1}}{x^2+ y^2}
+\frac{e^{z}-1}{z} & = & \frac{e^x\cos y - 1 + ie^x \sin y}{x+ iy} = \frac{\brb{e^x\cos y - 1 + ie^x \sin y}\brb{x- iy}}{x^2+ y^2}\\
+& = & \frac{x\brb{e^x\cos y - 1} + y e^x \sin y}{x^2+ y^2} + i\frac{x e^x\sin y - y\brb{e^x\cos y - 1}}{x^2+ y^2}
 \eeast
 
 Now let $x,y\to 0$. By the definitions of $e^x$, $\sin y$ and $\cos y$ (Definition \ref{def:exponential_function_natural_complex}, Definition \ref{def:sine_cosine_function}), we have
 \beast
-e^x & = & 1 + x + \frac 12 x^2 + o\bb{x^2} \\
-\sin y & = & y - \frac 16 y^3 + o\bb{y^3} \\
-\cos y & = & 1 - \frac 12 y^2+ o\bb{y^2}
+e^x & = & 1 + x + \frac 12 x^2 + o\brb{x^2} \\
+\sin y & = & y - \frac 16 y^3 + o\brb{y^3} \\
+\cos y & = & 1 - \frac 12 y^2+ o\brb{y^2}
 \eeast
 
 Thus,
 \beast
-\lim_{z\to 0} \frac{e^{z}-1}{z} & = & \lim_{x,y\to 0} \frac{x\bb{\bb{1+x+ \frac 12 x^2 + o\bb{x^2}}\bb{1 - \frac 12 y^2+ o\bb{y^2}}-1 } + y  \bb{1+x+ \frac 12 x^2 + o\bb{x^2}} \bb{y - \frac 16 y^3 + o\bb{y^3}}}{x^2+ y^2} \\
-& & + i\lim_{x,y\to 0} \frac{x \bb{1+x+ \frac 12 x^2 + o\bb{x^2}}\bb{y - \frac 16 y^3 + o\bb{y^3}} - y\bb{\bb{1+x+ \frac 12 x^2 + o\bb{x^2}}\bb{1 - \frac 12 y^2+ o\bb{y^2}}-1}}{x^2+ y^2}.
+\lim_{z\to 0} \frac{e^{z}-1}{z} & = & \lim_{x,y\to 0} \frac{x\brb{\brb{1+x+ \frac 12 x^2 + o\brb{x^2}}\brb{1 - \frac 12 y^2+ o\brb{y^2}}-1 } + y  \brb{1+x+ \frac 12 x^2 + o\brb{x^2}} \brb{y - \frac 16 y^3 + o\brb{y^3}}}{x^2+ y^2} \\
+& & + i\lim_{x,y\to 0} \frac{x \brb{1+x+ \frac 12 x^2 + o\brb{x^2}}\brb{y - \frac 16 y^3 + o\brb{y^3}} - y\brb{\brb{1+x+ \frac 12 x^2 + o\brb{x^2}}\brb{1 - \frac 12 y^2+ o\brb{y^2}}-1}}{x^2+ y^2}.
 \eeast
 
 For the real part,
 \beast
-& & \lim_{x,y\to 0} \frac{x\bb{\bb{1+x+ \frac 12 x^2 + o\bb{x^2}}\bb{1 - \frac 12 y^2+ o\bb{y^2}}-1 } + y  \bb{1+x+ \frac 12 x^2 + o\bb{x^2}} \bb{y - \frac 16 y^3 + o\bb{y^3}}}{x^2+ y^2}  \\
-& = & \lim_{x,y\to 0} \frac{x\bb{\bb{1+x+ \frac 12 x^2}\bb{1 - \frac 12 y^2}-1 } + y  \bb{1+x+ \frac 12 x^2} \bb{y - \frac 16 y^3}}{x^2+ y^2}  \\
-& = & \lim_{x,y\to 0} \frac{x\bb{x+ \frac 12 x^2 - \frac 12 y^2 - \frac 12 xy^2 - \frac 14 x^2y^2 } + y  \bb{y+xy+ \frac 12 yx^2  - \frac 16 y^3 - \frac 16 xy^3 - \frac 1{12}x^2y^3}}{x^2+ y^2}  \\
-& = & \lim_{x,y\to 0} \frac{x\bb{x- \frac 12 y^2 - \frac 12 xy^2 } + y  \bb{y+xy+ \frac 12 yx^2}}{x^2+ y^2} = \lim_{x,y\to 0} \frac{x^2 + y^2 - \frac 12 xy^2  +xy^2 }{x^2+ y^2} = 1.
+& & \lim_{x,y\to 0} \frac{x\brb{\brb{1+x+ \frac 12 x^2 + o\brb{x^2}}\brb{1 - \frac 12 y^2+ o\brb{y^2}}-1 } + y  \brb{1+x+ \frac 12 x^2 + o\brb{x^2}} \brb{y - \frac 16 y^3 + o\brb{y^3}}}{x^2+ y^2}  \\
+& = & \lim_{x,y\to 0} \frac{x\brb{\brb{1+x+ \frac 12 x^2}\brb{1 - \frac 12 y^2}-1 } + y  \brb{1+x+ \frac 12 x^2} \brb{y - \frac 16 y^3}}{x^2+ y^2}  \\
+& = & \lim_{x,y\to 0} \frac{x\brb{x+ \frac 12 x^2 - \frac 12 y^2 - \frac 12 xy^2 - \frac 14 x^2y^2 } + y  \brb{y+xy+ \frac 12 yx^2  - \frac 16 y^3 - \frac 16 xy^3 - \frac 1{12}x^2y^3}}{x^2+ y^2}  \\
+& = & \lim_{x,y\to 0} \frac{x\brb{x- \frac 12 y^2 - \frac 12 xy^2 } + y  \brb{y+xy+ \frac 12 yx^2}}{x^2+ y^2} = \lim_{x,y\to 0} \frac{x^2 + y^2 - \frac 12 xy^2  +xy^2 }{x^2+ y^2} = 1.
 \eeast
 For the imaginary part,
 \beast
-& & \lim_{x,y\to 0} \frac{x \bb{1+x+ \frac 12 x^2 + o\bb{x^2}}\bb{y - \frac 16 y^3 + o\bb{y^3}} - y\bb{\bb{1+x+ \frac 12 x^2 + o\bb{x^2}}\bb{1 - \frac 12 y^2+ o\bb{y^2}}-1}}{x^2+ y^2} \\
-& = & \lim_{x,y\to 0} \frac{x \bb{1+x+ \frac 12 x^2}\bb{y - \frac 16 y^3 } - y\bb{\bb{1+x+ \frac 12 x^2 }\bb{1 - \frac 12 y^2}-1}}{x^2+ y^2} \\
-& = & \lim_{x,y\to 0} \frac{xy + x^2y + \frac 12 x^3y  - y\bb{x+ \frac 12 x^2 }}{x^2+ y^2} = \lim_{x,y\to 0} \frac{xy + x^2y   - xy - \frac 12 x^2y }{x^2+ y^2} = 0.
+& & \lim_{x,y\to 0} \frac{x \brb{1+x+ \frac 12 x^2 + o\brb{x^2}}\brb{y - \frac 16 y^3 + o\brb{y^3}} - y\brb{\brb{1+x+ \frac 12 x^2 + o\brb{x^2}}\brb{1 - \frac 12 y^2+ o\brb{y^2}}-1}}{x^2+ y^2} \\
+& = & \lim_{x,y\to 0} \frac{x \brb{1+x+ \frac 12 x^2}\brb{y - \frac 16 y^3 } - y\brb{\brb{1+x+ \frac 12 x^2 }\brb{1 - \frac 12 y^2}-1}}{x^2+ y^2} \\
+& = & \lim_{x,y\to 0} \frac{xy + x^2y + \frac 12 x^3y  - y\brb{x+ \frac 12 x^2 }}{x^2+ y^2} = \lim_{x,y\to 0} \frac{xy + x^2y   - xy - \frac 12 x^2y }{x^2+ y^2} = 0.
 \eeast
 
-Thus, 
+Thus,
 \be
 \lim_{z\to 0} \frac{e^{z}-1}{z} = 1 \ \ra\ \lim_{z\to z_0} \frac{f(z) - f(z_0)}{z - z_0} = e^{z_0} \lim_{z\to 0} \frac{e^{z}-1}{z} = e^{z_0}.
 \ee
@@ -1794,21 +1794,21 @@ If complex function $f$ is differentiable at $z_0$, then $f$ is continuous at $z
 \end{proposition}
 
 \begin{proof}[\bf Proof]
-Given $\ve > 0$,  there exists $\delta(\ve) > 0$ such that 
+Given $\ve > 0$,  there exists $\delta(\ve) > 0$ such that
 \be
 \abs{\frac{f(z) - f(z_0)}{z-z_0} - f'(z_0)} < \ve
 \ee
-for $|z - x_0| < \delta(\ve)$, so 
+for $|z - x_0| < \delta(\ve)$, so
 \be
 \abs{f(z) - f(z_0) - f'(z_0)(z-z_0)} < \ve\abs{z-z_0}.
 \ee
- 
+
 Thus,
 \be
 \abs{f(z) - f(z_0)} < \ve |z-z_0| + \abs{f'(z_0) (z-z_0)} = \ve |z-z_0| + \abs{f'(z_0)}\abs{z-z_0}.
 \ee
 
-All of the terms in the last expression are small except $\abs{f'(z_0)}$ which is fixed. So if we set 
+All of the terms in the last expression are small except $\abs{f'(z_0)}$ which is fixed. So if we set
 \be
 \delta_1(\ve) = \min\bra{\delta(1), \frac{\ve}{2}, \frac{\ve}{2(\abs{f'(z_0) + 1})}}
 \ee
@@ -1825,10 +1825,10 @@ Let $C$ be a complex constant and $n$ is positive integer. $f(z)$ and $g(z)$ are
 \beast
 & \text{(i)} & \frac{d}{dz}C = 0, \\
 & \text{(ii)} & \fd{}{z} z^n = nz^{n-1},\ n\in \N, \\
-& \text{(iii)} & \frac{d}{dz}\bb{f(z)+g(z)} = f'(z) + g'(z), \\
-& \text{(iv)} & \frac{d}{dz}\bb{f(z)g(z)} = f'(z)g(z) + f(z)g'(z), \\
-& \text{(v)} & \frac{d}{dz}\bb{\frac{f(z)}{g(z)}} = \frac{f'(z)g(z) - f(z)g'(z)}{(g(z))^2}, \quad g(z) \neq 0\\
-& \text{(vi)} & \frac{d}{dz}\bb{f\circ g(z)} =  \frac{d}{dz}\bb{f(g(z))} = f'(g(z))g'(z).\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad
+& \text{(iii)} & \frac{d}{dz}\brb{f(z)+g(z)} = f'(z) + g'(z), \\
+& \text{(iv)} & \frac{d}{dz}\brb{f(z)g(z)} = f'(z)g(z) + f(z)g'(z), \\
+& \text{(v)} & \frac{d}{dz}\brb{\frac{f(z)}{g(z)}} = \frac{f'(z)g(z) - f(z)g'(z)}{(g(z))^2}, \quad g(z) \neq 0\\
+& \text{(vi)} & \frac{d}{dz}\brb{f\circ g(z)} =  \frac{d}{dz}\brb{f(g(z))} = f'(g(z))g'(z).\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad
 \eeast
 \end{proposition}
 
@@ -1836,11 +1836,11 @@ Let $C$ be a complex constant and $n$ is positive integer. $f(z)$ and $g(z)$ are
 We know that from (v) and (vi), for positive integer $n$,
 \beast
 \frac{d}{dz} z^{-n} & = & -n z^{-(n+1)},\\
-\frac{d}{dz}\bb{f(z)}^n & = & n\bb{f(z)}^{n-1} f'(z).
+\frac{d}{dz}\brb{f(z)}^n & = & n\brb{f(z)}^{n-1} f'(z).
 \eeast
 \end{remark}
 
-\begin{proof}[\bf Proof]%Let $z = z_0 + h$. 
+\begin{proof}[\bf Proof]%Let $z = z_0 + h$.
 Since $f$ and $g$ are differentiable, they are continuous.
 \ben
 \item [(i)]
@@ -1856,20 +1856,20 @@ Since $f$ and $g$ are differentiable, they are continuous.
 
 \item [(iii)]
 \beast
-\frac{d}{dz}\bb{f(z)+g(z)}  & = & \lim_{h\to 0}\frac{f(z+h)+g(z+h)-f(z)-g(z)}{h} \\
+\frac{d}{dz}\brb{f(z)+g(z)}  & = & \lim_{h\to 0}\frac{f(z+h)+g(z+h)-f(z)-g(z)}{h} \\
 & = & \lim_{h\to 0}\frac{f(z+h)-f(z)}{h} + \lim_{h\to 0}\frac{g(z+h)-g(z)}{h} =  f'(z)+g'(z).
 \eeast
 
-\item [(iv)] 
+\item [(iv)]
 \beast
-\frac{d}{dz}\bb{f(z)g(z)}  & = &  \lim_{h\to 0}\frac{f(z+h)g(z+h)-f(z)g(z)}{h} \\
+\frac{d}{dz}\brb{f(z)g(z)}  & = &  \lim_{h\to 0}\frac{f(z+h)g(z+h)-f(z)g(z)}{h} \\
 & = & \lim_{h\to 0}\frac{(f(z+h)-f(z))g(z+h)}{h} + \lim_{h\to 0}\frac{f(z)(g(z+h)-g(z))}{h}  = f'(z)g(z)+f(z)g'(z).
 \eeast
 
 
 \item [(v)] First for function $\phi(z) = 1/f(z)$ with $z\neq 0$, we have
 \beast
-\frac{d}{dz}\bb{\frac 1{f(z)}} & = & \lim_{h\to 0}\frac{\phi(z+h)-\phi(z)}{h} = \lim_{h\to 0}\frac{1/f(z+h)-1/f(z)}{h} = \lim_{h\to 0}\frac{f(z)-f(z+h)}{hf(z+h)f(z)} = -\frac{f'(z)}{f^2(z)}
+\frac{d}{dz}\brb{\frac 1{f(z)}} & = & \lim_{h\to 0}\frac{\phi(z+h)-\phi(z)}{h} = \lim_{h\to 0}\frac{1/f(z+h)-1/f(z)}{h} = \lim_{h\to 0}\frac{f(z)-f(z+h)}{hf(z+h)f(z)} = -\frac{f'(z)}{f^2(z)}
 \eeast%\item [(v)] \footnote{need proof}
 since $f$ is continuous at $z$. Then we have the required result by (iv).
 
@@ -1884,7 +1884,7 @@ since $f$ is continuous at $z$, $f(z+h) \rightarrow f(z)$.
 \begin{example}
 If we use Proposition \ref{pro:properties_differentiable_function_complex} and get for $f(z) = z^2 + 2iz + 3$, $f'(z) = 2z + 2i$. Then
 \be
-\frac{d}{dz}\bb{z^2 + 2iz + 3}^4 = 4\bb{z^2 + 2iz + 3}^3 \frac{d}{dz}\bb{z^2 + 2iz + 3} = 8(z^2 + 2iz + 3)^3(z+i).
+\frac{d}{dz}\brb{z^2 + 2iz + 3}^4 = 4\brb{z^2 + 2iz + 3}^3 \frac{d}{dz}\brb{z^2 + 2iz + 3} = 8(z^2 + 2iz + 3)^3(z+i).
 \ee
 \end{example}
 
@@ -1940,7 +1940,7 @@ f(z) = u(x,y) + iv(x,y),\qquad z = x+ iy.
 The necessary conditions are given by the Cauchy-Riemann equations. The sufficient conditions require, additionally, the continuity of all first-order partial derivatives of $u$ and $v$.
 
 \begin{theorem}[necessary conditions for differentiability of complex function]\label{thm:cauchy_riemann_equation}
-Suppose $f(z) = u(x,y) + iv(x,y)$ is differentiable at a point $z_0 = x_0 + iy_0$. Then at that point, all partial derivatives of $u(x,y)$ and $v(x,y)$ exist and 
+Suppose $f(z) = u(x,y) + iv(x,y)$ is differentiable at a point $z_0 = x_0 + iy_0$. Then at that point, all partial derivatives of $u(x,y)$ and $v(x,y)$ exist and
 \be
 f'(z_0) = u_x(x_0,y_0) + iv_x(x_0,y_0) = v_y(x_0,y_0) - iu_y(x_0,y_0).
 \ee
@@ -1994,7 +1994,7 @@ To give more specific result, we give the following two differential operators
 \begin{definition}
 For $z = x+ iy\in \C$,
 \be
-\fp{}{z} = \frac 12 \bb{\fp{}{x} + \frac 1i \fp{}{y}},\qquad \fp{}{\ol{z}} = \frac 12 \bb{\fp{}{x} - \frac 1i\fp{}{y}}.
+\fp{}{z} = \frac 12 \brb{\fp{}{x} + \frac 1i \fp{}{y}},\qquad \fp{}{\ol{z}} = \frac 12 \brb{\fp{}{x} - \frac 1i\fp{}{y}}.
 \ee
 \end{definition}
 
@@ -2004,7 +2004,7 @@ Let $f(z)= u + iv$ be differentiable at $z_0 = x_0+iy_0$ with real valued $u,v$,
 \fp{f}{\ol{z}} = 0,\qquad f'(z_0) = \fp{f}{z}(z_0) = 2\fp{u}{z}(z_0).
 \ee
 
-Also, if we write $F(x,y) = \bb{\Re(f(z)),\Im(f(z))}^T$, then $F:\R^2\to \R^2$ is differentiable in the sense of real variables and
+Also, if we write $F(x,y) = \brb{\Re(f(z)),\Im(f(z))}^T$, then $F:\R^2\to \R^2$ is differentiable in the sense of real variables and
 \be
 \det J_F(x_0,y_0) = \abs{f'(z_0)}^2.
 \ee
@@ -2012,24 +2012,24 @@ Also, if we write $F(x,y) = \bb{\Re(f(z)),\Im(f(z))}^T$, then $F:\R^2\to \R^2$ i
 
 \begin{proof}[\bf Proof]
 \be
-\fp{f}{\ol{z}}(z_0) = \frac 12\bb{\fp{f}{x}(z_0) + i\fp{f}{y}(z_0)} = \frac 12\bb{\fp{u}{x}(z_0) + i \fp{v}{x}(z_0) + i\fp{u}{y}(z_0)- \fp{v}{y}(z_0)} =0
+\fp{f}{\ol{z}}(z_0) = \frac 12\brb{\fp{f}{x}(z_0) + i\fp{f}{y}(z_0)} = \frac 12\brb{\fp{u}{x}(z_0) + i \fp{v}{x}(z_0) + i\fp{u}{y}(z_0)- \fp{v}{y}(z_0)} =0
 \ee
 by Cauchy-Riemann equations (Theorem \ref{thm:cauchy_riemann_equation}). Similarly, by Cauchy-Riemann equations again,
 \beast
-\fp{f}{z}(z_0) & = & \frac 12\bb{\fp{f}{x}(z_0) - i\fp{f}{y}(z_0)} = \frac 12\bb{\fp{u}{x}(z_0) + i \fp{v}{x}(z_0) - i\fp{u}{y}(z_0) + \fp{v}{y}(z_0)} \\
+\fp{f}{z}(z_0) & = & \frac 12\brb{\fp{f}{x}(z_0) - i\fp{f}{y}(z_0)} = \frac 12\brb{\fp{u}{x}(z_0) + i \fp{v}{x}(z_0) - i\fp{u}{y}(z_0) + \fp{v}{y}(z_0)} \\
 & = & \fp{u}{x}(z_0) + i \fp{v}{x}(z_0) = f'(z_0)
 \eeast
 \beast
-\fp{u}{z}(z_0) & = & \frac 12\bb{\fp{u}{x}(z_0) - i\fp{u}{y}(z_0)} = \frac 12\bb{\fp{u}{x}(z_0) + i\fp{v}{x}(z_0)} = \frac 12 f'(z_0)
+\fp{u}{z}(z_0) & = & \frac 12\brb{\fp{u}{x}(z_0) - i\fp{u}{y}(z_0)} = \frac 12\brb{\fp{u}{x}(z_0) + i\fp{v}{x}(z_0)} = \frac 12 f'(z_0)
 \eeast
 as required.
 
-Since $F(x,y) = \bb{\Re(f(z)),\Im(f(z))}^T = \bb{u(x,y),v(x,y)}^T$ we have $f(z) = (1,i)\cdot F(x,y)$. Now let $h = (h_1,h_2)$ and $\delta = h_1+ih_2$, we have
+Since $F(x,y) = \brb{\Re(f(z)),\Im(f(z))}^T = \brb{u(x,y),v(x,y)}^T$ we have $f(z) = (1,i)\cdot F(x,y)$. Now let $h = (h_1,h_2)$ and $\delta = h_1+ih_2$, we have
 \beast
 J(x_0,y_0)\cdot h & = & \bepm \fp{u}{x}(x_0,y_0)\cdot h_1 + \fp{u}{y}(x_0,y_0)\cdot h_2  \\ \fp{v}{x}(x_0,y_0)\cdot h_1 + \fp{v}{y}(x_0,y_0)\cdot h_2\eepm = \bepm \fp{u}{x}(x_0,y_0)\cdot h_1 - \fp{v}{x}(x_0,y_0)\cdot h_2  \\ \fp{v}{x}(x_0,y_0)\cdot h_1 + \fp{u}{x}(x_0,y_0)\cdot h_2\eepm \\
-& = & \bepm \Re\bb{\bb{\fp{u}{x}(x_0,y_0) + i\fp{v}{x}(x_0,y_0)}\cdot (h_1+ih_2)} \\
-\Im\bb{\bb{\fp{u}{x}(x_0,y_0) + i\fp{v}{x}(x_0,y_0)}\cdot (h_1+ih_2)}\eepm = \bepm \Re\bb{f'(z_0)\cdot \delta } \\
-\Im\bb{f'(z_0)\cdot \delta } \eepm
+& = & \bepm \Re\brb{\brb{\fp{u}{x}(x_0,y_0) + i\fp{v}{x}(x_0,y_0)}\cdot (h_1+ih_2)} \\
+\Im\brb{\brb{\fp{u}{x}(x_0,y_0) + i\fp{v}{x}(x_0,y_0)}\cdot (h_1+ih_2)}\eepm = \bepm \Re\brb{f'(z_0)\cdot \delta } \\
+\Im\brb{f'(z_0)\cdot \delta } \eepm
 \eeast
 
 %\beast
@@ -2052,7 +2052,7 @@ This implies that
 since $f$ is differentiable at $z_0$. Thus, $F$ is differentiable at $(x_0,y_0)$. By Cauchy-Riemann equations again,
 \beast
 \det J_F(x_0,y_0) & = & \det\bepm \fp{u}{x}(x_0,y_0) & & \fp{u}{y}(x_0,y_0) \\ \fp{v}{x}(x_0,y_0) & & \fp{v}{y}(x_0,y_0) \eepm = \fp{u}{x}(x_0,y_0) \fp{v}{y}(x_0,y_0) - \fp{u}{y}(x_0,y_0)\fp{v}{x}(x_0,y_0) \\
-& = & \bb{\fp{u}{x}(x_0,y_0)}^2 + \bb{\fp{u}{y}(x_0,y_0)}^2 = \abs{2\fp{u}{z}(z_0)}^2 = \abs{f'(z_0)}^2
+& = & \brb{\fp{u}{x}(x_0,y_0)}^2 + \brb{\fp{u}{y}(x_0,y_0)}^2 = \abs{2\fp{u}{z}(z_0)}^2 = \abs{f'(z_0)}^2
 \eeast
 as required.
 \end{proof}
@@ -2075,8 +2075,8 @@ f'(z_0) = u_x(x_0,y_0) + iv_x(x_0,y_0) = v_y(x_0,y_0) - iu_y(x_0,y_0).
 \begin{proof}[\bf Proof]
 ($\ra$). Assume $f$ is differentiable at $z_0$. it suffices to show that $u,v$ are differentiable at $(x_0,y_0)$ as the Cauchy-Riemann equations hold by Theorem \ref{thm:cauchy_riemann_equation}. By the Cauchy-Riemann equations, we have $f'(z_0) = u_x(x_0,y_0) - iu_y(x_0,y_0) = v_y(x_0,y_0) +  iv_x(x_0,y_0)$, thus
 \beast
-f'(z_0)(z-z_0) & = & \ul{u_x(x_0,y_0)(x-x_0) + u_y(x_0,y_0)(y-y_0)} + i \bb{u_x(x_0,y_0)(y-y_0) - u_y(x_0,y_0)(x-x_0)} \\
-& = & v_y(x_0,y_0)(x-x_0) - v_x(x_0,y_0)(y-y_0) + i\ul{\bb{v_y(x_0,y_0)(y-y_0) + v_x(x_0,y_0)(x-x_0)}}.
+f'(z_0)(z-z_0) & = & \ul{u_x(x_0,y_0)(x-x_0) + u_y(x_0,y_0)(y-y_0)} + i \brb{u_x(x_0,y_0)(y-y_0) - u_y(x_0,y_0)(x-x_0)} \\
+& = & v_y(x_0,y_0)(x-x_0) - v_x(x_0,y_0)(y-y_0) + i\ul{\brb{v_y(x_0,y_0)(y-y_0) + v_x(x_0,y_0)(x-x_0)}}.
 \eeast
 
 By the differentiability of $f(z)$, we have that%
@@ -2086,7 +2086,7 @@ By the differentiability of $f(z)$, we have that%
 by Lemma \ref{lem:basic_convergence_complex}. Also,
 \beast
 \abs{\frac{u(x,y) - u(x_0,y_0) - \fp{u}{x}(x_0,y_0)(x-x_0)-\fp{u}{y}(x_0,y_0)(y-y_0)}{\sqrt{(x-x_0)^2 + (y- y_0)^2}}} & \leq & \abs{\frac{f(z) - f(z_0) - f'(z_0)(z-z_0)}{\abs{z-z_0}}} \\
-\abs{\frac{v(x,y) - v(x_0,y_0) - \fp{v}{x}(x_0,y_0)(x-x_0)-\fp{v}{y}(x_0,y_0)(y-y_0)}{\sqrt{(x-x_0)^2 + (y- y_0)^2}}} & \leq & \abs{\frac{f(z) - f(z_0) - f'(z_0)(z-z_0)}{\abs{z-z_0}}} 
+\abs{\frac{v(x,y) - v(x_0,y_0) - \fp{v}{x}(x_0,y_0)(x-x_0)-\fp{v}{y}(x_0,y_0)(y-y_0)}{\sqrt{(x-x_0)^2 + (y- y_0)^2}}} & \leq & \abs{\frac{f(z) - f(z_0) - f'(z_0)(z-z_0)}{\abs{z-z_0}}}
 \eeast
 implies that the convergence of real and imaginary parts with
 \beast
@@ -2099,13 +2099,13 @@ Hence, $u(x,y)$ and $v(x,y)$ are differentiable by Definition \ref{def:different
 
 ($\la$). Now assume $u$ and $v$ are differentiable at $(x_0,y_0)$ (so their partial derviatives exist) and the Cauchy-Riemann equations hold. Combining the Cauchy-Riemann equations at the same point, we have that for sufficiently close point $(x,y)$ to $(x_0,y_0)$ all partial derivatives of $u$ and $v$ exist and
 \beast%& = & u(x,y) - u(x_0,y) + u(x_0,y) - u(x_0,y_0) \\
-u(x,y) - u(x_0,y_0) & = & u_x(x_0,y_0)(x-x_0) + u_y(x_0,y_0)(y-y_0) + o\bb{\abs{\Delta z}}, \\
-& = & u_x(x_0,y_0)(x-x_0) - v_x(x_0,y_0)(y-y_0) +  o\bb{\abs{\Delta z}}.\qquad (*)
+u(x,y) - u(x_0,y_0) & = & u_x(x_0,y_0)(x-x_0) + u_y(x_0,y_0)(y-y_0) + o\brb{\abs{\Delta z}}, \\
+& = & u_x(x_0,y_0)(x-x_0) - v_x(x_0,y_0)(y-y_0) +  o\brb{\abs{\Delta z}}.\qquad (*)
 \eeast
 and
 \beast
-v(x,y) - v(x_0,y_0) & = & v_x(x_0,y_0)(x-x_0) + v_y(x_0,y_0)(y-y_0) +o\bb{\abs{\Delta z}}, \\
-& = & v_x(x_0,y_0)(x-x_0) + u_x(x_0,y_0)(y-y_0) + o\bb{\abs{\Delta z}}. \qquad (\dag)
+v(x,y) - v(x_0,y_0) & = & v_x(x_0,y_0)(x-x_0) + v_y(x_0,y_0)(y-y_0) +o\brb{\abs{\Delta z}}, \\
+& = & v_x(x_0,y_0)(x-x_0) + u_x(x_0,y_0)(y-y_0) + o\brb{\abs{\Delta z}}. \qquad (\dag)
 \eeast
 where
 \be
@@ -2114,18 +2114,18 @@ where
 
 Then $(*)+ i\cdot (\dag)$ gives that
 \beast
-f(z) -f(z_0) & = & \bb{u_x(x_0,y_0) + i v_x(x_0,y_0)}(x-x_0) + i\bb{u_x(x_0,y_0) + iv_x(x_0,y_0)}(y-y_0) + (1+i)o\bb{\abs{\Delta z}}  \\
-& = & \bb{u_x(x_0,y_0) + i v_x(x_0,y_0)}(z-z_0) + (1+i) o\bb{\abs{\Delta z}}
+f(z) -f(z_0) & = & \brb{u_x(x_0,y_0) + i v_x(x_0,y_0)}(x-x_0) + i\brb{u_x(x_0,y_0) + iv_x(x_0,y_0)}(y-y_0) + (1+i)o\brb{\abs{\Delta z}}  \\
+& = & \brb{u_x(x_0,y_0) + i v_x(x_0,y_0)}(z-z_0) + (1+i) o\brb{\abs{\Delta z}}
 \eeast
 
 Thus,
 \be
-\frac{f(z) -f(z_0)}{z-z_0} = u_x(x_0,y_0) + i v_x(x_0,y_0) + (1+i) \frac{o\bb{\abs{\Delta z}}} {z-z_0}
+\frac{f(z) -f(z_0)}{z-z_0} = u_x(x_0,y_0) + i v_x(x_0,y_0) + (1+i) \frac{o\brb{\abs{\Delta z}}} {z-z_0}
 \ee
 
 Obviously,
 \be
-\lim_{z\to z_0}\abs{\frac{o\bb{\abs{\Delta z}}}{z-z_0}} = \lim_{z\to z_0}\frac{o\bb{\abs{\Delta z}}}{\abs{z-z_0}} = \lim_{\Delta z\to 0}\frac{o\bb{\abs{\Delta z}}}{\abs{\Delta z}} = 0
+\lim_{z\to z_0}\abs{\frac{o\brb{\abs{\Delta z}}}{z-z_0}} = \lim_{z\to z_0}\frac{o\brb{\abs{\Delta z}}}{\abs{z-z_0}} = \lim_{\Delta z\to 0}\frac{o\brb{\abs{\Delta z}}}{\abs{\Delta z}} = 0
 \ee
 
 Therefore, $f$ is differentiable at $z_0$ and
@@ -2156,7 +2156,7 @@ f'(z_0) = u_x(x_0,y_0) + iv_x(x_0,y_0) = v_y(x_0,y_0) - iu_y(x_0,y_0).
 \begin{remark}
 Condition (i) and (ii) implies the differentiability of real functions $u(x,y)$ and $v(x,y)$. %In particular, a function of real variables $f:\R^2\to\R$ is said to be differentiable at $(x_0,y_0)$ if
 %\be
-%\lim_{x\to x_0,y\to y_0} \frac{\abs{f(x,y)-f(x_0,y_0) - \bb{\fp{f}{x}(x_0,y_0)(x-x_0) +\fp{f}{y}(x_0,y_0)(y-y_0)}}}{\sqrt{(x-x_0)^2 + (y-y_0)^2}} = 0.
+%\lim_{x\to x_0,y\to y_0} \frac{\abs{f(x,y)-f(x_0,y_0) - \brb{\fp{f}{x}(x_0,y_0)(x-x_0) +\fp{f}{y}(x_0,y_0)(y-y_0)}}}{\sqrt{(x-x_0)^2 + (y-y_0)^2}} = 0.
 %\ee
 \end{remark}
 
@@ -2227,7 +2227,7 @@ has different limits. If we approach 0 along $z = x$,
 
 If we approach 0 along $z= x + ix$,
 \be
-\lim_{z\to 0} \frac{\ol{z}^2/z}{z} =  \lim_{x\to 0} \frac{(1-i)^2x^2}{(1+i)^2x^2} = \bb{\frac{1-i}{1+i}}^2 = -1.
+\lim_{z\to 0} \frac{\ol{z}^2/z}{z} =  \lim_{x\to 0} \frac{(1-i)^2x^2}{(1+i)^2x^2} = \brb{\frac{1-i}{1+i}}^2 = -1.
 \ee
 \een
 \end{example}
@@ -2235,7 +2235,7 @@ If we approach 0 along $z= x + ix$,
 \begin{example}
 Consider function $f(z) = z^3$ with $z =x+iy$, we have
 \be
-f(z) = (x+iy)^3 = x^3 - 3xy^2 + i\bb{3x^2y - y^3} \ \ra\ u(x,y) = x^3 - 3xy^2,\ v(x,y) = 3x^2y - y^3.
+f(z) = (x+iy)^3 = x^3 - 3xy^2 + i\brb{3x^2y - y^3} \ \ra\ u(x,y) = x^3 - 3xy^2,\ v(x,y) = 3x^2y - y^3.
 \ee
 
 Then we have
@@ -2244,7 +2244,7 @@ u_x(x,y) = 3x^2 - 3y^2 = v_y(x,y),\quad u_y(x,y) = -6xy = - v_x(x,y)
 \ee
 where all the first-order partial derivatives are continuous, we have by Corollary \ref{cor:sufficient_conditions_differentiable_complex},
 \be
-f'(z) = u_x(x,y) + iv_x(x,y) = 3x^2 - 3y^2 + 6i xy = 3\bb{x^2 - y^2 + 2i xy} = 3\bb{x+iy}^2 = 3z^2.
+f'(z) = u_x(x,y) + iv_x(x,y) = 3x^2 - 3y^2 + 6i xy = 3\brb{x^2 - y^2 + 2i xy} = 3\brb{x+iy}^2 = 3z^2.
 \ee
 \end{example}
 
@@ -2290,7 +2290,7 @@ Points of non-holomorphism are called singular points which are important for ce
 \begin{example}
 The function $f(z) = x^2 + y^2 + 2ixy$ is nowhere holomorphic (or analytic) for $z = x+ iy$.
 
-We identify the functions $u(x,y) = x^2 + y^2$ and $v(x,y) = 2xy$. The equation $u_x = v_y$ becomes $2x = 2x$, which holds everywhere. But the equation $u_y = -v_x$, becomes $2y = -2y$, which holds only when $y=0$. Thus $f(x)$ is differentiable only at points that lie on the $x$ axis (by Corollary \ref{cor:sufficient_conditions_differentiable_complex} as all the partial derivatives are continuous). However, for any point $z_0 = x_0 + 0i = x_0$ on the $x$ axis and any $\delta$-open disc of $z_0$, the point $z = x_0 + i\delta/2$ is a point where $f$ is not differentiable. 
+We identify the functions $u(x,y) = x^2 + y^2$ and $v(x,y) = 2xy$. The equation $u_x = v_y$ becomes $2x = 2x$, which holds everywhere. But the equation $u_y = -v_x$, becomes $2y = -2y$, which holds only when $y=0$. Thus $f(x)$ is differentiable only at points that lie on the $x$ axis (by Corollary \ref{cor:sufficient_conditions_differentiable_complex} as all the partial derivatives are continuous). However, for any point $z_0 = x_0 + 0i = x_0$ on the $x$ axis and any $\delta$-open disc of $z_0$, the point $z = x_0 + i\delta/2$ is a point where $f$ is not differentiable.
 
 Therefore $f$ is not differentiable in any open disc of $z_0$, and consequently it is not analytic at $z_0$.
 \end{example}
@@ -2307,7 +2307,7 @@ If $f$ is holomorphic on the whole complex plane, then $f$ is said to be entire.
 %\end{proposition}
 
 %\begin{proof}[\bf Proof]
-%Since $f$ is holomorphic on a set $A$, it is differenitable at any point $z = x+iy\in A$. Assume that $f(z) = u(x,y) + iv(x,y)$. Thus, by Theorem \ref{thm:cauchy_riemann_equation}, we have 
+%Since $f$ is holomorphic on a set $A$, it is differenitable at any point $z = x+iy\in A$. Assume that $f(z) = u(x,y) + iv(x,y)$. Thus, by Theorem \ref{thm:cauchy_riemann_equation}, we have
 %\be
 %0 = f'(z)= u_x(x,y) + iv_x(x,y) = v_y(x,y) - iu_y(x,y) \ \ra\ u_x(x,y) = v_x(x,y) = u_y(x,y) = v_y(x,y) = 0.
 %\ee
@@ -2366,9 +2366,9 @@ If $f$ is analytic function on $X$, $f'$ is continuous on $X$. Thus, $g'$ is con
 \end{proof}
 
 \begin{example}
-Let $f(z) = \exp(z)$ for $z\in \C$ and $g(z) = \Log(z)$ for $z\in \C\bs\bra{0}$ (principal value of logarithm function) with $\exp(z)$ continuous on $\C$ and $\Log(z)$ continuous on $\Arg z \in (-\pi,\pi)$. Also, $\Log(z) \subseteq \C$ and $\exp\bb{\Log(z)} = z$ (Proposition \ref{pro:exp_logarithm_composition}) for any $z\in \C\bs\bra{0}$. Furthermore, $\exp(z) \neq 0$ and $\exp(z)$ is differential on $\C$. Thus,
+Let $f(z) = \exp(z)$ for $z\in \C$ and $g(z) = \Log(z)$ for $z\in \C\bs\bra{0}$ (principal value of logarithm function) with $\exp(z)$ continuous on $\C$ and $\Log(z)$ continuous on $\Arg z \in (-\pi,\pi)$. Also, $\Log(z) \subseteq \C$ and $\exp\brb{\Log(z)} = z$ (Proposition \ref{pro:exp_logarithm_composition}) for any $z\in \C\bs\bra{0}$. Furthermore, $\exp(z) \neq 0$ and $\exp(z)$ is differential on $\C$. Thus,
 \be
-\bb{\Log(z)}' = \frac{1}{\exp'(\Log(z))} =  \frac{1}{\exp(\Log(z))} = \frac 1z.
+\brb{\Log(z)}' = \frac{1}{\exp'(\Log(z))} =  \frac{1}{\exp(\Log(z))} = \frac 1z.
 \ee
 \end{example}
 
@@ -2383,9 +2383,9 @@ Let $f(z) = \exp(z)$ for $z\in \C$ and $g(z) = \Log(z)$ for $z\in \C\bs\bra{0}$ 
 \begin{definition}[power series]
 A power series (of one complex variable $z$) centered at $z_0\in \C$ is an infinite series of the form
 \be
-\sum^\infty_{n=0} a_n(z-z_0)^n = a_0 + a_1(z-z_0) + a_2 \bb{z-z_0}^2 + \dots
+\sum^\infty_{n=0} a_n(z-z_0)^n = a_0 + a_1(z-z_0) + a_2 \brb{z-z_0}^2 + \dots
 \ee
-where $a_n\in \C$ represents the coefficient of the $n$th term and $z_0$ is a constant. $a_n$ is independent of $z$ and may be expressed as a function of $n$ (e.g. $a_n = \frac 1{n!}$). If $z_0 = 0$, we call 
+where $a_n\in \C$ represents the coefficient of the $n$th term and $z_0$ is a constant. $a_n$ is independent of $z$ and may be expressed as a function of $n$ (e.g. $a_n = \frac 1{n!}$). If $z_0 = 0$, we call
 \be
 \sum^\infty_{n=0} a_n z^n = a_0 + a_1z + a_2 z^2 + \dots
 \ee
@@ -2398,7 +2398,7 @@ the power series centered at origin.
 \be
 \sum^\infty_{n=0}z^n,\qquad a_n = 1.
 \ee
-\item [(ii)] The natural exponential function 
+\item [(ii)] The natural exponential function
 \be
 \exp(z) = \sum^\infty_{n=0} \frac{z^n}{n!},\qquad a_n = \frac 1{n!}.
 \ee
@@ -2419,7 +2419,7 @@ the power series centered at origin.
 %\subsection{Basic properties of power series}
 
 \begin{lemma}\label{lem:com}
-Let $(a_n),w,z\in \C$. For $\abs{z}<\abs{w}$, 
+Let $(a_n),w,z\in \C$. For $\abs{z}<\abs{w}$,
 \be
  \sum^\infty_{n=0}a_n w^n\text{ converges} \ \ra\  \sum^\infty_{n=0}a_n z^n\text{ converges absolutely.}
 \ee
@@ -2435,7 +2435,7 @@ as $n\to\infty$. In particular, there is a constant $K$ s.t. $\abs{a_n w^n}\leq 
 \abs{a_n z^n}= \abs{a_n z^n \frac{w^n}{w^n}} = \abs{a_n w^n \frac{z^n}{w^n}}  = \abs{a_n w^n }\abs{\frac{z^n}{w^n}} \leq K\abs{\frac{z}{w}}^n.
 \ee
 
-Since $|z|<|w|$, the geometric series 
+Since $|z|<|w|$, the geometric series
 \be
 \sum\abs{\frac{z}{w}}^n\text{ converges. }
 \ee
@@ -2512,9 +2512,9 @@ for any $\ve <1/\abs{z}$ (if $z = 0$, it is obvious the conclusion holds). Thus,
 
 For any $r$ such that $0<r<R$, we can find $\ve>0$ such that $r < 1/(t+\ve)$. Then for this $\ve$ there exists $N\in\N$ such that for all $n\geq N$, $\abs{a_n} \leq (t+\ve)^n$ (by Proposition \ref{pro:limsup_liminf_arbitrary_ve_with_finite_infinite_terms}). Therefore, for any $\abs{z} \leq r$, there exists $N\in \N$ such that for all $n\geq N$,
 \be
-\abs{a_n z^n} \leq \bb{t+\ve}^n r^n = \rho^n
+\abs{a_n z^n} \leq \brb{t+\ve}^n r^n = \rho^n
 \ee
-where $\rho < 1$. Thus, we have that $\sum^\infty_{n=1} \rho^n$ converges to $\frac 1{1-\rho}$. Apply Weierstrass M-test (Theorem \ref{thm:weierstrass_m_test}), we have that 
+where $\rho < 1$. Thus, we have that $\sum^\infty_{n=1} \rho^n$ converges to $\frac 1{1-\rho}$. Apply Weierstrass M-test (Theorem \ref{thm:weierstrass_m_test}), we have that
 \be
 \sum^\infty_{n=1} a_n z^n \text{ converges absolutely and uniformly on }\abs{z} \leq r.
 \ee
@@ -2526,7 +2526,7 @@ where $\rho < 1$. Thus, we have that $\sum^\infty_{n=1} \rho^n$ converges to $\f
 \ee
 so if $\abs{z} = 1/(t-\ve)> R$, the series cannot converge \footnote{lemma needed.} because its $n$th term $a_nz^n$ does not tend to 0,
 \be
-\abs{a_n z^n} > \abs{\bb{t-\ve}^n\bb{\frac 1{t-\ve}}^n} = 1 \nrightarrow 0.
+\abs{a_n z^n} > \abs{\brb{t-\ve}^n\brb{\frac 1{t-\ve}}^n} = 1 \nrightarrow 0.
 \ee
 % then there exists $N$ such that $\forall n\geq N$, $(\dag)$ holds and
 %\be
@@ -2534,7 +2534,7 @@ so if $\abs{z} = 1/(t-\ve)> R$, the series cannot converge \footnote{lemma neede
 %\ee
 %Then by Lemma \footnote{lemma needed.}, we have that the series does not converge.
 
-If $R = 0$ and $t =\infty$, there are infinitely many $n$ such that $\abs{a_n} > \bb{t-\ve}^n $ and $\abs{a_n z^n} > \abs{z\bb{t-\ve}}^n =\infty$. Therefore, the series cannot converge \footnote{lemma needed.} whenever $z$ is not 0 because its $n$th term $a_nz^n$ does not tend to 0.
+If $R = 0$ and $t =\infty$, there are infinitely many $n$ such that $\abs{a_n} > \brb{t-\ve}^n $ and $\abs{a_n z^n} > \abs{z\brb{t-\ve}}^n =\infty$. Therefore, the series cannot converge \footnote{lemma needed.} whenever $z$ is not 0 because its $n$th term $a_nz^n$ does not tend to 0.
 \een
 \end{proof}
 
@@ -2546,7 +2546,7 @@ If $R = 0$ and $t =\infty$, there are infinitely many $n$ such that $\abs{a_n} >
 %
 %Then $f(z)$ converges with radius of convergence $R$ (which is also a multi-index) if and only if
 %\be
-%\sum_{n\to \infty}\bb{\abs{a_n}R^n }^{1/n} := \sum_{n\to \infty}\bb{\abs{a_{n_1}\dots a_{n_d}}R_1^{n_1}\dots R_d^{n_d}}^{1/n} = 1.
+%\sum_{n\to \infty}\brb{\abs{a_n}R^n }^{1/n} := \sum_{n\to \infty}\brb{\abs{a_{n_1}\dots a_{n_d}}R_1^{n_1}\dots R_d^{n_d}}^{1/n} = 1.
 %\ee
 %\end{theorem}
 %
@@ -2558,7 +2558,7 @@ If $R = 0$ and $t =\infty$, there are infinitely many $n$ such that $\abs{a_n} >
 The next propositions are useful for computing $R$.
 
 \begin{proposition}\label{pro:ratio_test_convergence_radius}%{pro:ratio_convergence_radius}
-Consider the power series $\sum^\infty_{n=1}a_n z^n$ with $a_n,z\in \C$. If 
+Consider the power series $\sum^\infty_{n=1}a_n z^n$ with $a_n,z\in \C$. If
 \be
 \abs{\frac{a_{n+1}}{a_n}}\to \ell \ \text{ as }n\to \infty,
 \ee
@@ -2619,7 +2619,7 @@ By the above propositions, we can work out the radius of convergence. However, n
 
 \item [(vii)] $\sum^\infty_{n=0} n^n z^n$.
 \be
-\abs{\frac{a_{n+1}}{a_n}} = \abs{\frac{(n+1)^{n+1}}{n^n}} = (n+1)\bb{\frac{n+1}{n}}^n = (n+1)\underbrace{\bb{1 + \frac 1n}^n}_{\to e} \to \infty \ \ra \ R=0.
+\abs{\frac{a_{n+1}}{a_n}} = \abs{\frac{(n+1)^{n+1}}{n^n}} = (n+1)\brb{\frac{n+1}{n}}^n = (n+1)\underbrace{\brb{1 + \frac 1n}^n}_{\to e} \to \infty \ \ra \ R=0.
 \ee
 \een
 \end{example}
@@ -2663,10 +2663,10 @@ B_n := \sum^n_{k=1} b_k = \sum^n_{k=1} z^k = \frac{z-z^{n+1}}{1-z}
 \ee
 and thus
 \beast
-\abs{\sum^m_{k=n} \frac{z^k}{k}} & = & \abs{\sum^m_{k=n} a_k b_k} = \abs{a_{m}\sum^m_{k=n}b_k + \sum^{m-1}_{k=n}b_k\bb{a_k-a_{m}}} = \abs{a_{m}\bb{B_m - B_{n-1}} + \sum^{m-1}_{k=n}b_k\sum^{m-1}_{i=k}\bb{a_i-a_{i+1}} } \\
-& = & \abs{a_{m}\bb{B_m - B_{n-1}} + \sum^{m-1}_{i=n}\bb{a_i-a_{i+1}}\sum^i_{k=n}b_k } =  \abs{a_{m}\bb{B_m - B_{n-1}} + \sum^{m-1}_{i=n}\bb{a_i-a_{i+1}}\bb{B_i - B_{n-1}} }\\%\abs{a_mB_m - a_{n}B_{n-1} - \sum^{m-1}_{k=n}B_k(a_{k+1} - a_k)}
-& = & \abs{a_{m}\bb{B_m - B_{n-1}} + \bb{a_m- a_n} B_{n-1}+ \sum^{m-1}_{i=n}\bb{a_i-a_{i+1}}B_i } = \abs{a_{m}B_m  - a_n B_{n-1}+ \sum^{m-1}_{i=n}\bb{a_i-a_{i+1}}B_i } \\
-& \leq & \frac 2{\abs{1-z}}\bb{\frac 1m + \frac 1n + \sum^{m-1}_{i=n}\bb{\frac 1i - \frac 1{i+1}}} = \frac 4{n\abs{1-z}}.
+\abs{\sum^m_{k=n} \frac{z^k}{k}} & = & \abs{\sum^m_{k=n} a_k b_k} = \abs{a_{m}\sum^m_{k=n}b_k + \sum^{m-1}_{k=n}b_k\brb{a_k-a_{m}}} = \abs{a_{m}\brb{B_m - B_{n-1}} + \sum^{m-1}_{k=n}b_k\sum^{m-1}_{i=k}\brb{a_i-a_{i+1}} } \\
+& = & \abs{a_{m}\brb{B_m - B_{n-1}} + \sum^{m-1}_{i=n}\brb{a_i-a_{i+1}}\sum^i_{k=n}b_k } =  \abs{a_{m}\brb{B_m - B_{n-1}} + \sum^{m-1}_{i=n}\brb{a_i-a_{i+1}}\brb{B_i - B_{n-1}} }\\%\abs{a_mB_m - a_{n}B_{n-1} - \sum^{m-1}_{k=n}B_k(a_{k+1} - a_k)}
+& = & \abs{a_{m}\brb{B_m - B_{n-1}} + \brb{a_m- a_n} B_{n-1}+ \sum^{m-1}_{i=n}\brb{a_i-a_{i+1}}B_i } = \abs{a_{m}B_m  - a_n B_{n-1}+ \sum^{m-1}_{i=n}\brb{a_i-a_{i+1}}B_i } \\
+& \leq & \frac 2{\abs{1-z}}\brb{\frac 1m + \frac 1n + \sum^{m-1}_{i=n}\brb{\frac 1i - \frac 1{i+1}}} = \frac 4{n\abs{1-z}}.
 \eeast
 
 Thus, $\sum^m_{n=1} \frac 1n z^n$ is a Cauchy sequence. Then the completeness of the complex plane (Theorem \ref{thm:complex_plane_is_complete}) ensures that
@@ -2720,7 +2720,7 @@ By Lemma \ref{lem:binomial_inequality},
 \end{proof}
 
 \begin{theorem}\label{thm:power_series_differentiation}
-The power series 
+The power series
 \be
 f(z) = \sum^\infty_{n=0}a_nz^n
 \ee
@@ -2787,11 +2787,11 @@ S_N(z) = \sum^N_{n=0}a_n z^n,\qquad E_N(z) = \sum^\infty_{n=N+1} a_n z^n.
 Then, for any $h$ is chosen so that $\abs{z_0 + h} < r$ we have
 \beast
 & & \frac{f(z_0 + h) - f(z_0)}{h} - g(z_0) \\
-& = & \bb{\frac{S_N(z_0+h)-S_N(z_0)}{h}- S_N'(z_0) } + \bb{S_N'(z_0) - g(z_0)} + \bb{\frac{E_N(z_0+h)- E_N(z_0)}{h}}
+& = & \brb{\frac{S_N(z_0+h)-S_N(z_0)}{h}- S_N'(z_0) } + \brb{S_N'(z_0) - g(z_0)} + \brb{\frac{E_N(z_0+h)- E_N(z_0)}{h}}
 \eeast
 where $S_N'(z_0)$ is the derivative of $S_N(z_0)$. Since for any $a,b\in \C$,
 \be
-a^n - b^n = (a-b)\bb{a^{n-1} + a^{n-2}b + \dots + ab^{n-2}+b^{n-1}},
+a^n - b^n = (a-b)\brb{a^{n-1} + a^{n-2}b + \dots + ab^{n-2}+b^{n-1}},
 \ee
 we can have
 \be
@@ -2828,7 +2828,7 @@ whenever $\abs{h}< \delta$, thereby concluding the proof.
 
 \item [(ii)] Natural exponential function. $\sum^\infty_{n=0}\frac{z^n}{n!}$ has radius of convergence $R=\infty$. Thus, $\exp: \C\mapsto\C$, $\exp(z) = \sum^\infty_{n=0}\frac{z^n}{n!}$. The theorem tells us right away that $e$ is differentiable and
 \be
-\bb{e^z}' = \sum^\infty_{n=1}\frac n{n!}z^{n-1} = e^z.
+\brb{e^z}' = \sum^\infty_{n=1}\frac n{n!}z^{n-1} = e^z.
 \ee
 
 Of course, $\exp(z)$ and its derivative have the same radius of convergence $R=\infty$.
@@ -2846,7 +2846,7 @@ f(z) = \sum^\infty_{n=0} a_n(z-z_0)^n\quad\text{is analytic in $D_{R}(z_0)$.}
 
 
 \begin{corollary}
-A power series is infinitely complex differentiable in its disc of convergence, and the higher derivatives are also power series obtained by termwise differentiation. 
+A power series is infinitely complex differentiable in its disc of convergence, and the higher derivatives are also power series obtained by termwise differentiation.
 \end{corollary}
 
 
@@ -2872,27 +2872,27 @@ First, we have that for $z \neq 0$, there exists $\theta\in (-\pi,\pi]$ such tha
 \be
 \cos\theta = \frac x{\sqrt{x^2+y^2}} \ \ra\ \sin\theta = \pm \frac y{\sqrt{x^2+y^2}}
 \ee
-by Proposition \ref{pro:basic_properties_of_sine_and_cosine}. If so $\theta$ satisfying 
+by Proposition \ref{pro:basic_properties_of_sine_and_cosine}. If so $\theta$ satisfying
 \be
-z = \sqrt{x^2 + y^2}\frac{x}{\sqrt{x^2 + y^2}} + i\sqrt{x^2 + y^2}\frac{y}{\sqrt{x^2 + y^2}} = r\cos\theta \pm i r \sin \theta = r\cos\bb{\pm\theta} + i r \sin \bb{\pm\theta}
+z = \sqrt{x^2 + y^2}\frac{x}{\sqrt{x^2 + y^2}} + i\sqrt{x^2 + y^2}\frac{y}{\sqrt{x^2 + y^2}} = r\cos\theta \pm i r \sin \theta = r\cos\brb{\pm\theta} + i r \sin \brb{\pm\theta}
 \ee
 
-For uniqueness, we can assume $\theta_1,\theta_2\in (-\pi,\pi]$ such that 
+For uniqueness, we can assume $\theta_1,\theta_2\in (-\pi,\pi]$ such that
 \be
 z = r\cos \theta_1 + ir\sin\theta_1 = r\cos \theta_2 + ir\sin\theta_2 \ \ra\ \cos \theta_1 = \cos\theta_2,\ \sin \theta_1 = \sin\theta_2.
 \ee
 
-Then 
+Then
 \be
-\cos\bb{\theta_1 - \theta_2} = \cos \theta_1 \cos\theta_2 + \sin\theta_1\sin\theta_2 = \cos^2 \theta_1 + \sin^2 \theta_1 = 1 \ \ra\ \theta_1 - \theta_2 = 2k\pi,\ k\in\Z
+\cos\brb{\theta_1 - \theta_2} = \cos \theta_1 \cos\theta_2 + \sin\theta_1\sin\theta_2 = \cos^2 \theta_1 + \sin^2 \theta_1 = 1 \ \ra\ \theta_1 - \theta_2 = 2k\pi,\ k\in\Z
 \ee
 by the remark in Corollary \ref{cor:sine_cosine_pi_properties}. But $\theta_1 -\theta_2 \in (-2\pi,2\pi)$ implies that $\theta_1 -\theta_2 = 0$ and thus $\theta_1 =\theta_2$.
 \end{proof}
 
 \begin{proposition}
-Let $z_1 = r_1\bb{\cos \theta_1 + i\sin \theta_1)}$ and $z_2 = r_2\bb{\cos \theta_2 + i \sin \theta_2)}$ with $r_1,r_2>0$ and $\theta_1,\theta_2 \in \R$. Then, 
+Let $z_1 = r_1\brb{\cos \theta_1 + i\sin \theta_1)}$ and $z_2 = r_2\brb{\cos \theta_2 + i \sin \theta_2)}$ with $r_1,r_2>0$ and $\theta_1,\theta_2 \in \R$. Then,
 \be
-z_1z_2  =r_1r_2\bb{\cos(\theta_1+\theta_2) + i\sin (\theta_1+\theta_2)}
+z_1z_2  =r_1r_2\brb{\cos(\theta_1+\theta_2) + i\sin (\theta_1+\theta_2)}
 \ee
 \end{proposition}
 
@@ -2908,7 +2908,7 @@ Then we have the following definition.
 \begin{definition}[argument\index{argument!complex number}]\label{def:argument_complex_number}
 The argument of a complex number $z = x+ iy$, denoted by $\arg z$, is defined by $\theta$ such that
 \be
-z = r\bb{\cos\theta + i\sin\theta} = re^{i\theta}.
+z = r\brb{\cos\theta + i\sin\theta} = re^{i\theta}.
 \ee
 
 Geometrically, in the complex plane, the argument of $z$, is the angle $\theta$ from the positive real axis to the vector representing $z$. The numeric value is given by the angle in radians and is positive if measured counterclockwise.
@@ -2947,7 +2947,7 @@ Obviously, for any $z\in \C\bs \bra{0}$,
 \Arg(1) = 0,\quad \Arg(-1) = \pi,\quad \Arg(i) = \frac{\pi}2,\quad \Arg(-i) = -\frac{\pi}2,
 \ee
 \be
-\Arg(1+i) = \frac {\pi}4,\quad \Arg(1-i) = -\frac {\pi}4,\quad \Arg(-1+i) = \frac {3\pi}4,\quad \Arg(-1-i) = -\frac {3\pi}4. 
+\Arg(1+i) = \frac {\pi}4,\quad \Arg(1-i) = -\frac {\pi}4,\quad \Arg(-1+i) = \frac {3\pi}4,\quad \Arg(-1-i) = -\frac {3\pi}4.
 \ee
 \end{example}
 
@@ -2957,25 +2957,25 @@ Obviously, for any $z\in \C\bs \bra{0}$,
 Let $z = x + iy\in \C$. Then the principal value of argument is calculated by
 \be
 \Arg z = \left\{\ba{ll}
-\arctan\bb{y/x} & x>0,\\
-\arctan\bb{y/x} + \pi\quad\quad\quad\quad & x<0,y\geq 0,\\
-\arctan\bb{y/x} - \pi\quad\quad & x<0,y< 0,\\
+\arctan\brb{y/x} & x>0,\\
+\arctan\brb{y/x} + \pi\quad\quad\quad\quad & x<0,y\geq 0,\\
+\arctan\brb{y/x} - \pi\quad\quad & x<0,y< 0,\\
 \pi/2 & x=0,y> 0,\\
 -\pi/2 & x=0,y< 0,\\
 \text{undefined} & x=0,y=0
 \ea\right.
 \ee
-where $\arctan:\bb{-\infty,\infty}\to \bb{-\frac{\pi}2,\frac{\pi}2} $ is real inverse tangent function.
+where $\arctan:\brb{-\infty,\infty}\to \brb{-\frac{\pi}2,\frac{\pi}2} $ is real inverse tangent function.
 \end{proposition}
 
 \begin{remark}
 A compact expression with 4 overlapping half-plane is
 \be
 \Arg z = \left\{\ba{ll}
-\arctan\bb{y/x} & x>0,\\
-\pi/2 - \arctan\bb{x/y}\quad\quad\quad\quad & y>0,\\
--\pi/2 -\arctan\bb{x/y} \quad\quad & y< 0,\\
-\arctan\bb{y/x} \pm \pi & x < 0,\\
+\arctan\brb{y/x} & x>0,\\
+\pi/2 - \arctan\brb{x/y}\quad\quad\quad\quad & y>0,\\
+-\pi/2 -\arctan\brb{x/y} \quad\quad & y< 0,\\
+\arctan\brb{y/x} \pm \pi & x < 0,\\
 \text{undefined} & x=0,y=0
 \ea\right.
 \ee
@@ -2985,26 +2985,26 @@ A compact expression with 4 overlapping half-plane is
 \begin{proof}[\bf Proof]
 Clearly, we have that $x = r\cos \theta$ and $y = r\sin \theta$ for $z = x+iy$. Then for $z\in \C\bs\bra{0}$
 \be
-\frac{y}{x} = \frac{r\sin\theta}{r\cos\theta} = \frac{\sin\theta}{\cos\theta} = \tan\theta = \tan\bb{\arg z} = \tan\bb{\Arg z + 2k\pi} = \tan\bb{\Arg z},\quad k\in \Z.
+\frac{y}{x} = \frac{r\sin\theta}{r\cos\theta} = \frac{\sin\theta}{\cos\theta} = \tan\theta = \tan\brb{\arg z} = \tan\brb{\Arg z + 2k\pi} = \tan\brb{\Arg z},\quad k\in \Z.
 \ee
 
-Thus, if $\Arg z \in \bb{-\frac{\pi}2,\frac{\pi}2}$, we can have 
+Thus, if $\Arg z \in \brb{-\frac{\pi}2,\frac{\pi}2}$, we can have
 \be
 \Arg z = \arctan \frac{y}{x}
 \ee
 
-If $\theta = \frac {\pi}2$, we have that $z = r\bb{\cos {\pi}2 + i\sin {\pi}2} = r\bb{0+i\cdot 1} = ir$ ($x=0, y>0$) which implies that $z$ is purely imaginary above origin. Thus, we have $\Arg z = \frac {\pi}2$ for this case. Similarly, we have $\Arg z = -\frac {\pi}2$ when $x = 0$ and $y<0$.
+If $\theta = \frac {\pi}2$, we have that $z = r\brb{\cos {\pi}2 + i\sin {\pi}2} = r\brb{0+i\cdot 1} = ir$ ($x=0, y>0$) which implies that $z$ is purely imaginary above origin. Thus, we have $\Arg z = \frac {\pi}2$ for this case. Similarly, we have $\Arg z = -\frac {\pi}2$ when $x = 0$ and $y<0$.
 
-If $\Arg z = \theta \in \left(\frac{\pi}{2},\pi\right]$ we have 
+If $\Arg z = \theta \in \left(\frac{\pi}{2},\pi\right]$ we have
 \be
 x = r\cos\theta < 0,\qquad y = r\sin \theta \geq 0.
 \ee
-and $\tan\bb{\Arg z} = \tan \bb{\Arg z - \pi}$ since $\tan$ has period $\pi$. Furthermore, $\Arg z - \pi \in \left(-\frac{\pi}{2},0\right]$ and therefore
+and $\tan\brb{\Arg z} = \tan \brb{\Arg z - \pi}$ since $\tan$ has period $\pi$. Furthermore, $\Arg z - \pi \in \left(-\frac{\pi}{2},0\right]$ and therefore
 \be
 \Arg z - \pi = \arctan \frac{y}{x} \ \ra\ \Arg z = \arctan \frac{y}{x} + \pi.
 \ee
 
-Similarly, we have 
+Similarly, we have
 \be
 \Arg z = \arctan \frac{y}{x} - \pi
 \ee
@@ -3015,23 +3015,23 @@ for $x<0$ and $y<0$.
 For any $z,z_1,z_2\in \C\bs\bra{0}$ and $n\in \Z$,
 \ben
 \item [(i)] $\Arg(z_1z_2) \equiv \Arg z_1 + \Arg z_2 \lmod{(-\pi,\pi]}$.
-\item [(ii)] $\Arg\bb{\frac{z_1}{z_2}} \equiv \Arg z_1 - \Arg z_2 \lmod{(-\pi,\pi]}$.
+\item [(ii)] $\Arg\brb{\frac{z_1}{z_2}} \equiv \Arg z_1 - \Arg z_2 \lmod{(-\pi,\pi]}$.
 \item [(iii)] $\Arg(z^n) \equiv n\Arg(z)\lmod{(-\pi,\pi]}$.
 \een
 \end{proposition}
 
 
 \begin{proof}[\bf Proof]
-Let $z_1 = \abs{z_1}e^{i\Arg z_1}$ and $z_2 = \abs{z_2}e^{i\Arg z_2} \neq 0$. 
+Let $z_1 = \abs{z_1}e^{i\Arg z_1}$ and $z_2 = \abs{z_2}e^{i\Arg z_2} \neq 0$.
 
 For product,
 \beast
-z_1 z_2 = \abs{z_1z_2}e^{i\bb{\Arg z_1 + \Arg z_2}}  \ \ra\ \Arg\bb{z_1z_2} = \Arg z_1 + \Arg z_2 \lmod{(-\pi,\pi]}.
+z_1 z_2 = \abs{z_1z_2}e^{i\brb{\Arg z_1 + \Arg z_2}}  \ \ra\ \Arg\brb{z_1z_2} = \Arg z_1 + \Arg z_2 \lmod{(-\pi,\pi]}.
 \eeast
 
 For division,
 \beast
-\frac{z_1}{z_2} = \frac{\abs{z_1}e^{i\Arg z_1}}{\abs{z_2}e^{i\Arg z_2}} = \abs{\frac{z_1}{z_2}}e^{i\Arg z_1}e^{- i\Arg z_2} = \abs{\frac{z_1}{z_2}}e^{i\bb{\Arg z_1 - \Arg z_2}}  \ \ra\ \Arg\bb{\frac{z_1}{z_2}} = \Arg z_1 - \Arg z_2 \lmod{(-\pi,\pi]}.
+\frac{z_1}{z_2} = \frac{\abs{z_1}e^{i\Arg z_1}}{\abs{z_2}e^{i\Arg z_2}} = \abs{\frac{z_1}{z_2}}e^{i\Arg z_1}e^{- i\Arg z_2} = \abs{\frac{z_1}{z_2}}e^{i\brb{\Arg z_1 - \Arg z_2}}  \ \ra\ \Arg\brb{\frac{z_1}{z_2}} = \Arg z_1 - \Arg z_2 \lmod{(-\pi,\pi]}.
 \eeast
 
 (iii) is the direct result from (i) and (ii).
@@ -3053,9 +3053,9 @@ The principal value of argument of $z\in \C\bs\bra{0}$, $\Arg z$, is continuous 
 By Proposition\footnote{arg in form of arctan}, we have for $\Arg z\in (-\pi,\pi)$
 \be
 \Arg z = \left\{\ba{ll}
-\arctan\bb{y/x} & x>0,\\
-\pi/2 - \arctan\bb{x/y}\quad\quad\quad\quad & y>0,\\
--\pi/2 -\arctan\bb{x/y} \quad\quad & y< 0
+\arctan\brb{y/x} & x>0,\\
+\pi/2 - \arctan\brb{x/y}\quad\quad\quad\quad & y>0,\\
+-\pi/2 -\arctan\brb{x/y} \quad\quad & y< 0
 \ea\right..
 \ee
 
@@ -3063,9 +3063,9 @@ Since $\arctan$, $x = \Re z$ and $y = \Im z$ are all continuous, we have that $\
 
 For any real $z<0$, Let $z_n = e^{i/n}z$ and $w_n = e^{-i/n}z$. It is clear that $z_n,w_n \to z$. That is,
 \be
-\abs{z_n - z} = \abs{e^{i/n}-1}\abs{z} = \abs{z}\abs{\cos \frac 1n -1 + i\sin \frac 1n} = \abs{z}\sqrt{2 - 2\cos \frac 1n} = 2\abs{z}\sin\bb{\frac 1{2n}} \leq 2\abs{z}\frac 1{2n} = \frac{\abs{z}}{n} \to 0
+\abs{z_n - z} = \abs{e^{i/n}-1}\abs{z} = \abs{z}\abs{\cos \frac 1n -1 + i\sin \frac 1n} = \abs{z}\sqrt{2 - 2\cos \frac 1n} = 2\abs{z}\sin\brb{\frac 1{2n}} \leq 2\abs{z}\frac 1{2n} = \frac{\abs{z}}{n} \to 0
 \ee
-since $sin x\leq x$ for $x\in \bsb{0,\frac {\pi}2}$. However, we have that 
+since $sin x\leq x$ for $x\in \bsb{0,\frac {\pi}2}$. However, we have that
 \be
 \Arg z_n = -\pi + \frac 1n \to -\pi,\qquad \Arg w_n = \pi - \frac 1n \to \pi
 \ee
@@ -3124,7 +3124,7 @@ Consider the polar coordinates $r= \sqrt{x^2 + y^2}$ and $\theta = \arctan \frac
 \ee
 and
 \be
-\fp{\theta}{x} = \frac{1}{1+\bb{\frac yx}^2} \bb{-\frac{y}{x^2}} = -\frac{y}{x^2+y^2} = -\frac 1r\sin \theta,\qquad \fp{\theta}{y} = \frac{1}{1+\bb{\frac yx}^2} \bb{\frac{1}{x}} = \frac{x}{x^2+y^2} = \frac 1r\cos\theta.
+\fp{\theta}{x} = \frac{1}{1+\brb{\frac yx}^2} \brb{-\frac{y}{x^2}} = -\frac{y}{x^2+y^2} = -\frac 1r\sin \theta,\qquad \fp{\theta}{y} = \frac{1}{1+\brb{\frac yx}^2} \brb{\frac{1}{x}} = \frac{x}{x^2+y^2} = \frac 1r\cos\theta.
 \ee
 
 Using the chain rule\footnote{theorem needed.}, the first-order partial derivatives of $u$ are given by
@@ -3141,8 +3141,8 @@ Similarly, the first-order partial derivatives of $v$ are given by
 
 Using one of the Cauchy-Riemann equations (Theorem \ref{thm:cauchy_riemann_equation}),
 \beast
-0 & = & \fp{u}{x} - \fp{v}{y} = \bb{\fp{u}{r}- \frac 1r \fp{v}{\theta} } \cos\theta - \bb{\fp{v}{r} + \frac 1r \fp{u}{\theta} } \sin\theta \\
-0 & = & \fp{v}{x} + \fp{u}{y} = \bb{\fp{v}{r}+ \frac 1r \fp{u}{\theta} } \cos\theta + \bb{\fp{u}{r} - \frac 1r \fp{v}{\theta} } \sin\theta
+0 & = & \fp{u}{x} - \fp{v}{y} = \brb{\fp{u}{r}- \frac 1r \fp{v}{\theta} } \cos\theta - \brb{\fp{v}{r} + \frac 1r \fp{u}{\theta} } \sin\theta \\
+0 & = & \fp{v}{x} + \fp{u}{y} = \brb{\fp{v}{r}+ \frac 1r \fp{u}{\theta} } \cos\theta + \brb{\fp{u}{r} - \frac 1r \fp{v}{\theta} } \sin\theta
 \eeast
 
 Since the above equations are satisfied for all $\theta$, we must have
@@ -3165,92 +3165,92 @@ hold at a point $z_0 = r_0e^{i\theta_0}$.
 
 The derivative $f'(z_0)$ then exists and it is given by
 \be
-f'(z_0) = e^{-i\theta_0} \bb{u_r(r_0,\theta_0) + iv_r(r_0,\theta_0)} = \frac 1{r_0}e^{-i\theta_0}\bb{ v_\theta(r_0,\theta_0) - iu_\theta(r_0,\theta_0)}.
+f'(z_0) = e^{-i\theta_0} \brb{u_r(r_0,\theta_0) + iv_r(r_0,\theta_0)} = \frac 1{r_0}e^{-i\theta_0}\brb{ v_\theta(r_0,\theta_0) - iu_\theta(r_0,\theta_0)}.
 \ee
 \end{theorem}
 
 \begin{remark}
 Condition (ii) be relaxed to the differentiability of real functions $u(r,\theta)$ and $v(r,\theta)$. In particular, a function of real variables $f:\R^2\to\R$ is said to be differentiable (Definition \ref{def:differentiable_multi_dimensional_real_function}) if
 \be
-\lim_{r\to r_0,\theta\to \theta_0} \frac{\abs{f(r,\theta)-f(r_0,\theta_0) - \bb{\fp{f}{r}(r_0,\theta_0)(r-r_0) +\fp{f}{\theta}(r_0,\theta_0)(\theta-\theta_0)}}}{\sqrt{r^2 + r_0^2 - 2rr_0 \cos(\theta-\theta_0)}} = 0.
+\lim_{r\to r_0,\theta\to \theta_0} \frac{\abs{f(r,\theta)-f(r_0,\theta_0) - \brb{\fp{f}{r}(r_0,\theta_0)(r-r_0) +\fp{f}{\theta}(r_0,\theta_0)(\theta-\theta_0)}}}{\sqrt{r^2 + r_0^2 - 2rr_0 \cos(\theta-\theta_0)}} = 0.
 \ee
 \end{remark}
 
 \begin{proof}[\bf Proof]
 Since $u(r,\theta)$ and $v(r,\theta)$ have continuous first-order partial derivatives at $(r_0,\theta_0)$ (thus $u$ and $v$ are differentiable by Theorem \ref{thm:continuous_partial_derivatives_implies_real_differentiability}) and satisfy the Cauchy-Riemann equations at the same point, we have that for sufficiently close point $(r,\theta)$ to $(r_0,\theta_0)$
 \beast%& = & u(x,y) - u(x_0,y) + u(x_0,y) - u(x_0,y_0) \\
-u(r,\theta) - u(r_0,\theta_0) & = & u_r(r_0,\theta_0)(r-r_0) + u_\theta(r_0,\theta_0)(\theta-\theta_0) + o\bb{\abs{\Delta z}}, \\
-& = & u_r(r_0,\theta_0)(r-r_0) - r_0 v_r(r_0,\theta_0)(\theta-\theta_0) +  o\bb{\abs{\Delta z}}.\qquad (*)
+u(r,\theta) - u(r_0,\theta_0) & = & u_r(r_0,\theta_0)(r-r_0) + u_\theta(r_0,\theta_0)(\theta-\theta_0) + o\brb{\abs{\Delta z}}, \\
+& = & u_r(r_0,\theta_0)(r-r_0) - r_0 v_r(r_0,\theta_0)(\theta-\theta_0) +  o\brb{\abs{\Delta z}}.\qquad (*)
 \eeast
 and
 \beast
-v(r,\theta) - v(r_0,\theta_0) & = & v_r(r_0,\theta_0)(r-r_0) + v_\theta(r_0,\theta_0)(\theta-\theta_0) +o\bb{\abs{\Delta z}}, \\
-& = & v_r(r_0,\theta_0)(r-r_0) + r_0 u_r(r_0,\theta_0)(\theta-\theta_0) + o\bb{\abs{\Delta z}}. \qquad (\dag)
+v(r,\theta) - v(r_0,\theta_0) & = & v_r(r_0,\theta_0)(r-r_0) + v_\theta(r_0,\theta_0)(\theta-\theta_0) +o\brb{\abs{\Delta z}}, \\
+& = & v_r(r_0,\theta_0)(r-r_0) + r_0 u_r(r_0,\theta_0)(\theta-\theta_0) + o\brb{\abs{\Delta z}}. \qquad (\dag)
 \eeast
 where
 \beast
 \abs{\Delta z} & = & \sqrt{r^2 + r_0^2 - 2rr_0\cos(\theta-\theta_0)} \\
-& = & \sqrt{(r- r_0)^2 + 2rr_0\bb{1-\cos(\theta-\theta_0)}} \\
-& = & \sqrt{(r- r_0)^2 + rr_0(\theta-\theta_0)^2 + o\bb{(\theta-\theta_0)^2}}
+& = & \sqrt{(r- r_0)^2 + 2rr_0\brb{1-\cos(\theta-\theta_0)}} \\
+& = & \sqrt{(r- r_0)^2 + rr_0(\theta-\theta_0)^2 + o\brb{(\theta-\theta_0)^2}}
 \eeast
 
 Then $(*)+ i\cdot (\dag)$ gives that
 \beast
 & & f(z) -f(z_0)\\
-& = & \bb{u_r(r_0,\theta_0) + i v_r(r_0,\theta_0)}(r-r_0) + ir_0 \bb{u_r(r_0,\theta_0) + iv_r(r_0,\theta_0)}(\theta-\theta_0) + (1+i)o\bb{\abs{\Delta z}}  \\
-& = & e^{-i\theta_0}\bb{u_r(r_0,\theta_0) + i v_r(r_0,\theta_0)}(re^{i\theta}-r_0e^{i\theta_0}) + \bb{u_r(r_0,\theta_0) + iv_r(r_0,\theta_0)}\bb{r-r e^{i(\theta-\theta_0)} + i r_0(\theta-\theta_0)} + (1+i) o\bb{\abs{\Delta z}} \\
-& = & e^{-i\theta_0}\bb{u_r(r_0,\theta_0) + i v_r(r_0,\theta_0)}(z-z_0) + \bb{u_r(r_0,\theta_0) + iv_r(r_0,\theta_0)}\bb{r-r e^{i(\theta-\theta_0)} + i r_0(\theta-\theta_0)} + (1+i) o\bb{\abs{\Delta z}}.
+& = & \brb{u_r(r_0,\theta_0) + i v_r(r_0,\theta_0)}(r-r_0) + ir_0 \brb{u_r(r_0,\theta_0) + iv_r(r_0,\theta_0)}(\theta-\theta_0) + (1+i)o\brb{\abs{\Delta z}}  \\
+& = & e^{-i\theta_0}\brb{u_r(r_0,\theta_0) + i v_r(r_0,\theta_0)}(re^{i\theta}-r_0e^{i\theta_0}) + \brb{u_r(r_0,\theta_0) + iv_r(r_0,\theta_0)}\brb{r-r e^{i(\theta-\theta_0)} + i r_0(\theta-\theta_0)} + (1+i) o\brb{\abs{\Delta z}} \\
+& = & e^{-i\theta_0}\brb{u_r(r_0,\theta_0) + i v_r(r_0,\theta_0)}(z-z_0) + \brb{u_r(r_0,\theta_0) + iv_r(r_0,\theta_0)}\brb{r-r e^{i(\theta-\theta_0)} + i r_0(\theta-\theta_0)} + (1+i) o\brb{\abs{\Delta z}}.
 \eeast
 
 Thus,
 \beast
-\frac{f(z) -f(z_0)}{z-z_0} = e^{-i\theta_0}\bb{u_r(r_0,\theta_0) + i v_r(r_0,\theta_0)} + \bb{u_r(r_0,\theta_0) + iv_r(r_0,\theta_0)}\frac{\bb{r-r e^{i(\theta-\theta_0)} + i r_0(\theta-\theta_0)}}{z-z_0} + (1+i) \frac{o\bb{\abs{\Delta z}}} {z-z_0}
+\frac{f(z) -f(z_0)}{z-z_0} = e^{-i\theta_0}\brb{u_r(r_0,\theta_0) + i v_r(r_0,\theta_0)} + \brb{u_r(r_0,\theta_0) + iv_r(r_0,\theta_0)}\frac{\brb{r-r e^{i(\theta-\theta_0)} + i r_0(\theta-\theta_0)}}{z-z_0} + (1+i) \frac{o\brb{\abs{\Delta z}}} {z-z_0}
 \eeast
 %
 Obviously,
 \be
-\lim_{z\to z_0}\abs{\frac{o\bb{\abs{\Delta z}}}{z-z_0}} = \lim_{z\to z_0}\frac{o\bb{\abs{\Delta z}}}{\abs{z-z_0}} = \lim_{\Delta z\to 0}\frac{o\bb{\abs{\Delta z}}}{\abs{\Delta z}} = 0
+\lim_{z\to z_0}\abs{\frac{o\brb{\abs{\Delta z}}}{z-z_0}} = \lim_{z\to z_0}\frac{o\brb{\abs{\Delta z}}}{\abs{z-z_0}} = \lim_{\Delta z\to 0}\frac{o\brb{\abs{\Delta z}}}{\abs{\Delta z}} = 0
 \ee
 
 \beast
-\lim_{z\to z_0}\abs{\frac{\bb{r-r e^{i(\theta-\theta_0)} + i r_0(\theta-\theta_0)}}{z-z_0}} & = & \lim_{z\to z_0}\frac{\abs{\bb{r\bb{-i(\theta-\theta_0) + \frac 12(\theta-\theta_0)^2 + o\bb{(\theta-\theta_0)^2} } + i r_0(\theta-\theta_0)}}}{\abs{\Delta z}} \\
-& = & \lim_{z\to z_0}\frac{\abs{\frac 12r(\theta-\theta_0)^2 + r\cdot o\bb{(\theta-\theta_0)^2 } + i (r_0-r)(\theta-\theta_0)}}{\abs{\Delta z}} \\
-& \leq  & \lim_{z\to z_0}\frac{\abs{\frac 12r(\theta-\theta_0)^2} + r\abs{o\bb{(\theta-\theta_0)^2}} + \abs{(r_0-r)(\theta-\theta_0)}}{\abs{\Delta z}} \to 0.
+\lim_{z\to z_0}\abs{\frac{\brb{r-r e^{i(\theta-\theta_0)} + i r_0(\theta-\theta_0)}}{z-z_0}} & = & \lim_{z\to z_0}\frac{\abs{\brb{r\brb{-i(\theta-\theta_0) + \frac 12(\theta-\theta_0)^2 + o\brb{(\theta-\theta_0)^2} } + i r_0(\theta-\theta_0)}}}{\abs{\Delta z}} \\
+& = & \lim_{z\to z_0}\frac{\abs{\frac 12r(\theta-\theta_0)^2 + r\cdot o\brb{(\theta-\theta_0)^2 } + i (r_0-r)(\theta-\theta_0)}}{\abs{\Delta z}} \\
+& \leq  & \lim_{z\to z_0}\frac{\abs{\frac 12r(\theta-\theta_0)^2} + r\abs{o\brb{(\theta-\theta_0)^2}} + \abs{(r_0-r)(\theta-\theta_0)}}{\abs{\Delta z}} \to 0.
 \eeast
 
 Therefore,
 \be
-f'(z) = \lim_{z\to z_0}\frac{f(z) -f(z_0)}{z-z_0} = e^{-i\theta_0}\bb{u_r(r_0,\theta_0) + i v_r(r_0,\theta_0)} = \frac 1{r_0}e^{-i\theta_0}\bb{ v_\theta(r_0,\theta_0) - iu_\theta(r_0,\theta_0)}.
+f'(z) = \lim_{z\to z_0}\frac{f(z) -f(z_0)}{z-z_0} = e^{-i\theta_0}\brb{u_r(r_0,\theta_0) + i v_r(r_0,\theta_0)} = \frac 1{r_0}e^{-i\theta_0}\brb{ v_\theta(r_0,\theta_0) - iu_\theta(r_0,\theta_0)}.
 \ee
 \end{proof}
 
 \begin{example}
 We know that $f(z) = z^2$ is differentiable and that $f'(z) = 2z$. For polar coordinates,
 \be
-f(z) = f\bb{re^{i\theta}} = \bb{r\cos \theta + ir\sin\theta}^2 = r^2\cos(2\theta) + ir^2 \sin(2\theta) = u(r,\theta) + i v(r,\theta).
+f(z) = f\brb{re^{i\theta}} = \brb{r\cos \theta + ir\sin\theta}^2 = r^2\cos(2\theta) + ir^2 \sin(2\theta) = u(r,\theta) + i v(r,\theta).
 \ee
 
 Then it is easy to verify the Cauchy-Riemann equations in polar coordinates,
 \beast
 u_r(r,\theta) & = & 2r\cos(2\theta) = \frac 1r 2r^2 \cos(2\theta) = \frac 1r v_\theta(r,\theta), \\
-v_r(r,\theta) & = & 2r\sin(2\theta) = -\frac 1r \bb{-2r^2\sin(2\theta)} = - \frac 1r u_\theta(r,\theta).
+v_r(r,\theta) & = & 2r\sin(2\theta) = -\frac 1r \brb{-2r^2\sin(2\theta)} = - \frac 1r u_\theta(r,\theta).
 \eeast
 
 Moreover, the partial derivatives $u_r$, $v_r$, $u_\theta$ and $v_\theta$ are continuous. By Theorem \ref{thm:sufficient_conditions_differentiable_complex_polar_form}, $f(z) = r^2\cos(2\theta) + ir^2 \sin(2\theta)$ is differentiable for all $z\neq 0$ as Cauchy-Riemann equation does not hold at $r=0$. Then we have
 \be
-f'(z_0) = e^{-i\theta_0}\bb{u_r(r_0,\theta_0) + i v_r(r_0,\theta_0)} = e^{-i\theta_0}\bb{2r_0\cos(2\theta_0) + 2ir_0\sin(2\theta_0)} = 2r_0\bb{\cos \theta_0 + i\sin\theta_0} = 2z_0.
+f'(z_0) = e^{-i\theta_0}\brb{u_r(r_0,\theta_0) + i v_r(r_0,\theta_0)} = e^{-i\theta_0}\brb{2r_0\cos(2\theta_0) + 2ir_0\sin(2\theta_0)} = 2r_0\brb{\cos \theta_0 + i\sin\theta_0} = 2z_0.
 \ee
 \end{example}
 
 \begin{example}
 Let function
 \be
-f(z) = z^{1/2} = \bb{re^{i\theta}}^{1/2} = r^{1/2}\bb{\cos\frac{\theta}2 + i\sin\frac{\theta}2}.
+f(z) = z^{1/2} = \brb{re^{i\theta}}^{1/2} = r^{1/2}\brb{\cos\frac{\theta}2 + i\sin\frac{\theta}2}.
 \ee
 
 Then
 \be
-f'(z) = \frac 1{2}z^{-1/2} = \frac 12 \bb{re^{i\theta}}^{-1/2}= \frac 12 r^{-1/2} \bb{\cos\frac{\theta}2 - i\sin\frac{\theta}2}
+f'(z) = \frac 1{2}z^{-1/2} = \frac 12 \brb{re^{i\theta}}^{-1/2}= \frac 12 r^{-1/2} \brb{\cos\frac{\theta}2 - i\sin\frac{\theta}2}
 \ee
 for every point in the domain $\bra{re^{i\theta}: r>0,\theta\in (-\pi,\pi)}$. Note that
 \be
@@ -3260,13 +3260,13 @@ u(r,\theta) = r^{1/2}\cos\frac{\theta}2,\quad v(r,\theta)= r^{1/2}\sin\frac{\the
 Thus,
 \beast
 u_r(r,\theta) & = & \frac 12 r^{-1/2} \cos\frac{\theta}2 = \frac 1r \frac 12r^{1/2}\cos\frac{\theta}2 = \frac 1r v_\theta(r,\theta) \\
-v_r(r,\theta) & = & \frac 12 r^{-1/2} \sin \frac{\theta}2 = -\frac 1r \bb{-\frac 12r^{1/2}\sin\frac{\theta}2} = -\frac 1r u_\theta(r,\theta).
+v_r(r,\theta) & = & \frac 12 r^{-1/2} \sin \frac{\theta}2 = -\frac 1r \brb{-\frac 12r^{1/2}\sin\frac{\theta}2} = -\frac 1r u_\theta(r,\theta).
 \eeast
 
-Moreover, the partial derivatives $u_r$, $v_r$, $u_\theta$ and $v_\theta$ are continuous. By Theorem \ref{thm:sufficient_conditions_differentiable_complex_polar_form}, $f(z) = r^{1/2}\bb{\cos\frac{\theta}2 + i\sin\frac{\theta}2}$ is differentiable for all $z\neq 0$ as Cauchy-Riemann equation does not hold at $r=0$. Then we have
+Moreover, the partial derivatives $u_r$, $v_r$, $u_\theta$ and $v_\theta$ are continuous. By Theorem \ref{thm:sufficient_conditions_differentiable_complex_polar_form}, $f(z) = r^{1/2}\brb{\cos\frac{\theta}2 + i\sin\frac{\theta}2}$ is differentiable for all $z\neq 0$ as Cauchy-Riemann equation does not hold at $r=0$. Then we have
 \beast
-f'(z_0) & = & e^{-i\theta_0}\bb{u_r(r_0,\theta_0) + i v_r(r_0,\theta_0)} = e^{-i\theta_0}\bb{\frac 12 r_0^{-1/2} \cos\frac{\theta_0}2 + \frac 12i r_0^{-1/2} \sin \frac{\theta_0}2} \\
-& = & \frac 12 r_0^{-1/2} e^{-i\theta_0} e^{i\theta_0/2} = \bb{r_0e^{i\theta_0}}^{-1/2}  = \frac 12 z_0^{-1/2}.
+f'(z_0) & = & e^{-i\theta_0}\brb{u_r(r_0,\theta_0) + i v_r(r_0,\theta_0)} = e^{-i\theta_0}\brb{\frac 12 r_0^{-1/2} \cos\frac{\theta_0}2 + \frac 12i r_0^{-1/2} \sin \frac{\theta_0}2} \\
+& = & \frac 12 r_0^{-1/2} e^{-i\theta_0} e^{i\theta_0/2} = \brb{r_0e^{i\theta_0}}^{-1/2}  = \frac 12 z_0^{-1/2}.
 \eeast
 
 Note that the negative axis is a branch cut\footnote{definition needed.} and the origin is a branch point\footnote{definition needed.} for this function.
@@ -3317,7 +3317,7 @@ Note that the negative axis is a branch cut\footnote{definition needed.} and the
 
 \subsection{Paths in complex space}
 
-\begin{definition}[path]\label{def:path_complex}%n open connected 
+\begin{definition}[path]\label{def:path_complex}%n open connected
 A path in a set $X\subseteq \C$ is a continuous function $\gamma: [a,b]\to X$ for some interval $[a,b]$ in $\R$.
 
 The set $\bra{\gamma(t): t\in [a,b]}$ is called the trace of path $\gamma$, denoted by $\bra{\gamma}$.
@@ -3446,7 +3446,7 @@ Furthermore, by ($\dag$) and Proposition \ref{pro:riemann_integral_elementary_pr
 \int^b_a \abs{\gamma'(t)}dt \leq \ve(n + b-a) + \sum^n_{i=1} v_\gamma(P_i \cup Q_i) \leq \ve(n + b-a) + V_\gamma[a,b].
 \ee
 
-Letting $\ve\to 0$, we have 
+Letting $\ve\to 0$, we have
 \be
 \int^b_a \abs{\gamma'(t)}dt \leq V_\gamma[a,b].
 \ee
@@ -3576,7 +3576,7 @@ S = \bra{s\in [0,1] : sb'+ (1-s)a' \in A},\qquad T = \bra{t\in [0,1] : tb'+ (1-t
 Then $S\cap T = \emptyset$ (from $A\cap B = \emptyset$) and $S\cup T = [0,1]$ ($S,T$ form the whole segment). Clearly $0\in S$ and $1\in T$.
 
 
-Since $A$ is open, then for any $s\in S$ there exists $\ve>0$ such that $B_\ve\bb{sb'+ (1-s)a'}\subseteq A$. Thus we can find $\ve_s := \ve/\abs{a'-b'}$ such that $\bb{s+\delta} b'+ (1-s-\delta)a' \in A$ for any $\delta \leq \abs{\ve_s}$ which implies that $(s-\ve_s,s + \ve_s) \subseteq S$. Therefore, we have $S$ is open and so is $T$. This contradicts the connectedness of interval $[0,1]$. Thus, $X$ must be connected.
+Since $A$ is open, then for any $s\in S$ there exists $\ve>0$ such that $B_\ve\brb{sb'+ (1-s)a'}\subseteq A$. Thus we can find $\ve_s := \ve/\abs{a'-b'}$ such that $\brb{s+\delta} b'+ (1-s-\delta)a' \in A$ for any $\delta \leq \abs{\ve_s}$ which implies that $(s-\ve_s,s + \ve_s) \subseteq S$. Therefore, we have $S$ is open and so is $T$. This contradicts the connectedness of interval $[0,1]$. Thus, $X$ must be connected.
 
 ($\ra$). Now suppose that $X$ is connected and fix a point $a\in X$. To show how to construct a polygon (lying in $X$) from $a$ to a point $b$ in $X$ would be difficult. But we don't have to perform such a construction as we can merely show that one exists. For a fixed $a\in X$, define
 \be
@@ -3653,8 +3653,8 @@ The line integral of complex-valued continuous function is a special case of Rie
 \begin{example}
 For $a\in \R\bs \bra{0}$, we have
 \beast
-\int^{2\pi}_0 e^{iat}dt & = & \int^{2\pi}_0 \bb{\cos (at) + i\sin(at)} dt = \int^{2\pi}_0 \cos (at) dt + i \int^{2\pi}_0 \sin(at) dt \\
-& = & \frac 1{a}\bb{\sin (2\pi a)  - i\bb{\cos(2\pi a)-1} } = \frac 1a\bb{-ie^{i 2\pi a} + i} = \frac 1{ia}\bb{e^{i 2\pi a}-1} = \left.\frac 1{ia}e^{ia t}\right|^{2\pi}_0
+\int^{2\pi}_0 e^{iat}dt & = & \int^{2\pi}_0 \brb{\cos (at) + i\sin(at)} dt = \int^{2\pi}_0 \cos (at) dt + i \int^{2\pi}_0 \sin(at) dt \\
+& = & \frac 1{a}\brb{\sin (2\pi a)  - i\brb{\cos(2\pi a)-1} } = \frac 1a\brb{-ie^{i 2\pi a} + i} = \frac 1{ia}\brb{e^{i 2\pi a}-1} = \left.\frac 1{ia}e^{ia t}\right|^{2\pi}_0
 \eeast
 which is consistent with the result if we treat $ia$ as a real number.
 \end{example}
@@ -3667,16 +3667,16 @@ If $\alpha\in \C\bs\bra{0}$, we have $\alpha = a+ bi$ with $a,b\in \R$. Then
 
 By Proposition \ref{pro:integral_exponential_trigonometric_function} the real part is
 \be
-\int^{2\pi}_0 e^{a t}\cos(bt) =\left. \frac 1{a^2 + b^2}\bb{be^{at}\sin(bt) + ae^{at}\cos (bt)}\right|^{2\pi}_0
+\int^{2\pi}_0 e^{a t}\cos(bt) =\left. \frac 1{a^2 + b^2}\brb{be^{at}\sin(bt) + ae^{at}\cos (bt)}\right|^{2\pi}_0
 \ee
 and the imaginary part is
 \be
-\int^{2\pi}_0 e^{a t}\sin(bt) =\left. \frac 1{a^2 + b^2}\bb{-be^{at}\cos(bt) + ae^{at}\sin( bt)}\right|^{2\pi}_0.
+\int^{2\pi}_0 e^{a t}\sin(bt) =\left. \frac 1{a^2 + b^2}\brb{-be^{at}\cos(bt) + ae^{at}\sin( bt)}\right|^{2\pi}_0.
 \ee
 
 Thus,
 \beast
-\int^{2\pi}_0 e^{\alpha t}dt = \left.  \frac 1{a^2 + b^2} \bb{ae^{at}e^{ibt} - ib e^{at}e^{ibt}} \right|^{2\pi}_0 = \left. \frac 1{a+bi} e^{(a + ib)t} \right|^{2\pi}_0 = \left. \frac {e^{\alpha t}}{\alpha}  \right|^{2\pi}_0
+\int^{2\pi}_0 e^{\alpha t}dt = \left.  \frac 1{a^2 + b^2} \brb{ae^{at}e^{ibt} - ib e^{at}e^{ibt}} \right|^{2\pi}_0 = \left. \frac 1{a+bi} e^{(a + ib)t} \right|^{2\pi}_0 = \left. \frac {e^{\alpha t}}{\alpha}  \right|^{2\pi}_0
 \eeast
 which is consistent with the result if we treat $\alpha$ as a real number.
 \end{example}
@@ -3690,17 +3690,17 @@ Let $f,g$ be a complex-valued continuous functions of a real variable $t$ on $[a
 \ben
 \item [(i)] The real part of line integral
 \be
-\Re \bb{\int^b_a f(t)dt} = \int^b_a \Re\bb{f(t) }dt  = \int^b_a u(t)dt.
+\Re \brb{\int^b_a f(t)dt} = \int^b_a \Re\brb{f(t) }dt  = \int^b_a u(t)dt.
 \ee
 
 \item [(ii)] The imaginary part of line integral
 \be
-\Im \bb{\int^b_a f(t)dt} = \int^b_a \Im\bb{f(t) }dt  = \int^b_a v(t)dt.
+\Im \brb{\int^b_a f(t)dt} = \int^b_a \Im\brb{f(t) }dt  = \int^b_a v(t)dt.
 \ee
 
 \item [(iii)] For any complex numbers $\alpha$ and $\beta$,
 \be
-\int^b_a \bb{\alpha f(t) + \beta g(t)}dt = \alpha \int^b_a f(t) dt + \beta \int^b_a g(t) dt.
+\int^b_a \brb{\alpha f(t) + \beta g(t)}dt = \alpha \int^b_a f(t) dt + \beta \int^b_a g(t) dt.
 \ee
 
 \item [(iv)] Let $a = t_0 = t_1 = \dots = t_n = b$. Then
@@ -3716,19 +3716,19 @@ Let $f,g$ be a complex-valued continuous functions of a real variable $t$ on $[a
 \end{proposition}
 
 \begin{proof}[\bf Proof]
-The first three properties are obvious from definition. 
+The first three properties are obvious from definition.
 
 (iv) is direct result from Proposition \ref{pro:riemann_integral_elementary_property}.(vii).
 
 For (v), we consider
 \be
-\int^b_a f(t)dt = \abs{\int^b_a f(t)dt} e^{i\phi},\qquad \phi = \Arg \bb{\int^b_a f(t)dt}.
+\int^b_a f(t)dt = \abs{\int^b_a f(t)dt} e^{i\phi},\qquad \phi = \Arg \brb{\int^b_a f(t)dt}.
 \ee
 
 Since $\abs{\int^b_a f(t)dt}$ is real, we deduce that by (iii) and (i)
 \beast
-\abs{\int^b_a f(t)dt} & = & e^{-i\phi} \int^b_a f(t)dt = \int^b_a e^{-i\phi} f(t)dt = \Re\bb{\int^b_a e^{-i\phi} f(t)dt} \\
-& = & \int^b_a \Re\bb{e^{-i\phi} f(t)}dt \leq \int^b_a \abs{e^{-i\phi} f(t)}dt = \int^b_a \abs{f(t)}dt.
+\abs{\int^b_a f(t)dt} & = & e^{-i\phi} \int^b_a f(t)dt = \int^b_a e^{-i\phi} f(t)dt = \Re\brb{\int^b_a e^{-i\phi} f(t)dt} \\
+& = & \int^b_a \Re\brb{e^{-i\phi} f(t)}dt \leq \int^b_a \abs{e^{-i\phi} f(t)}dt = \int^b_a \abs{f(t)}dt.
 \eeast
 \end{proof}
 
@@ -3794,7 +3794,7 @@ Similar argument with Proposition \ref{pro:differentiation_under_integral_of_rea
 
 %Therefore,
 %\beast
-%\abs{g(t)-g(t_0)} & = & \abs{\int^b_a f(s,t)ds - \int^b_a f(s,t_0)ds} = \abs{\int^b_a \bb{f(s,t)-f(s,t_0)}dx} \\
+%\abs{g(t)-g(t_0)} & = & \abs{\int^b_a f(s,t)ds - \int^b_a f(s,t_0)ds} = \abs{\int^b_a \brb{f(s,t)-f(s,t_0)}dx} \\
 %& \leq & \int^b_a \abs{f(s,t) - f(s,t_0)} ds < \frac{\ve}{b-a}(b-a) = \ve
 %\eeast
 %which implies that $g(t)$ is continuous on $[c,d]$.
@@ -3813,20 +3813,20 @@ Similar argument with Proposition \ref{pro:differentiation_under_integral_of_rea
 
 %This gives that for $\abs{t-t_0}< \delta$ and $s\in [a,b]$,
 %\be
-%\abs{\int^t_{t_0} \bb{\fp{f}{t}(s,\tau) - \fp{f}{t}(s,t_0)}d\tau} < \frac{\ve \abs{t-t_0}}{b-a}.
+%\abs{\int^t_{t_0} \brb{\fp{f}{t}(s,\tau) - \fp{f}{t}(s,t_0)}d\tau} < \frac{\ve \abs{t-t_0}}{b-a}.
 %\ee
 
 %But for a fixed $s\in [a,b]$, $\phi(t) := f(s,t) - t\fp{f}{t}(s,t_0)$ is a primitive function of $\fp{f}{t}(s,t) - \fp{f}{t}(s,t_0)$ on $[c,d]$. Then by Corollary \ref{cor:primitive_funtion_equation}, for any $s\in [a,b]$ when $\abs{t-t_0} < \delta$
 %\beast
 %\abs{f(s,t) - f(s,t_0) - (t- t_0)\fp{f}{t}(s,t_0)} & = & \abs{f(s,t) - t\fp{f}{t}(s,t_0) - f(s,t_0) + t_0\fp{f}{t}(s,t_0)} = \abs{\phi(t) - \phi(t_0)} \\
-%& = & \abs{\int^t_{t_0} \bb{\fp{f}{t}(s,\tau) - \fp{f}{t}(s,t_0)}d\tau} < \frac{\ve \abs{t-t_0}}{b-a}.
+%& = & \abs{\int^t_{t_0} \brb{\fp{f}{t}(s,\tau) - \fp{f}{t}(s,t_0)}d\tau} < \frac{\ve \abs{t-t_0}}{b-a}.
 %\eeast
 
 %Then we have
 %\beast
 %& & \abs{\frac{g(t)-g(t_0)}{t-t_0} - \int^b_a \fp{f}{t}(s,t_0) ds} \\
-%& = & \abs{\frac{\int^b_a f(s,t)ds - \int^b_a f(s,t_0)ds}{t-t_0} - \int^b_a \fp{f}{t}(s,t_0) ds} = \frac 1{\abs{t-t_0}}\abs{\int^b_a \bb{f(s,t)-f(s,t_0) -(t-t_0) \fp{f}{t}(s,t_0)} ds} \\
-%& \leq & \frac 1{\abs{t-t_0}}\int^b_a \abs{\bb{f(s,t)-f(s,t_0) -(t-t_0) \fp{f}{t}(s,t_0)}} ds < \frac 1{\abs{t-t_0}} \frac{\ve \abs{t-t_0}}{b-a} \int^b_a ds = \ve \\
+%& = & \abs{\frac{\int^b_a f(s,t)ds - \int^b_a f(s,t_0)ds}{t-t_0} - \int^b_a \fp{f}{t}(s,t_0) ds} = \frac 1{\abs{t-t_0}}\abs{\int^b_a \brb{f(s,t)-f(s,t_0) -(t-t_0) \fp{f}{t}(s,t_0)} ds} \\
+%& \leq & \frac 1{\abs{t-t_0}}\int^b_a \abs{\brb{f(s,t)-f(s,t_0) -(t-t_0) \fp{f}{t}(s,t_0)}} ds < \frac 1{\abs{t-t_0}} \frac{\ve \abs{t-t_0}}{b-a} \int^b_a ds = \ve \\
 %\eeast%
 %when $\abs{t-t_0} < \delta$.
 %\end{proof}
@@ -4064,7 +4064,7 @@ for $s\in [s_{i-1},s_i]$. So on $[s_{i-1},s_i]$, $\Gamma(s)$ traces out the stra
 
 From ($*$), we have for any $s \in [s_{i-1},s_i]$,
 \beast
-\abs{\Gamma_k(s) - \gamma_k(\sigma_i)} &  = &  \abs{\frac 1{s_i - s_{i-1}} \bb{(s_i-s)(\gamma_k(s_{i-1})-\gamma_k(\sigma_i)) + (s-s_{i-1})(\gamma_k(s_i)-\gamma_k(\sigma_i))}} \\
+\abs{\Gamma_k(s) - \gamma_k(\sigma_i)} &  = &  \abs{\frac 1{s_i - s_{i-1}} \brb{(s_i-s)(\gamma_k(s_{i-1})-\gamma_k(\sigma_i)) + (s-s_{i-1})(\gamma_k(s_i)-\gamma_k(\sigma_i))}} \\
 & \leq &  \abs{\frac {s_i-s}{s_i - s_{i-1}}} \abs{\gamma_k(s_{i-1})-\gamma_k(\sigma_i)} + \abs{\frac{s-s_{i-1}}{s_i - s_{i-1}}} \abs{\gamma_k(s_i)-\gamma_k(\sigma_i)} \\
 & \leq &  \abs{\gamma_k(s_{i-1})-\gamma_k(\sigma_i)} + \abs{\gamma_k(s_i)-\gamma_k(\sigma_i)} < r_k/2 + r_k/2 = r_k.
 \eeast
@@ -4084,8 +4084,8 @@ Therefore,
 & & \abs{\int_{\gamma_k}f(z)dz - \int_{\Gamma_k}f(z)dz} \\
 & \leq & \abs{\int_{\gamma_k}f(z)dz - \sum^m_{i=1}f(\gamma_k(\sigma_i))[\gamma_k(s_i) - \gamma_k(s_{i-1})]}  + \abs{ \sum^m_{i=1} f(\gamma_k(\sigma_i)) [\gamma_k(s_i) - \gamma_k(s_{i-1})] - \int_{\Gamma_k}f(z)dz} \\
 & < & \ve + \abs{\sum^m_{i=1}f(\gamma_k(\sigma_i))[\gamma_k(s_i) - \gamma_k(s_{i-1})]- \sum^m_{i=1}  \frac{\gamma_k(s_i) - \gamma_k(s_{i-1})}{s_i - s_{i-1}}\int^{s_i}_{s_{i-1}} f(\Gamma_k(s))ds} \\
-& = & \ve + \abs{\sum^m_{i=1}  \frac{\gamma_k(s_i) - \gamma_k(s_{i-1})}{s_i - s_{i-1}}\int^{s_i}_{s_{i-1}} \bb{f(\gamma_k(\sigma_i))- f(\Gamma_k(s))}ds} < \ve + \ve \sum^m_{i=1} \abs{\gamma_k(s_i) - \gamma_k(s_{i-1})} \\
-& \leq & \ve \bb{1 + V_{\gamma_k}[t_{k-1},t_k]}.
+& = & \ve + \abs{\sum^m_{i=1}  \frac{\gamma_k(s_i) - \gamma_k(s_{i-1})}{s_i - s_{i-1}}\int^{s_i}_{s_{i-1}} \brb{f(\gamma_k(\sigma_i))- f(\Gamma_k(s))}ds} < \ve + \ve \sum^m_{i=1} \abs{\gamma_k(s_i) - \gamma_k(s_{i-1})} \\
+& \leq & \ve \brb{1 + V_{\gamma_k}[t_{k-1},t_k]}.
 \eeast
 
 Thus, we have that
@@ -4140,7 +4140,7 @@ Let $\gamma:[a,b]\to \C$ be a rectifiable path and $\phi:[c,d] \to [a,b]$ be a c
 
 Furthermore, for any function $f$ continuous on $\bra{\gamma}$,
 \be
-\int_\gamma f = \int_{\gamma\circ \phi}f \qquad \bb{\int_\gamma f(z)dz = \int_{\gamma\circ \phi}f(z)dz}.
+\int_\gamma f = \int_{\gamma\circ \phi}f \qquad \brb{\int_\gamma f(z)dz = \int_{\gamma\circ \phi}f(z)dz}.
 \ee
 \end{proposition}
 
@@ -4347,7 +4347,7 @@ First, the function $g(z)$ is well-defined since $f(t,z)$ is continuous of $t$. 
 
 Therefore,
 \beast
-\abs{g(w)-g(z)} & = & \abs{\int^b_a f(t,w)dt - \int^b_a f(t,z)dt} = \abs{\int^b_a \bb{f(t,w)-f(t,z)}dt} \\
+\abs{g(w)-g(z)} & = & \abs{\int^b_a f(t,w)dt - \int^b_a f(t,z)dt} = \abs{\int^b_a \brb{f(t,w)-f(t,z)}dt} \\
 & \leq & \int^b_a \abs{f(t,w) - f(t,w)} dt < \frac{\ve}{b-a}(b-a) = \ve
 \eeast
 which implies that $g(z)$ is continuous on $X$.
@@ -4359,26 +4359,26 @@ Since the continuity of $\fp{f}{z}$ of $z$ is uniform with respect to the variab
 \abs{\fp{f}{z}(t,w) - \fp{f}{z}(t,z)} < \frac{\ve}{b-a}\qquad \text{whenever }\ \abs{w-z} < \delta_1, \ t\in [a,b].
 \ee
 
-Also, since $X$ is open, for $z\in X$ we can find $\delta_2>0$ such that $D_{\delta_2}(z)\in X$. Then we can pick $\delta = \min\bra{\delta_1,\delta_2}$ such that for any $\abs{w-z}<\delta$, there is a line segment $\gamma$ lying in the disc $D_{\delta}(z)$ such that 
+Also, since $X$ is open, for $z\in X$ we can find $\delta_2>0$ such that $D_{\delta_2}(z)\in X$. Then we can pick $\delta = \min\bra{\delta_1,\delta_2}$ such that for any $\abs{w-z}<\delta$, there is a line segment $\gamma$ lying in the disc $D_{\delta}(z)$ such that
 \be
-\abs{\int_\gamma \bb{\fp{f}{z}(t,\xi) - \fp{f}{z}(t,z)}d\xi} < \frac{\ve }{b-a} \int_\gamma \abs{d\xi} = \frac{\ve \abs{w-z}}{b-a}
+\abs{\int_\gamma \brb{\fp{f}{z}(t,\xi) - \fp{f}{z}(t,z)}d\xi} < \frac{\ve }{b-a} \int_\gamma \abs{d\xi} = \frac{\ve \abs{w-z}}{b-a}
 \ee
 by modulus inequality (Proposition \ref{pro:properties_rectifiable_curve_integral}). But for a fixed $t\in [a,b]$, $\phi(w) := f(t,w) - w\fp{f}{z}(t,z)$ is a primitive function of $\fp{f}{z}(t,w) - \fp{f}{z}(t,z)$ on $D_{\delta}(z)$. Then for any $t\in [a,b]$ when $\abs{w-z} < \delta$, by Theorem \ref{thm:fundamental_theorem_of_calculus_of_complex_function_along_rectifiable_path},
 \beast
 \abs{f(t,w) - f(t,z) - (w- z)\fp{f}{z}(t,z)} & = & \abs{f(t,w) - w\fp{f}{z}(t,z) - f(t,z) + z\fp{f}{z}(t,z)} = \abs{\phi(w) - \phi(z)} \\
-& = & \abs{\int_\gamma \bb{\fp{f}{z}(t,\xi) - \fp{f}{z}(t,z)}d\xi} < \frac{\ve \abs{w-z}}{b-a}.
+& = & \abs{\int_\gamma \brb{\fp{f}{z}(t,\xi) - \fp{f}{z}(t,z)}d\xi} < \frac{\ve \abs{w-z}}{b-a}.
 \eeast
 
 %This gives that for $\abs{w-z}< \delta$ and any $t\in [a,b]$, a piecewise smooth (thus rectifiable) path $\gamma$ can be found from $z$ to $w$ since open connected set is piecewise smoothly pathwise connected by Theorem \ref{thm:open_set_is_piecewise_smoothly_pathwise_connected_iff_connected_complex}. Then
 %\be
-%\abs{\int_\gamma \bb{\fp{f}{z}(t,\xi) - \fp{f}{t}(s,z)}d\xi} < \frac{\ve \abs{w-z}}{b-a}.
+%\abs{\int_\gamma \brb{\fp{f}{z}(t,\xi) - \fp{f}{t}(s,z)}d\xi} < \frac{\ve \abs{w-z}}{b-a}.
 %\ee
 
 Then we have
 \beast
 & & \abs{\frac{g(w)-g(z)}{w-z} - \int^b_a \fp{f}{z}(t,z) dt} \\
-& = & \abs{\frac{\int^b_a f(t,w)dt - \int^b_a f(t,z)dt}{w-z} - \int^b_a \fp{f}{z}(t,z) dt} = \frac 1{\abs{w-z}}\abs{\int^b_a \bb{f(t,w)-f(t,z) -(w-z) \fp{f}{z}(t,z)} dt} \\
-& \leq & \frac 1{\abs{w-z}}\int^b_a \abs{\bb{f(t,w)-f(t,z) -(w-z) \fp{f}{z}(t,z)}} dt < \frac 1{\abs{w-z}} \frac{\ve \abs{w-z}}{b-a} \int^b_a dt = \ve 
+& = & \abs{\frac{\int^b_a f(t,w)dt - \int^b_a f(t,z)dt}{w-z} - \int^b_a \fp{f}{z}(t,z) dt} = \frac 1{\abs{w-z}}\abs{\int^b_a \brb{f(t,w)-f(t,z) -(w-z) \fp{f}{z}(t,z)} dt} \\
+& \leq & \frac 1{\abs{w-z}}\int^b_a \abs{\brb{f(t,w)-f(t,z) -(w-z) \fp{f}{z}(t,z)}} dt < \frac 1{\abs{w-z}} \frac{\ve \abs{w-z}}{b-a} \int^b_a dt = \ve
 \eeast
 when $\abs{w-z} < \delta$.
 \end{proof}
@@ -4522,7 +4522,7 @@ Let $\xi_k$ be an arbitrary point on the subpath $z_{k-1}z_{k}$ and write $\Delt
 \ee
 
 %If the above limit exists, we say
-%the function $f(z)$ is said to be integrable along the contour $C$. 
+%the function $f(z)$ is said to be integrable along the contour $C$.
 
 Then by Theorem \ref{thm:riemann_stieljes_integral_complex} the limit exists and is called contour integral of $f(z)$ along the contour $C$. In particular, we write
 \be
@@ -4555,13 +4555,13 @@ This is another version of Theorem \ref{thm:integral_along_piecewise_smooth_path
 \begin{proof}[\bf Proof]
 Write $f(z) = u(x,y) + iv(x,y)$ and $dz = dx + idy$. Then we have
 \beast
-\int_C f(z)dz & = & \lim_{\lm\to 0} \sum^{n}_{k=1} f(\xi_k)\Delta z_k = \lim_{\lm\to 0} \sum^{n}_{k=1} \bb{u(\xi_k) + iv(\xi_k)}\bb{\Delta x_k + i\Delta y_k} \\
-& = & \lim_{\lm\to 0} \sum^{n}_{k=1} \bb{u(x(t_k),y(t_k)) + iv(x(t_k),y(t_k))}\bb{\frac{\Delta x_k}{\Delta t_k} + i\frac{\Delta y_k}{\Delta t_k}} \Delta t_k
+\int_C f(z)dz & = & \lim_{\lm\to 0} \sum^{n}_{k=1} f(\xi_k)\Delta z_k = \lim_{\lm\to 0} \sum^{n}_{k=1} \brb{u(\xi_k) + iv(\xi_k)}\brb{\Delta x_k + i\Delta y_k} \\
+& = & \lim_{\lm\to 0} \sum^{n}_{k=1} \brb{u(x(t_k),y(t_k)) + iv(x(t_k),y(t_k))}\brb{\frac{\Delta x_k}{\Delta t_k} + i\frac{\Delta y_k}{\Delta t_k}} \Delta t_k
 \eeast
 where $\Delta t_k = t_{k+1} - t_k$ and it goes to 0 as $z'(t)$ always exists. Therefore,
 \beast
 \int_C f(z)dz & = & \int^b_a u(x(t),y(t))\frac {dx(t)}{dt} dt - \int^b_a v(x(t),y(t))\frac {dy(t)}{dt} dt + i\int^b_a v(x(t),y(t))\frac {dx(t)}{dt} dt + i\int^b_a u(x(t),y(t))\frac {dy(t)}{dt} dt \\
-& = & \int^b_a \bb{u(x(t),y(t)) + i v(x(t),y(t))}\bb{\frac {dx(t)}{dt} + i \frac {dy(t)}{dt}}dt = \int^b_a f(z(t)) \frac{dz(t)}{dt} dt.
+& = & \int^b_a \brb{u(x(t),y(t)) + i v(x(t),y(t))}\brb{\frac {dx(t)}{dt} + i \frac {dy(t)}{dt}}dt = \int^b_a f(z(t)) \frac{dz(t)}{dt} dt.
 \eeast
 \end{proof}
 
@@ -4638,7 +4638,7 @@ Let $X$ an open connected set and $C$ be any contour contained in $X$. Let $f,g$
 \item [(iv)] By Theorem \ref{thm:continuous_function_between_contour_integral_line_integral} and Proposition \ref{pro:complex_line_integral_properties}.(v),
 \beast
 \abs{\int_C f(z)dz} & = & \abs{\int^b_a f(z(t))\frac{dz(t)}{dt}dt} \leq \int^b_a \abs{f(z(t))}\abs{\frac{dz(t)}{dt}}dt \leq \int^b_a M\abs{\frac{dz(t)}{dt}}dt \\
-& = & M \int^b_a \sqrt{\bb{\frac{dx(t)}{dt}}^2 +\bb{\frac{dy(t)}{dt}}^2} dt = ML.
+& = & M \int^b_a \sqrt{\brb{\frac{dx(t)}{dt}}^2 +\brb{\frac{dy(t)}{dt}}^2} dt = ML.
 \eeast
 \een
 \end{proof}
@@ -4659,7 +4659,7 @@ along the following two paths.
 
     The contour integral can be expressed as
     \beast
-    \int_C \frac 1{z^2} dz & = & \int^1_0 \frac 1{z^2(t)}z'(t)dt = \int^1_0 \frac{1+i}{\bb{1+(1+i)t}^2}dt \\
+    \int_C \frac 1{z^2} dz & = & \int^1_0 \frac 1{z^2(t)}z'(t)dt = \int^1_0 \frac{1+i}{\brb{1+(1+i)t}^2}dt \\
     & = & (1+i)\int^1_0 \frac{(1+t - it)^2}{(2t^2 + 2t+1)^2}dt = (1+i)\int^1_0 \frac{1+2t - it(1+t)}{(2t^2 + 2t+1)^2}dt.
     \eeast
 
@@ -4675,7 +4675,7 @@ For imaginary part,
 
 Thus,
 \be
-\int_C \frac 1{z^2} dz = (1+i)\bb{\frac 25 - \frac 15 i} = \frac{3+i}{5}.
+\int_C \frac 1{z^2} dz = (1+i)\brb{\frac 25 - \frac 15 i} = \frac{3+i}{5}.
 \ee
 
 \item [(ii)] The horizontal line from 1 to 2, then the vertical line from 2 to $2+i$. The contour integral can be expressed as
@@ -4705,7 +4705,7 @@ so that
 
 Then
 \be
-\int_C \abs{z}^2 dz = (1+i)\int^1_0 (2t^2 - 2t+1) dt = (1+i) \bb{\frac 23 - 1 + 1} = \frac 23 (1+i).
+\int_C \abs{z}^2 dz = (1+i)\int^1_0 (2t^2 - 2t+1) dt = (1+i) \brb{\frac 23 - 1 + 1} = \frac 23 (1+i).
 \ee
 
 \item [(ii)] The arc of the unit circle $\abs{z}=1$ traversed in the clockwise direction with initial point -1 and final point $i$. We have
@@ -4762,10 +4762,10 @@ where $C = C_1 + C_2 + C_3 + C_4$.
 \rput[cb](-2.2,0.3){\textcolor{blue}{$C_3$}}
 \rput[cb](0.2,-2.2){\textcolor{blue}{$C_4$}}
 
-\rput[cb](1.95,2.15){\textcolor{blue}{$\bb{a,a}$}}
-\rput[cb](-2.2,2.15){\textcolor{blue}{$\bb{-a,a}$}}
-\rput[cb](-2.2,-2.15){\textcolor{blue}{$\bb{-a,-a}$}}
-\rput[cb](1.95,-2.15){\textcolor{blue}{$\bb{a,-a}$}}
+\rput[cb](1.95,2.15){\textcolor{blue}{$\brb{a,a}$}}
+\rput[cb](-2.2,2.15){\textcolor{blue}{$\brb{-a,a}$}}
+\rput[cb](-2.2,-2.15){\textcolor{blue}{$\brb{-a,-a}$}}
+\rput[cb](1.95,-2.15){\textcolor{blue}{$\brb{a,-a}$}}
 
 \end{pspicture}
 \end{center}
@@ -4821,21 +4821,21 @@ as required.
 
 (ii) $\ra$ (iii). Let $\alpha$ and $\beta$ denote two points on any closed contour $C$ lying in $\sD$ and form two paths $C_1$ and $C_2$, each with initial point $\alpha$ and final point $\beta$. By (ii), we have that the integration is independent of path in $\sD$,
 \be
-\int_{C_1} f(z)dz = F(\beta) - F(\alpha) = \int_{C_2} f(z)dz \ \ra\ \int_{C_1} f(z)dz + \int_{-C_2} f(z)dz = 0. 
+\int_{C_1} f(z)dz = F(\beta) - F(\alpha) = \int_{C_2} f(z)dz \ \ra\ \int_{C_1} f(z)dz + \int_{-C_2} f(z)dz = 0.
 \ee
 
 That is, the integral of $f(z)$ around the closed contour $C = C_1-C_2$ has value zero.
 
-(iii) $\ra$ (i). Suppose the integrals of $f(z)$ around closed contours in $X$ always have the zero value. It is obvious that the integration is independent of path in $\sD$. Thus, for fixed $z_0\in \sD$ and for any $z\in \sD$, there exists a contour (piecewise smooth curve) $C$ which goes from $z_0$ to $z$ by Theorem \ref{thm:open_set_is_piecewise_smoothly_pathwise_connected_iff_connected_complex}. Therefore, we can define the function on $X$, 
+(iii) $\ra$ (i). Suppose the integrals of $f(z)$ around closed contours in $X$ always have the zero value. It is obvious that the integration is independent of path in $\sD$. Thus, for fixed $z_0\in \sD$ and for any $z\in \sD$, there exists a contour (piecewise smooth curve) $C$ which goes from $z_0$ to $z$ by Theorem \ref{thm:open_set_is_piecewise_smoothly_pathwise_connected_iff_connected_complex}. Therefore, we can define the function on $X$,
 \be%Proposition \ref{pro:open_set_is_contour_connected_iff_connected_complex}
 F(z) = \int_C f(w)dw = \int^z_{z_0} f(w) dw.
-\ee 
+\ee
 
 We want to show that $F'(z) = f(z)$ everywhere in $\sD$. We do this by letting $z+\Delta z\in X$ be any point distinct from $z$ and lying in some neighbourhood of $z$ that is small enough to be contained in $X$ (since $\sD$ is open). Then
 \be
 F(z+\Delta z) - F(z) = \int^{z+\Delta z}_{z_0} f(w)dw - \int^{z}_{z_0} f(w)dw = \int^{z+\Delta z}_{z} f(w)dw
 \ee
-where the path of integration may be selected as line segment $C$. Then $C$ can be parameterized by $w = z_0 + t\Delta z$ and thus 
+where the path of integration may be selected as line segment $C$. Then $C$ can be parameterized by $w = z_0 + t\Delta z$ and thus
 \be
 \int^{z+\Delta z}_{z} dw = \int_C dw = \int^1_0 \frac{dw}{dt} dt = \int^1_0 \Delta z dt = \Delta z.
 \ee
@@ -4919,8 +4919,8 @@ by Theorem \ref{thm:contour_integral_primitive_function}. By assumption, $f'=0$ 
 \end{proof}
 
 \begin{remark}
-If $\sD$ is disconnected, we would not have the required conclusion by the following argument. %Since $f$ is holomorphic on a set $A$, it is differenitable at any point $z = x+iy\in A$. 
-Assume that $f(z) = u(x,y) + iv(x,y)$. Thus, by Theorem \ref{thm:cauchy_riemann_equation}, we have 
+If $\sD$ is disconnected, we would not have the required conclusion by the following argument. %Since $f$ is holomorphic on a set $A$, it is differenitable at any point $z = x+iy\in A$.
+Assume that $f(z) = u(x,y) + iv(x,y)$. Thus, by Theorem \ref{thm:cauchy_riemann_equation}, we have
 \be
 0 = f'(z)= u_x(x,y) + iv_x(x,y) = v_y(x,y) - iu_y(x,y) \ \ra\ u_x(x,y) = v_x(x,y) = u_y(x,y) = v_y(x,y) = 0.
 \ee
@@ -5096,7 +5096,7 @@ Given any $\ve>0$, we consider the covering of $\sD$ and $z_i$ in Lemma \ref{lem
 \delta_i(z) = \frac{f(z) - f(z_i)}{z-z_i} - f'(z_i),\qquad z\neq z_i.
 \ee
 
-By Lemma \ref{lem:holomorphic_function_with_cover_of_finitely_many_squares}, $\abs{\delta_i(z)} < \ve$ at all points $z$ in the subset on which $\delta_i(z)$ is defined. Also, the function $\delta_i(z)$ is continuous throughout the subset since $f(z)$ is continuous there and 
+By Lemma \ref{lem:holomorphic_function_with_cover_of_finitely_many_squares}, $\abs{\delta_i(z)} < \ve$ at all points $z$ in the subset on which $\delta_i(z)$ is defined. Also, the function $\delta_i(z)$ is continuous throughout the subset since $f(z)$ is continuous there and
 \be
 \lim_{z\to z_i} \delta_i(z) = f'(z_i) - f'(z_i) = 0.
 \ee
@@ -5107,10 +5107,10 @@ f(z) = f(z_i) - z_i f'(z_i) + f'(z_i)z + (z-z_i)\delta_i(z)
 \ee
 and this means that
 \be
-\oint_{C_i} f(z)dz = \bb{f(z_i) - z_i f'(z_i)}\oint_{C_i}dz + f'(z_i)\oint_{C_i}zdz + \oint_{C_i}(z-z_i)\delta_i(z)dz.
+\oint_{C_i} f(z)dz = \brb{f(z_i) - z_i f'(z_i)}\oint_{C_i}dz + f'(z_i)\oint_{C_i}zdz + \oint_{C_i}(z-z_i)\delta_i(z)dz.
 \ee
 
-But 
+But
 \be
 \oint_{C_i} dz = 0,\qquad \oint_{C_i} zdz = 0
 \ee
@@ -5123,11 +5123,11 @@ The sum of all $n$ integrals on the left in the above equation can be written by
 \be
 \sum^n_{i=1}\oint_{C_i} f(z)dz = \int_C f(z)dz
 \ee
-since the two integrals along the common boundary of every pair of adjacent subsets cancel each other, the integral being taken in one sense along that line segment in one subset and in the opposite sense in other (see the graph below). Only the integrals along the curves that are parts of $C$ remain. 
+since the two integrals along the common boundary of every pair of adjacent subsets cancel each other, the integral being taken in one sense along that line segment in one subset and in the opposite sense in other (see the graph below). Only the integrals along the curves that are parts of $C$ remain.
 
 Thus, we have
 \be
-\int_C f(z)dz = \sum^n_{i=1} \oint_{C_i}(z-z_i)\delta_i(z)dz 
+\int_C f(z)dz = \sum^n_{i=1} \oint_{C_i}(z-z_i)\delta_i(z)dz
 \ee
 and so
 \be
@@ -5199,7 +5199,7 @@ Then by Proposition \ref{pro:contour_integral_continuous_basic_properties} we ca
 \abs{z - z_i} \leq \sqrt{2}S_i.
 \ee
 
-Then we have that 
+Then we have that
 \be
 \abs{(z - z_i)\delta_i(z)} = \abs{z-z_i}\abs{\delta_i(z)} < \sqrt{2}S_i \ve.
 \ee
@@ -5215,9 +5215,9 @@ If $C_i$ is the boundary of a partial square, it length does not exceed $4S_i+ L
 \ee
 where $S$ is the length of a side of some square that encloses the entire contour $C$ as well as all of the squares originally used in covering $\sD$. This $S$ must exist since $C$ is a contour (piecewise smooth, that is, it has continuous path on closed interval). Note that the sum of all the $A_i$'s does not exceed $S^2$.
 
-If $L$ denotes the length of $C$, it follows that 
+If $L$ denotes the length of $C$, it follows that
 \be
-\abs{\oint_C f(z)dz} < \bb{4\sqrt{2}S^2 + \sqrt{2}SL}\ve.
+\abs{\oint_C f(z)dz} < \brb{4\sqrt{2}S^2 + \sqrt{2}SL}\ve.
 \ee
 
 Since the value of the positive number $\ve$ is arbitrary, we can choose it so that the right-hand side of the above inequality is as small as possible. Then the left-hand side, which is independent of $\ve$, must therefore be equal to zero. This implies the required result.
@@ -5226,17 +5226,17 @@ Since the value of the positive number $\ve$ is arbitrary, we can choose it so t
 \begin{example}
 Evaluate the integral
 \be
-\oint_C \bb{\abs{z} - e^{z}\sin z^2 + \ol{z}}dz
+\oint_C \brb{\abs{z} - e^{z}\sin z^2 + \ol{z}}dz
 \ee
 where $C$ is the circle $\abs{z} = a$. The integral can be split into three individual integrals as
 \be
-\oint_C \bb{\abs{z} - e^{z}\sin z^2 + \ol{z}}dz = \oint_C \abs{z} dz - \oint_C e^{z}\sin z^2 dz + \oint_C  \ol{z}dz
+\oint_C \brb{\abs{z} - e^{z}\sin z^2 + \ol{z}}dz = \oint_C \abs{z} dz - \oint_C e^{z}\sin z^2 dz + \oint_C  \ol{z}dz
 \ee
 by Proposition \ref{pro:contour_integral_continuous_basic_properties}.(i). The second integral equals zero by Goursat theorem (Theorem \ref{thm:goursat_simple_closed_contour}) since the integrand $e^z \sin z^2$ is an entire function. The first integral is found to be
 \be
 \oint_C \abs{z} dz = a \oint_C  dz = 0.
 \ee
-since $C$ is the circle $\abs{z} = a$. To compute the third integral, we write $z = ae^{i\theta}$ and substitute $\ol{z}$ with $ae^{-i\theta}$ and $dz$ with $aie^{i\theta}$. This gives 
+since $C$ is the circle $\abs{z} = a$. To compute the third integral, we write $z = ae^{i\theta}$ and substitute $\ol{z}$ with $ae^{-i\theta}$ and $dz$ with $aie^{i\theta}$. This gives
 \be
 \oint_C  \ol{z}dz = \int^{2\pi}_0 a e^{-i\theta} ai e^{i\theta} d\theta = a^2 i \int^{2\pi}_0 d\theta = 2\pi a^2 i.
 \ee
@@ -5249,7 +5249,7 @@ Let $\sD$ be the open connected set that contains the whole complex plane except
 \be
 \int_C \frac{dz}{z}
 \ee
-where $C$ is an arbitrary contour, lying completely inside $\sD$, that starts from 1 and ends at a point $\alpha$. 
+where $C$ is an arbitrary contour, lying completely inside $\sD$, that starts from 1 and ends at a point $\alpha$.
 
 \begin{center}
 \psset{yunit=3cm,xunit=3cm}
@@ -5284,8 +5284,8 @@ where $C$ is an arbitrary contour, lying completely inside $\sD$, that starts fr
 \rput[cb](1.25,1){$C_2$}
 \rput[cb](0.95,0.5){$C$}
 %\rput[cb](0.2,-0.2){\textcolor{blue}{$C_1$}}
-%\rput[cb](1.95,2.15){\textcolor{blue}{$\bb{a,b}$}}
-%\rput[cb](-2.2,2.15){\textcolor{blue}{$\bb{-a,b}$}}
+%\rput[cb](1.95,2.15){\textcolor{blue}{$\brb{a,b}$}}
+%\rput[cb](-2.2,2.15){\textcolor{blue}{$\brb{-a,b}$}}
 \rput[cb](0.7,1.35){$\alpha$}
 \rput[cb](1.5,-.1){$\abs{\alpha}$}
 \rput[cb](1,-.1){1}
@@ -5298,7 +5298,7 @@ Let $C_1$ be the line segment from 1 to $\abs{\alpha}$ along the real axis, and 
 \int_C \frac {dz}{z} = \int_{C_1} \frac {dz}{z} + \int_{C_2} \frac {dz}{z}.
 \ee
 
-Since $\alpha$ does not lie on the negative real axis, $\Arg \alpha$ cannot assume the value of $\pi$. If we write 
+Since $\alpha$ does not lie on the negative real axis, $\Arg \alpha$ cannot assume the value of $\pi$. If we write
 \be
 \alpha = \abs{\alpha} e^{i\Arg \alpha},\qquad -\pi < \Arg\alpha < \pi,
 \ee
@@ -5322,7 +5322,7 @@ For fixed $b\in \R$, %Evaluate the integral
 \int^\infty_{-\infty} e^{-x^2} e^{\pm 2ibx}dx = \int^\infty_{-\infty} e^{-x^2} \cos(2bx) dx = e^{-b^2}.
 \ee
 
-Also, 
+Also,
 \be
 \int^\infty_{-\infty} e^{-x^2} \sin(2bx) dx = 0.
 \ee
@@ -5337,7 +5337,7 @@ This result is called the Poisson integral. Note that
 
 
 \begin{proof}[\bf Proof]
-Consider the integration of the function $e^{-z^2}$ around the rectangle contour $C$ with vertices $\pm a$, $\pm a + ib$ and oriented positively.  
+Consider the integration of the function $e^{-z^2}$ around the rectangle contour $C$ with vertices $\pm a$, $\pm a + ib$ and oriented positively.
 
 \begin{center}
 \psset{yunit=1.5cm,xunit=1.5cm}
@@ -5362,14 +5362,14 @@ Consider the integration of the function $e^{-z^2}$ around the rectangle contour
 \rput[cb](0.2,2.15){\textcolor{blue}{$C_3$}}
 \rput[cb](-2.2,0.9){\textcolor{blue}{$C_4$}}
 \rput[cb](0.2,-0.2){\textcolor{blue}{$C_1$}}
-\rput[cb](1.95,2.15){\textcolor{blue}{$\bb{a,b}$}}
-\rput[cb](-2.2,2.15){\textcolor{blue}{$\bb{-a,b}$}}
-\rput[cb](-2.2,-.15){\textcolor{blue}{$\bb{-a,-0}$}}
-\rput[cb](1.95,-.15){\textcolor{blue}{$\bb{a,-0}$}}
+\rput[cb](1.95,2.15){\textcolor{blue}{$\brb{a,b}$}}
+\rput[cb](-2.2,2.15){\textcolor{blue}{$\brb{-a,b}$}}
+\rput[cb](-2.2,-.15){\textcolor{blue}{$\brb{-a,-0}$}}
+\rput[cb](1.95,-.15){\textcolor{blue}{$\brb{a,-0}$}}
 \end{pspicture}
 \end{center}
 
-Since $e^{-z^2}$ is an entire function, we have 
+Since $e^{-z^2}$ is an entire function, we have
 \be
 \oint_{C} e^{-z^2}dz = 0
 \ee
@@ -5378,7 +5378,7 @@ by Goursat theorem (Theorem \ref{thm:goursat_simple_closed_contour}). The closed
 C_1 & = & \bra{x:-a\leq x \leq a}, \\
 C_2 & = & \bra{a+iy:0\leq y \leq b}, \\
 C_3 & = & \bra{x+ib:-a\leq x \leq a}, \\
-C_4 & = & \bra{-a+iy:0\leq y \leq b}, 
+C_4 & = & \bra{-a+iy:0\leq y \leq b},
 \eeast
 and $C$ is oriented in the anticlockwise direction. The contour integral can be split into four contour integrals, namely,
 \be
@@ -5389,7 +5389,7 @@ The four contour integrals can be expressed as real integrals as follows:
 \beast
 \int_{C_1} e^{-z^2}dz & = & \int^a_{-a} e^{-x^2}dx,\\
 \int_{C_2} e^{-z^2}dz & = & \int^b_0 e^{-(a+iy)^2}i dy,\\
-\int_{C_3} e^{-z^2}dz & = & \int^{-a}_a e^{-(x+ib)^2} dx = -e^{b^2} \bb{\int^a_{-a} e^{-x^2}\cos(2bx)dx - i \int^a_{-a} e^{-x^2}\sin(2bx)dx},\\
+\int_{C_3} e^{-z^2}dz & = & \int^{-a}_a e^{-(x+ib)^2} dx = -e^{b^2} \brb{\int^a_{-a} e^{-x^2}\cos(2bx)dx - i \int^a_{-a} e^{-x^2}\sin(2bx)dx},\\
 \int_{C_4} e^{-z^2}dz & = & \int^0_b e^{-(a+iy)^2}i dy.
 \eeast
 
@@ -5400,7 +5400,7 @@ First, we consider the bound on the modulus of the second integral. By the modul
 \eeast
 as $a\to \infty$ since $0\leq y\leq b$. Using a similar argument, the fourth integral can be shown to be zero as $a\to\infty$. Thus, by taking the limit $a\to \infty$ but keeping $b$ fixed, the contour integral around $C$ is found to be equal to the sum of the first and third integrals. That is
 \be
-0 = \lim_{a\to\infty} \oint_C e^{-z^2}dz = \lim_{a\to\infty} \bb{\int^a_{-a} e^{-x^2}dx - e^{b^2} \int^a_{-a} e^{-x^2}\cos(2bx)dx} + ie^{b^2}\lim_{a\to\infty} \bb{ \int^a_{-a} e^{-x^2}\sin(2bx)dx}.
+0 = \lim_{a\to\infty} \oint_C e^{-z^2}dz = \lim_{a\to\infty} \brb{\int^a_{-a} e^{-x^2}dx - e^{b^2} \int^a_{-a} e^{-x^2}\cos(2bx)dx} + ie^{b^2}\lim_{a\to\infty} \brb{ \int^a_{-a} e^{-x^2}\sin(2bx)dx}.
 \ee
 
 Since we know that\footnote{proposition needed.}
@@ -5478,7 +5478,7 @@ f(z) = \frac 1{2\pi i}\int_C \frac{f(\xi)}{\xi-z}d\xi, \qquad \forall z\in D.
 \begin{theorem}
 Suppose $f$ is holomorphic in an open set $X$, then $f$ has infinitely many complex derivatives in $X$. Moreover, if $C\subseteq X$ is a circle whose interior is also contained in $X$, then
 \be
-f^{(n)}(z) = \frac {n!}{2\pi i}\int_C \frac{f(\xi)}{\bb{\xi-z}^{n+1}}d\xi
+f^{(n)}(z) = \frac {n!}{2\pi i}\int_C \frac{f(\xi)}{\brb{\xi-z}^{n+1}}d\xi
 \ee
 for all $z$ in the interior of $C$.
 \end{theorem}
@@ -5492,7 +5492,7 @@ for all $z$ in the interior of $C$.
 %\begin{theorem}\label{thm:differentiation_of_integrals_containing_a_parameter}
 %For $t\in \R, z\in \C$, if $f(t,z)$ possesses a Riemann integral with respect to $t$ and $\fp{f(t,z)}{z}$ is a continuous function of both the variables $t$ and $z$, then\footnote{checking needed.}
 %\be
-%\frac{d}{dz}\bb{\int^b_a f(t,z) dt} = \int^b_a \fp{f(t,z)}{t}dt.
+%\frac{d}{dz}\brb{\int^b_a f(t,z) dt} = \int^b_a \fp{f(t,z)}{t}dt.
 %\ee
 %\end{theorem}
 
@@ -5537,7 +5537,7 @@ is an analytic function of $z$ when $\Re z \geq r_1 >r$.
 \begin{proposition}
 Let $c$ be $n$th order pole of function $f$\footnote{type needed.}. Then
 \be
-\res\bsb{f,c} = \frac 1{(n-1)!} \lim_{z\to c} \frac{d^{n-1}}{dz^{n-1}}\bb{(z-c)^n f(z)}.
+\res\bsb{f,c} = \frac 1{(n-1)!} \lim_{z\to c} \frac{d^{n-1}}{dz^{n-1}}\brb{(z-c)^n f(z)}.
 \ee
 \end{proposition}
 
@@ -5575,14 +5575,14 @@ Let $c$ be $n$th order pole of function $f$\footnote{type needed.}. Then
 \begin{theorem}[the expansion of a class of functions as infinite products]\label{thm:expansion_of_function_infinite_products}
 Let $f(z)$ be a complex function which has simple zeros at the point $a_1,a_2,\dots$ with $a_n\neq 0$ where $\lim_{n\to\infty}\abs{a_n}$ is infinite and $f(z)$ be analytic for all values of $z$. Then\footnote{see a course of modern analysis, Whittaker and Watson p137}
 \be
-f(z) = f(0)e^{\frac{f'(0)}{f(0)}z} \prod^\infty_{n=1}\bb{\bb{1-\frac z{a_n}}e^{\frac{z}{a_n}}}.
+f(z) = f(0)e^{\frac{f'(0)}{f(0)}z} \prod^\infty_{n=1}\brb{\brb{1-\frac z{a_n}}e^{\frac{z}{a_n}}}.
 \ee
 \end{theorem}
 
 \begin{proof}[\bf Proof]
 Since $f(z)$ be analytic for all values of $z$, $f'(z)$ is analytic for all values of $z$ (\footnote{details needed. sec 5.22}), so $\frac{f'(z)}{f(z)}$ can have singularities only the points $a_1,a_2,\dots$. Consequently, by Taylor's theorem (Theorem \footnote{theorem needed.}), for point $a_r$ (with simple zero)%\item Sine function infinite product (see a course of modern analysis, Whittaker and Watson p137)
 \be
-f(z) = f(a_r) + (z-a_r)f'(a_r) + \frac{(z-a_r)^2}2 f''(a_r)+ \dots = (z-a_r)f'(a_r) + \frac{(z-a_r)^2}2 f''(a_r)+ \dots 
+f(z) = f(a_r) + (z-a_r)f'(a_r) + \frac{(z-a_r)^2}2 f''(a_r)+ \dots = (z-a_r)f'(a_r) + \frac{(z-a_r)^2}2 f''(a_r)+ \dots
 \ee
 and
 \be
@@ -5592,27 +5592,27 @@ f'(z) = f'(a_r) + (z-a_r)f''(a_r) + \dots.
 It follows immediately that at each of the points $a_r$, the function $\frac{f'(z)}{f(z)}$ has a simple pole, with residue +1\footnote{details needed.}. If then we can find a sequence of circles $c_m$\footnote{of the nature described in sec 7.4}, such that $\frac{f'(z)}{f(z)}$ is bounded on $c_m$ as $m\to \infty$, it follows, from the expansion\footnote{given in sec7.4} that
 
 \be
-\frac{f'(z)}{f(z)} = \frac{f'(0)}{f(0)} + \sum^\infty_{n=1}\bb{\frac 1{z-a_n} + \frac 1{a_n}}.
+\frac{f'(z)}{f(z)} = \frac{f'(0)}{f(0)} + \sum^\infty_{n=1}\brb{\frac 1{z-a_n} + \frac 1{a_n}}.
 \ee
 
 Since this series converges uniformly when the terms are suitably grouped\footnote{given in sec7.4}, we may integrate term-by-term. Doing so, and taking the exponential of each side, we get
 \be
-f(z) = ce^{\frac{f'(0)}{f(0)}z} \prod^\infty_{n=1}\bb{\bb{1-\frac z{a_n}}e^{\frac{z}{a_n}}},
+f(z) = ce^{\frac{f'(0)}{f(0)}z} \prod^\infty_{n=1}\brb{\brb{1-\frac z{a_n}}e^{\frac{z}{a_n}}},
 \ee
 where $c$ is independent of $z$. Putting $z= 0$, we see that $f(0)=c$, and thus the general result becomes
 \be
-f(z) = f(0)e^{\frac{f'(0)}{f(0)}z} \prod^\infty_{n=1}\bb{\bb{1-\frac z{a_n}}e^{\frac{z}{a_n}}}.
+f(z) = f(0)e^{\frac{f'(0)}{f(0)}z} \prod^\infty_{n=1}\brb{\brb{1-\frac z{a_n}}e^{\frac{z}{a_n}}}.
 \ee
 \end{proof}
 
-\begin{example}%This is actually Theorem\footnote{theorem needed.} 
+\begin{example}%This is actually Theorem\footnote{theorem needed.}
 Let $f(z) = \frac {\sin z}z$, which has simple zeros at the points $k\pi$, where $k$ is any positive or negative integer. In this case we have
 \be
 f(0) = 1 ,\quad f'(0) = 0
 \ee
 by L'h\^opital's rule\footnote{theorem needed.} so the theorem gives immediately
 \be
-\frac{\sin z}{z} = \prod^\infty_{n=1} \bb{\bb{1-\frac z{n\pi}}e^{\frac z{n\pi}}}\bb{\bb{1+\frac z{n\pi}}e^{-\frac z{n\pi}}} =  \prod^\infty_{n=1} \bb{1-\frac {z^2}{n^2\pi^2}}
+\frac{\sin z}{z} = \prod^\infty_{n=1} \brb{\brb{1-\frac z{n\pi}}e^{\frac z{n\pi}}}\brb{\brb{1+\frac z{n\pi}}e^{-\frac z{n\pi}}} =  \prod^\infty_{n=1} \brb{1-\frac {z^2}{n^2\pi^2}}
 \ee
 for it is easily seen that the condition concerning the behavior of $\frac{f'(z)}{f(z)}$ as $\abs{z}\to \infty$ is fulfilled.\footnote{details needed.}
 \end{example}
@@ -5621,14 +5621,14 @@ for it is easily seen that the condition concerning the behavior of $\frac{f'(z)
 \begin{example}
 For $f(z) = \cos z$, the zeros are at $a_n \in \bra{\pm (2k-1)\pi/2, \ k\in \Z^+}$ with $f(0) = 1$ and $f'(0) = 0$. Therefore, we have
 \beast
-f(z) & = & f(0) e^{\frac {f'(0)}{f(0)}z}\prod^\infty_{n=1}\bb{\bb{1-\frac z{a_n}}e^{\frac{z}{a_n}}} \\
-& = & \prod^\infty_{k=1}\bb{1-\frac z{(2k-1)\pi/2}}\bb{1+\frac z{(2k-1)\pi/2}} = \prod^\infty_{k=1}\bb{1-\frac {4z^2}{(2k-1)^2\pi^2}}.
+f(z) & = & f(0) e^{\frac {f'(0)}{f(0)}z}\prod^\infty_{n=1}\brb{\brb{1-\frac z{a_n}}e^{\frac{z}{a_n}}} \\
+& = & \prod^\infty_{k=1}\brb{1-\frac z{(2k-1)\pi/2}}\brb{1+\frac z{(2k-1)\pi/2}} = \prod^\infty_{k=1}\brb{1-\frac {4z^2}{(2k-1)^2\pi^2}}.
 \eeast
 
 Then for $z = \pi/4$, we have
 \beast
-0.707 \approx \frac {\sqrt{2}}2 = \cos\bb{\frac {\pi}4} & = & \prod^\infty_{k=1}\bb{1-\frac {1}{4(2k-1)^2}} =  \frac 34 \prod^\infty_{k=2}\bb{1-\frac {1}{4(2k-1)^2}} = \frac 34 \cdot \frac{107}{108} \prod^\infty_{k=3}\bb{1-\frac {1}{4(2k-1)^2}}\\
-& = & \frac{107}{144} \prod^\infty_{k=3}\bb{1-\frac {1}{4(2k-1)^2}} = 0.743 \prod^\infty_{k=3}\bb{1-\frac {1}{4(2k-1)^2}} = \dots.
+0.707 \approx \frac {\sqrt{2}}2 = \cos\brb{\frac {\pi}4} & = & \prod^\infty_{k=1}\brb{1-\frac {1}{4(2k-1)^2}} =  \frac 34 \prod^\infty_{k=2}\brb{1-\frac {1}{4(2k-1)^2}} = \frac 34 \cdot \frac{107}{108} \prod^\infty_{k=3}\brb{1-\frac {1}{4(2k-1)^2}}\\
+& = & \frac{107}{144} \prod^\infty_{k=3}\brb{1-\frac {1}{4(2k-1)^2}} = 0.743 \prod^\infty_{k=3}\brb{1-\frac {1}{4(2k-1)^2}} = \dots.
 \eeast
 \end{example}
 
@@ -5636,14 +5636,14 @@ Then for $z = \pi/4$, we have
 %\begin{problem}
 %Prove that
 %\be
-%\bb{1+\bb{\frac kx}^2}\bb{1 + \bb{\frac{k}{x - 2\pi}}^2}\bb{1 + \bb{\frac{k}{x+2\pi}}^2}\bb{1 + \bb{\frac{k}{x-4\pi}}^2}\bb{1 + \bb{\frac{k}{x+ 4\pi }}^2} \dots = \frac{\cosh k - \cos x}{1-\cos x}.\nonumber
+%\brb{1+\brb{\frac kx}^2}\brb{1 + \brb{\frac{k}{x - 2\pi}}^2}\brb{1 + \brb{\frac{k}{x+2\pi}}^2}\brb{1 + \brb{\frac{k}{x-4\pi}}^2}\brb{1 + \brb{\frac{k}{x+ 4\pi }}^2} \dots = \frac{\cosh k - \cos x}{1-\cos x}.\nonumber
 %\ee
 %\end{problem}
 %
 %\begin{solution}[\bf Solution.]
 %Since the simple zeros are $2n\pi + ki$ for $n\in \Z$, By Theorem \ref{thm:expansion_of_function_infinite_products} we have $f(0) = $ and $f'(0) = $ and thus %\footnote{solution needed.}
 %\be
-%f(z) = f(0)e^{\frac{f'(0)}{f(0)}z} \prod^\infty_{n=1}\bb{\bb{1-\frac z{a_n}}e^{\frac{z}{a_n}}}.
+%f(z) = f(0)e^{\frac{f'(0)}{f(0)}z} \prod^\infty_{n=1}\brb{\brb{1-\frac z{a_n}}e^{\frac{z}{a_n}}}.
 %\ee
 %\end{solution}
 
@@ -5699,7 +5699,7 @@ Show that
 
 \begin{solution}[\bf Solution.]
 \ben
-\item [(i)] Using modulus inequality and triangle inequality, we have $z(t) = it$ and 
+\item [(i)] Using modulus inequality and triangle inequality, we have $z(t) = it$ and
 \be
 \abs{x^2 + iy^2} \leq \abs{x^2} + \abs{iy^2} = \abs{x^2}+ \abs{y^2} \leq 1.
 \ee
@@ -5707,12 +5707,12 @@ Show that
 Thus,
 \beast
 \abs{\int_C (x^2 + iy^2)dz} & = & \abs{\int^1_{-1} (x^2 + iy^2)\frac{dz}{dt} dt} \leq \int^1_{-1} \abs{x^2 + iy^2} dt \\
-& \leq & \int^1_{-1} \bb{\abs{x}^2+ \abs{y}^2} dt \leq \int^1_{-1} dt = 2.
+& \leq & \int^1_{-1} \brb{\abs{x}^2+ \abs{y}^2} dt \leq \int^1_{-1} dt = 2.
 \eeast
 
 \item [(ii)] Similar, we use modulus inequality to have $z(t) = e^{it}$, $t\in [-\pi/2,\pi/2]$,
 \be
-\abs{\int_C (x^2 + iy^2)dz} \leq \int^{\pi/2}_{-\pi/2} \bb{\abs{x}^2 + \abs{y}^2} \abs{ie^{it}} dt = \int^{\pi/2}_{-\pi/2} dt = \pi.
+\abs{\int_C (x^2 + iy^2)dz} \leq \int^{\pi/2}_{-\pi/2} \brb{\abs{x}^2 + \abs{y}^2} \abs{ie^{it}} dt = \int^{\pi/2}_{-\pi/2} dt = \pi.
 \ee
 
 \item [(iii)] Along the contour $C$, we have $z = t+i$, $t\in [-1,1]$, so $1\leq \abs{z}\leq \sqrt{2}$ and correspondingly,
@@ -5735,7 +5735,7 @@ Here, $M := \max_{z\in C} \frac 1{\abs{z}^2} = 1$ and the arc length $L=2$. Then
 \begin{problem}
 Find the radii of convergence of the following power series:
 \beast
-\text{(i)}\ \sum^\infty_{k=1} \frac 1k (z-i)^k,\quad \text{(ii)}\ \sum^\infty_{k=1} k^{\ln k} (z-2)^k,\quad \text{(iii)} \ \sum^\infty_{k=1}\bb{\frac zk}^k ,\quad \text{(iv)}\ \sum^\infty_{k=1} \bb{1+\frac 1k}^{k^2} z^k,\quad \text{(v)}\ \sum^\infty_{k=1}(-1)^k z^{2k}.
+\text{(i)}\ \sum^\infty_{k=1} \frac 1k (z-i)^k,\quad \text{(ii)}\ \sum^\infty_{k=1} k^{\ln k} (z-2)^k,\quad \text{(iii)} \ \sum^\infty_{k=1}\brb{\frac zk}^k ,\quad \text{(iv)}\ \sum^\infty_{k=1} \brb{1+\frac 1k}^{k^2} z^k,\quad \text{(v)}\ \sum^\infty_{k=1}(-1)^k z^{2k}.
 \eeast
 \end{problem}
 
@@ -5754,7 +5754,7 @@ so the radius of convergence is $\abs{z-i} = 1$.
 
 To evaluate the limit, we consider the logarithm since it is continuous,
 \be
-\ln \bb{\lim_{k\to \infty}\sqrt[k]{k^{\ln k}}} = \lim_{k\to \infty}\ln \bb{\sqrt[k]{k^{\ln k}}} = \lim_{k\to \infty} \frac{\bb{\ln k}^2}k = 0.
+\ln \brb{\lim_{k\to \infty}\sqrt[k]{k^{\ln k}}} = \lim_{k\to \infty}\ln \brb{\sqrt[k]{k^{\ln k}}} = \lim_{k\to \infty} \frac{\brb{\ln k}^2}k = 0.
 \ee
 
 So we have
@@ -5766,14 +5766,14 @@ The radius of convergence is $\abs{z-2} =1$.
 
 \item [(iii)] By the ratio test (Proposition \ref{pro:ratio_test_convergence_radius}), we have
 \be
-\frac 1R = \lim_{k\to \infty} \frac{\bb{\frac 1{k+1}}^{k+1}}{\bb{\frac 1k}^k} = \lim_{k\to \infty} \frac 1{k+1} \lim_{k\to \infty} \frac 1{\bb{1+\frac 1k}^k} = 0 \cdot \frac 1e = 0.
+\frac 1R = \lim_{k\to \infty} \frac{\brb{\frac 1{k+1}}^{k+1}}{\brb{\frac 1k}^k} = \lim_{k\to \infty} \frac 1{k+1} \lim_{k\to \infty} \frac 1{\brb{1+\frac 1k}^k} = 0 \cdot \frac 1e = 0.
 \ee
 
 So the radius of convergence is the whole complex plane.
 
 \item [(iv)] By the root test (Proposition \ref{pro:root_test_convergence_radius}), we have
 \be
-\frac 1R = \lim_{k\to \infty} \sqrt[k]{\bb{1+\frac 1k}^{k^2}} = \lim_{k\to \infty}\bb{1+\frac 1k}^k = e,
+\frac 1R = \lim_{k\to \infty} \sqrt[k]{\brb{1+\frac 1k}^{k^2}} = \lim_{k\to \infty}\brb{1+\frac 1k}^k = e,
 \ee
 so the radius of convergence is $\abs{z} = \frac 1e$.
 
