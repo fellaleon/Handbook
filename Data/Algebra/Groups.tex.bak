@@ -35,8 +35,8 @@ The set is a semigroup\index{semigroup} if it satisfies (i) and (ii).
 $(\Z,-)$ is not a group because it is not associative, and $(\Z,\times) $ lacks inverses.
 \end{remark}
 
-\begin{definition}
-A group $G$ is said to be abelian\index{abelian} if $g_1*g_2=g_2*g_1$ for all $g_1,g_2\in G$.
+\begin{definition}[abelian group\index{abelian group}]
+A group $G$ is said to be abelian if $g_1*g_2=g_2*g_1$ for all $g_1,g_2\in G$.
 \end{definition}
 
 \begin{remark}\ben
@@ -86,9 +86,57 @@ If $(G,*)$ is a group, for $g_1,g_2,h\in G$, $g_1 h = g_2 h \ \ra \ g_1=g_2$.
 $g_1 h h^{-1} = g_2 h h^{-1} \ \ra \ g_1e = g_2e \ \ra \ g_1 = g_2$, and similarly in reverse.
 \end{proof}
 
-\begin{definition}[order\index{order!group}]\label{def:order_group}
+\subsection{Orders of groups and elements}
+
+\begin{definition}[order of group\index{order!group}]\label{def:order_group}
 The order of the group $G$ is written $\abs{G}$ and defined to be the size of the set $G$.
 \end{definition}
+
+\begin{definition}[order of group element]
+The order of an element\index{order!group element} $g\in G$, written $o(g)$, is the least positive integer $n$ (if one exists) such that $g^n =e_G$.
+
+If no such integer exists, then we say that $g$ has infinite order.
+\end{definition}
+
+\begin{proposition}\label{pro:group_element_any_two_integers}%show by induction that 
+Let $G$ be any group. Given $g \in G$, $g^{m+n} = g^mg^n$ for all integers $m$ and $n$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Since $g^0 = e$, the result is clear if $m$ or $n$ is 0, so assume $m,n\neq 0$. If $m,n>0$, both sides are the product of $m+n$ terms equal to $g$, so are equal, likewise if $m,n<0$ both sides are the product of $m+n$ terms equal to $g^{-1}$. If $m>0>n$, write $k=-n$, then
+\be
+g^{m+n} = g^{m-k},\quad g^m g^n = g^m(g^{-1})^k = g^{m-1}g g^{-1}(g^{-1})^{k-1} =  g^{m-1}e(g^{-1})^{k-1} =  g^{m-1}(g^{-1})^{k-1}
+\ee
+
+Thus, if $m\geq k$, by induction on $k$, we obtain $g^mg^n = g^{m-k} = g^{m+n}$ as required, which if $k>m$, by induction on $m$ we obtain $g^mg^n = (g^{-1})^{k-m} = g^{m+n}$ as required. A similar argument treats the case $m<0<n$.
+\end{proof}
+
+\begin{proposition}\label{pro:element_order}
+Let $G$ be a finite group. Let $g \in G$. Then there is a positive integer $n$ such that $g^n$ equals $e$, the identity element. The least such positive $n$ is the order of $g$.
+
+There also exists a positive integer $n$ such that $g^n = e$ for all $g \in G$. The least such positive $n$ is the exponent\index{exponent!group} of $G$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Let $\abs{G} = m$. Given $g\in G$, then the $m+1$ elements $g,g^2,\dots, g^m,g^{m+1}$ cannot all distinct, so $\exists s,t$ with $1\leq s<t \leq m +1$ such that $g^s = g^t$. Thus, $g^{t-s} = g^{t-s} = g^{s}g^{-s} = e$ by Proposition \ref{pro:group_element_any_two_integers}. So $\exists$ a positive integer $n_g$ with $g^{n_g} = e$. Set $n = \prod_{g\in G}n_g$, then $\forall g\in G$, we sset that $n_g$ divides $n$, so $g^n = e$. Thus, such $n$ is exponent of group $G$.
+\end{proof}
+
+%\begin{proposition}[exponent]\label{pro:exponent_group}
+%\end{proposition}
+%\begin{proof}[\bf Proof]
+%\end{proof}
+
+
+\begin{lemma}\label{lem:order_element}
+If $o(g) = n$ then $g^m = e$ iff $n\mid m$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+$\ra$. If $g^m = e$, then write with $m = qn +r$, $q,r\in \Z$, $0\leq r<n$. Then $g^r = g^m((g^{-1})^n)^q =e$, but $r<n$ and $n$ is the smallest positive integer such that $g^n = e$. Therefore $r=0$, which means $n|m$.
+
+$\la$. If $m=qn$, then $g^m = (g^n)^q = e$.
+\end{proof}
+
 
 \subsection{Subgroup}
 
@@ -100,6 +148,8 @@ Let $(G,*)$ be a group. The subset $H\subseteq G$ (i.e. $x\in H \ \! \ra \! \ x\
 \item [(iii)] $h\in H\ \ra\ h^{-1}\in H$.
 \een
 Note that associativity is inherited. We write $H\leq G$ to indicate that $H$ is a subgroup.
+
+Also, $\sub(G)$ denotes the set of all the subgroups of group $G$ and $\sub(G:H)$ denotes the set of all the subgroups (of group $G$) containg $H$. 
 \end{definition}
 
 \begin{example}
@@ -166,6 +216,41 @@ In particular, we can let $L = H_1\cup H_2$ and it has to be contained in $H_1$ 
 \end{proof}
 
 
+%\begin{proposition}\label{pro:order_group_element_divides_number_form_subgroup}
+%Let $G$ be a group. Then for $n\in \Z^+$, 
+%\be
+%H = \bra{g\in G: o(g)\mid n}\text{ is a subgroup of $G$.}
+%\ee
+%\end{proposition}
+
+\begin{proposition}\label{pro:order_abelian_group_element_divides_number_form_subgroup}
+Let $G$ be an abelian group. Then for $n\in \Z^+$,
+\be
+H = \bra{g\in G: o(g)\mid n}\text{ is a subgroup of $G$.}
+\ee
+\end{proposition}
+
+\begin{remark}
+Note that $G$ is not necessarily finite.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Obviously, $e\in H$ and thus $H$ is not empty. By assumption $\forall h_1,h_2\in H$, we have $h_1^n = h_2^n = e$ by Lemma \ref{lem:order_element}. 
+\be
+e = h_1^{-1} h_1 = h_1^{-1} e h_1 = \bb{h_1^{-1}}^2 h_1^2 = \dots = \bb{h_1^{-1}}^n h_1^n \ \ra\ \bb{h_1^{-1}}^n = e.%\ \ra\  h_1^{-1} \in H.
+\ee
+
+Then since $G$ is abelian,
+\be
+\bb{h_1^{-1}h_2}^n = \bb{h_1^{-1}}^n h_2^n = e \cdot e = e \ \ra\ h_1^{-1}h_2 \in H.
+\ee%$\bb{h_1^{-1}h_2}^n = e$
+
+Then we know that $H$ is a subgroup of $G$ by Lemma \ref{lem:subgroup}.
+\end{proof}
+
+
+
+
 \begin{definition}
 If $g_1,\dots, g_k\in G$, the subgroup generated by the elements $g_1,\dots,g_k$ is the smallest subgroup of $G$ containing all the $g_j$s. It is denoted by $\bra{g_1,\dots,g_k}$ and is the intersection of all the subgroups of $G$ that contain all the $g_j$s.
 \end{definition}
@@ -174,259 +259,7 @@ If $g_1,\dots, g_k\in G$, the subgroup generated by the elements $g_1,\dots,g_k$
 If there is no proper subgroup of $G$ containing all the $g_j$s, then the subgroup generated by $g_1,\dots,g_k \in G$ is $G$ itself.
 \end{remark}
 
-\begin{theorem}
-$S_n$ is generated by each of
-\be
-\text{(i) } \bra{(j\ k)|j<k}, \quad \text{(ii) }\bra{(1\ k)|1<k\leq n},\quad\text{(iii) }\bra{(j\ j+1)|1\leq j<n},\quad \text{(iv) }\bra{(1\ 2), (1\ 2\ \dots\ n)}.
-\ee
-\end{theorem}
 
-\begin{proof}[\bf Proof]
-\footnote{need proof}
-\end{proof}
-
-\begin{example}
-$S_3$ has order 6. Its subgroups are:
-\ben
-\item [(i)] $\bra{\iota}$, of order 1.
-\item [(ii)] $\bra{\iota,(1\ 2)}$, of order 2, and two others which are similar; $\bra{\iota,(1\ 3)}$ and $\bra{\iota,(2\ 3)}$.
-\item [(iii)] $\bra{\iota,(1\ 2\ 3), (1\ 3\ 2)}$, of order 3.
-\item [(iv)] $S_3$, of order 6.
-\een
-\end{example}
-
-
-
-
-\subsection{Class of groups}%The cyclic, symmetric and dihedral groups}
-
-\begin{definition}[cyclic group]\label{def:cyclic_group}
-A group is cyclic\index{cyclic group} if there exists $x\in G$ such that $g =x^n,\forall g\in G$. $x$ is called the generator\index{generator!Groups} of the group. Thus
-\be
-x^n = \left\{\ba{ll}
-\overbrace{x * x* \dots * x}^{n \text{ times}} & n>0\\
-e & n=0\\
-\underbrace{x^{-1} * x^{-1} * \dots * x^{-1}}_{n \text{ times}} & n<0
-\ea\right.
-\ee
-The cyclic group of order $n$ is denoted by $C_n = \bsa{x}$.
-\end{definition}
-
-\begin{remark}
-Clearly, cyclic group is abelian.
-\end{remark}
-
-\begin{example}
-\ben
-\item [(i)] $(\Z,+)$ is cyclic with generator 1.
-\item [(ii)] The group of rotations of a regular $n$-gon is cyclic (see Theorem \ref{thm:dihedral_symmetric_subgroup}).
-\een
-\end{example}
-
-\begin{definition}[permutation]\label{def:permutation}
-For $f:A\to B$, let $A=B=X$, i.e. we are mapping from a set to itself. Bijective functions $X\to X$ are called permutations\index{permutation} of $X$ (think shuffling).
-\end{definition}
-
-It is customary to use small Greek letters to denote permutations; $\iota$ represents the permutation which maps every element to itself (the 'identity').
-
-\begin{definition}[symmetric group]\label{def:symmetric_group}
-We define  $\sym(X)$ to be the set of all permutations. If $X$ is finite of size $\abs{X} = n$, often we take $X$ to be the set $\bra{1,2,\dots,n}$ and $S_n$ write for $\sym(X)$. For $\sigma\in S_n$, we write it and its inverse
-\be
-\sigma = \bepm
-1 & 2 & \dots & n\\
-\sigma(1) & \sigma(2) & \dots & \sigma(n)
-\eepm,\quad\quad
-\sigma^{-1} = \bepm
-\sigma(1) & \sigma(2) & \dots & \sigma(n)\\
-1 & 2 & \dots & n
-\eepm
-\ee
-\end{definition}
-
-\begin{theorem}
-$\sym(X)$ is a group under composition. (It is called the symmetric group\index{symmetric group} on $X$.)
-\end{theorem}
-
-\begin{proof}[\bf Proof]
-We prove each of the axioms in turn;
-\ben
-\item [(i)] If $f,g\in \sym(X)$ then $f\circ g \in \sym(X)$; this follows from permutation (Definiton \ref{def:permutation}).
-\item [(ii)] If $f,g,h\in \sym(X)$, we want to show that for any $x\in X$, $(f\circ (g\circ h))(x) = ((f\circ g)\circ h)(x)$. However,
-\be
-(f\circ (g\circ h))(x) = f((g\circ h)(x)) = f(g(h(x))),\quad\quad ((f\circ g)\circ h)(x) = ((f\circ g)\circ h(x)) = f(g(h(x))).
-\ee
-so the two are identical.
-\item [(iii)] $\iota:X\to X$ does nothing, thus $f\circ \iota = f = \iota \circ f$.
-\item [(iv)] Define $f^{-1}:X\to X$ as follows, for $y\in X$ let $f^{-1}(y)$ be the unique pre-image of in $X$. Then $f^{-1}\in \sym(X)$ and $(f^{-1}\circ f)(x) = x = \iota(x)$ for $x\in X$. Also $(f\circ f^{-1}(x)) = x = \iota(x)$, so the result follows since $f$, $f^{-1} $are bijective.
-\een
-\end{proof}
-
-\begin{example}
-We can now write
-\be
-S_1 = \bra{\iota},\quad\quad S_2 = \bra{\bepm 1 & 2\\ 1 & 2 \eepm, \bepm 1 & 2\\ 2 & 1 \eepm}
-\ee
-
-\be
-S_3 = \bra{\bepm 1 & 2 & 3\\ 1 & 2 & 3 \eepm, \bepm 1 & 2 & 3\\ 1 & 3 & 2 \eepm, \bepm 1 & 2 & 3\\ 2 & 1 & 3 \eepm, \bepm 1 & 2 & 3\\ 2 & 3 & 1 \eepm, \bepm 1 & 2 & 3\\ 3 & 1 & 2 \eepm, \bepm 1 & 2 & 3\\ 3 & 2 & 1 \eepm}.
-\ee
-
-In $S_3$, if we let
-\be
-\sigma = \bepm 1 & 2 & 3\\ 1 & 3 & 2 \eepm,\quad\quad \tau = \bepm 1 & 2 & 3\\ 2 & 3 & 1 \eepm
-\ee
-then $\sigma^2 = \iota$, $\tau^3 = \iota$, $\tau^2 = \tau^{-1}$, and in particular note that
-\be
-\sigma \circ \tau = \bepm 1 & 2 & 3\\ 3 & 2 & 1 \eepm,\quad\quad \tau \circ \sigma = \bepm 1 & 2 & 3\\ 2 & 1 & 3 \eepm
-\ee
-so $\sigma \circ \tau \neq \tau \circ \sigma$, which means $S_3$ is not abelian (this is true of $S_n$ in general with $n\geq 3$).
-
-We can write $S_3 = \bra{\iota,\tau,\tau^2, \sigma, \sigma\tau,\sigma\tau^2}$ so $\abs{S_3} = 6$. In general, $\abs{S_n} = n!$.
-
-%We consider $\tau$ as a reflection and $\sigma$ as a rotation.
-\end{example}
-
-%\begin{remark}
-
-\begin{definition}(permutation group)
-A group $G$ is a permutation group\index{permutation group} of degree $n$ if $G \leq \sym (X)$ with $\abs{X} = n$.
-\end{definition}
-
-\begin{remark}
-$S_n, A_n,D_{2n} \leq \sym(X)$ where $X$ is the set of vertices of the regular $n$-gon (see Definition \ref{def:symmetric_group}, \ref{def:alternating_group}, \ref{def:dihedral_group_symmetries}).
-\end{remark}
-
-
-\begin{definition}[isomorphism group]
-\footnote{need more details}
-\end{definition}
-
-
-\begin{definition}[dihedral group]\label{def:dihedral_group_symmetries}
-Consider the group of symmetries of a regular $n$-gon, with $n$ vertices (for example, the $n$th roots of unity in $\C$). This is a subgroup of $S_n$, since
-\ben
-\item [(i)] the composition of symmetries is a symmetry
-\item [(ii)] the identity is a symmetry
-\item [(iii)] if $\alpha$ is a symmetry then $\alpha^{-1}$ is a symmetry
-\een
-
-This is called dihedral group\index{dihedral group} and denoted as $D_{2n}$ (for $n\geq 3$. In geometry the group is denoted $D_n$, while in algebra the same group is denoted by $D_{2n}$ to indicate the number of elements.).
-\end{definition}
-
-With the following theorem, we have $D_{2n}\leq S_n$; for example, $D_6 \leq S_3$ (as a matter of fact, $D_6 \cong S_3$, see Definition \ref{def:group_isomorphism}).
-
-\begin{theorem}\label{thm:dihedral_symmetric_subgroup}
-The group $D_{2n}$ of symmetries of a regular $n$-gon ($n\geq 3$) is a non-abelian subgroup of $S_n$, of order $2n$. It is generated by the elements $\tau$ and $\sigma$, of orders $n$ and respectively, representing a rotation $\tau$ and a reflection $\sigma$, subject to $\tau^n = \iota$, $\sigma^2 = \iota$, $\sigma \tau \sigma = \tau^{-1}$.
-\end{theorem}
-
-\begin{remark}
-The symmetries of a regular $n$-gon reserve the relative positions.
-\end{remark}
-
-\begin{proof}[\bf Proof]
-First look at the $n$ rotations; these are the set $\bra{\iota,\tau,\tau^2,\dots,\tau^{n-1}}$ where
-\be
-\tau = \bepm 1 & 2 & \dots & n-1 & n\\ 2 & 3 & \dots & n & 1 \eepm
-\ee
-so that $\tau^n = \iota$. These form a subgroup of order $n$, which is a cyclic group $C_n$ of order $n$, since each element is a power of $\tau$ and $\tau^i\tau^j = \tau^{i+j(\!\bmod n)}$.
-
-Let $\sigma$ be a reflection through the real axis. There are reflections in the $n$ different axes of symmetry ($n/2$ axes cross edges and $n/2$ cross vertices if $n$ is even. $n$ axes cross vertices if $n$ is odd). Therefore $\abs{D_{2n}}\geq 2n$.
-
-We now need to show that any symmetry $g\in D_{2n}$ is either of the form $\tau^j$ for some $j$ or of the form $\sigma \tau^j$.
-
-Let $j = g(1)$. Then as $\tau^{j-1}(1) = j$ (rotating $j-1$ times, from 1 to $j$), we have $x = \bb{\tau^{j-1}}^{-1}g$ fixes 1 ($ \bb{\tau^{j-1}}^{-1}g (1) = 1$). Since only two vertices, 2 and $n$, are next to 1 (because the operation can not change the relative positions), either $x$ fixes 2 and $n$ as well (and therefore it fixes everything, by induction), so that $g=\tau^{j-1}$, or $x$ swaps 2 and $n$ and all the other vertices take a reflection in the axis crossing vertex 1.
-
-Thus the second case gives $\iota = \sigma^{-1} x = x\sigma^{-1}$, that is,
-\be
-\iota = \sigma^{-1}\bb{\tau^{j-1}}^{-1}g = \bb{\tau^{j-1}}^{-1}g\sigma^{-1} \ \ra \ g=\tau^{j-1}\sigma = \sigma\tau^{1-j}.
-\ee
-
-So any symmetry of our $n$-gon is either $\tau^j$ for some $j$, or $\sigma \tau^j$ for some $j$, so $\abs{D_{2n}}\leq 2n \ \ra\ \abs{D_{2n}} = 2n$.
-\end{proof}
-
-\begin{remark}
-Algebraically, we write $D_{2n} = \bra{t,s|t^n = \iota,s^2 = \iota, sts = t^{-1}} = \bra{t^j,st^j|0\leq j<n}$.
-\end{remark}
-
-\subsection{Cycles}
-
-\begin{definition}
-$\sigma \in S_n$ is a $k$-cycle\index{cycle} if the following hold:
-\be
-\sigma(a_i) = a_{i+1},\quad \sigma(a_k) = a_1,\quad \sigma(x) = x \ \text{ for all $x\in S_n$ not one of the $a_j$s.}
-\ee
-
-We denote it by $\sigma = (a_1\ a_2\ \dots\ a_k)$.
-\end{definition}
-
-\begin{example}
-For $S_5 = \bra{1,2,3,4,5}$, we can write
-\be
-\sigma = (1\ 2\ 3) = \bepm 1 & 2 & 3 & 4 & 5 \\ 2 & 3 & 1 & 4 & 5 \eepm
-\ee
-\end{example}
-
-\begin{remark}\ben
-\item [(i)] $(a_1\ a_2\ \dots\ a_k) = (a_2\ a_3\ \dots\ a_k\ a_1) = \dots$ so we can cycle cycles and these cycles are not unique.
-\item [(ii)] $(a_1\ a_2\ \dots\ a_k)^{-1} = (a_1\ a_k\ a_{k-1}\ \dots\ a_2) = (a_k\ a_{k-1}\ \dots\ a_1)$
-\item [(iii)] $\sigma^k = \iota$, but $\sigma^l \neq \iota$ if $0<l<k$, so $k$ is the order of the $k$-cycle $G = \bra{\iota,\sigma,\sigma^2,\dots, \sigma^{k-1}}$.
-\een
-\end{remark}
-
-\begin{definition}
-Two cycles $\sigma,\tau \in S_n$ with $\sigma = (a_1\ a_2\ \dots\ a_k)$ and $\tau = (b_1\ b_2\ \dots\ b_l)$ are disjoint\index{disjoint!cycle} if all the $a_j$s are different from all the $b_i$s, i.e. the sets are non-intersecting.
-\end{definition}
-
-\begin{lemma}
-If $\sigma$, $\tau$ are disjoint cycles as above, then $\sigma \tau = \tau \sigma$. E.g. $(1 \ 2)(3\ 4\ 5 )=(3\ 4 \ 5)(1\ 2)$.
-\end{lemma}
-
-\begin{remark}
-This is only true of disjoint cycles, e.g. $(2 \ 3)(1\ 2\ 3)=(1\ 3) \neq (1\ 2) = (1\ 2 \ 3)(2\ 3)$.
-\end{remark}
-
-\begin{proof}[\bf Proof]
-If $x\in X$ is one of the $a_j$s, then $\tau \sigma (a_j) = \tau (a_j + 1) = a_j +1$ and $\sigma \tau(a_j) = \sigma(a_j) = a_j + 1$, and similarly if $x$ is one of the $b_i$s. If $x$ is in neither set then $\tau\sigma(x) = \tau(x) = x = \sigma\tau(x)$ by the definition. So $\tau \sigma(x) = \sigma\tau(x)$ for all $x\in X$. Thus $\tau\sigma = \sigma \tau$.
-\end{proof}
-
-\begin{theorem}[disjoint cycle decomposition]\label{thm:disjoint_cycle_decomposition}
-Any permutation of a finite set $X$ can be written as a product of disjoint cycles (in an essentially unique way). E.g.
-\be
-\bepm 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ 2 & 7 & 6 & 8 & 5 & 4 & 1 & 3 \eepm = (1\ 2\ 7)(3\ 6\ 4\ 8)(5)
-\ee
-\end{theorem}
-
-\begin{proof}[\bf Proof]
-Let $\sigma \in S_n$. Start with any point $a_1$, and 'chase it' to get a sequence $a_1,\sigma(a_1), \sigma^2(a_1),\dots,X$ is finite, so we have to get $\sigma^l(a_1)$ being equal to one of the previous entries, say $\sigma^j(a_1)$. If $l$ is the smallest such that we get repetition and $\sigma^l(a_1) = \sigma^j(a_1)$, then $j=0$, so $\sigma^l(a_1) =a_1$.
-
-If not all points of $X$ are covered, choose $b_1$ to be a point in $X$ not yet reached. Chase it, to obtain $b_2 = \sigma(b_1)$, and in general, $b_k = \sigma^{k-1}(b_1)$ with $\sigma^k(b_1) = b_1$.
-
-Note that all the $b_j$s are different from all the $a_j$s, since $\sigma$ is injective. Continue until finished.
-\end{proof}
-
-\begin{remark}
-If $(a_1\ a_2\ \dots \ a_{k_1})(b_1\ b_2\ \dots \ b_{k_2}) \dots (z_1\ z_2\ \dots \ z_{k_r}) =\sigma$, then the order of $\pi$ is the least common multiple of $k_1,\dots,k_r$.
-\end{remark}
-
-\begin{definition}
-A transposition\index{transposition!groups} on $X$ is a 2-cycle on $X$.
-\end{definition}
-
-\begin{theorem}\label{thm:permutation_product_transposition}
-Any permutation of finite $X$ can be written as a product of transpositions.
-\end{theorem}
-
-\begin{proof}[\bf Proof]
-Let $\sigma \in S_n$, and write it as a product of disjoint cycles (by Theorem \ref{thm:disjoint_cycle_decomposition}). Now note that the cycle
-\be
-(a_1\ a_2\ \dots \ a_{k}) = (a_1\ a_2)(a_2 \ a_3)\dots (a_{k-1}\ a_k),
-\ee
-so a $k$-cycle is a product of $k-1$ transpositions.
-\end{proof}
-
-\begin{example}
-(1\ 2\ 3\ 4\ 5) = (1\ 2)(2\ 3)(3\ 4)(4\ 5). Note that $\iota = (1\ 2)(1\ 2) = (1\ 2)(2\ 3)(2\ 3)(1\ 2)$ so there are many representations of each permutation. Note that for $\iota$ there must be an even number of factors; this is explained in Section \ref{subsec:sign_groups}.
-\end{example}
 
 \subsection{Homomorphisms and isomorphisms}
 
@@ -461,7 +294,7 @@ An automorphism is an isomorphism. The elements of automorphism group $\aut(G)$ 
 \item [(i)] $C_n \cong \bra{x|x^n = e}$, i.e. the group generated by an $x$ with this property (see Definition \ref{def:cyclic_group}).
 \item [(ii)]
 \be
-\text{rotations of an $n$-gon}\cong \bb{\frac{\Z}{n\Z},+\bmod n} = \bb{\frac{\Z}{n\Z},\oplus_n}
+\text{rotations of an $n$-gon}\cong \bb{\frac{\Z}{n\Z},+\lmod{n}} = \bb{\frac{\Z}{n\Z},\oplus_n}
 \ee
 where $\Z/n\Z = \bra{0,1,\dots,n-1}$, i.e. the group of rotations of a regular $n$-gon has an isomorphism to addition modulo $n$. The isomorphism can be taken to be $x^j \mapsto j$, which is a bijection, and then $\theta(x^j,x^k) = \theta(x^{j+k}) = j+k = \theta(x^j) + \theta(x^k)$ which satisfies the definition.
 \een
@@ -562,114 +395,82 @@ so $g_1^{-1} g_2 \in \ker \theta$. But $\ker\theta = \bra{e_G}$, so $g_1 = g_2$.
 \end{proof}
 
 
-\subsection{Signs}\label{subsec:sign_groups}
+\subsection{Direct (Cartesian) products of groups}
 
-\begin{definition}[sign\index{sign!permutation}]\label{def:sign_permutation}
-The sign of a permutation $\sigma$ is $(-1)^k$ where $k$ is the number of factors in some expression of $\sigma$ as a product of transpositions.
+\begin{definition}[direct product]\label{def:direct_product_group}
+Given groups $H$ and $K$, we can construct the direct product\index{direct product!group} $H\times K = \bra{h,k|h\in H,k\in K}$ with operation $(h_1,k_1)(h_2,k_2) = (h_1h_2,k_1k_2)$.
 \end{definition}
 
-
-\begin{lemma}
-The function $\sgn:S_n \to \bra{\pm 1}$ taking $\sigma \to \sgn \sigma$ is well defined; that is, if $\sigma = \tau_1 \tau_2 \dots \tau_a = \tau_1'\tau_2' \dots \tau_b'$, two lots of transpositions, then $(-1)^a = (-1)^b$.
+\begin{lemma}\label{lem:direct_product_of_groups}
+If $H$ and $K$ are groups then $H\times K$ is a group.
 \end{lemma}
 
 \begin{proof}[\bf Proof]
-Let $c(\sigma)$ be the number of cycles in a disjoint cycle decomposition of $\sigma$, including 1-cycles. E.g. $c(\iota) = n$.
-
-We claim that if $\tau$ is any transposition then $c(\sigma\tau) = c(\sigma)\pm 1 = c(\sigma)+1 (\bmod 2)$.
-
-Write $\tau = (k\ l)$. Then the $\sigma \tau$ cycles are the same as the $\sigma$ cycles, except for the one other involving $k$ and $l$. If $k,l$ are in two different cycles of $\sigma$, these two become one cycle of $\sigma \tau$; if they are in the same cycle, then the cycle splits into two cycles of $\sigma \tau$.
-
-Now assume that $\sigma = \iota \tau_1\tau_2 \dots \tau_a = \iota\tau_1' \tau_2' \dots \tau_b'\iota$. Since $c(\iota) =n$, using the above result gives $c(\sigma) = n+a(\bmod 2) = n+b$. So $a = b (\bmod 2) \ \ra \ (-1)^a = (-1)^b$.
+\ben
+\item [(i)] Closed under the given operation, as $h_1h_2 \in H$ and $k_1k_2 \in K$.
+\item [(ii)] Associative since multiplication in $H$ and $K$ is associative.
+\item [(iii)] Identity $e = (e_H,e_K)$.
+\item [(iv)] Inverse of $(h,k) = (h^{-1},k^{-1})$.
+\een
 \end{proof}
 
-\begin{theorem}\label{thm:sgn_homomorphism}
-$\sgn:(S_n,\circ) \to \bb{\bra{\pm 1},\times}$ taking is a well-defined, non-trivial homomorphism.
-\end{theorem}
+%\subsubsection{Examples and notes}
 
-\begin{proof}[\bf Proof]
-Non-trivial due to the sign of any transposition being $-1$.
-
-If $\sgn \alpha = (-1)^k$ and $\sgn \beta = (-1)^l$, then write $\alpha = \tau_1\tau_2 \dots \tau_k$ and $\beta = \tau_1' \tau_2' \dots \tau_l'$ where all the $\tau$s are transpositions. Then $\alpha\beta = \tau_1\tau_2 \dots \tau_k \tau_1' \tau_2' \dots \tau_l'$, so $\sgn \alpha \beta = (-1)^{k+l} = (-1)^k(-1)^l = \sgn \alpha \sgn \beta$, satisfying the definition of a homomorphism. Thus, $\sgn$ is well-defined.
-\end{proof}
-
-\begin{definition}
-$\sigma \in S_n$ is an even permutation if its sign is $+1$, and an odd permutation if its sign is $-1$. Note that even $\circ$ even = even, odd $\circ$ odd = even, and the other compositions as expected.
-\end{definition}
-
-\begin{definition}[alternating group]\label{def:alternating_group}
-The even permutations in $S_n$ form a subgroup of $S_n$, called the alternating group\index{alternating group} and written $A_n$. E.g.
-\beast
-A_4 = \bra{\iota,(1\ 2)(3\ 4),(1\ 3)(2\ 4), (1\ 4)(2\ 3), (1\ 2\ 3), (1\ 3\ 2), (1\ 2\ 4), (1\ 4\ 2), (1\ 3\ 4), (1\ 4\ 3), (2\ 3\ 4), (2\ 4\ 3)}.
-\eeast
-\end{definition}
-
-\begin{theorem}
-Exactly half the permutations in $S_n$ are even and thus are in $A_n$, i.e. $\abs{A_n} = n!/2$.
-
-In fact, if $H\leq S_n$, and $H$ contains some odd permutation, then $\abs{A_n\cap H} = \abs{H}/2$.
-\end{theorem}
-
-\begin{proof}[\bf Proof]
-\footnote{need proof}
-\end{proof}
-
-\begin{remark}
-Cycles of even length are odd permutations whereas cycles of odd length are even permutations (see Theorem \ref{thm:permutation_product_transposition}).
-\end{remark}
-
-\begin{corollary}
-$\sigma$ is an odd permutation iff the number of cycles of even length in its disjoint-cycle representation is odd.
-\end{corollary}
-
-\begin{definition}
-Given $\sigma \in S_n$, let $x_1,x_2,\dots,x_n$ be distinct integers. Then the sign of $\sigma$ is
-\be
-\ve(\sigma) = \prod_{1\leq i<j\leq n} \frac{x_{\sigma(j)}-x_{\sigma(i)}}{x_j -x_i}
-\ee
-\end{definition}
 
 \begin{example}
-Let $\sigma = (1\ 2\ 3)$ and $x_j = j$, then
-\be
-\ve(\sigma) = \frac{3-2}{2-1} \times \frac{1-2}{3-1} \times \frac{1-3}{3-2} = +1
-\ee
+It follows that $\R^n$ for $n\in \N$ is a group under component-wise addition, since $\R^n = \underbrace{\R\times\dots \times \R}_{n\text{ times}}$.
 \end{example}
 
-\begin{lemma}
-$\ve(\sigma) = \pm 1$, independent of the actual numbers $x_j$. In fact, $\ve(\sigma) = (-1)^{N(\sigma)}$, where $N(\sigma) = \abs{\bra{i<j|\sigma(i)>\sigma(j)}}$.
-\end{lemma}
+\begin{remark}%If $H,K$ are finite, then so is $H\times K$, and $\abs{H\times K} = \abs{H}\abs{K}$\item [(ii)] 
+\ben
+\item [(i)] $H,K$ are abelian iff $H\times K$ is abelian.
+\item [(ii)] $H\times K$ contains a subgroup $\bra{(h,e):h\in H}$ isomorphic to $H$ and a subgroup $\bra{(e,k):k\in K}$ isomorphic to $K$.
+\een
+\end{remark}
 
-\begin{proof}[\bf Proof]
-For each $r\neq s$, either $x_r - x_s$ or $x_s - x_r$ appears on the top of the fraction. If $i = \sigma^{-1}(r) < \sigma^{-1}(s) = j$, then $x_s - x_r$ appears; if vice versa, then $x_r - x_s$ appears.
-\end{proof}
-
-\begin{lemma}
-For any permutations $\sigma,\tau \in S_n$, we have $\ve(\sigma \tau) = \ve(\sigma)\ve(\tau)$.
-\end{lemma}
-\begin{proof}[\bf Proof]
+\begin{proposition}\label{pro:direct_product_of_groups_order_product_of_order}
+The order of a direct product of groups $G,H$, $G\times H$, is the product of the order of $G$ and $H$.
 \be
-\ve(\sigma \tau) = \prod_{i<j} \frac{\sigma\tau(j) - \sigma\tau(i)}{j-i} = \prod_{i<j} \frac{\sigma(j) - \sigma(i)}{j-i} \prod_{i<j} \frac{\sigma\tau(j) - \sigma\tau(i)}{\sigma(j)-\sigma(i)} = \ve(\sigma)\ve(\tau)
+\abs{G\times H} = \abs{G}\abs{H}.
 \ee
-since the product on the right, taking $x_i = \sigma(i)$, gives us $x_{\tau(i)} = \sigma(\tau(i))$.
-\end{proof}
-
-\begin{lemma}
-If is a transposition then $\ve(\tau) = -1$.
-\end{lemma}
+\end{proposition}
 
 \begin{proof}[\bf Proof]
-Let $\tau = (1\ 2)$, $x_j =j$. Then
-\be
-\ve(\tau) = \frac{1-2}{2-1} \times \underbrace{\frac{3-2}{3-1} \times \ \dots\ \times\ \dots\ }_{\text{not affected by transposition}} = -1
-\ee
-
-If $\tau = (1\ l)$ then write it as $(2\ l)(1\ 2)(2\ l)$ and cancel the end terms. If $\tau = (k\ l) $it can be written in the form $(1\ k)(1\ l)(1\ k)$. Thus $\ve(k\ l) = \ve(1\ 2)$ and the lemma is proved.
+This follows from the formula for the cardinality of the cartesian product of sets. \footnote{need details}
 \end{proof}
 
-\begin{corollary}
-$\ve(\sigma) = \sgn\sigma$ for all $\sigma \in S_n$.
-\end{corollary}
+This can be extended to the product of finitely many groups.
+
+\begin{proposition}
+The order of a direct product of groups $G_1,\dots, G_n$, $G_1\times \dots\times G_n$, is the product of the order of $G_1,\dots,G_n$.
+\be
+\abs{G_1\times \dots \times G_n} = \abs{G_1}\dots \abs{G_n} = \prod^n_{i=1}\abs{G_i}.
+\ee
+\end{proposition}
+
+
+%\subsubsection{Full product conditions}
+
+\begin{proposition}\label{pro:direct_product_group}
+Let $G$ be a group with subgroups $H,K$ such that
+\ben
+\item [(i)] $HK = G$, i.e., each element $g\in G$ can be written as $g= hk$ with $h\in H$, $k\in K$.
+\item [(ii)] $H\cap K = \bra{e}$.
+\item [(iii)] $hk = kh$, $\forall h\in H,k\in K$.
+\een
+Then $G\cong H\times K$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+If $h_1k_1 = h_2k_2$ with $h_i \in H$, $k_i \in K$, then $h_2^{-1} h_1 = k_2 k_1^{-1} \in H\cap K = \bra{e}$, so expressions $hk$ for elements of $G$ are unique. Thus we can define $\theta:G\to H\times K$, taking $g=hk \to (h,k)$. This is well defined, by uniqueness of expressions $hk$.
+
+If $(h_1,k_1) = (h_2,k_2)$, $h_1 = h_2, k_1 = k_2 \ \ra \ h_1 k_1 = h_2k_2$, so $\theta$ is injective. Since $\forall h\in H,k\in K$, $h,k \in G$ ($H,K$ are subgroups), $hk \in G$. Thus, $\theta$ is surjective and therefore bijective. By condition (iii),
+\be
+\theta((h_1 k_1)(h_2 k_2))= \theta(h_1 h_2 k_1 k_2) = (h_1 h_2 ,k_1 k_2) = (h_1,k_1)(h_2,k_2) = \theta (h_1k_1)\theta(h_2k_2),
+\ee
+so the map $\theta$ is a homomorphism. Thus, $\theta$ is an isomorphism and $G\cong H\times K$.
+\end{proof}
+
 
 \section{Cosets and Lagrange's theorem}
 %\section{Subgroups, Cosets and Lagrange's theorem}
@@ -808,50 +609,9 @@ From Lemma \ref{lem:left_coset} (ii), if $c \in (aH \cap bH)$, then $aH = cH = b
 $A_4$ has order 12 but no subgroup of order 6, so the converse is not true\footnote{see example sheet 1}. A later example will be to show that $A_5$ has no subgroup of index 2, 3 or 4\footnote{see example sheet 1}.
 \end{remark}
 
-\begin{definition}[order of element]
-The order of an element\index{order!group element} $g\in G$, written $o(g)$, is the least positive integer $n$ (if one exists) such that $g^n =e_G$. If no such integer exists, then we say that $g$ has infinite order.
-\end{definition}
-
-\begin{proposition}\label{pro:group_element_any_two_integers}
-Let $G$ be any group. Given $g \in G$, show by induction that $g^{m+n} = g^mg^n$ for all integers $m$ and $n$.
-\end{proposition}
-
-\begin{proof}[\bf Proof]
-Since $g^0 = e$, the result is clear if $m$ or $n$ is 0, so assume $m,n\neq 0$. If $m,n>0$, both sides are the product of $m+n$ terms equal to $g$, so are equal, likewise if $m,n<0$ both sides are the product of $m+n$ terms equal to $g^{-1}$. If $m>0>n$, write $k=-n$, then
-\be
-g^{m+n} = g^{m-k},\quad g^m g^n = g^m(g^{-1})^k = g^{m-1}g g^{-1}(g^{-1})^{k-1} =  g^{m-1}e(g^{-1})^{k-1} =  g^{m-1}(g^{-1})^{k-1}
-\ee
-
-Thus, if $m\geq k$, by induction on $k$, we obtain $g^mg^n = g^{m-k} = g^{m+n}$ as required, which if $k>m$, by induction on $m$ we obtain $g^mg^n = (g^{-1})^{k-m} = g^{m+n}$ as required. A similar argument treats the case $m<0<n$.
-\end{proof}
-
-\begin{proposition}\label{pro:element_order}
-Let $G$ be a finite group. Let $g \in G$. Then there is a positive integer $n$ such that $g^n$ equals $e$, the identity element. The least such positive $n$ is the order of $g$.
-
-There also exists a positive integer $n$ such that $g^n = e$ for all $g \in G$. The least such positive $n$ is the exponent\index{exponent!group} of $G$.
-\end{proposition}
-
-\begin{proof}[\bf Proof]
-Let $\abs{G} = m$. Given $g\in G$, then the $m+1$ elements $g,g^2,\dots, g^m,g^{m+1}$ cannot all distinct, so $\exists s,t$ with $1\leq s<t \leq m +1$ such that $g^s = g^t$. Thus, $g^{t-s} = g^{t-s} = g^{s}g^{-s} = e$ by Proposition \ref{pro:group_element_any_two_integers}. So $\exists$ a positive integer $n_g$ with $g^{n_g} = e$. Set $n = \prod_{g\in G}n_g$, then $\forall g\in G$, we sset that $n_g$ divides $n$, so $g^n = e$. Thus, such $n$ is exponent of group $G$.
-\end{proof}
-
-%\begin{proposition}[exponent]\label{pro:exponent_group}
-%\end{proposition}
-%\begin{proof}[\bf Proof]
-%\end{proof}
 
 
-\begin{lemma}\label{lem:order_element}
-If $o(g) = n$ then $g^m = e$ iff $n|m$.
-\end{lemma}
-
-\begin{proof}[\bf Proof]
-$\ra$. If $g^m = e$, then write with $m = qn +r$, $q,r\in \Z$, $0\leq r<n$. Then $g^r = g^m((g^{-1})^n)^q =e$, but $r<n$ and $n$ is the smallest positive integer such that $g^n = e$. Therefore $r=0$, which means $n|m$.
-
-$\la$. If $m=qn$, then $g^m = (g^n)^q = e$.
-\end{proof}
-
-\begin{corollary}[Lagrange's corollary]\label{cor:lagrange_group_cor}
+\begin{corollary}[Lagrange's corollary]\label{cor:lagrange_group}
 If $G$ is a finite group, and $g\in G$, then $o(g)|\abs{G}$. Thus $g^{\abs{G}} =e$ for all $g\in G$.
 \end{corollary}
 
@@ -861,86 +621,444 @@ Consider the subgroup $\bsa{g} = \bra{e,g,g^2,\dots,g^{n-1}}$ where $n=o(g)$.
 So $o(g) = \abs{\bsa{g}}|\abs{G}$ by Lagrange's theorem (Theorem \ref{thm:lagrange_group}).
 \end{proof}
 
+
+
+
+\section{Normal Subgroups and Quotient Groups} 
+
+\subsection{Normal subgroups}
+
+\begin{example}
+The integers lie inside the real numbers, $(\Z, +) \leq (\R, +)$. We would like to add cosets,
+\be
+(\Z + r_1) + (\Z + r_2) = \Z + (r_1 + r_2).
+\ee
+\end{example}
+
+In general, we want to copy this procedure to define an operation on the cosets of a subgroup. If $K \leq G$ we want to define $g_1Kg_2K = g_1g_2K$. But this requires $Kg_2K = g_2K$, after multiplying on left by $g^{-1}_1$. In particular, we need $Kg_2 \subseteq g_2K$ for all $g_2 \in G$, and also $Kg^{-1}_2 \subseteq g^{-1}_2 K$ which implies $g_2K \subseteq Kg_2$. So to make the definition work we need that $gK = Kg$ for all $g \in G$.
+%\be
+%Kg_2K = g_2K \ \ra \ \forall h\in Kg_2 Kg_2 \subseteq g_2K \ \ra \
+%\ee
+
+\begin{definition}[normal subgroup]\label{def:normal_subgroup}
+A subgroup $K\leq G$ is normal\index{normal!subgroup} if each left coset of $K$ is equal to the corresponding right coset, i.e. $gK = Kg$, $\forall g\in G$. 
+
+Therefore $\forall g\in G,k\in K,\exists k' \in K$ with $gk = k'g$, i.e. $gkg^{-1} \in K, \forall g\in G,k\in K$ or equivalently, $gKg^{-1} = K$ for all $g \in G$. We write $K\lhd G$.
+\end{definition}
+
+\begin{remark}
+\ben
+\item [(i)] If $G$ is abelian, then any subgroup $K$ is normal, because $gkg^{-1} = k\in K$ for any $g\in G,k\in K$.
+\item [(ii)] In general, $\{e\}$ and $G$ are always normal.
+\een
+\end{remark}
+
+\begin{example}
+In the dihedral group $D_{2n}$, the subgroup of rotations is normal but $\{e, \tau\}$, for a reflection $\tau$, is not normal if $n \geq 3$.
+\end{example}
+
+
+\begin{lemma}\label{lem:normal_index_2}
+If $K\leq G$ of index 2, then $K\lhd G$.% (often used in chapter 3).
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+If $g\in G$, then either $g\in K$, in which case $gK=K = Kg$, or $g\in G\bs K$, in which case $gK =G\bs K = Kg$. Either way, $K\lhd G$.
+
+It follows from the definition that if any one member of a conjugacy class is an element of a normal subgroup, then the entire conjugacy class must be within that subgroup. Therefore any normal subgroup is a (disjoint) union of conjugacy classes.
+\end{proof}
+
+
+\begin{lemma}\label{lem:ker_normal}
+If $\theta: G\to H$ is a homomorphism, then $\ker \theta \lhd G$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+First note that $e_G \in \ker \theta$ by Theorem \ref{lem:homomorphism_property} (i). Next, if $g_1,g_2 \in \ker\theta$, then
+\be
+\theta(g_1^{-1}g_2) = \theta(g_1^{-1})\theta(g_2) = \bb{\theta(g_1)}^{-1}\theta(g_2)= e_H
+\ee
+by Theorem \ref{lem:homomorphism_property} (ii). then $g_1^{-1}g_2 \in \ker\theta $. Therefore $\ker \theta \leq G$ by Lemma \ref{lem:subgroup}.
+
+Now if $\forall g\in G, k\in \ker \theta$, then
+\be
+\theta(gkg^{-1}) = \theta(g)\theta(k)\theta(g^{-1}) = \theta(g)e_H\theta(g^{-1}) = \theta(g)e_H\bb{\theta(g)}^{-1}=  e_H
+\ee
+
+Thus, $gkg^{-1} \in \ker \theta$. Therefore the subgroup $\ker \theta$ is normal.
+\end{proof}
+
+%\begin{remark}
+%If $G$ acts on a set $X$, we have the homomorphism $\varphi:G\to \sym(X)$ taking $g\to \varphi_g$ where $\varphi_g:x\to g(x)$. The kernel of the action on $X$ is precisely $\ker \varphi$, hence it is a normal subgroup of $G$.
+%\end{remark}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%\subsubsection{Normal factors}
+
+\begin{lemma}
+If $G_1,G_2 \lhd G$ such that $G = \inner{G_1}{G_2}$ and $G_1\cap G_2 = \bra{e}$, then $G\cong G_1\times G_2$.
+\end{lemma}
+
+\begin{remark}
+This is the clarification of Proposition \ref{pro:direct_product_group}.
+\end{remark}
+
+%Note. This was used when $G$ was the group of all symmetries of a cube, $G_1$ was $G^+ \lhd G$, and $G_2$ was the kernel of the action of $G$ on $D$, thus $G_2\lhd G$.
+
+\begin{proof}[\bf Proof]
+It is enough to show, by Proposition \ref{pro:direct_product_group}, that $g_1g_2 = g_2 g_1$ for any $g_1 \in G_1$, $g_2 \in G_2$.
+
+Since $g_1g_2g_1^{-1}\in G_2$ and $g_2g_1^{-1}g_2^{-1}\in G_1$ (definition of normal), we have $g_1g_2g_1^{-1}g_2^{-1} \in G_1\cap G_2 = \bra{e}$. So $g_1g_2 = g_2 g_1$.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Quotient groups}
+
+\begin{theorem}[quotient group\index{quotient group}]\label{thm:quotient_group}
+Let $K \lhd G$ and $g_1,g_2\in G$. Then the set of cosets of $K$ in $G$ form a group under the operation of coset multiplication, defined by $g_1Kg_2K = g_1g_2K$. 
+
+This group $\bra{gK:g\in G}$ is called the quotient group $G/K$.%(G:K) = 
+\end{theorem}
+
+\begin{remark}
+Normality of $K$ is necessary.
+
+Note that $gK$ is an element (but not a subset) of quotient group $G/K = \bra{gK:g\in G}$ and $K$ is the identity of the quotient group $G/K$.
+
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Let $g,g_1,g_2,g_3\in G$. First we must check this operation is well-defined on $(G:K)$; that is, $(g_1g_2)K$ is a valid coset of $K$ in $G$ (obvious), and if $g_1K = g_1'K$ and $g_2 K = g_2' K$ then $(g_1g_2)K = (g_1'g_2')K$ (less obvious, the proof is from \cite{Beardon_2005}) .
+
+Directly from the above expressions $g_i^{-1}g_i' \in K$ (for $i=1,2$) so call it $k_i$. Now
+\be
+(g_1g_2)K = (g_1'g_2')K \ \lra\ g_2^{-1}g_1^{-1}g_1'g_2' \in K
+\ee
+but $g_2^{-1}g_1^{-1}g_1'g_2' = g_2^{-1} k_1 g_2' = g_2^{-1}g_2' (g_2')^{-1}k_1 g_2' = k_2 (g_2')^{-1}k_1g_2' \in k_2 K$ due to the fact that $(g_2')^{-1}k_1g_2' \in K$. Finally, $k_2K = K$ so we are done.
+
+Next we check the remaining group axioms (as Closure is $g_1Kg_2K = g_1g_2K$).
+
+Associativity:
+\be
+(g_1Kg_2K)g_3K = (g_1g_2)K g_3 K = (g_1g_2)g_3 K = g_1(g_2g_3)K = g_1K(g_2Kg_3K) = g_1K(g_2g_3)K.
+\ee
+
+Identity element: $gKeK = gK$ and $eKgK = gK$ so the identity =$eK = K$.
+
+Inverses: $gKg^{-1}K = eK = K = g^{-1}KgK$, thus $(gK)^{-1} = g^{-1}K$.
+\end{proof}
+
+\begin{proposition}\label{pro:quotient_groups_order_product}
+Let $K \lhd G$ and $G/K$ is a quotient group. Then
+\be
+\abs{G} = \abs{K}\abs{G/K}.
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+This is the direct result from Theorem \ref{thm:quotient_group} and Theorem \ref{thm:lagrange_group}.
+\end{proof}
+
+\begin{proposition}\label{pro:order_quotient_group_divides_finite_group}
+Let $K \lhd G$ with $G$ finite. Then $\forall g\in G$, the order of $gK\in G/K$ divides the order of $g\in G$, that is
+\be
+o(gK) | o(g).
+\ee
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+Let $n = o(g)$. Then $g^n = e$ and $\bb{gK}^n = g^n K = K$ where $K$ is the identity in $gK$. Thus, $o(gK)\mid n$.
+\end{proof}
+
+%\section{Isomorphism Theorem}
+
+\subsection{Isomorphism theorem}
+
+%\subsection{First isomorphism theorem}
+
+\begin{theorem}[first isomorphism theorem\index{isomorphism theorem!groups}]\label{thm:isomorphism_1_group}
+Let $\theta : G \to H$ be a homomorphism. Then $\ker \theta$ is a normal subgroup ($\ker \theta \lhd G$) and $G/ \ker \theta \cong \im \theta$.
+\end{theorem}
+\begin{remark}
+$G/ \ker \theta \cong \im \theta$ means that any homomorphic image of $G$ is isomorphic to a quotient.
+\end{remark}
+\begin{proof}[\bf Proof]
+For the first assertion see Lemma \ref{lem:ker_normal}.
+
+In general, the way to show that two groups are isomorphic is to construct an isomorphism between them. Therefore we define a map $\Phi: G/K \to \im \theta$, $gK \mapsto \theta(g)$ where $K = \ker \theta$ and will show that it is an isomorphism.
+
+First check that $\Phi$ is well-defined,
+\be
+g_1K = g_2K \ \ra \ g^{-1}_2 g_1 \in K \ \ra \ \theta(g^{-1}_2 g_1) = e \ \ra \ \theta(g_2)^{-1}\theta(g_1) = e \ \ra \ \theta(g_1) = \theta(g_2) \ \ra \ \Phi(g_1K) = \Phi(g_2K).
+\ee
+
+If $\theta(g_1) = \theta(g_2)$ then $\theta(g^{-1}_1 g_2) = e$ and so $g^{-1}_1 g_2 \in K$. Hence $g_1K = g_2K$ by Theorem \ref{thm:left_coset}. Thus, $\Phi$ is injective.
+
+Any element in $\im(\theta) = \theta(G)$ is $\theta(g)$ for some $g\in G$, so $\Phi(gK) = \theta(g)$. Hence, $\Phi$ is surjective.
+
+$\forall g_1,g_2\in G$,
+\be
+\Phi(g_1Kg_2K) = \Phi(g_1g_2K) = \theta(g_1g_2) = \theta(g_1)\theta(g_2) = \Phi(g_1K)\Phi(g_2K).
+\ee
+
+So $\Phi$ is a homomorphism. Thus, $\Phi$ is an isomorphism.
+\end{proof}
+
+\begin{example}
+Let $G=(\Z,+)$. Then $\bsa{n} = \bra{nk:k\in \Z}\lhd G$. Let $H=C_n = \bsa{x:x^n = 1}$. Define $\theta:G\to H$ taking $m \to x^m$. This is a surjective homomorphism with kernel $\bsa{n}$.
+
+Therefore by Theorem \ref{thm:isomorphism_1_group}, $\Z/\bsa{n} \cong C_n$ and $\Z/\bsa{n}$ is the group of integers $\bmod n$, sometines written $\Z/n\Z$.
+\end{example}
+
+\begin{example}
+Let $G = (\R,+)$ and $H = (\C\bs\bra{0},\times)$, with $\theta:G\to H$ taking $t\to e^{i t}$.
+
+First we check $\theta$ is a homomorphism: $\theta(t_1 + t_2) = e^{i(t_1+t_2)} = e^{it_1}e^{it_2} = \theta(t_1)\theta(t_2)$.
+
+Now $\im \theta = \theta(G) = \bra{z\in \C:\abs{z}=1}$. Then $K = \ker\theta = \bra{2n\pi:n\in \Z}:= \bsa{2\pi}\leq \R$, which is normal in $(\R,+)$ since
+\be
+\forall g\in G, k\in K \ \ra \ g\in \R, k = 2n\pi,n\in \Z \ \ra \ gkg^{-1} = g + 2n\pi + (- g ) = 2n\pi \in K.
+\ee
+Therefore Theorem \ref{thm:isomorphism_1_group} implies that $\R/\bsa{2\pi} \cong \im \theta = \bra{e^{it}:t\in \R} = \bra{z\in \C:\abs{z}=1}$.
+
+The map $\Phi$ is $\Phi(t+\bsa{2\pi}) = e^{it}$. Similarly, if $\theta:t\mapsto e^{2\pi it}$, the map $\Phi$ is $\Phi(t + \Z) = e^{2\pi it}$.
+\end{example}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\subsection{Second isomorphism theorem}
+
+\begin{theorem}[second isomorphism theorem\index{isomorphism theorem!groups}]\label{thm:isomorphism_2_group}
+Let $H \leq G$ and $K \lhd G$. Then $HK \leq G$ and $H \cap K \lhd G$ where $HK = \{hk : h \in H, k \in K\}$ and $(HK)/K \cong H/(H \cap K)$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+First show that $HK$ is a subgroup. It suffices to show $(h_1k_1)(h_2k_2)^{-1} \in HK$ with $h_1,h_2\in H, k_1,k_2 \in K$ by Lemma \ref{lem:subgroup}.
+\be
+(h_1k_1)(h_2k_2)^{-1} = h_1 \underbrace{k_1k^{-1}_2}_{\in K} h_2^{-1}
+\ee
+
+But $Kh^{-1}_2 = h^{-1}_2 K$ since $K \lhd G$ and so $(k_1k_2^{-1})h_2^{-1} = h_2^{-1} k_3$ for some $k_3 \in K$. So $(h_1k_2)(h_2k_2)^{-1} = h_1h_2^{-1} k_3 \in HK$.
+
+Define
+\be
+\theta : H \to H/K,\ h \mapsto hK.
+\ee
+
+This is a group homomorphism (identity is $e_HK$) since
+\be
+\theta(h_1h_2) = h_1h_2 K = h_1Kh_2K = \theta(h_1)\theta(h_2).
+\ee
+
+So Theorem \ref{thm:isomorphism_1_group} implies that $\ker \theta \lhd G$ and $H/\ker \theta \cong \im \theta$. Now
+\be
+\ker \theta = \{h \in H : hK = eK = K\} = H \cap K.
+\ee
+
+Thus $H \cap K \lhd G$. Also,
+\be
+\im \theta = \{hK : h \in H\} = \bra{(hk)K : h \in H,k\in K} = \bra{gK:g\in HK} = (HK)/K\ \text{ (by Theorem \ref{thm:quotient_group})}
+\ee
+
+cosets of $K$ in $HK$. Thus $H/(H \cap K) \cong (HK)/K$, as required.
+\end{proof}
+
+
+
+
+
+%\subsection{Third isomorphism theorem}
+
+\begin{theorem}[third isomorphism theorem\index{isomorphism theorem!groups}]\label{thm:isomorphism_3_group}
+If $K$ and $L$ are normal subgroups of $G$ with $K \leq L \lhd G$ (i.e. $K\lhd L$) then $(G/K)/(L/K) \cong G/L$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Apply Theorem \ref{thm:isomorphism_1_group} to the well chosen map
+\be
+\theta : G/K \to G/L,\ gK \mapsto gL.
+\ee
+
+We need to check this is well-defined,
+\be
+g_1K = g_2K \ \ra \ g^{-1}_1 g_2 \in K \leq L \ \ra \ g_1 L = g_2L.
+\ee
+
+To check $\theta$ is a homomorphism,
+\be
+\theta(g_1Kg_2K) = \theta(g_1g_2K) = g_1g_2L = g_1Lg_2L = \theta(g_1K)\theta(g_2K).
+\ee
+
+Clearly, $\im \theta = G/L$. Also $\ker \theta = \{gK : gL = L\} = \bra{gK : g \in L} = L/K$ and so Theorem \ref{thm:isomorphism_1_group} implies
+\be
+(G/K)/(L/K) \cong G/L.
+\ee
+\end{proof}
+
+%\subsection{Correspondence theorem}
+
+%\begin{proposition}\label{pro:remark_second_isomorphism_theorem_group}
+%Let $K\lhd G$ and $L\leq G$ be a subgroup containing $K$. Then
+%\be
+%L/K \lhd G/K \ \lra\  L \lhd G.
+%\ee
+%\end{proposition}
+
+%\begin{proof}[\bf Proof]
+%In fact, there is a bijection\footnote{need proof} between subgroups of $G/K$ and the subgroups of $G$ containing $K$. This is given by the maps
+%\beast
+%\text{\{subgroups of $G/K$\}} & & \text{\{subgroups of $G$ containing $K$\}}\\
+%X\quad\quad & \ \longrightarrow \ & \quad \quad \{g \in G : gK \in X\}\\
+%L/K \quad\quad & \ \longleftarrow \ & \quad\quad\quad L
+%\eeast
+
+%These maps are inverses of each other.
+
+%Take a normal subgroup $K \lhd G$ and form the quotient group $G/K$, with elements the cosets $gK$ and multiplication defined by $g_1Kg_2K = g_1g_2K$. The correspondence
+%\be
+%\text{\{subgroups of $G/K$\}}\ \longleftrightarrow\ \text{\{subgroups of $G$ containing $K$\}}
+%\ee
+%restricts to
+%\be
+%\text{\{normal subgroups of $G/K$\}} \ \longleftrightarrow \ \text{\{normal subgroups of $G$ containing $K$\}}
+%\ee
+%For a subgroup $L/K \leq G/K$ ($L$ is a normal subgroup of $G$ containing $K$) we have that
+%\be
+%(gK)(L/K)(gK)^{-1} = (gLg^{-1})/K
+%\ee
+%so $K\leq L$, we have $(gLg^{-1})/K = L/K \ \ra \ gl_1g^{-1}K = l_2 K  \ \ra \ gl_1 g^{-1} \in L \ \ra \ gLg^{-1} = L$. It is obvious that $gLg^{-1} = L \ \ra \ (gLg^{-1})/K = L/K$. Thus,
+%\be
+%(gK)(L/K)(gK)^{-1} = L/K \ \lra\ gLg^{-1} = L,
+%\ee
+%that is, $L/K \lhd G/K \ \lra\  L \lhd G$.
+%\end{proof}
+
+
+
+\begin{theorem}[correspondence theorem of groups]\label{thm:correspondence_subgroup_containg_normal_subgroup_quotient_group}%\label{pro:remark_second_isomorphism_theorem_group}
+Let $G$ be a group and $K$ be a normal subgroup of $G$ ($K\lhd G$). Then there is a bijection between the set of all subgroups of $G$ containing $K$ and the set of all subgroups of $G/K$. That is,
+\be
+\sub(G:K) \cong \sub(G/K).
+\ee
+
+In particular, there is a bijection between the set of all normal subgroups of $G$ containing $K$ and the set of all normal subgroups of $G/K$. That is,
+\be
+\text{\{normal subgroups of $G$ containing $K$\}}\ \longleftrightarrow \ \text{\{normal subgroups of $G/K$\}} 
+\ee
+
+In other words, for $L\leq G$,
+\be
+L\lhd G \ \lra \ (L/K) \lhd (G/K).
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Consider two maps $\Phi$ and $\Theta$. First, we define
+\beast
+& \Phi: & \sub(G:K)\to \sub(G/K),\\
+& & \qquad \qquad S\mapsto S/K.
+\eeast
+
+It is clear that $S/K$ is a quotient group (thus a group) since $S$ is a group containing $K$. Thus, $\Phi$ is well-defined. Also, we define
+\beast
+& \Theta: & \sub(G/K) \to \sub(G:K), \\
+& & \qquad\quad T \mapsto \bra{g\in G:gK \in T}.
+\eeast
+
+If $T$ is a subgroup of $G/K$, we can have that for any $t_1,t_2\in T$, $t_1^{-1}t_2 \in T$. Thus, for any $g_1,g_2\in \bra{g\in G:gK \in T}$, we have
+\be
+g_1K,g_2K \in T \ \ra\ g_1^{-1}K g_2 K \in T \ \ra\ g_1^{-1}g_2 K \in T \ \ra\ g_1^{-1}g_2 \in \bra{g\in G:gK \in T}.
+\ee
+
+Thus, $\bra{g\in G:gK \in T}$ is a group (by Lemma \ref{lem:subgroup}) and thus a subgroup of $G:K$.
+
+Now we can check the composition of these two functions. For any $S\in \sub(G:K)$,
+\beast
+\Theta\circ \Phi(S) = \Theta(S/K) & = & \bra{g\in G:gK \in S/K} = \bra{g\in G:gK \in \bra{gK: g\in S}} \\
+& = & \bra{g\in G: g\in S} = \bra{g\in S} = S.
+\eeast%Then for any $g\in S\leq G$, we have that $gK \in \bra{gK:g\in S} = S/K$. Thus, $S \subseteq \bra{g\in G:gK \in S/K}$.
+
+Also, for any $T \in \sub(G/K)$, we have
+\beast
+\Phi\circ \Theta(T) & = & \Phi\bb{\bra{g\in G:gK \in T}} = \bra{gK: g\in G, gK \in T} \\
+& = & \bra{gK: gK \in T} = T.
+\eeast
+
+Thus, we have that $\Theta\circ \Phi = \identity_{\sub(G:K)}$ and $\Phi\circ \Theta = \identity_{\sub(G/K)}$. Thus, $\Phi,\Theta$ are bijections and they are inverse functions of each other (by Theorem \ref{thm:bijective_function_has_unique_inverse}). Thus, $\Phi$ is a bijection between the set of all subgroups $S$ of $G$ containing $K$ and the set of all subgroups of $G/K$.
+
+Now let $S$ be a normal subgroup of $G$ containing $K$. That is, $K\lhd S\lhd G$ and $gSg^{-1} = S$ for any $g\in G$ (i.e., $\forall g\in G, s\in S$, $gsg^{-1} = s' \in S$). Then for any $gK\in G/K$ and $sK\in S/K$, we have
+\be
+(gK) (sK) (gK)^{-1} = (gK) (sK) (g^{-1}K) = gsg^{-1}K = s'K \in S/K 
+\ee
+which implies that $gK (S/K) (gK)^{-1} = S/K \ \ra\ (S/K) \lhd (G/K)$.
+
+Also, for any normal subgroup $T$ of $G/K$, we have that $(gK) T (gK)^{-1} = T$. That is, for any $gK\in G/K$ and $t = rK\in T$, 
+\be
+(gK) t (gK)^{-1} = t' = r'K \in T \ \ra\ gK rK (gK)^{-1} = r'K \ \ra\ grg^{-1} K = r'K \in T
+\ee
+
+Thus, for any $r \in \bra{g\in G, gK \in T}, g\in G$,
+\be
+grg^{-1} K = r'K \in T \ \ra\ grg^{-1} \in \bra{g\in G, gK \in T} 
+\ee
+which implies that $g \bra{g\in G, gK \in T}g^{-1} = \bra{g\in G, gK \in T} \ \ra\ \bra{g\in G, gK \in T}\lhd G$.
+\end{proof}
+
+
+\section{Class of Groups}%{Small groups}
+
+
+\subsection{Cyclic groups}
+
+\begin{definition}[cyclic group]\label{def:cyclic_group}
+A group is cyclic\index{cyclic group} if there exists $x\in G$ such that $g =x^n,\forall g\in G$. $x$ is called the generator\index{generator!Groups} of the group. Thus
+\be
+x^n = \left\{\ba{ll}
+\overbrace{x * x* \dots * x}^{n \text{ times}} & n>0\\
+e & n=0\\
+\underbrace{x^{-1} * x^{-1} * \dots * x^{-1}}_{n \text{ times}} & n<0
+\ea\right.
+\ee
+The cyclic group of order $n$ is denoted by $C_n = \bsa{x}$.
+\end{definition}
+
+\begin{remark}
+Clearly, cyclic group is abelian.
+\end{remark}
+
+\begin{example}
+\ben
+\item [(i)] $(\Z,+)$ is cyclic with generator 1.
+\item [(ii)] The group of rotations of a regular $n$-gon is cyclic (see Theorem \ref{thm:dihedral_symmetric_subgroup}).
+\een
+\end{example}
+
 \begin{corollary}\label{cor:prime_order_cyclic}
 If $G$ is a group of prime order $p$, then $G$ is cyclic. In fact, any element $g\in G\bs \bra{e}$ generates $G$.
 \end{corollary}
 
 \begin{proof}[\bf Proof]
-Take $g\in G\bs \bra{e}$. Then $\bsa{g} \leq G$ of an order dividing $p$, so $G=\bsa{g}$. Thus $G\cong C_p$.
+Take $g\in G\bs \bra{e}$. Then $\bsa{g} \leq G$ of an order dividing $p$ by Corollary \ref{cor:lagrange_group}, so $G=\bsa{g}$. Thus $G\cong C_p$.
 \end{proof}
 
-
-
-%\subsubsection{Equivalence relations and Lagrange's theorem}
-%\subsection{An application of Lagrange's theorem: Fermat's little theorem}
+%Recall Definition \ref{def:cyclic_group}. The group $G$ is cyclic if there exists $x\in G$ such that every element of $G$ is a power of $x$.
 
 
 \begin{definition}[$\bmod \, n$]
-Let $n\in \N$. Then $R_n = \bra{0,1,\dots, n-1}$ = a cyclic group under $+\bmod\,n$, denoted as $\oplus_n$.
+Let $n\in \N$. Then $R_n = \bra{0,1,\dots, n-1}$ = a cyclic group under $+\lmod{n}$, denoted as $\oplus_n$.
 
-For $a\in \Z$, define $r_n(a)$ to be the remainder in $R_n$ (also known as the residue$\mod n$); that is, if $\exists q\in \Z$, $r\in R_n$ with $a=qn+r$, then $r_n(a)=r$.
+For $a\in \Z$, define $r_n(a)$ to be the remainder in $R_n$ (also known as the residue $\lmod{n}$); that is, if $\exists q\in \Z$, $r\in R_n$ with $a=qn+r$, then $r_n(a)=r$.
 
 We see that there is a function $r_n:\Z\to R_n$ which takes $a\to r_n(a)$. This is a surjective function, and in fact, a homomorphism from $(\Z,+)\to (R_n,\oplus_n)$.
 \end{definition}
 
-\begin{definition}[numbers coprime to $n$]
-Let $n\in \N$. Define $R^*_n = \bra{a\in R_n|\hcf(a,n) =1}$\footnote{need definition of $\hcf$}. Define the operation $\otimes_n$ to be multiplication $\bmod n$, that is, $a\otimes_n b = r_n(ab)$.
-\end{definition}
-
-\begin{lemma}
-$R^*_n$ is an abelian group with operation $\otimes_n$.
-\end{lemma}
-
-\begin{proof}[\bf Proof]
-\ben
-\item [(i)] Closure. If $\hcf(a,n) =1 = \hcf(b,n)$, then $\hcf(ab,n)=1$, so $(a\otimes_n b)\in R^*_n$.
-\item [(ii)] Abelian. Multiplication in $\Z$ is abelian, so $a\otimes_n b = b\otimes_n a$.
-\item [(iii)] Identity is 1, since $a\otimes_n 1 = a,\forall a \in R^*_n$.
-\item [(iv)] Associativity. Multiplication in $\Z$ is associative.
-\item [(v)] Inverses. Given $a\in R^*_n$, $u,v\in \Z$ with $au+nv = 1$\footnote{see Numbers and Sets}. So $a\otimes_n u = 1\bmod n$. Then $r_n(u)$ is the inverse of $a$ under $\otimes_n$.
-\een
-\end{proof}
-
-\begin{definition}[Euler's totient function\index{Euler's totient function}]\label{def:euler_totient_function}
-The order of $R^*_n$ is $\phi(n)$, Euler's totient function\index{Euler's totient function}, defined by
-\be
-\phi(n) = \bra{\#a:\hcf(a,n)=1,1\leq a\leq n}
-\ee
-Note that $\phi(p) = p-1$ for prime $p$.
-\end{definition}
-
-%\subsubsection{The Fermat-Euler theorem}
-
-\begin{theorem}[Fermat-Euler theorem]\label{thm:fermat_euler}
-If $n\in\N$, $a\in \Z$ with $a$ coprime to $n$, then $a^{\phi(n)}\equiv 1\bmod n$.
-\end{theorem}
-
-\begin{proof}[\bf Proof]
-Since $\abs{R^*_n} = \phi(n)$, $r_n(a^{\phi(n)}) =1$ in $R^*_n$ by Theorem \ref{cor:lagrange_group_cor}. Hence $a^{\phi(n)} \equiv 1\bmod n$. \footnote{There is another proof in Numbers and Sets.}
-\end{proof}
-
-\begin{theorem}[Fermat's little theorem]\label{thm:fermat_little_group}
-If $p$ is a prime and $a\in \Z$ with $p\nmid a$, then $a^{p-1} \equiv 1\bmod p$.
-\end{theorem}
-
-\begin{proof}[\bf Proof]
-This is just the special case of Theorem \ref{thm:fermat_euler} when $n$ is prime.
-\end{proof}
-
-
-\section{Small groups}
-
-\subsection{Cyclic groups}
-
-Recall Definition \ref{def:cyclic_group}. The group $G$ is cyclic if there exists $x\in G$ such that every element of $G$ is a power of $x$.
-
-\begin{lemma}
+\begin{proposition}\label{pro:cyclic_group_isomorphism_infinite_finite}
 Let $G$ be cyclic and generated by $x$. Then either
 \ben
 \item [(i)] $G$ is infinite, all the $x^j$s are distinct, and $G\cong (\Z,+)$; or
 \item [(ii)] $G$ is finite with order $n$ for some $n\in\N$, and $G=\bra{e,x,x^2,\dots,x^{n-1}}$ with $G\cong C_n\cong (R_n,\oplus_n) \cong (\Z/n\Z,\oplus_n)$.
 \een
-\end{lemma}
+\end{proposition}
 
 \begin{proof}[\bf Proof]
 \ben
@@ -952,13 +1070,13 @@ Also, the mapping $\theta: G\to (\Z,+)$ taking $x^j\to j$ is bijective, and $\th
 
 If $[j_1] = [j_2]$, we have $n|(j_1-j_2)$, $x^{j_1-j_2} =e \ \ra \ x^{j_1} = x^{j_2}$ and thus $\theta$ is injective. Also, for any $j\in \Z/n\Z$, we can find $x^j\in G$ since $j\in \bra{0,1,\dots,n-1}$. Thus, $\theta$ is bijective.
 
-Furthermore, $\theta(x^jx^k) = \theta(x^{j+k}) = (j+k) \bmod n = (j \bmod n) \oplus_n (k \bmod n) = \theta(x^j)\theta(x^k)$. So $\theta$ is also a homomorphism and thus an isomorphism.
+Furthermore, $\theta(x^jx^k) = \theta(x^{j+k}) = (j+k) \lmod{n} = (j \lmod{ n}) \oplus_n (k \lmod{n}) = \theta(x^j)\theta(x^k)$. So $\theta$ is also a homomorphism and thus an isomorphism.
 \een
 \end{proof}
 
 %\subsubsection{Subgroups of cyclic groups}
 
-\begin{lemma}
+\begin{lemma}\label{lem:subgroup_of_cyclic_group_is_cyclic}
 Any subgroup $H$ of a cyclic group $G=\bsa{x}$ is cyclic. In fact, if $H\neq \bra{e}$, then $H=\bsa{x^k}$ with $k$ the smallest positive integer such that $x^k \in H$.
 \end{lemma}
 
@@ -977,69 +1095,418 @@ Multiplication here is actually addition since the operation in $\Z$ is $+$, so 
 \end{remark}
 
 
-
-\subsection{Direct (Cartesian) products of groups}
-
-\begin{definition}[direct product]\label{def:direct_product_group}
-Given groups $H$ and $K$, we can construct the direct product\index{direct product!group} $H\times K = \bra{h,k|h\in H,k\in K}$ with operation $(h_1,k_1)(h_2,k_2) = (h_1h_2,k_1k_2)$.
-\end{definition}
-
-\begin{lemma}\label{lem:direct_product_of_groups}
-If $H$ and $K$ are groups then $H\times K$ is a group.
+\begin{lemma}\label{lem:coprime_cong_cyclic_group}
+If $m$ and $n$ are coprime iff ($\hcf(m,n) = 1$) $C_m \times C_n \cong C_{mn}$.
 \end{lemma}
 
 \begin{proof}[\bf Proof]
+($\ra$). Take elements $g$ of order $m$ in $C_m$ and $h$ or order $n$ in $C_n$.
+
+Then $(g, h)$ is of order $mn$ in $C_m \times C_n$ since $(g, h)^r = (g^r, h^r)$ (by Definition \ref{def:direct_product_group}) and so the order of $(g, h)$ is the least common multiple of $m$ and $n$ which is $mn$ since $m$ and $n$ are coprime.
+
+But $|C_m \times C_n| = mn$ and so $(g, h)$ is a generator for the group.
+
+($\la$). If $\hcf(m,n) >1$, we can pick any $(g,h) \in C_{m}\times C_n$ with $g\in C_m$ and $h\in C_n$. It is easy to see that $\lcm(m,n) < mn$ and
+\be
+g^{\lcm(m,n)} = e_{C_m},\qquad h^{\lcm(m,n)} = e_{C_n} \ \ra\ (g,h)^{\lcm(m,n)} = e_{C_m\times C_n}.
+\ee 
+
+It follows that every element of $C_m\times C_n$ has order lower than $mn$ and and therefore $C_m\times C_n$ is not cyclic.
+\end{proof}
+
+\begin{example}
+$C_6 \cong C_2 \times C_3$. %Abelian groups of order $24 = 2^3 \times 3$ are $C_2 \times C_2 \times C_6$, $C_2 \times C_{12}$ and $C_{24}$.
+\end{example}
+
+\begin{lemma}\label{lem:coprime_congruence_generator_group}
+For $a\in \Z$ and $n\in \Z^+$, the followings are euquivalent:
 \ben
-\item [(i)] Closed under the given operation, as $h_1h_2 \in H$ and $k_1k_2 \in K$.
-\item [(ii)] Associative since multiplication in $H$ and $K$ is associative.
-\item [(iii)] Identity $e = (e_H,e_K)$.
-\item [(iv)] Inverse of $(h,k) = (h^{-1},k^{-1})$.
+\item [(i)] $\hcf(a,n)=1$.
+\item [(ii)] There exists $x$ such that $ax \equiv 1\lmod{n}$.
+\item [(iii)] $a$ is a generator of the additive group $\Z/n\Z$.
+\een
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+The equivalence of (i) and (ii) is implied by Theorem \ref{thm:gcd_divides_linear_combination}.%$$ \footnote{proof needed.}
+
+(ii) $\ra$ (iii). Suppose that there exists $x$ such that $ax \equiv  1\lmod {n}$ so there exists $y$ such that $ax + ny =1$. Let $d$ be the order of $a\in \Z/n\Z$ and so $n\mid ad$. Since $axd + nyd = d$ and $n\mid axd$, $n\mid nyd$ so $n\mid d$. Therefore $d=n$. 
+
+(iii) $\ra$ (ii). If $a$ generates $\Z/n\Z$ and $\hcf(a,n)=d >1$. Then $n\mid \frac{an}{d}$ and so the order of $a$ is at most $\frac nd <n$ which is an contradiction.
+\end{proof}
+
+
+\subsection{Symmetric groups and permutation groups}%The cyclic, symmetric and dihedral groups}
+
+\begin{definition}[permutation]\label{def:permutation}
+For $f:A\to B$, let $A=B=X$, i.e. we are mapping from a set to itself. Bijective functions $X\to X$ are called permutations\index{permutation} of $X$ (think shuffling).
+\end{definition}
+
+It is customary to use small Greek letters to denote permutations; $\iota$ represents the permutation which maps every element to itself (the 'identity').
+
+\begin{definition}[symmetric group]\label{def:symmetric_group}
+We define  $\sym(X)$ to be the set of all permutations. If $X$ is finite of size $\abs{X} = n$, often we take $X$ to be the set $\bra{1,2,\dots,n}$ and $S_n$ write for $\sym(X)$. For $\sigma\in S_n$, we write it and its inverse
+\be
+\sigma = \bepm
+1 & 2 & \dots & n\\
+\sigma(1) & \sigma(2) & \dots & \sigma(n)
+\eepm,\quad\quad
+\sigma^{-1} = \bepm
+\sigma(1) & \sigma(2) & \dots & \sigma(n)\\
+1 & 2 & \dots & n
+\eepm
+\ee
+\end{definition}
+
+\begin{theorem}
+$\sym(X)$ is a group under composition. (It is called the symmetric group\index{symmetric group} on $X$.)
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+We prove each of the axioms in turn;
+\ben
+\item [(i)] If $f,g\in \sym(X)$ then $f\circ g \in \sym(X)$; this follows from permutation (Definiton \ref{def:permutation}).
+\item [(ii)] If $f,g,h\in \sym(X)$, we want to show that for any $x\in X$, $(f\circ (g\circ h))(x) = ((f\circ g)\circ h)(x)$. However,
+\be
+(f\circ (g\circ h))(x) = f((g\circ h)(x)) = f(g(h(x))),\quad\quad ((f\circ g)\circ h)(x) = ((f\circ g)\circ h(x)) = f(g(h(x))).
+\ee
+so the two are identical.
+\item [(iii)] $\iota:X\to X$ does nothing, thus $f\circ \iota = f = \iota \circ f$.
+\item [(iv)] Define $f^{-1}:X\to X$ as follows, for $y\in X$ let $f^{-1}(y)$ be the unique pre-image of in $X$. Then $f^{-1}\in \sym(X)$ and $(f^{-1}\circ f)(x) = x = \iota(x)$ for $x\in X$. Also $(f\circ f^{-1}(x)) = x = \iota(x)$, so the result follows since $f$, $f^{-1} $are bijective.
 \een
 \end{proof}
 
-%\subsubsection{Examples and notes}
+\begin{example}
+We can now write
+\be
+S_1 = \bra{\iota},\quad\quad S_2 = \bra{\bepm 1 & 2\\ 1 & 2 \eepm, \bepm 1 & 2\\ 2 & 1 \eepm}
+\ee
 
-\begin{example}[Klein 4-group]
-$C_2 \times C_2 = \bra{e,x}\times\bra{e,y} = \bra{(e,e),(x,e),(y,e),(x,y)}$ where all non-identity elements have order 2.
+\be
+S_3 = \bra{\bepm 1 & 2 & 3\\ 1 & 2 & 3 \eepm, \bepm 1 & 2 & 3\\ 1 & 3 & 2 \eepm, \bepm 1 & 2 & 3\\ 2 & 1 & 3 \eepm, \bepm 1 & 2 & 3\\ 2 & 3 & 1 \eepm, \bepm 1 & 2 & 3\\ 3 & 1 & 2 \eepm, \bepm 1 & 2 & 3\\ 3 & 2 & 1 \eepm}.
+\ee
 
-Alternatively, $C_2\times C_2 \cong \Z/2\times \Z/2 = \bra{(0,0),(1,0),(0,1),(1,1)}$ under addition $\bmod 2$.
+In $S_3$, if we let
+\be
+\sigma = \bepm 1 & 2 & 3\\ 1 & 3 & 2 \eepm,\quad\quad \tau = \bepm 1 & 2 & 3\\ 2 & 3 & 1 \eepm
+\ee
+then $\sigma^2 = \iota$, $\tau^3 = \iota$, $\tau^2 = \tau^{-1}$, and in particular note that
+\be
+\sigma \circ \tau = \bepm 1 & 2 & 3\\ 3 & 2 & 1 \eepm,\quad\quad \tau \circ \sigma = \bepm 1 & 2 & 3\\ 2 & 1 & 3 \eepm
+\ee
+so $\sigma \circ \tau \neq \tau \circ \sigma$, which means $S_3$ is not abelian (this is true of $S_n$ in general with $n\geq 3$).
 
-Now $C_2\times C_3 \cong C_6$ since $C_2$ is generated by $x$ of order 2 and $C_3$ is generated by of order 3, so $o(x,y) = 6$. In general, $C_m\times C_n \cong C_{mn}$ iff $\hcf(m,n) =1$ (see Lemma \ref{lem:coprime_cycle_cong}).
+We can write $S_3 = \bra{\iota,\tau,\tau^2, \sigma, \sigma\tau,\sigma\tau^2}$ so $\abs{S_3} = 6$. In general, $\abs{S_n} = n!$.
 
-It follows that $\R^n$ for $n\in \N$ is a group under component-wise addition, since $\R^n = \underbrace{\R\times\dots \times \R}_{n\text{ times}}$.
+%We consider $\tau$ as a reflection and $\sigma$ as a rotation.
 \end{example}
 
-\begin{remark}
+%\begin{remark}
+
+
+
+
+%\begin{definition}[isomorphism group]
+%\footnote{need more details}
+%\end{definition}
+
+\begin{theorem}
+$S_n$ is generated by each of
+\be
+\text{(i) } \bra{(j\ k)|j<k}, \quad \text{(ii) }\bra{(1\ k)|1<k\leq n},\quad\text{(iii) }\bra{(j\ j+1)|1\leq j<n},\quad \text{(iv) }\bra{(1\ 2), (1\ 2\ \dots\ n)}.
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+\footnote{need proof}
+\end{proof}
+
+\begin{example}
+$S_3$ has order 6. Its subgroups are:
 \ben
-\item [(i)] If $H,K$ are finite, then so is $H\times K$, and $\abs{H\times K} = \abs{H}\abs{K}$\footnote{need details}.
-\item [(ii)] $H,K$ are abelian iff $H\times K$ is abelian.
-\item [(iii)] $H\times K$ contains a subgroup $\bra{(h,e):h\in H}$ isomorphic to $H$ and a subgroup $\bra{(e,k):k\in K}$ isomorphic to $K$.
+\item [(i)] $\bra{\iota}$, of order 1.
+\item [(ii)] $\bra{\iota,(1\ 2)}$, of order 2, and two others which are similar; $\bra{\iota,(1\ 3)}$ and $\bra{\iota,(2\ 3)}$.
+\item [(iii)] $\bra{\iota,(1\ 2\ 3), (1\ 3\ 2)}$, of order 3.
+\item [(iv)] $S_3$, of order 6.
+\een
+\end{example}
+
+
+
+
+
+\begin{definition}(permutation group)
+A group $G$ is a permutation group\index{permutation group} of degree $n$ if $G \leq \sym (X)$ with $\abs{X} = n$.
+\end{definition}
+
+\begin{remark}
+$S_n, A_n,D_{2n} \leq \sym(X)$ where $X$ is the set of vertices of the regular $n$-gon (see Definition \ref{def:symmetric_group}, \ref{def:alternating_group}, \ref{def:dihedral_group_symmetries}).
+\end{remark}
+
+
+
+
+\subsection{Cycles}
+
+\begin{definition}[cycle]
+$\sigma \in S_n$ is a $k$-cycle\index{cycle!group} if the following hold:
+\be
+\sigma(a_i) = a_{i+1},\quad \sigma(a_k) = a_1,\quad \sigma(x) = x \ \text{ for all $x\in S_n$ not one of the $a_j$s.}
+\ee
+
+We denote it by $\sigma = (a_1\ a_2\ \dots\ a_k)$.
+\end{definition}
+
+\begin{example}
+For $S_5 = \bra{1,2,3,4,5}$, we can write
+\be
+\sigma = (1\ 2\ 3) = \bepm 1 & 2 & 3 & 4 & 5 \\ 2 & 3 & 1 & 4 & 5 \eepm
+\ee
+\end{example}
+
+\begin{remark}\ben
+\item [(i)] $(a_1\ a_2\ \dots\ a_k) = (a_2\ a_3\ \dots\ a_k\ a_1) = \dots$ so we can cycle cycles and these cycles are not unique.
+\item [(ii)] $(a_1\ a_2\ \dots\ a_k)^{-1} = (a_1\ a_k\ a_{k-1}\ \dots\ a_2) = (a_k\ a_{k-1}\ \dots\ a_1)$
+\item [(iii)] $\sigma^k = \iota$, but $\sigma^l \neq \iota$ if $0<l<k$, so $k$ is the order of the $k$-cycle $G = \bra{\iota,\sigma,\sigma^2,\dots, \sigma^{k-1}}$.
 \een
 \end{remark}
 
-%\subsubsection{Full product conditions}
+\begin{definition}
+Two cycles $\sigma,\tau \in S_n$ with $\sigma = (a_1\ a_2\ \dots\ a_k)$ and $\tau = (b_1\ b_2\ \dots\ b_l)$ are disjoint\index{disjoint!cycle} if all the $a_j$s are different from all the $b_i$s, i.e. the sets are non-intersecting.
+\end{definition}
 
-\begin{proposition}\label{pro:direct_product}
-Let $G$ be a group with subgroups $H,K$ such that
-\ben
-\item [(i)] each element in $G$ can be written as $hk$ with $h\in H$, $k\in K$.
-\item [(ii)] $H\cap K = \bra{e}$.
-\item [(iii)] $hk = kh$, $\forall h\in H,k\in K$.
-\een
-Then $G\cong H\times K$.
+\begin{lemma}
+If $\sigma$, $\tau$ are disjoint cycles as above, then $\sigma \tau = \tau \sigma$. E.g. $(1 \ 2)(3\ 4\ 5 )=(3\ 4 \ 5)(1\ 2)$.
+\end{lemma}
+
+\begin{remark}
+This is only true of disjoint cycles, e.g. $(2 \ 3)(1\ 2\ 3)=(1\ 3) \neq (1\ 2) = (1\ 2 \ 3)(2\ 3)$.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+If $x\in X$ is one of the $a_j$s, then $\tau \sigma (a_j) = \tau (a_j + 1) = a_j +1$ and $\sigma \tau(a_j) = \sigma(a_j) = a_j + 1$, and similarly if $x$ is one of the $b_i$s. If $x$ is in neither set then $\tau\sigma(x) = \tau(x) = x = \sigma\tau(x)$ by the definition. So $\tau \sigma(x) = \sigma\tau(x)$ for all $x\in X$. Thus $\tau\sigma = \sigma \tau$.
+\end{proof}
+
+\begin{theorem}[disjoint cycle decomposition]\label{thm:disjoint_cycle_decomposition}
+Any permutation of a finite set $X$ can be written as a product of disjoint cycles (in an essentially unique way). E.g.
+\be
+\bepm 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ 2 & 7 & 6 & 8 & 5 & 4 & 1 & 3 \eepm = (1\ 2\ 7)(3\ 6\ 4\ 8)(5)
+\ee
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $\sigma \in S_n$. Start with any point $a_1$, and 'chase it' to get a sequence $a_1,\sigma(a_1), \sigma^2(a_1),\dots,X$ is finite, so we have to get $\sigma^l(a_1)$ being equal to one of the previous entries, say $\sigma^j(a_1)$. If $l$ is the smallest such that we get repetition and $\sigma^l(a_1) = \sigma^j(a_1)$, then $j=0$, so $\sigma^l(a_1) =a_1$.
+
+If not all points of $X$ are covered, choose $b_1$ to be a point in $X$ not yet reached. Chase it, to obtain $b_2 = \sigma(b_1)$, and in general, $b_k = \sigma^{k-1}(b_1)$ with $\sigma^k(b_1) = b_1$.
+
+Note that all the $b_j$s are different from all the $a_j$s, since $\sigma$ is injective. Continue until finished.
+\end{proof}
+
+\begin{remark}
+If $(a_1\ a_2\ \dots \ a_{k_1})(b_1\ b_2\ \dots \ b_{k_2}) \dots (z_1\ z_2\ \dots \ z_{k_r}) =\sigma$, then the order of $\pi$ is the least common multiple of $k_1,\dots,k_r$.
+\end{remark}
+
+\begin{definition}
+A transposition\index{transposition!groups} on $X$ is a 2-cycle on $X$.
+\end{definition}
+
+\begin{theorem}\label{thm:permutation_product_transposition}
+Any permutation of finite $X$ can be written as a product of transpositions.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Let $\sigma \in S_n$, and write it as a product of disjoint cycles (by Theorem \ref{thm:disjoint_cycle_decomposition}). Now note that the cycle
+\be
+(a_1\ a_2\ \dots \ a_{k}) = (a_1\ a_2)(a_2 \ a_3)\dots (a_{k-1}\ a_k),
+\ee
+so a $k$-cycle is a product of $k-1$ transpositions.
+\end{proof}
+
+\begin{example}
+(1\ 2\ 3\ 4\ 5) = (1\ 2)(2\ 3)(3\ 4)(4\ 5). Note that $\iota = (1\ 2)(1\ 2) = (1\ 2)(2\ 3)(2\ 3)(1\ 2)$ so there are many representations of each permutation. Note that for $\iota$ there must be an even number of factors; this is explained in Section \ref{subsec:sign_groups}.
+\end{example}
+
+\subsection{Signs}\label{subsec:sign_groups}
+
+\begin{definition}[sign\index{sign!permutation}]\label{def:sign_permutation}
+The sign of a permutation $\sigma$, $\sgn:S_n \to \bra{\pm 1}, \sigma\mapsto \sgn(\sigma)$ is $(-1)^k$ where $k$ is the number of factors in some expression of $\sigma$ as a product of transpositions.
+\end{definition}
+
+
+\begin{lemma}
+The function $\sgn:S_n \to \bra{\pm 1}$ taking $\sigma \to \sgn \sigma$ is well defined; that is, if $\sigma = \tau_1 \tau_2 \dots \tau_a = \tau_1'\tau_2' \dots \tau_b'$, two lots of transpositions, then $(-1)^a = (-1)^b$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Let $c(\sigma)$ be the number of cycles in a disjoint cycle decomposition of $\sigma$, including 1-cycles. E.g. $c(\iota) = n$.
+
+We claim that if $\tau$ is any transposition then $c(\sigma\tau) = c(\sigma)\pm 1 = c(\sigma)+1 \lmod{2}$.
+
+Write $\tau = (k\ l)$. Then the $\sigma \tau$ cycles are the same as the $\sigma$ cycles, except for the one other involving $k$ and $l$. If $k,l$ are in two different cycles of $\sigma$, these two become one cycle of $\sigma \tau$; if they are in the same cycle, then the cycle splits into two cycles of $\sigma \tau$.
+
+Now assume that $\sigma = \iota \tau_1\tau_2 \dots \tau_a = \iota\tau_1' \tau_2' \dots \tau_b'\iota$. Since $c(\iota) =n$, using the above result gives $c(\sigma) = n+a\lmod{2} = n+b$. So $a = b \lmod{2} \ \ra \ (-1)^a = (-1)^b$.
+\end{proof}
+
+\begin{theorem}\label{thm:sgn_homomorphism}
+$\sgn:(S_n,\circ) \to \bb{\bra{\pm 1},\times}$ taking is a well-defined, non-trivial homomorphism.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+Non-trivial due to the sign of any transposition being $-1$.
+
+If $\sgn \alpha = (-1)^k$ and $\sgn \beta = (-1)^l$, then write $\alpha = \tau_1\tau_2 \dots \tau_k$ and $\beta = \tau_1' \tau_2' \dots \tau_l'$ where all the $\tau$s are transpositions. Then $\alpha\beta = \tau_1\tau_2 \dots \tau_k \tau_1' \tau_2' \dots \tau_l'$, so $\sgn \alpha \beta = (-1)^{k+l} = (-1)^k(-1)^l = \sgn \alpha \sgn \beta$, satisfying the definition of a homomorphism. Thus, $\sgn$ is well-defined.
+\end{proof}
+
+
+
+\begin{definition}
+Given $\sigma \in S_n$, let $x_1,x_2,\dots,x_n$ be distinct integers. We define%Then the sign of $\sigma$ is
+\be
+\ve(\sigma) = \prod_{1\leq i<j\leq n} \frac{x_{\sigma(j)}-x_{\sigma(i)}}{x_j -x_i}
+\ee
+\end{definition}
+
+\begin{example}
+Let $\sigma = (1\ 2\ 3)$ and $x_j = j$, then
+\be
+\ve(\sigma) = \frac{3-2}{2-1} \times \frac{1-2}{3-1} \times \frac{1-3}{3-2} = +1
+\ee
+\end{example}
+
+\begin{lemma}
+$\ve(\sigma) = \pm 1$, independent of the actual numbers $x_j$. In fact, $\ve(\sigma) = (-1)^{N(\sigma)}$, where $N(\sigma) = \abs{\bra{i<j|\sigma(i)>\sigma(j)}}$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+For each $r\neq s$, either $x_r - x_s$ or $x_s - x_r$ appears on the top of the fraction. If $i = \sigma^{-1}(r) < \sigma^{-1}(s) = j$, then $x_s - x_r$ appears; if vice versa, then $x_r - x_s$ appears.
+\end{proof}
+
+\begin{lemma}\label{lem:permutation_sign_product}
+For any permutations $\sigma,\tau \in S_n$, we have $\ve(\sigma \tau) = \ve(\sigma)\ve(\tau)$.
+\end{lemma}
+\begin{proof}[\bf Proof]
+\be
+\ve(\sigma \tau) = \prod_{i<j} \frac{\sigma\tau(j) - \sigma\tau(i)}{j-i} = \prod_{i<j} \frac{\sigma(j) - \sigma(i)}{j-i} \prod_{i<j} \frac{\sigma\tau(j) - \sigma\tau(i)}{\sigma(j)-\sigma(i)} = \ve(\sigma)\ve(\tau)
+\ee
+since the product on the right, taking $x_i = \sigma(i)$, gives us $x_{\tau(i)} = \sigma(\tau(i))$.
+\end{proof}
+
+\begin{lemma}\label{lem:transposition_sign_minus_one}
+If $\tau$ is a transposition then $\ve(\tau) = -1$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+Let $\tau = (1\ 2)$, $x_j =j$. Then
+\be
+\ve(\tau) = \frac{1-2}{2-1} \times \underbrace{\frac{3-2}{3-1} \times \ \dots\ \times\ \dots\ }_{\text{not affected by transposition}} = -1
+\ee
+
+If $\tau = (1\ l)$ then write it as $(2\ l)(1\ 2)(2\ l)$ and cancel the end terms. If $\tau = (k\ l) $it can be written in the form $(1\ k)(1\ l)(1\ k)$. Thus $\ve(k\ l) = \ve(1\ 2)$ and the lemma is proved.
+\end{proof}
+
+Then combining Lemma \ref{lem:permutation_sign_product} and Lemma \ref{lem:transposition_sign_minus_one} we have the following theorem.
+
+\begin{theorem}
+$\ve(\sigma) = \sgn\sigma$ for all $\sigma \in S_n$.
+\end{theorem}
+
+
+
+\subsection{Alternating groups}\label{subsec:alternating_groups}%
+
+\begin{definition}
+$\sigma \in S_n$ is an even permutation if its sign is $+1$, and an odd permutation if its sign is $-1$. 
+\end{definition}
+
+\begin{remark}
+Note that even $\circ$ even = even, odd $\circ$ odd = even.%, and the other compositions as expected.
+\end{remark}
+
+\begin{definition}[alternating group]\label{def:alternating_group}
+The even permutations in $S_n$ form a subgroup of $S_n$, called the alternating group\index{alternating group} and written $A_n$. E.g.
+\beast
+A_4 = \bra{\iota,(1\ 2)(3\ 4),(1\ 3)(2\ 4), (1\ 4)(2\ 3), (1\ 2\ 3), (1\ 3\ 2), (1\ 2\ 4), (1\ 4\ 2), (1\ 3\ 4), (1\ 4\ 3), (2\ 3\ 4), (2\ 4\ 3)}.
+\eeast
+\end{definition}
+
+\begin{theorem}
+Exactly half the permutations in $S_n$ are even and thus are in $A_n$, i.e. $\abs{A_n} = n!/2$.
+
+In fact, if $H\leq S_n$, and $H$ contains some odd permutation, then $\abs{A_n\cap H} = \abs{H}/2$.
+\end{theorem}
+
+\begin{proof}[\bf Proof]
+\footnote{need proof}
+\end{proof}
+
+\begin{remark}
+Cycles of even length are odd permutations whereas cycles of odd length are even permutations (see Theorem \ref{thm:permutation_product_transposition}).
+\end{remark}
+
+\begin{corollary}
+$\sigma$ is an odd permutation iff the number of cycles of even length in its disjoint-cycle representation is odd.
+\end{corollary}
+
+
+\begin{proposition}\label{pro:an_sn_normal}
+$A_n \lhd S_n$.
 \end{proposition}
 
 \begin{proof}[\bf Proof]
-If $h_1k_1 = h_2k_2$ with $h_i \in H$, $k_i \in K$, then $h_2^{-1} h_1 = k_2 k_1^{-1} \in H\cap K = \bra{e}$, so expressions $hk$ for elements of $G$ are unique. Thus we can define $\theta:G\to H\times K$, taking $g=hk \to (h,k)$. This is well defined, by uniqueness of expressions $hk$.
-
-If $(h_1,k_1) = (h_2,k_2)$, $h_1 = h_2, k_1 = k_2 \ \ra \ h_1 k_1 = h_2k_2$, so $\theta$ is injective. Since $\forall h\in H,k\in K$, $h,k \in G$ ($H,K$ are subgroups), $hk \in G$. Thus, $\theta$ is surjective and therefore bijective. By condition (iii),
-\be
-\theta((h_1 k_1)(h_2 k_2))= \theta(h_1 h_2 k_1 k_2) = (h_1 h_2 ,k_1 k_2) = (h_1,k_1)(h_2,k_2) = \theta (h_1k_1)\theta(h_2k_2),
-\ee
-so the map $\theta$ is a homomorphism. Thus, $\theta$ is an isomorphism and $G\cong H\times K$.
+\footnote{need proof}
 \end{proof}
 
+
+
+
+
 \subsection{Dihedral groups}
+
+\begin{definition}[dihedral group]\label{def:dihedral_group_symmetries}
+Consider the group of symmetries of a regular $n$-gon, with $n$ vertices (for example, the $n$th roots of unity in $\C$). This is a subgroup of $S_n$, since
+\ben
+\item [(i)] the composition of symmetries is a symmetry,
+\item [(ii)] the identity is a symmetry,
+\item [(iii)] if $\alpha$ is a symmetry then $\alpha^{-1}$ is a symmetry.
+\een
+
+This is called dihedral group\index{dihedral group} and denoted as $D_{2n}$ (for $n\geq 3$. In geometry the group is denoted $D_n$, while in algebra the same group is denoted by $D_{2n}$ to indicate the number of elements.).
+\end{definition}
+
+With the following theorem, we have $D_{2n}\leq S_n$; for example, $D_6 \leq S_3$ (as a matter of fact, $D_6 \cong S_3$, see Definition \ref{def:group_isomorphism}).
+
+\begin{theorem}\label{thm:dihedral_symmetric_subgroup}
+The group $D_{2n}$ of symmetries of a regular $n$-gon ($n\geq 3$) is a non-abelian subgroup of $S_n$, of order $2n$. It is generated by the elements $\tau$ and $\sigma$, of orders $n$ and respectively, representing a rotation $\tau$ and a reflection $\sigma$, subject to $\tau^n = \iota$, $\sigma^2 = \iota$, $\sigma \tau \sigma = \tau^{-1}$.
+\end{theorem}
+
+\begin{remark}
+The symmetries of a regular $n$-gon reserve the relative positions.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+First look at the $n$ rotations; these are the set $\bra{\iota,\tau,\tau^2,\dots,\tau^{n-1}}$ where
+\be
+\tau = \bepm 1 & 2 & \dots & n-1 & n\\ 2 & 3 & \dots & n & 1 \eepm
+\ee
+so that $\tau^n = \iota$. These form a subgroup of order $n$, which is a cyclic group $C_n$ of order $n$, since each element is a power of $\tau$ and $\tau^i\tau^j = \tau^{i+j\lmod{n}}$.
+
+Let $\sigma$ be a reflection through the real axis. There are reflections in the $n$ different axes of symmetry ($n/2$ axes cross edges and $n/2$ cross vertices if $n$ is even. $n$ axes cross vertices if $n$ is odd). Therefore $\abs{D_{2n}}\geq 2n$.
+
+We now need to show that any symmetry $g\in D_{2n}$ is either of the form $\tau^j$ for some $j$ or of the form $\sigma \tau^j$.
+
+Let $j = g(1)$. Then as $\tau^{j-1}(1) = j$ (rotating $j-1$ times, from 1 to $j$), we have $x = \bb{\tau^{j-1}}^{-1}g$ fixes 1 ($ \bb{\tau^{j-1}}^{-1}g (1) = 1$). Since only two vertices, 2 and $n$, are next to 1 (because the operation can not change the relative positions), either $x$ fixes 2 and $n$ as well (and therefore it fixes everything, by induction), so that $g=\tau^{j-1}$, or $x$ swaps 2 and $n$ and all the other vertices take a reflection in the axis crossing vertex 1.
+
+Thus the second case gives $\iota = \sigma^{-1} x = x\sigma^{-1}$, that is,
+\be
+\iota = \sigma^{-1}\bb{\tau^{j-1}}^{-1}g = \bb{\tau^{j-1}}^{-1}g\sigma^{-1} \ \ra \ g=\tau^{j-1}\sigma = \sigma\tau^{1-j}.
+\ee
+
+So any symmetry of our $n$-gon is either $\tau^j$ for some $j$, or $\sigma \tau^j$ for some $j$, so $\abs{D_{2n}}\leq 2n \ \ra\ \abs{D_{2n}} = 2n$.
+\end{proof}
+
+\begin{remark}
+Algebraically, we write $D_{2n} = \bra{t,s|t^n = \iota,s^2 = \iota, sts = t^{-1}} = \bra{t^j,st^j|0\leq j<n}$.
+\end{remark}
 
 \begin{proposition}[dihedral group]\label{pro:dihedral_group}
 Let $G$ be a group generated by two elements, $s$ of order $n$ and $t$ of order 2, with $tst = s^{-1}$. Algebraically, $G = \bsa{s,t|s^n=e,t^2 =e,tst=s^{-1}}$. Then $G$ is dihedral of order $2n$, that is, $G$ is isomorphic to the group of symmetries of a regular $n$-gon.
@@ -1051,9 +1518,21 @@ $G=\bra{e,s,s^2,\dots,s^{n-1},t,ts,ts^2,\dots,ts^{n-1}}$ and these are precisely
 Now the group of symmetries of a regular $n$-gon contains $\sigma$, a rotation of order $n$, and $\tau$, a reflection satisfying $\tau^2 =\iota$ and $\tau \sigma \tau = \sigma^{-1}$ (see Definition \ref{def:dihedral_group_symmetries}). So the mapping $\theta:t^k s^j \to \tau^k \sigma^j$ is a well-defined bijective homomorphism, i.e. an isomorphism, since both groups satisfy the same conditions.
 \end{proof}
 
+
+\begin{example}
+$G =D_8 = \bsa{a,b:a^4 = e = b^2,bab^{-1} =a^{-1}}$ and $K = \bsa{a^2}$. Then
+\be
+\frac{G}{K} = G/K =\bra{K,aK,bK,abK} \cong C_2 \times C_2 = \inner{aK}{bK}
+\ee
+Note that $\bsa{b}$ is not normal (as $aba^{-1} = ba^{-2}\notin \bsa{b}$), but $\bsa{a^2} $ and all subgroups of order 4 are normal.
+\end{example}
+
+
 \subsection{The groups of order $\leq 10$}
 
-Here is a table of them. For groups of prime order we use Corollary \ref{cor:prime_order_cyclic}. For other orders see the Table \ref{tab:small_groups}.
+%Here is a table of them. 
+
+For groups of prime order we use Corollary \ref{cor:prime_order_cyclic}. For other orders see the Table \ref{tab:small_groups}.
 %\begin{remark}
 There are 10 groups of order 16, and $\approx 50,000,000,000$ groups of order $2^{10}$.
 %\end{remark}
@@ -1066,7 +1545,9 @@ A group $G$ of order 4 is abelian, and is isomorphic to $C_4$ or $C_2\times C_2$
 \end{lemma}
 
 \begin{proof}[\bf Proof]
-Non-identity elements have order 2 or 4. If $G$ contains an element of order 4, then $G\cong C_4$ (of course, it is abelian). So assume all non-identity elements have order 2. Let $a\in G\bs \bra{e}$ and let $b\in G\bs \bsa{a}$. Then $G=\bra{e,a,b,ab}$. So $G\cong \bsa{a}\times \bsa{b} = C_2 \times C_2$ by Proposition \ref{pro:direct_product}. Also, $e = (ab)^2 = abab \ \ra \ ab = a^2 ba b^2 = eba e = ba$. Thus, $G$ is abelian.
+Non-identity elements have order 2 or 4. If $G$ contains an element of order 4, then $G\cong C_4$ (of course, it is abelian). So assume all non-identity elements have order 2. Let $a\in G\bs \bra{e}$ and let $b\in G\bs \bsa{a}$. Then $G=\bra{e,a,b,ab}$. Also, $e = (ab)^2 = abab \ \ra \ ab = a^2 ba b^2 = eba e = ba$. Thus, $G$ is abelian.
+
+Therefore, $G\cong \bsa{a}\times \bsa{b} = C_2 \times C_2$ by Proposition \ref{pro:direct_product_group}.
 \end{proof}
 
 %\subsubsection{Groups of order 6}
@@ -1132,7 +1613,7 @@ The orders of non-identity elements are 2,4 and 8 by Lagrange's corollary (Theor
 
 We the elment $ca$ has order 2. Then $(ca)^2 = e \ \ra \ caca = e \ \ra \ c^2aca^2 = ca \ \ra \ ac = ca$. Similarly, we can have $cx = xc$, $\forall x \in \bra{e,a,b,ab} = \bsa{a,b}$ and thus $xy = yx$ $\forall x\in \bsa{a,b},y\in \bsa{c}$.
 
-Thus $G\cong \bsa{a,b}\times \bsa{c} \cong (C_2 \times C_2) \times C_2 = C_2 \times C_2 \times C_2$ by Proposition \ref{pro:direct_product}.
+Thus $G\cong \bsa{a,b}\times \bsa{c} \cong (C_2 \times C_2) \times C_2 = C_2 \times C_2 \times C_2$ by Proposition \ref{pro:direct_product_group}.
 \item [(iii)] So there is an element $a$ of order 4 in $G$ but none of order 8. Let $b\in G\bs\bsa{a}$ with order 2 or 4. Hence $G=\bra{e,a,a^2,a^3,b,ab,a^2b,a^3b}$ with no more elements. What are $b^2$ and $ba$?
 \ben
 \item If $b^2 \in \bra{b,ab,a^2b, a^3b}$, then $b\in \bra{e,a,a^2,a^3}= \bsa{a}$ which is a contradiction. Thus $b^2 \in \bsa{a}$. If $b^2$ is $a$ or $a^3$, then $o(b) = 8$ which cannot be. So $b^2 = e$ or $b^2 = a^2$.
@@ -1140,8 +1621,8 @@ Thus $G\cong \bsa{a,b}\times \bsa{c} \cong (C_2 \times C_2) \times C_2 = C_2 \ti
 \een
 \item [] Case 1. $bab^{-1} =a$. Then $ba = ab$ so $G$ is abelian.
 \ben
-\item If $b^2 = e$, by Proposition \ref{pro:direct_product}, $G\cong \bsa{a}\times \bsa{b}$  $\cong C_4\times C_2$.
-\item If $b^2 = a^2$, replace $b$ by $b' = ab^{-1}$. Then $b'^2 = (ab^{-1})^2 = a^2 b^{-2} = e$. So $G\cong \bsa{a}\times \bsa{b'} \cong C_4 \times C_2$ by Proposition \ref{pro:direct_product}.
+\item If $b^2 = e$, by Proposition \ref{pro:direct_product_group}, $G\cong \bsa{a}\times \bsa{b}$  $\cong C_4\times C_2$.
+\item If $b^2 = a^2$, replace $b$ by $b' = ab^{-1}$. Then $b'^2 = (ab^{-1})^2 = a^2 b^{-2} = e$. So $G\cong \bsa{a}\times \bsa{b'} \cong C_4 \times C_2$ by Proposition \ref{pro:direct_product_group}.
 \een
 \item [] Case 2. $bab^{-1} = a^{-1}$
 \ben
@@ -1174,287 +1655,15 @@ So $i=4$, so $x^{-1}yx = y^4 = y^{-1}$ and thus $G \cong D_{10}$.
 Thus any group of order 10 is isomorphic to either $C_{10}$ or $D_{10}$.
 \end{proof}
 
+\begin{example}[Klein 4-group]
+$C_2 \times C_2 = \bra{e,x}\times\bra{e,y} = \bra{(e,e),(x,e),(y,e),(x,y)}$ where all non-identity elements have order 2.
 
+Alternatively, $C_2\times C_2 \cong \Z/2\Z\times \Z/2\Z = \bra{(0,0),(1,0),(0,1),(1,1)}$ under addition $\lmod{2}$.
 
-\section{Normal Subgroups, Quotient Groups and Isomorphism Theorem}
-
-\subsection{Normal Subgroups, Quotient Groups}
-
-\begin{example}
-The integers lie inside the real numbers, $(\Z, +) \leq (\R, +)$. We would like to add cosets,
-\be
-(\Z + r_1) + (\Z + r_2) = \Z + (r_1 + r_2).
-\ee
+Now $C_2\times C_3 \cong C_6$ since $C_2$ is generated by $x$ of order 2 and $C_3$ is generated by of order 3, so $o(x,y) = 6$. In general, $C_m\times C_n \cong C_{mn}$ iff $\hcf(m,n) =1$ (see Lemma \ref{lem:coprime_cong_cyclic_group}).
 \end{example}
 
-In general, we want to copy this procedure to define an operation on the cosets of a subgroup. If $K \leq G$ we want to define $g_1Kg_2K = g_1g_2K$. But this requires $Kg_2K = g_2K$, after multiplying on left by $g^{-1}_1$. In particular, we need $Kg_2 \subseteq g_2K$ for all $g_2 \in G$, and also $Kg^{-1}_2 \subseteq g^{-1}_2 K$ which implies $g_2K \subseteq Kg_2$. So to make the definition work we need that $gK = Kg$ for all $g \in G$.
-%\be
-%Kg_2K = g_2K \ \ra \ \forall h\in Kg_2 Kg_2 \subseteq g_2K \ \ra \
-%\ee
 
-\begin{definition}[normal subgroup]\label{def:normal_subgroup}
-A subgroup $K\leq G$ is normal\index{normal!subgroup} if each left coset of $K$ is equal to the corresponding right coset, i.e. $gK = Kg$, $\forall g\in G$. Therefore for any $g\in G,k\in K,\exists k' \in K$ with $gk = k'g$, i.e. $gkg^{-1} \in K, \forall g\in G,k\in K$ or equivalently, $gKg^{-1} = K$ for all $g \in G$. We write $K\lhd G$.
-\end{definition}
-
-\begin{example}
-\ben
-\item [(i)] If $G$ is abelian, then any subgroup $K$ is normal, because $gkg^{-1} = k\in K$ for any $g\in G,k\in K$.
-\item [(i)] In general, $\{e\}$ and $G$ are always normal.
-\item [(iii)] In the dihedral group $D_{2n}$, the subgroup of rotations is normal but $\{e, \tau\}$, for a reflection $\tau$, is not normal if $n \geq 3$.
-
-\een
-\end{example}
-
-\begin{proposition}\label{pro:an_sn_normal}
-$A_n \lhd S_n$.
-\end{proposition}
-
-\begin{proof}[\bf Proof]
-\footnote{need proof}
-\end{proof}
-
-\begin{lemma}\label{lem:normal_index_2}
-If $K\leq G$ of index 2, then $K\lhd G$.% (often used in chapter 3).
-\end{lemma}
-
-\begin{proof}[\bf Proof]
-If $g\in G$, then either $g\in K$, in which case $gK=K = Kg$, or $g\in G\bs K$, in which case $gK =G\bs K = Kg$. Either way, $K\lhd G$.
-
-It follows from the definition that if any one member of a conjugacy class is an element of a normal subgroup, then the entire conjugacy class must be within that subgroup. Therefore any normal subgroup is a (disjoint) union of conjugacy classes.
-\end{proof}
-
-
-\begin{lemma}\label{lem:ker_normal}
-If $\theta: G\to H$ is a homomorphism, then $\ker \theta \lhd G$.
-\end{lemma}
-
-\begin{proof}[\bf Proof]
-First note that $e_G \in \ker \theta$ by Theorem \ref{lem:homomorphism_property} (i). Next, if $g_1,g_2 \in \ker\theta$, then
-\be
-\theta(g_1^{-1}g_2) = \theta(g_1^{-1})\theta(g_2) = \bb{\theta(g_1)}^{-1}\theta(g_2)= e_H
-\ee
-by Theorem \ref{lem:homomorphism_property} (ii). then $g_1^{-1}g_2 \in \ker\theta $. Therefore $\ker \theta \leq G$ by Lemma \ref{lem:subgroup}.
-
-Now if $\forall g\in G, k\in \ker \theta$, then
-\be
-\theta(gkg^{-1}) = \theta(g)\theta(k)\theta(g^{-1}) = \theta(g)e_H\theta(g^{-1}) = \theta(g)e_H\bb{\theta(g)}^{-1}=  e_H
-\ee
-
-Thus, $gkg^{-1} \in \ker \theta$. Therefore the subgroup $\ker \theta$ is normal.
-\end{proof}
-
-%\begin{remark}
-%If $G$ acts on a set $X$, we have the homomorphism $\varphi:G\to \sym(X)$ taking $g\to \varphi_g$ where $\varphi_g:x\to g(x)$. The kernel of the action on $X$ is precisely $\ker \varphi$, hence it is a normal subgroup of $G$.
-%\end{remark}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%\subsubsection{Normal factors}
-
-\begin{lemma}
-If $G_1,G_2 \lhd G$ such that $G = \inner{G_1}{G_2}$ and $G_1\cap G_2 = \bra{e}$, then $G\cong G_1\times G_2$.
-\end{lemma}
-
-%\begin{remark}
-%This is the clarification of Proposition \ref{pro:direct_product}.
-%\end{remark}
-
-%Note. This was used when $G$ was the group of all symmetries of a cube, $G_1$ was $G^+ \lhd G$, and $G_2$ was the kernel of the action of $G$ on $D$, thus $G_2\lhd G$.
-
-\begin{proof}[\bf Proof]
-It is enough to show, by Proposition \ref{pro:direct_product}, that $g_1g_2 = g_2 g_1$ for any $g_1 \in G_1$, $g_2 \in G_2$.
-
-Since $g_1g_2g_1^{-1}\in G_2$ and $g_2g_1^{-1}g_2^{-1}\in G_1$ (definition of normal), we have $g_1g_2g_1^{-1}g_2^{-1} \in G_1\cap G_2 = \bra{e}$. So $g_1g_2 = g_2 g_1$.
-\end{proof}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{theorem}[quotient group]\label{thm:quotient_group}
-Let $K \lhd G$ and $g_1,g_2\in G$. Then the set of cosets of $K$ in $G$ form a group under the operation of coset multiplication, defined by $g_1Kg_2K = g_1g_2K$. This group ($(G:K) = \bra{gK:g\in G}$) is called the quotient group\index{quotient group} $G/K$.
-\end{theorem}
-
-\begin{remark}
-Normality of $K$ is necessary.
-\end{remark}
-
-\begin{proof}[\bf Proof]
-Let $g,g_1,g_2,g_3\in G$. First we must check this operation is well-defined on $(G:K)$; that is, $(g_1g_2)K$ is a valid coset of $K$ in $G$ (obvious), and if $g_1K = g_1'K$ and $g_2 K = g_2' K$ then $(g_1g_2)K = (g_1'g_2')K$ (less obvious, the proof is from \cite{Beardon_2005}) .
-
-Directly from the above expressions $g_i^{-1}g_i' \in K$ (for $i=1,2$) so call it $k_i$. Now
-\be
-(g_1g_2)K = (g_1'g_2')K \ \lra\ g_2^{-1}g_1^{-1}g_1'g_2' \in K
-\ee
-but $g_2^{-1}g_1^{-1}g_1'g_2' = g_2^{-1} k_1 g_2' = g_2^{-1}g_2' (g_2')^{-1}k_1 g_2' = k_2 (g_2')^{-1}k_1g_2' \in k_2 K$ due to the fact that $(g_2')^{-1}k_1g_2' \in K$. Finally, $k_2K = K$ so we are done.
-
-Next we check the remaining group axioms (as Closure is $g_1Kg_2K = g_1g_2K$).
-
-Associativity:
-\be
-(g_1Kg_2K)g_3K = (g_1g_2)K g_3 K = (g_1g_2)g_3 K = g_1(g_2g_3)K = g_1K(g_2Kg_3K) = g_1K(g_2g_3)K.
-\ee
-
-Identity element: $gKeK = gK$ and $eKgK = gK$ so the identity =$eK = K$.
-
-Inverses: $gKg^{-1}K = eK = K = g^{-1}KgK$, thus $(gK)^{-1} = g^{-1}K$.
-\end{proof}
-
-
-\begin{example}
-$G =D_8 = \bsa{a,b:a^4 = e = b^2,bab^{-1} =a^{-1}}$ and $K = \bsa{a^2}$. Then
-\be
-\frac{G}{K} = G/K =\bra{K,aK,bK,abK} \cong C_2 \times C_2 = \inner{aK}{bK}
-\ee
-Note that $\bsa{b}$ is not normal (as $aba^{-1} = ba^{-2}\notin \bsa{b}$), but $\bsa{a^2} $ and all subgroups of order 4 are normal.
-\end{example}
-
-\subsection{Isomorphism theorem}
-
-\begin{theorem}[first isomorphism theorem\index{isomorphism theorem!groups}]\label{thm:isomorphism_1_group}
-Let $\theta : G \to H$ be a homomorphism. Then $\ker \theta$ is a normal subgroup ($\ker \theta \lhd G$) and $G/ \ker \theta \cong \im \theta$.
-\end{theorem}
-\begin{remark}
-$G/ \ker \theta \cong \im \theta$ means that any homomorphic image of $G$ is isomorphic to a quotient.
-\end{remark}
-\begin{proof}[\bf Proof]
-For the first assertion see Lemma \ref{lem:ker_normal}.
-
-In general, the way to show that two groups are isomorphic is to construct an isomorphism between them. Therefore we define a map $\Phi: G/K \to \im \theta$, $gK \mapsto \theta(g)$ where $K = \ker \theta$ and will show that it is an isomorphism.
-
-First check that $\Phi$ is well-defined,
-\be
-g_1K = g_2K \ \ra \ g^{-1}_2 g_1 \in K \ \ra \ \theta(g^{-1}_2 g_1) = e \ \ra \ \theta(g_2)^{-1}\theta(g_1) = e \ \ra \ \theta(g_1) = \theta(g_2) \ \ra \ \Phi(g_1K) = \Phi(g_2K).
-\ee
-
-If $\theta(g_1) = \theta(g_2)$ then $\theta(g^{-1}_1 g_2) = e$ and so $g^{-1}_1 g_2 \in K$. Hence $g_1K = g_2K$ by Theorem \ref{thm:left_coset}. Thus, $\Phi$ is injective.
-
-Any element in $\im(\theta) = \theta(G)$ is $\theta(g)$ for some $g\in G$, so $\Phi(gK) = \theta(g)$. Hence, $\Phi$ is surjective.
-
-$\forall g_1,g_2\in G$,
-\be
-\Phi(g_1Kg_2K) = \Phi(g_1g_2K) = \theta(g_1g_2) = \theta(g_1)\theta(g_2) = \Phi(g_1K)\Phi(g_2K).
-\ee
-
-So $\Phi$ is a homomorphism. Thus, $\Phi$ is an isomorphism.
-\end{proof}
-
-\begin{example}
-Let $G=(\Z,+)$. Then $\bsa{n} = \bra{nk:k\in \Z}\lhd G$. Let $H=C_n = \bsa{x:x^n = 1}$. Define $\theta:G\to H$ taking $m \to x^m$. This is a surjective homomorphism with kernel $\bsa{n}$.
-
-Therefore by Theorem \ref{thm:isomorphism_1_group}, $\Z/\bsa{n} \cong C_n$ and $\Z/\bsa{n}$ is the group of integers $\bmod n$, sometines written $\Z/n\Z$.
-\end{example}
-
-\begin{example}
-Let $G = (\R,+)$ and $H = (\C\bs\bra{0},\times)$, with $\theta:G\to H$ taking $t\to e^{i t}$.
-
-First we check $\theta$ is a homomorphism: $\theta(t_1 + t_2) = e^{i(t_1+t_2)} = e^{it_1}e^{it_2} = \theta(t_1)\theta(t_2)$.
-
-Now $\im \theta = \theta(G) = \bra{z\in \C:\abs{z}=1}$. Then $K = \ker\theta = \bra{2n\pi:n\in \Z}:= \bsa{2\pi}\leq \R$, which is normal in $(\R,+)$ since
-\be
-\forall g\in G, k\in K \ \ra \ g\in \R, k = 2n\pi,n\in \Z \ \ra \ gkg^{-1} = g + 2n\pi + (- g ) = 2n\pi \in K.
-\ee
-Therefore Theorem \ref{thm:isomorphism_1_group} implies that $\R/\bsa{2\pi} \cong \im \theta = \bra{e^{it}:t\in \R} = \bra{z\in \C:\abs{z}=1}$.
-
-The map $\Phi$ is $\Phi(t+\bsa{2\pi}) = e^{it}$. Similarly, if $\theta:t\mapsto e^{2\pi it}$, the map $\Phi$ is $\Phi(t + \Z) = e^{2\pi it}$.
-\end{example}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-
-\begin{theorem}[second isomorphism theorem\index{isomorphism theorem!groups}]\label{thm:isomorphism_2_group}
-Let $H \leq G$ and $K \lhd G$. Then $HK \leq G$ and $H \cap K \lhd G$ where $HK = \{hk : h \in H, k \in K\}$ and $(HK)/K \cong H/(H \cap K)$.
-\end{theorem}
-
-\begin{proof}[\bf Proof]
-First show that $HK$ is a subgroup. It suffices to show $(h_1k_1)(h_2k_2)^{-1} \in HK$ with $h_1,h_2\in H, k_1,k_2 \in K$ by Lemma \ref{lem:subgroup}.
-\be
-(h_1k_1)(h_2k_2)^{-1} = h_1 \underbrace{k_1k^{-1}_2}_{\in K} h_2^{-1}
-\ee
-
-But $Kh^{-1}_2 = h^{-1}_2 K$ since $K \lhd G$ and so $(k_1k_2^{-1})h_2^{-1} = h_2^{-1} k_3$ for some $k_3 \in K$. So $(h_1k_2)(h_2k_2)^{-1} = h_1h_2^{-1} k_3 \in HK$.
-
-Define
-\be
-\theta : H \to H/K,\ h \mapsto hK.
-\ee
-
-This is a group homomorphism (identity is $e_HK$) since
-\be
-\theta(h_1h_2) = h_1h_2 K = h_1Kh_2K = \theta(h_1)\theta(h_2).
-\ee
-
-So Theorem \ref{thm:isomorphism_1_group} implies that $\ker \theta \lhd G$ and $H/\ker \theta \cong \im \theta$. Now
-\be
-\ker \theta = \{h \in H : hK = eK = K\} = H \cap K.
-\ee
-
-Thus $H \cap K \lhd G$. Also,
-\be
-\im \theta = \{hK : h \in H\} = \bra{(hk)K : h \in H,k\in K} = \bra{gK:g\in HK} = (HK)/K\ \text{ (by Theorem \ref{thm:quotient_group})}
-\ee
-
-cosets of $K$ in $HK$. Thus $H/(H \cap K) \cong (HK)/K$, as required.
-\end{proof}
-
-
-\begin{proposition}\label{pro:remark_second_isomorphism_theorem_group}
-Let $K\lhd G$ and $L\leq G$ be a subgroup containing $K$. Then
-\be
-L/K \lhd G/K \ \lra\  L \lhd G.
-\ee
-\end{proposition}
-
-\begin{proof}[\bf Proof]
-In fact, there is a bijection\footnote{need proof} between subgroups of $G/K$ and the subgroups of $G$ containing $K$. This is given by the maps
-\beast
-\text{\{subgroups of $G/K$\}} & & \text{\{subgroups of $G$ containing $K$\}}\\
-X\quad\quad & \ \longrightarrow \ & \quad \quad \{g \in G : gK \in X\}\\
-L/K \quad\quad & \ \longleftarrow \ & \quad\quad\quad L
-\eeast
-
-These maps are inverses of each other.
-
-Take a normal subgroup $K \lhd G$ and form the quotient group $G/K$, with elements the cosets $gK$ and multiplication defined by $g_1Kg_2K = g_1g_2K$. The correspondence
-\be
-\text{\{subgroups of $G/K$\}}\ \longleftrightarrow\ \text{\{subgroups of $G$ containing $K$\}}
-\ee
-restricts to
-\be
-\text{\{normal subgroups of $G/K$\}} \ \longleftrightarrow \ \text{\{normal subgroups of $G$ containing $K$\}}
-\ee
-For a subgroup $L/K \leq G/K$ ($L$ is a normal subgroup of $G$ containing $K$) we have that
-\be
-(gK)(L/K)(gK)^{-1} = (gLg^{-1})/K
-\ee
-so $K\leq L$, we have $(gLg^{-1})/K = L/K \ \ra \ gl_1g^{-1}K = l_2 K  \ \ra \ gl_1 g^{-1} \in L \ \ra \ gLg^{-1} = L$. It is obvious that $gLg^{-1} = L \ \ra \ (gLg^{-1})/K = L/K$. Thus,
-\be
-(gK)(L/K)(gK)^{-1} = L/K \ \lra\ gLg^{-1} = L,
-\ee
-that is, $L/K \lhd G/K \ \lra\  L \lhd G$.
-\end{proof}
-
-\begin{theorem}[third isomorphism theorem\index{isomorphism theorem!groups}]\label{thm:isomorphism_3_group}
-If $K$ and $L$ are normal subgroups of $G$ with $K \leq L \lhd G$ (i.e. $K\lhd L$) then $(G/K)/(L/K) \cong G/L$.
-\end{theorem}
-
-\begin{proof}[\bf Proof]
-Apply Theorem \ref{thm:isomorphism_1_group} to the well chosen map
-\be
-\theta : G/K \to G/L,\ gK \mapsto gL.
-\ee
-
-We need to check this is well-defined,
-\be
-g_1K = g_2K \ \ra \ g^{-1}_1 g_2 \in K \leq L \ \ra \ g_1 L = g_2L.
-\ee
-
-To check $\theta$ is a homomorphism,
-\be
-\theta(g_1Kg_2K) = \theta(g_1g_2K) = g_1g_2L = g_1Lg_2L = \theta(g_1K)\theta(g_2K).
-\ee
-
-Clearly, $\im \theta = G/L$. Also $\ker \theta = \{gK : gL = L\} = \bra{gK : g \in L} = L/K$ and so Theorem \ref{thm:isomorphism_1_group} implies
-\be
-(G/K)/(L/K) \cong G/L.
-\ee
-\end{proof}
 
 \subsection{Simple groups}
 
@@ -1493,7 +1702,7 @@ Note that $|A_3| = 3$, so $A_3$ is isomorphic to $C_3$ and simple. $|A_4| = 12$ 
 
 There are finitely many families of finite simple groups, and 26 groups that do not fit into those general families, called the sporadic\index{sporadic group} ones.
 
-Note $|A_5| = 60$ and $|A_6| = 360$. There is another finite simple group of order 168, $GL_3(\Z \bmod 2)$, the group of invertible $3 \times 3$ matrices entries $\{0, 1\}$ modulo 2\footnote{This is left as an exercise.}.
+Note $|A_5| = 60$ and $|A_6| = 360$. There is another finite simple group of order 168, $GL_3(\Z /2\Z)$, the group of invertible $3 \times 3$ matrices entries $\{0, 1\}$ modulo 2\footnote{This is left as an exercise.}.
 \end{remark}
 
 \begin{proof}[\bf Proof]
@@ -1549,17 +1758,19 @@ The terminology comes from Galois theory, see the relevant Part II course. You a
 
 \item [(ii)] $A_n$ for $n\geq 5$ (see Theorem \ref{thm:a_n_is_simple_n_geq_5}).
 
-\item [(iii)] \footnote{need check, add in matrix section}$PSL_n(q)$ where $q$ is a prime power and $n\geq 2$; also $PSO_n(q)$, $PSU_n(q)$ and $PS_{p_n}(q)$. These four are known as the `classical groups'
-\be
-GL_2(5) \lhd \frac{SL_2(5)}2
-\ee
-where $GL_2(5)$ is integer arithmetic$\bmod 5$ and $Z$ = centre = $\bra{\text{scalars in }SL_2(5)}= \bra{\pm I}$
+%\item [(iii)] \footnote{need check, add in matrix section}$PSL_n(q)$ where $q$ is a prime power and $n\geq 2$; also $PSO_n(q)$, $PSU_n(q)$ and $PS_{p_n}(q)$. These four are known as the `classical groups'
+%\be
+%GL_2(5) \lhd \frac{SL_2(5)}2
+%\ee
+%where $GL_2(5)$ is integer arithmetic$\bmod 5$ and $Z$ = centre = $\bra{\text{scalars in }SL_2(5)}= \bra{\pm I}$
 
-\item [(iv)] $PSL_2(5) \cong A_5$\footnote{see example sheet 4, question 13}.
+\item [(iii)] $PSL_2(5) \cong A_5$\footnote{see Part I Groups example sheet 4, question 13}.
 \een
 
 Then there are the exceptional groups; $G_2$ and 10 more families corresponding to Lie algebras, and the 26 sporadic groups, starting with $M_{11}$ (which was discovered in the 1860s and has elements) and working up to $M$, the 'Monster' group.
 \end{example}
+
+
 
 %\subsubsection{Normality of the kernel}
 
@@ -1587,7 +1798,7 @@ Then there are the exceptional groups; $G_2$ and 10 more families corresponding 
 %\end{remark}
 
 
-\section{Group actions}
+\section{Group Actions}
 
 \subsection{Group actions}
 
@@ -2284,13 +2495,58 @@ Thus $G/G_G = G/\bra{e} = G$, so we have $G \cong G^G = \vp(G)$ i.e. the group $
 \end{proof}
 
 
-\section{Finite $p$-groups and Finite Abelian Groups}
+\section{$p$-groups}% and Finite Abelian Groups}
+
+\subsection{$p$-groups}
+
+\begin{definition}[$p$-group]\label{def:p_group}
+Let $p$ be a prime number, then a $p$-group $G$ is a group, all of whose elements have order of some power of $p$.
+\end{definition}
+
+\begin{theorem}[Cauchy's theorem]\label{thm:cauchy_group}
+If $G$ is a finite group of order divisible by the prime $p$, then $G$ contains an element of order $p$.
+\end{theorem}
+
+\begin{remark}
+Another proof is on wiki.
+\end{remark}
+
+\begin{proof}[\bf Proof]
+Let $X=\bra{(x_1,x_2,\dots,x_p)|x_1x_2\dots x_p = e}$ with all $x_i \in G$. Let the cyclic group $C_p = \bsa{g|g^p =e}$ act on the set $X$ such that $g^j:(x_1,x_2,\dots,x_p) \to (x_{1+j},x_{2+j},\dots, x_j)$, so that $g$ cycles the coordinates. (Note that we are working $\bmod p$.)
+
+This is an action of $C_p$; the image is in $X$ since if $x_1x_2\dots x_p = e$, then $x_{1+j}x_{2+j}\dots x_j = e$.
+
+Now look at the orbits of this action. For arbitrary $x_i$, its orbit is
+\be
+\bra{x_i,g(x_i),g^2(x_i),\dots, g^{p-1}(x_i)}.
+\ee
+
+If these elements are distinct, then this orbit has size $p$. Otherwise, if any of these elements are the same, we will have $g =e$, which gives that the orbit size 1. Thus, the orbits have sizes 1 or $p$.
+
+Any orbit of size 1 is $\bra{(x,x,\dots, x)|x^p =e}$, e.g. $(e,e,\dots,e)$. Finally, $\abs{X} = \abs{G}^{p-1}$, since the first $p-1$ coordinates can be chosen independently, but the last is forced; $x_p = (x_1x_2\dots x_{p-1})^{-1}$. Therefore $p|\abs{X}$. Since $X$ is partitioned into $C_p$-orbits of sizes 1 or $p$, there are at least $p$ of them of size 1.
+
+Thus, we can pick a orbit of size 1, $\bra{(x,x,\dots, x)|x^p =e}$ where $x\neq e$ and by Lemma \ref{lem:order_element} we have $o(x) = p$.
+\end{proof}
+
+Thus we can redefine $p$-group for finite case by following proposition.
+
+\begin{proposition}\label{pro:finite_p_group_redefinition}
+For finite $p$-group $G$, $\abs{G}$ is a power of $p$.
+\end{proposition}
+
+\begin{proof}[\bf Proof]
+By Theorem \ref{thm:cauchy_group}, if $G$ is a finite group of order divisible by another prime $q$, then $G$ contains an element of order $q$. However, this is contradiction with the definition of $p$-group. Therefore, $\abs{G}$ can only be divided by prime $p$.
+\end{proof}
 
 \subsection{Finite $p$-groups}
 
-\begin{definition}[$p$-group]
+\begin{definition}[finite $p$-group]
 A finite group $G$ is a $p$-group\index{p-group@$p$-group} if $|G| = p^n$ for prime $p$.
 \end{definition}
+
+\begin{remark}
+This definition is result from Proposition \ref{pro:finite_p_group_redefinition}.
+\end{remark}
 
 Now restating Proposition \ref{pro:prime_center}, we can have
 
@@ -2392,26 +2648,9 @@ Thus, totoally we have $p^2 +p -1$ conjugacy classes.
 %Given a group $L$ and subgroups $G_1$, $H_1$ with $G_1H_1 = L$, $G_1 \cap H_1 = \{e\}$, all elements $g \in G_1$ commute with all elements $h \in H_1$. Note that $L \cong G_1 \times H_1$.
 %\end{definition}
 
-\begin{theorem}[Cauchy's theorem]\label{thm:cauchy_group}
-If $G$ is a finite group of order divisible by the prime $p$, then $G$ contains an element of order $p$.
-\end{theorem}
+%\subsection{Cauchy's theorem}
 
-\begin{proof}[\bf Proof]
-Let $X=\bra{(x_1,x_2,\dots,x_p)|x_1x_2\dots x_p = e}$ with all $x_i \in G$. Let the cyclic group $C_p = \bsa{g|g^p =e}$ act on the set $X$ such that $g^j:(x_1,x_2,\dots,x_p) \to (x_{1+j},x_{2+j},\dots, x_j)$, so that $g$ cycles the coordinates. (Note that we are working $\bmod p$.)
 
-This is an action of $C_p$; the image is in $X$ since if $x_1x_2\dots x_p = e$, then $x_{1+j}x_{2+j}\dots x_j = e$.
-
-Now look at the orbits of this action. For arbitrary $x_i$, its orbit is
-\be
-\bra{x_i,g(x_i),g^2(x_i),\dots, g^{p-1}(x_i)}.
-\ee
-
-If these elements are distinct, then this orbit has size $p$. Otherwise, if any of these elements are the same, we will have $g =e$, which gives that the orbit size 1. Thus, the orbits have sizes 1 or $p$.
-
-Any orbit of size 1 is $\bra{(x,x,\dots, x)|x^p =e}$, e.g. $(e,e,\dots,e)$. Finally, $\abs{X} = \abs{G}^{p-1}$, since the first $p-1$ coordinates can be chosen independently, but the last is forced; $x_p = (x_1x_2\dots x_{p-1})^{-1}$. Therefore $p|\abs{X}$. Since $X$ is partitioned into $C_p$-orbits of sizes 1 or $p$, there are at least $p$ of them of size 1.
-
-Thus, we can pick a orbit of size 1, $\bra{(x,x,\dots, x)|x^p =e}$ where $x\neq e$ and by Lemma \ref{lem:order_element} we have $o(x) = p$\footnote{another proof is on wiki}.
-\end{proof}
 
 %To generalize the above theorem, we have
 
@@ -2433,46 +2672,288 @@ Hence let $K = \{e, x,\dots , x^{p-1}\}$ be a subgroup of $G$, and it is normal 
 Consider the quotient $G/K$. Its order is $p^{a-1}$ and we can apply the inductive hypothesis to get a subgroup $L/K \leq G/K$ of order $p^{b-1}$. The correspondence between subgroups of $G/K$ and subgroups of $G$ containing $K$ gives a subgroup $L$ of $G$ containing $K$ of order $p^b$.
 \end{proof}
 
+\section{Finite Abelian Groups}
 
-\subsection{Finite Abelian Groups}
+\subsection{Basic theorems for finite abelian groups}
 
-\begin{theorem}[structure theorem for finite abelian groups\index{structure theorem for finite abelian groups}]\label{thm:structure_theorem_finite_abelian_group}
-Let $G$ be a finite abelian group. Then
+
+\begin{lemma}\label{lem:coprime_cong_abelian_group}
+Let $G$ be an abelian group with $\abs{G} = mn$ where $m,n\in \Z^+$ with $\hcf(m,n)=1$ ($m,n$ coprime). Define the subgroups
 \be
-G \cong C_{d_1} \times C_{d_2} \times \dots \times C_{d_k}
+H := \bra{g\in G:o(g)\mid m},\qquad K := \bra{g\in G:o(g)\mid n}.
 \ee
-with $1 \neq d_i\mid d_{i+1}$ and $d_1 \dots d_k = |G|$.
+
+Then $G\cong H\times K$.
+\end{lemma}
+
+\begin{proof}[\bf Proof]
+$H$ and $K$ are subgroups of $G$ by Proposition \ref{pro:order_abelian_group_element_divides_number_form_subgroup}. Then we can have the result by applying Proposition \ref{pro:direct_product_group}.  Now we check three conditions of Proposition \ref{pro:direct_product_group}. 
+\ben
+\item [(i)] $\forall g\in G$, we have that $g^{\abs{G}} = g^{mn} = e$ by Lagrange theorem (Corollary \ref{cor:lagrange_group}). Then we have that $g^n \in H$ and $g^m \in K$. By Euclidean algorithm\footnote{algorithm needed.}, we can find $k,r \in \Z$ such that $km + nr = 1$ since $m,n$ are coprime. Thus 
+\be
+g =g^{km+nr} = \bb{g^m}^k \bb{g^n}^r \in HK.
+\ee
+
+%Since all $g^n$ and $g^r$ are in group $HK$, we have that $g^r = g$ can be presented by the product of the elements in $HK$. Furthermore, since $G$ is abelian, we can have the product of $h$ and $k$ where $h\in H$ and $k\in K$.
+
+\item [(ii)] Let $g\in H\cap K$. Then by assumption $o(g)\mid m$ and $o(g) \mid n$. Since $m,n$ are coprime, we have that $o(g) = 1$ which gives that $g=e$. 
+
+\item [(iii)] Direct result from abelian group.
+\een
+\end{proof}
+
+%In particular, we investigate the case of cyclic groups.
+
+%\begin{lemma}\label{lem:coprime_cong_cyclic_group}
+%If $m$ and $n$ are coprime then $C_{mn} \cong C_m \times C_n$.
+%\end{lemma}
+
+%\begin{proof}[\bf Proof]
+%Take elements $g$ of order $m$ in $C_m$ and $h$ or order $n$ in $C_n$.
+
+%Then $(g, h)$ is of order $mn$ in $C_m \times C_n$ since $(g, h)^r = (g^r, h^r)$ (by Definition \ref{def:direct_product_group}) and so the order of $(g, h)$ is the least common multiple of $m$ and $n$ which is $mn$ since $m$ and $n$ are coprime.
+
+%But $|C_m \times C_n| = mn$ and so $(g, h)$ is a generator for the group.
+%\end{proof}
+
+%\begin{example}
+%$C_6 \cong C_2 \times C_3$. %Abelian groups of order $24 = 2^3 \times 3$ are $C_2 \times C_2 \times C_6$, $C_2 \times C_{12}$ and $C_{24}$.
+%\end{example}
+
+
+
+\begin{theorem}\label{thm:finite_abelian_p_group_direct_product_maximal_element}
+Let $G$ be a finite abelian $p$-group and $g$ be an element of maximal order in $G$. Then there is a subgroup $H$ of $G$ such that 
+\be
+G\cong \bsa{g}\times H.
+\ee
 \end{theorem}
 
 \begin{proof}[\bf Proof]
-\footnote{Postponed until Ring \& Modules}
+{\bf Approach 1.} Let $g\in G$ be an element of maximal order, say $o(g)= p^k$. Consider all subgroup $K$ of $G$ such that $\bsa{g}\cap K = \bra{e}$. Let $H$ be the maximal with respect to these subgroups. That is, if $H<K\leq G$, then $\bsa{g}\cap K \neq \bra{e}$. 
+
+So we want to prove the theorem by applying Proposition \ref{pro:direct_product_group}. Since $G$ is abelian, all subgroups are normal and (iii) of Proposition \ref{pro:direct_product_group} is satisfied. Moreover, $\bsa{g}\cap H = \bra{e}$ by definition and (ii) of Proposition \ref{pro:direct_product_group} is also fulfilled. Therefore in order to prove that $G\cong \bsa{g}\times H$, we need only show $G = \bsa{g}\!\!H$, i.e., $\forall x\in G$, $x = kh$ where $k\in \bsa{g}$ and $h\in H$.
+
+Suppose $G\neq \bsa{g}\!\!H$ ($\bsa{g}\!\!H \subset G$), then there exists $y\in G$ such that $y\notin \bsa{g}\!\!H$. Let 
+\be
+r = \min\bra{m\in \N: y^{p^m}\in \bsa{g}\!\!H}.
+\ee 
+
+Since $o(g) = p^k$ is the highest order of all the elements of $G$, 
+\be
+y^{p^k} = e \in \bsa{g}\!\! H
+\ee
+so $r\leq k$. Let $x = y^{p^{r-1}}$. So $x\notin \bsa{g}\!\! H$ since $r$ was the smallest such power. However, $x^p = y^{p^r} \in \bsa{g}\!\! H$. In other words, we have found an element $x\in G$ such that $x\notin \bsa{g}H$, but $x\in \bsa{g}\!\! H$. 
+
+Since $x^p\in \bsa{g}\!\! H$, we have $x^p = g^q h$ for some $q\in \Z, h\in H$. Since $o(g) = p^k$ is the highest order of all the elements of $G$, we get the following.
+\be
+e = x^{p^k} = \bb{x^p}^{p^{k-1}} = \bb{g^q h}^{p^{k-1}} = g^{qp^{k-1}} h^{p^{k-1}} \ \ra\ g^{qp^{k-1}} = h^{-p^{k-1}} \in H.
+\ee
+
+However, 
+\be
+g^{qp^{k-1}} \in \bsa{g} \ \ra\ g^{qp^{k-1}} \in \bsa{g}\cap H = \bra{e} \ \ra \ o(g)\mid qp^{k-1}.
+\ee
+
+Recall $o(g) = p^k$, so $p^k\mid qp^{k-1}$ implies $p\mid q$. So $q=ps$ for some $s\in \Z$. Recall that $x\notin\bsa{g}\!\! H$, so $xg^{-s}\notin H$. However we have that
+\be
+\bb{xg^{-s}}^p = x^p g^{-ps} = x^p g^{-q} = h\in H.\qquad (*)
+\ee
+
+Consider $K =\bsa{xg^{-s}}\!\! H$. Note that $H\subseteq K$. Moreover $xg^{-s}\in K$ but $xg^{-s} \notin H$, so $H\neq K$ ($H\subset K$). Therefore by the maximality of $H$, $\bsa{g}\cap K \neq \bra{e}$. Let $b\in \bsa{g}\cap K$ where $b\neq e$. Then there exists $t,u\in \Z$ and $h'\in H$ such that
+\be
+b = g^t = \bb{xg^{-s}}^u h'.
+\ee
+
+We claim that $p$ does not divide $u$. Suppose it does. Then $u = pv$ for some $v\in \Z$, so we have the following.
+\be
+b = \bb{xg^{-s}}^u h' = \bb{xg^{-s}}^{pv}h' = \bb{(xg^{-s})^p}^v h' \in H.
+\ee
+by ($*$). Recall that $b\in \bsa{g}$ as well, hence 
+\be
+b\in \bsa{g}\cap H = \bra{e} \ \ra \ b = e.
+\ee
+
+This is a contradiction since $b\neq e$. Therefore $p$ does not divide $u$.
+
+Now since $p$ is prime, $\hcf(p,u)=1$. So there exists integers $w$ and $d$ such that $1 = pw+ud$. Therefore
+\be
+x = x^{pw+ud} = \bb{x^p}^w\bb{x^u}^d.
+\ee
+
+Since $x^p \in \bsa{g}\!\! H$, then $\bra{x^p}^w\in \bsa{g}\!\! H$. Moreover,
+\be
+g^t = \bb{xg^{-s}}^u h' \ \ra\ x^u = g^tg^{su} \bb{h'}^{-1} \in \bsa{g}\!\! H.
+\ee
+
+Therefore $x\in \bsa{g}\!\! H$ and this is a contradiction to how $x$ was chosen. Thus, $G = \bsa{g}\!\! H$ and this is (i) for Proposition \ref{pro:direct_product_group}. % and hence $G$ is the in
+
+Then we have $G\cong \bsa{g}\times H$ by Proposition \ref{pro:direct_product_group}.%\footnote{proof needed.}
+
+{\bf Approach 2.} We can also use induction to prove this. Assume smaller $p$-groups have this result so we can write the quoteint groups by 
+\be
+G/\bsa{g} \cong \bsa{x_1\!\bsa{g}} \times \dots \times \bsa{x_n\! \bsa{g}}  = \bsa{\bsa{g}\! x_1} \times \dots \times \bsa{\bsa{g}\! x_n}\qquad (\dag) 
+\ee 
+for some $x_1,\dots,x_n\in G$. Then we want to pick $y_i\in \bsa{g}x_i$ so that $o(y_i)\in G$ is equal to $o\bb{\bsa{g}x_i}\in G/\! \bsa{g}$. 
+
+By Proposition \ref{pro:order_quotient_group_divides_finite_group}, we know that the order of $\bsa{g}\! x \in G/\!\bsa{g}$ divides the order of $x\in G$. Assume that 
+\be
+o(\bsa{g}\! x) = p^i,\quad o\bb{x} = p^j,\qquad j\geq i.
+\ee 
+
+If $i = j$, we can use $y :=x$. If $i<j$, this gives the fact that $x^{p^i}$ is in $\bsa{g}$ without being $e$. Therefore, we can assume that 
+\be
+x^{p^i} = g^{mp^r},\quad p\nmid m.\qquad(\ddag)
+\ee
+
+The orders of these two equal elements of $G$ should be consistent and thus
+\be
+p^{j-i} = o\bb{x^{p^i}} = o\bb{g^{mp^r}} = p^{k-r}
+\ee
+where $p^k$ is the order of $g$. Since we choose $g$ to have the highest order $p^k$ in $G$, we get $k\geq j$. Furthermore, $j-i = k-r$ implies that $r\geq i$. Therefore, $p^{r-i}$ is a positive integer and 
+\be
+y := xg^{-mp^{r-i}}
+\ee
+should be well-definied. So by ($\ddag$)
+\be
+y^{p^i} = x^{p^i}g^{-mp^r} = e \ \ra \ o(y) \mid p^i.
+\ee
+
+However, for $0\leq s< i$, 
+\be
+y^{p^s} = x^{p^s}g^{-mp^{r-i+s}} \neq e 
+\ee
+as $x^{p^s} \notin \bsa{g}$ (otherwise $o(\bsa{g}\! x) < p^i$). Thus, $o(y) = p^i$. Moreover, by Proposition \ref{pro:order_quotient_group_divides_finite_group},
+\be
+o(\bsa{g}\! y) \mid o\bb{y}  \ \ra\ o(\bsa{g}\! y) \mid p^i 
+\ee
+and for $0\leq s< i$, 
+\be
+\bb{\bsa{g}\! y}^{p^s} = \bsa{g} y^{p^s} = \bsa{g} x^{p^s} \neq e \ \ra \ o(\bsa{g}\! y) = p^i = o(y).
+\ee
+
+%\in \bsa{g}
+
+We know from the assumption that smaller $p$-groups have the required  result (see ($\dag$))
+\beast
+\psi: & & \bsa{\bsa{g}\! y_1} \times \dots \times \bsa{\bsa{g}\! y_n} \to G/\!\bsa{g}, \\
+& & \bb{\bsa{g}\! y_1^{m_1},\dots \bsa{g}\! y_n^{m_n}  } \mapsto \bsa{g}\! y_1^{m_1}\dots y_n^{m_n}
+\eeast
+is an isomorphism, then 
+\beast
+\vp: & & \bsa{g} \times \bsa{y_1} \times \dots \times \bsa{ y_n} \to G, \\
+& & \bb{g^m, y_1^{m_1}, \dots, y_n^{m_n}} \mapsto g^m y_1^{m_1} \dots y_n^{m_n}
+\eeast
+is also an isomorphism. 
+
+Because $G$ is abelian, for any $g_1,g_2 \in \bsa{g} \times \bsa{y_1} \times \dots \times \bsa{ y_n} $ with
+\beast
+g_1 & = & (g^{m}, y_1^{m_1},\dots, y_n^{m_n}), \\
+g_2 & = & (g^{r}, y_1^{r_1},\dots, y_n^{r_n}).
+\eeast
+we have
+\beast
+\vp(g_1g_2) & = & \vp\bb{g^{m+r}, y_1^{m_1+r_1},\dots, y_n^{m_n+r_n}} = g^{m+r}y_1^{m_1+r_1}\dots y_n^{m_n+r_n} \\
+& = & g^{m} y_1^{m_1}\dots y_n^{m_n} g^{r} y_1^{r_1}\dots y_n^{r_n} = \vp(g_1)\vp(g_2)
+\eeast
+and thus $\vp$ is a homomorphism. Furthermore, $\vp$ is onto $G$ ($\vp$) since $\psi$ is onto $G/\!\bsa{g}$. For $\psi$, the image in $G/\!\bsa{g}$ of any element $h$ of $G$ has the form
+\be
+\bsa{g}\! h = \bsa{g}\! y_1^{m_1}\dots y_n^{m_n} \ \ra\ h = g^m y_1^{m_1}\dots y_n^{m_n} 
+\ee 
+for some $m$. Then by first isomorphism theorem (Theorem \ref{thm:isomorphism_1_group}) we have
+\beast
+\abs{\bsa{g}\times \bsa{y_1}\dots \bsa{y_n} } / \ker(\vp) = \abs{G} & = & o(g) \cdot \abs{G/\!\bsa{g}} = o(g) \cdot \abs{\bsa{\bsa{g}\! y_1} \times \dots \times \bsa{\bsa{g}\! y_n}}\\ 
+& = & o(g)\cdots o\bb{\bsa{g}\! y_1} \times \dots \times o\bb{\bsa{g}\! y_n} = o(g)\cdots o\bb{ y_1} \times \dots \times o\bb{y_n} \\
+& = & \abs{\bsa{g} \times \bsa{y_1} \times \dots \times \bsa{ y_n}} 
+\eeast
+which imples that $\abs{\ker(\vp)} = 1$ and thus $\ker(\vp) = \bra{e}$ (trivial). Then we know that $\vp$ is injective by Lemma \ref{lem:injective_kernel_group}. Therefore, $\vp$ is bijective and thus an isomorphism. Hence, we have
+\be
+G \cong \bsa{g} \times \bsa{y_1} \times \dots \times \bsa{y_n}.
+\ee
 \end{proof}
+
+\subsection{structure theorem for finite abelian groups}
+
+
+\begin{theorem}[structure theorem for finite abelian groups\index{structure theorem for finite abelian groups}]\label{thm:structure_theorem_finite_abelian_group}
+Every finite abelian group is isomorphic to a direct product of cyclic groups of order that are powers of prime numbers (and of course the product of orders of these cyclic groups is the order of the original group). 
+
+That is, let $G$ be a finite abelian group, then for some integer $n$,
+\be
+G \cong C_{p_1^{k_1}} \times C_{p_2^{k_2}} \times \dots \times C_{p_n^{k_n}} \cong \Z/p_1^{k_1}\Z\times \Z/p_2^{k_2}\Z\times \dots \times \Z/p_n^{k_n}\Z = \prod^n_{i=1} \Z/p_i^{k_i}\Z
+\ee
+where the $p_i$'s are prime integers called elementary divisors\index{elementary divisors!groups}, not necessarily distinct, and $k_i$'s are positive integers given by 
+\be
+\abs{G} = p_1^{k_1} \cdot p_2^{k_2} \cdot \dots \cdot p_n^{k_n}.
+\ee
+
+Furthermore, $G$ can be expressed in simpler form, which is a direct product of cyclic groups of orders $d_1,d_2,\dots,d_m$ for some integer $m$,
+\be
+G \cong C_{d_1} \times C_{d_2} \times \dots \times C_{d_m} \cong \Z/d_1\Z\times \Z/d_2\Z\times \dots \times \Z/d_m\Z = \prod^m_{i=1} \Z/d_i\Z
+\ee
+where $d_i \mid d_{i+1}$ for $i=1,\dots,m-1$ and 
+\be
+\abs{G} = d_1 \cdot d_2 \dots \cdot d_m.
+\ee
+
+$d_1,\dots,d_m$ are called invariant factors\index{invariant factors!groups}.
+\end{theorem}
+
+%\begin{theorem}
+%Let $G$ be a finite abelian group. Then
+%\be
+%G \cong C_{d_1} \times C_{d_2} \times \dots \times C_{d_k}
+%\ee
+%with $1 \neq d_i\mid d_{i+1}$ and $d_1 \dots d_k = |G|$.
+%\end{theorem}
+
+\begin{remark}
+This theorem can also be proved in Ring \& Modules\footnote{proof needed.}.
+\end{remark}
 
 %\begin{remark}[Remark on proof]
 %One can be less sophisticated. As the first step, consider an abelian $p$-group $G$ and the subgroup $\langle x\rangle$ generated by $x \in G$ of maximal order. If $\langle x\rangle = G$ we are done. Otherwise, if $\langle x\rangle \neq G$, the claim is that there exists a subgroup $H \leq G$ with $\langle x\rangle H = G$, $\langle x\rangle\cap H = \{e\}$, i.e. $G \cong = \langle x\rangle \times H$.
 %\end{remark}
 
-\begin{example}
-The abelian groups of order 8 are $C_2\times C_4$, $C_2\times C_2\times C_2$ and $C_8$. The abelian groups of order 16 are $C_2 \times C_8$, $C_2 \times C_2 \times C_4$, $C_2 \times C_2 \times C_2 \times C_2$, $C_4 \times C_4$,and $C_{16}$.
-\end{example}
-
-\begin{lemma}\label{lem:coprime_cycle_cong}
-If $m$ and $n$ are coprime then $C_m \times C_n \cong C_{mn}$.
-\end{lemma}
-
 \begin{proof}[\bf Proof]
-Take elements $g$ of order $m$ in $C_m$ and $h$ or order $n$ in $C_n$.
+According to Lemma \ref{lem:coprime_cong_abelian_group}, the abelian group $G$ is congruent to the direct product of $p_i$-group where $p_i$ are distinct prime numbers. That it,
+\be
+G\cong G(p_1) \times G(p_2) \times\dots \times G(p_m)
+\ee
+where $p_1,p_2,\dots,p_m$ are distinct primes dividing $\abs{G}$ with $\abs{G} = p_1^{r_1} \cdot p_2^{r_2}\cdot \dots \cdot p_n^{r_m}$ and
+\be
+G(p_i) =  \bra{g\in G: o(g) \mid p_i^{r_i}} = \bra{g\in G: o(g)\text{ is a power of }p_i}.%,\qquad \abs{G(p_i)} = p_i^{r_i}.
+\ee
 
-Then $(g, h)$ is of order $mn$ in $C_m \times C_n$ since $(g, h)^r = (g^r, h^r)$ (by Definition \ref{def:direct_product_group}) and so the order of $(g, h)$ is the least common multiple of $m$ and $n$ which is $mn$ since $m$ and $n$ are coprime.
+Since $G(p_i)$ is a $p_i$-group, we have that $\abs{G(p_i)} \leq p_i^{r_i}$ for all $i$. Furthermore, we have that\footnote{theorem needed, $\abs{G} = \abs{H}\abs{K}$ for $G\cong H\times K$.}
+\be
+\abs{G} = \abs{G(p_1)} \cdot \dots \abs{G(p_m)} \ \ra \ \abs{G(p_i)} = p_i^{r_i}.
+\ee
 
-But $|C_m \times C_n| = mn$ and so $(g, h)$ is a generator for the group.
+Then by Theorem \ref{thm:finite_abelian_p_group_direct_product_maximal_element} each of $G(p_i)$ can be decomposed futher such that 
+\be
+G(p_i) \cong C_{p_i^{n_1}} \times C_{p_i^{n_2}} \times \dots \times C_{p_i^{n_{t_i}}}
+\ee
+where $C_x$ is a cyclic group of order $x$. Therefore, we have that $G$ is isomorphic to a direct product of cyclic groups of prime power order. The order of these cyclic groups are called elmentary divisors.
+
+In order to get a simpler form of direct product, we arrange all the elementary divisors in increasing right-aligned order with one row for each prime. Then we define invariant factors $d_1,\dots d_n$ by the product of each column in increasing order. It is easy to see that $d_i\mid d_{i+1}$ by the above constructure.
+
+The elementary divisor form and invariant factor form are actually consistent as we can decompose $C_{d_i}$ into the direct product of cyclic groups with coprime orders (see Lemma \ref{lem:coprime_cong_cyclic_group}) .%\footnote{proof needed.}
 \end{proof}
 
+
+
 \begin{example}
-$C_2 \times C_3 \cong C_6$. Abelian groups of order $24 = 2^3 \times 3$ are $C_2 \times C_2 \times C_6$, $C_2 \times C_{12}$ and $C_{24}$.
+The abelian groups of order 8 are $C_2\times C_4$, $C_2\times C_2\times C_2$ and $C_8$. 
+
+The abelian groups of order 16 are $C_2 \times C_8$, $C_2 \times C_2 \times C_4$, $C_2 \times C_2 \times C_2 \times C_2$, $C_4 \times C_4$,and $C_{16}$.
 \end{example}
 
-\section{Sylow's Theorems and Applications to Groups of Small Orders}
+%\begin{proof}[\bf Proof]
+%\end{proof}
+
+
+\section{Sylow's Theorems}% and Applications to Groups of Small Orders}
 
 \subsection{Sylow's theorems}
 
@@ -2481,7 +2962,7 @@ Let $G$ be a finite group of order $p^am$ where $p$ is prime and $p \nmid m$.
 \ben
 \item [(i)] There exists a subgroup $P$ of order $p^a$, called the Sylow $p$-subgroup\index{Sylow $p$-subgroup}.
 \item [(ii)] All Sylow $p$-subgroups are conjugate.
-\item [(iii)] The number $n_p$ of Sylow $p$-subgroups satisfies $n_p \equiv 1 (\bmod p)$ and divides $|G|$, and hence $n_p | m$.
+\item [(iii)] The number $n_p$ of Sylow $p$-subgroups satisfies $n_p \equiv 1 \lmod{p}$ and divides $|G|$, and hence $n_p \mid m$.
 \een
 \end{theorem}
 
@@ -2701,6 +3182,10 @@ If $|G|$ is odd then $G$ is soluble.
 
 %%%%%%%%%%%%%%%%%%%%
 
+\section{Groups of Matrices}
+
+%%%%%%%%%%%%%%%%%%%%
+
 \section{Summary}
 
 \subsection{List of small groups}
@@ -2726,8 +3211,12 @@ order & groups (up to isomorphism) & number of these\\
 \caption{small groups}
 \end{table}
 
+$\Z/n\Z$ is cyclic group under $+\bmod{n}$, i.e., $(\Z/n\Z,\oplus) \cong C_n$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 
 \section{Problems}
 
@@ -3341,7 +3830,7 @@ Thus $pqr$ is not simple.
 
 \begin{solution}[\bf Solution.]
 \ben
-\item [(i)] $15 = 3\cdot 5$. Thus, $n_3 \equiv 1 \lmod{3}$ and $n_3\mid 5$ gives that $n_3 = 1$. Similarly, $n_5 = 1$. So $H$ and $K$ are normal if $\abs{H}=3$, $\abs{K} =5$. Since $H$ and $K$ are cyclic and $H,K\lhd G$, $H\cap K = e$, we have $G \cong H\times K$ by Problem \ref{ques:group_direct_product}. Then by Lemma \ref{lem:coprime_cycle_cong}, 3 and 5 are coprime. Thus $G \cong C_3 \times C_5 \cong C_{15}$.
+\item [(i)] $15 = 3\cdot 5$. Thus, $n_3 \equiv 1 \lmod{3}$ and $n_3\mid 5$ gives that $n_3 = 1$. Similarly, $n_5 = 1$. So $H$ and $K$ are normal if $\abs{H}=3$, $\abs{K} =5$. Since $H$ and $K$ are cyclic and $H,K\lhd G$, $H\cap K = e$, we have $G \cong H\times K$ by Problem \ref{ques:group_direct_product}. Then by Lemma \ref{lem:coprime_cong_cyclic_group}, 3 and 5 are coprime. Thus $G \cong C_3 \times C_5 \cong C_{15}$.
 
 \item [(ii)] $30 = 2\cdot 3 \cdot 5$. Thus,
 \be
