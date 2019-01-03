@@ -8,23 +8,23 @@
 
 Heat equation with homogeneous Dirichlet boundary conditions is \be u_t(x,t) = ku_{xx}(u,t),\quad 0<x<L,t>0,k>0 \ee with boundary conditions \be u(0,t) = u(L,t) =0,\quad u(x,0) = g(x) \ee where 0 and $L$ are the boundary.
 
-With Fourier series method\footnote{method needed.}, we know that the solution has the form \be u(x,t) = \sum^\infty_{n=1} b_n \exp\bb{-\frac{n^2\pi^2 k t}{L^2}} \sin\bb{\frac{n\pi x}{L}}.\ee
+With Fourier series method\footnote{method needed.}, we know that the solution has the form \be u(x,t) = \sum^\infty_{n=1} b_n \exp\brb{-\frac{n^2\pi^2 k t}{L^2}} \sin\brb{\frac{n\pi x}{L}}.\ee
 
-Also, we have \be b_n = \frac 2L\int^L_0 g(x) \sin\bb{\frac{n\pi x}{L}} dx .\ee
+Also, we have \be b_n = \frac 2L\int^L_0 g(x) \sin\brb{\frac{n\pi x}{L}} dx .\ee
 
 
 
 \begin{example}\label{exa:heat_equation_homogeneous_dirichlet_boundary_delta}
-We set $g(x) = \delta(x-a)$ for $0<a<L$. Thus, we have \be b_n = \frac 2L\int^L_0 \delta(x-a) \sin\bb{\frac{n\pi x}{L}} dx = \frac 2L \sin\bb{\frac{n\pi a}{L}}.\ee
+We set $g(x) = \delta(x-a)$ for $0<a<L$. Thus, we have \be b_n = \frac 2L\int^L_0 \delta(x-a) \sin\brb{\frac{n\pi x}{L}} dx = \frac 2L \sin\brb{\frac{n\pi a}{L}}.\ee
 
 Thus,
-\beast u(x,t) & = & \frac 2L  \sum^\infty_{n=1} \exp\bb{-\frac{n^2\pi^2 k t}{L^2}} \sin\bb{\frac{n\pi x}{L}} \sin\bb{\frac{n\pi a}{L}} \\
-& = &  \frac 1L  \sum^\infty_{n=1} \exp\bb{-\frac{n^2\pi^2 k t}{L^2}} \bb{\cos\bb{\frac{n\pi (x-a)}{L}} - \cos\bb{\frac{n\pi (x+a)}{L}}}
+\beast u(x,t) & = & \frac 2L  \sum^\infty_{n=1} \exp\brb{-\frac{n^2\pi^2 k t}{L^2}} \sin\brb{\frac{n\pi x}{L}} \sin\brb{\frac{n\pi a}{L}} \\
+& = &  \frac 1L  \sum^\infty_{n=1} \exp\brb{-\frac{n^2\pi^2 k t}{L^2}} \brb{\cos\brb{\frac{n\pi (x-a)}{L}} - \cos\brb{\frac{n\pi (x+a)}{L}}}
 \eeast
 
 Applying Theorem \ref{thm:jacobi_theta_function_transform}, for $\tau = \frac{i\pi k t}{L^2}$ and $z_{1,2} = \frac 1{2L}(x\mp a)$, we have
 \be
-2L u(x,t) = (-i \tau)^{-1/2} \bb{\exp\bb{-\frac{\pi}{\tau} i z_1^2 }\vartheta \bb{\frac{z_1}{\tau}, \frac{-1}{\tau}} - \exp\bb{-\frac{\pi}{\tau} i z_2^2 }\vartheta \bb{\frac{z_2}{\tau}, \frac{-1}{\tau}}}  \ee where \be\vartheta(z, \tau) =\sum_{n=-\infty}^\infty \exp \bb{\pi i n^2 \tau + 2 \pi i n z}
+2L u(x,t) = (-i \tau)^{-1/2} \brb{\exp\brb{-\frac{\pi}{\tau} i z_1^2 }\vartheta \brb{\frac{z_1}{\tau}, \frac{-1}{\tau}} - \exp\brb{-\frac{\pi}{\tau} i z_2^2 }\vartheta \brb{\frac{z_2}{\tau}, \frac{-1}{\tau}}}  \ee where \be\vartheta(z, \tau) =\sum_{n=-\infty}^\infty \exp \brb{\pi i n^2 \tau + 2 \pi i n z}
 =  1 + 2 \sum_{n=1}^\infty \left(e^{\pi i\tau}\right)^{n^2} \cos(2\pi n z).
 \ee
 
@@ -32,14 +32,14 @@ Applying Theorem \ref{thm:jacobi_theta_function_transform}, for $\tau = \frac{i\
 Therefore,
 \beast
 & & 2L u(x,t) \\
-& = & \frac L{\sqrt{\pi k t}} \sum_{n=-\infty}^\infty \bb{\exp\bb{-\frac{(x-a)^2}{4kt}}\exp\bb{-\frac{n^2L^2}{kt}} \exp\bb{\frac{nL(x-a)}{kt}} - \exp\bb{-\frac{(x+a)^2}{4kt}}\exp\bb{-\frac{n^2L^2}{kt}}
-\exp\bb{\frac{nL(x+a)}{kt}}} \\
-& = & \frac L{\sqrt{\pi k t}} \sum_{n=-\infty}^\infty \bb{\exp\bb{-\frac{(x-a-2nL)^2}{4kt}} - \exp\bb{-\frac{(x+a-2nL)^2}{4kt}}} .
+& = & \frac L{\sqrt{\pi k t}} \sum_{n=-\infty}^\infty \brb{\exp\brb{-\frac{(x-a)^2}{4kt}}\exp\brb{-\frac{n^2L^2}{kt}} \exp\brb{\frac{nL(x-a)}{kt}} - \exp\brb{-\frac{(x+a)^2}{4kt}}\exp\brb{-\frac{n^2L^2}{kt}}
+\exp\brb{\frac{nL(x+a)}{kt}}} \\
+& = & \frac L{\sqrt{\pi k t}} \sum_{n=-\infty}^\infty \brb{\exp\brb{-\frac{(x-a-2nL)^2}{4kt}} - \exp\brb{-\frac{(x+a-2nL)^2}{4kt}}} .
 \eeast
 
 This will imply that
 \be
-u(x,t) = \frac 1{\sqrt{4\pi k t}} \sum_{n=-\infty}^\infty \bb{\exp\bb{-\frac{(x-a-2nL)^2}{4kt}} - \exp\bb{-\frac{(x+a-2nL)^2}{4kt}}}.
+u(x,t) = \frac 1{\sqrt{4\pi k t}} \sum_{n=-\infty}^\infty \brb{\exp\brb{-\frac{(x-a-2nL)^2}{4kt}} - \exp\brb{-\frac{(x+a-2nL)^2}{4kt}}}.
 \ee
 \end{example}
 
