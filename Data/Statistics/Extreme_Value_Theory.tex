@@ -17,16 +17,16 @@ Let $F$ be a distribution function of i.i.d. random variables $X_1,X_2,\dots,X_n
 \begin{proof}[\bf Proof]
 Since $X_1,X_2\dots,X_n$ are i.i.d., Then
 \beast
-\pro\bb{\max\bra{X_1,X_2,\dots, X_n} \leq x} & = & \pro\bb{X_1\leq x,X_2\leq x,\dots, X_n\leq x} \\
-& = & \pro\bb{X_1\leq x}\pro\bb{X_2\leq x} \dots \pro\bb{X_n\leq x} = F^n(x).
+\pro\brb{\max\bra{X_1,X_2,\dots, X_n} \leq x} & = & \pro\brb{X_1\leq x,X_2\leq x,\dots, X_n\leq x} \\
+& = & \pro\brb{X_1\leq x}\pro\brb{X_2\leq x} \dots \pro\brb{X_n\leq x} = F^n(x).
 \eeast
 
 Then for $x<x^*$, we have $F(x)<1$ otherwise, the supremum is smaller than $x^*$. Thus $F^n(x) \to 0$ as $n\to \infty$. Also, for $x>x^*$, we have that $F(x) = 1$, otherwise $x^*$ won't be the supremum of $F(x)<1$. Then $F^n(x) \to 1$ as $n\to \infty$. For $x=x^*$ and $\forall \ve >0$, we can find a series of $x_1>x_2>\dots>x^*$ such that $F(x_n)\to F(x^*)$ since $F$ is distribution thus right-continuous. Then $\abs{F^n(x^*)-1} = \abs{F^n(x^*) - F^n(x_n)+F^n(x_n)-1} \leq \abs{F^n(x^*) - F^n(x_n)} + \abs{F^n(x_n)-1} < \ve/2 + \ve/2 = \ve$. Thus, $F^n(x^*) \to 1$ as $n\to \infty$.
 
 Therefore, $\forall \ve >0$,
 \beast
-\pro\bb{\abs{\max\bb{X_1,X_2,\dots,X_n}-x^*}>\ve} & = & \pro\bb{\max\bb{X_1,X_2,\dots,X_n} > x^*+\ve} +  \pro\bb{\max\bb{X_1,X_2,\dots,X_n} < x^*-\ve}\\
-& = & 1 - \pro\bb{\max\bb{X_1,X_2,\dots,X_n} \leq x^*+\ve} + \pro\bb{\max\bb{X_1,X_2,\dots,X_n} < x^*-\ve} \\
+\pro\brb{\abs{\max\brb{X_1,X_2,\dots,X_n}-x^*}>\ve} & = & \pro\brb{\max\brb{X_1,X_2,\dots,X_n} > x^*+\ve} +  \pro\brb{\max\brb{X_1,X_2,\dots,X_n} < x^*-\ve}\\
+& = & 1 - \pro\brb{\max\brb{X_1,X_2,\dots,X_n} \leq x^*+\ve} + \pro\brb{\max\brb{X_1,X_2,\dots,X_n} < x^*-\ve} \\
 & \leq & 1 - F^n(x^*+\ve) + F^n(x^*-\ve) \to 1 - 1 + 0 = 0.
 \eeast
 which is the definition of the convergence in probability.
@@ -55,9 +55,9 @@ Let $F$ be a distribution function of i.i.d. random variables $X_1,X_2,\dots,X_n
 \be
 \lim_{n\to \infty} F^n(a_n x + b_n) = G(x)\qquad (*)
 \ee
-for every continuous point $x$ of $G$. Then ($*$) is equivalent to 
+for every continuous point $x$ of $G$. Then ($*$) is equivalent to
 \be
-\lim_{n\to \infty} \frac{U(nu)-b_n}{a_n} = G^{\to}\bb{e^{-1/u}} := D(u)\qquad (\dag)
+\lim_{n\to \infty} \frac{U(nu)-b_n}{a_n} = G^{\to}\brb{e^{-1/u}} := D(u)\qquad (\dag)
 \ee
 for each continuous point $u>0$ of $D$ where $U$ is the left-continuous inverse of $1/(1-F)$. Note that $U(t)$ is defined for $t>1$.
 \end{lemma}
@@ -73,7 +73,7 @@ for each continuous point $x$ for which $0<G(x)<1$. Clearly it follows that $F(a
 \ee
 and in fact ($*$) is equivalent to
 \be
-\lim_{n\to \infty} n\bb{1-F(a_n x + b_n)} = -\log G(x) \ \lra \ \lim_{n\to \infty} \frac 1{n\bb{1-F(a_n x + b_n)}} = -\frac 1{\log G(x)}.
+\lim_{n\to \infty} n\brb{1-F(a_n x + b_n)} = -\log G(x) \ \lra \ \lim_{n\to \infty} \frac 1{n\brb{1-F(a_n x + b_n)}} = -\frac 1{\log G(x)}.
 \ee
 
 We can write $U(t) := \inf\bra{y\in \R: \frac 1{1-F(y)} \geq t} $. Then for fixed $n$,
@@ -84,18 +84,18 @@ U(t) = \inf\bra{a_ny+b_n\in \R: \frac 1{1-F(a_n y + b_n)} \geq t} = a_n\inf\bra{
 For each $u>0$, we can have for large enough $n$,
 \beast
 U(nu) & = & a_n\inf\bra{y\in \R: \frac 1{1-F(a_n y + b_n)} \geq nu} +b_n \\
-\ \lra\ \frac{U(nu)-b_n}{a_n} & = & \inf\bra{y\in \R: \frac 1{n\bb{1-F(a_n y + b_n)}} \geq u}
+\ \lra\ \frac{U(nu)-b_n}{a_n} & = & \inf\bra{y\in \R: \frac 1{n\brb{1-F(a_n y + b_n)}} \geq u}
 \eeast
 
 Also, by letting $H(x) = -\frac 1{\log G(x)}$ and $u>0$
 \beast
 H^{\to}(u) & = & \inf\bra{y\in \R: H(y)\geq u} =  \inf\bra{y\in \R: -\frac 1{\log G(y)}  \geq u} \\
-& = & \inf\bra{y\in \R: \log G(y) \geq -1/u} =  \inf\bra{y\in \R: G(y) \geq e^{-1/u}} = G^{\to}\bb{e^{-1/u}} := D(u).
+& = & \inf\bra{y\in \R: \log G(y) \geq -1/u} =  \inf\bra{y\in \R: G(y) \geq e^{-1/u}} = G^{\to}\brb{e^{-1/u}} := D(u).
 \eeast
 
 By Theorem \ref{thm:convergence_increasing_function_and_its_left_inverse_function_imply_each_other}, we have for each continuous positive point $u$ of $D$, ($*$) is equivalent to ($\dag$) which is
 \be
-\lim_{n\to\infty} \frac{U(nu)-b_n}{a_n} = G^{\to}\bb{e^{-1/u}} = D(u).
+\lim_{n\to\infty} \frac{U(nu)-b_n}{a_n} = G^{\to}\brb{e^{-1/u}} = D(u).
 \ee
 \end{proof}
 
@@ -103,7 +103,7 @@ By Theorem \ref{thm:convergence_increasing_function_and_its_left_inverse_functio
 Let $a_n>0$ and $b_n$ be real sequences of constants and $G$ is a non-degenerate distribution function. The following statements are equivalent:
 \ben
 \item [(i)] $\lim_{n\to\infty} F^n(a_n x + b_n) = G(x)$ for each continuous point $x$ of $G$ with $0<G(x)<1$.
-\item [(ii)] For $a(t):= a_{\floor{t}}$ and $b(t) := b_{\floor{t}}$ and each continuous point $u>0$ of $D(u)= G^{\to}\bb{e^{-1/u}}$,
+\item [(ii)] For $a(t):= a_{\floor{t}}$ and $b(t) := b_{\floor{t}}$ and each continuous point $u>0$ of $D(u)= G^{\to}\brb{e^{-1/u}}$,
 \be
 \lim_{t\to\infty} \frac{U(tu)-b(t)}{a(t)} = D(u).
 \ee
@@ -118,7 +118,7 @@ Let $a_n>0$ and $b_n$ be real sequences of constants and $G$ is a non-degenerate
 
 For $t\geq 1$, since $U$ is non-decreasing function we have
 \be
-\frac{U(\floor{t}u)-b_{\floor{t}}}{a_{\floor{t}}} \leq \frac{U(tu)-b_{\floor{t}}}{a_{\floor{t}}} \leq \frac{U\bb{\floor{t}u\bb{1+1/\floor{t}}}-b_{\floor{t}}}{a_{\floor{t}}}.
+\frac{U(\floor{t}u)-b_{\floor{t}}}{a_{\floor{t}}} \leq \frac{U(tu)-b_{\floor{t}}}{a_{\floor{t}}} \leq \frac{U\brb{\floor{t}u\brb{1+1/\floor{t}}}-b_{\floor{t}}}{a_{\floor{t}}}.
 \ee
 
 The right-hand side is eventually less than $D(u')$ for any continuous point $u'>u$ with $D(u')> D(u)$. Since $D$ is continuous at $u$, we obtain
@@ -127,16 +127,16 @@ The right-hand side is eventually less than $D(u')$ for any continuous point $u'
 \ee
 as required.
 
-(ii) $\ra$ (i). According to (ii), we can have $\lim_{n\to\infty} \frac{U(nu)-b_n}{a_n} = G^{\to}\bb{e^{-1/u}} = D(u)$ which implies (i) by Lemma \ref{lem:extreme_value_distribution_equivalent_forms}.
+(ii) $\ra$ (i). According to (ii), we can have $\lim_{n\to\infty} \frac{U(nu)-b_n}{a_n} = G^{\to}\brb{e^{-1/u}} = D(u)$ which implies (i) by Lemma \ref{lem:extreme_value_distribution_equivalent_forms}.
 \end{proof}
 
 
 \begin{theorem}[Fisher-Tippett-Gnedendo theorem, 1928, 1943]\label{thm:extreme_value_theorem}
 The class of extreme value distribution is $G_{\xi}(ax+b)$ with $a>0$, $b\in \R$, where
 \be
-G_{\xi}(x) = \exp\bb{-\bb{1+\xi x}^{-1/\xi}},\qquad 1+ \xi x >0,
+G_{\xi}(x) = \exp\brb{-\brb{1+\xi x}^{-1/\xi}},\qquad 1+ \xi x >0,
 \ee
-with $\xi$ real and where for $\xi =0$ the right-hand side is interpreted as $\exp\bb{-e^{-x}}$. Note that the scaled version of $x$ is $1+ \xi(ax+b)> 0$ and we can have $G(x) = G_\xi(x)$ by letting $a_n' = a_n/a$ and $b_n' = b_n- \frac{a_n b}{a}$.
+with $\xi$ real and where for $\xi =0$ the right-hand side is interpreted as $\exp\brb{-e^{-x}}$. Note that the scaled version of $x$ is $1+ \xi(ax+b)> 0$ and we can have $G(x) = G_\xi(x)$ by letting $a_n' = a_n/a$ and $b_n' = b_n- \frac{a_n b}{a}$.
 
 The parameter $\xi$ is called the extreme value index.
 \end{theorem}
@@ -200,7 +200,7 @@ E(u_0 v) = E(u_0)A(v) + E(v) = E(v)
 Therefore, $E(1) = E(u_0\cdot 1) = E(u_0) = 0$. Hence for $s:=\log u$, $t:=\log v$ ($u,v\neq 1$), and $H(x):= E(e^x)$, we have
 \beast
 E(uv) & = & E(u)A(v) + E(v) \\
-E\bb{e^{s+t}} & = & E\bb{e^s} A(e^t) + E\bb{e^t}\\
+E\brb{e^{s+t}} & = & E\brb{e^s} A(e^t) + E\brb{e^t}\\
 H(t+s) & = & H(s) A(e^t) + H(t),    \qquad (**)
 \eeast
 which we can write as (since $H(0) = 0$)
@@ -220,14 +220,14 @@ Q(t+s) -Q(t) = Q(s)A(e^t) = Q(s) \frac{H'(t)}{H'(0)} = Q(s)Q'(t).
 
 Subtracting the same expression with $t$ and $s$ interchanged we get
 \be
-Q(t)\frac{Q'(s)-1}{s} = \frac{Q(s)}{s}\bb{Q'(t)-1}.
+Q(t)\frac{Q'(s)-1}{s} = \frac{Q(s)}{s}\brb{Q'(t)-1}.
 \ee
 
 Since $\lim_{s\to 0}Q(s)/s = \lim_{s\to 0}(H(s)-H(0))/H'(0)s$ exists, we let $s\to 0$ and get
 \beast
-\lim_{s\to 0}Q(t)\frac{Q'(s)-1}{s} & = & \frac{Q(s)}{s}\bb{Q'(t)-1}\\
-\lim_{s\to 0}Q(t)\frac{Q'(s)-Q'(0)}{s} & = & \frac{Q(s)-Q(0)}{s}\bb{Q'(t)-1} \\
-Q(t)Q''(0) & = & Q'(0)\bb{Q'(t)-1} = \bb{Q'(t)-1}.
+\lim_{s\to 0}Q(t)\frac{Q'(s)-1}{s} & = & \frac{Q(s)}{s}\brb{Q'(t)-1}\\
+\lim_{s\to 0}Q(t)\frac{Q'(s)-Q'(0)}{s} & = & \frac{Q(s)-Q(0)}{s}\brb{Q'(t)-1} \\
+Q(t)Q''(0) & = & Q'(0)\brb{Q'(t)-1} = \brb{Q'(t)-1}.
 \eeast
 
 It follows that $Q$ is twice differentiable and by differentiation,
@@ -237,7 +237,7 @@ Q''(0)Q'(t) = Q''(t).
 
 Hence,
 \be
-\bb{\log Q'}'(t) = Q''(0) := \xi \in \R,
+\brb{\log Q'}'(t) = Q''(0) := \xi \in \R,
 \ee
 for all $t$. It follows that (note that $Q'(0)=1$)
 \be
@@ -255,28 +255,28 @@ Q(t) = t \ \ra\ H(t) = H'(0) t \ \ra\ E(u) = H'(0) \log u \ \ra\ D(u) = D(u_0) +
 
 For $\xi\neq 0$, we have for $u>0$,
 \beast
-Q(t) = \frac{e^{\xi t}-1}{\xi} & \ra & H(t) = H'(0) \frac{e^{\xi t}-1}{\xi} \ \ra\ E(u) = H'(0) \frac{\log\bb{e^{u}}^\xi-1}{\xi} \\
+Q(t) = \frac{e^{\xi t}-1}{\xi} & \ra & H(t) = H'(0) \frac{e^{\xi t}-1}{\xi} \ \ra\ E(u) = H'(0) \frac{\log\brb{e^{u}}^\xi-1}{\xi} \\
 & \ra& D(u) = D(u_0) + H'(0) \frac{u^\xi-1}{\xi}
 \eeast
 
 Therefore for $\xi\neq 0$,
 \beast
 D^{\to}(x) & = & \inf\bra{u>0:D(u_0) + H'(0) \frac{u^\xi-1}{\xi}\geq x} = \inf\bra{u>0:  \frac{u^\xi-1}{\xi}\geq \frac{x-D(u_0)}{H'(0)}}\\
-& = & \inf\bra{u>0:  u^\xi \geq 1 + \xi\frac{x-D(u_0)}{H'(0)}} = \inf\bra{u>0:  u \geq \bb{1 + \xi\frac{x-D(u_0)}{H'(0)}}^{1/\xi}} \\
-& = & \bb{1 + \xi\frac{x-D(u_0)}{H'(0)}}^{1/\xi},
+& = & \inf\bra{u>0:  u^\xi \geq 1 + \xi\frac{x-D(u_0)}{H'(0)}} = \inf\bra{u>0:  u \geq \brb{1 + \xi\frac{x-D(u_0)}{H'(0)}}^{1/\xi}} \\
+& = & \brb{1 + \xi\frac{x-D(u_0)}{H'(0)}}^{1/\xi},
 \eeast
 with $1 + \xi\frac{x-D(u_0)}{H'(0)} > 0$. If $\xi=0$, we have
 \beast
 D^{\to}(x) & = & \inf\bra{u>0:D(u_0) + H'(0) \log u \geq x} = \inf\bra{u>0:  \log u \geq \frac{x-D(u_0)}{H'(0)}}\\
-& = & \inf\bra{u>0:  u \geq \exp\bb{\frac{x-D(u_0)}{H'(0)}}} = \exp\bb{\frac{x-D(u_0)}{H'(0)}}.
+& = & \inf\bra{u>0:  u \geq \exp\brb{\frac{x-D(u_0)}{H'(0)}}} = \exp\brb{\frac{x-D(u_0)}{H'(0)}}.
 \eeast
 
 %\qquad \text{Theorem \refthm:switching_formula_right_continuous_function}, $G$ is right-continuous} \\
 
-Since $D(u) = G^{\to}\bb{e^{-1/u}}$, we have for $x\in \R$, by switching formula (Theorem \ref{thm:switching_formula_distribution_function}),
+Since $D(u) = G^{\to}\brb{e^{-1/u}}$, we have for $x\in \R$, by switching formula (Theorem \ref{thm:switching_formula_distribution_function}),
 \beast
-D^{\to}(x) & = & \inf\bra{u>0: D(u) \geq x } = \inf\bra{u>0: G^{\to}\bb{e^{-1/u}} \geq x } \\
-&  = &\inf\bra{u>0: G^{\to}\bb{e^{-1/u}} > x } \cup \bra{u>0: G^{\to}\bb{e^{-1/u}} = x }\\
+D^{\to}(x) & = & \inf\bra{u>0: D(u) \geq x } = \inf\bra{u>0: G^{\to}\brb{e^{-1/u}} \geq x } \\
+&  = &\inf\bra{u>0: G^{\to}\brb{e^{-1/u}} > x } \cup \bra{u>0: G^{\to}\brb{e^{-1/u}} = x }\\
 & = & \inf\bra{u>0: G(x) < e^{-1/u}} \cup \bra{u>0: G(x) \leq e^{-1/u},\forall \ve,\delta>0, G(x-\ve) < e^{-1/u} ,  G(x+\delta)\geq e^{-1/u}} \\
 & = & \inf\bra{u>0: \log G(x) < -1/u} \cup \bra{u>0: \forall \ve,\delta>0,\log G(x) \leq -1/u, \log G(x-\ve) < -1/u , \log G(x+\delta) \geq -1/u} \\
 & = & \inf\bra{u>0: u > - \frac 1{\log G(x)}} \cup \bra{u>0: \forall \ve,\delta>0,u \geq - \frac 1{\log G(x)} , - \frac 1{\log G(x+\delta)} \geq u > - \frac 1{\log G(x-\ve)}  } \\
@@ -286,12 +286,12 @@ D^{\to}(x) & = & \inf\bra{u>0: D(u) \geq x } = \inf\bra{u>0: G^{\to}\bb{e^{-1/u}
 
 Therefore, for $\xi \neq 0$,
 \be
-G(x) = \exp\bb{-\bb{1 + \xi\frac{x-D(u_0)}{H'(0)}}^{-1/\xi}}.
+G(x) = \exp\brb{-\brb{1 + \xi\frac{x-D(u_0)}{H'(0)}}^{-1/\xi}}.
 \ee
 
 For $\xi=0$,
 \be
-G(x) = \exp\bb{-\exp\bb{-\frac{x-D(u_0)}{H'(0)}}}.
+G(x) = \exp\brb{-\exp\brb{-\frac{x-D(u_0)}{H'(0)}}}.
 \ee
 as required.
 \end{proof}
@@ -315,7 +315,7 @@ The extreme value distribution contains distributions with quite different featu
 %\be
 %G_{\xi}((x-1)/\xi) = \left\{\ba{ll}
 %0 & x\leq 0, \\
-%\exp\bb{-x^{-\alpha}}\quad\quad & x>0.
+%\exp\brb{-x^{-\alpha}}\quad\quad & x>0.
 %\ea\right.
 %\ee
 
@@ -323,14 +323,14 @@ The extreme value distribution contains distributions with quite different featu
 
 %\item [(ii)] The distribution function with $\xi =0$,
 %\be
-%G_0(x) = \exp\bb{-e^{-x}},
+%G_0(x) = \exp\brb{-e^{-x}},
 %\ee
 %for all real $x$, is called the double exponential or Gumbel distribution.
 
-%\item [(iii)] For $\xi <0$ use $G_{\xi}\bb{-(1+x)/\xi}$and get with $\alpha = -1/\xi >0$,
+%\item [(iii)] For $\xi <0$ use $G_{\xi}\brb{-(1+x)/\xi}$and get with $\alpha = -1/\xi >0$,
 %\be
-%G_{\xi}\bb{-(1+x)/\xi} = \left\{\ba{ll}
-%\exp\bb{-(-x)^{\alpha}}\quad\quad  & x< 0, \\
+%G_{\xi}\brb{-(1+x)/\xi} = \left\{\ba{ll}
+%\exp\brb{-(-x)^{\alpha}}\quad\quad  & x< 0, \\
 %1 & x\geq 0.
 %\ea\right.
 %\ee
@@ -345,19 +345,19 @@ In summary, we have the following theorem.
 \begin{theorem}\label{thm:limit_distribution_types}
 According to Theorem \ref{thm:extreme_value_theorem}, there are totally three types of limit distributions:
 \ben
-\item [(i)] Fr\'echet distribution: 
+\item [(i)] Fr\'echet distribution:
 \be
-G_1(x) = \exp\bb{-\bb{1+\xi \frac{x-\mu}{\sigma}}^{-1/\xi}} ,\quad x\in \left(\mu -\frac{\sigma}{\xi},\infty\right)\qquad \xi > 0.%G_1(x) = \exp\bb{-x^{-1/\xi}} ,\quad x\in \left(0,\infty\right)\qquad \xi > 0.
+G_1(x) = \exp\brb{-\brb{1+\xi \frac{x-\mu}{\sigma}}^{-1/\xi}} ,\quad x\in \left(\mu -\frac{\sigma}{\xi},\infty\right)\qquad \xi > 0.%G_1(x) = \exp\brb{-x^{-1/\xi}} ,\quad x\in \left(0,\infty\right)\qquad \xi > 0.
 \ee
 
-\item [(ii)] reverse-Weibull distribution: 
+\item [(ii)] reverse-Weibull distribution:
 \be
-G_2(x) = \exp\bb{-\bb{1+\xi \frac{x-\mu}{\sigma}}^{-1/\xi}} ,\quad x\in \left(-\infty,\mu-\frac{\sigma}{\xi}\right)\qquad \xi < 0.%G_2(x) = \exp\bb{-(-x)^{-1/\xi}} ,\quad x\in \left(-\infty,0\right)\qquad \xi < 0.
+G_2(x) = \exp\brb{-\brb{1+\xi \frac{x-\mu}{\sigma}}^{-1/\xi}} ,\quad x\in \left(-\infty,\mu-\frac{\sigma}{\xi}\right)\qquad \xi < 0.%G_2(x) = \exp\brb{-(-x)^{-1/\xi}} ,\quad x\in \left(-\infty,0\right)\qquad \xi < 0.
 \ee
 
-\item [(iii)] Gumbel distribution: 
+\item [(iii)] Gumbel distribution:
 \be
-G_3(x) = \exp\bb{-\exp\bb{-\frac{x-\mu}{\sigma}}}, \qquad x\in (-\infty,\infty)\qquad \xi = 0.%G_3(x) = \exp\bb{-\exp\bb{-x}}, \qquad x\in (-\infty,\infty)\qquad \xi = 0.
+G_3(x) = \exp\brb{-\exp\brb{-\frac{x-\mu}{\sigma}}}, \qquad x\in (-\infty,\infty)\qquad \xi = 0.%G_3(x) = \exp\brb{-\exp\brb{-x}}, \qquad x\in (-\infty,\infty)\qquad \xi = 0.
 \ee
 \een
 \end{theorem}
@@ -379,18 +379,18 @@ Let $F$ be a distribution function. Then
 \ben
 \item [(i)] $F\in \sD(G_1)$ iff $x^*:= \sup\bra{x:F(x)<1}$ is infinite (i.e., $F^{-1}(1) = \infty$) and there exists a constant $\xi >0$ such that
 \be
-\lim_{t\to \infty} \frac{1-F(xt)}{1-F(t)} = x^{-1/\xi} \quad (=-\log\bb{G_1})
+\lim_{t\to \infty} \frac{1-F(xt)}{1-F(t)} = x^{-1/\xi} \quad (=-\log\brb{G_1})
 \ee
 for all $x>0$.
 
 \item [(ii)] $F\in \sD(G_2)$ iff $F^{-1}$ is finite and there exists a constant $\xi >0$ such that for all $x>0$
 \be
-\lim_{t\to 0^+} \frac{1-F\bb{F^{-1}(1)-xt}}{1-F\bb{F^{-1}(1)-t}} = x^{1/\xi} \quad (=-\log\bb{G_2}).
+\lim_{t\to 0^+} \frac{1-F\brb{F^{-1}(1)-xt}}{1-F\brb{F^{-1}(1)-t}} = x^{1/\xi} \quad (=-\log\brb{G_2}).
 \ee
 
-\item [(iii)] $F\in \sD(G_3)$ iff $\E\bb{X|X>c}$ is finite for some $c<F^{-1}(1)$, and for all real $x$
+\item [(iii)] $F\in \sD(G_3)$ iff $\E\brb{X|X>c}$ is finite for some $c<F^{-1}(1)$, and for all real $x$
 \be
-\lim_{t\to F^{-1}(1)} \frac{1-F\bb{t+x \E\bb{X-t|X>t}}}{1-F\bb{t}} = \exp(-x) \quad (=-\log\bb{G_3}).
+\lim_{t\to F^{-1}(1)} \frac{1-F\brb{t+x \E\brb{X-t|X>t}}}{1-F\brb{t}} = \exp(-x) \quad (=-\log\brb{G_3}).
 \ee
 \een
 \end{theorem}
@@ -407,45 +407,45 @@ for all $x>0$.
 
 %
 \begin{example}[limit distribution of maximia of standard Gaussian distribuiton]
-Let $F(x)$ be the distribution function of standard Gaussian random variable with probability density function $f(x) = \frac 1{\sqrt{2\pi}}\exp\bb{-x^2/2}$. It is obvious that $F^{-1}(1) = \infty$ and for all $x>0$%there exists a constant $\xi >0$ such that
+Let $F(x)$ be the distribution function of standard Gaussian random variable with probability density function $f(x) = \frac 1{\sqrt{2\pi}}\exp\brb{-x^2/2}$. It is obvious that $F^{-1}(1) = \infty$ and for all $x>0$%there exists a constant $\xi >0$ such that
 \be
-\lim_{t\to \infty} \frac{1-F(xt)}{1-F(t)} = \lim_{t\to\infty} \frac{xf(xt)}{f(t)} = \lim_{t\to\infty} \frac{x\exp\bb{-x^2t^2/2}}{\exp\bb{-t^2/2}} = \lim_{t\to\infty} x\exp\bb{-(x^2-1)t^2/2}.
+\lim_{t\to \infty} \frac{1-F(xt)}{1-F(t)} = \lim_{t\to\infty} \frac{xf(xt)}{f(t)} = \lim_{t\to\infty} \frac{x\exp\brb{-x^2t^2/2}}{\exp\brb{-t^2/2}} = \lim_{t\to\infty} x\exp\brb{-(x^2-1)t^2/2}.
 \ee
 
-Thus, $F\notin \sD(G_1)$. Also, we have that $\E\bb{X|X>c}$ is finite for some $c<F^{-1}(1)= \infty$ as
+Thus, $F\notin \sD(G_1)$. Also, we have that $\E\brb{X|X>c}$ is finite for some $c<F^{-1}(1)= \infty$ as
 \be
 \int^\infty_c x f(x)dx = \frac{1}{\sqrt{2\pi}}\exp(-c^2/2)< \infty.
 \ee
 
 Therefore,
 \be
-\E\bb{X-t|X>t} = \frac{\int^\infty_t x f(x)dx}{\int^\infty_t f(x)dx} -t = \frac{f(t)}{1-F(t)} -t % \frac{\frac{1}{\sqrt{2\pi}}\exp(-t^2/2)}{1-F(t)} -t >0
+\E\brb{X-t|X>t} = \frac{\int^\infty_t x f(x)dx}{\int^\infty_t f(x)dx} -t = \frac{f(t)}{1-F(t)} -t % \frac{\frac{1}{\sqrt{2\pi}}\exp(-t^2/2)}{1-F(t)} -t >0
 \ee
 
-Since $1-F(t) \in \left[\bb{t^{-1}-t^{-3}}f(t),t^{-1}f(t)\right]$, we have $\frac{f(t)}{t(1-F(t))} \to 1$ as $t\to \infty$ and
+Since $1-F(t) \in \left[\brb{t^{-1}-t^{-3}}f(t),t^{-1}f(t)\right]$, we have $\frac{f(t)}{t(1-F(t))} \to 1$ as $t\to \infty$ and
 \be
-\E\bb{X-t|X>t} \in \left[0, \frac{t}{t^2-1}\right]
+\E\brb{X-t|X>t} \in \left[0, \frac{t}{t^2-1}\right]
 \ee
 
-Thus, $\E\bb{X-t|X>t} \sim O(t^{-1})$. Then
+Thus, $\E\brb{X-t|X>t} \sim O(t^{-1})$. Then
 \beast
-\bb{\frac{f(t)}{1-F(t)} -t}' & = & \frac{f'(t)(1-F(t)) + f(t)^2}{(1-F(t))^2} -1 =  \frac{f(t)}{1-F(t)}\bb{\frac{f(t)}{1-F(t)} -t}-1 \\%= \frac{f(t)}{(1-F(t))^2} -\bb{\frac{\frac 12 tf(t)}{1-F(t)} -1}^2 >0 \ \ra\ \frac{f(t)}{1-F(t)} -t \to \infty
+\brb{\frac{f(t)}{1-F(t)} -t}' & = & \frac{f'(t)(1-F(t)) + f(t)^2}{(1-F(t))^2} -1 =  \frac{f(t)}{1-F(t)}\brb{\frac{f(t)}{1-F(t)} -t}-1 \\%= \frac{f(t)}{(1-F(t))^2} -\brb{\frac{\frac 12 tf(t)}{1-F(t)} -1}^2 >0 \ \ra\ \frac{f(t)}{1-F(t)} -t \to \infty
 & \leq & \frac{t^3}{t^2-1}\frac {t}{t^2 -1} - 1 = \frac{t^4}{(t^2-1)^2}-1 \to 0
 \eeast
-as $t\to\infty$. So $\E\bb{X-t|X>t}$ is a decreasing function of $t$.
+as $t\to\infty$. So $\E\brb{X-t|X>t}$ is a decreasing function of $t$.
 
 Then by L'H\^opital's rule (Theorem \ref{thm:lhopital_rule_general}),
 \beast
-& & \lim_{t\to F^{-1}(1)} \frac{1-F\bb{t+x \E\bb{X-t|X>t}}}{1-F\bb{t}} \\
-&=& \lim_{t\to \infty} \frac{1-F\bb{t+ x \cdot \E\bb{X-t|X>t}}}{1-F\bb{t}} = \lim_{t\to \infty} \frac{f\bb{t+ x \cdot \E\bb{X-t|X>t}}}{f\bb{t}} \\
-& = &  \lim_{t\to \infty} \exp\bb{\frac 12 \bb{t^2 - \bb{t+ x \E\bb{X-t|X>t} }^2}} = \lim_{t\to \infty} \exp\bb{-xt\bb{\frac{f(t)}{1-F(t)} -t} - \frac 12 x^2 O(t^{-2})} \\
-& = & \exp\bb{-x \lim_{t\to \infty}  \bb{\frac{tf(t) - t^2(1-F(t))}{(1-F(t))}} } = \exp\bb{x \lim_{t\to \infty}  \bb{\frac{f(t) - t^2 f(t) - 2t(1-F(t)) +t^2f(t)}{f(t)}} } \\
-& = & \exp\bb{x \lim_{t\to \infty}  \bb{\frac{f(t) - 2t(1-F(t)) }{f(t)}} } = \exp(-x).
+& & \lim_{t\to F^{-1}(1)} \frac{1-F\brb{t+x \E\brb{X-t|X>t}}}{1-F\brb{t}} \\
+&=& \lim_{t\to \infty} \frac{1-F\brb{t+ x \cdot \E\brb{X-t|X>t}}}{1-F\brb{t}} = \lim_{t\to \infty} \frac{f\brb{t+ x \cdot \E\brb{X-t|X>t}}}{f\brb{t}} \\
+& = &  \lim_{t\to \infty} \exp\brb{\frac 12 \brb{t^2 - \brb{t+ x \E\brb{X-t|X>t} }^2}} = \lim_{t\to \infty} \exp\brb{-xt\brb{\frac{f(t)}{1-F(t)} -t} - \frac 12 x^2 O(t^{-2})} \\
+& = & \exp\brb{-x \lim_{t\to \infty}  \brb{\frac{tf(t) - t^2(1-F(t))}{(1-F(t))}} } = \exp\brb{x \lim_{t\to \infty}  \brb{\frac{f(t) - t^2 f(t) - 2t(1-F(t)) +t^2f(t)}{f(t)}} } \\
+& = & \exp\brb{x \lim_{t\to \infty}  \brb{\frac{f(t) - 2t(1-F(t)) }{f(t)}} } = \exp(-x).
 \eeast
 
 So we showed that $F\in \sD(G_3)$.
-%& = & \lim_{t\to \infty} \frac{\bb{1+x \bb{\bb{\frac{f(t)}{1-F(t)}}'-1} }f\bb{t+x \bb{\frac{f(t)}{1-F(t)} -t}}}{f\bb{t}} \\
-%& = & \lim_{t\to \infty} \bb{1+x \bb{\bb{\frac{\frac{1}{\sqrt{2\pi}}\exp(-t^2/2)}{1-F(t)}}'-1} }\exp\bb{-\bb{t+x \bb{\frac{\frac{1}{\sqrt{2\pi}}\exp(-t^2/2)}{1-F(t)} -t}}^2/2+t^2/2}
+%& = & \lim_{t\to \infty} \frac{\brb{1+x \brb{\brb{\frac{f(t)}{1-F(t)}}'-1} }f\brb{t+x \brb{\frac{f(t)}{1-F(t)} -t}}}{f\brb{t}} \\
+%& = & \lim_{t\to \infty} \brb{1+x \brb{\brb{\frac{\frac{1}{\sqrt{2\pi}}\exp(-t^2/2)}{1-F(t)}}'-1} }\exp\brb{-\brb{t+x \brb{\frac{\frac{1}{\sqrt{2\pi}}\exp(-t^2/2)}{1-F(t)} -t}}^2/2+t^2/2}
 \end{example}
 
 \begin{example}[counter example of GEV]
@@ -458,7 +458,7 @@ Since $F^{-1}(1) = \infty$, $F\notin \sD(G_2)$. Also, since
 
 Finally, $f(x) = F'(x) = \frac{1}{x\log^2x}$
 \be
-\E\bb{X|X>c} = \frac{\int^\infty_c x dF}{\int^\infty_c dF}= \frac{\int^\infty_c \bb{\log x}^{-2} dx}{1-F(c)} = \infty \ \ra\ F\notin \sD(G_3).
+\E\brb{X|X>c} = \frac{\int^\infty_c x dF}{\int^\infty_c dF}= \frac{\int^\infty_c \brb{\log x}^{-2} dx}{1-F(c)} = \infty \ \ra\ F\notin \sD(G_3).
 \ee
 
 This example means that GEV does not necessarily exist for all the distributions.
@@ -482,7 +482,7 @@ Basically, POT method is more effective than MV method and it considers the dist
 
 For distribution $F$ of random variable $X$, we define the conditional excess distribution function $F_u$ by
 \be
-F_u(y) = \pro\bb{X-u\leq y|X>u},\quad 0\leq y\leq x_F-u
+F_u(y) = \pro\brb{X-u\leq y|X>u},\quad 0\leq y\leq x_F-u
 \ee
 where $u$ is a given threshold, $y = x-u$ are the excesses and $x_F\leq \infty$ is the right endpoint of $F$. The conditional excess distribution function can be written by
 \be
@@ -497,17 +497,17 @@ At this point EVT (peak over threshold (POT)) can be very helpful as a powerful 
 \begin{theorem}[second extreme value theorem]\label{thm:second_extreme_value}
 Let $F$ be a distribution function of random variable $X$ such that $F(x)<1$ (i.e., $F^{-1}(1) = \infty$) for all real $x$. Suppose for some threshold $u$ there exist $a(u)$ and $b(u)$ such that $F_u(a(u)y+b(u))$ weakly converges to a non-degenerate distribution function $G(y)$ as $u \to \infty$. Then $G(x)$ has the two forms
 \be
-G(y) = \Gamma_{\xi}(y) = 1-\bb{1+\frac{\xi y}{\sigma}}^{-1/\xi},\qquad  y\geq 0, \xi > 0 ,
+G(y) = \Gamma_{\xi}(y) = 1-\brb{1+\frac{\xi y}{\sigma}}^{-1/\xi},\qquad  y\geq 0, \xi > 0 ,
 \ee
 \be
-G(y) = \Pi(y) = 1 - \exp\bb{-\frac{y}{\sigma}}, \qquad y\geq 0, \xi =0.
+G(y) = \Pi(y) = 1 - \exp\brb{-\frac{y}{\sigma}}, \qquad y\geq 0, \xi =0.
 \ee
 
 $G$ is called generalized Pareto distribution (GPD)\footnote{We only consider certain part of cases, though $\xi$ can be negative.}. $\xi$ is called shape parameter or tail index and $\sigma$ is the scaling parameter. Furthermore,
 \be
 G(x) = \left\{ \ba{ll}
-1 - \bb{1+\xi \frac{x-u}{\sigma}}^{-1/\xi}\quad\quad & \xi > 0 \\
-1 - \exp\bb{-\frac{x-u}{\sigma}} &  \xi =0
+1 - \brb{1+\xi \frac{x-u}{\sigma}}^{-1/\xi}\quad\quad & \xi > 0 \\
+1 - \exp\brb{-\frac{x-u}{\sigma}} &  \xi =0
 \ea\right..
 \ee
 %with
