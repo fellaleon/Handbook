@@ -8,15 +8,15 @@ y = a_0 + a_1 x + \dots + a_n x^n
 \ee
 with $m\geq n+1$ and $A = (a_0,\dots,a_n)^T$. The residual is given by
 \be
-R^2 = \sum^m_{i=1} \bb{y_i - (a_0 + a_1x_i + \dots + a_n x_i^n)}^2.
+R^2 = \sum^m_{i=1} \brb{y_i - (a_0 + a_1x_i + \dots + a_n x_i^n)}^2.
 \ee
 
 Then partial derivatives are
 \beast
-0 & = & \fp{R^2}{a_0} = -2\sum^m_{i=1} \bb{y_i - (a_0 + a_1x_i + \dots + a_n x_i^n)}, \\
-0 & = & \fp{R^2}{a_1} = -2\sum^m_{i=1} \bb{y_i - (a_0 + a_1x_i + \dots + a_n x_i^n)}x_i, \\
+0 & = & \fp{R^2}{a_0} = -2\sum^m_{i=1} \brb{y_i - (a_0 + a_1x_i + \dots + a_n x_i^n)}, \\
+0 & = & \fp{R^2}{a_1} = -2\sum^m_{i=1} \brb{y_i - (a_0 + a_1x_i + \dots + a_n x_i^n)}x_i, \\
 & \vdots & \\
-0 & = & \fp{R^2}{a_n} = -2\sum^m_{i=1} \bb{y_i - (a_0 + a_1x_i + \dots + a_n x_i^n)}x_i^n.
+0 & = & \fp{R^2}{a_n} = -2\sum^m_{i=1} \brb{y_i - (a_0 + a_1x_i + \dots + a_n x_i^n)}x_i^n.
 \eeast
 
 These lead to the equations
@@ -83,5 +83,5 @@ x_1^n & x_2^n & \dots & x_m^n
 
 Since $m\geq n+1$ and $x_i$ are distinct, $V^TV$ is full rank and therefore its inverse exists. Hence
 \be
-V^T V A = V^T Y  \ \ra\ A = \bb{V^TV}^{-1} V^T Y.
+V^T V A = V^T Y  \ \ra\ A = \brb{V^TV}^{-1} V^T Y.
 \ee
