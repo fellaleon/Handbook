@@ -1463,11 +1463,11 @@ Using the same argument in Theorem \ref{thm:function_product_is_function_of_sum_
 \begin{definition}[sine function\index{sine function}, cosine function\index{cosine function}]\label{def:sine_cosine_function}
 For complex number $z$, we define the sine function $\sin:\C\to \C$ by
 \be
-\sin z = \sum^\infty_{n=0}\frac{(-1)^nz^{2n+1}}{(2n+1)!} = z - \frac {z^3}{3!}+ \frac {z^5}{5!} - \frac {z^7}{7!} + \dots
+\sin z = \sum^\infty_{n=0}\frac{(-1)^n}{(2n+1)!}z^{2n+1} = z - \frac {z^3}{3!}+ \frac {z^5}{5!} - \frac {z^7}{7!} + \dots
 \ee
 and cosine function $\cos:\C\to \C$ by
 \be
-\cos z= \sum^\infty_{n=0}\frac{(-1)^nz^{2n}}{(2n)!} = 1 - \frac {z^2}{2!} + \frac {z^4}{4!} - \frac {z^6}{6!} + \dots
+\cos z= \sum^\infty_{n=0}\frac{(-1)^n}{(2n)!}z^{2n} = 1 - \frac {z^2}{2!} + \frac {z^4}{4!} - \frac {z^6}{6!} + \dots
 \ee
 \end{definition}
 
@@ -4754,8 +4754,8 @@ a = \sum^\infty_{k=0} k\brb{\floor{\frac{n}{p^k}} - \floor{\frac{n}{p^{k+1}}}} =
 \ee
 \end{proof}
 
-\begin{theorem}
-For all $m\geq n>0$, $\binom{m}{n}$ is a positive integer.
+\begin{theorem}\label{thm:binomial_coefficient_is_positive_integer}
+For all $m,n\in \Z^+$ with $m\geq n>0$, $\binom{m}{n}$ is a positive integer.
 \end{theorem}
 
 \begin{proof}[\bf Proof]
@@ -4778,9 +4778,8 @@ and so $a_1 + a_2 \leq a_3$. This shows that if $p^k\mid n!(n-m)!$ then $p^k\mid
 
 \subsection{Binomial theorem}
 
-
 \begin{theorem}[Pascal's rule]\label{thm:Pascal_rule_binomial_coefficients}
-For $1\leq k\leq n$,
+For $k,n\in \Z^+$ with $1\leq k\leq n$,
 \be
 \binom{n-1}{k} + \binom{n-1}{k-1} = \binom{n}{k}.
 \ee
@@ -4792,6 +4791,18 @@ By definition of binomial coefficients,
 \binom{n-1}{k} + \binom{n-1}{k-1}  & = & \frac{\brb{n-1}!}{k!(n-k-1)!} + \frac{\brb{n-1}!}{\brb{k-1}!(n-k)!} = \frac{n!}{k!(n-k)!} \frac{n-k}{n}+ \frac{n!}{k!(n-k)!}\frac{k}{n} \\
 & = & \frac{n!}{k!(n-k)!} = \binom{n}{k}.
 \eeast
+\end{proof}
+
+\begin{corollary}
+For all $m,n\in \Z^+$ with $m\geq n>0$, $\binom{m}{n}$ is a positive integer.
+\end{corollary}
+
+\begin{remark}
+This is the alternative proof of Theorem \ref{thm:binomial_coefficient_is_positive_integer}.
+\end{remark}
+
+\begin{proof}
+We can induct on $n$ using Pascal's rule (Theorem \ref{thm:Pascal_rule_binomial_coefficients}) to have that $\binom{n}{m} = \binom{n-1}{m} + \binom{n-1}{m-1} $ and each of $\binom{n-1}{0}$ is just 1.
 \end{proof}
 
 \begin{theorem}[binomial theorem]\label{thm:binomial_non_negative_integer_power}
