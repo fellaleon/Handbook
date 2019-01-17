@@ -374,7 +374,23 @@ i\leq n}X_i}.
 \ee
 
 
+\begin{center}
+\psset{yunit=3cm,xunit=3cm}
+\begin{pspicture}(-0.2,-0.2)(3,1.2)%[showgrid](-3,-1.5)(3,4)
+\psaxes[labels=none,ticks=none]{->}(0,0)(-0.2,-0.2)(3,1.2)%Dx=0.25,Dy=0.25%dx =1,dy=1,
+\psset{algebraic}
+\psplot{1}{2.8}{3/3^x}
+%\psplot{1}{1}{x-0.5}
 
+\rput[lb](0.8,-0.17){$\max_{1\leq i\leq n}X_i$}
+\rput[lb](-0.2,0.9){$\frac 1{\theta^n}$}
+\rput[lb](2.7,-0.15){$\theta$}
+\rput[lb](0.05,1.1){$L$}
+
+\psline[linestyle=dashed](1,0)(1,1)(0,1)
+
+\end{pspicture}
+\end{center}
 
 
 So the likelihood function is 0 for $\theta < \max_{1\leq i\leq n}X_i$ and positive and decreasing for $\theta \geq \max_{1\leq i\leq n}X_i$. Thus, $\wh{\theta} = \max_{1\leq i\leq n} X_i$.
