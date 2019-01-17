@@ -48,8 +48,8 @@ as $e^{-rT}\bb{\frac {2r - \sigma^2}{2r}} $ is not equal to $1- \frac{\sigma^2}{
 \end{remark}
 
 \begin{proof}[\bf Proof]
-Let $X_t=at + \sigma W_t$ and $Y_T=\inf_{0\leq t\leq T}X_t$, where $W$ is a standard Brownian motion. For $x>y$, $y<0$, by Proposition \ref{pro:pairwise_joint_density_bm_maximum_minimum_current} and Girsanov's
-theorem (Corollary \ref{cor:girsanov_drift_brownian_motion}), we know the joint density $f$ of ($X_T,Y_T$) is
+Let $X_t=at + \sigma W_t$ and $Y_T=\inf_{0\leq t\leq T}X_t$, where $W$ is a standard Brownian motion. For $x>y$, $y<0$, by Proposition \ref{pro:pairwise_joint_density_bm_maximum_minimum_current} and
+Girsanov, Cameron-Martin theorem (Corollary \ref{cor:girsanov_drift_brownian_motion}), we know the joint density $f$ of ($X_T,Y_T$) is
 \be
 f(x,y)=\frac{2(x-2y)}{\sigma^3\sqrt{2\pi T^3}}\exp\bb{\frac{a}{\sigma}\frac{x}{\sigma}-\frac{a^2T}{2\sigma^2}-\frac{(x-2y)^2}{2\sigma^2T}},\qquad x>y,y<0.
 \ee
