@@ -8481,6 +8481,100 @@ p_5 = \frac 12 - \frac 16 + \frac 1{24} - \frac 1{120} = \frac {11}{30}.
 \ee
 \end{solution}
 
+
+\begin{problem}[STEP I 2015 Q13]
+A fair die with faces numbered $1$, $\ldots\,$, $6$ is thrown repeatedly. The events $A$,  $B$, $C$, $D$ and $E$ are defined as follows.
+\ben
+\item []$A$: \ the first 6 arises on the $n$th throw.
+\item []$B$: \ at least one 5 arises before the first 6.
+\item []$C$: \ at least one 4 arises before the first 6.
+\item []$D$: \ exactly one 5 arises before the first 6.
+\item []$E$: \ exactly one 4 arises before the first 6.
+\een
+
+Evaluate the following probabilities:
+
+(i) \  $\pro(A)$ \ \  \ \
+(ii) \  $\pro(B)$ \ \ \ \
+(iii) \ $\pro(B\cap C)$ \ \ \ \
+(iv) \ $\pro(D)$ \ \ \ \
+(v)  \ $\pro(D\cup E)$ \,.
+\end{problem}
+
+
+\begin{solution}[\bf Solution.]
+\ben
+\item [(i)] Clearly, event $A$ means that $n$th throw is 6 and first $n-1$ are chosen from 1-5. Thus, the probability is
+\be
+\pro(A) = \underbrace{\brb{\frac 56}^{n-1}}_{\text{pick 1-5 for first $n-1$ throws}}\cdot \underbrace{\frac 16}_{\text{pick 6 for $n$th throw}}
+\ee
+
+\item [(ii)] Events $B$ and $C$ has the same probability as it is fair dice. By tower law of probability
+\be
+\pro(B) = \sum^\infty_{n=2}\pro(B|A_n)\pro(A_n).
+\ee
+where $A_n$ is the event that the first 6 arises on the $n$th throw. Also,
+\be
+\pro(B|A_n) = 1 - \pro\brb{\text{there is no 5 in the first $n-1$ throws}|A_n} = 1 - \brb{\frac 45}^{n-1} = 1 - \brb{\frac 45}^{n-1}.
+\ee
+
+Note that this is conditional probability $\frac 45$ not $\frac 46$. Therefore,
+\beast
+\pro(B) & = & \frac 16 \sum^\infty_{n=2}\brb{1 - \brb{\frac 45}^{n-1}}\brb{\frac 56}^{n-1} = \frac 16 \sum^\infty_{n=2}\brb{1 - \brb{\frac 45}^{n-1}}\brb{\frac 56}^{n-1} \\
+& = & \frac 16 \brb{\sum^\infty_{n=1}\brb{\frac 56}^{n} - \sum^\infty_{n=1}\brb{\frac 23}^{n}} = \frac 16\brb{\frac{\frac 56}{1-\frac 56} - \frac {\frac 23}{1-\frac 23}} = \frac 16\brb{5-2} = \frac 12.
+\eeast
+which is consistent with the intuition. Alternatively, we can prove it with symmetry.
+
+\item [(iii)] For event $B\cap C$, it is not obvious to derive the expression. So we consider the event $B\cup C$. Indeed,
+\be
+\pro\brb{B\cup C|A_n} = 1 - \pro\brb{\text{there is no 4 or 5 in the first $n-1$ throws}|A_n} = 1 -  \brb{\frac 35}^{n-1}.
+\ee
+
+Thus, using the fact that
+\be
+\pro\brb{B\cap C|A_n} = \pro\brb{B|A_n} + \pro\brb{C|A_n} - \pro\brb{B\cup C|A_n} = 2\pro\brb{B|A_n}  - \pro\brb{B\cup C|A_n}
+\ee
+we have
+\beast
+\pro\brb{B\cap C} & = & \sum^\infty_{n=2} \pro\brb{B\cap C|A_n}\pro\brb{A_n} = \sum^\infty_{n=2} \brb{2\pro\brb{B|A_n}  - \pro\brb{B\cup C|A_n}}\pro\brb{A_n} \\
+& = & 2\pro\brb{B}  - \sum^\infty_{n=2} \pro\brb{B\cup C|A_n}\pro\brb{A_n} = 2\cdot \frac 12 - \sum^\infty_{n=2} \brb{1 -  \brb{\frac 35}^{n-1}} \brb{\frac 56}^{n-1} \\
+& = & 1 - \frac 16\brb{\sum^\infty_{n=1} \brb{\frac 56}^{n} - \sum^\infty_{n=1}  \brb{\frac 12}^{n}} = 1 - \frac 16\brb{5 - 1} = \frac 13
+\eeast
+by Proposition \ref{pro:geometric_series_sum}.
+
+\item [(iv)] Given $A_n$ if there is exactly one 5 in the first $n-1$ throws, the probability (of binomial distribution) is
+\be
+\pro\brb{D|A_n} = \binom{n-1}{1} \brb{\frac 15}\brb{\frac 45}^{n-2},\qquad n\geq 2
+\ee
+
+Thus, by Proposition \ref{pro:geometric_series_sum},
+\beast
+\pro(D) & = & \sum^\infty_{n=2}  \pro\brb{D|A_n}\pro\brb{A_n} = \frac 16 \sum^\infty_{n=2} \binom{n-1}{1} \brb{\frac 15}\brb{\frac 45}^{n-2} \brb{\frac 56}^{n-1} \\
+& = & \frac 1{24}\sum^\infty_{n=2} (n-1) \brb{\frac 23}^{n-1} =  \frac 1{24}\sum^\infty_{n=1} n \brb{\frac 23}^{n} = \frac 1{36}\sum^\infty_{n=1} n \brb{\frac 23}^{n-1} \\
+& = & \frac 1{36}\frac{1}{\brb{1 - \frac 23}^2} = \frac 9{36} = \frac 14.
+\eeast
+
+\item [(v)] Given $A_n$ if there is exactly one 4 and one 5 in the first $n-1$ throws, the probability is
+\be
+\pro\brb{D\cap E|A_n} = \underbrace{\binom{n-1}{1} \brb{\frac 15}}_{\text{pick one 4}} \underbrace{\binom{n-2}{1} \brb{\frac 15}}_{\text{pick one 5}} \brb{\frac 35}^{n-3},\qquad n\geq 3.
+\ee
+
+Then by Proposition \ref{pro:geometric_series_sum} again,
+\beast
+\pro\brb{D\cap E} & = & \sum^\infty_{n=2}  \pro\brb{D\cap E|A_n}\pro\brb{A_n} = \frac 16 \sum^\infty_{n=3} (n-1)(n-2) \brb{\frac 15}^2 \brb{\frac 35}^{n-3} \brb{\frac 56}^{n-1} \\
+& = & \frac 1{54} \sum^\infty_{n=3} (n-1)(n-2) \brb{\frac 12}^{n-1}  = \frac 1{4\cdot 54} \sum^\infty_{n=3} (n-1)(n-2) \brb{\frac 12}^{n-3} \\
+& = & \frac 1{4\cdot 54} \sum^\infty_{n=2} n(n-1) \brb{\frac 12}^{n-2} =\frac 1{4\cdot 54} \frac 2{\brb{1- \frac 12}^3} = \frac 2{27}.
+\eeast
+
+Therefore,
+\be
+\pro(D\cup E) = \pro(D) + \pro(E) - \pro\brb{D\cap E}= 2\pro(D) - \pro\brb{D\cap E} = 2\cdot \frac 14 - \frac 2{27} = \frac{23}{54}.
+\ee
+\een
+\end{solution}
+
+
+
 \begin{problem}
 John chooses a sequence, such as $HHH$, and then Mary chooses a sequence, perhaps $THH$. A fair coin is tossed until on or other sequence occurs, when the coin is awarded to the person whose sequence has been observed. Advise Mary on which sequence she should choose for each (or at least some) of John's eight possible choices.
 \end{problem}
