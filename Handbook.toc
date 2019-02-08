@@ -1,4 +1,4 @@
-\select@language {english}
+\babel@toc {english}{}
 \contentsline {chapter}{Preface}{1}{section*.2}
 \contentsline {part}{I\hspace {1em}Elementary}{3}{part.1}
 \contentsline {chapter}{\numberline {1}Notations}{5}{chapter.1}
@@ -422,7 +422,7 @@
 \contentsline {subsection}{\numberline {11.11.2}Riemann-Stieljes integral}{426}{subsection.11.11.2}
 \contentsline {subsection}{\numberline {11.11.3}Line integral of complex function along path}{429}{subsection.11.11.3}
 \contentsline {subsection}{\numberline {11.11.4}Invariance form of line integral along rectifiable path}{431}{subsection.11.11.4}
-\contentsline {subsection}{\numberline {11.11.5}Curves}{432}{subsection.11.11.5}
+\contentsline {subsection}{\numberline {11.11.5}Curves}{431}{subsection.11.11.5}
 \contentsline {subsection}{\numberline {11.11.6}Properties of curve integral}{432}{subsection.11.11.6}
 \contentsline {subsection}{\numberline {11.11.7}Simple closed curve, simply connected set and multiply connected set}{435}{subsection.11.11.7}
 \contentsline {section}{\numberline {11.12}Contour Integral}{436}{section.11.12}
@@ -436,11 +436,11 @@
 \contentsline {subsection}{\numberline {11.13.2}Goursat's theorem}{443}{subsection.11.13.2}
 \contentsline {subsection}{\numberline {11.13.3}Cauchy's integral formula}{449}{subsection.11.13.3}
 \contentsline {subsection}{\numberline {11.13.4}Cauchy's Residue Theorem}{450}{subsection.11.13.4}
-\contentsline {section}{\numberline {11.14}The Expansion of Functions in Infinite Series}{451}{section.11.14}
-\contentsline {subsection}{\numberline {11.14.1}The expansion of a class of functions as infinite fractions}{451}{subsection.11.14.1}
-\contentsline {subsection}{\numberline {11.14.2}The expansion of a class of functions as infinite products}{451}{subsection.11.14.2}
-\contentsline {subsection}{\numberline {11.14.3}Applications}{452}{subsection.11.14.3}
-\contentsline {section}{\numberline {11.15}Summary}{452}{section.11.15}
+\contentsline {section}{\numberline {11.14}The Expansion of Functions in Infinite Series}{450}{section.11.14}
+\contentsline {subsection}{\numberline {11.14.1}The expansion of a class of functions as infinite fractions}{450}{subsection.11.14.1}
+\contentsline {subsection}{\numberline {11.14.2}The expansion of a class of functions as infinite products}{450}{subsection.11.14.2}
+\contentsline {subsection}{\numberline {11.14.3}Applications}{451}{subsection.11.14.3}
+\contentsline {section}{\numberline {11.15}Summary}{451}{section.11.15}
 \contentsline {section}{\numberline {11.16}Problems}{452}{section.11.16}
 \contentsline {subsection}{\numberline {11.16.1}Contour integral}{452}{subsection.11.16.1}
 \contentsline {subsection}{\numberline {11.16.2}Power series}{453}{subsection.11.16.2}
@@ -504,43 +504,43 @@
 \contentsline {subsection}{\numberline {12.9.3}Properties of binomial coefficients}{517}{subsection.12.9.3}
 \contentsline {subsection}{\numberline {12.9.4}Binomial series}{518}{subsection.12.9.4}
 \contentsline {subsection}{\numberline {12.9.5}Convergence of binomial series}{519}{subsection.12.9.5}
-\contentsline {subsection}{\numberline {12.9.6}Properties of binomial series}{520}{subsection.12.9.6}
+\contentsline {subsection}{\numberline {12.9.6}Properties of binomial series}{521}{subsection.12.9.6}
 \contentsline {subsection}{\numberline {12.9.7}Binomial coefficients by complex integral}{521}{subsection.12.9.7}
 \contentsline {subsection}{\numberline {12.9.8}Elementary boundary of binomial coefficients}{526}{subsection.12.9.8}
 \contentsline {section}{\numberline {12.10}Riemann Zeta Function}{527}{section.12.10}
 \contentsline {subsection}{\numberline {12.10.1}Definition}{527}{subsection.12.10.1}
 \contentsline {subsection}{\numberline {12.10.2}Properties}{527}{subsection.12.10.2}
-\contentsline {subsection}{\numberline {12.10.3}Euler product}{527}{subsection.12.10.3}
+\contentsline {subsection}{\numberline {12.10.3}Euler product}{528}{subsection.12.10.3}
 \contentsline {section}{\numberline {12.11}Constants}{528}{section.12.11}
 \contentsline {subsection}{\numberline {12.11.1}Euler-Mascheroni constant}{528}{subsection.12.11.1}
-\contentsline {subsection}{\numberline {12.11.2}Series expansions of Euler constant}{529}{subsection.12.11.2}
+\contentsline {subsection}{\numberline {12.11.2}Series expansions of Euler constant}{530}{subsection.12.11.2}
 \contentsline {subsection}{\numberline {12.11.3}Euler's generalized constants}{531}{subsection.12.11.3}
 \contentsline {section}{\numberline {12.12}Partial Sums}{532}{section.12.12}
 \contentsline {subsection}{\numberline {12.12.1}Faulhaber's formula}{532}{subsection.12.12.1}
 \contentsline {subsection}{\numberline {12.12.2}Pascal's identity}{533}{subsection.12.12.2}
-\contentsline {subsection}{\numberline {12.12.3}Faulhaber polynomials}{533}{subsection.12.12.3}
+\contentsline {subsection}{\numberline {12.12.3}Faulhaber polynomials}{534}{subsection.12.12.3}
 \contentsline {section}{\numberline {12.13}Hyperbolic functions}{534}{section.12.13}
 \contentsline {subsection}{\numberline {12.13.1}Definitions}{534}{subsection.12.13.1}
-\contentsline {subsection}{\numberline {12.13.2}Euler numbers}{535}{subsection.12.13.2}
+\contentsline {subsection}{\numberline {12.13.2}Euler numbers}{536}{subsection.12.13.2}
 \contentsline {section}{\numberline {12.14}Polynomials}{536}{section.12.14}
 \contentsline {subsection}{\numberline {12.14.1}Basic properties}{536}{subsection.12.14.1}
-\contentsline {subsection}{\numberline {12.14.2}Chebyshev polynomials}{536}{subsection.12.14.2}
-\contentsline {section}{\numberline {12.15}Taylor Series}{536}{section.12.15}
-\contentsline {subsection}{\numberline {12.15.1}Maclaurin series}{536}{subsection.12.15.1}
-\contentsline {subsection}{\numberline {12.15.2}Exponential function}{536}{subsection.12.15.2}
+\contentsline {subsection}{\numberline {12.14.2}Chebyshev polynomials}{537}{subsection.12.14.2}
+\contentsline {section}{\numberline {12.15}Taylor Series}{537}{section.12.15}
+\contentsline {subsection}{\numberline {12.15.1}Maclaurin series}{537}{subsection.12.15.1}
+\contentsline {subsection}{\numberline {12.15.2}Exponential function}{537}{subsection.12.15.2}
 \contentsline {subsection}{\numberline {12.15.3}Geometric series}{537}{subsection.12.15.3}
 \contentsline {subsection}{\numberline {12.15.4}Binomial series}{537}{subsection.12.15.4}
 \contentsline {subsection}{\numberline {12.15.5}trigonometric functions}{537}{subsection.12.15.5}
-\contentsline {subsection}{\numberline {12.15.6}Maclaurin series of inverse trigonometric functions}{537}{subsection.12.15.6}
-\contentsline {subsection}{\numberline {12.15.7}Hyperbolic functions}{538}{subsection.12.15.7}
+\contentsline {subsection}{\numberline {12.15.6}Maclaurin series of inverse trigonometric functions}{538}{subsection.12.15.6}
+\contentsline {subsection}{\numberline {12.15.7}Hyperbolic functions}{539}{subsection.12.15.7}
 \contentsline {section}{\numberline {12.16}Convolution of Functions}{539}{section.12.16}
 \contentsline {subsection}{\numberline {12.16.1}Convolution of probability density functions}{539}{subsection.12.16.1}
 \contentsline {section}{\numberline {12.17}Theta Functions}{540}{section.12.17}
 \contentsline {section}{\numberline {12.18}Summary}{541}{section.12.18}
-\contentsline {section}{\numberline {12.19}Problems}{541}{section.12.19}
-\contentsline {subsection}{\numberline {12.19.1}Logarithm function}{541}{subsection.12.19.1}
-\contentsline {subsection}{\numberline {12.19.2}Gamma function}{541}{subsection.12.19.2}
-\contentsline {subsection}{\numberline {12.19.3}Trigonometric functions}{542}{subsection.12.19.3}
+\contentsline {section}{\numberline {12.19}Problems}{542}{section.12.19}
+\contentsline {subsection}{\numberline {12.19.1}Logarithm function}{542}{subsection.12.19.1}
+\contentsline {subsection}{\numberline {12.19.2}Gamma function}{542}{subsection.12.19.2}
+\contentsline {subsection}{\numberline {12.19.3}Trigonometric functions}{543}{subsection.12.19.3}
 \contentsline {chapter}{\numberline {13}Calculus}{545}{chapter.13}
 \contentsline {section}{\numberline {13.1}Integrals}{545}{section.13.1}
 \contentsline {subsection}{\numberline {13.1.1}Integrals related to exponential function}{545}{subsection.13.1.1}
@@ -670,8 +670,8 @@
 \contentsline {subsection}{\numberline {17.7.8}Convergence in ${\cal L}^p(E,{\cal E},\mu )$}{653}{subsection.17.7.8}
 \contentsline {subsection}{\numberline {17.7.9}Dense property}{656}{subsection.17.7.9}
 \contentsline {subsection}{\numberline {17.7.10}Fourier transform}{657}{subsection.17.7.10}
-\contentsline {section}{\numberline {17.8}Convergence of Measures}{659}{section.17.8}
-\contentsline {subsection}{\numberline {17.8.1}Weak convergence and vague convergence}{659}{subsection.17.8.1}
+\contentsline {section}{\numberline {17.8}Convergence of Measures}{658}{section.17.8}
+\contentsline {subsection}{\numberline {17.8.1}Weak convergence and vague convergence}{658}{subsection.17.8.1}
 \contentsline {subsection}{\numberline {17.8.2}Tightness}{660}{subsection.17.8.2}
 \contentsline {section}{\numberline {17.9}Ergodic theory}{661}{section.17.9}
 \contentsline {subsection}{\numberline {17.9.1}Measure-preserving transformations}{661}{subsection.17.9.1}
@@ -802,14 +802,15 @@
 \contentsline {section}{\numberline {25.8}Adventitious Angles}{757}{section.25.8}
 \contentsline {subsection}{\numberline {25.8.1}Langley's adventitious angles}{757}{subsection.25.8.1}
 \contentsline {subsection}{\numberline {25.8.2}World's hardest easy geometric problem}{758}{subsection.25.8.2}
-\contentsline {subsection}{\numberline {25.8.3}Curves}{760}{subsection.25.8.3}
+\contentsline {subsection}{\numberline {25.8.3}Curves}{761}{subsection.25.8.3}
 \contentsline {subsection}{\numberline {25.8.4}Implicit functions}{762}{subsection.25.8.4}
 \contentsline {section}{\numberline {25.9}$\mathbb R^3$ space}{762}{section.25.9}
 \contentsline {subsection}{\numberline {25.9.1}Cross product in $\mathbb R^3$ space}{762}{subsection.25.9.1}
 \contentsline {subsection}{\numberline {25.9.2}Triple scalar product in $\mathbb R^3$ space}{762}{subsection.25.9.2}
 \contentsline {section}{\numberline {25.10}Ruler and Compass Constructions}{762}{section.25.10}
-\contentsline {section}{\numberline {25.11}Other Problems}{771}{section.25.11}
-\contentsline {subsection}{\numberline {25.11.1}Space division by planes}{771}{subsection.25.11.1}
+\contentsline {section}{\numberline {25.11}Other Problems}{772}{section.25.11}
+\contentsline {subsection}{\numberline {25.11.1}Space division by planes}{772}{subsection.25.11.1}
+\contentsline {section}{\numberline {25.12}Problems}{772}{section.25.12}
 \contentsline {chapter}{\numberline {26}Spherical Geometry}{773}{chapter.26}
 \contentsline {chapter}{\numberline {27}Hyperbolic Geometry}{775}{chapter.27}
 \contentsline {chapter}{\numberline {28}Differential Geometry}{777}{chapter.28}
@@ -902,320 +903,320 @@
 \contentsline {subsection}{\numberline {31.12.2}Theoretical problems}{908}{subsection.31.12.2}
 \contentsline {subsection}{\numberline {31.12.3}Random variables}{912}{subsection.31.12.3}
 \contentsline {subsection}{\numberline {31.12.4}Practical problems}{915}{subsection.31.12.4}
-\contentsline {chapter}{\numberline {32}Discrete-time Stochastic Processes}{923}{chapter.32}
-\contentsline {section}{\numberline {32.1}Stochastic processes and filtrations}{923}{section.32.1}
-\contentsline {section}{\numberline {32.2}Stopping times}{923}{section.32.2}
-\contentsline {subsection}{\numberline {32.2.1}Stopped process}{926}{subsection.32.2.1}
-\contentsline {section}{\numberline {32.3}Branching process}{927}{section.32.3}
-\contentsline {section}{\numberline {32.4}Random walks}{929}{section.32.4}
-\contentsline {subsection}{\numberline {32.4.1}Symmetric random walks}{930}{subsection.32.4.1}
-\contentsline {subsection}{\numberline {32.4.2}Asymmetric random walks}{934}{subsection.32.4.2}
-\contentsline {section}{\numberline {32.5}Summary}{935}{section.32.5}
-\contentsline {section}{\numberline {32.6}Problems}{935}{section.32.6}
-\contentsline {subsection}{\numberline {32.6.1}Random walks}{935}{subsection.32.6.1}
-\contentsline {chapter}{\numberline {33}Continuous-time Stochastic Processes}{937}{chapter.33}
-\contentsline {section}{\numberline {33.1}Stochastic processes and filtrations}{937}{section.33.1}
-\contentsline {subsection}{\numberline {33.1.1}Stochastic processes}{937}{subsection.33.1.1}
-\contentsline {subsection}{\numberline {33.1.2}Filtration and filtered probability space}{937}{subsection.33.1.2}
-\contentsline {subsection}{\numberline {33.1.3}Technical issues in dealing with continuous-time}{938}{subsection.33.1.3}
-\contentsline {subsection}{\numberline {33.1.4}C$\mathaccentV {grave}012{\text {a}}$dl$\mathaccentV {grave}012{\text {a}}$g processes}{939}{subsection.33.1.4}
-\contentsline {subsection}{\numberline {33.1.5}Finite variation processes}{940}{subsection.33.1.5}
-\contentsline {subsection}{\numberline {33.1.6}Finite dimensional distribution}{941}{subsection.33.1.6}
-\contentsline {subsection}{\numberline {33.1.7}Indenpendence of processes}{941}{subsection.33.1.7}
-\contentsline {subsection}{\numberline {33.1.8}Versions and indistinguishability}{942}{subsection.33.1.8}
-\contentsline {subsection}{\numberline {33.1.9}Canonical Processes}{944}{subsection.33.1.9}
-\contentsline {section}{\numberline {33.2}Stopping time}{945}{section.33.2}
-\contentsline {subsection}{\numberline {33.2.1}Stopping time}{945}{subsection.33.2.1}
-\contentsline {subsection}{\numberline {33.2.2}Optional time}{947}{subsection.33.2.2}
-\contentsline {subsection}{\numberline {33.2.3}$\sigma $-algebra of stopping time}{947}{subsection.33.2.3}
-\contentsline {subsection}{\numberline {33.2.4}First entry time and first hitting time}{950}{subsection.33.2.4}
-\contentsline {subsection}{\numberline {33.2.5}Stopped processes}{953}{subsection.33.2.5}
-\contentsline {section}{\numberline {33.3}Types of Processes}{954}{section.33.3}
-\contentsline {subsection}{\numberline {33.3.1}Progressive processes}{954}{subsection.33.3.1}
-\contentsline {subsection}{\numberline {33.3.2}Optional processes}{955}{subsection.33.3.2}
-\contentsline {subsection}{\numberline {33.3.3}Previsible processes}{956}{subsection.33.3.3}
-\contentsline {subsection}{\numberline {33.3.4}Locally bounded processes and finite variation integrals}{959}{subsection.33.3.4}
-\contentsline {section}{\numberline {33.4}Convergence of stochastic processes}{965}{section.33.4}
-\contentsline {section}{\numberline {33.5}Other Stochastic Processes}{968}{section.33.5}
-\contentsline {subsection}{\numberline {33.5.1}Gaussian processes}{968}{subsection.33.5.1}
-\contentsline {section}{\numberline {33.6}Summary}{968}{section.33.6}
-\contentsline {subsection}{\numberline {33.6.1}Processes}{968}{subsection.33.6.1}
-\contentsline {section}{\numberline {33.7}Problems}{968}{section.33.7}
-\contentsline {chapter}{\numberline {34}Martingale Theory}{969}{chapter.34}
-\contentsline {section}{\numberline {34.1}Discrete-time Martingales}{969}{section.34.1}
-\contentsline {subsection}{\numberline {34.1.1}Definitions}{969}{subsection.34.1.1}
-\contentsline {subsection}{\numberline {34.1.2}Previsible process and construction of a martingale}{969}{subsection.34.1.2}
-\contentsline {subsection}{\numberline {34.1.3}Optional stopping theorem for bounded stopping time}{971}{subsection.34.1.3}
-\contentsline {subsection}{\numberline {34.1.4}Martingale Convergence Theorem}{975}{subsection.34.1.4}
-\contentsline {subsection}{\numberline {34.1.5}Doob's inequalities and Kolmogorov's inequality}{978}{subsection.34.1.5}
-\contentsline {subsection}{\numberline {34.1.6}Convergence in ${\cal L}^p$ for $p \in (1,\infty )$}{979}{subsection.34.1.6}
-\contentsline {subsection}{\numberline {34.1.7}UI martingale and convergence in ${\cal L}^1$}{981}{subsection.34.1.7}
-\contentsline {subsection}{\numberline {34.1.8}Backward martingales}{983}{subsection.34.1.8}
-\contentsline {section}{\numberline {34.2}Applications of Discrete Time Martingales}{984}{section.34.2}
-\contentsline {subsection}{\numberline {34.2.1}Strong law of large numbers}{984}{subsection.34.2.1}
-\contentsline {subsection}{\numberline {34.2.2}Kakutani's theorem for product martingales}{985}{subsection.34.2.2}
-\contentsline {subsection}{\numberline {34.2.3}Radon-Nikodym theorem}{986}{subsection.34.2.3}
-\contentsline {section}{\numberline {34.3}Continuous-time Martingales}{988}{section.34.3}
-\contentsline {subsection}{\numberline {34.3.1}Definitions}{988}{subsection.34.3.1}
-\contentsline {subsection}{\numberline {34.3.2}Martingale regularization theorem}{989}{subsection.34.3.2}
-\contentsline {subsection}{\numberline {34.3.3}Doob's inequalities}{992}{subsection.34.3.3}
-\contentsline {subsection}{\numberline {34.3.4}Convergence theorems for martingales}{994}{subsection.34.3.4}
-\contentsline {subsection}{\numberline {34.3.5}Optional stopping theorems}{996}{subsection.34.3.5}
-\contentsline {subsection}{\numberline {34.3.6}Convergence of martingale sequence}{998}{subsection.34.3.6}
-\contentsline {section}{\numberline {34.4}Local Martingales}{999}{section.34.4}
-\contentsline {subsection}{\numberline {34.4.1}Definitions}{999}{subsection.34.4.1}
-\contentsline {subsection}{\numberline {34.4.2}The relationship between martingales and local martingales}{1001}{subsection.34.4.2}
-\contentsline {subsection}{\numberline {34.4.3}Local martingale properties}{1004}{subsection.34.4.3}
-\contentsline {subsection}{\numberline {34.4.4}Semimartingales}{1005}{subsection.34.4.4}
-\contentsline {section}{\numberline {34.5}Summary}{1005}{section.34.5}
-\contentsline {subsection}{\numberline {34.5.1}Martingale properties}{1005}{subsection.34.5.1}
-\contentsline {section}{\numberline {34.6}Problems}{1005}{section.34.6}
-\contentsline {subsection}{\numberline {34.6.1}Discrete-time martingales}{1005}{subsection.34.6.1}
-\contentsline {chapter}{\numberline {35}Markov Chains}{1011}{chapter.35}
-\contentsline {section}{\numberline {35.1}Discrete-time Markov Chains}{1011}{section.35.1}
-\contentsline {subsection}{\numberline {35.1.1}Definition and basic facts}{1011}{subsection.35.1.1}
-\contentsline {section}{\numberline {35.2}Continuous-time Markov Chains}{1011}{section.35.2}
-\contentsline {section}{\numberline {35.3}Problems}{1011}{section.35.3}
-\contentsline {subsection}{\numberline {35.3.1}Discrete-time Markov chains}{1011}{subsection.35.3.1}
-\contentsline {subsection}{\numberline {35.3.2}Continuous-time Markov chains}{1017}{subsection.35.3.2}
-\contentsline {chapter}{\numberline {36}Brownian Motions}{1019}{chapter.36}
-\contentsline {section}{\numberline {36.1}History and Definition}{1019}{section.36.1}
-\contentsline {subsection}{\numberline {36.1.1}Definitions}{1019}{subsection.36.1.1}
-\contentsline {subsection}{\numberline {36.1.2}Microscopical approach to Brownian motion}{1020}{subsection.36.1.2}
-\contentsline {subsection}{\numberline {36.1.3}Existence and uniqueness of Brownian motion}{1021}{subsection.36.1.3}
-\contentsline {subsection}{\numberline {36.1.4}Wiener measure and Wiener space}{1023}{subsection.36.1.4}
-\contentsline {section}{\numberline {36.2}Basic Properties of Brownian motions}{1024}{section.36.2}
-\contentsline {subsection}{\numberline {36.2.1}Basic properties}{1024}{subsection.36.2.1}
-\contentsline {subsection}{\numberline {36.2.2}Markov property}{1025}{subsection.36.2.2}
-\contentsline {subsection}{\numberline {36.2.3}Reflection principle}{1029}{subsection.36.2.3}
-\contentsline {subsection}{\numberline {36.2.4}Martingales for Brownian Motion}{1031}{subsection.36.2.4}
-\contentsline {subsection}{\numberline {36.2.5}Maximum, minimum of Brownian motions}{1037}{subsection.36.2.5}
-\contentsline {subsection}{\numberline {36.2.6}Range of Brownian motions}{1039}{subsection.36.2.6}
-\contentsline {subsection}{\numberline {36.2.7}Hitting time of single barrier}{1043}{subsection.36.2.7}
-\contentsline {subsection}{\numberline {36.2.8}Hitting time of double barriers}{1045}{subsection.36.2.8}
-\contentsline {subsection}{\numberline {36.2.9}Recurrence and Transience}{1047}{subsection.36.2.9}
-\contentsline {section}{\numberline {36.3}Advanced Properties of Brownian motions}{1051}{section.36.3}
-\contentsline {subsection}{\numberline {36.3.1}Quadratic variation}{1051}{subsection.36.3.1}
-\contentsline {subsection}{\numberline {36.3.2}Local time of Brownian motion}{1053}{subsection.36.3.2}
-\contentsline {subsection}{\numberline {36.3.3}L\'evy's theorem on distribution identity}{1053}{subsection.36.3.3}
-\contentsline {subsection}{\numberline {36.3.4}L\'evy's arcsine law}{1053}{subsection.36.3.4}
-\contentsline {section}{\numberline {36.4}The Relationship between Random Walks and Brownian Motions}{1055}{section.36.4}
-\contentsline {subsection}{\numberline {36.4.1}Skorokhod embedding theorem}{1055}{subsection.36.4.1}
-\contentsline {subsection}{\numberline {36.4.2}Donsker's invariance principle}{1056}{subsection.36.4.2}
-\contentsline {section}{\numberline {36.5}Conditioned Brownian Motion and Brownian Bridge}{1061}{section.36.5}
-\contentsline {subsection}{\numberline {36.5.1}Conditioned Brownian motion}{1061}{subsection.36.5.1}
-\contentsline {subsection}{\numberline {36.5.2}Brownian bridge}{1062}{subsection.36.5.2}
-\contentsline {section}{\numberline {36.6}Brownian Motion with Drift}{1063}{section.36.6}
-\contentsline {subsection}{\numberline {36.6.1}Maximum and minimum of Brownian motion with drift}{1063}{subsection.36.6.1}
-\contentsline {subsection}{\numberline {36.6.2}Range of Brownian motion with drift}{1067}{subsection.36.6.2}
-\contentsline {subsection}{\numberline {36.6.3}Hitting time of single barrier}{1071}{subsection.36.6.3}
-\contentsline {subsection}{\numberline {36.6.4}Hitting time of double barriers for Brownian motion with drift}{1072}{subsection.36.6.4}
-\contentsline {section}{\numberline {36.7}Problems}{1078}{section.36.7}
-\contentsline {chapter}{\numberline {37}Markov Processes}{1081}{chapter.37}
-\contentsline {section}{\numberline {37.1}Markov Processes}{1081}{section.37.1}
-\contentsline {subsection}{\numberline {37.1.1}Markov transition kernel and transition density}{1081}{subsection.37.1.1}
-\contentsline {subsection}{\numberline {37.1.2}Markov processes}{1082}{subsection.37.1.2}
-\contentsline {subsection}{\numberline {37.1.3}Transformation of Markov process}{1084}{subsection.37.1.3}
-\contentsline {section}{\numberline {37.2}Homogeneous Markov process}{1086}{section.37.2}
-\contentsline {subsection}{\numberline {37.2.1}Homogeneous Markov process}{1086}{subsection.37.2.1}
-\contentsline {subsection}{\numberline {37.2.2}Transformation of homogeneous Markov process}{1088}{subsection.37.2.2}
-\contentsline {section}{\numberline {37.3}Strong Markov process}{1090}{section.37.3}
-\contentsline {section}{\numberline {37.4}Brownian Motions}{1090}{section.37.4}
-\contentsline {subsection}{\numberline {37.4.1}Brownian motion is strong Markov process}{1090}{subsection.37.4.1}
-\contentsline {subsection}{\numberline {37.4.2}Transformation of Brownian motion}{1093}{subsection.37.4.2}
-\contentsline {subsection}{\numberline {37.4.3}Brownian motion is a strong Markov process}{1094}{subsection.37.4.3}
-\contentsline {section}{\numberline {37.5}SDE and PDE}{1094}{section.37.5}
-\contentsline {subsection}{\numberline {37.5.1}Infinitesimal generator}{1094}{subsection.37.5.1}
-\contentsline {subsection}{\numberline {37.5.2}Kolmogorov Backward and Forward Equations}{1095}{subsection.37.5.2}
-\contentsline {section}{\numberline {37.6}Feller Processes}{1099}{section.37.6}
-\contentsline {section}{\numberline {37.7}Problems}{1099}{section.37.7}
-\contentsline {chapter}{\numberline {38}L\'evy\ Processes and Infinitely Divisible Distributions}{1101}{chapter.38}
-\contentsline {section}{\numberline {38.1}L\'evy\ Processes}{1101}{section.38.1}
-\contentsline {section}{\numberline {38.2}Poisson Processes}{1101}{section.38.2}
-\contentsline {chapter}{\numberline {39}Stochastic Calculus}{1103}{chapter.39}
-\contentsline {section}{\numberline {39.1}It\^o Stochastic Integral}{1103}{section.39.1}
-\contentsline {subsection}{\numberline {39.1.1}Simple integrands}{1103}{subsection.39.1.1}
-\contentsline {subsection}{\numberline {39.1.2}${\cal M}^2$ properties}{1104}{subsection.39.1.2}
-\contentsline {subsection}{\numberline {39.1.3}Stochastic integral for simple processes}{1108}{subsection.39.1.3}
-\contentsline {subsection}{\numberline {39.1.4}Quadratic variation and covariation of ${\cal M}_c^2$}{1110}{subsection.39.1.4}
-\contentsline {subsection}{\numberline {39.1.5}It\^o stochastic integrals for ${\cal L}^2(M)$ with $M\in {\cal M}^2_c$}{1115}{subsection.39.1.5}
-\contentsline {subsection}{\numberline {39.1.6}Stochastic integrals for locally bounded previsible processes with $M\in {\cal M}_{c,loc}$}{1119}{subsection.39.1.6}
-\contentsline {subsection}{\numberline {39.1.7}Covariation of continuous local martingales}{1123}{subsection.39.1.7}
-\contentsline {subsection}{\numberline {39.1.8}Stochastic integral for semimartingales}{1127}{subsection.39.1.8}
-\contentsline {subsection}{\numberline {39.1.9}It\^o's formula for continuous semimartingale}{1131}{subsection.39.1.9}
-\contentsline {section}{\numberline {39.2}Applications to Brownian Motion and Martingales}{1135}{section.39.2}
-\contentsline {subsection}{\numberline {39.2.1}Brownian martingales}{1135}{subsection.39.2.1}
-\contentsline {subsection}{\numberline {39.2.2}Dubins-Schwarz theorem}{1137}{subsection.39.2.2}
-\contentsline {subsection}{\numberline {39.2.3}Girsanov's theorem}{1140}{subsection.39.2.3}
-\contentsline {subsection}{\numberline {39.2.4}Martingale representation theorem}{1144}{subsection.39.2.4}
-\contentsline {subsection}{\numberline {39.2.5}Local times}{1145}{subsection.39.2.5}
-\contentsline {section}{\numberline {39.3}Problems}{1145}{section.39.3}
-\contentsline {chapter}{\numberline {40}Stochastic Differential Equations}{1147}{chapter.40}
-\contentsline {section}{\numberline {40.1}Applications}{1147}{section.40.1}
-\contentsline {subsection}{\numberline {40.1.1}Feynman-Kac formula}{1147}{subsection.40.1.1}
-\contentsline {subsection}{\numberline {40.1.2}Vasicek Model}{1147}{subsection.40.1.2}
-\contentsline {subsection}{\numberline {40.1.3}Reflecting Brownian motion}{1147}{subsection.40.1.3}
-\contentsline {section}{\numberline {40.2}Problems}{1147}{section.40.2}
-\contentsline {chapter}{\numberline {41}Diffusion Processes}{1149}{chapter.41}
-\contentsline {section}{\numberline {41.1}Ornstein-Uhlenbeck Process}{1149}{section.41.1}
-\contentsline {subsection}{\numberline {41.1.1}Ornstein-Uhlenbeck process}{1149}{subsection.41.1.1}
-\contentsline {subsection}{\numberline {41.1.2}Parameters estimation of OU process}{1150}{subsection.41.1.2}
-\contentsline {section}{\numberline {41.2}Cox-Ingersoll-Ross Process}{1153}{section.41.2}
-\contentsline {section}{\numberline {41.3}Bessel Processes}{1153}{section.41.3}
-\contentsline {section}{\numberline {41.4}Legendre Process}{1154}{section.41.4}
-\contentsline {section}{\numberline {41.5}Jacobi Process}{1154}{section.41.5}
-\contentsline {subsection}{\numberline {41.5.1}SDE}{1154}{subsection.41.5.1}
-\contentsline {subsection}{\numberline {41.5.2}Parameters calibration of Jacobi process}{1155}{subsection.41.5.2}
-\contentsline {section}{\numberline {41.6}Planar Brownian motion}{1155}{section.41.6}
-\contentsline {section}{\numberline {41.7}Spherical Brownian Motion}{1156}{section.41.7}
-\contentsline {part}{X\hspace {1em}Statistics}{1159}{part.10}
-\contentsline {chapter}{\numberline {42}Distributions}{1161}{chapter.42}
-\contentsline {section}{\numberline {42.1}Distributions Related to Poisson Distribution}{1161}{section.42.1}
-\contentsline {subsection}{\numberline {42.1.1}Skellam distribution}{1161}{subsection.42.1.1}
-\contentsline {section}{\numberline {42.2}Distributions Related to Uniform Distribution}{1162}{section.42.2}
-\contentsline {subsection}{\numberline {42.2.1}Distributions in spherical space}{1162}{subsection.42.2.1}
-\contentsline {section}{\numberline {42.3}Distributions Related to Gaussian Distribution}{1163}{section.42.3}
-\contentsline {subsection}{\numberline {42.3.1}Gaussian distribution}{1163}{subsection.42.3.1}
-\contentsline {subsection}{\numberline {42.3.2}Chi-squared random variables}{1163}{subsection.42.3.2}
-\contentsline {subsection}{\numberline {42.3.3}$F$-distribution}{1169}{subsection.42.3.3}
-\contentsline {subsection}{\numberline {42.3.4}Weibull random variables}{1171}{subsection.42.3.4}
-\contentsline {section}{\numberline {42.4}Logistic Distribution}{1173}{section.42.4}
-\contentsline {section}{\numberline {42.5}Distributions Related to Gamma Distribution}{1174}{section.42.5}
-\contentsline {subsection}{\numberline {42.5.1}Generalized gamma distribution}{1174}{subsection.42.5.1}
-\contentsline {subsection}{\numberline {42.5.2}Inverse gamma distribution}{1175}{subsection.42.5.2}
-\contentsline {subsection}{\numberline {42.5.3}L\'evy\ distribution}{1176}{subsection.42.5.3}
-\contentsline {subsection}{\numberline {42.5.4}Beta random variables}{1178}{subsection.42.5.4}
-\contentsline {subsection}{\numberline {42.5.5}Beta prime distribution}{1180}{subsection.42.5.5}
-\contentsline {subsection}{\numberline {42.5.6}Generalized beta prime distribution}{1181}{subsection.42.5.6}
-\contentsline {section}{\numberline {42.6}Student-$t$ Distribution}{1182}{section.42.6}
-\contentsline {subsection}{\numberline {42.6.1}Standard Student-$t$ random variables}{1182}{subsection.42.6.1}
-\contentsline {subsection}{\numberline {42.6.2}Non-central scaled $t$-distribution}{1185}{subsection.42.6.2}
-\contentsline {subsection}{\numberline {42.6.3}Skewed $t$-disbribution}{1185}{subsection.42.6.3}
-\contentsline {section}{\numberline {42.7}Inverse Gaussian Family}{1186}{section.42.7}
-\contentsline {subsection}{\numberline {42.7.1}Inverse Gaussian random variables}{1186}{subsection.42.7.1}
-\contentsline {subsection}{\numberline {42.7.2}Generalized inverse Gaussian random variables}{1189}{subsection.42.7.2}
-\contentsline {section}{\numberline {42.8}Generalized Extreme Value Distribution}{1191}{section.42.8}
-\contentsline {subsection}{\numberline {42.8.1}Fr\'echet distribution}{1191}{subsection.42.8.1}
-\contentsline {subsection}{\numberline {42.8.2}Gumbel distribution}{1191}{subsection.42.8.2}
-\contentsline {subsection}{\numberline {42.8.3}Reversed Weibull distribution}{1193}{subsection.42.8.3}
-\contentsline {subsection}{\numberline {42.8.4}Generalized extreme value distribution}{1193}{subsection.42.8.4}
-\contentsline {section}{\numberline {42.9}Generalized Pareto Family}{1194}{section.42.9}
-\contentsline {subsection}{\numberline {42.9.1}Generalized Pareto distribution}{1194}{subsection.42.9.1}
-\contentsline {section}{\numberline {42.10}Generalized Hyperbolic Family}{1194}{section.42.10}
-\contentsline {subsection}{\numberline {42.10.1}Normal-inverse Gaussian random variables}{1194}{subsection.42.10.1}
-\contentsline {subsection}{\numberline {42.10.2}Variance-gamma random variables}{1195}{subsection.42.10.2}
-\contentsline {subsection}{\numberline {42.10.3}Hyperbolic random variables}{1195}{subsection.42.10.3}
-\contentsline {subsection}{\numberline {42.10.4}Generalized hyperbolic skewed $t$ random variables}{1197}{subsection.42.10.4}
-\contentsline {subsection}{\numberline {42.10.5}Generalized hyperbolic random variables}{1201}{subsection.42.10.5}
-\contentsline {subsection}{\numberline {42.10.6}Relation between the members of generalized hyperbolic family}{1203}{subsection.42.10.6}
-\contentsline {section}{\numberline {42.11}Truncated distribution}{1204}{section.42.11}
-\contentsline {subsection}{\numberline {42.11.1}Truncated normal distribution}{1204}{subsection.42.11.1}
-\contentsline {subsection}{\numberline {42.11.2}Correlation of truncated distribution}{1205}{subsection.42.11.2}
-\contentsline {section}{\numberline {42.12}Limit Distributions}{1207}{section.42.12}
-\contentsline {section}{\numberline {42.13}Domain of Attraction of Distribution}{1207}{section.42.13}
-\contentsline {subsection}{\numberline {42.13.1}Domain of attraction}{1207}{subsection.42.13.1}
-\contentsline {section}{\numberline {42.14}Summary}{1207}{section.42.14}
-\contentsline {chapter}{\numberline {43}Statistics}{1209}{chapter.43}
-\contentsline {section}{\numberline {43.1}Estimators and Bias}{1209}{section.43.1}
-\contentsline {section}{\numberline {43.2}Fisher information}{1209}{section.43.2}
-\contentsline {subsection}{\numberline {43.2.1}Fisher information}{1209}{subsection.43.2.1}
-\contentsline {subsection}{\numberline {43.2.2}Fisher information matrix}{1212}{subsection.43.2.2}
-\contentsline {subsection}{\numberline {43.2.3}Cram\'er-Rao lower bound}{1214}{subsection.43.2.3}
-\contentsline {section}{\numberline {43.3}Maximum Likelihood Estimation}{1214}{section.43.3}
-\contentsline {subsection}{\numberline {43.3.1}Likelihood function}{1214}{subsection.43.3.1}
-\contentsline {subsection}{\numberline {43.3.2}Estimation of distributions}{1214}{subsection.43.3.2}
-\contentsline {section}{\numberline {43.4}Linear Regression Model}{1217}{section.43.4}
-\contentsline {subsection}{\numberline {43.4.1}Linear model}{1217}{subsection.43.4.1}
-\contentsline {subsection}{\numberline {43.4.2}Cochran's theorem}{1218}{subsection.43.4.2}
-\contentsline {subsection}{\numberline {43.4.3}MLE for linear model}{1220}{subsection.43.4.3}
-\contentsline {subsection}{\numberline {43.4.4}Ordinary least squares}{1222}{subsection.43.4.4}
-\contentsline {subsection}{\numberline {43.4.5}Ordinary least square with constraints}{1225}{subsection.43.4.5}
-\contentsline {subsection}{\numberline {43.4.6}One-way ANOVA}{1227}{subsection.43.4.6}
-\contentsline {subsection}{\numberline {43.4.7}Two-way ANOVA}{1229}{subsection.43.4.7}
-\contentsline {subsection}{\numberline {43.4.8}Generalized least squares}{1229}{subsection.43.4.8}
-\contentsline {section}{\numberline {43.5}Sample Statistics}{1229}{section.43.5}
-\contentsline {subsection}{\numberline {43.5.1}Distribution of sample variance}{1229}{subsection.43.5.1}
-\contentsline {section}{\numberline {43.6}Other Theorems}{1230}{section.43.6}
-\contentsline {subsection}{\numberline {43.6.1}EM algorithm}{1230}{subsection.43.6.1}
-\contentsline {section}{\numberline {43.7}Principal Component Analysis (PCA)}{1230}{section.43.7}
-\contentsline {chapter}{\numberline {44}Non-parametric Estimation}{1233}{chapter.44}
-\contentsline {section}{\numberline {44.1}Empirical distribution}{1233}{section.44.1}
-\contentsline {subsection}{\numberline {44.1.1}Empirical distribution function}{1233}{subsection.44.1.1}
-\contentsline {subsection}{\numberline {44.1.2}Kolmogorov-Smirnov limit theorem}{1233}{subsection.44.1.2}
-\contentsline {chapter}{\numberline {45}Statistical Tests}{1247}{chapter.45}
-\contentsline {section}{\numberline {45.1}Basic Tests}{1247}{section.45.1}
-\contentsline {subsection}{\numberline {45.1.1}$T$-test}{1247}{subsection.45.1.1}
-\contentsline {subsection}{\numberline {45.1.2}$F$-test}{1247}{subsection.45.1.2}
-\contentsline {section}{\numberline {45.2}Analysis of Variance}{1247}{section.45.2}
-\contentsline {subsection}{\numberline {45.2.1}Kruskal-Wallis test}{1247}{subsection.45.2.1}
-\contentsline {section}{\numberline {45.3}Distribution Tests}{1247}{section.45.3}
-\contentsline {subsection}{\numberline {45.3.1}Kolmogorov-Smirnov test}{1247}{subsection.45.3.1}
-\contentsline {section}{\numberline {45.4}Unit Root test}{1248}{section.45.4}
-\contentsline {subsection}{\numberline {45.4.1}Augmented Dickey-Fuller test}{1248}{subsection.45.4.1}
-\contentsline {subsection}{\numberline {45.4.2}Optimal finite sample test}{1248}{subsection.45.4.2}
-\contentsline {subsection}{\numberline {45.4.3}Phillips-Perron test}{1248}{subsection.45.4.3}
-\contentsline {section}{\numberline {45.5}Cointegration Tests}{1248}{section.45.5}
-\contentsline {subsection}{\numberline {45.5.1}Engle-Granger cointegration test}{1248}{subsection.45.5.1}
-\contentsline {subsection}{\numberline {45.5.2}Johansen cointegration test}{1248}{subsection.45.5.2}
-\contentsline {section}{\numberline {45.6}Test for Detecting Non-randomness}{1248}{section.45.6}
-\contentsline {subsection}{\numberline {45.6.1}Wald-Wolfowitz runs test}{1248}{subsection.45.6.1}
-\contentsline {chapter}{\numberline {46}Extreme Value Theory}{1253}{chapter.46}
-\contentsline {section}{\numberline {46.1}Limit Distributions and Domains of Attraction}{1253}{section.46.1}
-\contentsline {subsection}{\numberline {46.1.1}Motivation}{1253}{subsection.46.1.1}
-\contentsline {subsection}{\numberline {46.1.2}Extreme value distribution}{1254}{subsection.46.1.2}
-\contentsline {subsection}{\numberline {46.1.3}Parametrization of extreme value distribution}{1258}{subsection.46.1.3}
-\contentsline {section}{\numberline {46.2}Domains of attraction of GEV}{1259}{section.46.2}
-\contentsline {section}{\numberline {46.3}Second Extreme Value Theory - Peak Over Threshold}{1260}{section.46.3}
-\contentsline {subsection}{\numberline {46.3.1}Domains of attraction of GPD}{1261}{subsection.46.3.1}
-\contentsline {chapter}{\numberline {47}Order Statistic}{1263}{chapter.47}
-\contentsline {section}{\numberline {47.1}Basic Distribution Theory}{1263}{section.47.1}
-\contentsline {subsection}{\numberline {47.1.1}Order statistic}{1263}{subsection.47.1.1}
-\contentsline {subsection}{\numberline {47.1.2}Inverse distribution function of order statistic}{1263}{subsection.47.1.2}
-\contentsline {subsection}{\numberline {47.1.3}Distribution of an order statistic}{1264}{subsection.47.1.3}
-\contentsline {subsection}{\numberline {47.1.4}Distribution of two order statistic}{1266}{subsection.47.1.4}
-\contentsline {section}{\numberline {47.2}Order Statistics of Specific Distribution}{1267}{section.47.2}
-\contentsline {subsection}{\numberline {47.2.1}Exponential distribution}{1267}{subsection.47.2.1}
-\contentsline {subsection}{\numberline {47.2.2}Uniform distribution}{1268}{subsection.47.2.2}
-\contentsline {section}{\numberline {47.3}Asymptotic Theory of Order Statistic}{1270}{section.47.3}
-\contentsline {subsection}{\numberline {47.3.1}Central and intermediate order statistic}{1270}{subsection.47.3.1}
-\contentsline {section}{\numberline {47.4}Problems}{1272}{section.47.4}
-\contentsline {subsection}{\numberline {47.4.1}Order statistics of specific distributions}{1272}{subsection.47.4.1}
-\contentsline {chapter}{\numberline {48}Stable Distribution}{1273}{chapter.48}
-\contentsline {section}{\numberline {48.1}Stable Distribution}{1273}{section.48.1}
-\contentsline {subsection}{\numberline {48.1.1}Definition of stable distribution}{1273}{subsection.48.1.1}
-\contentsline {subsection}{\numberline {48.1.2}Examples of stable distribution}{1276}{subsection.48.1.2}
-\contentsline {section}{\numberline {48.2}Characteristic function of stable distribution}{1276}{section.48.2}
-\contentsline {section}{\numberline {48.3}Domain of Attraction of Stable Distribution}{1276}{section.48.3}
-\contentsline {section}{\numberline {48.4}Generalized Central Limit Theorem}{1276}{section.48.4}
-\contentsline {part}{XI\hspace {1em}Optimization}{1279}{part.11}
-\contentsline {chapter}{\numberline {49}Optimization}{1281}{chapter.49}
-\contentsline {section}{\numberline {49.1}Problems}{1281}{section.49.1}
-\contentsline {part}{XII\hspace {1em}Financial Mathematics}{1283}{part.12}
-\contentsline {chapter}{\numberline {50}Model}{1285}{chapter.50}
-\contentsline {section}{\numberline {50.1}Black-Scholes Model}{1285}{section.50.1}
-\contentsline {section}{\numberline {50.2}Utility Theory}{1285}{section.50.2}
-\contentsline {chapter}{\numberline {51}Options}{1287}{chapter.51}
-\contentsline {section}{\numberline {51.1}Black-Scholes Model}{1287}{section.51.1}
-\contentsline {section}{\numberline {51.2}Greeks}{1287}{section.51.2}
-\contentsline {section}{\numberline {51.3}Barrier Options}{1287}{section.51.3}
-\contentsline {section}{\numberline {51.4}Lookback Options}{1287}{section.51.4}
-\contentsline {section}{\numberline {51.5}Hedging}{1290}{section.51.5}
-\contentsline {subsection}{\numberline {51.5.1}Put-call Symmetry}{1290}{subsection.51.5.1}
-\contentsline {section}{\numberline {51.6}American options}{1290}{section.51.6}
-\contentsline {section}{\numberline {51.7}Path Dependent options}{1290}{section.51.7}
-\contentsline {section}{\numberline {51.8}Heston Model}{1290}{section.51.8}
-\contentsline {chapter}{\numberline {52}Volatility}{1291}{chapter.52}
-\contentsline {section}{\numberline {52.1}VIX}{1291}{section.52.1}
-\contentsline {subsection}{\numberline {52.1.1}Variance swaps}{1291}{subsection.52.1.1}
-\contentsline {chapter}{\numberline {53}Contracting Theory}{1293}{chapter.53}
-\contentsline {chapter}{\numberline {54}Risk}{1295}{chapter.54}
-\contentsline {section}{\numberline {54.1}Value at Risk}{1295}{section.54.1}
-\contentsline {subsection}{\numberline {54.1.1}Long Gamma position}{1295}{subsection.54.1.1}
-\contentsline {subsection}{\numberline {54.1.2}Statistical error of VaR}{1295}{subsection.54.1.2}
-\contentsline {subsection}{\numberline {54.1.3}Estimation statistical error of VaR under empirical distribution}{1296}{subsection.54.1.3}
-\contentsline {section}{\numberline {54.2}VaR and ES derived by EVT}{1296}{section.54.2}
-\contentsline {subsection}{\numberline {54.2.1}ES derived from MV}{1296}{subsection.54.2.1}
-\contentsline {subsection}{\numberline {54.2.2}VaR and ES derived from POT}{1296}{subsection.54.2.2}
-\contentsline {part}{XIII\hspace {1em}Appendix}{1299}{part.13}
-\contentsline {chapter}{Bibliography}{1301}{section*.11}
-\contentsline {chapter}{Index}{1307}{section*.13}
+\contentsline {chapter}{\numberline {32}Discrete-time Stochastic Processes}{925}{chapter.32}
+\contentsline {section}{\numberline {32.1}Stochastic processes and filtrations}{925}{section.32.1}
+\contentsline {section}{\numberline {32.2}Stopping times}{925}{section.32.2}
+\contentsline {subsection}{\numberline {32.2.1}Stopped process}{928}{subsection.32.2.1}
+\contentsline {section}{\numberline {32.3}Branching process}{929}{section.32.3}
+\contentsline {section}{\numberline {32.4}Random walks}{931}{section.32.4}
+\contentsline {subsection}{\numberline {32.4.1}Symmetric random walks}{932}{subsection.32.4.1}
+\contentsline {subsection}{\numberline {32.4.2}Asymmetric random walks}{936}{subsection.32.4.2}
+\contentsline {section}{\numberline {32.5}Summary}{937}{section.32.5}
+\contentsline {section}{\numberline {32.6}Problems}{937}{section.32.6}
+\contentsline {subsection}{\numberline {32.6.1}Random walks}{937}{subsection.32.6.1}
+\contentsline {chapter}{\numberline {33}Continuous-time Stochastic Processes}{939}{chapter.33}
+\contentsline {section}{\numberline {33.1}Stochastic processes and filtrations}{939}{section.33.1}
+\contentsline {subsection}{\numberline {33.1.1}Stochastic processes}{939}{subsection.33.1.1}
+\contentsline {subsection}{\numberline {33.1.2}Filtration and filtered probability space}{939}{subsection.33.1.2}
+\contentsline {subsection}{\numberline {33.1.3}Technical issues in dealing with continuous-time}{940}{subsection.33.1.3}
+\contentsline {subsection}{\numberline {33.1.4}C$\mathaccentV {grave}012{\text {a}}$dl$\mathaccentV {grave}012{\text {a}}$g processes}{941}{subsection.33.1.4}
+\contentsline {subsection}{\numberline {33.1.5}Finite variation processes}{942}{subsection.33.1.5}
+\contentsline {subsection}{\numberline {33.1.6}Finite dimensional distribution}{943}{subsection.33.1.6}
+\contentsline {subsection}{\numberline {33.1.7}Indenpendence of processes}{943}{subsection.33.1.7}
+\contentsline {subsection}{\numberline {33.1.8}Versions and indistinguishability}{944}{subsection.33.1.8}
+\contentsline {subsection}{\numberline {33.1.9}Canonical Processes}{946}{subsection.33.1.9}
+\contentsline {section}{\numberline {33.2}Stopping time}{947}{section.33.2}
+\contentsline {subsection}{\numberline {33.2.1}Stopping time}{947}{subsection.33.2.1}
+\contentsline {subsection}{\numberline {33.2.2}Optional time}{949}{subsection.33.2.2}
+\contentsline {subsection}{\numberline {33.2.3}$\sigma $-algebra of stopping time}{949}{subsection.33.2.3}
+\contentsline {subsection}{\numberline {33.2.4}First entry time and first hitting time}{952}{subsection.33.2.4}
+\contentsline {subsection}{\numberline {33.2.5}Stopped processes}{955}{subsection.33.2.5}
+\contentsline {section}{\numberline {33.3}Types of Processes}{956}{section.33.3}
+\contentsline {subsection}{\numberline {33.3.1}Progressive processes}{956}{subsection.33.3.1}
+\contentsline {subsection}{\numberline {33.3.2}Optional processes}{957}{subsection.33.3.2}
+\contentsline {subsection}{\numberline {33.3.3}Previsible processes}{958}{subsection.33.3.3}
+\contentsline {subsection}{\numberline {33.3.4}Locally bounded processes and finite variation integrals}{961}{subsection.33.3.4}
+\contentsline {section}{\numberline {33.4}Convergence of stochastic processes}{967}{section.33.4}
+\contentsline {section}{\numberline {33.5}Other Stochastic Processes}{970}{section.33.5}
+\contentsline {subsection}{\numberline {33.5.1}Gaussian processes}{970}{subsection.33.5.1}
+\contentsline {section}{\numberline {33.6}Summary}{970}{section.33.6}
+\contentsline {subsection}{\numberline {33.6.1}Processes}{970}{subsection.33.6.1}
+\contentsline {section}{\numberline {33.7}Problems}{970}{section.33.7}
+\contentsline {chapter}{\numberline {34}Martingale Theory}{971}{chapter.34}
+\contentsline {section}{\numberline {34.1}Discrete-time Martingales}{971}{section.34.1}
+\contentsline {subsection}{\numberline {34.1.1}Definitions}{971}{subsection.34.1.1}
+\contentsline {subsection}{\numberline {34.1.2}Previsible process and construction of a martingale}{971}{subsection.34.1.2}
+\contentsline {subsection}{\numberline {34.1.3}Optional stopping theorem for bounded stopping time}{973}{subsection.34.1.3}
+\contentsline {subsection}{\numberline {34.1.4}Martingale Convergence Theorem}{977}{subsection.34.1.4}
+\contentsline {subsection}{\numberline {34.1.5}Doob's inequalities and Kolmogorov's inequality}{980}{subsection.34.1.5}
+\contentsline {subsection}{\numberline {34.1.6}Convergence in ${\cal L}^p$ for $p \in (1,\infty )$}{981}{subsection.34.1.6}
+\contentsline {subsection}{\numberline {34.1.7}UI martingale and convergence in ${\cal L}^1$}{983}{subsection.34.1.7}
+\contentsline {subsection}{\numberline {34.1.8}Backward martingales}{985}{subsection.34.1.8}
+\contentsline {section}{\numberline {34.2}Applications of Discrete Time Martingales}{986}{section.34.2}
+\contentsline {subsection}{\numberline {34.2.1}Strong law of large numbers}{986}{subsection.34.2.1}
+\contentsline {subsection}{\numberline {34.2.2}Kakutani's theorem for product martingales}{987}{subsection.34.2.2}
+\contentsline {subsection}{\numberline {34.2.3}Radon-Nikodym theorem}{988}{subsection.34.2.3}
+\contentsline {section}{\numberline {34.3}Continuous-time Martingales}{990}{section.34.3}
+\contentsline {subsection}{\numberline {34.3.1}Definitions}{990}{subsection.34.3.1}
+\contentsline {subsection}{\numberline {34.3.2}Martingale regularization theorem}{991}{subsection.34.3.2}
+\contentsline {subsection}{\numberline {34.3.3}Doob's inequalities}{994}{subsection.34.3.3}
+\contentsline {subsection}{\numberline {34.3.4}Convergence theorems for martingales}{996}{subsection.34.3.4}
+\contentsline {subsection}{\numberline {34.3.5}Optional stopping theorems}{998}{subsection.34.3.5}
+\contentsline {subsection}{\numberline {34.3.6}Convergence of martingale sequence}{1000}{subsection.34.3.6}
+\contentsline {section}{\numberline {34.4}Local Martingales}{1001}{section.34.4}
+\contentsline {subsection}{\numberline {34.4.1}Definitions}{1001}{subsection.34.4.1}
+\contentsline {subsection}{\numberline {34.4.2}The relationship between martingales and local martingales}{1003}{subsection.34.4.2}
+\contentsline {subsection}{\numberline {34.4.3}Local martingale properties}{1006}{subsection.34.4.3}
+\contentsline {subsection}{\numberline {34.4.4}Semimartingales}{1007}{subsection.34.4.4}
+\contentsline {section}{\numberline {34.5}Summary}{1007}{section.34.5}
+\contentsline {subsection}{\numberline {34.5.1}Martingale properties}{1007}{subsection.34.5.1}
+\contentsline {section}{\numberline {34.6}Problems}{1007}{section.34.6}
+\contentsline {subsection}{\numberline {34.6.1}Discrete-time martingales}{1007}{subsection.34.6.1}
+\contentsline {chapter}{\numberline {35}Markov Chains}{1013}{chapter.35}
+\contentsline {section}{\numberline {35.1}Discrete-time Markov Chains}{1013}{section.35.1}
+\contentsline {subsection}{\numberline {35.1.1}Definition and basic facts}{1013}{subsection.35.1.1}
+\contentsline {section}{\numberline {35.2}Continuous-time Markov Chains}{1013}{section.35.2}
+\contentsline {section}{\numberline {35.3}Problems}{1013}{section.35.3}
+\contentsline {subsection}{\numberline {35.3.1}Discrete-time Markov chains}{1013}{subsection.35.3.1}
+\contentsline {subsection}{\numberline {35.3.2}Continuous-time Markov chains}{1019}{subsection.35.3.2}
+\contentsline {chapter}{\numberline {36}Brownian Motions}{1021}{chapter.36}
+\contentsline {section}{\numberline {36.1}History and Definition}{1021}{section.36.1}
+\contentsline {subsection}{\numberline {36.1.1}Definitions}{1021}{subsection.36.1.1}
+\contentsline {subsection}{\numberline {36.1.2}Microscopical approach to Brownian motion}{1022}{subsection.36.1.2}
+\contentsline {subsection}{\numberline {36.1.3}Existence and uniqueness of Brownian motion}{1023}{subsection.36.1.3}
+\contentsline {subsection}{\numberline {36.1.4}Wiener measure and Wiener space}{1025}{subsection.36.1.4}
+\contentsline {section}{\numberline {36.2}Basic Properties of Brownian motions}{1026}{section.36.2}
+\contentsline {subsection}{\numberline {36.2.1}Basic properties}{1026}{subsection.36.2.1}
+\contentsline {subsection}{\numberline {36.2.2}Markov property}{1027}{subsection.36.2.2}
+\contentsline {subsection}{\numberline {36.2.3}Reflection principle}{1031}{subsection.36.2.3}
+\contentsline {subsection}{\numberline {36.2.4}Martingales for Brownian Motion}{1033}{subsection.36.2.4}
+\contentsline {subsection}{\numberline {36.2.5}Maximum, minimum of Brownian motions}{1039}{subsection.36.2.5}
+\contentsline {subsection}{\numberline {36.2.6}Range of Brownian motions}{1041}{subsection.36.2.6}
+\contentsline {subsection}{\numberline {36.2.7}Hitting time of single barrier}{1045}{subsection.36.2.7}
+\contentsline {subsection}{\numberline {36.2.8}Hitting time of double barriers}{1047}{subsection.36.2.8}
+\contentsline {subsection}{\numberline {36.2.9}Recurrence and Transience}{1049}{subsection.36.2.9}
+\contentsline {section}{\numberline {36.3}Advanced Properties of Brownian motions}{1053}{section.36.3}
+\contentsline {subsection}{\numberline {36.3.1}Quadratic variation}{1053}{subsection.36.3.1}
+\contentsline {subsection}{\numberline {36.3.2}Local time of Brownian motion}{1055}{subsection.36.3.2}
+\contentsline {subsection}{\numberline {36.3.3}L\'evy's theorem on distribution identity}{1055}{subsection.36.3.3}
+\contentsline {subsection}{\numberline {36.3.4}L\'evy's arcsine law}{1055}{subsection.36.3.4}
+\contentsline {section}{\numberline {36.4}The Relationship between Random Walks and Brownian Motions}{1057}{section.36.4}
+\contentsline {subsection}{\numberline {36.4.1}Skorokhod embedding theorem}{1057}{subsection.36.4.1}
+\contentsline {subsection}{\numberline {36.4.2}Donsker's invariance principle}{1058}{subsection.36.4.2}
+\contentsline {section}{\numberline {36.5}Conditioned Brownian Motion and Brownian Bridge}{1063}{section.36.5}
+\contentsline {subsection}{\numberline {36.5.1}Conditioned Brownian motion}{1063}{subsection.36.5.1}
+\contentsline {subsection}{\numberline {36.5.2}Brownian bridge}{1064}{subsection.36.5.2}
+\contentsline {section}{\numberline {36.6}Brownian Motion with Drift}{1065}{section.36.6}
+\contentsline {subsection}{\numberline {36.6.1}Maximum and minimum of Brownian motion with drift}{1065}{subsection.36.6.1}
+\contentsline {subsection}{\numberline {36.6.2}Range of Brownian motion with drift}{1069}{subsection.36.6.2}
+\contentsline {subsection}{\numberline {36.6.3}Hitting time of single barrier}{1073}{subsection.36.6.3}
+\contentsline {subsection}{\numberline {36.6.4}Hitting time of double barriers for Brownian motion with drift}{1074}{subsection.36.6.4}
+\contentsline {section}{\numberline {36.7}Problems}{1080}{section.36.7}
+\contentsline {chapter}{\numberline {37}Markov Processes}{1083}{chapter.37}
+\contentsline {section}{\numberline {37.1}Markov Processes}{1083}{section.37.1}
+\contentsline {subsection}{\numberline {37.1.1}Markov transition kernel and transition density}{1083}{subsection.37.1.1}
+\contentsline {subsection}{\numberline {37.1.2}Markov processes}{1084}{subsection.37.1.2}
+\contentsline {subsection}{\numberline {37.1.3}Transformation of Markov process}{1086}{subsection.37.1.3}
+\contentsline {section}{\numberline {37.2}Homogeneous Markov process}{1088}{section.37.2}
+\contentsline {subsection}{\numberline {37.2.1}Homogeneous Markov process}{1088}{subsection.37.2.1}
+\contentsline {subsection}{\numberline {37.2.2}Transformation of homogeneous Markov process}{1090}{subsection.37.2.2}
+\contentsline {section}{\numberline {37.3}Strong Markov process}{1092}{section.37.3}
+\contentsline {section}{\numberline {37.4}Brownian Motions}{1092}{section.37.4}
+\contentsline {subsection}{\numberline {37.4.1}Brownian motion is strong Markov process}{1092}{subsection.37.4.1}
+\contentsline {subsection}{\numberline {37.4.2}Transformation of Brownian motion}{1095}{subsection.37.4.2}
+\contentsline {subsection}{\numberline {37.4.3}Brownian motion is a strong Markov process}{1095}{subsection.37.4.3}
+\contentsline {section}{\numberline {37.5}SDE and PDE}{1096}{section.37.5}
+\contentsline {subsection}{\numberline {37.5.1}Infinitesimal generator}{1096}{subsection.37.5.1}
+\contentsline {subsection}{\numberline {37.5.2}Kolmogorov Backward and Forward Equations}{1097}{subsection.37.5.2}
+\contentsline {section}{\numberline {37.6}Feller Processes}{1101}{section.37.6}
+\contentsline {section}{\numberline {37.7}Problems}{1101}{section.37.7}
+\contentsline {chapter}{\numberline {38}L\'evy\ Processes and Infinitely Divisible Distributions}{1103}{chapter.38}
+\contentsline {section}{\numberline {38.1}L\'evy\ Processes}{1103}{section.38.1}
+\contentsline {section}{\numberline {38.2}Poisson Processes}{1103}{section.38.2}
+\contentsline {chapter}{\numberline {39}Stochastic Calculus}{1105}{chapter.39}
+\contentsline {section}{\numberline {39.1}It\^o Stochastic Integral}{1105}{section.39.1}
+\contentsline {subsection}{\numberline {39.1.1}Simple integrands}{1105}{subsection.39.1.1}
+\contentsline {subsection}{\numberline {39.1.2}${\cal M}^2$ properties}{1106}{subsection.39.1.2}
+\contentsline {subsection}{\numberline {39.1.3}Stochastic integral for simple processes}{1110}{subsection.39.1.3}
+\contentsline {subsection}{\numberline {39.1.4}Quadratic variation and covariation of ${\cal M}_c^2$}{1112}{subsection.39.1.4}
+\contentsline {subsection}{\numberline {39.1.5}It\^o stochastic integrals for ${\cal L}^2(M)$ with $M\in {\cal M}^2_c$}{1117}{subsection.39.1.5}
+\contentsline {subsection}{\numberline {39.1.6}Stochastic integrals for locally bounded previsible processes with $M\in {\cal M}_{c,loc}$}{1121}{subsection.39.1.6}
+\contentsline {subsection}{\numberline {39.1.7}Covariation of continuous local martingales}{1125}{subsection.39.1.7}
+\contentsline {subsection}{\numberline {39.1.8}Stochastic integral for semimartingales}{1129}{subsection.39.1.8}
+\contentsline {subsection}{\numberline {39.1.9}It\^o's formula for continuous semimartingale}{1133}{subsection.39.1.9}
+\contentsline {section}{\numberline {39.2}Applications to Brownian Motion and Martingales}{1137}{section.39.2}
+\contentsline {subsection}{\numberline {39.2.1}Brownian martingales}{1137}{subsection.39.2.1}
+\contentsline {subsection}{\numberline {39.2.2}Dubins-Schwarz theorem}{1139}{subsection.39.2.2}
+\contentsline {subsection}{\numberline {39.2.3}Girsanov's theorem}{1142}{subsection.39.2.3}
+\contentsline {subsection}{\numberline {39.2.4}Martingale representation theorem}{1146}{subsection.39.2.4}
+\contentsline {subsection}{\numberline {39.2.5}Local times}{1147}{subsection.39.2.5}
+\contentsline {section}{\numberline {39.3}Problems}{1147}{section.39.3}
+\contentsline {chapter}{\numberline {40}Stochastic Differential Equations}{1149}{chapter.40}
+\contentsline {section}{\numberline {40.1}Applications}{1149}{section.40.1}
+\contentsline {subsection}{\numberline {40.1.1}Feynman-Kac formula}{1149}{subsection.40.1.1}
+\contentsline {subsection}{\numberline {40.1.2}Vasicek Model}{1149}{subsection.40.1.2}
+\contentsline {subsection}{\numberline {40.1.3}Reflecting Brownian motion}{1149}{subsection.40.1.3}
+\contentsline {section}{\numberline {40.2}Problems}{1149}{section.40.2}
+\contentsline {chapter}{\numberline {41}Diffusion Processes}{1151}{chapter.41}
+\contentsline {section}{\numberline {41.1}Ornstein-Uhlenbeck Process}{1151}{section.41.1}
+\contentsline {subsection}{\numberline {41.1.1}Ornstein-Uhlenbeck process}{1151}{subsection.41.1.1}
+\contentsline {subsection}{\numberline {41.1.2}Parameters estimation of OU process}{1152}{subsection.41.1.2}
+\contentsline {section}{\numberline {41.2}Cox-Ingersoll-Ross Process}{1155}{section.41.2}
+\contentsline {section}{\numberline {41.3}Bessel Processes}{1155}{section.41.3}
+\contentsline {section}{\numberline {41.4}Legendre Process}{1156}{section.41.4}
+\contentsline {section}{\numberline {41.5}Jacobi Process}{1156}{section.41.5}
+\contentsline {subsection}{\numberline {41.5.1}SDE}{1156}{subsection.41.5.1}
+\contentsline {subsection}{\numberline {41.5.2}Parameters calibration of Jacobi process}{1157}{subsection.41.5.2}
+\contentsline {section}{\numberline {41.6}Planar Brownian motion}{1157}{section.41.6}
+\contentsline {section}{\numberline {41.7}Spherical Brownian Motion}{1158}{section.41.7}
+\contentsline {part}{X\hspace {1em}Statistics}{1161}{part.10}
+\contentsline {chapter}{\numberline {42}Distributions}{1163}{chapter.42}
+\contentsline {section}{\numberline {42.1}Distributions Related to Poisson Distribution}{1163}{section.42.1}
+\contentsline {subsection}{\numberline {42.1.1}Skellam distribution}{1163}{subsection.42.1.1}
+\contentsline {section}{\numberline {42.2}Distributions Related to Uniform Distribution}{1164}{section.42.2}
+\contentsline {subsection}{\numberline {42.2.1}Distributions in spherical space}{1164}{subsection.42.2.1}
+\contentsline {section}{\numberline {42.3}Distributions Related to Gaussian Distribution}{1165}{section.42.3}
+\contentsline {subsection}{\numberline {42.3.1}Gaussian distribution}{1165}{subsection.42.3.1}
+\contentsline {subsection}{\numberline {42.3.2}Chi-squared random variables}{1165}{subsection.42.3.2}
+\contentsline {subsection}{\numberline {42.3.3}$F$-distribution}{1171}{subsection.42.3.3}
+\contentsline {subsection}{\numberline {42.3.4}Weibull random variables}{1173}{subsection.42.3.4}
+\contentsline {section}{\numberline {42.4}Logistic Distribution}{1175}{section.42.4}
+\contentsline {section}{\numberline {42.5}Distributions Related to Gamma Distribution}{1176}{section.42.5}
+\contentsline {subsection}{\numberline {42.5.1}Generalized gamma distribution}{1176}{subsection.42.5.1}
+\contentsline {subsection}{\numberline {42.5.2}Inverse gamma distribution}{1177}{subsection.42.5.2}
+\contentsline {subsection}{\numberline {42.5.3}L\'evy\ distribution}{1178}{subsection.42.5.3}
+\contentsline {subsection}{\numberline {42.5.4}Beta random variables}{1180}{subsection.42.5.4}
+\contentsline {subsection}{\numberline {42.5.5}Beta prime distribution}{1182}{subsection.42.5.5}
+\contentsline {subsection}{\numberline {42.5.6}Generalized beta prime distribution}{1183}{subsection.42.5.6}
+\contentsline {section}{\numberline {42.6}Student-$t$ Distribution}{1184}{section.42.6}
+\contentsline {subsection}{\numberline {42.6.1}Standard Student-$t$ random variables}{1184}{subsection.42.6.1}
+\contentsline {subsection}{\numberline {42.6.2}Non-central scaled $t$-distribution}{1187}{subsection.42.6.2}
+\contentsline {subsection}{\numberline {42.6.3}Skewed $t$-disbribution}{1187}{subsection.42.6.3}
+\contentsline {section}{\numberline {42.7}Inverse Gaussian Family}{1188}{section.42.7}
+\contentsline {subsection}{\numberline {42.7.1}Inverse Gaussian random variables}{1188}{subsection.42.7.1}
+\contentsline {subsection}{\numberline {42.7.2}Generalized inverse Gaussian random variables}{1191}{subsection.42.7.2}
+\contentsline {section}{\numberline {42.8}Generalized Extreme Value Distribution}{1193}{section.42.8}
+\contentsline {subsection}{\numberline {42.8.1}Fr\'echet distribution}{1193}{subsection.42.8.1}
+\contentsline {subsection}{\numberline {42.8.2}Gumbel distribution}{1193}{subsection.42.8.2}
+\contentsline {subsection}{\numberline {42.8.3}Reversed Weibull distribution}{1195}{subsection.42.8.3}
+\contentsline {subsection}{\numberline {42.8.4}Generalized extreme value distribution}{1195}{subsection.42.8.4}
+\contentsline {section}{\numberline {42.9}Generalized Pareto Family}{1196}{section.42.9}
+\contentsline {subsection}{\numberline {42.9.1}Generalized Pareto distribution}{1196}{subsection.42.9.1}
+\contentsline {section}{\numberline {42.10}Generalized Hyperbolic Family}{1196}{section.42.10}
+\contentsline {subsection}{\numberline {42.10.1}Normal-inverse Gaussian random variables}{1196}{subsection.42.10.1}
+\contentsline {subsection}{\numberline {42.10.2}Variance-gamma random variables}{1197}{subsection.42.10.2}
+\contentsline {subsection}{\numberline {42.10.3}Hyperbolic random variables}{1197}{subsection.42.10.3}
+\contentsline {subsection}{\numberline {42.10.4}Generalized hyperbolic skewed $t$ random variables}{1199}{subsection.42.10.4}
+\contentsline {subsection}{\numberline {42.10.5}Generalized hyperbolic random variables}{1203}{subsection.42.10.5}
+\contentsline {subsection}{\numberline {42.10.6}Relation between the members of generalized hyperbolic family}{1205}{subsection.42.10.6}
+\contentsline {section}{\numberline {42.11}Truncated distribution}{1206}{section.42.11}
+\contentsline {subsection}{\numberline {42.11.1}Truncated normal distribution}{1206}{subsection.42.11.1}
+\contentsline {subsection}{\numberline {42.11.2}Correlation of truncated distribution}{1207}{subsection.42.11.2}
+\contentsline {section}{\numberline {42.12}Limit Distributions}{1209}{section.42.12}
+\contentsline {section}{\numberline {42.13}Domain of Attraction of Distribution}{1209}{section.42.13}
+\contentsline {subsection}{\numberline {42.13.1}Domain of attraction}{1209}{subsection.42.13.1}
+\contentsline {section}{\numberline {42.14}Summary}{1209}{section.42.14}
+\contentsline {chapter}{\numberline {43}Statistics}{1211}{chapter.43}
+\contentsline {section}{\numberline {43.1}Estimators and Bias}{1211}{section.43.1}
+\contentsline {section}{\numberline {43.2}Fisher information}{1211}{section.43.2}
+\contentsline {subsection}{\numberline {43.2.1}Fisher information}{1211}{subsection.43.2.1}
+\contentsline {subsection}{\numberline {43.2.2}Fisher information matrix}{1214}{subsection.43.2.2}
+\contentsline {subsection}{\numberline {43.2.3}Cram\'er-Rao lower bound}{1216}{subsection.43.2.3}
+\contentsline {section}{\numberline {43.3}Maximum Likelihood Estimation}{1216}{section.43.3}
+\contentsline {subsection}{\numberline {43.3.1}Likelihood function}{1216}{subsection.43.3.1}
+\contentsline {subsection}{\numberline {43.3.2}Estimation of distributions}{1216}{subsection.43.3.2}
+\contentsline {section}{\numberline {43.4}Linear Regression Model}{1219}{section.43.4}
+\contentsline {subsection}{\numberline {43.4.1}Linear model}{1219}{subsection.43.4.1}
+\contentsline {subsection}{\numberline {43.4.2}Cochran's theorem}{1220}{subsection.43.4.2}
+\contentsline {subsection}{\numberline {43.4.3}MLE for linear model}{1222}{subsection.43.4.3}
+\contentsline {subsection}{\numberline {43.4.4}Ordinary least squares}{1224}{subsection.43.4.4}
+\contentsline {subsection}{\numberline {43.4.5}Ordinary least square with constraints}{1227}{subsection.43.4.5}
+\contentsline {subsection}{\numberline {43.4.6}One-way ANOVA}{1229}{subsection.43.4.6}
+\contentsline {subsection}{\numberline {43.4.7}Two-way ANOVA}{1231}{subsection.43.4.7}
+\contentsline {subsection}{\numberline {43.4.8}Generalized least squares}{1231}{subsection.43.4.8}
+\contentsline {section}{\numberline {43.5}Sample Statistics}{1231}{section.43.5}
+\contentsline {subsection}{\numberline {43.5.1}Distribution of sample variance}{1231}{subsection.43.5.1}
+\contentsline {section}{\numberline {43.6}Other Theorems}{1232}{section.43.6}
+\contentsline {subsection}{\numberline {43.6.1}EM algorithm}{1232}{subsection.43.6.1}
+\contentsline {section}{\numberline {43.7}Principal Component Analysis (PCA)}{1232}{section.43.7}
+\contentsline {chapter}{\numberline {44}Non-parametric Estimation}{1235}{chapter.44}
+\contentsline {section}{\numberline {44.1}Empirical distribution}{1235}{section.44.1}
+\contentsline {subsection}{\numberline {44.1.1}Empirical distribution function}{1235}{subsection.44.1.1}
+\contentsline {subsection}{\numberline {44.1.2}Kolmogorov-Smirnov limit theorem}{1235}{subsection.44.1.2}
+\contentsline {chapter}{\numberline {45}Statistical Tests}{1249}{chapter.45}
+\contentsline {section}{\numberline {45.1}Basic Tests}{1249}{section.45.1}
+\contentsline {subsection}{\numberline {45.1.1}$T$-test}{1249}{subsection.45.1.1}
+\contentsline {subsection}{\numberline {45.1.2}$F$-test}{1249}{subsection.45.1.2}
+\contentsline {section}{\numberline {45.2}Analysis of Variance}{1249}{section.45.2}
+\contentsline {subsection}{\numberline {45.2.1}Kruskal-Wallis test}{1249}{subsection.45.2.1}
+\contentsline {section}{\numberline {45.3}Distribution Tests}{1249}{section.45.3}
+\contentsline {subsection}{\numberline {45.3.1}Kolmogorov-Smirnov test}{1249}{subsection.45.3.1}
+\contentsline {section}{\numberline {45.4}Unit Root test}{1250}{section.45.4}
+\contentsline {subsection}{\numberline {45.4.1}Augmented Dickey-Fuller test}{1250}{subsection.45.4.1}
+\contentsline {subsection}{\numberline {45.4.2}Optimal finite sample test}{1250}{subsection.45.4.2}
+\contentsline {subsection}{\numberline {45.4.3}Phillips-Perron test}{1250}{subsection.45.4.3}
+\contentsline {section}{\numberline {45.5}Cointegration Tests}{1250}{section.45.5}
+\contentsline {subsection}{\numberline {45.5.1}Engle-Granger cointegration test}{1250}{subsection.45.5.1}
+\contentsline {subsection}{\numberline {45.5.2}Johansen cointegration test}{1250}{subsection.45.5.2}
+\contentsline {section}{\numberline {45.6}Test for Detecting Non-randomness}{1250}{section.45.6}
+\contentsline {subsection}{\numberline {45.6.1}Wald-Wolfowitz runs test}{1250}{subsection.45.6.1}
+\contentsline {chapter}{\numberline {46}Extreme Value Theory}{1255}{chapter.46}
+\contentsline {section}{\numberline {46.1}Limit Distributions and Domains of Attraction}{1255}{section.46.1}
+\contentsline {subsection}{\numberline {46.1.1}Motivation}{1255}{subsection.46.1.1}
+\contentsline {subsection}{\numberline {46.1.2}Extreme value distribution}{1256}{subsection.46.1.2}
+\contentsline {subsection}{\numberline {46.1.3}Parametrization of extreme value distribution}{1260}{subsection.46.1.3}
+\contentsline {section}{\numberline {46.2}Domains of attraction of GEV}{1261}{section.46.2}
+\contentsline {section}{\numberline {46.3}Second Extreme Value Theory - Peak Over Threshold}{1262}{section.46.3}
+\contentsline {subsection}{\numberline {46.3.1}Domains of attraction of GPD}{1263}{subsection.46.3.1}
+\contentsline {chapter}{\numberline {47}Order Statistic}{1265}{chapter.47}
+\contentsline {section}{\numberline {47.1}Basic Distribution Theory}{1265}{section.47.1}
+\contentsline {subsection}{\numberline {47.1.1}Order statistic}{1265}{subsection.47.1.1}
+\contentsline {subsection}{\numberline {47.1.2}Inverse distribution function of order statistic}{1265}{subsection.47.1.2}
+\contentsline {subsection}{\numberline {47.1.3}Distribution of an order statistic}{1266}{subsection.47.1.3}
+\contentsline {subsection}{\numberline {47.1.4}Distribution of two order statistic}{1268}{subsection.47.1.4}
+\contentsline {section}{\numberline {47.2}Order Statistics of Specific Distribution}{1269}{section.47.2}
+\contentsline {subsection}{\numberline {47.2.1}Exponential distribution}{1269}{subsection.47.2.1}
+\contentsline {subsection}{\numberline {47.2.2}Uniform distribution}{1270}{subsection.47.2.2}
+\contentsline {section}{\numberline {47.3}Asymptotic Theory of Order Statistic}{1272}{section.47.3}
+\contentsline {subsection}{\numberline {47.3.1}Central and intermediate order statistic}{1272}{subsection.47.3.1}
+\contentsline {section}{\numberline {47.4}Problems}{1274}{section.47.4}
+\contentsline {subsection}{\numberline {47.4.1}Order statistics of specific distributions}{1274}{subsection.47.4.1}
+\contentsline {chapter}{\numberline {48}Stable Distribution}{1275}{chapter.48}
+\contentsline {section}{\numberline {48.1}Stable Distribution}{1275}{section.48.1}
+\contentsline {subsection}{\numberline {48.1.1}Definition of stable distribution}{1275}{subsection.48.1.1}
+\contentsline {subsection}{\numberline {48.1.2}Examples of stable distribution}{1278}{subsection.48.1.2}
+\contentsline {section}{\numberline {48.2}Characteristic function of stable distribution}{1278}{section.48.2}
+\contentsline {section}{\numberline {48.3}Domain of Attraction of Stable Distribution}{1278}{section.48.3}
+\contentsline {section}{\numberline {48.4}Generalized Central Limit Theorem}{1278}{section.48.4}
+\contentsline {part}{XI\hspace {1em}Optimization}{1281}{part.11}
+\contentsline {chapter}{\numberline {49}Optimization}{1283}{chapter.49}
+\contentsline {section}{\numberline {49.1}Problems}{1283}{section.49.1}
+\contentsline {part}{XII\hspace {1em}Financial Mathematics}{1285}{part.12}
+\contentsline {chapter}{\numberline {50}Model}{1287}{chapter.50}
+\contentsline {section}{\numberline {50.1}Black-Scholes Model}{1287}{section.50.1}
+\contentsline {section}{\numberline {50.2}Utility Theory}{1287}{section.50.2}
+\contentsline {chapter}{\numberline {51}Options}{1289}{chapter.51}
+\contentsline {section}{\numberline {51.1}Black-Scholes Model}{1289}{section.51.1}
+\contentsline {section}{\numberline {51.2}Greeks}{1289}{section.51.2}
+\contentsline {section}{\numberline {51.3}Barrier Options}{1289}{section.51.3}
+\contentsline {section}{\numberline {51.4}Lookback Options}{1289}{section.51.4}
+\contentsline {section}{\numberline {51.5}Hedging}{1292}{section.51.5}
+\contentsline {subsection}{\numberline {51.5.1}Put-call Symmetry}{1292}{subsection.51.5.1}
+\contentsline {section}{\numberline {51.6}American options}{1292}{section.51.6}
+\contentsline {section}{\numberline {51.7}Path Dependent options}{1292}{section.51.7}
+\contentsline {section}{\numberline {51.8}Heston Model}{1292}{section.51.8}
+\contentsline {chapter}{\numberline {52}Volatility}{1293}{chapter.52}
+\contentsline {section}{\numberline {52.1}VIX}{1293}{section.52.1}
+\contentsline {subsection}{\numberline {52.1.1}Variance swaps}{1293}{subsection.52.1.1}
+\contentsline {chapter}{\numberline {53}Contracting Theory}{1295}{chapter.53}
+\contentsline {chapter}{\numberline {54}Risk}{1297}{chapter.54}
+\contentsline {section}{\numberline {54.1}Value at Risk}{1297}{section.54.1}
+\contentsline {subsection}{\numberline {54.1.1}Long Gamma position}{1297}{subsection.54.1.1}
+\contentsline {subsection}{\numberline {54.1.2}Statistical error of VaR}{1297}{subsection.54.1.2}
+\contentsline {subsection}{\numberline {54.1.3}Estimation statistical error of VaR under empirical distribution}{1298}{subsection.54.1.3}
+\contentsline {section}{\numberline {54.2}VaR and ES derived by EVT}{1298}{section.54.2}
+\contentsline {subsection}{\numberline {54.2.1}ES derived from MV}{1298}{subsection.54.2.1}
+\contentsline {subsection}{\numberline {54.2.2}VaR and ES derived from POT}{1298}{subsection.54.2.2}
+\contentsline {part}{XIII\hspace {1em}Appendix}{1301}{part.13}
+\contentsline {chapter}{Bibliography}{1303}{section*.11}
+\contentsline {chapter}{Index}{1309}{section*.13}
