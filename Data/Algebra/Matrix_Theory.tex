@@ -3032,8 +3032,8 @@ a_{11} & a_{12} & & \dots & & a_{1n} \\
 a_{21} & a_{22} & &\dots  & & a_{2n} \\
 0 & a_{32} & & & & a_{3n} \\
 0 & 0 & a_{43} & \ddots & & \vdots \\
-\vdots & \vdots & & &\ddots　&  \\
-0 & 0 & \dots & 0　& a_{n,n-1} & a_{nn}
+\vdots & \vdots & & & \ddots &  \\
+0 & 0 & \dots & 0 & a_{n,n-1} & a_{nn}
 \eepm
 \ee
 
@@ -3049,8 +3049,8 @@ a_{11} & a_{12} & 0 & 0 & \dots & 0 \\
 a_{21} & a_{22} & a_{32} & 0 & \dots & 0 \\
 0 & a_{32} & a_{33} & a_{34} & \dots & 0 \\
 0 & 0 & \ddots & \ddots & \ddots & \vdots \\
-\vdots & \vdots & & \ddots & \ddots　& a_{n-1,n}\\
-0 & 0 & \dots & 0　& a_{n,n-1} & a_{nn}
+\vdots & \vdots & & \ddots & \ddots & a_{n-1,n}\\
+0 & 0 & \dots & 0 & a_{n,n-1} & a_{nn}
 \eepm
 \ee
 \end{definition}
@@ -3547,7 +3547,7 @@ for $k = 1,\dots,n$ and therefore conclude that $A$ is diagonalizable.
 \end{proposition}
 
 \begin{proof}[\bf Proof]
-For an eigenpair $(\lm, x)$, the components in $(A − \lm I) x = 0$ are
+For an eigenpair $(\lm, x)$, the components in $(A - \lm I) x = 0$ are
 \be
 c x_{k-1}+(b-\lm)x_k+a x_{k+1} = 0,\qquad k = 1,\dots,n,\qquad x_0 = x_{n+1} = 0
 \ee
@@ -3591,7 +3591,7 @@ yields
 \ee
 
 so $r_1 = r_2e^{\frac{2k\pi i}{n+1}}$ for some $1 \leq j \leq n$. Couple this with
-￼￼￼\be
+\be
 r^2 + \frac{(b-\lm)r}c + \frac ca =  (r - r_1)(r -r_2)  \quad \ra \quad  \left\{\ba{l}
 r_1r_2 = \frac ca\\
 r_1 + r_2 = -\frac{b - \lm}a
@@ -3621,7 +3621,6 @@ so
 \be
 x_j = \alpha \brb{\frac ca}^{j/2}\brb{e^{\frac{jk\pi i}{n+1}} - e^{-\frac{jk\pi i}{n+1}}} = 2i\alpha \brb{\frac ca}^{j/2}\sin\brb{\frac{jk\pi}{n+1}}.
 \ee
-￼￼￼￼￼￼￼
 
 Setting $\alpha = \frac 1{2i}$ yields a particular eigenvector associated with $\lm_k$ as
 \be
