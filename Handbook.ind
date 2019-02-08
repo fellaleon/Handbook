@@ -10,12 +10,12 @@
   \item absolute value
     \subitem rational numbers, \hyperpage{31}
   \item absolutely continuous
-    \subitem measure, \hyperpage{987}
+    \subitem measure, \hyperpage{989}
   \item absolutely continuous probability distribution, \hyperpage{878}
   \item ACC
     \subitem ring, \hyperpage{118}
-  \item adapted process, \hyperpage{923}
-    \subitem continuous, \hyperpage{938}
+  \item adapted process, \hyperpage{925}
+    \subitem continuous, \hyperpage{940}
   \item addition
     \subitem natural number, \hyperpage{25}
   \item addition theorem
@@ -24,7 +24,7 @@
   \item additive function
     \subitem real analysis, \hyperpage{472}
   \item additive set function, \hyperpage{590}
-  \item adjoint infinitesimal generator, \hyperpage{1095}
+  \item adjoint infinitesimal generator, \hyperpage{1097}
   \item adjoint matrix, \hyperpage{157}
   \item adjoint operator, \hyperpage{671}
   \item adjugate matrix, \hyperpage{180}
@@ -67,17 +67,17 @@
   \indexspace
 
   \item backward martingale
-    \subitem discrete, \hyperpage{983}
+    \subitem discrete, \hyperpage{985}
   \item backwards martingale convergence theorem
-    \subitem discrete, \hyperpage{983}
+    \subitem discrete, \hyperpage{985}
   \item Bakers' map, \hyperpage{666}
-  \item ballot problem, \hyperpage{931}
+  \item ballot problem, \hyperpage{933}
   \item Banach space, \hyperpage{671}
   \item basic circulant permutation matrix, \hyperpage{193}
   \item basis
     \subitem vector space, \hyperpage{38}
   \item Bayes' Theorem, \hyperpage{835, 836}
-  \item Bayes' urn, \hyperpage{1009}
+  \item Bayes' urn, \hyperpage{1011}
   \item Bernoulli, \hyperpage{815}
   \item Bernoulli numbers, \hyperpage{714}
   \item Bernoulli random variable
@@ -85,25 +85,25 @@
   \item Bessel differential equation, \hyperpage{715}
   \item Bessel function
     \subitem first kind, \hyperpage{715}
-  \item Bessel process, \hyperpage{1153}
+  \item Bessel process, \hyperpage{1155}
   \item beta function, \hyperpage{514}
     \subitem incomplete, \hyperpage{514}
-  \item beta prime distributed random variable, \hyperpage{1180}
-  \item beta-distributed random variable, \hyperpage{1178}
-  \item bias, \hyperpage{1209}
-  \item biased estimator, \hyperpage{1209}
+  \item beta prime distributed random variable, \hyperpage{1182}
+  \item beta-distributed random variable, \hyperpage{1180}
+  \item bias, \hyperpage{1211}
+  \item biased estimator, \hyperpage{1211}
   \item bijective function, \hyperpage{17}
   \item binomial coefficients
     \subitem positive integers, \hyperpage{515}
   \item Binomial random variable
     \subitem $\R$, \hyperpage{872}
   \item binomial series, \hyperpage{518}
-  \item Birkhoff's almost everywhere ergodic theorem, \hyperpage{664}
+  \item Birkhoff's almost everywhere ergodic theorem, \hyperpage{663}
   \item block diagonal matrix, \hyperpage{188}
   \item block matrix, \hyperpage{153}
   \item block permutation matrix, \hyperpage{193}
   \item block transposition matrix, \hyperpage{192}
-  \item Blumenthal's 0-1 law, \hyperpage{1026}
+  \item Blumenthal's 0-1 law, \hyperpage{1028}
   \item Bolzano-Weierstrass theorem, \hyperpage{283}
   \item Bonferroni's inequalities, \hyperpage{798}
   \item Bonnet's recursion formula, \hyperpage{721}
@@ -130,23 +130,23 @@
     \subitem complex, \hyperpage{383}
   \item bounded set
     \subitem complex, \hyperpage{383}
-  \item branching process, \hyperpage{927}
-  \item Brownian bridge, \hyperpage{1062}
-  \item Brownian motion, \hyperpage{1019}
-    \subitem standard, \hyperpage{1019}
+  \item branching process, \hyperpage{929}
+  \item Brownian bridge, \hyperpage{1064}
+  \item Brownian motion, \hyperpage{1021}
+    \subitem standard, \hyperpage{1021}
 
   \indexspace
 
   \item c\`adl\`ag\ function, \hyperpage{307}
-  \item c\`adl\`ag\ process, \hyperpage{939}
-  \item Cameron-Martin space, \hyperpage{1143}
+  \item c\`adl\`ag\ process, \hyperpage{941}
+  \item Cameron-Martin space, \hyperpage{1145}
   \item cancellation law
     \subitem addition of natural number, \hyperpage{26}
     \subitem integers, \hyperpage{29}
     \subitem multiplication of natural number, \hyperpage{27}
   \item canonical probability space
     \subitem random variable sequence, \hyperpage{899}
-  \item canonical process, \hyperpage{944}
+  \item canonical process, \hyperpage{946}
   \item Carath\'eodory's extension theorem, \hyperpage{595}
   \item Catalan number, \hyperpage{784}
   \item Cauchy random variable
@@ -174,24 +174,24 @@
     \subitem group, \hyperpage{68}
   \item chain rule
     \subitem c\`adl\`ag\ adapted finite variation process with integrands bounded on compact time intervals, 
-		\hyperpage{963}
+		\hyperpage{965}
     \subitem c\`adl\`ag\ adapted finite variation process with locally bounded integrands, 
-		\hyperpage{964}
+		\hyperpage{966}
     \subitem differentiable real functions, \hyperpage{321}
     \subitem matrix, \hyperpage{149}
-    \subitem stochastic integrals, \hyperpage{1121}
-  \item Chapman-Kolmogorov equation, \hyperpage{1081}
+    \subitem stochastic integrals, \hyperpage{1123}
+  \item Chapman-Kolmogorov equation, \hyperpage{1083}
   \item characteristic
     \subitem ring, \hyperpage{103}
   \item characteristic exponent
-    \subitem distribution, \hyperpage{1273}
+    \subitem distribution, \hyperpage{1275}
   \item characteristic function, \hyperpage{848}
   \item characteristic polynomial
     \subitem matrix, \hyperpage{199}
   \item Chebyshev's inequality, \hyperpage{826}
   \item check needed for the definition., \hyperpage{584}
   \item check needed for the whole remark., \hyperpage{585}
-  \item chi squared-distributed random variable, \hyperpage{1163}
+  \item chi squared-distributed random variable, \hyperpage{1165}
   \item Chinese remainder theorem
     \subitem number theory, \hyperpage{695}
     \subitem rodular ring, \hyperpage{106}
@@ -200,20 +200,20 @@
   \item Cholesky algorithm, Banachiewicz, \hyperpage{254}
   \item Cholesky algorithm, Crout, \hyperpage{254}
   \item Cholesky decomposition, \hyperpage{252}
-  \item CIR process, \hyperpage{1153}
+  \item CIR process, \hyperpage{1155}
   \item circulant matrix, \hyperpage{193}
   \item closed
     \subitem $\sL^2(E,\sE,\mu)$ space, \hyperpage{648}
     \subitem $\sL^2(\Omega,\sF,\pro)$ space, \hyperpage{827}
   \item closed ball
     \subitem metric space, \hyperpage{556}
-  \item closed in $\sL^p$, \hyperpage{979}
+  \item closed in $\sL^p$, \hyperpage{981}
   \item closed set
     \subitem metric space, \hyperpage{558}
     \subitem topological space, \hyperpage{583}
   \item closure, \hyperpage{560}
     \subitem Groups, \hyperpage{45}
-  \item Cochran's theorem, \hyperpage{1218}
+  \item Cochran's theorem, \hyperpage{1220}
   \item cofactor matrix, \hyperpage{180}
   \item column equivalent
     \subitem matrix, \hyperpage{162}
@@ -231,7 +231,7 @@
   \item complement, \hyperpage{796}
   \item complementary error function, \hyperpage{455}
   \item complete, \hyperpage{647}
-    \subitem filtered probability space, \hyperpage{938}
+    \subitem filtered probability space, \hyperpage{940}
     \subitem measure space, \hyperpage{599}
   \item complete space
     \subitem complex, \hyperpage{382}
@@ -244,7 +244,7 @@
     \subitem function, \hyperpage{16}
     \subitem relation, \hyperpage{14}
   \item composition factor, \hyperpage{65}
-  \item concatenation operation, \hyperpage{1029}
+  \item concatenation operation, \hyperpage{1031}
   \item conditional expectation
     \subitem elementary for $\sigma$-algebra, \hyperpage{837}
     \subitem elementary for set, \hyperpage{837}
@@ -270,8 +270,8 @@
   \item continuous mapping theorem, \hyperpage{863}
   \item continuous probability distribution, \hyperpage{878}
   \item continuous process
-    \subitem pathwise, \hyperpage{937}
-    \subitem sample, \hyperpage{937}
+    \subitem pathwise, \hyperpage{939}
+    \subitem sample, \hyperpage{939}
   \item continuous random variable, \hyperpage{879}
   \item convergence
     \subitem almost everywhere, \hyperpage{618}
@@ -300,7 +300,7 @@
   \item convex, \hyperpage{642}
   \item convolution
     \subitem arithmetic function, \hyperpage{687}
-  \item coordinate mapping, \hyperpage{944}
+  \item coordinate mapping, \hyperpage{946}
   \item coprime
     \subitem elements of ring, \hyperpage{121}
   \item correlation, \hyperpage{833}
@@ -315,10 +315,10 @@
   \item covariance matrix
     \subitem multi-dimension, \hyperpage{832}
   \item covariation
-    \subitem continuous semimartingales, \hyperpage{1123}
+    \subitem continuous semimartingales, \hyperpage{1125}
   \item cover, \hyperpage{359}
-  \item Cox-Ingersoll-Ross process, \hyperpage{1153}
-  \item Cram\'er-Rao lower bound, \hyperpage{1214}
+  \item Cox-Ingersoll-Ross process, \hyperpage{1155}
+  \item Cram\'er-Rao lower bound, \hyperpage{1216}
   \item Cramer's rule
     \subitem matrix, \hyperpage{178}
   \item cycle
@@ -348,8 +348,8 @@
     \subitem conditional probability, \hyperpage{847}
     \subitem measure, \hyperpage{630}
     \subitem probability, \hyperpage{823}
-    \subitem Radon-Nikodym derivative, \hyperpage{986}
-  \item design matrix, \hyperpage{1217}
+    \subitem Radon-Nikodym derivative, \hyperpage{988}
+  \item design matrix, \hyperpage{1219}
   \item determinant
     \subitem linear endomorphism, \hyperpage{151}
     \subitem matrix, \hyperpage{174}
@@ -401,17 +401,17 @@
     \subitem conditional expectation, \hyperpage{843}
     \subitem measure, \hyperpage{626}
     \subitem probability, \hyperpage{822}
-  \item Donsker's invariance principle, \hyperpage{1057}
+  \item Donsker's invariance principle, \hyperpage{1059}
   \item Doob's ${\cal  L}^p$-inequality
-    \subitem continous, \hyperpage{993}
-    \subitem discrete, \hyperpage{978}
+    \subitem continous, \hyperpage{995}
+    \subitem discrete, \hyperpage{980}
   \item Doob's maximal inequality
-    \subitem continuous-time, \hyperpage{993}
-    \subitem discrete, \hyperpage{978}
-  \item double exponential distribution, \hyperpage{1191}
+    \subitem continuous-time, \hyperpage{995}
+    \subitem discrete, \hyperpage{980}
+  \item double exponential distribution, \hyperpage{1193}
   \item double factorial, \hyperpage{456}
-  \item Dubins-Schwarz theorem, \hyperpage{1138}
-    \subitem extension version, \hyperpage{1139}
+  \item Dubins-Schwarz theorem, \hyperpage{1140}
+    \subitem extension version, \hyperpage{1141}
   \item Dynkin's Lemma, \hyperpage{589}
 
   \indexspace
@@ -428,7 +428,7 @@
     \subitem groups, \hyperpage{77}
   \item elementary matrix, \hyperpage{161}
   \item elementary symmetric function, \hyperpage{200}
-  \item empirical distribution, \hyperpage{1233}
+  \item empirical distribution, \hyperpage{1235}
   \item empty set, \hyperpage{11}
   \item endomorphism
     \subitem groups, \hyperpage{48}
@@ -450,7 +450,7 @@
     \subitem measure preserving transformation, \hyperpage{662}
   \item error function, \hyperpage{455}
   \item essential supremum
-    \subitem stochastic process, \hyperpage{1104}
+    \subitem stochastic process, \hyperpage{1106}
   \item essential supremum, measure, \hyperpage{641}
   \item essential supremum, probability, \hyperpage{821}
   \item Euclidean algorithm
@@ -459,13 +459,13 @@
   \item Euclidean domain, \hyperpage{116}
   \item Euclidean function, \hyperpage{116}
   \item Euclidean metric space, \hyperpage{554}
-  \item Euler numbers, \hyperpage{535}
+  \item Euler numbers, \hyperpage{536}
   \item Euler's formula, \hyperpage{475}, \hyperpage{834}
   \item Euler's totient function, \hyperpage{689}
   \item event, \hyperpage{795}
   \item eventually, \hyperpage{594}
   \item expectation, \hyperpage{819}
-  \item explained sum of squares, ESS, \hyperpage{1223}
+  \item explained sum of squares, ESS, \hyperpage{1225}
   \item exponent
     \subitem group, \hyperpage{46}
   \item exponential random variable
@@ -473,11 +473,11 @@
   \item exponentiation
     \subitem natural number, \hyperpage{31}
     \subitem negative integer, \hyperpage{32}
-  \item extreme value distribution, \hyperpage{1254}
+  \item extreme value distribution, \hyperpage{1256}
 
   \indexspace
 
-  \item F-distributed random variable, \hyperpage{1169}
+  \item F-distributed random variable, \hyperpage{1171}
   \item factor
     \subitem division, \hyperpage{683}
   \item factorial, \hyperpage{455}
@@ -492,33 +492,33 @@
   \item field, \hyperpage{95}
   \item field of fractions, \hyperpage{105}
   \item filtered probability space
-    \subitem continuous, \hyperpage{938}
-    \subitem discrete, \hyperpage{923}
+    \subitem continuous, \hyperpage{940}
+    \subitem discrete, \hyperpage{925}
   \item filtration
-    \subitem continuous, \hyperpage{937}
-    \subitem discrete, \hyperpage{923}
+    \subitem continuous, \hyperpage{939}
+    \subitem discrete, \hyperpage{925}
   \item finite dimensional distributions
-    \subitem stochastic process, \hyperpage{941}
+    \subitem stochastic process, \hyperpage{943}
   \item finite intersection property
     \subitem metric space, \hyperpage{570}
   \item finite measure, \hyperpage{593}
   \item finite variation, \hyperpage{309}
-  \item finite variation process, \hyperpage{940}
-  \item first entry time, \hyperpage{950}
-  \item first hitting time, \hyperpage{950}
-  \item Fisher information, \hyperpage{1209}
-  \item Fisher information matrix, \hyperpage{1212}
+  \item finite variation process, \hyperpage{942}
+  \item first entry time, \hyperpage{952}
+  \item first hitting time, \hyperpage{952}
+  \item Fisher information, \hyperpage{1211}
+  \item Fisher information matrix, \hyperpage{1214}
   \item floor function, \hyperpage{33}
   \item Fourier inverse transform
     \subitem unitary ordinary frequency, \hyperpage{675}
   \item Fourier transform
     \subitem finite Borel measure, \hyperpage{657}
     \subitem unitary ordinary frequency, \hyperpage{675}
-  \item Fr\'echet distribution, \hyperpage{1191}
+  \item Fr\'echet distribution, \hyperpage{1193}
   \item Fubini's Theorem, \hyperpage{636}
   \item function, \hyperpage{15}
   \item function space
-    \subitem with time index, \hyperpage{944}
+    \subitem with time index, \hyperpage{946}
   \item fundamental axiom of analysis, \hyperpage{281}
   \item fundamental property of measure, \hyperpage{593}
   \item fundamental theorem of calculus
@@ -531,7 +531,7 @@
   \item Gauss' lemma
     \subitem polynomial, \hyperpage{122}
   \item Gaussian integer, \hyperpage{126}
-  \item Gaussian process, \hyperpage{968}
+  \item Gaussian process, \hyperpage{970}
   \item Gaussian random variable
     \subitem $\R$, \hyperpage{887}
     \subitem standard, \hyperpage{849}
@@ -539,16 +539,16 @@
     \subitem bivariate, \hyperpage{891}
     \subitem multivariate, \hyperpage{890}
   \item general principle of convergence, \hyperpage{285}
-  \item generalized extreme value distribution, \hyperpage{1193}
-  \item generalized gamma random variable, \hyperpage{1174}
+  \item generalized extreme value distribution, \hyperpage{1195}
+  \item generalized gamma random variable, \hyperpage{1176}
   \item generalized hyperbolic distributed random variable, 
-		\hyperpage{1201}
+		\hyperpage{1203}
   \item generalized hyperbolic skewed $t$ distributed random variable, 
-		\hyperpage{1197}
+		\hyperpage{1199}
   \item generalized inverse Gaussian distributed random variable, 
-		\hyperpage{1189}
+		\hyperpage{1191}
   \item generalized Pareto distributed random variable, 
-		\hyperpage{1194}
+		\hyperpage{1196}
   \item generated $\sigma$-algebra, \hyperpage{588}
   \item generator
     \subitem Groups, \hyperpage{56}
@@ -557,13 +557,13 @@
   \item geometric series
     \subitem complex series, \hyperpage{457}
     \subitem real series, \hyperpage{297}
-  \item Girsanov, Cameron-Martin theorem, \hyperpage{1143}
+  \item Girsanov, Cameron-Martin theorem, \hyperpage{1145}
   \item Gram-Schmidt orthonormalization, \hyperpage{144}
   \item greatest common divisor, \hyperpage{683}
   \item greatest lower bound, \hyperpage{22}
   \item group, \hyperpage{45}
   \item group action, \hyperpage{65}
-  \item Gumbel distribution, \hyperpage{1191}
+  \item Gumbel distribution, \hyperpage{1193}
 
   \indexspace
 
@@ -587,13 +587,13 @@
   \item Hilbert space, \hyperpage{647}
   \item Hilbert's basis theorem, \hyperpage{119}
   \item holomorphic function, \hyperpage{406}
-  \item homogeneous Markov process, \hyperpage{1087}
+  \item homogeneous Markov process, \hyperpage{1089}
   \item homomorphism
     \subitem groups, \hyperpage{48}
     \subitem linear map, \hyperpage{145}
     \subitem rings, \hyperpage{97}
   \item hook length, \hyperpage{786}
-  \item hyperbolic distributed random variable, \hyperpage{1195}
+  \item hyperbolic distributed random variable, \hyperpage{1197}
 
   \indexspace
 
@@ -624,16 +624,16 @@
   \item independent
     \subitem $\sigma$-algebra, \hyperpage{801}
     \subitem set, \hyperpage{800}
-  \item independent and stationary increments, \hyperpage{942}
+  \item independent and stationary increments, \hyperpage{944}
   \item index
     \subitem Groups, \hyperpage{52}
   \item indicator function, \hyperpage{614}
   \item indicator random variable, \hyperpage{803}
   \item indistinguishable version
-    \subitem stochastic process, \hyperpage{942}
+    \subitem stochastic process, \hyperpage{944}
   \item infimum, \hyperpage{22}
   \item infinitely often, \hyperpage{594}
-  \item infinitesimal generator, \hyperpage{1094}
+  \item infinitesimal generator, \hyperpage{1096}
   \item injective, \hyperpage{16}
   \item inner corner, \hyperpage{785}
   \item inner product, \hyperpage{141}
@@ -644,13 +644,13 @@
   \item integrable
     \subitem Lebesgue, \hyperpage{624}
     \subitem Riemann, \hyperpage{336}, \hyperpage{631}
-    \subitem stochastic process, \hyperpage{923}, \hyperpage{937}
+    \subitem stochastic process, \hyperpage{925}, \hyperpage{939}
   \item integral
     \subitem measurable function, \hyperpage{622}
     \subitem non-negative measurable function, \hyperpage{621}
   \item integral domain, \hyperpage{103}
   \item integration by parts
-    \subitem stochastic calculus, \hyperpage{1131}
+    \subitem stochastic calculus, \hyperpage{1133}
   \item interior, \hyperpage{562}
   \item intermediate value theorem, \hyperpage{306}
   \item intersection, \hyperpage{796}
@@ -667,8 +667,8 @@
     \subitem matrix, \hyperpage{158}
     \subitem relation, \hyperpage{14}
   \item inverse distribution function, \hyperpage{807}
-  \item inverse gamma random variable, \hyperpage{1175}
-  \item inverse Gaussian distributed random variable, \hyperpage{1186}
+  \item inverse gamma random variable, \hyperpage{1177}
+  \item inverse Gaussian distributed random variable, \hyperpage{1188}
   \item inverse image
     \subitem measure, \hyperpage{613}
     \subitem set, \hyperpage{18}
@@ -689,12 +689,12 @@
     \subitem groups, \hyperpage{54, 55}
     \subitem ring, \hyperpage{100--102}
   \item It\^o's formula
-    \subitem sample continuous semimartingale, \hyperpage{1132}
-  \item It\^o's stochastic integral, \hyperpage{1117}
+    \subitem sample continuous semimartingale, \hyperpage{1134}
+  \item It\^o's stochastic integral, \hyperpage{1119}
 
   \indexspace
 
-  \item Jacobi process, \hyperpage{1154}
+  \item Jacobi process, \hyperpage{1156}
   \item Jacobi theta function, \hyperpage{540}
   \item Jacobian matrix
     \subitem real valued, \hyperpage{364}
@@ -711,40 +711,40 @@
 
   \indexspace
 
-  \item Kakutani's product martingale theorem, \hyperpage{985}
-  \item kernel, \hyperpage{1081}
+  \item Kakutani's product martingale theorem, \hyperpage{987}
+  \item kernel, \hyperpage{1083}
     \subitem group action, \hyperpage{67}
     \subitem group homomorphism, \hyperpage{49}
     \subitem ring homomorphism, \hyperpage{97}
   \item Kolmogorov backward equation
-    \subitem one dimensional, \hyperpage{1095}
-  \item Kolmogorov distribution function, \hyperpage{1235}
+    \subitem one dimensional, \hyperpage{1097}
+  \item Kolmogorov distribution function, \hyperpage{1237}
   \item Kolmogorov forward equation
-    \subitem one dimensional, \hyperpage{1095}
+    \subitem one dimensional, \hyperpage{1097}
   \item Kolmogorov's 0-1 law, \hyperpage{816}
-  \item Kolmogorov's continuity criterion, \hyperpage{943}
+  \item Kolmogorov's continuity criterion, \hyperpage{945}
   \item Kolmogorov's inequality
-    \subitem continuous-time martingale, \hyperpage{994}
-    \subitem discrete time martingale, \hyperpage{979}
+    \subitem continuous-time martingale, \hyperpage{996}
+    \subitem discrete time martingale, \hyperpage{981}
   \item Kolmogorov-Smirnov limit theorem
     \subitem absolute difference between empirical and theoretical distributions, 
-		\hyperpage{1235}
+		\hyperpage{1237}
   \item Kronecker delta, \hyperpage{455}
   \item Kronecker product, \hyperpage{259}
   \item Kunita-Watanabe identity
-    \subitem local martingale, \hyperpage{1125}
-    \subitem semimartingale, \hyperpage{1129}
+    \subitem local martingale, \hyperpage{1127}
+    \subitem semimartingale, \hyperpage{1131}
   \item kurtosis, \hyperpage{857}
 
   \indexspace
 
   \item L\'evy's continuity theorem, \hyperpage{866}
   \item L\'evy's convergence theorem, \hyperpage{866}
-  \item L\'evy's quadratic variation, \hyperpage{1052}
+  \item L\'evy's quadratic variation, \hyperpage{1054}
   \item L\'evy\ arcsine law
-    \subitem the last zero, \hyperpage{1053}
-    \subitem the position of the maximum, \hyperpage{1054}
-    \subitem the time spent above zero, \hyperpage{1053}
+    \subitem the last zero, \hyperpage{1055}
+    \subitem the position of the maximum, \hyperpage{1056}
+    \subitem the time spent above zero, \hyperpage{1055}
   \item Lagrange interpolation polynomial, \hyperpage{197}
   \item Lagrange's theorem
     \subitem ring, \hyperpage{104}
@@ -753,7 +753,7 @@
   \item Laurent polynomials, \hyperpage{97}
   \item Laurent series, \hyperpage{97}
   \item law, \hyperpage{803}
-    \subitem process, \hyperpage{941}
+    \subitem process, \hyperpage{943}
   \item law of cosines, \hyperpage{750}
   \item law of sines, \hyperpage{749}
   \item law of total probability, \hyperpage{835}
@@ -770,11 +770,11 @@
   \item left-invertible function, \hyperpage{20}
   \item Legendre differential equation, \hyperpage{718}
   \item Legendre polynomials, \hyperpage{718}
-  \item Legendre process, \hyperpage{1154}
+  \item Legendre process, \hyperpage{1156}
   \item Legendre symbol, \hyperpage{697}
   \item Leibniz formula for $\pi $, \hyperpage{504}
   \item Leibniz rule], \hyperpage{320}
-  \item likelihood function, \hyperpage{1214}
+  \item likelihood function, \hyperpage{1216}
   \item limit
     \subitem complex sequence, \hyperpage{379}
     \subitem metric space, \hyperpage{555}
@@ -794,16 +794,16 @@
   \item Lipschitz continuous
     \subitem metric space, \hyperpage{578}
   \item Lipschitz equivalent metrics, \hyperpage{579}
-  \item local martingale, \hyperpage{999}
+  \item local martingale, \hyperpage{1001}
   \item locally bounded
-    \subitem stochastic process, \hyperpage{959}
+    \subitem stochastic process, \hyperpage{961}
   \item locally finite
     \subitem measure, \hyperpage{598}
-  \item log-likelihood function, \hyperpage{1214}
-  \item lookback option, \hyperpage{1287}
+  \item log-likelihood function, \hyperpage{1216}
+  \item lookback option, \hyperpage{1289}
   \item ${\cal  L}^p$ martingale convergence theorem
-    \subitem continuous, \hyperpage{995}
-    \subitem discrete, \hyperpage{979}
+    \subitem continuous, \hyperpage{997}
+    \subitem discrete, \hyperpage{981}
   \item ${\cal  L}^p$-norm, \hyperpage{641}
   \item ${\cal  L}^p$-space, measure, \hyperpage{641}
   \item ${\cal  L}^p$-space, probability, \hyperpage{821}
@@ -815,19 +815,19 @@
     \subitem real, \hyperpage{330}
   \item marginal density function
     \subitem probability, \hyperpage{825}
-  \item Markov process, \hyperpage{1082}
+  \item Markov process, \hyperpage{1084}
   \item Markov property
-    \subitem simple, Brownian motion, \hyperpage{1025}
-    \subitem strong, Brownian motion, \hyperpage{1028}
-  \item Markov transition density, \hyperpage{1081}
-  \item Markov transition kernel, \hyperpage{1081}
+    \subitem simple, Brownian motion, \hyperpage{1027}
+    \subitem strong, Brownian motion, \hyperpage{1030}
+  \item Markov transition density, \hyperpage{1083}
+  \item Markov transition kernel, \hyperpage{1083}
   \item Markov's inequality, \hyperpage{825}
   \item martingale
-    \subitem continuous, \hyperpage{988}
-    \subitem discrete, \hyperpage{969}
+    \subitem continuous, \hyperpage{990}
+    \subitem discrete, \hyperpage{971}
   \item martingale convergence theorem
-    \subitem continuous, \hyperpage{994}
-  \item martingale transform, \hyperpage{970}
+    \subitem continuous, \hyperpage{996}
+  \item martingale transform, \hyperpage{972}
   \item mass function, \hyperpage{595}
   \item matrix, \hyperpage{153}
   \item maximal element, \hyperpage{22}
@@ -858,7 +858,7 @@
   \item mode
     \subitem random variable, \hyperpage{879}
   \item modification
-    \subitem stochastic process, \hyperpage{942}
+    \subitem stochastic process, \hyperpage{944}
   \item modified Bessel function
     \subitem first kind, \hyperpage{716}
     \subitem second kind, \hyperpage{717}
@@ -891,8 +891,8 @@
   \indexspace
 
   \item natural filtration
-    \subitem continuous, \hyperpage{938}
-    \subitem discrete, \hyperpage{923}
+    \subitem continuous, \hyperpage{940}
+    \subitem discrete, \hyperpage{925}
   \item natural numbers, \hyperpage{25}
   \item negative
     \subitem rational numbers, \hyperpage{30}
@@ -915,7 +915,7 @@
     \subitem subgroup, \hyperpage{52}
   \item normal representation, \hyperpage{619}
   \item normal-inverse Gaussian distributed random variable, 
-		\hyperpage{1194}
+		\hyperpage{1196}
   \item normaliser
     \subitem group action, \hyperpage{79}
   \item normed space, \hyperpage{669}
@@ -938,22 +938,22 @@
   \item open set
     \subitem metric space, \hyperpage{556}
     \subitem topological space, \hyperpage{583}
-  \item optional process, \hyperpage{955}
+  \item optional process, \hyperpage{957}
   \item optional stopping theoerem
-    \subitem bounded stopping time, continuous, \hyperpage{996}
-    \subitem UI martingale, continuous, \hyperpage{997}
-    \subitem UI martingale, discrete, \hyperpage{982}
+    \subitem bounded stopping time, continuous, \hyperpage{998}
+    \subitem UI martingale, continuous, \hyperpage{999}
+    \subitem UI martingale, discrete, \hyperpage{984}
   \item optional stopping theorem
-    \subitem discrete, bounded, \hyperpage{971}
-  \item optional time, \hyperpage{947}
+    \subitem discrete, bounded, \hyperpage{973}
+  \item optional time, \hyperpage{949}
   \item orbit
     \subitem group action, \hyperpage{66}
   \item order
     \subitem group, \hyperpage{46}
     \subitem group element, \hyperpage{46}
-  \item order statistic, \hyperpage{1263}
+  \item order statistic, \hyperpage{1265}
   \item ordered pair, \hyperpage{23}
-  \item Ornstein-Uhlenbeck process, \hyperpage{1149}
+  \item Ornstein-Uhlenbeck process, \hyperpage{1151}
   \item orthogonal
     \subitem general inner product space, \hyperpage{648}
   \item orthogonal complement, \hyperpage{671}
@@ -965,7 +965,7 @@
   \item Orthogonal Projection Theorem
     \subitem probability, \hyperpage{827}
   \item orthonormal set, \hyperpage{143}
-  \item OU process, \hyperpage{1149}
+  \item OU process, \hyperpage{1151}
   \item outer corner, \hyperpage{785}
   \item outer measure, \hyperpage{592}
   \item outer regular measure, \hyperpage{598}
@@ -973,7 +973,7 @@
   \indexspace
 
   \item $p$-group, \hyperpage{73}
-  \item P\'olya's urn, \hyperpage{1005}
+  \item P\'olya's urn, \hyperpage{1007}
   \item pair set, \hyperpage{11}
   \item pairwise independent, \hyperpage{801}
   \item parallelogram law, \hyperpage{648}
@@ -986,7 +986,7 @@
     \subitem real interval, \hyperpage{335}
   \item partitioned matrices multiplication, \hyperpage{156}
   \item partitioned matrix, \hyperpage{153}
-  \item Pascal's identity, \hyperpage{533}
+  \item Pascal's identity, \hyperpage{534}
   \item pathwise connected set
     \subitem complex space, \hyperpage{421}
   \item Peano axioms, \hyperpage{25}
@@ -1014,12 +1014,12 @@
   \item positive semi-definite matrix, \hyperpage{242}
   \item power matrix, \hyperpage{155}
   \item previsible sigma-algebra
-    \subitem with time zero, \hyperpage{957}
-    \subitem without time zero, \hyperpage{956}
+    \subitem with time zero, \hyperpage{959}
+    \subitem without time zero, \hyperpage{958}
   \item previsible process
-    \subitem continuous-time, with time zero, \hyperpage{957}
-    \subitem continuous-time, without time zero, \hyperpage{956}
-    \subitem discrete-time, \hyperpage{969}
+    \subitem continuous-time, with time zero, \hyperpage{959}
+    \subitem continuous-time, without time zero, \hyperpage{958}
+    \subitem discrete-time, \hyperpage{971}
   \item prime
     \subitem element of ring, \hyperpage{105}
     \subitem number theory, \hyperpage{683}
@@ -1030,7 +1030,7 @@
   \item primitive function
     \subitem complex, \hyperpage{440}
     \subitem real, \hyperpage{345}
-  \item principal components, \hyperpage{1230}
+  \item principal components, \hyperpage{1232}
   \item principal ideal, \hyperpage{98}
   \item principal ideal domain, \hyperpage{113}
   \item principal minor, \hyperpage{178}
@@ -1039,16 +1039,16 @@
   \item probability distribution
     \subitem discrete, \hyperpage{869}
   \item probability generating function, \hyperpage{869}
-  \item probability kernel, \hyperpage{1081}
+  \item probability kernel, \hyperpage{1083}
   \item probability mass function, \hyperpage{869}
   \item probability space, \hyperpage{796}
   \item process, \hyperpage{814}
   \item product $\sigma$-algebra, \hyperpage{634}
   \item product martingale
-    \subitem discrete, \hyperpage{985}
+    \subitem discrete, \hyperpage{987}
   \item product measure, \hyperpage{635}
-  \item progressive sigma-algebra, \hyperpage{954, 955}
-  \item progressive process, \hyperpage{954}
+  \item progressive sigma-algebra, \hyperpage{956, 957}
+  \item progressive process, \hyperpage{956}
   \item proper ideal, \hyperpage{114}
   \item pseudometric, \hyperpage{553}
   \item Pythagoras' rule, \hyperpage{648}
@@ -1060,7 +1060,7 @@
   \item $QR$ factorization, \hyperpage{228}
   \item quadratic non-residue, \hyperpage{696}
   \item quadratic residue, \hyperpage{696}
-  \item quadratic variation process, \hyperpage{1110}
+  \item quadratic variation process, \hyperpage{1112}
   \item quasimetric, \hyperpage{554}
   \item quotient
     \subitem rational numbers, \hyperpage{30}
@@ -1072,21 +1072,21 @@
   \item Rademacher functions, \hyperpage{815}
   \item radius of convergence, \hyperpage{408}
   \item Radon measure, \hyperpage{598}
-  \item Radon-Nikodym density, \hyperpage{1143}
-  \item Radon-Nikodym derivative, \hyperpage{986}
-  \item Radon-Nikodym theorem, \hyperpage{987}
+  \item Radon-Nikodym density, \hyperpage{1145}
+  \item Radon-Nikodym derivative, \hyperpage{988}
+  \item Radon-Nikodym theorem, \hyperpage{989}
   \item Ramanujan tau function, \hyperpage{688}
   \item random process
-    \subitem continuous, \hyperpage{937}
-    \subitem discrete, \hyperpage{923}
+    \subitem continuous, \hyperpage{939}
+    \subitem discrete, \hyperpage{925}
   \item random variable, \hyperpage{803}
     \subitem discrete, \hyperpage{869}
   \item random walk
-    \subitem one-dimensional, \hyperpage{929}
-    \subitem simple, \hyperpage{930}
-    \subitem simple symmetric, \hyperpage{930}
+    \subitem one-dimensional, \hyperpage{931}
+    \subitem simple, \hyperpage{932}
+    \subitem simple symmetric, \hyperpage{932}
   \item range, \hyperpage{15}
-    \subitem Brownian motion, \hyperpage{1039}
+    \subitem Brownian motion, \hyperpage{1041}
     \subitem relation, \hyperpage{14}
   \item range space
     \subitem matrix, \hyperpage{162}
@@ -1104,27 +1104,27 @@
     \subitem rational numbers, \hyperpage{29}
   \item record
     \subitem probability, \hyperpage{814}
-  \item reduction of local martingale, \hyperpage{999}
-  \item reflection principle, \hyperpage{1029}
-    \subitem simple random walk, \hyperpage{930}
+  \item reduction of local martingale, \hyperpage{1001}
+  \item reflection principle, \hyperpage{1031}
+    \subitem simple random walk, \hyperpage{932}
   \item reflexive
     \subitem relation, \hyperpage{15}
   \item regular measure, \hyperpage{598}
   \item regularity conditions
-    \subitem density function, \hyperpage{1209}
+    \subitem density function, \hyperpage{1211}
   \item regularized incomplete beta function, \hyperpage{514}
   \item relation, \hyperpage{14}
-  \item residual sum of squares, RSS, \hyperpage{1223}
-  \item reversed Weibull distribution, \hyperpage{1193}
+  \item residual sum of squares, RSS, \hyperpage{1225}
+  \item reversed Weibull distribution, \hyperpage{1195}
   \item Riemann zeta function, \hyperpage{527}
-  \item Riemann-Lebesgue lemma, \hyperpage{658}
+  \item Riemann-Lebesgue lemma, \hyperpage{657}
   \item Riemann-Stieljes integral
     \subitem complex space, \hyperpage{426}
   \item right coset, \hyperpage{51}
   \item right inverse
     \subitem matrix, \hyperpage{158}
   \item right-continuous
-    \subitem filtration, \hyperpage{938}
+    \subitem filtration, \hyperpage{940}
   \item right-continuous inverse, \hyperpage{313}
   \item right-invertible function, \hyperpage{20}
   \item ring
@@ -1143,7 +1143,7 @@
   \item rrthogonal projection theorem
     \subitem measure, \hyperpage{648}
   \item run
-    \subitem random sequence, \hyperpage{1249}
+    \subitem random sequence, \hyperpage{1251}
 
   \indexspace
 
@@ -1166,9 +1166,9 @@
   \item semidirect product
     \subitem groups, \hyperpage{90}
   \item semigroup, \hyperpage{45}
-    \subitem transition, \hyperpage{1088}
-  \item semimartingale, \hyperpage{1005}
-    \subitem continuous, \hyperpage{1127}
+    \subitem transition, \hyperpage{1089}
+  \item semimartingale, \hyperpage{1007}
+    \subitem continuous, \hyperpage{1129}
   \item semimetric, \hyperpage{554}
   \item separable
     \subitem $\sigma$-algebra, \hyperpage{587}
@@ -1184,8 +1184,8 @@
   \item shift map, \hyperpage{900}
   \item $\sigma$-algebra, \hyperpage{587}
   \item $\sigma$-algebra of measurable events before stopping time
-    \subitem continuous, \hyperpage{947}
-    \subitem discrete, \hyperpage{925}
+    \subitem continuous, \hyperpage{949}
+    \subitem discrete, \hyperpage{927}
   \item $\sigma$-finite measure, \hyperpage{593}
   \item sign
     \subitem permutation, \hyperpage{60}
@@ -1196,7 +1196,7 @@
   \item simple
     \subitem group, \hyperpage{64}
   \item simple function, \hyperpage{619}
-  \item simple process, \hyperpage{1103}
+  \item simple process, \hyperpage{1105}
   \item simply connected set
     \subitem complex, \hyperpage{435}
   \item simultaneously diagonalizable
@@ -1206,7 +1206,7 @@
   \item singular
     \subitem matrix, \hyperpage{155}
   \item singular value decomposition, \hyperpage{257}
-  \item Skellam random variable, \hyperpage{1161}
+  \item Skellam random variable, \hyperpage{1163}
   \item skew-Hermitian matrix, \hyperpage{173}
   \item skewness, \hyperpage{857}
   \item Skorokhod representation theorem, \hyperpage{858}
@@ -1223,27 +1223,27 @@
   \item sporadic group, \hyperpage{64}
   \item stabiliser
     \subitem group action, \hyperpage{66}
-  \item stable distribution, \hyperpage{1273}
+  \item stable distribution, \hyperpage{1275}
   \item standard tableaux, \hyperpage{786}
   \item stationary
     \subitem sequence of random variables, \hyperpage{900}
-  \item stationary Markov transition kernel, \hyperpage{1087}
+  \item stationary Markov transition kernel, \hyperpage{1088}
   \item stepfunction, \hyperpage{656}
   \item Stirling's formula, \hyperpage{467}
   \item stochastic integral
-    \subitem discrete, \hyperpage{970}
+    \subitem discrete, \hyperpage{972}
   \item stochastic process
-    \subitem continuous, \hyperpage{937}
-    \subitem discrete, \hyperpage{923}
+    \subitem continuous, \hyperpage{939}
+    \subitem discrete, \hyperpage{925}
   \item Stone-Weierstrass theorem, \hyperpage{671}
   \item stopped martingale theorem
-    \subitem discrete, \hyperpage{971}
+    \subitem discrete, \hyperpage{973}
   \item stopped process
-    \subitem continuous, \hyperpage{953}
-    \subitem discrete, \hyperpage{926}
+    \subitem continuous, \hyperpage{955}
+    \subitem discrete, \hyperpage{928}
   \item stopping time
-    \subitem continuous, \hyperpage{945}
-    \subitem discrete, \hyperpage{923}
+    \subitem continuous, \hyperpage{947}
+    \subitem discrete, \hyperpage{925}
   \item strictly decreasing
     \subitem real function, \hyperpage{293}
     \subitem sequence, \hyperpage{285}
@@ -1252,23 +1252,23 @@
     \subitem sequence, \hyperpage{285}
   \item strictly monotone
     \subitem real function, \hyperpage{293}
-  \item strictly stable distribution, \hyperpage{1273}
+  \item strictly stable distribution, \hyperpage{1275}
   \item strong closure property
     \subitem ring, \hyperpage{97}
   \item strong law of large numbers
     \subitem 4th moment, \hyperpage{898}
     \subitem ergodic theorem approach, \hyperpage{902}
-    \subitem martingale approach, \hyperpage{984}
+    \subitem martingale approach, \hyperpage{986}
   \item structure theorem for finite abelian groups, \hyperpage{77}
   \item Student's $t$ distributed random variable
-    \subitem non-central scaled, \hyperpage{1185}
-    \subitem standard, \hyperpage{1182}
+    \subitem non-central scaled, \hyperpage{1187}
+    \subitem standard, \hyperpage{1184}
   \item subalgebra, \hyperpage{141}
   \item subcover, \hyperpage{359}
   \item subgroup, \hyperpage{46}
   \item submartingale
-    \subitem continuous, \hyperpage{988}
-    \subitem discrete, \hyperpage{969}
+    \subitem continuous, \hyperpage{990}
+    \subitem discrete, \hyperpage{971}
   \item submatrix, \hyperpage{154}
   \item subring
     \subitem group, \hyperpage{95}
@@ -1280,8 +1280,8 @@
   \item subspace
     \subitem vector space, \hyperpage{36}
   \item supermartingale
-    \subitem continuous, \hyperpage{988}
-    \subitem discrete, \hyperpage{969}
+    \subitem continuous, \hyperpage{990}
+    \subitem discrete, \hyperpage{971}
   \item support, \hyperpage{583}
     \subitem real space, \hyperpage{291}
   \item supremum, \hyperpage{22}
@@ -1316,15 +1316,15 @@
   \item topology, \hyperpage{583}
   \item topology induced by metric, \hyperpage{583}
   \item total ordering, \hyperpage{22}
-  \item total sum of squares, TSS, \hyperpage{1223}
+  \item total sum of squares, TSS, \hyperpage{1225}
   \item total variation, \hyperpage{309}
-  \item total variation process, \hyperpage{940}
+  \item total variation process, \hyperpage{942}
   \item tower property, \hyperpage{844}
   \item trace
     \subitem linear endomorphism, \hyperpage{151}
     \subitem matrix, \hyperpage{174}
   \item transition density
-    \subitem Brownian motion, \hyperpage{1019}
+    \subitem Brownian motion, \hyperpage{1021}
   \item transitive
     \subitem group action, \hyperpage{66}
     \subitem relation, \hyperpage{15}
@@ -1343,18 +1343,18 @@
   \item UI (uniformly integrable)
     \subitem measurable function family, \hyperpage{649}
     \subitem random variable family, \hyperpage{827}
-  \item UI martingale, \hyperpage{981}
+  \item UI martingale, \hyperpage{983}
   \item UI martingale convergence theorem
-    \subitem continuous, \hyperpage{996}
-    \subitem discrete, \hyperpage{981}
+    \subitem continuous, \hyperpage{998}
+    \subitem discrete, \hyperpage{983}
   \item ultrametric, \hyperpage{553}
-  \item unbiased estimator, \hyperpage{1209}
+  \item unbiased estimator, \hyperpage{1211}
   \item uniform convergence
     \subitem complex function, \hyperpage{383}
     \subitem real function, \hyperpage{290}
   \item uniform convergence on compacts, \hyperpage{585}
-    \subitem stochastic process, almost surely, \hyperpage{965}
-    \subitem stochastic process, in probability, \hyperpage{965}
+    \subitem stochastic process, almost surely, \hyperpage{967}
+    \subitem stochastic process, in probability, \hyperpage{967}
   \item uniform convergence theorem
     \subitem complex function, \hyperpage{395}
     \subitem real function, \hyperpage{317}
@@ -1375,38 +1375,38 @@
     \subitem matrix, \hyperpage{217}
   \item unitary matrix, \hyperpage{173}
   \item universal formula of trigonometric function, \hyperpage{481}
-  \item up-crossing inequality, \hyperpage{976}
+  \item up-crossing inequality, \hyperpage{978}
   \item upper bound
     \subitem patially ordered set, \hyperpage{22}
   \item usual conditions
-    \subitem filtered probability space, \hyperpage{938}
+    \subitem filtered probability space, \hyperpage{940}
 
   \indexspace
 
   \item Vandermonde matrix, \hyperpage{196}
   \item variance, \hyperpage{830}
-  \item variance-gamma distributed random variable, \hyperpage{1195}
+  \item variance-gamma distributed random variable, \hyperpage{1197}
   \item vector space, \hyperpage{35}
   \item vectorization operator, \hyperpage{264}
   \item version
-    \subitem stochastic process, \hyperpage{942}
+    \subitem stochastic process, \hyperpage{944}
   \item Vitali convergence theorem, \hyperpage{654}
   \item volume form, \hyperpage{175}
   \item von Neumann's ${\cal  L}^p$ ergodic theorem, \hyperpage{667}
 
   \indexspace
 
-  \item Wald-Wolfowitz runs test, \hyperpage{1251}
+  \item Wald-Wolfowitz runs test, \hyperpage{1253}
   \item weak law of large numbers
     \subitem finite absolute moment, \hyperpage{897}
     \subitem finite variance, \hyperpage{896}
   \item Weibull random variable
-    \subitem standard, \hyperpage{1171}
-    \subitem translated, \hyperpage{1172}
+    \subitem standard, \hyperpage{1173}
+    \subitem translated, \hyperpage{1174}
   \item Weierstrass M-test, \hyperpage{391}
   \item Weierstrass' approximation theorem, \hyperpage{671}
-  \item Wiener measure, \hyperpage{1023}
-  \item Wiener space, \hyperpage{1023}
+  \item Wiener measure, \hyperpage{1025}
+  \item Wiener space, \hyperpage{1025}
   \item Wilson's theorem, \hyperpage{696}
 
   \indexspace
