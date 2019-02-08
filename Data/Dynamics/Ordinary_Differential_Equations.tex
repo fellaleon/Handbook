@@ -372,17 +372,17 @@ where $\nu,z\in \C$.
 \begin{center}
 \psset{xunit=0.4,yunit=5}
 \begin{pspicture}(-13,-.75)(13,1.15)
-\rput(10,0.8){￼$J_n(x)=\frac{1}{\pi}\int_0^{\pi}\cos(x\sin t-nt)dt,\quad x\in \R$}
+\rput(10,0.8){$J_n(x)=\frac{1}{\pi}\int_0^{\pi}\cos(x\sin t-nt)dt,\quad x\in \R$}
 \psaxes[Dy=0.2,Dx=2.5]{->}(0,0)(-22,-.7)(22,1.1)
 \psset{linewidth=1pt}
 \psBessel[linecolor=red]{0}{-20}{20}%
 \psBessel[linecolor=blue]{1}{-20}{20}%
 \psBessel[linecolor=green]{2}{-20}{20}%
 \psBessel[linecolor=cyan]{3}{-20}{20}%magenta
-\rput(-15,1){￼\textcolor{red}{$J_0(x)$}}
-\rput(-15,0.8){￼\textcolor{blue}{$J_1(x)$}}
-\rput(-15,0.6){￼\textcolor{green}{$J_2(x)$}}
-\rput(-15,0.4){￼\textcolor{cyan}{$J_3(x)$}}
+\rput(-15,1){\textcolor{red}{$J_0(x)$}}
+\rput(-15,0.8){\textcolor{blue}{$J_1(x)$}}
+\rput(-15,0.6){\textcolor{green}{$J_2(x)$}}
+\rput(-15,0.4){\textcolor{cyan}{$J_3(x)$}}
 \end{pspicture}
 \end{center}
 
@@ -437,10 +437,10 @@ where $\nu,z\in \C$.
 \psset{xunit=1,yunit=0.5}
 \begin{pspicture}(0,-0.5)(5,15)
 \psaxes[Dy=2,Dx=1,ticksize=-5pt 0]{->}(0,0)(-2,-.5)(6,15)%
-\rput(-1.5,11){￼\textcolor{red}{$I_0(x)$}}
-\rput(-1.5,10){￼\textcolor{blue}{$I_1(x)$}}
-\rput(-1.5,9){￼\textcolor{green}{$I_2(x)$}}
-\rput(-1.5,8){￼\textcolor{cyan}{$I_3(x)$}}
+\rput(-1.5,11){\textcolor{red}{$I_0(x)$}}
+\rput(-1.5,10){\textcolor{blue}{$I_1(x)$}}
+\rput(-1.5,9){\textcolor{green}{$I_2(x)$}}
+\rput(-1.5,8){\textcolor{cyan}{$I_3(x)$}}
 \psModBessel[yMaxValue=15,nue=0,linecolor=red]{0}{5}%
 \psModBessel[yMaxValue=15,nue=1,linecolor=blue]{0}{5}%
 \psModBessel[yMaxValue=15,nue=2,linecolor=green]{0}{5}%
@@ -2036,9 +2036,7 @@ x^n = He_n(x) + \frac{n!}{2!(n-2)!} He_{n-2}(x) + \dots = \sum^{\floor{\frac n2}
 %\subsection{Mehler's formula}
 
 \begin{theorem}[Mehler's formula\index{Mehler's formula}]\label{thm:mehler_formula}
-Let\footnote{Mehler, F. G. (1866), ``Ueber die Entwicklung einer Function von beliebig vielen Variabeln nach Laplaceschen Functionen h \"oherer Ordnung'', Journal f\"ur Reine und Angewandte
-Mathematik (in German) (66): 161�C176, ISSN 0075-4102, JFM 066.1720cj (cf. p 174, (18) \& p 173, (13) ), Erd\'elyi, Arthur; Magnus, Wilhelm; Oberhettinger, Fritz; Tricomi, Francesco G. (1955), Higher
-transcendental functions. Vol. II, McGraw-Hill (scan: p.194 10.13 (22))}
+Let\footnote{Mehler, F. G. (1866), ``Ueber die Entwicklung einer Function von beliebig vielen Variabeln nach Laplaceschen Functionen h \"oherer Ordnung'', Journal f\"ur Reine und Angewandte Mathematik (in German) (66): 161-176, ISSN 0075-4102, JFM 066.1720cj (cf. p 174, (18) \& p 173, (13) ), Erd\'elyi, Arthur; Magnus, Wilhelm; Oberhettinger, Fritz; Tricomi, Francesco G. (1955), Higher transcendental functions. Vol. II, McGraw-Hill (scan: p.194 10.13 (22))}
 \be
 f(x,y) =\frac 1{\sqrt{1-\rho^2}}\exp\left(-\frac{\rho^2 (x^2+y^2)-2\rho xy}{(1-\rho^2)}\right).
 \ee
@@ -2069,8 +2067,7 @@ p(x) = \frac 1{\sqrt{2\pi}}\exp\brb{-\frac{x^2}{2}},\qquad p(y) = \frac 1{\sqrt{
 \ee
 \end{remark}
 
-There follows the usually quoted form of the result.\footnote{see Kibble, W. F. (1945), "An extension of a theorem of Mehler's on Hermite polynomials", Proc. Cambridge Philos. Soc. 41: 12�C15, doi:10.1017/S0305004100022313,
-MR 0012728}
+There follows the usually quoted form of the result.\footnote{see Kibble, W. F. (1945), "An extension of a theorem of Mehler's on Hermite polynomials", Proc. Cambridge Philos. Soc. 41: 12-15, doi:10.1017/S0305004100022313,MR 0012728}
 
 \begin{theorem}\label{thm:mehler_formula_extension}
 Let $p(x,y)$ be the joint density function of bivariate normal distribution. Then
