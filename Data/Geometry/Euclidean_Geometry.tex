@@ -1036,7 +1036,6 @@ We have two approaches.
 \pstMarkAngle[LabelSep=0.7]{B}{F}{C}{$60^\circ$}
 \rput[lb](0,-1){II}
 \end{pspicture}
-￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
 \end{center}
 \end{figure}
 
@@ -1089,7 +1088,7 @@ Consider isosceles triangle $\triangle ABC$ with $\angle ABC = \angle ACB = 80^\
 %\pstTriangle (1;0){C}(5.7588;90) {A}(1;180) {B}
 
 \begin{proof}[\bf Proof]
-We can have three approaches.
+We can have five approaches.
 
 {\bf Approach I.} Let $F$ be a point on $AC$ such that $\angle FBC = 20^\circ$ such that $\triangle BEF$ is an equilateral triangle. Then $BC = BF =BE = EF$. By law of sines\footnote{theorem needed.},
 \be
@@ -1120,9 +1119,107 @@ BE = BC = CF = DF = DE.
 
 Thus, $\angle AED = 2\angle ABD = 20^\circ = \angle BAC$ and therefore $AD = DE = BC$.
 
+%\begin{figure}[t]
+%\begin{center}
+%\begin{pspicture}(-3,-1)(3,9)
+%\psset{PointSymbol =none}
+%\pstTriangle(8.507;90){A}(1.5;180){B}(1.5;0){C}
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D2}{B}{A}{D3}
+%%\pstGeonode[PointSymbol=none, PointName=none]{B}(5;70){DD1}
+%\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D}
+%\pstLineAB{B}{D}
+%
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{D1}{D4}
+%\pstInterLL[PosAngle=30]{A}{C}{B}{D4}{F}
+%\pstLineAB[linestyle=dashed]{B}{F}
+%%\pstLineAB[linestyle=dashed]{D}{F}
+%
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
+%\pstInterLL[PosAngle=120]{A}{B}{C}{E3}{E}
+%\pstLineAB[linestyle=dashed]{C}{E}
+%\pstLineAB[linestyle=dashed]{E}{D}
+%\pstLineAB[linestyle=dashed]{E}{F}
+%\pstMarkAngle[LabelSep=1]{C}{B}{F}{$20^\circ$}
+%\pstMarkAngle[LabelSep=0.7]{E}{C}{B}{$50^\circ$}
+%
+%\pstSegmentMark[linestyle=dashed]{B}{E}
+%\pstSegmentMark[linestyle=dashed]{B}{F}
+%\pstSegmentMark[linestyle=dashed]{E}{F}
+%\pstSegmentMark[linestyle=dashed]{B}{C}
+%\pstSegmentMark[linestyle=dashed]{E}{D}
+%\pstSegmentMark[linestyle=dashed]{A}{D}
+%
+%\rput[lb](0,-1){I}
+%\end{pspicture}
+%\begin{pspicture}(-3,-1)(3,9)
+%\psset{PointSymbol =none}
+%\pstTriangle(8.507;90){A}(1.5;180){B}(1.5;0){C}
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D2}{B}{A}{D3}
+%%\pstGeonode[PointSymbol=none, PointName=none]{B}(5;70){DD1}
+%\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D}
+%\pstLineAB{B}{D}
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{B}{E1}
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{A}{C}{E1}{E2}
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{E2}{C}{E1}{E3}
+%\pstInterLL[PosAngle=120]{A}{B}{C}{E3}{E}
+%\pstLineAB[linestyle=dashed]{E}{D}
+%\pstLineAB[linestyle=dashed]{E}{C}
+%
+%\pstGeonode[PosAngle=30](2.598;90){F}
+%\pstLineAB[linestyle=dashed]{B}{F}
+%\pstLineAB[linestyle=dashed]{C}{F}
+%\pstLineAB[linestyle=dashed]{D}{F}
+%\pstLineAB[linestyle=dashed]{E}{F}
+%\pstInterLL[PointSymbol=none, PointName=none]{B}{D}{E}{F}{G}
+%\pstRightAngle[RightAngleSize=0.2]{D}{G}{F}
+%\pstMarkAngle[LabelSep=0.7]{C}{B}{F}{$60^\circ$}
+%\pstMarkAngle[LabelSep=0.7]{E}{C}{B}{$50^\circ$}
+%\pstMarkAngle[LabelSep=0.7]{B}{F}{C}{$60^\circ$}
+%
+%\pstSegmentMark[linestyle=dashed]{B}{C}
+%\pstSegmentMark[linestyle=dashed]{B}{E}
+%\pstSegmentMark[linestyle=dashed]{B}{F}
+%\pstSegmentMark[linestyle=dashed]{C}{F}
+%\pstSegmentMark[linestyle=dashed]{F}{D}
+%\pstSegmentMark[linestyle=dashed]{E}{D}
+%\pstSegmentMark[linestyle=dashed]{A}{D}
+%
+%\rput[lb](0,-1){II}
+%\end{pspicture}
+%\begin{pspicture}(-3,-1)(3,9)
+%\psset{PointSymbol =none}
+%\pstTriangle(8.507;90){A}(1.5;180){B}(1.5;0){C}
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
+%\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D2}{B}{A}{D3}
+%%\pstGeonode[PointSymbol=none, PointName=none]{B}(5;70){DD1}
+%\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D}
+%\pstLineAB{B}{D}
+%
+%\pstGeonode[PosAngle=30](2.598;90){E}
+%\pstLineAB[linestyle=dashed]{A}{E}
+%\pstLineAB[linestyle=dashed]{B}{E}
+%\pstLineAB[linestyle=dashed]{C}{E}
+%\pstMarkAngle[LabelSep=0.7]{C}{B}{E}{$60^\circ$}
+%\pstMarkAngle[LabelSep=0.7]{B}{E}{C}{$60^\circ$}
+%\pstMarkAngle[LabelSep=0.7]{E}{C}{B}{$60^\circ$}
+%
+%\pspolygon[fillstyle=solid,fillcolor=magenta,linestyle=dashed,opacity=0.3](A)(B)(D)
+%\pspolygon[fillstyle=solid,fillcolor=green,linestyle=dashed,opacity=0.3](A)(C)(E)
+%\rput[lb](0,-1){III}
+%\end{pspicture}
+%\end{center}
+%\end{figure}
+
 \begin{figure}[t]
 \begin{center}
-\begin{pspicture}(-3,-1)(3,9)
+\begin{pspicture}(-2,-1)(2,9)
 \psset{PointSymbol =none}
 \pstTriangle(8.507;90){A}(1.5;180){B}(1.5;0){C}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
@@ -1156,7 +1253,7 @@ Thus, $\angle AED = 2\angle ABD = 20^\circ = \angle BAC$ and therefore $AD = DE 
 
 \rput[lb](0,-1){I}
 \end{pspicture}
-\begin{pspicture}(-3,-1)(3,9)
+\begin{pspicture}(-2,-1)(2,9)
 \psset{PointSymbol =none}
 \pstTriangle(8.507;90){A}(1.5;180){B}(1.5;0){C}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
@@ -1193,7 +1290,7 @@ Thus, $\angle AED = 2\angle ABD = 20^\circ = \angle BAC$ and therefore $AD = DE 
 
 \rput[lb](0,-1){II}
 \end{pspicture}
-\begin{pspicture}(-3,-1)(3,9)
+\begin{pspicture}(-2,-1)(2,9)
 \psset{PointSymbol =none}
 \pstTriangle(8.507;90){A}(1.5;180){B}(1.5;0){C}
 \pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
@@ -1215,13 +1312,61 @@ Thus, $\angle AED = 2\angle ABD = 20^\circ = \angle BAC$ and therefore $AD = DE 
 \pspolygon[fillstyle=solid,fillcolor=green,linestyle=dashed,opacity=0.3](A)(C)(E)
 \rput[lb](0,-1){III}
 \end{pspicture}
-￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
+\begin{pspicture}(-2,-1)(2,9)
+\psset{PointSymbol=none}
+\pstTriangle(8.507;90){A}(1.5;180){B}(1.5;0){C}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{C}{B}{A}{D1}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D1}{B}{A}{D2}
+\pstBissectBAC[linestyle=none,PointSymbol=none, PointName=none]{D2}{B}{A}{D3}
+%\pstGeonode[PointSymbol=none, PointName=none]{B}(5;70){DD1}
+\pstInterLL[PosAngle=30]{A}{C}{B}{D3}{D}
+\pstLineAB{B}{D}
+
+\pstProjection[linestyle=dashed]{D}{B}{A}[E]
+\pstLineAB[linestyle=dashed]{D}{E}
+\pstLineAB[linestyle=dashed]{A}{E}
+\pstRightAngle[RightAngleSize=0.2]{D}{E}{A}
+\pstOrtSym[PosAngle=90]{A}{B}{E}[F]
+\pstLineAB[linestyle=dashed]{B}{F}
+%\pstSymO[PosAngle=90]{F}{A}[G]
+%\pstLineAB[linestyle=dashed]{G}{B}
+%\pstLineAB[linestyle=dashed]{G}{A}
+\pstRightAngle[RightAngleSize=0.2]{A}{F}{B}
+
+%\pstSegmentMark[linestyle=dashed]{G}{F}
+\pstSegmentMark[linestyle=dashed]{A}{F}
+\pstSegmentMark[linestyle=dashed]{A}{E}
+
+\rput[lb](0,-1){IV}
+\end{pspicture}
 \end{center}
 \end{figure}
 
-
-
 {\bf Approach III.} Let $E$ be a point such that $\triangle BCE$ is an equilateral triangle with $BC = CE$. Also, $AB = AC$, $\angle BAD = \angle ACE = 20^\circ$ and $\angle ABD = \angle CAE = 10^\circ$. Thus, $\triangle ABD \cong \triangle ACE$ which implies that $AD = CE$ and therefore $AD = BC$.
+
+{\bf Approach IV.} Extend $BD$ to $E$ such that we have $AE \perp BE$. Then we have that $\angle BAE = 80^\circ$ and
+\be
+\angle DAE = \angle BAE - \angle BAC = 80^\circ - 20^\circ = 60^\circ.
+\ee
+
+Then we have $AD = 2AE$. Also, we can have point $F$ such that $BF\perp AF$ such that $\triangle BAE \cong \triangle BAF$. Therefore, we have $BC = 2AF$ and $AF = AE$. Thus,
+\be
+AD = 2AE = 2AF = BC.
+\ee
+
+{\bf Approach IV.} By law of sines (Theorem \ref{thm:law_of_sines}),
+\be
+S_{\triangle ABC} = \frac 12 AB \cdot BC \sin 80^\circ = \frac 12 AB^2 \sin 20^\circ \ \ra\ BC = \frac{\sin 20^\circ}{\sin 80^\circ}AB.
+\ee
+\be
+S_{\triangle ABD} = \frac 12 AB \cdot BD \sin 10^\circ = \frac 12 AD\cdot BD \sin 150^\circ \ \ra\ AD = \frac{\sin 10^\circ}{\sin 150^\circ}AB.
+\ee
+
+However,
+\be
+\frac{\sin 20^\circ}{\sin 80^\circ} = \frac{2\sin 10^\circ \cos 10^\circ}{\cos 10^\circ} = \frac{\sin 10^\circ}{1/2} = \frac{\sin 10^\circ}{\sin 150^\circ}
+\ee
+which implies that $AD = BC$.
 \end{proof}
 
 
@@ -1409,7 +1554,6 @@ and the fact $\angle DFE = \angle BFC = 50^\circ$ implies that $\triangle DEF \s
 %\pspolygon[fillstyle=solid,fillcolor=green,opacity=0.3](C)(E)(F)
 \rput[lb](0,-1){III}
 \end{pspicture}
-￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
 \end{center}
 \end{figure}
 
@@ -1562,7 +1706,6 @@ The theoretical proof can be found in the proof of Theorem \ref{thm:algebraic_pr
 
 \ncline[linestyle=solid]{B}{A}
 \end{pspicture}
-￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
 \end{center}
 
 \een
@@ -2010,7 +2153,7 @@ Thus, the corresponding roots $\ve_3,\ve_4,\ve_2,\ve_1$ (in order) of equation $
 x_1 = \ve_4 + \ve_1,\quad x_2 = \ve_3 + \ve_2.
 \ee
 
-Also, we knwo that $x_1+x_2 = -1$ and
+Also, we know that $x_1+x_2 = -1$ and
 \be
 x_1 x_2 = (\ve_4+\ve_1)(\ve_3+\ve_2) = \ve_{4+3}+\ve_{4+2} + \ve_{1+3}+\ve_{1+2} = \ve_2 + \ve_1 + \ve_4 + \ve_3 = -1
 \ee
@@ -2119,7 +2262,6 @@ where $y_4$ is defined in proof of Theorem \ref{thm:algebraic_proof_of_17_sided_
 
 \ncline[linestyle=solid]{B}{A}
 \end{pspicture}
-￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
 \end{center}
 
 %\begin{center}
@@ -2163,7 +2305,6 @@ where $y_4$ is defined in proof of Theorem \ref{thm:algebraic_proof_of_17_sided_
 % \pspolygon[linecolor=blue, linestyle=solid, linewidth=2\pslinewidth]
 % (P_1)(P_2)(P_3)(P_4)(P_5)(P_6)(P_7)(P_8)(P_9)(P_10)(P_11)(P_12)(P_13)(P_14)(P_15)(P_16)(P_17)
 % \end{pspicture}
-￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼￼
 %\end{center}
 
 
@@ -2256,3 +2397,76 @@ f(n) = \frac 16\brb{n^3 + 5n + 6}.
 \ee
 
 
+\section{Problems}
+
+\begin{problem}
+Kevin and Stuart have some bananas. Each banana has the same size and shape, and they are all two-dimensional. Each one consists of the area between two circular arcs. The two circular arcs meet at either end of the banana at an angle of $\pi/9$.
+\begin{center}
+\psset{unit=2cm}
+\begin{pspicture}(-3,-1.1)(2,1.1)
+\pstGeonode[PointSymbol=none,PointName=none](0,0){O}(1.732,0){A}(5.6713,0){B}(0,1){C}(0,-1){D}
+\psset{PointSymbol=none,PointName=none,linewidth=0.5pt}
+\pstArcOAB{A}{C}{D}
+\pstArcOAB{B}{C}{D}
+
+\pscustom[linestyle=solid,fillstyle=solid,fillcolor=yellow!100,opacity=0.8]{
+\psarcAB(A)(C)(D)
+\psarcnAB(B)(D)(C)}
+
+\pstSymO[]{C}{A}[E]
+\pstSymO[]{C}{B}[F]
+\pstMediatorAB[linestyle=none]{A}{E}{C}{M}
+\pstMediatorAB[linestyle=none]{B}{F}{C}{N}
+\pstMarkAngle[MarkAngleRadius=0.15,LabelSep=0.5,LabelAngleOffset=5]{M}{C}{N}{$\frac{\pi}9$}
+\end{pspicture}
+\end{center}
+
+Kevin has 12 more bananas than Stuart. Kevin can use all of his bananas to form a perfect circle from circular arcs. Stuart can also use all of his bananas to form a perfect circle from circular arcs. How many bananas does Kevin have?
+\end{problem}
+
+
+\begin{solution}[\bf Solution.]
+Let $A$ and $B$ be the two centers of circular arcs. Then we can see that $\angle ACB = \frac{\pi}9$ and thus
+\be
+\angle CAD - \angle CBD = \frac {2\pi}9.
+\ee
+
+\begin{center}
+\psset{unit=2cm}
+\begin{pspicture}(-1,-1.2)(6,1.2)
+\pstGeonode[PointSymbol=none,PosAngle={90,45,45,90,-90}](0,0){O}(1.732,0){A}(5.6713,0){B}(0,1){C}(0,-1){D}%,PointName=none
+\psset{PointSymbol=none,PointName=none,linewidth=0.5pt}
+%\pstGeonode(-1.871,0.707){B1}(0,-2.828){AB1}(1.871,-0.707){A2}(-1.871,-0.707){B2}(0,2.828){AB2}(-2.828,0){CC}(2.828,0){DD}(0,2){N}(1.414,1.414){NE}
+
+\pstArcOAB{A}{C}{D}
+\pstArcOAB{B}{C}{D}
+
+\pscustom[linestyle=solid,fillstyle=solid,fillcolor=yellow!100,opacity=0.8]{
+\psarcAB(A)(C)(D)
+\psarcnAB(B)(D)(C)}
+
+\pstSymO[]{C}{A}[E]
+\pstSymO[]{C}{B}[F]
+\pstMediatorAB[linestyle=none]{A}{E}{C}{M}
+\pstMediatorAB[linestyle=none]{B}{F}{C}{N}
+\pstMarkAngle[MarkAngleRadius=0.15,LabelSep=0.5,LabelAngleOffset=5]{M}{C}{N}{$\frac{\pi}9$}
+
+\psline[linestyle=dashed](C)(A)(D)
+\psline[linestyle=dashed](C)(B)(D)
+\psline[linestyle=dashed](O)(B)
+
+\pstMarkAngle[MarkAngleRadius=0.5,LabelSep=0.8,LabelAngleOffset=0]{A}{C}{B}{$\frac{\pi}9$}
+\end{pspicture}
+\end{center}
+
+Then assume Kevin has $x$ bananas. We have that
+\be
+\frac{2\pi}{x-12} - \frac{2\pi}{x} = \angle CAD - \angle CBD = \frac {2\pi}9
+\ee
+which implies
+\be
+\frac{1}{x-12} - \frac 1x = \frac 19 \ \ra\ 9x - 9(x-12) = x(x-12) \ \ra\ x^2 - 12x - 108 = 0 \ \ra\ x = -6,18.
+\ee
+
+So we can take the positive value $x= 18$ and therefore Stuart has $6$ bananas.
+\end{solution}
