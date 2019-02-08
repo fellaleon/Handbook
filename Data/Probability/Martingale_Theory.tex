@@ -670,7 +670,7 @@ B_k=\bra{X_m < \lm \text{ for all }m<k, \text{ but }X_k \geq \lm}.
 
 Then
 \beast
-\pro\brb{B} & = & \sum_{k=1}^n \E\brb{\ind_{B_k}} \leq \sum_{k=1}^n \E\brb{\frac 1{\lm} X_k \ind_{B_k}} \leq \frac 1{\lm} \sum_{k=1}^n \E\brb{\E\brb{X_n|\sF_k}\ind_{B_k}}\qquad \text{ $X⁢$ is a submartingale}\\
+\pro\brb{B} & = & \sum_{k=1}^n \E\brb{\ind_{B_k}} \leq \sum_{k=1}^n \E\brb{\frac 1{\lm} X_k \ind_{B_k}} \leq \frac 1{\lm} \sum_{k=1}^n \E\brb{\E\brb{X_n|\sF_k}\ind_{B_k}} \qquad \text{$X$ is a submartingale} \\
 & = & \frac 1{\lm} \sum_{k=1}^n\E\brb{\E\brb{X_n \ind_{B_k}|\sF_k}}\qquad \text{ $B_k$ is $\sF_k$-measurable}\\
 & = & \frac 1{\lm} \sum_{k=1}^n\E\brb{X_n \ind_{B_k}} = \frac 1{\lm} \E\brb{X_n \ind_B}  \leq \frac 1{\lm}\E\brb{X_n^+ \ind_B} \leq \frac 1{\lm}\E\brb{X_n^+},
 \eeast
@@ -689,7 +689,7 @@ Notice the analogy with Chebyshev inequality (Theorem \ref{thm:chebyshev_inequal
 \end{remark}
 
 \begin{proof}[\bf Proof]
-Apply Kolmogorov's inequality (Theorem \ref{thm:kolmogorov_inequality_discrete_time_martingale}) to $(X⁢_n -m)^2$, which is a submartingale by Jensen's inequality.
+Apply Kolmogorov's inequality (Theorem \ref{thm:kolmogorov_inequality_discrete_time_martingale}) to $(X_n-m)^2$, which is a submartingale by Jensen's inequality.
 \end{proof}
 
 
@@ -1846,7 +1846,7 @@ Notice the analogy with Chebyshev inequality (Theorem \ref{thm:chebyshev_inequal
 \end{remark}
 
 \begin{proof}[\bf Proof]
-Apply Kolmogorov's inequality (Theorem \ref{thm:kolmogorov_inequality_continuous_time_martingale}) to $(X⁢_n -m)^2$, which is a submartingale by Jensen's inequality.
+Apply Kolmogorov's inequality (Theorem \ref{thm:kolmogorov_inequality_continuous_time_martingale}) to $(X_n -m)^2$, which is a submartingale by Jensen's inequality.
 \end{proof}
 
 
