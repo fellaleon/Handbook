@@ -1,3 +1,4 @@
+% $Id: pstricks.sty 872 2018-12-21 20:39:31Z herbert $
 %%
 %% This is file `pstricks.sty'.
 %%
@@ -5,8 +6,9 @@
 %%
 %% pstricks.sty Copyright (C) 1997 Timothy Van Zandt
 %% pstcol.sty   Copyright (C) 1994-1996 1999 David Carlisle
-%% pstricks.sty Copyright (C) 2004-2014 Rolf Niepraschk <Rolf.Niepraschk@gmx.de>
+%% pstricks.sty Copyright (C) 2004-     Rolf Niepraschk <Rolf.Niepraschk@gmx.de>
 %%                                      Herbert Voss <hvoss@tug.org>
+%%                            2019-     Herbert Voss <hvoss@tug.org>
 %%
 %% This package may be distributed under the terms of the LaTeX Project
 %% Public License, as described in lppl.txt in the base LaTeX distribution.
@@ -15,7 +17,7 @@
 
 \NeedsTeXFormat{LaTeX2e}
 
-\ProvidesPackage{pstricks}[2013/12/12 v0.60 LaTeX wrapper for `PSTricks' (RN,HV)]
+\ProvidesPackage{pstricks}[2018/12/21 v0.69 LaTeX wrapper for `PSTricks' (RN,HV)]
 % 
 \def\documentclass{%
   \edef\@tempa{\jobname.tex }%
@@ -32,128 +34,86 @@
   \fi
 }
 % 
-\newif\ifpst@OldVersion\pst@OldVersionfalse
-\DeclareOption{97}{\pst@OldVersiontrue}
+\def\pst@ColorPackage{xcolor}
+\DeclareOption{noxcolor}{\def\pst@ColorPackage{color}}
 %
-\newif\ifpst@ovl \pst@ovlfalse
-\DeclareOption{overlays}{\global\pst@ovltrue}
-%
-\newif\ifpst@loadPDF \pst@loadPDFfalse
-\DeclareOption{pdf}{\global\pst@loadPDFtrue}
-%------------------------------------ PLAIN --------------------------------
+\newif\ifpst@psfonts  \pst@psfontsfalse
+\newif\if@check@engine  \@check@enginetrue 
+\newif\ifpst@xetex  \pst@xetexfalse
 
-\DeclareOption{plain}{%
-  \ifpst@OldVersion
-    \def\psDEBUG[#1]#2{}%
-    \def\pst@tempa{pstricks97.tex}%
-  \else
-    \def\pst@tempa{pstricks.tex}%
-  \fi
-  \input{\pst@tempa}%
-  \ProvidesFile{\pst@tempa}[\filedate\space v\fileversion\space `PSTricks' (tvz)]%
-  \endinput
-}
+\DeclareOption{psfonts}{\pst@psfontstrue}
+\DeclareOption{noEngineCheck}{\@check@enginefalse}
+\DeclareOption{xetex}{\global\pst@xetextrue}
 %
-\DeclareOption*{\OptionNotUsed}
+%---------------------------------DISTILLER --------------------------------
+\newif\ifpst@distiller\pst@distillerfalse
+\DeclareOption{distiller}{\pst@distillertrue\pst@psfontstrue}
 %
+%---------------------------------COLOR --------------------------------
+\DeclareOption{monochrome}{%
+  \AtBeginDocument{\special{ps:
+   true setglobal globaldict begin
+    /setrgbcolor { add add 0 gt {1}{0} ifelse setgray } def 
+    /setcmykcolor{ 4 dict begin
+      /k ED /y ED /m ED /c ED 
+      1 1 k sub c mul k add sub 0.29 mul 
+      1 1 k sub m mul k add sub 0.587 mul add 
+      1 1 k sub y mul k add sub 0.114 mul add
+      end 0 gt {1}{0} ifelse setgray } def 
+   end false setglobal }}}
+
+\DeclareOption{grayscale}{%
+  \AtBeginDocument{\special{ps:
+   true setglobal globaldict begin
+    /setrgbcolor { 0.07 mul exch 0.71 mul add exch 0.21 mul add setgray } def 
+    /setcmykcolor{ 4 dict begin
+      /k ED /y ED /m ED /c ED 
+      1 1 k sub c mul k add sub 0.29 mul 
+      1 1 k sub m mul k add sub 0.587 mul add 
+      1 1 k sub y mul k add sub 0.114 mul add
+      end setgray } def 
+    end false setglobal }}}
+
+\DeclareOption*{\PassOptionsToPackage\CurrentOption{\pst@ColorPackage}}
 \ProcessOptions\relax
-%
-\RequirePackage{ifpdf}
-%
-\ifpst@loadPDF
-  \ifnum\pdfshellescape=\@ne\else
-    \PackageWarningNoLine{pstricks}{%
-************************************               \MessageBreak
-  Option pdf needs a "pdflatex -shell-escape <file>" \MessageBreak
-    or a "pdflatex -enable-write18 <file>"           \MessageBreak
-    (if you are using MikTeX)                        \MessageBreak  
-************************************}
-  \fi
-  \def\app@pdfcrop@opts{--hres}%%%                hv 20130405
-  \@ifclassloaded{beamer}{%
-     \ifpdf    \else\setbeamertemplate{navigation symbols}{}   \fi
-     \AtEndOfPackage{\RequirePackage{auto-pst-pdf}}}
-    {\AtBeginDocument{%
-        {\@ifundefined{shorthandoff}           % we have no babel until now
-          { \typeout{noshorthand}\usepackage{auto-pst-pdf}}
-          { \@ifundefined{bbl@active@"}{}{\shorthandoff{"}}
-            \usepackage{auto-pst-pdf}
-            \@ifundefined{bbl@active@"}{}{\shorthandon{"}}}}}}
-\fi
-%
-\ifpst@ovl \RequirePackage{pst-ovl}\fi
+
+
+\RequirePackage{iftex}
+\RequirePackage{shellesc}
+%\ifPDFTeX
+%  \ifpdfshellescape\else
+%        \@latex@error
+%    {You are running `\jobname.tex' with pdflatex and without option `--shell-escape' ,\MessageBreak
+%    	you need package auto-pst-pdf and that option!}%
+%    {Alternatively use xelatex or latex->dvips->ps2pdf}
+%  \fi
+%\fi
+\RequirePackage{\pst@ColorPackage}
 %
 \@ifundefined{PSTricksLoaded}
 {%
   \let\saved@scalebox\scalebox
-  \ifpst@OldVersion
-    \def\psDEBUG[#1]#2{}
-    \def\pst@tempa{pstricks97.tex}%
-  \else
-    \def\pst@tempa{pstricks.tex}
-  \fi
-  \input{\pst@tempa}%
-  \ProvidesFile{\pst@tempa}
-    [\filedate\space v\fileversion\space `PSTricks' (tvz,hv)]
-  \ifpst@OldVersion
-    \IfFileExists{pstricks97.pro}{%
-      \ProvidesFile{pstricks97.pro}%
-        [1998/06/01 v. 97 patch 3,  PostScript prologue file (hv)]
-        \@addtofilelist{pstricks97.pro}}{}%
-    \IfFileExists{pst-dots97.pro}{%
-      \ProvidesFile{pst-dots97.pro}
-        [1999/12/16 v. 97 patch 1,  PostScript prologue file (hv)]
-        \@addtofilelist{pst-dots97.pro}}{}%
-  \else
-    \input{pst-fp.tex}
-    \ProvidesFile{pst-fp.tex}
-      [\filedate\space v\fileversion\space `PST-fp' (hv)]
-    \IfFileExists{pstricks.pro}{%
-      \ProvidesFile{pstricks.pro}
-        [2012/10/16 v. 1.15,  PostScript prologue file (hv)]
+  \input{pst-xkey}%
+  \input{pstricks}%
+  \ProvidesFile{pstricks.tex}[\filedate\space v\fileversion\space `PSTricks' (tvz,hv)]
+  \input{pst-fp.tex}%
+  \ProvidesFile{pst-fp.tex}[\filedate\space v\fileversion\space `PST-fp' (hv)]
+  \IfFileExists{pstricks.pro}{%
+    \ProvidesFile{pstricks.pro}
+      [2018/11/14 v. 1.29,  PostScript prologue file (hv)]
         \@addtofilelist{pstricks.pro}}{}%
-    \IfFileExists{pst-algparser.pro}{%
-      \ProvidesFile{pst-algparser.pro}
-        [2011/10/31 v. 0.04,  PostScript prologue file (hv)]
+  \IfFileExists{pst-algparser.pro}{%
+    \ProvidesFile{pst-algparser.pro}[2011/10/31 v. 0.04,  PostScript prologue file (hv)]
         \@addtofilelist{pst-algparser.pro}}{}%
-    \IfFileExists{pst-tools.pro}{%
-      \ProvidesFile{pst-tools.pro}
-        [2012/01/01 v. 0.02,  PostScript prologue file (hv)]
+  \IfFileExists{pst-tools.pro}{%
+    \ProvidesFile{pst-tools.pro}[2012/01/01 v. 0.02,  PostScript prologue file (hv)]
         \@addtofilelist{pst-tools.pro}}{}%
-    \IfFileExists{pst-dots.pro}{%
-      \ProvidesFile{pst-dots.pro}
-        [2006/12/19 v. 2.00,  PostScript prologue file (hv)]
+  \IfFileExists{pst-dots.pro}{%
+    \ProvidesFile{pst-dots.pro}[2006/12/19 v. 2.00,  PostScript prologue file (hv)]
         \@addtofilelist{pst-dots.pro}}{}%
-  \fi
-  {%
-    \let\psscalebox\scalebox
-    \let\psscaleboxto\scaleboxto
-  }{}
-  \let\scalebox\saved@scalebox
 }{}
 %
-%
-\IfFileExists{xcolor.sty}{%
-  \def\pst@ColorPackage{xcolor}
-%  \PassOptionsToPackage{override}{xcolor}
-}{\def\pst@ColorPackage{color}}%
-
-%------------------------------------ DIA --------------------------------
-\newif\ifpst@DIA\pst@DIAfalse
-\DeclareOption{DIA}{\pst@DIAtrue}
-%------------------------------ color or xcolor --------------------------
-\DeclareOption{noxcolor}{\def\pst@ColorPackage{color}}
-%------------------------------------ VTeX --------------------------------
-\DeclareOption{vtex}{%
-  \pst@def{setTransparency}< >
-  \pst@def{setStrokeTransparency}< >
-  \pst@def{setBlendmode}< >%
-  \PassOptionsToPackage{vtex}{\pst@ColorPackage}%
-}
-%---------------------------------DISTILLER --------------------------------
-\newif\ifpst@distiller\pst@distillerfalse
-\DeclareOption{distiller}{%
-  \pst@distillertrue%
+\ifpst@distiller
   \pst@def{setTransparency}<
     [ /ca \psk@opacityalpha 
       /CA \psk@opacityalpha /SetTransparency pdfmark >
@@ -161,53 +121,31 @@
     [ /ca \psk@strokeopacityalpha 
       /CA \psk@strokeopacityalpha /SetTransparency pdfmark >
   \pst@def{setBlendmode}<
-    [ /BM\ifcase\psk@blendmode%
-        /Normal \or	% 0
-	/Multiply \or	% 1
-	/Screen \or	% 2
-	/Overlay \or	% 3
-	/Darken \or	% 4
-	/Lighten \or	% 5
-	/ColorDodge \or	% 6
-	/ColorBurn \or	% 7
-	/HardLight \or	% 8
-	/SoftLight \or	% 9
-	/Difference \or	% 10
-	/Exclusion \or	% 11
-	/Hue \or	% 12
-	/Color \or	% 13
-	/Saturation \or	% 14
-	/Luminosity 	% 15
-      \else /Normal \fi
-      /ca \psk@shapealpha /CA \psk@opacityalpha /SetTransparency pdfmark >%
-}
-%---------------------------------COLOR --------------------------------
-\DeclareOption{monochrome}{%
-  \AtBeginDocument{\special{ps:
-    /setrgbcolor { add add 0 gt {1}{0} ifelse setgray } def 
-    /setcmykcolor{ 4 dict begin
-      /k ED /y ED /m ED /c ED 
-      1 1 k sub c mul k add sub 0.29 mul 
-      1 1 k sub m mul k add sub 0.587 mul add 
-      1 1 k sub y mul k add sub 0.114 mul add
-      end 0 gt {1}{0} ifelse setgray } def }}}
-
-\DeclareOption{grayscale}{%
-  \AtBeginDocument{\special{ps:
-    /setrgbcolor { 0.07 mul exch 0.71 mul add exch 0.21 mul add setgray } def 
-    /setcmykcolor{ 4 dict begin
-      /k ED /y ED /m ED /c ED 
-      1 1 k sub c mul k add sub 0.29 mul 
-      1 1 k sub m mul k add sub 0.587 mul add 
-      1 1 k sub y mul k add sub 0.114 mul add
-      end setgray } def }}}
-
-\DeclareOption*{%
-  \PassOptionsToPackage\CurrentOption{\pst@ColorPackage}}
-\ProcessOptions\relax
-
-\RequirePackage{\pst@ColorPackage}
-
+    [ /BM%
+     \ifcase\psk@blendmode
+      /Normal \or
+      /Compatible \or
+      /Screen \or
+      /Multiply \or
+      /HardLight \or
+      /Darken \or
+      /Lighten \or
+      /Difference \or
+      /ColorDodge \or
+      /ColorBurn \or
+      /SoftLight \or
+      /Hue \or
+      /Saturation \or
+      /Luminosity \or
+      /Overlay \or
+      /Exclusion \or
+      /Color
+    \else 
+      /Normal 
+    \fi
+    /ca \psk@shapealpha /CA \psk@opacityalpha /SetTransparency pdfmark >
+\fi
+%
 \@ifpackageloaded{xcolor}{%
   \@ifpackagelater{xcolor}{2004/05/02}%
   {%
@@ -298,7 +236,12 @@
 %  \let\pst@color=\relax%
 % LaTeX used `\color@endgroup' instead. RN 2004-05-06
 }
+\pst@cntm=0
+\ifXeTeX\pst@cntm=1\else\ifpst@xetex\pst@cntm=1\fi\fi
+
+\ifnum\pst@cntm>\z@
+  \typeout{>>> Loading XeTeX special macros}%
+  \input{pstricks-xetex.def}%
+\fi
 %
-\endinput
-%%
 %% End of file `pstricks.sty'.
