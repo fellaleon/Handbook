@@ -1,7 +1,7 @@
-% $Id: pstricks.pro 489 2011-04-23 09:25:08Z herbert $
+% $Id: pstricks.pro 872 2018-12-21 20:39:31Z herbert $
 %
 %% PostScript prologue for pstricks.tex.
-%% Version 1.07, 2009/04/30
+%% Version 1.30, 2018/12/17
 %%
 %% This program can be redistributed and/or modified under the terms
 %% of the LaTeX Project Public License Distributed from CTAN archives
@@ -16,7 +16,7 @@ systemdict /.setshapealpha known not {/.setshapealpha { pop } def } if
 %
 /tx@Dict 200 dict def 				% the main PSTricks dictionary
 tx@Dict begin
-/ADict 25 dict def				% The arrow dictionaray
+/ADict 25 dict def				% The arrow dictionary
 /CM { matrix currentmatrix } bind def
 /SLW /setlinewidth load def
 /CLW /currentlinewidth load def
@@ -30,6 +30,7 @@ tx@Dict begin
 /Atan { /atan load stopped { pop pop 0 } if } def % return 0 if atan not known
 /ATAN1 {neg -1 atan 180 sub } def		% atan(x) (only one parameter)
 /Div { dup 0 eq { pop } { div } ifelse } def  	% control the division
+/Log { dup 1e-20 lt { pop -1e30 }{ log } ifelse } def % control the log
 /tan { dup cos abs 1.e-10 lt 
   { pop 1.e10 } 				% return 1.e10 as infinit
   { dup sin exch cos div } ifelse 		% default sin/cos
@@ -37,6 +38,28 @@ tx@Dict begin
 /Tan { dup sin exch cos Div } def 		% sin(x)/cos(x) x in degrees
 /Acos {dup dup mul neg 1 add dup 0 lt {		% arc cos, returns 0 when negative root
   pop pop 0 }{ sqrt exch atan} ifelse } def
+/Acos2 { 2 dict begin 
+  /x ED /y ED
+  y abs 1.0e-20 lt { 1.0e30 } if
+  x y div 
+  dup dup mul neg 1 add dup 0 lt {		% arc cos needs two values x,y
+  pop pop 0 }{ sqrt exch atan} ifelse 
+  y 0 lt { 180 add } if
+} def
+/Power { %  a^b   latest ghostscript don't allow -4^-3.1
+  2 dict begin	% hold all local
+  /b ED
+  /a ED
+  a 0 lt % prevent something like (-4)^(-3.1)=> 1/(-4)^3
+    { b 0 lt 
+      { a b cvi exp }
+      { a b exp } ifelse 
+    }
+    { a 0 eq { 0 }{ a b exp } ifelse
+    } ifelse
+  end
+} def
+%
 /NET { neg exch neg exch T } def	      	% change coordinate system to the negative one		
 /Pyth { dup mul exch dup mul add sqrt } def   	% Pythagoras, expects 2 parameter
 /Pyth2 {					% Pythagoras, xA yA xB yB
@@ -45,8 +68,16 @@ tx@Dict begin
   3 1 roll 		% yB-yA xA xB
   sub			% yB-yA xA-xB
   Pyth } def
-/PtoC { 2 copy cos mul 3 1 roll sin mul } def 	% Polar to Cartesian
-/Rand { rand 4294967295 div } def		% a real random number
+/PtoC { 2 copy cos mul 3 1 roll sin mul } def % Polar to Cartesian (origimal)
+/PtoCrel { pst@angleunit PtoC } def % Polar to Cartesian with \degrees[??]
+/PtoCab { dup cos 4 -1 roll mul 3 1 roll sin mul } def % Polar to Cartesian (Ellipse) a b phi-> x y 
+/AnytoDeg { pst@angleunit } def 
+/DegtoAny { 1 pst@angleunit div} def
+/AnytoRad { AnytoDeg DegtoRad } def 
+/RadtoAny { RadtoDeg DegtoAny } def
+%
+%/Rand { rand 4294967295 div } def		% a real random number
+/Rand { rand 2147483447 div } def		% a real random number between 0 and 1
 %----------------- hv added 20050516 ---------------
 /PiDiv2 1.57079632680 def
 /Pi 3.14159265359 def 
@@ -56,6 +87,13 @@ tx@Dict begin
 %
 /RadtoDeg { 180 mul Pi div } bind def 		% convert from radian to degrees
 /DegtoRad { Pi mul 180 div } bind def 		% viceversa
+%
+/startGlobal { true setglobal globaldict begin } bind def
+/endGlobal { end false setglobal } bind def
+/pssetRGBcolor /setrgbcolor load def
+/pssetCMYKcolor /setcmykcolor load def
+/pssetGraycolor /setgray load def
+%
 %----------------- hv end---------------------------
 /PathLength@ { /z z y y1 sub x x1 sub Pyth add def /y1 y def /x1 x def } def
 %
@@ -123,22 +161,55 @@ tx@Dict begin
     /YLength YB YA sub def
     /PAngle YLength XLength Atan def
     /XYLength XLength YLength Pyth def
-    /nSym XYLength SymStep div cvi def
+    %% for negative SymStep we calculate the distance 
+    SymStep 0 lt 
+      { %XYLength SymStep div abs cvi 
+        /nSym SymStep abs cvi def } 
+      { /nSym XYLength SymStep div cvi def }
+    ifelse
+    0.5 setflat
     /Shift Symbol stringwidth pop 2 div def 
     /deltaX XLength nSym div def
     /deltaY YLength nSym div def
-    XA Shift sub YA Shift sub moveto 
+    curveticks 
+      { XA YA moveto }
+      { XA Shift sub YA Shift sub moveto }
+    ifelse 
     nSym { 
-      gsave rotateSymbol { PAngle 180 sub CorrAngle sub rotate } if
-      Symbol show 
+      gsave 
+      curveticks 
+        { PAngle 180 sub CorrAngle sub tickAngle add /rotAngle ED  
+          currentpoint translate rotAngle rotate 
+          0 SymbolWidth 2 div moveto 0 SymbolWidth 2 div neg lineto 
+          SymbolLinewidth setlinewidth stroke
+        }
+        { 
+          rotateSymbol { PAngle 180 sub CorrAngle sub rotate } if
+          Symbol show 
+        }
+      ifelse 
       grestore 
       deltaX deltaY rmoveto
     } repeat
     /YA YB def /XA XB def
   } repeat 
-  XA Shift sub YA Shift sub moveto 
-  gsave rotateSymbol { PAngle 180 sub CorrAngle sub rotate } if
-  Symbol show grestore
+  curveticks 
+    { XA YA moveto }
+    { XA Shift sub YA Shift sub moveto }
+  ifelse 
+  gsave 
+  curveticks 
+    { PAngle 180 sub CorrAngle sub tickAngle add /rotAngle ED  
+      XA YA translate rotAngle rotate 
+      0 SymbolWidth 2 div moveto 0 SymbolWidth 2 div neg lineto 
+      SymbolLinewidth setlinewidth stroke
+    }
+    { 
+      rotateSymbol { PAngle 180 sub CorrAngle sub rotate } if
+      Symbol show 
+    }
+  ifelse 
+  grestore
   pop 				% delete the mark symbol
 } def
 %
@@ -155,7 +226,7 @@ tx@Dict begin
   /y2 ED 
   a Div ceiling cvi /x2 ED /y1 ED 
   a Div cvi /x1 ED /y2 y2 y1 sub def 
-  clip 
+  clipType   % must be defined in pstricks.tex: clip -- eoclip 
   newpath 
   2 setlinecap 
   systemdict
@@ -173,29 +244,100 @@ tx@Dict begin
   grestore 
   pop pop } def
 %
-/PenroseFill {%	 on stack: scaling factor
-  dup dup scale
-  1 exch div round /penroseFactor ED 
+/DotFill {%	 on stack: dot radius
+  /dotRadius ED
+  abs CLW add /a ED 
   a 0 dtransform round exch round exch
   2 copy idtransform 
   exch Atan rotate 
   idtransform pop /a ED 
-  .25 .25 itransform pathbbox 
-  /y2 ED 
-  a Div ceiling cvi /x2 ED /y1 ED 
-  a Div cvi /x1 ED /y2 y2 y1 sub def 
+  .25 .25 itransform 
+  pathbbox % llx lly urx ury of smallest bounding box
+  /y2 ED /x2 ED /y1 ED /x1 ED 
+  y2 y1 sub a div 2 add cvi /Ny ED
+  x2 x1 sub a div 2 add cvi /Nx ED
+  clipType   % must be defined in pstricks.tex: clip -- eoclip 
+  newpath 
+  /yA y1 dotRadius add CLW add def
+  /xA0 x1 dotRadius add CLW add def
+  Ny {
+     /xA xA0 def
+     Nx { 
+       newpath 
+       xA yA dotRadius 0 360 arc 
+       SolidDot { gsave fill grestore } if 
+       stroke
+       xA a add /xA ED
+     } repeat
+     yA a add /yA ED
+  } repeat
+  grestore
+} def
+%
+/PenroseFill {%	 on stack: scaling factor
+  /Scale ED
+%  1 exch div round /penroseFactor ED 
+%  a 0 dtransform round exch round exch
+%  2 copy idtransform 
+%  exch Atan rotate 
+%  idtransform pop /a ED 
+%  .25 .25 itransform pathbbox 
+%  /y2 ED 
+%  a Div ceiling cvi /x2 ED /y1 ED 
+%  a Div cvi /x1 ED /y2 y2 y1 sub def 
   clip 
   newpath 
-  systemdict
-  /setstrokeadjust known { true setstrokeadjust } if 
+gsave
+  220 150 translate
+  Scale dup scale
+  systemdict /setstrokeadjust known { true setstrokeadjust } if 
   /I/S/L/W/G/+/Z/F/E/D[/def/exch/for{E D}/add{s E get mul}
  { Z -36.2001 1 33 }{25 E S rlineto}{/q Z dup q G E q 1 + G}{Z 2 2}]{cvx def}forall
   [0 72 1008 {dup sin E cos }F ]1 setlinejoin/s W{/a W{/b I 10{/i I 4{/m I moveto
   i m +/j I 10{/l Z b m l + G a l G sub s m get div .2 + floor .3 + 25
   mul j l + S rmoveto}F i L j L stroke }F}F}F}F 
   grestore 
-  pop pop 
+%  pop pop 
 } def
+%
+/PenroseFillA {%  on stack: scaling factor, border color, kite color, dart color
+  /Scale ED
+  Scale dup scale
+  /border_colour ED 
+  /kite_colour ED 
+  /dart_colour ED
+  clip 
+  newpath 
+  gsave
+  100 100 translate
+  6 
+  Scale 1 lt { 1 Scale dup add div mul cvi } if %%%%   Number of iterations
+  10					%%%%   Long side length in millimeters
+  /border_width { L 0.06 mul }def		%%%%   Choose the scalefactor for the borders
+  /L exch 25.4 div 72 mul def		%%%%   Conversion: mm -> inches -> points
+  /f{-1 5 sqrt add 2 div}bind def		%%%%   The reciprocal of the golden ratio
+  /l{L f mul}bind def			%%%%   Short side length l = L*f
+  /Ll{L l add}bind def			%%%%   Ll =  L + l
+  /c{36 cos L mul}bind def		%%%%   c  =  L*cos(36)
+  /s{36 sin L mul}bind def		%%%%   s  =  L*sin(36)
+  /draw_tile { 0 0 moveto c s lineto 0 lineto gsave closepath gsave fill grestore
+	     0 setlinewidth stroke grestore border_colour stroke } bind def
+  /half_kite { dup dup 0 gt{ 1 sub gsave f f neg scale -36 rotate half_dart
+			   Ll 0 translate 144 rotate kite grestore }
+	      		 { kite_colour L draw_tile }ifelse
+	     pop } bind def
+  /half_dart { dup dup 0 gt{ 1 sub gsave f f scale half_kite
+			   -144 rotate Ll neg 0 translate half_dart grestore }
+	      		 { dart_colour l draw_tile }ifelse
+  	     pop } bind def
+  /kite{ gsave half_kite 1 -1 scale half_kite grestore }bind def
+  border_width setlinewidth  1 setlinejoin  1 setlinecap
+%  450 0 translate  
+  dup f exch neg exp dup scale
+  5 {kite 72 rotate } repeat stroke 
+  grestore
+} def
+%
 %
 /TruchetFill { %	 on stack: scaling factor
   10 dict begin
@@ -331,9 +473,10 @@ tx@Dict begin
   /showpoints ED 
   counttomark 2 div dup cvi /n ED  	% n 2 div on stack 
   n eq not { exch pop } if		% even numbers of points? delete one
-  showpoints 
-    { ] aload /Points ED } 
-    { n 2 mul 1 add -1 roll pop } ifelse	% delete the mark symbol 
+  ] aload /Points ED 
+  showpoints not { Points aload pop } if
+%    { ] aload /Points ED } 
+%    { n 2 mul 1 add -1 roll pop } ifelse	% delete the mark symbol 
 } def
 %
 /Line { 
@@ -345,25 +488,27 @@ tx@Dict begin
 } def
 %
 /LineToYAxis {
+  /Ox ED		% Save the x origin value 
   NArray            % all x-y pairs on stack
   n { 2 copy moveto % go to current point
-    0 exch Lineto   % line to y-axis
+    Ox exch Lineto   % line to y-axis
     pop             % delete old x-value
   } repeat
 } def
 %
 /LineToXAxis{
+  /Oy ED		% Save the y origin value 
   NArray		% all x-y pairs on stack
   n 0 eq not
     { n 1 eq { 0 0 /n 2 def } if
       ArrowA
       /n n 2 sub def
-      CP 2 copy moveto pop 0 Lineto
-      n { 2 copy moveto pop 0 Lineto } repeat
+      CP 2 copy moveto pop Oy Lineto
+      n { 2 copy moveto pop Oy Lineto } repeat
       CP
       4 2 roll
       ArrowB
-      2 copy moveto pop 0
+      2 copy moveto pop Oy
       L
       pop pop } if
 } def
@@ -509,28 +654,62 @@ tx@Dict begin
 } def
 %
 /CurvePath { 
+  %% for negative SymStep we calculate the distance 
+  SymStep 0 lt { gsave PathLength SymStep div abs /SymStep ED grestore } if
+  0.5 setflat
   flattenpath /z 0 def /z0 0 def
   { /y1 ED /x1 ED /y2 y1 def /x2 x1 def 
     x1 Shift sub y1 Shift sub moveto 
     gsave 
-    startAngle rotate Symbol show 
+    curveticks 
+      { x1 y1 translate startAngle rotate 
+        0 SymbolWidth 2 div moveto 0 SymbolWidth 2 div neg lineto 
+        SymbolLinewidth setlinewidth stroke      
+      }
+      { startAngle rotate Symbol show }
+    ifelse 
     grestore /z0 z def }
   { /y ED /x ED PathLength@ z z0 sub SymStep ge {
       x Shift sub y Shift sub moveto 
       gsave 
-      rotateSymbol { y yOld sub x xOld sub Atan 180 sub CorrAngle sub rotate } if
-      Symbol show 
+      curveticks 
+        { y yOld sub x xOld sub Atan 180 sub CorrAngle sub /rotAngle ED  
+          x y translate rotAngle rotate 
+          0 SymbolWidth 2 div moveto 0 SymbolWidth 2 div neg lineto 
+          SymbolLinewidth setlinewidth stroke
+        }
+        { 
+          rotateSymbol { y yOld sub x xOld sub Atan 180 sub CorrAngle sub rotate } if        
+          Symbol show 
+        }
+      ifelse 
       grestore /z0 z def } if 
     /yOld y def /xOld x def } 
-  {} 
+  {} %% the lineto part
   { /y y2 def /x x2 def PathLength@ 
     x Shift sub y Shift sub moveto 
     gsave
-    rotateSymbol { y yOld sub x xOld sub Atan 180 sub CorrAngle sub rotate } if
-    Symbol show 
+    curveticks 
+      { y yOld sub x xOld sub Atan 180 sub /rotAngle ED  
+        x y translate rotAngle rotate 
+        0 SymbolWidth 2 div moveto 0 SymbolWidth 2 div neg lineto 
+        SymbolLinewidth setlinewidth stroke
+      }
+      { 
+        x Shift sub y Shift sub moveto 
+        rotateSymbol { y yOld sub x xOld sub Atan 180 sub CorrAngle sub rotate } if        
+        Symbol show 
+      }
+    ifelse 
     grestore
   }
   pathforall 
+%  curveticks 
+%   { gsave 
+%     x y translate rotAngle rotate 
+%     0 SymbolWidth 2 div moveto 0 SymbolWidth 2 div neg lineto 
+%     SymbolLinewidth setlinewidth stroke grestore
+%   } if
   z 
 } def
 %
@@ -574,6 +753,99 @@ tx@Dict begin
   CurvePath 
 } def
 %
+/CalcBezierSpline {%  Christoph Bersch
+  10 dict begin
+  /getX { Points exch 2 mul get } def
+  /getY { Points exch 2 mul 1 add get } def
+  /n Points length 1 sub 2 idiv def
+  /GetFirstControlPoints {
+    /x n array def
+    /tmp n array def
+    /b 2 def
+    x 0 rhs 0 get b div put
+    1 1 n 1 sub {
+      /i exch def
+      tmp i 1 b div dup 4 1 roll put
+      i n 1 sub lt { 4 }{ 3.5 } ifelse exch sub /b exch def
+      x i rhs i get x i 1 sub get sub b div put
+    } for
+    1 1 n 1 sub {
+      n exch sub
+      dup dup x exch 1 sub 2 copy 6 2 roll
+      get 3 1 roll tmp exch get
+      exch x exch get mul sub
+      put	
+    } for
+    x
+  } def
+  % 
+  n 1 eq {
+    0 getX 2 mul 1 getX add 3 div
+    0 getY 2 mul 1 getY add 3 div
+    exch dup 3 1 roll 2 mul 0 getX sub
+    exch dup 3 1 roll 2 mul 0 getY sub
+    [ 0 getX 0 getY 7 3 roll 1 getX 1 getY ] /outPoints exch def
+  } {
+    /outPoints 6 n mul 2 add array def
+    0 1 n {
+      dup dup 6 mul dup 1 add
+      outPoints exch 5 -1 roll getY put
+      outPoints exch 3 -1 roll getX put
+    } for
+    /rhs n array def
+    1 1 n 2 sub {
+      rhs exch dup dup getX 4 mul exch 1 add getX 2 mul add put
+    } for
+    rhs 0 0 getX 1 getX 2 mul add put
+    rhs n 1 sub dup getX 8 mul n getX add 2 div put
+    GetFirstControlPoints
+    1 1 n 2 sub {
+      rhs exch dup dup getY 4 mul exch 1 add getY 2 mul add put
+    } for
+    rhs 0 0 getY 1 getY 2 mul add put
+    rhs n 1 sub dup getY 8 mul n getY add 2 div put
+    GetFirstControlPoints
+    0 1 n 1 sub {
+      /i exch def
+      2 copy
+      i get outPoints 6 i mul 3 add 3 -1 roll put
+      i get outPoints 6 i mul 2 add 3 -1 roll put
+      2 copy
+      i n 1 sub lt {
+        i 1 add get i 1 add getY 2 mul exch sub outPoints 6 i mul 5 add 3 -1 roll put
+        i 1 add get i 1 add getX 2 mul exch sub outPoints 6 i mul 4 add 3 -1 roll put
+      }{
+        n 1 sub get n getY add 2 div outPoints 6 n 1 sub mul 5 add 3 -1 roll put
+        n 1 sub get n getX add 2 div outPoints 6 n 1 sub mul 4 add 3 -1 roll put
+      } ifelse
+    } for
+    pop pop
+  } ifelse
+  outPoints
+  end
+} def
+/Spline {
+  /showpoints ED
+  counttomark 2 div dup cvi /n ED
+  n eq not { exch pop } if
+  ] /Points ED
+  n 1 gt {
+    CalcBezierSpline
+    mark exch aload pop
+    ArrowA
+    n 2 sub {
+      6 2 roll 4 2 roll curveto
+    } repeat
+    6 2 roll 4 2 roll ArrowB curveto
+  } if
+} def
+/OpenSymbolSpline {
+  Spline
+  0.1 setflat
+  /Shift Symbol stringwidth pop 2 div def 
+  CurvePath 
+} def
+%
 /SQ { /r ED r r moveto r r neg L r neg r neg L r neg r L fill } def
 /ST { /y ED /x ED x y moveto x neg y L 0 x L fill } def
 /SP { /r ED gsave 0 r moveto 4 { 72 rotate 0 r L } repeat fill grestore } def
@@ -587,10 +859,14 @@ tx@Dict begin
 %
 /Rect { 
   x1 y1 y2 add 2 div moveto 
+%  x1 y2 lineto 
+%  x2 y2 lineto 
+%  x2 y1 lineto
+%  x1 y1 lineto 
+  x1 y1 lineto  % counter clockwise path
+  x2 y1 lineto 
+  x2 y2 lineto
   x1 y2 lineto 
-  x2 y2 lineto 
-  x2 y1 lineto
-  x1 y1 lineto 
   closepath 
 } def
 %
@@ -724,8 +1000,12 @@ tx@Dict begin
   /w x2 x1 sub 0 gt { 1 } { -1 } ifelse def 
   b 0 gt { 
     /z1 b 4 div CLW 2 div add def
-%    /Helvetica findfont b scalefont setfont 
-    /b b .95 mul CLW 2 div add def } if 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%    Helvetica findfont b scalefont setfont 
+%    is set in pstricks.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%    
+%     /NimbusSanL-Regu findfont b scalefont setfont   
+  /b b .95 mul CLW 2 div add def } if 
   systemdict /setstrokeadjust known 
     { true setstrokeadjust /t { } def }
     { /t { transform 0.25 sub round 0.25 add exch 0.25 sub round 0.25 add
@@ -735,7 +1015,7 @@ tx@Dict begin
   /f y1 dy mul n 0 gt { dy n div 2 div h mul sub } if def 
   /g y2 dy mul n 0 gt { dy n div 2 div h mul add } if def 
   x2 x1 sub w mul 1 add dup 1000 gt { pop 1000 } if 
-  { i dx mul dup y0 moveto 
+  { i dx mul dup xGridOffset add y0 moveto 
     b 0 gt 
       { gsave c i a cvs dup stringwidth pop 
         /z2 ED w 0 gt {z1} {z1 z2 add neg} ifelse 
@@ -757,7 +1037,7 @@ tx@Dict begin
   /f x1 dx mul n 0 gt { dx n div 2 div w mul sub } if def 
   /g x2 dx mul n 0 gt { dx n div 2 div w mul add } if def 
   y2 y1 sub h mul 1 add dup 1000 gt { pop 1000 } if 
-  { newpath i dy mul dup x0 exch moveto 
+  { newpath i dy mul dup yGridOffset add x0 exch moveto 
     b 0 gt { gsave c i a cvs dup stringwidth pop 
       /z2 ED 
       w 0 gt {z1 z2 add neg} {z1} ifelse 
@@ -784,12 +1064,18 @@ tx@Dict begin
   mul neg d 
 } def
 %
+%
+/isbool { type (booleantype) cvn eq } def
+%
 /Ellipse { 
+  dup isbool { /MoveToStart ED }{ /MoveToStart false def }ifelse  % false or true
   /rotAngle ED
   /mtrx CM def 
   T 
   rotAngle rotate
-  scale 0 0 1 5 3 roll arc 
+  scale 
+  MoveToStart { 0 0 moveto 1 0 rmoveto } if  % move to the start position
+  0 0 1 5 3 roll arc 
   mtrx setmatrix 
 } def
 %
@@ -911,7 +1197,7 @@ dup angle0 sub dup abs 180 gt { 180 add 360 div floor 360 mul sub } { pop } ifel
 /PutBegin { /TMatrix [ TMatrix CM ] cvx def CP 4 2 roll T moveto } def
 /PutEnd { CP /TMatrix [ TMatrix setmatrix ] cvx def moveto } def
 %
-/Uput { 
+/Uput {
   /a ED 
   add 2 div /h ED 2 
   div /w ED 
@@ -926,6 +1212,7 @@ dup angle0 sub dup abs 180 gt { 180 add 360 div floor 360 mul sub } { pop } ifel
 } def
 %
 /UUput { 
+  5 dict begin
   /z ED 
   abs /y ED 
   /x ED 
@@ -936,73 +1223,6 @@ dup angle0 sub dup abs 180 gt { 180 add 360 div floor 360 mul sub } { pop } ifel
   a PtoC 
   h1 add exch 
   w1 add exch 
-} def
-%
-/BeginOL { 
-  dup (all) eq exch TheOL eq or 
-    { IfVisible not { Visible /IfVisible true def } if } 
-    { IfVisible { Invisible /IfVisible false def } if } ifelse 
-} def
-%
-/InitOL { 
-  /OLUnit [ 3000 3000 matrix defaultmatrix dtransform ] cvx def
-  /Visible { CP OLUnit idtransform T moveto } def 
-  /Invisible { CP OLUnit neg exch neg exch idtransform T moveto } def 
-  /BOL { BeginOL } def
-  /IfVisible true def 
-} def
-%
-%%%%%%%%%%%%%%%%% tools %%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%% ### bubblesort ###
-%% syntax : array bubblesort --> array2 trie par ordre croissant
-%% code de Bill Casselman
-%% http://www.math.ubc.ca/people/faculty/cass/graphics/text/www/
-/bubblesort {
-4 dict begin
-   /a exch def
-   /n a length 1 sub def
-   n 0 gt {
-      % at this point only the n+1 items in the bottom of a remain to
-      % the sorted largest item in that blocks is to be moved up into
-      % position n
-      n {
-         0 1 n 1 sub {
-            /i exch def
-            a i get a i 1 add get gt {
-               % if a[i] > a[i+1] swap a[i] and a[i+1]
-               a i 1 add
-               a i get
-               a i a i 1 add get
-               % set new a[i] = old a[i+1]
-               put
-               % set new a[i+1] = old a[i]
-               put
-            } if
-         } for
-         /n n 1 sub def
-      } repeat
-   } if
-   a
-end
-} def
-%
-%
-/concatstringarray{  %  [(a) (b) ... (z)] --> (ab...z)  20100422
-  0 1 index { length add } forall 
-  string     
-  0 3 2 roll      
-  { 3 copy putinterval length add }forall 
-  pop  
-} bind def
-%
-/dot2comma {% on stack a string (...) 
-  2 dict begin
-  /Output exch def
-  0 1 Output length 1 sub { 
-    /Index exch def 
-    Output Index get 46 eq { Output Index 44 put } if 
-  } for
-  Output
   end
 } def
 %
