@@ -246,19 +246,18 @@ $m$ balls from an urn which initially contains n distinguishable balls (they are
 \item [(iii)] {\bf Sampling without replacement and without ordering.} If we take $m$ balls from $n$ and they were ordered there would be $n(n - 1) \dots (n - m + 1) = n!/(n - m)!$ ways but each
     unordered selection may be permuted in $m!$ different ways (or give $m!$ ordered arrangements) so that the total number of unordered ways is \be \frac{n!}{(n - m)!m!} = \binom{n}{m} = C^n_m. \ee
 
-The symbol $\binom{n}{m}$ is the binomial coe��cient, usually read "$n$ choose $m$", and represents the number of ways of picking $m$ objects from $n$, note that $\binom{n}{m}$ is the coefficient of
-$x^m$ in the expansion of $(1 + x)^n$ using the binomial theorem.
+The symbol $\binom{n}{m}$ is the binomial coefficient, usually read "$n$ choose $m$", and represents the number of ways of picking $m$ objects from $n$, note that $\binom{n}{m}$ is the coefficient of $x^m$ in the expansion of $(1 + x)^n$ using the binomial theorem.
 
 Suppose that, of the $n$ balls, $m_1$ are of colour 1, $m_2$ are of colour 2 and so on up to $m_k$ balls of colour $k$, where $n = m_1 + \dots + m_k$. Consider the number of permutations of the $n$
-balls when the balls are distinguishable only by colour. For example, if $n = 4$ and there are two black balls and two white balls then there are 6 possible arrangements: \be BBWW\quad BWBW\quad
-BWWB\quad WBBW\quad WBWB\quad WWBB \ee
+balls when the balls are distinguishable only by colour. For example, if $n = 4$ and there are two black balls and two white balls then there are 6 possible arrangements: 
+\be 
+BBWW\quad BWBW\quad BWWB\quad WBBW\quad WBWB\quad WWBB 
+\ee
 
-If the balls are distinguishable then there are $n!$ permutations, but within colour $i$ there are $m_i!$ ways of permuting the balls so the Fundamental Rule gives that for each distinguishable
-arrangement there are $\prod^k_{i=1} (m_i!)$ ways of permuting the balls leaving the arrangement the same if the balls are distinguishable only by colour. Thus the number of arrangements
-distinguishable only by colour is \be \frac{n!}{m_1!m_2! \dots m_k!} = \binom{n}{m_1 \dots m_k}, \ee which is the multinomial coefficient (the coefficient of $x^{m_1}_1 x^{m_2}_2 \dots x^{m_k}_k$ in
-the expansion of $(x_1 + \dots + x_k)^n$). An alternative way of seeing this is to think of first choosing the positions for the balls of colour 1, which can be done in $\binom{n}{m_1}$ ways, then
-choose the positions for the balls of colour 2 in $\binom{n- m_1}{m_2}$ ways and so on to see that the total number of ways, using the Fundamental Rule, is \be \binom{n}{m_1}\binom{n -m_1}{m_2}
-\binom{n -m_1 -m_2}{m_3} \cdots \binom{n - m_1 - \dots - m_{k-1}}{m_k} = \binom{n}{m_1 \dots m_k}. \ee
+If the balls are distinguishable then there are $n!$ permutations, but within colour $i$ there are $m_i!$ ways of permuting the balls so the Fundamental Rule gives that for each distinguishable arrangement there are $\prod^k_{i=1} (m_i!)$ ways of permuting the balls leaving the arrangement the same if the balls are distinguishable only by colour. Thus the number of arrangements distinguishable only by colour is \be \frac{n!}{m_1!m_2! \dots m_k!} = \binom{n}{m_1 \dots m_k}, \ee which is the multinomial coefficient (the coefficient of $x^{m_1}_1 x^{m_2}_2 \dots x^{m_k}_k$ in the expansion of $(x_1 + \dots + x_k)^n$). An alternative way of seeing this is to think of first choosing the positions for the balls of colour 1, which can be done in $\binom{n}{m_1}$ ways, then choose the positions for the balls of colour 2 in $\binom{n- m_1}{m_2}$ ways and so on to see that the total number of ways, using the Fundamental Rule, is 
+\be 
+\binom{n}{m_1}\binom{n -m_1}{m_2}\binom{n -m_1 -m_2}{m_3} \cdots \binom{n - m_1 - \dots - m_{k-1}}{m_k} = \binom{n}{m_1 \dots m_k}. 
+\ee
 
 \item [(iv)] {\bf Sampling with replacement and without ordering.} Draw $m$ balls one after another, each time noting the number of the ball and replacing it before the next draw,
 \begin{center}
@@ -5271,7 +5270,7 @@ Then this result holds for any norm on $\R^n$ by the equivalence of norms in fin
 \end{theorem}
 
 \begin{remark}
-In probability theory, \levy��s continuity theorem, named after the French mathematician Paul \levy, connects convergence in distribution of the sequence of random variables with pointwise convergence of their characteristic functions. An alternative name sometimes used is \levy��s convergence theorem (see \cite{Williams_1991}, sec 18.1).
+In probability theory, \levy's continuity theorem, named after the French mathematician Paul \levy, connects convergence in distribution of the sequence of random variables with pointwise convergence of their characteristic functions. An alternative name sometimes used is \levy's convergence theorem (see \cite{Williams_1991}, sec 18.1).
 
 Note that there a Laplace transform version of \levy's continuity theorem in \cite{Feller_1948}\footnote{details needed.}.
 \end{remark}
@@ -8100,7 +8099,7 @@ Informally, the probability that any number is divisible by a prime (or in fact 
 
 Here $\zeta$ refers to the Riemann zeta function (see Theorem \ref{thm:euler_product_riemann_zeta_function}), the identity relating the product over primes to $\zeta(2)$ is an example of an Euler product, and the evaluation of $\zeta(2)$ as $\pi^2/6$ is the Basel problem, solved by Leonhard Euler in 1735. In general, the probability of $k$ randomly chosen integers being coprime is $1/\zeta(k)$.
 
-The notion of a `randomly chosen integer' in the preceding paragraphs is not rigorous. One rigorous formalization is the notion of natural density: choose the integers $a$ and $b$ randomly between 1 and an integer $N$. Then, for each upper bound $N$, there is a probability $P_N$ that two randomly chosen numbers are coprime. This will never be exactly $6/\pi^2$, but in the limit as $N \to \infty$, the probability $P_N$ approaches $6/\pi^2$. This theorem was proved by Ernesto Ces��ro in 1881. For a more rigorous proof, see Hardy-Wright\cite{Hardy_Wright_2008}.
+The notion of a `randomly chosen integer' in the preceding paragraphs is not rigorous. One rigorous formalization is the notion of natural density: choose the integers $a$ and $b$ randomly between 1 and an integer $N$. Then, for each upper bound $N$, there is a probability $P_N$ that two randomly chosen numbers are coprime. This will never be exactly $6/\pi^2$, but in the limit as $N \to \infty$, the probability $P_N$ approaches $6/\pi^2$. This theorem was proved by Ernesto Ces\`aro in 1881. For a more rigorous proof, see Hardy-Wright\cite{Hardy_Wright_2008}.
 \end{solution}
 
 
